@@ -1,802 +1,1809 @@
-# Remote Sensing Frequency Project — Experiment Master
+# Optical–DSM 双模态频率引导语义分割：实验总计划与完整记录
 
-> 本文件是本项目的实验总索引。
+> 本文件是本项目唯一的实验主记录。
 >
-> 任何正式/筛选实验均应在此登记：
-> 实验目的、数据集、模型代码、训练脚本、run目录、训练预算、
-> 主要结果、结论、下一步以及对应 Git commit。
+> 以后查看一个实验时，应当能够直接从本文件找到：
+> 为什么做、与哪个实验比较、改了什么、数据在哪里、代码在哪里、
+> 权重在哪里、运行结果在哪里、最终结果是多少、结论是什么、下一步做什么。
 >
-> 不再依赖文件名猜测实验含义。
+> P1、P2H、F0、ScreenV2、ScreenV3 等名称只作为历史文件定位名称，
+> 不再作为实验的主要名称。
 
 ---
 
-# 1. 当前研究目标
+## 1. 当前项目状态
 
-任务：
+### 1.1 当前研究主线
 
-- ISPRS 遥感语义分割
-- Optical + DSM 双模态
-- 重点研究：
-  1. 融合前跨模态频率可靠性；
-  2. 稀有类别采样；
-  3. 难例历史采样；
-  4. 浅层细节保持；
-  5. 小目标与边界改善。
+本项目研究 Optical + DSM 双模态遥感语义分割。
 
-当前主线：
+当前主要问题包括：
 
-P2-H
-→ Rare30
-→ Shallow Detail Preservation
+- 提高 Optical 与 DSM 融合时的模态可靠性；
+- 改善 LowVegetation / Tree 等易混类别与边界；
+- 改善 Car 等小目标和稀有类别；
+- 判断频率信息在哪个阶段使用最有效。
 
-当前 10k 最优：
+目前已经完成的研究路线为：
 
-**E32 P2-H + Rare30**
+**NoSR 双模态基线**
 
-Vaihingen NB:
+↓
 
-- OA = 92.2850%
-- mF1_fg5 = 90.4897%
-- mIoU_fg5 = 83.0658%
+**Decoder 频率增强**
 
-当前正在验证：
+结果：存在小幅增益，但提升有限，因此不作为后续主线。
 
-- E40 NormalDetail
-- E41 HFDetail
+↓
+
+**将频率建模前置到双模态融合之前**
+
+↓
+
+**DSM 高频校准**
+
+结果：有效。
+
+↓
+
+**Optical/DSM 跨模态高频可靠性**
+
+结果：有效，保留。
+
+↓
+
+**Rare30 稀有类别定向采样**
+
+结果：进一步提高性能。
+
+↓
+
+**History 难例采样**
+
+结果：不能超过 Rare30，停止。
+
+↓
+
+**浅层细节保持**
+
+Normal Shallow Detail 与 HF Shallow Detail 均完成 10k 验证。
+
+两者虽然能够改善早期收敛，
+但最终 NB mIoU_fg5 均低于不加 Detail 的主基线，因此停止。
+
+当前保留的统一 10k 主线为：
+
+**Optical/DSM 跨模态高频可靠性 + Rare30**
+
+Vaihingen 10k：
+
+- NB OA = 92.2850
+- NB mF1_fg5 = 90.4897
+- NB mIoU_fg5 = **83.0658**
+
+### 1.2 当前最好已完成实验
+
+#### Vaihingen｜Optical/DSM 跨模态高频可靠性 + Rare30
+
+训练预算：10k steps。
+
+这是目前统一 10k 筛选实验中的最佳方案，也是后续研究的主基线。
+
+| 指标 | 结果 |
+|---|---:|
+| NB OA | 92.2850 |
+| NB mF1_fg5 | 90.4897 |
+| NB mIoU_fg5 | **83.0658** |
+
+NB 各类 IoU：
+
+| 类别 | IoU |
+|---|---:|
+| Impervious | 87.7727 |
+| Building | 95.1703 |
+| LowVegetation | 68.7736 |
+| Tree | 84.5056 |
+| Car | 79.1068 |
+| Clutter | 0.0000 |
+
+当前状态：
+
+**CURRENT MAIN BASELINE**
+
+### 1.3 当前正在运行的实验
+
+当前没有需要继续训练的浅层 Detail 实验。
+
+Normal Shallow Detail 与 HF Shallow Detail 均已完成 10k，
+并确认不能超过当前主基线。
+
+下一轮结构实验开始前，先以：
+
+**Optical/DSM 跨模态高频可靠性 + Rare30**
+
+作为统一对照。
+
+### 1.4 最近下一步
+
+当前不继续 Normal Shallow Detail 或 HF Shallow Detail。
+
+当前主基线：
+
+**Optical/DSM 跨模态高频可靠性 + Rare30**
+
+10k NB mIoU_fg5：
+
+**83.0658**
+
+下一阶段研究应优先针对现有薄弱类别，
+特别是 Car 小目标以及 LowVegetation / Tree 的类别与边界问题。
+
+浅层 Detail 实验说明：
+
+简单地在最终预测前重复注入浅层特征，
+即使能够改善早期收敛，也不能保证最终性能提高。
+
+HF Shallow Detail 还表现出非常明显的类别重分配现象：
+Clutter 大幅提高，但 Car 明显下降。
+
+因此后续不继续做简单浅层残差叠加。
+
+## 2. 公共路径、数据、权重和评价设置
+
+### 2.1 项目根目录
+
+服务器：
+
+`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro`
+
+GitHub：
+
+`66322/remote_sensing_frequency`
 
 ---
 
-# 2. 数据集协议
+### 2.2 公共预训练权重
 
-## 2.1 Vaihingen
+R50 + ViT-B/16：
 
-Train12:
+`/home/jovyan/zzx/paper_rebuild/08_assets/pretrained/ftransunet/R50+ViT-B_16.npz`
 
-1, 3, 7, 11, 13, 17, 23, 26, 28, 32, 34, 37
+说明：
 
-Test4:
+该权重不上传 GitHub。
 
-5, 15, 21, 30
+GitHub 只保存代码、路径以及实验记录。
+
+---
+
+### 2.3 Vaihingen 数据
+
+数据根目录：
+
+`/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen`
+
+NoBoundary / eroded GT：
+
+`/home/jovyan/zzx/projects_zys/ISPRS_dataset/Vaihingen/gts_eroded_for_participants`
 
 输入：
 
-- Optical: IRRG
+- Optical IRRG
 - DSM
 
-类别：
+Train tiles：
 
-0. Impervious
-1. Building
-2. LowVegetation
-3. Tree
-4. Car
-5. Clutter/background
+`1, 3, 7, 11, 13, 17, 23, 26, 28, 32, 34, 37`
 
-主要指标：
+Test tiles：
 
-- NB / noBoundary
-- OA
-- mF1_fg5
-- mIoU_fg5
+`5, 15, 21, 30`
+
+空间分辨率：
+
+约 9 cm。
+
+---
+
+### 2.4 Potsdam 数据
+
+数据根目录：
+
+`/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped`
+
+RGB：
+
+`/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped/2_Ortho_RGB`
+
+DSM：
+
+`/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped/1_DSM/1_DSM`
+
+Full GT：
+
+`/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped/5_Labels_for_participants`
+
+NoBoundary GT：
+
+`/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped/5_Labels_for_participants_no_Boundary`
+
+Train tiles：
+
+`6_10, 7_10, 2_12, 3_11, 2_10, 7_8, 5_10, 3_12, 5_12, 7_11, 7_9, 6_9, 7_7, 4_12, 6_8, 6_12, 6_7, 4_11`
+
+Test tiles：
+
+`4_10, 5_11, 2_11, 3_10, 6_11, 7_12`
+
+空间分辨率：
+
+约 5 cm。
+
+---
+
+### 2.5 类别
+
+统一 6 类：
+
+1. Impervious surface
+2. Building
+3. Low vegetation
+4. Tree
+5. Car
+6. Clutter / Background
+
+主要论文指标使用前五个前景类别：
+
+`fg5`
 
 同时保留：
 
+`all6`
+
+---
+
+### 2.6 评价
+
+同时计算：
+
 - FullGT
-- all6
+- NoBoundary / eroded GT
+
+主要比较优先查看：
+
+- NB OA
+- NB mF1_fg5
+- NB mIoU_fg5
+
+同时累计完整 6 × 6 confusion matrix。
 
 ---
 
-## 2.2 Potsdam
+### 2.7 常用统一设置
 
-Train18:
+随机种子：
 
-6_10, 7_10, 2_12, 3_11, 2_10, 7_8,
-5_10, 3_12, 5_12, 7_11, 7_9, 6_9,
-7_7, 4_12, 6_8, 6_12, 6_7, 4_11
+`42`
 
-Test6:
+主要快速筛选 crop：
 
-4_10, 5_11, 2_11, 3_10, 6_11, 7_12
+`512 × 512`
 
----
+当前不再采用 crop 256 作为主设置。
 
-# 3. 统一训练协议
+GPU：
 
-当前筛选实验默认：
+仅使用 `CUDA_VISIBLE_DEVICES=0`
 
-- seed = 42
-- crop = 512 × 512
-- random scale = 0.5–2.0
-- physical batch = 4
-- gradient accumulation = 4
-- effective batch = 16
-- optimizer = AdamW
-- backbone LR = 6e-5
-- decoder/head/new-module LR = 6e-4
-- weight decay = 0.01
-- warmup = 1500 optimizer steps
-- evaluation interval = 2000 steps
-- screening budget = 10000 steps
-- GPU = CUDA_VISIBLE_DEVICES=0
+确定性相关设置：
 
-主 checkpoint：
+`PYTHONHASHSEED=42`
 
-- highest NB OA
-
-同时记录：
-
-- best NB OA
-- best NB mF1_fg5
-- best NB mIoU_fg5
+`CUBLAS_WORKSPACE_CONFIG=:4096:8`
 
 ---
 
-# 4. 实验编号规则
+## 3. 总实验计划与研究逻辑
 
-## E00–E09 Baseline
+### 3.1 建立双模态 NoSR 基线
 
-基础模型与原始复现。
+要回答的问题：
 
-## E10–E19 Decoder Frequency
+**不使用 SR，仅使用 Optical + DSM 双模态网络，本身能够达到什么水平？**
 
-Decoder-stage frequency experiments.
+作用：
 
-## E20–E29 Pre-fusion Frequency
+后续所有结构实验必须有统一基准。
 
-融合前频率可靠性实验。
+状态：
 
-## E30–E39 Sampling / Context
-
-Crop、Rare sampling、History sampling。
-
-## E40–E49 Detail Preservation
-
-浅层细节、高频细节、小目标增强。
+COMPLETED。
 
 ---
 
-# 5. 实验总表
+### 3.2 验证 Decoder 频率增强
 
-| ID | Method | Dataset | Budget | NB mIoU | Status | Conclusion |
-|---|---|---|---:|---:|---|---|
-| E00 | F0 baseline | Vaihingen | 40k | 82.7268 best | Done | 基础对照 |
-| E10 | Decoder F0 | Vaihingen | 40k | 82.6386 primary | Done | baseline |
-| E13 | Decoder F3 | Vaihingen | 40k | 82.5477 best | Done | decoder frequency增益很小 |
-| E20 | P1 pre-fusion DSM HF calibration | Vaihingen | 40k | 83.1941 best | Done | 融合前频率有效 |
-| E21 | P2-H cross-modal HF reliability | Vaihingen | 20k | 83.1850 | Done | 跨模态可靠性有效 |
-| E30 | P1 + crop256 | Vaihingen | ~3k | 73.1822@2k | Rejected | 当前模型需要512上下文 |
-| E31 | P1 + Rare30 | Vaihingen | 10k | 82.8807 | Done | 强有效 |
-| E32 | P2-H + Rare30 | Vaihingen | 10k | **83.0658** | Current Best | 当前主线 |
-| E33 | P1 + History30 | Vaihingen | 10k | 82.0895 | Done | 有效但弱于Rare30 |
-| E34 | P1 + Rare15 + History15 | Vaihingen | 10k | 82.2388 | Done | 未证明互补 |
-| E40 | P2-H + Rare30 + NormalDetail | Vaihingen | 2k | 79.5690 | Running/Pending 10k | 2k正增益 |
-| E41 | P2-H + Rare30 + HFDetail | Vaihingen | 2k | 79.2304 | Running/Pending 10k | 2k正增益但弱于Normal |
+要回答的问题：
 
-Reference:
+**频率增强放在 decoder 阶段是否能够明显提高分割性能？**
 
-P2-H + Rare30 @2k = 79.0518
+逐步加入：
+
+F0：普通上采样基线
+
+F1：LFAU
+
+F2：LFAU + SGOR
+
+F3：LFAU + SGOR + HFDC
+
+主要结论：
+
+Vaihingen 和 Potsdam 都观察到一定增益，但提升幅度有限。
+
+Potsdam F0 → F3：
+
+约 **+0.2674 mIoU**
+
+Vaihingen 的增益更小。
+
+结论：
+
+**Decoder 后期频率增强不作为后续主要创新方向。**
+
+状态：
+
+STOPPED AS MAIN LINE。
 
 ---
 
-# 6. E20 — P1 Pre-fusion Frequency Calibration
+### 3.3 将频率前置到融合之前
 
-## Purpose
+新的问题：
+
+**频率信息是否应该在 Optical 与 DSM 融合之前发挥作用，而不是只在 decoder 后端修补？**
+
+第一步使用 DSM-only 高频校准进行验证。
+
+结果明显优于单纯 decoder 频率增强。
+
+因此频率前置成为后续主线。
+
+---
+
+### 3.4 Optical/DSM 跨模态高频可靠性
+
+进一步的问题：
+
+**能否利用 Optical 与 DSM 高频差异动态判断哪个模态在当前位置更可靠？**
+
+由 DSM-only 校准升级为：
+
+**Cross-modal HF Reliability**
+
+即根据 Optical / DSM 高频差异预测互补的空间模态可靠性。
+
+结果有效。
+
+状态：
+
+保留。
+
+---
+
+### 3.5 Rare30 稀有类别采样
+
+问题：
+
+**Car 等类别是否因为普通随机 crop 中出现频率不足而限制性能？**
+
+方案：
+
+70% 普通随机 crop。
+
+30% 稀有类别定向 crop。
+
+Rare30 内部目标权重：
+
+LowVegetation：0.25
+
+Tree：0.25
+
+Car：0.50
+
+结果：
+
+在 Cross-modal HF Reliability 基础上继续提升。
+
+当前成为后续结构筛选的主要基线。
+
+---
+
+### 3.6 History 难例采样
+
+问题：
+
+**历史上模型长期分错的空间区域，是否比 Rare 类别采样更值得重复学习？**
 
 验证：
 
-融合前对 DSM 高频进行校准是否比 decoder 后频率增强更有效。
+History30
 
-## Model
+以及：
 
-model/vitcross_seg_modeling_prefusion_freq_detpair.py
+Rare15 + History15
 
-## Trainer
+结果：
 
-scripts/train_vaihingen_P1_detpair.py
+两者均未超过 Rare30。
 
-## Main run
+其中 History 对 LowVegetation / Tree 部分指标有帮助，
+但明显伤害 Car。
 
-runs/Thesis_Ch4_NoSR_DetPair_P1_Vaihingen_P1_seed42_formal160k
+结论：
 
-## Main result
+不继续进行 History 比例搜索。
 
-Best NB mIoU:
+状态：
 
-83.1941% @ 34k
-
-## Conclusion
-
-通过。
-
-融合前频率处理比 decoder-stage frequency fusion 更有价值。
+STOPPED。
 
 ---
 
-# 7. E21 — P2-H Cross-modal HF Reliability
+### 3.7 浅层细节保持
 
-## Purpose
+研究问题：
 
-使用 Optical / DSM 高频差异估计模态可靠性。
+在已经使用 Optical/DSM 跨模态高频可靠性和 Rare30 后，
+最终预测前再次加强浅层结构信息是否还能提高边界和小目标性能？
 
-约束：
+进行了两个严格控制实验：
 
-wo + wd = 1
+**Normal Shallow Detail**
 
-So = 2wo
-Sd = 2wd
+直接注入完整浅层融合特征。
+
+**HF Shallow Detail**
+
+仅注入浅层高频残差：
+
+`F_s - AvgPool3×3(F_s)`
+
+两者使用：
+
+- 相同浅层特征来源；
+- 相同注入位置；
+- 相同 64→16 projection；
+- 相同新增参数量 1040；
+- 相同 zero-init endpoint。
+
+10k NB mIoU_fg5：
+
+| 实验 | NB mIoU_fg5 |
+|---|---:|
+| 跨模态高频可靠性 + Rare30 | **83.0658** |
+| + Normal Shallow Detail | 82.4473 |
+| + HF Shallow Detail | 82.4446 |
+
+相对主基线：
+
+- Normal Detail：-0.6185
+- HF Detail：-0.6212
+
+两种 Detail 均只能改善早期训练表现，
+不能改善统一 10k 预算下的最终 fg5 性能。
+
+其中 HF Detail 出现明显的类别性能重新分配：
+
+- LowVegetation：+0.0229 IoU
+- Tree：-0.0152 IoU
+- Car：-2.6506 IoU
+- Clutter：+67.3141 IoU
 
 因此：
 
-So + Sd = 2
+**Normal Shallow Detail：REJECTED**
 
-## Model
+**HF Shallow Detail：REJECTED / DIAGNOSTICALLY INTERESTING**
 
-model/vitcross_seg_modeling_hf_reliability_detpair.py
+不继续进行 20k / 40k 扩展实验。
 
-## Trainer
+## 4. 详细实验记录
 
-scripts/train_vaihingen_P2H_detpair.py
+### 4.1 Vaihingen｜确定性双模态基线
 
-## Main run
+#### 实验目的
 
-runs/Thesis_Ch4_NoSR_DetPair_P2H_Vaihingen_P2H_seed42_formal160k
+建立融合前频率实验使用的严格确定性基线。
 
-## Result
+历史名称：
 
-20k NB mIoU:
+`F0 / DetPair F0`
 
-83.1850%
-
-## Important observation
-
-Car 对 DSM 高频表现出稳定偏好。
-
-## Conclusion
-
-通过。
-
-保留为当前核心频率机制。
+历史名称只用于定位旧文件。
 
 ---
 
-# 8. E31 — Rare30
+#### 数据
 
-## Purpose
+使用第 2.3 节 Vaihingen 数据。
+
+---
+
+#### 主要代码
+
+训练脚本：
+
+`scripts/train_vaihingen_F0_detpair.py`
+
+相关评估：
+
+`scripts/evaluate_detpair_F0_per_class.py`
+
+---
+
+#### 公共预训练权重
+
+`/home/jovyan/zzx/paper_rebuild/08_assets/pretrained/ftransunet/R50+ViT-B_16.npz`
+
+---
+
+#### 运行目录
+
+`runs/Thesis_Ch4_NoSR_DetPair_F0_Vaihingen_F0_seed42_formal160k`
+
+---
+
+#### 权重
+
+保存的关键 checkpoint：
+
+`runs/Thesis_Ch4_NoSR_DetPair_F0_Vaihingen_F0_seed42_formal160k/checkpoints/model_iter_014000.pth`
+
+`runs/Thesis_Ch4_NoSR_DetPair_F0_Vaihingen_F0_seed42_formal160k/checkpoints/model_iter_034000.pth`
+
+恢复训练状态：
+
+`runs/Thesis_Ch4_NoSR_DetPair_F0_Vaihingen_F0_seed42_formal160k/last_train_state.pth`
+
+---
+
+#### 结果文件
+
+`runs/Thesis_Ch4_NoSR_DetPair_F0_Vaihingen_F0_seed42_formal160k/best_registry.json`
+
+`runs/Thesis_Ch4_NoSR_DetPair_F0_Vaihingen_F0_seed42_formal160k/metrics_history.csv`
+
+---
+
+#### 关键结果
+
+40k 范围内最佳 NB mIoU_fg5：
+
+**82.7268**
+
+---
+
+#### 结论
+
+作为确定性融合前频率实验的主要基础对照。
+
+状态：
+
+COMPLETED。
+
+---
+
+### 4.2 Vaihingen / Potsdam｜Decoder 频率增强消融
+
+#### 实验目的
+
+验证频率模块放在 decoder 端是否能够稳定带来明显提升。
+
+---
+
+#### 变量
+
+F0：
+
+普通 bilinear / 无完整频率增强。
+
+F1：
+
+LFAU。
+
+F2：
+
+LFAU + SGOR。
+
+F3：
+
+LFAU + SGOR + HFDC。
+
+---
+
+#### 主要代码
+
+Vaihingen：
+
+`scripts/train_vaihingen_freq_ablation.py`
+
+Potsdam：
+
+`scripts/train_potsdam_freq_ablation.py`
+
+相关模型文件：
+
+`model/vitcross_seg_modeling_freq_ablation.py`
+
+`model/vitcross_seg_modeling_freqfusion.py`
+
+---
+
+#### Vaihingen 运行目录
+
+`runs/Thesis_Ch4_NoSR_Ablation_Vaihingen_F0_seed42`
+
+`runs/Thesis_Ch4_NoSR_Ablation_Vaihingen_F1_seed42`
+
+`runs/Thesis_Ch4_NoSR_Ablation_Vaihingen_F2_seed42`
+
+---
+
+#### Potsdam 运行目录
+
+`runs/Thesis_Ch4_NoSR_Ablation_Potsdam_F0_seed42`
+
+`runs/Thesis_Ch4_NoSR_Ablation_Potsdam_F1_seed42`
+
+`runs/Thesis_Ch4_NoSR_Ablation_Potsdam_F2_seed42`
+
+`runs/Thesis_Ch4_NoSR_Ablation_Potsdam_F3_seed42`
+
+---
+
+#### 结果文件
+
+每个目录均保存：
+
+`best_registry.json`
+
+`final_summary.json`
+
+`metrics_history.csv`
+
+---
+
+#### 结论
+
+Decoder 频率增强有一定作用，但没有形成足够大的稳定优势。
+
+因此：
+
+**不继续在 decoder 后端不断叠加频率模块。**
+
+后续转向融合前频率建模。
+
+状态：
+
+COMPLETED / MAIN LINE STOPPED。
+
+---
+
+### 4.3 Vaihingen｜融合前 DSM 高频校准
+
+#### 实验目的
+
+验证频率信息在双模态融合前使用是否比 decoder 后端使用更有效。
+
+---
+
+#### 核心变化
+
+仅利用 DSM 高频信息进行融合前校准。
+
+历史名称：
+
+`P1`
+
+---
+
+#### 模型代码
+
+`model/vitcross_seg_modeling_prefusion_freq_detpair.py`
+
+---
+
+#### 训练代码
+
+`scripts/train_vaihingen_P1_detpair.py`
+
+---
+
+#### 审计代码
+
+`scripts/audit_detpair_P1_2k_scale_by_class.py`
+
+`scripts/audit_detpair_P1_34k_scale_by_class.py`
+
+`scripts/analyze_detpair_F0_P1_40k.py`
+
+---
+
+#### 运行目录
+
+`runs/Thesis_Ch4_NoSR_DetPair_P1_Vaihingen_P1_seed42_formal160k`
+
+---
+
+#### 权重
+
+最佳关键 checkpoint：
+
+`runs/Thesis_Ch4_NoSR_DetPair_P1_Vaihingen_P1_seed42_formal160k/checkpoints/model_iter_034000.pth`
+
+恢复状态：
+
+`runs/Thesis_Ch4_NoSR_DetPair_P1_Vaihingen_P1_seed42_formal160k/last_train_state.pth`
+
+---
+
+#### 结果文件
+
+`runs/Thesis_Ch4_NoSR_DetPair_P1_Vaihingen_P1_seed42_formal160k/best_registry.json`
+
+`runs/Thesis_Ch4_NoSR_DetPair_P1_Vaihingen_P1_seed42_formal160k/metrics_history.csv`
+
+---
+
+#### 结果
+
+2k：
+
+NB mIoU_fg5 = **78.0476**
+
+同 step F0：
+
+77.4944
 
 提升：
 
-- LowVegetation
-- Tree
-- Car
+**+0.5532**
 
-特别是 Car 小目标。
+40k 范围最佳：
 
-## Sampling
+NB mIoU_fg5 = **83.1941 @ 34k**
 
-70% random
+F0 对应最佳：
 
-30% targeted
+82.7268
 
-Rare classes:
+提升：
 
-- LowVeg: 25%
-- Tree: 25%
-- Car: 50%
-
-## Trainer
-
-scripts/train_vaihingen_P1_Rare30_screen_v2run.py
-
-## Run
-
-runs/Thesis_Ch4_NoSR_ScreenV2_Rare30_P1_Vaihingen_P1_seed42_formal160k
-
-## Result @10k
-
-NB:
-
-- OA = 92.1140
-- mF1 = 90.3785
-- mIoU = 82.8807
-
-Per-class IoU:
-
-- Impervious = 87.4444
-- Building = 94.9705
-- LowVeg = 68.4467
-- Tree = 84.2318
-- Car = 79.3102
-- Clutter = 24.4554
-
-## Conclusion
-
-通过。
-
-Rare30 是目前最有效的 sampling strategy。
+**+0.4673**
 
 ---
 
-# 9. E32 — P2-H + Rare30
+#### 结论
 
-## Purpose
+融合前频率校准比继续在 decoder 后端堆叠频率模块更有研究价值。
 
-验证频率可靠性与 Rare sampling 是否可以叠加。
+状态：
 
-## Model
+COMPLETED / EFFECTIVE。
 
-model/vitcross_seg_modeling_hf_reliability_detpair.py
+---
 
-## Trainer
+### 4.4 Vaihingen｜Optical/DSM 跨模态高频可靠性
 
-scripts/train_vaihingen_P2H_Rare30_screen_v2run.py
+#### 实验目的
 
-## Run
+从 DSM-only 高频校准进一步升级。
 
-runs/Thesis_Ch4_NoSR_ScreenV2_Rare30_P2H_Vaihingen_P2H_seed42_formal160k
+利用 Optical 与 DSM 高频差异动态估计模态可靠性。
 
-## Result @10k
+历史名称：
 
-NB:
+`P2H`
+
+以后正式记录中不再使用 P2H 作为实验主名称。
+
+---
+
+#### 模型代码
+
+`model/vitcross_seg_modeling_hf_reliability_detpair.py`
+
+---
+
+#### 训练代码
+
+`scripts/train_vaihingen_P2H_detpair.py`
+
+---
+
+#### 审计代码
+
+`scripts/audit_detpair_P2H_2k_reliability_by_class.py`
+
+`scripts/audit_detpair_P2H_20k_reliability_by_class.py`
+
+`scripts/check_P2H_detpair_seed_fairness.py`
+
+---
+
+#### 运行目录
+
+`runs/Thesis_Ch4_NoSR_DetPair_P2H_Vaihingen_P2H_seed42_formal160k`
+
+---
+
+#### 权重
+
+20k checkpoint：
+
+`runs/Thesis_Ch4_NoSR_DetPair_P2H_Vaihingen_P2H_seed42_formal160k/checkpoints/model_iter_020000.pth`
+
+恢复状态：
+
+`runs/Thesis_Ch4_NoSR_DetPair_P2H_Vaihingen_P2H_seed42_formal160k/last_train_state.pth`
+
+---
+
+#### 结果文件
+
+`runs/Thesis_Ch4_NoSR_DetPair_P2H_Vaihingen_P2H_seed42_formal160k/best_registry.json`
+
+`runs/Thesis_Ch4_NoSR_DetPair_P2H_Vaihingen_P2H_seed42_formal160k/metrics_history.csv`
+
+`runs/Thesis_Ch4_NoSR_DetPair_P2H_Vaihingen_P2H_seed42_formal160k/p2h_diagnostics.csv`
+
+---
+
+#### 结果
+
+2k：
+
+NB mIoU_fg5 = **78.6107**
+
+20k：
+
+NB mIoU_fg5 = **83.1850**
+
+20k per-class IoU：
+
+| 类别 | IoU |
+|---|---:|
+| Impervious | 87.5243 |
+| Building | 95.2395 |
+| LowVegetation | 69.1190 |
+| Tree | 84.2977 |
+| Car | 79.7446 |
+
+---
+
+#### 可靠性分析
+
+20k 平均 Optical / DSM 权重：
+
+| 类别 | Optical | DSM |
+|---|---:|---:|
+| Impervious | 0.5727 | 0.4273 |
+| Building | 0.5387 | 0.4613 |
+| LowVegetation | 0.5388 | 0.4612 |
+| Tree | 0.4992 | 0.5008 |
+| Car | 0.4752 | 0.5248 |
+
+Car 对 DSM 高频表现出更明显的偏好。
+
+---
+
+#### 结论
+
+跨模态高频可靠性建模有效。
+
+后续不继续跑 40k，而是进入统一 10k 快速组合验证。
+
+状态：
+
+COMPLETED / RETAINED。
+
+---
+
+### 4.5 Vaihingen｜DSM 高频校准 + Rare30
+
+#### 实验目的
+
+先验证 Rare30 采样本身是否能够在融合前频率模型上产生增益。
+
+历史名称：
+
+`P1 + Rare30`
+
+---
+
+#### 模型
+
+`model/vitcross_seg_modeling_prefusion_freq_detpair.py`
+
+---
+
+#### 训练代码
+
+`scripts/train_vaihingen_P1_Rare30_screen_v2run.py`
+
+---
+
+#### 运行目录
+
+`runs/Thesis_Ch4_NoSR_ScreenV2_Rare30_P1_Vaihingen_P1_seed42_formal160k`
+
+---
+
+#### 权重
+
+10k checkpoint：
+
+`runs/Thesis_Ch4_NoSR_ScreenV2_Rare30_P1_Vaihingen_P1_seed42_formal160k/checkpoints/model_iter_010000.pth`
+
+恢复状态：
+
+`runs/Thesis_Ch4_NoSR_ScreenV2_Rare30_P1_Vaihingen_P1_seed42_formal160k/last_train_state.pth`
+
+---
+
+#### 结果文件
+
+`runs/Thesis_Ch4_NoSR_ScreenV2_Rare30_P1_Vaihingen_P1_seed42_formal160k/best_registry.json`
+
+`runs/Thesis_Ch4_NoSR_ScreenV2_Rare30_P1_Vaihingen_P1_seed42_formal160k/metrics_history.csv`
+
+---
+
+#### 结果
+
+10k：
+
+NB OA = **92.1140**
+
+NB mF1_fg5 = **90.3785**
+
+NB mIoU_fg5 = **82.8807**
+
+---
+
+#### 结论
+
+Rare30 有效。
+
+下一步与更强的 Cross-modal HF Reliability 组合。
+
+状态：
+
+COMPLETED。
+
+---
+
+### 4.6 Vaihingen｜跨模态高频可靠性 + Rare30
+
+#### 实验目的
+
+将当前最有效的网络侧改动：
+
+**Cross-modal HF Reliability**
+
+与训练采样侧改动：
+
+**Rare30**
+
+组合。
+
+---
+
+#### 唯一新增采样策略
+
+70%：
+
+普通随机 crop。
+
+30%：
+
+稀有类别定向 crop。
+
+目标类别权重：
+
+LowVegetation = 0.25
+
+Tree = 0.25
+
+Car = 0.50
+
+---
+
+#### 模型代码
+
+`model/vitcross_seg_modeling_hf_reliability_detpair.py`
+
+---
+
+#### 训练代码
+
+`scripts/train_vaihingen_P2H_Rare30_screen_v2run.py`
+
+---
+
+#### 运行目录
+
+`runs/Thesis_Ch4_NoSR_ScreenV2_Rare30_P2H_Vaihingen_P2H_seed42_formal160k`
+
+---
+
+#### 权重
+
+10k checkpoint：
+
+`runs/Thesis_Ch4_NoSR_ScreenV2_Rare30_P2H_Vaihingen_P2H_seed42_formal160k/checkpoints/model_iter_010000.pth`
+
+恢复状态：
+
+`runs/Thesis_Ch4_NoSR_ScreenV2_Rare30_P2H_Vaihingen_P2H_seed42_formal160k/last_train_state.pth`
+
+---
+
+#### 结果文件
+
+`runs/Thesis_Ch4_NoSR_ScreenV2_Rare30_P2H_Vaihingen_P2H_seed42_formal160k/best_registry.json`
+
+`runs/Thesis_Ch4_NoSR_ScreenV2_Rare30_P2H_Vaihingen_P2H_seed42_formal160k/metrics_history.csv`
+
+`runs/Thesis_Ch4_NoSR_ScreenV2_Rare30_P2H_Vaihingen_P2H_seed42_formal160k/p2h_diagnostics.csv`
+
+---
+
+#### 结果
+
+2k：
+
+NB mIoU_fg5 = **79.0518**
+
+10k：
+
+NB OA = **92.2850**
+
+NB mF1_fg5 = **90.4897**
+
+NB mIoU_fg5 = **83.0658**
+
+per-class IoU：
+
+| 类别 | IoU |
+|---|---:|
+| Impervious | 87.7727 |
+| Building | 95.1703 |
+| LowVegetation | 68.7736 |
+| Tree | 84.5056 |
+| Car | 79.1068 |
+
+---
+
+#### 结论
+
+当前已完成的统一 10k 实验中最佳。
+
+后续浅层结构实验统一以此为主基线。
+
+状态：
+
+**CURRENT MAIN BASELINE**
+
+---
+
+### 4.7 Vaihingen｜Crop 256 验证
+
+#### 实验目的
+
+判断减小 crop 是否能够增加训练样本变化，并提高性能。
+
+历史名称：
+
+`P1 + C256`
+
+---
+
+#### 训练代码
+
+`scripts/train_vaihingen_P1_C256_screen_v2run.py`
+
+---
+
+#### 运行目录
+
+`runs/Thesis_Ch4_NoSR_ScreenV2_C256_P1_Vaihingen_P1_seed42_formal160k`
+
+---
+
+#### 结果
+
+2k NB mIoU_fg5：
+
+**73.1822**
+
+对应 512 crop：
+
+78.0476
+
+---
+
+#### 结论
+
+性能明显下降。
+
+说明当前模型需要较大的上下文。
+
+**后续统一保持 crop 512。**
+
+状态：
+
+REJECTED。
+
+---
+
+### 4.8 Vaihingen｜History30 历史难例采样
+
+#### 实验目的
+
+验证长期被模型分错的空间区域是否值得优先重复采样。
+
+---
+
+#### 历史区域审计
+
+固定 512 window。
+
+Stride：
+
+256。
+
+Train12 共：
+
+780 个 window。
+
+观察：
+
+2k / 4k / 6k / 8k / 10k。
+
+困难区域在训练过程中具有较强持续性。
+
+---
+
+#### 训练代码
+
+`scripts/train_vaihingen_P1_History30_screen.py`
+
+历史审计：
+
+`scripts/build_P1_history_audit_20260910.py`
+
+---
+
+#### 运行目录
+
+`runs/Thesis_Ch4_NoSR_ScreenV3_History30_P1_Vaihingen_P1_seed42_formal160k`
+
+---
+
+#### 权重
+
+10k checkpoint：
+
+`runs/Thesis_Ch4_NoSR_ScreenV3_History30_P1_Vaihingen_P1_seed42_formal160k/checkpoints/model_iter_010000.pth`
+
+恢复状态：
+
+`runs/Thesis_Ch4_NoSR_ScreenV3_History30_P1_Vaihingen_P1_seed42_formal160k/last_train_state.pth`
+
+---
+
+#### 结果
+
+10k NB mIoU_fg5：
+
+**82.0895**
+
+---
+
+#### 结论
+
+困难区域确实具有持续性，因此分析本身有价值。
+
+但作为训练采样策略：
+
+**弱于 Rare30。**
+
+尤其 Car 明显下降。
+
+不继续搜索 History30 比例。
+
+状态：
+
+STOPPED。
+
+---
+
+### 4.9 Vaihingen｜Rare15 + History15
+
+#### 实验目的
+
+判断 Rare sampling 与 History hard-region sampling 是否具有互补性。
+
+---
+
+#### 训练代码
+
+`scripts/train_vaihingen_P1_Rare15History15_screen.py`
+
+---
+
+#### 运行目录
+
+`runs/Thesis_Ch4_NoSR_ScreenV3_Rare15History15_P1_Vaihingen_P1_seed42_formal160k`
+
+---
+
+#### 权重
+
+10k checkpoint：
+
+`runs/Thesis_Ch4_NoSR_ScreenV3_Rare15History15_P1_Vaihingen_P1_seed42_formal160k/checkpoints/model_iter_010000.pth`
+
+恢复状态：
+
+`runs/Thesis_Ch4_NoSR_ScreenV3_Rare15History15_P1_Vaihingen_P1_seed42_formal160k/last_train_state.pth`
+
+---
+
+#### 结果
+
+10k NB mIoU_fg5：
+
+**82.2388**
+
+---
+
+#### 结论
+
+没有超过 Rare30。
+
+没有证明二者存在值得继续搜索的明显互补性。
+
+状态：
+
+STOPPED。
+
+---
+
+### 4.10 Vaihingen｜跨模态高频可靠性 + Rare30 + 完整浅层细节保持
+
+#### 状态
+
+**REJECTED**
+
+训练已完成至 10k。
+
+---
+
+#### 实验目的
+
+验证在当前主基线已经包含：
+
+- Optical/DSM 跨模态高频可靠性
+- Rare30
+
+之后，在最终预测前再次加入完整浅层融合特征，
+是否能够进一步改善边界和小目标。
+
+历史名称：
+
+`P2H + Rare30 + NormalDetail`
+
+---
+
+#### 对照实验
+
+Vaihingen｜Optical/DSM 跨模态高频可靠性 + Rare30。
+
+对照实验 10k：
+
+NB mIoU_fg5 = **83.0658**
+
+---
+
+#### 本实验唯一结构变化
+
+浅层融合特征记为：
+
+`F_s`
+
+直接保留完整浅层信息：
+
+`F_detail = F_s`
+
+使用：
+
+`1×1 Conv, 64 → 16`
+
+新增参数：
+
+1040。
+
+projection endpoint 使用 zero initialization，
+因此 step 0 与原主基线完全一致。
+
+---
+
+#### 模型代码
+
+`model/vitcross_seg_modeling_shallow_detail.py`
+
+---
+
+#### 训练代码
+
+`scripts/train_vaihingen_P2H_Rare30_NormalDetail_screen.py`
+
+---
+
+#### 公共预训练权重
+
+`/home/jovyan/zzx/paper_rebuild/08_assets/pretrained/ftransunet/R50+ViT-B_16.npz`
+
+---
+
+#### 运行目录
+
+`runs/Thesis_Ch4_NoSR_ScreenV4_Rare30_P2H_NormalDetail_Vaihingen_P2H_seed42_formal160k`
+
+---
+
+#### 最终 checkpoint
+
+`runs/Thesis_Ch4_NoSR_ScreenV4_Rare30_P2H_NormalDetail_Vaihingen_P2H_seed42_formal160k/checkpoints/model_iter_010000.pth`
+
+恢复状态：
+
+`runs/Thesis_Ch4_NoSR_ScreenV4_Rare30_P2H_NormalDetail_Vaihingen_P2H_seed42_formal160k/last_train_state.pth`
+
+---
+
+#### 结果文件
+
+`runs/Thesis_Ch4_NoSR_ScreenV4_Rare30_P2H_NormalDetail_Vaihingen_P2H_seed42_formal160k/best_registry.json`
+
+`runs/Thesis_Ch4_NoSR_ScreenV4_Rare30_P2H_NormalDetail_Vaihingen_P2H_seed42_formal160k/metrics_history.csv`
+
+`runs/Thesis_Ch4_NoSR_ScreenV4_Rare30_P2H_NormalDetail_Vaihingen_P2H_seed42_formal160k/p2h_diagnostics.csv`
+
+---
+
+#### 训练曲线
+
+| Step | NB OA | NB mF1_fg5 | NB mIoU_fg5 |
+|---:|---:|---:|---:|
+| 2k | 91.4481 | 88.2086 | 79.5690 |
+| 4k | 91.9332 | 89.3238 | 81.2339 |
+| 6k | 91.8342 | 89.4530 | 81.4231 |
+| 8k | 92.0910 | 89.9033 | 82.1156 |
+| 10k | 92.0741 | 90.1027 | **82.4473** |
+
+早期 2k 相比主基线同 step：
+
+**+0.5172 mIoU**
+
+但 10k：
+
+**82.4473 vs 83.0658**
+
+最终：
+
+**-0.6185 mIoU**
+
+---
+
+#### 10k NB 各类结果
+
+| 类别 | F1 | IoU | 相对主基线 IoU |
+|---|---:|---:|---:|
+| Impervious | 93.2229 | 87.3061 | -0.4666 |
+| Building | 97.4585 | 95.0429 | -0.1273 |
+| LowVegetation | 81.1372 | 68.2613 | -0.5123 |
+| Tree | 91.4797 | 84.2973 | -0.2083 |
+| Car | 87.2153 | 77.3290 | **-1.7778** |
+| Clutter | 7.4807 | 3.8857 | +3.8857 |
+
+---
+
+#### FullGT 10k
+
+OA = 88.9683
+
+mF1_fg5 = 86.2917
+
+mIoU_fg5 = 76.5024
+
+主基线 FullGT mIoU_fg5：
+
+76.9410
+
+下降：
+
+**-0.4386**
+
+---
+
+#### 结论
+
+完整浅层细节保持只能改善早期训练阶段的收敛表现。
+
+随着训练继续，主基线从 6k 开始重新反超，
+10k 时差距扩大到 -0.6185 mIoU。
+
+五个前景类别全部下降，
+其中 Car 下降最明显。
+
+因此：
+
+**完整浅层细节保持不进入最终方法。**
+
+不继续进行 20k / 40k 扩展实验。
+
+### 4.11 Vaihingen｜跨模态高频可靠性 + Rare30 + 高频浅层细节保持
+
+#### 状态
+
+**REJECTED / DIAGNOSTICALLY INTERESTING**
+
+训练已完成至 10k。
+
+---
+
+#### 实验目的
+
+与完整浅层细节保持形成严格控制实验。
+
+只使用浅层高频成分，而不是完整浅层特征。
+
+---
+
+#### 对照实验
+
+Vaihingen｜Optical/DSM 跨模态高频可靠性 + Rare30。
+
+对照实验 10k：
+
+NB mIoU_fg5 = **83.0658**
+
+---
+
+#### 本实验唯一结构变化
+
+浅层融合特征：
+
+`F_s`
+
+只保留高频残差：
+
+`F_detail = F_s - AvgPool3×3(F_s)`
+
+与 Normal Detail 使用：
+
+- 相同特征来源；
+- 相同注入位置；
+- 相同 64→16 projection；
+- 相同新增参数量 1040；
+- 相同 zero-init endpoint。
+
+---
+
+#### 模型代码
+
+`model/vitcross_seg_modeling_shallow_detail.py`
+
+---
+
+#### 训练代码
+
+`scripts/train_vaihingen_P2H_Rare30_HFDetail_screen.py`
+
+---
+
+#### 公共预训练权重
+
+`/home/jovyan/zzx/paper_rebuild/08_assets/pretrained/ftransunet/R50+ViT-B_16.npz`
+
+---
+
+#### 运行目录
+
+`runs/Thesis_Ch4_NoSR_ScreenV4_Rare30_P2H_HFDetail_Vaihingen_P2H_seed42_formal160k`
+
+---
+
+#### 最终 checkpoint
+
+`runs/Thesis_Ch4_NoSR_ScreenV4_Rare30_P2H_HFDetail_Vaihingen_P2H_seed42_formal160k/checkpoints/model_iter_010000.pth`
+
+恢复状态：
+
+`runs/Thesis_Ch4_NoSR_ScreenV4_Rare30_P2H_HFDetail_Vaihingen_P2H_seed42_formal160k/last_train_state.pth`
+
+---
+
+#### 结果文件
+
+`runs/Thesis_Ch4_NoSR_ScreenV4_Rare30_P2H_HFDetail_Vaihingen_P2H_seed42_formal160k/best_registry.json`
+
+`runs/Thesis_Ch4_NoSR_ScreenV4_Rare30_P2H_HFDetail_Vaihingen_P2H_seed42_formal160k/metrics_history.csv`
+
+`runs/Thesis_Ch4_NoSR_ScreenV4_Rare30_P2H_HFDetail_Vaihingen_P2H_seed42_formal160k/p2h_diagnostics.csv`
+
+---
+
+#### 训练曲线
+
+| Step | NB OA | NB mF1_fg5 | NB mIoU_fg5 |
+|---:|---:|---:|---:|
+| 2k | 91.3268 | 87.9698 | 79.2304 |
+| 4k | 91.9192 | 89.2772 | 81.1579 |
+| 6k | 91.9454 | 89.4842 | 81.4683 |
+| 8k | 92.0275 | 89.9257 | 82.1490 |
+| 10k | 92.2059 | 90.1041 | **82.4446** |
+
+早期 2k 相比主基线同 step：
+
+**+0.1786 mIoU**
+
+10k：
+
+**82.4446 vs 83.0658**
+
+最终：
+
+**-0.6212 mIoU**
+
+---
+
+#### 10k NB 各类结果
+
+| 类别 | F1 | IoU | 相对主基线 IoU |
+|---|---:|---:|---:|
+| Impervious | 93.2936 | 87.4302 | -0.3425 |
+| Building | 97.4620 | 95.0496 | -0.1206 |
+| LowVegetation | 81.5141 | 68.7965 | +0.0229 |
+| Tree | 91.5933 | 84.4904 | -0.0152 |
+| Car | 86.6574 | 76.4562 | **-2.6506** |
+| Clutter | 80.4643 | **67.3141** | **+67.3141** |
+
+---
+
+#### FullGT 10k
+
+OA = 89.1334
+
+mF1_fg5 = 86.4122
+
+mIoU_fg5 = 76.6804
+
+主基线 FullGT mIoU_fg5：
+
+76.9410
+
+下降：
+
+**-0.2606**
+
+---
+
+#### 关键分析
+
+HF Detail 与 Normal Detail 在最终 fg5 指标上几乎完全相同：
+
+Normal：
+
+82.4473
+
+HF：
+
+82.4446
+
+两者仅差：
+
+**0.0027 mIoU**
+
+HF Detail 对 LowVegetation 和 Tree 基本无损：
+
+LowVegetation：
+
++0.0229 IoU
+
+Tree：
+
+-0.0152 IoU
+
+但 Car 显著下降：
+
+**-2.6506 IoU**
+
+与此同时 Clutter 从主基线的 0.0000 提升到：
+
+**67.3141 IoU**
+
+因此 HF Detail 并非完全无效，
+而是显著改变了类别判别分配。
+
+现有 per-class 指标不能证明 Car 是否直接被误分为 Clutter，
+若需要确定具体错误流向，必须进一步分析 confusion matrix。
+
+---
+
+#### 结论
+
+尽管 HF Detail 对 Clutter 的识别产生了非常大的变化，
+但论文主要使用的 fg5 指标下降，
+尤其 Car 小目标性能显著下降。
+
+因此：
+
+**HF Shallow Detail 不进入最终主方法。**
+
+该实验仅作为分析证据保留，
+用于说明简单浅层高频强化可能导致类别性能重新分配。
+
+不继续进行 20k / 40k 扩展实验。
+
+## 5. 已明确停止或淘汰的路线
+
+### Decoder 端继续叠加频率模块
+
+Vaihingen 与 Potsdam 均只有有限增益。
+
+不再作为主要研究方向。
+
+### Crop 256
+
+2k NB mIoU 从 78.0476 降至 73.1822。
+
+后续保持 crop 512。
+
+### History30
+
+整体弱于 Rare30，并明显伤害 Car。
+
+停止比例搜索。
+
+### Rare15 + History15
+
+没有超过 Rare30，没有证明明显互补性。
+
+停止。
+
+### 完整浅层细节保持
+
+10k NB mIoU_fg5：
+
+82.4473
+
+主基线：
+
+83.0658
+
+下降：
+
+-0.6185。
+
+五个前景类别全部下降。
+
+停止。
+
+### 高频浅层细节保持
+
+10k NB mIoU_fg5：
+
+82.4446
+
+主基线：
+
+83.0658
+
+下降：
+
+-0.6212。
+
+LowVegetation / Tree 基本保持，
+但 Car 下降 2.6506 IoU。
+
+Clutter IoU 提升到 67.3141，
+说明该结构明显改变了类别判别分配，
+但没有提高主要 fg5 性能。
+
+停止作为主线。
+
+## 6. 后续实验计划
+
+### 当前保留主线
+
+当前统一 10k 最佳方案：
+
+**Optical/DSM 跨模态高频可靠性 + Rare30**
+
+NB：
 
 - OA = 92.2850
-- mF1 = 90.4897
-- mIoU = **83.0658**
+- mF1_fg5 = 90.4897
+- mIoU_fg5 = 83.0658
 
-Per-class IoU:
+### 下一研究重点
 
-- Impervious = 87.7727
-- Building = 95.1703
-- LowVeg = 68.7736
-- Tree = 84.5056
-- Car = 79.1068
-- Clutter = 0.0000
+后续结构修改优先围绕当前仍然较困难的类别展开：
 
-## Conclusion
+- Car 小目标；
+- LowVegetation / Tree 类别混淆与边界；
+- 模态可靠性的进一步类别感知建模。
 
-当前 10k 最优。
+不再继续简单的浅层残差或浅层高频残差叠加。
 
-当前正式主线 baseline。
+任何新实验继续采用当前主基线作为统一 10k 对照。
 
----
+### 暂不执行
 
-# 10. E33 — History30
+- 不继续 Normal Detail 20k / 40k；
+- 不继续 HF Detail 20k / 40k；
+- 不继续 History 比例搜索；
+- 不重新测试 crop 256；
+- 不在当前没有明确假设的情况下继续堆叠 decoder 频率模块。
 
-## Hypothesis
+## 7. 历史名称与现在的人类可读名称
 
-多次预测失败的空间区域可能具有持续难度。
-
-如果增加这些区域的学习机会，模型可能进一步提升。
-
-## Audit evidence
-
-固定训练窗口：
-
-- window = 512
-- stride = 256
-- total = 780
-
-相邻 hard-score Spearman:
-
-2k→4k: 0.7684
-4k→6k: 0.8719
-6k→8k: 0.9011
-8k→10k: 0.9252
-
-5/5 Top20 persistent windows:
-
-66 / 780 = 8.46%
-
-## Trainer
-
-scripts/train_vaihingen_P1_History30_screen.py
-
-## Result @10k
-
-NB mIoU:
-
-82.0895%
-
-## Per-class observation
-
-Compared with Rare30:
-
-- Impervious: -0.4500
-- Building: +0.0442
-- LowVeg: +0.5184
-- Tree: +0.3168
-- Car: -4.3854
-- Clutter: -13.8278
-
-## Conclusion
-
-History hypothesis is valid:
-
-persistent hard regions exist and targeted training helps.
-
-However:
-
-History30 is clearly weaker than Rare30.
-
-Main weakness:
-
-Car decreases strongly.
-
-Therefore History is NOT current mainline.
+| 旧名称 | 现在统一理解 |
+|---|---|
+| F0 / DetPair F0 | 确定性 NoSR 双模态基础对照 |
+| F1 | Decoder + LFAU |
+| F2 | Decoder + LFAU + SGOR |
+| F3 | Decoder + LFAU + SGOR + HFDC |
+| P1 | 融合前 DSM 高频校准 |
+| P2H | Optical/DSM 跨模态高频可靠性 |
+| P1 + Rare30 | DSM 高频校准 + Rare30 |
+| P2H + Rare30 | 跨模态高频可靠性 + Rare30 |
+| P1 + C256 | DSM 高频校准 + Crop256 |
+| History30 | 历史难例采样 30% |
+| Rare15History15 | Rare15 + History15 |
+| NormalDetail | 完整浅层细节保持 |
+| HFDetail | 高频浅层细节保持 |
+| ScreenV2 / V3 / V4 | 旧运行目录版本号，仅用于定位文件 |
 
 ---
 
-# 11. E34 — Rare15 + History15
+## 8. 实验记录规则
 
-## Purpose
+以后新增正式实验之前，必须先在本文件建立对应小节。
 
-Test complementarity:
+每个实验至少写清楚：
 
-Rare prior
-+
-model historical difficulty.
+**研究目的 → 对照实验 → 唯一变化 → 数据 → 模型代码 → 训练脚本 → 预训练权重 → checkpoint → run 目录 → 日志 → 结果 → 结论 → 下一步。**
 
-## Sampling
+实时训练输出继续保存在：
 
-Before 2k:
+`runs/`
 
-70% Random + 30% Rare
+`runs/` 不进入 Git。
 
-After 2k:
+重要实验完成后，将关键轻量结果复制到：
 
-70% Random
-15% Rare
-15% History
+`records/experiments/`
 
-## Result @10k
-
-NB mIoU:
-
-82.2388%
-
-## Conclusion
-
-Better than History30 but clearly below Rare30.
-
-Strong complementarity is NOT demonstrated.
-
-Stop this branch.
+GitHub 不保存大型 checkpoint，只在本文件记录服务器真实路径。
 
 ---
 
-# 12. E40 — NormalDetail
-
-## Full name
-
-P2-H + Rare30 + Normal Shallow Detail Residual
-
-## Purpose
-
-Test whether preserving the shallow fused representation directly to
-the final prediction stage benefits small objects and boundaries.
-
-## Model
-
-model/vitcross_seg_modeling_shallow_detail.py
-
-detail_mode:
-
-NORMAL
-
-## Trainer
-
-scripts/train_vaihingen_P2H_Rare30_NormalDetail_screen.py
-
-## Run
-
-runs/Thesis_Ch4_NoSR_ScreenV4_Rare30_P2H_NormalDetail_Vaihingen_P2H_seed42_formal160k
-
-## Structure
-
-Source:
-
-features[-1]
-
-64 channels @ input/2
-
-after:
-
-P2-H calibration
-+
-SE0 fusion
-
-Projection:
-
-64 → 16
-
-1×1 Conv
-
-zero initialization.
-
-Injection:
-
-decoder final output
-+
-detail residual
-→ segmentation head
-
-Extra parameters:
-
-1040
-
-## Step-0 gate
-
-PASS
-
-- common parameter mismatch = 0
-- max output difference = 0
-- initial detail residual = 0
-
-## Result @2k
-
-NB:
-
-- OA = 91.4481
-- mF1 = 88.2086
-- mIoU = 79.5690
-
-Compared with E32 @2k:
-
-+0.5172 pp mIoU
-
-## Status
-
-Continue to 10k.
-
----
-
-# 13. E41 — HFDetail
-
-## Full name
-
-P2-H + Rare30 + High-frequency Shallow Detail Residual
-
-## Difference from E40
-
-Only detail source changes:
-
-NORMAL:
-
-F_s
-
-HF:
-
-H_s = F_s - AvgPool3x3(F_s)
-
-Everything else is identical.
-
-## Model
-
-model/vitcross_seg_modeling_shallow_detail.py
-
-detail_mode:
-
-HF
-
-## Trainer
-
-scripts/train_vaihingen_P2H_Rare30_HFDetail_screen.py
-
-## Run
-
-runs/Thesis_Ch4_NoSR_ScreenV4_Rare30_P2H_HFDetail_Vaihingen_P2H_seed42_formal160k
-
-## Result @2k
-
-NB:
-
-- OA = 91.3268
-- mF1 = 87.9698
-- mIoU = 79.2304
-
-Compared with E32 @2k:
-
-+0.1786 pp
-
-Compared with E40:
-
--0.3386 pp
-
-## Current interpretation
-
-Shallow detail preservation appears useful.
-
-Pure HF-only detail is currently weaker than preserving the complete
-shallow representation.
-
-## Status
-
-Continue to 10k.
-
----
-
-# 14. 当前路线决策
-
-Current best:
-
-E32 P2-H + Rare30
-
-NB mIoU @10k:
-
-83.0658%
-
-Current experiments:
-
-E40 NormalDetail → 10k
-E41 HFDetail → 10k
-
-Decision after 10k:
-
-Case A:
-
-E40 > E41 > E32
-
-Interpretation:
-
-general shallow detail preservation helps more than HF-only detail.
-
-Case B:
-
-E41 > E40 > E32
-
-Interpretation:
-
-high-frequency-selective detail preservation is specifically useful.
-
-Case C:
-
-E40 ≈ E41 > E32
-
-Interpretation:
-
-gain mainly comes from additional shallow information.
-
-Case D:
-
-both ≤ E32
-
-Stop detail branch.
-
----
-
-# 15. 下一阶段候选
-
-Only after E40/E41 10k finish.
-
-Priority order:
-
-1. Determine whether NormalDetail or HFDetail is retained.
-2. Inspect Car / LowVeg / Tree per-class IoU.
-3. If detail branch succeeds:
-   test with Potsdam.
-4. If detail branch fails:
-   stop structural stacking.
-5. Formal cross-dataset validation.
-6. Re-run final selected model under locked protocol.
-7. Generate final ablation table and qualitative examples.
-
-No further History ratio search.
-
----
-
-# 16. 文件命名规范
-
-## New model files
-
-Format:
-
-model/exp_<ID>_<short_name>.py
-
-Example:
-
-model/exp_E42_detail_gate.py
-
-## New training scripts
-
-Format:
-
-scripts/train_<ID>_<dataset>_<short_name>.py
-
-Example:
-
-scripts/train_E42_vaihingen_detail_gate.py
-
-## New run directories
-
-Format:
-
-runs/<ID>_<dataset>_<method>_seed<seed>_<budget>
-
-Example:
-
-runs/E42_vaihingen_detail_gate_seed42_10k
-
-## New analysis scripts
-
-Format:
-
-scripts/analyze_<ID>_<purpose>.py
-
-Example:
-
-scripts/analyze_E40_E41_per_class.py
-
----
-
-# 17. Git规则
-
-Every experiment should record:
-
-- Experiment ID
-- model file
-- trainer file
-- dataset
-- seed
-- crop
-- training budget
-- run directory
-- main result
-- conclusion
-- Git commit SHA
-
-Do NOT commit:
-
-- *.pth
-- *.pt
-- *.npz
-- raw dataset
-- large predictions
-- resume states
-
-Keep:
-
-- source code
-- metrics CSV
-- best_registry.json
-- diagnostic CSV
-- audit summary
-- experiment documentation
-
----
-
-# 18. Git Commit Mapping
-
-| Experiment | Commit | Notes |
-|---|---|---|
-| Initial repository | TBD | Initial code and experiment archive |
-| E32 P2-H + Rare30 | TBD | Current strongest completed screen |
-| E40/E41 Detail | TBD | Current active experiments |
-
-Update this table after every meaningful commit.
-
----
-
-# 19. Current status
-
-Last updated:
+最后更新：
 
 2026-09-11
-
-Mainline:
-
-E32 P2-H + Rare30
-
-Current best:
-
-83.0658% NB mIoU @10k
-
-Active:
-
-- E40 NormalDetail
-- E41 HFDetail
-
-Deprecated / stopped:
-
-- decoder-only frequency enhancement as main innovation
-- C256
-- History ratio search
-- Rare15History15
