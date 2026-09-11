@@ -1,0 +1,27 @@
+{
+  "F0": {
+    "pass": true,
+    "errors": [],
+    "num_evaluations": 100,
+    "run_dir": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/Thesis_Ch4_NoSR_Ablation_Potsdam_F0_seed42"
+  },
+  "F1": {
+    "pass": true,
+    "errors": [],
+    "num_evaluations": 100,
+    "run_dir": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/Thesis_Ch4_NoSR_Ablation_Potsdam_F1_seed42"
+  },
+  "F2": {
+    "pass": true,
+    "errors": [],
+    "num_evaluations": 100,
+    "run_dir": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/Thesis_Ch4_NoSR_Ablation_Potsdam_F2_seed42"
+  },
+  "F3": {
+    "pass": true,
+    "errors": [],
+    "num_evaluations": 100,
+    "run_dir": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/Thesis_Ch4_NoSR_Ablation_Potsdam_F3_seed42"
+  },
+  "overall_pass": true
+}

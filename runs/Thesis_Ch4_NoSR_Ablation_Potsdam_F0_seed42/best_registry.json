@@ -1,0 +1,20 @@
+{
+  "OA": {
+    "value": 0.8943105465051882,
+    "iter": 42000,
+    "epoch": 42,
+    "model": "model_iter_042000.pth"
+  },
+  "mF1_fg5": {
+    "value": 0.901761312285067,
+    "iter": 42000,
+    "epoch": 42,
+    "model": "model_iter_042000.pth"
+  },
+  "mIoU_fg5": {
+    "value": 0.8253369496094113,
+    "iter": 42000,
+    "epoch": 42,
+    "model": "model_iter_042000.pth"
+  }
+}

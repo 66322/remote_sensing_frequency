@@ -1,0 +1,20 @@
+{
+  "tag": "F3_bestmIoU36k",
+  "variant": "F3",
+  "checkpoint": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/Thesis_Ch4_NoSR_Stage2_FreqRecipe_Vaihingen_F3_seed42_formal160k/checkpoints/model_iter_036000.pth",
+  "seconds": 76.57144355773926,
+  "full": {
+    "OA": 0.8889033367854826,
+    "mF1_fg5": 0.866248823594353,
+    "mIoU_fg5": 0.7697926060489605,
+    "mF1_all6": 0.7218740196619607,
+    "mIoU_all6": 0.6414938383741338
+  },
+  "noboundary": {
+    "OA": 0.9188160207719623,
+    "mF1_fg5": 0.9016555930591295,
+    "mIoU_fg5": 0.8254773735577553,
+    "mF1_all6": 0.7513796608826079,
+    "mIoU_all6": 0.6878978112981294
+  }
+}

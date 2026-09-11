@@ -1,0 +1,809 @@
+================================================================================
+A. DUAL RESNET / SHALLOW BIMODAL BACKBONE
+================================================================================
+11:class AttentionGate(nn.Module):
+22:    def forward(self, g, x):                 # g: 上采样后特征；x: skip
+25:        return x * alpha
+28:class SqueezeAndExcitation(nn.Module):
+29:    def __init__(self, channel,
+33:            nn.Conv2d(channel, channel // reduction, kernel_size=1),
+35:            nn.Conv2d(channel // reduction, channel, kernel_size=1),
+39:    def forward(self, x):
+43:        return y
+45:class SqueezeAndExciteFusionAdd(nn.Module):
+46:    def __init__(self, channels_in, activation=nn.ReLU(inplace=True)):
+47:        super(SqueezeAndExciteFusionAdd, self).__init__()
+49:        self.se_rgb = SqueezeAndExcitation(channels_in,
+51:        self.se_depth = SqueezeAndExcitation(channels_in,
+54:    def forward(self, rgb, depth):
+58:        return out
+64:    return torch.from_numpy(weights)
+67:class StdConv2d(nn.Conv2d):
+69:    def forward(self, x):
+73:        return F.conv2d(x, w, self.bias, self.stride, self.padding,
+78:    return StdConv2d(cin, cout, kernel_size=3, stride=stride,
+83:    return StdConv2d(cin, cout, kernel_size=1, stride=stride,
+87:class PreActBottleneck(nn.Module):
+109:    def forward(self, x):
+123:        return y
+161:class ResNetV2(nn.Module):
+169:        self.root = nn.Sequential(OrderedDict([
+176:        self.body = nn.Sequential(OrderedDict([
+191:    def forward(self, x):
+194:        x = self.root(x)
+195:        features.append(x)
+197:        for i in range(len(self.body)-1):
+198:            x = self.body[i](x)
+207:            features.append(feat)
+208:        x = self.body[-1](x)
+209:        return x, features[::-1]
+211:class FuseResNetV2(nn.Module):
+220:        self.root = nn.Sequential(OrderedDict([
+227:        self.rootd = nn.Sequential(OrderedDict([
+234:        self.se_layer0 = SqueezeAndExciteFusionAdd(
+236:        self.se_layer1 = SqueezeAndExciteFusionAdd(
+239:        self.se_layer2 = SqueezeAndExciteFusionAdd(
+242:        self.se_layer3 = SqueezeAndExciteFusionAdd(
+246:        self.body = nn.Sequential(OrderedDict([
+261:        self.bodyd = nn.Sequential(OrderedDict([
+276:    def forward(self, x, y):
+277:        SE = True
+278:        # SE = False
+281:        x = self.root(x) #64*128
+282:        y = self.rootd(y) #64*128
+283:        if SE:
+285:        features.append(x)
+288:        for i in range(len(self.body)-1):
+289:            x = self.body[i](x) #256*63, 512*32
+290:            y = self.bodyd[i](y) #256*63, 512*32
+291:            if SE:
+305:            features.append(feat)
+306:        x = self.body[-1](x) # 1024*16
+307:        y = self.bodyd[-1](y) # 1024*16
+308:        if SE:
+310:        return x, y, features[::-1]
+
+================================================================================
+B. RESNET FORWARD BODY
+================================================================================
+   220	        self.root = nn.Sequential(OrderedDict([
+   221	            ('conv', DynamicConv2d(3, width, k=7, stride=2, padding=3)),
+   222	            ('gn', nn.GroupNorm(32, width, eps=1e-6)),
+   223	            ('relu', nn.ReLU(inplace=True)),
+   224	            # ('pool', nn.MaxPool2d(kernel_size=3, stride=2, padding=0))
+   225	        ]))
+   226	        
+   227	        self.rootd = nn.Sequential(OrderedDict([
+   228	            ('conv', DynamicConv2d(1, width, k=7, stride=2, padding=3)),
+   229	            ('gn', nn.GroupNorm(32, width, eps=1e-6)),
+   230	            ('relu', nn.ReLU(inplace=True)),
+   231	            # ('pool', nn.MaxPool2d(kernel_size=3, stride=2, padding=0))
+   232	        ]))
+   233	
+   234	        self.se_layer0 = SqueezeAndExciteFusionAdd(
+   235	            64, activation=self.activation)
+   236	        self.se_layer1 = SqueezeAndExciteFusionAdd(
+   237	            256,
+   238	            activation=self.activation)
+   239	        self.se_layer2 = SqueezeAndExciteFusionAdd(
+   240	            512,
+   241	            activation=self.activation)
+   242	        self.se_layer3 = SqueezeAndExciteFusionAdd(
+   243	            1024,
+   244	            activation=self.activation)
+   245	        
+   246	        self.body = nn.Sequential(OrderedDict([
+   247	            ('block1', nn.Sequential(OrderedDict(
+   248	                [('unit1', PreActBottleneck(cin=width, cout=width*4, cmid=width))] +
+   249	                [(f'unit{i:d}', PreActBottleneck(cin=width*4, cout=width*4, cmid=width)) for i in range(2, block_units[0] + 1)],
+   250	                ))),
+   251	            ('block2', nn.Sequential(OrderedDict(
+   252	                [('unit1', PreActBottleneck(cin=width*4, cout=width*8, cmid=width*2, stride=2))] +
+   253	                [(f'unit{i:d}', PreActBottleneck(cin=width*8, cout=width*8, cmid=width*2)) for i in range(2, block_units[1] + 1)],
+   254	                ))),
+   255	            ('block3', nn.Sequential(OrderedDict(
+   256	                [('unit1', PreActBottleneck(cin=width*8, cout=width*16, cmid=width*4, stride=2))] +
+   257	                [(f'unit{i:d}', PreActBottleneck(cin=width*16, cout=width*16, cmid=width*4)) for i in range(2, block_units[2] + 1)],
+   258	                ))),
+   259	        ]))
+   260	    
+   261	        self.bodyd = nn.Sequential(OrderedDict([
+   262	            ('block1', nn.Sequential(OrderedDict(
+   263	                [('unit1', PreActBottleneck(cin=width, cout=width*4, cmid=width))] +
+   264	                [(f'unit{i:d}', PreActBottleneck(cin=width*4, cout=width*4, cmid=width)) for i in range(2, block_units[0] + 1)],
+   265	                ))),
+   266	            ('block2', nn.Sequential(OrderedDict(
+   267	                [('unit1', PreActBottleneck(cin=width*4, cout=width*8, cmid=width*2, stride=2))] +
+   268	                [(f'unit{i:d}', PreActBottleneck(cin=width*8, cout=width*8, cmid=width*2)) for i in range(2, block_units[1] + 1)],
+   269	                ))),
+   270	            ('block3', nn.Sequential(OrderedDict(
+   271	                [('unit1', PreActBottleneck(cin=width*8, cout=width*16, cmid=width*4, stride=2))] +
+   272	                [(f'unit{i:d}', PreActBottleneck(cin=width*16, cout=width*16, cmid=width*4)) for i in range(2, block_units[2] + 1)],
+   273	                ))),
+   274	        ]))
+   275	
+   276	    def forward(self, x, y):
+   277	        SE = True
+   278	        # SE = False
+   279	        features = []
+   280	        b, c, in_size, _ = x.size()
+   281	        x = self.root(x) #64*128
+   282	        y = self.rootd(y) #64*128
+   283	        if SE:
+   284	            x = self.se_layer0(x, y)
+   285	        features.append(x)
+   286	        x = nn.MaxPool2d(kernel_size=3, stride=2, padding=0)(x)
+   287	        y = nn.MaxPool2d(kernel_size=3, stride=2, padding=0)(y)
+   288	        for i in range(len(self.body)-1):
+   289	            x = self.body[i](x) #256*63, 512*32
+   290	            y = self.bodyd[i](y) #256*63, 512*32
+   291	            if SE:
+   292	                if i == 0:
+   293	                    x = self.se_layer1(x, y)
+   294	                if i == 1:
+   295	                    x = self.se_layer2(x, y)
+   296	                
+   297	            right_size = int(in_size / 4 / (i+1))
+   298	            if x.size()[2] != right_size:
+   299	                pad = right_size - x.size()[2]
+   300	                assert pad < 3 and pad > 0, "x {} should {}".format(x.size(), right_size)
+   301	                feat = torch.zeros((b, x.size()[1], right_size, right_size), device=x.device)
+   302	                feat[:, :, 0:x.size()[2], 0:x.size()[3]] = x[:]
+   303	            else:
+   304	                feat = x
+   305	            features.append(feat)
+   306	        x = self.body[-1](x) # 1024*16
+   307	        y = self.bodyd[-1](y) # 1024*16
+   308	        if SE:
+   309	            x = self.se_layer3(x, y)
+   310	        return x, y, features[::-1]
+
+================================================================================
+C. TRANSFORMER / CROSS-MODAL PART
+================================================================================
+16:from torch.nn import CrossEntropyLoss, Dropout, Softmax, Linear, Conv2d, LayerNorm
+27:ATTENTION_Q = "MultiHeadDotProductAttention_1/query"
+28:ATTENTION_K = "MultiHeadDotProductAttention_1/key"
+29:ATTENTION_V = "MultiHeadDotProductAttention_1/value"
+30:ATTENTION_OUT = "MultiHeadDotProductAttention_1/out"
+103:class FreqFusion(nn.Module):
+196:    def forward(self, hr_feat, lr_feat, use_checkpoint=False):
+263:class LocalSimGuidedSampler(nn.Module):
+348:    def forward(self, hr_x, lr_x, feat2sample):
+356:            hr_sim = torch.cat([hr_x, compute_similarity(hr_x, self.local_window, dilation=2, sim='cos')], dim=1)
+357:            lr_sim = torch.cat([lr_x, compute_similarity(lr_x, self.local_window, dilation=2, sim='cos')], dim=1)
+393:class Attention(nn.Module):
+395:        super(Attention, self).__init__()
+398:        self.num_attention_heads = config.transformer["num_heads"]
+399:        self.attention_head_size = int(config.hidden_size / self.num_attention_heads)
+400:        self.all_head_size = self.num_attention_heads * self.attention_head_size
+407:        self.attn_dropout = Dropout(config.transformer["attention_dropout_rate"])
+408:        self.proj_dropout = Dropout(config.transformer["attention_dropout_rate"])
+428:        new_x_shape = x.size()[:-1] + (self.num_attention_heads, self.attention_head_size)
+432:    def forward(self, hidden_statesx, hidden_statesy):
+449:        attention_scores = torch.matmul(query_layer, key_layer.transpose(-1, -2))
+450:        attention_scores = attention_scores / math.sqrt(self.attention_head_size)
+451:        attention_probs = self.softmax(attention_scores)
+452:        weights = attention_probs if self.vis else None
+453:        attention_probs = self.attn_dropout(attention_probs)
+455:        context_layer = torch.matmul(attention_probs, value_layer)
+459:        attention_sx = self.out(context_layer)
+460:        attention_sx = self.proj_dropout(attention_sx)
+462:        attention_scores = torch.matmul(queryd_layer, keyd_layer.transpose(-1, -2))
+463:        attention_scores = attention_scores / math.sqrt(self.attention_head_size)
+464:        attention_probs = self.softmax(attention_scores)
+465:        weights = attention_probs if self.vis else None
+466:        attention_probs = self.attn_dropout(attention_probs)
+468:        context_layer = torch.matmul(attention_probs, valued_layer)
+472:        attention_sy = self.outd(context_layer)
+473:        attention_sy = self.proj_dropout(attention_sy)
+476:            attention_scores = torch.matmul(query_layer, keyd_layer.transpose(-1, -2))
+477:            attention_scores = attention_scores / math.sqrt(self.attention_head_size)
+478:            attention_probs = self.softmax(attention_scores)
+479:            weights = attention_probs if self.vis else None
+480:            attention_probs = self.attn_dropout(attention_probs)
+482:            context_layer = torch.matmul(attention_probs, valued_layer)
+486:            attention_cx = self.out(context_layer)
+487:            attention_cx = self.proj_dropout(attention_cx)
+489:            attention_scores = torch.matmul(queryd_layer, key_layer.transpose(-1, -2))
+490:            attention_scores = attention_scores / math.sqrt(self.attention_head_size)
+491:            attention_probs = self.softmax(attention_scores)
+492:            weights = attention_probs if self.vis else None
+493:            attention_probs = self.attn_dropout(attention_probs)
+495:            context_layer = torch.matmul(attention_probs, value_layer)
+499:            attention_cy = self.outd(context_layer)
+500:            attention_cy = self.proj_dropout(attention_cy)
+502:            attention_sx = self.w11 * attention_sx + self.w12 * attention_cx
+503:            attention_sy = self.w21 * attention_sy + self.w22 * attention_cy
+505:        return attention_sx, attention_sy, weights
+508:class Mlp(nn.Module):
+524:    def forward(self, x):
+533:class Embeddings(nn.Module):
+552:            self.hybrid_model = FuseResNetV2(block_units=config.resnet.num_layers, width_factor=config.resnet.width_factor)
+553:            in_channels = self.hybrid_model.width * 16
+566:    def forward(self, x, y):
+569:            x, y, features = self.hybrid_model(x, y)
+571:            features = None
+583:        return embeddingsx, embeddingsy, features
+586:class Block(nn.Module):
+590:        self.attention_norm = LayerNorm(config.hidden_size, eps=1e-6)
+591:        self.attention_normd = LayerNorm(config.hidden_size, eps=1e-6)
+596:        self.attn = Attention(config, vis, mode=mode)
+598:    def forward(self, x, y):
+601:        x = self.attention_norm(x)
+602:        y = self.attention_normd(y)
+603:        x, y, weights = self.attn(x, y)
+615:        return x, y, weights
+630:            self.attn.query.weight.copy_(query_weight)
+631:            self.attn.key.weight.copy_(key_weight)
+632:            self.attn.value.weight.copy_(value_weight)
+633:            self.attn.out.weight.copy_(out_weight)
+634:            self.attn.query.bias.copy_(query_bias)
+635:            self.attn.key.bias.copy_(key_bias)
+636:            self.attn.value.bias.copy_(value_bias)
+637:            self.attn.out.bias.copy_(out_bias)
+639:            self.attn.queryd.weight.copy_(query_weight)
+640:            self.attn.keyd.weight.copy_(key_weight)
+641:            self.attn.valued.weight.copy_(value_weight)
+642:            self.attn.outd.weight.copy_(out_weight)
+643:            self.attn.queryd.bias.copy_(query_bias)
+644:            self.attn.keyd.bias.copy_(key_bias)
+645:            self.attn.valued.bias.copy_(value_bias)
+646:            self.attn.outd.bias.copy_(out_bias)
+663:            self.attention_norm.weight.copy_(np2th(weights[pjoin(ROOT, ATTENTION_NORM, "scale")]))
+664:            self.attention_norm.bias.copy_(np2th(weights[pjoin(ROOT, ATTENTION_NORM, "bias")]))
+665:            self.attention_normd.weight.copy_(np2th(weights[pjoin(ROOT, ATTENTION_NORM, "scale")]))
+666:            self.attention_normd.bias.copy_(np2th(weights[pjoin(ROOT, ATTENTION_NORM, "bias")]))
+673:class Encoder(nn.Module):
+687:    def forward(self, hidden_statesx, hidden_statesy):
+688:        attn_weights = []
+692:                attn_weights.append(weights)
+695:        return encodedx, encodedy, attn_weights
+698:class Transformer(nn.Module):
+704:    def forward(self, input_ids, dsm_ids):
+705:        embeddingsx, embeddingsy, features = self.embeddings(input_ids, dsm_ids)
+706:        encodedx, encodedy, attn_weights = self.encoder(embeddingsx, embeddingsy)
+707:        return encodedx, encodedy, attn_weights, features
+710:class Conv2dReLU(nn.Sequential):
+735:class DecoderBlockFreqFusion(nn.Module):
+786:    def forward(self, x, skip=None):
+790:                x = torch.cat([x, skip], dim=1)
+793:                x = torch.cat([x, skip], dim=1)
+801:class SegmentationHead(nn.Sequential):
+808:class DecoderCupFreqFusion(nn.Module):
+837:    def forward(self, hidden_states, features=None):
+844:            if features is not None:
+845:                skip = features[i] if (i < self.config.n_skip) else None
+852:class VisionTransformerFreqFusion(nn.Module):
+867:    def forward(self, x, y):
+868:        x, y, attn_weights, features = self.transformer(x, y)
+869:        x = x + y
+870:        x = self.decoder(x, features)
+916:                root_conv = self.transformer.embeddings.hybrid_model.root.conv
+923:                rootd_conv = self.transformer.embeddings.hybrid_model.rootd.conv
+931:                self.transformer.embeddings.hybrid_model.root.gn.weight.copy_(gn_weight)
+932:                self.transformer.embeddings.hybrid_model.root.gn.bias.copy_(gn_bias)
+933:                self.transformer.embeddings.hybrid_model.rootd.gn.weight.copy_(gn_weight)
+934:                self.transformer.embeddings.hybrid_model.rootd.gn.bias.copy_(gn_bias)
+936:                for bname, block in self.transformer.embeddings.hybrid_model.body.named_children():
+939:                for bname, block in self.transformer.embeddings.hybrid_model.bodyd.named_children():
+
+================================================================================
+D. EMBEDDING + TRANSFORMER FORWARD
+================================================================================
+   500	            attention_cy = self.proj_dropout(attention_cy)
+   501	        
+   502	            attention_sx = self.w11 * attention_sx + self.w12 * attention_cx
+   503	            attention_sy = self.w21 * attention_sy + self.w22 * attention_cy
+   504	        
+   505	        return attention_sx, attention_sy, weights
+   506	
+   507	
+   508	class Mlp(nn.Module):
+   509	    def __init__(self, config):
+   510	        super(Mlp, self).__init__()
+   511	        self.fc1 = Linear(config.hidden_size, config.transformer["mlp_dim"])
+   512	        self.fc2 = Linear(config.transformer["mlp_dim"], config.hidden_size)
+   513	        self.act_fn = ACT2FN["gelu"]
+   514	        self.dropout = Dropout(config.transformer["dropout_rate"])
+   515	
+   516	        self._init_weights()
+   517	
+   518	    def _init_weights(self):
+   519	        nn.init.xavier_uniform_(self.fc1.weight)
+   520	        nn.init.xavier_uniform_(self.fc2.weight)
+   521	        nn.init.normal_(self.fc1.bias, std=1e-6)
+   522	        nn.init.normal_(self.fc2.bias, std=1e-6)
+   523	
+   524	    def forward(self, x):
+   525	        x = self.fc1(x)
+   526	        x = self.act_fn(x)
+   527	        x = self.dropout(x)
+   528	        x = self.fc2(x)
+   529	        x = self.dropout(x)
+   530	        return x
+   531	
+   532	
+   533	class Embeddings(nn.Module):
+   534	    def __init__(self, config, img_size, in_channels=3):
+   535	        super(Embeddings, self).__init__()
+   536	        self.hybrid = None
+   537	        self.config = config
+   538	        img_size = _pair(img_size)
+   539	
+   540	        if config.patches.get("grid") is not None:
+   541	            grid_size = config.patches["grid"]
+   542	            patch_size = (img_size[0] // 16 // grid_size[0], img_size[1] // 16 // grid_size[1])
+   543	            patch_size_real = (patch_size[0] * 16, patch_size[1] * 16)
+   544	            n_patches = (img_size[0] // patch_size_real[0]) * (img_size[1] // patch_size_real[1])  
+   545	            self.hybrid = True
+   546	        else:
+   547	            patch_size = _pair(config.patches["size"])
+   548	            n_patches = (img_size[0] // patch_size[0]) * (img_size[1] // patch_size[1])
+   549	            self.hybrid = False
+   550	
+   551	        if self.hybrid:
+   552	            self.hybrid_model = FuseResNetV2(block_units=config.resnet.num_layers, width_factor=config.resnet.width_factor)
+   553	            in_channels = self.hybrid_model.width * 16
+   554	        self.patch_embeddings = Conv2d(in_channels=in_channels,
+   555	                                       out_channels=config.hidden_size,
+   556	                                       kernel_size=patch_size,
+   557	                                       stride=patch_size)
+   558	        self.patch_embeddingsd = Conv2d(in_channels=in_channels,
+   559	                                       out_channels=config.hidden_size,
+   560	                                       kernel_size=patch_size,
+   561	                                       stride=patch_size)
+   562	        self.position_embeddings = nn.Parameter(torch.zeros(1, n_patches, config.hidden_size))
+   563	
+   564	        self.dropout = Dropout(config.transformer["dropout_rate"])
+   565	
+   566	    def forward(self, x, y):
+   567	        y = y.unsqueeze(1)
+   568	        if self.hybrid:
+   569	            x, y, features = self.hybrid_model(x, y)
+   570	        else:
+   571	            features = None
+   572	        x = self.patch_embeddings(x)
+   573	        y = self.patch_embeddingsd(y)
+   574	        x = x.flatten(2)
+   575	        x = x.transpose(-1, -2)
+   576	        y = y.flatten(2)
+   577	        y = y.transpose(-1, -2)
+   578	        
+   579	        embeddingsx = x + self.position_embeddings
+   580	        embeddingsx = self.dropout(embeddingsx)
+   581	        embeddingsy = y + self.position_embeddings
+   582	        embeddingsy = self.dropout(embeddingsy)
+   583	        return embeddingsx, embeddingsy, features
+   584	
+   585	
+   586	class Block(nn.Module):
+   587	    def __init__(self, config, vis, mode=None):
+   588	        super(Block, self).__init__()
+   589	        self.hidden_size = config.hidden_size
+   590	        self.attention_norm = LayerNorm(config.hidden_size, eps=1e-6)
+   591	        self.attention_normd = LayerNorm(config.hidden_size, eps=1e-6)
+   592	        self.ffn_norm = LayerNorm(config.hidden_size, eps=1e-6)
+   593	        self.ffn_normd = LayerNorm(config.hidden_size, eps=1e-6)
+   594	        self.ffn = Mlp(config)
+   595	        self.ffnd = Mlp(config)
+   596	        self.attn = Attention(config, vis, mode=mode)
+   597	
+   598	    def forward(self, x, y):
+   599	        hx = x
+   600	        hy = y
+   601	        x = self.attention_norm(x)
+   602	        y = self.attention_normd(y)
+   603	        x, y, weights = self.attn(x, y)
+   604	        x = x + hx
+   605	        y = y + hy
+   606	
+   607	        hx = x
+   608	        hy = y
+   609	        x = self.ffn_norm(x)
+   610	        y = self.ffn_normd(y)
+   611	        x = self.ffn(x)
+   612	        y = self.ffnd(y)
+   613	        x = x + hx
+   614	        y = y + hy
+   615	        return x, y, weights
+   616	
+   617	    def load_from(self, weights, n_block):
+   618	        ROOT = f"Transformer/encoderblock_{n_block}"
+   619	        with torch.no_grad():
+   620	            query_weight = np2th(weights[pjoin(ROOT, ATTENTION_Q, "kernel")]).view(self.hidden_size, self.hidden_size).t()
+   621	            key_weight = np2th(weights[pjoin(ROOT, ATTENTION_K, "kernel")]).view(self.hidden_size, self.hidden_size).t()
+   622	            value_weight = np2th(weights[pjoin(ROOT, ATTENTION_V, "kernel")]).view(self.hidden_size, self.hidden_size).t()
+   623	            out_weight = np2th(weights[pjoin(ROOT, ATTENTION_OUT, "kernel")]).view(self.hidden_size, self.hidden_size).t()
+   624	
+   625	            query_bias = np2th(weights[pjoin(ROOT, ATTENTION_Q, "bias")]).view(-1)
+   626	            key_bias = np2th(weights[pjoin(ROOT, ATTENTION_K, "bias")]).view(-1)
+   627	            value_bias = np2th(weights[pjoin(ROOT, ATTENTION_V, "bias")]).view(-1)
+   628	            out_bias = np2th(weights[pjoin(ROOT, ATTENTION_OUT, "bias")]).view(-1)
+   629	
+   630	            self.attn.query.weight.copy_(query_weight)
+   631	            self.attn.key.weight.copy_(key_weight)
+   632	            self.attn.value.weight.copy_(value_weight)
+   633	            self.attn.out.weight.copy_(out_weight)
+   634	            self.attn.query.bias.copy_(query_bias)
+   635	            self.attn.key.bias.copy_(key_bias)
+   636	            self.attn.value.bias.copy_(value_bias)
+   637	            self.attn.out.bias.copy_(out_bias)
+   638	            
+   639	            self.attn.queryd.weight.copy_(query_weight)
+   640	            self.attn.keyd.weight.copy_(key_weight)
+   641	            self.attn.valued.weight.copy_(value_weight)
+   642	            self.attn.outd.weight.copy_(out_weight)
+   643	            self.attn.queryd.bias.copy_(query_bias)
+   644	            self.attn.keyd.bias.copy_(key_bias)
+   645	            self.attn.valued.bias.copy_(value_bias)
+   646	            self.attn.outd.bias.copy_(out_bias)
+   647	
+   648	            mlp_weight_0 = np2th(weights[pjoin(ROOT, FC_0, "kernel")]).t()
+   649	            mlp_weight_1 = np2th(weights[pjoin(ROOT, FC_1, "kernel")]).t()
+   650	            mlp_bias_0 = np2th(weights[pjoin(ROOT, FC_0, "bias")]).t()
+   651	            mlp_bias_1 = np2th(weights[pjoin(ROOT, FC_1, "bias")]).t()
+   652	
+   653	            self.ffn.fc1.weight.copy_(mlp_weight_0)
+   654	            self.ffn.fc2.weight.copy_(mlp_weight_1)
+   655	            self.ffn.fc1.bias.copy_(mlp_bias_0)
+   656	            self.ffn.fc2.bias.copy_(mlp_bias_1)
+   657	            
+   658	            self.ffnd.fc1.weight.copy_(mlp_weight_0)
+   659	            self.ffnd.fc2.weight.copy_(mlp_weight_1)
+   660	            self.ffnd.fc1.bias.copy_(mlp_bias_0)
+   661	            self.ffnd.fc2.bias.copy_(mlp_bias_1)
+   662	
+   663	            self.attention_norm.weight.copy_(np2th(weights[pjoin(ROOT, ATTENTION_NORM, "scale")]))
+   664	            self.attention_norm.bias.copy_(np2th(weights[pjoin(ROOT, ATTENTION_NORM, "bias")]))
+   665	            self.attention_normd.weight.copy_(np2th(weights[pjoin(ROOT, ATTENTION_NORM, "scale")]))
+   666	            self.attention_normd.bias.copy_(np2th(weights[pjoin(ROOT, ATTENTION_NORM, "bias")]))
+   667	            self.ffn_normd.weight.copy_(np2th(weights[pjoin(ROOT, MLP_NORM, "scale")]))
+   668	            self.ffn_normd.bias.copy_(np2th(weights[pjoin(ROOT, MLP_NORM, "bias")]))
+   669	            self.ffn_norm.weight.copy_(np2th(weights[pjoin(ROOT, MLP_NORM, "scale")]))
+   670	            self.ffn_norm.bias.copy_(np2th(weights[pjoin(ROOT, MLP_NORM, "bias")]))
+   671	
+   672	
+   673	class Encoder(nn.Module):
+   674	    def __init__(self, config, vis):
+   675	        super(Encoder, self).__init__()
+   676	        self.vis = vis
+   677	        self.layer = nn.ModuleList()
+   678	        self.encoder_norm = LayerNorm(config.hidden_size, eps=1e-6)
+   679	        self.encoder_normd = LayerNorm(config.hidden_size, eps=1e-6)
+   680	        for i in range(config.transformer["num_layers"]):
+   681	            if i < 3 or i > 8:
+   682	                layer = Block(config, vis, mode='sa')
+   683	            else:
+   684	                layer = Block(config, vis, mode='mba')
+   685	            self.layer.append(copy.deepcopy(layer))
+   686	
+   687	    def forward(self, hidden_statesx, hidden_statesy):
+   688	        attn_weights = []
+   689	        for layer_block in self.layer:
+   690	            hidden_statesx, hidden_statesy, weights = layer_block(hidden_statesx, hidden_statesy)
+   691	            if self.vis:
+   692	                attn_weights.append(weights)
+   693	        encodedx = self.encoder_norm(hidden_statesx)
+   694	        encodedy = self.encoder_normd(hidden_statesy)
+   695	        return encodedx, encodedy, attn_weights
+   696	
+   697	
+   698	class Transformer(nn.Module):
+   699	    def __init__(self, config, img_size, vis):
+   700	        super(Transformer, self).__init__()
+   701	        self.embeddings = Embeddings(config, img_size=img_size)
+   702	        self.encoder = Encoder(config, vis)
+   703	
+   704	    def forward(self, input_ids, dsm_ids):
+   705	        embeddingsx, embeddingsy, features = self.embeddings(input_ids, dsm_ids)
+   706	        encodedx, encodedy, attn_weights = self.encoder(embeddingsx, embeddingsy)
+   707	        return encodedx, encodedy, attn_weights, features
+   708	
+   709	
+   710	class Conv2dReLU(nn.Sequential):
+   711	    def __init__(
+   712	            self,
+   713	            in_channels,
+   714	            out_channels,
+   715	            kernel_size,
+   716	            padding=0,
+   717	            stride=1,
+   718	            use_batchnorm=True,
+   719	    ):
+   720	        conv = nn.Conv2d(
+   721	            in_channels,
+   722	            out_channels,
+   723	            kernel_size,
+   724	            stride=stride,
+   725	            padding=padding,
+   726	            bias=not (use_batchnorm),
+   727	        )
+   728	        relu = nn.ReLU(inplace=True)
+   729	
+   730	        bn = nn.BatchNorm2d(out_channels)
+   731	
+   732	        super(Conv2dReLU, self).__init__(conv, bn, relu)
+   733	
+   734	
+   735	class DecoderBlockFreqFusion(nn.Module):
+   736	    def __init__(
+   737	            self,
+   738	            in_channels,
+   739	            out_channels,
+   740	            skip_channels=0,
+   741	            use_batchnorm=True,
+   742	            use_freq_fusion=True,
+   743	            compressed_channels=64,
+   744	    ):
+   745	        super().__init__()
+   746	        self.use_freq_fusion = use_freq_fusion
+   747	        self.skip_channels = skip_channels
+   748	        
+   749	        if self.use_freq_fusion and skip_channels > 0:
+   750	            self.freq_fusion = FreqFusion(
+   751	                hr_channels=skip_channels,
+   752	                lr_channels=in_channels,
+   753	                compressed_channels=compressed_channels,
+   754	                feature_resample=True,
+   755	                use_high_pass=True,
+   756	                use_low_pass=True,
+   757	                hr_residual=True,
+   758	                semi_conv=True,
+   759	                hamming_window=True,
+   760	            )
+
+================================================================================
+E. ALL POSSIBLE BIMODAL OPERATORS
+================================================================================
+model/FreqFusion_reference.py:1:# TPAMI 2024：Frequency-aware Feature Fusion for Dense Image Prediction
+model/FreqFusion_reference.py:109:    hamming_2d = np.outer(hamming_x, hamming_y)
+model/FreqFusion_reference.py:112:class FreqFusion(nn.Module):
+model/FreqFusion_reference.py:197:        # mask = F.softmax(mask, dim=2, dtype=mask.dtype)
+model/FreqFusion_reference.py:201:        mask = F.softmax(mask, dim=2, dtype=mask.dtype)
+model/FreqFusion_reference.py:283:    offset generator in FreqFusion
+model/FreqFusion_reference.py:356:                             ).transpose(1, 2).unsqueeze(1).unsqueeze(0).type(x.dtype).to(x.device)
+model/FreqFusion_reference.py:357:        normalizer = torch.tensor([W, H], dtype=x.dtype, device=x.device).view(1, 2, 1, 1, 1)
+model/FreqFusion_reference.py:372:            hr_sim = torch.cat([hr_x, compute_similarity(hr_x, self.local_window, dilation=2, sim='cos')], dim=1)
+model/FreqFusion_reference.py:373:            lr_sim = torch.cat([lr_x, compute_similarity(lr_x, self.local_window, dilation=2, sim='cos')], dim=1)
+model/FreqFusion_reference.py:439:    model = FreqFusion(hr_channels=128, lr_channels=128)
+model/vitcross_seg_modeling_adaptive_freq.py:31:from . import vitcross_seg_modeling_freqfusion as base
+model/vitcross_seg_modeling_adaptive_freq.py:179:            self.freq_fusion = (
+model/vitcross_seg_modeling_adaptive_freq.py:180:                base.FreqFusion(
+model/vitcross_seg_modeling_adaptive_freq.py:197:            fused_channels = (
+model/vitcross_seg_modeling_adaptive_freq.py:205:                        fused_channels,
+model/vitcross_seg_modeling_adaptive_freq.py:316:                ) = self.freq_fusion(
+model/vitcross_seg_modeling_adaptive_freq.py:361:                ) = self.freq_fusion(
+model/vitcross_seg_modeling_adaptive_freq.py:653:        x = x + y
+model/vitcross_seg_modeling_adaptive_freq.py:668:        .VisionTransformerFreqFusion
+model/vitcross_seg_modeling_freq_ablation.py:12:- F0 bypasses FreqFusion completely.
+model/vitcross_seg_modeling_freq_ablation.py:13:- F1/F2 use comp_feat_upsample=False because the preserved FreqFusion
+model/vitcross_seg_modeling_freq_ablation.py:25:from model import vitcross_seg_modeling_freqfusion as base
+model/vitcross_seg_modeling_freq_ablation.py:55:        self.use_freq_fusion = (
+model/vitcross_seg_modeling_freq_ablation.py:60:        if self.use_freq_fusion:
+model/vitcross_seg_modeling_freq_ablation.py:89:            self.freq_fusion = base.FreqFusion(
+model/vitcross_seg_modeling_freq_ablation.py:122:                self.use_freq_fusion
+model/vitcross_seg_modeling_freq_ablation.py:125:                _, skip, x = self.freq_fusion(
+model/vitcross_seg_modeling_freq_ablation.py:287:        # Backbone/Transformer is exactly the existing implementation.
+model/vitcross_seg_modeling_freq_ablation.py:313:    def forward(self, x, y):
+model/vitcross_seg_modeling_freq_ablation.py:324:        x = x + y
+model/vitcross_seg_modeling_freq_ablation.py:339:        base.VisionTransformerFreqFusion.load_from
+model/vitcross_seg_modeling_freqfusion.py:16:from torch.nn import CrossEntropyLoss, Dropout, Softmax, Linear, Conv2d, LayerNorm
+model/vitcross_seg_modeling_freqfusion.py:20:from model.vit_seg_modeling_resnet_skip import FuseResNetV2
+model/vitcross_seg_modeling_freqfusion.py:99:    hamming_2d = np.outer(hamming_x, hamming_y)
+model/vitcross_seg_modeling_freqfusion.py:103:class FreqFusion(nn.Module):
+model/vitcross_seg_modeling_freqfusion.py:187:        mask = F.softmax(mask, dim=2, dtype=mask.dtype)
+model/vitcross_seg_modeling_freqfusion.py:340:                             ).transpose(1, 2).unsqueeze(1).unsqueeze(0).type(x.dtype).to(x.device)
+model/vitcross_seg_modeling_freqfusion.py:341:        normalizer = torch.tensor([W, H], dtype=x.dtype, device=x.device).view(1, 2, 1, 1, 1)
+model/vitcross_seg_modeling_freqfusion.py:356:            hr_sim = torch.cat([hr_x, compute_similarity(hr_x, self.local_window, dilation=2, sim='cos')], dim=1)
+model/vitcross_seg_modeling_freqfusion.py:357:            lr_sim = torch.cat([lr_x, compute_similarity(lr_x, self.local_window, dilation=2, sim='cos')], dim=1)
+model/vitcross_seg_modeling_freqfusion.py:432:    def forward(self, hidden_statesx, hidden_statesy):
+model/vitcross_seg_modeling_freqfusion.py:433:        mixed_query_layer = self.query(hidden_statesx)
+model/vitcross_seg_modeling_freqfusion.py:434:        mixed_key_layer = self.key(hidden_statesx)
+model/vitcross_seg_modeling_freqfusion.py:435:        mixed_value_layer = self.value(hidden_statesx)
+model/vitcross_seg_modeling_freqfusion.py:437:        mixed_queryd_layer = self.queryd(hidden_statesy)
+model/vitcross_seg_modeling_freqfusion.py:438:        mixed_keyd_layer = self.keyd(hidden_statesy)
+model/vitcross_seg_modeling_freqfusion.py:439:        mixed_valued_layer = self.valued(hidden_statesy)
+model/vitcross_seg_modeling_freqfusion.py:441:        query_layer = self.transpose_for_scores(mixed_query_layer)
+model/vitcross_seg_modeling_freqfusion.py:442:        key_layer = self.transpose_for_scores(mixed_key_layer)
+model/vitcross_seg_modeling_freqfusion.py:443:        value_layer = self.transpose_for_scores(mixed_value_layer)
+model/vitcross_seg_modeling_freqfusion.py:445:        queryd_layer = self.transpose_for_scores(mixed_queryd_layer)
+model/vitcross_seg_modeling_freqfusion.py:446:        keyd_layer = self.transpose_for_scores(mixed_keyd_layer)
+model/vitcross_seg_modeling_freqfusion.py:447:        valued_layer = self.transpose_for_scores(mixed_valued_layer)
+model/vitcross_seg_modeling_freqfusion.py:455:        context_layer = torch.matmul(attention_probs, value_layer)
+model/vitcross_seg_modeling_freqfusion.py:456:        context_layer = context_layer.permute(0, 2, 1, 3).contiguous()
+model/vitcross_seg_modeling_freqfusion.py:457:        new_context_layer_shape = context_layer.size()[:-2] + (self.all_head_size,)
+model/vitcross_seg_modeling_freqfusion.py:458:        context_layer = context_layer.view(*new_context_layer_shape)
+model/vitcross_seg_modeling_freqfusion.py:459:        attention_sx = self.out(context_layer)
+model/vitcross_seg_modeling_freqfusion.py:468:        context_layer = torch.matmul(attention_probs, valued_layer)
+model/vitcross_seg_modeling_freqfusion.py:469:        context_layer = context_layer.permute(0, 2, 1, 3).contiguous()
+model/vitcross_seg_modeling_freqfusion.py:470:        new_context_layer_shape = context_layer.size()[:-2] + (self.all_head_size,)
+model/vitcross_seg_modeling_freqfusion.py:471:        context_layer = context_layer.view(*new_context_layer_shape)
+model/vitcross_seg_modeling_freqfusion.py:472:        attention_sy = self.outd(context_layer)
+model/vitcross_seg_modeling_freqfusion.py:482:            context_layer = torch.matmul(attention_probs, valued_layer)
+model/vitcross_seg_modeling_freqfusion.py:483:            context_layer = context_layer.permute(0, 2, 1, 3).contiguous()
+model/vitcross_seg_modeling_freqfusion.py:484:            new_context_layer_shape = context_layer.size()[:-2] + (self.all_head_size,)
+model/vitcross_seg_modeling_freqfusion.py:485:            context_layer = context_layer.view(*new_context_layer_shape)
+model/vitcross_seg_modeling_freqfusion.py:486:            attention_cx = self.out(context_layer)
+model/vitcross_seg_modeling_freqfusion.py:495:            context_layer = torch.matmul(attention_probs, value_layer)
+model/vitcross_seg_modeling_freqfusion.py:496:            context_layer = context_layer.permute(0, 2, 1, 3).contiguous()
+model/vitcross_seg_modeling_freqfusion.py:497:            new_context_layer_shape = context_layer.size()[:-2] + (self.all_head_size,)
+model/vitcross_seg_modeling_freqfusion.py:498:            context_layer = context_layer.view(*new_context_layer_shape)
+model/vitcross_seg_modeling_freqfusion.py:499:            attention_cy = self.outd(context_layer)
+model/vitcross_seg_modeling_freqfusion.py:505:        return attention_sx, attention_sy, weights
+model/vitcross_seg_modeling_freqfusion.py:552:            self.hybrid_model = FuseResNetV2(block_units=config.resnet.num_layers, width_factor=config.resnet.width_factor)
+model/vitcross_seg_modeling_freqfusion.py:566:    def forward(self, x, y):
+model/vitcross_seg_modeling_freqfusion.py:569:            x, y, features = self.hybrid_model(x, y)
+model/vitcross_seg_modeling_freqfusion.py:583:        return embeddingsx, embeddingsy, features
+model/vitcross_seg_modeling_freqfusion.py:598:    def forward(self, x, y):
+model/vitcross_seg_modeling_freqfusion.py:603:        x, y, weights = self.attn(x, y)
+model/vitcross_seg_modeling_freqfusion.py:615:        return x, y, weights
+model/vitcross_seg_modeling_freqfusion.py:687:    def forward(self, hidden_statesx, hidden_statesy):
+model/vitcross_seg_modeling_freqfusion.py:690:            hidden_statesx, hidden_statesy, weights = layer_block(hidden_statesx, hidden_statesy)
+model/vitcross_seg_modeling_freqfusion.py:695:        return encodedx, encodedy, attn_weights
+model/vitcross_seg_modeling_freqfusion.py:704:    def forward(self, input_ids, dsm_ids):
+model/vitcross_seg_modeling_freqfusion.py:705:        embeddingsx, embeddingsy, features = self.embeddings(input_ids, dsm_ids)
+model/vitcross_seg_modeling_freqfusion.py:706:        encodedx, encodedy, attn_weights = self.encoder(embeddingsx, embeddingsy)
+model/vitcross_seg_modeling_freqfusion.py:707:        return encodedx, encodedy, attn_weights, features
+model/vitcross_seg_modeling_freqfusion.py:735:class DecoderBlockFreqFusion(nn.Module):
+model/vitcross_seg_modeling_freqfusion.py:742:            use_freq_fusion=True,
+model/vitcross_seg_modeling_freqfusion.py:746:        self.use_freq_fusion = use_freq_fusion
+model/vitcross_seg_modeling_freqfusion.py:749:        if self.use_freq_fusion and skip_channels > 0:
+model/vitcross_seg_modeling_freqfusion.py:750:            self.freq_fusion = FreqFusion(
+model/vitcross_seg_modeling_freqfusion.py:788:            if self.use_freq_fusion and self.skip_channels > 0:
+model/vitcross_seg_modeling_freqfusion.py:789:                _, skip, x = self.freq_fusion(hr_feat=skip, lr_feat=x)
+model/vitcross_seg_modeling_freqfusion.py:808:class DecoderCupFreqFusion(nn.Module):
+model/vitcross_seg_modeling_freqfusion.py:832:            DecoderBlockFreqFusion(in_ch, out_ch, sk_ch, use_freq_fusion=True, compressed_channels=64) 
+model/vitcross_seg_modeling_freqfusion.py:852:class VisionTransformerFreqFusion(nn.Module):
+model/vitcross_seg_modeling_freqfusion.py:854:        super(VisionTransformerFreqFusion, self).__init__()
+model/vitcross_seg_modeling_freqfusion.py:859:        self.decoder = DecoderCupFreqFusion(config)
+model/vitcross_seg_modeling_freqfusion.py:867:    def forward(self, x, y):
+model/vitcross_seg_modeling_freqfusion.py:868:        x, y, attn_weights, features = self.transformer(x, y)
+model/vitcross_seg_modeling_freqfusion.py:869:        x = x + y
+model/vitcross_seg_modeling_adaptive_freq_before_trainlog_20260829.py:31:from . import vitcross_seg_modeling_freqfusion as base
+model/vitcross_seg_modeling_adaptive_freq_before_trainlog_20260829.py:179:            self.freq_fusion = (
+model/vitcross_seg_modeling_adaptive_freq_before_trainlog_20260829.py:180:                base.FreqFusion(
+model/vitcross_seg_modeling_adaptive_freq_before_trainlog_20260829.py:197:            fused_channels = (
+model/vitcross_seg_modeling_adaptive_freq_before_trainlog_20260829.py:205:                        fused_channels,
+model/vitcross_seg_modeling_adaptive_freq_before_trainlog_20260829.py:316:                ) = self.freq_fusion(
+model/vitcross_seg_modeling_adaptive_freq_before_trainlog_20260829.py:361:                ) = self.freq_fusion(
+model/vitcross_seg_modeling_adaptive_freq_before_trainlog_20260829.py:651:        x = x + y
+model/vitcross_seg_modeling_adaptive_freq_before_trainlog_20260829.py:666:        .VisionTransformerFreqFusion
+model/vitcross_seg_modeling_heatmap.py:16:from torch.nn import CrossEntropyLoss, Dropout, Softmax, Linear, Conv2d, LayerNorm
+model/vitcross_seg_modeling_heatmap.py:20:from model.vit_seg_modeling_resnet_skip import FuseResNetV2
+model/vitcross_seg_modeling_heatmap.py:94:    def forward(self, hidden_statesx, hidden_statesy):
+model/vitcross_seg_modeling_heatmap.py:95:        mixed_query_layer = self.query(hidden_statesx)
+model/vitcross_seg_modeling_heatmap.py:96:        mixed_key_layer = self.key(hidden_statesx)
+model/vitcross_seg_modeling_heatmap.py:97:        mixed_value_layer = self.value(hidden_statesx)
+model/vitcross_seg_modeling_heatmap.py:99:        mixed_queryd_layer = self.queryd(hidden_statesy)
+model/vitcross_seg_modeling_heatmap.py:100:        mixed_keyd_layer = self.keyd(hidden_statesy)
+model/vitcross_seg_modeling_heatmap.py:101:        mixed_valued_layer = self.valued(hidden_statesy)
+model/vitcross_seg_modeling_heatmap.py:103:        query_layer = self.transpose_for_scores(mixed_query_layer)
+model/vitcross_seg_modeling_heatmap.py:104:        key_layer = self.transpose_for_scores(mixed_key_layer)
+model/vitcross_seg_modeling_heatmap.py:105:        value_layer = self.transpose_for_scores(mixed_value_layer)
+model/vitcross_seg_modeling_heatmap.py:107:        queryd_layer = self.transpose_for_scores(mixed_queryd_layer)
+model/vitcross_seg_modeling_heatmap.py:108:        keyd_layer = self.transpose_for_scores(mixed_keyd_layer)
+model/vitcross_seg_modeling_heatmap.py:109:        valued_layer = self.transpose_for_scores(mixed_valued_layer)
+model/vitcross_seg_modeling_heatmap.py:118:        context_layer = torch.matmul(attention_probs, value_layer)
+model/vitcross_seg_modeling_heatmap.py:119:        context_layer = context_layer.permute(0, 2, 1, 3).contiguous()
+model/vitcross_seg_modeling_heatmap.py:120:        new_context_layer_shape = context_layer.size()[:-2] + (self.all_head_size,)
+model/vitcross_seg_modeling_heatmap.py:121:        context_layer = context_layer.view(*new_context_layer_shape)
+model/vitcross_seg_modeling_heatmap.py:122:        attention_sx = self.out(context_layer)
+model/vitcross_seg_modeling_heatmap.py:132:        context_layer = torch.matmul(attention_probs, valued_layer)
+model/vitcross_seg_modeling_heatmap.py:133:        context_layer = context_layer.permute(0, 2, 1, 3).contiguous()
+model/vitcross_seg_modeling_heatmap.py:134:        new_context_layer_shape = context_layer.size()[:-2] + (self.all_head_size,)
+model/vitcross_seg_modeling_heatmap.py:135:        context_layer = context_layer.view(*new_context_layer_shape)
+model/vitcross_seg_modeling_heatmap.py:136:        attention_sy = self.outd(context_layer)
+model/vitcross_seg_modeling_heatmap.py:139:        # return attention_sx, attention_sy, weights
+model/vitcross_seg_modeling_heatmap.py:141:            # ## Cross Attention x: Qx, Ky, Vy
+model/vitcross_seg_modeling_heatmap.py:148:            context_layer = torch.matmul(attention_probs, valued_layer)
+model/vitcross_seg_modeling_heatmap.py:149:            context_layer = context_layer.permute(0, 2, 1, 3).contiguous()
+model/vitcross_seg_modeling_heatmap.py:150:            new_context_layer_shape = context_layer.size()[:-2] + (self.all_head_size,)
+model/vitcross_seg_modeling_heatmap.py:151:            context_layer = context_layer.view(*new_context_layer_shape)
+model/vitcross_seg_modeling_heatmap.py:152:            attention_cx = self.out(context_layer)
+model/vitcross_seg_modeling_heatmap.py:162:            context_layer = torch.matmul(attention_probs, value_layer)
+model/vitcross_seg_modeling_heatmap.py:163:            context_layer = context_layer.permute(0, 2, 1, 3).contiguous()
+model/vitcross_seg_modeling_heatmap.py:164:            new_context_layer_shape = context_layer.size()[:-2] + (self.all_head_size,)
+model/vitcross_seg_modeling_heatmap.py:165:            context_layer = context_layer.view(*new_context_layer_shape)
+model/vitcross_seg_modeling_heatmap.py:166:            attention_cy = self.outd(context_layer)
+model/vitcross_seg_modeling_heatmap.py:170:            # return attention_cx, attention_cy, weights
+model/vitcross_seg_modeling_heatmap.py:194:            # attention_vector_y = self.softmax(attention_vector_y)
+model/vitcross_seg_modeling_heatmap.py:201:        return attention_sx, attention_sy, weights
+model/vitcross_seg_modeling_heatmap.py:249:            self.hybrid_model = FuseResNetV2(block_units=config.resnet.num_layers, width_factor=config.resnet.width_factor)
+model/vitcross_seg_modeling_heatmap.py:264:    def forward(self, x, y):
+model/vitcross_seg_modeling_heatmap.py:267:            x, y, features = self.hybrid_model(x, y)
+model/vitcross_seg_modeling_heatmap.py:282:        # return embeddingsx, embeddingsy, features
+model/vitcross_seg_modeling_heatmap.py:283:        return embeddingsx, embeddingsy, features, cnn_x
+model/vitcross_seg_modeling_heatmap.py:298:    def forward(self, x, y):
+model/vitcross_seg_modeling_heatmap.py:303:        x, y, weights = self.attn(x, y)
+model/vitcross_seg_modeling_heatmap.py:315:        return x, y, weights
+model/vitcross_seg_modeling_heatmap.py:393:    def forward(self, hidden_statesx, hidden_statesy):
+model/vitcross_seg_modeling_heatmap.py:396:            hidden_statesx, hidden_statesy, weights = layer_block(hidden_statesx, hidden_statesy)
+model/vitcross_seg_modeling_heatmap.py:401:        return encodedx, encodedy, attn_weights
+model/vitcross_seg_modeling_heatmap.py:410:    def forward(self, input_ids, dsm_ids):
+model/vitcross_seg_modeling_heatmap.py:411:        # embeddingsx, embeddingsy, features = self.embeddings(input_ids, dsm_ids)
+model/vitcross_seg_modeling_heatmap.py:412:        # encodedx, encodedy, attn_weights = self.encoder(embeddingsx, embeddingsy)  # (B, n_patch, hidden)
+model/vitcross_seg_modeling_heatmap.py:413:        # return encodedx, encodedy, attn_weights, features
+model/vitcross_seg_modeling_heatmap.py:414:        embeddingsx, embeddingsy, features, cnn_x = self.embeddings(input_ids, dsm_ids)
+model/vitcross_seg_modeling_heatmap.py:415:        encodedx, encodedy, attn_weights = self.encoder(embeddingsx, embeddingsy)  # (B, n_patch, hidden)
+model/vitcross_seg_modeling_heatmap.py:416:        return encodedx, encodedy, attn_weights, features, cnn_x
+model/vitcross_seg_modeling_heatmap.py:547:    def forward(self, x, y):
+model/vitcross_seg_modeling_heatmap.py:548:        # x, y, attn_weights, features = self.transformer(x, y)  # (B, n_patch, hidden)
+model/vitcross_seg_modeling_heatmap.py:549:        # x = x + y
+model/vitcross_seg_modeling_heatmap.py:555:        x, y, attn_weights, features, cnn_x = self.transformer(x, y)  # (B, n_patch, hidden)
+model/vitcross_seg_modeling_heatmap.py:557:        x = x + y
+model/vit_seg_modeling_resnet_skip.py:45:class SqueezeAndExciteFusionAdd(nn.Module):
+model/vit_seg_modeling_resnet_skip.py:47:        super(SqueezeAndExciteFusionAdd, self).__init__()
+model/vit_seg_modeling_resnet_skip.py:198:            x = self.body[i](x)
+model/vit_seg_modeling_resnet_skip.py:208:        x = self.body[-1](x)
+model/vit_seg_modeling_resnet_skip.py:211:class FuseResNetV2(nn.Module):
+model/vit_seg_modeling_resnet_skip.py:234:        self.se_layer0 = SqueezeAndExciteFusionAdd(
+model/vit_seg_modeling_resnet_skip.py:236:        self.se_layer1 = SqueezeAndExciteFusionAdd(
+model/vit_seg_modeling_resnet_skip.py:239:        self.se_layer2 = SqueezeAndExciteFusionAdd(
+model/vit_seg_modeling_resnet_skip.py:242:        self.se_layer3 = SqueezeAndExciteFusionAdd(
+model/vit_seg_modeling_resnet_skip.py:276:    def forward(self, x, y):
+model/vit_seg_modeling_resnet_skip.py:284:            x = self.se_layer0(x, y)
+model/vit_seg_modeling_resnet_skip.py:287:        y = nn.MaxPool2d(kernel_size=3, stride=2, padding=0)(y)
+model/vit_seg_modeling_resnet_skip.py:289:            x = self.body[i](x) #256*63, 512*32
+model/vit_seg_modeling_resnet_skip.py:293:                    x = self.se_layer1(x, y)
+model/vit_seg_modeling_resnet_skip.py:295:                    x = self.se_layer2(x, y)
+model/vit_seg_modeling_resnet_skip.py:306:        x = self.body[-1](x) # 1024*16
+model/vit_seg_modeling_resnet_skip.py:309:            x = self.se_layer3(x, y)
+model/vit_seg_modeling_resnet_skip.py:310:        return x, y, features[::-1]
+model/vitcross_seg_modeling.py:16:from torch.nn import CrossEntropyLoss, Dropout, Softmax, Linear, Conv2d, LayerNorm
+model/vitcross_seg_modeling.py:20:from model.vit_seg_modeling_resnet_skip import FuseResNetV2
+model/vitcross_seg_modeling.py:94:    def forward(self, hidden_statesx, hidden_statesy):
+model/vitcross_seg_modeling.py:95:        mixed_query_layer = self.query(hidden_statesx)
+model/vitcross_seg_modeling.py:96:        mixed_key_layer = self.key(hidden_statesx)
+model/vitcross_seg_modeling.py:97:        mixed_value_layer = self.value(hidden_statesx)
+model/vitcross_seg_modeling.py:99:        mixed_queryd_layer = self.queryd(hidden_statesy)
+model/vitcross_seg_modeling.py:100:        mixed_keyd_layer = self.keyd(hidden_statesy)
+model/vitcross_seg_modeling.py:101:        mixed_valued_layer = self.valued(hidden_statesy)
+model/vitcross_seg_modeling.py:103:        query_layer = self.transpose_for_scores(mixed_query_layer)
+model/vitcross_seg_modeling.py:104:        key_layer = self.transpose_for_scores(mixed_key_layer)
+model/vitcross_seg_modeling.py:105:        value_layer = self.transpose_for_scores(mixed_value_layer)
+model/vitcross_seg_modeling.py:107:        queryd_layer = self.transpose_for_scores(mixed_queryd_layer)
+model/vitcross_seg_modeling.py:108:        keyd_layer = self.transpose_for_scores(mixed_keyd_layer)
+model/vitcross_seg_modeling.py:109:        valued_layer = self.transpose_for_scores(mixed_valued_layer)
+model/vitcross_seg_modeling.py:118:        context_layer = torch.matmul(attention_probs, value_layer)
+model/vitcross_seg_modeling.py:119:        context_layer = context_layer.permute(0, 2, 1, 3).contiguous()
+model/vitcross_seg_modeling.py:120:        new_context_layer_shape = context_layer.size()[:-2] + (self.all_head_size,)
+model/vitcross_seg_modeling.py:121:        context_layer = context_layer.view(*new_context_layer_shape)
+model/vitcross_seg_modeling.py:122:        attention_sx = self.out(context_layer)
+model/vitcross_seg_modeling.py:132:        context_layer = torch.matmul(attention_probs, valued_layer)
+model/vitcross_seg_modeling.py:133:        context_layer = context_layer.permute(0, 2, 1, 3).contiguous()
+model/vitcross_seg_modeling.py:134:        new_context_layer_shape = context_layer.size()[:-2] + (self.all_head_size,)
+model/vitcross_seg_modeling.py:135:        context_layer = context_layer.view(*new_context_layer_shape)
+model/vitcross_seg_modeling.py:136:        attention_sy = self.outd(context_layer)
+model/vitcross_seg_modeling.py:139:        # return attention_sx, attention_sy, weights
+model/vitcross_seg_modeling.py:141:            # ## Cross Attention x: Qx, Ky, Vy
+model/vitcross_seg_modeling.py:148:            context_layer = torch.matmul(attention_probs, valued_layer)
+model/vitcross_seg_modeling.py:149:            context_layer = context_layer.permute(0, 2, 1, 3).contiguous()
+model/vitcross_seg_modeling.py:150:            new_context_layer_shape = context_layer.size()[:-2] + (self.all_head_size,)
+model/vitcross_seg_modeling.py:151:            context_layer = context_layer.view(*new_context_layer_shape)
+model/vitcross_seg_modeling.py:152:            attention_cx = self.out(context_layer)
+model/vitcross_seg_modeling.py:162:            context_layer = torch.matmul(attention_probs, value_layer)
+model/vitcross_seg_modeling.py:163:            context_layer = context_layer.permute(0, 2, 1, 3).contiguous()
+model/vitcross_seg_modeling.py:164:            new_context_layer_shape = context_layer.size()[:-2] + (self.all_head_size,)
+model/vitcross_seg_modeling.py:165:            context_layer = context_layer.view(*new_context_layer_shape)
+model/vitcross_seg_modeling.py:166:            attention_cy = self.outd(context_layer)
+model/vitcross_seg_modeling.py:169:            # return attention_cx, attention_cy, weights
+model/vitcross_seg_modeling.py:192:            # attention_vector_y = self.softmax(attention_vector_y)
+model/vitcross_seg_modeling.py:199:        return attention_sx, attention_sy, weights
+model/vitcross_seg_modeling.py:247:            self.hybrid_model = FuseResNetV2(block_units=config.resnet.num_layers, width_factor=config.resnet.width_factor)
+model/vitcross_seg_modeling.py:262:    def forward(self, x, y):
+model/vitcross_seg_modeling.py:265:            x, y, features = self.hybrid_model(x, y)
+model/vitcross_seg_modeling.py:279:        return embeddingsx, embeddingsy, features
+model/vitcross_seg_modeling.py:294:    def forward(self, x, y):
+model/vitcross_seg_modeling.py:299:        x, y, weights = self.attn(x, y)
+model/vitcross_seg_modeling.py:311:        return x, y, weights
+model/vitcross_seg_modeling.py:388:    def forward(self, hidden_statesx, hidden_statesy):
+model/vitcross_seg_modeling.py:391:            hidden_statesx, hidden_statesy, weights = layer_block(hidden_statesx, hidden_statesy)
+model/vitcross_seg_modeling.py:396:        return encodedx, encodedy, attn_weights
+model/vitcross_seg_modeling.py:405:    def forward(self, input_ids, dsm_ids):
+model/vitcross_seg_modeling.py:406:        embeddingsx, embeddingsy, features = self.embeddings(input_ids, dsm_ids)
+model/vitcross_seg_modeling.py:407:        encodedx, encodedy, attn_weights = self.encoder(embeddingsx, embeddingsy)  # (B, n_patch, hidden)
+model/vitcross_seg_modeling.py:408:        return encodedx, encodedy, attn_weights, features
+model/vitcross_seg_modeling.py:537:    def forward(self, x, y):
+model/vitcross_seg_modeling.py:538:        x, y, attn_weights, features = self.transformer(x, y)  # (B, n_patch, hidden)
+model/vitcross_seg_modeling.py:539:        x = x + y

@@ -1,0 +1,20 @@
+{
+  "tag": "DetPair_F0_iter2000",
+  "variant": "F0",
+  "checkpoint": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/Thesis_Ch4_NoSR_DetPair_F0_Vaihingen_F0_seed42_formal160k/checkpoints/model_iter_002000.pth",
+  "seconds": 52.178367614746094,
+  "full": {
+    "OA": 0.8811226499902246,
+    "mF1_fg5": 0.8249483084083049,
+    "mIoU_fg5": 0.7162999573217872,
+    "mF1_all6": 0.6874569236735875,
+    "mIoU_all6": 0.5969166311014893
+  },
+  "noboundary": {
+    "OA": 0.913511137635464,
+    "mF1_fg5": 0.8663329125493556,
+    "mIoU_fg5": 0.7749441076898773,
+    "mF1_all6": 0.7219440937911297,
+    "mIoU_all6": 0.645786756408231
+  }
+}

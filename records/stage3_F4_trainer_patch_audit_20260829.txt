@@ -1,0 +1,565 @@
+===== IMPORTS =====
+31:    VisionTransformerFreqAblation,
+983:    "--variant",
+1107:net = VisionTransformerFreqAblation(
+1111:    freq_variant=args.variant,
+
+===== RUN =====
+1045-    args.smoke_eval
+1046-    and args.smoke_steps == 0
+1047-):
+1048-    raise ValueError(
+1049-        "--smoke-eval requires "
+1050-        "--smoke-steps > 0"
+1051-    )
+1052-
+1053-run_mode = (
+1054-    f"smoke{args.smoke_steps}"
+1055-    if args.smoke_steps > 0
+1056-    else "formal160k"
+1057-)
+1058-
+1059-run_name = (
+1060:    "Thesis_Ch4_NoSR_Stage2_FreqRecipe_"
+1061-    f"Vaihingen_{args.variant}_seed42_"
+1062-    f"{run_mode}"
+1063-)
+1064-
+1065-RUN_DIR = (
+1066-    ROOT
+1067-    / "runs"
+1068-    / run_name
+1069-)
+1070-
+1071-if RUN_DIR.exists() and not args.resume:
+1072-    raise FileExistsError(
+1073-        "Run directory already exists. "
+1074-        "Refusing to overwrite: "
+1075-        f"{RUN_DIR}"
+1076-    )
+1077-
+1078-(RUN_DIR / "checkpoints").mkdir(
+1079-    parents=True,
+1080-    exist_ok=True,
+1081-)
+1082-
+1083-set_seed(SEED)
+1084-
+1085-train_cache, test_cache = preload_all()
+1086-
+1087-print("\nBUILD MODEL")
+1088-
+1089-# Deep-copy is important because CONFIGS is global.
+1090-import copy
+1091-
+1092-config = copy.deepcopy(
+1093-    CONFIGS["R50-ViT-B_16"]
+1094-)
+1095-
+
+===== MODEL =====
+1067-    / "runs"
+1068-    / run_name
+1069-)
+1070-
+1071-if RUN_DIR.exists() and not args.resume:
+1072-    raise FileExistsError(
+1073-        "Run directory already exists. "
+1074-        "Refusing to overwrite: "
+1075-        f"{RUN_DIR}"
+1076-    )
+1077-
+1078-(RUN_DIR / "checkpoints").mkdir(
+1079-    parents=True,
+1080-    exist_ok=True,
+1081-)
+1082-
+1083-set_seed(SEED)
+1084-
+1085-train_cache, test_cache = preload_all()
+1086-
+1087:print("\nBUILD MODEL")
+1088-
+1089-# Deep-copy is important because CONFIGS is global.
+1090-import copy
+1091-
+1092-config = copy.deepcopy(
+1093-    CONFIGS["R50-ViT-B_16"]
+1094-)
+1095-
+1096-config.n_classes = 6
+1097-config.n_skip = 3
+1098-
+1099-# Preserve the original 16-pixel effective token stride:
+1100-# 256 -> 16x16
+1101-# 512 -> 32x32
+1102-config.patches.grid = (
+1103-    PATCH // 16,
+1104-    PATCH // 16,
+1105-)
+1106-
+1107-net = VisionTransformerFreqAblation(
+1108-    config,
+1109-    img_size=PATCH,
+1110-    num_classes=6,
+1111-    freq_variant=args.variant,
+1112-).to(DEVICE)
+1113-
+1114-# Architecture-adapted differential LR.
+1115-#
+1116-# The transformer branch is treated as the pretrained trunk.
+1117-# Decoder and segmentation head are newly initialized in both
+1118-# F0 and F3 and receive the same 10x LR multiplier.
+1119-#
+1120-# This keeps F0/F3 comparison fair: F3 is not granted an LR
+1121-# advantage that F0 does not receive.
+1122-backbone_params = []
+1123-new_module_params = []
+1124-
+1125-backbone_numel = 0
+1126-new_module_numel = 0
+1127-
+1128-for name, param in net.named_parameters():
+1129-    if not param.requires_grad:
+1130-        continue
+1131-
+1132-    if (
+1133-        name.startswith("decoder.")
+1134-        or name.startswith("segmentation_head.")
+1135-    ):
+1136-        new_module_params.append(param)
+1137-        new_module_numel += param.numel()
+1138-    else:
+1139-        backbone_params.append(param)
+1140-        backbone_numel += param.numel()
+1141-
+1142-assigned = (
+1143-    sum(p.numel() for p in backbone_params)
+1144-    + sum(p.numel() for p in new_module_params)
+1145-)
+1146-
+1147-trainable = sum(
+1148-    p.numel()
+1149-    for p in net.parameters()
+1150-    if p.requires_grad
+1151-)
+1152-
+1153-if assigned != trainable:
+1154-    raise RuntimeError(
+1155-        f"Optimizer grouping mismatch: "
+1156-        f"assigned={assigned}, "
+1157-        f"trainable={trainable}"
+1158-    )
+1159-
+1160-optimizer = torch.optim.AdamW(
+1161-    [
+1162-        {
+1163-            "params": backbone_params,
+1164-            "lr": BASE_LR,
+1165-            "lr_mult": 1.0,
+1166-            "group_name": "backbone",
+1167-        },
+1168-        {
+1169-            "params": new_module_params,
+1170-            "lr": (
+1171-                BASE_LR
+1172-                * NEW_MODULE_LR_MULT
+1173-            ),
+1174-            "lr_mult": NEW_MODULE_LR_MULT,
+1175-            "group_name": "decoder_head",
+1176-        },
+1177-    ],
+
+===== OPTIMIZER =====
+1163-            "params": backbone_params,
+1164-            "lr": BASE_LR,
+1165-            "lr_mult": 1.0,
+1166-            "group_name": "backbone",
+1167-        },
+1168-        {
+1169-            "params": new_module_params,
+1170-            "lr": (
+1171-                BASE_LR
+1172-                * NEW_MODULE_LR_MULT
+1173-            ),
+1174-            "lr_mult": NEW_MODULE_LR_MULT,
+1175-            "group_name": "decoder_head",
+1176-        },
+1177-    ],
+1178-    betas=(0.9, 0.999),
+1179-    weight_decay=WEIGHT_DECAY,
+1180-)
+1181-
+1182-print(
+1183:    "[OPTIMIZER GROUP] backbone:",
+1184-    f"{backbone_numel:,}",
+1185-    "parameters",
+1186-)
+1187-
+1188-print(
+1189:    "[OPTIMIZER GROUP] decoder/head:",
+1190-    f"{new_module_numel:,}",
+1191-    "parameters",
+1192-)
+1193-
+1194-resume_path = (
+1195-    RUN_DIR
+1196-    / "last_train_state.pth"
+1197-)
+1198-
+1199-registry = {}
+1200-
+1201-start_epoch = 1
+1202-global_step = 0
+1203-
+1204-if args.resume:
+1205-    if not resume_path.is_file():
+1206-        raise FileNotFoundError(
+1207-            resume_path
+1208-        )
+1209-
+1210-    state = torch.load(
+1211-        resume_path,
+1212-        map_location="cpu",
+1213-    )
+1214-
+1215-    net.load_state_dict(
+1216-        state["model"],
+1217-        strict=True,
+1218-    )
+1219-
+1220-    optimizer.load_state_dict(
+1221-        state["optimizer"]
+1222-    )
+1223-
+1224-    start_epoch = (
+1225-        int(state["epoch"]) + 1
+1226-    )
+1227-
+1228-    global_step = int(
+1229-        state["global_step"]
+1230-    )
+1231-
+1232-    registry = state.get(
+1233-        "registry",
+1234-        {},
+1235-    )
+1236-
+1237-    random.setstate(
+1238-        state["python_rng"]
+1239-    )
+1240-
+1241-    np.random.set_state(
+1242-        state["numpy_rng"]
+1243-    )
+1244-
+1245-    torch.set_rng_state(
+1246-        state["torch_rng"]
+1247-    )
+1248-
+1249-    torch.cuda.set_rng_state_all(
+1250-        state["cuda_rng"]
+1251-    )
+1252-
+1253-    print(
+1254-        "[RESUME]",
+1255-        "epoch=", start_epoch,
+1256-        "global_step=", global_step,
+1257-    )
+1258-
+1259-else:
+1260-    weights = np.load(
+1261-        str(PRETRAIN)
+1262-    )
+1263-
+1264-    net.load_from(
+1265-        weights=weights
+1266-    )
+1267-
+1268-    print(
+1269-        "[PASS] pretrained weights loaded"
+1270-    )
+1271-
+1272-
+1273-# ------------------------------------------------------------
+1274-# Variant-specific structural gate
+1275-# ------------------------------------------------------------
+1276-freq_modules = [
+1277-    n
+1278-    for n, _ in net.named_modules()
+1279-    if "freq_fusion" in n.lower()
+1280-]
+1281-
+1282-sgor_modules = [
+1283-    n
+1284-    for n, _ in net.named_modules()
+1285-    if "dysampler" in n.lower()
+1286-]
+1287-
+1288-hfdc_modules = [
+1289-    n
+1290-    for n, _ in net.named_modules()
+1291-    if "content_encoder2" in n.lower()
+1292-]
+1293-
+1294-n_freq = len(freq_modules)
+1295-n_sgor = len(sgor_modules)
+1296-n_hfdc = len(hfdc_modules)
+1297-
+1298-print(
+1299-    f"VARIANT STRUCTURE | "
+1300-    f"{args.variant} | "
+1301-    f"FreqFusion={n_freq} | "
+1302-    f"SGOR={n_sgor} | "
+1303-    f"HFDC={n_hfdc}"
+1304-)
+1305-
+1306-if args.variant == "F0":
+1307-    if not (
+1308-        n_freq == 0
+1309-        and n_sgor == 0
+
+===== STRUCTURE =====
+1279-    if "freq_fusion" in n.lower()
+1280-]
+1281-
+1282-sgor_modules = [
+1283-    n
+1284-    for n, _ in net.named_modules()
+1285-    if "dysampler" in n.lower()
+1286-]
+1287-
+1288-hfdc_modules = [
+1289-    n
+1290-    for n, _ in net.named_modules()
+1291-    if "content_encoder2" in n.lower()
+1292-]
+1293-
+1294-n_freq = len(freq_modules)
+1295-n_sgor = len(sgor_modules)
+1296-n_hfdc = len(hfdc_modules)
+1297-
+1298-print(
+1299:    f"VARIANT STRUCTURE | "
+1300-    f"{args.variant} | "
+1301-    f"FreqFusion={n_freq} | "
+1302-    f"SGOR={n_sgor} | "
+1303-    f"HFDC={n_hfdc}"
+1304-)
+1305-
+1306-if args.variant == "F0":
+1307-    if not (
+1308-        n_freq == 0
+1309-        and n_sgor == 0
+1310-        and n_hfdc == 0
+1311-    ):
+1312-        raise RuntimeError(
+1313-            f"F0 structure invalid: "
+1314-            f"FreqFusion={n_freq}, "
+1315-            f"SGOR={n_sgor}, "
+1316-            f"HFDC={n_hfdc}"
+1317-        )
+1318-
+1319-elif args.variant == "F1":
+1320-    if not (
+1321-        n_freq > 0
+1322-        and n_sgor == 0
+1323-        and n_hfdc == 0
+1324-    ):
+1325-        raise RuntimeError(
+1326-            f"F1 structure invalid: "
+1327-            f"FreqFusion={n_freq}, "
+1328-            f"SGOR={n_sgor}, "
+1329-            f"HFDC={n_hfdc}"
+1330-        )
+1331-
+1332-elif args.variant == "F2":
+1333-    if not (
+1334-        n_freq > 0
+1335-        and n_sgor > 0
+1336-        and n_hfdc == 0
+1337-    ):
+1338-        raise RuntimeError(
+1339-            f"F2 structure invalid: "
+1340-            f"FreqFusion={n_freq}, "
+1341-            f"SGOR={n_sgor}, "
+1342-            f"HFDC={n_hfdc}"
+1343-        )
+1344-
+1345-elif args.variant == "F3":
+1346-    if not (
+1347-        n_freq > 0
+1348-        and n_sgor > 0
+1349-        and n_hfdc > 0
+1350-    ):
+1351-        raise RuntimeError(
+1352-            f"F3 structure invalid: "
+1353-            f"FreqFusion={n_freq}, "
+1354-            f"SGOR={n_sgor}, "
+1355-            f"HFDC={n_hfdc}"
+1356-        )
+1357-
+1358-else:
+1359-    raise RuntimeError(
+1360-        f"Unknown variant: {args.variant}"
+1361-    )
+1362-
+1363-print(
+1364-    f"[PASS] {args.variant} structural gate"
+1365-)
+1366-
+1367-# ------------------------------------------------------------------
+1368-# Logs
+1369-# ------------------------------------------------------------------
+1370-
+1371-train_csv = (
+1372-    RUN_DIR
+1373-    / "train_history.csv"
+1374-)
+1375-
+1376-metric_csv = (
+1377-    RUN_DIR
+1378-    / "metrics_history.csv"
+1379-)
+1380-
+1381-if not args.resume:
+1382-    with open(
+1383-        train_csv,
+1384-        "w",
+1385-        newline="",
+1386-    ) as f:
+1387-        csv.writer(f).writerow([
+1388-            "step",
+1389-            "epoch",
+1390-            "step_in_epoch",
+1391-            "lr",
+1392-            "loss",
+1393-            "mean_loss_50",
+1394-            "sec_per_step",
+1395-        ])
+1396-
+1397-    with open(
+1398-        metric_csv,
+1399-        "w",
+
+===== LOGGING =====
+1629-
+1630-        scale_min = float(
+1631-            np.min(micro_scales)
+1632-        )
+1633-
+1634-        scale_max = float(
+1635-            np.max(micro_scales)
+1636-        )
+1637-
+1638-        loss_buffer.append(
+1639-            loss_value
+1640-        )
+1641-
+1642:        mean50 = float(
+1643-            np.mean(
+1644-                loss_buffer[-50:]
+1645-            )
+1646-        )
+1647-
+1648-        sec_step = (
+1649-            time.time()
+1650-            - step_start
+1651-        )
+1652-
+1653-        # Keep the legacy CSV column layout.
+1654-        # `lr` records backbone LR; decoder/head LR is always 10x.
+1655-        lr = lrs["backbone"]
+1656-
+1657-        with open(
+1658-            train_csv,
+1659-            "a",
+1660-            newline="",
+1661-        ) as f:
+1662-            csv.writer(f).writerow([
+1663-                global_step,
+1664-                epoch,
+1665-                step_in_epoch,
+1666-                lr,
+1667-                f"{loss_value:.8f}",
+1668:                f"{mean50:.8f}",
+1669-                f"{sec_step:.4f}",
+1670-            ])
+1671-
+1672-        if (
+1673-            global_step == 1
+1674-            or global_step % 20 == 0
+1675-        ):
+1676-            allocated = (
+1677-                torch.cuda
+1678-                .memory_allocated()
+1679-                / 1024**3
+1680-            )
+1681-
+1682-            reserved = (
+1683-                torch.cuda
+1684-                .memory_reserved()
+1685-                / 1024**3
+1686-            )
+1687-
+1688-            print(
+1689-                f"step "
+1690-                f"{global_step:06d}/"
+1691-                f"{target_total_steps} | "
+1692-                f"loss={loss_value:.6f} | "
+1693:                f"mean50={mean50:.6f} | "
+1694-                f"lr_backbone="
+1695-                f"{lrs['backbone']:.3e} | "
+1696-                f"lr_head="
+1697-                f"{lrs['decoder_head']:.3e} | "
+1698-                f"scale="
+1699-                f"{scale_mean:.3f}"
+1700-                f"[{scale_min:.3f},"
+1701-                f"{scale_max:.3f}] | "
+1702-                f"GPU="
+1703-                f"{allocated:.2f}/"
+1704-                f"{reserved:.2f}G | "
+1705-                f"{sec_step:.3f}s"
+1706-            )
+1707-
+1708-        # No expensive test-set evaluation during smoke.
+1709-        do_eval = (
+1710-            (
+1711-                args.smoke_steps == 0
+1712-                and global_step % EVAL_INTERVAL == 0
+1713-            )
+1714-            or
+1715-            (
+1716-                args.smoke_steps > 0
+1717-                and args.smoke_eval
+1718-                and global_step == target_total_steps
+1719-            )
+1720-        )
+1721-
+1722-        if do_eval:
+1723-            print(
+1724-                "\n"
+1725-                + "-" * 100
+1726-            )
+1727-
+1728-            print(
+1729-                f"EVALUATION "
+1730-                f"@ ITER {global_step}"
+1731-            )
+1732-
+1733-            result = evaluate(
+1734-                net,
+1735-                test_cache,
+1736-            )
+1737-
+1738-            full = result["full"]
+1739-            nb = result["noboundary"]
+1740-
+1741-            print(
+1742-                "FULL | "
+1743-                f"OA={full['OA']*100:.4f} "
+1744-                f"mF1fg5="
+1745-                f"{full['mF1_fg5']*100:.4f} "
+1746-                f"mIoUfg5="
+1747-                f"{full['mIoU_fg5']*100:.4f}"
+1748-            )

@@ -1,0 +1,43 @@
+{
+  "primary_selection": {
+    "selection_rule": "best_noBoundary_OA",
+    "iter": 42000,
+    "epoch": 42,
+    "model": "model_iter_042000.pth",
+    "FullGT": {
+      "OA": 0.8710677546296296,
+      "mF1_fg5": 0.871516836855271,
+      "mIoU_fg5": 0.7764226333076787,
+      "mF1_all6": 0.8268409719848019,
+      "mIoU_all6": 0.7190376073716145
+    },
+    "noBoundary": {
+      "OA": 0.8943105465051882,
+      "mF1_fg5": 0.901761312285067,
+      "mIoU_fg5": 0.8253369496094113,
+      "mF1_all6": 0.8584642980906682,
+      "mIoU_all6": 0.7665693783714737
+    }
+  },
+  "diagnostic_best": {
+    "OA": {
+      "value": 0.8943105465051882,
+      "iter": 42000,
+      "epoch": 42,
+      "model": "model_iter_042000.pth"
+    },
+    "mF1_fg5": {
+      "value": 0.901761312285067,
+      "iter": 42000,
+      "epoch": 42,
+      "model": "model_iter_042000.pth"
+    },
+    "mIoU_fg5": {
+      "value": 0.8253369496094113,
+      "iter": 42000,
+      "epoch": 42,
+      "model": "model_iter_042000.pth"
+    }
+  },
+  "num_evaluations": 100
+}

@@ -1,0 +1,865 @@
+===== LOSS =====
+1563-    ):
+1564-        if global_step >= target_total_steps:
+1565-            stop_training = True
+1566-            break
+1567-
+1568-        step_start = time.time()
+1569-
+1570-        # global_step counts optimizer updates.
+1571-        next_global_step = (
+1572-            global_step + 1
+1573-        )
+1574-
+1575-        lrs = set_optimizer_lr(
+1576-            next_global_step
+1577-        )
+1578-
+1579-        optimizer.zero_grad(
+1580-            set_to_none=True
+1581-        )
+1582-
+1583-        micro_losses = []
+1584-        micro_scales = []
+1585-
+1586-        for micro_idx in range(
+1587-            ACCUM_STEPS
+1588-        ):
+1589-            (
+1590-                optical,
+1591-                dsm,
+1592-                gt,
+1593-                sampled_scales,
+1594-            ) = sample_train_batch(
+1595-                train_cache
+1596-            )
+1597-
+1598-            logits = net(
+1599-                optical,
+1600-                dsm,
+1601-            )
+1602-
+1603:            raw_loss = F.cross_entropy(
+1604-                logits,
+1605-                gt,
+1606-            )
+1607-
+1608-            if not torch.isfinite(raw_loss):
+1609-                raise RuntimeError(
+1610-                    f"Non-finite loss "
+1611-                    f"before optimizer step "
+1612-                    f"{next_global_step}, "
+1613-                    f"micro={micro_idx}"
+1614-                )
+1615-
+1616-            # Average gradients across the accumulated
+1617-            # micro-batches.
+1618-            (
+1619-                raw_loss / ACCUM_STEPS
+1620-            ).backward()
+1621-
+1622-            micro_losses.append(
+1623-                float(
+1624-                    raw_loss.detach()
+1625-                )
+1626-            )
+1627-
+1628-            micro_scales.extend(
+1629-                sampled_scales
+1630-            )
+1631-
+1632-            del optical
+1633-            del dsm
+1634-            del gt
+1635-            del logits
+1636-            del raw_loss
+1637-
+1638-        optimizer.step()
+1639-
+1640-        global_step = next_global_step
+1641-
+1642-        torch.cuda.synchronize()
+1643-
+1644-        loss_value = float(
+1645-            np.mean(micro_losses)
+1646-        )
+1647-
+1648-        scale_mean = float(
+1649-            np.mean(micro_scales)
+1650-        )
+1651-
+1652-        scale_min = float(
+1653-            np.min(micro_scales)
+1654-        )
+1655-
+1656-        scale_max = float(
+1657-            np.max(micro_scales)
+1658-        )
+1659-
+1660-        loss_buffer.append(
+1661-            loss_value
+1662-        )
+1663-
+1664-        mean50 = float(
+1665-            np.mean(
+1666-                loss_buffer[-50:]
+1667-            )
+1668-        )
+1669-
+1670-        sec_step = (
+1671-            time.time()
+1672-            - step_start
+1673-        )
+1674-
+1675-        # Keep the legacy CSV column layout.
+1676-        # `lr` records backbone LR; decoder/head LR is always 10x.
+1677-        lr = lrs["backbone"]
+1678-
+1679-        with open(
+1680-            train_csv,
+1681-            "a",
+1682-            newline="",
+1683-        ) as f:
+1684-            csv.writer(f).writerow([
+1685-                global_step,
+1686-                epoch,
+1687-                step_in_epoch,
+1688-                lr,
+1689-                f"{loss_value:.8f}",
+1690-                f"{mean50:.8f}",
+1691-                f"{sec_step:.4f}",
+1692-            ])
+1693-
+
+===== BACKWARD =====
+1580-            set_to_none=True
+1581-        )
+1582-
+1583-        micro_losses = []
+1584-        micro_scales = []
+1585-
+1586-        for micro_idx in range(
+1587-            ACCUM_STEPS
+1588-        ):
+1589-            (
+1590-                optical,
+1591-                dsm,
+1592-                gt,
+1593-                sampled_scales,
+1594-            ) = sample_train_batch(
+1595-                train_cache
+1596-            )
+1597-
+1598-            logits = net(
+1599-                optical,
+1600-                dsm,
+1601-            )
+1602-
+1603-            raw_loss = F.cross_entropy(
+1604-                logits,
+1605-                gt,
+1606-            )
+1607-
+1608-            if not torch.isfinite(raw_loss):
+1609-                raise RuntimeError(
+1610-                    f"Non-finite loss "
+1611-                    f"before optimizer step "
+1612-                    f"{next_global_step}, "
+1613-                    f"micro={micro_idx}"
+1614-                )
+1615-
+1616-            # Average gradients across the accumulated
+1617-            # micro-batches.
+1618-            (
+1619-                raw_loss / ACCUM_STEPS
+1620:            ).backward()
+1621-
+1622-            micro_losses.append(
+1623-                float(
+1624-                    raw_loss.detach()
+1625-                )
+1626-            )
+1627-
+1628-            micro_scales.extend(
+1629-                sampled_scales
+1630-            )
+1631-
+1632-            del optical
+1633-            del dsm
+1634-            del gt
+1635-            del logits
+1636-            del raw_loss
+1637-
+1638-        optimizer.step()
+1639-
+1640-        global_step = next_global_step
+1641-
+1642-        torch.cuda.synchronize()
+1643-
+1644-        loss_value = float(
+1645-            np.mean(micro_losses)
+1646-        )
+1647-
+1648-        scale_mean = float(
+1649-            np.mean(micro_scales)
+1650-        )
+1651-
+1652-        scale_min = float(
+1653-            np.min(micro_scales)
+1654-        )
+1655-
+1656-        scale_max = float(
+1657-            np.max(micro_scales)
+1658-        )
+1659-
+1660-        loss_buffer.append(
+1661-            loss_value
+1662-        )
+1663-
+1664-        mean50 = float(
+1665-            np.mean(
+1666-                loss_buffer[-50:]
+1667-            )
+1668-        )
+1669-
+1670-        sec_step = (
+1671-            time.time()
+1672-            - step_start
+1673-        )
+1674-
+1675-        # Keep the legacy CSV column layout.
+1676-        # `lr` records backbone LR; decoder/head LR is always 10x.
+1677-        lr = lrs["backbone"]
+1678-
+1679-        with open(
+1680-            train_csv,
+1681-            "a",
+1682-            newline="",
+1683-        ) as f:
+1684-            csv.writer(f).writerow([
+1685-                global_step,
+1686-                epoch,
+1687-                step_in_epoch,
+1688-                lr,
+1689-                f"{loss_value:.8f}",
+1690-                f"{mean50:.8f}",
+1691-                f"{sec_step:.4f}",
+1692-            ])
+1693-
+1694-        if (
+1695-            global_step == 1
+1696-            or global_step % 20 == 0
+1697-        ):
+1698-            allocated = (
+1699-                torch.cuda
+1700-                .memory_allocated()
+1701-                / 1024**3
+1702-            )
+1703-
+1704-            reserved = (
+1705-                torch.cuda
+1706-                .memory_reserved()
+1707-                / 1024**3
+1708-            )
+1709-
+1710-            # Gates correspond to the most recent physical
+1711-            # micro-batch in this optimizer update.
+1712-            gate_parts = []
+1713-
+1714-            for stage, gate in (
+1715-                net.get_last_gates()
+1716-            ):
+1717-                gate_parts.append(
+1718-                    f"s{stage}="
+1719-                    f"{gate.mean().item():.6f}"
+1720-                    f"[{gate.min().item():.6f},"
+
+===== OPTIMIZER STEP =====
+986-    "--variant",
+987-    type=str,
+988-    required=True,
+989-    choices=["F4"],
+990-)
+991-
+992-parser.add_argument(
+993-    "--smoke-steps",
+994-    type=int,
+995-    default=0,
+996-    help=(
+997-        "If >0, run only this many optimizer updates "
+998-        "in a separate smoke directory."
+999-    ),
+1000-)
+1001-
+1002-parser.add_argument(
+1003-    "--smoke-eval",
+1004-    action="store_true",
+1005-    help=(
+1006-        "Run one full evaluation at the end of a smoke run. "
+1007-        "This is only for validating the inference/evaluation path."
+1008-    ),
+1009-)
+1010-
+1011-parser.add_argument(
+1012-    "--max-steps",
+1013-    type=int,
+1014-    default=0,
+1015-    help=(
+1016:        "For a formal run, stop at this optimizer step. "
+1017-        "Use 0 for the full 160000-step schedule. "
+1018-        "A stopped formal run can later continue with --resume."
+1019-    ),
+1020-)
+1021-
+1022-args = parser.parse_args()
+1023-
+1024-if args.smoke_steps < 0:
+1025-    raise ValueError("--smoke-steps must be >= 0")
+1026-
+1027-if args.max_steps < 0:
+1028-    raise ValueError("--max-steps must be >= 0")
+1029-
+1030-if (
+1031-    args.max_steps > TOTAL_STEPS
+1032-):
+1033-    raise ValueError(
+1034-        f"--max-steps cannot exceed "
+1035-        f"{TOTAL_STEPS}"
+1036-    )
+1037-
+1038-if (
+1039-    args.smoke_steps > 0
+1040-    and args.max_steps > 0
+1041-):
+1042-    raise ValueError(
+1043-        "--smoke-steps and --max-steps "
+1044-        "cannot be used together"
+1045-    )
+1046-
+1047-if (
+1048-    args.smoke_eval
+1049-    and args.smoke_steps == 0
+1050-):
+1051-    raise ValueError(
+1052-        "--smoke-eval requires "
+1053-        "--smoke-steps > 0"
+1054-    )
+1055-
+1056-run_mode = (
+1057-    f"smoke{args.smoke_steps}"
+1058-    if args.smoke_steps > 0
+1059-    else "formal160k"
+1060-)
+1061-
+1062-run_name = (
+1063-    "Thesis_Ch4_NoSR_Stage3_AdaptiveFreq_"
+1064-    f"Vaihingen_{args.variant}_seed42_"
+1065-    f"{run_mode}"
+1066-)
+1067-
+1068-RUN_DIR = (
+1069-    ROOT
+1070-    / "runs"
+1071-    / run_name
+1072-)
+1073-
+1074-if RUN_DIR.exists() and not args.resume:
+1075-    raise FileExistsError(
+1076-        "Run directory already exists. "
+1077-        "Refusing to overwrite: "
+1078-        f"{RUN_DIR}"
+1079-    )
+1080-
+1081-(RUN_DIR / "checkpoints").mkdir(
+1082-    parents=True,
+1083-    exist_ok=True,
+1084-)
+1085-
+1086-set_seed(SEED)
+1087-
+1088-train_cache, test_cache = preload_all()
+1089-
+1090-print("\nBUILD MODEL")
+1091-
+1092-# Deep-copy is important because CONFIGS is global.
+1093-import copy
+1094-
+1095-config = copy.deepcopy(
+1096-    CONFIGS["R50-ViT-B_16"]
+1097-)
+1098-
+1099-config.n_classes = 6
+1100-config.n_skip = 3
+1101-
+1102-# Preserve the original 16-pixel effective token stride:
+1103-# 256 -> 16x16
+1104-# 512 -> 32x32
+1105-config.patches.grid = (
+1106-    PATCH // 16,
+--
+1485-            * factor
+1486-        )
+1487-
+1488-    return {
+1489-        group["group_name"]:
+1490-            group["lr"]
+1491-        for group in optimizer.param_groups
+1492-    }
+1493-
+1494-
+1495-if args.smoke_steps > 0:
+1496-    target_total_steps = (
+1497-        args.smoke_steps
+1498-    )
+1499-elif args.max_steps > 0:
+1500-    target_total_steps = (
+1501-        args.max_steps
+1502-    )
+1503-else:
+1504-    target_total_steps = (
+1505-        TOTAL_STEPS
+1506-    )
+1507-
+1508-loss_buffer = []
+1509-
+1510-print("\n" + "=" * 100)
+1511-print("STAGE-3 F4 ADAPTIVE FREQUENCY TRAINING START")
+1512-print("variant:", args.variant)
+1513-print("run:", RUN_DIR)
+1514-print("pseudo epochs:", EPOCHS)
+1515:print("optimizer steps/pseudo-epoch:", STEPS_PER_EPOCH)
+1516:print("formal optimizer steps:", TOTAL_STEPS)
+1517-print("requested smoke steps:", args.smoke_steps)
+1518-print("formal max steps:", args.max_steps)
+1519:print("actual target optimizer steps:", target_total_steps)
+1520-print("physical batch:", TRAIN_BATCH)
+1521-print("gradient accumulation:", ACCUM_STEPS)
+1522-print("effective sampled batch:", EFFECTIVE_BATCH)
+1523-print("crop:", PATCH)
+1524-print("grid:", config.patches.grid)
+1525-print(
+1526-    "random scale:",
+1527-    RANDOM_SCALE_MIN,
+1528-    "to",
+1529-    RANDOM_SCALE_MAX,
+1530-)
+1531-print("optimizer: AdamW")
+1532-print("base LR:", BASE_LR)
+1533-print("decoder/head LR multiplier:", NEW_MODULE_LR_MULT)
+1534:print("warmup optimizer steps:", WARMUP_STEPS)
+1535-print("poly power:", POLY_POWER)
+1536-print("eval interval:", EVAL_INTERVAL)
+1537-print("=" * 100)
+1538-
+1539-torch.cuda.reset_peak_memory_stats()
+1540-
+1541-training_start = time.time()
+1542-
+1543-
+1544-stop_training = False
+1545-
+1546-for epoch in range(
+1547-    start_epoch,
+1548-    EPOCHS + 1,
+1549-):
+1550-    if global_step >= target_total_steps:
+1551-        break
+1552-
+1553-    print(
+1554-        f"\n===== PSEUDO-EPOCH "
+1555-        f"{epoch:03d}/{EPOCHS} ====="
+1556-    )
+1557-
+1558-    net.train()
+1559-
+1560-    for step_in_epoch in range(
+1561-        1,
+1562-        STEPS_PER_EPOCH + 1,
+1563-    ):
+1564-        if global_step >= target_total_steps:
+1565-            stop_training = True
+1566-            break
+1567-
+1568-        step_start = time.time()
+1569-
+1570-        # global_step counts optimizer updates.
+1571-        next_global_step = (
+1572-            global_step + 1
+1573-        )
+1574-
+1575-        lrs = set_optimizer_lr(
+1576-            next_global_step
+1577-        )
+1578-
+1579-        optimizer.zero_grad(
+1580-            set_to_none=True
+1581-        )
+1582-
+1583-        micro_losses = []
+1584-        micro_scales = []
+1585-
+1586-        for micro_idx in range(
+1587-            ACCUM_STEPS
+1588-        ):
+1589-            (
+1590-                optical,
+1591-                dsm,
+1592-                gt,
+1593-                sampled_scales,
+1594-            ) = sample_train_batch(
+1595-                train_cache
+1596-            )
+1597-
+1598-            logits = net(
+1599-                optical,
+1600-                dsm,
+1601-            )
+1602-
+1603-            raw_loss = F.cross_entropy(
+1604-                logits,
+1605-                gt,
+1606-            )
+1607-
+1608-            if not torch.isfinite(raw_loss):
+1609-                raise RuntimeError(
+1610-                    f"Non-finite loss "
+1611:                    f"before optimizer step "
+1612-                    f"{next_global_step}, "
+1613-                    f"micro={micro_idx}"
+1614-                )
+1615-
+1616-            # Average gradients across the accumulated
+1617-            # micro-batches.
+1618-            (
+1619-                raw_loss / ACCUM_STEPS
+1620-            ).backward()
+1621-
+1622-            micro_losses.append(
+1623-                float(
+1624-                    raw_loss.detach()
+1625-                )
+1626-            )
+1627-
+1628-            micro_scales.extend(
+1629-                sampled_scales
+1630-            )
+1631-
+1632-            del optical
+1633-            del dsm
+1634-            del gt
+1635-            del logits
+1636-            del raw_loss
+1637-
+1638:        optimizer.step()
+1639-
+1640-        global_step = next_global_step
+1641-
+1642-        torch.cuda.synchronize()
+1643-
+1644-        loss_value = float(
+1645-            np.mean(micro_losses)
+1646-        )
+1647-
+1648-        scale_mean = float(
+1649-            np.mean(micro_scales)
+1650-        )
+1651-
+1652-        scale_min = float(
+1653-            np.min(micro_scales)
+1654-        )
+1655-
+1656-        scale_max = float(
+1657-            np.max(micro_scales)
+1658-        )
+1659-
+1660-        loss_buffer.append(
+1661-            loss_value
+1662-        )
+1663-
+1664-        mean50 = float(
+1665-            np.mean(
+1666-                loss_buffer[-50:]
+1667-            )
+1668-        )
+1669-
+1670-        sec_step = (
+1671-            time.time()
+1672-            - step_start
+1673-        )
+1674-
+1675-        # Keep the legacy CSV column layout.
+1676-        # `lr` records backbone LR; decoder/head LR is always 10x.
+1677-        lr = lrs["backbone"]
+1678-
+1679-        with open(
+1680-            train_csv,
+1681-            "a",
+1682-            newline="",
+1683-        ) as f:
+1684-            csv.writer(f).writerow([
+1685-                global_step,
+1686-                epoch,
+1687-                step_in_epoch,
+1688-                lr,
+1689-                f"{loss_value:.8f}",
+1690-                f"{mean50:.8f}",
+1691-                f"{sec_step:.4f}",
+1692-            ])
+1693-
+1694-        if (
+1695-            global_step == 1
+1696-            or global_step % 20 == 0
+1697-        ):
+1698-            allocated = (
+1699-                torch.cuda
+1700-                .memory_allocated()
+1701-                / 1024**3
+1702-            )
+1703-
+1704-            reserved = (
+1705-                torch.cuda
+1706-                .memory_reserved()
+1707-                / 1024**3
+1708-            )
+1709-
+1710-            # Gates correspond to the most recent physical
+1711-            # micro-batch in this optimizer update.
+1712-            gate_parts = []
+1713-
+1714-            for stage, gate in (
+1715-                net.get_last_gates()
+1716-            ):
+1717-                gate_parts.append(
+1718-                    f"s{stage}="
+1719-                    f"{gate.mean().item():.6f}"
+1720-                    f"[{gate.min().item():.6f},"
+1721-                    f"{gate.max().item():.6f}]"
+1722-                )
+1723-
+1724-            gate_text = (
+1725-                ";".join(gate_parts)
+1726-                if gate_parts
+1727-                else "NONE"
+1728-            )
+
+===== LR =====
+1139-    ):
+1140-        new_module_params.append(param)
+1141-        new_module_numel += param.numel()
+1142-    else:
+1143-        backbone_params.append(param)
+1144-        backbone_numel += param.numel()
+1145-
+1146-assigned = (
+1147-    sum(p.numel() for p in backbone_params)
+1148-    + sum(p.numel() for p in new_module_params)
+1149-)
+1150-
+1151-trainable = sum(
+1152-    p.numel()
+1153-    for p in net.parameters()
+1154-    if p.requires_grad
+1155-)
+1156-
+1157-if assigned != trainable:
+1158-    raise RuntimeError(
+1159-        f"Optimizer grouping mismatch: "
+1160-        f"assigned={assigned}, "
+1161-        f"trainable={trainable}"
+1162-    )
+1163-
+1164-optimizer = torch.optim.AdamW(
+1165-    [
+1166-        {
+1167-            "params": backbone_params,
+1168-            "lr": BASE_LR,
+1169:            "lr_mult": 1.0,
+1170-            "group_name": "backbone",
+1171-        },
+1172-        {
+1173-            "params": new_module_params,
+1174-            "lr": (
+1175-                BASE_LR
+1176-                * NEW_MODULE_LR_MULT
+1177-            ),
+1178:            "lr_mult": NEW_MODULE_LR_MULT,
+1179-            "group_name": "decoder_head",
+1180-        },
+1181-    ],
+1182-    betas=(0.9, 0.999),
+1183-    weight_decay=WEIGHT_DECAY,
+1184-)
+1185-
+1186-print(
+1187-    "[OPTIMIZER GROUP] backbone:",
+1188-    f"{backbone_numel:,}",
+1189-    "parameters",
+1190-)
+1191-
+1192-print(
+1193-    "[OPTIMIZER GROUP] decoder/head:",
+1194-    f"{new_module_numel:,}",
+1195-    "parameters",
+1196-)
+1197-
+1198-resume_path = (
+1199-    RUN_DIR
+1200-    / "last_train_state.pth"
+1201-)
+1202-
+1203-registry = {}
+1204-
+1205-start_epoch = 1
+1206-global_step = 0
+1207-
+1208-if args.resume:
+1209-    if not resume_path.is_file():
+1210-        raise FileNotFoundError(
+1211-            resume_path
+1212-        )
+1213-
+1214-    state = torch.load(
+1215-        resume_path,
+1216-        map_location="cpu",
+1217-    )
+1218-
+1219-    net.load_state_dict(
+1220-        state["model"],
+1221-        strict=True,
+1222-    )
+1223-
+1224-    optimizer.load_state_dict(
+1225-        state["optimizer"]
+1226-    )
+1227-
+1228-    start_epoch = (
+1229-        int(state["epoch"]) + 1
+1230-    )
+1231-
+1232-    global_step = int(
+1233-        state["global_step"]
+1234-    )
+1235-
+1236-    registry = state.get(
+1237-        "registry",
+1238-        {},
+1239-    )
+1240-
+1241-    random.setstate(
+1242-        state["python_rng"]
+1243-    )
+1244-
+1245-    np.random.set_state(
+1246-        state["numpy_rng"]
+1247-    )
+1248-
+1249-    torch.set_rng_state(
+1250-        state["torch_rng"]
+1251-    )
+1252-
+1253-    torch.cuda.set_rng_state_all(
+1254-        state["cuda_rng"]
+1255-    )
+1256-
+1257-    print(
+1258-        "[RESUME]",
+1259-        "epoch=", start_epoch,
+1260-        "global_step=", global_step,
+1261-    )
+1262-
+1263-else:
+1264-    weights = np.load(
+1265-        str(PRETRAIN)
+1266-    )
+1267-
+1268-    net.load_from(
+1269-        weights=weights
+1270-    )
+1271-
+1272-    print(
+1273-        "[PASS] pretrained weights loaded"
+1274-    )
+1275-
+1276-
+1277-# ------------------------------------------------------------
+1278-# Stage-3 F4 structural gate
+--
+1454-        )
+1455-
+1456-        return (
+1457-            WARMUP_RATIO
+1458-            + alpha
+1459-            * (1.0 - WARMUP_RATIO)
+1460-        )
+1461-
+1462-    progress = (
+1463-        (step - WARMUP_STEPS)
+1464-        / (TOTAL_STEPS - WARMUP_STEPS)
+1465-    )
+1466-
+1467-    progress = min(
+1468-        max(progress, 0.0),
+1469-        1.0,
+1470-    )
+1471-
+1472-    return (
+1473-        (1.0 - progress)
+1474-        ** POLY_POWER
+1475-    )
+1476-
+1477-
+1478-def set_optimizer_lr(step):
+1479-    factor = lr_factor_for_step(step)
+1480-
+1481-    for group in optimizer.param_groups:
+1482-        group["lr"] = (
+1483-            BASE_LR
+1484:            * float(group["lr_mult"])
+1485-            * factor
+1486-        )
+1487-
+1488-    return {
+1489-        group["group_name"]:
+1490-            group["lr"]
+1491-        for group in optimizer.param_groups
+1492-    }
+1493-
+1494-
+1495-if args.smoke_steps > 0:
+1496-    target_total_steps = (
+1497-        args.smoke_steps
+1498-    )
+1499-elif args.max_steps > 0:
+1500-    target_total_steps = (
+1501-        args.max_steps
+1502-    )
+1503-else:
+1504-    target_total_steps = (
+1505-        TOTAL_STEPS
+1506-    )
+1507-
+1508-loss_buffer = []
+1509-
+1510-print("\n" + "=" * 100)
+1511-print("STAGE-3 F4 ADAPTIVE FREQUENCY TRAINING START")
+1512-print("variant:", args.variant)
+1513-print("run:", RUN_DIR)
+1514-print("pseudo epochs:", EPOCHS)
+1515-print("optimizer steps/pseudo-epoch:", STEPS_PER_EPOCH)
+1516-print("formal optimizer steps:", TOTAL_STEPS)
+1517-print("requested smoke steps:", args.smoke_steps)
+1518-print("formal max steps:", args.max_steps)
+1519-print("actual target optimizer steps:", target_total_steps)
+1520-print("physical batch:", TRAIN_BATCH)
+1521-print("gradient accumulation:", ACCUM_STEPS)
+1522-print("effective sampled batch:", EFFECTIVE_BATCH)
+1523-print("crop:", PATCH)
+1524-print("grid:", config.patches.grid)
+1525-print(
+1526-    "random scale:",
+1527-    RANDOM_SCALE_MIN,
+1528-    "to",
+1529-    RANDOM_SCALE_MAX,
+1530-)
+1531-print("optimizer: AdamW")
+1532-print("base LR:", BASE_LR)

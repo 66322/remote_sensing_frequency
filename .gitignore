@@ -1,0 +1,85 @@
+# ============================================================
+# Python
+# ============================================================
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ============================================================
+# Model weights / checkpoints
+# ============================================================
+*.pth
+*.pt
+*.ckpt
+*.npz
+*.onnx
+
+# ============================================================
+# Large arrays / caches
+# ============================================================
+*.npy
+*.npz
+*.pkl
+*.pickle
+.cache/
+cache/
+
+# ============================================================
+# Training temporary files
+# ============================================================
+runs/**/checkpoints/
+runs/**/resume*.pth
+runs/**/model_iter_*.pth
+
+# ============================================================
+# Dataset / assets
+# ============================================================
+datasets/
+dataset/
+data/
+08_assets/pretrained/
+
+# ============================================================
+# System / editor
+# ============================================================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ============================================================
+# Temporary / backup
+# ============================================================
+*.tmp
+*.bak
+*.swp
+*~
+
+# ============================================================
+# Raw training logs / verbose step histories
+# Keep compact metrics / diagnostics / summaries instead
+# ============================================================
+*.log
+runs/**/train_history.csv
+
+# Smoke / failed diagnostic runs are reproducible and noisy
+runs/*smoke*/
+runs/*failed*
+
+# ============================================================
+# Third-party upstream repository snapshots
+# Keep provenance separately; do not vendor full upstream repos
+# ============================================================
+sources/reference_freqfusion/
+sources/reference_ftransunet/
+
+# ============================================================
+# Other generated large state
+# ============================================================
+runs/**/last_train_state.pth
+
+# Runtime process/status artifacts
+*.pid
+*_status.tsv

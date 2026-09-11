@@ -1,0 +1,1 @@
+step,epoch,step_in_epoch,wo_mean,wo_p05,wo_p50,wo_p95,wd_mean,wd_p05,wd_p50,wd_p95,So_mean,So_min,So_max,Sd_mean,Sd_min,Sd_max,opt_dominant_frac,dsm_dominant_frac,opt_dominant_005_frac,dsm_dominant_005_frac,neutral_005_frac,wo_gt060_frac,wd_gt060_frac,reliability_gap_mean,hf_disc_mean,hf_disc_p95,hf_disc_p99
