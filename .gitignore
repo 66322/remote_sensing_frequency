@@ -83,3 +83,10 @@ runs/**/last_train_state.pth
 # Runtime process/status artifacts
 *.pid
 *_status.tsv
+
+# ============================================================
+# Runtime experiment directories
+# Runs are live server outputs and are not tracked directly.
+# Important results should be copied to records/experiments/.
+# ============================================================
+runs/

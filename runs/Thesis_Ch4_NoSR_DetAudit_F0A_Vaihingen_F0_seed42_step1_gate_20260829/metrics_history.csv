@@ -1,1 +1,0 @@
-step,epoch,full_OA,full_mF1_fg5,full_mIoU_fg5,full_mF1_all6,full_mIoU_all6,nb_OA,nb_mF1_fg5,nb_mIoU_fg5,nb_mF1_all6,nb_mIoU_all6,eval_seconds
