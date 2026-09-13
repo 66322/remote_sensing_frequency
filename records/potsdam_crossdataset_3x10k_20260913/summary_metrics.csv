@@ -1,0 +1,4 @@
+experiment,full_OA,full_mF1_fg5,full_mIoU_fg5,nb_OA,nb_mF1_fg5,nb_mIoU_fg5,best_iter
+Dual-modal NoSR Baseline,88.8687,89.2582,80.9084,91.1537,92.238,85.9045,10000
+Cross-modal HF Reliability,88.6984,88.7866,80.1594,90.9838,91.8469,85.2439,10000
+Cross-modal HF Reliability + Rare30,88.9744,89.3903,81.1305,91.2682,92.3091,86.0306,10000

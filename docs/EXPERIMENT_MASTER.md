@@ -1807,3 +1807,88 @@ GitHub 不保存大型 checkpoint，只在本文件记录服务器真实路径�
 最后更新：
 
 2026-09-11
+
+<!-- POTSDAM_CROSSDATASET_20260913_START -->
+
+## Potsdam 跨数据集受控验证与可靠性审计（2026-09-12～2026-09-13）
+
+实验代码基线 commit：`5b31dd2224248ffc5ff17af9e1d40f4159b95095`。
+
+本轮固定使用 Potsdam Train18/Test6，crop=512，physical batch=4，gradient accumulation=4，effective batch=16，seed=42，统一训练 10,000 optimizer steps，每 2,000 step 评估一次。三组正式实验依次为“双模态 NoSR 基线”、“Optical/DSM 跨模态高频可靠性”和“Optical/DSM 跨模态高频可靠性 + Rare30”。
+
+### 最终 10k 结果
+
+| 方法 | Full OA | Full mF1_fg5 | Full mIoU_fg5 | NB OA | NB mF1_fg5 | NB mIoU_fg5 |
+|---|---:|---:|---:|---:|---:|---:|
+| 双模态 NoSR 基线 | 88.8687 | 89.2582 | 80.9084 | 91.1537 | 92.2380 | 85.9045 |
+| 跨模态 HF Reliability | 88.6984 | 88.7866 | 80.1594 | 90.9838 | 91.8469 | 85.2439 |
+| 跨模态 HF Reliability + Rare30 | **88.9744** | **89.3903** | **81.1305** | **91.2682** | **92.3091** | **86.0306** |
+
+固定 10k 预算下，HF Reliability 单独相对基线的 NB mIoU_fg5 为 **-0.6606**；加入 Rare30 后相对 HF Reliability 为 **+0.7867**，相对基线最终为 **+0.1261**。FullGT mIoU_fg5 相对基线为 **+0.2221**。
+
+### NB mIoU_fg5 训练曲线
+
+| Iter | Baseline | HF Reliability | HF Reliability + Rare30 |
+|---:|---:|---:|---:|
+| 2k | 79.0694 | 78.8443 | 77.2369 |
+| 4k | 83.0949 | 82.2920 | 83.2339 |
+| 6k | 83.3900 | 83.2643 | **85.4545** |
+| 8k | 83.7685 | 84.1692 | **85.1542** |
+| 10k | 85.9045 | 85.2439 | **86.0306** |
+
+Rare30 前期较慢，但在 6k～8k 阶段形成明显优势；到 10k 时基线继续追赶，因此最终增益较小。
+
+### NB 逐类别 IoU
+
+| 类别 | Baseline | HF Reliability | HF+Rare30 | HF−Base | Rare30−Base | Rare30−HF |
+|---|---:|---:|---:|---:|---:|---:|
+| Impervious | 87.1767 | 86.7740 | 87.4173 | -0.4027 | +0.2406 | +0.6433 |
+| Building | 95.2536 | 95.0095 | 95.4745 | -0.2441 | +0.2209 | +0.4650 |
+| LowVegetation | 77.4611 | 77.2918 | 77.4208 | -0.1692 | -0.0403 | +0.1289 |
+| Tree | 76.9201 | 75.5345 | 77.0794 | **-1.3856** | +0.1593 | **+1.5449** |
+| Car | 92.7112 | 91.6096 | 92.7609 | **-1.1015** | +0.0498 | **+1.1513** |
+| Clutter | 45.6513 | 47.9302 | 49.8009 | +2.2789 | +4.1496 | +1.8707 |
+
+HF Reliability 在 Potsdam 上主要损失出现在 Tree 和 Car；Rare30 能明显恢复这两个类别，但相对于原始 Baseline 的最终绝对增益很小。因此不应表述为“Rare30 显著提高 Potsdam 三个稀有类”，更准确的是“Rare30 显著修复 HF Reliability 下 Tree/Car 的退化”。
+
+### 逐类别 HF reliability 审计
+
+HF Reliability @10k 的 NB 平均 `(wo, wd)`：
+
+| 类别 | Optical wo | DSM wd | Opt005 | DSM005 | Gap |
+|---|---:|---:|---:|---:|---:|
+| Impervious | 0.5468 | 0.4532 | 97.68% | 1.79% | 0.0974 |
+| Building | 0.5402 | 0.4598 | 92.09% | 6.24% | 0.0926 |
+| LowVegetation | 0.5479 | 0.4521 | 98.86% | 0.79% | 0.0972 |
+| Tree | 0.5467 | 0.4533 | 98.03% | 1.39% | 0.0957 |
+| Car | 0.5131 | 0.4869 | 71.74% | 24.90% | 0.0984 |
+| Clutter | 0.5403 | 0.4597 | 92.42% | 6.01% | 0.0921 |
+
+HF Reliability + Rare30 @10k 的 NB 平均 `(wo, wd)`：
+
+| 类别 | Optical wo | DSM wd | Opt005 | DSM005 | Gap |
+|---|---:|---:|---:|---:|---:|
+| Impervious | 0.5535 | 0.4465 | 96.31% | 2.82% | 0.1127 |
+| Building | 0.5428 | 0.4572 | 87.92% | 9.92% | 0.1068 |
+| LowVegetation | 0.5539 | 0.4461 | 97.53% | 1.70% | 0.1105 |
+| Tree | 0.5525 | 0.4475 | 96.09% | 2.75% | 0.1095 |
+| Car | 0.5083 | 0.4917 | 66.58% | 29.98% | 0.1156 |
+| Clutter | 0.5427 | 0.4573 | 88.52% | 9.28% | 0.1050 |
+
+诊断结论：Rare30 并不是简单把 reliability gate 拉回 0.5。Tree 的 Optical 偏好反而增强，但 IoU 同时恢复；Car 则轻微向 DSM/更均衡方向移动。因此 Rare30 的收益不能简单归因于“修正错误的模态权重”，更可能来自 sampling 对 reliability gate 与后续特征/分类器联合学习的影响。
+
+跨数据集诊断中，Vaihingen 既有结果显示 Tree 约为 `0.4992/0.5008`、Car 约为 `0.4752/0.5248`，而 Potsdam HF Reliability @10k 为 Tree `0.5467/0.4533`、Car `0.5131/0.4869`，显示明显的数据集/类别依赖。但 Vaihingen 该审计来自 20k checkpoint，而 Potsdam 来自 10k，因此目前作为机制诊断证据使用，不作为严格受控的跨数据集因果结论。
+
+### 保存位置
+
+机器可读汇总：`records/potsdam_crossdataset_3x10k_20260913/`
+
+HF Reliability 完整审计：`records/potsdam_crossmodal_hf_reliability_10k_by_class_20260913/`
+
+HF Reliability + Rare30 完整审计：`records/potsdam_crossmodal_hf_reliability_rare30_10k_by_class_20260913/`
+
+三个正式 checkpoint 保留在对应 `runs/` 目录中；完整训练日志与 audit 日志保留在 `.local_backups/`，不提交 Git。
+
+当前阶段结论：Potsdam 跨数据集验证已经完成。下一阶段可以研究语义/类别条件的跨模态可靠性，但在本轮记录与 Git 同步完成前不启动新实验。
+
+<!-- POTSDAM_CROSSDATASET_20260913_END -->

@@ -1,0 +1,48 @@
+{
+  "record_date": "2026-09-13",
+  "experiment_code_commit_before_record_commit": "5b31dd2224248ffc5ff17af9e1d40f4159b95095",
+  "protocol": {
+    "dataset": "ISPRS Potsdam",
+    "train_tiles": 18,
+    "test_tiles": 6,
+    "crop": 512,
+    "physical_batch": 4,
+    "gradient_accumulation": 4,
+    "effective_batch": 16,
+    "seed": 42,
+    "optimizer_steps": 10000,
+    "eval_interval": 2000,
+    "gpu": "CUDA_VISIBLE_DEVICES=0"
+  },
+  "formal_runs": {
+    "baseline": "runs/potsdam_dualmodal_baseline_seed42_10k",
+    "hf_reliability": "runs/potsdam_crossmodal_hf_reliability_seed42_10k",
+    "hf_reliability_rare30": "runs/potsdam_crossmodal_hf_reliability_rare30_seed42_10k"
+  },
+  "formal_checkpoints": {
+    "baseline": "runs/potsdam_dualmodal_baseline_seed42_10k/checkpoints/model_iter_010000.pth",
+    "hf_reliability": "runs/potsdam_crossmodal_hf_reliability_seed42_10k/checkpoints/model_iter_010000.pth",
+    "hf_reliability_rare30": "runs/potsdam_crossmodal_hf_reliability_rare30_seed42_10k/checkpoints/model_iter_010000.pth"
+  },
+  "audit_records": {
+    "hf_reliability": "records/potsdam_crossmodal_hf_reliability_10k_by_class_20260913",
+    "hf_reliability_rare30": "records/potsdam_crossmodal_hf_reliability_rare30_10k_by_class_20260913"
+  },
+  "local_logs_not_committed": [
+    ".local_backups/potsdam_crossdataset_3x10k_queue_20260912.log",
+    ".local_backups/potsdam_dualmodal_baseline_10k_20260912.log",
+    ".local_backups/potsdam_crossmodal_hf_reliability_10k_20260912.log",
+    ".local_backups/potsdam_crossmodal_hf_reliability_rare30_10k_20260912.log",
+    ".local_backups/potsdam_crossmodal_hf_reliability_by_class_20260913.log",
+    ".local_backups/potsdam_crossmodal_hf_reliability_rare30_by_class_20260913.log"
+  ],
+  "headline_findings": {
+    "hf_vs_baseline_nb_miou_delta": -0.6606,
+    "rare30_vs_hf_nb_miou_delta": 0.7867,
+    "rare30_vs_baseline_nb_miou_delta": 0.1261,
+    "rare30_vs_baseline_full_miou_delta": 0.2221,
+    "tree_rare30_vs_hf_iou_delta": 1.5449,
+    "car_rare30_vs_hf_iou_delta": 1.1513
+  },
+  "note": "runs/ checkpoints and .local_backups logs are intentionally not committed to Git. Compact metrics, per-class data, reliability audits, confusion matrices, audit scripts, and the master experiment record are committed."
+}

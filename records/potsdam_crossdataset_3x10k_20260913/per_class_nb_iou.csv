@@ -1,0 +1,7 @@
+class,baseline_iou,hf_reliability_iou,hf_reliability_rare30_iou,hf_minus_baseline,rare30_minus_baseline,rare30_minus_hf
+Impervious,87.1767,86.774,87.4173,-0.4027,0.2406,0.6433
+Building,95.2536,95.0095,95.4745,-0.2441,0.2209,0.4650
+LowVegetation,77.4611,77.2918,77.4208,-0.1692,-0.0403,0.1289
+Tree,76.9201,75.5345,77.0794,-1.3856,0.1593,1.5449
+Car,92.7112,91.6096,92.7609,-1.1015,0.0498,1.1513
+Clutter,45.6513,47.9302,49.8009,2.2789,4.1496,1.8707
