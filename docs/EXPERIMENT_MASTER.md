@@ -1892,3 +1892,165 @@ HF Reliability + Rare30 完整审计：`records/potsdam_crossmodal_hf_reliabilit
 当前阶段结论：Potsdam 跨数据集验证已经完成。下一阶段可以研究语义/类别条件的跨模态可靠性，但在本轮记录与 Git 同步完成前不启动新实验。
 
 <!-- POTSDAM_CROSSDATASET_20260913_END -->
+## E50 Reliability-v2：HF quality cue diagnosis and hybrid reliability
+
+日期：2026-09-13。
+
+### E50-A：modality corruption gate smoke
+
+基于 Potsdam Test6、固定 294 个 512×512 sparse windows，对已有
+HF Reliability 与 HF Reliability + Rare30 的 10k checkpoint 做无训练诊断。
+
+主要发现：
+
+- DSM zero 时 gate 能弱幅度提高 Optical 权重：
+  - HF：Δwo = +0.00184
+  - HF+Rare30：Δwo = +0.00271
+- DSM blur/down2 的响应非常弱，Δwo 约为 1e-4 量级。
+- Optical blur/down2 时响应方向错误：
+  - HF optical_blur5：Δwo = +0.00241
+  - HF optical_down2：Δwo = +0.00167
+  - HF+Rare30 optical_blur5：Δwo = +0.00456
+  - HF+Rare30 optical_down2：Δwo = +0.00324
+
+因此原 gate 不能直接解释为稳定的 modality-quality reliability estimator。
+
+### E50-A2：raw HF / HF-retention audit
+
+在 hfrely0 输入前的 S0 Optical/DSM 特征上直接检查 HF 信号。
+
+HF checkpoint：
+
+- Optical blur5：
+  - RawO = -50.15%
+  - RatioO = -52.27%
+- Optical down2：
+  - RawO = -43.13%
+  - RatioO = -44.85%
+- DSM blur5：
+  - RawD = -8.84%
+  - RatioD = -9.02%
+- DSM down2：
+  - RawD = -7.56%
+  - RatioD = -7.69%
+- DSM zero：
+  - RawD = -48.43%
+  - RatioD = +12.03%
+
+HF+Rare30 给出相同趋势。
+
+结论：
+
+1. S0 特征内存在明显的 modality-quality HF 信号；
+2. 原模型的 per-modality spatial HF normalization 会弱化绝对质量变化；
+3. HF/feature ratio 也不能单独作为 reliability cue，因为 DSM zero 时比例可能反向增加；
+4. 下一版应保留原 spatial HF cue，并加入跨模态共享归一化的 raw-HF quality cue。
+
+### Reliability-v2 结构
+
+新文件：
+
+- `model/vitcross_seg_modeling_hf_reliability_v2.py`
+- `scripts/train_potsdam_hf_reliability_v2_10k.py`
+
+Hybrid cue 共 6 channels：
+
+原 spatial cue：
+
+- normalized Optical HF energy
+- normalized DSM HF energy
+- absolute spatial HF discrepancy
+
+新增 shared raw-HF quality cue：
+
+- qo = mean(Eo_raw) / (mean(Eo_raw) + mean(Ed_raw) + eps)
+- qd = mean(Ed_raw) / (mean(Eo_raw) + mean(Ed_raw) + eps)
+- |qo - qd|
+
+context 参数量由 738 增至 1170。
+
+最终 reliability logits 层继续 zero-init，因此初始化严格保持：
+
+- wo = wd = 0.5
+- So = Sd = 1
+- calibrated Optical == original Optical
+- calibrated DSM == original DSM
+
+### Reliability-v2 training degradation
+
+保持 Potsdam 原冻结协议：
+
+- crop = 512
+- physical batch = 4
+- gradient accumulation = 4
+- effective batch = 16
+- seed = 42
+- optimizer / LR / warmup / random-scale / flip 规则不变
+
+仅加入独立 RNG 控制的模态质量增强：
+
+- 70% clean
+- 15% Optical degradation
+- 15% DSM degradation
+
+退化类型在被选择模态内 50/50：
+
+- blur5
+- downsample×2 -> resize
+
+不加入 Rare30，不加入 shift。
+
+### Static / identity gate
+
+通过：
+
+- parameter count = 1170
+- context input channels = 6
+- final reliability conv weight/bias = 0
+- Optical identity max error = 0
+- DSM identity max error = 0
+- wo/wd initialization error from 0.5 = 0
+
+### Deterministic smoke 20 × 2
+
+两次独立进程：
+
+- Rep A：20 optimizer steps
+- Rep B：20 optimizer steps
+
+结果：
+
+- 20/20 loss 完全一致
+- 20/20 mean50 完全一致
+- LR 完全一致
+- max |loss_A-loss_B| = 0
+- max |mean50_A-mean50_B| = 0
+- max |lr_A-lr_B| = 0
+
+step 1：
+- loss = 1.83890909
+- wo/wd = 0.5 / 0.5
+
+step 20：
+- loss = 1.71921754
+- mean50 = 1.79131564
+- wo = 0.50021684
+- wd = 0.49978316
+- reliability gap = 0.00043895
+
+判定：
+
+`RELIABILITY-V2 DETERMINISTIC SMOKE: EXACT PASS`
+
+### 下一阶段 gate
+
+先正式训练到 2000 optimizer steps，而不是直接跑完 10k。
+
+2000-step 后检查：
+
+1. clean NB segmentation；
+2. DSM blur/down2 是否满足 Δwo > 0；
+3. Optical blur/down2 是否满足 Δwo < 0；
+4. Tree / Car 是否存在明显异常。
+
+机制方向通过后，再 resume 至 10000 steps。
