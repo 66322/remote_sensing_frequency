@@ -1,4 +1,4 @@
-# E51-C fixed-grid information degradation — joint x2 close-out
+# E51-C fixed-grid information degradation — close-out
 
 Date: 2026-09-15
 
@@ -11,94 +11,119 @@ This experiment is **not** a new-GSD test.
 
 For `information_loss_factor = 2.0`:
 
-- Optical and DSM are anti-aliased, downsampled by x2, then bilinearly restored to the original native grid.
-- FullGT and NoBoundary GT are unchanged.
-- Output grid and sliding-window coordinates are unchanged.
-- Native Potsdam grid remains 5 cm.
-- PH receives inference scale `1.0` at every factor.
-- Historical sliding-window inference is preserved (`patch=512`, `stride=64`, `infer_batch=8`).
+- selected input modalities are anti-aliased, downsampled by x2, then bilinearly restored to the original native grid;
+- FullGT and NoBoundary GT are unchanged;
+- output grid and sliding-window coordinates are unchanged;
+- native Potsdam grid remains 5 cm;
+- PH receives inference scale `1.0` at every factor;
+- historical inference geometry is preserved (`patch=512`, `stride=64`, `infer_batch=8`, FP32).
 
-The x1.0 native reproduction gate matched the historical metrics exactly for both PP4k and PH4k (`max_diff = 0`).
+The x1.0 native reproduction gate matched historical PP4k and PH4k metrics exactly (`max_diff = 0`).
+
+The clean x1.0 joint run is used as the canonical clean reference for all modality-specific x2 comparisons because factor=1.0 performs no degradation and is mathematically identical across `joint`, `dsm`, and `optical` modes.
 
 ## Dataset-level results
 
-### FullGT
+### NoBoundary fg5
 
-| factor | PP4k mIoU_fg5 | PH4k mIoU_fg5 | PH-PP (pp) | PP drop from clean (pp) | PH drop from clean (pp) | PH robustness advantage (pp) |
-|---:|---:|---:|---:|---:|---:|---:|
-| 1.0 | 77.4655 | 78.5089 | +1.0435 | 0.0000 | 0.0000 | 0.0000 |
-| 2.0 | 77.2880 | 78.3167 | +1.0287 | 0.1775 | 0.1923 | -0.0148 |
+| condition | PP4k mIoU_fg5 | PH4k mIoU_fg5 | PH-PP (pp) | PP drop from clean (pp) | PH drop from clean (pp) | PH robustness advantage (pp) |
+|---|---:|---:|---:|---:|---:|---:|
+| clean x1.0 | 82.3889 | 83.5771 | +1.1882 | 0.0000 | 0.0000 | 0.0000 |
+| joint x2.0 | 82.2682 | 83.4258 | +1.1576 | +0.1207 | +0.1513 | -0.0306 |
+| DSM-only x2.0 | 82.5376 | 83.6246 | +1.0870 | -0.1488 | -0.0475 | -0.1012 |
 
-### NoBoundary
+Negative `drop from clean` means the degraded condition performed slightly **better** than clean.
 
-| factor | PP4k mIoU_fg5 | PH4k mIoU_fg5 | PH-PP (pp) | PP drop from clean (pp) | PH drop from clean (pp) | PH robustness advantage (pp) |
-|---:|---:|---:|---:|---:|---:|---:|
-| 1.0 | 82.3889 | 83.5771 | +1.1882 | 0.0000 | 0.0000 | 0.0000 |
-| 2.0 | 82.2682 | 83.4258 | +1.1576 | 0.1207 | 0.1513 | -0.0306 |
+### FullGT fg5
 
-## Paired per-tile result
+| condition | PP4k mIoU_fg5 | PH4k mIoU_fg5 | PH-PP (pp) | PP drop from clean (pp) | PH drop from clean (pp) | PH robustness advantage (pp) |
+|---|---:|---:|---:|---:|---:|---:|
+| clean x1.0 | 77.4655 | 78.5089 | +1.0435 | 0.0000 | 0.0000 | 0.0000 |
+| joint x2.0 | 77.2880 | 78.3167 | +1.0287 | +0.1775 | +0.1923 | -0.0148 |
+| DSM-only x2.0 | 77.6060 | 78.5593 | +0.9533 | -0.1405 | -0.0503 | -0.0902 |
 
-At x2.0, PH4k is above PP4k on all six TEST6 tiles for both FullGT and NoBoundary.
+## Joint x2 result
 
-NoBoundary PH4k-PP4k mIoU_fg5 differences at x2.0:
+Joint Optical+DSM x2 information loss barely changes either model.
 
-- `2_11`: +0.9540 pp
-- `3_10`: +1.2545 pp
-- `4_10`: +1.3322 pp
-- `5_11`: +0.8933 pp
-- `6_11`: +1.5394 pp
-- `7_12`: +0.5528 pp
+NoBoundary:
 
-This supports distributional consistency of the absolute PH4k>PP4k margin across tiles, but does not identify the cause.
+- PP4k drop: +0.1207 pp;
+- PH4k drop: +0.1513 pp;
+- PH robustness advantage: -0.0306 pp;
+- PH-PP absolute gap changes from +1.1882 pp clean to +1.1576 pp.
 
-## Per-class result at x2.0
+PH4k remains above PP4k on all six TEST6 tiles and all five foreground classes, but the result supports persistence of the pre-existing PH accuracy margin rather than superior robustness to generic joint information loss.
 
-NoBoundary PH4k-PP4k IoU differences:
+## DSM-only x2 result
 
-- Impervious: +0.5151 pp
-- Building: +0.4966 pp
-- LowVegetation: +2.2399 pp
-- Tree: +1.4332 pp
-- Car: +1.1034 pp
-- Clutter: +22.7338 pp
+DSM-only x2 closes the remaining attribution gap from the joint perturbation.
 
-All five foreground classes remain positive. As in E51-B, LowVegetation is the largest foreground contributor. Clutter remains very large but is excluded from fg5 and must not be used as the main mechanism evidence.
+NoBoundary:
 
-## Interpretation
+- PP4k improves by +0.1488 pp relative to clean;
+- PH4k improves by +0.0475 pp relative to clean;
+- therefore `PH robustness advantage = -0.1012 pp`;
+- PH-PP gap narrows from +1.1882 pp clean to +1.0870 pp.
 
-The fixed-grid x2 result **does not show a PH robustness advantage to generic joint information loss**.
+FullGT shows the same direction:
 
-The key observation is that both models barely degrade under the x2 downsample-restore perturbation:
+- PP4k improves by +0.1405 pp;
+- PH4k improves by +0.0503 pp;
+- PH robustness advantage = -0.0902 pp;
+- PH-PP gap narrows from +1.0435 pp to +0.9533 pp.
 
-- NoBoundary PP4k drop: only 0.1207 pp.
-- NoBoundary PH4k drop: only 0.1513 pp.
-- PH robustness advantage: -0.0306 pp (slightly worse, effectively near zero at this screening scale).
+Thus DSM-only smoothing/downsample-restore does **not** reveal a PH-specific robustness advantage. If anything, PP4k benefits slightly more from this perturbation.
 
-At the same time, the absolute PH4k-PP4k gap is almost unchanged:
+This small improvement after DSM smoothing may indicate that some fine-scale DSM variation behaves like nuisance/noise for both checkpoints, but E51-C alone does not establish that mechanism. Do not claim denoising causality from this result.
 
-- clean: +1.1882 pp
-- fixed-grid x2: +1.1576 pp
+## Relation to historical Grid-GSD result
 
-Therefore the x2 fixed-grid result supports **persistence of the pre-existing PH4k accuracy margin**, not improved robustness to joint information loss.
+Historical Grid-GSD E51-B showed a growing PH4k-PP4k NoBoundary fg5 gap as the entire raster grid became coarser:
 
-This materially weakens an interpretation that the growing PH advantage in historical Grid-GSD tests was simply due to better tolerance of generic blur/downsample information loss. The historical Grid-GSD protocol changes more than information content: it also changes the sampling grid and the physical coverage of each fixed 512-pixel window.
+- 5 cm: +1.1882 pp;
+- 8 cm: +1.9771 pp;
+- 10 cm: +2.2854 pp;
+- 12 cm: +2.1672 pp.
 
-However, this joint perturbation degrades Optical and DSM together. Since the physical-frequency hypothesis specifically concerns DSM treatment, one attribution gap remains.
+By contrast, fixed-grid information loss does not reproduce that growth:
 
-## Decision gate
+- clean: +1.1882 pp;
+- joint x2: +1.1576 pp;
+- DSM-only x2: +1.0870 pp.
 
-Do **not** run the entire factor sweep yet.
+Therefore the historical growth cannot be explained simply as PH being more tolerant to blur/downsample information loss. The Grid-GSD protocol also changes sampling-grid spacing and the physical area covered by a fixed 512-pixel inference window, among other consequences.
 
-Next run only one additional condition:
+## Fast-path note
 
-- `modality=dsm`
-- `information_loss_factor=2.0`
-- same PP4k/PH4k checkpoints
-- same stride=64 formal geometry
-- same native PH inference scale=1.0
+A diagnostic GPU-resident inference path was benchmarked with the formal geometry unchanged (`512/64/batch8/FP32`). On a 2048x2048 benchmark region it produced zero final-label differences for both PP4k and PH4k while improving speed by approximately 1.22-1.25x.
 
-Use the existing x1.0 joint run as the canonical clean reference because factor=1.0 performs no modality-specific degradation and is mathematically identical across `joint`, `dsm`, and `optical` modes.
+DSM-only x2 was run with that exact-gated diagnostic fast path and took about 844.2 s per model. Historical/reference results remain the frozen formal reference. If DSM-only x2 is later promoted to a publication-critical final table, rerun the retained condition once with the original reference path for whole-TEST6 confirmation.
 
-If DSM-only x2 still shows essentially identical PP/PH drops and a stable absolute PH margin, stop expanding E51-C factors and move to the rebuilt-training causal control (`PH-correct` vs `PH-shuffled`).
+## E51-C decision
 
-If DSM-only x2 produces a materially different robustness pattern, then add stronger DSM-only factors before deciding whether the physical-frequency route deserves more work.
+**Stop E51-C factor expansion.**
+
+The fixed-grid tests do not support a PH-specific robustness mechanism:
+
+1. joint x2: both models barely degrade and PH has essentially zero robustness advantage;
+2. DSM-only x2: both models improve slightly, with PP improving more;
+3. the absolute PH4k advantage remains real and spatially/class-wise consistent, but E51-C does not identify its cause;
+4. earlier wrong/fixed-scale inference tests also showed PH4k to be nearly insensitive to tested inference-scale settings.
+
+Do not spend additional compute on 1.2/1.4/1.6/1.8/2.4 fixed-grid sweeps for these historical checkpoints.
+
+## Next research priority
+
+Return to the frozen REBUILD_V1 causal protocol rather than extending historical PH4k diagnostics.
+
+Primary priority:
+
+1. build/finalize the unified REBUILD_V1 training framework;
+2. run a baseline budget/scheduler pilot;
+3. freeze the complete schedule;
+4. train R01 true Optical-only and R02 matched clean Optical+DSM baseline;
+5. test controlled DSM corruption to determine whether harmful fusion actually exists;
+6. then train R03 quality-corruption and R04 modality-dropout baselines.
+
+Physical-frequency work is now a secondary branch. If retained, its next meaningful test is **new-training `PH-correct` vs `PH-shuffled`**, where all architecture/resampling/interpolation/training details are matched and only the correctness of physical-scale correspondence differs. Do not use more historical inference sweeps as a substitute for that causal control.
