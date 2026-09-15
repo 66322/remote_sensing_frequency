@@ -32,6 +32,65 @@ def write_csv(path, rows):
     print(f"[PASS] {path}")
 
 
+def metric_signature(result):
+    """Compact native-clean signature used to verify duplicate factor=1 runs."""
+    out = []
+    for split in ("full", "noboundary"):
+        m = result[split]
+        for key in ("OA", "mF1_fg5", "mIoU_fg5", "mF1_all6", "mIoU_all6"):
+            out.append(float(m[key]))
+    return tuple(out)
+
+
+def build_canonical_clean(progress):
+    """
+    factor=1.0 applies no degradation, so `joint`, `dsm`, and `optical`
+    are mathematically the same native input. Reuse one canonical clean run per
+    model instead of rerunning x1.0 for every modality-specific diagnostic.
+
+    If duplicate native runs exist, verify that they reproduce the same metrics.
+    Prefer the historical `joint` x1.0 key when available.
+    """
+    clean = {}
+    clean_source = {}
+
+    for model in ("PP4k", "PH4k"):
+        candidates = []
+        for key, result in progress.items():
+            if result.get("model") != model:
+                continue
+            factor = float(result.get("information_loss_factor", -1.0))
+            if abs(factor - 1.0) > 1e-12:
+                continue
+            candidates.append((key, result))
+
+        if not candidates:
+            continue
+
+        preferred_key = f"{model}__joint__x1.0000"
+        preferred = next(
+            ((key, result) for key, result in candidates if key == preferred_key),
+            candidates[0],
+        )
+
+        ref_key, ref_result = preferred
+        ref_sig = metric_signature(ref_result)
+
+        for key, result in candidates:
+            sig = metric_signature(result)
+            max_diff = max(abs(a - b) for a, b in zip(ref_sig, sig))
+            if max_diff > 1e-10:
+                raise RuntimeError(
+                    "factor=1.0 runs should be modality-independent but differ: "
+                    f"{ref_key} vs {key}, max_diff={max_diff:.3e}"
+                )
+
+        clean[model] = ref_result
+        clean_source[model] = ref_key
+
+    return clean, clean_source
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", type=Path, default=DEFAULT_IN)
@@ -53,15 +112,13 @@ def main():
         }
     )
 
-    # Native-grid clean reference (factor 1.0) for corruption-drop calculations.
-    clean = {}
-    for modality, factor in groups:
-        if abs(factor - 1.0) > 1e-12:
-            continue
-        for model in ("PP4k", "PH4k"):
-            key = f"{model}__{modality}__x{factor:.4f}"
-            if key in progress:
-                clean[(modality, model)] = progress[key]
+    # Canonical native-grid clean reference, shared across modality labels.
+    clean, clean_source = build_canonical_clean(progress)
+    for model in ("PP4k", "PH4k"):
+        if model in clean_source:
+            print(f"[CLEAN] {model}: {clean_source[model]}")
+        else:
+            print(f"[WARN] no canonical x1.0 clean reference for {model}")
 
     paired_dataset = []
     paired_per_class = []
@@ -83,8 +140,8 @@ def main():
             ppm = pp[split]
             phm = ph[split]
 
-            pp_clean = clean.get((modality, "PP4k"))
-            ph_clean = clean.get((modality, "PH4k"))
+            pp_clean = clean.get("PP4k")
+            ph_clean = clean.get("PH4k")
 
             if pp_clean is not None:
                 pp_drop = 100.0 * (
@@ -123,6 +180,8 @@ def main():
                     "PH_minus_PP_OA_pp": 100.0 * (phm["OA"] - ppm["OA"]),
                     "PP_valid_pixels": ppm["valid_pixels"],
                     "PH_valid_pixels": phm["valid_pixels"],
+                    "PP_clean_reference": clean_source.get("PP4k"),
+                    "PH_clean_reference": clean_source.get("PH4k"),
                 }
             )
 
