@@ -91,3 +91,9 @@ runs/**/last_train_state.pth
 # ============================================================
 runs/
 .local_backups/
+
+# Timestamped backup copies
+*.bak*
+
+# Large reproducible sampled feature tables
+records/**/sampled_features.csv

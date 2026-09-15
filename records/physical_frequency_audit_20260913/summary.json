@@ -1,0 +1,74 @@
+{
+  "status": "PASS",
+  "train_only": true,
+  "datasets": {
+    "Vaihingen": {
+      "gsd_m": 0.09,
+      "train_tiles": [
+        1,
+        3,
+        7,
+        11,
+        13,
+        17,
+        23,
+        26,
+        28,
+        32,
+        34,
+        37
+      ],
+      "optical": "IRRG"
+    },
+    "Potsdam": {
+      "gsd_m": 0.05,
+      "train_tiles": [
+        "6_10",
+        "7_10",
+        "2_12",
+        "3_11",
+        "2_10",
+        "7_8",
+        "5_10",
+        "3_12",
+        "5_12",
+        "7_11",
+        "7_9",
+        "6_9",
+        "7_7",
+        "4_12",
+        "6_8",
+        "6_12",
+        "6_7",
+        "4_11"
+      ],
+      "optical": "RGB"
+    }
+  },
+  "physical_sigma_m": [
+    0.18,
+    0.36,
+    0.72,
+    1.44,
+    2.88
+  ],
+  "fixed_pixel_sigma": [
+    2.0,
+    4.0,
+    8.0,
+    16.0,
+    32.0
+  ],
+  "boundary_width_m": 0.27,
+  "primary_cross_dataset_modalities": [
+    "DSM",
+    "Optical_shared_RG"
+  ],
+  "mean_primary_jsd_pixel": 0.014938011434859724,
+  "mean_primary_jsd_physical": 0.020140303354071333,
+  "mean_primary_jsd_improvement": -0.005202291919211609,
+  "primary_all_profiles_improved_count": 1,
+  "primary_all_profiles_total": 10,
+  "primary_all_profiles_improved_fraction": 0.1,
+  "interpretation_rule": "Positive pixel-minus-physical distance means GSD-aligned physical scales make Vaihingen and Potsdam frequency profiles more similar."
+}

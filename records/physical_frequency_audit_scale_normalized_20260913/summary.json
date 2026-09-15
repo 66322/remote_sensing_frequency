@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "method": "Post-hoc discrete DoG filter L2-energy normalization; no image reprocessing.",
+  "mean_crossdataset_jsd_pixel": 0.0011900918177126386,
+  "mean_crossdataset_jsd_physical": 0.00046666149414447734,
+  "pixel_minus_physical": 0.0007234303235681613,
+  "physical_alignment_improved": "10/10",
+  "mean_boundary_vs_interior_jsd": 0.006621993081037181,
+  "max_boundary_vs_interior_jsd": 0.03202176011642178,
+  "mean_optical_vs_dsm_jsd": 0.024630824423456803,
+  "max_optical_vs_dsm_jsd": 0.09441500055750467
+}

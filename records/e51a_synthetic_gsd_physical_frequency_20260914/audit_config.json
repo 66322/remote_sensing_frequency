@@ -1,0 +1,28 @@
+{
+  "experiment": "E51-A synthetic GSD physical-frequency audit",
+  "dataset": "Potsdam TRAIN18 only",
+  "native_gsd_m": 0.05,
+  "target_gsds_m": [
+    0.05,
+    0.07,
+    0.09
+  ],
+  "patch_size_native_px": 512,
+  "patches_per_tile": 8,
+  "n_tiles": 18,
+  "n_patches_expected": 144,
+  "pixel_sigmas_px": [
+    1.5,
+    3.5,
+    7.5,
+    15.5
+  ],
+  "physical_sigmas_m": [
+    0.07500000000000001,
+    0.17500000000000002,
+    0.375,
+    0.775
+  ],
+  "border_margin_m": 2.0,
+  "note": "Same physical scene patches are synthetically resampled from native 5 cm to 7 and 9 cm. Pixel scheme keeps sigma in pixels fixed. Physical scheme keeps sigma in meters fixed."
+}

@@ -1,0 +1,25 @@
+{
+  "seed": 42,
+  "train_tiles_only": true,
+  "label": "ISPRS noBoundary / eroded labels",
+  "ignored_label_color": [
+    0,
+    0,
+    0
+  ],
+  "max_samples_per_class_per_tile": 3000,
+  "absolute_dsm_bin_m": 0.5,
+  "local_support_m": 1.0,
+  "geometry_quantile_bins": 4,
+  "matching": {
+    "FULL": "No matching.",
+    "ABS_DSM_MATCHED": "Class-balanced matching within the same tile and 0.5 m raw DSM value bins.",
+    "LOCAL_GEOM_MATCHED": "Class-balanced matching within the same tile and joint quantile cells of local-relative DSM, DSM roughness, and DSM gradient."
+  },
+  "important_caveat": "Raw DSM is surface elevation, not normalized object height. Therefore raw DSM matching is interpreted only as elevation-value ambiguity. LOCAL_GEOM_MATCHED is the main semantic-disambiguation analysis.",
+  "metric_interpretation": {
+    "balanced_accuracy": "0.5 is approximately chance for binary classification.",
+    "overlap_coefficient": "1 indicates highly overlapping feature distributions.",
+    "jsd_bits": "0 indicates identical distributions; larger values mean greater separation."
+  }
+}
