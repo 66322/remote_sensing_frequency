@@ -25,13 +25,32 @@ fi
 
 PID="$(cat "$PIDFILE")"
 echo "R02 PID=$PID"
-echo "Waiting for R02 12k to finish before using GPU0..."
+echo "Waiting for R02 12k completion before using GPU0..."
 
-while kill -0 "$PID" 2>/dev/null; do
+# Completion is determined primarily by the durable run artifact rather than
+# only by kill -0. A completed training process may remain visible briefly as
+# a zombie/unreaped PID, in which case kill -0 still succeeds forever.
+while true; do
+  if [[ -f "$RUN_DIR/summary.json" ]]; then
+    echo "R02 summary.json detected; advancing to completion gate."
+    break
+  fi
+
+  if ! kill -0 "$PID" 2>/dev/null; then
+    echo "R02 PID no longer exists; advancing to completion gate."
+    break
+  fi
+
+  STAT="$(ps -o stat= -p "$PID" 2>/dev/null | awk '{print $1}' || true)"
+  if [[ "$STAT" == Z* ]]; then
+    echo "R02 PID is zombie/unreaped ($STAT); advancing to completion gate."
+    break
+  fi
+
   sleep 60
 done
 
-echo "R02 process exited. Checking completion gate..."
+echo "Checking R02 completion gate..."
 
 if [[ ! -f "$RUN_DIR/summary.json" ]]; then
   echo "[STOP] R02 summary.json missing; do not run downstream diagnostics."
