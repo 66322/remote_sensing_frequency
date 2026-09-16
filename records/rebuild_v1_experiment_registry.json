@@ -1,0 +1,193 @@
+{
+  "schema_version": "1.0",
+  "project": "REBUILD_V1",
+  "timezone": "UTC+08:00",
+  "last_updated": "2026-09-16T17:32+08:00",
+  "timing_policy": {
+    "started_at": "Actual launch time when directly evidenced; otherwise date/minute precision is stated explicitly.",
+    "completed_at": "Actual successful completion time when directly evidenced; otherwise null or a confirmed-complete-by time is used.",
+    "recorded_at": "Time/date when the experiment record was written to Git history.",
+    "time_source": "Direct source for the timing claim, such as process start display, queue log, experiment log, or retained artifact.",
+    "historical_rule": "Do not invent missing historical clock times."
+  },
+  "experiments": [
+    {
+      "id": "E50",
+      "name": "historical_modality_quality_reliability_diagnostics",
+      "status": "closed",
+      "purpose": "Test whether the historical reliability gate behaves like a stable modality-quality estimator under Optical/DSM corruption.",
+      "started_at": null,
+      "completed_at": null,
+      "time_precision": "historical_date_only_or_unknown",
+      "time_source": "historical records",
+      "result_summary": "Historical gate response was not reliably aligned with modality degradation.",
+      "decision": "Use as motivation only; do not resume the legacy reliability-v2 route unless later gates justify it."
+    },
+    {
+      "id": "E51-B",
+      "name": "grid_gsd_same_step_pp4k_ph4k",
+      "status": "closed",
+      "purpose": "Compare PP4k and PH4k under jointly resampled raster grids while matching checkpoint step.",
+      "started_at": null,
+      "completed_at": "2026-09-15",
+      "time_precision": "date",
+      "time_source": "retained record date",
+      "records": [
+        "records/e51b_same_step_per_class_summary_20260915/"
+      ],
+      "decision": "Historical positive PH margin is not sufficient to claim a physical-GSD mechanism."
+    },
+    {
+      "id": "E51-C",
+      "name": "fixed_grid_information_degradation",
+      "status": "closed",
+      "purpose": "Separate generic information/detail loss from historical Grid-GSD changes while keeping labels and output coordinates on the native grid.",
+      "started_at": null,
+      "completed_at": "2026-09-15",
+      "time_precision": "date",
+      "time_source": "retained record date",
+      "records": [
+        "records/e51c_fixed_grid_information_degradation_20260915/"
+      ],
+      "result_summary": "Joint x2 and DSM-only x2 did not show a PH-specific robustness advantage.",
+      "decision": "Stop E51-C factor expansion; physical-frequency work is secondary unless PH-correct beats PH-shuffled under new training."
+    },
+    {
+      "id": "REBUILD_SPLIT_FREEZE",
+      "name": "potsdam_train16_val2_test6_separation",
+      "status": "complete",
+      "purpose": "Prevent the repeatedly exposed Potsdam TEST6 from influencing checkpoint or training-budget selection.",
+      "started_at": "2026-09-15",
+      "completed_at": "2026-09-15",
+      "time_precision": "date",
+      "time_source": "split/config commit date",
+      "records": [
+        "configs/rebuild_v1/potsdam_split_seed20260915.json"
+      ],
+      "decision": "Use Train16 for training and Val2 for development selection; do not load historical TEST6 during training."
+    },
+    {
+      "id": "R02_SMOKE",
+      "name": "r02_trainer_validation_checkpoint_smoke_gates",
+      "status": "complete",
+      "purpose": "Verify the unified trainer, split isolation, deterministic short-run behavior, Val2 evaluation, and checkpoint path before a real budget pilot.",
+      "started_at": "2026-09-15",
+      "completed_at": "2026-09-15",
+      "time_precision": "date",
+      "time_source": "retained smoke-gate record",
+      "records": [
+        "records/rebuild_v1_r02_smoke_gates_20260915/README.md"
+      ],
+      "result_summary": "PASS",
+      "decision": "Proceed to the first complete-schedule R02 budget pilot."
+    },
+    {
+      "id": "R02_BUDGET_12K",
+      "name": "r02_complete_schedule_budget_pilot_12k",
+      "status": "complete",
+      "purpose": "Determine whether a complete 12k LR schedule is sufficient before formal R01-R04 comparisons.",
+      "started_at": "2026-09-15T22:11+08:00",
+      "completed_at": null,
+      "confirmed_complete_by": "2026-09-16T11:02:18+08:00",
+      "time_precision": "started_at minute precision; exact completed_at not retained",
+      "time_source": "process start display and corrected diagnostics queue",
+      "records": [
+        "configs/rebuild_v1/r02_budget_pilot_12k.json",
+        "records/rebuild_v1_r02_diagnostics_20260916/README.md"
+      ],
+      "result_summary": {
+        "val2_full_mIoU_fg5_percent": 80.9842,
+        "val2_noboundary_mIoU_fg5_percent": 85.4135,
+        "best_step": 12000,
+        "test6_loaded": false
+      },
+      "decision": "Do not freeze 12k because the best validation score occurs at the schedule endpoint; run a fresh complete 16k pilot."
+    },
+    {
+      "id": "R02_CORRUPTION_SCREEN_12K",
+      "name": "r02_val2_corruption_screen_12k_best",
+      "status": "complete",
+      "purpose": "Measure absolute R02 sensitivity to mild modality degradation and artificial full-modality missing before a true Optical-only control exists.",
+      "started_at": "2026-09-16T11:02:18+08:00",
+      "completed_at": "2026-09-16T11:09:13+08:00",
+      "time_precision": "bounded by corrected diagnostics queue",
+      "time_source": "queue log",
+      "records": [
+        "records/rebuild_v1_r02_corruption_screen_20260915/",
+        "records/rebuild_v1_r02_diagnostics_20260916/README.md"
+      ],
+      "result_summary": {
+        "clean_nb_mIoU_fg5_percent": 85.4135,
+        "dsm_blur5_drop_pp": 0.3365,
+        "dsm_down2_drop_pp": 0.2567,
+        "optical_blur5_drop_pp": 1.1912,
+        "optical_down2_drop_pp": 0.5485,
+        "dsm_zero_drop_pp": 34.7190
+      },
+      "decision": "This is sensitivity evidence, not harmful-fusion evidence; matched R01 Optical-only Fusion Gain is still required."
+    },
+    {
+      "id": "REBUILD_RESUME_EXACTNESS",
+      "name": "resume_exactness_40_vs_20_save_restore_20",
+      "status": "complete",
+      "purpose": "Verify exact deterministic equivalence of uninterrupted training and save/load plus RNG restoration.",
+      "started_at": "2026-09-16T11:02:18+08:00",
+      "completed_at": "2026-09-16T11:09:13+08:00",
+      "time_precision": "bounded by corrected diagnostics queue",
+      "time_source": "queue log",
+      "records": [
+        "records/rebuild_v1_resume_exactness_20260915/result.json"
+      ],
+      "result_summary": {
+        "loss_exact": true,
+        "max_abs_loss_diff": 0.0,
+        "model_state_exact": true,
+        "optimizer_state_exact": true,
+        "pass": true
+      },
+      "decision": "Accept the current deterministic resume path for REBUILD_V1 engineering use."
+    },
+    {
+      "id": "R02_BUDGET_16K",
+      "name": "r02_complete_schedule_budget_pilot_16k",
+      "status": "running",
+      "purpose": "Test whether extending the complete LR decay horizon from 12k to 16k removes the endpoint-improvement ambiguity seen in the 12k pilot.",
+      "started_at": "2026-09-16T11:19+08:00",
+      "completed_at": null,
+      "time_precision": "started_at minute precision",
+      "time_source": "process start display",
+      "records": [
+        "configs/rebuild_v1/r02_budget_pilot_16k.json"
+      ],
+      "decision_rule": "Inspect the 13k-16k Val2 region; freeze 16k only if late training is stable/plateaued and there is no material sustained endpoint improvement.",
+      "decision": "pending"
+    },
+    {
+      "id": "R01",
+      "name": "true_optical_only_baseline",
+      "status": "planned",
+      "purpose": "Train a genuine Optical-only baseline and establish matched Fusion Gain.",
+      "started_at": null,
+      "completed_at": null,
+      "decision": "pending budget lock"
+    },
+    {
+      "id": "R03",
+      "name": "dual_quality_corruption_training",
+      "status": "planned",
+      "purpose": "Test how much degraded-modality robustness is solved by ordinary quality-corruption training.",
+      "started_at": null,
+      "completed_at": null,
+      "decision": "pending budget lock"
+    },
+    {
+      "id": "R04",
+      "name": "dual_modality_dropout_training",
+      "status": "planned",
+      "purpose": "Test how much missing-modality robustness is solved by a simple modality-dropout baseline.",
+      "started_at": null,
+      "completed_at": null,
+      "decision": "pending budget lock"
+    }
+  ]
+}
