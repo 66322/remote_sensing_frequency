@@ -1,0 +1,52 @@
+{
+  "version": "REBUILD_V1_R01_OPTICAL_ONLY_16K_20260916",
+  "purpose": "Formal screening run for the genuine Optical-only baseline under the frozen REBUILD_V1 16k complete schedule. Establishes matched Optical-only accuracy and efficiency for clean/degraded Fusion Gain comparisons.",
+  "model_id": "R01",
+  "model": "optical_only_f0",
+  "seed": 42,
+  "split_file": "configs/rebuild_v1/potsdam_split_seed20260915.json",
+  "data_root": "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped",
+  "pretrain": "/home/jovyan/zzx/paper_rebuild/08_assets/pretrained/ftransunet/R50+ViT-B_16.npz",
+  "patch": 512,
+  "micro_batch": 4,
+  "accum_steps": 4,
+  "effective_batch": 16,
+  "optimizer": {
+    "name": "AdamW",
+    "backbone_lr": 0.00006,
+    "decoder_head_lr_mult": 10.0,
+    "betas": [0.9, 0.999],
+    "weight_decay": 0.01
+  },
+  "schedule": {
+    "scheduler_total_steps": 16000,
+    "stop_at_step": 16000,
+    "warmup_steps": 1200,
+    "warmup_ratio": 0.000001,
+    "poly_power": 1.0,
+    "note": "Frozen complete schedule accepted by the R02 16k budget pilot."
+  },
+  "augmentation": {
+    "random_scale_min": 0.5,
+    "random_scale_max": 2.0,
+    "horizontal_flip_p": 0.5,
+    "vertical_flip_p": 0.5,
+    "rare_sampling": false,
+    "quality_corruption": false,
+    "modality_dropout": false
+  },
+  "validation": {
+    "eval_interval_steps": 1000,
+    "stride": 256,
+    "inference_batch": 8,
+    "selection_metric": "noboundary_mIoU_fg5",
+    "fullgt_also_reported": true,
+    "note": "Validation uses Val2 only. Historical TEST6 is not loaded."
+  },
+  "timing": {
+    "timezone": "local offset-aware ISO-8601",
+    "record_started_at": true,
+    "record_completed_at": true,
+    "record_git_commit": true
+  }
+}
