@@ -10,6 +10,15 @@
     "time_source": "Direct source for the timing claim, such as process start display, queue log, experiment log, or retained artifact.",
     "historical_rule": "Do not invent missing historical clock times."
   },
+  "frozen_budget": {
+    "scheduler_total_steps": 16000,
+    "stop_at_step": 16000,
+    "warmup_steps": 1200,
+    "selection_metric": "val2_noboundary_mIoU_fg5",
+    "selection_split": "Val2",
+    "historical_test6_loaded_during_selection": false,
+    "decision_source": "R02_BUDGET_16K"
+  },
   "experiments": [
     {
       "id": "E50",
@@ -122,7 +131,7 @@
         "dsm_down2_drop_pp": 0.2567,
         "optical_blur5_drop_pp": 1.1912,
         "optical_down2_drop_pp": 0.5485,
-        "dsm_zero_drop_pp": 34.7190
+        "dsm_zero_drop_pp": 34.719
       },
       "decision": "This is sensitivity evidence, not harmful-fusion evidence; matched R01 Optical-only Fusion Gain is still required."
     },
@@ -150,26 +159,52 @@
     {
       "id": "R02_BUDGET_16K",
       "name": "r02_complete_schedule_budget_pilot_16k",
-      "status": "running",
+      "status": "complete",
       "purpose": "Test whether extending the complete LR decay horizon from 12k to 16k removes the endpoint-improvement ambiguity seen in the 12k pilot.",
       "started_at": "2026-09-16T11:19+08:00",
       "completed_at": null,
-      "time_precision": "started_at minute precision",
-      "time_source": "process start display",
+      "confirmed_complete_by": "2026-09-16T17:32+08:00",
+      "time_precision": "started_at minute precision; exact completed_at not retained",
+      "time_source": "process start display and post-run server inspection",
       "records": [
-        "configs/rebuild_v1/r02_budget_pilot_16k.json"
+        "configs/rebuild_v1/r02_budget_pilot_16k.json",
+        "records/rebuild_v1_r02_budget_16k_20260916/README.md"
       ],
+      "result_summary": {
+        "best_step": 13000,
+        "best_val2_noboundary_mIoU_fg5_percent": 86.2016,
+        "best_step_full_mIoU_fg5_percent": 81.8483,
+        "final_step": 16000,
+        "final_val2_noboundary_mIoU_fg5_percent": 86.0244,
+        "final_full_mIoU_fg5_percent": 81.6683,
+        "late_nb_mIoU_fg5_percent": {
+          "13000": 86.2016,
+          "14000": 86.1183,
+          "15000": 85.658,
+          "16000": 86.0244
+        },
+        "test6_loaded": false
+      },
       "decision_rule": "Inspect the 13k-16k Val2 region; freeze 16k only if late training is stable/plateaued and there is no material sustained endpoint improvement.",
-      "decision": "pending"
+      "decision": "Freeze the complete schedule at 16k for formal R01-R04. Best validation is at 13k and the 13k-16k region shows no sustained endpoint improvement."
     },
     {
       "id": "R01",
       "name": "true_optical_only_baseline",
-      "status": "planned",
+      "status": "planned_next",
       "purpose": "Train a genuine Optical-only baseline and establish matched Fusion Gain.",
       "started_at": null,
       "completed_at": null,
-      "decision": "pending budget lock"
+      "decision": "ready after 16k budget lock"
+    },
+    {
+      "id": "R02_FORMAL",
+      "name": "matched_clean_dual_baseline",
+      "status": "planned",
+      "purpose": "Train the matched clean Optical+DSM baseline under the frozen 16k schedule and measure clean DSM fusion gain.",
+      "started_at": null,
+      "completed_at": null,
+      "decision": "pending R01 framework readiness"
     },
     {
       "id": "R03",
@@ -178,7 +213,7 @@
       "purpose": "Test how much degraded-modality robustness is solved by ordinary quality-corruption training.",
       "started_at": null,
       "completed_at": null,
-      "decision": "pending budget lock"
+      "decision": "pending R01/R02 matched baseline"
     },
     {
       "id": "R04",
@@ -187,7 +222,7 @@
       "purpose": "Test how much missing-modality robustness is solved by a simple modality-dropout baseline.",
       "started_at": null,
       "completed_at": null,
-      "decision": "pending budget lock"
+      "decision": "pending R01/R02 matched baseline"
     }
   ]
 }
