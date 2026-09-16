@@ -11,6 +11,7 @@ For new experiments, record:
 
 - `started_at`: actual process launch time in ISO-8601 form with UTC offset;
 - `completed_at`: actual successful completion time if available;
+- `confirmed_complete_by`: latest direct observation proving the run had already completed when exact completion time was not retained;
 - `recorded_at`: time the result was written into the experiment record/Git history;
 - `status`: `planned`, `running`, `complete`, `failed`, `aborted`, or `closed`;
 - `time_source`: log timestamp, process start, queue timestamp, or other direct evidence.
@@ -101,14 +102,19 @@ Do **not** invent missing historical clock times. If only the date is known, rec
 
 ### R02 complete-schedule budget pilot — 16k
 
-- **status:** **running**
+- **status:** **complete; budget accepted**
 - **started_at:** approximately `2026-09-16T11:19+08:00` (minute precision from process start display)
-- **completed_at:** pending
+- **completed_at:** exact clock time not retained in the committed training artifact.
+- **confirmed complete by:** `2026-09-16T17:32+08:00` from post-run server inspection showing the process as defunct and the log ending with `COMPLETE`.
 - **purpose:** test whether extending the complete LR decay horizon from 12k to 16k removes the endpoint-improvement ambiguity seen in the 12k pilot.
 - **config:** `configs/rebuild_v1/r02_budget_pilot_16k.json`.
+- **record:** `records/rebuild_v1_r02_budget_16k_20260916/README.md`.
 - **controlled change vs 12k:** scheduler/stop horizon 16000 instead of 12000; warmup remains 1200; split/model/optimizer/augmentation/validation protocol remain matched.
-- **decision rule:** inspect the 13k-16k Val2 region. Freeze 16k only if the late region is stable/plateaued and no material sustained endpoint improvement remains.
-- **next decision:** if budget is frozen, proceed to formal `R01 -> R02 -> R03 -> R04`.
+- **best checkpoint:** step 13000, Val2 NoBoundary `mIoU_fg5 = 86.2016%`, corresponding FullGT `mIoU_fg5 = 81.8483%`.
+- **final step 16000:** FullGT `mIoU_fg5 = 81.6683%`; NoBoundary `mIoU_fg5 = 86.0244%`; `test6_loaded=false`.
+- **late-region evidence:** NoBoundary 13k-16k = `86.2016 -> 86.1183 -> 85.6580 -> 86.0244`.
+- **decision:** **freeze the complete training schedule at 16k for formal R01-R04**. Best validation occurs at 13k rather than the endpoint, and 13k-16k shows no sustained endpoint improvement.
+- **schedule-comparison note:** the fresh 16k schedule reaches 85.0438% at step 12k, while the separate complete 12k schedule reaches 85.4135% at its own endpoint; the difference is expected because LR trajectories differ and reinforces that the first N steps of a longer schedule are not a complete N-step schedule.
 
 ---
 
@@ -116,13 +122,25 @@ Do **not** invent missing historical clock times. If only the date is known, rec
 
 | ID | Status | Purpose |
 |---|---|---|
-| R01 | planned | Train a genuine Optical-only baseline to establish what Optical alone can do and enable matched Fusion Gain. |
-| R02 | budget pilot running; formal run pending | Matched clean Optical+DSM baseline; measure clean DSM fusion gain. |
+| R01 | **next / planned** | Train a genuine Optical-only baseline to establish what Optical alone can do and enable matched Fusion Gain. |
+| R02 | budget fixed at 16k; formal matched run pending | Matched clean Optical+DSM baseline; measure clean DSM fusion gain. |
 | R03 | planned | Train with simple quality corruption Q; test how much degraded-modality robustness is solved by ordinary corruption training. |
 | R04 | planned | Train with modality dropout D; test how much missing-modality robustness is solved by a simple strong baseline. |
 | R05 | conditional | Q+D only if R03/R04 leave a meaningful residual gap. |
 | M1/M2 | gated | Selective DSM fusion only if harmful fusion is supported and simple Q/D baselines leave a stable residual gap. |
 | PH-correct / PH-shuffled | secondary / gated | Physical-frequency route only if new-training controls show a contribution from correct physical correspondence beyond generic interpolation/resampling regularization. |
+
+## Frozen training-budget decision
+
+For formal R01-R04 development comparisons:
+
+- complete scheduler horizon: **16000 optimizer steps**;
+- stop step: **16000**;
+- warmup: **1200**;
+- checkpoint/model selection: **Val2 NoBoundary mIoU_fg5**;
+- historical TEST6: **not loaded during training or development selection**.
+
+Do not resume the old 12k run into 16k and do not compare partial trajectories as if they were complete schedules.
 
 ## Core causal question
 
