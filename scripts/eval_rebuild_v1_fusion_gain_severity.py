@@ -94,8 +94,14 @@ def main():
         raise RuntimeError("R01/R02 split mismatch")
     if int(cfg02["patch"]) != int(cfg01["patch"]):
         raise RuntimeError("R01/R02 patch mismatch")
-    if cfg02["validation"] != cfg01["validation"]:
-        raise RuntimeError("R01/R02 validation protocol mismatch")
+
+    # Compare only scientific validation fields. Free-text notes are allowed to differ.
+    for key in ("eval_interval_steps", "stride", "inference_batch", "selection_metric", "fullgt_also_reported"):
+        if cfg02["validation"].get(key) != cfg01["validation"].get(key):
+            raise RuntimeError(
+                f"R01/R02 validation protocol mismatch for {key}: "
+                f"{cfg01['validation'].get(key)} vs {cfg02['validation'].get(key)}"
+            )
 
     split = r02.read_json(r02.resolve_root_relative(cfg02["split_file"]))
     val_ids = list(split["val2"])
