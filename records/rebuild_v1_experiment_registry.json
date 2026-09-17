@@ -1,8 +1,8 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "project": "REBUILD_V1",
   "timezone": "UTC+08:00",
-  "last_updated": "2026-09-16T17:32+08:00",
+  "last_updated": "2026-09-17T11:04:42+08:00",
   "timing_policy": {
     "started_at": "Actual launch time when directly evidenced; otherwise date/minute precision is stated explicitly.",
     "completed_at": "Actual successful completion time when directly evidenced; otherwise null or a confirmed-complete-by time is used.",
@@ -41,9 +41,7 @@
       "completed_at": "2026-09-15",
       "time_precision": "date",
       "time_source": "retained record date",
-      "records": [
-        "records/e51b_same_step_per_class_summary_20260915/"
-      ],
+      "records": ["records/e51b_same_step_per_class_summary_20260915/"],
       "decision": "Historical positive PH margin is not sufficient to claim a physical-GSD mechanism."
     },
     {
@@ -55,9 +53,7 @@
       "completed_at": "2026-09-15",
       "time_precision": "date",
       "time_source": "retained record date",
-      "records": [
-        "records/e51c_fixed_grid_information_degradation_20260915/"
-      ],
+      "records": ["records/e51c_fixed_grid_information_degradation_20260915/"],
       "result_summary": "Joint x2 and DSM-only x2 did not show a PH-specific robustness advantage.",
       "decision": "Stop E51-C factor expansion; physical-frequency work is secondary unless PH-correct beats PH-shuffled under new training."
     },
@@ -70,9 +66,7 @@
       "completed_at": "2026-09-15",
       "time_precision": "date",
       "time_source": "split/config commit date",
-      "records": [
-        "configs/rebuild_v1/potsdam_split_seed20260915.json"
-      ],
+      "records": ["configs/rebuild_v1/potsdam_split_seed20260915.json"],
       "decision": "Use Train16 for training and Val2 for development selection; do not load historical TEST6 during training."
     },
     {
@@ -84,9 +78,7 @@
       "completed_at": "2026-09-15",
       "time_precision": "date",
       "time_source": "retained smoke-gate record",
-      "records": [
-        "records/rebuild_v1_r02_smoke_gates_20260915/README.md"
-      ],
+      "records": ["records/rebuild_v1_r02_smoke_gates_20260915/README.md"],
       "result_summary": "PASS",
       "decision": "Proceed to the first complete-schedule R02 budget pilot."
     },
@@ -100,10 +92,7 @@
       "confirmed_complete_by": "2026-09-16T11:02:18+08:00",
       "time_precision": "started_at minute precision; exact completed_at not retained",
       "time_source": "process start display and corrected diagnostics queue",
-      "records": [
-        "configs/rebuild_v1/r02_budget_pilot_12k.json",
-        "records/rebuild_v1_r02_diagnostics_20260916/README.md"
-      ],
+      "records": ["configs/rebuild_v1/r02_budget_pilot_12k.json", "records/rebuild_v1_r02_diagnostics_20260916/README.md"],
       "result_summary": {
         "val2_full_mIoU_fg5_percent": 80.9842,
         "val2_noboundary_mIoU_fg5_percent": 85.4135,
@@ -121,10 +110,7 @@
       "completed_at": "2026-09-16T11:09:13+08:00",
       "time_precision": "bounded by corrected diagnostics queue",
       "time_source": "queue log",
-      "records": [
-        "records/rebuild_v1_r02_corruption_screen_20260915/",
-        "records/rebuild_v1_r02_diagnostics_20260916/README.md"
-      ],
+      "records": ["records/rebuild_v1_r02_corruption_screen_20260915/", "records/rebuild_v1_r02_diagnostics_20260916/README.md"],
       "result_summary": {
         "clean_nb_mIoU_fg5_percent": 85.4135,
         "dsm_blur5_drop_pp": 0.3365,
@@ -133,7 +119,7 @@
         "optical_down2_drop_pp": 0.5485,
         "dsm_zero_drop_pp": 34.719
       },
-      "decision": "This is sensitivity evidence, not harmful-fusion evidence; matched R01 Optical-only Fusion Gain is still required."
+      "decision": "Sensitivity evidence only; matched R01 was subsequently completed in the core matrix."
     },
     {
       "id": "REBUILD_RESUME_EXACTNESS",
@@ -144,9 +130,7 @@
       "completed_at": "2026-09-16T11:09:13+08:00",
       "time_precision": "bounded by corrected diagnostics queue",
       "time_source": "queue log",
-      "records": [
-        "records/rebuild_v1_resume_exactness_20260915/result.json"
-      ],
+      "records": ["records/rebuild_v1_resume_exactness_20260915/result.json"],
       "result_summary": {
         "loss_exact": true,
         "max_abs_loss_diff": 0.0,
@@ -159,17 +143,14 @@
     {
       "id": "R02_BUDGET_16K",
       "name": "r02_complete_schedule_budget_pilot_16k",
-      "status": "complete",
-      "purpose": "Test whether extending the complete LR decay horizon from 12k to 16k removes the endpoint-improvement ambiguity seen in the 12k pilot.",
+      "status": "complete_canonical_clean_baseline",
+      "purpose": "Test whether extending the complete LR decay horizon from 12k to 16k removes the endpoint-improvement ambiguity and provide the canonical matched clean dual baseline.",
       "started_at": "2026-09-16T11:19+08:00",
       "completed_at": null,
       "confirmed_complete_by": "2026-09-16T17:32+08:00",
       "time_precision": "started_at minute precision; exact completed_at not retained",
       "time_source": "process start display and post-run server inspection",
-      "records": [
-        "configs/rebuild_v1/r02_budget_pilot_16k.json",
-        "records/rebuild_v1_r02_budget_16k_20260916/README.md"
-      ],
+      "records": ["configs/rebuild_v1/r02_budget_pilot_16k.json", "records/rebuild_v1_r02_budget_16k_20260916/README.md", "records/rebuild_v1_core_matrix_20260917/README.md"],
       "result_summary": {
         "best_step": 13000,
         "best_val2_noboundary_mIoU_fg5_percent": 86.2016,
@@ -177,52 +158,94 @@
         "final_step": 16000,
         "final_val2_noboundary_mIoU_fg5_percent": 86.0244,
         "final_full_mIoU_fg5_percent": 81.6683,
-        "late_nb_mIoU_fg5_percent": {
-          "13000": 86.2016,
-          "14000": 86.1183,
-          "15000": 85.658,
-          "16000": 86.0244
-        },
         "test6_loaded": false
       },
-      "decision_rule": "Inspect the 13k-16k Val2 region; freeze 16k only if late training is stable/plateaued and there is no material sustained endpoint improvement.",
-      "decision": "Freeze the complete schedule at 16k for formal R01-R04. Best validation is at 13k and the 13k-16k region shows no sustained endpoint improvement."
+      "decision": "Freeze 16k and reuse this deterministic completed run as the canonical R02 clean baseline rather than duplicating an identical seed42 rerun."
     },
     {
       "id": "R01",
       "name": "true_optical_only_baseline",
-      "status": "planned_next",
-      "purpose": "Train a genuine Optical-only baseline and establish matched Fusion Gain.",
-      "started_at": null,
-      "completed_at": null,
-      "decision": "ready after 16k budget lock"
+      "status": "complete",
+      "purpose": "Train a genuine Optical-only baseline and establish matched system-level Fusion Gain and compute reference.",
+      "started_at": "2026-09-16T18:39:18+08:00",
+      "completed_at": "2026-09-16T22:51:38+08:00",
+      "time_source": "trainer summary",
+      "records": ["configs/rebuild_v1/r01_optical_only_16k.json", "records/rebuild_v1_r01_formal_16k_20260916/README.md", "records/rebuild_v1_core_matrix_20260917/README.md"],
+      "result_summary": {
+        "best_step": 10000,
+        "val2_full_mIoU_fg5_percent": 80.6883,
+        "val2_noboundary_mIoU_fg5_percent": 85.3713,
+        "dsm_loaded": false,
+        "test6_loaded": false
+      },
+      "decision": "Use as the matched true Optical-only comparator for clean and DSM-degradation Fusion Gain."
     },
     {
-      "id": "R02_FORMAL",
-      "name": "matched_clean_dual_baseline",
-      "status": "planned",
-      "purpose": "Train the matched clean Optical+DSM baseline under the frozen 16k schedule and measure clean DSM fusion gain.",
-      "started_at": null,
-      "completed_at": null,
-      "decision": "pending R01 framework readiness"
-    },
-    {
-      "id": "R03",
-      "name": "dual_quality_corruption_training",
-      "status": "planned",
-      "purpose": "Test how much degraded-modality robustness is solved by ordinary quality-corruption training.",
-      "started_at": null,
-      "completed_at": null,
-      "decision": "pending R01/R02 matched baseline"
+      "id": "R02_FUSION_GAIN_SEVERITY",
+      "name": "matched_dsm_severity_fusion_gain",
+      "status": "complete",
+      "purpose": "Test whether positive clean dual-modal gain becomes negative as DSM information is progressively degraded while Optical remains unchanged.",
+      "started_at": "2026-09-16T22:52:04+08:00",
+      "completed_at": "2026-09-16T22:55:06+08:00",
+      "time_source": "queue log",
+      "records": ["records/rebuild_v1_r01_r02_fusion_gain_severity_20260916/", "records/rebuild_v1_core_matrix_20260917/README.md"],
+      "result_summary": {
+        "clean_nb_fusion_gain_pp": 0.8303,
+        "dsm_down2_nb_fusion_gain_pp": 0.6127,
+        "dsm_down4_nb_fusion_gain_pp": 0.3033,
+        "dsm_down8_nb_fusion_gain_pp": -0.4096,
+        "dsm_zero_nb_fusion_gain_pp": -36.6016
+      },
+      "decision": "G1 conditional/harmful fusion is supported on development Val2: clean gain is positive and down8 makes matched NB Fusion Gain negative."
     },
     {
       "id": "R04",
       "name": "dual_modality_dropout_training",
-      "status": "planned",
+      "status": "complete",
       "purpose": "Test how much missing-modality robustness is solved by a simple modality-dropout baseline.",
-      "started_at": null,
-      "completed_at": null,
-      "decision": "pending R01/R02 matched baseline"
+      "started_at": "2026-09-16T22:58:24+08:00",
+      "completed_at": "2026-09-17T04:54:42+08:00",
+      "time_precision": "queue-stage boundary",
+      "time_source": "queue log",
+      "records": ["configs/rebuild_v1/r04_modality_dropout_16k.json", "records/rebuild_v1_r04_robust_eval_20260916/", "records/rebuild_v1_core_matrix_20260917/README.md"],
+      "result_summary": {
+        "clean_full_mIoU_fg5_percent": 81.6042,
+        "clean_nb_mIoU_fg5_percent": 85.9818,
+        "dsm_zero_nb_mIoU_fg5_percent": 83.1375,
+        "dsm_zero_gap_to_r01_nb_pp": -2.2338
+      },
+      "decision": "Strong simple missing-modality baseline: most catastrophic DSM-zero failure is repaired, but a residual fallback gap remains relative to true Optical-only."
+    },
+    {
+      "id": "R03",
+      "name": "dual_quality_corruption_training",
+      "status": "complete",
+      "purpose": "Test how much degraded-modality robustness is solved by ordinary quality-corruption training.",
+      "started_at": "2026-09-17T05:02:07+08:00",
+      "completed_at": "2026-09-17T11:00:37+08:00",
+      "time_source": "trainer summary",
+      "records": ["configs/rebuild_v1/r03_quality_corruption_16k.json", "records/rebuild_v1_r03_robust_eval_20260916/", "records/rebuild_v1_core_matrix_20260917/README.md"],
+      "result_summary": {
+        "best_step": 14000,
+        "clean_full_mIoU_fg5_percent": 82.1069,
+        "clean_nb_mIoU_fg5_percent": 86.5251,
+        "dsm_down8_nb_mIoU_fg5_percent": 85.2979,
+        "dsm_zero_nb_mIoU_fg5_percent": 41.2815,
+        "realized_training_samples": 256000,
+        "test6_loaded": false
+      },
+      "decision": "Strong baseline for clean and mild/moderate degradation, but does not solve severe or missing DSM and performs very poorly under DSM zero."
+    },
+    {
+      "id": "CORE_MATRIX_20260917",
+      "name": "r01_r02_r03_r04_unified_core_matrix",
+      "status": "complete",
+      "purpose": "Unify clean, degraded-DSM, robustness and Fusion-Gain evidence before selecting the next method-development route.",
+      "started_at": "2026-09-16T18:38:44+08:00",
+      "completed_at": "2026-09-17T11:04:42+08:00",
+      "time_source": "extended queue log",
+      "records": ["records/rebuild_v1_core_matrix_20260917/README.md"],
+      "decision": "Next priority is an Optical+Optical dual-stream capacity control, followed by selective/reliability-aware DSM or lightweight DSM only if the corresponding evidence remains after capacity and compute controls."
     }
   ]
 }
