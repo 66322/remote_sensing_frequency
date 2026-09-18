@@ -95,7 +95,11 @@ def write_csv(path, rows):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--variant", choices=["R03", "R04", "R05"], required=True)
+    ap.add_argument(
+        "--variant",
+        choices=["R03", "R04", "R05", "C-OO-QD"],
+        required=True,
+    )
     ap.add_argument("--out", type=Path, default=None)
     args = ap.parse_args()
 
@@ -107,10 +111,18 @@ def main():
         config = ROOT / "configs/rebuild_v1/r04_modality_dropout_16k.json"
         run_dir = ROOT / "runs/rebuild_v1/R04_dual_f0_modality_dropout_seed42_sched16000_stop16000"
         default_out = ROOT / "records/rebuild_v1_r04_robust_eval_20260916"
-    else:
+    elif args.variant == "R05":
         config = ROOT / "configs/rebuild_v1/r05_quality_plus_dropout_16k.json"
         run_dir = ROOT / "runs/rebuild_v1/R05_dual_f0_quality_plus_dropout_seed42_sched16000_stop16000"
         default_out = ROOT / "records/rebuild_v1_r05_robust_eval_20260918"
+    else:
+        config = ROOT / "configs/rebuild_v1/c_oo_qd_optical_gray_16k.json"
+        run_dir = ROOT / (
+            "runs/rebuild_v1/"
+            "C_OO_QD_dual_optical_gray_quality_plus_dropout_"
+            "seed42_sched16000_stop16000"
+        )
+        default_out = ROOT / "records/rebuild_v1_c_oo_qd_robust_eval_20260918"
 
     cfg = r02.read_json(config)
     summary_path = run_dir / "summary.json"
@@ -151,7 +163,21 @@ def main():
         tile_raw = {}
         for tile in val_ids:
             d = val_cache[tile]
-            op, ds = apply_condition(d["optical"], d["dsm"], condition)
+            if args.variant == "C-OO-QD":
+                # Matched control: branch 2 is fixed Optical grayscale.
+                # DSM is loaded only for dataset-interface compatibility.
+                branch2 = d["optical"].mean(axis=2).astype(
+                    np.float32,
+                    copy=False,
+                )
+            else:
+                branch2 = d["dsm"]
+
+            op, ds = apply_condition(
+                d["optical"],
+                branch2,
+                condition,
+            )
             pred = r02.infer_tile(net, op, ds, patch, stride, infer_batch)
             tile_cm_full = np.zeros_like(cm_full)
             tile_cm_nb = np.zeros_like(cm_nb)
@@ -215,6 +241,15 @@ def main():
     payload = {
         "recorded_at": now_iso(),
         "variant": args.variant,
+        "second_stream": (
+            "fixed_optical_channel_mean"
+            if args.variant == "C-OO-QD"
+            else "DSM"
+        ),
+        "condition_label_note": (
+            "For C-OO-QD, dsm_* condition names mean matched "
+            "second-stream corruption and contain no DSM values."
+        ),
         "checkpoint": str(run_dir / "best_model.pth"),
         "checkpoint_step": int(state.get("global_step", -1)),
         "val_ids": val_ids,

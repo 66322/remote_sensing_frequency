@@ -1,0 +1,38 @@
+{
+  "experiment_id": "C-OO-QD",
+  "started_at": "2026-09-18T11:16:57+08:00",
+  "completed_at": "2026-09-18T17:16:05+08:00",
+  "git_commit": "1f858b97fa8ada4f1e4321bdd8d6da35fb07ce3c",
+  "global_step": 16000,
+  "scheduler_total_steps": 16000,
+  "stop_at_step": 16000,
+  "best": {
+    "metric": "val2_noboundary_mIoU_fg5",
+    "value": 0.8619687786008502,
+    "step": 15000
+  },
+  "peak_allocated_gib": 22.70693349838257,
+  "run_dir": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/C_OO_QD_dual_optical_gray_quality_plus_dropout_seed42_sched16000_stop16000",
+  "test6_loaded": false,
+  "augmentation": {
+    "total_samples": 256000,
+    "counts": {
+      "clean": 143659,
+      "optical_blur5": 15306,
+      "optical_down2": 15294,
+      "second_stream_blur5": 15511,
+      "second_stream_down2": 15339,
+      "optical_zero": 25536,
+      "second_stream_zero": 25355
+    },
+    "fractions": {
+      "clean": 0.56116796875,
+      "optical_blur5": 0.0597890625,
+      "optical_down2": 0.0597421875,
+      "second_stream_blur5": 0.06058984375,
+      "second_stream_down2": 0.05991796875,
+      "optical_zero": 0.09975,
+      "second_stream_zero": 0.09904296875
+    }
+  }
+}
