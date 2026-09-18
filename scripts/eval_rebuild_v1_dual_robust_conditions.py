@@ -91,7 +91,7 @@ def write_csv(path, rows):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--variant", choices=["R03", "R04"], required=True)
+    ap.add_argument("--variant", choices=["R03", "R04", "R05"], required=True)
     ap.add_argument("--out", type=Path, default=None)
     args = ap.parse_args()
 
@@ -99,10 +99,14 @@ def main():
         config = ROOT / "configs/rebuild_v1/r03_quality_corruption_16k.json"
         run_dir = ROOT / "runs/rebuild_v1/R03_dual_f0_quality_corruption_seed42_sched16000_stop16000"
         default_out = ROOT / "records/rebuild_v1_r03_robust_eval_20260916"
-    else:
+    elif args.variant == "R04":
         config = ROOT / "configs/rebuild_v1/r04_modality_dropout_16k.json"
         run_dir = ROOT / "runs/rebuild_v1/R04_dual_f0_modality_dropout_seed42_sched16000_stop16000"
         default_out = ROOT / "records/rebuild_v1_r04_robust_eval_20260916"
+    else:
+        config = ROOT / "configs/rebuild_v1/r05_quality_plus_dropout_16k.json"
+        run_dir = ROOT / "runs/rebuild_v1/R05_dual_f0_quality_plus_dropout_seed42_sched16000_stop16000"
+        default_out = ROOT / "records/rebuild_v1_r05_robust_eval_20260918"
 
     cfg = r02.read_json(config)
     summary_path = run_dir / "summary.json"
