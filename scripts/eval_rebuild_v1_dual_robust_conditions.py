@@ -100,6 +100,8 @@ def main():
         choices=["R03", "R04", "R05", "C-OO-QD"],
         required=True,
     )
+    ap.add_argument("--config", type=Path, default=None)
+    ap.add_argument("--run-dir", type=Path, default=None)
     ap.add_argument("--out", type=Path, default=None)
     args = ap.parse_args()
 
@@ -124,12 +126,17 @@ def main():
         )
         default_out = ROOT / "records/rebuild_v1_c_oo_qd_robust_eval_20260918"
 
+    config = args.config or config
+    run_dir = args.run_dir or run_dir
+    config = r02.resolve_root_relative(config)
+    run_dir = r02.resolve_root_relative(run_dir)
     cfg = r02.read_json(config)
     summary_path = run_dir / "summary.json"
     if not summary_path.is_file():
         raise FileNotFoundError(summary_path)
     run_summary = r02.read_json(summary_path)
-    if int(run_summary.get("global_step", -1)) != 16000:
+    expected_step = int(cfg["schedule"]["stop_at_step"])
+    if int(run_summary.get("global_step", -1)) != expected_step:
         raise RuntimeError(f"incomplete {args.variant}: {run_summary}")
     if run_summary.get("test6_loaded") is not False:
         raise RuntimeError("TEST6 safety flag failed")

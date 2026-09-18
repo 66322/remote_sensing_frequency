@@ -225,10 +225,13 @@ def main():
     ap.add_argument("--smoke-steps", type=int, default=0)
     ap.add_argument("--smoke-eval", action="store_true")
     ap.add_argument("--run-tag", default="")
+    ap.add_argument("--seed-override", type=int, default=None)
     args = ap.parse_args()
 
     cfg_path = r02.resolve_root_relative(args.config)
     cfg = r02.read_json(cfg_path)
+    if args.seed_override is not None:
+        cfg["seed"] = int(args.seed_override)
     if cfg.get("model_id") != "R01" or cfg.get("model") != "optical_only_f0":
         raise RuntimeError("R01 trainer requires model_id=R01 and model=optical_only_f0")
 

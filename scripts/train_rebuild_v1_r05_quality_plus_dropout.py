@@ -339,10 +339,13 @@ def main():
     ap.add_argument("--smoke-steps", type=int, default=0)
     ap.add_argument("--smoke-eval", action="store_true")
     ap.add_argument("--run-tag", default="")
+    ap.add_argument("--seed-override", type=int, default=None)
     args = ap.parse_args()
 
     cfg_path = r02.resolve_root_relative(args.config)
     cfg = r02.read_json(cfg_path)
+    if args.seed_override is not None:
+        cfg["seed"] = int(args.seed_override)
     variant = str(cfg.get("model_id", "")).upper()
     if variant not in {"R03", "R04", "R05"}:
         raise RuntimeError("dual robust trainer supports only R03/R04/R05")
