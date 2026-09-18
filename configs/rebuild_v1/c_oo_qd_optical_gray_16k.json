@@ -1,0 +1,73 @@
+{
+  "version": "REBUILD_V1_C_OO_QD_OPTICAL_GRAY_16K_20260918",
+  "purpose": "Matched capacity-and-training-policy control for R05. Keep the same dual-stream architecture, complete 16k schedule, and Q+D treatment probabilities as R05, but replace DSM with a fixed one-channel mean of the identically transformed Optical RGB crop. This separates DSM-specific information from dual-stream capacity and Q+D regularization.",
+  "model_id": "C-OO-QD",
+  "model": "dual_f0_optical_gray_quality_plus_dropout",
+  "seed": 42,
+  "split_file": "configs/rebuild_v1/potsdam_split_seed20260915.json",
+  "data_root": "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped",
+  "pretrain": "/home/jovyan/zzx/paper_rebuild/08_assets/pretrained/ftransunet/R50+ViT-B_16.npz",
+  "patch": 512,
+  "micro_batch": 4,
+  "accum_steps": 4,
+  "effective_batch": 16,
+  "optimizer": {
+    "name": "AdamW",
+    "backbone_lr": 6e-05,
+    "decoder_head_lr_mult": 10.0,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "weight_decay": 0.01
+  },
+  "schedule": {
+    "scheduler_total_steps": 16000,
+    "stop_at_step": 16000,
+    "warmup_steps": 1200,
+    "warmup_ratio": 1e-06,
+    "poly_power": 1.0
+  },
+  "augmentation": {
+    "random_scale_min": 0.5,
+    "random_scale_max": 2.0,
+    "horizontal_flip_p": 0.5,
+    "vertical_flip_p": 0.5,
+    "rare_sampling": false,
+    "quality_corruption": true,
+    "modality_dropout": true,
+    "optical_dropout_p": 0.1,
+    "dsm_dropout_p": 0.1,
+    "no_dropout_p": 0.8,
+    "never_drop_both": true,
+    "clean_within_no_dropout_p": 0.7,
+    "optical_degraded_within_no_dropout_p": 0.15,
+    "dsm_degraded_within_no_dropout_p": 0.15,
+    "blur5_within_degraded_p": 0.5,
+    "down2_within_degraded_p": 0.5,
+    "expected_overall_probabilities": {
+      "clean": 0.56,
+      "quality_degraded": 0.24,
+      "modality_dropout": 0.2
+    },
+    "corruption_order": "normalized Optical -> matched crop/resize/flip -> fixed Optical-gray second stream -> dropout decision -> conditional quality corruption -> network",
+    "second_stream_probability_key_note": "Legacy dsm_* probability keys are retained only to match the R05 policy numerically; in C-OO-QD they apply to the Optical-gray second stream, not DSM."
+  },
+  "validation": {
+    "eval_interval_steps": 1000,
+    "stride": 256,
+    "inference_batch": 8,
+    "selection_metric": "noboundary_mIoU_fg5",
+    "fullgt_also_reported": true
+  },
+  "second_stream": {
+    "source": "optical_rgb",
+    "transform": "channel_mean_after_geometric_augmentation",
+    "formula": "(R+G+B)/3",
+    "learnable_adapter": false,
+    "dsm_loaded_for_dataset_compatibility": true,
+    "dsm_used_by_network": false,
+    "treatment_policy": "matched_to_R05_Q_plus_D",
+    "treatment_label_note": "second_stream_* output labels correspond to the R05 DSM-branch treatment positions, but the actual content is Optical grayscale"
+  }
+}
