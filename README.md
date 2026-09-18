@@ -6,7 +6,7 @@ Optical + DSM semantic segmentation experiments on ISPRS Vaihingen and Potsdam.
 
 **All experiment purposes, code mappings, datasets, results and future plans:**
 
-[docs/EXPERIMENT_MASTER.md](docs/EXPERIMENT_MASTER.md)
+[Project documentation](docs/START_HERE.md)
 
 ## Current best
 

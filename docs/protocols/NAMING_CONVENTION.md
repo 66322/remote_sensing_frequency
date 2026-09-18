@@ -82,7 +82,7 @@ For long-running training, the run metadata/summary should eventually retain bot
 
 The central REBUILD_V1 timing/status index is:
 
-`docs/REBUILD_V1_EXPERIMENT_TIMELINE.md`
+`docs/experiments/rebuild_v1/INDEX.md`
 
 ---
 
@@ -151,7 +151,7 @@ Existing files and run directories are not renamed.
 
 They are mapped to descriptive names in:
 
-docs/EXPERIMENT_MASTER.md
+docs/START_HERE.md
 
 Git history records code versions.
 
@@ -159,4 +159,4 @@ File names record experiment purpose.
 
 For REBUILD_V1, experiment purpose/status/timing is additionally indexed in:
 
-docs/REBUILD_V1_EXPERIMENT_TIMELINE.md
+docs/experiments/rebuild_v1/INDEX.md
