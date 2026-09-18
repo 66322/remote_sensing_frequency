@@ -1,30 +1,62 @@
 # Start Here
 
-This is the authoritative entry point for a new conversation or a new computer.
+This is the mandatory entry point for every new conversation, computer and
+experiment.
 
-Read in this order:
+## Mandatory execution rules
 
-1. `docs/current/PROJECT_STATUS.md`
-2. `docs/current/DO_NOT_REPEAT.md`
-3. `docs/current/NEXT_EXPERIMENT.md`
-4. `docs/experiments/rebuild_v1/INDEX.md`
-5. `records/rebuild_v1_experiment_registry.json`
-6. `docs/protocols/NAMING_CONVENTION.md`
+These rules apply to every training run, evaluation, diagnostic and queue.
 
-The files under `docs/archive/` are historical evidence only. They must not be
-used to determine current status or the next experiment.
+1. Use physical GPU 0 only.
+2. Set `CUDA_VISIBLE_DEVICES=0` before Python starts.
+3. Inside the restricted process, use only logical device `cuda:0`.
+4. Multi-GPU, distributed execution, `torchrun` and fallback to another GPU
+   are forbidden.
+5. All persistent files must remain under `/home/jovyan/zzx`.
+6. Project code and outputs must remain under
+   `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro`.
+7. Runtime outputs go to project `runs/`; compact evidence goes to `records/`.
+8. Raw datasets and pretrained weights are read-only.
+9. Do not upload checkpoints, training states, datasets or complete `runs/`
+   directories to GitHub.
+10. Every launch must pass
+    `scripts/validate_execution_boundaries.py`.
+11. Before proposing a new experiment, check `DO_NOT_REPEAT.md` and the JSON
+    experiment registry.
+12. If a requested command conflicts with these rules, stop instead of
+    silently changing the GPU or output path.
 
-Before proposing any experiment, search the registry by experiment ID and
-fingerprint. Do not repeat a completed or closed experiment unless the new run
-changes seed, dataset, split, protocol, model, budget, or an explicitly stated
-independent variable.
+Full policy:
 
-After each formal experiment:
+`docs/protocols/EXECUTION_BOUNDARIES.md`
+
+Machine-readable policy:
+
+`configs/execution_boundaries.json`
+
+## Required reading order
+
+1. This file and its mandatory rules.
+2. `docs/protocols/EXECUTION_BOUNDARIES.md`
+3. `docs/current/PROJECT_STATUS.md`
+4. `docs/current/DO_NOT_REPEAT.md`
+5. `docs/current/NEXT_EXPERIMENT.md`
+6. `docs/experiments/rebuild_v1/INDEX.md`
+7. `records/rebuild_v1_experiment_registry.json`
+8. `docs/protocols/NAMING_CONVENTION.md`
+
+Files under `docs/archive/` are historical evidence only. They must not be used
+to determine current status or the next experiment.
+
+## Experiment closure rule
+
+After every formal experiment:
 
 1. verify completion and TEST6 isolation;
-2. analyze CSV/JSON results;
+2. analyze CSV and JSON results;
 3. write an experiment report;
-4. update the registry, status, do-not-repeat list, index, and next experiment;
+4. update the registry, status, do-not-repeat list, experiment index and next
+   experiment;
 5. generate an artifact SHA256 manifest;
 6. commit code, configuration, results, analysis and documentation together;
 7. push and verify that local and remote commits match.

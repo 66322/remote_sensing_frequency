@@ -1,35 +1,37 @@
 # Remote Sensing Frequency Segmentation
 
-Optical + DSM semantic segmentation experiments on ISPRS Vaihingen and Potsdam.
+Optical and DSM semantic-segmentation experiments on ISPRS Vaihingen and
+Potsdam.
 
 ## Start here
 
-**All experiment purposes, code mappings, datasets, results and future plans:**
-
 [Project documentation](docs/START_HERE.md)
-
-## Current best
-
-E32 — P2-H + Rare30
-
-Vaihingen @10k:
-
-- NB OA: 92.2850%
-- NB mF1_fg5: 90.4897%
-- NB mIoU_fg5: **83.0658%**
 
 ## Current work
 
-- E40 — Normal shallow detail preservation
-- E41 — HF-only shallow detail preservation
+The active line is REBUILD_V1 multimodal capacity and robustness analysis.
+
+R01-R05, C-OO and C-OO-QD are complete. The only active next experiment is
+D1-D3 local failure diagnostics.
+
+## Mandatory execution boundaries
+
+- Physical GPU 0 only.
+- `CUDA_VISIBLE_DEVICES=0` is required.
+- Persistent files must remain under `/home/jovyan/zzx`.
+- Project outputs must remain inside this repository.
+- Raw datasets and pretrained weights are read-only.
+- Checkpoints and complete run directories are not uploaded to GitHub.
+
+Full policy:
+
+[Execution boundaries](docs/protocols/EXECUTION_BOUNDARIES.md)
 
 ## Main directories
 
-- `model/` — model implementations
-- `scripts/` — training / evaluation / audit scripts
-- `runs/` — lightweight experiment outputs only
-- `records/` — analyses and frozen experiment evidence
-- `docs/` — project-wide experiment documentation
-- `sources/` — historical local source snapshots
-
-Large checkpoints, pretrained weights and datasets are intentionally not tracked by Git.
+- `model/`: model implementations
+- `scripts/`: training, evaluation and audit scripts
+- `configs/`: configurations and execution policy
+- `runs/`: server-only runtime outputs
+- `records/`: compact frozen evidence
+- `docs/`: documentation and experiment reports

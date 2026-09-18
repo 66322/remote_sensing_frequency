@@ -378,5 +378,14 @@
       "new model component",
       "new diagnostic protocol"
     ]
+  },
+  "execution_boundaries": {
+    "mandatory": true,
+    "documentation": "docs/protocols/EXECUTION_BOUNDARIES.md",
+    "machine_policy": "configs/execution_boundaries.json",
+    "preflight": "scripts/validate_execution_boundaries.py",
+    "physical_gpu": 0,
+    "cuda_visible_devices": "0",
+    "persistent_scope_root": "/home/jovyan/zzx"
   }
 }
