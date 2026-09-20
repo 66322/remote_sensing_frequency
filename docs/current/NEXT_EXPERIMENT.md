@@ -29,6 +29,12 @@ Run `scripts/run_rebuild_v1_b1_pilot_queue_20260920.sh`. Each method first runs
 a 20-step smoke test. A failed stage is recorded and skipped without blocking
 the remaining methods.
 
+The first launch exposed a deterministic-CUDA incompatibility in the unflattened
+cross-entropy call before any optimizer step completed. Fix1 uses the same
+flattened deterministic CE path as R01-R05 and writes queue diagnostics to
+`records/rebuild_v1_b1_pilot_queue_fix1_20260920` so failed smoke artifacts are
+never overwritten.
+
 The pilot gate requires B1-SAFE to exceed B1-C on the mean of clean, DSM-zero
 and DSM-down8; remain within 0.5 pp of R05 on clean; remain within 0.3 pp of R01
 on DSM-zero; and remain within 0.3 pp of the two-expert safe teacher on DSM-down8.

@@ -393,7 +393,14 @@ def main():
             optical, dsm, gt, scales = r02.sample_batch(train_cache, train_ids, cfg)
             dsm, missing, _ = apply_b1_treatments(dsm, cfg, counts)
             logits = student(optical, dsm)
-            ce = F.cross_entropy(logits, gt)
+            # Match the deterministic CE path used by the accepted R01-R05
+            # trainers. CUDA nll_loss2d has no deterministic implementation in
+            # the server's PyTorch build, while the flattened 2-D kernel does.
+            flat_logits = logits.permute(0, 2, 3, 1).contiguous().view(
+                -1, logits.shape[1]
+            )
+            flat_gt = gt.contiguous().view(-1)
+            ce = F.cross_entropy(flat_logits, flat_gt)
             kd = logits.new_zeros(())
             fallback = logits.new_zeros(())
             if mode != "ce_control":
@@ -415,7 +422,7 @@ def main():
             micro_kd.append(float(kd.detach()))
             micro_fb.append(float(fallback.detach()))
             scales_all.extend(scales)
-            del optical, dsm, gt, missing, logits, ce, kd, fallback, loss
+            del optical, dsm, gt, missing, logits, flat_logits, flat_gt, ce, kd, fallback, loss
 
         optimizer.step()
         global_step = next_step
