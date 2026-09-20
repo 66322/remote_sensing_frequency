@@ -30,9 +30,11 @@ a 20-step smoke test. A failed stage is recorded and skipped without blocking
 the remaining methods.
 
 The first launch exposed a deterministic-CUDA incompatibility in the unflattened
-cross-entropy call before any optimizer step completed. Fix1 uses the same
-flattened deterministic CE path as R01-R05 and writes queue diagnostics to
-`records/rebuild_v1_b1_pilot_queue_fix1_20260920` so failed smoke artifacts are
+cross-entropy call. Fix1 then exposed a missing channel dimension in local DSM
+downsampling. Both failed before the first optimizer step. Fix2 uses the same
+flattened deterministic CE path as R01-R05 and normalizes every DSM degradation
+to `B x 1 x H x W` before interpolation. It writes diagnostics to
+`records/rebuild_v1_b1_pilot_queue_fix2_20260920` so failed smoke artifacts are
 never overwritten.
 
 The pilot gate requires B1-SAFE to exceed B1-C on the mean of clean, DSM-zero

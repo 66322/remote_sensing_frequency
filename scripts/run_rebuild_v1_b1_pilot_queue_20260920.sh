@@ -2,7 +2,7 @@
 set -uo pipefail
 
 R=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
-O=$R/records/rebuild_v1_b1_pilot_queue_fix1_20260920
+O=$R/records/rebuild_v1_b1_pilot_queue_fix2_20260920
 export CUDA_VISIBLE_DEVICES=0
 export CUBLAS_WORKSPACE_CONFIG=:4096:8
 cd "$R" || exit 2
@@ -39,7 +39,7 @@ train_and_evaluate() {
   local eval_out=$4
 
   if run "${label}_SMOKE" 2400 python -u scripts/train_rebuild_v1_b1_distillation.py \
-      --config "$config" --smoke-steps 20 --smoke-eval --run-tag queue20260920_fix1; then
+      --config "$config" --smoke-steps 20 --smoke-eval --run-tag queue20260920_fix2; then
     if run "$label" 64800 python -u scripts/train_rebuild_v1_b1_distillation.py \
         --config "$config"; then
       run "${label}_ROBUST_EVAL" 21600 python -u \

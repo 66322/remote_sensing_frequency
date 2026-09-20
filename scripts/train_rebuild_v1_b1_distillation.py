@@ -108,11 +108,16 @@ def down_restore(x, factor):
 
 
 def degrade(x, kind):
+    if x.ndim != 3:
+        raise RuntimeError(f"DSM degradation expects BxHxW, got {tuple(x.shape)}")
+    x4 = x.unsqueeze(1)
     if kind == "blur5":
-        return blur5(x)
-    if kind.startswith("down"):
-        return down_restore(x, int(kind.replace("down", "")))
-    raise ValueError(kind)
+        out = blur5(x4)
+    elif kind.startswith("down"):
+        out = down_restore(x4, int(kind.replace("down", "")))
+    else:
+        raise ValueError(kind)
+    return out.squeeze(1)
 
 
 def random_rectangle(height, width, area_fraction):
