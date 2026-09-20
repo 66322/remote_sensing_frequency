@@ -75,7 +75,14 @@ Not supported:
 
 ## Active work
 
-The active experiment is D5 confidence routing. D4 found 3.53-4.30 pp mean
-pixel-oracle headroom but rejected a DSM-quality-only gate because the preferred
-expert under local down8 changes between seeds. D5 tests nonlearned probability
-and confidence routing before a benefit-aware learned router is considered.
+The active experiment is the B1 single-student distillation pilot. D5 identified
+SafeMaxConfidence as the only shared passing nonlearned router across seeds 42
+and 17. D6 then showed that its explicit and inferred missing masks are
+numerically identical on the tested masks. It improves over the best individual
+expert by 1.2121/0.4430 pp on variable-shape missing masks and remains stable on
+degraded masks, but requires both R01 and R05 at inference.
+
+B1 compares a matched 4k CE continuation, safe-teacher distillation, and
+safe-teacher distillation with an extra R01 constraint on missing pixels. The
+goal is to retain the safe router's fallback behavior in one R05-structure
+student before considering a new fusion architecture.

@@ -1,27 +1,37 @@
-# Next Experiment: D5 Confidence Routing
+# Next Experiment: B1 Single-Student Distillation Pilot
 
 - Status: code ready; server execution pending
-- Models: frozen R01 and R05, seeds 42 and 17
-- Training: none
+- Seed: 42 pilot
+- Budget: 4000 optimizer steps per method
+- Initialization: the same frozen R05 seed42 best checkpoint
 - Device: physical GPU 0 only
-- Dataset: Potsdam Val2 only; historical TEST6 prohibited
+- Dataset: Potsdam Train16/Val2 only; historical TEST6 prohibited
 
-D4 rejects a degradation-only reliability gate because R05 beats R01 in local
-down8 regions at seed42 but loses at seed17. D4 nevertheless finds 3.53-4.30 pp
-mean pixel-oracle headroom, so expert errors are strongly complementary.
+D5 and D6 establish SafeMaxConfidence as a robust inference baseline, but it
+requires both R01 and R05 at inference. B1 tests whether that behavior can be
+compressed into one R05-structure student.
 
-D5 tests whether this complementarity is recoverable without training:
+The queue contains three matched experiments:
 
-- equal and fixed-weight probability fusion;
-- maximum-confidence routing;
-- minimum-entropy routing;
-- maximum-confidence routing with forced Optical fallback in known missing
-  regions.
+1. `B1-C`: segmentation CE only, controlling for the extra 4k steps and the new
+   corruption mixture.
+2. `B1-KD`: CE plus KL distillation from the frozen SafeMaxConfidence teacher.
+3. `B1-SAFE`: B1-KD plus an explicit R01 consistency loss on known DSM-missing
+   pixels.
 
-Conditions are clean, global DSM zero/down8, four local-zero quadrants and four
-local-down8 quadrants. Both seeds must pass the same rule: clean and down8
-within 0.2 pp of the best expert, and DSM-zero within 0.2 pp of R01.
+All three use the same initialization, training samples, effective batch size,
+schedule and corruption probabilities. The mixture is 40% clean, 15% global
+DSM degradation, 10% global DSM missing, 20% local DSM missing and 15% local
+DSM degradation. Local masks use 10%, 25% or 50% target area. The teacher is
+forced to R01 inside known missing regions.
 
-Run `scripts/run_rebuild_v1_d5_queue_20260920.sh`. If no nonlearned method
-passes both seeds, the next model is a benefit-aware router supervised by expert
-correctness/disagreement, with a hard Optical fallback mask.
+Run `scripts/run_rebuild_v1_b1_pilot_queue_20260920.sh`. Each method first runs
+a 20-step smoke test. A failed stage is recorded and skipped without blocking
+the remaining methods.
+
+The pilot gate requires B1-SAFE to exceed B1-C on the mean of clean, DSM-zero
+and DSM-down8; remain within 0.5 pp of R05 on clean; remain within 0.3 pp of R01
+on DSM-zero; and remain within 0.3 pp of the two-expert safe teacher on DSM-down8.
+Passing this gate triggers D6 mask/latency evaluation and then a frozen full
+schedule plus seed17 replication. Failure keeps the two-expert router as the
+reference and calls for loss-specific diagnosis before any new model module.

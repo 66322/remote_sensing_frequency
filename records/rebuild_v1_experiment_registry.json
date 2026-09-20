@@ -357,13 +357,40 @@
     {
       "id": "D1-D3",
       "name": "local_failure_diagnostics",
-      "status": "planned",
+      "status": "complete",
       "fingerprint": "potsdam_val2_r05_vs_c_oo_qd_local_zero_shift_local_down8_v1",
       "purpose": "Measure local missing-input, spatial-misalignment and local-quality sensitivity.",
       "records": [
+        "records/rebuild_v1_local_failure_diagnostics_summary_20260918/"
+      ],
+      "decision": "Local missing needs Optical fallback; local down8 retains DSM value at seed42; shifts are monotonic but modest."
+    },
+    {
+      "id": "D4-D6",
+      "name": "frozen_expert_routing_diagnostics",
+      "status": "complete",
+      "fingerprint": "potsdam_val2_r01_r05_seed42_seed17_confidence_routing_masks_v1",
+      "purpose": "Test frozen-expert complementarity, nonlearned routing and variable-shape mask generalization.",
+      "records": [
+        "records/rebuild_v1_d4_expert_complementarity_summary_20260920/",
+        "records/rebuild_v1_d5_confidence_routing_summary_20260920/",
+        "records/rebuild_v1_d6_mask_generalization_summary_20260920/"
+      ],
+      "decision": "SafeMaxConfidence is the shared passing two-expert router; compress it before designing a new fusion module."
+    },
+    {
+      "id": "B1",
+      "name": "single_student_safe_router_distillation_pilot",
+      "status": "planned",
+      "fingerprint": "potsdam_train16_val2_seed42_r05init_4k_b1_distillation_v1",
+      "purpose": "Compare matched CE continuation, safe-teacher KD and KD with an explicit Optical fallback constraint.",
+      "records": [
+        "configs/rebuild_v1/b1_c_ce_control_4k.json",
+        "configs/rebuild_v1/b1_kd_safe_teacher_4k.json",
+        "configs/rebuild_v1/b1_safe_fallback_4k.json",
         "docs/current/NEXT_EXPERIMENT.md"
       ],
-      "decision": "This is the only active next experiment."
+      "decision": "Active next experiment."
     }
   ],
   "handoff_entry": "docs/START_HERE.md",

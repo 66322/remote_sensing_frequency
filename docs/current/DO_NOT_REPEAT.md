@@ -36,6 +36,9 @@ Do not rerun the same dataset, split, seed, schedule and configuration:
 - A1 no-Optical-dropout seed42 16k;
 - A2 20%-DSM-dropout/no-Optical-dropout seed42 16k;
 - R01, R05 and C-OO-QD seed17 16k replications and matched robustness checks.
+- D4 frozen-expert complementarity analysis for seeds 42 and 17;
+- D5 probability/confidence routing for seeds 42 and 17;
+- D6 variable-shape missing/degraded-mask generalization for SafeMaxConfidence.
 
 ## Important negative or limiting findings
 
@@ -55,6 +58,12 @@ Do not rerun the same dataset, split, seed, schedule and configuration:
   module before a safer fusion path has been demonstrated.
 - D4 rejects a degradation-only frozen-expert gate: local down8 prefers R05 at
   seed42 but R01 at seed17. Do not treat DSM quality as expert benefit.
+- D5 SafeMaxConfidence passes the shared seed42/seed17 clean, DSM-zero and
+  DSM-down8 gate; fixed probability mixtures and unconstrained confidence or
+  entropy routing do not pass both seeds.
+- D6 confirms explicit and DSM-equals-zero missing masks are equivalent on the
+  tested masks. Do not add a learned missing-mask detector before testing the
+  simpler inferred mask under a genuinely different missing-value convention.
 
 ## Legitimate reasons to rerun
 
