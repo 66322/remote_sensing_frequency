@@ -1,6 +1,6 @@
 # Current Project Status
 
-- Updated: 2026-09-18
+- Updated: 2026-09-20
 - Active branch: `rebuild-v1-protocol-20260915`
 - Current line: REBUILD_V1 multimodal capacity and robustness audit
 - Dataset: ISPRS Potsdam
@@ -25,6 +25,19 @@
 
 These are seed42 results on the two-tile Val2 development split. They are not
 multi-seed or held-out test conclusions.
+
+## Completed follow-up results
+
+| ID | Clean NB mIoU_fg5 | DSM-zero | DSM-down8 | Decision |
+|---|---:|---:|---:|---|
+| A1 no Optical dropout | 86.4066 | 81.2529 | 85.7454 | negative fallback ablation |
+| A2 DSM dropout 20% | 85.7936 | 83.9292 | 84.8006 | fallback/clean tradeoff |
+| R05 seed17 | 85.8600 | 83.2120 | 84.4839 | replication complete |
+| C-OO-QD seed17 | 85.6440 | 83.0267 | 77.8835 | replication complete |
+
+R01 seed17 reaches 85.8366 clean NB mIoU_fg5. R05 therefore exceeds R01 by
+only 0.0234 pp on clean seed17, while its down8 advantage over C-OO-QD remains
+large at 6.6004 pp.
 
 ## Current evidence
 
@@ -52,7 +65,16 @@ Not supported:
 - A new frequency module has beaten simple robust training.
 - The current single-seed two-tile evidence is a final test-set conclusion.
 
+## Local diagnostics
+
+- R05 local-down8 advantage over C-OO-QD averages 2.4555 pp across whole tiles.
+- Inside damaged local-down8 regions, R05 exceeds C-OO-QD by about 7.0087 pp.
+- Inside local missing regions, R05 does not exceed C-OO-QD.
+- Shift loss is monotonic in all directions, but averages only 0.2340 pp across
+  all tested offsets.
+
 ## Active work
 
-The only active experiment is D1-D3 local failure diagnostics comparing R05
-and C-OO-QD on Val2 without retraining.
+The only active experiment is D4 expert-complementarity analysis. It pairs R01
+and R05 at seeds 42 and 17 to measure whether a local reliability gate has
+usable error complementarity before any new model is trained.

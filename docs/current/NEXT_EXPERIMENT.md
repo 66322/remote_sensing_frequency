@@ -1,76 +1,67 @@
-# Next Experiment: D1-D3 Local Failure Diagnostics
+# Next Experiment: D4 Expert Complementarity
 
-- Status: queued for execution
-- Priority: D1-D3 first, then optical-fallback ablations and one replication seed
-- Models: R05 and C-OO-QD
+- Status: code ready; server execution pending
+- Priority: only active experiment
+- Models: paired R01 Optical-only and R05 Optical+DSM
+- Seeds: 42 and 17
 - Training: none; existing best checkpoints only
 - Device: physical GPU 0 only
 - Dataset: Potsdam Val2 only
 - TEST6: prohibited
 
-## Purpose
+## Why D4 is required
 
-Determine whether the observed R05 advantage is spatially local and measure
-sensitivity to local missing input, cross-modal misalignment and local severe
-quality degradation.
+D1-D3 show that R05 is strongly preferable to the capacity-matched control
+inside locally down8 DSM regions, but it does not retain an Optical-safe path
+when DSM is missing. A1 and A2 show that changing dropout probability alone
+cannot remove this tradeoff without reducing clean performance.
 
-## D1: local second-stream missing
+Before training a learned reliability gate, D4 must establish that R01 and R05
+make complementary errors at the same pixels and regions.
 
-Zero each of four quadrants separately. Report whole-image, affected-region and
-unaffected-region metrics.
+## Protocol
 
-## D2: spatial misalignment
+For seed42 and seed17, evaluate paired R01 and R05 predictions under:
 
-Shift the second stream up, down, left and right by 2, 4 and 8 pixels. Use zero
-padding and no circular wrapping. Report directional mean and worst direction.
+- clean;
+- global DSM zero and down8;
+- four local-zero quadrants;
+- four local-down8 quadrants;
+- 2, 4 and 8 pixel shifts in four directions.
 
-## D3: local quality degradation
+Report four methods:
 
-Apply down8 only inside each of four quadrants. Report whole-image,
-affected-region and unaffected-region metrics.
+1. R01 Optical-only;
+2. R05 Optical+DSM;
+3. a condition-aware rule using R01 only in known missing regions;
+4. a label-informed pixel oracle as an upper bound.
 
-## Fixed protocol
+Also report both-correct, only-R01-correct, only-R05-correct and both-wrong
+pixel fractions, plus damaged/undamaged regional metrics.
 
-- Val2 tiles: `3_11`, `5_10`
-- splits: FullGT and NoBoundary
-- metrics: OA, mF1_fg5, mIoU_fg5 and mIoU_all6
-- checkpoint: each model's own `best_model.pth`
-- smoke: one tile and four representative conditions
-- formal evaluation: 21 conditions per model
+## Go/no-go rule for B1
 
-## Follow-on queue
+Proceed to the frozen-expert local gate only if both seeds show:
 
-The queue continues after D1-D3 without requiring manual intervention:
+- R01 is better inside local DSM-missing regions;
+- R05 is better inside local down8 regions;
+- mean pixel-oracle headroom over the better expert is at least 0.5 pp.
 
-1. A1 removes Optical dropout while retaining 10% DSM dropout and the same
-   overall 24% quality-corruption probability.
-2. A2 uses 20% DSM dropout and no Optical dropout to strengthen the Optical
-   fallback path.
-3. R05, R01 and C-OO-QD are repeated with seed 17 after the two ablations.
-4. Every new training policy is evaluated under the existing nine-condition
-   clean/global-corruption protocol.
+If this gate passes, B1 uses:
 
-Each A1/A2 formal run is gated by its own 20-step smoke run. A failed smoke
-skips only the dependent formal run. Any other failed stage is recorded and the
-queue proceeds to the next independent experiment. There is no automatic retry.
+`Zsafe = Zopt + g(x, dsm) * (Zdual - Zopt)`
 
-The executable queue is
-`scripts/run_rebuild_v1_next_experiments_20260918.sh`. It exports only physical
-GPU 0, validates the execution boundaries before every stage, applies hard
-timeouts, and writes all logs/status files below
-`records/rebuild_v1_next_queue_20260918`.
+Both experts remain frozen during the first pilot. Only the spatial reliability
+map `g` is trained.
 
-## Completion gate
+## Execution
 
-Do not push experimental artifacts until the formal evaluation has been checked
-and analyzed. The final closure must contain:
+Use `scripts/run_rebuild_v1_d4_queue_20260920.sh`. The queue performs a seed42
+smoke test, both formal seed evaluations and the cross-seed decision summary.
+It enforces physical GPU 0, project-path boundaries and per-stage timeouts.
 
-- evaluation script;
-- `dataset_metrics.csv`;
-- `per_tile_metrics.csv`;
-- `summary.json`;
-- `paired_condition_comparison.csv`;
-- `family_summary.csv` and `decision_evidence.json`;
-- `EXPERIMENT_REPORT.md`;
-- `artifact_manifest.sha256`;
-- updated registry, project status, do-not-repeat list, index and next step.
+Expected output directories:
+
+- `records/rebuild_v1_d4_expert_complementarity_seed42_20260920/`;
+- `records/rebuild_v1_d4_expert_complementarity_seed17_20260920/`;
+- `records/rebuild_v1_d4_expert_complementarity_summary_20260920/`.

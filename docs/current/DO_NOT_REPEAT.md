@@ -31,6 +31,11 @@ Do not rerun the same dataset, split, seed, schedule and configuration:
 - R05 Optical+DSM Q+D seed42 16k;
 - C-OO-QD matched capacity/augmentation control seed42 16k;
 - matched global robustness evaluation for R05 and C-OO-QD.
+- D1-D3 local missing, local down8 and spatial-shift diagnostics for R05 and
+  C-OO-QD;
+- A1 no-Optical-dropout seed42 16k;
+- A2 20%-DSM-dropout/no-Optical-dropout seed42 16k;
+- R01, R05 and C-OO-QD seed17 16k replications and matched robustness checks.
 
 ## Important negative or limiting findings
 
@@ -42,6 +47,12 @@ Do not rerun the same dataset, split, seed, schedule and configuration:
 - C-OO clean outperforming R02 means clean dual-stream improvement alone is
   not proof of DSM-specific value.
 - Optical-zero comparisons between R05 and C-OO-QD are not semantically matched.
+- A1 worsens DSM-zero fallback despite retaining 10% DSM dropout.
+- A2 improves DSM-zero over R05 seed42 but remains 1.4421 pp below R01 and
+  loses 1.2549 pp clean performance relative to R05 seed42.
+- Increasing modality-dropout probability alone is not the active route.
+- Spatial shifts produce monotonic but modest loss; do not add a registration
+  module before a safer fusion path has been demonstrated.
 
 ## Legitimate reasons to rerun
 
