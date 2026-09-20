@@ -11,6 +11,12 @@
 - Formal schedule: 16000 optimizer steps
 - Selection metric: Val2 NoBoundary mIoU_fg5
 
+Evidence status: core seed42 compact records are committed. Follow-up results
+below are user-reported server outputs; original D1-D6 records await archival.
+See `HANDOFF.md` and `EVIDENCE_AUDIT_20260920.md`. B1 is running as last
+reported on 2026-09-20, with no final result in GitHub. Its 4k is additional
+training from the R05 checkpoint, not a replacement for base training.
+
 ## Completed core results
 
 | ID | Meaning | FullGT mIoU_fg5 | NB mIoU_fg5 | Status |
@@ -77,12 +83,20 @@ Not supported:
 
 The active experiment is the B1 single-student distillation pilot. D5 identified
 SafeMaxConfidence as the only shared passing nonlearned router across seeds 42
-and 17. D6 then showed that its explicit and inferred missing masks are
-numerically identical on the tested masks. It improves over the best individual
-expert by 1.2121/0.4430 pp on variable-shape missing masks and remains stable on
-degraded masks, but requires both R01 and R05 at inference.
+and 17 under an asymmetric candidate set: other fusion rules were not supplied
+the same hard fallback. D6 explicit/inferred-zero scores agree to four printed
+decimals, but supplied full-precision rows contain tiny differences. Neither
+mask equality nor general missing-data detection was established. The missing
+family mean exceeds the larger of the two expert family means by
+1.2121/0.4430 pp; this is not the mean gain over each condition's best expert.
+The router requires both R01 and R05 at inference.
 
 B1 compares a matched 4k CE continuation, safe-teacher distillation, and
 safe-teacher distillation with an extra R01 constraint on missing pixels. The
 goal is to retain the safe router's fallback behavior in one R05-structure
 student before considering a new fusion architecture.
+
+B1-SAFE adds weight to a missing-region R01 KL target already present in
+B1-KD; it provides no guaranteed Optical-only path. The student retains the
+dual-input, dual-branch F0 architecture. The latest supplied detailed log reached
+B1-C step 1980/4000, without an observation timestamp; this is not live progress.

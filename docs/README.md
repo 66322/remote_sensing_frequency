@@ -3,6 +3,9 @@
 ## Current authoritative documents
 
 - [Start here](START_HERE.md)
+- [Current handoff](current/HANDOFF.md)
+- [Evidence audit](current/EVIDENCE_AUDIT_20260920.md)
+- [Conditional follow-up plan](current/FOLLOWUP_PLAN.md)
 - [Project status](current/PROJECT_STATUS.md)
 - [Do not repeat](current/DO_NOT_REPEAT.md)
 - [Next experiment](current/NEXT_EXPERIMENT.md)

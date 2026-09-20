@@ -1,6 +1,8 @@
 # Next Experiment: B1 Single-Student Distillation Pilot
 
-- Status: code ready; server execution pending
+- Status: running as last reported on 2026-09-20; no final result
+- Launch code: `e2ad594` (fix2); do not restart the existing queue
+- Evidence: `HANDOFF.md` and the user-reported snapshot in records
 - Seed: 42 pilot
 - Budget: 4000 optimizer steps per method
 - Initialization: the same frozen R05 seed42 best checkpoint
@@ -25,7 +27,7 @@ DSM degradation, 10% global DSM missing, 20% local DSM missing and 15% local
 DSM degradation. Local masks use 10%, 25% or 50% target area. The teacher is
 forced to R01 inside known missing regions.
 
-Run `scripts/run_rebuild_v1_b1_pilot_queue_20260920.sh`. Each method first runs
+The running queue uses `scripts/run_rebuild_v1_b1_pilot_queue_20260920.sh`. Each method first runs
 a 20-step smoke test. A failed stage is recorded and skipped without blocking
 the remaining methods.
 
@@ -40,6 +42,8 @@ never overwritten.
 The pilot gate requires B1-SAFE to exceed B1-C on the mean of clean, DSM-zero
 and DSM-down8; remain within 0.5 pp of R05 on clean; remain within 0.3 pp of R01
 on DSM-zero; and remain within 0.3 pp of the two-expert safe teacher on DSM-down8.
-Passing this gate triggers D6 mask/latency evaluation and then a frozen full
-schedule plus seed17 replication. Failure keeps the two-expert router as the
-reference and calls for loss-specific diagnosis before any new model module.
+These original exploratory thresholds remain unchanged for the running pilot.
+The summary is advisory and only checks SAFE against C; it does not justify
+choosing SAFE over KD or launching a longer run. After completion compare all
+three arms and use `FOLLOWUP_PLAN.md` before freezing a replication protocol.
+The queue does not automatically launch 16k or seed17 work.

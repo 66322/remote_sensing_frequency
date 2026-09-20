@@ -3,6 +3,10 @@
 Before launching work, compare the proposed experiment with this file and
 `records/rebuild_v1_experiment_registry.json`.
 
+Follow-up completion is user-reported; original artifacts await archival.
+Missing GitHub evidence is a reason to archive outputs, not rerun experiments.
+B1 is running as last reported; do not start a duplicate queue.
+
 ## Closed historical directions
 
 | Direction | Decision |
@@ -61,9 +65,13 @@ Do not rerun the same dataset, split, seed, schedule and configuration:
 - D5 SafeMaxConfidence passes the shared seed42/seed17 clean, DSM-zero and
   DSM-down8 gate; fixed probability mixtures and unconstrained confidence or
   entropy routing do not pass both seeds.
-- D6 confirms explicit and DSM-equals-zero missing masks are equivalent on the
-  tested masks. Do not add a learned missing-mask detector before testing the
-  simpler inferred mask under a genuinely different missing-value convention.
+- D6 explicit/inferred-zero scores agree to four printed decimals but are not
+  exactly equal in all supplied raw rows; no mask-equality test was performed.
+  Known zero-fill detection is not evidence of real missing-data detection.
+- D5 only supplies hard missing-region fallback to maximum-confidence routing.
+  Safe probability-average/entropy controls remain untested, not ruled out.
+- D4's rejected "B1 frozen-expert gate" proposal is NOT the current B1
+  single-student distillation pilot; preserve this distinction in handoffs.
 
 ## Legitimate reasons to rerun
 

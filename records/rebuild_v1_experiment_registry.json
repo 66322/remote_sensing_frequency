@@ -2,7 +2,8 @@
   "schema_version": "1.2",
   "project": "REBUILD_V1",
   "timezone": "UTC+08:00",
-  "last_updated": "2026-09-18",
+  "last_updated": "2026-09-20",
+  "status_provenance_policy": "reported_complete and running_as_last_reported are user observations, not live server verification. expected_server_records are absent artifacts to collect, not archived evidence.",
   "timing_policy": {
     "started_at": "Actual launch time when directly evidenced; otherwise date/minute precision is stated explicitly.",
     "completed_at": "Actual successful completion time when directly evidenced; otherwise null or a confirmed-complete-by time is used.",
@@ -357,40 +358,73 @@
     {
       "id": "D1-D3",
       "name": "local_failure_diagnostics",
-      "status": "complete",
+      "status": "reported_complete",
+      "evidence_status": "original_server_artifacts_pending_archival",
       "fingerprint": "potsdam_val2_r05_vs_c_oo_qd_local_zero_shift_local_down8_v1",
       "purpose": "Measure local missing-input, spatial-misalignment and local-quality sensitivity.",
       "records": [
-        "records/rebuild_v1_local_failure_diagnostics_summary_20260918/"
+        "docs/current/PROJECT_STATUS.md",
+        "docs/current/EVIDENCE_AUDIT_20260920.md"
+      ],
+      "expected_server_records": [
+        "records/rebuild_v1_r05_local_failure_diagnostics_20260918/",
+        "records/rebuild_v1_c_oo_qd_local_failure_diagnostics_20260918/",
+        "records/rebuild_v1_local_failure_comparison_20260918/"
       ],
       "decision": "Local missing needs Optical fallback; local down8 retains DSM value at seed42; shifts are monotonic but modest."
     },
     {
       "id": "D4-D6",
       "name": "frozen_expert_routing_diagnostics",
-      "status": "complete",
+      "status": "reported_complete",
+      "evidence_status": "user_transcription_committed_original_artifacts_pending",
       "fingerprint": "potsdam_val2_r01_r05_seed42_seed17_confidence_routing_masks_v1",
       "purpose": "Test frozen-expert complementarity, nonlearned routing and variable-shape mask generalization.",
       "records": [
-        "records/rebuild_v1_d4_expert_complementarity_summary_20260920/",
-        "records/rebuild_v1_d5_confidence_routing_summary_20260920/",
-        "records/rebuild_v1_d6_mask_generalization_summary_20260920/"
+        "records/rebuild_v1_handoff_20260920/user_reported_snapshot.json",
+        "docs/current/EVIDENCE_AUDIT_20260920.md"
       ],
-      "decision": "SafeMaxConfidence is the shared passing two-expert router; compress it before designing a new fusion module."
+      "expected_server_records": [
+        "records/rebuild_v1_d4_expert_complementarity_seed42_20260920/",
+        "records/rebuild_v1_d4_expert_complementarity_seed17_20260920/",
+        "records/rebuild_v1_d4_expert_complementarity_summary_20260920/",
+        "records/rebuild_v1_d5_confidence_routing_seed42_20260920/",
+        "records/rebuild_v1_d5_confidence_routing_seed17_20260920/",
+        "records/rebuild_v1_d5_confidence_routing_summary_20260920/",
+        "records/rebuild_v1_d6_mask_generalization_seed42_20260920/",
+        "records/rebuild_v1_d6_mask_generalization_seed17_20260920/"
+      ],
+      "decision": "SafeMaxConfidence passed the tested candidates; same-fallback average/entropy controls remain missing. B1 is a running compression pilot, not a completed method."
+    },
+    {
+      "id": "A1-A2-SEED17",
+      "name": "dropout_ablations_and_seed17_replications",
+      "status": "reported_complete",
+      "evidence_status": "narrative_only_original_artifacts_pending",
+      "records": [
+        "docs/current/PROJECT_STATUS.md",
+        "scripts/archive_rebuild_v1_next_queue_20260920.py"
+      ],
+      "decision": "Archive existing A1/A2 and R01/R05/C-OO-QD seed17 outputs rather than rerunning."
     },
     {
       "id": "B1",
       "name": "single_student_safe_router_distillation_pilot",
-      "status": "planned",
+      "status": "running_as_last_reported",
+      "launch_commit": "e2ad594049f36c118b31d659335715b089e1fe0b",
+      "final_conclusion": null,
+      "evidence_status": "user_reported_smoke_and_c_step1980_no_final_result",
       "fingerprint": "potsdam_train16_val2_seed42_r05init_4k_b1_distillation_v1",
       "purpose": "Compare matched CE continuation, safe-teacher KD and KD with an explicit Optical fallback constraint.",
       "records": [
         "configs/rebuild_v1/b1_c_ce_control_4k.json",
         "configs/rebuild_v1/b1_kd_safe_teacher_4k.json",
         "configs/rebuild_v1/b1_safe_fallback_4k.json",
-        "docs/current/NEXT_EXPERIMENT.md"
+        "docs/current/NEXT_EXPERIMENT.md",
+        "docs/current/HANDOFF.md",
+        "records/rebuild_v1_handoff_20260920/user_reported_snapshot.json"
       ],
-      "decision": "Active next experiment."
+      "decision": "Await results without restarting or changing the running protocol. Original summary Boolean is advisory; compare C/KD/SAFE before further experiments."
     }
   ],
   "handoff_entry": "docs/START_HERE.md",

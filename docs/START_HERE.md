@@ -3,6 +3,12 @@
 This is the mandatory entry point for every new conversation, computer and
 experiment.
 
+Research branch: `rebuild-v1-protocol-20260915`; GitHub defaults to `main`.
+Read `docs/current/HANDOFF.md` first for the last observed server state and
+evidence provenance. On 2026-09-20 the user reports B1 is still running with no
+final conclusion. Code updates do not imply experiment completion.
+Do not launch a duplicate queue based on a stale conversation snapshot.
+
 ## Mandatory execution rules
 
 These rules apply to every training run, evaluation, diagnostic and queue.
@@ -44,6 +50,8 @@ Machine-readable policy:
 6. `docs/experiments/rebuild_v1/INDEX.md`
 7. `records/rebuild_v1_experiment_registry.json`
 8. `docs/protocols/NAMING_CONVENTION.md`
+9. `docs/current/EVIDENCE_AUDIT_20260920.md`
+10. `docs/current/FOLLOWUP_PLAN.md` (conditional proposals, not queued work).
 
 Files under `docs/archive/` are historical evidence only. They must not be used
 to determine current status or the next experiment.
