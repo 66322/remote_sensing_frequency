@@ -75,6 +75,7 @@ Not supported:
 
 ## Active work
 
-The only active experiment is D4 expert-complementarity analysis. It pairs R01
-and R05 at seeds 42 and 17 to measure whether a local reliability gate has
-usable error complementarity before any new model is trained.
+The active experiment is D5 confidence routing. D4 found 3.53-4.30 pp mean
+pixel-oracle headroom but rejected a DSM-quality-only gate because the preferred
+expert under local down8 changes between seeds. D5 tests nonlearned probability
+and confidence routing before a benefit-aware learned router is considered.

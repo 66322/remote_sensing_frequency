@@ -53,6 +53,8 @@ Do not rerun the same dataset, split, seed, schedule and configuration:
 - Increasing modality-dropout probability alone is not the active route.
 - Spatial shifts produce monotonic but modest loss; do not add a registration
   module before a safer fusion path has been demonstrated.
+- D4 rejects a degradation-only frozen-expert gate: local down8 prefers R05 at
+  seed42 but R01 at seed17. Do not treat DSM quality as expert benefit.
 
 ## Legitimate reasons to rerun
 
