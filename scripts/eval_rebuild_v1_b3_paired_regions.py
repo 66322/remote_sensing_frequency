@@ -96,6 +96,9 @@ def main():
     cfg_path, run_dir = ROOT / args.config, ROOT / args.run_dir
     cfg = r02.read_json(cfg_path)
     summary = r02.read_json(run_dir / "summary.json")
+    run_metadata = r02.read_json(run_dir / "run_metadata.json")
+    if run_metadata.get("config") != cfg:
+        raise RuntimeError("Run/config binding mismatch")
     expected = int(cfg["schedule"]["stop_at_step"])
     if summary.get("test6_loaded") is not False or summary.get("global_step") != expected:
         raise RuntimeError("Run incomplete or TEST6 flag invalid")
