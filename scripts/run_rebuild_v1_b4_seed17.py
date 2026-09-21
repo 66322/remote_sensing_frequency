@@ -279,6 +279,9 @@ def main():
     if not args.execute:
         print("NO JOBS STARTED. Re-run with --execute.")
         return 0
+    def interrupted(signum, frame):
+        raise KeyboardInterrupt
+    signal.signal(signal.SIGTERM, interrupted)
     return execute(root, jobs, args.max_hours, report)
 
 
