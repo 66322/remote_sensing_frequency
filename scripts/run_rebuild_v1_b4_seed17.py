@@ -264,7 +264,7 @@ def execute(root, jobs, max_hours, report):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--tag", default="b4seed17_20260921")
+    parser.add_argument("--tag", default="seed17_20260921")
     parser.add_argument("--execute", action="store_true")
     parser.add_argument("--max-hours", type=float, default=12)
     args = parser.parse_args()
