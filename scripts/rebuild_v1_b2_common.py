@@ -16,7 +16,7 @@ def fingerprint(path):
     return {"path": str(path.resolve()), "bytes": path.stat().st_size, "sha256": h.hexdigest()}
 
 
-def validate_matched_config(cfg, reference):
+def validate_matched_config(cfg, reference, expected_seed=42):
     if cfg.get("model_id") not in MODES:
         raise ValueError("Unknown B2 arm")
     if cfg["distillation"]["mode"] != MODES[cfg["model_id"]]:
@@ -30,8 +30,10 @@ def validate_matched_config(cfg, reference):
         return c
     if controlled(cfg) != controlled(reference):
         raise ValueError("B2 differs from B1-KD beyond teacher target/identity")
-    if cfg["seed"] != 42 or cfg["schedule"]["stop_at_step"] != 4000:
-        raise ValueError("Expected seed42, 4000-step continuation")
+    if cfg["seed"] != expected_seed or reference["seed"] != expected_seed:
+        raise ValueError(f"Expected matched seed{expected_seed} configs")
+    if cfg["schedule"]["stop_at_step"] != 4000:
+        raise ValueError("Expected 4000-step continuation")
     if cfg["distillation"]["missing_fallback_kl_weight"] != 0:
         raise ValueError("No extra missing-region KL allowed")
 
@@ -81,4 +83,3 @@ def safe_output(path, category="records"):
     if path.exists():
         raise FileExistsError("Refusing existing output: " + str(path))
     return path
-

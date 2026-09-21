@@ -55,7 +55,15 @@ def load_checkpoint(path):
 
 
 def validate_config(cfg):
-    validate_matched_config(cfg, r02.read_json(ROOT / "configs/rebuild_v1/b1_kd_safe_teacher_4k.json"))
+    seed = int(cfg.get("seed", -1))
+    references = {
+        42: "b1_kd_safe_teacher_4k.json",
+        17: "b4_kd_seed17_4k.json",
+    }
+    if seed not in references:
+        raise RuntimeError(f"unsupported B2/B4 seed: {seed}")
+    reference = r02.read_json(ROOT / "configs/rebuild_v1" / references[seed])
+    validate_matched_config(cfg, reference, expected_seed=seed)
     model_id = str(cfg.get("model_id", "")).upper()
     if model_id not in VALID_MODES:
         raise RuntimeError(f"unsupported B1 model_id: {model_id}")
