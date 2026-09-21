@@ -1,0 +1,16 @@
+model,seed,condition,split,metric,value_percent,server_record
+C,42,clean,noboundary,mIoU_fg5,86.9976,records/rebuild_v1_b1_c_robust_eval_20260920/
+C,42,dsm_down8,noboundary,mIoU_fg5,85.6900,records/rebuild_v1_b1_c_robust_eval_20260920/
+C,42,dsm_zero,noboundary,mIoU_fg5,83.0949,records/rebuild_v1_b1_c_robust_eval_20260920/
+KD,42,clean,noboundary,mIoU_fg5,87.2223,records/rebuild_v1_b1_kd_robust_eval_20260920/
+KD,42,dsm_down8,noboundary,mIoU_fg5,86.2175,records/rebuild_v1_b1_kd_robust_eval_20260920/
+KD,42,dsm_zero,noboundary,mIoU_fg5,83.7867,records/rebuild_v1_b1_kd_robust_eval_20260920/
+SAFE,42,clean,noboundary,mIoU_fg5,87.2998,records/rebuild_v1_b1_safe_robust_eval_20260920/
+SAFE,42,dsm_down8,noboundary,mIoU_fg5,86.3802,records/rebuild_v1_b1_safe_robust_eval_20260920/
+SAFE,42,dsm_zero,noboundary,mIoU_fg5,83.6187,records/rebuild_v1_b1_safe_robust_eval_20260920/
+R05_KD,42,clean,noboundary,mIoU_fg5,87.4440,records/rebuild_v1_b2_night20260920_v1/R05_KD_ROBUST/
+R05_KD,42,dsm_down8,noboundary,mIoU_fg5,85.9955,records/rebuild_v1_b2_night20260920_v1/R05_KD_ROBUST/
+R05_KD,42,dsm_zero,noboundary,mIoU_fg5,83.6299,records/rebuild_v1_b2_night20260920_v1/R05_KD_ROBUST/
+AVG_KD,42,clean,noboundary,mIoU_fg5,87.2595,records/rebuild_v1_b2_night20260920_v1/AVG_KD_ROBUST/
+AVG_KD,42,dsm_down8,noboundary,mIoU_fg5,86.0029,records/rebuild_v1_b2_night20260920_v1/AVG_KD_ROBUST/
+AVG_KD,42,dsm_zero,noboundary,mIoU_fg5,83.5725,records/rebuild_v1_b2_night20260920_v1/AVG_KD_ROBUST/

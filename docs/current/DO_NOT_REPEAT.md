@@ -5,7 +5,8 @@ Before launching work, compare the proposed experiment with this file and
 
 Follow-up completion is user-reported; original artifacts await archival.
 Missing GitHub evidence is a reason to archive outputs, not rerun experiments.
-B1 is running as last reported; do not start a duplicate queue.
+B1/B2/B3 are complete. B4 seed17 is running as last observed; do not start a
+duplicate queue.
 
 ## Closed historical directions
 
@@ -43,6 +44,10 @@ Do not rerun the same dataset, split, seed, schedule and configuration:
 - D4 frozen-expert complementarity analysis for seeds 42 and 17;
 - D5 probability/confidence routing for seeds 42 and 17;
 - D6 variable-shape missing/degraded-mask generalization for SafeMaxConfidence.
+- B1 seed42 matched CE/KD/SAFE 4k continuation and robust evaluation;
+- B2 seed42 R05-teacher and average-teacher controls;
+- B3 seed42 paired damaged/boundary regional diagnostics for C, KD, SAFE,
+  R05_KD and AVG_KD.
 
 ## Important negative or limiting findings
 
@@ -72,6 +77,10 @@ Do not rerun the same dataset, split, seed, schedule and configuration:
   Safe probability-average/entropy controls remain untested, not ruled out.
 - D4's rejected "B1 frozen-expert gate" proposal is NOT the current B1
   single-student distillation pilot; preserve this distinction in handoffs.
+- B1 SAFE does not consistently improve on KD; do not repeat it unchanged.
+- B2 AVG_KD does not consistently improve on KD; do not repeat it unchanged.
+- B3 supports KD over R05_KD within seed42, but local missing boundaries remain
+  mixed against CE. Do not promote this to a cross-seed claim before B4 ends.
 
 ## Legitimate reasons to rerun
 

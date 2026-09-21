@@ -1,49 +1,36 @@
-# Next Experiment: B1 Single-Student Distillation Pilot
+# Current Experiment: B4 Seed17 Replication
 
-- Status: running as last reported on 2026-09-20; no final result
-- Launch code: `e2ad594` (fix2); do not restart the existing queue
-- Evidence: `HANDOFF.md` and the user-reported snapshot in records
-- Seed: 42 pilot
-- Budget: 4000 optimizer steps per method
-- Initialization: the same frozen R05 seed42 best checkpoint
+- Status: running as last observed on 2026-09-21 17:25:17 +08:00
+- Queue started: 2026-09-21 17:22:07 +08:00
+- Launch commit: `bae3462403e309cd81185e70028e0825455f9df4`
+- Seed: 17
+- Budget: 4000 optimizer steps per trained arm
+- Initialization: matched R05 seed17 checkpoint
 - Device: physical GPU 0 only
-- Dataset: Potsdam Train16/Val2 only; historical TEST6 prohibited
+- Dataset: Potsdam Train16/Val2 only; TEST6 prohibited
+- Server queue: `records/rebuild_v1_b4_seed17_20260921/`
 
-D5 and D6 establish SafeMaxConfidence as a robust inference baseline, but it
-requires both R01 and R05 at inference. B1 tests whether that behavior can be
-compressed into one R05-structure student.
+## Purpose
 
-The queue contains three matched experiments:
+B4 is the confirmation gate for the seed42 B1–B3 observation. It separates three effects with matched initialization and budget:
 
-1. `B1-C`: segmentation CE only, controlling for the extra 4k steps and the new
-   corruption mixture.
-2. `B1-KD`: CE plus KL distillation from the frozen SafeMaxConfidence teacher.
-3. `B1-SAFE`: B1-KD plus an explicit R01 consistency loss on known DSM-missing
-   pixels.
+1. `C17`: CE continuation.
+2. `R05_KD17`: ordinary distillation from the dual-modal R05 teacher.
+3. `KD17`: SafeMaxConfidence reliability-teacher distillation.
 
-All three use the same initialization, training samples, effective batch size,
-schedule and corruption probabilities. The mixture is 40% clean, 15% global
-DSM degradation, 10% global DSM missing, 20% local DSM missing and 15% local
-DSM degradation. Local masks use 10%, 25% or 50% target area. The teacher is
-forced to R01 inside known missing regions.
+The key comparison is KD17 versus R05_KD17 under global DSM down8/zero and paired local damaged regions. KD17 versus C17 determines whether the resulting model also beats continued training. Clean performance is a retention constraint, not the only objective.
 
-The running queue uses `scripts/run_rebuild_v1_b1_pilot_queue_20260920.sh`. Each method first runs
-a 20-step smoke test. A failed stage is recorded and skipped without blocking
-the remaining methods.
+## Decision rule
 
-The first launch exposed a deterministic-CUDA incompatibility in the unflattened
-cross-entropy call. Fix1 then exposed a missing channel dimension in local DSM
-downsampling. Both failed before the first optimizer step. Fix2 uses the same
-flattened deterministic CE path as R01-R05 and normalizes every DSM degradation
-to `B x 1 x H x W` before interpolation. It writes diagnostics to
-`records/rebuild_v1_b1_pilot_queue_fix2_20260920` so failed smoke artifacts are
-never overwritten.
+- Promote the mechanism to the main thesis line only if the reliability-teacher direction reproduces under seed17, especially on DSM-degraded and local damaged regions.
+- Treat boundary metrics as secondary because thin-region class support is unstable.
+- Do not continue SAFE or AVG_KD unless B4 creates a specific unresolved alternative explanation.
+- Do not start weak supervision, open-vocabulary segmentation, another dataset or a longer budget before this gate is read.
 
-The pilot gate requires B1-SAFE to exceed B1-C on the mean of clean, DSM-zero
-and DSM-down8; remain within 0.5 pp of R05 on clean; remain within 0.3 pp of R01
-on DSM-zero; and remain within 0.3 pp of the two-expert safe teacher on DSM-down8.
-These original exploratory thresholds remain unchanged for the running pilot.
-The summary is advisory and only checks SAFE against C; it does not justify
-choosing SAFE over KD or launching a longer run. After completion compare all
-three arms and use `FOLLOWUP_PLAN.md` before freezing a replication protocol.
-The queue does not automatically launch 16k or seed17 work.
+## Runtime expectation
+
+Based on the completed queue timing and the number of B4 stages, the planning estimate is 8–9 hours from launch, approximately 2026-09-22 01:20–02:20 +08:00. The launcher has a 12-hour limit near 05:22. These are estimates; only completion markers and per-stage outputs establish success.
+
+## After completion
+
+Extract compact global, paired damaged/boundary and per-class comparisons; verify step 4000 and `test6_loaded=false`; record failures/skips; then update GitHub before launching another line. Preserve original outputs on the server and commit only compact evidence plus provenance.

@@ -5,8 +5,9 @@ experiment.
 
 Research branch: `rebuild-v1-protocol-20260915`; GitHub defaults to `main`.
 Read `docs/current/HANDOFF.md` first for the last observed server state and
-evidence provenance. On 2026-09-20 the user reports B1 is still running with no
-final conclusion. Code updates do not imply experiment completion.
+evidence provenance. On 2026-09-21 B1/B2/B3 are reported complete and their
+compact metrics are committed; B4 seed17 is running as last observed.
+Code updates or elapsed time do not imply experiment completion.
 Do not launch a duplicate queue based on a stale conversation snapshot.
 
 ## Mandatory execution rules

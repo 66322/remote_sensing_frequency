@@ -2,7 +2,7 @@
   "schema_version": "1.2",
   "project": "REBUILD_V1",
   "timezone": "UTC+08:00",
-  "last_updated": "2026-09-20",
+  "last_updated": "2026-09-21",
   "status_provenance_policy": "reported_complete and running_as_last_reported are user observations, not live server verification. expected_server_records are absent artifacts to collect, not archived evidence.",
   "timing_policy": {
     "started_at": "Actual launch time when directly evidenced; otherwise date/minute precision is stated explicitly.",
@@ -410,21 +410,116 @@
     {
       "id": "B1",
       "name": "single_student_safe_router_distillation_pilot",
-      "status": "running_as_last_reported",
+      "status": "reported_complete",
       "launch_commit": "e2ad594049f36c118b31d659335715b089e1fe0b",
-      "final_conclusion": null,
-      "evidence_status": "user_reported_smoke_and_c_step1980_no_final_result",
+      "final_conclusion": "At seed42, KD exceeded the matched CE continuation on clean, global DSM down8 and global DSM zero. SAFE did not consistently improve on KD.",
+      "evidence_status": "user_supplied_terminal_metrics_compact_transcription_committed_original_artifacts_on_server",
       "fingerprint": "potsdam_train16_val2_seed42_r05init_4k_b1_distillation_v1",
       "purpose": "Compare matched CE continuation, safe-teacher KD and KD with an explicit Optical fallback constraint.",
       "records": [
         "configs/rebuild_v1/b1_c_ce_control_4k.json",
         "configs/rebuild_v1/b1_kd_safe_teacher_4k.json",
         "configs/rebuild_v1/b1_safe_fallback_4k.json",
+        "records/rebuild_v1_b2_b3_compact_20260921/global_metrics.csv",
+        "docs/experiments/B2_B3_RESULTS_20260921.md"
+      ],
+      "expected_server_records": [
+        "records/rebuild_v1_b1_c_robust_eval_20260920/",
+        "records/rebuild_v1_b1_kd_robust_eval_20260920/",
+        "records/rebuild_v1_b1_safe_robust_eval_20260920/"
+      ],
+      "result_summary": {
+        "split": "Val2_noboundary",
+        "metric": "mIoU_fg5_percent",
+        "C_clean_down8_zero": [86.9976, 85.69, 83.0949],
+        "KD_clean_down8_zero": [87.2223, 86.2175, 83.7867],
+        "SAFE_clean_down8_zero": [87.2998, 86.3802, 83.6187],
+        "test6_loaded": false
+      },
+      "decision": "Continue KD as the primary reliability-teacher arm. Do not continue SAFE without new evidence."
+    },
+    {
+      "id": "B2",
+      "name": "teacher_target_control_queue",
+      "status": "reported_complete",
+      "evidence_status": "user_supplied_terminal_metrics_compact_transcription_committed_original_artifacts_on_server",
+      "fingerprint": "potsdam_train16_val2_seed42_r05init_4k_r05_teacher_average_teacher_controls_v1",
+      "purpose": "Separate reliability-aware teacher-target selection from generic R05-teacher distillation and simple probability averaging.",
+      "started_at": "2026-09-20T23:34:59+08:00",
+      "completed_at": "2026-09-21T05:34:42+08:00",
+      "time_source": "user-supplied queue log",
+      "records": [
+        "records/rebuild_v1_b2_b3_compact_20260921/global_metrics.csv",
+        "records/rebuild_v1_b2_b3_compact_20260921/README.md",
+        "docs/experiments/B2_B3_RESULTS_20260921.md"
+      ],
+      "expected_server_records": [
+        "records/rebuild_v1_b2_night20260920_v1/"
+      ],
+      "result_summary": {
+        "split": "Val2_noboundary",
+        "metric": "mIoU_fg5_percent",
+        "R05_KD_clean_down8_zero": [87.444, 85.9955, 83.6299],
+        "AVG_KD_clean_down8_zero": [87.2595, 86.0029, 83.5725],
+        "test6_loaded": false
+      },
+      "decision": "KD is lower than R05_KD on clean but higher under down8 and zero. AVG_KD has no consistent advantage. Proceed to paired diagnostics and independent-seed replication."
+    },
+    {
+      "id": "B3",
+      "name": "paired_local_degradation_diagnostic",
+      "status": "reported_complete",
+      "evidence_status": "user_supplied_terminal_metrics_compact_transcription_committed_original_artifacts_on_server",
+      "fingerprint": "potsdam_val2_seed42_c_kd_safe_r05kd_avgkd_paired_regions_v1",
+      "purpose": "Compare corrupt-minus-clean performance on identical damaged and boundary pixels to distinguish damage sensitivity from intrinsic regional difficulty.",
+      "records": [
+        "records/rebuild_v1_b2_b3_compact_20260921/paired_family_metrics.csv",
+        "records/rebuild_v1_b2_b3_compact_20260921/paired_tile_metrics.csv",
+        "records/rebuild_v1_b2_b3_compact_20260921/README.md",
+        "docs/experiments/B2_B3_RESULTS_20260921.md"
+      ],
+      "expected_server_records": [
+        "records/rebuild_v1_b3_paired_20260921/"
+      ],
+      "result_summary": {
+        "split": "Val2_noboundary",
+        "metric": "paired_delta_mIoU_fg5_pp",
+        "kd_better_than_r05kd_comparisons": 8,
+        "total_tile_family_region_comparisons": 8,
+        "improvement_range_pp": [0.0192, 3.2908],
+        "test6_loaded": false
+      },
+      "decision": "Reliability-aware KD consistently degrades less than ordinary R05-teacher KD within seed42, but absolute gains over CE are mixed for local missing boundaries. Boundary is secondary; replicate seed17."
+    },
+    {
+      "id": "B4",
+      "name": "seed17_reliability_teacher_replication",
+      "status": "running_as_last_reported",
+      "launch_commit": "bae3462403e309cd81185e70028e0825455f9df4",
+      "evidence_status": "user_supplied_launcher_log_last_observed_2026-09-21T17:25:17+08:00",
+      "fingerprint": "potsdam_train16_val2_seed17_r05init_4k_c_r05kd_kd_paired_v1",
+      "purpose": "Replicate the seed42 distinction among CE continuation, generic R05-teacher distillation and reliability-aware teacher-target selection.",
+      "started_at": "2026-09-21T17:22:07+08:00",
+      "completed_at": null,
+      "time_source": "user-supplied launcher log",
+      "records": [
         "docs/current/NEXT_EXPERIMENT.md",
         "docs/current/HANDOFF.md",
-        "records/rebuild_v1_handoff_20260920/user_reported_snapshot.json"
+        "scripts/run_rebuild_v1_b4_seed17.py"
       ],
-      "decision": "Await results without restarting or changing the running protocol. Original summary Boolean is advisory; compare C/KD/SAFE before further experiments."
+      "expected_server_records": [
+        "records/rebuild_v1_b4_seed17_20260921/",
+        "records/rebuild_v1_b4_seed17_20260921_launcher.log",
+        "records/rebuild_v1_b4_seed17_20260921.pid"
+      ],
+      "last_observed": {
+        "at": "2026-09-21T17:25:17+08:00",
+        "stage": "C17_TRAIN_STARTED",
+        "gpu": "physical GPU 0; NVIDIA H100 80GB HBM3; logical cuda:0"
+      },
+      "planning_eta": "2026-09-22T01:20:00+08:00 to 2026-09-22T02:20:00+08:00",
+      "hard_launcher_deadline": "approximately 2026-09-22T05:22:07+08:00",
+      "decision": "Do not infer completion from time. Verify all stages, step 4000, test6_loaded=false and final queue markers before updating the thesis conclusion."
     }
   ],
   "handoff_entry": "docs/START_HERE.md",
