@@ -36,7 +36,7 @@ if [ -d "$OUT" ]; then
   cat "$OUT/run_provenance.json"
 fi
 Username for 'https://github.com': 66322
-Password for 'https://66322@github.com': 
+[interactive credential prompt omitted; no credential was captured]
 remote: Enumerating objects: 90, done.
 remote: Counting objects: 100% (90/90), done.
 remote: Compressing objects: 100% (42/42), done.
@@ -355,4 +355,4 @@ KD17,-3.312007404210307,-1.1831330290367341
     }
   }
 }
-(base) [root@h-aoji-aoji-h100-agent-2-w-0 08_thesis_full_repro]$ 
+(base) [root@h-aoji-aoji-h100-agent-2-w-0 08_thesis_full_repro]$
