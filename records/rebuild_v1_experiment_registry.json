@@ -555,6 +555,25 @@
       "provenance_note": "The trainers reported Git HEAD abb3d97 while later B4 files were selectively installed. Server preflight source hashes are authoritative for executed source identity.",
       "decision": "Global down8/zero ordering over R05_KD repeats, but both paired local damaged-region directions reverse. Close the current SafeMaxConfidence distillation route as the proposed main method; retain B1-B4 as mechanism, ablation and negative-result evidence.",
       "gate_status": "failed"
+    },
+    {
+      "id": "D7",
+      "name": "data_sampling_scale_semantic_boundary_audit",
+      "status": "planned",
+      "evidence_status": "protocol_and_queue_committed_results_pending",
+      "fingerprint": "potsdam_train16_val2_r01_r05_seed42_seed17_class_crop_component_boundary_audit_v1",
+      "purpose": "Determine whether class imbalance, random-crop exposure, connected-object size, semantic boundaries, or class-specific DSM degradation justify a controlled training intervention.",
+      "protocol": "docs/protocols/D7_DATA_SCALE_BOUNDARY_AUDIT.md",
+      "queue": "scripts/run_rebuild_v1_d7_audit_queue_20260922.sh",
+      "expected_server_records": [
+        "records/rebuild_v1_d7_data_sampling_20260922/",
+        "records/rebuild_v1_d7_semantic_errors_seed42_20260922/",
+        "records/rebuild_v1_d7_semantic_errors_seed17_20260922/",
+        "records/rebuild_v1_d7_summary_20260922/"
+      ],
+      "test6_policy": "prohibited",
+      "training": false,
+      "decision": "Pending. D7 flags may authorize a small matched R01 screen but cannot establish a paper claim."
     }
   ],
   "handoff_entry": "docs/START_HERE.md",

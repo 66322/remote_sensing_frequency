@@ -75,3 +75,26 @@ global degradation direction but fails both local damaged-region criteria, so th
 SafeMaxConfidence distillation route is closed as the proposed main method. Do not
 rerun it unchanged. Audit the evidence and design a materially different next gate
 before using GPU0.”
+# Immediate handoff: D7 diagnostic audit
+
+The completed B4 gate remains failed and no new model training is authorized. The
+next runnable work is D7, a no-training audit of Train16 class/crop exposure and
+existing R01/R05 seed42/17 errors by semantic class, connected-object size and
+true label boundary. See `docs/protocols/D7_DATA_SCALE_BOUNDARY_AUDIT.md`.
+
+Server launch:
+
+```bash
+cd /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+git pull origin rebuild-v1-protocol-20260915
+conda activate remote_sensing
+mkdir -p records/rebuild_v1_d7_queue_20260922
+nohup bash scripts/run_rebuild_v1_d7_audit_queue_20260922.sh \
+  > records/rebuild_v1_d7_queue_20260922/launcher.log 2>&1 &
+echo $!
+```
+
+Progress is recorded in
+`records/rebuild_v1_d7_queue_20260922/status.tsv`. Each failed stage is recorded
+and skipped so the queue cannot remain stuck on one diagnostic. The queue uses
+physical GPU 0 only for inference; the data audit and summary are CPU stages.

@@ -2,7 +2,7 @@
 
 - Updated: 2026-09-22
 - Active branch: `rebuild-v1-protocol-20260915`
-- Current line: completed reliability-aware distillation audit; no next method queued
+- Current line: completed reliability-aware distillation audit; D7 no-training data/error audit prepared
 - Dataset/split: ISPRS Potsdam Train16 -> Val2 (`3_11`, `5_10`)
 - Primary metric: Val2 `mIoU_fg5(noboundary)`
 - Historical TEST6: prohibited for training, selection and current diagnostics
@@ -106,3 +106,9 @@ The current SafeMaxConfidence distillation implementation is closed as the propo
 main method. B1–B4 may be retained as mechanism, ablation and negative-result
 evidence. A new main-method experiment requires a changed reliability design and a
 new frozen evaluation source rather than another identical Val2 rerun.
+
+D7 is the immediate diagnostic gate. It measures class and crop exposure on
+Train16 and evaluates existing R01/R05 checkpoints by class, connected-object size
+and true semantic boundary. D7 does not train or select a new model, and its Val2
+flags remain exploratory. Protocol:
+`docs/protocols/D7_DATA_SCALE_BOUNDARY_AUDIT.md`.

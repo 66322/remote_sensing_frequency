@@ -1,6 +1,6 @@
 # Next experiment decision after B4
 
-- Status: no GPU experiment queued
+- Status: D7 diagnostic queue prepared; no new model training approved
 - Last completed gate: B4 seed17 replication
 - Decision: current SafeMaxConfidence distillation route is closed as the proposed
   main method because the documented local replication criteria failed
@@ -46,3 +46,16 @@ Queue a new run only after the method differs materially from B1–B4, all contr
 are specified, the evaluation data are frozen, and success thresholds are written
 before results are viewed. Until then, the correct next action is paper/evidence
 consolidation and protocol design, not another training queue.
+
+## Immediate diagnostic: D7
+
+D7 audits Train16 class/crop exposure and existing R01/R05 seed42/17 errors by
+class, connected-object size and true semantic boundary under clean, DSM down8 and
+DSM zero. It performs no training and does not reopen the closed B1–B4 method.
+
+Protocol: `docs/protocols/D7_DATA_SCALE_BOUNDARY_AUDIT.md`.
+
+Only after D7 is summarized may one small R01 training screen be specified. The
+screen must isolate sampling from loss design and retain a matched CE control. D7
+Val2 flags alone cannot support paper claims or replace a new frozen evaluation
+source.
