@@ -34,3 +34,9 @@ Based on the completed queue timing and the number of B4 stages, the planning es
 ## After completion
 
 Extract compact global, paired damaged/boundary and per-class comparisons; verify step 4000 and `test6_loaded=false`; record failures/skips; then update GitHub before launching another line. Preserve original outputs on the server and commit only compact evidence plus provenance.
+
+Use `python scripts/archive_rebuild_v1_b4_seed17.py` for this closeout. It validates
+the full queue and creates `records/rebuild_v1_b4_seed17_compact_20260922/` without
+rerunning evaluation or copying model weights. Do not manually transcribe the B4
+headline numbers if this validated package can be generated from the original
+server artifacts.
