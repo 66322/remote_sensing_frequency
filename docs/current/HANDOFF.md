@@ -1,68 +1,77 @@
-# Current handoff — 2026-09-21
+# Current handoff — 2026-09-22
 
 ## Read this first on another computer
 
 - Branch: `rebuild-v1-protocol-20260915`
 - Repository: https://github.com/66322/remote_sensing_frequency/tree/rebuild-v1-protocol-20260915
-- Current completed evidence: `records/rebuild_v1_b2_b3_compact_20260921/`
-- Interpretation and thesis boundary: `docs/experiments/B2_B3_RESULTS_20260921.md`
-- Current experiment: B4 seed17 replication; do not restart it based only on this handoff.
+- B1–B3 evidence: `records/rebuild_v1_b2_b3_compact_20260921/`
+- B4 evidence: `records/rebuild_v1_b4_seed17_compact_20260922/`
+- B4 report: `docs/experiments/B4_SEED17_REPLICATION_20260921.md`
+- Current state: B4 is complete and its documented decision gate failed.
+- No GPU experiment is currently queued by this handoff.
 
-GitHub preserves the committed compact data, code, decisions and server-path index across computers. It does not contain the large checkpoints or automatically read future server outputs. Those remain under `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro`. After B4 finishes, supply the final launcher/summary output to Codex and commit a new compact result package before changing the active machine if possible.
+GitHub contains compact metrics, decisions, timestamps and checkpoint references.
+Large checkpoints, complete logs, full per-condition CSV files and confusion matrices
+remain under `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro` on the experiment
+server. Missing GitHub copies are not a reason to rerun completed work.
 
-## Completed state
+## Completed B1–B3 state
 
-B1/B2/B3 are complete as reported by the user. The seed42 headline is:
+Seed42 KD minus C is +0.2247 pp clean, +0.5275 pp down8 and +0.6918 pp
+DSM-zero. Compared with R05_KD, KD is -0.2217 pp clean but +0.2220 pp down8
+and +0.1568 pp zero. Its paired local drops are smaller than R05_KD in all eight
+reported seed42 tile/family/region summaries. SAFE and AVG_KD do not provide a
+consistent additional benefit.
 
-- KD minus C: +0.2247 pp clean, +0.5275 pp DSM down8, +0.6918 pp DSM zero.
-- R05_KD minus KD: +0.2217 pp clean, -0.2220 pp DSM down8, -0.1568 pp DSM zero.
-- SAFE minus KD: +0.0775 pp clean, +0.1627 pp down8, -0.1679 pp zero; no consistent extra benefit.
-- In B3 paired local evaluation, KD degrades less than R05_KD in all eight tile x family x region comparisons.
-- KD versus CE is mixed on local missing boundaries; do not claim complete missing-modality robustness.
+These are stage results on the repeatedly used two-tile Val2 development split.
 
-The compact files are transcriptions of user-supplied terminal output. Original server artifacts take precedence and should be archived later with hashes when convenient; missing GitHub copies are not a reason to rerun completed experiments.
+## Completed B4 state
 
-## Running state
+B4 ran from 2026-09-21 17:22:07 to 2026-09-22 01:29:52 +08:00. All three
+smokes, 4000-step trainings, global robustness evaluations and paired local
+evaluations completed. TEST6 was not loaded.
 
-Last observed at 2026-09-21 17:25:17 +08:00:
+| Arm | clean | DSM down8 | DSM zero |
+|---|---:|---:|---:|
+| C17 | 86.6027 | 84.9647 | 83.3285 |
+| R05_KD17 | 86.1756 | 84.9972 | 83.1646 |
+| KD17 | 86.6258 | 85.2065 | 83.2083 |
 
-- B4 queue started at 17:22:07.
-- `C17_SMOKE` completed successfully at 17:25:15.
-- `C17_TRAIN` started at 17:25:17.
-- Physical GPU: 0, NVIDIA H100 80GB HBM3; logical device `cuda:0`.
-- Queue root: `records/rebuild_v1_b4_seed17_20260921/`.
-- Launcher log: `records/rebuild_v1_b4_seed17_20260921_launcher.log`.
-- PID file: `records/rebuild_v1_b4_seed17_20260921.pid`.
-- Planning ETA: 2026-09-22 01:20–02:20 +08:00; hard 12-hour limit near 05:22.
+KD17 minus R05_KD17 is +0.4502 pp clean, +0.2093 pp down8 and +0.0438 pp
+zero. The global degradation ordering repeats, although the zero advantage is tiny.
 
-This is not live status. A new session must inspect fresh output supplied by the user.
+For paired local damaged regions, KD17 is 0.2855 pp worse than R05_KD17 under
+local missing and 0.0372 pp worse under local down8. Both local directions reverse
+seed42. KD17 is also 0.1202 pp below C17 on global DSM-zero.
 
-## B4 scientific gate
+## Decision
 
-B4 compares only C17, R05_KD17 and KD17 under a matched seed17 protocol:
+The frozen B4 gate fails. The defensible finding is a small global degradation
+trend that repeats across two seeds, combined with a local mechanism result that
+does not replicate. Do not present the current SafeMaxConfidence distillation as a
+validated local reliability method, automatic missing detector, Optical fallback or
+generally superior robust model.
 
-1. C17 controls for continued CE training.
-2. R05_KD17 measures generic distillation from the dual-modal R05 teacher.
-3. KD17 measures the additional effect of SafeMaxConfidence teacher-target selection.
+B1–B4 are closed as mechanism/ablation evidence for the current implementation.
+Any next main-method experiment must change the reliability design and use a new
+frozen evaluation source. Repeating the same models on Val2 or extending their
+training budget is not justified by B4.
 
-The primary decision uses clean/down8/zero global metrics and paired local damaged-region changes. Boundary and per-class scores are diagnostic. If KD17 retains the DSM-degradation advantage over R05_KD17, the reliability-teacher mechanism can enter the main thesis result. If the direction reverses, seed42 must be reported as exploratory.
+## Provenance caveat
 
-## Required completion check
+The B4 trainers reported Git HEAD `abb3d97`, while later B4 files had been installed
+selectively on the server. The preflight source hashes retained in the original
+server package are authoritative for executed code identity. The compact GitHub
+package was reconstructed from validated archiver output supplied by the user;
+checkpoint paths and SHA256 values are in `run_provenance.json`.
 
-Do not infer completion from elapsed time. Confirm:
+## Reusable prompt
 
-1. launcher reports success for each intended stage rather than FAILED/SKIPPED;
-2. each trained arm reached expected step 4000;
-3. `test6_loaded` is false;
-4. robust and paired summary files exist for C17, R05_KD17 and KD17;
-5. final markers include `B4_SEED17_SUMMARY_COMPLETE`, `SUMMARIZE COMPLETE` and `QUEUE COMPLETE`.
-
-Then commit aggregate CSV/JSON, configuration/checkpoint identity, timestamps, conclusion, original server paths and hashes where available. Do not commit weights, datasets or large prediction arrays.
-
-## Non-negotiable execution constraints
-
-Use physical GPU 0 only with `CUDA_VISIBLE_DEVICES=0`. Keep persistent outputs under `/home/jovyan/zzx`. Historical TEST6 is prohibited. Raw datasets and pretrained assets are read-only. Failed experiments move on and are not automatically retried.
-
-## Reusable prompt on the second computer
-
-“Read `docs/START_HERE.md`, `docs/current/HANDOFF.md`, and `docs/experiments/B2_B3_RESULTS_20260921.md` on branch `rebuild-v1-protocol-20260915`. B1/B2/B3 are complete; B4 seed17 was last observed running on GPU 0. Do not repeat completed experiments. I will paste the fresh B4 launcher and summary output; verify completion, extract compact metrics, update the registry/status/handoff, and commit the result package to GitHub.”
+“Read `docs/START_HERE.md`, `docs/current/HANDOFF.md`,
+`docs/experiments/B2_B3_RESULTS_20260921.md`, and
+`docs/experiments/B4_SEED17_REPLICATION_20260921.md` on branch
+`rebuild-v1-protocol-20260915`. B1–B4 are complete. B4 partially repeats the
+global degradation direction but fails both local damaged-region criteria, so the
+SafeMaxConfidence distillation route is closed as the proposed main method. Do not
+rerun it unchanged. Audit the evidence and design a materially different next gate
+before using GPU0.”

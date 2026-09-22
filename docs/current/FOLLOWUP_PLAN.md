@@ -1,81 +1,64 @@
-# Conditional follow-up plan — 2026-09-20
+# Conditional follow-up plan — 2026-09-22
 
-Status: proposals only. B1 is running; no results or automatic new launches.
-Maintain GPU 0, zzx boundary, failure-continue policy and historical TEST6 exclusion.
+Status: B1–B4 complete; no GPU experiment queued. Maintain physical GPU0,
+`/home/jovyan/zzx` persistence, failure-continue behavior and historical TEST6
+exclusion for any later work.
 
-## P0 — Close and archive the running B1 pilot
+## P0 — Consolidate the completed evidence
 
-Read C, KD and SAFE full results, not just the summary Boolean. Preserve the
-original 4k schedule, clean-checkpoint rule and exploratory thresholds. Save
-all outcomes, including failures. Compare each arm to C and the two-expert
-teacher; report the clean/zero/down8 trade-off rather than only its average.
+- Treat B4 as partial global replication and failed local mechanism replication.
+- Preserve original B1–B4 logs, CSV files, preflight hashes and checkpoints on the
+  server; GitHub stores compact evidence and checkpoint references only.
+- Use tiles/scenes as evaluation units. Quadrants and pixels are repeated
+  measurements, not independent replicates.
+- Keep seed42 local results as exploratory rather than averaging away the seed17
+  reversal.
 
-If KD matches or beats SAFE, prefer the simpler KD unless local evidence
-supports the extra weighting. If both fail to improve over C, do not
-automatically extend to 16k; inspect learning curves and condition failures.
-A passing SAFE flag does not authorize selecting it over better KD.
+## P1 — Low-cost mechanism audit before training
 
-## P1 — Low-cost fairness checks, no new training
+- Measure R01/R05 confidence calibration by condition and class. Raw maximum
+  softmax values from independently trained teachers are not automatically
+  comparable.
+- Quantify how often SafeMaxConfidence chooses each teacher and whether those
+  choices improve correctness, separately inside and outside known synthetic masks.
+- Separate explicit augmentation masks, exact-zero inference and real metadata
+  validity masks. Exact zero-fill recognition is not general missing-data detection.
+- Recheck clean, zero, down8 and local results at matched checkpoint steps where
+  retained checkpoints permit it, so early checkpoint selection is not confused
+  with the teacher mechanism.
 
-- Compare safe_max_confidence, safe_prob_avg, safe_prob_alpha25 and
-  safe_min_entropy with identical missing-region fallback, on both existing seeds.
-- Add deterministic condition-rule fallback as a deployment baseline.
-- Evaluate all completed B1 arms on local missing/degraded masks; report whole
-  image, damaged, intact and boundary-adjacent regions plus class-level results.
-- Report family mean, worst condition, and per-condition gains over R01/R05.
-  Define aggregation before inspecting results.
-- Separate known valid-mask use from inferred-zero use. Check natural zero
-  false positives and metadata masks; general missing detection is a separate task.
-- Benchmark R01, R05, the two-expert system and student using the same input,
-  hardware, warmup, repeats, preprocessing and timing scope. Report train cost too.
+These analyses may reuse predictions/checkpoints, but their protocol and output
+paths must be reviewed before execution.
 
-These checks reuse existing checkpoints. Running scripts must first be
-implemented and reviewed; this document is not a claim that they already exist.
+## P2 — Requirements for a materially new method
 
-## P2 — Mechanism controls only if distillation shows benefit
+A new training line must isolate:
 
-Freeze identical initialization, treatments, continuation budget and seeds:
-(a) ordinary R05-teacher KL, and
-(b) matched safe-average-teacher KL.
-These distinguish distillation benefits from the particular teacher routing
-rule. Existing C/KD/SAFE isolates continuation and missing-region reweighting.
+1. ordinary R05-teacher KD;
+2. mask-only supervision using R01 inside known missing masks and fixed R05 outside;
+3. confidence-only selection without the synthetic missing mask;
+4. the proposed calibrated reliability or explicit Optical-anchor method;
+5. matched CE continuation.
 
-If simpler controls match the candidate, simplify the method and reduce
-novelty claims. Do not add frequency/alignment/gating blocks to rescue a name.
+The deployable method may use only information available at inference. A synthetic
+training mask can supervise learning but cannot be presented as a learned detector
+or test-time fallback signal.
 
-## P3 — Independent evidence after selecting a method
+## P3 — Independent evidence
 
-- Fix the method, hyperparameters and checkpoint selection before replication.
-- Run seed17 then a third prespecified seed for the candidate and essential
-  controls, not every historical ablation.
-- Choose a second Optical/DSM dataset with a documented train/validation/test
-  policy. Audit historical Vaihingen exposure before treating any split as new.
-- Prespecify unseen mask shapes/severities and distinct DSM corruption types.
-  Prefer documented real NoData/quality issues where available.
-- Include FullGT and NoBoundary, per-class IoU, damaged/intact metrics and
-  efficiency; report sample units and uncertainty honestly.
-- Historical Potsdam TEST6 remains exposed and cannot become an honest sealed test.
-- Any longer training schedule must state whether it is fresh training or
-  continuation, specify total history/cost, and retain a matched control.
-  There is no automatic “pilot passed, therefore add 16k” rule.
+- Freeze method, hyperparameters, checkpoint rule and success thresholds before
+  viewing new results.
+- Use a second Optical/DSM dataset or previously untouched scenes. Audit historical
+  exposure before calling any split unseen.
+- Add a third random seed only for the selected method and essential controls.
+- Include clean, missing, degraded and local failures; report per-class and
+  damaged/intact metrics plus efficiency.
+- Historical Potsdam TEST6 is exposed and cannot serve as a sealed test.
 
-## Related-work priorities and claim boundary
+## Claim boundary
 
-Closest verified examples include OGP-Net (AAAI 2025), sensor-failure benchmarking
-(CVPR Workshops 2025), DIS2 (WACV Workshops 2026), STARS (January 2026 preprint),
-and Multi-to-Uni Modality Knowledge Distillation for Remote Sensing Image
-Semantic Segmentation (online August 2026).
-Implementations and protocols must be checked before numeric comparison.
-Select a feasible directly comparable robust-segmentation baseline, not only
-ordinary clean-fusion networks. Paper-table scores on other splits are not
-comparable to this Val2 score.
-
-- https://ojs.aaai.org/index.php/AAAI/article/view/32743
-- https://openaccess.thecvf.com/content/WACV2026W/CV4EO/papers/Kieu_DIS2_Disentanglement_Meets_Distillation_with_Classwise_Attention_for_Robust_Remote_WACVW_2026_paper.pdf
-- https://arxiv.org/abs/2601.17342
-- https://doi.org/10.1016/j.inffus.2026.104696
-
-A possible research claim is reducing negative transfer from spatially failing
-DSM while retaining its useful contribution with single-model inference.
-It is a hypothesis, not an established innovation. Current evidence supports
-development diagnostics, not an acceptance probability or guaranteed journal tier.
+The retained evidence supports the problem statement that DSM is useful under some
+degradations yet harmful when absent, and that teacher-target choice can slightly
+change global robustness. It does not establish a cross-seed local reliability
+mechanism, automatic missing detection, Optical fallback, cross-dataset robustness
+or a final publication-ready main method.

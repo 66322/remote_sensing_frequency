@@ -4,11 +4,11 @@ This is the mandatory entry point for every new conversation, computer and
 experiment.
 
 Research branch: `rebuild-v1-protocol-20260915`; GitHub defaults to `main`.
-Read `docs/current/HANDOFF.md` first for the last observed server state and
-evidence provenance. On 2026-09-21 B1/B2/B3 are reported complete and their
-compact metrics are committed; B4 seed17 is running as last observed.
-Code updates or elapsed time do not imply experiment completion.
-Do not launch a duplicate queue based on a stale conversation snapshot.
+Read `docs/current/HANDOFF.md` first for the current evidence and decision boundary.
+As of 2026-09-22, B1–B4 are complete and their compact metrics are committed. B4
+partially repeats the global degradation trend but fails both local damaged-region
+replication criteria. No GPU experiment is currently queued. Do not rerun the
+unchanged SafeMaxConfidence distillation route from a stale conversation snapshot.
 
 ## Mandatory execution rules
 

@@ -1,0 +1,20 @@
+{
+  "observed_at": "2026-09-22T01:29:52+08:00",
+  "statuses": {
+    "QUEUE": "COMPLETE",
+    "C17_SMOKE": "COMPLETE",
+    "C17_TRAIN": "COMPLETE",
+    "C17_ROBUST": "COMPLETE",
+    "C17_PAIRED": "COMPLETE",
+    "R05_KD17_SMOKE": "COMPLETE",
+    "R05_KD17_TRAIN": "COMPLETE",
+    "R05_KD17_ROBUST": "COMPLETE",
+    "R05_KD17_PAIRED": "COMPLETE",
+    "KD17_SMOKE": "COMPLETE",
+    "KD17_TRAIN": "COMPLETE",
+    "KD17_ROBUST": "COMPLETE",
+    "KD17_PAIRED": "COMPLETE",
+    "SUMMARIZE": "COMPLETE"
+  },
+  "test6_loaded": false
+}

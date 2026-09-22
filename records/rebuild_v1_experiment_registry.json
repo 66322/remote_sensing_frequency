@@ -2,7 +2,7 @@
   "schema_version": "1.2",
   "project": "REBUILD_V1",
   "timezone": "UTC+08:00",
-  "last_updated": "2026-09-21",
+  "last_updated": "2026-09-22",
   "status_provenance_policy": "reported_complete and running_as_last_reported are user observations, not live server verification. expected_server_records are absent artifacts to collect, not archived evidence.",
   "timing_policy": {
     "started_at": "Actual launch time when directly evidenced; otherwise date/minute precision is stated explicitly.",
@@ -494,32 +494,67 @@
     {
       "id": "B4",
       "name": "seed17_reliability_teacher_replication",
-      "status": "running_as_last_reported",
+      "status": "complete",
       "launch_commit": "bae3462403e309cd81185e70028e0825455f9df4",
-      "evidence_status": "user_supplied_launcher_log_last_observed_2026-09-21T17:25:17+08:00",
+      "trainer_reported_git_commit": "abb3d97f3f5d8f4b145c54bfe87bed0a12c6e187",
+      "evidence_status": "validated_server_archiver_output_compact_transcription_committed_original_artifacts_on_server",
       "fingerprint": "potsdam_train16_val2_seed17_r05init_4k_c_r05kd_kd_paired_v1",
-      "purpose": "Replicate the seed42 distinction among CE continuation, generic R05-teacher distillation and reliability-aware teacher-target selection.",
+      "purpose": "Replicate the seed42 distinction among CE continuation, generic R05-teacher distillation and SafeMaxConfidence teacher-target selection.",
       "started_at": "2026-09-21T17:22:07+08:00",
-      "completed_at": null,
-      "time_source": "user-supplied launcher log",
+      "completed_at": "2026-09-22T01:29:52+08:00",
+      "recorded_at": "2026-09-22",
+      "time_source": "validated queue status and per-run summaries supplied from the experiment server",
       "records": [
-        "docs/current/NEXT_EXPERIMENT.md",
-        "docs/current/HANDOFF.md",
-        "scripts/run_rebuild_v1_b4_seed17.py"
+        "records/rebuild_v1_b4_seed17_compact_20260922/",
+        "docs/experiments/B4_SEED17_REPLICATION_20260921.md"
       ],
-      "expected_server_records": [
+      "server_records": [
         "records/rebuild_v1_b4_seed17_20260921/",
-        "records/rebuild_v1_b4_seed17_20260921_launcher.log",
-        "records/rebuild_v1_b4_seed17_20260921.pid"
+        "records/rebuild_v1_b4_seed17_compact_20260922/",
+        "runs/rebuild_v1/B1_C_ce_control_seed17_sched4000_stop4000_seed17_20260921/",
+        "runs/rebuild_v1/B2_R05_teacher_seed17_sched4000_stop4000_seed17_20260921/",
+        "runs/rebuild_v1/B1_KD_safe_teacher_seed17_sched4000_stop4000_seed17_20260921/"
       ],
-      "last_observed": {
-        "at": "2026-09-21T17:25:17+08:00",
-        "stage": "C17_TRAIN_STARTED",
-        "gpu": "physical GPU 0; NVIDIA H100 80GB HBM3; logical cuda:0"
+      "result_summary": {
+        "split": "Val2_noboundary",
+        "metric": "mIoU_fg5_percent",
+        "C17_clean_down8_zero": [
+          86.60273449756119,
+          84.9647477845305,
+          83.32852149386753
+        ],
+        "R05_KD17_clean_down8_zero": [
+          86.17555326807052,
+          84.99722021842243,
+          83.16455178727848
+        ],
+        "KD17_clean_down8_zero": [
+          86.62576090236198,
+          85.2065092677648,
+          83.20830219306372
+        ],
+        "KD17_minus_R05_KD17_pp": {
+          "clean": 0.45020763429145916,
+          "dsm_down8": 0.2092890493423738,
+          "dsm_zero": 0.04375040578523226,
+          "local_missing_damaged_drop_improvement": -0.28554068587224046,
+          "local_down8_damaged_drop_improvement": -0.03718994711655865
+        },
+        "KD17_minus_C17_pp": {
+          "clean": 0.023026404800788214,
+          "dsm_down8": 0.24176148323429913,
+          "dsm_zero": -0.12021930080381082,
+          "local_missing_damaged_drop_improvement": -0.2251511811156539,
+          "local_down8_damaged_drop_improvement": 0.16675781189257632
+        },
+        "all_12_stages_complete": true,
+        "all_formal_runs_step": 4000,
+        "test6_loaded": false,
+        "replication_gate_pass": false
       },
-      "planning_eta": "2026-09-22T01:20:00+08:00 to 2026-09-22T02:20:00+08:00",
-      "hard_launcher_deadline": "approximately 2026-09-22T05:22:07+08:00",
-      "decision": "Do not infer completion from time. Verify all stages, step 4000, test6_loaded=false and final queue markers before updating the thesis conclusion."
+      "provenance_note": "The trainers reported Git HEAD abb3d97 while later B4 files were selectively installed. Server preflight source hashes are authoritative for executed source identity.",
+      "decision": "Global down8/zero ordering over R05_KD repeats, but both paired local damaged-region directions reverse. Close the current SafeMaxConfidence distillation route as the proposed main method; retain B1-B4 as mechanism, ablation and negative-result evidence.",
+      "gate_status": "failed"
     }
   ],
   "handoff_entry": "docs/START_HERE.md",

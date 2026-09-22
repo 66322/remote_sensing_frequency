@@ -3,10 +3,9 @@
 Before launching work, compare the proposed experiment with this file and
 `records/rebuild_v1_experiment_registry.json`.
 
-Follow-up completion is user-reported; original artifacts await archival.
+Follow-up completion is user-reported; original large artifacts remain on the server.
 Missing GitHub evidence is a reason to archive outputs, not rerun experiments.
-B1/B2/B3 are complete. B4 seed17 is running as last observed; do not start a
-duplicate queue.
+B1–B4 are complete. No duplicate B4 queue or unchanged follow-up is justified.
 
 ## Closed historical directions
 
@@ -48,6 +47,8 @@ Do not rerun the same dataset, split, seed, schedule and configuration:
 - B2 seed42 R05-teacher and average-teacher controls;
 - B3 seed42 paired damaged/boundary regional diagnostics for C, KD, SAFE,
   R05_KD and AVG_KD.
+- B4 seed17 matched C/R05_KD/KD 4k continuation, global robustness and paired
+  local damaged-region replication.
 
 ## Important negative or limiting findings
 
@@ -80,7 +81,14 @@ Do not rerun the same dataset, split, seed, schedule and configuration:
 - B1 SAFE does not consistently improve on KD; do not repeat it unchanged.
 - B2 AVG_KD does not consistently improve on KD; do not repeat it unchanged.
 - B3 supports KD over R05_KD within seed42, but local missing boundaries remain
-  mixed against CE. Do not promote this to a cross-seed claim before B4 ends.
+  mixed against CE.
+- B4 repeats the small KD-over-R05_KD global down8/zero direction but reverses both
+  paired local damaged-region directions. The documented B4 decision gate fails.
+- KD17 is 0.1202 pp below C17 on global DSM-zero. Do not claim the current KD is a
+  generally superior robust model.
+- Do not repeat or extend the unchanged SafeMaxConfidence distillation route. A new
+  run requires a materially changed reliability design and a new frozen evaluation
+  source.
 
 ## Legitimate reasons to rerun
 

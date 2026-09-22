@@ -1,14 +1,14 @@
 # Current Project Status
 
-- Updated: 2026-09-21
+- Updated: 2026-09-22
 - Active branch: `rebuild-v1-protocol-20260915`
-- Current line: reliability-aware distillation under RGB–DSM degradation
+- Current line: completed reliability-aware distillation audit; no next method queued
 - Dataset/split: ISPRS Potsdam Train16 -> Val2 (`3_11`, `5_10`)
 - Primary metric: Val2 `mIoU_fg5(noboundary)`
 - Historical TEST6: prohibited for training, selection and current diagnostics
 - Execution device: physical GPU 0 only (`CUDA_VISIBLE_DEVICES=0`)
 
-Evidence provenance: core results and compact B2/B3 transcriptions are committed. The B2/B3 compact files were transcribed from user-supplied server terminal output; original logs, CSV files, confusion matrices and checkpoints remain on the server and take precedence if a discrepancy is found.
+Evidence provenance: core results plus compact B2/B3/B4 transcriptions are committed. The compact files were reconstructed from user-supplied validated server output; original logs, full CSV files, confusion matrices and checkpoints remain on the server and take precedence if a discrepancy is found.
 
 ## Completed core results
 
@@ -57,32 +57,52 @@ B3 compares corrupt and clean predictions on the same pixels. KD has a smaller m
 
 The absolute comparison against CE remains mixed. For local missing, pooled KD is only +0.0551 pp better than C in the damaged region and 2.6510 pp worse at the boundary. For local down8, KD improves the pooled damaged and boundary drops by 0.3326 and 1.8050 pp. Boundary results are secondary diagnostics because the thin regions have volatile class support.
 
+## B4 completed seed17 replication
+
+B4 ran C17, R05_KD17 and KD17 with matched seed17 initialization, augmentation,
+budget and selection protocol. The queue completed all 12 stages from
+2026-09-21 17:22:07 to 2026-09-22 01:29:52 +08:00. All formal runs reached
+4000 steps and TEST6 was not loaded.
+
+Val2 NoBoundary `mIoU_fg5` (%):
+
+| Arm | clean | DSM down8 | DSM zero |
+|---|---:|---:|---:|
+| C17 | 86.6027 | 84.9647 | 83.3285 |
+| R05_KD17 | 86.1756 | 84.9972 | 83.1646 |
+| KD17 | 86.6258 | 85.2065 | 83.2083 |
+
+KD17 is above R05_KD17 by +0.2093 pp down8 and +0.0438 pp zero, so the global
+degradation direction from seed42 repeats. Against C17, however, KD17 is 0.1202 pp
+lower on DSM-zero.
+
+In paired local damaged regions, KD17 has a -3.3120 pp local-missing drop and a
+-1.1831 pp local-down8 drop. These are respectively 0.2855 and 0.0372 pp worse
+than R05_KD17. Both local directions reverse the seed42 ordering. The documented
+B4 decision gate therefore fails.
+
+Compact evidence: `records/rebuild_v1_b4_seed17_compact_20260922/` and
+`docs/experiments/B4_SEED17_REPLICATION_20260921.md`.
+
 ## Current conclusion boundary
 
-Supported as seed42 stage evidence:
+Supported:
 
-- reliable teacher-target selection is preferable to an ordinary R05 teacher under the evaluated DSM degradations;
-- generic continuation alone does not explain all global robustness gains;
-- local complete DSM absence remains the harder unresolved condition;
-- SAFE and AVG_KD show no consistent reason to continue as primary arms.
+- SafeMaxConfidence teacher selection shows a small, directionally repeated global
+  advantage over an ordinary R05 teacher under down8 and zero DSM in seeds 42 and 17;
+- the effect is not explained solely by continued CE training under down8;
+- local complete DSM absence remains unresolved;
+- SAFE and AVG_KD have no consistent reason to continue unchanged.
 
 Not supported:
 
-- a learned missing-modality detector or an inference-time Optical-only fallback;
-- robustness under every local region, seed, dataset or real sensor failure;
-- a held-out test conclusion or final thesis claim before seed17 replication.
+- a cross-seed local reliability-teacher advantage;
+- a generally superior model over CE, because KD17 is below C17 on DSM-zero;
+- a learned missing-modality detector, explicit Optical fallback or deployment-ready
+  router;
+- independent-dataset, held-out-test or population-level significance claims.
 
-## Active work — B4 seed17 replication
-
-Last observed from the user-supplied launcher log at 2026-09-21 17:25:17 +08:00: the queue had completed `C17_SMOKE` and started `C17_TRAIN` on physical GPU 0 (NVIDIA H100 80GB HBM3). This is a historical observation, not live monitoring.
-
-B4 contains only the three necessary independent arms: C17, R05_KD17 and KD17. It tests whether the seed42 reliability-teacher direction reproduces under seed17 while keeping the R05 seed17 initialization, 4k continuation budget, augmentation mixture and selection protocol matched.
-
-- Queue root: `records/rebuild_v1_b4_seed17_20260921/`
-- Launcher log: `records/rebuild_v1_b4_seed17_20260921_launcher.log`
-- PID file: `records/rebuild_v1_b4_seed17_20260921.pid`
-- Started: 2026-09-21 17:22:07 +08:00
-- Expected duration: about 8–9 hours, so the planning estimate is 2026-09-22 01:20–02:20 +08:00
-- Hard launcher limit: 12 hours, approximately 2026-09-22 05:22 +08:00
-
-Completion requires successful per-arm stages, expected step 4000, `test6_loaded=false`, the final summary, and `QUEUE COMPLETE`; elapsed-time prediction alone is not proof of completion.
+The current SafeMaxConfidence distillation implementation is closed as the proposed
+main method. B1–B4 may be retained as mechanism, ablation and negative-result
+evidence. A new main-method experiment requires a changed reliability design and a
+new frozen evaluation source rather than another identical Val2 rerun.

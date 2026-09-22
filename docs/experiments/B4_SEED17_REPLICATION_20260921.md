@@ -1,6 +1,6 @@
 # B4 seed17 replication — frozen protocol
 
-Status: implemented and CPU-tested locally; no server GPU jobs executed here.
+Status: complete; the documented decision gate failed.
 
 ## Question
 
@@ -53,3 +53,51 @@ weights remain on the server and are never copied into the compact package.
 The generated decision is still a two-seed result on the same two-tile Val2
 development split. Passing B4 supports random-seed replication only; it is not an
 independent-dataset or held-out-test conclusion.
+
+## Completed execution
+
+The queue ran from 2026-09-21 17:22:07 to 2026-09-22 01:29:52 +08:00. All
+12 arm stages and the final summarizer completed successfully. C17, R05_KD17 and
+KD17 each reached 4000 optimizer steps, and TEST6 remained unloaded.
+
+Selected checkpoints were C17 step 1500, R05_KD17 step 3000 and KD17 step 2000.
+The trainer recorded Git HEAD `abb3d97`, while the queue used selectively installed
+later B4 files. The validated preflight/source hashes and checkpoint hashes retained
+on the server therefore define the executed source more precisely than Git HEAD.
+
+## Results
+
+Val2 NoBoundary `mIoU_fg5` (%):
+
+| Model | clean | DSM down8 | DSM zero |
+|---|---:|---:|---:|
+| C17 | 86.6027 | 84.9647 | 83.3285 |
+| R05_KD17 | 86.1756 | 84.9972 | 83.1646 |
+| KD17 | 86.6258 | 85.2065 | 83.2083 |
+
+KD17 minus R05_KD17 is +0.4502 pp clean, +0.2093 pp down8 and +0.0438 pp
+DSM-zero. Thus the seed42 global degradation ordering repeats, but the zero margin
+is nearly neutral. KD17 minus C17 is +0.0230 pp clean, +0.2418 pp down8 and
+-0.1202 pp DSM-zero.
+
+Paired damaged-region corrupt-minus-clean changes (pp; less negative is better):
+
+| Model | Local missing | Local down8 |
+|---|---:|---:|
+| C17 | -3.0869 | -1.3499 |
+| R05_KD17 | -3.0265 | -1.1459 |
+| KD17 | -3.3120 | -1.1831 |
+
+KD17 is 0.2855 pp worse than R05_KD17 for local missing and 0.0372 pp worse for
+local down8. Both local directions reverse the seed42 result.
+
+## Decision
+
+The frozen replication gate fails because both paired local damaged-region criteria
+fail. B4 supports only a small, directionally repeated global degradation effect;
+it does not reproduce the proposed local reliability-teacher mechanism. Do not
+promote SafeMaxConfidence distillation as the validated main method or claim learned
+missing-modality detection, local reliability estimation, or inference-time Optical
+fallback.
+
+Compact evidence is in `records/rebuild_v1_b4_seed17_compact_20260922/`.

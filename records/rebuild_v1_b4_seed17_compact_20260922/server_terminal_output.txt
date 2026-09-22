@@ -1,0 +1,358 @@
+(base) [root@h-aoji-aoji-h100-agent-2-w-0 jovyan]$ cd /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+
+git fetch origin rebuild-v1-protocol-20260915
+
+ARCHIVER="records/archive_rebuild_v1_b4_seed17_0faeaa4.py"
+OUT="records/rebuild_v1_b4_seed17_compact_20260922"
+
+git show \
+  origin/rebuild-v1-protocol-20260915:scripts/archive_rebuild_v1_b4_seed17.py \
+  > "$ARCHIVER"
+
+if [ ! -d "$OUT" ]; then
+  python "$ARCHIVER"
+fi
+
+echo "===== QUEUE STATUS ====="
+cat records/rebuild_v1_b4_seed17_20260921/status.tsv
+
+echo "===== QUEUE SUMMARY ====="
+cat records/rebuild_v1_b4_seed17_20260921/queue_summary.json
+
+if [ -d "$OUT" ]; then
+  echo "===== HASH CHECK ====="
+  (cd "$OUT" && sha256sum -c SHA256SUMS)
+
+  echo "===== GLOBAL METRICS ====="
+  cat "$OUT/global_metrics.csv"
+
+  echo "===== LOCAL DAMAGED METRICS ====="
+  cat "$OUT/local_damaged_metrics.csv"
+
+  echo "===== DECISION ====="
+  cat "$OUT/decision_evidence.json"
+
+  echo "===== PROVENANCE ====="
+  cat "$OUT/run_provenance.json"
+fi
+Username for 'https://github.com': 66322
+Password for 'https://66322@github.com': 
+remote: Enumerating objects: 90, done.
+remote: Counting objects: 100% (90/90), done.
+remote: Compressing objects: 100% (42/42), done.
+remote: Total 71 (delta 39), reused 61 (delta 29), pack-reused 0 (from 0)
+Unpacking objects: 100% (71/71), 38.14 KiB | 191.00 KiB/s, done.
+From https://github.com/66322/remote_sensing_frequency
+ * branch            rebuild-v1-protocol-20260915 -> FETCH_HEAD
+   abb3d97..0faeaa4  rebuild-v1-protocol-20260915 -> origin/rebuild-v1-protocol-20260915
+B4_ARCHIVE_COMPLETE /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/rebuild_v1_b4_seed17_compact_20260922
+{
+  "kd17_minus_r05_kd17": {
+    "clean_pp": 0.45020763429145916,
+    "dsm_down8_pp": 0.2092890493423738,
+    "dsm_zero_pp": 0.04375040578523226,
+    "local_missing_damaged_drop_improvement_pp": -0.28554068587224046,
+    "local_down8_damaged_drop_improvement_pp": -0.03718994711655865
+  },
+  "kd17_minus_c17": {
+    "clean_pp": 0.023026404800788214,
+    "dsm_down8_pp": 0.24176148323429913,
+    "dsm_zero_pp": -0.12021930080381082,
+    "local_missing_damaged_drop_improvement_pp": -0.2251511811156539,
+    "local_down8_damaged_drop_improvement_pp": 0.16675781189257632
+  },
+  "gate": {
+    "global_down8_better_than_r05_kd": true,
+    "global_zero_better_than_r05_kd": true,
+    "local_missing_damaged_drop_better_than_r05_kd": false,
+    "local_down8_damaged_drop_better_than_r05_kd": false,
+    "replication_pass": false
+  }
+}
+===== QUEUE STATUS =====
+2026-09-21T17:22:07+08:00       QUEUE   STARTED
+2026-09-21T17:22:09+08:00       C17_SMOKE       STARTED
+2026-09-21T17:25:15+08:00       C17_SMOKE       COMPLETE        exit=0
+2026-09-21T17:25:17+08:00       C17_TRAIN       STARTED
+2026-09-21T19:31:04+08:00       C17_TRAIN       COMPLETE        exit=0
+2026-09-21T19:31:09+08:00       C17_ROBUST      STARTED
+2026-09-21T19:35:11+08:00       C17_ROBUST      COMPLETE        exit=0
+2026-09-21T19:35:14+08:00       C17_PAIRED      STARTED
+2026-09-21T19:40:55+08:00       C17_PAIRED      COMPLETE        exit=0
+2026-09-21T19:40:58+08:00       R05_KD17_SMOKE  STARTED
+2026-09-21T19:44:20+08:00       R05_KD17_SMOKE  COMPLETE        exit=0
+2026-09-21T19:44:23+08:00       R05_KD17_TRAIN  STARTED
+2026-09-21T22:25:57+08:00       R05_KD17_TRAIN  COMPLETE        exit=0
+2026-09-21T22:26:01+08:00       R05_KD17_ROBUST STARTED
+2026-09-21T22:30:02+08:00       R05_KD17_ROBUST COMPLETE        exit=0
+2026-09-21T22:30:04+08:00       R05_KD17_PAIRED STARTED
+2026-09-21T22:35:30+08:00       R05_KD17_PAIRED COMPLETE        exit=0
+2026-09-21T22:35:32+08:00       KD17_SMOKE      STARTED
+2026-09-21T22:38:52+08:00       KD17_SMOKE      COMPLETE        exit=0
+2026-09-21T22:38:54+08:00       KD17_TRAIN      STARTED
+2026-09-22T01:20:26+08:00       KD17_TRAIN      COMPLETE        exit=0
+2026-09-22T01:20:28+08:00       KD17_ROBUST     STARTED
+2026-09-22T01:24:26+08:00       KD17_ROBUST     COMPLETE        exit=0
+2026-09-22T01:24:28+08:00       KD17_PAIRED     STARTED
+2026-09-22T01:29:52+08:00       KD17_PAIRED     COMPLETE        exit=0
+2026-09-22T01:29:52+08:00       SUMMARIZE       COMPLETE        exit=0
+2026-09-22T01:29:52+08:00       QUEUE   COMPLETE
+===== QUEUE SUMMARY =====
+{
+  "observed_at": "2026-09-22T01:29:52+08:00",
+  "statuses": {
+    "QUEUE": "COMPLETE",
+    "C17_SMOKE": "COMPLETE",
+    "C17_TRAIN": "COMPLETE",
+    "C17_ROBUST": "COMPLETE",
+    "C17_PAIRED": "COMPLETE",
+    "R05_KD17_SMOKE": "COMPLETE",
+    "R05_KD17_TRAIN": "COMPLETE",
+    "R05_KD17_ROBUST": "COMPLETE",
+    "R05_KD17_PAIRED": "COMPLETE",
+    "KD17_SMOKE": "COMPLETE",
+    "KD17_TRAIN": "COMPLETE",
+    "KD17_ROBUST": "COMPLETE",
+    "KD17_PAIRED": "COMPLETE",
+    "SUMMARIZE": "COMPLETE"
+  },
+  "test6_loaded": false
+}===== HASH CHECK =====
+b4_global_summary.csv: OK
+b4_paired_summary.csv: OK
+decision_evidence.json: OK
+global_metrics.csv: OK
+local_damaged_metrics.csv: OK
+preflight.json: OK
+queue_summary.json: OK
+run_provenance.json: OK
+source_artifact_manifest.json: OK
+status.tsv: OK
+===== GLOBAL METRICS =====
+model,clean,dsm_down8,dsm_zero
+C17,86.60273449756119,84.9647477845305,83.32852149386753
+R05_KD17,86.17555326807052,84.99722021842243,83.16455178727848
+KD17,86.62576090236198,85.2065092677648,83.20830219306372
+===== LOCAL DAMAGED METRICS =====
+model,D1_local_missing,D3_local_down8
+C17,-3.086856223094653,-1.3498908409293104
+R05_KD17,-3.0264667183380665,-1.1459430819201755
+KD17,-3.312007404210307,-1.1831330290367341
+===== DECISION =====
+{
+  "recorded_at": "2026-09-22T12:14:02+08:00",
+  "experiment_id": "B4_SEED17_REPLICATION",
+  "dataset_split": "Potsdam Train16 -> Val2",
+  "seed": 17,
+  "metric_units": "percentage points",
+  "test6_loaded": false,
+  "global_metrics": {
+    "C17": {
+      "clean": 86.60273449756119,
+      "dsm_down8": 84.9647477845305,
+      "dsm_zero": 83.32852149386753
+    },
+    "R05_KD17": {
+      "clean": 86.17555326807052,
+      "dsm_down8": 84.99722021842243,
+      "dsm_zero": 83.16455178727848
+    },
+    "KD17": {
+      "clean": 86.62576090236198,
+      "dsm_down8": 85.2065092677648,
+      "dsm_zero": 83.20830219306372
+    }
+  },
+  "local_damaged_corrupt_minus_clean_pp": {
+    "C17": {
+      "D1_local_missing": -3.086856223094653,
+      "D3_local_down8": -1.3498908409293104
+    },
+    "R05_KD17": {
+      "D1_local_missing": -3.0264667183380665,
+      "D3_local_down8": -1.1459430819201755
+    },
+    "KD17": {
+      "D1_local_missing": -3.312007404210307,
+      "D3_local_down8": -1.1831330290367341
+    }
+  },
+  "kd17_minus_r05_kd17": {
+    "clean_pp": 0.45020763429145916,
+    "dsm_down8_pp": 0.2092890493423738,
+    "dsm_zero_pp": 0.04375040578523226,
+    "local_missing_damaged_drop_improvement_pp": -0.28554068587224046,
+    "local_down8_damaged_drop_improvement_pp": -0.03718994711655865
+  },
+  "kd17_minus_c17": {
+    "clean_pp": 0.023026404800788214,
+    "dsm_down8_pp": 0.24176148323429913,
+    "dsm_zero_pp": -0.12021930080381082,
+    "local_missing_damaged_drop_improvement_pp": -0.2251511811156539,
+    "local_down8_damaged_drop_improvement_pp": 0.16675781189257632
+  },
+  "gate": {
+    "global_down8_better_than_r05_kd": true,
+    "global_zero_better_than_r05_kd": true,
+    "local_missing_damaged_drop_better_than_r05_kd": false,
+    "local_down8_damaged_drop_better_than_r05_kd": false,
+    "replication_pass": false
+  },
+  "claim_boundary": "Seed17 replication on the same two-tile Val2 development split; not an independent-dataset or held-out-test conclusion."
+}
+===== PROVENANCE =====
+{
+  "C17": {
+    "run_dir": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/B1_C_ce_control_seed17_sched4000_stop4000_seed17_20260921",
+    "started_at": "2026-09-21T17:27:38+08:00",
+    "completed_at": "2026-09-21T19:31:03+08:00",
+    "git_commit_reported_by_trainer": "abb3d97f3f5d8f4b145c54bfe87bed0a12c6e187",
+    "source_fingerprints": {
+      "config_file": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/configs/rebuild_v1/b4_c_seed17_4k.json",
+      "split_file": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/configs/rebuild_v1/potsdam_split_seed20260915.json",
+      "model_id": "B1-C",
+      "mode": "ce_control",
+      "seed": 17,
+      "train_ids": [
+        "6_10",
+        "7_10",
+        "2_12",
+        "2_10",
+        "7_8",
+        "3_12",
+        "5_12",
+        "7_11",
+        "7_9",
+        "6_9",
+        "7_7",
+        "4_12",
+        "6_8",
+        "6_12",
+        "6_7",
+        "4_11"
+      ],
+      "val_ids": [
+        "3_11",
+        "5_10"
+      ],
+      "scheduler_total_steps": 4000,
+      "stop_at_step": 4000,
+      "student_init": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/R05_dual_f0_quality_plus_dropout_seed17_sched16000_stop16000/best_model.pth",
+      "test6_loaded": false
+    },
+    "best": {
+      "metric": "val2_noboundary_mIoU_fg5",
+      "value": 0.8660275031981562,
+      "step": 1500
+    },
+    "checkpoint": {
+      "server_only": true,
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/B1_C_ce_control_seed17_sched4000_stop4000_seed17_20260921/best_model.pth",
+      "bytes": 816522165,
+      "sha256": "b9ef6ec97cf25482f562ebd7be5e0819e0fe2575c468ee796896b352f3de79e0"
+    }
+  },
+  "R05_KD17": {
+    "run_dir": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/B2_R05_teacher_seed17_sched4000_stop4000_seed17_20260921",
+    "started_at": "2026-09-21T19:46:49+08:00",
+    "completed_at": "2026-09-21T22:25:56+08:00",
+    "git_commit_reported_by_trainer": "abb3d97f3f5d8f4b145c54bfe87bed0a12c6e187",
+    "source_fingerprints": {
+      "config_file": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/configs/rebuild_v1/b4_r05_teacher_seed17_4k.json",
+      "config_sha256": "3543aada5b8bcef53b370fb64b125fd32b59b7e79e71a9b42a98dacd4e8f43b9",
+      "trainer_sha256": "8c839df867b5f4b93d1bce82208fe98ba46ec23f96bf820139953294c777854b",
+      "split_file": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/configs/rebuild_v1/potsdam_split_seed20260915.json",
+      "model_id": "B2-R05",
+      "mode": "r05_teacher_kd",
+      "seed": 17,
+      "train_ids": [
+        "6_10",
+        "7_10",
+        "2_12",
+        "2_10",
+        "7_8",
+        "3_12",
+        "5_12",
+        "7_11",
+        "7_9",
+        "6_9",
+        "7_7",
+        "4_12",
+        "6_8",
+        "6_12",
+        "6_7",
+        "4_11"
+      ],
+      "val_ids": [
+        "3_11",
+        "5_10"
+      ],
+      "scheduler_total_steps": 4000,
+      "stop_at_step": 4000,
+      "student_init": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/R05_dual_f0_quality_plus_dropout_seed17_sched16000_stop16000/best_model.pth",
+      "test6_loaded": false
+    },
+    "best": {
+      "metric": "val2_noboundary_mIoU_fg5",
+      "value": 0.8617555696545927,
+      "step": 3000
+    },
+    "checkpoint": {
+      "server_only": true,
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/B2_R05_teacher_seed17_sched4000_stop4000_seed17_20260921/best_model.pth",
+      "bytes": 816522357,
+      "sha256": "19b735088e17f035b2b0de6db191049701a11093a65c5df45a6089cfe46bb262"
+    }
+  },
+  "KD17": {
+    "run_dir": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/B1_KD_safe_teacher_seed17_sched4000_stop4000_seed17_20260921",
+    "started_at": "2026-09-21T22:41:19+08:00",
+    "completed_at": "2026-09-22T01:20:25+08:00",
+    "git_commit_reported_by_trainer": "abb3d97f3f5d8f4b145c54bfe87bed0a12c6e187",
+    "source_fingerprints": {
+      "config_file": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/configs/rebuild_v1/b4_kd_seed17_4k.json",
+      "split_file": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/configs/rebuild_v1/potsdam_split_seed20260915.json",
+      "model_id": "B1-KD",
+      "mode": "safe_teacher_kd",
+      "seed": 17,
+      "train_ids": [
+        "6_10",
+        "7_10",
+        "2_12",
+        "2_10",
+        "7_8",
+        "3_12",
+        "5_12",
+        "7_11",
+        "7_9",
+        "6_9",
+        "7_7",
+        "4_12",
+        "6_8",
+        "6_12",
+        "6_7",
+        "4_11"
+      ],
+      "val_ids": [
+        "3_11",
+        "5_10"
+      ],
+      "scheduler_total_steps": 4000,
+      "stop_at_step": 4000,
+      "student_init": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/R05_dual_f0_quality_plus_dropout_seed17_sched16000_stop16000/best_model.pth",
+      "test6_loaded": false
+    },
+    "best": {
+      "metric": "val2_noboundary_mIoU_fg5",
+      "value": 0.8662575217596444,
+      "step": 2000
+    },
+    "checkpoint": {
+      "server_only": true,
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/B1_KD_safe_teacher_seed17_sched4000_stop4000_seed17_20260921/best_model.pth",
+      "bytes": 816522165,
+      "sha256": "706a22f9e63a6d750a58d76f469d08d80d54d2e0fad9c9dfd3add38cd6d8cc95"
+    }
+  }
+}
+(base) [root@h-aoji-aoji-h100-agent-2-w-0 08_thesis_full_repro]$ 

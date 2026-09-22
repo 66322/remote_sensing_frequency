@@ -1,42 +1,48 @@
-# Current Experiment: B4 Seed17 Replication
+# Next experiment decision after B4
 
-- Status: running as last observed on 2026-09-21 17:25:17 +08:00
-- Queue started: 2026-09-21 17:22:07 +08:00
-- Launch commit: `bae3462403e309cd81185e70028e0825455f9df4`
-- Seed: 17
-- Budget: 4000 optimizer steps per trained arm
-- Initialization: matched R05 seed17 checkpoint
-- Device: physical GPU 0 only
-- Dataset: Potsdam Train16/Val2 only; TEST6 prohibited
-- Server queue: `records/rebuild_v1_b4_seed17_20260921/`
+- Status: no GPU experiment queued
+- Last completed gate: B4 seed17 replication
+- Decision: current SafeMaxConfidence distillation route is closed as the proposed
+  main method because the documented local replication criteria failed
+- Device rule for any future run: physical GPU0 only
+- Persistent scope: `/home/jovyan/zzx`
 
-## Purpose
+## What B4 resolved
 
-B4 is the confirmation gate for the seed42 B1–B3 observation. It separates three effects with matched initialization and budget:
+KD17 remains slightly above R05_KD17 under global down8 (+0.2093 pp) and DSM-zero
+(+0.0438 pp), but it is worse in both paired local damaged-region families. It is
+also 0.1202 pp below matched CE continuation on global DSM-zero. The result supports
+a small global trend, not a replicated local reliability mechanism or a generally
+better robust model.
 
-1. `C17`: CE continuation.
-2. `R05_KD17`: ordinary distillation from the dual-modal R05 teacher.
-3. `KD17`: SafeMaxConfidence reliability-teacher distillation.
+## Work that must not be queued
 
-The key comparison is KD17 versus R05_KD17 under global DSM down8/zero and paired local damaged regions. KD17 versus C17 determines whether the resulting model also beats continued training. Clean performance is a retention constraint, not the only objective.
+- another identical C/R05_KD/KD run on seed42 or seed17;
+- a longer continuation budget for the unchanged models;
+- another SAFE or AVG_KD run without a new causal question;
+- claims or experiments that treat known zero-fill masks as learned missing-data
+  detection;
+- final model selection on the repeatedly inspected two-tile Val2 split.
 
-## Decision rule
+## Required next design gate
 
-- Promote the mechanism to the main thesis line only if the reliability-teacher direction reproduces under seed17, especially on DSM-degraded and local damaged regions.
-- Treat boundary metrics as secondary because thin-region class support is unstable.
-- Do not continue SAFE or AVG_KD unless B4 creates a specific unresolved alternative explanation.
-- Do not start weak supervision, open-vocabulary segmentation, another dataset or a longer budget before this gate is read.
+Before new training, write and review a protocol that separates three mechanisms:
 
-## Runtime expectation
+1. **Known-mask supervision:** R01 inside the synthetic missing mask and fixed R05
+   elsewhere, without confidence selection.
+2. **Confidence selection:** teacher selection without access to the synthetic
+   missing mask, with teacher confidence calibration checked first.
+3. **Deployable fallback:** an explicit Optical anchor or quality estimator whose
+   inference inputs are actually available under real missing/degraded DSM.
 
-Based on the completed queue timing and the number of B4 stages, the planning estimate is 8–9 hours from launch, approximately 2026-09-22 01:20–02:20 +08:00. The launcher has a 12-hour limit near 05:22. These are estimates; only completion markers and per-stage outputs establish success.
+The protocol must include a new frozen evaluation source, preferably a second
+dataset or previously untouched tiles. It must define a matched CE baseline,
+ordinary R05-teacher KD, mask-only teacher, confidence-only teacher and the proposed
+method. The primary unit must be tiles/scenes rather than pixels or quadrants.
 
-## After completion
+## Decision rule for resuming GPU work
 
-Extract compact global, paired damaged/boundary and per-class comparisons; verify step 4000 and `test6_loaded=false`; record failures/skips; then update GitHub before launching another line. Preserve original outputs on the server and commit only compact evidence plus provenance.
-
-Use `python scripts/archive_rebuild_v1_b4_seed17.py` for this closeout. It validates
-the full queue and creates `records/rebuild_v1_b4_seed17_compact_20260922/` without
-rerunning evaluation or copying model weights. Do not manually transcribe the B4
-headline numbers if this validated package can be generated from the original
-server artifacts.
+Queue a new run only after the method differs materially from B1–B4, all controls
+are specified, the evaluation data are frozen, and success thresholds are written
+before results are viewed. Until then, the correct next action is paper/evidence
+consolidation and protocol design, not another training queue.

@@ -1,0 +1,154 @@
+{
+  "C17": {
+    "run_dir": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/B1_C_ce_control_seed17_sched4000_stop4000_seed17_20260921",
+    "started_at": "2026-09-21T17:27:38+08:00",
+    "completed_at": "2026-09-21T19:31:03+08:00",
+    "git_commit_reported_by_trainer": "abb3d97f3f5d8f4b145c54bfe87bed0a12c6e187",
+    "source_fingerprints": {
+      "config_file": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/configs/rebuild_v1/b4_c_seed17_4k.json",
+      "split_file": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/configs/rebuild_v1/potsdam_split_seed20260915.json",
+      "model_id": "B1-C",
+      "mode": "ce_control",
+      "seed": 17,
+      "train_ids": [
+        "6_10",
+        "7_10",
+        "2_12",
+        "2_10",
+        "7_8",
+        "3_12",
+        "5_12",
+        "7_11",
+        "7_9",
+        "6_9",
+        "7_7",
+        "4_12",
+        "6_8",
+        "6_12",
+        "6_7",
+        "4_11"
+      ],
+      "val_ids": [
+        "3_11",
+        "5_10"
+      ],
+      "scheduler_total_steps": 4000,
+      "stop_at_step": 4000,
+      "student_init": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/R05_dual_f0_quality_plus_dropout_seed17_sched16000_stop16000/best_model.pth",
+      "test6_loaded": false
+    },
+    "best": {
+      "metric": "val2_noboundary_mIoU_fg5",
+      "value": 0.8660275031981562,
+      "step": 1500
+    },
+    "checkpoint": {
+      "server_only": true,
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/B1_C_ce_control_seed17_sched4000_stop4000_seed17_20260921/best_model.pth",
+      "bytes": 816522165,
+      "sha256": "b9ef6ec97cf25482f562ebd7be5e0819e0fe2575c468ee796896b352f3de79e0"
+    }
+  },
+  "R05_KD17": {
+    "run_dir": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/B2_R05_teacher_seed17_sched4000_stop4000_seed17_20260921",
+    "started_at": "2026-09-21T19:46:49+08:00",
+    "completed_at": "2026-09-21T22:25:56+08:00",
+    "git_commit_reported_by_trainer": "abb3d97f3f5d8f4b145c54bfe87bed0a12c6e187",
+    "source_fingerprints": {
+      "config_file": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/configs/rebuild_v1/b4_r05_teacher_seed17_4k.json",
+      "config_sha256": "3543aada5b8bcef53b370fb64b125fd32b59b7e79e71a9b42a98dacd4e8f43b9",
+      "trainer_sha256": "8c839df867b5f4b93d1bce82208fe98ba46ec23f96bf820139953294c777854b",
+      "split_file": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/configs/rebuild_v1/potsdam_split_seed20260915.json",
+      "model_id": "B2-R05",
+      "mode": "r05_teacher_kd",
+      "seed": 17,
+      "train_ids": [
+        "6_10",
+        "7_10",
+        "2_12",
+        "2_10",
+        "7_8",
+        "3_12",
+        "5_12",
+        "7_11",
+        "7_9",
+        "6_9",
+        "7_7",
+        "4_12",
+        "6_8",
+        "6_12",
+        "6_7",
+        "4_11"
+      ],
+      "val_ids": [
+        "3_11",
+        "5_10"
+      ],
+      "scheduler_total_steps": 4000,
+      "stop_at_step": 4000,
+      "student_init": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/R05_dual_f0_quality_plus_dropout_seed17_sched16000_stop16000/best_model.pth",
+      "test6_loaded": false
+    },
+    "best": {
+      "metric": "val2_noboundary_mIoU_fg5",
+      "value": 0.8617555696545927,
+      "step": 3000
+    },
+    "checkpoint": {
+      "server_only": true,
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/B2_R05_teacher_seed17_sched4000_stop4000_seed17_20260921/best_model.pth",
+      "bytes": 816522357,
+      "sha256": "19b735088e17f035b2b0de6db191049701a11093a65c5df45a6089cfe46bb262"
+    }
+  },
+  "KD17": {
+    "run_dir": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/B1_KD_safe_teacher_seed17_sched4000_stop4000_seed17_20260921",
+    "started_at": "2026-09-21T22:41:19+08:00",
+    "completed_at": "2026-09-22T01:20:25+08:00",
+    "git_commit_reported_by_trainer": "abb3d97f3f5d8f4b145c54bfe87bed0a12c6e187",
+    "source_fingerprints": {
+      "config_file": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/configs/rebuild_v1/b4_kd_seed17_4k.json",
+      "split_file": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/configs/rebuild_v1/potsdam_split_seed20260915.json",
+      "model_id": "B1-KD",
+      "mode": "safe_teacher_kd",
+      "seed": 17,
+      "train_ids": [
+        "6_10",
+        "7_10",
+        "2_12",
+        "2_10",
+        "7_8",
+        "3_12",
+        "5_12",
+        "7_11",
+        "7_9",
+        "6_9",
+        "7_7",
+        "4_12",
+        "6_8",
+        "6_12",
+        "6_7",
+        "4_11"
+      ],
+      "val_ids": [
+        "3_11",
+        "5_10"
+      ],
+      "scheduler_total_steps": 4000,
+      "stop_at_step": 4000,
+      "student_init": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/R05_dual_f0_quality_plus_dropout_seed17_sched16000_stop16000/best_model.pth",
+      "test6_loaded": false
+    },
+    "best": {
+      "metric": "val2_noboundary_mIoU_fg5",
+      "value": 0.8662575217596444,
+      "step": 2000
+    },
+    "checkpoint": {
+      "server_only": true,
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/B1_KD_safe_teacher_seed17_sched4000_stop4000_seed17_20260921/best_model.pth",
+      "bytes": 816522165,
+      "sha256": "706a22f9e63a6d750a58d76f469d08d80d54d2e0fad9c9dfd3add38cd6d8cc95"
+    }
+  }
+}
