@@ -59,3 +59,14 @@ Only after D7 is summarized may one small R01 training screen be specified. The
 screen must isolate sampling from loss design and retain a matched CE control. D7
 Val2 flags alone cannot support paper claims or replace a new frozen evaluation
 source.
+
+## D7 decision and D8 queue
+
+D7 completed with zero queue failures. Car crop absence alone does not imply
+effective-batch starvation, while the small-Car correctness deficit repeats across
+seeds and tiles. Car is not the worst class, and R05 helps Building while lowering
+Car IoU in both seeds. See `docs/experiments/D7_RESULTS_20260922.md`.
+
+The next runnable experiment is the fixed-step D8 C/A/S sampling screen specified
+in `docs/protocols/D8_SMALL_CAR_SAMPLING_SCREEN.md`. Do not add weighted CE, Dice,
+Focal, boundary loss or copy-paste to this queue.
