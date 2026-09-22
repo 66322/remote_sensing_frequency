@@ -66,7 +66,11 @@ def main():
  for step in range(1,target+1):
   t=time.time(); lrs=r02.set_lr(opt,cfg,step,total); opt.zero_grad(set_to_none=True); micro=[]; scales=[]
   for _ in range(int(cfg["accum_steps"])):
-   x,y,s=sample_batch(cache,ids,cfg,mode,indices,counts); z=net(x); loss=F.cross_entropy(z,y)
+   x,y,s=sample_batch(cache,ids,cfg,mode,indices,counts); z=net(x)
+   # The server CUDA build has no deterministic NCHW nll_loss2d kernel.
+   # The flattened 2-D CE path is the already validated B1/B2 solution.
+   flat_z=z.permute(0,2,3,1).contiguous().view(-1,z.shape[1]); flat_y=y.contiguous().view(-1)
+   loss=F.cross_entropy(flat_z,flat_y)
    if not torch.isfinite(loss): raise RuntimeError("non-finite loss")
    (loss/int(cfg["accum_steps"])).backward(); micro.append(float(loss.detach())); scales+=s
   opt.step(); torch.cuda.synchronize(); lv=float(np.mean(micro)); losses.append(lv)
