@@ -1,4 +1,12 @@
-# Current handoff — 2026-09-22
+# Current handoff — 2026-09-23
+
+## Current decision
+
+D8 `fix1` completed on 2026-09-22 17:59:55 +08:00 with zero queue failures.
+Both A and S fail the frozen sampling gate, so `proceed_seed17=[]`. The next
+research step is D9 frozen-expert DSM benefit diagnosis, specified in
+`docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md`. Do not start D8 seed17 or a
+safety-gate training run. Historical TEST6 remains frozen.
 
 ## Read this first on another computer
 
@@ -7,7 +15,7 @@
 - B1–B3 evidence: `records/rebuild_v1_b2_b3_compact_20260921/`
 - B4 evidence: `records/rebuild_v1_b4_seed17_compact_20260922/`
 - B4 report: `docs/experiments/B4_SEED17_REPLICATION_20260921.md`
-- Current state: B4 is complete and its documented decision gate failed.
+- Current state: B4 and D8 are complete and both documented decision gates failed.
 - No GPU experiment is currently queued by this handoff.
 
 GitHub contains compact metrics, decisions, timestamps and checkpoint references.
@@ -68,33 +76,9 @@ checkpoint paths and SHA256 values are in `run_provenance.json`.
 ## Reusable prompt
 
 “Read `docs/START_HERE.md`, `docs/current/HANDOFF.md`,
-`docs/experiments/B2_B3_RESULTS_20260921.md`, and
-`docs/experiments/B4_SEED17_REPLICATION_20260921.md` on branch
-`rebuild-v1-protocol-20260915`. B1–B4 are complete. B4 partially repeats the
-global degradation direction but fails both local damaged-region criteria, so the
-SafeMaxConfidence distillation route is closed as the proposed main method. Do not
-rerun it unchanged. Audit the evidence and design a materially different next gate
-before using GPU0.”
-# Immediate handoff: D7 diagnostic audit
-
-The completed B4 gate remains failed and no new model training is authorized. The
-next runnable work is D7, a no-training audit of Train16 class/crop exposure and
-existing R01/R05 seed42/17 errors by semantic class, connected-object size and
-true label boundary. See `docs/protocols/D7_DATA_SCALE_BOUNDARY_AUDIT.md`.
-
-Server launch:
-
-```bash
-cd /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
-git pull origin rebuild-v1-protocol-20260915
-conda activate remote_sensing
-mkdir -p records/rebuild_v1_d7_queue_20260922
-nohup bash scripts/run_rebuild_v1_d7_audit_queue_20260922.sh \
-  > records/rebuild_v1_d7_queue_20260922/launcher.log 2>&1 &
-echo $!
-```
-
-Progress is recorded in
-`records/rebuild_v1_d7_queue_20260922/status.tsv`. Each failed stage is recorded
-and skipped so the queue cannot remain stuck on one diagnostic. The queue uses
-physical GPU 0 only for inference; the data audit and summary are CPU stages.
+`docs/experiments/D8_RESULTS_20260922.md` and
+`docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md` on branch
+`rebuild-v1-protocol-20260915`. B1–B4 and D8 are closed; the D8 seed17
+condition was not met. Diagnose the label-defined marginal benefit of DSM
+using frozen R01/R05 experts in both seeds. Keep TEST6 frozen, use physical
+GPU0 only, and store runtime artifacts under `/home/jovyan/zzx`.”

@@ -19,6 +19,9 @@
 | B2 | seed42 R05-teacher and average-teacher controls | reported complete; compact transcription committed | `docs/experiments/B2_B3_RESULTS_20260921.md` |
 | B3 | paired local damaged/boundary diagnostic | reported complete; compact transcription committed | `records/rebuild_v1_b2_b3_compact_20260921/paired_family_metrics.csv` |
 | B4 | seed17 C/R05_KD/KD replication | complete; documented gate failed | `records/rebuild_v1_b4_seed17_compact_20260922/` |
+| D7 | data, scale and semantic-error audit | complete | `docs/experiments/D7_RESULTS_20260922.md` |
+| D8 | seed42 C/A/S sampling screen | complete; gate failed | `docs/experiments/D8_RESULTS_20260922.md` |
+| D9 | frozen-expert DSM benefit diagnostic | protocol; not yet run | `docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md` |
 
 The JSON registry is the machine-readable authority. This index is the
 human-readable navigation layer.

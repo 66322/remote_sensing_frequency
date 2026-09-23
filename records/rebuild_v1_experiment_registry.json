@@ -2,7 +2,7 @@
   "schema_version": "1.2",
   "project": "REBUILD_V1",
   "timezone": "UTC+08:00",
-  "last_updated": "2026-09-22",
+  "last_updated": "2026-09-23",
   "status_provenance_policy": "reported_complete and running_as_last_reported are user observations, not live server verification. expected_server_records are absent artifacts to collect, not archived evidence.",
   "timing_policy": {
     "started_at": "Actual launch time when directly evidenced; otherwise date/minute precision is stated explicitly.",
@@ -559,8 +559,8 @@
     {
       "id": "D7",
       "name": "data_sampling_scale_semantic_boundary_audit",
-      "status": "planned",
-      "evidence_status": "protocol_and_queue_committed_results_pending",
+      "status": "complete",
+      "evidence_status": "summary_committed_original_server_artifacts_pending_archival",
       "fingerprint": "potsdam_train16_val2_r01_r05_seed42_seed17_class_crop_component_boundary_audit_v1",
       "purpose": "Determine whether class imbalance, random-crop exposure, connected-object size, semantic boundaries, or class-specific DSM degradation justify a controlled training intervention.",
       "protocol": "docs/protocols/D7_DATA_SCALE_BOUNDARY_AUDIT.md",
@@ -573,7 +573,61 @@
       ],
       "test6_policy": "prohibited",
       "training": false,
-      "decision": "Pending. D7 flags may authorize a small matched R01 screen but cannot establish a paper claim."
+      "decision": "The completed audit supports a matched small-Car sampling screen, not a generic long-tail or weighted-loss claim. See docs/experiments/D7_RESULTS_20260922.md."
+    },
+    {
+      "id": "D8",
+      "name": "small_car_sampling_screen",
+      "status": "complete",
+      "evidence_status": "user_supplied_final_server_transcript_compact_transcription_committed_original_artifacts_on_server",
+      "fingerprint": "potsdam_train16_val2_seed42_r01init_4k_random_anycar_smallcar_fix1",
+      "purpose": "Isolate the effect of any-Car and small-Car crop selection with the same R01 initialization, CE loss and 4000-step budget.",
+      "protocol": "docs/protocols/D8_SMALL_CAR_SAMPLING_SCREEN.md",
+      "launch_commit": "94a12135eea2e6dd0d89557ff628676af0746484",
+      "started_at": "2026-09-22T14:40:40+08:00",
+      "completed_at": "2026-09-22T17:59:55+08:00",
+      "time_source": "user-supplied final queue status.tsv",
+      "records": [
+        "docs/experiments/D8_RESULTS_20260922.md",
+        "records/rebuild_v1_d8_compact_20260923/decision_transcription.json"
+      ],
+      "server_records": [
+        "records/rebuild_v1_d8_queue_fix1_20260922/",
+        "records/rebuild_v1_d8_random_ce_eval_20260922_fix1/",
+        "records/rebuild_v1_d8_any_car_eval_20260922_fix1/",
+        "records/rebuild_v1_d8_small_car_eval_20260922_fix1/",
+        "records/rebuild_v1_d8_summary_20260922_fix1/"
+      ],
+      "result_summary": {
+        "split": "Val2",
+        "seed": 42,
+        "fixed_step": 4000,
+        "queue_failures": 0,
+        "S_minus_C_pp": {
+          "nb_mIoU_fg5": 0.07397050092003976,
+          "car_iou": 0.9158811150137169,
+          "car_precision": 0.10977575510464632,
+          "small_car_mean_correct": 1.857915086633355,
+          "small_car_recall50": 1.2987012987012991
+        },
+        "per_tile_small_car_mean_positive": true,
+        "test6_loaded": false
+      },
+      "gate_status": "failed",
+      "proceed_seed17": [],
+      "decision": "Neither A nor S passes the frozen conjunctive gate. Do not run D8 seed17 or relax the thresholds. Retain size-specific sampling as exploratory heterogeneity evidence."
+    },
+    {
+      "id": "D9",
+      "name": "frozen_expert_dsm_marginal_benefit_diagnostic",
+      "status": "protocol_only",
+      "evidence_status": "not_run",
+      "fingerprint": "potsdam_val2_r01_r05_seed42_seed17_dsm_benefit_feature_audit_v1",
+      "purpose": "Test whether observable semantic, frequency and expert-disagreement features predict the label-defined marginal benefit and harm from DSM.",
+      "protocol": "docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md",
+      "test6_policy": "prohibited",
+      "training": false,
+      "decision": "Run frozen-expert diagnostics only after data and leakage checks; safety-gate training requires a passed, predeclared cross-seed gate and a new frozen evaluation source."
     }
   ],
   "handoff_entry": "docs/START_HERE.md",

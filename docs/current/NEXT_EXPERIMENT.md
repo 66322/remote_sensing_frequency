@@ -1,72 +1,39 @@
-# Next experiment decision after B4
+# Next experiment decision after D8
 
-- Status: D7 diagnostic queue prepared; no new model training approved
-- Last completed gate: B4 seed17 replication
-- Decision: current SafeMaxConfidence distillation route is closed as the proposed
-  main method because the documented local replication criteria failed
-- Device rule for any future run: physical GPU0 only
-- Persistent scope: `/home/jovyan/zzx`
+- Updated: 2026-09-23
+- Current gate: D8 seed42 fixed-step C/A/S sampling screen completed; both A
+  and S failed the predeclared conjunctive gate.
+- Decision: do not launch D8 seed17 or change the D8 thresholds post hoc.
+- Device and persistence: physical GPU 0 only; all runtime outputs under
+  `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro`.
+- Historical TEST6 remains frozen.
 
-## What B4 resolved
+## Next action: D9 benefit diagnostic
 
-KD17 remains slightly above R05_KD17 under global down8 (+0.2093 pp) and DSM-zero
-(+0.0438 pp), but it is worse in both paired local damaged-region families. It is
-also 0.1202 pp below matched CE continuation on global DSM-zero. The result supports
-a small global trend, not a replicated local reliability mechanism or a generally
-better robust model.
+Use the existing R01 RGB expert and R05 RGB+DSM expert at seeds 42 and 17 to
+measure the label-defined pixel benefit of adding DSM:
 
-## Work that must not be queued
+`benefit = CE(R01, y) - CE(R05, y)`.
 
-- another identical C/R05_KD/KD run on seed42 or seed17;
-- a longer continuation budget for the unchanged models;
-- another SAFE or AVG_KD run without a new causal question;
-- claims or experiments that treat known zero-fill masks as learned missing-data
-  detection;
-- final model selection on the repeatedly inspected two-tile Val2 split.
+Compare confidence, entropy, SGMA-style semantic prototype similarity,
+frequency/image-quality features, semantic+frequency features, and the same
+features plus expert disagreement. Include D5 SafeMaxConfidence and a label-
+informed oracle as controls. Report benefit and harm AUROC/AUPRC, calibration,
+negative-transfer rate and mIoU by class, size, corruption, tile and seed.
+Protocol: `docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md`.
 
-## Required next design gate
+The immediate implementation step is a read-only frozen-expert inference
+and feature audit on Val2. A fitted combination and any safety-gate training
+require a previously frozen, spatially independent fitting/calibration/evaluation
+source. Val2 alone supports only exploratory ranking. Freeze numeric success
+thresholds before fitting the combinations. Do not load TEST6 for D9.
 
-Before new training, write and review a protocol that separates three mechanisms:
+The new method is eligible for training only if combined evidence shows a
+consistent benefit-prediction and negative-transfer advantage over confidence
+and semantic-only controls in both seeds. The candidate residual form is
 
-1. **Known-mask supervision:** R01 inside the synthetic missing mask and fixed R05
-   elsewhere, without confidence selection.
-2. **Confidence selection:** teacher selection without access to the synthetic
-   missing mask, with teacher confidence calibration checked first.
-3. **Deployable fallback:** an explicit Optical anchor or quality estimator whose
-   inference inputs are actually available under real missing/degraded DSM.
+`Zsafe = ZRGB + availability_DSM * gate * (Zdual - ZRGB)`.
 
-The protocol must include a new frozen evaluation source, preferably a second
-dataset or previously untouched tiles. It must define a matched CE baseline,
-ordinary R05-teacher KD, mask-only teacher, confidence-only teacher and the proposed
-method. The primary unit must be tiles/scenes rather than pixels or quadrants.
-
-## Decision rule for resuming GPU work
-
-Queue a new run only after the method differs materially from B1–B4, all controls
-are specified, the evaluation data are frozen, and success thresholds are written
-before results are viewed. Until then, the correct next action is paper/evidence
-consolidation and protocol design, not another training queue.
-
-## Immediate diagnostic: D7
-
-D7 audits Train16 class/crop exposure and existing R01/R05 seed42/17 errors by
-class, connected-object size and true semantic boundary under clean, DSM down8 and
-DSM zero. It performs no training and does not reopen the closed B1–B4 method.
-
-Protocol: `docs/protocols/D7_DATA_SCALE_BOUNDARY_AUDIT.md`.
-
-Only after D7 is summarized may one small R01 training screen be specified. The
-screen must isolate sampling from loss design and retain a matched CE control. D7
-Val2 flags alone cannot support paper claims or replace a new frozen evaluation
-source.
-
-## D7 decision and D8 queue
-
-D7 completed with zero queue failures. Car crop absence alone does not imply
-effective-batch starvation, while the small-Car correctness deficit repeats across
-seeds and tiles. Car is not the worst class, and R05 helps Building while lowering
-Car IoU in both seeds. See `docs/experiments/D7_RESULTS_20260922.md`.
-
-The next runnable experiment is the fixed-step D8 C/A/S sampling screen specified
-in `docs/protocols/D8_SMALL_CAR_SAMPLING_SCREEN.md`. Do not add weighted CE, Dice,
-Focal, boundary loss or copy-paste to this queue.
+With `availability_DSM=0`, output must exactly equal `ZRGB`. RGB-missing
+robustness belongs to a later bidirectional protocol; it is not established by
+the first D9 stage.

@@ -49,6 +49,8 @@ Do not rerun the same dataset, split, seed, schedule and configuration:
   R05_KD and AVG_KD.
 - B4 seed17 matched C/R05_KD/KD 4k continuation, global robustness and paired
   local damaged-region replication.
+- D7 Train16 sampling and seed42/17 semantic-error audit;
+- D8 seed42 4000-step C/A/S crop-sampling screen and `fix1` summary.
 
 ## Important negative or limiting findings
 
@@ -89,6 +91,12 @@ Do not rerun the same dataset, split, seed, schedule and configuration:
 - Do not repeat or extend the unchanged SafeMaxConfidence distillation route. A new
   run requires a materially changed reliability design and a new frozen evaluation
   source.
+- D8-S improves small-Car indicators but fails the prespecified +2 pp mean
+  correctness and +3 pp recall@50 joint gate. D8-A also fails. Do not run the
+  conditional D8 seed17 replication or relax the gate after seeing Val2.
+- Semantic prototype similarity, frequency quality, confidence and availability
+  are candidate D9 evidence or controls. Do not relabel them as ground-truth
+  reliability or claim them alone as the main innovation.
 
 ## Legitimate reasons to rerun
 

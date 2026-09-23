@@ -1,14 +1,34 @@
 # Current Project Status
 
-- Updated: 2026-09-22
+- Updated: 2026-09-23
 - Active branch: `rebuild-v1-protocol-20260915`
-- Current line: completed reliability-aware distillation audit; D7 no-training data/error audit prepared
+- Current line: D8 sampling screen completed and failed its gate; D9 frozen-expert benefit diagnostic is the next protocol
 - Dataset/split: ISPRS Potsdam Train16 -> Val2 (`3_11`, `5_10`)
 - Primary metric: Val2 `mIoU_fg5(noboundary)`
 - Historical TEST6: prohibited for training, selection and current diagnostics
 - Execution device: physical GPU 0 only (`CUDA_VISIBLE_DEVICES=0`)
 
 Evidence provenance: core results plus compact B2/B3/B4 transcriptions are committed. The compact files were reconstructed from user-supplied validated server output; original logs, full CSV files, confusion matrices and checkpoints remain on the server and take precedence if a discrepancy is found.
+
+## D7/D8 update
+
+D7 completed. Train16 has a 15.9175x foreground pixel-frequency ratio;
+small Car is harder than medium/large Car, but Car is not the lowest-IoU class.
+R05 helps Building while it can harm Car. D8 then compared matched R01 seed42
+4000-step random (C), any-Car-centred (A) and small-Car-centred (S) crops.
+The `fix1` queue completed on 2026-09-22 17:59:55 +08:00 with zero failures,
+and all run summaries report `test6_loaded=false`.
+
+S versus C improves small-Car mean correctness by 1.8579 pp, recall@50 by
+1.2987 pp and Car IoU by 0.9159 pp. It fails the predeclared +2 pp mean
+correctness and +3 pp recall requirements. A reduces small-Car mean correctness
+by 1.0097 pp. D8's joint gate failed for both candidates; no seed17 arm is
+authorized by this protocol. See `docs/experiments/D8_RESULTS_20260922.md`.
+
+The next question is whether observable semantic, frequency and expert-disagreement
+evidence predicts the label-defined marginal DSM benefit over R01. D9 is
+diagnostic only until a new frozen evaluation source and numerical training gate
+are specified. See `docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md`.
 
 ## Completed core results
 
@@ -107,8 +127,6 @@ main method. B1–B4 may be retained as mechanism, ablation and negative-result
 evidence. A new main-method experiment requires a changed reliability design and a
 new frozen evaluation source rather than another identical Val2 rerun.
 
-D7 is the immediate diagnostic gate. It measures class and crop exposure on
-Train16 and evaluates existing R01/R05 checkpoints by class, connected-object size
-and true semantic boundary. D7 does not train or select a new model, and its Val2
-flags remain exploratory. Protocol:
-`docs/protocols/D7_DATA_SCALE_BOUNDARY_AUDIT.md`.
+D7 and D8 are closed diagnostics. Do not turn their Val2 findings into a final
+paper claim. B1–B4 remain closed. The proposed paper direction is benefit-aware
+suppression of negative transfer from DSM, subject to D9 evidence.

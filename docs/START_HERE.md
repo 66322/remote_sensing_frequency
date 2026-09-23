@@ -5,10 +5,11 @@ experiment.
 
 Research branch: `rebuild-v1-protocol-20260915`; GitHub defaults to `main`.
 Read `docs/current/HANDOFF.md` first for the current evidence and decision boundary.
-As of 2026-09-22, B1–B4 are complete and their compact metrics are committed. B4
-partially repeats the global degradation trend but fails both local damaged-region
-replication criteria. No GPU experiment is currently queued. Do not rerun the
-unchanged SafeMaxConfidence distillation route from a stale conversation snapshot.
+As of 2026-09-23, B1–B4, D7 and D8 are complete. B4 fails its local replication
+gate; D8's seed42 C/A/S screen fails its sampling gate. No GPU experiment is
+currently queued. The next protocol is D9 frozen-expert DSM benefit diagnosis.
+Do not rerun unchanged SafeMaxConfidence distillation or the conditional D8
+seed17 arm from a stale conversation snapshot.
 
 ## Mandatory execution rules
 
