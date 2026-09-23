@@ -12,6 +12,8 @@ The original-versus-current direction check is in
 `docs/current/DIRECTION_CHECK_20260923.md`.
 The independent dataset decision is in
 `docs/current/INDEPENDENT_SOURCE_DECISION_20260923.md`.
+The conditional D10 method design is in
+`docs/protocols/D10_SELECTIVE_DSM_BENEFIT.md`; it is not yet a GPU queue.
 Read `docs/current/HANDOFF.md` first for the current evidence and decision boundary.
 As of 2026-09-23, B1–B4, D7, D8 and D9A are complete. B4 fails its local
 replication gate; D8 fails its sampling gate. D9A's simple disagreement

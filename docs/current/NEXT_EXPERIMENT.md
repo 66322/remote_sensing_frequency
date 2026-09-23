@@ -43,6 +43,11 @@ residual fusion. Include DSM complete/local absence, blur, downsampling,
 noise and misalignment; the bidirectional RGB-failure extension remains
 required before claiming arbitrary-modality support.
 
+The source-independent method hypothesis, target and essential controls are
+now frozen in `docs/protocols/D10_SELECTIVE_DSM_BENEFIT.md`. It has no
+dataset-specific split, fitted parameters or launch command. Do not interpret
+this design document as authorization to run a new Val2 gate.
+
 If no source qualifies, stop this benefit-predictor training line and write
 up the D9A/D9B negative evidence. Do not optimize the same six scores on
 Val2 or relaunch B1–B4, D8 or D9A.

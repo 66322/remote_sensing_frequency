@@ -12,6 +12,8 @@ The direction check is in `docs/current/DIRECTION_CHECK_20260923.md`;
 the operative next action is `docs/current/NEXT_EXPERIMENT.md`.
 External source candidates and explicit acceptance criteria are in
 `docs/current/INDEPENDENT_SOURCE_DECISION_20260923.md`.
+The next method's source-independent target and control design are frozen in
+`docs/protocols/D10_SELECTIVE_DSM_BENEFIT.md`; no D10 run is queued.
 
 ## Current decision
 

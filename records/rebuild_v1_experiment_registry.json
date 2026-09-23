@@ -802,6 +802,18 @@
       "test6_policy": "prohibited",
       "gpu": "physical_0_only",
       "decision": "The fixed input-space semantic/frequency/expert combination fails the cross-seed decision-benefit gate; close this exact Val2 screen. Do not train a safety residual gate or fit/calibrate a selector until an independent spatially disjoint labelled source is frozen."
+    },
+    {
+      "id": "D10_SELECTIVE_DSM_BENEFIT",
+      "name": "risk_controlled_decision_benefit_selector",
+      "status": "design_frozen_source_pending_no_run",
+      "purpose": "Test a learned decision-relevant DSM benefit predictor and calibrated abstention after accepting a new independent image-height segmentation source.",
+      "protocol": "docs/protocols/D10_SELECTIVE_DSM_BENEFIT.md",
+      "source_decision": "docs/current/INDEPENDENT_SOURCE_DECISION_20260923.md",
+      "training": false,
+      "test6_policy": "prohibited",
+      "gpu": "physical_0_only",
+      "decision": "No D10 fitting or GPU queue until source access, prior exposure, scene-disjoint expert/head/calibration/evaluation partitions, class mapping, and dataset-specific thresholds are frozen."
     }
   ],
   "handoff_entry": "docs/START_HERE.md",
