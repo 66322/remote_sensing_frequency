@@ -2,7 +2,7 @@
 
 - Updated: 2026-09-23
 - Active branch: `rebuild-v1-protocol-20260915`
-- Current line: D9A/D9B/D10M closed; fixed structure score failed; learned benefit model remains untested
+- Current line: D9A/D9B/D10M closed; D11 supervised benefit probe implemented, server execution pending
 - Dataset/split: ISPRS Potsdam Train16 -> Val2 (`3_11`, `5_10`)
 - Primary metric: Val2 `mIoU_fg5(noboundary)`
 - Historical TEST6: prohibited for training, selection and current diagnostics
@@ -11,6 +11,13 @@
 Evidence provenance: core results plus compact B2/B3/B4 transcriptions are committed. The compact files were reconstructed from user-supplied validated server output; original logs, full CSV files, confusion matrices and checkpoints remain on the server and take precedence if a discrepancy is found.
 
 ## Current scheduling correction
+
+D11 now implements the next supervised model experiment, with tile-disjoint
+head fit / probability calibration / threshold calibration and cached Val2
+reporting. See `docs/protocols/D11_SUPERVISED_BENEFIT_PROBE.md`. It is a
+small linear three-outcome probe, not a residual gate or deep semantic model.
+Train16 expert exposure and repeated Val2 use make it exploratory. No result
+or benefit is claimed yet; no external-data audit is a prerequisite.
 
 External source audits stop here. DFC19 acquisition was blocked by proxy 403.
 This does not block D10M's original amplitude-preserving shift / harm-rescue

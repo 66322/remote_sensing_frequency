@@ -1,5 +1,11 @@
 # Start Here
 
+**Active next action:** execute the implemented D11 supervised benefit probe
+queue. Read `docs/current/NEXT_EXPERIMENT.md` and
+`docs/protocols/D11_SUPERVISED_BENEFIT_PROBE.md`. Server results pending.
+The D10M closure below still applies to its fixed-score mechanism branch;
+D11 is a new supervised head experiment with off-Val2 fit/calibration.
+
 Latest decision (2026-09-23 17:50:39+08:00 server completion): D10M
 reported 20/20, zero failures. Its fixed structure score fails the criterion;
 close the mechanism branch. Do not execute older run instructions below.

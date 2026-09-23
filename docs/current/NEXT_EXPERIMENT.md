@@ -1,42 +1,48 @@
-# Next decision after D10M - 2026-09-23
+# Next experiment - D11 supervised benefit probe
 
-D10M reported complete: 20/20, zero failures. The result is extracted and
-recorded in `docs/experiments/D10M_RESULTS_20260923.md`. No more data or
-result audits are required to make the primary decision.
+D9A/D9B/D10M results are extracted and their fixed-score branches remain
+closed. D11 is now implemented; no server run or result is claimed yet.
+No new data download or source inventory is required.
 
-## Close the tested feature branch
+Run `scripts/run_rebuild_v1_d11_probe_queue.sh` in remote_sensing from the
+server project. It automatically exports development samples, fits the
+supervised heads, calibrates them, evaluates existing Val2 caches and prints
+D11_SUMMARY.log. The frozen protocol is
+`docs/protocols/D11_SUPERVISED_BENEFIT_PROBE.md`.
 
-Structure_r8 has 2 wins / 34 losses on available-DSM comparisons. After
-removing the matched edge-shift duplicates: 1 win / 23 losses. The small
-positive is +0.0030 pp. Circular shifts preserve amplitude but their mIoU
-effect has opposite directions across expert seeds. Close this fixed-score
-hypothesis; no more radius, threshold or weighted-sum optimization on Val2.
-Do not start residual-gate training. Keep D9A/D9B/B1-B4 closed as well.
+## Concrete experiment
 
-## Next model work, not another source inventory
+- Frozen expert pairs, seeds42/17. Six fit tiles, two temperature-calibration
+  tiles and two threshold-calibration tiles, all from Train16. No role overlap.
+- Export 50k matched samples per development tile under clean, blur and noise;
+  infer RGB once per seed/tile and reuse across the three conditions.
+- Fit six tiny three-class linear models: confidence, entropy, JS, expert
+  outputs, frequency/structure, expert+frequency. No backbone or residual gate.
+- Learn gain/harm/both-wrong outcomes on expert disagreements. Calibrate gain
+  and harm probabilities on separate tiles; select one condition-agnostic
+  threshold subject to empirical H<=0.5% in every threshold-calibration group.
+- Freeze model and threshold before opening Val2. Reuse D10M caches, including
+  head-held-out shifts. Missing DSM deterministically selects RGB.
+- Print sampled NoBoundary mIoU, actual harm/rescue, gain/harm ECE and Brier,
+  benefit ranking and class/size strata. Do not confuse sampled results with
+  previous complete-image mIoU.
 
-Negative-transfer suppression remains the research objective. The next
-possible experiment is a separately preregistered, small supervised
-benefit/harm predictor, starting with expert-output-only inputs. Establish
-learnability before assuming semantic or frequency descriptors help. Then
-compare capacity-matched semantic-only, frequency-only, semantic+expert,
-and full models. Retain calibrated confidence/entropy and expert disagreement
-controls. Semantic and frequency are candidate inputs, not proven reliability.
+## Interpretation and one-batch stop
 
-This is a new hypothesis, not a positive D10M gate decision. Freeze actual
-head-fit, calibration and evaluation scene groups before implementation.
-A local exploratory experiment may use available development data, with
-explicit expert-training exposure disclosure; it cannot be called independent
-confirmation. Do not train or calibrate on Val2 and report the same pixels
-as held-out evidence. Do not random-split pixels across adjacent scenes.
+The experts saw all Train16 development tiles, and Val2 was repeatedly used
+for earlier decisions. This experiment is exploratory, not independent
+confirmation or formal risk control. Predicted class probabilities do not
+constitute a deep semantic prototype method. Frequency adds model parameters;
+its increment alone does not establish mechanism or novelty.
 
-No learned-model queue is implemented or launched in this result-recording
-update. No DFC19 download or metadata inventory is a prerequisite for the
-next protocol. Existing D10M caches are preserved; they are diagnostic
-Val2 data and not an independently held-out fitting dataset.
+The summary predeclares a candidate screen for each model: both seeds must
+have >=0.10 pp family-average sampled mIoU gain over the stronger calibrated
+confidence/entropy control, no clean regression versus RGB, and H<=0.5% for
+every evaluated tile-condition. These are practical screening rules, not
+significance tests. A pass leads only to a frozen full-resolution comparison.
+No pass: close this linear probe, without changing thresholds/capacity on
+Val2. No automatic residual-gate training in either case.
 
-Only genuinely incremental, cross-seed evidence can reopen the residual-gate
-entry criterion. Calibrated benefit probabilities, held-out corruption
-families, RGB failure and independent confirmation remain required before
-strong final claims. Physical GPU 0, writes under /home/jovyan/zzx, failures
-continue, Test6 frozen. No new shell command is required for this closed batch.
+Runtime writes stay under /home/jovyan/zzx, physical GPU0 only, timeout-bound
+serial jobs continue after failure. Test6 remains frozen. The queue refuses
+to overwrite existing records. No new dataset audit follows this batch.

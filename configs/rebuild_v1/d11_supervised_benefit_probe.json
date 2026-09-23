@@ -1,0 +1,21 @@
+{
+  "experiment": "D11_SUPERVISED_BENEFIT_PROBE",
+  "seeds": [42, 17],
+  "fit": ["6_7", "6_8", "6_9", "7_7", "7_8", "7_9"],
+  "probability_calibration": ["6_10", "7_10"],
+  "threshold_calibration": ["4_11", "7_11"],
+  "evaluation": ["3_11", "5_10"],
+  "development_conditions": ["clean", "dsm_blur5", "dsm_noise_std010"],
+  "evaluation_conditions": ["clean", "dsm_blur5", "dsm_noise_std010", "roll4", "roll16", "roll32", "dsm_zero"],
+  "models": ["confidence", "entropy", "disagreement", "expert", "frequency", "expert_frequency"],
+  "samples_per_development_tile": 50000,
+  "l2": 0.01,
+  "max_iterations": 300,
+  "temperature_bounds": [0.25, 4.0],
+  "harm_budget": 0.005,
+  "thresholds": [0.0, 0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 1.0],
+  "target": "three outcomes among expert disagreements: gain, harm, both_wrong",
+  "scope": "exploratory: experts saw Train16; head roles are tile-disjoint; Val2 repeatedly used for development; no independent confirmation",
+  "selection": "fixed optimizer and features; temperature on probability-calibration tiles; one threshold per seed/model on threshold-calibration tiles, with empirical H <= budget in every tile-condition group; no Val2 threshold choice",
+  "semantic_features": "not implemented; predicted class probabilities are expert-output context, not learned semantic prototypes"
+}

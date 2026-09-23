@@ -1,5 +1,12 @@
 # Current handoff — 2026-09-23 (after D9B)
 
+**Current action:** D11 supervised decision-benefit probe is implemented and
+awaiting server execution. Its protocol fixes six head-fit tiles, two
+probability-calibration tiles, two threshold-calibration tiles and Val2
+evaluation using D10M caches. Run `scripts/run_rebuild_v1_d11_probe_queue.sh`.
+This supersedes the no-new-queue wording in the historical D10M closure below.
+It does not reopen residual-gate training or the failed fixed scores.
+
 Latest decision (2026-09-23 17:50:39+08:00 server completion): D10M
 reported 20/20, zero failures. Its fixed structure score fails the criterion;
 close the mechanism branch. Do not execute older run instructions below.

@@ -823,6 +823,27 @@
       "decision": "Close fixed structure scoring: primary harm-rescue comparison fails and shift mIoU direction reverses across seeds. No rerun, weight/radius search, or residual-gate training. Learned benefit prediction remains a separate untested hypothesis."
     },
     {
+      "id": "D11_SUPERVISED_BENEFIT_PROBE",
+      "name": "linear_decision_benefit_probe_with_off_val2_calibration",
+      "status": "implemented_server_run_pending",
+      "purpose": "Establish supervised benefit predictability from frozen expert outputs and screen incremental frequency inputs; not residual-gate training.",
+      "protocol": "docs/protocols/D11_SUPERVISED_BENEFIT_PROBE.md",
+      "config": "configs/rebuild_v1/d11_supervised_benefit_probe.json",
+      "queue_script": "scripts/run_rebuild_v1_d11_probe_queue.sh",
+      "seeds": [42, 17],
+      "head_fit": ["6_7", "6_8", "6_9", "7_7", "7_8", "7_9"],
+      "probability_calibration": ["6_10", "7_10"],
+      "threshold_calibration": ["4_11", "7_11"],
+      "evaluation": ["3_11", "5_10"],
+      "expert_training_exposure": "All head-development tiles were seen by the frozen experts; repeatedly used Val2 is exploratory evaluation only.",
+      "models": ["confidence", "entropy", "disagreement", "expert", "frequency", "expert_frequency"],
+      "backbone_or_residual_gate_training": false,
+      "deep_semantic_prototype_implemented": false,
+      "test6_policy": "prohibited",
+      "gpu": "physical_0_only",
+      "decision": "One fixed supervised screening batch. No result yet. A two-seed pass can nominate a model for full-resolution confirmation only; failures close the linear probe without Val2 tuning."
+    },
+    {
       "id": "D10_SELECTIVE_DSM_BENEFIT",
       "name": "risk_controlled_decision_benefit_selector",
       "status": "design_frozen_source_pending_no_run",

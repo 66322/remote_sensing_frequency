@@ -1,5 +1,11 @@
 # Completed, Closed, or Do-Not-Repeat Work
 
+D11 exception is a new supervised three-outcome probe with a frozen separate
+protocol, not a repetition of D9B/D10M fixed scores. Fit and both calibration
+roles must remain outside Val2; no hyperparameter/radius sweep follows its
+results. A screening pass only leads to frozen full-resolution confirmation,
+not residual-gate training. No source inventory before this runnable queue.
+
 D10M completed: close structure_r8 and fixed local structure scoring. Do not
 rerun the batch or select a different radius/budget after seeing the result.
 No residual-gate training is authorized by this negative evidence.
