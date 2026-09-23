@@ -15,8 +15,9 @@ DFC19-specific interpretation before acquisition completes: the
 [contest description](https://www.grss-ieee.org/community/technical-committees/2019-ieee-grss-data-fusion-contest/)
 says JAX and OMA are different cities, the optical data are pan-sharpened
 WorldView-3 rather than Potsdam RGB, and LiDAR-derived height and semantic
-labels are projected into geographic tiles. Car is not among the listed
-semantic categories; DFC19 cannot validate the small-Car claim. The linked
+labels are projected into geographic tiles. Car is not among the categories
+explicitly listed on that page; do not claim small-Car validation without
+confirming a Car label in the actual DFC19 masks and class documentation. The linked
 preprocessed `gt_nDSM` is an above-ground-height raster, not necessarily the
 same DSM representation as Potsdam. A D10 experiment using it must explicitly
 assume that this height modality is available at inference and report its
