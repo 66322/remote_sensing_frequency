@@ -22,6 +22,22 @@ roots, this does **not** establish 17 usable triplets. The next check is
 `scripts/inspect_rebuild_v1_vaihingen_d10_metadata.py`; it reads metadata
 only and reports source paths, header alignment and patch proximity.
 
+User-reported follow-up at commit `f09808b`: all 17 candidates have extracted
+optical, DSM and complete-label files, with matching raster dimensions within
+each ID. The TIFFs did not expose CRS/bounds to the available `tifffile`
+fallback, so `headers_aligned=null` and `nearest_legacy_used=null` mean
+**unknown**, not misalignment or isolation. [ISPRS states the TOP and DSM use
+the same grid](https://www.isprs.org/resources/datasets/benchmarks/UrbanSemLab/2d-sem-label-vaihingen.aspx).
+Its official patch overview also shows all patches cut from one mosaic, with
+candidate IDs interleaved with or adjacent to legacy-used IDs. Vaihingen is
+therefore available for same-domain development but **not accepted as a
+geographically independent D10 final confirmation source**. The compact
+transcription is in
+`records/rebuild_v1_d10_vaihingen_inventory_20260923/user_reported_header_summary.json`.
+The selected `label_complete` path in the inspection output is the eroded
+NoBoundary file; an eventual FullGT protocol must choose its separate file
+explicitly.
+
 2026-09-23 direction update: The official
 [IEEE GRSS 2019 DFC US3D page](https://www.grss-ieee.org/community/technical-committees/2019-ieee-grss-data-fusion-contest/)
 describes satellite imagery, LiDAR-derived heights and semantic labels for

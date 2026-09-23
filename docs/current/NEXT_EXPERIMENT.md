@@ -13,7 +13,7 @@ decision benefit and suppressing negative transfer**. The comparison with
 the original plan, including unfinished RGB-missing and training/inference
 requirements, is in `docs/current/DIRECTION_CHECK_20260923.md`.
 
-## Immediate next action: independent source decision
+## Immediate next action: geographically independent source
 
 Before any new GPU experiment, identify an additional labelled image+height
 segmentation scene set that has not been used for method selection. Freeze:
@@ -27,25 +27,25 @@ segmentation scene set that has not been used for method selection. Freeze:
 Only metadata are needed for this decision. Do not load historical Potsdam
 Test6. Known Potsdam Train16 and repeatedly inspected Val2 are ineligible as
 independent confirmation; earlier Vaihingen train12/test4 were also exposed.
-First check whether complete labels for previously unused Vaihingen scenes
-are already on the server, using the targeted filename-only inventory
-`scripts/inventory_rebuild_v1_vaihingen_unused_metadata.py`. The earlier
-generic locator's zero candidates was a naming-pattern false negative for
-the legacy `top/dsm/gts_*` layout. If no usable untouched Vaihingen scenes
-exist, US3D is the first external feasibility candidate; the 2018 Houston
-DFC dataset is a harder fallback. None is approved for an experiment yet.
-The user-reported inventory found 17 possible unused Vaihingen IDs, recorded
-in `records/rebuild_v1_d10_vaihingen_inventory_20260923/user_reported_metadata.json`.
-That count includes ZIP members and merges two roots, so it is not a set of
-validated triplets. Run `scripts/inspect_rebuild_v1_vaihingen_d10_metadata.py`
-once to check extracted-file provenance, GeoTIFF headers, alignment and
-nearest previously used patch; then freeze spatial groups only if viable.
+The user-reported inventory found 17 unused Vaihingen IDs with extracted
+optical, DSM and complete-label files and matching dimensions, recorded in
+`records/rebuild_v1_d10_vaihingen_inventory_20260923/`. The official ISPRS
+patch overview shows these patches are from one mosaic and adjacent to or
+interleaved with previously used patches. Their metadata contain no readable
+CRS/bounds, so the numeric neighbor field is unavailable; this does not
+negate the official map. **Do not use Vaihingen as D10's independent final
+confirmation.** It remains suitable for explicitly exploratory, same-domain
+development with scene-level partitions. Assess US3D/DFC19 next for a final
+geographically distinct source and an accessible labelled image-height-mask
+split; if it is unusable, evaluate DFC18 Houston once.
+The [SynRS3D authors' real-data preparation instructions](https://github.com/JTRNEO/SynRS3D#real-world-elevation-datasets)
+describe a concrete DFC19 `opt`/`gt_nDSM`/`gt_ss_mask` format and JAX/OMA
+lists. Check the actual DFC19 source/license, class values and geographic
+partition before treating those files as D10 inputs. Their preprocessed
+download is a lead, not evidence of a ready, approved split.
 The source comparison and stop conditions are in
 `docs/current/INDEPENDENT_SOURCE_DECISION_20260923.md`; the existing-scene
 exposure record is in `docs/current/D9B_SOURCE_STATUS_20260923.md`.
-The one-time metadata-only locator is
-`scripts/find_rebuild_v1_d10_source_triplets.py`; it reads directory names
-under `/home/jovyan/zzx`, not pixel data or Test6.
 
 If an eligible source is frozen, write a new protocol for **one** fitted
 benefit predictor with calibrated abstention, exact DSM-absence RGB fallback,
