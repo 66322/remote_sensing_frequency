@@ -37,18 +37,21 @@ repeated.
 
 The old D5 per-seed result directories are absent under project `records/`,
 although its seed42/17 logs report `D5 COMPLETE`. Its queue status file is
-also absent. A new, predeclared D9A entropy-routing decision audit is prepared
+also absent. A new, predeclared D9A entropy-routing decision audit is running
 at `docs/protocols/D9A_ENTROPY_ROUTING_DECISION_AUDIT.md`. It measures routed
 mIoU and selected harm for safe entropy versus corrected safe confidence on
 the same eight conditions and both seeds. It is exploratory Val2 analysis,
-uses only frozen experts, and cannot establish a new method claim. Run its
-smoke plus independent failure-continue queue, then validate the source-hashed
-summary against the existing D9A expert and confidence outputs.
+uses only frozen experts, and cannot establish a new method claim. The queue
+started at 2026-09-23 13:00:35 +08:00; smoke passed and seed42 clean started.
+Wait for its independent failure-continue stages, then validate the
+source-hashed summary against the existing D9A expert and confidence outputs.
 
 After the route audit, perform a read-only D9B source audit. Inventory RGB/DSM
 images, labels, scene IDs and prior experiment exposure for a second dataset
-or genuinely untouched scenes. Vaihingen appears in earlier work and cannot
-be assumed unseen without that exposure audit. Freeze spatially disjoint
+or genuinely untouched scenes. Earlier Vaihingen work already used train tiles
+`1,3,7,11,13,17,23,26,28,32,34,37` and evaluated on `5,15,21,30`;
+neither documented set is an untouched final test. See
+`docs/current/D9B_SOURCE_STATUS_20260923.md`. Freeze spatially disjoint
 fitting, calibration and evaluation scenes and the condition generator before
 extracting fitted features. If no independent labelled source exists, keep
 D9B as a protocol and report D9A as exploratory rather than fitting on Val2.

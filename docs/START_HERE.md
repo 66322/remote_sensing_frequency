@@ -12,11 +12,14 @@ Entropy difference ranks benefit above confidence in all 16 comparisons;
 its routed segmentation effect still needs an audit of existing D5 records.
 The D5 per-seed result directories were absent in the latest server check,
 although its logs report completion. A matched safe-entropy routing decision
-audit is prepared as an exploratory D9A follow-up. The original D9A
+audit is running as an exploratory D9A follow-up. The original D9A
 local-down8 D5 route incorrectly forced RGB in degraded but available DSM;
-its two-seed `fix1` correction completed with zero failures. No GPU experiment
-is currently queued. The full D9 gate remains unevaluated; a fitted D9B needs
-an independent evaluation source.
+its two-seed `fix1` correction completed with zero failures. The entropy-route
+queue started at 2026-09-23 13:00:35 +08:00; its smoke stage passed, and
+seed42 clean started. The full D9 gate remains unevaluated; a fitted D9B needs
+an independent evaluation source. The documented Potsdam and Vaihingen scenes
+are already exposed; see `docs/current/D9B_SOURCE_STATUS_20260923.md` before
+proposing a new source.
 Do not rerun unchanged SafeMaxConfidence distillation or the conditional D8
 seed17 arm from a stale conversation snapshot.
 

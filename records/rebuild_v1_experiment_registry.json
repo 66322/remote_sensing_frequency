@@ -723,9 +723,26 @@
       "decision": "Corrected local-down8 D5 mIoU exceeds both frozen experts at both seeds, while selected-dual harm remains nonzero. Original local-down8 D5 routing values are invalid; no D9 safety-gate claim follows."
     },
     {
+      "id": "D9B_SOURCE_AUDIT",
+      "name": "independent_scene_source_audit",
+      "status": "repository_audit_complete_server_inventory_pending",
+      "purpose": "Identify a spatially independent labelled optical+DSM source before fitting or evaluating D9 benefit predictors.",
+      "records": [
+        "docs/current/D9B_SOURCE_STATUS_20260923.md",
+        "configs/rebuild_v1/potsdam_split_seed20260915.json",
+        "records/DETPAIR_PREFUSION_FREQ_VAIHINGEN_FROZEN_20260831.md"
+      ],
+      "result_summary": "Known Potsdam Train16/Val2/Test6 scenes and historical Vaihingen train12/test4 scenes are exposed; no documented untouched scene source is presently available.",
+      "decision": "Do not fit or claim independent confirmation for D9B until additional labelled optical+DSM scenes and prior exposure are audited and partitions frozen."
+    },
+    {
       "id": "D9A_ENTROPY_ROUTE",
       "name": "matched_safe_entropy_vs_safe_confidence_decision_audit",
-      "status": "prepared_not_launched",
+      "status": "running_smoke_complete",
+      "launch_commit": "3c0f4909a854cd2e87539cc79ef68d2b8da5fdc3",
+      "started_at": "2026-09-23T13:00:35+08:00",
+      "last_reported_stage": "D9A_ENT_42_clean START at 2026-09-23T13:01:30+08:00",
+      "time_source": "user-supplied queue status excerpt",
       "fingerprint": "potsdam_val2_seed42_seed17_8dsmconditions_frozen_expert_safe_entropy_vs_safe_confidence_route_v1",
       "purpose": "Test whether D9A entropy benefit-ranking gains improve actual routed mIoU and selected-dual CE harm without retraining either expert.",
       "reason_for_new_evaluation": "Original D5 seed42/17 logs report completion, but their per-seed metric directories are absent from project records; D9A did not compute entropy-route mIoU.",

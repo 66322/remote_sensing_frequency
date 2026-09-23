@@ -18,7 +18,10 @@ corrected D5 NB mIoU is 86.8285%/86.2557% at seeds 42/17, and the ranking
 CSVs are byte-identical to the originals. See
 `docs/experiments/D9A_RESULTS_20260923.md`. Inspect existing strata and
 select an independent evaluation source before fitting D9B or training a
-safety gate. Historical TEST6 remains frozen.
+safety gate. The repository source audit finds no documented untouched scene
+set: Potsdam Train16/Val2/Test6 are respectively trained, inspected and
+historically exposed; earlier Vaihingen F0/P1 work used train12/test4. See
+`docs/current/D9B_SOURCE_STATUS_20260923.md`. Historical TEST6 remains frozen.
 
 ## Read this first on another computer
 
@@ -28,8 +31,8 @@ safety gate. Historical TEST6 remains frozen.
 - B4 evidence: `records/rebuild_v1_b4_seed17_compact_20260922/`
 - B4 report: `docs/experiments/B4_SEED17_REPLICATION_20260921.md`
 - Current state: B4 and D8 gates failed; D9A and local-down8 fix1 complete, full D9 gate unevaluated.
-- No GPU experiment is currently queued by this handoff; the entropy-route
-  decision audit is prepared but not launched.
+- The D9A entropy-route queue is active as of the last user report: smoke
+  complete, seed42 clean started. No full-queue result has been reported.
 
 GitHub contains compact metrics, decisions, timestamps and checkpoint references.
 Large checkpoints, complete logs, full per-condition CSV files and confusion matrices
@@ -94,6 +97,7 @@ checkpoint paths and SHA256 values are in `run_provenance.json`.
 `docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md` on branch
 `rebuild-v1-protocol-20260915`. B1–B4 and D8 are closed; D9A and its
 local-down8 correction are complete.
-Run the prepared D9A entropy-route decision audit, then choose a new evaluation
-source before fitting benefit predictors. Keep TEST6 frozen, use physical GPU0 only, and store
+Await and audit the running D9A entropy-route decision queue, then inventory
+new labelled scenes before fitting benefit predictors. The documented Potsdam
+and Vaihingen scenes are exposed. Keep TEST6 frozen, use physical GPU0 only, and store
 runtime artifacts under `/home/jovyan/zzx`.”

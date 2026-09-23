@@ -24,7 +24,8 @@ both ranking metrics in 16/16 comparisons, and within locally damaged regions
 in 4/4. Existing D5 entropy-routing metric files are missing from expected
 locations; the server audit found only the D5 queue directory, while seed42/17
 logs report completion. A narrow frozen-expert entropy-route mIoU/harm audit
-is prepared. The D9A local-down8 D5
+is running: smoke passed and seed42 clean started in the last server report.
+The D9A local-down8 D5
 routing result was invalid because the original code treated degraded DSM as
 known absence; the two-seed fix completed with zero failures. Corrected D5 NB
 mIoU is 86.8285%/86.2557%, with unchanged benefit-ranking CSVs. Under normalized DSM Gaussian noise sigma
