@@ -114,6 +114,28 @@ benefit; add symmetric RGB-missing handling only under a separate protocol.
 
 ## Execution rules
 
+### D9A initial runnable stage
+
+`scripts/run_rebuild_v1_d9a_queue_20260923.sh` performs a seed42 clean smoke
+check, followed by independent condition stages for both frozen expert seeds.
+It covers clean DSM, global zero/down8/blur5/noise (Gaussian sigma 0.10 on
+normalized DSM), 4-pixel right shift, and quadrant-1 local zero/down8. Each
+stage computes true-class CE benefit on a fixed uniform sample of up to 200,000
+valid NoBoundary pixels per tile. It reports exact tie-aware AUROC/AUPRC of
+unfitted confidence, entropy and expert-disagreement scores, plus full-tile
+R01/R05/D5/correctness-oracle mIoU. The same sampled pixel locations are used
+across seeds and conditions. A 0.01-CE neutral exclusion and a zero-threshold
+sensitivity result are both reported. Selected-dual harm is the fraction of
+selected pixels whose CE benefit is below -0.01. All scores and groups report
+support counts.
+
+D9A does not output ECE because these unfitted scores are not calibrated
+benefit probabilities. Semantic-prototype and frequency combinations, ECE and
+the entry gate above require the separately frozen fitting and evaluation
+source. D9A results alone cannot pass the full D9 gate. Every D9A stage is
+read-only with respect to checkpoints and datasets, writes only compact metrics
+under project `records/`, and has a separate timeout and failure-continue log.
+
 Any inference job must use physical GPU 0 only (`CUDA_VISIBLE_DEVICES=0`, logical
 `cuda:0`). All generated features, logits, logs and records stay under
 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro`; do not upload full logits,

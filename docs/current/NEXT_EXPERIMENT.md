@@ -22,8 +22,9 @@ informed oracle as controls. Report benefit and harm AUROC/AUPRC, calibration,
 negative-transfer rate and mIoU by class, size, corruption, tile and seed.
 Protocol: `docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md`.
 
-The immediate implementation step is a read-only frozen-expert inference
-and feature audit on Val2. A fitted combination and any safety-gate training
+The immediate runnable step is the D9A read-only frozen-expert inference
+and direct-score audit on Val2 (`scripts/run_rebuild_v1_d9a_queue_20260923.sh`).
+A fitted combination and any safety-gate training
 require a previously frozen, spatially independent fitting/calibration/evaluation
 source. Val2 alone supports only exploratory ranking. Freeze numeric success
 thresholds before fitting the combinations. Do not load TEST6 for D9.

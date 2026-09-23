@@ -5,7 +5,9 @@
 D8 `fix1` completed on 2026-09-22 17:59:55 +08:00 with zero queue failures.
 Both A and S fail the frozen sampling gate, so `proceed_seed17=[]`. The next
 research step is D9 frozen-expert DSM benefit diagnosis, specified in
-`docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md`. Do not start D8 seed17 or a
+`docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md`. The D9A read-only queue is
+prepared at `scripts/run_rebuild_v1_d9a_queue_20260923.sh` but has not run.
+Do not start D8 seed17 or a
 safety-gate training run. Historical TEST6 remains frozen.
 
 ## Read this first on another computer

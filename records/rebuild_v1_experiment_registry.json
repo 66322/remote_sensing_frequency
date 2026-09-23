@@ -620,14 +620,20 @@
     {
       "id": "D9",
       "name": "frozen_expert_dsm_marginal_benefit_diagnostic",
-      "status": "protocol_only",
+      "status": "prepared_not_launched",
       "evidence_status": "not_run",
       "fingerprint": "potsdam_val2_r01_r05_seed42_seed17_dsm_benefit_feature_audit_v1",
       "purpose": "Test whether observable semantic, frequency and expert-disagreement features predict the label-defined marginal benefit and harm from DSM.",
       "protocol": "docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md",
+      "queue": "scripts/run_rebuild_v1_d9a_queue_20260923.sh",
+      "expected_server_records": [
+        "records/rebuild_v1_d9a_queue_20260923/",
+        "records/rebuild_v1_d9a_seed42_*_20260923/",
+        "records/rebuild_v1_d9a_seed17_*_20260923/"
+      ],
       "test6_policy": "prohibited",
       "training": false,
-      "decision": "Run frozen-expert diagnostics only after data and leakage checks; safety-gate training requires a passed, predeclared cross-seed gate and a new frozen evaluation source."
+      "decision": "D9A unfitted-score inference queue is prepared but not run. It is an exploratory Val2 screen; fitted semantic/frequency combinations and safety-gate training require a new frozen evaluation source."
     }
   ],
   "handoff_entry": "docs/START_HERE.md",
