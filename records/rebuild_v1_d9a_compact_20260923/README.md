@@ -10,3 +10,8 @@ erroneously forced RGB in the locally downsampled quadrant. The expert metrics
 and all benefit-ranking values remain unaffected by this routing mask. The
 correction uses existing checkpoints with a distinct `fix1` output path;
 original files are retained for audit.
+
+`user_reported_local_down8_fix1.json` transcribes the successful two-seed
+correction queue and server summarizer. Use its corrected D5 values for local
+down8; keep the older table only as an invalidated historical transcription.
+The server's `source_manifest.json` hashes the original and corrected inputs.

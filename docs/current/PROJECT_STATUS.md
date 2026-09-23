@@ -23,8 +23,9 @@ ranking finding, not yet a routed-mIoU or calibration gain. Within Car it wins
 both ranking metrics in 16/16 comparisons, and within locally damaged regions
 in 4/4. Existing D5 entropy-routing metric files are missing from expected
 locations; search before scheduling new inference. The D9A local-down8 D5
-routing result is invalid because the original code treated degraded DSM as
-known absence; a two-seed fix is prepared. Under normalized DSM Gaussian noise sigma
+routing result was invalid because the original code treated degraded DSM as
+known absence; the two-seed fix completed with zero failures. Corrected D5 NB
+mIoU is 86.8285%/86.2557%, with unchanged benefit-ranking CSVs. Under normalized DSM Gaussian noise sigma
 0.10, D5 is below R01 by 0.1814/0.3190 pp NB mIoU for seeds 42/17, despite
 its exact R01 fallback when DSM is completely absent. This is a negative
 result for the tested direct disagreement interaction, not the full D9

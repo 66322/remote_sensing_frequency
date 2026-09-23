@@ -4,7 +4,8 @@
 - Current gate: D9A frozen-expert direct-score audit completed on both seeds
   and eight conditions with no queue failures.
 - Correction: original D9A forced RGB in local down8, affecting only that
-  condition's D5 routed mIoU and selected harm. Correct those two stages.
+  condition's D5 routed mIoU and selected harm. The two-stage fix1 queue
+  completed with zero failures and preserved ranking CSVs byte-for-byte.
 - Decision: confidence×JS disagreement does not improve benefit ranking over
   confidence difference in any of the 16 comparisons. Do not fit a safety
   gate from this result. D8 seed17 also remains closed.
@@ -30,10 +31,9 @@ D9A is complete. A read-only review finds entropy difference above confidence
 difference on AUROC and AUPRC in all 16 seed-by-condition comparisons.
 The entropy stratum audit is complete: Car wins 16/16 AUROC/AUPRC comparisons,
 small Car wins 16/16 AUROC and 15/16 AUPRC, and damaged regions win 4/4 on
-both metrics. First run `scripts/run_rebuild_v1_d9a_local_down8_fix1_20260923.sh`
-and validate with `scripts/summarize_rebuild_v1_d9a_local_down8_fix1.py`.
-These correct only two affected existing-model evaluations; the other 14
-D9A conditions must not be repeated.
+both metrics. The local-down8 correction is complete: D5 NB mIoU is
+86.8285%/86.2557% at seeds 42/17. The other 14 D9A conditions must not be
+repeated.
 
 The expected old D5 `method_metrics.csv` paths are missing. Locate any
 existing D5 original metrics within the project records and

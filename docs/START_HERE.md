@@ -13,7 +13,7 @@ its routed segmentation effect still needs an audit of existing D5 records.
 The expected D5 metric paths were absent in the latest server check; locate
 originals before scheduling an entropy-routing reevaluation. The original D9A
 local-down8 D5 route incorrectly forced RGB in degraded but available DSM;
-the next GPU action is the two-stage `fix1` correction only. No GPU experiment
+its two-seed `fix1` correction completed with zero failures. No GPU experiment
 is currently queued. The full D9 gate remains unevaluated; a fitted D9B needs
 an independent evaluation source.
 Do not rerun unchanged SafeMaxConfidence distillation or the conditional D8

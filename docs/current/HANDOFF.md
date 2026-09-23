@@ -11,8 +11,10 @@ routed mIoU has not been audited in this handoff. Car and damaged-region
 ranking advantages also repeat, with small-Car support limited. Expected
 D5 per-seed metric files are missing; locate originals before an entropy-route
 rerun. The original D9A local-down8 D5 route incorrectly masked degraded DSM
-as absent. Run only the two-stage `fix1` correction before citing its routed
-mIoU or selected harm. See `docs/experiments/D9A_RESULTS_20260923.md`. Inspect existing strata and
+as absent. Its two-stage `fix1` correction completed with zero failures:
+corrected D5 NB mIoU is 86.8285%/86.2557% at seeds 42/17, and the ranking
+CSVs are byte-identical to the originals. See
+`docs/experiments/D9A_RESULTS_20260923.md`. Inspect existing strata and
 select an independent evaluation source before fitting D9B or training a
 safety gate. Historical TEST6 remains frozen.
 
@@ -23,7 +25,7 @@ safety gate. Historical TEST6 remains frozen.
 - B1–B3 evidence: `records/rebuild_v1_b2_b3_compact_20260921/`
 - B4 evidence: `records/rebuild_v1_b4_seed17_compact_20260922/`
 - B4 report: `docs/experiments/B4_SEED17_REPLICATION_20260921.md`
-- Current state: B4 and D8 gates failed; D9A complete, full D9 gate unevaluated.
+- Current state: B4 and D8 gates failed; D9A and local-down8 fix1 complete, full D9 gate unevaluated.
 - No GPU experiment is currently queued by this handoff.
 
 GitHub contains compact metrics, decisions, timestamps and checkpoint references.
@@ -87,7 +89,8 @@ checkpoint paths and SHA256 values are in `run_provenance.json`.
 `docs/experiments/D8_RESULTS_20260922.md`,
 `docs/experiments/D9A_RESULTS_20260923.md` and
 `docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md` on branch
-`rebuild-v1-protocol-20260915`. B1–B4 and D8 are closed; D9A is complete.
+`rebuild-v1-protocol-20260915`. B1–B4 and D8 are closed; D9A and its
+local-down8 correction are complete.
 Check existing D5 min-entropy routing and choose a new evaluation source before fitting
 benefit predictors. Keep TEST6 frozen, use physical GPU0 only, and store
 runtime artifacts under `/home/jovyan/zzx`.”
