@@ -1,5 +1,15 @@
 # D9B independent-source audit — repository evidence only
 
+2026-09-23 direction update: The official
+[IEEE GRSS 2019 DFC US3D page](https://www.grss-ieee.org/community/technical-committees/2019-ieee-grss-data-fusion-contest/)
+describes satellite imagery, LiDAR-derived heights and semantic labels for
+training regions in Jacksonville and Omaha. It is a possible *new-domain*
+source, not an approved split or a substitute for Potsdam Car analysis.
+Verify current access, height-as-input usage, scene IDs, class mapping,
+spatial independence and publication terms before any data transfer or run.
+The page says its contest validation/test reference labels are undisclosed
+and imposes registration and publication-use conditions.
+
 The D9A entropy-route queue has completed. This read-only audit identifies which
 labelled scenes are already exposed in the repository; it does not inspect
 the server's dataset files or load any image, DSM, label or historical TEST6
