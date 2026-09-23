@@ -1,3 +1,4 @@
+> 2026-09-23 D11 update: user-reported server queue completed 12/12 with failures=0 at 18:51:37 +08:00; the frozen screen yielded no full-resolution candidates. D12 deep decoder-context/frequency exploration is implemented but not yet run on the server. See `docs/experiments/D11_RESULTS_20260923.md` and `docs/protocols/D12_NIGHT_SEMANTIC_FREQUENCY_20260923.md`. This paragraph supersedes older D11-pending directions below.
 # Current handoff — 2026-09-23 (after D9B)
 
 **Current action:** D11 supervised decision-benefit probe is implemented and

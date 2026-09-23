@@ -1,0 +1,23 @@
+{
+  "experiment": "D12_NIGHT_SEMANTIC_FREQUENCY",
+  "seeds": [42, 17],
+  "fit": ["6_7", "6_8", "6_9", "7_7", "7_8", "7_9"],
+  "probability_calibration": ["6_10", "7_10"],
+  "threshold_calibration": ["4_11", "7_11"],
+  "evaluation": ["3_11", "5_10"],
+  "development_conditions": ["clean", "dsm_blur5", "dsm_noise_std010"],
+  "evaluation_conditions": ["clean", "dsm_blur5", "dsm_noise_std010", "roll4", "roll16", "roll32", "dsm_zero"],
+  "core_models": ["E", "Ecap", "ES", "EF", "ESF"],
+  "mechanism_models": ["ESF_shuffleS", "ESF_shuffleF"],
+  "full_resolution_priority": ["ESF", "ES", "EF", "E", "Ecap"],
+  "max_full_resolution_candidates": 2,
+  "harm_budget": 0.005,
+  "minimum_family_gain_pp": 0.10,
+  "thresholds": [0.0, 0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 1.0],
+  "epochs": 8,
+  "batch_size": 4096,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "semantic": "Frozen R01 and R05 pre-segmentation-head decoder outputs; channel mean, mean absolute value and local contrast per expert, fixed six features; R05 is fused context",
+  "note": "Exploratory Train16-exposed experts and repeatedly used Val2. No Test6. No Val2 tuning."
+}
