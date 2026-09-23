@@ -2,7 +2,7 @@
 
 | ID | Purpose | Status | Primary evidence |
 |---|---|---|---|
-| D10M | amplitude-preserving spatial perturbation and harm/rescue | implemented; server run pending | `docs/protocols/D10M_SPATIAL_FREQUENCY_MECHANISM.md` |
+| D10M | amplitude-preserving spatial perturbation and harm/rescue | reported complete; fixed-score gate failed | `docs/experiments/D10M_RESULTS_20260923.md` |
 | R01 | true Optical-only baseline | complete | `records/rebuild_v1_r01_formal_16k_20260916/` |
 | R02 | clean dual baseline and 16k budget freeze | complete | `records/rebuild_v1_r02_budget_16k_20260916/` |
 | R03 | quality-corruption baseline | complete | `records/rebuild_v1_r03_robust_eval_20260916/` |

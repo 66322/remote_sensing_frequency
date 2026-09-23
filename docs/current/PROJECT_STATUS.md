@@ -2,7 +2,7 @@
 
 - Updated: 2026-09-23
 - Active branch: `rebuild-v1-protocol-20260915`
-- Current line: D9A/D9B closed; D10M spatial-frequency mechanism queue implemented, server execution pending
+- Current line: D9A/D9B/D10M closed; fixed structure score failed; learned benefit model remains untested
 - Dataset/split: ISPRS Potsdam Train16 -> Val2 (`3_11`, `5_10`)
 - Primary metric: Val2 `mIoU_fg5(noboundary)`
 - Historical TEST6: prohibited for training, selection and current diagnostics
@@ -15,7 +15,8 @@ Evidence provenance: core results plus compact B2/B3/B4 transcriptions are commi
 External source audits stop here. DFC19 acquisition was blocked by proxy 403.
 This does not block D10M's original amplitude-preserving shift / harm-rescue
 experiment on the existing R01/R05 experts. See `NEXT_EXPERIMENT.md` and
-`docs/protocols/D10M_SPATIAL_FREQUENCY_MECHANISM.md`. No D10M results yet.
+`docs/experiments/D10M_RESULTS_20260923.md`. D10M reported complete, 20/20,
+zero failures; fixed structure score fails. No additional D10M queue.
 This section supersedes older next-action recommendations below. Independent
 confirmation remains required for final generalization claims; D10P retraining
 is deferred. Learned semantic-frequency benefit models remain untested.

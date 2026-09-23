@@ -1,58 +1,42 @@
-# Next experiment - 2026-09-23: stop the data-audit detour
+# Next decision after D10M - 2026-09-23
 
-**Run D10M now: frozen-expert spatial/frequency mechanism experiment.**
-Implementation and numerical tests are present; server execution is pending.
-The queue is `scripts/run_rebuild_v1_d10m_mechanism_queue.sh`; it automatically
-runs a smoke, 20 seed-condition jobs and the final summary. No download,
-directory inventory or new expert training is a prerequisite.
+D10M reported complete: 20/20, zero failures. The result is extracted and
+recorded in `docs/experiments/D10M_RESULTS_20260923.md`. No more data or
+result audits are required to make the primary decision.
 
-Read `docs/protocols/D10M_SPATIAL_FREQUENCY_MECHANISM.md` for the frozen design.
+## Close the tested feature branch
 
-## Correction to the previous schedule
+Structure_r8 has 2 wins / 34 losses on available-DSM comparisons. After
+removing the matched edge-shift duplicates: 1 win / 23 losses. The small
+positive is +0.0030 pp. Circular shifts preserve amplitude but their mIoU
+effect has opposite directions across expert seeds. Close this fixed-score
+hypothesis; no more radius, threshold or weighted-sum optimization on Val2.
+Do not start residual-gate training. Keep D9A/D9B/B1-B4 closed as well.
 
-D9A/D9B conclusions have already been extracted. Continued source checks
-were for future independent evaluation, not unfinished extraction. Requiring
-a geographically new dataset before every exploratory experiment delayed
-the untested method hypotheses. DFC19 Google Drive acquisition failed due
-to proxy tunnel 403, not a model/data-quality result. Stop retrying it.
+## Next model work, not another source inventory
 
-The earlier D10P Vaihingen expert-training proposal is deferred, not started.
-It would introduce a new domain and require matched expert training before
-answering the original mechanism question. D10M uses existing R01/R05.
-The strict independent D10 confirmation protocol stays unchanged; its data
-requirements no longer block this explicitly exploratory mechanism study.
+Negative-transfer suppression remains the research objective. The next
+possible experiment is a separately preregistered, small supervised
+benefit/harm predictor, starting with expert-output-only inputs. Establish
+learnability before assuming semantic or frequency descriptors help. Then
+compare capacity-matched semantic-only, frequency-only, semantic+expert,
+and full models. Retain calibrated confidence/entropy and expert disagreement
+controls. Semantic and frequency are candidate inputs, not proven reliability.
 
-## What this batch answers
+This is a new hypothesis, not a positive D10M gate decision. Freeze actual
+head-fit, calibration and evaluation scene groups before implementation.
+A local exploratory experiment may use available development data, with
+explicit expert-training exposure disclosure; it cannot be called independent
+confirmation. Do not train or calibrate on Val2 and report the same pixels
+as held-out evidence. Do not random-split pixels across adjacent scenes.
 
-1. Does DSM usefulness change when global Fourier amplitude stays fixed but
-   RGB-DSM spatial correspondence changes? Circular/edge-filled shifts at
-   4/16/32 px, with a common interior evaluation region, test this distinction.
-2. At the same error-harm budget, do local spatial/frequency descriptors
-   preserve more rescued predictions than confidence/entropy? Curves are
-   diagnostic post-hoc envelopes, not calibrated deployable thresholds.
-3. Do these patterns repeat for both existing expert seeds and both Val2
-   tiles? The two tiles do not support independent generalization claims.
+No learned-model queue is implemented or launched in this result-recording
+update. No DFC19 download or metadata inventory is a prerequisite for the
+next protocol. Existing D10M caches are preserved; they are diagnostic
+Val2 data and not an independently held-out fitting dataset.
 
-The queue saves sample probabilities, descriptors and labels for reuse.
-It reports full/interior mIoU, correctness harm/rescue, per-class and small-Car
-ranking/curves, with exact missing-DSM fallback for safe methods. No labels
-are features. Global spectrum preservation does not imply local energy is
-unchanged. No raw-score ECE is reported.
-
-## After one completed batch
-
-Read the automatic summary and make a method decision, without another
-data audit. If structure cues provide no stable advantage, retain negative
-evidence and do not tune another fixed sum. If promising, freeze a bounded
-learned-benefit ablation with separate local exploratory fit/calibration/eval
-scene groups. Confidence/disagreement and semantic+disagreement controls
-are mandatory. D10M alone cannot authorize residual gate training.
-
-Still unfinished: learned semantic representations, learned feature
-combinations, calibrated benefit probabilities, held-out corruption families,
-RGB failure, and independent confirmation. A meaningful method contribution
-requires these experiments; the residual interpolation formula alone is not it.
-
-Physical GPU 0 only; runtime outputs under /home/jovyan/zzx; failed jobs do
-not stop subsequent jobs; Test6 frozen; B1-B4 and failed D9B weighted scores
-remain closed. No D10M result is claimed before actual server output arrives.
+Only genuinely incremental, cross-seed evidence can reopen the residual-gate
+entry criterion. Calibrated benefit probabilities, held-out corruption
+families, RGB failure and independent confirmation remain required before
+strong final claims. Physical GPU 0, writes under /home/jovyan/zzx, failures
+continue, Test6 frozen. No new shell command is required for this closed batch.

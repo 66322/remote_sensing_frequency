@@ -806,7 +806,11 @@
     {
       "id": "D10M_SPATIAL_FREQUENCY_MECHANISM",
       "name": "amplitude_preserving_shift_and_harm_rescue",
-      "status": "implemented_server_run_pending",
+      "status": "reported_complete_gate_failed",
+      "completed_at": "2026-09-23T17:50:39+08:00",
+      "evidence_status": "user_pasted_status_and_rounded_summary_original_artifacts_not_transferred",
+      "records": ["docs/experiments/D10M_RESULTS_20260923.md", "records/rebuild_v1_d10m_compact_20260923/"],
+      "result_summary": {"completed_jobs": 20, "queue_failures": 0, "structure_wins_losses_ties": [2, 34, 4], "without_edge_duplicates_and_missing_wins_losses": [1, 23], "seed42_seed17_roll32_miou_delta_pp": [-0.5531, 0.1744]},
       "purpose": "Run the previously proposed spatial-correspondence mechanism experiment using frozen R01/R05; no new data prerequisite.",
       "protocol": "docs/protocols/D10M_SPATIAL_FREQUENCY_MECHANISM.md",
       "queue_script": "scripts/run_rebuild_v1_d10m_mechanism_queue.sh",
@@ -816,7 +820,7 @@
       "training": false,
       "test6_policy": "prohibited",
       "gpu": "physical_0_only",
-      "decision": "One mechanism batch with reusable samples and automatic summary. No trained gate or independent-generalization claim; D10P retraining deferred."
+      "decision": "Close fixed structure scoring: primary harm-rescue comparison fails and shift mIoU direction reverses across seeds. No rerun, weight/radius search, or residual-gate training. Learned benefit prediction remains a separate untested hypothesis."
     },
     {
       "id": "D10_SELECTIVE_DSM_BENEFIT",

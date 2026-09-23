@@ -1,6 +1,8 @@
 # D10M: spatial correspondence versus frequency amplitude
 
-Status: implemented, awaiting server smoke and full execution. No result yet.
+Status: reported complete, primary structure-score criterion failed. See
+`docs/experiments/D10M_RESULTS_20260923.md`. This protocol is closed; the
+execution instructions below are retained for provenance, not a rerun request.
 
 ## Why now
 
