@@ -11,6 +11,18 @@ remains binding; finding a source does not by itself authorize a safety gate.
 | Existing Potsdam Train16 / Val2 / historical Test6 | Aligned RGB–DSM and six classes; only Train16 and Val2 labels usable in this project | Train16 trained the frozen experts, Val2 has repeatedly guided decisions, and historical Test6 is frozen. | Not independent confirmation; do not load Test6. |
 | Vaihingen full reference release | 33 TOP/DSM patches; [ISPRS says complete reference data have been downloadable since 2018](https://www.isprs.org/resources/datasets/benchmarks/UrbanSemLab/default.aspx) | Server metadata confirmed 17 formerly unused IDs have extracted optical, DSM and complete-label files with matching dimensions. [The official patch map](https://www.isprs.org/resources/datasets/benchmarks/UrbanSemLab/2d-sem-label-vaihingen.aspx) shows all patches from one mosaic, interleaved with or adjacent to legacy-used patches. | Same-domain development source only; **not** independent final D10 confirmation. |
 
+DFC19-specific interpretation before acquisition completes: the
+[contest description](https://www.grss-ieee.org/community/technical-committees/2019-ieee-grss-data-fusion-contest/)
+says JAX and OMA are different cities, the optical data are pan-sharpened
+WorldView-3 rather than Potsdam RGB, and LiDAR-derived height and semantic
+labels are projected into geographic tiles. Car is not among the listed
+semantic categories; DFC19 cannot validate the small-Car claim. The linked
+preprocessed `gt_nDSM` is an above-ground-height raster, not necessarily the
+same DSM representation as Potsdam. A D10 experiment using it must explicitly
+assume that this height modality is available at inference and report its
+different source/resolution. No source-specific split or class mapping is
+frozen until the actual archive and labels are checked.
+
 The [official SynRS3D repository](https://github.com/JTRNEO/SynRS3D)
 provides a more concrete acquisition lead for DFC19: its authors describe
 preprocessed `opt`, `gt_nDSM` and `gt_ss_mask` directories and links for
