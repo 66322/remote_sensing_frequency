@@ -1,5 +1,12 @@
 # Current handoff — 2026-09-23 (after D9B)
 
+**Current action superseding older next-step text below:** execute the
+implemented D10M spatial-frequency mechanism queue. No new source audit or
+download first. See `NEXT_EXPERIMENT.md`. D10M has numerical tests but no
+server results yet. D10 independent confirmation stays pending; D10P local
+expert retraining is deferred. This is a new predeclared perturbation/decision
+experiment, not reopening D9B's failed fixed weighted scores.
+
 D9B completed its unfitted decision-benefit screen with zero user-reported
 queue failures. The fixed semantic+frequency+expert score beat the better
 confidence/entropy direct control in only 1/16 flip-benefit AUROC and 0/16

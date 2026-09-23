@@ -804,6 +804,21 @@
       "decision": "The fixed input-space semantic/frequency/expert combination fails the cross-seed decision-benefit gate; close this exact Val2 screen. Do not train a safety residual gate or fit/calibrate a selector until an independent spatially disjoint labelled source is frozen."
     },
     {
+      "id": "D10M_SPATIAL_FREQUENCY_MECHANISM",
+      "name": "amplitude_preserving_shift_and_harm_rescue",
+      "status": "implemented_server_run_pending",
+      "purpose": "Run the previously proposed spatial-correspondence mechanism experiment using frozen R01/R05; no new data prerequisite.",
+      "protocol": "docs/protocols/D10M_SPATIAL_FREQUENCY_MECHANISM.md",
+      "queue_script": "scripts/run_rebuild_v1_d10m_mechanism_queue.sh",
+      "summary_script": "scripts/summarize_rebuild_v1_d10m_mechanism.py",
+      "seeds": [42, 17],
+      "conditions": ["clean", "roll4", "roll16", "roll32", "edge4", "edge16", "edge32", "dsm_blur5", "dsm_noise_std010", "dsm_zero"],
+      "training": false,
+      "test6_policy": "prohibited",
+      "gpu": "physical_0_only",
+      "decision": "One mechanism batch with reusable samples and automatic summary. No trained gate or independent-generalization claim; D10P retraining deferred."
+    },
+    {
       "id": "D10_SELECTIVE_DSM_BENEFIT",
       "name": "risk_controlled_decision_benefit_selector",
       "status": "design_frozen_source_pending_no_run",

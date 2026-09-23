@@ -1,5 +1,11 @@
 # Completed, Closed, or Do-Not-Repeat Work
 
+Scheduling correction (2026-09-23): do not prolong source inventories or
+retry the same proxy-blocked DFC19 URL before method exploration. D10M is a
+new mechanism protocol: amplitude-preserving shifts and tie-aware harm/rescue,
+not a D9B fixed-score rerun. No threshold/weight tuning on Val2. Independent
+final-evaluation requirements do not prohibit this exploratory experiment.
+
 Before launching work, compare the proposed experiment with this file and
 `records/rebuild_v1_experiment_registry.json`.
 

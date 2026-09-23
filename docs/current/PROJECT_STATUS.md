@@ -2,7 +2,7 @@
 
 - Updated: 2026-09-23
 - Active branch: `rebuild-v1-protocol-20260915`
-- Current line: D9A direct-score benefit diagnostic completed; specific confidence×disagreement interaction underperforms confidence in all 16 comparisons
+- Current line: D9A/D9B closed; D10M spatial-frequency mechanism queue implemented, server execution pending
 - Dataset/split: ISPRS Potsdam Train16 -> Val2 (`3_11`, `5_10`)
 - Primary metric: Val2 `mIoU_fg5(noboundary)`
 - Historical TEST6: prohibited for training, selection and current diagnostics
@@ -10,7 +10,17 @@
 
 Evidence provenance: core results plus compact B2/B3/B4 transcriptions are committed. The compact files were reconstructed from user-supplied validated server output; original logs, full CSV files, confusion matrices and checkpoints remain on the server and take precedence if a discrepancy is found.
 
-## D9A update
+## Current scheduling correction
+
+External source audits stop here. DFC19 acquisition was blocked by proxy 403.
+This does not block D10M's original amplitude-preserving shift / harm-rescue
+experiment on the existing R01/R05 experts. See `NEXT_EXPERIMENT.md` and
+`docs/protocols/D10M_SPATIAL_FREQUENCY_MECHANISM.md`. No D10M results yet.
+This section supersedes older next-action recommendations below. Independent
+confirmation remains required for final generalization claims; D10P retraining
+is deferred. Learned semantic-frequency benefit models remain untested.
+
+## D9A update (completed evidence)
 
 The D9A safe-entropy route follow-up completed its 17-stage queue with zero
 failures and verified R01/R05/safe-confidence agreement with earlier D9A.

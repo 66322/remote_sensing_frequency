@@ -4,6 +4,13 @@ This is the mandatory entry point for every new conversation, computer and
 experiment.
 
 Research branch: `rebuild-v1-protocol-20260915`; GitHub defaults to `main`.
+
+Current next action: run the implemented D10M spatial/frequency mechanism
+queue using existing R01/R05. No external-data audit is a prerequisite.
+Read `docs/current/NEXT_EXPERIMENT.md` and
+`docs/protocols/D10M_SPATIAL_FREQUENCY_MECHANISM.md`. Server results pending.
+This update supersedes older source-first next-step language below.
+
 D9B's unfitted Val2 decision-benefit screen has now completed and failed its
 cross-seed entry gate; see `docs/experiments/D9B_RESULTS_20260923.md`.
 Do not launch a safety-gate fit from those features. The next source decision

@@ -1,89 +1,58 @@
-# Next decision after D9B — 2026-09-23
+# Next experiment - 2026-09-23: stop the data-audit detour
 
-D9B completed with zero user-reported queue failures. The fixed
-semantic+frequency+expert score beat the better confidence/entropy control
-in only 1/16 flip-benefit AUROC and 0/16 AUPRC comparisons. The exact Val2
-screen is closed; it does not authorize a safety-gate fit. The full result
-and evidence boundary are in `docs/experiments/D9B_RESULTS_20260923.md`.
+**Run D10M now: frozen-expert spatial/frequency mechanism experiment.**
+Implementation and numerical tests are present; server execution is pending.
+The queue is `scripts/run_rebuild_v1_d10m_mechanism_queue.sh`; it automatically
+runs a smoke, 20 seed-condition jobs and the final summary. No download,
+directory inventory or new expert training is a prerequisite.
 
-The original research goal remains robust RGB–DSM semantic segmentation
-under modality degradation and absence. The method claim has narrowed from
-generic semantic/frequency reliability to **predicting DSM's marginal
-decision benefit and suppressing negative transfer**. The comparison with
-the original plan, including unfinished RGB-missing and training/inference
-requirements, is in `docs/current/DIRECTION_CHECK_20260923.md`.
+Read `docs/protocols/D10M_SPATIAL_FREQUENCY_MECHANISM.md` for the frozen design.
 
-## Immediate next action: geographically independent source
+## Correction to the previous schedule
 
-Before any new GPU experiment, identify an additional labelled image+height
-segmentation scene set that has not been used for method selection. Freeze:
+D9A/D9B conclusions have already been extracted. Continued source checks
+were for future independent evaluation, not unfinished extraction. Requiring
+a geographically new dataset before every exploratory experiment delayed
+the untested method hypotheses. DFC19 Google Drive acquisition failed due
+to proxy tunnel 403, not a model/data-quality result. Stop retrying it.
 
-1. exact available scene IDs, geographic relation and previous exposure;
-2. optical bands, DSM/nDSM meaning, spatial resolution and alignment;
-3. semantic classes and whether Car/Building analyses remain possible;
-4. spatially disjoint fit, calibration and evaluation scenes;
-5. data access and publication conditions.
+The earlier D10P Vaihingen expert-training proposal is deferred, not started.
+It would introduce a new domain and require matched expert training before
+answering the original mechanism question. D10M uses existing R01/R05.
+The strict independent D10 confirmation protocol stays unchanged; its data
+requirements no longer block this explicitly exploratory mechanism study.
 
-Only metadata are needed for this decision. Do not load historical Potsdam
-Test6. Known Potsdam Train16 and repeatedly inspected Val2 are ineligible as
-independent confirmation; earlier Vaihingen train12/test4 were also exposed.
-The user-reported inventory found 17 unused Vaihingen IDs with extracted
-optical, DSM and complete-label files and matching dimensions, recorded in
-`records/rebuild_v1_d10_vaihingen_inventory_20260923/`. The official ISPRS
-patch overview shows these patches are from one mosaic and adjacent to or
-interleaved with previously used patches. Their metadata contain no readable
-CRS/bounds, so the numeric neighbor field is unavailable; this does not
-negate the official map. **Do not use Vaihingen as D10's independent final
-confirmation.** It remains suitable for explicitly exploratory, same-domain
-development with scene-level partitions. Assess US3D/DFC19 next for a final
-geographically distinct source and an accessible labelled image-height-mask
-split; if it is unusable, evaluate DFC18 Houston once.
-The [SynRS3D authors' real-data preparation instructions](https://github.com/JTRNEO/SynRS3D#real-world-elevation-datasets)
-describe a concrete DFC19 `opt`/`gt_nDSM`/`gt_ss_mask` format and JAX/OMA
-lists. Check the actual DFC19 source/license, class values and geographic
-partition before treating those files as D10 inputs. Their preprocessed
-download is a lead, not evidence of a ready, approved split.
-The attempted `scripts/run_rebuild_v1_d10_dfc19_acquire.sh` run failed at
-Google Drive access with a server proxy tunnel `403 Forbidden`; see
-`records/rebuild_v1_d10_dfc19_acquire_20260923/user_reported_failure.json`.
-Do not repeat that URL unchanged. The official JHU/APL repository provides
-torrent metadata and IEEE DataPort as alternative access routes, but they
-are not yet confirmed reachable from this server. Its official class list
-has no Car, so DFC19 cannot replace the Potsdam/Vaihingen small-Car analysis.
+## What this batch answers
 
-Stop the repeated source audits here. The next GPU-facing work is a distinct
-**D10P local exploratory pilot** using the already present Vaihingen IRRG+DSM
-triplets. It must first produce a true optical-only expert matched to a dual
-expert on the same frozen expert-training scenes; the old F0/P1 pair are both
-dual-modal and cannot substitute for that contrast. Freeze separate scene
-groups for benefit-head fitting, threshold calibration and pilot evaluation
-among the previously unused IDs. Spatial adjacency in the one Vaihingen
-mosaic means all D10P results are exploratory and cannot certify independent
-generalization. Use two seeds and a stop rule against confidence/entropy
-before attempting a residual gate. D10 remains the independent confirmation
-protocol; do not relax its final-evaluation requirements. No D10P queue is
-launched until the matched expert recipes and scene IDs are implemented.
-The source comparison and stop conditions are in
-`docs/current/INDEPENDENT_SOURCE_DECISION_20260923.md`; the existing-scene
-exposure record is in `docs/current/D9B_SOURCE_STATUS_20260923.md`.
+1. Does DSM usefulness change when global Fourier amplitude stays fixed but
+   RGB-DSM spatial correspondence changes? Circular/edge-filled shifts at
+   4/16/32 px, with a common interior evaluation region, test this distinction.
+2. At the same error-harm budget, do local spatial/frequency descriptors
+   preserve more rescued predictions than confidence/entropy? Curves are
+   diagnostic post-hoc envelopes, not calibrated deployable thresholds.
+3. Do these patterns repeat for both existing expert seeds and both Val2
+   tiles? The two tiles do not support independent generalization claims.
 
-If an eligible source is frozen, write a new protocol for **one** fitted
-benefit predictor with calibrated abstention, exact DSM-absence RGB fallback,
-and matched confidence/entropy/semantic/frequency controls. The fit and
-calibration splits cannot overlap the final evaluation scenes. Apply the
-entry gate in `docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md` before training
-residual fusion. Include DSM complete/local absence, blur, downsampling,
-noise and misalignment; the bidirectional RGB-failure extension remains
-required before claiming arbitrary-modality support.
+The queue saves sample probabilities, descriptors and labels for reuse.
+It reports full/interior mIoU, correctness harm/rescue, per-class and small-Car
+ranking/curves, with exact missing-DSM fallback for safe methods. No labels
+are features. Global spectrum preservation does not imply local energy is
+unchanged. No raw-score ECE is reported.
 
-The source-independent method hypothesis, target and essential controls are
-now frozen in `docs/protocols/D10_SELECTIVE_DSM_BENEFIT.md`. It has no
-dataset-specific split, fitted parameters or launch command. Do not interpret
-this design document as authorization to run a new Val2 gate.
+## After one completed batch
 
-If no source qualifies, stop this benefit-predictor training line and write
-up the D9A/D9B negative evidence. Do not optimize the same six scores on
-Val2 or relaunch B1–B4, D8 or D9A.
+Read the automatic summary and make a method decision, without another
+data audit. If structure cues provide no stable advantage, retain negative
+evidence and do not tune another fixed sum. If promising, freeze a bounded
+learned-benefit ablation with separate local exploratory fit/calibration/eval
+scene groups. Confidence/disagreement and semantic+disagreement controls
+are mandatory. D10M alone cannot authorize residual gate training.
 
-Every future run uses physical GPU 0, writes only under `/home/jovyan/zzx`,
-continues the queue after individual failures, and keeps Test6 frozen.
+Still unfinished: learned semantic representations, learned feature
+combinations, calibrated benefit probabilities, held-out corruption families,
+RGB failure, and independent confirmation. A meaningful method contribution
+requires these experiments; the residual interpolation formula alone is not it.
+
+Physical GPU 0 only; runtime outputs under /home/jovyan/zzx; failed jobs do
+not stop subsequent jobs; Test6 frozen; B1-B4 and failed D9B weighted scores
+remain closed. No D10M result is claimed before actual server output arrives.
