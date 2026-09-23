@@ -48,6 +48,44 @@ Train16/Val2/Test6 and historical Vaihingen train12/test4 scenes are already
 exposed. Historical Test6 must not be loaded. If no new eligible source is
 available, stop at an exploratory screen and report the limitation.
 
+## Frozen exploratory implementation (2026-09-23)
+
+The first queue samples the same 200,000 valid NoBoundary pixels per Val2 tile
+as D9A for each seed and condition. The primary target is
+`dual_only_correct` versus `rgb_only_correct` among argmax disagreements.
+It separately counts `both_wrong` and agreement pixels and retains CE-benefit
+AUROC/AUPRC with D9A's ±0.01 neutral margin. Class, Train16 component-size
+quantiles, damage region and tile are analysis strata only; ground-truth
+class and size never enter the score.
+
+The prototype builder uses Train16 tiles only, at most 200,000 uniform valid
+pixels per tile and 5,000 per class per tile. Fixed *input-space* RGB features
+are three optical channels and centered grayscale edge magnitudes at radii
+2 and 8 pixels. DSM features are normalized height and centered edge
+magnitudes at the same radii. Class-conditional Gaussian means and standard
+deviations yield `exp(-0.5 * mean(standardized squared distance))`.
+This is a handcrafted multiscale class-prototype **control**, not a faithful
+replication of SGMA's learned deep-feature prototypes. Frequency evidence is
+mean unsigned RGB–DSM edge alignment at radii 2 and 8, mapped to [-1, 1].
+It is an image-quality cue, not a true-reliability measurement. Class
+prototype lookups use each expert's *predicted* class.
+
+Six score orientations are frozen in `scripts/d9b_observable_features.py`
+(larger favors R05): dual-minus-RGB maximum confidence; RGB-minus-dual
+predictive entropy; `0.5 * (dual RGB prototype + dual DSM prototype) - RGB
+prototype`; edge alignment; equal-weight semantic and frequency; and the
+mean of semantic, frequency, normalized entropy margin and signed
+Jensen–Shannon disagreement. No weights or thresholds are fitted. Compare
+AUROC/AUPRC to the stronger of confidence and entropy per seed-condition,
+then to semantic-only. D9A already provides confidence and entropy routing
+mIoU controls.
+
+This queue does not calibrate probabilities, compute ECE, optimize thresholds
+or route a composite score. Its ranking metrics are diagnostic, not mIoU or
+negative-transfer gains. Any later routing experiment needs independent
+labelled scenes and a new frozen protocol. Hard DSM absence must still force
+deterministic RGB fallback.
+
 ## Decision
 
 Advance a combination only if it improves both seeds over the strongest

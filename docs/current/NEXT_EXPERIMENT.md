@@ -58,7 +58,11 @@ change the predicted label. Compare confidence, entropy, semantic prototypes,
 observable frequency/image quality, and their combinations against
 `dual_only_correct` versus `rgb_only_correct`, while keeping both-wrong pixels
 and CE benefit visible. This addresses the observed ranking-versus-mIoU gap
-and Car/Building trade-off. Freeze features and controls before running it.
+and Car/Building trade-off. The unfitted Val2 six-score implementation and
+definitions are now frozen in `docs/protocols/D9B_DECISION_BENEFIT_SCREEN.md`.
+Run its Train16 prototype stage and frozen-expert seed42/17 × eight-condition
+queue, then summarize after completion. This new decision-target experiment
+does not train or calibrate a gate and cannot establish routed mIoU.
 
 The repository part of the D9B source audit is complete. A metadata-only
 server inventory still needs to determine whether additional labelled
