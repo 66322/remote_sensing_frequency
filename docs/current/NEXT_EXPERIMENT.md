@@ -34,6 +34,12 @@ generic locator's zero candidates was a naming-pattern false negative for
 the legacy `top/dsm/gts_*` layout. If no usable untouched Vaihingen scenes
 exist, US3D is the first external feasibility candidate; the 2018 Houston
 DFC dataset is a harder fallback. None is approved for an experiment yet.
+The user-reported inventory found 17 possible unused Vaihingen IDs, recorded
+in `records/rebuild_v1_d10_vaihingen_inventory_20260923/user_reported_metadata.json`.
+That count includes ZIP members and merges two roots, so it is not a set of
+validated triplets. Run `scripts/inspect_rebuild_v1_vaihingen_d10_metadata.py`
+once to check extracted-file provenance, GeoTIFF headers, alignment and
+nearest previously used patch; then freeze spatial groups only if viable.
 The source comparison and stop conditions are in
 `docs/current/INDEPENDENT_SOURCE_DECISION_20260923.md`; the existing-scene
 exposure record is in `docs/current/D9B_SOURCE_STATUS_20260923.md`.

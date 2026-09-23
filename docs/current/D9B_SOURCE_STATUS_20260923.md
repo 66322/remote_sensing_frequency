@@ -13,6 +13,15 @@ zero matches do not exclude Vaihingen: its legacy folders are named
 Vaihingen as exhausted. Server availability, actual unused IDs and spatial
 independence remain unverified. Historical Potsdam Test6 remains frozen.
 
+User-reported output from the targeted inventory after commit `3afca67`
+found 17 filename-level candidates: `2,4,6,8,10,12,14,16,20,22,24,27,29,31,33,35,38`.
+The full transcription is in
+`records/rebuild_v1_d10_vaihingen_inventory_20260923/user_reported_metadata.json`.
+Because the script combined extracted files and ZIP member names from two
+roots, this does **not** establish 17 usable triplets. The next check is
+`scripts/inspect_rebuild_v1_vaihingen_d10_metadata.py`; it reads metadata
+only and reports source paths, header alignment and patch proximity.
+
 2026-09-23 direction update: The official
 [IEEE GRSS 2019 DFC US3D page](https://www.grss-ieee.org/community/technical-committees/2019-ieee-grss-data-fusion-contest/)
 describes satellite imagery, LiDAR-derived heights and semantic labels for
