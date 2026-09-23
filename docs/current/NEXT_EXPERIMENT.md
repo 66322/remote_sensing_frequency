@@ -43,6 +43,14 @@ describe a concrete DFC19 `opt`/`gt_nDSM`/`gt_ss_mask` format and JAX/OMA
 lists. Check the actual DFC19 source/license, class values and geographic
 partition before treating those files as D10 inputs. Their preprocessed
 download is a lead, not evidence of a ready, approved split.
+The next concrete server stage is `scripts/run_rebuild_v1_d10_dfc19_acquire.sh`.
+It obtains the authors' linked `DFC19.zip` under
+`/home/jovyan/zzx/datasets/rebuild_v1_d10_dfc19`, hashes the archive and
+lists ZIP members without extracting images or labels. Its dependency cache,
+temporary files and logs also stay under `/home/jovyan/zzx`. The resulting
+`archive_inventory.json` is a source-readiness input, not a training split.
+If acquisition fails, keep the error log and assess the failure once; do not
+start any GPU queue or substitute Val2 as final evaluation.
 The source comparison and stop conditions are in
 `docs/current/INDEPENDENT_SOURCE_DECISION_20260923.md`; the existing-scene
 exposure record is in `docs/current/D9B_SOURCE_STATUS_20260923.md`.
