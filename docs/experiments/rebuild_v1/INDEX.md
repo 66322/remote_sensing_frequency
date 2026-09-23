@@ -24,6 +24,7 @@
 | D9 | frozen-expert DSM benefit diagnostic | D9A complete; full gate unevaluated | `docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md` |
 | D9A | direct confidence/entropy/disagreement benefit audit | complete; entropy ranking positive, disagreement interaction negative | `docs/experiments/D9A_RESULTS_20260923.md` |
 | D9A local-down8 fix1 | correct degraded-DSM routing for seeds 42/17 | complete; zero failures; ranking unchanged | `records/rebuild_v1_d9a_compact_20260923/user_reported_local_down8_fix1.json` |
+| D9A entropy route | safe entropy versus safe confidence routing with frozen experts | prepared; not launched | `docs/protocols/D9A_ENTROPY_ROUTING_DECISION_AUDIT.md` |
 
 The JSON registry is the machine-readable authority. This index is the
 human-readable navigation layer.

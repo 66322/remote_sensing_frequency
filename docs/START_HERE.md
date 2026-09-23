@@ -10,8 +10,9 @@ replication gate; D8 fails its sampling gate. D9A's simple disagreement
 interaction loses to confidence on all reported benefit-ranking comparisons.
 Entropy difference ranks benefit above confidence in all 16 comparisons;
 its routed segmentation effect still needs an audit of existing D5 records.
-The expected D5 metric paths were absent in the latest server check; locate
-originals before scheduling an entropy-routing reevaluation. The original D9A
+The D5 per-seed result directories were absent in the latest server check,
+although its logs report completion. A matched safe-entropy routing decision
+audit is prepared as an exploratory D9A follow-up. The original D9A
 local-down8 D5 route incorrectly forced RGB in degraded but available DSM;
 its two-seed `fix1` correction completed with zero failures. No GPU experiment
 is currently queued. The full D9 gate remains unevaluated; a fitted D9B needs

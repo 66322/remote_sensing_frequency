@@ -141,6 +141,12 @@ source. D9A results alone cannot pass the full D9 gate. Every D9A stage is
 read-only with respect to checkpoints and datasets, writes only compact metrics
 under project `records/`, and has a separate timeout and failure-continue log.
 
+The entropy-ranking follow-up is frozen separately in
+`docs/protocols/D9A_ENTROPY_ROUTING_DECISION_AUDIT.md`. It compares unfitted
+safe-entropy and safe-confidence routing mIoU and selected harm after the
+historical D5 per-seed metrics were found absent. It does not fit a benefit
+predictor or evaluate the full D9 entry gate.
+
 Any inference job must use physical GPU 0 only (`CUDA_VISIBLE_DEVICES=0`, logical
 `cuda:0`). All generated features, logits, logs and records stay under
 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro`; do not upload full logits,

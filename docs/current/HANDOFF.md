@@ -9,8 +9,10 @@ AUPRC in all 16 seed-by-condition comparisons. Entropy difference is above
 confidence difference on both ranking metrics in all 16 comparisons, but its
 routed mIoU has not been audited in this handoff. Car and damaged-region
 ranking advantages also repeat, with small-Car support limited. Expected
-D5 per-seed metric files are missing; locate originals before an entropy-route
-rerun. The original D9A local-down8 D5 route incorrectly masked degraded DSM
+D5 per-seed result directories are missing from project records even though
+the original seed42/17 logs say `D5 COMPLETE`. A new, narrowly scoped and
+exploratory matched safe-entropy versus safe-confidence route audit is prepared;
+see `docs/protocols/D9A_ENTROPY_ROUTING_DECISION_AUDIT.md`. The original D9A local-down8 D5 route incorrectly masked degraded DSM
 as absent. Its two-stage `fix1` correction completed with zero failures:
 corrected D5 NB mIoU is 86.8285%/86.2557% at seeds 42/17, and the ranking
 CSVs are byte-identical to the originals. See
@@ -26,7 +28,8 @@ safety gate. Historical TEST6 remains frozen.
 - B4 evidence: `records/rebuild_v1_b4_seed17_compact_20260922/`
 - B4 report: `docs/experiments/B4_SEED17_REPLICATION_20260921.md`
 - Current state: B4 and D8 gates failed; D9A and local-down8 fix1 complete, full D9 gate unevaluated.
-- No GPU experiment is currently queued by this handoff.
+- No GPU experiment is currently queued by this handoff; the entropy-route
+  decision audit is prepared but not launched.
 
 GitHub contains compact metrics, decisions, timestamps and checkpoint references.
 Large checkpoints, complete logs, full per-condition CSV files and confusion matrices
@@ -91,6 +94,6 @@ checkpoint paths and SHA256 values are in `run_provenance.json`.
 `docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md` on branch
 `rebuild-v1-protocol-20260915`. B1–B4 and D8 are closed; D9A and its
 local-down8 correction are complete.
-Check existing D5 min-entropy routing and choose a new evaluation source before fitting
-benefit predictors. Keep TEST6 frozen, use physical GPU0 only, and store
+Run the prepared D9A entropy-route decision audit, then choose a new evaluation
+source before fitting benefit predictors. Keep TEST6 frozen, use physical GPU0 only, and store
 runtime artifacts under `/home/jovyan/zzx`.”

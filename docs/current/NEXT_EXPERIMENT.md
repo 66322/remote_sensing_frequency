@@ -35,18 +35,33 @@ both metrics. The local-down8 correction is complete: D5 NB mIoU is
 86.8285%/86.2557% at seeds 42/17. The other 14 D9A conditions must not be
 repeated.
 
-The expected old D5 `method_metrics.csv` paths are missing. Locate any
-existing D5 original metrics within the project records and
-archive them. If genuinely absent, specify one narrow frozen-expert routing
-evaluation that measures entropy-route mIoU and selected harm; this is a new
-decision diagnostic, not a repetition of the D9A ranking screen. See
-`docs/experiments/D9A_RESULTS_20260923.md`.
+The old D5 per-seed result directories are absent under project `records/`,
+although its seed42/17 logs report `D5 COMPLETE`. Its queue status file is
+also absent. A new, predeclared D9A entropy-routing decision audit is prepared
+at `docs/protocols/D9A_ENTROPY_ROUTING_DECISION_AUDIT.md`. It measures routed
+mIoU and selected harm for safe entropy versus corrected safe confidence on
+the same eight conditions and both seeds. It is exploratory Val2 analysis,
+uses only frozen experts, and cannot establish a new method claim. Run its
+smoke plus independent failure-continue queue, then validate the source-hashed
+summary against the existing D9A expert and confidence outputs.
 
-After that, decide whether D9B has a concrete, independent source for
-fitting/calibration/evaluation. R01/R05 were trained on Train16, Val2 has been
-repeatedly inspected, and historical TEST6 is frozen. Therefore a fitted
-semantic/frequency combination cannot claim an unbiased test on the current
-Potsdam split. Do not start a model-training or learned-router queue on Val2.
+After the route audit, perform a read-only D9B source audit. Inventory RGB/DSM
+images, labels, scene IDs and prior experiment exposure for a second dataset
+or genuinely untouched scenes. Vaihingen appears in earlier work and cannot
+be assumed unseen without that exposure audit. Freeze spatially disjoint
+fitting, calibration and evaluation scenes and the condition generator before
+extracting fitted features. If no independent labelled source exists, keep
+D9B as a protocol and report D9A as exploratory rather than fitting on Val2.
+R01/R05 were trained on Train16, Val2 has been repeatedly inspected, and
+historical TEST6 is frozen. Do not start a learned-router queue on Val2.
+
+Only after a source is frozen, compute the D9 comparison ladder on the same
+pixels: confidence, entropy, SGMA-style semantic prototypes, observable
+frequency/image quality, semantic+frequency, and the same features plus
+expert disagreement. Use identical conditions and class/size/region strata,
+fit/calibrate only on designated scenes, and compare to the strongest direct
+control from the entropy-route audit. Apply the entry gate in
+`docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md` before training a residual gate.
 
 The new method is eligible for training only if combined evidence shows a
 consistent benefit-prediction and negative-transfer advantage over confidence

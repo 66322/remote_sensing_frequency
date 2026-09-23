@@ -70,3 +70,14 @@ def apply_known_missing_fallback(choose_dual, region_mask, family):
     if mask.shape != choose.shape:
         raise ValueError("availability mask shape mismatch")
     return choose & ~mask
+
+
+def entropy_choose_dual(rgb_prob, dual_prob, eps=1e-8):
+    """Select dual only for strictly lower predictive entropy; ties select RGB."""
+    rgb = np.asarray(rgb_prob)
+    dual = np.asarray(dual_prob)
+    if rgb.shape != dual.shape or rgb.ndim < 2:
+        raise ValueError("expert probability shapes must match (classes, ...)")
+    rgb_entropy = -(rgb * np.log(rgb + eps)).sum(axis=0)
+    dual_entropy = -(dual * np.log(dual + eps)).sum(axis=0)
+    return dual_entropy < rgb_entropy
