@@ -1,5 +1,18 @@
 # D9B independent-source audit — repository evidence only
 
+2026-09-23 correction: The
+[ISPRS Vaihingen page](https://www.isprs.org/resources/datasets/benchmarks/UrbanSemLab/2d-sem-label-vaihingen.aspx)
+lists 33 image/DSM patches, and the
+[benchmark download page](https://www.isprs.org/resources/datasets/benchmarks/UrbanSemLab/default.aspx)
+says complete reference data became available in 2018. The legacy repository
+documents exposure of only 12 training and four evaluation IDs. Additional
+labelled scenes may therefore exist. The generic D10 directory locator's
+zero matches do not exclude Vaihingen: its legacy folders are named
+`top/dsm/gts_*`. Run the targeted filename-only inventory
+`scripts/inventory_rebuild_v1_vaihingen_unused_metadata.py` before treating
+Vaihingen as exhausted. Server availability, actual unused IDs and spatial
+independence remain unverified. Historical Potsdam Test6 remains frozen.
+
 2026-09-23 direction update: The official
 [IEEE GRSS 2019 DFC US3D page](https://www.grss-ieee.org/community/technical-committees/2019-ieee-grss-data-fusion-contest/)
 describes satellite imagery, LiDAR-derived heights and semantic labels for
@@ -25,10 +38,10 @@ tile.
 
 Vaihingen scene IDs are specified in `scripts/train_vaihingen_formal.py` and
 `records/DETPAIR_PREFUSION_FREQ_VAIHINGEN_FROZEN_20260831.md`. The known
-Potsdam split covers all 24 documented scenes. No currently documented scene
-set qualifies as an independent confirmatory D9B evaluation source. This
-does **not** prove that the server has no other labelled scenes; their
-availability and prior exposure still require a metadata-only inventory.
+Potsdam split covers all 24 documented scenes. No scene set is yet frozen as
+independent confirmatory D9B evidence. Complete Vaihingen reference data may
+provide additional candidates, pending the targeted inventory and a spatial
+neighbor/prior-exposure check.
 
 For D9B, first identify an additional labelled optical+DSM segmentation
 scene set or genuinely unused labelled scenes, then freeze scene IDs and

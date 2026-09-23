@@ -27,9 +27,13 @@ segmentation scene set that has not been used for method selection. Freeze:
 Only metadata are needed for this decision. Do not load historical Potsdam
 Test6. Known Potsdam Train16 and repeatedly inspected Val2 are ineligible as
 independent confirmation; earlier Vaihingen train12/test4 were also exposed.
-US3D is the first conditional feasibility candidate; the 2018 Houston
-DFC dataset is a harder fallback because RGB/DSM/label resolution and
-geographic partitioning differ. Neither is approved for an experiment yet.
+First check whether complete labels for previously unused Vaihingen scenes
+are already on the server, using the targeted filename-only inventory
+`scripts/inventory_rebuild_v1_vaihingen_unused_metadata.py`. The earlier
+generic locator's zero candidates was a naming-pattern false negative for
+the legacy `top/dsm/gts_*` layout. If no usable untouched Vaihingen scenes
+exist, US3D is the first external feasibility candidate; the 2018 Houston
+DFC dataset is a harder fallback. None is approved for an experiment yet.
 The source comparison and stop conditions are in
 `docs/current/INDEPENDENT_SOURCE_DECISION_20260923.md`; the existing-scene
 exposure record is in `docs/current/D9B_SOURCE_STATUS_20260923.md`.
