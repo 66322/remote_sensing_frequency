@@ -103,6 +103,9 @@ Do not rerun the same dataset, split, seed, schedule and configuration:
   confidence difference on benefit AUROC and AUPRC in all 16 reported
   seed-by-condition comparisons. Do not present this interaction as the new
   mechanism or retrain it unchanged on Val2.
+- D9A entropy difference beats confidence difference on CE-benefit AUROC and
+  AUPRC in all 16 comparisons. This is an existing baseline, not a novel gate;
+  do not equate ranking with routed mIoU or a calibrated benefit probability.
 
 ## Legitimate reasons to rerun
 

@@ -633,7 +633,7 @@
       ],
       "test6_policy": "prohibited",
       "training": false,
-      "decision": "D9A is complete and its tested confidence-times-JS score loses to confidence on all 16 benefit-ranking comparisons. Fitted semantic/frequency combinations and safety-gate training require a new frozen evaluation source."
+      "decision": "D9A is complete: entropy difference beats confidence on benefit ranking in all 16 comparisons, while tested disagreement interactions lose. Fitted semantic/frequency combinations and safety-gate training require a new frozen evaluation source."
     },
     {
       "id": "D9A",
@@ -648,7 +648,8 @@
       "purpose": "Measure label-defined DSM benefit and compare unfitted confidence, entropy and expert-disagreement scores across two seeds and eight conditions.",
       "records": [
         "docs/experiments/D9A_RESULTS_20260923.md",
-        "records/rebuild_v1_d9a_compact_20260923/user_reported_summary_table.csv"
+        "records/rebuild_v1_d9a_compact_20260923/user_reported_summary_table.csv",
+        "records/rebuild_v1_d9a_compact_20260923/user_reported_strata_review.json"
       ],
       "server_records": [
         "records/rebuild_v1_d9a_queue_20260923/",
@@ -662,6 +663,10 @@
         "seed_condition_comparisons": 16,
         "confidence_beats_confidence_times_js_auroc": 16,
         "confidence_beats_confidence_times_js_auprc": 16,
+        "entropy_beats_confidence_auroc": 16,
+        "entropy_beats_confidence_auprc": 16,
+        "mean_entropy_minus_confidence_auroc_from_rounded_review": 0.0219,
+        "mean_entropy_minus_confidence_auprc_from_rounded_review": 0.0258,
         "mean_auroc_advantage_from_rounded_table": 0.01414375,
         "mean_auprc_advantage_from_rounded_table": 0.02105,
         "dsm_zero_d5_exact_r01_fallback_both_seeds": true,
@@ -669,7 +674,7 @@
         "test6_loaded": false
       },
       "gate_status": "full_D9_not_evaluated",
-      "decision": "Close the tested confidence-times-JS interaction as an improvement over confidence. Archive D9A; inspect already produced strata before choosing a new independent source for any fitted benefit predictor. Do not train a safety gate from D9A."
+      "decision": "Close the tested disagreement interactions as improvements over confidence. Treat entropy as the strongest observed unfitted ranking baseline; check existing D5 min-entropy routed mIoU before interpreting it as a safe decision. Do not train a safety gate from D9A."
     }
   ],
   "handoff_entry": "docs/START_HERE.md",

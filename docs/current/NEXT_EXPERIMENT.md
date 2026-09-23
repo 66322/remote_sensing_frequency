@@ -10,7 +10,7 @@
   `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro`.
 - Historical TEST6 remains frozen.
 
-## Next action: D9A stratified audit, then D9B source decision
+## Next action: D9A entropy decision audit, then D9B source decision
 
 Use the existing R01 RGB expert and R05 RGB+DSM expert at seeds 42 and 17 to
 measure the label-defined pixel benefit of adding DSM:
@@ -24,11 +24,12 @@ informed oracle as controls. Report benefit and harm AUROC/AUPRC, calibration,
 negative-transfer rate and mIoU by class, size, corruption, tile and seed.
 Protocol: `docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md`.
 
-D9A is complete. First inspect the already generated
-`records/rebuild_v1_d9a_summary_20260923/strata_table.csv` for Building, Car,
-small Car and damaged-region differences, and inspect entropy and class-
-agreement columns in `summary_table.csv`. This requires no rerun. See
-`docs/experiments/D9A_RESULTS_20260923.md`.
+D9A is complete. A read-only review finds entropy difference above confidence
+difference on AUROC and AUPRC in all 16 seed-by-condition comparisons.
+Run `scripts/print_rebuild_v1_d9a_entropy_followup.py` to compare the already
+generated entropy and confidence ranking in Building, Car, small Car and
+damaged regions, and to read existing D5 `min_entropy` routed mIoU. This
+requires no new GPU inference. See `docs/experiments/D9A_RESULTS_20260923.md`.
 
 After that, decide whether D9B has a concrete, independent source for
 fitting/calibration/evaluation. R01/R05 were trained on Train16, Val2 has been

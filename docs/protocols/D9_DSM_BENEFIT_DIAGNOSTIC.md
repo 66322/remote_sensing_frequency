@@ -90,7 +90,7 @@ are enough independent units; do not calculate pixel-independent p-values.
 ## Entry gate for safety-gate training
 
 No safety-gate training follows D9 unless semantic+frequency+disagreement
-improves both seeds over the better of confidence and semantic-only on both
+improves both seeds over the best of confidence, entropy and semantic-only on both
 benefit AUROC and AUPRC by at least 0.02 absolute each, and improves both Val2
 tile directions. For a calibrated threshold chosen only on the fitting split,
 its selected-dual negative-transfer rate must fall by at least 10% relative
@@ -103,6 +103,11 @@ must be registered before fitting a combination. The new source is required
 to confirm the effect before safety-gate training or paper claims. A gate that
 merely reproduces the D5 confidence policy does not establish a new mechanism.
 If the evidence fails, retain D9 as a negative diagnostic and stop this route.
+
+The entropy control was added to this entry gate after the D9A read-only
+ranking review and before any fitted combination was specified or trained.
+It makes the comparison stricter; D9A Val2 cannot serve as the independent
+confirmation source.
 
 If the gate passes, the candidate model is
 

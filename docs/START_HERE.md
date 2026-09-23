@@ -8,6 +8,8 @@ Read `docs/current/HANDOFF.md` first for the current evidence and decision bound
 As of 2026-09-23, B1–B4, D7, D8 and D9A are complete. B4 fails its local
 replication gate; D8 fails its sampling gate. D9A's simple disagreement
 interaction loses to confidence on all reported benefit-ranking comparisons.
+Entropy difference ranks benefit above confidence in all 16 comparisons;
+its routed segmentation effect still needs an audit of existing D5 records.
 No GPU experiment is currently queued. The full D9 gate remains unevaluated;
 the next action is analysis of existing D9A strata and an independent D9B
 evaluation source, not another Val2 rerun.

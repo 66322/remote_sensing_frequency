@@ -5,7 +5,9 @@
 D8 `fix1` completed and failed its sampling gate, so `proceed_seed17=[]`.
 D9A completed all 17 queue stages with zero failures. Its tested confidence×JS
 disagreement score is below direct confidence difference on benefit AUROC and
-AUPRC in all 16 seed-by-condition comparisons. See
+AUPRC in all 16 seed-by-condition comparisons. Entropy difference is above
+confidence difference on both ranking metrics in all 16 comparisons, but its
+routed mIoU has not been audited in this handoff. See
 `docs/experiments/D9A_RESULTS_20260923.md`. Inspect existing strata and
 select an independent evaluation source before fitting D9B or training a
 safety gate. Historical TEST6 remains frozen.
@@ -82,6 +84,6 @@ checkpoint paths and SHA256 values are in `run_provenance.json`.
 `docs/experiments/D9A_RESULTS_20260923.md` and
 `docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md` on branch
 `rebuild-v1-protocol-20260915`. B1–B4 and D8 are closed; D9A is complete.
-Inspect its existing strata and choose a new evaluation source before fitting
+Check existing D5 min-entropy routing and choose a new evaluation source before fitting
 benefit predictors. Keep TEST6 frozen, use physical GPU0 only, and store
 runtime artifacts under `/home/jovyan/zzx`.”

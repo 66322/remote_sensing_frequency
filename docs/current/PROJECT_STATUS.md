@@ -16,7 +16,10 @@ D9A's seed42/17 frozen-expert queue completed with zero stage failures. The
 server summarizer validated source files and the deterministic DSM-zero RGB
 fallback. On sampled Val2 pixels, the confidence-difference score exceeds
 confidence×Jensen-Shannon disagreement on both benefit AUROC and AUPRC in all
-16 seed-by-condition comparisons. Under normalized DSM Gaussian noise sigma
+16 seed-by-condition comparisons. A subsequent read-only review finds that
+entropy difference exceeds confidence difference on both ranking metrics in
+all 16 comparisons (+0.0219 AUROC and +0.0258 AUPRC on average). This is a
+ranking finding, not yet a routed-mIoU or calibration gain. Under normalized DSM Gaussian noise sigma
 0.10, D5 is below R01 by 0.1814/0.3190 pp NB mIoU for seeds 42/17, despite
 its exact R01 fallback when DSM is completely absent. This is a negative
 result for the tested direct disagreement interaction, not the full D9
