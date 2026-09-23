@@ -10,6 +10,8 @@ are in `docs/experiments/D9B_RESULTS_20260923.md`. Next: freeze an independent
 labelled RGB–DSM source before any fitted model. Test6 stays frozen.
 The direction check is in `docs/current/DIRECTION_CHECK_20260923.md`;
 the operative next action is `docs/current/NEXT_EXPERIMENT.md`.
+External source candidates and explicit acceptance criteria are in
+`docs/current/INDEPENDENT_SOURCE_DECISION_20260923.md`.
 
 ## Current decision
 

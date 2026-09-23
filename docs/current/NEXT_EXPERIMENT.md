@@ -27,9 +27,12 @@ segmentation scene set that has not been used for method selection. Freeze:
 Only metadata are needed for this decision. Do not load historical Potsdam
 Test6. Known Potsdam Train16 and repeatedly inspected Val2 are ineligible as
 independent confirmation; earlier Vaihingen train12/test4 were also exposed.
-US3D is a conditional candidate, not yet approved. See
-`docs/current/D9B_SOURCE_STATUS_20260923.md` and the source note in the
-direction check.
+US3D is the first conditional feasibility candidate; the 2018 Houston
+DFC dataset is a harder fallback because RGB/DSM/label resolution and
+geographic partitioning differ. Neither is approved for an experiment yet.
+The source comparison and stop conditions are in
+`docs/current/INDEPENDENT_SOURCE_DECISION_20260923.md`; the existing-scene
+exposure record is in `docs/current/D9B_SOURCE_STATUS_20260923.md`.
 
 If an eligible source is frozen, write a new protocol for **one** fitted
 benefit predictor with calibrated abstention, exact DSM-absence RGB fallback,

@@ -1,0 +1,33 @@
+# Independent-source decision after D9B — 2026-09-23
+
+This decision uses only dataset documentation. No data, labels or historical
+Potsdam Test6 tiles were downloaded or opened. D9B's failed fixed-score gate
+remains binding; finding a source does not by itself authorize a safety gate.
+
+| Candidate | Documented modalities and labels | Fit to the current question | Decision |
+|---|---|---|---|
+| [US3D / 2019 IEEE GRSS DFC](https://www.grss-ieee.org/community/technical-committees/2019-ieee-grss-data-fusion-contest/) | Multi-band satellite imagery, LiDAR-derived height rasters and semantic labels in training regions across Jacksonville and Omaha | Closest documented external candidate for image+height semantic segmentation and geographically separated scenes. Its bands, GSD, height-as-input use and class mapping differ from Potsdam; Car-specific confirmation may be impossible. Contest validation/test reference labels are undisclosed. Access requires registration and the official page gives publication-use conditions. | **First feasibility candidate**, not a frozen split. Confirm that accessible labelled image/height/semantic triplets can be paired and that their permitted use covers the proposed experiment. |
+| [2018 IEEE GRSS DFC Houston](https://www.grss-ieee.org/community/technical-committees/2018-ieee-grss-data-fusion-contest/) | 5-cm RGB, 0.5-m LiDAR DSM and 20-class 0.5-m raster labels for a training region | A possible second source, but alignment/resolution and label remapping change the task substantially. Published test reference labels are withheld; one exposed campus training region may not yield a strong geographically independent evaluation. Publication-use approval is specified by the organizer. | **Fallback feasibility candidate** only if US3D is unusable; do not pool its metrics with Potsdam without a separate protocol. |
+| Existing Potsdam Train16 / Val2 / historical Test6 | Aligned RGB–DSM and six classes; only Train16 and Val2 labels usable in this project | Train16 trained the frozen experts, Val2 has repeatedly guided decisions, and historical Test6 is frozen. | Not independent confirmation; do not load Test6. |
+| Previously used Vaihingen tiles | Image–DSM and compatible urban classes | The documented train12/test4 scenes were used or inspected in the legacy line. | Potential development comparison, not untouched confirmation. |
+
+## Minimal source acceptance decision
+
+Accept a candidate for a new benefit-predictor experiment only when all of
+these facts are recorded before model fitting:
+
+1. The user can access enough labelled **image, height and semantic-mask
+   triplets** under the dataset's terms, and confirms that none of the chosen
+   evaluation scenes guided this project's model or threshold selection.
+2. Scene identities and geographic footprints support disjoint fitting,
+   calibration and evaluation partitions. Splitting patches from one scene
+   is insufficient.
+3. Bands, height units/normalization, alignment, ignore labels and a class
+   mapping are frozen. A missing Car class limits claims about small Car.
+4. The evaluation plan states which condition families can be synthesized
+   without relying on forbidden or undisclosed labels.
+
+If US3D fails these checks, assess Houston once. If neither qualifies, stop
+the learned DSM-benefit line rather than optimizing another Val2 score. The
+original research theme can continue only through a different method and an
+honest non-confirmatory evidence claim.
