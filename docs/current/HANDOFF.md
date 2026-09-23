@@ -15,9 +15,12 @@ missing although its logs report completion, so a matched frozen-expert
 safe-entropy versus safe-confidence decision audit was run. Safe entropy won
 routed NB mIoU in only 4/16 rows, lost in 10 and tied under DSM zero twice
 (mean -0.0089 pp). Its better benefit ranking therefore did not translate
-into a safer or stronger simple router. See
-`docs/experiments/D9A_ENTROPY_ROUTE_RESULTS_20260923.md`; class/region
-strata remain to be audited from existing server outputs.
+into a safer or stronger simple router. The source-hash-checked class/region
+review is complete: entropy routing raises Car
+IoU in 12/16 rows but Building in only 1/16, and local-down8 damaged-region
+effects reverse across seeds. D9A is closed. The next substantive protocol is
+`docs/protocols/D9B_DECISION_BENEFIT_SCREEN.md`; see
+`docs/experiments/D9A_ENTROPY_ROUTE_RESULTS_20260923.md` for the final D9A result.
 
 No documented untouched scene source is currently available for fitted D9B:
 Potsdam Train16/Val2/Test6 are trained, inspected and historically exposed,
@@ -33,8 +36,7 @@ while earlier Vaihingen work used train12/test4. See
 - B4 report: `docs/experiments/B4_SEED17_REPLICATION_20260921.md`
 - Current state: B4 and D8 gates failed; D9A and local-down8 fix1 complete, full D9 gate unevaluated.
 - The D9A entropy-route queue completed with zero failures. Its source-hashed
-  server summary and compact transcription are archived; class/region review
-  remains read-only follow-up.
+  server summary, compact transcription and class/region review are archived.
 
 GitHub contains compact metrics, decisions, timestamps and checkpoint references.
 Large checkpoints, complete logs, full per-condition CSV files and confusion matrices

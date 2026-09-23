@@ -13,7 +13,7 @@
   `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro`.
 - Historical TEST6 remains frozen.
 
-## Next action: D9A entropy decision audit, then D9B source decision
+## Next action: D9B decision-benefit screen
 
 Use the existing R01 RGB expert and R05 RGB+DSM expert at seeds 42 and 17 to
 measure the label-defined pixel benefit of adding DSM:
@@ -45,14 +45,25 @@ uses only frozen experts, and cannot establish a new method claim. All 17
 stages completed with zero failures, and the server summary validated frozen
 controls against D9A. Safe entropy wins NB mIoU in only 4/16 rows, loses in
 10 and ties twice under DSM zero (mean -0.0089 pp). Do not promote simple
-lower-entropy routing as the new safety mechanism. Next, review its existing
-Car, component-size and local-region outputs without running new inference,
-using `scripts/print_rebuild_v1_d9a_entropy_route_strata.py`;
-see `docs/experiments/D9A_ENTROPY_ROUTE_RESULTS_20260923.md`.
+lower-entropy routing as the new safety mechanism. The read-only Car,
+small-Car and damaged-region review is complete: Car IoU improved in 12/16
+comparisons, Building in only 1/16, and local-down8 damaged-region effects
+changed sign across seeds. D9A evidence extraction is closed; see
+`docs/experiments/D9A_ENTROPY_ROUTE_RESULTS_20260923.md`.
 
-After the route audit, perform a read-only D9B source audit. Inventory RGB/DSM
-images, labels, scene IDs and prior experiment exposure for a second dataset
-or genuinely untouched scenes. Earlier Vaihingen work already used train tiles
+The next substantive experiment is D9B decision-relevant benefit prediction,
+registered in `docs/protocols/D9B_DECISION_BENEFIT_SCREEN.md`. Restrict the
+primary routing analysis to expert-disagreement pixels, where selection can
+change the predicted label. Compare confidence, entropy, semantic prototypes,
+observable frequency/image quality, and their combinations against
+`dual_only_correct` versus `rgb_only_correct`, while keeping both-wrong pixels
+and CE benefit visible. This addresses the observed ranking-versus-mIoU gap
+and Car/Building trade-off. Freeze features and controls before running it.
+
+The repository part of the D9B source audit is complete. A metadata-only
+server inventory still needs to determine whether additional labelled
+RGB/DSM scenes exist and whether they were previously used. Earlier
+Vaihingen work already used train tiles
 `1,3,7,11,13,17,23,26,28,32,34,37` and evaluated on `5,15,21,30`;
 neither documented set is an untouched final test. See
 `docs/current/D9B_SOURCE_STATUS_20260923.md`. Freeze spatially disjoint

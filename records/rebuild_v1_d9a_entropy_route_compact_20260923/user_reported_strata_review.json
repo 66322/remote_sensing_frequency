@@ -1,0 +1,23 @@
+{
+  "source": "User-pasted output of scripts/print_rebuild_v1_d9a_entropy_route_strata.py on 2026-09-23; server source-hashed CSVs take precedence",
+  "source_hashes_verified_by_server_script": true,
+  "class_iou_entropy_minus_safe_confidence": {
+    "Car": {"wins": 12, "losses": 2, "ties": 2, "comparisons": 16},
+    "Building": {"wins": 1, "losses": 13, "ties": 2, "comparisons": 16}
+  },
+  "small_car_sampled_support_per_condition": 362,
+  "small_car_warning": "Only 14 entropy-selected small-Car pixels at seed17 DSM noise; its selected-harm rate of 0.7857 is unstable and must be reported with denominator.",
+  "small_car_seed17_dsm_noise": {
+    "safe_confidence_selected": 20,
+    "safe_confidence_selected_harm_rate": 0.7,
+    "safe_entropy_selected": 14,
+    "safe_entropy_selected_harm_rate": 0.7857
+  },
+  "local_damaged_region": [
+    {"seed": 42, "condition": "dsm_local_zero_q1", "safe_confidence_miou_percent": 83.5795, "safe_entropy_miou_percent": 83.5795, "delta_pp": 0.0, "selected_dual_both": 0, "sampled_support": 100727},
+    {"seed": 42, "condition": "dsm_local_down8_q1", "safe_confidence_miou_percent": 85.4188, "safe_entropy_miou_percent": 85.4270, "delta_pp": 0.0083, "safe_confidence_selected_dual": 47038, "safe_entropy_selected_dual": 46957, "safe_confidence_harm_rate": 0.0983, "safe_entropy_harm_rate": 0.1, "sampled_support": 100727},
+    {"seed": 17, "condition": "dsm_local_zero_q1", "safe_confidence_miou_percent": 84.8004, "safe_entropy_miou_percent": 84.8004, "delta_pp": 0.0, "selected_dual_both": 0, "sampled_support": 100727},
+    {"seed": 17, "condition": "dsm_local_down8_q1", "safe_confidence_miou_percent": 84.4737, "safe_entropy_miou_percent": 84.4500, "delta_pp": -0.0237, "safe_confidence_selected_dual": 42604, "safe_entropy_selected_dual": 41764, "safe_confidence_harm_rate": 0.1036, "safe_entropy_harm_rate": 0.1026, "sampled_support": 100727}
+  ],
+  "decision": "The D9A evidence extraction is closed. Car/Building class trade-offs and seed-dependent local-down8 outcomes motivate class- and scale-stratified DSM benefit prediction; they do not validate an entropy gate."
+}

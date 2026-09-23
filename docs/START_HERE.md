@@ -18,6 +18,9 @@ its two-seed `fix1` correction completed with zero failures. The entropy-route
 queue finished with zero failures: safe entropy won routed mIoU in only 4/16
 rows, lost in 10 and tied under DSM zero (mean -0.0089 pp). The full D9 gate
 remains unevaluated; a fitted D9B needs an independent evaluation source.
+The D9A class/region review is complete and closed. The next screen is
+decision-relevant DSM benefit on expert-disagreement pixels; see
+`docs/protocols/D9B_DECISION_BENEFIT_SCREEN.md`.
 The documented Potsdam and Vaihingen scenes
 are already exposed; see `docs/current/D9B_SOURCE_STATUS_20260923.md` before
 proposing a new source.

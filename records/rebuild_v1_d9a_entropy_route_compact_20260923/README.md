@@ -13,3 +13,8 @@ remain on the server and take precedence. The compact table lacks the
 support counts and per-class/size/region results required for a detailed
 mechanism conclusion. Blank harm rates under `dsm_zero` mean that the safe
 routes selected no R05 pixels, not that the harm rate was measured as zero.
+
+`user_reported_strata_review.json` transcribes the subsequent read-only,
+source-hash-verified Car/Building and local-region printout. It preserves the
+small selected-pixel denominator behind the seed17 DSM-noise small-Car harm
+rate. Original server CSVs remain authoritative.

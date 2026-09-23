@@ -18,8 +18,10 @@ Despite entropy's 16/16 CE-benefit ranking wins over confidence, safe entropy
 improves routed NB mIoU in only 4/16 seed-condition rows, loses in 10 and
 ties in both DSM-zero rows (mean paired difference -0.0089 pp). Gaussian DSM
 noise remains below the R01 RGB expert for both seeds. This closes simple
-lower-entropy routing as a claimed safety improvement; class/region review
-and the independent-source audit remain. See
+lower-entropy routing as a claimed safety improvement. The source-hash-checked
+stratum review found Car IoU wins in 12/16 rows, Building in 1/16, and
+opposite local-down8 damaged-region directions across seeds. D9A is closed;
+the next protocol is `docs/protocols/D9B_DECISION_BENEFIT_SCREEN.md`. See
 `docs/experiments/D9A_ENTROPY_ROUTE_RESULTS_20260923.md`.
 
 D9A's seed42/17 frozen-expert queue completed with zero stage failures. The

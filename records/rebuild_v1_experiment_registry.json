@@ -753,6 +753,7 @@
       "records": [
         "records/rebuild_v1_d9a_entropy_route_preflight_20260923/user_reported_d5_artifact_audit.json",
         "records/rebuild_v1_d9a_entropy_route_compact_20260923/user_reported_route_comparison.csv",
+        "records/rebuild_v1_d9a_entropy_route_compact_20260923/user_reported_strata_review.json",
         "docs/experiments/D9A_ENTROPY_ROUTE_RESULTS_20260923.md"
       ],
       "server_records": [
@@ -772,9 +773,26 @@
         "mean_safe_entropy_minus_confidence_nb_miou_pp_from_rounded_table": -0.0089375,
         "dsm_zero_exact_rgb_fallback_both_routes_both_seeds": true,
         "safe_entropy_minus_rgb_under_dsm_noise_pp_seed42_seed17": [-0.1471, -0.4156],
+        "entropy_car_iou_wins_losses_ties": [12, 2, 2],
+        "entropy_building_iou_wins_losses_ties": [1, 13, 2],
+        "local_down8_damaged_region_entropy_minus_confidence_miou_pp_seed42_seed17_from_rounded_review": [0.0083, -0.0237],
         "test6_loaded": false
       },
-      "decision": "Better CE-benefit ranking did not make the simple safe-entropy router outperform safe confidence. Close lower-entropy routing as a main safety mechanism; inspect existing class/region outputs and keep D9B fitted semantic/frequency benefit prediction gated on an independent source."
+      "decision": "D9A evidence extraction is closed. Better CE-benefit ranking did not make safe-entropy routing outperform safe confidence; Car and Building IoU move in opposite directions, and local-down8 damage results reverse across seeds. Move to the D9B decision-relevant benefit screen; fitted combinations remain gated on an independent source."
+    },
+    {
+      "id": "D9B_DECISION_BENEFIT_SCREEN",
+      "name": "expert_disagreement_conditioned_dsm_benefit_screen",
+      "status": "protocol_registered_feature_spec_pending_not_launched",
+      "purpose": "Compare observable semantic, frequency and expert features on decisions where selecting R05 can change the predicted label.",
+      "protocol": "docs/protocols/D9B_DECISION_BENEFIT_SCREEN.md",
+      "primary_target": "dual_only_correct versus rgb_only_correct on expert-disagreement pixels, with both-wrong and CE benefit reported separately",
+      "controls": ["confidence_difference", "entropy_difference", "semantic_prototype_only", "safe_confidence_route", "safe_entropy_route"],
+      "conditions": ["clean", "dsm_zero", "dsm_down8", "dsm_blur5", "dsm_noise_std010", "dsm_shift_right_4px", "dsm_local_zero_q1", "dsm_local_down8_q1"],
+      "fitting_policy": "unfitted Val2 screen only until an independent spatially disjoint labelled source is frozen",
+      "test6_policy": "prohibited",
+      "gpu": "physical_0_only",
+      "decision": "Do not train a safety residual gate from D9A or relax the full D9 entry gate; implement the D9B comparison ladder after feature definitions are frozen."
     }
   ],
   "handoff_entry": "docs/START_HERE.md",

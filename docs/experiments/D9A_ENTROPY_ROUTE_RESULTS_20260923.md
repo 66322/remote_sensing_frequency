@@ -33,10 +33,20 @@ stage does not test semantic prototypes, frequency quality, fitted feature
 combinations or calibrated benefit probabilities, and it does not satisfy the
 full D9 gate. No safety residual gate should be trained from this result.
 
-Per-class IoU, small-Car selected harm and local damaged-region metrics are
-available in the original server outputs. Run the read-only, source-hash
-checking `scripts/print_rebuild_v1_d9a_entropy_route_strata.py` before a
-class-specific mechanism conclusion. The known Potsdam and
+The read-only source-hash-checked stratum review is complete. Entropy routing
+has higher Car IoU in 12/16 seed-condition rows, while Building IoU is higher
+in only 1/16 rows (a +0.0006 pp difference); the two DSM-zero rows tie for
+both classes. This is a class trade-off, not a general Car improvement claim:
+the Car gains are usually small, and seed17 Gaussian DSM noise loses 0.2304
+pp Car IoU. In locally missing quadrants both safe routes select zero R05
+pixels and tie exactly. In locally downsampled quadrants the entropy route
+changes damaged-region mIoU by +0.0083/-0.0237 pp for seeds 42/17, so there
+is no stable local benefit. Small-Car harm rates have limited selected-pixel
+support: under seed17 DSM noise, only 14 sampled small-Car pixels are selected
+by entropy, with 11 harmed. No further D9A audit is needed to reject simple
+entropy routing as the main method.
+
+The known Potsdam and
 historical Vaihingen scenes are already exposed; see
 `docs/current/D9B_SOURCE_STATUS_20260923.md` for the independent-source
 boundary before D9B fitting.
