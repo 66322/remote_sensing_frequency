@@ -1,6 +1,6 @@
 # D9B independent-source audit — repository evidence only
 
-The D9A entropy-route queue is running. This read-only audit identifies which
+The D9A entropy-route queue has completed. This read-only audit identifies which
 labelled scenes are already exposed in the repository; it does not inspect
 the server's dataset files or load any image, DSM, label or historical TEST6
 tile.

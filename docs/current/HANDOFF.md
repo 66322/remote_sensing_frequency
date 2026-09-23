@@ -6,21 +6,22 @@ D8 `fix1` completed and failed its sampling gate, so `proceed_seed17=[]`.
 D9A completed all 17 queue stages with zero failures. Its tested confidence×JS
 disagreement score is below direct confidence difference on benefit AUROC and
 AUPRC in all 16 seed-by-condition comparisons. Entropy difference is above
-confidence difference on both ranking metrics in all 16 comparisons, but its
-routed mIoU has not been audited in this handoff. Car and damaged-region
-ranking advantages also repeat, with small-Car support limited. Expected
-D5 per-seed result directories are missing from project records even though
-the original seed42/17 logs say `D5 COMPLETE`. A new, narrowly scoped and
-exploratory matched safe-entropy versus safe-confidence route audit is prepared;
-see `docs/protocols/D9A_ENTROPY_ROUTING_DECISION_AUDIT.md`. The original D9A local-down8 D5 route incorrectly masked degraded DSM
-as absent. Its two-stage `fix1` correction completed with zero failures:
-corrected D5 NB mIoU is 86.8285%/86.2557% at seeds 42/17, and the ranking
-CSVs are byte-identical to the originals. See
-`docs/experiments/D9A_RESULTS_20260923.md`. Inspect existing strata and
-select an independent evaluation source before fitting D9B or training a
-safety gate. The repository source audit finds no documented untouched scene
-set: Potsdam Train16/Val2/Test6 are respectively trained, inspected and
-historically exposed; earlier Vaihingen F0/P1 work used train12/test4. See
+confidence difference on both ranking metrics in all 16 comparisons. Car and
+damaged-region ranking advantages also repeat, with small-Car support limited.
+The original D9A local-down8 D5 route incorrectly masked degraded DSM as
+absent; its two-seed `fix1` correction completed with zero failures and left
+the ranking CSVs byte-identical. D5's older per-seed result directories are
+missing although its logs report completion, so a matched frozen-expert
+safe-entropy versus safe-confidence decision audit was run. Safe entropy won
+routed NB mIoU in only 4/16 rows, lost in 10 and tied under DSM zero twice
+(mean -0.0089 pp). Its better benefit ranking therefore did not translate
+into a safer or stronger simple router. See
+`docs/experiments/D9A_ENTROPY_ROUTE_RESULTS_20260923.md`; class/region
+strata remain to be audited from existing server outputs.
+
+No documented untouched scene source is currently available for fitted D9B:
+Potsdam Train16/Val2/Test6 are trained, inspected and historically exposed,
+while earlier Vaihingen work used train12/test4. See
 `docs/current/D9B_SOURCE_STATUS_20260923.md`. Historical TEST6 remains frozen.
 
 ## Read this first on another computer
@@ -31,8 +32,9 @@ historically exposed; earlier Vaihingen F0/P1 work used train12/test4. See
 - B4 evidence: `records/rebuild_v1_b4_seed17_compact_20260922/`
 - B4 report: `docs/experiments/B4_SEED17_REPLICATION_20260921.md`
 - Current state: B4 and D8 gates failed; D9A and local-down8 fix1 complete, full D9 gate unevaluated.
-- The D9A entropy-route queue is active as of the last user report: smoke
-  complete, seed42 clean started. No full-queue result has been reported.
+- The D9A entropy-route queue completed with zero failures. Its source-hashed
+  server summary and compact transcription are archived; class/region review
+  remains read-only follow-up.
 
 GitHub contains compact metrics, decisions, timestamps and checkpoint references.
 Large checkpoints, complete logs, full per-condition CSV files and confusion matrices
@@ -93,11 +95,12 @@ checkpoint paths and SHA256 values are in `run_provenance.json`.
 
 “Read `docs/START_HERE.md`, `docs/current/HANDOFF.md`,
 `docs/experiments/D8_RESULTS_20260922.md`,
-`docs/experiments/D9A_RESULTS_20260923.md` and
+`docs/experiments/D9A_RESULTS_20260923.md`,
+`docs/experiments/D9A_ENTROPY_ROUTE_RESULTS_20260923.md` and
 `docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md` on branch
 `rebuild-v1-protocol-20260915`. B1–B4 and D8 are closed; D9A and its
-local-down8 correction are complete.
-Await and audit the running D9A entropy-route decision queue, then inventory
-new labelled scenes before fitting benefit predictors. The documented Potsdam
-and Vaihingen scenes are exposed. Keep TEST6 frozen, use physical GPU0 only, and store
+local-down8 correction are complete. Audit the entropy-route class/region
+strata, then inventory new labelled scenes before fitting benefit predictors.
+The documented Potsdam and Vaihingen scenes are exposed. Keep TEST6 frozen,
+use physical GPU0 only, and store
 runtime artifacts under `/home/jovyan/zzx`.”

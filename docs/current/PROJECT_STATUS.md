@@ -12,6 +12,16 @@ Evidence provenance: core results plus compact B2/B3/B4 transcriptions are commi
 
 ## D9A update
 
+The D9A safe-entropy route follow-up completed its 17-stage queue with zero
+failures and verified R01/R05/safe-confidence agreement with earlier D9A.
+Despite entropy's 16/16 CE-benefit ranking wins over confidence, safe entropy
+improves routed NB mIoU in only 4/16 seed-condition rows, loses in 10 and
+ties in both DSM-zero rows (mean paired difference -0.0089 pp). Gaussian DSM
+noise remains below the R01 RGB expert for both seeds. This closes simple
+lower-entropy routing as a claimed safety improvement; class/region review
+and the independent-source audit remain. See
+`docs/experiments/D9A_ENTROPY_ROUTE_RESULTS_20260923.md`.
+
 D9A's seed42/17 frozen-expert queue completed with zero stage failures. The
 server summarizer validated source files and the deterministic DSM-zero RGB
 fallback. On sampled Val2 pixels, the confidence-difference score exceeds
@@ -19,17 +29,17 @@ confidence×Jensen-Shannon disagreement on both benefit AUROC and AUPRC in all
 16 seed-by-condition comparisons. A subsequent read-only review finds that
 entropy difference exceeds confidence difference on both ranking metrics in
 all 16 comparisons (+0.0219 AUROC and +0.0258 AUPRC on average). This is a
-ranking finding, not yet a routed-mIoU or calibration gain. Within Car it wins
+ranking finding, not a routed-mIoU or calibration gain. Within Car it wins
 both ranking metrics in 16/16 comparisons, and within locally damaged regions
 in 4/4. Existing D5 entropy-routing metric files are missing from expected
 locations; the server audit found only the D5 queue directory, while seed42/17
-logs report completion. A narrow frozen-expert entropy-route mIoU/harm audit
-is running: smoke passed and seed42 clean started in the last server report.
-The D9A local-down8 D5
-routing result was invalid because the original code treated degraded DSM as
+logs report completion. The narrow frozen-expert entropy-route mIoU/harm
+audit is complete and reported above. The D9A local-down8 D5 routing result
+was invalid because the original code treated degraded DSM as
 known absence; the two-seed fix completed with zero failures. Corrected D5 NB
-mIoU is 86.8285%/86.2557%, with unchanged benefit-ranking CSVs. Under normalized DSM Gaussian noise sigma
-0.10, D5 is below R01 by 0.1814/0.3190 pp NB mIoU for seeds 42/17, despite
+mIoU is 86.8285%/86.2557%, with unchanged benefit-ranking CSVs. Under
+normalized DSM Gaussian noise sigma 0.10, D5 is below R01 by 0.1814/0.3190
+pp NB mIoU for seeds 42/17, despite
 its exact R01 fallback when DSM is completely absent. This is a negative
 result for the tested direct disagreement interaction, not the full D9
 semantic/frequency hypothesis. See `docs/experiments/D9A_RESULTS_20260923.md`.

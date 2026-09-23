@@ -8,16 +8,17 @@ Read `docs/current/HANDOFF.md` first for the current evidence and decision bound
 As of 2026-09-23, B1–B4, D7, D8 and D9A are complete. B4 fails its local
 replication gate; D8 fails its sampling gate. D9A's simple disagreement
 interaction loses to confidence on all reported benefit-ranking comparisons.
-Entropy difference ranks benefit above confidence in all 16 comparisons;
-its routed segmentation effect still needs an audit of existing D5 records.
+Entropy difference ranks benefit above confidence in all 16 comparisons, but
+the subsequent matched safe-entropy router loses mean mIoU to safe confidence.
 The D5 per-seed result directories were absent in the latest server check,
 although its logs report completion. A matched safe-entropy routing decision
-audit is running as an exploratory D9A follow-up. The original D9A
+audit completed as an exploratory D9A follow-up. The original D9A
 local-down8 D5 route incorrectly forced RGB in degraded but available DSM;
 its two-seed `fix1` correction completed with zero failures. The entropy-route
-queue started at 2026-09-23 13:00:35 +08:00; its smoke stage passed, and
-seed42 clean started. The full D9 gate remains unevaluated; a fitted D9B needs
-an independent evaluation source. The documented Potsdam and Vaihingen scenes
+queue finished with zero failures: safe entropy won routed mIoU in only 4/16
+rows, lost in 10 and tied under DSM zero (mean -0.0089 pp). The full D9 gate
+remains unevaluated; a fitted D9B needs an independent evaluation source.
+The documented Potsdam and Vaihingen scenes
 are already exposed; see `docs/current/D9B_SOURCE_STATUS_20260923.md` before
 proposing a new source.
 Do not rerun unchanged SafeMaxConfidence distillation or the conditional D8

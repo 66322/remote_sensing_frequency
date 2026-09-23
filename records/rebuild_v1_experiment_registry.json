@@ -738,19 +738,22 @@
     {
       "id": "D9A_ENTROPY_ROUTE",
       "name": "matched_safe_entropy_vs_safe_confidence_decision_audit",
-      "status": "running_smoke_complete",
+      "status": "reported_complete",
+      "evidence_status": "user_supplied_server_summarizer_table_compact_transcription_committed_original_source_hashed_on_server",
       "launch_commit": "3c0f4909a854cd2e87539cc79ef68d2b8da5fdc3",
       "started_at": "2026-09-23T13:00:35+08:00",
-      "last_reported_stage": "D9A_ENT_42_clean START at 2026-09-23T13:01:30+08:00",
-      "time_source": "user-supplied queue status excerpt",
+      "time_source": "user-supplied queue start and successful server summarizer output",
       "fingerprint": "potsdam_val2_seed42_seed17_8dsmconditions_frozen_expert_safe_entropy_vs_safe_confidence_route_v1",
       "purpose": "Test whether D9A entropy benefit-ranking gains improve actual routed mIoU and selected-dual CE harm without retraining either expert.",
       "reason_for_new_evaluation": "Original D5 seed42/17 logs report completion, but their per-seed metric directories are absent from project records; D9A did not compute entropy-route mIoU.",
       "protocol": "docs/protocols/D9A_ENTROPY_ROUTING_DECISION_AUDIT.md",
       "script": "scripts/run_rebuild_v1_d9a_entropy_route_queue_20260923.sh",
       "summary_script": "scripts/summarize_rebuild_v1_d9a_entropy_route.py",
+      "strata_review_script": "scripts/print_rebuild_v1_d9a_entropy_route_strata.py",
       "records": [
-        "records/rebuild_v1_d9a_entropy_route_preflight_20260923/user_reported_d5_artifact_audit.json"
+        "records/rebuild_v1_d9a_entropy_route_preflight_20260923/user_reported_d5_artifact_audit.json",
+        "records/rebuild_v1_d9a_entropy_route_compact_20260923/user_reported_route_comparison.csv",
+        "docs/experiments/D9A_ENTROPY_ROUTE_RESULTS_20260923.md"
       ],
       "server_records": [
         "records/rebuild_v1_d9a_entropy_route_queue_20260923/",
@@ -761,7 +764,17 @@
       "gpu": "physical_0_only",
       "test6_policy": "prohibited",
       "training": false,
-      "decision": "Await an exploratory matched decision outcome; D9B fitted semantic/frequency benefit prediction remains gated on an independent source."
+      "result_summary": {
+        "completed_stages": 17,
+        "queue_failures": 0,
+        "frozen_controls_match_D9A_within_1e-4": true,
+        "safe_entropy_miou_wins_losses_ties": [4, 10, 2],
+        "mean_safe_entropy_minus_confidence_nb_miou_pp_from_rounded_table": -0.0089375,
+        "dsm_zero_exact_rgb_fallback_both_routes_both_seeds": true,
+        "safe_entropy_minus_rgb_under_dsm_noise_pp_seed42_seed17": [-0.1471, -0.4156],
+        "test6_loaded": false
+      },
+      "decision": "Better CE-benefit ranking did not make the simple safe-entropy router outperform safe confidence. Close lower-entropy routing as a main safety mechanism; inspect existing class/region outputs and keep D9B fitted semantic/frequency benefit prediction gated on an independent source."
     }
   ],
   "handoff_entry": "docs/START_HERE.md",

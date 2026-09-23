@@ -37,14 +37,18 @@ repeated.
 
 The old D5 per-seed result directories are absent under project `records/`,
 although its seed42/17 logs report `D5 COMPLETE`. Its queue status file is
-also absent. A new, predeclared D9A entropy-routing decision audit is running
+also absent. A predeclared D9A entropy-routing decision audit completed
 at `docs/protocols/D9A_ENTROPY_ROUTING_DECISION_AUDIT.md`. It measures routed
 mIoU and selected harm for safe entropy versus corrected safe confidence on
 the same eight conditions and both seeds. It is exploratory Val2 analysis,
-uses only frozen experts, and cannot establish a new method claim. The queue
-started at 2026-09-23 13:00:35 +08:00; smoke passed and seed42 clean started.
-Wait for its independent failure-continue stages, then validate the
-source-hashed summary against the existing D9A expert and confidence outputs.
+uses only frozen experts, and cannot establish a new method claim. All 17
+stages completed with zero failures, and the server summary validated frozen
+controls against D9A. Safe entropy wins NB mIoU in only 4/16 rows, loses in
+10 and ties twice under DSM zero (mean -0.0089 pp). Do not promote simple
+lower-entropy routing as the new safety mechanism. Next, review its existing
+Car, component-size and local-region outputs without running new inference,
+using `scripts/print_rebuild_v1_d9a_entropy_route_strata.py`;
+see `docs/experiments/D9A_ENTROPY_ROUTE_RESULTS_20260923.md`.
 
 After the route audit, perform a read-only D9B source audit. Inventory RGB/DSM
 images, labels, scene IDs and prior experiment exposure for a second dataset

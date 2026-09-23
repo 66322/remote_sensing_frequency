@@ -106,6 +106,10 @@ Do not rerun the same dataset, split, seed, schedule and configuration:
 - D9A entropy difference beats confidence difference on CE-benefit AUROC and
   AUPRC in all 16 comparisons. This is an existing baseline, not a novel gate;
   do not equate ranking with routed mIoU or a calibrated benefit probability.
+- The matched safe-entropy routing audit completed with zero failures. It won
+  NB mIoU over safe confidence in only 4/16 seed-condition rows, lost in 10,
+  and tied in both DSM-zero rows. Do not repeat it or claim simple lower-entropy
+  routing as a safety improvement.
 - Original D9A `dsm_local_down8_q1` D5 routing masked degraded DSM as if it
   were absent. Its two original D5 mIoU and selected-harm rows are invalid;
   the documented two-seed `fix1` correction is complete. Do not rerun it.
