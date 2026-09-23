@@ -620,8 +620,8 @@
     {
       "id": "D9",
       "name": "frozen_expert_dsm_marginal_benefit_diagnostic",
-      "status": "prepared_not_launched",
-      "evidence_status": "not_run",
+      "status": "partial_complete",
+      "evidence_status": "D9A_complete_full_D9_gate_unevaluated",
       "fingerprint": "potsdam_val2_r01_r05_seed42_seed17_dsm_benefit_feature_audit_v1",
       "purpose": "Test whether observable semantic, frequency and expert-disagreement features predict the label-defined marginal benefit and harm from DSM.",
       "protocol": "docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md",
@@ -633,7 +633,43 @@
       ],
       "test6_policy": "prohibited",
       "training": false,
-      "decision": "D9A unfitted-score inference queue is prepared but not run. It is an exploratory Val2 screen; fitted semantic/frequency combinations and safety-gate training require a new frozen evaluation source."
+      "decision": "D9A is complete and its tested confidence-times-JS score loses to confidence on all 16 benefit-ranking comparisons. Fitted semantic/frequency combinations and safety-gate training require a new frozen evaluation source."
+    },
+    {
+      "id": "D9A",
+      "name": "frozen_expert_direct_benefit_score_audit",
+      "status": "reported_complete",
+      "evidence_status": "user_supplied_server_summarizer_table_compact_transcription_committed_original_source_hashed_on_server",
+      "launch_commit": "ed92ae4f605c87d5c8ebd5c6c932c548d77b28c0",
+      "started_at": "2026-09-23T11:08:12+08:00",
+      "completed_at": "2026-09-23T11:33:06+08:00",
+      "time_source": "user-supplied queue status and successful server summarizer output",
+      "fingerprint": "potsdam_val2_r01_r05_seed42_seed17_8dsmconditions_direct_benefit_scores_v1",
+      "purpose": "Measure label-defined DSM benefit and compare unfitted confidence, entropy and expert-disagreement scores across two seeds and eight conditions.",
+      "records": [
+        "docs/experiments/D9A_RESULTS_20260923.md",
+        "records/rebuild_v1_d9a_compact_20260923/user_reported_summary_table.csv"
+      ],
+      "server_records": [
+        "records/rebuild_v1_d9a_queue_20260923/",
+        "records/rebuild_v1_d9a_summary_20260923/",
+        "records/rebuild_v1_d9a_seed42_*_20260923/",
+        "records/rebuild_v1_d9a_seed17_*_20260923/"
+      ],
+      "result_summary": {
+        "completed_stages": 17,
+        "queue_failures": 0,
+        "seed_condition_comparisons": 16,
+        "confidence_beats_confidence_times_js_auroc": 16,
+        "confidence_beats_confidence_times_js_auprc": 16,
+        "mean_auroc_advantage_from_rounded_table": 0.01414375,
+        "mean_auprc_advantage_from_rounded_table": 0.02105,
+        "dsm_zero_d5_exact_r01_fallback_both_seeds": true,
+        "dsm_noise_d5_minus_r01_nb_miou_pp_seed42_seed17": [-0.1814, -0.3190],
+        "test6_loaded": false
+      },
+      "gate_status": "full_D9_not_evaluated",
+      "decision": "Close the tested confidence-times-JS interaction as an improvement over confidence. Archive D9A; inspect already produced strata before choosing a new independent source for any fitted benefit predictor. Do not train a safety gate from D9A."
     }
   ],
   "handoff_entry": "docs/START_HERE.md",

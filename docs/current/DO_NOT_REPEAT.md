@@ -51,6 +51,8 @@ Do not rerun the same dataset, split, seed, schedule and configuration:
   local damaged-region replication.
 - D7 Train16 sampling and seed42/17 semantic-error audit;
 - D8 seed42 4000-step C/A/S crop-sampling screen and `fix1` summary.
+- D9A seed42/17 frozen-expert direct-score benefit audit across eight DSM
+  conditions; do not rerun identical inference.
 
 ## Important negative or limiting findings
 
@@ -97,6 +99,10 @@ Do not rerun the same dataset, split, seed, schedule and configuration:
 - Semantic prototype similarity, frequency quality, confidence and availability
   are candidate D9 evidence or controls. Do not relabel them as ground-truth
   reliability or claim them alone as the main innovation.
+- D9A confidence-difference times Jensen-Shannon disagreement loses to direct
+  confidence difference on benefit AUROC and AUPRC in all 16 reported
+  seed-by-condition comparisons. Do not present this interaction as the new
+  mechanism or retrain it unchanged on Val2.
 
 ## Legitimate reasons to rerun
 

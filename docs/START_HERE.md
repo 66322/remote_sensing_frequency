@@ -5,10 +5,12 @@ experiment.
 
 Research branch: `rebuild-v1-protocol-20260915`; GitHub defaults to `main`.
 Read `docs/current/HANDOFF.md` first for the current evidence and decision boundary.
-As of 2026-09-23, B1–B4, D7 and D8 are complete. B4 fails its local replication
-gate; D8's seed42 C/A/S screen fails its sampling gate. No GPU experiment is
-currently queued. The next protocol is D9 frozen-expert DSM benefit diagnosis.
-D9A's read-only queue is prepared but has not been launched.
+As of 2026-09-23, B1–B4, D7, D8 and D9A are complete. B4 fails its local
+replication gate; D8 fails its sampling gate. D9A's simple disagreement
+interaction loses to confidence on all reported benefit-ranking comparisons.
+No GPU experiment is currently queued. The full D9 gate remains unevaluated;
+the next action is analysis of existing D9A strata and an independent D9B
+evaluation source, not another Val2 rerun.
 Do not rerun unchanged SafeMaxConfidence distillation or the conditional D8
 seed17 arm from a stale conversation snapshot.
 

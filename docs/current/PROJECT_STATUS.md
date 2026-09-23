@@ -2,13 +2,25 @@
 
 - Updated: 2026-09-23
 - Active branch: `rebuild-v1-protocol-20260915`
-- Current line: D8 sampling screen completed and failed its gate; D9 frozen-expert benefit diagnostic is the next protocol
+- Current line: D9A direct-score benefit diagnostic completed; specific confidence×disagreement interaction underperforms confidence in all 16 comparisons
 - Dataset/split: ISPRS Potsdam Train16 -> Val2 (`3_11`, `5_10`)
 - Primary metric: Val2 `mIoU_fg5(noboundary)`
 - Historical TEST6: prohibited for training, selection and current diagnostics
 - Execution device: physical GPU 0 only (`CUDA_VISIBLE_DEVICES=0`)
 
 Evidence provenance: core results plus compact B2/B3/B4 transcriptions are committed. The compact files were reconstructed from user-supplied validated server output; original logs, full CSV files, confusion matrices and checkpoints remain on the server and take precedence if a discrepancy is found.
+
+## D9A update
+
+D9A's seed42/17 frozen-expert queue completed with zero stage failures. The
+server summarizer validated source files and the deterministic DSM-zero RGB
+fallback. On sampled Val2 pixels, the confidence-difference score exceeds
+confidence×Jensen-Shannon disagreement on both benefit AUROC and AUPRC in all
+16 seed-by-condition comparisons. Under normalized DSM Gaussian noise sigma
+0.10, D5 is below R01 by 0.1814/0.3190 pp NB mIoU for seeds 42/17, despite
+its exact R01 fallback when DSM is completely absent. This is a negative
+result for the tested direct disagreement interaction, not the full D9
+semantic/frequency hypothesis. See `docs/experiments/D9A_RESULTS_20260923.md`.
 
 ## D7/D8 update
 
@@ -26,9 +38,10 @@ by 1.0097 pp. D8's joint gate failed for both candidates; no seed17 arm is
 authorized by this protocol. See `docs/experiments/D8_RESULTS_20260922.md`.
 
 The next question is whether observable semantic, frequency and expert-disagreement
-evidence predicts the label-defined marginal DSM benefit over R01. D9 is
-diagnostic only until a new frozen evaluation source and numerical training gate
-are specified. See `docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md`.
+evidence predicts the label-defined marginal DSM benefit over R01. D9 remains
+diagnostic until an independent fitting/calibration/evaluation source and a
+fitted-combination protocol are frozen. See
+`docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md`.
 
 ## Completed core results
 
@@ -127,6 +140,8 @@ main method. B1–B4 may be retained as mechanism, ablation and negative-result
 evidence. A new main-method experiment requires a changed reliability design and a
 new frozen evaluation source rather than another identical Val2 rerun.
 
-D7 and D8 are closed diagnostics. Do not turn their Val2 findings into a final
-paper claim. B1–B4 remain closed. The proposed paper direction is benefit-aware
-suppression of negative transfer from DSM, subject to D9 evidence.
+D7 and D8 are closed diagnostics. D9A is complete but cannot pass the full D9
+gate, because semantic/frequency combinations and independent evaluation are
+absent. Do not turn these Val2 findings into a final paper claim. B1–B4 remain
+closed. The proposed paper direction is benefit-aware suppression of negative
+transfer from DSM, subject to further D9 evidence.

@@ -1,14 +1,14 @@
-# Current handoff — 2026-09-23
+# Current handoff — 2026-09-23 (after D9A)
 
 ## Current decision
 
-D8 `fix1` completed on 2026-09-22 17:59:55 +08:00 with zero queue failures.
-Both A and S fail the frozen sampling gate, so `proceed_seed17=[]`. The next
-research step is D9 frozen-expert DSM benefit diagnosis, specified in
-`docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md`. The D9A read-only queue is
-prepared at `scripts/run_rebuild_v1_d9a_queue_20260923.sh` but has not run.
-Do not start D8 seed17 or a
-safety-gate training run. Historical TEST6 remains frozen.
+D8 `fix1` completed and failed its sampling gate, so `proceed_seed17=[]`.
+D9A completed all 17 queue stages with zero failures. Its tested confidence×JS
+disagreement score is below direct confidence difference on benefit AUROC and
+AUPRC in all 16 seed-by-condition comparisons. See
+`docs/experiments/D9A_RESULTS_20260923.md`. Inspect existing strata and
+select an independent evaluation source before fitting D9B or training a
+safety gate. Historical TEST6 remains frozen.
 
 ## Read this first on another computer
 
@@ -17,7 +17,7 @@ safety-gate training run. Historical TEST6 remains frozen.
 - B1–B3 evidence: `records/rebuild_v1_b2_b3_compact_20260921/`
 - B4 evidence: `records/rebuild_v1_b4_seed17_compact_20260922/`
 - B4 report: `docs/experiments/B4_SEED17_REPLICATION_20260921.md`
-- Current state: B4 and D8 are complete and both documented decision gates failed.
+- Current state: B4 and D8 gates failed; D9A complete, full D9 gate unevaluated.
 - No GPU experiment is currently queued by this handoff.
 
 GitHub contains compact metrics, decisions, timestamps and checkpoint references.
@@ -78,9 +78,10 @@ checkpoint paths and SHA256 values are in `run_provenance.json`.
 ## Reusable prompt
 
 “Read `docs/START_HERE.md`, `docs/current/HANDOFF.md`,
-`docs/experiments/D8_RESULTS_20260922.md` and
+`docs/experiments/D8_RESULTS_20260922.md`,
+`docs/experiments/D9A_RESULTS_20260923.md` and
 `docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md` on branch
-`rebuild-v1-protocol-20260915`. B1–B4 and D8 are closed; the D8 seed17
-condition was not met. Diagnose the label-defined marginal benefit of DSM
-using frozen R01/R05 experts in both seeds. Keep TEST6 frozen, use physical
-GPU0 only, and store runtime artifacts under `/home/jovyan/zzx`.”
+`rebuild-v1-protocol-20260915`. B1–B4 and D8 are closed; D9A is complete.
+Inspect its existing strata and choose a new evaluation source before fitting
+benefit predictors. Keep TEST6 frozen, use physical GPU0 only, and store
+runtime artifacts under `/home/jovyan/zzx`.”

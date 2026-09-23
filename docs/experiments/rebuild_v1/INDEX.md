@@ -21,7 +21,8 @@
 | B4 | seed17 C/R05_KD/KD replication | complete; documented gate failed | `records/rebuild_v1_b4_seed17_compact_20260922/` |
 | D7 | data, scale and semantic-error audit | complete | `docs/experiments/D7_RESULTS_20260922.md` |
 | D8 | seed42 C/A/S sampling screen | complete; gate failed | `docs/experiments/D8_RESULTS_20260922.md` |
-| D9 | frozen-expert DSM benefit diagnostic | protocol; not yet run | `docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md` |
+| D9 | frozen-expert DSM benefit diagnostic | D9A complete; full gate unevaluated | `docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md` |
+| D9A | direct confidence/entropy/disagreement benefit audit | complete; specific interaction negative | `docs/experiments/D9A_RESULTS_20260923.md` |
 
 The JSON registry is the machine-readable authority. This index is the
 human-readable navigation layer.

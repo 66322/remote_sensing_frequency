@@ -1,14 +1,16 @@
-# Next experiment decision after D8
+# Next experiment decision after D9A
 
 - Updated: 2026-09-23
-- Current gate: D8 seed42 fixed-step C/A/S sampling screen completed; both A
-  and S failed the predeclared conjunctive gate.
-- Decision: do not launch D8 seed17 or change the D8 thresholds post hoc.
+- Current gate: D9A frozen-expert direct-score audit completed on both seeds
+  and eight conditions with no queue failures.
+- Decision: confidence×JS disagreement does not improve benefit ranking over
+  confidence difference in any of the 16 comparisons. Do not fit a safety
+  gate from this result. D8 seed17 also remains closed.
 - Device and persistence: physical GPU 0 only; all runtime outputs under
   `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro`.
 - Historical TEST6 remains frozen.
 
-## Next action: D9 benefit diagnostic
+## Next action: D9A stratified audit, then D9B source decision
 
 Use the existing R01 RGB expert and R05 RGB+DSM expert at seeds 42 and 17 to
 measure the label-defined pixel benefit of adding DSM:
@@ -22,12 +24,17 @@ informed oracle as controls. Report benefit and harm AUROC/AUPRC, calibration,
 negative-transfer rate and mIoU by class, size, corruption, tile and seed.
 Protocol: `docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md`.
 
-The immediate runnable step is the D9A read-only frozen-expert inference
-and direct-score audit on Val2 (`scripts/run_rebuild_v1_d9a_queue_20260923.sh`).
-A fitted combination and any safety-gate training
-require a previously frozen, spatially independent fitting/calibration/evaluation
-source. Val2 alone supports only exploratory ranking. Freeze numeric success
-thresholds before fitting the combinations. Do not load TEST6 for D9.
+D9A is complete. First inspect the already generated
+`records/rebuild_v1_d9a_summary_20260923/strata_table.csv` for Building, Car,
+small Car and damaged-region differences, and inspect entropy and class-
+agreement columns in `summary_table.csv`. This requires no rerun. See
+`docs/experiments/D9A_RESULTS_20260923.md`.
+
+After that, decide whether D9B has a concrete, independent source for
+fitting/calibration/evaluation. R01/R05 were trained on Train16, Val2 has been
+repeatedly inspected, and historical TEST6 is frozen. Therefore a fitted
+semantic/frequency combination cannot claim an unbiased test on the current
+Potsdam split. Do not start a model-training or learned-router queue on Val2.
 
 The new method is eligible for training only if combined evidence shows a
 consistent benefit-prediction and negative-transfer advantage over confidence
