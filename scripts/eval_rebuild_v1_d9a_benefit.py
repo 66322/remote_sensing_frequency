@@ -4,6 +4,7 @@ import argparse
 import csv
 import json
 import os
+import re
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -19,7 +20,9 @@ from scipy import ndimage
 
 import train_rebuild_v1_r01_optical_only as r01
 import train_rebuild_v1_r02_budget_pilot as r02
-from d9_benefit_metrics import benefit_from_probabilities, rank_metrics, selected_harm
+from d9_benefit_metrics import (apply_known_missing_fallback,
+                                benefit_from_probabilities, rank_metrics,
+                                selected_harm)
 from eval_rebuild_v1_d4_expert_complementarity import oracle_prediction, validate_run
 from eval_rebuild_v1_d5_confidence_routing import infer_scores, softmax_np
 from eval_rebuild_v1_dual_robust_conditions import apply_condition as apply_global
@@ -149,11 +152,14 @@ def main():
     ap.add_argument("--condition", choices=tuple(CONDITIONS), required=True)
     ap.add_argument("--sample-pixels-per-tile", type=int, default=200000)
     ap.add_argument("--smoke", action="store_true")
+    ap.add_argument("--tag", default="")
     ap.add_argument("--out", type=Path)
     args = ap.parse_args()
     if args.sample_pixels_per_tile < 1000:
         raise ValueError("sample size must be at least 1000")
-    suffix = "_smoke" if args.smoke else ""
+    if args.tag and not re.fullmatch(r"[A-Za-z0-9_]+", args.tag):
+        raise ValueError("tag must be alphanumeric/underscore")
+    suffix = ("_smoke" if args.smoke else "") + (f"_{args.tag}" if args.tag else "")
     out = args.out or ROOT / f"records/rebuild_v1_d9a_seed{args.seed}_{args.condition}_20260923{suffix}"
     out = out.resolve()
     if not out.is_relative_to((ROOT / "records").resolve()):
@@ -187,6 +193,7 @@ def main():
                   for method in ("R01", "R05", "D5_safe_confidence", "correctness_oracle")}
     pooled_samples = {"labels": [], "sizes": [], "regions": [], "benefit": [],
                       **{name: [] for name in SCORES}, "selected_d5": []}
+    hard_missing = CONDITIONS[args.condition]["family"] in ("global_missing", "local_missing")
 
     for tile in ids:
         print(f"D9A seed={args.seed} condition={args.condition} tile={tile}", flush=True)
@@ -196,8 +203,8 @@ def main():
         p5 = softmax_np(infer_scores(net5, d["optical"], treated, patch, stride, batch, False))
         pred1, pred5 = p1.argmax(0).astype(np.uint8), p5.argmax(0).astype(np.uint8)
         choose5 = p5.max(0) > p1.max(0)
-        if missing_mask is not None:
-            choose5 &= ~missing_mask
+        choose5 = apply_known_missing_fallback(choose5, missing_mask,
+                                               CONDITIONS[args.condition]["family"])
         routed = np.where(choose5, pred5, pred1).astype(np.uint8)
         if args.condition == "dsm_zero" and not np.array_equal(routed, pred1):
             raise RuntimeError("DSM-zero deterministic RGB fallback failed")
@@ -263,6 +270,7 @@ def main():
     payload = {"recorded_at": datetime.now().astimezone().isoformat(timespec="seconds"),
                "experiment_id": "D9A_FROZEN_EXPERT_BENEFIT_AUDIT", "seed": args.seed,
                "condition": args.condition, "condition_spec": CONDITIONS[args.condition],
+               "run_tag": args.tag, "hard_missing_fallback_applied": hard_missing,
                "smoke": args.smoke, "val_ids": ids, "test6_loaded": False,
                "r01_checkpoint": str(ck1), "r05_checkpoint": str(ck5),
                "r01_checkpoint_step": int(state1.get("global_step", -1)),

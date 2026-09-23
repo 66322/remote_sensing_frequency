@@ -7,8 +7,12 @@ D9A completed all 17 queue stages with zero failures. Its tested confidence×JS
 disagreement score is below direct confidence difference on benefit AUROC and
 AUPRC in all 16 seed-by-condition comparisons. Entropy difference is above
 confidence difference on both ranking metrics in all 16 comparisons, but its
-routed mIoU has not been audited in this handoff. See
-`docs/experiments/D9A_RESULTS_20260923.md`. Inspect existing strata and
+routed mIoU has not been audited in this handoff. Car and damaged-region
+ranking advantages also repeat, with small-Car support limited. Expected
+D5 per-seed metric files are missing; locate originals before an entropy-route
+rerun. The original D9A local-down8 D5 route incorrectly masked degraded DSM
+as absent. Run only the two-stage `fix1` correction before citing its routed
+mIoU or selected harm. See `docs/experiments/D9A_RESULTS_20260923.md`. Inspect existing strata and
 select an independent evaluation source before fitting D9B or training a
 safety gate. Historical TEST6 remains frozen.
 

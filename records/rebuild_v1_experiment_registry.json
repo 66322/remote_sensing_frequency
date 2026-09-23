@@ -649,7 +649,8 @@
       "records": [
         "docs/experiments/D9A_RESULTS_20260923.md",
         "records/rebuild_v1_d9a_compact_20260923/user_reported_summary_table.csv",
-        "records/rebuild_v1_d9a_compact_20260923/user_reported_strata_review.json"
+        "records/rebuild_v1_d9a_compact_20260923/user_reported_strata_review.json",
+        "records/rebuild_v1_d9a_compact_20260923/user_reported_entropy_followup.json"
       ],
       "server_records": [
         "records/rebuild_v1_d9a_queue_20260923/",
@@ -667,14 +668,39 @@
         "entropy_beats_confidence_auprc": 16,
         "mean_entropy_minus_confidence_auroc_from_rounded_review": 0.0219,
         "mean_entropy_minus_confidence_auprc_from_rounded_review": 0.0258,
+        "entropy_car_auroc_auprc_wins": [16, 16],
+        "entropy_small_car_auroc_auprc_wins": [16, 15],
+        "entropy_local_damaged_auroc_auprc_wins": [4, 4],
+        "expected_d5_entropy_routing_metric_paths_found": false,
         "mean_auroc_advantage_from_rounded_table": 0.01414375,
         "mean_auprc_advantage_from_rounded_table": 0.02105,
         "dsm_zero_d5_exact_r01_fallback_both_seeds": true,
         "dsm_noise_d5_minus_r01_nb_miou_pp_seed42_seed17": [-0.1814, -0.3190],
+        "local_down8_d5_routing_valid": false,
         "test6_loaded": false
       },
       "gate_status": "full_D9_not_evaluated",
-      "decision": "Close the tested disagreement interactions as improvements over confidence. Treat entropy as the strongest observed unfitted ranking baseline; check existing D5 min-entropy routed mIoU before interpreting it as a safe decision. Do not train a safety gate from D9A."
+      "decision": "Close the tested disagreement interactions as improvements over confidence. Entropy ranks benefit better overall and in Car/damaged strata, but routing utility is unverified. Original local-down8 D5 routing was invalid; run only its two-stage fix1 correction. Locate original D5 metrics before any separate entropy-route evaluation; do not train a safety gate from D9A."
+    },
+    {
+      "id": "D9A_LOCAL_DOWN8_ROUTING_FIX1",
+      "name": "correct_local_down8_known_missing_fallback",
+      "status": "prepared_not_launched",
+      "fingerprint": "potsdam_val2_seed42_seed17_d9a_local_down8_routing_implementation_fix1",
+      "purpose": "Correct only the D5 routing result and selected-dual harm when local DSM is downsampled but still available.",
+      "reason_for_rerun": "The original D9A route treated the damaged-region mask as a DSM-absence mask and forced RGB in local down8.",
+      "script": "scripts/run_rebuild_v1_d9a_local_down8_fix1_20260923.sh",
+      "summary_script": "scripts/summarize_rebuild_v1_d9a_local_down8_fix1.py",
+      "server_records": [
+        "records/rebuild_v1_d9a_local_down8_fix1_queue_20260923/",
+        "records/rebuild_v1_d9a_seed42_dsm_local_down8_q1_20260923_fix1/",
+        "records/rebuild_v1_d9a_seed17_dsm_local_down8_q1_20260923_fix1/",
+        "records/rebuild_v1_d9a_local_down8_fix1_summary_20260923/"
+      ],
+      "gpu": "physical_0_only",
+      "test6_policy": "prohibited",
+      "training": false,
+      "decision": "Await corrected server evaluations; original R01/R05/oracle and benefit-ranking metrics remain valid."
     }
   ],
   "handoff_entry": "docs/START_HERE.md",

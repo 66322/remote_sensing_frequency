@@ -3,6 +3,8 @@
 - Updated: 2026-09-23
 - Current gate: D9A frozen-expert direct-score audit completed on both seeds
   and eight conditions with no queue failures.
+- Correction: original D9A forced RGB in local down8, affecting only that
+  condition's D5 routed mIoU and selected harm. Correct those two stages.
 - Decision: confidence×JS disagreement does not improve benefit ranking over
   confidence difference in any of the 16 comparisons. Do not fit a safety
   gate from this result. D8 seed17 also remains closed.
@@ -26,10 +28,19 @@ Protocol: `docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md`.
 
 D9A is complete. A read-only review finds entropy difference above confidence
 difference on AUROC and AUPRC in all 16 seed-by-condition comparisons.
-Run `scripts/print_rebuild_v1_d9a_entropy_followup.py` to compare the already
-generated entropy and confidence ranking in Building, Car, small Car and
-damaged regions, and to read existing D5 `min_entropy` routed mIoU. This
-requires no new GPU inference. See `docs/experiments/D9A_RESULTS_20260923.md`.
+The entropy stratum audit is complete: Car wins 16/16 AUROC/AUPRC comparisons,
+small Car wins 16/16 AUROC and 15/16 AUPRC, and damaged regions win 4/4 on
+both metrics. First run `scripts/run_rebuild_v1_d9a_local_down8_fix1_20260923.sh`
+and validate with `scripts/summarize_rebuild_v1_d9a_local_down8_fix1.py`.
+These correct only two affected existing-model evaluations; the other 14
+D9A conditions must not be repeated.
+
+The expected old D5 `method_metrics.csv` paths are missing. Locate any
+existing D5 original metrics within the project records and
+archive them. If genuinely absent, specify one narrow frozen-expert routing
+evaluation that measures entropy-route mIoU and selected harm; this is a new
+decision diagnostic, not a repetition of the D9A ranking screen. See
+`docs/experiments/D9A_RESULTS_20260923.md`.
 
 After that, decide whether D9B has a concrete, independent source for
 fitting/calibration/evaluation. R01/R05 were trained on Train16, Val2 has been

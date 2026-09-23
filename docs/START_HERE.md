@@ -10,9 +10,12 @@ replication gate; D8 fails its sampling gate. D9A's simple disagreement
 interaction loses to confidence on all reported benefit-ranking comparisons.
 Entropy difference ranks benefit above confidence in all 16 comparisons;
 its routed segmentation effect still needs an audit of existing D5 records.
-No GPU experiment is currently queued. The full D9 gate remains unevaluated;
-the next action is analysis of existing D9A strata and an independent D9B
-evaluation source, not another Val2 rerun.
+The expected D5 metric paths were absent in the latest server check; locate
+originals before scheduling an entropy-routing reevaluation. The original D9A
+local-down8 D5 route incorrectly forced RGB in degraded but available DSM;
+the next GPU action is the two-stage `fix1` correction only. No GPU experiment
+is currently queued. The full D9 gate remains unevaluated; a fitted D9B needs
+an independent evaluation source.
 Do not rerun unchanged SafeMaxConfidence distillation or the conditional D8
 seed17 arm from a stale conversation snapshot.
 

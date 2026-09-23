@@ -57,3 +57,16 @@ def selected_harm(choose_dual, benefit, neutral=0.01):
     return {"selected_dual": selected, "selected_harm": harmed,
             "selected_harm_rate": harmed / selected if selected else None,
             "harm_per_valid": harmed / choose.size if choose.size else None}
+
+
+def apply_known_missing_fallback(choose_dual, region_mask, family):
+    """Force RGB only where DSM is absent; degraded DSM remains selectable."""
+    choose = np.asarray(choose_dual, dtype=bool)
+    if family not in ("global_missing", "local_missing"):
+        return choose
+    if region_mask is None:
+        raise ValueError("known-missing condition requires a region mask")
+    mask = np.asarray(region_mask, dtype=bool)
+    if mask.shape != choose.shape:
+        raise ValueError("availability mask shape mismatch")
+    return choose & ~mask
