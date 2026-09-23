@@ -11,6 +11,26 @@ remains binding; finding a source does not by itself authorize a safety gate.
 | Existing Potsdam Train16 / Val2 / historical Test6 | Aligned RGB–DSM and six classes; only Train16 and Val2 labels usable in this project | Train16 trained the frozen experts, Val2 has repeatedly guided decisions, and historical Test6 is frozen. | Not independent confirmation; do not load Test6. |
 | Previously used Vaihingen tiles | Image–DSM and compatible urban classes | The documented train12/test4 scenes were used or inspected in the legacy line. | Potential development comparison, not untouched confirmation. |
 
+The [official SynRS3D repository](https://github.com/JTRNEO/SynRS3D)
+provides a more concrete acquisition lead for DFC19: its authors describe
+preprocessed `opt`, `gt_nDSM` and `gt_ss_mask` directories and links for
+Jacksonville/Omaha. This is evidence that a usable triplet format exists,
+not proof that our server already holds it or that the redistribution terms
+supersede the IEEE GRSS contest conditions. Verify the authoritative terms
+before obtaining or publishing with those files. SynRS3D itself is synthetic
+and has a different class taxonomy; it is not real-world confirmation.
+
+To determine whether any candidate triplets are *already present* under
+`/home/jovyan/zzx`, run the repository's metadata-only locator once:
+
+```bash
+python -B scripts/find_rebuild_v1_d10_source_triplets.py
+```
+
+It reads directory names only and does not open images, labels, archives or
+historical Test6. A hit is merely a path to evaluate against the acceptance
+criteria below; zero hits only means this naming pattern was not found.
+
 ## Minimal source acceptance decision
 
 Accept a candidate for a new benefit-predictor experiment only when all of

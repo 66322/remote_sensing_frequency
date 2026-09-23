@@ -33,6 +33,9 @@ geographic partitioning differ. Neither is approved for an experiment yet.
 The source comparison and stop conditions are in
 `docs/current/INDEPENDENT_SOURCE_DECISION_20260923.md`; the existing-scene
 exposure record is in `docs/current/D9B_SOURCE_STATUS_20260923.md`.
+The one-time metadata-only locator is
+`scripts/find_rebuild_v1_d10_source_triplets.py`; it reads directory names
+under `/home/jovyan/zzx`, not pixel data or Test6.
 
 If an eligible source is frozen, write a new protocol for **one** fitted
 benefit predictor with calibrated abstention, exact DSM-absence RGB fallback,
