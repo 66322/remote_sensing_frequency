@@ -43,14 +43,26 @@ describe a concrete DFC19 `opt`/`gt_nDSM`/`gt_ss_mask` format and JAX/OMA
 lists. Check the actual DFC19 source/license, class values and geographic
 partition before treating those files as D10 inputs. Their preprocessed
 download is a lead, not evidence of a ready, approved split.
-The next concrete server stage is `scripts/run_rebuild_v1_d10_dfc19_acquire.sh`.
-It obtains the authors' linked `DFC19.zip` under
-`/home/jovyan/zzx/datasets/rebuild_v1_d10_dfc19`, hashes the archive and
-lists ZIP members without extracting images or labels. Its dependency cache,
-temporary files and logs also stay under `/home/jovyan/zzx`. The resulting
-`archive_inventory.json` is a source-readiness input, not a training split.
-If acquisition fails, keep the error log and assess the failure once; do not
-start any GPU queue or substitute Val2 as final evaluation.
+The attempted `scripts/run_rebuild_v1_d10_dfc19_acquire.sh` run failed at
+Google Drive access with a server proxy tunnel `403 Forbidden`; see
+`records/rebuild_v1_d10_dfc19_acquire_20260923/user_reported_failure.json`.
+Do not repeat that URL unchanged. The official JHU/APL repository provides
+torrent metadata and IEEE DataPort as alternative access routes, but they
+are not yet confirmed reachable from this server. Its official class list
+has no Car, so DFC19 cannot replace the Potsdam/Vaihingen small-Car analysis.
+
+Stop the repeated source audits here. The next GPU-facing work is a distinct
+**D10P local exploratory pilot** using the already present Vaihingen IRRG+DSM
+triplets. It must first produce a true optical-only expert matched to a dual
+expert on the same frozen expert-training scenes; the old F0/P1 pair are both
+dual-modal and cannot substitute for that contrast. Freeze separate scene
+groups for benefit-head fitting, threshold calibration and pilot evaluation
+among the previously unused IDs. Spatial adjacency in the one Vaihingen
+mosaic means all D10P results are exploratory and cannot certify independent
+generalization. Use two seeds and a stop rule against confidence/entropy
+before attempting a residual gate. D10 remains the independent confirmation
+protocol; do not relax its final-evaluation requirements. No D10P queue is
+launched until the matched expert recipes and scene IDs are implemented.
 The source comparison and stop conditions are in
 `docs/current/INDEPENDENT_SOURCE_DECISION_20260923.md`; the existing-scene
 exposure record is in `docs/current/D9B_SOURCE_STATUS_20260923.md`.

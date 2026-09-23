@@ -11,7 +11,7 @@ remains binding; finding a source does not by itself authorize a safety gate.
 | Existing Potsdam Train16 / Val2 / historical Test6 | Aligned RGB–DSM and six classes; only Train16 and Val2 labels usable in this project | Train16 trained the frozen experts, Val2 has repeatedly guided decisions, and historical Test6 is frozen. | Not independent confirmation; do not load Test6. |
 | Vaihingen full reference release | 33 TOP/DSM patches; [ISPRS says complete reference data have been downloadable since 2018](https://www.isprs.org/resources/datasets/benchmarks/UrbanSemLab/default.aspx) | Server metadata confirmed 17 formerly unused IDs have extracted optical, DSM and complete-label files with matching dimensions. [The official patch map](https://www.isprs.org/resources/datasets/benchmarks/UrbanSemLab/2d-sem-label-vaihingen.aspx) shows all patches from one mosaic, interleaved with or adjacent to legacy-used patches. | Same-domain development source only; **not** independent final D10 confirmation. |
 
-DFC19-specific interpretation before acquisition completes: the
+DFC19-specific interpretation: the
 [contest description](https://www.grss-ieee.org/community/technical-committees/2019-ieee-grss-data-fusion-contest/)
 says JAX and OMA are different cities, the optical data are pan-sharpened
 WorldView-3 rather than Potsdam RGB, and LiDAR-derived height and semantic
@@ -24,6 +24,21 @@ assume that this height modality is available at inference and report its
 different source/resolution. No source-specific split or class mapping is
 frozen until the actual archive and labels are checked.
 
+Source-access update, 2026-09-23: the server's attempt to fetch the
+SynRS3D-linked Google Drive archive failed immediately with proxy tunnel
+`403 Forbidden`, recorded at
+`records/rebuild_v1_d10_dfc19_acquire_20260923/user_reported_failure.json`.
+This is an access failure, not evidence that DFC19 lacks data. Do not retry
+the same URL through the same proxy unchanged. The
+[JHU/APL contest repository](https://github.com/pubgeo/dfc2019/tree/master/data)
+offers official torrent metadata and points to IEEE DataPort; either route
+still needs an access check before transfer. Its
+[class table](https://github.com/pubgeo/dfc2019/blob/master/data/README.md#classification-labels)
+lists Ground (02), Trees (05), Buildings (06), Water (09),
+Bridge/elevated road (17), and Unlabeled (65): **no Car**. Accordingly DFC19
+can confirm benefit selection across cities/domains for its available
+classes, but cannot validate the small-Car claim.
+
 The [official SynRS3D repository](https://github.com/JTRNEO/SynRS3D)
 provides a more concrete acquisition lead for DFC19: its authors describe
 preprocessed `opt`, `gt_nDSM` and `gt_ss_mask` directories and links for
@@ -33,16 +48,9 @@ supersede the IEEE GRSS contest conditions. Verify the authoritative terms
 before obtaining or publishing with those files. SynRS3D itself is synthetic
 and has a different class taxonomy; it is not real-world confirmation.
 
-To determine whether any candidate triplets are *already present* under
-`/home/jovyan/zzx`, run the repository's metadata-only locator once:
-
-```bash
-python -B scripts/find_rebuild_v1_d10_source_triplets.py
-```
-
-It reads directory names only and does not open images, labels, archives or
-historical Test6. A hit is merely a path to evaluate against the acceptance
-criteria below; zero hits only means this naming pattern was not found.
+The generic metadata-only locator previously found no named triplets under
+`/home/jovyan/zzx`; its directory-name screen does not exclude different
+layouts. The Vaihingen-specific inventory has already been completed.
 
 ## Minimal source acceptance decision
 
