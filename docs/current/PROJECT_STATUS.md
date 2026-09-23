@@ -169,3 +169,12 @@ gate, because semantic/frequency combinations and independent evaluation are
 absent. Do not turn these Val2 findings into a final paper claim. B1–B4 remain
 closed. The proposed paper direction is benefit-aware suppression of negative
 transfer from DSM, subject to further D9 evidence.
+
+D9B's unfitted decision-benefit screen is complete by user-reported server
+summary (zero queue failures, 16 seed-condition rows). The handcrafted
+semantic+frequency+expert score beat the best direct confidence/entropy
+control in only 1/16 flip-benefit AUROC and 0/16 AUPRC comparisons. Its
+cross-seed entry gate failed, so no learned safety gate is authorized from
+these features. See `docs/experiments/D9B_RESULTS_20260923.md`. The result
+is exploratory Val2 evidence; per-stratum source files remain on the server
+and an independent labelled source has not yet been frozen.

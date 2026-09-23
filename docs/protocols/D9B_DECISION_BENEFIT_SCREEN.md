@@ -1,5 +1,10 @@
 # D9B: decision-relevant DSM benefit screen
 
+Status (2026-09-23): exploratory unfitted screen completed; the fixed
+combination failed its cross-seed entry gate. See
+`docs/experiments/D9B_RESULTS_20260923.md`. The design below is the frozen
+pre-run protocol, not a plan to repeat the same Val2 scores.
+
 ## Question
 
 D9A is closed. Entropy difference improved cross-entropy benefit ranking in

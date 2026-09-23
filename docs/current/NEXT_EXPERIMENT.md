@@ -1,4 +1,22 @@
-# Next experiment decision after D9A
+# Next experiment decision after D9B
+
+D9B is complete by user-reported server summary: zero queue failures, 16
+seed-condition rows and six unfitted scores. The semantic+frequency+expert
+combination won only 1/16 flip-benefit AUROC and 0/16 AUPRC comparisons
+against the stronger confidence/entropy direct control. This exact screen is
+closed and does not authorize safety-gate training. See
+`docs/experiments/D9B_RESULTS_20260923.md`.
+
+**Next action:** identify and freeze an independent labelled RGB–DSM
+segmentation source. Record scene IDs, any prior exposure, compatible RGB/DSM
+bands, label mapping and spatially disjoint fitting/calibration/evaluation
+partitions before any learned benefit predictor or new gate. A metadata-only
+server inventory is sufficient for this source decision; do not load Test6.
+If no eligible source exists, report the D9B negative result and pursue a
+different, independently testable method design instead of another Val2 fit.
+
+The following paragraphs preserve the earlier D9A-to-D9B plan as history;
+their D9B launch instruction has already been completed.
 
 - Updated: 2026-09-23
 - Current gate: D9A frozen-expert direct-score audit completed on both seeds
@@ -60,9 +78,9 @@ observable frequency/image quality, and their combinations against
 and CE benefit visible. This addresses the observed ranking-versus-mIoU gap
 and Car/Building trade-off. The unfitted Val2 six-score implementation and
 definitions are now frozen in `docs/protocols/D9B_DECISION_BENEFIT_SCREEN.md`.
-Run its Train16 prototype stage and frozen-expert seed42/17 × eight-condition
-queue, then summarize after completion. This new decision-target experiment
-does not train or calibrate a gate and cannot establish routed mIoU.
+Its Train16 prototype stage and frozen-expert seed42/17 × eight-condition
+queue completed with zero failures. This decision-target experiment did not
+train or calibrate a gate and did not establish routed mIoU.
 
 The repository part of the D9B source audit is complete. A metadata-only
 server inventory still needs to determine whether additional labelled

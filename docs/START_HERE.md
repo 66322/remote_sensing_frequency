@@ -4,6 +4,10 @@ This is the mandatory entry point for every new conversation, computer and
 experiment.
 
 Research branch: `rebuild-v1-protocol-20260915`; GitHub defaults to `main`.
+D9B's unfitted Val2 decision-benefit screen has now completed and failed its
+cross-seed entry gate; see `docs/experiments/D9B_RESULTS_20260923.md`.
+Do not launch a safety-gate fit from those features. The next source decision
+is described at the top of `docs/current/NEXT_EXPERIMENT.md`.
 Read `docs/current/HANDOFF.md` first for the current evidence and decision boundary.
 As of 2026-09-23, B1–B4, D7, D8 and D9A are complete. B4 fails its local
 replication gate; D8 fails its sampling gate. D9A's simple disagreement

@@ -113,6 +113,12 @@ Do not rerun the same dataset, split, seed, schedule and configuration:
 - Original D9A `dsm_local_down8_q1` D5 routing masked degraded DSM as if it
   were absent. Its two original D5 mIoU and selected-harm rows are invalid;
   the documented two-seed `fix1` correction is complete. Do not rerun it.
+- D9B's frozen unfitted input-space prototype, edge-alignment and equal-weight
+  combination screen failed its decision-benefit entry gate: the full
+  combination beat the stronger confidence/entropy direct control in only
+  1/16 AUROC and 0/16 AUPRC rows. Do not repeat these exact scores on Val2
+  or train a safety gate from them. This does not rule out different learned
+  representations on an independent source.
 
 ## Legitimate reasons to rerun
 

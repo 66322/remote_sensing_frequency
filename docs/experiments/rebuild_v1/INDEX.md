@@ -26,7 +26,7 @@
 | D9A local-down8 fix1 | correct degraded-DSM routing for seeds 42/17 | complete; zero failures; ranking unchanged | `records/rebuild_v1_d9a_compact_20260923/user_reported_local_down8_fix1.json` |
 | D9A entropy route | safe entropy versus safe confidence routing with frozen experts | complete; 4 wins, 10 losses, 2 ties | `docs/experiments/D9A_ENTROPY_ROUTE_RESULTS_20260923.md` |
 | D9B source audit | locate independent labelled scenes for benefit prediction | repository audit complete; server inventory pending | `docs/current/D9B_SOURCE_STATUS_20260923.md` |
-| D9B decision-benefit screen | semantic/frequency/expert evidence on decision-changing pixels | protocol registered; feature specification pending | `docs/protocols/D9B_DECISION_BENEFIT_SCREEN.md` |
+| D9B decision-benefit screen | semantic/frequency/expert evidence on decision-changing pixels | complete; six-score gate failed | `docs/experiments/D9B_RESULTS_20260923.md` |
 
 The JSON registry is the machine-readable authority. This index is the
 human-readable navigation layer.

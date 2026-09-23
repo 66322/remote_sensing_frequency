@@ -1,4 +1,13 @@
-# Current handoff — 2026-09-23 (after D9A)
+# Current handoff — 2026-09-23 (after D9B)
+
+D9B completed its unfitted decision-benefit screen with zero user-reported
+queue failures. The fixed semantic+frequency+expert score beat the better
+confidence/entropy direct control in only 1/16 flip-benefit AUROC and 0/16
+AUPRC comparisons; the gate failed. Do not train the candidate safety gate
+from these features or repeat this Val2 screen. The original server per-stratum
+files remain under project `records/`; the compact pooled table and decision
+are in `docs/experiments/D9B_RESULTS_20260923.md`. Next: freeze an independent
+labelled RGB–DSM source before any fitted model. Test6 stays frozen.
 
 ## Current decision
 
@@ -34,7 +43,7 @@ while earlier Vaihingen work used train12/test4. See
 - B1–B3 evidence: `records/rebuild_v1_b2_b3_compact_20260921/`
 - B4 evidence: `records/rebuild_v1_b4_seed17_compact_20260922/`
 - B4 report: `docs/experiments/B4_SEED17_REPLICATION_20260921.md`
-- Current state: B4 and D8 gates failed; D9A and local-down8 fix1 complete, full D9 gate unevaluated.
+- Current state: B4, D8 and D9B screens failed their gates; D9A and local-down8 fix1 complete, full D9 gate unevaluated.
 - The D9A entropy-route queue completed with zero failures. Its source-hashed
   server summary, compact transcription and class/region review are archived.
 
