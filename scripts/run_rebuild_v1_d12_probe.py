@@ -8,7 +8,7 @@ from pathlib import Path
 import numpy as np
 from d11_benefit_probe import targets, choose_threshold, routing_metrics, validate_roles
 from d12_night_probe import (ROOT, CFG, BASE, MODELS, sample_and_semantic,
-                             features, train_model, temperature, predict)
+                             features, pooled_features, train_model, temperature, predict)
 
 
 def write_csv(path, rows):
@@ -90,7 +90,8 @@ def main():
                 sem = {key: np.concatenate([s[key] for _, _, s in parts],
                                axis=1 if key in ("sem_rgb", "sem_dual") else 0)
                        for key in parts[0][2]}
-            x = features(sample, sem, args.model, args.seed, tile, condition)
+            x = (pooled_features(parts, args.model, args.seed, condition)
+                 if tile == "ALL" else features(sample, sem, args.model, args.seed, tile, condition))
             prob = predict(artifact, x)
             target, eligible, rgb, dual = targets(sample)
             available = condition != "dsm_zero"

@@ -23,6 +23,9 @@ the marginal values and other blocks. Ecap uses only expert features with a
 wider hidden layer and more parameters than ESF. All heads use the same
 three-outcome target, eight fixed epochs, AdamW, and the same matched samples.
 The shuffled controls are mechanism diagnostics, not selectable candidates.
+The pooled two-tile evaluation concatenates each tile's already shuffled
+features; it never reshuffles across tile boundaries. This matches the
+predeclared within-tile perturbation for pooled and per-tile metrics.
 
 ## Separation and evaluation
 

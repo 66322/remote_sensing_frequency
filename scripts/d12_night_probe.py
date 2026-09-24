@@ -68,6 +68,12 @@ def features(sample, sem, model, seed, tile, condition):
     return x
 
 
+def pooled_features(parts, model, seed, condition):
+    """Combine per-tile features without reshuffling across evaluation tiles."""
+    return np.concatenate([features(sample, sem, model, seed, tile, condition)
+                           for tile, sample, sem in parts], axis=0)
+
+
 class Head(torch.nn.Module):
     def __init__(self, n, model):
         super().__init__()

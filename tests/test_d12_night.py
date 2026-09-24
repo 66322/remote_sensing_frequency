@@ -8,7 +8,7 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from d12_semantic import decoder_maps, infer_at_pixels
-from d12_night_probe import features, train_model, predict
+from d12_night_probe import features, pooled_features, train_model, predict
 
 
 class D12NightTests(unittest.TestCase):
@@ -70,6 +70,30 @@ class D12NightTests(unittest.TestCase):
         np.testing.assert_array_equal(base[:, 17:23], shuffled_f[:, 17:23])
         self.assertFalse(np.array_equal(base[:, 17:23], shuffled_s[:, 17:23]))
         self.assertFalse(np.array_equal(base[:, 23:], shuffled_f[:, 23:]))
+
+    def test_pooled_shuffle_respects_tile_boundary(self):
+        parts = []
+        for tile, offset in (("3_11", 0), ("5_10", 100)):
+            n = 20
+            rgb = np.zeros((6, n), np.float32)
+            dual = np.zeros((6, n), np.float32)
+            rgb[0] = 1
+            dual[1] = 1
+            sample = {"rgb_prob": rgb, "dual_prob": dual}
+            for radius in (2, 8, 32):
+                sample[f"rgb_energy_r{radius}"] = np.arange(n, dtype=np.float32) + offset
+                sample[f"dsm_energy_r{radius}"] = np.arange(n, dtype=np.float32) + offset + radius
+                sample[f"structure_r{radius}"] = (np.arange(n, dtype=np.float32) + offset)/200
+            semantic = dict(sem_rgb=np.tile(np.arange(n, dtype=np.float32)+offset, (3, 1)),
+                            sem_dual=np.tile(np.arange(n, dtype=np.float32)+offset+1, (3, 1)))
+            parts.append((tile, sample, semantic))
+        for model, first in (("ESF_shuffleS", 17), ("ESF_shuffleF", 23)):
+            actual = pooled_features(parts, model, 42, "clean")
+            expected = np.concatenate([features(s, z, model, 42, tile, "clean")
+                                       for tile, s, z in parts])
+            np.testing.assert_array_equal(actual, expected)
+            # The shifted block remains in its own tile's value range.
+            self.assertLess(actual[:20, first].max(), actual[20:, first].min())
 
     def test_head_is_finite_and_capacity_control_is_larger(self):
         rng = np.random.default_rng(5)
