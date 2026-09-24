@@ -1,5 +1,15 @@
 # Next research decision after D12 (2026-09-24)
 
+**2026-09-24 direction proposal:** After reviewing D9-D12, the next concrete
+method question is a staged RGB-anchored DSM residual training pilot, specified
+in `docs/protocols/D13_RGB_ANCHORED_DSM_RESIDUAL_PILOT_20260924.md`.
+Stage 1 compares matched RGB-capacity, DSM-CE, and DSM-risk arms in both seeds;
+semantic/frequency ablations are conditional on Stage 1. This is a design
+proposal, not implemented code or authorization to launch a queue. It is a
+new training mechanism, distinct from the failed D12 frozen-expert selector.
+Potsdam Val2 can give exploratory development evidence only; an independent
+scene source is still required for final confirmation. Do not use Test6.
+
 D12 completed 14/14 heads with zero queue failures and **no candidate** under
 the prespecified two-seed gain/harm screen. Complete-image confirmation was
 correctly skipped. The exact server-output transcription and interpretation

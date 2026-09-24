@@ -1,5 +1,11 @@
 # Current handoff — 2026-09-24 (after D12)
 
+**Latest planning update:** D13 is a staged, unimplemented RGB-anchored DSM
+residual pilot proposal; see
+`docs/protocols/D13_RGB_ANCHORED_DSM_RESIDUAL_PILOT_20260924.md` and the top
+of `NEXT_EXPERIMENT.md`. No D13 server queue exists. The completed D12 result
+and its failed gate still stand. Older pending instructions below are history.
+
 **Latest:** D12 completed 14/14 with zero queue failures. No core head passed
 the prespecified two-seed screen, so no full-image candidate exists. Read
 `docs/experiments/D12_RESULTS_20260924.md` and its compact CSV. Do not rerun
