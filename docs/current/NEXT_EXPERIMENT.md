@@ -3,9 +3,12 @@
 **2026-09-24 direction proposal:** After reviewing D9-D12, the next concrete
 method question is a staged RGB-anchored DSM residual training pilot, specified
 in `docs/protocols/D13_RGB_ANCHORED_DSM_RESIDUAL_PILOT_20260924.md`.
-Stage 1 compares matched RGB-capacity, DSM-CE, and DSM-risk arms in both seeds;
-semantic/frequency ablations are conditional on Stage 1. This is a design
-proposal, not implemented code or authorization to launch a queue. It is a
+Stage 1 compares matched RGB-capacity, DSM-CE, RGB-risk, and DSM-risk arms in
+both seeds (eight runs); Stage 2 adds up to eight semantic/frequency/capacity
+ablations only on a both-seed pass. The requested unattended plan has a
+24-hour cap, fixed 4000-step runs, frozen numerical continuation margins,
+automatic diagnostics on failure, and final summaries. Implementation and
+server smoke are still pending; there is no runnable D13 queue yet. It is a
 new training mechanism, distinct from the failed D12 frozen-expert selector.
 Potsdam Val2 can give exploratory development evidence only; an independent
 scene source is still required for final confirmation. Do not use Test6.
