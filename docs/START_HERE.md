@@ -1,6 +1,11 @@
 # Start Here
 
-**Active next action:** execute the implemented D11 supervised benefit probe
+**Active next action (2026-09-24):** D12 completed 14/14 without a screened
+candidate. Read `docs/experiments/D12_RESULTS_20260924.md` and
+`docs/current/NEXT_EXPERIMENT.md`. Do not rerun D11/D12 or train a safety gate
+from their failed screens. Historical instructions below are superseded.
+
+**Historical next action:** execute the implemented D11 supervised benefit probe
 queue. Read `docs/current/NEXT_EXPERIMENT.md` and
 `docs/protocols/D11_SUPERVISED_BENEFIT_PROBE.md`. Server results pending.
 The D10M closure below still applies to its fixed-score mechanism branch;

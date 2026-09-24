@@ -3,7 +3,7 @@
 | ID | Purpose | Status | Primary evidence |
 |---|---|---|---|
 | D11 | supervised benefit/harm probe with off-Val2 calibration | user-reported complete; gate failed | `docs/experiments/D11_RESULTS_20260923.md` |
-| D12 | deep decoder context, frequency and capacity screen | implemented; server execution pending | `docs/protocols/D12_NIGHT_SEMANTIC_FREQUENCY_20260923.md` |
+| D12 | deep decoder context, frequency and capacity screen | user-reported complete; gate failed | `docs/experiments/D12_RESULTS_20260924.md` |
 | D10M | amplitude-preserving spatial perturbation and harm/rescue | reported complete; fixed-score gate failed | `docs/experiments/D10M_RESULTS_20260923.md` |
 | R01 | true Optical-only baseline | complete | `records/rebuild_v1_r01_formal_16k_20260916/` |
 | R02 | clean dual baseline and 16k budget freeze | complete | `records/rebuild_v1_r02_budget_16k_20260916/` |

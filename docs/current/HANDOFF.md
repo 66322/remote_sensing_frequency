@@ -1,5 +1,12 @@
-> 2026-09-23 D11 update: user-reported server queue completed 12/12 with failures=0 at 18:51:37 +08:00; the frozen screen yielded no full-resolution candidates. D12 deep decoder-context/frequency exploration is implemented but not yet run on the server. See `docs/experiments/D11_RESULTS_20260923.md` and `docs/protocols/D12_NIGHT_SEMANTIC_FREQUENCY_20260923.md`. This paragraph supersedes older D11-pending directions below.
-# Current handoff — 2026-09-23 (after D9B)
+# Current handoff — 2026-09-24 (after D12)
+
+**Latest:** D12 completed 14/14 with zero queue failures. No core head passed
+the prespecified two-seed screen, so no full-image candidate exists. Read
+`docs/experiments/D12_RESULTS_20260924.md` and its compact CSV. Do not rerun
+D12 or train a residual gate from these results. The run commit was absent
+from the pasted status tail; pooled shuffled-control attribution is
+provisional pending verification against later fix `d28e4af`. Older D11/D12
+pending instructions below are historical.
 
 **Current action:** D11 supervised decision-benefit probe is implemented and
 awaiting server execution. Its protocol fixes six head-fit tiles, two

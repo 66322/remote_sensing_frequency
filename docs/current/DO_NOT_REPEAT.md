@@ -2,6 +2,13 @@ D11 completed 12/12 with zero queue failures by user report, but no model passed
 
 # Completed, Closed, or Do-Not-Repeat Work
 
+D12 completed 14/14 with zero queue failures by user report. No core model
+passed its predeclared two-seed screen; full-image confirmation was skipped.
+Do not repeat the same D12 Val2 screen, alter thresholds post hoc, or train a
+residual gate from it. Pooled shuffled-control attribution is provisional
+until the run revision is verified against fix `d28e4af`. See
+`docs/experiments/D12_RESULTS_20260924.md`.
+
 D11 exception is a new supervised three-outcome probe with a frozen separate
 protocol, not a repetition of D9B/D10M fixed scores. Fit and both calibration
 roles must remain outside Val2; no hyperparameter/radius sweep follows its

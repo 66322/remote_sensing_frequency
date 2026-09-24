@@ -1,5 +1,9 @@
-> 2026-09-23 D11 update: user-reported server queue completed 12/12 with failures=0 at 18:51:37 +08:00; the frozen screen yielded no full-resolution candidates. D12 deep decoder-context/frequency exploration is implemented but not yet run on the server. See `docs/experiments/D11_RESULTS_20260923.md` and `docs/protocols/D12_NIGHT_SEMANTIC_FREQUENCY_20260923.md`. This paragraph supersedes older D11-pending directions below.
 # Current Project Status
+
+**Latest (2026-09-24):** The user-reported D12 queue completed 14/14 with
+zero failures and no screened candidate. Full-image work was skipped. Read
+`docs/experiments/D12_RESULTS_20260924.md`; older pending text below is
+historical. Original artifacts remain on the server.
 
 - Updated: 2026-09-23
 - Active branch: `rebuild-v1-protocol-20260915`

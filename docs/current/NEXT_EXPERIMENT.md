@@ -1,4 +1,22 @@
-# Next experiment: D12 night batch
+# Next research decision after D12 (2026-09-24)
+
+D12 completed 14/14 heads with zero queue failures and **no candidate** under
+the prespecified two-seed gain/harm screen. Complete-image confirmation was
+correctly skipped. The exact server-output transcription and interpretation
+are in `docs/experiments/D12_RESULTS_20260924.md`. Do not relaunch D12 or
+relax its Val2 thresholds after seeing the result.
+
+The next step is a bounded decision memo using D9–D12 evidence: decide whether
+a benefit-aware selector warrants a new experimental design. A new fitted
+method needs a genuinely changed mechanism or supervision target and a frozen,
+spatially independent labelled evaluation source. The repeatedly inspected
+Val2 cannot serve as confirmation. Keep the question of DSM's marginal
+decision value over RGB, but do not claim that this semantic/frequency head
+solves it. Do not start residual-gate training, Test6 evaluation, or another
+same-source parameter sweep. The DFC19 proxy failure is not a reason for
+another prolonged audit now. The launch instructions below are historical.
+
+# Historical D12 launch plan (completed)
 
 D11 finished on the server at 2026-09-23 18:51:37 +08:00 according to the user's pasted queue and summary. All 12 models completed with zero queue failures; none passed the predeclared two-seed screen. The result is transcribed at `docs/experiments/D11_RESULTS_20260923.md`.
 
