@@ -1,17 +1,36 @@
 # Next research decision after D12 (2026-09-24)
 
-**2026-09-24 direction proposal:** After reviewing D9-D12, the next concrete
+**2026-09-24 runnable exploratory plan:** After reviewing D9-D12, the next concrete
 method question is a staged RGB-anchored DSM residual training pilot, specified
 in `docs/protocols/D13_RGB_ANCHORED_DSM_RESIDUAL_PILOT_20260924.md`.
 Stage 1 compares matched RGB-capacity, DSM-CE, RGB-risk, and DSM-risk arms in
 both seeds (eight runs); Stage 2 adds up to eight semantic/frequency/capacity
 ablations only on a both-seed pass. The requested unattended plan has a
 24-hour cap, fixed 4000-step runs, frozen numerical continuation margins,
-automatic diagnostics on failure, and final summaries. Implementation and
-server smoke are still pending; there is no runnable D13 queue yet. It is a
+automatic diagnostics on failure, and final summaries. The D13 queue is now
+implemented; local CPU numerics and syntax checks passed, while server smoke
+and GPU training are pending. It is a
 new training mechanism, distinct from the failed D12 frozen-expert selector.
 Potsdam Val2 can give exploratory development evidence only; an independent
 scene source is still required for final confirmation. Do not use Test6.
+
+After pulling this branch on the server, launch once from
+`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro` in the `remote_sensing`
+environment:
+
+```bash
+git pull --ff-only origin rebuild-v1-protocol-20260915
+mkdir -p records/rebuild_v1_d13_residual_queue_20260924
+nohup bash scripts/run_rebuild_v1_d13_residual_queue.sh > records/rebuild_v1_d13_residual_queue_20260924/launcher.log 2>&1 &
+```
+
+The queue performs its own GPU-boundary, numeric, training-smoke and
+Train16-only evaluation-smoke checks before formal work. Later inspect
+`records/rebuild_v1_d13_residual_queue_20260924/status.tsv`,
+`D13_STAGE1_SUMMARY.log`, `D13_FINAL_SUMMARY.log` in that directory, and
+`records/rebuild_v1_d13_residual_20260924/final_decision.json`. No manual
+intermediate decision is required. The executable commands below under the
+historical D12 heading are obsolete.
 
 D12 completed 14/14 heads with zero queue failures and **no candidate** under
 the prespecified two-seed gain/harm screen. Complete-image confirmation was
@@ -19,13 +38,14 @@ correctly skipped. The exact server-output transcription and interpretation
 are in `docs/experiments/D12_RESULTS_20260924.md`. Do not relaunch D12 or
 relax its Val2 thresholds after seeing the result.
 
-The next step is a bounded decision memo using D9–D12 evidence: decide whether
+The historical next step was a bounded decision memo using D9–D12 evidence: decide whether
 a benefit-aware selector warrants a new experimental design. A new fitted
 method needs a genuinely changed mechanism or supervision target and a frozen,
 spatially independent labelled evaluation source. The repeatedly inspected
 Val2 cannot serve as confirmation. Keep the question of DSM's marginal
 decision value over RGB, but do not claim that this semantic/frequency head
-solves it. Do not start residual-gate training, Test6 evaluation, or another
+solves it. Do not train a residual gate from the failed D12 selector, run Test6
+evaluation, or launch another
 same-source parameter sweep. The DFC19 proxy failure is not a reason for
 another prolonged audit now. The launch instructions below are historical.
 

@@ -1,5 +1,12 @@
 # Current Project Status
 
+**Latest preparation (2026-09-24):** The D13 staged RGB-anchored DSM residual
+queue is implemented for manual server launch; no D13 GPU result exists yet.
+The queue includes eight mandatory matched arms and at most eight conditional
+semantic/frequency/capacity arms, each at 4000 steps, with a 24-hour cap.
+See `docs/protocols/D13_RGB_ANCHORED_DSM_RESIDUAL_PILOT_20260924.md`.
+All D13 Val2 findings will be exploratory, and Test6 remains frozen.
+
 **Latest (2026-09-24):** The user-reported D12 queue completed 14/14 with
 zero failures and no screened candidate. Full-image work was skipped. Read
 `docs/experiments/D12_RESULTS_20260924.md`; older pending text below is

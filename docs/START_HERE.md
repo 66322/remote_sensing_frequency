@@ -1,5 +1,12 @@
 # Start Here
 
+**Latest preparation (2026-09-24):** D13 residual training and evaluation code
+is prepared on this branch, with an unattended 24-hour queue. Server smoke and
+formal GPU work have not yet run. Read
+`docs/protocols/D13_RGB_ANCHORED_DSM_RESIDUAL_PILOT_20260924.md` and the top
+of `docs/current/NEXT_EXPERIMENT.md`. D12 remains a failed exploratory screen.
+The D13 queue is a new training mechanism and Val2 is development evidence.
+
 **Active next action (2026-09-24):** D12 completed 14/14 without a screened
 candidate. Read `docs/experiments/D12_RESULTS_20260924.md` and
 `docs/current/NEXT_EXPERIMENT.md`. Do not rerun D11/D12 or train a safety gate

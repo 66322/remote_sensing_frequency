@@ -867,6 +867,27 @@
       "decision": "Close the exact D12 frozen-expert screen. No two-seed candidate, full-image confirmation or residual gate. Do not use pooled shuffled-control attribution until the run revision is checked against the d28e4af correction."
     },
     {
+      "id": "D13_RGB_ANCHORED_DSM_RESIDUAL",
+      "name": "staged_rgb_anchored_dsm_residual_negative_transfer_pilot",
+      "status": "implemented_server_execution_pending",
+      "purpose": "Test whether a trainable DSM residual and a harm-aware training surrogate reduce new errors while preserving correction gains relative to frozen R01.",
+      "protocol": "docs/protocols/D13_RGB_ANCHORED_DSM_RESIDUAL_PILOT_20260924.md",
+      "config": "configs/rebuild_v1/d13_residual_overnight_20260924.json",
+      "queue_script": "scripts/run_rebuild_v1_d13_residual_queue.sh",
+      "seeds": [42, 17],
+      "stage1_arms": ["rgb_ce", "dsm_ce", "rgb_risk", "dsm_risk"],
+      "stage2_arms": ["dsm_capacity", "dsm_semantic", "dsm_frequency", "dsm_semantic_frequency"],
+      "stage2_policy": "Only if all Stage 1 pairs complete and DSM-risk passes all prespecified margins in both seeds",
+      "steps_per_arm": 4000,
+      "maximum_training_runs": 16,
+      "wall_seconds": 86400,
+      "evaluation": "Potsdam Val2 full images, exploratory because previously inspected",
+      "server_records": "records/rebuild_v1_d13_residual_20260924/ and records/rebuild_v1_d13_residual_queue_20260924/",
+      "test6_policy": "prohibited",
+      "gpu": "physical_0_only",
+      "decision": "No result or method claim until server smoke, full paired training/evaluation, and automatic decision summary complete."
+    },
+    {
       "id": "D10_SELECTIVE_DSM_BENEFIT",
       "name": "risk_controlled_decision_benefit_selector",
       "status": "design_frozen_source_pending_no_run",
