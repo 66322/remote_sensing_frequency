@@ -1,5 +1,15 @@
 # Current handoff — 2026-09-26 (after D14 audit)
 
+**2026-09-26 D15 implementation handoff:** The user authorized physical GPU0 and
+GPU1 and experiments longer than one day. The D15 capability protocol,
+two-worker queue, DSM-only trainer, paired evaluation and offline summary are
+prepared; server execution has not been observed. Pull this branch and use the
+launch command in `docs/protocols/D15_DSM_CAPABILITY_RGB_DEGRADATION_20260926.md`.
+The queue stops after D15, even when its exploratory gate passes. Retrieve
+`records/rebuild_v1_d15_capability_20260926/decision.json` and all eight
+evaluation summaries before deciding on the next method. The D13/D14 evidence
+and Test6 boundary remain as stated below.
+
 **Current handoff, 2026-09-26 after D14:** The user-reported D14 queue
 finished at 00:26:16 +08:00 with eight evaluations complete and zero
 failures. DSM heads show nonzero prediction sensitivity to content while

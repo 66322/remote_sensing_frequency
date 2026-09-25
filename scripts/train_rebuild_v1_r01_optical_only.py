@@ -10,7 +10,7 @@ import subprocess
 from datetime import datetime
 from pathlib import Path
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ.setdefault("CUDA_VISIBLE_DEVICES", "0")
 os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
 
 ROOT = Path("/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro")

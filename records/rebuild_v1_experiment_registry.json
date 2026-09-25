@@ -2,7 +2,7 @@
   "schema_version": "1.2",
   "project": "REBUILD_V1",
   "timezone": "UTC+08:00",
-  "last_updated": "2026-09-23",
+  "last_updated": "2026-09-26",
   "status_provenance_policy": "reported_complete and running_as_last_reported are user observations, not live server verification. expected_server_records are absent artifacts to collect, not archived evidence.",
   "timing_policy": {
     "started_at": "Actual launch time when directly evidenced; otherwise date/minute precision is stated explicitly.",
@@ -937,6 +937,22 @@
       "decision": "Source-file audit completed without discrepancy. DSM heads have nonzero decision-level sensitivity to DSM content and RGB controls are invariant, but mIoU changes are mixed and D13's gain/rescue gate remains failed. Do not rerun this Val2 diagnostic or reopen D13 Stage 2."
     },
     {
+      "id": "D15_DSM_CAPABILITY_RGB_DEGRADATION",
+      "name": "DSM_only_baseline_and_paired_RGB_degradation",
+      "status": "queued_for_user_launch_not_observed",
+      "purpose": "Measure DSM-only capability under the matched R01 schedule and whether R05 gains over RGB and matched-capacity controls when RGB detail degrades.",
+      "protocol": "docs/protocols/D15_DSM_CAPABILITY_RGB_DEGRADATION_20260926.md",
+      "config": "configs/rebuild_v1/d15_capability_20260926.json",
+      "queue_script": "scripts/run_rebuild_v1_d15_capability_queue.sh",
+      "seeds": [42, 17],
+      "training": "two DSM-only 16k jobs; existing experts inference-only",
+      "evaluation": "Potsdam Val2, exploratory only",
+      "server_records": "records/rebuild_v1_d15_capability_20260926/ and records/rebuild_v1_d15_capability_queue_20260926/",
+      "test6_policy": "prohibited",
+      "gpu": "physical_0_and_1_independent_workers_user_authorized_20260926",
+      "decision": "Await both-seed capability and RGB degradation evidence before choosing a new method; no new method training is auto-launched."
+    },
+    {
       "id": "D10_SELECTIVE_DSM_BENEFIT",
       "name": "risk_controlled_decision_benefit_selector",
       "status": "design_frozen_source_pending_no_run",
@@ -969,6 +985,7 @@
     "preflight": "scripts/validate_execution_boundaries.py",
     "physical_gpu": 0,
     "cuda_visible_devices": "0",
-    "persistent_scope_root": "/home/jovyan/zzx"
+    "persistent_scope_root": "/home/jovyan/zzx",
+    "d15_exception": "User authorized physical GPU0 and GPU1 for D15. Its new queue applies an explicit dual-worker device check; this older GPU0-only machine policy and validator remain for historical queues."
   }
 }

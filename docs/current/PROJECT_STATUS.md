@@ -1,5 +1,12 @@
 # Current Project Status
 
+**Next queue prepared 2026-09-26, not yet observed on server:** D15 trains
+matched DSM-only baselines in seeds 42/17 and measures existing R01/R05/
+C-OO-QD experts under paired RGB degradation on Val2. Physical GPU0 and GPU1
+are authorized for this queue, with continuation beyond one day. Read
+`docs/protocols/D15_DSM_CAPABILITY_RGB_DEGRADATION_20260926.md` for the exact
+launch and result checks. Historical Test6 remains frozen.
+
 **Latest observed server state (2026-09-26 00:26:16 +08:00):** The
 user-reported D14 queue completed all eight evaluations with zero failures
 and `missing=[]`. DSM content intervention changes 0.0291–0.5526% of

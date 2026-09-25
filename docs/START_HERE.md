@@ -1,5 +1,11 @@
 # Start Here
 
+**D15 prepared on 2026-09-26; server execution not yet observed.** The next
+two-GPU experiment is the [D15 protocol](protocols/D15_DSM_CAPABILITY_RGB_DEGRADATION_20260926.md):
+DSM-only matched training in seeds 42/17 and paired RGB degradation evaluation.
+GPU0 and GPU1 are authorized for this queue, which can continue beyond one day.
+Read the protocol for the launch command and result checks. Test6 stays frozen.
+
 **Latest observed result (2026-09-26 00:26:16 +08:00):** D14 completed
 8/8 full-image evaluations with zero queue failures. The DSM heads change
 predictions when DSM content changes while availability remains true;
