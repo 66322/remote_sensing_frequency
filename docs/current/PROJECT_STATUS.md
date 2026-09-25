@@ -1,5 +1,11 @@
 # Current Project Status
 
+**Last observed D15 server state (2026-09-26 01:18:08 +08:00):** Both smoke
+checks passed, but the first queue attempt ended with `worker0=1 worker1=1`
+before formal training because of a shell worker variable error. The queue
+script has been repaired and locally regression-tested; a server relaunch is
+pending. This is an infrastructure failure, not an experimental result.
+
 **Next queue prepared 2026-09-26, not yet observed on server:** D15 trains
 matched DSM-only baselines in seeds 42/17 and measures existing R01/R05/
 C-OO-QD experts under paired RGB degradation on Val2. Physical GPU0 and GPU1

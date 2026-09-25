@@ -1,5 +1,14 @@
 # Current handoff — 2026-09-26 (after D14 audit)
 
+**2026-09-26 D15 server attempt:** User-reported `status.tsv` at 01:18:08
++08:00 has PREFLIGHT COMPLETE, SMOKE_EVAL COMPLETE 0, SMOKE_TRAIN COMPLETE 0,
+SUMMARY COMPLETE, and QUEUE FINISHED `worker0=1 worker1=1`. No formal D15
+training or evaluation stage started. The queue shell used `seed` in a combined
+`local` assignment under `set -u`, and an empty array expansion was also
+fragile. Both are fixed with a regression test; pull the repair and relaunch
+the same queue. The existing smoke outputs can be reused. No result claim is
+available yet.
+
 **2026-09-26 D15 implementation handoff:** The user authorized physical GPU0 and
 GPU1 and experiments longer than one day. The D15 capability protocol,
 two-worker queue, DSM-only trainer, paired evaluation and offline summary are

@@ -1,4 +1,6 @@
 import sys
+import re
+import subprocess
 import unittest
 from pathlib import Path
 
@@ -9,6 +11,18 @@ import d15_capability as capability
 
 
 class D15CapabilityTest(unittest.TestCase):
+    def test_queue_training_worker_expands_seed_under_nounset(self):
+        queue = (Path(__file__).resolve().parents[1] / "scripts" /
+                 "run_rebuild_v1_d15_capability_queue.sh").read_text()
+        function = re.search(r"(?ms)^train_dsm\(\) \{\n.*?^\}", queue)
+        self.assertIsNotNone(function)
+        shell = ("set -u\nR=/nonexistent_d15_test_root\n"
+                 "stage() { echo \"$2\"; }\n" +
+                 function.group(0) + "\ntrain_dsm 0 42\ntrain_dsm 1 17\n")
+        result = subprocess.run(["bash", "-s"], input=shell.encode(), capture_output=True)
+        self.assertEqual(result.returncode, 0, result.stderr.decode())
+        self.assertEqual(result.stdout.decode().splitlines(), ["TRAIN_DSM_42", "TRAIN_DSM_17"])
+
     def test_dsm_representation_and_rgb_pairing(self):
         dsm = np.arange(64, dtype=np.float32).reshape(8, 8) / 63
         rgb = np.stack([dsm, 1 - dsm, dsm / 2], axis=-1)

@@ -1,6 +1,6 @@
 # D15: DSM capability and RGB degradation headroom (exploratory)
 
-Status on 2026-09-26: runnable code committed after local checks; no server run has been observed. Two physical GPUs 0 and 1 are authorized for this D15 queue. The former GPU0-only execution boundary applies to older queues, not to this new queue. D15 uses one independent process per GPU, each seeing one logical `cuda:0`; it does not use distributed training.
+Status on 2026-09-26: the first server attempt passed both smoke checks at 01:18:08 +08:00 but the workers exited before formal training because of a Bash `set -u` local-variable error. The queue was repaired; pull the latest branch and relaunch below. Two physical GPUs 0 and 1 are authorized for this D15 queue. The former GPU0-only execution boundary applies to older queues, not to this new queue. D15 uses one independent process per GPU, each seeing one logical `cuda:0`; it does not use distributed training.
 
 ## Question and controls
 

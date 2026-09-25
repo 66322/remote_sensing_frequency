@@ -60,11 +60,15 @@ stage() {
   return 1
 }
 train_dsm() {
-  local gpu=$1 seed=$2 output=$R/runs/rebuild_v1/D15_dsm_only_seed${seed}_sched16000_stop16000
-  local extra=()
-  if [[ -e "$output/last_train_state.pth" && ! -e "$output/summary.json" ]]; then extra=(--resume); fi
-  stage "$gpu" "TRAIN_DSM_${seed}" "$output/summary.json" train "$seed" \
-    scripts/train_rebuild_v1_d15_dsm_only.py --seed "$seed" "${extra[@]}"
+  local gpu=$1 seed=$2
+  local output=$R/runs/rebuild_v1/D15_dsm_only_seed${seed}_sched16000_stop16000
+  if [[ -e "$output/last_train_state.pth" && ! -e "$output/summary.json" ]]; then
+    stage "$gpu" "TRAIN_DSM_${seed}" "$output/summary.json" train "$seed" \
+      scripts/train_rebuild_v1_d15_dsm_only.py --seed "$seed" --resume
+  else
+    stage "$gpu" "TRAIN_DSM_${seed}" "$output/summary.json" train "$seed" \
+      scripts/train_rebuild_v1_d15_dsm_only.py --seed "$seed"
+  fi
 }
 eval_model() {
   local gpu=$1 model=$2 seed=$3

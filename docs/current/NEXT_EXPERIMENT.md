@@ -1,5 +1,11 @@
 # Next research decision after D14 (2026-09-26)
 
+**D15 relaunch pending after queue repair:** User-reported 01:18:08 +08:00
+status shows both smokes passed but both workers exited before formal training.
+Pull the repaired queue script and rerun the same launch command in the D15
+protocol. Existing smoke summaries will be reused; no D15 research result
+exists yet.
+
 **D15 queued for user launch; server execution not yet observed.** The next exploratory batch is the two-GPU D15 DSM-only capability and RGB degradation evaluation in [`D15_DSM_CAPABILITY_RGB_DEGRADATION_20260926.md`](../protocols/D15_DSM_CAPABILITY_RGB_DEGRADATION_20260926.md). It trains two matched 16k DSM-only seeds, evaluates R01/R05/C-OO-QD under paired RGB degradation on both seeds, then summarizes a prespecified exploratory gate. The user's new authorization allows physical GPU0 and GPU1 and continuation beyond one day. After pulling this branch, run the launch command in that protocol. D15 results will choose the *next* method protocol; no untested recovery architecture or harm/rescue training is auto-launched.
 
 **Current decision after D14, 2026-09-26:** D14 completed 8/8 paired
