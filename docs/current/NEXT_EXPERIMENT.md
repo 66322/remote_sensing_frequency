@@ -1,35 +1,16 @@
-# Next research decision after D12 (2026-09-24)
+# Next research decision after D14 (2026-09-26)
 
 **Current decision after D14, 2026-09-26:** D14 completed 8/8 paired
 inference evaluations with no queue failures. It detects DSM
 decision-level sensitivity but no stable mIoU benefit; D13's failed
 gain/rescue gate is unchanged. Read
 `docs/experiments/D14_RESULTS_20260926.md`. Do not relaunch D14,
-run D13 Stage 2, or tune its risk penalty on Val2. First transfer the
-eight small original D14 `summary.json` files to GitHub for per-tile/class
-audit. The subsequent research decision should focus on a genuinely new
-method target and an independent labelled scene source before any
+run D13 Stage 2, or tune its risk penalty on Val2. The eight original
+D14 summaries were transferred in commit `348dda6` and the per-tile/class
+audit is complete. The subsequent research decision should focus on a
+new method target and an independent labelled scene source before any
 confirmatory claim. No GPU queue is currently specified. The older D14
 launch instructions below are historical.
-
-**Runnable next step, 2026-09-26:** D14 implements the bounded,
-inference-only DSM content intervention described in
-`docs/protocols/D14_D13_DSM_CONTENT_INTERVENTION_20260926.md`.
-The purpose is to measure prediction sensitivity while availability
-stays true, not to rescue D13's failed gate or choose a checkpoint.
-After pulling this branch on the server, launch once from
-`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro` in the
-`remote_sensing` environment:
-
-```bash
-git pull --ff-only origin rebuild-v1-protocol-20260915
-mkdir -p records/rebuild_v1_d14_intervention_queue_20260926
-nohup bash scripts/run_rebuild_v1_d14_intervention_queue.sh > records/rebuild_v1_d14_intervention_queue_20260926/launcher.log 2>&1 &
-```
-
-Inspect `records/rebuild_v1_d14_intervention_queue_20260926/status.tsv`
-and `D14_SUMMARY.log` afterwards. Do not start D13 Stage 2. Older
-instructions below are historical.
 
 **Current decision, 2026-09-25:** D13 Stage 1 completed but failed its
 prespecified two-seed gate; the queue correctly skipped Stage 2. No D13

@@ -908,8 +908,8 @@
       "status": "reported_complete_diagnostic_only",
       "completed_at": "2026-09-26T00:26:16+08:00",
       "executed_commit": "877e39c1322c9c93a0cf683a51cb87c3aff3eb75",
-      "evidence_status": "user_pasted_queue_status_and_summary_original_per_arm_files_on_server",
-      "records": ["docs/experiments/D14_RESULTS_20260926.md", "records/rebuild_v1_d14_compact_20260926/user_reported_intervention_summary.csv"],
+      "evidence_status": "user_pasted_queue_status_and_summary_eight_original_evaluation_summaries_transferred_in_348dda6_and_audited",
+      "records": ["docs/experiments/D14_RESULTS_20260926.md", "records/rebuild_v1_d14_compact_20260926/user_reported_intervention_summary.csv", "records/rebuild_v1_d14_compact_20260926/server_*_summary.json"],
       "result_summary": {
         "completed_evaluations": 8,
         "queue_failures": 0,
@@ -934,7 +934,7 @@
       "server_records": "records/rebuild_v1_d14_dsm_intervention_20260926/ and records/rebuild_v1_d14_intervention_queue_20260926/",
       "test6_policy": "prohibited",
       "gpu": "physical_0_only",
-      "decision": "DSM heads have nonzero decision-level sensitivity to DSM content and RGB controls are invariant, but mIoU changes are mixed and D13's gain/rescue gate remains failed. Do not rerun this Val2 diagnostic or reopen D13 Stage 2."
+      "decision": "Source-file audit completed without discrepancy. DSM heads have nonzero decision-level sensitivity to DSM content and RGB controls are invariant, but mIoU changes are mixed and D13's gain/rescue gate remains failed. Do not rerun this Val2 diagnostic or reopen D13 Stage 2."
     },
     {
       "id": "D10_SELECTIVE_DSM_BENEFIT",

@@ -4,14 +4,11 @@
 8/8 full-image evaluations with zero queue failures. The DSM heads change
 predictions when DSM content changes while availability remains true;
 the matched RGB controls do not change. This is a sensitivity diagnostic,
-not a benefit result. Read `docs/experiments/D14_RESULTS_20260926.md`.
-The earlier pending D14 launch text below is historical; do not rerun it.
-
-**Next prepared action (2026-09-26):** D14 is an inference-only
-counterfactual check of frozen D13 heads with DSM availability held true.
-The protocol and one-hour queue are prepared; no server result exists yet.
-Read `docs/protocols/D14_D13_DSM_CONTENT_INTERVENTION_20260926.md`
-and the top of `docs/current/NEXT_EXPERIMENT.md`.
+not a benefit result. The eight original summaries were transferred in
+commit `348dda6` and audited. Read
+`docs/experiments/D14_RESULTS_20260926.md`.
+Do not rerun it. Read `docs/current/NEXT_EXPERIMENT.md` for the next
+research decision; there is no active GPU queue.
 
 **Current decision (2026-09-25):** D13 Stage 1 finished all eight matched
 train/evaluation pairs with zero queue failures, but failed its prespecified
