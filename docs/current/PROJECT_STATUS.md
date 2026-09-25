@@ -5,9 +5,12 @@ finished all eight matched training/evaluation pairs with zero queue failures.
 Both seeds failed the fixed family-gain and rescue-retention gates; seed 17
 also failed clean-versus-R01. Stage 2 was skipped. See
 `docs/experiments/D13_RESULTS_20260925.md` for the user-supplied decision
-transcription. The original per-arm files remain on the server. No new GPU
-queue is active in this handoff; Test6 is frozen. Older pending statements
-below are historical.
+transcription and the audited original evaluation summaries transferred in
+commit `8236a07`. DSM's gain beyond matched RGB capacity is small and
+changes sign across seeds; the risk loss reduces both harm and rescue.
+Training logs and checkpoints remain on the server. No new GPU queue is
+active in this handoff; Test6 is frozen. Older pending statements below are
+historical.
 
 **Latest preparation (2026-09-24):** The D13 staged RGB-anchored DSM residual
 queue is implemented for manual server launch; no D13 GPU result exists yet.

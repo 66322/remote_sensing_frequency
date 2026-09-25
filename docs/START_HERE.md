@@ -5,7 +5,8 @@ train/evaluation pairs with zero queue failures, but failed its prespecified
 two-seed gate; conditional Stage 2 was skipped. Read
 `docs/experiments/D13_RESULTS_20260925.md` and the top of
 `docs/current/NEXT_EXPERIMENT.md`. The older D13 launch instruction below is
-historical; do not relaunch it.
+historical; do not relaunch it. The eight original evaluation summaries
+reached GitHub on 2026-09-26 and support the paired diagnostic in the report.
 
 **Latest preparation (2026-09-24):** D13 residual training and evaluation code
 is prepared on this branch, with an unattended 24-hour queue. Server smoke and

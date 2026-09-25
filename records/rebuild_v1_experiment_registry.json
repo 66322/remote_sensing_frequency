@@ -872,8 +872,8 @@
       "status": "reported_stage1_complete_gate_failed_stage2_skipped",
       "completed_at": "2026-09-25T02:07:03+08:00",
       "executed_commit": "afea788fe15bf5b3656ad8e36f58da282eecd4b8",
-      "evidence_status": "user_pasted_queue_status_and_stage1_decision_original_per_arm_files_on_server",
-      "records": ["docs/experiments/D13_RESULTS_20260925.md", "records/rebuild_v1_d13_compact_20260925/user_reported_stage1_decision.json"],
+      "evidence_status": "user_pasted_queue_status_and_stage1_decision_eight_original_evaluation_summaries_transferred_in_8236a07",
+      "records": ["docs/experiments/D13_RESULTS_20260925.md", "records/rebuild_v1_d13_compact_20260925/user_reported_stage1_decision.json", "records/rebuild_v1_d13_compact_20260925/server_*_summary.json"],
       "result_summary": {
         "stage1_completed_pairs": 8,
         "queue_failures": 0,
@@ -900,7 +900,7 @@
       "server_records": "records/rebuild_v1_d13_residual_20260924/ and records/rebuild_v1_d13_residual_queue_20260924/",
       "test6_policy": "prohibited",
       "gpu": "physical_0_only",
-      "decision": "Close this D13 Stage 1 design under its prespecified gate. Do not run Stage 2 or repeat the same Val2 screen. Diagnose existing paired condition/class/tile counts before proposing a new objective."
+      "decision": "Close this D13 Stage 1 design under its prespecified gate. Do not run Stage 2 or repeat the same Val2 screen. Paired source-file diagnosis found a small DSM increment reversing across seeds and suppression of both harm and rescue; any counterfactual DSM-use check needs a new inference-only protocol."
     },
     {
       "id": "D10_SELECTIVE_DSM_BENEFIT",
