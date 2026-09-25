@@ -1,5 +1,12 @@
 # Current handoff — 2026-09-24 (after D12)
 
+**Current action, 2026-09-26:** D14's one-hour inference-only queue is
+implemented for manual server launch. It checks frozen D13 heads under
+clean, zero-but-present and half-tile-shifted DSM with RGB negative
+controls. Read `docs/protocols/D14_D13_DSM_CONTENT_INTERVENTION_20260926.md`
+and the top of `docs/current/NEXT_EXPERIMENT.md`. No D14 server result
+exists. D13 Stage 2 stays closed; Test6 stays frozen.
+
 **Current handoff, 2026-09-25:** D13 queue started at commit `afea788`
 and finished at 02:07:03 +08:00 with zero queue failures. Stage 1 completed
 all eight matched arms and failed in both seeds; Stage 2 was skipped. Read

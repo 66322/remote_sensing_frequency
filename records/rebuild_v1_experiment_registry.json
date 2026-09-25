@@ -903,6 +903,25 @@
       "decision": "Close this D13 Stage 1 design under its prespecified gate. Do not run Stage 2 or repeat the same Val2 screen. Paired source-file diagnosis found a small DSM increment reversing across seeds and suppression of both harm and rescue; any counterfactual DSM-use check needs a new inference-only protocol."
     },
     {
+      "id": "D14_D13_DSM_CONTENT_INTERVENTION",
+      "name": "frozen_d13_dsm_content_decision_sensitivity",
+      "status": "implemented_server_execution_pending",
+      "purpose": "Test whether changing DSM content while keeping availability true changes predictions of frozen D13 Stage 1 heads.",
+      "protocol": "docs/protocols/D14_D13_DSM_CONTENT_INTERVENTION_20260926.md",
+      "config": "configs/rebuild_v1/d14_dsm_intervention_20260926.json",
+      "queue_script": "scripts/run_rebuild_v1_d14_intervention_queue.sh",
+      "seeds": [42, 17],
+      "arms": ["rgb_ce", "dsm_ce", "rgb_risk", "dsm_risk"],
+      "conditions": ["clean", "zero_present", "shift_half"],
+      "training": false,
+      "wall_seconds": 3600,
+      "evaluation": "Potsdam Val2 full images, diagnostic only",
+      "server_records": "records/rebuild_v1_d14_dsm_intervention_20260926/ and records/rebuild_v1_d14_intervention_queue_20260926/",
+      "test6_policy": "prohibited",
+      "gpu": "physical_0_only",
+      "decision": "No model selection or continuation gate; report paired decision sensitivity and preserve D13 failed gate."
+    },
+    {
       "id": "D10_SELECTIVE_DSM_BENEFIT",
       "name": "risk_controlled_decision_benefit_selector",
       "status": "design_frozen_source_pending_no_run",

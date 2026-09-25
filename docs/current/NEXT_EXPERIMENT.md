@@ -1,5 +1,24 @@
 # Next research decision after D12 (2026-09-24)
 
+**Runnable next step, 2026-09-26:** D14 implements the bounded,
+inference-only DSM content intervention described in
+`docs/protocols/D14_D13_DSM_CONTENT_INTERVENTION_20260926.md`.
+The purpose is to measure prediction sensitivity while availability
+stays true, not to rescue D13's failed gate or choose a checkpoint.
+After pulling this branch on the server, launch once from
+`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro` in the
+`remote_sensing` environment:
+
+```bash
+git pull --ff-only origin rebuild-v1-protocol-20260915
+mkdir -p records/rebuild_v1_d14_intervention_queue_20260926
+nohup bash scripts/run_rebuild_v1_d14_intervention_queue.sh > records/rebuild_v1_d14_intervention_queue_20260926/launcher.log 2>&1 &
+```
+
+Inspect `records/rebuild_v1_d14_intervention_queue_20260926/status.tsv`
+and `D14_SUMMARY.log` afterwards. Do not start D13 Stage 2. Older
+instructions below are historical.
+
 **Current decision, 2026-09-25:** D13 Stage 1 completed but failed its
 prespecified two-seed gate; the queue correctly skipped Stage 2. No D13
 relaunch or threshold adjustment. The eight full-image Val2 summaries were

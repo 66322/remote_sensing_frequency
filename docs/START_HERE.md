@@ -1,5 +1,11 @@
 # Start Here
 
+**Next prepared action (2026-09-26):** D14 is an inference-only
+counterfactual check of frozen D13 heads with DSM availability held true.
+The protocol and one-hour queue are prepared; no server result exists yet.
+Read `docs/protocols/D14_D13_DSM_CONTENT_INTERVENTION_20260926.md`
+and the top of `docs/current/NEXT_EXPERIMENT.md`.
+
 **Current decision (2026-09-25):** D13 Stage 1 finished all eight matched
 train/evaluation pairs with zero queue failures, but failed its prespecified
 two-seed gate; conditional Stage 2 was skipped. Read

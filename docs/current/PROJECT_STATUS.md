@@ -1,5 +1,11 @@
 # Current Project Status
 
+**Preparation, 2026-09-26:** D14 inference-only DSM-content intervention
+is implemented and awaits manual server execution. It uses D13's frozen
+heads and R01 anchors, both seeds, Val2 and matched RGB controls; there
+is no training or Test6 access. D13's failed gate remains unchanged.
+See `docs/protocols/D14_D13_DSM_CONTENT_INTERVENTION_20260926.md`.
+
 **Latest observed server state (2026-09-25 02:07:03 +08:00):** D13 Stage 1
 finished all eight matched training/evaluation pairs with zero queue failures.
 Both seeds failed the fixed family-gain and rescue-retention gates; seed 17

@@ -1,0 +1,12 @@
+{
+  "experiment": "D14_D13_DSM_CONTENT_INTERVENTION",
+  "seeds": [42, 17],
+  "arms": ["rgb_ce", "dsm_ce", "rgb_risk", "dsm_risk"],
+  "interventions": ["clean", "zero_present", "shift_half"],
+  "split": "Potsdam Val2 full images 3_11 and 5_10",
+  "decision": "diagnostic only; no threshold, selection, or retraining",
+  "wall_seconds": 3600,
+  "smoke_timeout_seconds": 600,
+  "eval_timeout_seconds": 600,
+  "note": "availability remains true under all interventions; Test6 forbidden"
+}

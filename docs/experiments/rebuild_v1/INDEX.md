@@ -2,6 +2,7 @@
 
 | ID | Purpose | Status | Primary evidence |
 |---|---|---|---|
+| D14 | inference-only DSM-content sensitivity of frozen D13 heads | implemented; server run pending | `docs/protocols/D14_D13_DSM_CONTENT_INTERVENTION_20260926.md` |
 | D13 | trainable RGB-anchored DSM residual and risk surrogate | user-reported Stage 1 complete; two-seed gate failed; Stage 2 skipped | `docs/experiments/D13_RESULTS_20260925.md` |
 | D11 | supervised benefit/harm probe with off-Val2 calibration | user-reported complete; gate failed | `docs/experiments/D11_RESULTS_20260923.md` |
 | D12 | deep decoder context, frequency and capacity screen | user-reported complete; gate failed | `docs/experiments/D12_RESULTS_20260924.md` |
