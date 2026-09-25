@@ -905,7 +905,22 @@
     {
       "id": "D14_D13_DSM_CONTENT_INTERVENTION",
       "name": "frozen_d13_dsm_content_decision_sensitivity",
-      "status": "implemented_server_execution_pending",
+      "status": "reported_complete_diagnostic_only",
+      "completed_at": "2026-09-26T00:26:16+08:00",
+      "executed_commit": "877e39c1322c9c93a0cf683a51cb87c3aff3eb75",
+      "evidence_status": "user_pasted_queue_status_and_summary_original_per_arm_files_on_server",
+      "records": ["docs/experiments/D14_RESULTS_20260926.md", "records/rebuild_v1_d14_compact_20260926/user_reported_intervention_summary.csv"],
+      "result_summary": {
+        "completed_evaluations": 8,
+        "queue_failures": 0,
+        "missing": [],
+        "rgb_control_flip_count": 0,
+        "dsm_ce_zero_present_flip_percent_seed42_seed17": [0.3855134695815089, 0.22164213678303565],
+        "dsm_risk_zero_present_flip_percent_seed42_seed17": [0.05364079845817905, 0.06238458456175863],
+        "dsm_ce_shift_half_flip_percent_seed42_seed17": [0.5525651753992145, 0.25332940261127435],
+        "dsm_risk_shift_half_flip_percent_seed42_seed17": [0.03580532629163907, 0.029062338237717388],
+        "test6_loaded": false
+      },
       "purpose": "Test whether changing DSM content while keeping availability true changes predictions of frozen D13 Stage 1 heads.",
       "protocol": "docs/protocols/D14_D13_DSM_CONTENT_INTERVENTION_20260926.md",
       "config": "configs/rebuild_v1/d14_dsm_intervention_20260926.json",
@@ -919,7 +934,7 @@
       "server_records": "records/rebuild_v1_d14_dsm_intervention_20260926/ and records/rebuild_v1_d14_intervention_queue_20260926/",
       "test6_policy": "prohibited",
       "gpu": "physical_0_only",
-      "decision": "No model selection or continuation gate; report paired decision sensitivity and preserve D13 failed gate."
+      "decision": "DSM heads have nonzero decision-level sensitivity to DSM content and RGB controls are invariant, but mIoU changes are mixed and D13's gain/rescue gate remains failed. Do not rerun this Val2 diagnostic or reopen D13 Stage 2."
     },
     {
       "id": "D10_SELECTIVE_DSM_BENEFIT",

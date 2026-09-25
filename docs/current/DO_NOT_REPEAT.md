@@ -2,6 +2,13 @@ D11 completed 12/12 with zero queue failures by user report, but no model passed
 
 # Completed, Closed, or Do-Not-Repeat Work
 
+D14 completed its frozen D13-head DSM-content intervention with eight
+evaluations and zero queue failures by user-supplied server output.
+DSM heads respond at the decision level; RGB controls are invariant.
+Do not repeat the same Val2 intervention, infer segmentation benefit
+from prediction flips, or reopen the failed D13 Stage 2 gate. See
+`docs/experiments/D14_RESULTS_20260926.md`.
+
 D13 Stage 1 completed all eight matched train/evaluation pairs with zero
 queue failures by user-supplied server output and failed its prespecified
 two-seed gate. Stage 2 was skipped. Do not rerun D13, run its unqualified

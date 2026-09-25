@@ -1,5 +1,16 @@
 # Current handoff — 2026-09-24 (after D12)
 
+**Current handoff, 2026-09-26 after D14:** The user-reported D14 queue
+finished at 00:26:16 +08:00 with eight evaluations complete and zero
+failures. DSM heads show nonzero prediction sensitivity to content while
+the RGB negative controls remain invariant; mIoU changes are mixed.
+See `docs/experiments/D14_RESULTS_20260926.md` and the compact CSV.
+The original per-arm D14 summaries have not yet been transferred to
+GitHub. D13 Stage 2 remains closed. Do not rerun D14 or use the
+repeatedly inspected Val2 as confirmatory evidence. Next: archive the
+original D14 summaries, then plan the next method and independent
+evaluation source. All older D14 launch instructions below are historical.
+
 **Current action, 2026-09-26:** D14's one-hour inference-only queue is
 implemented for manual server launch. It checks frozen D13 heads under
 clean, zero-but-present and half-tile-shifted DSM with RGB negative

@@ -1,5 +1,12 @@
 # Start Here
 
+**Latest observed result (2026-09-26 00:26:16 +08:00):** D14 completed
+8/8 full-image evaluations with zero queue failures. The DSM heads change
+predictions when DSM content changes while availability remains true;
+the matched RGB controls do not change. This is a sensitivity diagnostic,
+not a benefit result. Read `docs/experiments/D14_RESULTS_20260926.md`.
+The earlier pending D14 launch text below is historical; do not rerun it.
+
 **Next prepared action (2026-09-26):** D14 is an inference-only
 counterfactual check of frozen D13 heads with DSM availability held true.
 The protocol and one-hour queue are prepared; no server result exists yet.

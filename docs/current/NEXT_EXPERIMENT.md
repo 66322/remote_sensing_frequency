@@ -1,5 +1,17 @@
 # Next research decision after D12 (2026-09-24)
 
+**Current decision after D14, 2026-09-26:** D14 completed 8/8 paired
+inference evaluations with no queue failures. It detects DSM
+decision-level sensitivity but no stable mIoU benefit; D13's failed
+gain/rescue gate is unchanged. Read
+`docs/experiments/D14_RESULTS_20260926.md`. Do not relaunch D14,
+run D13 Stage 2, or tune its risk penalty on Val2. First transfer the
+eight small original D14 `summary.json` files to GitHub for per-tile/class
+audit. The subsequent research decision should focus on a genuinely new
+method target and an independent labelled scene source before any
+confirmatory claim. No GPU queue is currently specified. The older D14
+launch instructions below are historical.
+
 **Runnable next step, 2026-09-26:** D14 implements the bounded,
 inference-only DSM content intervention described in
 `docs/protocols/D14_D13_DSM_CONTENT_INTERVENTION_20260926.md`.

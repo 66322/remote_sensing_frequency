@@ -1,5 +1,13 @@
 # Current Project Status
 
+**Latest observed server state (2026-09-26 00:26:16 +08:00):** The
+user-reported D14 queue completed all eight evaluations with zero failures
+and `missing=[]`. DSM content intervention changes 0.0291–0.5526% of
+valid Val2 pixel decisions depending on arm, seed and intervention;
+matched RGB controls change zero. The D13 gain/rescue gate remains failed.
+See `docs/experiments/D14_RESULTS_20260926.md`. Original D14 summaries
+are still on the server; no further GPU queue is active in this handoff.
+
 **Preparation, 2026-09-26:** D14 inference-only DSM-content intervention
 is implemented and awaits manual server execution. It uses D13's frozen
 heads and R01 anchors, both seeds, Val2 and matched RGB controls; there
