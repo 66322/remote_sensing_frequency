@@ -1,5 +1,12 @@
 # Start Here
 
+**Current decision (2026-09-25):** D13 Stage 1 finished all eight matched
+train/evaluation pairs with zero queue failures, but failed its prespecified
+two-seed gate; conditional Stage 2 was skipped. Read
+`docs/experiments/D13_RESULTS_20260925.md` and the top of
+`docs/current/NEXT_EXPERIMENT.md`. The older D13 launch instruction below is
+historical; do not relaunch it.
+
 **Latest preparation (2026-09-24):** D13 residual training and evaluation code
 is prepared on this branch, with an unattended 24-hour queue. Server smoke and
 formal GPU work have not yet run. Read

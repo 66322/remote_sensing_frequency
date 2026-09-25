@@ -2,6 +2,12 @@ D11 completed 12/12 with zero queue failures by user report, but no model passed
 
 # Completed, Closed, or Do-Not-Repeat Work
 
+D13 Stage 1 completed all eight matched train/evaluation pairs with zero
+queue failures by user-supplied server output and failed its prespecified
+two-seed gate. Stage 2 was skipped. Do not rerun D13, run its unqualified
+Stage 2, tune the risk loss on the repeatedly used Val2, or present its low
+harm alone as a safety gain. See `docs/experiments/D13_RESULTS_20260925.md`.
+
 D12 completed 14/14 with zero queue failures by user report. No core model
 passed its predeclared two-seed screen; full-image confirmation was skipped.
 Do not repeat the same D12 Val2 screen, alter thresholds post hoc, or train a

@@ -1,5 +1,18 @@
 # Next research decision after D12 (2026-09-24)
 
+**Current decision, 2026-09-25:** D13 Stage 1 completed but failed its
+prespecified two-seed gate; the queue correctly skipped Stage 2. No D13
+relaunch or threshold adjustment. First transfer or summarize the eight
+existing full-image Val2 `summary.json` files from
+`records/rebuild_v1_d13_residual_20260924/<arm>_seed<seed>/`, then perform
+a read-only paired diagnosis by condition, class, and tile for harm, rescue,
+and mIoU versus the matched RGB controls and DSM-CE. Confirm whether the
+risk loss suppresses both beneficial and harmful corrections. Any new
+training objective needs a separate prespecified protocol and an independent
+evaluation source for confirmatory claims. Test6 remains frozen. See
+`docs/experiments/D13_RESULTS_20260925.md`. All D13 launch instructions
+below are historical.
+
 **2026-09-24 runnable exploratory plan:** After reviewing D9-D12, the next concrete
 method question is a staged RGB-anchored DSM residual training pilot, specified
 in `docs/protocols/D13_RGB_ANCHORED_DSM_RESIDUAL_PILOT_20260924.md`.

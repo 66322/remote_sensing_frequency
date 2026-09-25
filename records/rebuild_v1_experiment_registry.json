@@ -869,7 +869,22 @@
     {
       "id": "D13_RGB_ANCHORED_DSM_RESIDUAL",
       "name": "staged_rgb_anchored_dsm_residual_negative_transfer_pilot",
-      "status": "implemented_server_execution_pending",
+      "status": "reported_stage1_complete_gate_failed_stage2_skipped",
+      "completed_at": "2026-09-25T02:07:03+08:00",
+      "executed_commit": "afea788fe15bf5b3656ad8e36f58da282eecd4b8",
+      "evidence_status": "user_pasted_queue_status_and_stage1_decision_original_per_arm_files_on_server",
+      "records": ["docs/experiments/D13_RESULTS_20260925.md", "records/rebuild_v1_d13_compact_20260925/user_reported_stage1_decision.json"],
+      "result_summary": {
+        "stage1_completed_pairs": 8,
+        "queue_failures": 0,
+        "stage1_pass": false,
+        "stage2_status": "SKIPPED",
+        "seed42_family_gain_pp": -0.17567165402767593,
+        "seed17_family_gain_pp": -0.013790933849211484,
+        "seed42_rescue_retention_fraction": 0.183717,
+        "seed17_rescue_retention_fraction": 0.1551,
+        "test6_loaded": false
+      },
       "purpose": "Test whether a trainable DSM residual and a harm-aware training surrogate reduce new errors while preserving correction gains relative to frozen R01.",
       "protocol": "docs/protocols/D13_RGB_ANCHORED_DSM_RESIDUAL_PILOT_20260924.md",
       "config": "configs/rebuild_v1/d13_residual_overnight_20260924.json",
@@ -885,7 +900,7 @@
       "server_records": "records/rebuild_v1_d13_residual_20260924/ and records/rebuild_v1_d13_residual_queue_20260924/",
       "test6_policy": "prohibited",
       "gpu": "physical_0_only",
-      "decision": "No result or method claim until server smoke, full paired training/evaluation, and automatic decision summary complete."
+      "decision": "Close this D13 Stage 1 design under its prespecified gate. Do not run Stage 2 or repeat the same Val2 screen. Diagnose existing paired condition/class/tile counts before proposing a new objective."
     },
     {
       "id": "D10_SELECTIVE_DSM_BENEFIT",

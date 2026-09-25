@@ -1,5 +1,14 @@
 # Current handoff — 2026-09-24 (after D12)
 
+**Current handoff, 2026-09-25:** D13 queue started at commit `afea788`
+and finished at 02:07:03 +08:00 with zero queue failures. Stage 1 completed
+all eight matched arms and failed in both seeds; Stage 2 was skipped. Read
+`docs/experiments/D13_RESULTS_20260925.md` and the compact decision JSON.
+Do not relaunch D13 or use its unrun Stage 2 as evidence. The immediate task
+is read-only condition/class/tile analysis of the existing server summaries,
+then a new predeclared design if warranted. The D13 launch instructions and
+older pending actions below are superseded.
+
 **Latest planning update:** D13 is a staged, unimplemented RGB-anchored DSM
 residual queue: eight mandatory and up to eight conditional 4000-step
 runs, a 24-hour unattended cap, and automatic summaries. Code is implemented
