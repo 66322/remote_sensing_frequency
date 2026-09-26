@@ -4,7 +4,9 @@
 It proposes sixteen matched continuation pilots covering task-conditioned
 intervention learning and geometry supervision, with pretrained adaptation as
 a reserved alternative. RGB-DSM reliable segmentation remains the topic;
-down4 is one stress condition. This design is not implemented or running.
+down4 is one stress condition. The training/evaluation/shared two-GPU queue is
+now implemented and locally checked; server CUDA smoke/launch not yet observed.
+Use the server commands in that protocol. Do not relaunch the completed D15 queue.
 
 **D15 complete and offline-audited, 2026-09-26:** Last user-reported server
 completion is 14:45:11 +08:00, eight evaluations complete, both workers0.

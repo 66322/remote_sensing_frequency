@@ -1,5 +1,11 @@
 # Current Project Status
 
+**D16/D17 executable queue prepared (2026-09-26), no server run observed:**
+Eight configurations x seeds42/17 = sixteen4k continuation pilots. Ten local
+CPU tests passed; server queue first checks both GPUs with eight train/reload/
+deterministic clean-evaluation smokes, then automatically trains and evaluates.
+See `docs/protocols/D16_D17_RESEARCH_PORTFOLIO_20260926.md`. Test6 prohibited.
+
 **Last observed D15 server state (2026-09-26 14:45:11 +08:00):** All eight
 evaluations completed, both workers exit0. Original summaries uploaded in
 `3f95584` and offline-audited. Prespecified pooled RGB-degradation gate passed

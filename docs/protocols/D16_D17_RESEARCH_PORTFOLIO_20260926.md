@@ -1,6 +1,6 @@
 # Post-D15 research portfolio: intervention learning and geometry supervision
 
-Status: **proposed new designs, not implemented or launched**. User requested a
+Status: **implemented exploratory designs, awaiting server launch and CUDA smoke**. User requested a
 larger useful batch, two physical GPUs 0/1, one day or longer. This supersedes
 the proposed pivot to low-resolution feature recovery after D15. The research
 problem remains RGB-DSM complementary semantic segmentation under variable
@@ -69,6 +69,16 @@ measure their independent effects. Training must use separate RNG streams for
 augmentation and new-head initialization so the matched data sequence survives
 differences in auxiliary computation.
 
+Frozen executable config: `configs/rebuild_v1/d16_d17_portfolio_20260926.json`.
+Microbatch2 x accumulation8 = effective16, two supervised views per example;
+4000 continuation steps; backbone LR2e-5, decoder/head multiplier10, AdamW,
+100-step warmup followed by linear decay; consistency0.2, geometry0.1 with
+gradient scale0.1. Treatment probabilities: clean0.2 and each of the four RGB
+quality, two auxiliary quality, two auxiliary absence treatments0.1. Random
+crops/flips use the original R05 settings and a separate step-keyed RNG.
+Geometry loss uses the clean view. B2 shuffles paired x/y targets spatially
+within each sample. These choices are frozen before new result collection.
+
 ## Evaluation and stopping
 
 Evaluate clean, RGB down2/down4/blur/localdown, DSM quality degradation and
@@ -89,6 +99,8 @@ Proposed continuation screen to freeze in configs before launch:
 - Clean must not fall more than0.1pp below A0; report each tile and reject a
   broad robustness claim if a family loses more than0.3pp. A candidate passing
   pooled thresholds can still warrant rejection after these predefined guards.
+- The same guards apply per tile: clean loss <=0.1pp and each family loss
+  <=0.3pp versus A0; they are encoded before launch, not applied retrospectively.
 - For a claim of reduced negative transfer, require harm to improve while
   retaining at least90% of matched-control rescue in the predeclared DSM-quality
   family; do not reinterpret reduced use of DSM as safer benefit selection.
@@ -151,3 +163,47 @@ RGBD camera depth and overhead DSM are not interchangeable physical inputs;
 these papers motivate comparisons, not an assumption that their results carry
 over. Claims attached to unverified 2026 titles in earlier notes are not used
 to establish novelty or decide the experiment gate.
+
+## Server launch and observation
+
+Local validation: ten CPU tests passed, including real pre-fusion independence,
+teacher stop-gradient, missing-region exclusion, shuffled control counts,
+noise reproducibility, atomic checkpoint/optimizer/RNG resume, and shared-worker
+failure isolation. Entry imports and Python syntax checked. Server weights,
+raw images and CUDA are unavailable on this computer; CUDA end-to-end checks
+are mandatory in the queue before formal jobs, and are not yet observed.
+
+```bash
+cd /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+conda activate remote_sensing
+git pull --ff-only origin rebuild-v1-protocol-20260915
+mkdir -p records/rebuild_v1_d16_d17_queue_20260926
+nohup bash scripts/run_rebuild_v1_d16_d17_queue.sh > records/rebuild_v1_d16_d17_queue_20260926/launcher.log 2>&1 &
+```
+
+The launcher checks tracked source, inputs, three existing model families,
+physical GPUs0/1 and free workspace capacity (80GiB on first launch; reserve
+decreases for already saved checkpoints when resuming). Eight one-step smoke jobs
+cover every loss branch (four on each GPU), save/reload their checkpoints and
+repeat deterministic clean inference on a 512px Val2 crop. Any smoke failure
+stops formal launch. Passing smokes automatically start 16 full 4k pilots and
+their nine-condition, two-tile evaluations. Smokes are excluded from decisions.
+Each worker takes the next shared job and immediately evaluates its own training.
+Completed work is bound to source/config/checkpoint hashes and reused; interrupted
+training resumes the last100-step state and interrupted evaluation reuses completed
+condition files. A code/config mismatch stops reuse rather than silently mixing.
+One failed formal job does not stop independent jobs. No automatic scientific
+retry. Restart the same launcher after diagnosis, keeping bound source unchanged.
+
+```bash
+tail -n 20 records/rebuild_v1_d16_d17_queue_20260926/status.tsv
+tail -n 30 records/rebuild_v1_d16_d17_queue_20260926/launcher.log
+cat records/rebuild_v1_d16_d17_queue_20260926/SUMMARY.log
+```
+
+Final success: `QUEUE FINISHED jobs=16 failures=0 summary_ok=True`, decision
+status COMPLETE and missing=[] in `records/rebuild_v1_d16_d17_20260926/decision.json`.
+At24h a progress line is written and unfinished finite work continues. Runtime
+estimates remain provisional until the first100 full optimizer steps; dual-stream
+two-view work may exceed the earlier12-30h rough estimate. Do not promise24h completion.
+Reserved pretrained-adapter runs are not part of this executable queue.

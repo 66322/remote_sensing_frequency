@@ -7,7 +7,11 @@ to SR. The proposed next batch is eight configurations x seeds42/17 = sixteen
 generic/shuffled/RGB-capacity controls, plus aligned-versus-shuffled geometry
 supervision. See `docs/protocols/D16_D17_RESEARCH_PORTFOLIO_20260926.md` for the
 matrix, stop rules, two-GPU ready-job scheduling and reserved pretrained-adapter
-direction. The design is not yet implemented or launched. D15 is complete;
+direction. Executable config and train/eval/shared GPU0/1 queue are implemented;
+ten local CPU tests passed. Server CUDA smoke and launch not yet observed.
+Launch `scripts/run_rebuild_v1_d16_d17_queue.sh` using the protocol commands;
+eight end-to-end smoke jobs gate sixteen4k pilots and automatic evaluation.
+D15 is complete;
 do not rerun it. Earlier queue/repair instructions below are historical.
 
 **D15 relaunch pending after queue repair:** User-reported 01:18:08 +08:00

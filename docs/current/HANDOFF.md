@@ -7,9 +7,11 @@ stress condition. New proposal: sixteen 4k continuation trainings, combining
 paired-intervention task consistency with proper controls and an independent
 geometry-supervision alternative; six pretrained-adapter runs reserved for a
 later representation check. Read `docs/protocols/D16_D17_RESEARCH_PORTFOLIO_20260926.md`.
-No new method code or server queue has been launched. Update executable configs
-before running; implement shared two-GPU ready jobs so evaluation errors do not
-discard independent work or strand an idle GPU.
+Executable config, method losses, training, resumable evaluation and shared
+GPU0/1 queue are now implemented. Ten local CPU tests passed, including exact
+next-step optimizer/RNG resume and actual pre-fusion independence. Server CUDA
+and data smoke not yet observed. Launch the commands in the protocol; eight
+smokes automatically gate sixteen4k pilots. Physical GPUs0/1 are authorized.
 
 **D15 closed, 2026-09-26:** Last observed server completion 14:45:11 +08:00,
 8/8 summaries, both workers0. Originals uploaded in `3f95584`; offline hash/
@@ -17,7 +19,7 @@ CM/count/invariance/decision audit passed. See `docs/experiments/D15_RESULTS_202
 RGB down4 gains over the stronger RGB control are +2.9585/+1.9245 pp and
 positive on both tiles in both seeds; other degradations are mixed by tile.
 DSM-only is about65.8% overall but strong on Building. The next mechanism batch
-is defined in the corrected portfolio above. Method implementation/queue is still pending;
+is defined in the corrected portfolio above. Method code/queue is ready for server smoke;
 no new server training is observed. Historical repair notes below are closed.
 
 **D15 evaluation repair, last observed 2026-09-26 05:49:46 +08:00:** Both

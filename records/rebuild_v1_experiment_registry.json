@@ -953,6 +953,21 @@
       "decision": "Final queue completed 2026-09-26 14:45:11 +08:00, 8/8 evaluations; originals archived in 3f95584 and offline audit passed. Down4 gains are positive on both tiles but mild conditions mixed. Keep reliable RGB-DSM segmentation as the topic; down4 is a stress condition, not an SR pivot. Proposed intervention-learning and geometry-supervision pilots are in docs/protocols/D16_D17_RESEARCH_PORTFOLIO_20260926.md; not implemented/running. Val2 exploratory, Test6 frozen."
     },
     {
+      "id": "D16_D17_PORTFOLIO_20260926",
+      "name": "paired_intervention_consistency_and_prefusion_geometry_supervision",
+      "status": "implemented_local_tests_passed_server_smoke_pending",
+      "protocol": "docs/protocols/D16_D17_RESEARCH_PORTFOLIO_20260926.md",
+      "config": "configs/rebuild_v1/d16_d17_portfolio_20260926.json",
+      "queue": "scripts/run_rebuild_v1_d16_d17_queue.sh",
+      "seeds": [42, 17],
+      "training": "8 configurations x 2 seeds; 4000-step full-network continuations from matched R05/C-OO-QD anchors; eight separate one-step smokes",
+      "evaluation": "Potsdam Val2 exploratory, fixed final checkpoint, clean plus four RGB quality/two auxiliary quality/two known absence conditions",
+      "server_records": "records/rebuild_v1_d16_d17_20260926/ and records/rebuild_v1_d16_d17_queue_20260926/",
+      "test6_policy": "prohibited",
+      "gpu": "user_authorized_physical_0_and_1_independent_shared_workers",
+      "decision": "Ten local CPU tests and entry imports passed; CUDA/data/anchor end-to-end smokes gate formal launch on server. No server run observed. Reserved six pretrained-adapter trials not implemented or scheduled."
+    },
+    {
       "id": "D10_SELECTIVE_DSM_BENEFIT",
       "name": "risk_controlled_decision_benefit_selector",
       "status": "design_frozen_source_pending_no_run",
@@ -986,6 +1001,6 @@
     "physical_gpu": 0,
     "cuda_visible_devices": "0",
     "persistent_scope_root": "/home/jovyan/zzx",
-    "d15_exception": "User authorized physical GPU0 and GPU1 for D15. Its new queue applies an explicit dual-worker device check; this older GPU0-only machine policy and validator remain for historical queues."
+    "d15_exception": "User authorized physical GPU0 and GPU1 for D15 and D16/D17. Their queues apply explicit independent-worker device checks; the older GPU0-only machine policy and validator remain for historical queues."
   }
 }

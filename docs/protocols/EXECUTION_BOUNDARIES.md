@@ -34,6 +34,14 @@ Do not modify, rename, move or overwrite the raw dataset or pretrained weights.
 
 ## GPU boundary
 
+Explicit user authorization on2026-09-26 permits physical GPU0 and GPU1 for
+D15 and D16/D17 independent workers, including continuation beyond one day.
+For D16/D17 use `scripts/run_rebuild_v1_d16_d17_queue.sh`: it checks physical
+GPU indices, project scope, read-only input presence and source binding; each
+subprocess sees exactly its assigned GPU and uses logical cuda:0. The older
+GPU0-only validator below applies to historical queues, not these authorized
+dual-worker queues. No distributed training is introduced.
+
 Every GPU task must use physical GPU 0 only.
 
 Before starting Python:
