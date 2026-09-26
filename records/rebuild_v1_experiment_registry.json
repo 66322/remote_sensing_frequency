@@ -939,7 +939,7 @@
     {
       "id": "D15_DSM_CAPABILITY_RGB_DEGRADATION",
       "name": "DSM_only_baseline_and_paired_RGB_degradation",
-      "status": "first_server_attempt_smokes_passed_queue_failed_repair_pending_relaunch",
+      "status": "both_trainings_complete_clean_evaluation_reproduction_failed_repair_pending_replay",
       "purpose": "Measure DSM-only capability under the matched R01 schedule and whether R05 gains over RGB and matched-capacity controls when RGB detail degrades.",
       "protocol": "docs/protocols/D15_DSM_CAPABILITY_RGB_DEGRADATION_20260926.md",
       "config": "configs/rebuild_v1/d15_capability_20260926.json",
@@ -950,7 +950,7 @@
       "server_records": "records/rebuild_v1_d15_capability_20260926/ and records/rebuild_v1_d15_capability_queue_20260926/",
       "test6_policy": "prohibited",
       "gpu": "physical_0_and_1_independent_workers_user_authorized_20260926",
-      "decision": "First server attempt ended 2026-09-26 01:18:08 +08:00 after both smokes passed but before formal work; shell worker error repaired locally. Relaunch same queue and await both-seed capability and RGB degradation evidence."
+      "decision": "Both 16k DSM-only trainings completed by 2026-09-26 05:43:56 +08:00; evaluations failed exact clean FullGT reproduction by 05:49:46. Evaluator deterministic settings aligned with training validation; exact gate retained with matrix diagnostics. Replay evaluation and reuse completed training."
     },
     {
       "id": "D10_SELECTIVE_DSM_BENEFIT",

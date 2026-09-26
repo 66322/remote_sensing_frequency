@@ -100,6 +100,9 @@ def main():
         f"smoke_{args.model}_seed{args.seed}" if args.smoke else f"{args.model}_seed{args.seed}")
     if out.exists():
         raise FileExistsError(out)
+    # Match the training-validation CUDA/cuDNN settings before building models.
+    # r02.set_seed also enables deterministic algorithms and disables benchmark.
+    r02.set_seed(args.seed)
     net, cfg, binding = load_model(args.model, args.seed)
     ref_net, ref_cfg, ref_binding = (net, cfg, binding) if args.model == "R01" else load_model("R01", args.seed)
     raw = {}
@@ -134,11 +137,26 @@ def main():
                                                   oracle_cm=oracle_pooled[scope].tolist(),
                                                   oracle_metrics=safe_metrics(oracle_pooled[scope]))
                                       for scope, cm in pooled.items()})
-    if not args.smoke and args.model in ("R01", "D15_DSM_ONLY"):
-        for scope, key in (("full", "clean_cm_full"), ("noboundary", "clean_cm_noboundary")):
-            expected = binding[key]
-            if expected is None or raw["clean"]["pooled"][scope]["cm"] != expected:
-                raise RuntimeError(f"clean checkpoint metric reproduction failed: {scope}")
+        if condition == "clean" and not args.smoke and args.model in ("R01", "D15_DSM_ONLY"):
+            diagnostic = dict(model=args.model, seed=args.seed, checkpoint=binding,
+                              source_sha256=d15.sha256(Path(__file__)), scopes={})
+            passed = True
+            for scope, key in (("full", "clean_cm_full"), ("noboundary", "clean_cm_noboundary")):
+                expected = binding[key]
+                actual = pooled[scope]
+                match = expected is not None and np.array_equal(actual, np.asarray(expected, dtype=np.int64))
+                passed = passed and match
+                diagnostic["scopes"][scope] = dict(
+                    exact_match=match, expected_cm=expected, actual_cm=actual.tolist(),
+                    difference_cm=None if expected is None else
+                    (actual - np.asarray(expected, dtype=np.int64)).tolist())
+            diagnostic["pass"] = passed
+            diagnostic_path = ROOT / "records/rebuild_v1_d15_capability_20260926/diagnostics" / f"{args.model}_seed{args.seed}_clean.json"
+            diagnostic_path.parent.mkdir(parents=True, exist_ok=True)
+            diagnostic_path.write_text(json.dumps(diagnostic, indent=2, allow_nan=False) + "\n")
+            if not passed:
+                raise RuntimeError(f"clean checkpoint metric reproduction failed; details: {diagnostic_path}")
+            print("D15 CLEAN REPRODUCTION PASS", flush=True)
     result = dict(model=args.model, seed=args.seed, smoke=args.smoke, conditions=raw,
                   checkpoint=binding, r01_checkpoint=ref_binding,
                   config_sha256=d15.sha256(CONFIG), source_sha256=d15.sha256(Path(__file__)),

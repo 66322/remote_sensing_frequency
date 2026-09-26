@@ -1,5 +1,12 @@
 # Current Project Status
 
+**Last observed D15 state (2026-09-26 05:49:46 +08:00):** Both DSM-only
+trainings reached 16000 steps and completed. Both independent evaluations
+failed exact clean FullGT metric reproduction; the queue stopped before
+existing-expert evaluations. Deterministic evaluator settings have been
+corrected, with the exact gate retained and expanded diagnostics. Server
+replay is pending; the two completed models must be reused.
+
 **Last observed D15 server state (2026-09-26 01:18:08 +08:00):** Both smoke
 checks passed, but the first queue attempt ended with `worker0=1 worker1=1`
 before formal training because of a shell worker variable error. The queue

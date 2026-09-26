@@ -1,5 +1,17 @@
 # Current handoff — 2026-09-26 (after D14 audit)
 
+**D15 evaluation repair, last observed 2026-09-26 05:49:46 +08:00:** Both
+16000-step DSM-only trainings completed successfully (seed42 05:43:05,
+seed17 05:43:56). Both evaluations failed their exact clean FullGT confusion
+matrix reproduction check after inference. The evaluator omitted the
+deterministic CUDA/cuDNN initialization used in training validation. It now
+calls the same `r02.set_seed` before model loading; the exact check is retained
+and moved immediately after clean, with expected/actual/difference matrices
+written to `records/rebuild_v1_d15_capability_20260926/diagnostics/`.
+This setting correction awaits server verification; if mismatch remains,
+inspect that diagnostic rather than relaxing the gate. Pull and relaunch the
+same queue; both completed trainings and smokes are reused.
+
 **2026-09-26 D15 server attempt:** User-reported `status.tsv` at 01:18:08
 +08:00 has PREFLIGHT COMPLETE, SMOKE_EVAL COMPLETE 0, SMOKE_TRAIN COMPLETE 0,
 SUMMARY COMPLETE, and QUEUE FINISHED `worker0=1 worker1=1`. No formal D15

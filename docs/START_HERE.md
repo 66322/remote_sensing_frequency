@@ -1,5 +1,12 @@
 # Start Here
 
+**D15 evaluation repair pending server replay:** Both DSM-only 16k trainings
+completed, but evaluation failed exact clean confusion-matrix reproduction at
+05:49:46 +08:00 on 2026-09-26. The evaluator now uses the deterministic runtime
+settings from training validation and saves matrix differences if reproduction
+still fails. Pull and relaunch the same queue to reuse trained checkpoints;
+do not retrain or treat this as a research result.
+
 **D15 queue repair, 2026-09-26:** The user's server log showed both smokes
 complete at 01:18:08 +08:00, then `worker0=1 worker1=1` before formal training.
 The shell worker had an unbound local variable under `set -u`; this is fixed
