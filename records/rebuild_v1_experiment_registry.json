@@ -955,7 +955,7 @@
     {
       "id": "D16_D17_PORTFOLIO_20260926",
       "name": "paired_intervention_consistency_and_prefusion_geometry_supervision",
-      "status": "implemented_local_tests_passed_server_smoke_pending",
+      "status": "server_smoke_failed_ce_compatibility_repaired_replay_pending",
       "protocol": "docs/protocols/D16_D17_RESEARCH_PORTFOLIO_20260926.md",
       "config": "configs/rebuild_v1/d16_d17_portfolio_20260926.json",
       "queue": "scripts/run_rebuild_v1_d16_d17_queue.sh",
@@ -965,7 +965,7 @@
       "server_records": "records/rebuild_v1_d16_d17_20260926/ and records/rebuild_v1_d16_d17_queue_20260926/",
       "test6_policy": "prohibited",
       "gpu": "user_authorized_physical_0_and_1_independent_shared_workers",
-      "decision": "Ten local CPU tests and entry imports passed; CUDA/data/anchor end-to-end smokes gate formal launch on server. No server run observed. Reserved six pretrained-adapter trials not implemented or scheduled."
+      "decision": "Server queue stopped 2026-09-26 15:29:20 +08:00: all eight smokes failed before first update at legacy CUDA NLL2d cross_entropy under strict determinism. Formal pilots never started. Equivalent one-hot/log-softmax CE and CPU/CUDA regression tests added; strict mode retained, replay pending. Reserved six pretrained-adapter trials not scheduled."
     },
     {
       "id": "D10_SELECTIVE_DSM_BENEFIT",

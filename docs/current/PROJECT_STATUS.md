@@ -1,5 +1,12 @@
 # Current Project Status
 
+**Last observed D16/D17 server state (2026-09-26 15:29:20 +08:00):** Eight
+smoke trainings failed, queue stopped before formal pilots. Shared cause from
+user tracebacks: CUDA NLL2d lacks a strict deterministic implementation in the
+server PyTorch. Equivalent deterministic CE is now implemented and locally
+checked; CUDA regression runs in server preflight before the eight smokes.
+Server replay has not yet been observed.
+
 **D16/D17 executable queue prepared (2026-09-26), no server run observed:**
 Eight configurations x seeds42/17 = sixteen4k continuation pilots. Ten local
 CPU tests passed; server queue first checks both GPUs with eight train/reload/

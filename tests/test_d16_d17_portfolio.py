@@ -16,6 +16,43 @@ from run_rebuild_v1_d16_d17_queue import run_shared
 
 
 class PortfolioTests(unittest.TestCase):
+    def test_deterministic_ce_matches_loss_and_gradients(self):
+        torch.manual_seed(3)
+        logits = torch.randn(2,6,7,9,dtype=torch.float64,requires_grad=True)
+        labels = torch.randint(0,6,(2,7,9))
+        labels[0,:2,:3] = 255
+        reference = torch.nn.functional.cross_entropy(logits,labels,ignore_index=255)
+        expected = torch.autograd.grad(reference,logits)[0]
+        actual = p.deterministic_ce(logits,labels)
+        gradient = torch.autograd.grad(actual,logits)[0]
+        torch.testing.assert_close(actual,reference,rtol=1e-12,atol=1e-12)
+        torch.testing.assert_close(gradient,expected,rtol=1e-12,atol=1e-12)
+        empty = p.deterministic_ce(logits,torch.full_like(labels,255))
+        self.assertEqual(float(empty.detach()),0)
+
+    @unittest.skipUnless(torch.cuda.is_available(), 'requires server CUDA')
+    def test_cuda_ce_strict_determinism_forward_backward(self):
+        previous = torch.are_deterministic_algorithms_enabled()
+        try:
+            torch.use_deterministic_algorithms(True)
+            torch.manual_seed(8)
+            cpu = torch.randn(2,6,7,9,requires_grad=True)
+            labels = torch.randint(0,6,(2,7,9))
+            labels[0,0,0] = 255
+            expected = torch.nn.functional.cross_entropy(cpu,labels,ignore_index=255)
+            expected_grad = torch.autograd.grad(expected,cpu)[0]
+            gradients = []
+            for _ in range(2):
+                logits = cpu.detach().cuda().requires_grad_()
+                loss = p.deterministic_ce(logits,labels.cuda())
+                gradient = torch.autograd.grad(loss,logits)[0]
+                torch.testing.assert_close(loss.cpu(),expected.detach())
+                torch.testing.assert_close(gradient.cpu(),expected_grad)
+                gradients.append(gradient)
+            self.assertTrue(torch.equal(*gradients))
+        finally:
+            torch.use_deterministic_algorithms(previous)
+
     def test_config_and_split_boundary(self):
         cfg = p.read(p.CONFIG)
         p.validate_config(cfg)

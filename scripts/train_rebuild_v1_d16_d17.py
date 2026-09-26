@@ -129,7 +129,7 @@ def main():
                 captured.clear()
                 clean = net(op, aux)
                 detached = clean.detach()
-                loss = 0.5 * F.cross_entropy(clean, gt, ignore_index=255)
+                loss = 0.5 * p.deterministic_ce(clean, gt)
                 if head is not None:
                     if len(captured) != 1:
                         raise RuntimeError('RGB pre-fusion root hook count mismatch')
@@ -147,7 +147,7 @@ def main():
                 captured.clear()
                 perturbed = net(op2, aux2)
                 captured.clear()
-                loss = 0.5 * F.cross_entropy(perturbed, gt, ignore_index=255)
+                loss = 0.5 * p.deterministic_ce(perturbed, gt)
                 if args.arm in ('A1','A2','A3','A5'):
                     kl, n = p.consistency(detached, perturbed, gt, available, args.arm,
                                          torch.Generator().manual_seed(key+4))

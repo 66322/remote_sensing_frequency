@@ -166,6 +166,16 @@ to establish novelty or decide the experiment gate.
 
 ## Server launch and observation
 
+Compatibility repair after first server attempt: last observed stop15:29:20
++08:00, 2026-09-26. Eight smoke jobs failed before the first optimizer update
+because the server PyTorch rejects CUDA NLL2d forward under strict determinism.
+Use one-hot/log-softmax mean-valid-pixel CE for both views; this preserves the
+unweighted CE objective and its gradients and avoids NLL2d and gather backward.
+Do not use warn_only or disable strict determinism. Added CPU value/gradient
+equivalence and a strict CUDA forward/backward regression in server preflight.
+Failed smoke directories have no checkpoints; relaunch reuses the directories
+and appends logs. No formal training or experimental result was produced.
+
 Local validation: ten CPU tests passed, including real pre-fusion independence,
 teacher stop-gradient, missing-region exclusion, shuffled control counts,
 noise reproducibility, atomic checkpoint/optimizer/RNG resume, and shared-worker

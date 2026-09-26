@@ -1,5 +1,11 @@
 # Next research decision after D14 (2026-09-26)
 
+**Immediate action:** Pull the strict-CE compatibility repair and relaunch
+`scripts/run_rebuild_v1_d16_d17_queue.sh`. All eight smokes failed on legacy
+CUDA NLL2d before any optimizer step; sixteen formal pilots have not started.
+Strict deterministic mode is retained. New loss/gradient equivalence and CUDA
+regression checks precede the server smoke gate. Keep failed logs; no deletion.
+
 **Post-D15 plan corrected, 2026-09-26:** Keep RGB-DSM complementary/reliable
 segmentation as the research problem. Down4 is a stress condition, not a pivot
 to SR. The proposed next batch is eight configurations x seeds42/17 = sixteen

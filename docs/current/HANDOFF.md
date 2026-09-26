@@ -1,5 +1,15 @@
 # Current handoff — 2026-09-26 (after D14 audit)
 
+**D16/D17 server smoke repair, 2026-09-26:** Last observed queue stopped
+15:29:20 +08:00, all eight smoke trainings failed before their first update;
+formal pilots did not start. User logs identify legacy CUDA NLL2d under strict
+deterministic algorithms in cross_entropy. Both supervised losses now use
+equivalent one-hot/log-softmax valid-pixel CE without NLL2d/gather backward.
+Strict deterministic mode remains enabled. A CPU loss/gradient equivalence test
+and a server-only strict CUDA forward/backward test are added. Pull and rerun
+the same D16/D17 queue; failed smoke directories contain no completed checkpoint
+and may be reused. No deletion or D15 retraining is needed.
+
 **Research direction correction, 2026-09-26:** User questioned the premature
 low-resolution pivot and requested more experiments and alternative directions.
 RGB-DSM complementary/reliable segmentation remains the topic. Down4 is one

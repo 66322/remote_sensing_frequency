@@ -1,5 +1,10 @@
 # Start Here
 
+**D16/D17 launch repair:** User's server queue stopped at15:29:20 +08:00 on
+2026-09-26: eight smokes failed at CUDA cross_entropy NLL2d under strict
+determinism. Formal pilots never started. Equivalent CE implementation and
+regression checks are added; pull and relaunch the same D16/D17 command below.
+
 **Next design, 2026-09-26:** Read the [post-D15 portfolio](protocols/D16_D17_RESEARCH_PORTFOLIO_20260926.md).
 It proposes sixteen matched continuation pilots covering task-conditioned
 intervention learning and geometry supervision, with pretrained adaptation as

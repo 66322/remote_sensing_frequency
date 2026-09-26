@@ -108,6 +108,19 @@ def transform(op, ds, arm, kinds, generator):
             raise ValueError(kind)
     return op, aux, available
 
+def deterministic_ce(logits, gt, ignore_index=255):
+    """Unweighted pixel CE without legacy CUDA NLL2d or gather backward kernels.
+
+    One-hot multiplication preserves mean-over-valid-pixels CE and its gradients.
+    Keep strict deterministic mode enabled; an unsupported other op still fails.
+    """
+    valid = gt != ignore_index
+    labels = gt.masked_fill(~valid, 0)
+    targets = F.one_hot(labels, num_classes=logits.shape[1]).permute(0,3,1,2).to(logits.dtype)
+    per_pixel = -(F.log_softmax(logits,dim=1) * targets).sum(dim=1)
+    return (per_pixel * valid).sum() / valid.sum().clamp_min(1)
+
+
 def selected_mask(clean, perturbed, gt, available):
     return (gt != 255) & available & (clean.detach().argmax(1) == gt) & (perturbed.detach().argmax(1) != gt)
 
