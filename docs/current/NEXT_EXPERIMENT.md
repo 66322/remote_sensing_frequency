@@ -3,7 +3,10 @@
 **当前安排：等待本轮完成，2026-09-27 计划复盘。** 用户要求将 ISFuse 迁移
 与 D16/D17 结果统一讨论，暂不追加运行。见
 [`次日复盘议程`](../protocols/POST_D16_D17_REVIEW_20260927.md)。若明天未完成，
-先整理进度，继续当前队列，不将不完整结果判为方法失败。下述修复启动说明为历史。
+先整理进度，继续当前队列，不将不完整结果判为方法失败。
+新增 [2025–2026分割与交叉方向筛选](../protocols/SEGMENTATION_CROSSOVER_2025_2026_REVIEW_20260926.md)，
+供复盘时选一条主路线和一条备选，涵盖几何、点监督实例、按需计算、跨域、开放词汇与遮挡补全。
+这些是未实施建议，须先过结果/数据/实现门槛，不是新服务器队列。下述修复启动说明为历史。
 
 **Immediate action:** Pull the strict-CE compatibility repair and relaunch
 `scripts/run_rebuild_v1_d16_d17_queue.sh`. All eight smokes failed on legacy
