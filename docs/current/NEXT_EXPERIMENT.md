@@ -1,14 +1,14 @@
 # Next research decision after D14 (2026-09-26)
 
-**After D15: new method design, not a D15 relaunch.** D15 completed at
-2026-09-26 14:45:11 +08:00 and the eight archived summaries passed offline
-audit. Primary next target: DSM-guided feature recovery for RGB down4.
-Compare four matched arms (RGB baseline, RGB recovery, ordinary DSM fusion,
-DSM-guided recovery), seeds42/17. Require improvement over ordinary fusion
-and generic recovery, not just RGB. Freeze training degradation, full-image
-selection and resource schedule before implementation. Mild RGB degradation,
-clean and DSM absence are secondary checks; frequency is a later ablation.
-Read `docs/experiments/D15_RESULTS_20260926.md`. No new method queue is running.
+**Post-D15 plan corrected, 2026-09-26:** Keep RGB-DSM complementary/reliable
+segmentation as the research problem. Down4 is a stress condition, not a pivot
+to SR. The proposed next batch is eight configurations x seeds42/17 = sixteen
+4000-step continuation pilots: paired-intervention task consistency with
+generic/shuffled/RGB-capacity controls, plus aligned-versus-shuffled geometry
+supervision. See `docs/protocols/D16_D17_RESEARCH_PORTFOLIO_20260926.md` for the
+matrix, stop rules, two-GPU ready-job scheduling and reserved pretrained-adapter
+direction. The design is not yet implemented or launched. D15 is complete;
+do not rerun it. Earlier queue/repair instructions below are historical.
 
 **D15 relaunch pending after queue repair:** User-reported 01:18:08 +08:00
 status shows both smokes passed but both workers exited before formal training.

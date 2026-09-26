@@ -950,7 +950,7 @@
       "server_records": "records/rebuild_v1_d15_capability_20260926/ and records/rebuild_v1_d15_capability_queue_20260926/",
       "test6_policy": "prohibited",
       "gpu": "physical_0_and_1_independent_workers_user_authorized_20260926",
-      "decision": "Final queue completed 2026-09-26 14:45:11 +08:00, 8/8 evaluations; originals archived in 3f95584 and offline audit passed. Both-seed RGB degradation gate passes, with down4 positive on both tiles but mild conditions mixed by tile. Prioritize a new matched DSM-guided structure-recovery comparison under RGB down4; Val2 exploratory, Test6 frozen."
+      "decision": "Final queue completed 2026-09-26 14:45:11 +08:00, 8/8 evaluations; originals archived in 3f95584 and offline audit passed. Down4 gains are positive on both tiles but mild conditions mixed. Keep reliable RGB-DSM segmentation as the topic; down4 is a stress condition, not an SR pivot. Proposed intervention-learning and geometry-supervision pilots are in docs/protocols/D16_D17_RESEARCH_PORTFOLIO_20260926.md; not implemented/running. Val2 exploratory, Test6 frozen."
     },
     {
       "id": "D10_SELECTIVE_DSM_BENEFIT",

@@ -1,12 +1,18 @@
 # Start Here
 
+**Next design, 2026-09-26:** Read the [post-D15 portfolio](protocols/D16_D17_RESEARCH_PORTFOLIO_20260926.md).
+It proposes sixteen matched continuation pilots covering task-conditioned
+intervention learning and geometry supervision, with pretrained adaptation as
+a reserved alternative. RGB-DSM reliable segmentation remains the topic;
+down4 is one stress condition. This design is not implemented or running.
+
 **D15 complete and offline-audited, 2026-09-26:** Last user-reported server
 completion is 14:45:11 +08:00, eight evaluations complete, both workers0.
 The prespecified RGB degradation screen passed in both seeds. Read
 [`D15 results`](experiments/D15_RESULTS_20260926.md): down4 gains are positive
-in both seeds and both tiles, while mild-condition gains vary by tile. The next
-method target is DSM-guided RGB structure recovery under down4; its new code
-and queue are not yet implemented. Do not rerun completed D15.
+in both seeds and both tiles, while mild-condition gains vary by tile. These
+findings motivate the two hypotheses above, not a demonstrated restoration
+method. Do not rerun completed D15.
 
 **D15 evaluation repair pending server replay:** Both DSM-only 16k trainings
 completed, but evaluation failed exact clean confusion-matrix reproduction at
