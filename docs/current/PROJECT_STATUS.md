@@ -1,5 +1,12 @@
 # Current Project Status
 
+**Last observed D15 server state (2026-09-26 14:45:11 +08:00):** All eight
+evaluations completed, both workers exit0. Original summaries uploaded in
+`3f95584` and offline-audited. Prespecified pooled RGB-degradation gate passed
+in both seeds. Strongest reproducible target is RGB down4: both tiles/seed
+comparisons improve versus RGB controls. See `docs/experiments/D15_RESULTS_20260926.md`.
+No new-method queue has been launched; Val2 remains exploratory.
+
 **Last observed D15 state (2026-09-26 05:49:46 +08:00):** Both DSM-only
 trainings reached 16000 steps and completed. Both independent evaluations
 failed exact clean FullGT metric reproduction; the queue stopped before

@@ -1,5 +1,15 @@
 # Next research decision after D14 (2026-09-26)
 
+**After D15: new method design, not a D15 relaunch.** D15 completed at
+2026-09-26 14:45:11 +08:00 and the eight archived summaries passed offline
+audit. Primary next target: DSM-guided feature recovery for RGB down4.
+Compare four matched arms (RGB baseline, RGB recovery, ordinary DSM fusion,
+DSM-guided recovery), seeds42/17. Require improvement over ordinary fusion
+and generic recovery, not just RGB. Freeze training degradation, full-image
+selection and resource schedule before implementation. Mild RGB degradation,
+clean and DSM absence are secondary checks; frequency is a later ablation.
+Read `docs/experiments/D15_RESULTS_20260926.md`. No new method queue is running.
+
 **D15 relaunch pending after queue repair:** User-reported 01:18:08 +08:00
 status shows both smokes passed but both workers exited before formal training.
 Pull the repaired queue script and rerun the same launch command in the D15

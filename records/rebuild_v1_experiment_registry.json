@@ -939,7 +939,7 @@
     {
       "id": "D15_DSM_CAPABILITY_RGB_DEGRADATION",
       "name": "DSM_only_baseline_and_paired_RGB_degradation",
-      "status": "both_trainings_complete_clean_evaluation_reproduction_failed_repair_pending_replay",
+      "status": "complete_original_summaries_offline_audited",
       "purpose": "Measure DSM-only capability under the matched R01 schedule and whether R05 gains over RGB and matched-capacity controls when RGB detail degrades.",
       "protocol": "docs/protocols/D15_DSM_CAPABILITY_RGB_DEGRADATION_20260926.md",
       "config": "configs/rebuild_v1/d15_capability_20260926.json",
@@ -950,7 +950,7 @@
       "server_records": "records/rebuild_v1_d15_capability_20260926/ and records/rebuild_v1_d15_capability_queue_20260926/",
       "test6_policy": "prohibited",
       "gpu": "physical_0_and_1_independent_workers_user_authorized_20260926",
-      "decision": "Both 16k DSM-only trainings completed by 2026-09-26 05:43:56 +08:00; evaluations failed exact clean FullGT reproduction by 05:49:46. Evaluator deterministic settings aligned with training validation; exact gate retained with matrix diagnostics. Replay evaluation and reuse completed training."
+      "decision": "Final queue completed 2026-09-26 14:45:11 +08:00, 8/8 evaluations; originals archived in 3f95584 and offline audit passed. Both-seed RGB degradation gate passes, with down4 positive on both tiles but mild conditions mixed by tile. Prioritize a new matched DSM-guided structure-recovery comparison under RGB down4; Val2 exploratory, Test6 frozen."
     },
     {
       "id": "D10_SELECTIVE_DSM_BENEFIT",

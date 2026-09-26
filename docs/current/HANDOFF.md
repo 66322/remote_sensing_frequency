@@ -1,5 +1,15 @@
 # Current handoff — 2026-09-26 (after D14 audit)
 
+**D15 closed, 2026-09-26:** Last observed server completion 14:45:11 +08:00,
+8/8 summaries, both workers0. Originals uploaded in `3f95584`; offline hash/
+CM/count/invariance/decision audit passed. See `docs/experiments/D15_RESULTS_20260926.md`.
+RGB down4 gains over the stronger RGB control are +2.9585/+1.9245 pp and
+positive on both tiles in both seeds; other degradations are mixed by tile.
+DSM-only is about65.8% overall but strong on Building. Choose the next method
+question as DSM-guided feature recovery under RGB down4 with matched ordinary
+fusion and RGB recovery controls. Method implementation/queue is still pending;
+no new server training is observed. Historical repair notes below are closed.
+
 **D15 evaluation repair, last observed 2026-09-26 05:49:46 +08:00:** Both
 16000-step DSM-only trainings completed successfully (seed42 05:43:05,
 seed17 05:43:56). Both evaluations failed their exact clean FullGT confusion
