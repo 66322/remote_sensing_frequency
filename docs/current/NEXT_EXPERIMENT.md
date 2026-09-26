@@ -1,5 +1,10 @@
 # Next research decision after D14 (2026-09-26)
 
+**当前安排：等待本轮完成，2026-09-27 计划复盘。** 用户要求将 ISFuse 迁移
+与 D16/D17 结果统一讨论，暂不追加运行。见
+[`次日复盘议程`](../protocols/POST_D16_D17_REVIEW_20260927.md)。若明天未完成，
+先整理进度，继续当前队列，不将不完整结果判为方法失败。下述修复启动说明为历史。
+
 **Immediate action:** Pull the strict-CE compatibility repair and relaunch
 `scripts/run_rebuild_v1_d16_d17_queue.sh`. All eight smokes failed on legacy
 CUDA NLL2d before any optimizer step; sixteen formal pilots have not started.

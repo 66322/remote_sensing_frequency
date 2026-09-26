@@ -1,5 +1,13 @@
 # Current handoff — 2026-09-26 (after D14 audit)
 
+**最新交接（2026-09-26）：** 用户已观测15:37:38 +08:00 全部8项 smoke
+训练/评估通过，GPU0/1 分别启动 A0 seed42/17；随后日志显示两项均到20/4000步
+（未附新时间戳）。这是最后观测状态，不是实时监控。修复已通过服务器短流程。
+ISFuse 迁移仅归档为备选，用户要求明天结合本轮结果统一整理：
+[`2026-09-27复盘议程`](../protocols/POST_D16_D17_REVIEW_20260927.md)。
+全队列可能跨过明天，未完则继续，不改动当前16项任务，也不自动追加新任务。
+以下修复与启动记录为历史，不应据此重复重启。
+
 **D16/D17 server smoke repair, 2026-09-26:** Last observed queue stopped
 15:29:20 +08:00, all eight smoke trainings failed before their first update;
 formal pilots did not start. User logs identify legacy CUDA NLL2d under strict
