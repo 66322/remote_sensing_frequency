@@ -1,5 +1,13 @@
 # Start Here
 
+**Latest, 2026-09-27: D18/D19 ready for server launch.** Follow the
+[single-seed execution instructions](protocols/D18_D19_EXECUTION_20260927.md):
+8 base runs plus at most2 conditional runs, GPU0/1, integrated evaluation, no seed17.
+Server smoke/launch still pending. D16/D17 completed, archived and audited; both candidate gates failed.
+Do not relaunch that queue. Read [current handoff](current/HANDOFF.md) for the immediate action.
+
+**Historical material follows.** Earlier running/repair/launch notes are superseded by the current handoff.
+
 **D16/D17 launch repair:** User's server queue stopped at15:29:20 +08:00 on
 2026-09-26: eight smokes failed at CUDA cross_entropy NLL2d under strict
 determinism. Formal pilots never started. Equivalent CE implementation and

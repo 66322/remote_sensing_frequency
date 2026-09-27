@@ -989,6 +989,24 @@
       "test6_policy": "prohibited",
       "gpu": "physical_0_only",
       "decision": "No D10 fitting or GPU queue until source access, prior exposure, scene-disjoint expert/head/calibration/evaluation partitions, class mapping, and dataset-specific thresholds are frozen."
+    },
+    {
+      "id": "D18_D19_NIGHT_SCREEN_20260927",
+      "name": "single_seed_pretrained_adapter_and_intervention_structure_screen",
+      "status": "implemented_awaiting_server_launch",
+      "protocol": "docs/protocols/D18_D19_EXECUTION_20260927.md",
+      "config": "configs/rebuild_v1/d18_d19_night_20260927.json",
+      "queue": "scripts/run_rebuild_v1_d18_d19_queue.sh",
+      "seeds": [
+        42
+      ],
+      "training": "3 frozen DINOv2 adapter 8k runs + 5 R05 continuation 4k runs; 2 structure-gated conditional runs; no seed17 scheduled",
+      "evaluation": "automatic reload/clean probe + Val2 nine standard and two diagnostic conditions; four completed old checkpoints used for boundary inference only",
+      "test6_policy": "prohibited",
+      "server_records": "records/rebuild_v1_d18_d19_20260927/ and records/rebuild_v1_d18_d19_queue_20260927/",
+      "server_started_at": null,
+      "completed_at": null,
+      "decision": "Await server branch-local CPU/CUDA/data train-save-reload-eval smoke; no result exists."
     }
   ],
   "handoff_entry": "docs/START_HERE.md",

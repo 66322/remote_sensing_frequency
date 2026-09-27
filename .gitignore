@@ -40,6 +40,8 @@ datasets/
 dataset/
 data/
 08_assets/pretrained/
+external/dinov2_*/
+pretrained_external/
 
 # ============================================================
 # System / editor
