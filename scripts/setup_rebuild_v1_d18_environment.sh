@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
+export CUBLAS_WORKSPACE_CONFIG=:4096:8
+export CUDA_DEVICE_ORDER=PCI_BUS_ID
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 conda_exe="${CONDA_EXE:-$(command -v conda)}"
 base="$("$conda_exe" info --base)"
