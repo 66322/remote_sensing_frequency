@@ -2,6 +2,12 @@ D11 completed 12/12 with zero queue failures by user report, but no model passed
 
 # Completed, Closed, or Do-Not-Repeat Work
 
+D16/D17 completed all16 formal tasks, zero failures, with archived-summary audit passing.
+A2 task-conditioned consistency and B1 RGB-feature DSM-gradient auxiliary supervision both
+failed the frozen two-seed accuracy/tile screen. Do not relaunch these variants, tune their
+weights on Val2, or change the screen to rescue them. Generic/shuffled/RGB controls are part
+of the completed evidence. See `docs/experiments/D16_D17_RESULTS_20260927.md`.
+
 D14 completed its frozen D13-head DSM-content intervention with eight
 evaluations and zero queue failures by user-supplied server output.
 DSM heads respond at the decision level; RGB controls are invariant.

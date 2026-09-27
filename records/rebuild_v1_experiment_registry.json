@@ -2,7 +2,7 @@
   "schema_version": "1.2",
   "project": "REBUILD_V1",
   "timezone": "UTC+08:00",
-  "last_updated": "2026-09-26",
+  "last_updated": "2026-09-27",
   "status_provenance_policy": "reported_complete and running_as_last_reported are user observations, not live server verification. expected_server_records are absent artifacts to collect, not archived evidence.",
   "timing_policy": {
     "started_at": "Actual launch time when directly evidenced; otherwise date/minute precision is stated explicitly.",
@@ -955,17 +955,28 @@
     {
       "id": "D16_D17_PORTFOLIO_20260926",
       "name": "paired_intervention_consistency_and_prefusion_geometry_supervision",
-      "status": "server_smoke_failed_ce_compatibility_repaired_replay_pending",
+      "status": "reported_complete",
       "protocol": "docs/protocols/D16_D17_RESEARCH_PORTFOLIO_20260926.md",
       "config": "configs/rebuild_v1/d16_d17_portfolio_20260926.json",
       "queue": "scripts/run_rebuild_v1_d16_d17_queue.sh",
-      "seeds": [42, 17],
+      "seeds": [
+        42,
+        17
+      ],
       "training": "8 configurations x 2 seeds; 4000-step full-network continuations from matched R05/C-OO-QD anchors; eight separate one-step smokes",
       "evaluation": "Potsdam Val2 exploratory, fixed final checkpoint, clean plus four RGB quality/two auxiliary quality/two known absence conditions",
       "server_records": "records/rebuild_v1_d16_d17_20260926/ and records/rebuild_v1_d16_d17_queue_20260926/",
       "test6_policy": "prohibited",
       "gpu": "user_authorized_physical_0_and_1_independent_shared_workers",
-      "decision": "Server queue stopped 2026-09-26 15:29:20 +08:00: all eight smokes failed before first update at legacy CUDA NLL2d cross_entropy under strict determinism. Formal pilots never started. Equivalent one-hot/log-softmax CE and CPU/CUDA regression tests added; strict mode retained, replay pending. Reserved six pretrained-adapter trials not scheduled."
+      "decision": "16 tasks completed with zero failures; all decision fields independently recomputed from archived summaries. A2 and B1 both failed frozen two-seed gates; close tested variants. Prepare matched pretrained-adapter comparison; no new trial scheduled.",
+      "evidence_status": "archived_original_summaries_offline_audit_passed",
+      "completed_at": "2026-09-27T22:53:47+08:00",
+      "time_source": "records/rebuild_v1_d16_d17_compact_20260927/status.tsv",
+      "archive_commit": "e37d103",
+      "records": [
+        "records/rebuild_v1_d16_d17_compact_20260927/",
+        "docs/experiments/D16_D17_RESULTS_20260927.md"
+      ]
     },
     {
       "id": "D10_SELECTIVE_DSM_BENEFIT",

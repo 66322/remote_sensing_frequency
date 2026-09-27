@@ -1,5 +1,10 @@
 # Current Project Status
 
+**最新状态，2026-09-27：** 最后观测D16/D17服务器完成时间22:53:47 +08:00，
+16项任务、零失败，16份原始摘要归档于e37d103且离线审计通过。A2/B1都未通过预设门槛，
+当前方法变体关闭。详见 [结果报告](../experiments/D16_D17_RESULTS_20260927.md)。
+下一步为匹配预训练表示/适配器对照准备；没有新队列启动证据。以下运行态为历史。
+
 **Last observed D16/D17 server state (2026-09-26 15:29:20 +08:00):** Eight
 smoke trainings failed, queue stopped before formal pilots. Shared cause from
 user tracebacks: CUDA NLL2d lacks a strict deterministic implementation in the

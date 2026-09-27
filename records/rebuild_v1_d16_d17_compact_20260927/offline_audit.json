@@ -1,0 +1,145 @@
+{
+  "status": "PASS",
+  "summaries": 16,
+  "source_commit": "8cf6f0a",
+  "candidates": [],
+  "score_rows": [
+    {
+      "arm": "A0",
+      "seed": 42,
+      "macro_percent": 86.54362044047986,
+      "clean": 87.10202734873681,
+      "rgb_quality": 86.52552058280234,
+      "aux_quality": 86.0033133899004
+    },
+    {
+      "arm": "A1",
+      "seed": 42,
+      "macro_percent": 86.66244298316042,
+      "clean": 87.18778918326663,
+      "rgb_quality": 86.67773588888087,
+      "aux_quality": 86.12180387733378
+    },
+    {
+      "arm": "A2",
+      "seed": 42,
+      "macro_percent": 87.02947868471414,
+      "clean": 87.58385126575648,
+      "rgb_quality": 87.09645084164345,
+      "aux_quality": 86.40813394674248
+    },
+    {
+      "arm": "A3",
+      "seed": 42,
+      "macro_percent": 86.8469889805133,
+      "clean": 87.5196513926722,
+      "rgb_quality": 86.75166251269567,
+      "aux_quality": 86.26965303617204
+    },
+    {
+      "arm": "A4",
+      "seed": 42,
+      "macro_percent": 84.52891733841687,
+      "clean": 85.64284642385743,
+      "rgb_quality": 84.6259784169869,
+      "aux_quality": 83.3179271744063
+    },
+    {
+      "arm": "A5",
+      "seed": 42,
+      "macro_percent": 84.78488958159072,
+      "clean": 85.6444399385491,
+      "rgb_quality": 84.90303362964463,
+      "aux_quality": 83.80719517657843
+    },
+    {
+      "arm": "B1",
+      "seed": 42,
+      "macro_percent": 86.63063283986673,
+      "clean": 87.21153602430756,
+      "rgb_quality": 86.62133672821311,
+      "aux_quality": 86.0590257670795
+    },
+    {
+      "arm": "B2",
+      "seed": 42,
+      "macro_percent": 86.64308020564083,
+      "clean": 87.18514335213395,
+      "rgb_quality": 86.64989581724467,
+      "aux_quality": 86.09420144754387
+    },
+    {
+      "arm": "A0",
+      "seed": 17,
+      "macro_percent": 85.74504572713249,
+      "clean": 86.37596721768317,
+      "rgb_quality": 86.11428827700412,
+      "aux_quality": 84.74488168671016
+    },
+    {
+      "arm": "A1",
+      "seed": 17,
+      "macro_percent": 85.58372483846556,
+      "clean": 86.14465493874313,
+      "rgb_quality": 85.93602113055229,
+      "aux_quality": 84.67049844610125
+    },
+    {
+      "arm": "A2",
+      "seed": 17,
+      "macro_percent": 85.5602750019894,
+      "clean": 86.031242747381,
+      "rgb_quality": 85.95138327138885,
+      "aux_quality": 84.69819898719834
+    },
+    {
+      "arm": "A3",
+      "seed": 17,
+      "macro_percent": 85.35885082782897,
+      "clean": 85.80438415048646,
+      "rgb_quality": 85.75259364435445,
+      "aux_quality": 84.51957468864602
+    },
+    {
+      "arm": "A4",
+      "seed": 17,
+      "macro_percent": 83.51147766054468,
+      "clean": 84.81186215370997,
+      "rgb_quality": 83.80968787088676,
+      "aux_quality": 81.9128829570373
+    },
+    {
+      "arm": "A5",
+      "seed": 17,
+      "macro_percent": 83.95405952611475,
+      "clean": 85.03392925530468,
+      "rgb_quality": 84.38892235900911,
+      "aux_quality": 82.43932696403044
+    },
+    {
+      "arm": "B1",
+      "seed": 17,
+      "macro_percent": 85.6004374099666,
+      "clean": 86.23809182817995,
+      "rgb_quality": 85.91820172955634,
+      "aux_quality": 84.6450186721635
+    },
+    {
+      "arm": "B2",
+      "seed": 17,
+      "macro_percent": 85.7806991997952,
+      "clean": 86.3783179216292,
+      "rgb_quality": 86.13568642907909,
+      "aux_quality": 84.82809324867726
+    }
+  ],
+  "checks": [
+    "historical Git-blob source/config hashes",
+    "matched anchor/split/reference bindings",
+    "pooled and tile integer confusion matrices",
+    "per-class IoU and fg5 recomputation",
+    "paired correctness counts",
+    "all decision fields recomputed"
+  ],
+  "limitation": "Server checkpoint bytes, split-file bytes and imagery were not independently accessed or rehashed; no reinference. Repeated Val2 remains exploratory."
+}
