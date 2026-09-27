@@ -14,6 +14,10 @@ if [[ ! -f "$marker" ]]; then
   "$python_bin" -c "import torch,numpy,skimage,scipy,ml_collections; assert torch.__version__.startswith('2.2.2'); assert torch.cuda.is_available()"
   touch "$marker"
 fi
+if [[ "${1:-}" == "--environment-only" ]]; then
+  "$python_bin" -c "import torch,numpy,skimage,scipy,ml_collections; assert torch.__version__.startswith('2.2.2'); assert int(numpy.__version__.split('.')[0]) < 2; assert torch.cuda.is_available(); print('D18 ENVIRONMENT READY', torch.__version__, torch.cuda.get_device_name(0))"
+  exit 0
+fi
 cd "$root"
 "$python_bin" -B -u scripts/prepare_rebuild_v1_d18.py
 "$python_bin" -c "import torch,numpy,skimage,scipy,ml_collections; assert torch.__version__.startswith('2.2.2'); assert torch.cuda.is_available()"
