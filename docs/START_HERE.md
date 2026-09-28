@@ -1,5 +1,12 @@
 # Start Here
 
+**D20 Stage A server probe completed, 2026-09-28.** Local DFC19 triplets: zero;
+official Track-1 torrent metadata reachable; GRSS/DataPort server proxy: 403.
+Actual data transfer and terms remain pending. Vaihingen is available for
+same-area development, with prior scene exposure and NIR/red/green inputs to account for.
+Read the [Stage A result and next action](current/D20_STAGE_A_SOURCE_ACCEPTANCE_20260928.md).
+No D20 training queue exists yet.
+
 **Latest, 2026-09-28: D18 seed17 replication complete and offline-audited.**
 The seed42/17 P0/P1/P2 summaries are archived. P2 passed the prespecified
 screen in each seed, with gains of +1.0603/+0.9229 percentage points over

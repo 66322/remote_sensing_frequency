@@ -1,6 +1,14 @@
-# Current handoff — 2026-09-28, D18 seed17 replication audited
+# Current handoff — 2026-09-28, D20 Stage A server probe complete
 
 ## 当前事实与下一步
+
+D20 Stage A 已在服务器执行 `6c7c0d1`：本地 DFC19 三元组为0；官方 Track-1
+torrent 元数据可达并确认 RGB/Truth 两个所需包；GRSS/DataPort 代理403。
+当前阻塞是实际数据传输及使用条件，尚未完成数据准入或GPU队列。
+[实测与 Vaihingen 可用角色](D20_STAGE_A_SOURCE_ACCEPTANCE_20260928.md)；
+[GitHub 紧凑记录](../../records/rebuild_v1_d20_source_acceptance_compact_20260928/user_reported_stage_a.json)。
+Vaihingen 已有部分可用三元组，可作开发实验；其旧实验曝光及同一镶嵌图邻近关系
+限制了独立最终确认结论，TOP 输入是近红外/红/绿，需单独冻结通道协议。
 
 服务器 D18 seed17 队列于 2026-09-28 14:52:05 +08:00 完成：P0/P1/P2
 三组短流程、正式训练、评估、配对分析及精简归档均成功。服务器原始六份
@@ -18,7 +26,8 @@ P2相对同seed最强P0/P1的综合增益分别为+1.0603／+0.9229 pp，
 [D20阶段计划](../protocols/D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928.md)：
 来源准入→冻结fit/dev/final→P0/P1/P2 seed42三组→开发门槛通过后再补seed17三组→
 另定可靠性干预。最终区域保留到全部方法与对照冻结后统一评价。
-当前仅有计划、无D20可执行队列，不重启D18/D19或seed17队列。
+Stage A 来源与传输审计脚本已执行；D20 训练队列尚未实现。
+不重启D18/D19或seed17队列。
 Val2只有两个场景且已反复使用，两种子通过仍是开发证据；Test6保持冻结。
 
 以下旧交接内容仅保留作时间线背景，**不是当前启动指令**。

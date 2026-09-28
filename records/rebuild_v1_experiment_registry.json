@@ -1045,9 +1045,17 @@
   ],
   "next_plan": {
     "id": "D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928",
-    "status": "planned_source_split_and_implementation_pending",
+    "status": "stage_a_source_probe_complete_transfer_terms_pending",
     "protocol": "docs/protocols/D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928.md",
-    "immediate_action": "Bounded US3D source acceptance check; assess Houston once if US3D is unusable.",
+    "immediate_action": "Resolve US3D data transfer and use terms; preserve Vaihingen as a same-area development option; assess Houston once if US3D becomes unusable.",
+    "stage_a_probe": {
+      "source_commit": "6c7c0d14290197e6741c48342d5f4f82111473ab",
+      "status": "BLOCKED_DATA_TRANSFER_AND_TERMS_PENDING",
+      "local_triplets": 0,
+      "grss_and_dataport": "server_proxy_403",
+      "official_torrent_metadata": "reachable_http_200",
+      "evidence": "records/rebuild_v1_d20_source_acceptance_compact_20260928/user_reported_stage_a.json"
+    },
     "conditional_training": "P0/P1/P2 seed42 on accepted source; all three seed17 only after frozen dev gate passes.",
     "final_evaluation": "Reserve independent geography until all methods and controls are frozen; never select reliability interventions on final scores.",
     "queue": null,

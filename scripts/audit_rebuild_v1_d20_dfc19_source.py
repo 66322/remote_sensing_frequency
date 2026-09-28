@@ -211,7 +211,7 @@ def inspect_torrent(path: Path) -> dict:
 
 
 def inventory_local(data_root: Path) -> dict:
-    roles = defaultdict(dict)
+    roles = defaultdict(lambda: defaultdict(list))
     city_tiles = defaultdict(set)
     tif_count = 0
     for p in data_root.rglob("*") if data_root.exists() else []:
@@ -223,19 +223,23 @@ def inventory_local(data_root: Path) -> dict:
             continue
         prefix = m.group("prefix")
         role = m.group("role").upper()
-        roles[prefix][role] = str(p)
+        roles[prefix][role].append(str(p))
         cm = CITY_TILE_RE.match(prefix)
         if cm:
             city_tiles[cm.group("city").upper()].add(cm.group("tile"))
     triplets = []
+    ambiguous = []
     for prefix, mapping in sorted(roles.items()):
         if {"RGB", "AGL", "CLS"} <= set(mapping):
+            if any(len(mapping[role]) != 1 for role in ("RGB", "AGL", "CLS")):
+                ambiguous.append({"prefix": prefix, "paths_by_role": dict(mapping)})
+                continue
             triplets.append(
                 {
                     "prefix": prefix,
-                    "rgb": mapping["RGB"],
-                    "agl": mapping["AGL"],
-                    "cls": mapping["CLS"],
+                    "rgb": mapping["RGB"][0],
+                    "agl": mapping["AGL"][0],
+                    "cls": mapping["CLS"][0],
                 }
             )
     return {
@@ -244,6 +248,8 @@ def inventory_local(data_root: Path) -> dict:
         "tif_count": tif_count,
         "matched_triplet_count": len(triplets),
         "triplet_examples": triplets[:20],
+        "ambiguous_prefix_count": len(ambiguous),
+        "ambiguous_prefix_examples": ambiguous[:20],
         "city_tile_counts": {k: len(v) for k, v in sorted(city_tiles.items())},
     }
 
@@ -317,11 +323,17 @@ def main() -> int:
             "Potentially usable local Track-1 triplets exist. Next inspect raster metadata, "
             "class codes, geographic split and publication-use approval before training."
         )
-    elif torrent_download.get("ok"):
+    elif (
+        probes["github_torrent"].get("ok")
+        and torrent_download.get("ok")
+        and torrent
+        and {"Train-Track1-RGB.zip", "Train-Track1-Truth.zip"}
+        <= {Path(item["path"]).name for item in torrent["wanted_files"]}
+    ) or probes["dataport"].get("ok"):
         status = "BLOCKED_DATA_TRANSFER_AND_TERMS_PENDING"
         decision = (
-            "Official JHU/APL torrent metadata is reachable, so the old Google Drive 403 is "
-            "not the only route. However no local RGB/AGL/CLS triplets were confirmed; do not "
+            "An official metadata or DataPort page is reachable, but this does not prove the "
+            "data packages can be transferred. No local RGB/AGL/CLS triplets were confirmed; do not "
             "start D20 training until data transfer and publication-use conditions are resolved."
         )
     else:

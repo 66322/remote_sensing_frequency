@@ -4,7 +4,9 @@
 
 - Date: 2026-09-28
 - Protocol: `docs/protocols/D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928.md`
-- Status: **OFFICIAL_DOCUMENTATION_VERIFIED / SERVER_DATA_ACCESS_PENDING**
+- Status: **SOURCE_FIT_PASS / LOCAL_TRIPLETS_ABSENT / TERMS_FOR_TRANSFER_PENDING**
+- Server probe: 2026-09-28 15:22 +08:00, executed commit `6c7c0d1`; compact result is in
+  [`user_reported_stage_a.json`](../../records/rebuild_v1_d20_source_acceptance_compact_20260928/user_reported_stage_a.json)
 - GPU queue: none
 - Test6: sealed; not loaded
 - Google Drive: the previously failed proxy-403 route is explicitly excluded from the new probe
@@ -55,7 +57,7 @@ JHU/APL 的 `pubgeo/dfc2019` 仓库公开提供所有 track 的 torrent metadata
 它有 Cars 类，但空间独立 fit/dev/final 的证据强度明显弱于 JAX/OMA 双城市 US3D。
 此外同样存在论文使用审批要求。
 
-因此当前策略保持：
+以下是服务器实测前的候选选择；实测结果及当前执行边界见文末更新：
 - **US3D：内容适配 PASS_WITH_LIMITATIONS；访问/许可 PENDING。**
 - **Houston：只在 US3D 服务器访问或许可明确不可行后检查一次。**
 - 当前还不能把阶段 A 写成“可用”，也没有理由判为“不合格”；状态应为 **BLOCKED_PENDING_ACCESS**。
@@ -139,3 +141,21 @@ Colab/外部网络获取数据后，经 Hugging Face 私有 dataset repo 中转�
 
 下一项 Stage-A 工作因此改为：确认官方注册/科研使用审批以及是否允许个人私有云/HF 中转。
 在此之前不启动 GPU，也不切换 Houston；US3D/DFC19 仍是第一候选。
+
+## Vaihingen 的可用角色
+
+用户服务器已有 Vaihingen。此前元数据审计确认 17 个旧实验未用 ID 有提取的
+光学、DSM、完整标签文件；但这些 patch 与已用于旧 F0/P1 训练和评价的区域同属
+一幅影像镶嵌图，且交错或相邻，故不能仅凭 ID 未使用就称为独立最终验证。
+已有 ID、历史曝光和文件说明见
+[D9B 来源记录](D9B_SOURCE_STATUS_20260923.md)。
+
+Vaihingen 很适合在等待 US3D 条款/传输期间做低成本的数据管线、类别映射、
+输入退化和 P0/P1/P2 短流程开发，但结果须明确标为同域探索。正式使用前仍要核对
+实际标签路径、边界标签版本、内容对齐、场景相邻关系与既往曝光。官方 Vaihingen
+TOP 三个通道是**近红外、红、绿**，并非真 RGB；将其送入现有 DINO RGB 预训练
+模型会改变输入含义，应单独冻结通道方案和归一化，不能直接套 D20 US3D 的 RGB
+结论。[ISPRS 数据说明](https://www.isprs.org/resources/datasets/benchmarks/UrbanSemLab/2d-sem-label-vaihingen.aspx)
+
+如后续 US3D 确定不可用，可单独制定 Vaihingen 探索协议；其结论等级不能写作
+跨城市独立最终确认。
