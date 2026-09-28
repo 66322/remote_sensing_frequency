@@ -5,8 +5,12 @@
 - Origin Skill: academic-research-suite / experiment-agent
 - Origin Mode: plan/run preparation
 - Origin Date: 2026-09-28
-- Verification Status: IMPLEMENTED_LOCAL_CHECKS_ONLY; server formal CUDA pending
+- Verification Status: SERVER_COMPLETE; compact count audit passed; development gate failed
 - Version Label: v1
+
+**执行后结果：**三组训练/评价及分析于2026-09-28 17:42:26 +08:00完成，
+冻结逐块门槛未过；见[结果](../experiments/D20_VAIHINGEN_SEED42_RESULTS_20260928.md)。
+以下启动命令是已完成队列的历史协议，不应再次执行。
 
 ## 依据与证据等级
 

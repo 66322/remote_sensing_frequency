@@ -1,5 +1,12 @@
 # Start Here
 
+**D20 Vaihingen seed42 development screen completed and failed the frozen
+per-tile gate, 2026-09-28.** All three 8,000-step arms and 17-tile/11-condition
+evaluations completed; archived-count audit passed. P2 gained +1.0261 pp over
+the stronger pooled control but lost on tiles 12 and 14, so seed17 is not
+automatically launched. Read the [result and next decision](experiments/D20_VAIHINGEN_SEED42_RESULTS_20260928.md).
+US3D independent-source transfer and use terms remain unresolved.
+
 **D20 Vaihingen seed42 queue running as last reported.** The server passed
 87 input hashes; P0/P1 each reached 1,000/8,000 training steps. Preserve the
 running code/config and archive its decision. A separate

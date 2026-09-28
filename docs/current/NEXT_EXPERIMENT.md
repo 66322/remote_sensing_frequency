@@ -1,5 +1,11 @@
 # Next research decision after audited D18 replication (2026-09-28)
 
+**最新决定：**D20 Vaihingen seed42正式同域开发已完成、归档并离线复算。
+P2总体+1.0261pp，但12/14号块未过预设局部门槛，整体验收为失败。
+按冻结规则停止自动seed17；不删块、不改阈值重筛。下一步优先完成
+[失败区域的只读数据质量解释与US3D来源准入](../experiments/D20_VAIHINGEN_SEED42_RESULTS_20260928.md)，
+独立确认继续受US3D传输/条款阻塞。
+
 **运行态：**服务器最近报告D20 seed42 P0/P1各1,000/8,000步，队列仍在运行。
 先等待训练、17块×11条件评价和decision完成并归档；随后根据预设门槛决定
 是否补seed17。[吞吐优化计划](../protocols/D20_THROUGHPUT_OPTIMIZATION_AFTER_SEED42_20260928.md)

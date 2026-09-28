@@ -1047,7 +1047,7 @@
     "id": "D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928",
     "status": "stage_a_source_probe_complete_transfer_terms_pending",
     "protocol": "docs/protocols/D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928.md",
-    "immediate_action": "Run frozen Vaihingen matched seed42 development queue and archive full decision; independently resolve US3D data transfer/use terms; assess Houston once if US3D becomes unusable.",
+    "immediate_action": "Preserve failed Vaihingen per-tile gate and no-seed17 stop; optionally audit tiles 12/14 read-only for input quality; independently resolve US3D data transfer/use terms and assess Houston once if US3D becomes unusable.",
     "stage_a_probe": {
       "source_commit": "6c7c0d14290197e6741c48342d5f4f82111473ab",
       "status": "BLOCKED_DATA_TRANSFER_AND_TERMS_PENDING",
@@ -1105,7 +1105,7 @@
       "host_peak_rss_gib": 2.258
     },
     "vaihingen_seed42_formal_development": {
-      "status": "running_as_last_reported",
+      "status": "complete_development_gate_failed_offline_count_audit_passed",
       "config": "configs/rebuild_v1/d20_vaihingen_formal_seed42_20260928.json",
       "protocol": "docs/protocols/D20_VAIHINGEN_SEED42_FORMAL_20260928.md",
       "queue": "scripts/run_rebuild_v1_d20_vaihingen_seed42_queue.sh",
@@ -1117,10 +1117,19 @@
       "independent_final_loaded": false,
       "server_queue_started_at": "2026-09-28T16:35:48+08:00",
       "server_preflight": "87_input_hashes_passed",
-      "last_reported_progress": "P0 and P1 each at step 1000/8000 with 247.2 seconds elapsed; GPU utilization about 30 percent reported by user"
+      "server_completed_at": "2026-09-28T17:42:26+08:00",
+      "archive_commit": "5538bf3",
+      "archive": "records/rebuild_v1_d20_vaihingen_seed42_compact_20260928/",
+      "offline_audit": "records/rebuild_v1_d20_vaihingen_seed42_compact_20260928/offline_audit.json",
+      "macro_gain_pp": 1.026148283788089,
+      "stronger_control": "P0",
+      "checks": {"gain": true, "clean": true, "families": true, "tile_clean": false, "tile_families": false},
+      "passed": false,
+      "failed_development_tiles": [12, 14],
+      "next_seed17_auto_launch": false
     },
     "d20_throughput_optimization_after_seed42": {
-      "status": "planned_after_current_queue",
+      "status": "deprioritized_after_vaihingen_seed42_gate_failure",
       "protocol": "docs/protocols/D20_THROUGHPUT_OPTIMIZATION_AFTER_SEED42_20260928.md",
       "current_queue_source_changes_allowed": false,
       "benchmark_scope": "fit_only_then_evaluation_equivalence",
