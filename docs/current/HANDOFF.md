@@ -8,10 +8,12 @@
 通过单seed预设筛选；C2、C3未通过。见
 [D18/D19结果记录](../experiments/D18_D19_RESULTS_20260928.md)。
 
-**立即下一步：**从服务器归档原始 `status.tsv`、`conditional_gate.json`、
-`decision.json` 和8份正式评估 `summary.json` 到 GitHub，并做离线重算审计。
-当前 GitHub 仅保存用户粘贴的最终decision，不能宣称已完成原始摘要审计。
-审计通过后，按同一冻结协议为 P0/P1/P2 一起补 seed17；不要只复验 P2。
+原始 `status.tsv`、`conditional_gate.json`、`decision.json` 和8份正式评估
+`summary.json` 已由服务器上传至GitHub；离线重算审计通过，见
+[`offline_audit.json`](../../records/rebuild_v1_d18_d19_compact_20260928/offline_audit.json)。
+**立即下一步：**按同一冻结协议设计 P0/P1/P2 匹配seed17复验，不要只复验P2；
+复验代码和队列尚未实现或启动。P2在DSM完全缺失时原模型比P0低约0.50 pp，
+不能将辅助质量组的harm检查扩展成普遍缺失鲁棒性结论。
 C2/C3本轮变体停止，C4/C5不启动。Test6继续冻结。服务器队列已结束，
 不应按下文历史启动说明再次运行。
 

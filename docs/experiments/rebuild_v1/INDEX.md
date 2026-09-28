@@ -2,7 +2,7 @@
 
 | ID | Purpose | Status | Primary evidence |
 |---|---|---|---|
-| D18/D19 | single-seed pretrained adapters and intervention structures | user-reported 8/8 complete; P2 passes seed42 screen; C2/C3 fail; original summaries pending archive/audit | `docs/experiments/D18_D19_RESULTS_20260928.md` |
+| D18/D19 | single-seed pretrained adapters and intervention structures | 8/8 complete, originals archived and offline-audited; P2 seed42 candidate; C2/C3 fail | `docs/experiments/D18_D19_RESULTS_20260928.md` |
 | D16/D17 | intervention consistency and geometry auxiliary supervision; matched controls | 16/16 reported complete; archive audit passed; A2/B1 gates failed | `docs/experiments/D16_D17_RESULTS_20260927.md` |
 | D14 | inference-only DSM-content sensitivity of frozen D13 heads | user-reported complete; sensitivity found, no benefit gate | `docs/experiments/D14_RESULTS_20260926.md` |
 | D13 | trainable RGB-anchored DSM residual and risk surrogate | user-reported Stage 1 complete; two-seed gate failed; Stage 2 skipped | `docs/experiments/D13_RESULTS_20260925.md` |

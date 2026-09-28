@@ -1,4 +1,4 @@
-# D18/D19 compact archive — partial
+# D18/D19 compact archive — offline audited
 
 `user_reported_decision.json` is an exact JSON extract from the server terminal
 output supplied by the user on 2026-09-28. It is a transcript, not an
@@ -7,11 +7,17 @@ reported `QUEUE FINISHED` at 2026-09-28 12:13:32 +08:00, with 8/8 formal
 training/evaluation pairs complete, failures=0, and C4/C5 skipped by the
 conditional screen.
 
-Required for a complete cross-computer archive: original server `status.tsv`,
-`conditional_gate.json`, `decision.json`, and all eight formal
-`{P0,P1,P2,C0,C1,C2,C3,CP}_seed42/summary.json` files, plus an offline audit
-that recomputes the summary decision and key integer-count metrics. Do not
-claim this partial transcript satisfies the full handoff requirement.
+The server has now supplied original `status.tsv`, `conditional_gate.json`,
+`decision.json`, and all eight formal summaries named `server_*_seed42_summary.json`.
+`offline_audit.json` was produced by `scripts/audit_rebuild_v1_d18_d19_archived.py`:
+all eight summaries, integer confusion matrices, paired counts, source/config
+Git blobs and frozen decision fields passed offline recomputation. The status
+file includes one earlier interrupted launch; the audit uses the final run
+starting at 2026-09-28 00:18:08 +08:00 from commit `5209403`.
+
+The server checkpoint, dataset and split-file bytes have not been independently
+rehashed or re-inferred on this computer. This is still repeatedly used Val2
+exploratory evidence, not independent confirmation.
 
 Original server paths:
 

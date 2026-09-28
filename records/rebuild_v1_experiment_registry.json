@@ -993,7 +993,7 @@
     {
       "id": "D18_D19_NIGHT_SCREEN_20260927",
       "name": "single_seed_pretrained_adapter_and_intervention_structure_screen",
-      "status": "user_reported_complete_partial_archive",
+      "status": "complete_original_summaries_offline_audited",
       "protocol": "docs/protocols/D18_D19_EXECUTION_20260927.md",
       "config": "configs/rebuild_v1/d18_d19_night_20260927.json",
       "queue": "scripts/run_rebuild_v1_d18_d19_queue.sh",
@@ -1006,11 +1006,12 @@
       "server_records": "records/rebuild_v1_d18_d19_20260927/ and records/rebuild_v1_d18_d19_queue_20260927/",
       "server_started_at": null,
       "completed_at": "2026-09-28T12:13:32+08:00",
-      "time_source": "user-supplied server status.tsv tail",
-      "decision": "Eight of eight formal seed42 training/evaluation pairs complete, zero failures. P2 passed the prespecified within-D18 single-seed screen by +1.0603 pp over the stronger P0/P1 control. C2/C3 failed; C4/C5 were conditionally skipped. Await original server summaries and offline audit before paired P0/P1/P2 seed17 replication. Val2 exploratory; Test6 frozen.",
-      "evidence_status": "user_reported_decision_only_original_summaries_pending",
+      "time_source": "records/rebuild_v1_d18_d19_compact_20260928/status.tsv final run segment",
+      "source_commit": "5209403c9a25bd7a7a85369e931ee4b44358a0a9",
+      "decision": "Eight of eight formal seed42 training/evaluation pairs complete, zero failures; original summaries archived and independently recomputed offline. P2 passed the prespecified within-D18 single-seed screen by +1.0603 pp over the stronger P0/P1 control, but its raw aux_zero score is 0.4986 pp below P0. C2/C3 failed; C4/C5 were conditionally skipped. Next proposed batch: paired P0/P1/P2 seed17 replication, not yet implemented. Val2 exploratory; Test6 frozen.",
+      "evidence_status": "archived_original_summaries_offline_audit_passed",
       "records": [
-        "records/rebuild_v1_d18_d19_compact_20260928/user_reported_decision.json",
+        "records/rebuild_v1_d18_d19_compact_20260928/",
         "docs/experiments/D18_D19_RESULTS_20260928.md"
       ]
     }
