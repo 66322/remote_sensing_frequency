@@ -1,5 +1,10 @@
 # Current Project Status
 
+**D20 新来源 Stage A 审计待服务器执行：**作者链接的 GAMUS 新版公开元数据包括
+DC、NYC、PHL 三城 RGB／高度／标签文件；原提供的 train/val/test 混城。
+已准备[9 文件 CPU 小样本审计](../protocols/D20_GAMUS_SOURCE_ACCEPTANCE_20260928.md)。
+权利、内容和地理切分尚未准入；没有新 GPU 训练。DFC2019 使用/传输仍待决。
+
 **D20 失败区域输入核查完成，2026-09-28：**17 块输入及 P0/P2 clean 预测与冻结哈希一致，
 精简证据归档 `21dbb2d`。12 号块主要在标签边界外失分；14 号块 Car 假阳性增加，
 总体正确像素增加而五类等权 mIoU 下降。没有发现明确文件/标签/尺寸异常。

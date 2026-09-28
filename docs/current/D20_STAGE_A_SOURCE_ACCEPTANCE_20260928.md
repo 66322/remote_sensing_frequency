@@ -1,5 +1,10 @@
 # D20 Stage A：独立来源准入检查（US3D / DFC19）
 
+**2026-09-28 候选优先级更新：**US3D/DFC2019 来源、传输和条款记录保留；
+另发现作者已公开移除 DFC2019 JAX/OMA 样本的修订版 GAMUS。
+现先执行[修订版 GAMUS 三城 CPU 小样本准入](../protocols/D20_GAMUS_SOURCE_ACCEPTANCE_20260928.md)，
+不把其 Hub 权利标签、混城原划分或旧论文版本直接视为正式准入。
+
 ## 当前状态
 
 - Date: 2026-09-28

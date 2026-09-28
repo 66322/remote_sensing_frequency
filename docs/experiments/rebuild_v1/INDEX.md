@@ -2,7 +2,7 @@
 
 | ID | Purpose | Status | Primary evidence |
 |---|---|---|---|
-| D20 | independent source acceptance and matched external P0/P1/P2 baselines | US3D source probe blocked on transfer/terms; Vaihingen same-mosaic seed42 three-arm development completed and count-audited; pooled gain positive, per-tile gate failed; 17-tile input/prediction audit complete; no automatic seed17 | `docs/experiments/D20_VAIHINGEN_SEED42_RESULTS_20260928.md`; `docs/experiments/D20_VAIHINGEN_FAILURE_INPUT_AUDIT_RESULTS_20260928.md` |
+| D20 | independent source acceptance and matched external P0/P1/P2 baselines | revised GAMUS three-city CPU sample audit prepared; US3D transfer/terms pending; Vaihingen seed42 per-tile gate failed and input audit complete; no automatic seed17 | `docs/protocols/D20_GAMUS_SOURCE_ACCEPTANCE_20260928.md`; `docs/experiments/D20_VAIHINGEN_SEED42_RESULTS_20260928.md`; `docs/experiments/D20_VAIHINGEN_FAILURE_INPUT_AUDIT_RESULTS_20260928.md` |
 | D18 seed17 replication | matched frozen-DINO P0/P1/P2 and paired error analysis across seeds42/17 | complete; originals archived and offline-audited; P2 passes both seeds with DSM absence cost | `docs/experiments/D18_REPLICATION_RESULTS_20260928.md` |
 | D18/D19 | single-seed pretrained adapters and intervention structures | 8/8 complete, originals archived and offline-audited; P2 seed42 candidate; C2/C3 fail | `docs/experiments/D18_D19_RESULTS_20260928.md` |
 | D16/D17 | intervention consistency and geometry auxiliary supervision; matched controls | 16/16 reported complete; archive audit passed; A2/B1 gates failed | `docs/experiments/D16_D17_RESULTS_20260927.md` |

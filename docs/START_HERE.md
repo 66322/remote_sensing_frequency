@@ -1,5 +1,12 @@
 # Start Here
 
+**D20 source priority revised for Stage A, 2026-09-28.** The author-linked
+revised [GAMUS source audit](protocols/D20_GAMUS_SOURCE_ACCEPTANCE_20260928.md)
+is prepared for a CPU-only server run. Its published files offer RGB, height
+and semantic labels from three cities, but rights, content and a geographic
+split are unverified. No GPU queue follows automatically. DFC2019 access and
+terms remain pending; Vaihingen seed42 remains a failed development screen.
+
 **D20 Vaihingen failure-input audit complete, 2026-09-28.** The 17-tile
 CPU-only audit was archived in `21dbb2d`; raw inputs and clean predictions
 matched frozen hashes. It found no clear file/label/shape anomaly to explain

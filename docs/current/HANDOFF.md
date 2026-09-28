@@ -1,5 +1,11 @@
 # Current handoff — 2026-09-28, D20 Stage A server probe complete
 
+**新增来源复核，服务器待运行：**作者[修订版 GAMUS Stage A 准入审计](../protocols/D20_GAMUS_SOURCE_ACCEPTANCE_20260928.md)
+已准备。公开元数据出现 DC、NYC、PHL 三城匹配的 RGB／高度／标签文件；作者新版
+移除了 DFC2019 JAX/OMA 样本，不能把 GAMUS 旧版与新版混同。先运行仅 CPU 的
+9 文件小样本审计，核对权利与来源后才考虑城市级 fit/dev/final；不启动 GPU。
+US3D 原始数据的传输/条款问题保留，Vaihingen 失败门槛不变。
+
 **最新接力：**D20 Vaihingen 17 块 CPU 只读输入核查已在服务器完成并归档
 `21dbb2d`。原始文件和 P0/P2 clean 预测与冻结 SHA 一致；12 号块失分主要在
 边界四像素邻域外，14 号块总体正确像素增加但 Car 假阳性增加使该类 IoU 下降。

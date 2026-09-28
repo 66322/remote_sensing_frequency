@@ -1,5 +1,10 @@
 # Next research decision after audited D18 replication (2026-09-28)
 
+**当前可执行：**运行[修订版 GAMUS 来源 Stage A 小样本核查](../protocols/D20_GAMUS_SOURCE_ACCEPTANCE_20260928.md)，
+只检查三城各一组 RGB／高度／标签及全量文件名配对，不训练。若通过，还需
+独立核对原始数据权利、空间来源和城市级切分，不能使用原混城 train/val/test
+作为外部最终验证。US3D 仍是条款/传输待决备选；Vaihingen seed42 不补 seed17。
+
 **当前下一步：**D20 Vaihingen 失败区域的 CPU 只读核查已完成并归档
 `21dbb2d`，见[核查结果](../experiments/D20_VAIHINGEN_FAILURE_INPUT_AUDIT_RESULTS_20260928.md)。
 没有发现足以撤销 12/14 号块失败的明确输入异常；保持 `passed=false`，
