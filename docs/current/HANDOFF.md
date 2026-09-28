@@ -1,164 +1,36 @@
-# Current handoff — 2026-09-28, revised GAMUS Stage A sample audit complete
+# 当前交接：D21 细尺度高度与频率对照
 
-**公开来源案头核查完成：**固定 revision 的数据仓库、作者代码、旧论文和
-Dataset4EO 导入代码均未在所查材料中提供修订版文件 stem 到地理范围的索引；
-Hub 的 CC BY 4.0 标签也未逐项说明三城原始 RGB／LiDAR／标签的权利。
-见[证据表与未发送的作者询问稿](D20_GAMUS_PROVENANCE_DESK_AUDIT_20260928.md)。
-下一步是取得来源和地理映射答复，或以明确限制重新论证纯城市级划分；
-现阶段无新的服务器命令和 GPU 队列。
+记录于2026-09-28。用户授权物理 GPU0/1，可连续运行超过一天。
+**状态：代码和队列已准备，CPU合同测试通过；服务器环境/真实CUDA完整链尚待启动器验证，没有训练已启动证据。**
 
-**最新接力：**九文件 HDF5 元数据核查在服务器 `ed4186a` 完成，最后归档观测
-2026-09-28 22:17:36 +08:00、退出码 0，证据归档 `4cdb91f`。DC／PHL／NYC
-各一组三元组全部与 Stage A SHA 相符，HDF5 根节点及 `image` 数据集均无属性。
-该结果不能给出文件地理范围或原始授权，也不能推出全量数据性质。
+## 立即执行
 
-**下一步：**向作者或原始发布方核对三城每种模态的原始数据集及许可，取得
-文件 stem 至地理范围／CRS 的映射，再审计空间重叠与全量类别。先记录
-证据缺口和可核验来源，不因城市前缀冻结 final、不启动新 GPU。
-详见[结果](../experiments/D20_GAMUS_SAMPLE_METADATA_RESULTS_20260928.md)。
-下方“元数据审计待执行”段落已被本次结果覆盖。
+在服务器工程目录、remote_sensing 环境拉取当前分支后运行：
 
-**下一条服务器操作已准备、尚未执行：**运行[九文件 HDF5 属性只读核查](../protocols/D20_GAMUS_SAMPLE_METADATA_AUDIT_20260928.md)，
-检查已下载样本有无坐标和来源属性。只用 CPU，不下载、不训练；已有 Stage A
-审计和文件 SHA 绑定。完成后先归档紧凑证据，再判断能否从文件内恢复空间位置。
-这一步不替代三城底层权利与原始数据源核对。
+```bash
+mkdir -p records/rebuild_v1_d21_queue_20260928
+nohup bash scripts/run_rebuild_v1_d21_queue.sh > records/rebuild_v1_d21_queue_20260928/launcher.log 2>&1 < /dev/null &
+echo $!
+tail -n 50 records/rebuild_v1_d21_queue_20260928/launcher.log
+```
 
-**最后观测：**服务器归档的 `status.tsv` 于 2026-09-28 18:33:49 +08:00
-记录 `AUDIT COMPLETE 0`；审计执行 `83808a9`，紧凑证据在 `70344a4`。
-修订版 GAMUS 的 DC／PHL／NYC 各一组影像、高度、标签内容通过，状态为
-`SAMPLE_CONTENT_PASS_SOURCE_ACCEPTANCE_PENDING`。这是 CPU 来源探针，
-没有新 GPU 训练，也未加载 Potsdam Test6。
+完整命令、资源、停止和恢复方法见[协议](../protocols/D21_DETAIL_FREQUENCY_DAY_QUEUE_20260928.md)。
+脚本自动复用 d18_dino 环境和权重，核对两套现有数据，完成16个短流程后跑48组；不需要逐轮回来批准。
+每组16k，三个种子42/17/2026，两个数据集Potsdam/Vaihingen；粗估30–50小时，最终以实测吞吐为准。
 
-**立即下一步：**核查三城上游数据权利、地理来源、全量类别覆盖与空间重复／邻接，
-再预先冻结城市级 fit/dev/final 和类别映射。现成 GAMUS train/val/test 混城，
-不能直接作为独立最终验证。未完成来源准入前不启动新 GPU 队列。
-US3D/DFC2019 获取与论文使用条件仍待决；D20 Vaihingen seed42 逐块门槛失败，
-不补 seed17。见[Stage A 结果](../experiments/D20_GAMUS_STAGE_A_SOURCE_AUDIT_RESULTS_20260928.md)。
-下方修复、重试和旧训练接力段落均为历史过程。
+## 已知依据与边界
 
-**GAMUS API 分页修复：**第二次审计隔离依赖通过（`h5py 3.14.0`、
-NumPy `1.26.4`），随后因 Hub `expand=true&limit=1000` 返回 400，
-在样本下载前停止。已移除不必要的 `expand` 并复用已安装依赖，服务器待拉取重试。
+- D18 双seed显示 DSM 互补增益；全缺失时仍有退化。
+- D20 Vaihingen旧P0/P1/P2的seed42逐tile门槛失败，保留原判，不追加原8k复验。
+- D21 新机制是冻结DINO下1/4尺度高度特征及高低频对应关系，所有基线在同一16k预算重跑。
+- D12旧冻结专家头、D16/D17一致性/梯度监督、D19局部交互失败，不重启这些配方。
+- GAMUS元数据核查结束，不重复；其来源问题不再阻塞已有数据开发实验。
+- Test6/独立final均未开放；48组输出仍是重复开发证据。
 
-**GAMUS 审计启动修复：**服务器首次运行在任何下载之前发现
-`ModuleNotFoundError: h5py`。已把启动器改为在本实验记录目录独立准备
-`h5py`，不改训练环境；服务器待拉取后重试。同一 `status.tsv` 保留首次失败。
+## 回传
 
-**新增来源复核，服务器待运行：**作者[修订版 GAMUS Stage A 准入审计](../protocols/D20_GAMUS_SOURCE_ACCEPTANCE_20260928.md)
-已准备。公开元数据出现 DC、NYC、PHL 三城匹配的 RGB／高度／标签文件；作者新版
-移除了 DFC2019 JAX/OMA 样本，不能把 GAMUS 旧版与新版混同。先运行仅 CPU 的
-9 文件小样本审计，核对权利与来源后才考虑城市级 fit/dev/final；不启动 GPU。
-US3D 原始数据的传输/条款问题保留，Vaihingen 失败门槛不变。
+观察日志 `records/rebuild_v1_d21_queue_20260928/launcher.log`，训练状态在 `progress.json`。
+每个seed块后生成 `records/rebuild_v1_d21_compact_20260928/metrics.csv`、`decision.json`。
+结束后只将 compact 目录提交到当前 GitHub 分支，命令见协议。运行中勿修改/拉取冻结源码。
 
-**最新接力：**D20 Vaihingen 17 块 CPU 只读输入核查已在服务器完成并归档
-`21dbb2d`。原始文件和 P0/P2 clean 预测与冻结 SHA 一致；12 号块失分主要在
-边界四像素邻域外，14 号块总体正确像素增加但 Car 假阳性增加使该类 IoU 下降。
-无明确文件/标签/尺寸异常证据；GeoTIFF 空间标签缺失，不能据此证明配准。
-详见[结果报告](../experiments/D20_VAIHINGEN_FAILURE_INPUT_AUDIT_RESULTS_20260928.md)。
-冻结门槛仍失败，不补 seed17。接下来按[已备询问草稿](D20_US3D_ACCESS_AND_USE_INQUIRY_20260928.md)
-确认 US3D 数据获取、私有中转许可和论文使用程序；草稿尚未发送。
-
-**接力更新：**针对 D20 Vaihingen seed42 的 12/14 号块，已准备
-[17块统一口径的只读输入与预测核查](../protocols/D20_VAIHINGEN_FAILURE_INPUT_AUDIT_20260928.md)，
-服务器尚未执行。先运行该 CPU 审计，提交紧凑结果后解释失败区域；
-原定逐块门槛失败及不启动 seed17 的决定保持不变。US3D 独立来源仍需解决。
-
-**最新结论：**D20 Vaihingen seed42三组8,000步及17块×11条件完整开发评价已于
-17:42:26 +08:00完成，服务器证据归档`5538bf3`，离线整数计数/门槛复算`PASS`。
-P2相对最强P0综合+1.0261pp，但12、14号块触发逐块clean/家族门槛失败，
-所以总门槛`passed=false`，**不自动补seed17**。见
-[完整结果](../experiments/D20_VAIHINGEN_SEED42_RESULTS_20260928.md)。
-接下来保留正负区域证据、可做CPU只读的12/14号数据质量核查，并继续解决US3D
-独立来源的获取/使用条件。后续吞吐优化不能改变此次冻结失败判断。
-
-**运行中补充：**服务器报告D20 Vaihingen seed42队列已通过87个输入哈希预检查，
-P0/P1分别在GPU0/1训练；两组最近各到1,000/8,000步，约247.2秒。
-GPU利用率约30%是用户观察，尚未做瓶颈剖析。当前队列保持冻结；
-[后续吞吐优化计划](../protocols/D20_THROUGHPUT_OPTIMIZATION_AFTER_SEED42_20260928.md)
-安排在本轮结束并归档后，优先测实际耗时和数值一致性，不混用新旧训练协议。
-
-**最新可执行：**训练区 P2 20步吞吐测量已于16:23:08 +08:00通过，服务器精简
-记录归档`abe10e4`。稳态每步中位0.222秒，8,000步P2纯训练约0.49小时。
-已据此冻结[三组seed42正式同域开发协议及队列](../protocols/D20_VAIHINGEN_SEED42_FORMAL_20260928.md)，
-待服务器运行。开发17块均来自同一镶嵌图；不自动补seed17，不作独立最终确认。
-
-**最新交接：**Vaihingen P0/P1/P2 一步短流程已于16:15:54 +08:00全部通过，
-三组训练、保存重载及512开发裁块评估成功；服务器归档`8401bcd`。
-见[结果](../experiments/D20_VAIHINGEN_SMOKE_RESULTS_20260928.md)。单步指标不用于选模。
-下一项可执行的是[只读训练区的20步P2吞吐测量](../protocols/D20_VAIHINGEN_FIT_BUDGET_PROBE_20260928.md)，
-测完才冻结正式三组预算；US3D传输/条款继续独立处理。
-
-## 当前事实与下一步
-
-D20 Stage A 已在服务器执行 `6c7c0d1`：本地 DFC19 三元组为0；官方 Track-1
-torrent 元数据可达并确认 RGB/Truth 两个所需包；GRSS/DataPort 代理403。
-当前阻塞是实际数据传输及使用条件，尚未完成数据准入或GPU队列。
-[实测与 Vaihingen 可用角色](D20_STAGE_A_SOURCE_ACCEPTANCE_20260928.md)；
-[GitHub 紧凑记录](../../records/rebuild_v1_d20_source_acceptance_compact_20260928/user_reported_stage_a.json)。
-Vaihingen 已有部分可用三元组，可作开发实验；其旧实验曝光及同一镶嵌图邻近关系
-限制了独立最终确认结论，TOP 输入是近红外/红/绿，需单独冻结通道协议。
-[Vaihingen 内容检查](D20_VAIHINGEN_CONTENT_AUDIT_20260928.md)修正版已于服务器通过：
-17/17同域开发候选块的三类影像尺寸一致、DSM样本有限、FullGT标签颜色样本均
-属于既有调色板；原始结果归档`66ac041`。地理坐标对齐仍未知，标签为采样检查。
-首次路径错误记录在`5299318`。Vaihingen 的
-[三组一步匹配短流程](../protocols/D20_VAIHINGEN_MATCHED_SMOKE_20260928.md)
-已通过服务器CUDA验证，TOP按近红外/红/绿原顺序、旧训练12块与新开发17块冻结；
-它没有自动启动正式训练。US3D独立来源传输和条款问题单独继续。
-
-服务器 D18 seed17 队列于 2026-09-28 14:52:05 +08:00 完成：P0/P1/P2
-三组短流程、正式训练、评估、配对分析及精简归档均成功。服务器原始六份
-seed42/17 评估摘要已在 GitHub 提交 `705d8d2`；本机离线审计 `PASS`，
-见 [结果报告](../experiments/D18_REPLICATION_RESULTS_20260928.md)及
-[`offline_audit.json`](../../records/rebuild_v1_d18_replication_compact_20260928/offline_audit.json)。
-P2相对同seed最强P0/P1的综合增益分别为+1.0603／+0.9229 pp，
-两个seed各自通过五项预设门槛。P2原模型完整DSM缺失时分别比P0
-低0.4986／0.4103 pp；显式切换P0只验证availability策略。
-
-**立即下一步：**先确认可用的独立场景来源、既往曝光、RGB/高度/语义标签配对、
-类别映射和使用条件；依据
-[独立来源决策](INDEPENDENT_SOURCE_DECISION_20260923.md)
-评估US3D，若不具备条件再评估Houston。具体顺序见
-[D20阶段计划](../protocols/D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928.md)：
-来源准入→冻结fit/dev/final→P0/P1/P2 seed42三组→开发门槛通过后再补seed17三组→
-另定可靠性干预。最终区域保留到全部方法与对照冻结后统一评价。
-Stage A 来源与传输审计脚本已执行；D20同域正式开发队列现已实现，服务器运行待验证。
-不重启D18/D19或seed17队列。
-Val2只有两个场景且已反复使用，两种子通过仍是开发证据；Test6保持冻结。
-
-以下旧交接内容仅保留作时间线背景，**不是当前启动指令**。
-
-最新用户要求：多方案单seed初筛；本批仅seed42，有信号后再选候选及必要对照补seed。
-训练后必须自动重载、评估与汇总，物理GPU0/1共享任务，可跨一天继续。
-
-## 历史：旧D18/D19队列启动说明（已完成，禁止重启）
-
-代码已实现，本地9项CPU测试通过、2项CUDA检查待服务器；还核对官方DINOv2架构接口。
-服务器尚未观测新队列启动。按 [执行说明](../protocols/D18_D19_EXECUTION_20260927.md)
-启动 `scripts/run_rebuild_v1_d18_d19_queue.sh`，无需手动分别启动训练和评估。
-
-8项基础：P0/P1/P2新预训练表示对照（8000步），C0/C1/C2/C3/CP融合对照（4000步）。
-C4/C5仅在结构门槛通过后触发。全部seed42，无seed17任务。
-DINOv2 ViT-S/14的代码commit、权重下载地址和配置已固定；后台创建独立d18_dino环境。
-准备失败仅阻塞D18；D19可独立通过smoke后继续。每组所有独特分支短流程先验证。
-
-每项训练后保存并重载最终权重，clean探针精确复算，然后Val2全图9条件＋2项固定新扰动，
-记录CM、逐类/tile、harm/rescue、回退与FullGT边界计数。另复用D16旧权重做4项推理诊断。
-
-队列记录：`records/rebuild_v1_d18_d19_queue_20260927/status.tsv`。
-预训练准备日志：同目录 `D18_PREPARATION.log`。
-最终判断：`records/rebuild_v1_d18_d19_20260927/decision.json`。
-首次需要依赖和约84MB权重下载；启动前需要55GiB可用空间。新任务时长待服务器短流程实测。
-Test6禁止；Potsdam Train16/Val2仍为探索协议。运行中不得修改已绑定配置/源码。
-
-## 已完成的事实
-
-最后观测D16/D17服务器完成时间：2026-09-27 22:53:47 +08:00，16正式任务、零失败。
-原始归档e37d103；离线审计e4c3a09通过，A2/B1均未通过冻结双seed门槛，方案关闭。
-见 [结果](../experiments/D16_D17_RESULTS_20260927.md)。不重新启动该队列。
-D15仍支持特定RGB退化条件下的DSM互补；不能据D16/D17失败否定所有模态价值。
-
-新骨干组是独立新起点，不能与旧R05继续训练直接作预算等价的机制比较。
-CFI启发插入为分割适配，不声称复制原图像融合方法。容量对照参数接近但MAC不同。
-点监督实例分割等交叉方向只准备数据条件，不是当前可执行任务。
-
-[之前全部交接历史](../history/HANDOFF_20260927_before_D18_D19.md)只作背景，不据此重启旧实验。
+旧交接全文保留于[历史归档](../history/20260928_before_d21/HANDOFF.md)。

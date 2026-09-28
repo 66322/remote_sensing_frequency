@@ -1044,6 +1044,53 @@
     }
   ],
   "next_plan": {
+    "id": "D21_DETAIL_FREQUENCY_DEVELOPMENT_20260928",
+    "status": "prepared_not_server_observed",
+    "protocol": "docs/protocols/D21_DETAIL_FREQUENCY_DAY_QUEUE_20260928.md",
+    "config": "configs/rebuild_v1/d21_detail_frequency_20260928.json",
+    "queue": "scripts/run_rebuild_v1_d21_queue.sh",
+    "arms": [
+      "R0",
+      "R1",
+      "M0",
+      "M1",
+      "F0",
+      "F1",
+      "F2",
+      "F3"
+    ],
+    "datasets": [
+      "potsdam",
+      "vaihingen"
+    ],
+    "seeds": [
+      42,
+      17,
+      2026
+    ],
+    "steps_per_job": 16000,
+    "jobs": 48,
+    "physical_gpus": [
+      0,
+      1
+    ],
+    "estimated_wall_hours": [
+      30,
+      50
+    ],
+    "started_at": null,
+    "completed_at": null,
+    "authorization": "User explicitly requested at least one day of experiments and GPU0/GPU1 may run longer.",
+    "new_mechanism": "quarter-resolution auxiliary detail injection with matched raw/gray/low/high/alignment controls",
+    "budget_rationale": "matched new 16k development block; previous 8k baselines are not pooled as controls",
+    "gate": "fixed F2 candidate; paired accuracy/tile and separate aux_zero safety checks",
+    "gamus_is_prerequisite": false,
+    "test6_loaded": false,
+    "independent_final_loaded": false,
+    "evidence_level": "repeated_development_not_independent_confirmation",
+    "compact_archive": "records/rebuild_v1_d21_compact_20260928/"
+  },
+  "historical_external_source_plan_before_d21": {
     "id": "D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928",
     "status": "gamus_stage_a_sample_content_pass_source_acceptance_pending_us3d_transfer_terms_pending",
     "protocol": "docs/protocols/D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928.md",
@@ -1232,6 +1279,6 @@
     "physical_gpu": 0,
     "cuda_visible_devices": "0",
     "persistent_scope_root": "/home/jovyan/zzx",
-    "dual_worker_exception": "User authorized physical GPU0 and GPU1 for D15, D16/D17, D18/D19, D18 seed17 replication, and the current D20 work. Their queues apply explicit independent-worker device checks; the older GPU0-only machine policy and validator remain for historical queues."
+    "dual_worker_exception": "User authorized physical GPU0 and GPU1 for D15, D16/D17, D18/D19, D18 seed17 replication, and the current D20 work. Their queues apply explicit independent-worker device checks; the older GPU0-only machine policy and validator remain for historical queues. D21 explicitly authorized on physical GPU0/GPU1 for a queue longer than one day; UUID binding and idle checks apply."
   }
 }
