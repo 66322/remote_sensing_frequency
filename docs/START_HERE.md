@@ -128,23 +128,24 @@ seed17 arm from a stale conversation snapshot.
 
 These rules apply to every training run, evaluation, diagnostic and queue.
 
-1. Use physical GPU 0 only.
-2. Set `CUDA_VISIBLE_DEVICES=0` before Python starts.
-3. Inside the restricted process, use only logical device `cuda:0`.
-4. Multi-GPU, distributed execution, `torchrun` and fallback to another GPU
-   are forbidden.
-5. All persistent files must remain under `/home/jovyan/zzx`.
-6. Project code and outputs must remain under
+1. Use only the physical GPU indices authorized in the active experiment protocol.
+   D18/D19 permits physical GPU 0 and GPU 1 as independent queue workers.
+2. Set `CUDA_VISIBLE_DEVICES` to the worker's assigned physical index before
+   Python starts; inside that process use logical device `cuda:0`.
+3. Distributed execution, `torchrun` and fallback to another GPU are forbidden.
+4. All persistent files must remain under `/home/jovyan/zzx`.
+5. Project code and outputs must remain under
    `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro`.
-7. Runtime outputs go to project `runs/`; compact evidence goes to `records/`.
-8. Raw datasets and pretrained weights are read-only.
-9. Do not upload checkpoints, training states, datasets or complete `runs/`
+6. Runtime outputs go to project `runs/`; compact evidence goes to `records/`.
+7. Raw datasets and pretrained weights are read-only.
+8. Do not upload checkpoints, training states, datasets or complete `runs/`
    directories to GitHub.
-10. Every launch must pass
-    `scripts/validate_execution_boundaries.py`.
-11. Before proposing a new experiment, check `DO_NOT_REPEAT.md` and the JSON
+9. Apply the active queue's preflight. The GPU0-only
+    `scripts/validate_execution_boundaries.py` is for historical GPU0 queues;
+    D18/D19 performs its own dual-worker preflight.
+10. Before proposing a new experiment, check `DO_NOT_REPEAT.md` and the JSON
     experiment registry.
-12. If a requested command conflicts with these rules, stop instead of
+11. If a requested command conflicts with these rules, stop instead of
     silently changing the GPU or output path.
 
 Full policy:
@@ -176,10 +177,16 @@ to determine current status or the next experiment.
 After every formal experiment:
 
 1. verify completion and TEST6 isolation;
-2. analyze CSV and JSON results;
-3. write an experiment report;
+2. archive the decision, every arm's compact evaluation summary and the queue
+   status in GitHub, including failures and skipped arms;
+3. analyze the archived results and write an experiment report with the exact
+   comparisons, gate decisions, limitations and next action;
 4. update the registry, status, do-not-repeat list, experiment index and next
    experiment;
 5. generate an artifact SHA256 manifest;
 6. commit code, configuration, results, analysis and documentation together;
 7. push and verify that local and remote commits match.
+
+The minimum evidence needed for another computer to judge the experiment is
+specified in `docs/protocols/EXPERIMENT_GITHUB_HANDOFF.md`. Server paths and
+hashes alone do not close an experiment.

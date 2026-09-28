@@ -34,15 +34,16 @@ Do not modify, rename, move or overwrite the raw dataset or pretrained weights.
 
 ## GPU boundary
 
-Explicit user authorization on2026-09-26 permits physical GPU0 and GPU1 for
-D15 and D16/D17 independent workers, including continuation beyond one day.
-For D16/D17 use `scripts/run_rebuild_v1_d16_d17_queue.sh`: it checks physical
-GPU indices, project scope, read-only input presence and source binding; each
-subprocess sees exactly its assigned GPU and uses logical cuda:0. The older
-GPU0-only validator below applies to historical queues, not these authorized
-dual-worker queues. No distributed training is introduced.
+Explicit user authorization permits physical GPU0 and GPU1 as independent
+workers for D15, D16/D17 and D18/D19. The D18/D19 queue checks both physical
+indices, project scope, input presence and source binding. Each worker sees
+exactly its assigned GPU and uses logical cuda:0. No distributed training is
+introduced. The GPU0-only rules and validator below apply to historical GPU0
+queues, not these authorized dual-worker queues.
+`configs/execution_boundaries.json` retains the historical GPU0 validator
+settings; use the active D18/D19 protocol and queue checks for this run.
 
-Every GPU task must use physical GPU 0 only.
+For historical GPU0-only queues, every GPU task uses physical GPU 0 only.
 
 Before starting Python:
 
@@ -56,16 +57,16 @@ Because only physical GPU 0 is visible, logical `cuda:0` maps to physical GPU 0.
 
 Forbidden:
 
-- physical GPU 1 or another GPU;
+- an unassigned physical GPU;
 - multiple GPUs;
 - distributed training;
 - `torchrun`;
 - fallback to another GPU;
-- launching GPU work without `CUDA_VISIBLE_DEVICES=0`.
+- launching GPU work without `CUDA_VISIBLE_DEVICES` set to the assigned index.
 
 ## Mandatory preflight
 
-Before every launch:
+Before launching a historical GPU0-only queue:
 
 `python scripts/validate_execution_boundaries.py --torch-check`
 
