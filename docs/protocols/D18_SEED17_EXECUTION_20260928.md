@@ -3,6 +3,9 @@
 本执行文件对应 [预先制定的研究计划](D18_MATCHED_SEED17_REPLICATION_PLAN_20260928.md)。
 当前 GitHub 中只包含可执行代码；服务器短流程、正式训练和结果尚未观察到。
 执行前确保服务器没有其他占用 GPU0/1 的实验队列。
+如此前拉取失败后仍执行了后台命令，先查看 `launcher.log` 和
+`pgrep -af '[r]un_rebuild_v1_d18_replication_queue'`；已有运行进程时先核对
+其 Git 提交与状态，不启动第二份。
 
 ## 从另一台电脑启动
 
@@ -10,15 +13,23 @@
 及 `records/`；这些目录均位于 `/home/jovyan/zzx` 下。
 
 ```bash
-cd /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
-conda activate remote_sensing
-git pull --ff-only origin rebuild-v1-protocol-20260915
-mkdir -p records/rebuild_v1_d18_replication_queue_20260928
-nohup bash scripts/run_rebuild_v1_d18_replication_queue.sh > records/rebuild_v1_d18_replication_queue_20260928/launcher.log 2>&1 &
+(
+  set -e
+  cd /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+  conda activate remote_sensing
+  git pull --ff-only origin rebuild-v1-protocol-20260915
+  git merge-base --is-ancestor c922fce HEAD
+  mkdir -p records/rebuild_v1_d18_replication_queue_20260928
+  nohup bash scripts/run_rebuild_v1_d18_replication_queue.sh > records/rebuild_v1_d18_replication_queue_20260928/launcher.log 2>&1 &
+)
 ```
 
 如果 `git pull` 因服务器已有未提交修改而停止，先查看 `git status --short`，
 保留现有产物并处理冲突后再启动。不要删除或重置旧 seed42 结果。
+如果 HTTPS 询问 `Password`，输入有此仓库权限的 GitHub personal access token，
+不能输入账号密码。也可用 `gh auth login` 选 HTTPS 并授权 Git；不要将 token
+写入命令行、远端 URL、日志或交给聊天。上述子 shell 的 `set -e` 和提交检查
+会使拉取或认证失败时停止，避免误启动旧版本队列。
 
 队列检查源码和配置已提交、官方 DINO 权重、旧 seed42 三组摘要及 66 个逐条件/
 逐图块预测文件、R01 历史参考、数据路径、磁盘及两张显卡。先并行运行
