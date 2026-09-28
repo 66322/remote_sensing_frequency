@@ -1,5 +1,12 @@
 # Current handoff — 2026-09-28, revised GAMUS Stage A sample audit complete
 
+**公开来源案头核查完成：**固定 revision 的数据仓库、作者代码、旧论文和
+Dataset4EO 导入代码均未在所查材料中提供修订版文件 stem 到地理范围的索引；
+Hub 的 CC BY 4.0 标签也未逐项说明三城原始 RGB／LiDAR／标签的权利。
+见[证据表与未发送的作者询问稿](D20_GAMUS_PROVENANCE_DESK_AUDIT_20260928.md)。
+下一步是取得来源和地理映射答复，或以明确限制重新论证纯城市级划分；
+现阶段无新的服务器命令和 GPU 队列。
+
 **最新接力：**九文件 HDF5 元数据核查在服务器 `ed4186a` 完成，最后归档观测
 2026-09-28 22:17:36 +08:00、退出码 0，证据归档 `4cdb91f`。DC／PHL／NYC
 各一组三元组全部与 Stage A SHA 相符，HDF5 根节点及 `image` 数据集均无属性。

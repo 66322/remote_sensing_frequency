@@ -1047,7 +1047,13 @@
     "id": "D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928",
     "status": "gamus_stage_a_sample_content_pass_source_acceptance_pending_us3d_transfer_terms_pending",
     "protocol": "docs/protocols/D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928.md",
-    "immediate_action": "Obtain per-city original imagery, height and label provenance, terms, and file-stem-to-geographic-bounds mapping; then audit spatial leakage and full class coverage before freezing city-separated fit/dev/final. Preserve failed Vaihingen seed42 gate and no-seed17 stop. Keep US3D transfer/terms pending. No new GPU training.",
+    "immediate_action": "Use the prepared unsent inquiry to obtain revised GAMUS per-city original imagery, height and label provenance, terms, and file-stem-to-geographic-bounds mapping; then audit spatial leakage and class coverage before freezing fit/dev/final. Preserve failed Vaihingen seed42 gate, Test6 isolation and no-seed17 stop. No new GPU training.",
+    "gamus_provenance_desk_audit": {
+      "status": "public_sources_inspected_author_mapping_and_underlying_rights_pending",
+      "evidence_and_unsent_inquiry": "docs/current/D20_GAMUS_PROVENANCE_DESK_AUDIT_20260928.md",
+      "external_message_sent": false,
+      "new_gpu_queue": false
+    },
     "gamus_sample_metadata_audit": {
       "status": "complete_archived_sha_bound_no_root_or_image_attributes",
       "server_run_commit": "ed4186a4fa0d28d486b7ffa43741b47386c1a702",

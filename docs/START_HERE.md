@@ -1,5 +1,11 @@
 # Start Here
 
+**Source provenance desk audit, 2026-09-28:** The pinned revised GAMUS
+repository, author code, prior paper and Dataset4EO loader do not provide a
+file-stem-to-geographic-bounds index in the inspected materials. The
+[evidence table and unsent author inquiry](current/D20_GAMUS_PROVENANCE_DESK_AUDIT_20260928.md)
+state what remains needed before source acceptance and spatial splitting.
+
 **Latest, 2026-09-28:** The nine-file revised GAMUS HDF5 metadata audit
 completed at 22:17:36 +08:00 and was archived in `4cdb91f`. All nine samples
 are bound to the earlier Stage A hashes; their HDF5 root and `image` dataset
