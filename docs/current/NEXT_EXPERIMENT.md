@@ -1,5 +1,9 @@
 # Next research decision after audited D18 replication (2026-09-28)
 
+**当前下一步：**P2训练区20步吞吐测量通过并归档`abe10e4`；
+三组seed42正式预算统一冻结为8,000步。运行[同域开发队列](../protocols/D20_VAIHINGEN_SEED42_FORMAL_20260928.md)，
+完成后按预设门槛判定是否值得全部补seed17。US3D独立地域数据与使用条件仍需解决。
+
 **当前可执行：**D20 Vaihingen 三组一步短流程已通过并归档`8401bcd`。
 结果仅验证流程，不比较方法。下一步执行[训练区20步吞吐/显存测量](../protocols/D20_VAIHINGEN_FIT_BUDGET_PROBE_20260928.md)，
 然后冻结 P0/P1/P2 一致的正式预算和全区域开发评价；US3D独立来源仍阻塞。
@@ -16,7 +20,7 @@ P0/P1/P2 的[同域匹配一步短流程](../protocols/D20_VAIHINGEN_MATCHED_SMO
 **2026-09-28 D20 Stage A 已执行：**服务器检查结果为DFC19本地三元组0，
 官方torrent元数据可达，GRSS/DataPort在服务器代理下403；所需数据包及
 使用/传输条件仍待落实。见[Stage A 实测及 Vaihingen 角色](D20_STAGE_A_SOURCE_ACCEPTANCE_20260928.md)。
-当前已实现D20一步短流程，尚无正式训练队列。Vaihingen 服务器已有数据，可用于同域开发和短流程；
+当前已实现D20同域正式开发队列，尚未在服务器执行。Vaihingen 服务器已有数据，可用于同域开发和短流程；
 旧实验已用区域与候选区域同属一幅镶嵌图，不能直接作为独立最终确认。
 Vaihingen [内容检查](D20_VAIHINGEN_CONTENT_AUDIT_20260928.md)已完成；
 一步短流程及其结果归档已完成；接续训练区吞吐测量。

@@ -1047,7 +1047,7 @@
     "id": "D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928",
     "status": "stage_a_source_probe_complete_transfer_terms_pending",
     "protocol": "docs/protocols/D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928.md",
-    "immediate_action": "Run Vaihingen fit-only P2 throughput probe before freezing matched formal budget; independently resolve US3D data transfer/use terms; assess Houston once if US3D becomes unusable.",
+    "immediate_action": "Run frozen Vaihingen matched seed42 development queue and archive full decision; independently resolve US3D data transfer/use terms; assess Houston once if US3D becomes unusable.",
     "stage_a_probe": {
       "source_commit": "6c7c0d14290197e6741c48342d5f4f82111473ab",
       "status": "BLOCKED_DATA_TRANSFER_AND_TERMS_PENDING",
@@ -1088,14 +1088,33 @@
       "result": "P0/P1/P2 each completed one train step, save/reload and 262144-pixel crop evaluation; infrastructure check only"
     },
     "vaihingen_fit_budget_probe": {
-      "status": "implemented_server_cuda_pending",
+      "status": "complete_server_reported_and_archived",
       "config": "configs/rebuild_v1/d20_vaihingen_fit_budget_probe_20260928.json",
       "protocol": "docs/protocols/D20_VAIHINGEN_FIT_BUDGET_PROBE_20260928.md",
       "queue": "scripts/run_rebuild_v1_d20_vaihingen_fit_budget_probe.sh",
       "arm": "P2",
       "steps": 20,
       "scope": "fit_only_no_development_labels_no_model_checkpoint",
-      "formal_training_auto_launch": false
+      "formal_training_auto_launch": false,
+      "server_started_at": "2026-09-28T16:22:47+08:00",
+      "server_completed_at": "2026-09-28T16:23:08+08:00",
+      "archive_commit": "abe10e4",
+      "archive": "records/rebuild_v1_d20_vaihingen_fit_budget_probe_compact_20260928/",
+      "steady_step_median_seconds": 0.222,
+      "gpu_peak_allocated_gib": 0.36,
+      "host_peak_rss_gib": 2.258
+    },
+    "vaihingen_seed42_formal_development": {
+      "status": "implemented_server_cuda_pending",
+      "config": "configs/rebuild_v1/d20_vaihingen_formal_seed42_20260928.json",
+      "protocol": "docs/protocols/D20_VAIHINGEN_SEED42_FORMAL_20260928.md",
+      "queue": "scripts/run_rebuild_v1_d20_vaihingen_seed42_queue.sh",
+      "arms": ["P0", "P1", "P2"],
+      "seeds": [42],
+      "steps_per_arm": 8000,
+      "evidence_level": "same_mosaic_development_only",
+      "seed17_auto_launch": false,
+      "independent_final_loaded": false
     },
     "conditional_training": "P0/P1/P2 seed42 on accepted source; all three seed17 only after frozen dev gate passes.",
     "final_evaluation": "Reserve independent geography until all methods and controls are frozen; never select reliability interventions on final scores.",
@@ -1125,6 +1144,6 @@
     "physical_gpu": 0,
     "cuda_visible_devices": "0",
     "persistent_scope_root": "/home/jovyan/zzx",
-    "dual_worker_exception": "User authorized physical GPU0 and GPU1 for D15, D16/D17, D18/D19, and the matched D18 seed17 replication. Their queues apply explicit independent-worker device checks; the older GPU0-only machine policy and validator remain for historical queues."
+    "dual_worker_exception": "User authorized physical GPU0 and GPU1 for D15, D16/D17, D18/D19, D18 seed17 replication, and the current D20 work. Their queues apply explicit independent-worker device checks; the older GPU0-only machine policy and validator remain for historical queues."
   }
 }

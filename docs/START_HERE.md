@@ -1,5 +1,12 @@
 # Start Here
 
+**D20 Vaihingen seed42 matched development queue prepared, 2026-09-28.**
+The fit-only P2 timing probe completed and was archived in `abe10e4`.
+The common 8,000-step budget, 17 full development tiles and the gate are frozen in
+the [execution protocol](protocols/D20_VAIHINGEN_SEED42_FORMAL_20260928.md).
+Server CUDA formal execution is pending. Vaihingen remains same-mosaic development;
+US3D independent-source transfer and terms remain unresolved.
+
 **D20 Vaihingen matched one-step smoke passed, 2026-09-28.** P0/P1/P2 each
 completed train, save, reload and development-crop evaluation; server evidence
 was archived in `8401bcd`. The one-step scores are infrastructure diagnostics.
@@ -22,7 +29,7 @@ same-area development, with prior scene exposure and NIR/red/green inputs to acc
 Read the [Stage A result and next action](current/D20_STAGE_A_SOURCE_ACCEPTANCE_20260928.md).
 The runnable [Vaihingen content audit](current/D20_VAIHINGEN_CONTENT_AUDIT_20260928.md)
 checks the development source while US3D transfer terms are resolved.
-No D20 formal training queue exists yet.
+The D20 Vaihingen formal development queue is prepared; server execution is pending.
 
 **Latest, 2026-09-28: D18 seed17 replication complete and offline-audited.**
 The seed42/17 P0/P1/P2 summaries are archived. P2 passed the prespecified
