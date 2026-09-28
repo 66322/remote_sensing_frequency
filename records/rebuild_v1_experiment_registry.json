@@ -1047,7 +1047,15 @@
     "id": "D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928",
     "status": "gamus_stage_a_sample_content_pass_source_acceptance_pending_us3d_transfer_terms_pending",
     "protocol": "docs/protocols/D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928.md",
-    "immediate_action": "Review revised GAMUS upstream rights, city provenance, full class coverage and spatial leakage; freeze a city-separated fit/dev/final split before any new training. Preserve failed Vaihingen seed42 gate and no-seed17 stop. Keep US3D transfer/terms pending.",
+    "immediate_action": "Run CPU-only metadata inspection of the nine pinned GAMUS samples, then review upstream rights, city provenance, full class coverage and spatial leakage; freeze a city-separated fit/dev/final split before any new training. Preserve failed Vaihingen seed42 gate and no-seed17 stop. Keep US3D transfer/terms pending.",
+    "gamus_sample_metadata_audit": {
+      "status": "prepared_not_executed",
+      "protocol": "docs/protocols/D20_GAMUS_SAMPLE_METADATA_AUDIT_20260928.md",
+      "runner": "scripts/run_rebuild_v1_d20_gamus_sample_metadata.sh",
+      "scope": "nine_existing_hdf5_files_read_only_cpu_no_download_no_training",
+      "server_record": "records/rebuild_v1_d20_gamus_sample_metadata_20260928/",
+      "compact_archive": "records/rebuild_v1_d20_gamus_sample_metadata_compact_20260928/"
+    },
     "gamus_revised_stage_a": {
       "status": "sample_content_pass_source_acceptance_pending",
       "server_run_commit": "83808a96f64e3bc5b8986dbfd1d11cfd6e803239",

@@ -1,5 +1,9 @@
 # Next research decision after audited D18 replication (2026-09-28)
 
+**下一可执行核查：**先运行[修订版 GAMUS 九文件 HDF5 属性审计](../protocols/D20_GAMUS_SAMPLE_METADATA_AUDIT_20260928.md)，
+只读取已下载样本的元数据和文件 SHA，不下载、不启动 GPU。若没有地理属性，
+仍需从发布方取得文件名到原始区域的映射；不能靠城市前缀证明空间独立。
+
 **当前动作，2026-09-28：**修订版 GAMUS Stage A CPU 小样本审计已完成并归档；
 三城样本内容通过，但来源准入仍待完成。先核查上游权利、城市来源、全量类别
 与空间泄漏，形成城市级 fit/dev/final 与类别映射草案；在批准匹配短流程和

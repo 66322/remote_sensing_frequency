@@ -1,5 +1,11 @@
 # Start Here
 
+**Next CPU action prepared, 2026-09-28:** Inspect HDF5 attributes in the nine
+already downloaded revised GAMUS samples for coordinate and source metadata.
+Read the [bounded execution protocol](protocols/D20_GAMUS_SAMPLE_METADATA_AUDIT_20260928.md).
+It verifies sample hashes, reads metadata only, and has no download or GPU
+step. Its result cannot establish source rights or geographic independence.
+
 **Current, 2026-09-28: revised GAMUS Stage A sample audit completed.** The
 server's last archived status is `AUDIT COMPLETE 0` at 18:33:49 +08:00.
 Three city sample triplets passed content checks, while upstream rights,

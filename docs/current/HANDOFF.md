@@ -1,5 +1,10 @@
 # Current handoff — 2026-09-28, revised GAMUS Stage A sample audit complete
 
+**下一条服务器操作已准备、尚未执行：**运行[九文件 HDF5 属性只读核查](../protocols/D20_GAMUS_SAMPLE_METADATA_AUDIT_20260928.md)，
+检查已下载样本有无坐标和来源属性。只用 CPU，不下载、不训练；已有 Stage A
+审计和文件 SHA 绑定。完成后先归档紧凑证据，再判断能否从文件内恢复空间位置。
+这一步不替代三城底层权利与原始数据源核对。
+
 **最后观测：**服务器归档的 `status.tsv` 于 2026-09-28 18:33:49 +08:00
 记录 `AUDIT COMPLETE 0`；审计执行 `83808a9`，紧凑证据在 `70344a4`。
 修订版 GAMUS 的 DC／PHL／NYC 各一组影像、高度、标签内容通过，状态为
