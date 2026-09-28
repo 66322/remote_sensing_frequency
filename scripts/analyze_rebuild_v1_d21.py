@@ -125,10 +125,10 @@ def main():
                     if any(row[field] != bindings[0][field] for row in bindings):
                         raise RuntimeError('unmatched experiment bindings: '+field)
                 decisions[f'{dataset}_seed{seed}'] = decision(arms,dataset)
-    p.write(p.COMPACT/'decision.json',dict(completed=len(summaries),planned=48,missing=missing,
+    p.write(p.COMPACT/'decision.json',dict(completed=len(summaries),planned=32,missing=missing,
         integer_count_audit='PASS', decisions=decisions,
-        all_development_accuracy_gates_passed=(len(decisions)==6 and all(d['development_accuracy_gate_passed'] for d in decisions.values())),
-        all_missing_aux_safety_gates_passed=(len(decisions)==6 and all(d['missing_aux_safety_passed'] for d in decisions.values())),
+        all_development_accuracy_gates_passed=(len(decisions)==4 and all(d['development_accuracy_gate_passed'] for d in decisions.values())),
+        all_missing_aux_safety_gates_passed=(len(decisions)==4 and all(d['missing_aux_safety_passed'] for d in decisions.values())),
         evidence_level=cfg['evidence_level'], independent_confirmation=False, test6_loaded=False))
     with (p.COMPACT/'metrics.csv').open('w',encoding='utf-8',newline='') as file:
         fields=['dataset','arm','seed','scope','clean','optical_quality','auxiliary_quality','macro','aux_zero','trainable_parameters']
@@ -138,7 +138,7 @@ def main():
     for name in ('plan.json','preflight.json','input_manifest.json'):
         if (p.OUT/name).is_file():
             shutil.copy2(p.OUT/name,p.COMPACT/name)
-    print(f'D21 ARCHIVED {len(summaries)}/48; integer audit PASS; missing jobs retained',flush=True)
+    print(f'D21 ARCHIVED {len(summaries)}/32; integer audit PASS; missing jobs retained',flush=True)
 
 
 if __name__ == '__main__':

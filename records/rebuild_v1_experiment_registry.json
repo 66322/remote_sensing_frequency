@@ -1065,18 +1065,17 @@
     ],
     "seeds": [
       42,
-      17,
-      2026
+      17
     ],
     "steps_per_job": 16000,
-    "jobs": 48,
+    "jobs": 32,
     "physical_gpus": [
       0,
       1
     ],
     "estimated_wall_hours": [
-      30,
-      50
+      20,
+      35
     ],
     "started_at": null,
     "completed_at": null,

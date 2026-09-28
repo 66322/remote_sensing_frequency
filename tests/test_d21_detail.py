@@ -83,8 +83,8 @@ class Contracts(unittest.TestCase):
 
     def test_plan_and_count_audit(self):
         jobs=p.jobs()
-        self.assertEqual(len(jobs),48)
-        self.assertEqual(len({p.key(job) for job in jobs}),48)
+        self.assertEqual(len(jobs),32)
+        self.assertEqual(len({p.key(job) for job in jobs}),32)
         self.assertEqual([job['seed'] for job in jobs[:16]],[42]*16)
         p.datasets()
         cm=[[0]*6 for _ in range(6)]

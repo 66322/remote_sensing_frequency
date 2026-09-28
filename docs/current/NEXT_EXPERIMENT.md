@@ -1,6 +1,6 @@
 # 下一步：执行 D21 并据配对结果决定方向
 
-1. 启动[D21队列](../protocols/D21_DETAIL_FREQUENCY_DAY_QUEUE_20260928.md)：8设置×2数据集×3种子，每组16k。
+1. 启动[D21队列](../protocols/D21_DETAIL_FREQUENCY_DAY_QUEUE_20260928.md)：8设置×2数据集×2种子，每组16k。
 2. 自动完成环境/数据预检、16个train-only短流程、每个seed块的16项训练和全图评估。
 3. 汇总同时展示全部组、全部种子、逐tile和逐类结果；明确FullGT与NoBoundary口径。
 4. 若细尺度M0优于旧融合R1而F2不优于M0，研究重点转向精细融合；不归因于频率。

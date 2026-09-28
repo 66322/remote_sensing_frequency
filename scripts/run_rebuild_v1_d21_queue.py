@@ -30,7 +30,7 @@ def prepare():
     cfg = p.config()
     p.ROOT.resolve().relative_to(Path('/home/jovyan/zzx').resolve())
     remaining = sum(not (p.eval_dir(job)/'summary.json').is_file() for job in p.jobs())
-    required_gib = 12 + (cfg['minimum_free_disk_gib']-12)*remaining/48
+    required_gib = 12 + (cfg['minimum_free_disk_gib']-12)*remaining/32
     if shutil.disk_usage(p.ROOT).free < required_gib*1024**3:
         raise RuntimeError(f'need {required_gib:.1f} GiB free disk for remaining checkpoints and predictions')
     if available_ram_gib() < cfg['minimum_available_ram_gib']:
@@ -89,7 +89,7 @@ def main():
             return 3
         cfg, plan = prepare()
         if args.prepare_only:
-            print('D21 PREPARED: 48 jobs; no training launched', flush=True)
+            print('D21 PREPARED: 32 jobs; no training launched', flush=True)
             return 0
         stop, mutex = threading.Event(), threading.Lock()
         active, failures = {}, []
@@ -175,7 +175,7 @@ def main():
                 for future in futures:
                     future.result()
             return not stopped() and pending.empty()
-        event('QUEUE','START','48 formal jobs; fixed 16000 steps; GPU0+GPU1')
+        event('QUEUE','START','32 formal jobs; fixed 16000 steps; GPU0+GPU1')
         smoke_jobs = [dict(dataset=d,arm=a,seed=42) for a in cfg['arms'] for d in cfg['datasets']]
         passed = batch(smoke_jobs, smoke=True)
         if passed:
@@ -188,12 +188,12 @@ def main():
         subprocess.run([sys.executable,'-B','scripts/analyze_rebuild_v1_d21.py'],cwd=p.ROOT,check=True)
         completed = sum((p.eval_dir(job)/'summary.json').is_file() for job in p.jobs())
         p.write(p.OUT/'queue_summary.json', dict(observed_at=datetime.now().astimezone().isoformat(),
-            completed=completed, planned=48, failures=failures, stop_requested=stopped(),
-            test6_loaded=False, status='COMPLETE' if completed == 48 else 'INCOMPLETE'))
-        event('QUEUE','COMPLETE' if completed == 48 else 'INCOMPLETE',f'{completed}/48')
+            completed=completed, planned=32, failures=failures, stop_requested=stopped(),
+            test6_loaded=False, status='COMPLETE' if completed == 32 else 'INCOMPLETE'))
+        event('QUEUE','COMPLETE' if completed == 32 else 'INCOMPLETE',f'{completed}/32')
         shutil.copy2(p.OUT/'queue_summary.json',p.COMPACT/'queue_summary.json')
         shutil.copy2(p.OUT/'status.tsv',p.COMPACT/'status.tsv')
-        return 0 if completed == 48 else 2
+        return 0 if completed == 32 else 2
 
 
 if __name__ == '__main__':

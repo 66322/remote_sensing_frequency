@@ -34,7 +34,7 @@ def sha(path):
 def config():
     cfg = read(CONFIG)
     assert cfg['arms'] == ['R0', 'R1', 'M0', 'M1', 'F0', 'F1', 'F2', 'F3']
-    assert cfg['seeds'] == [42, 17, 2026] and cfg['datasets'] == ['potsdam', 'vaihingen']
+    assert cfg['seeds'] == [42, 17] and cfg['datasets'] == ['potsdam', 'vaihingen']
     assert cfg['steps'] == 16000 and cfg['micro_batch'] * cfg['accum_steps'] == 16
     assert cfg['test6_loaded'] is False and cfg['independent_final_loaded'] is False
     return cfg

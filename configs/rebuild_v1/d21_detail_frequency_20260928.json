@@ -1,7 +1,7 @@
 {
   "experiment": "D21_DETAIL_FREQUENCY_DEVELOPMENT_20260928",
   "arms": ["R0", "R1", "M0", "M1", "F0", "F1", "F2", "F3"],
-  "seeds": [42, 17, 2026],
+  "seeds": [42, 17],
   "datasets": ["potsdam", "vaihingen"],
   "steps": 16000,
   "micro_batch": 2,
@@ -23,7 +23,7 @@
   "gate_pp": {"macro_gain_min": 0.2, "clean_loss_max": 0.1, "family_loss_max": 0.3, "tile_clean_loss_max": 0.1, "tile_family_loss_max": 0.3},
   "aux_zero_loss_vs_R0_max_pp": 0.1,
   "boundary_tolerance_pixels": 3,
-  "minimum_free_disk_gib": 120,
+  "minimum_free_disk_gib": 80,
   "minimum_available_ram_gib": 48,
   "gpu_idle_memory_mib_max": 1500,
   "gpu_idle_utilization_max": 10,
