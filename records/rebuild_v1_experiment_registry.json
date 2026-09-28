@@ -1008,12 +1008,31 @@
       "completed_at": "2026-09-28T12:13:32+08:00",
       "time_source": "records/rebuild_v1_d18_d19_compact_20260928/status.tsv final run segment",
       "source_commit": "5209403c9a25bd7a7a85369e931ee4b44358a0a9",
-      "decision": "Eight of eight formal seed42 training/evaluation pairs complete, zero failures; original summaries archived and independently recomputed offline. P2 passed the prespecified within-D18 single-seed screen by +1.0603 pp over the stronger P0/P1 control, but its raw aux_zero score is 0.4986 pp below P0. C2/C3 failed; C4/C5 were conditionally skipped. Next proposed batch: paired P0/P1/P2 seed17 replication, not yet implemented. Val2 exploratory; Test6 frozen.",
+      "decision": "Eight of eight formal seed42 training/evaluation pairs complete, zero failures; original summaries archived and independently recomputed offline. P2 passed the prespecified within-D18 single-seed screen by +1.0603 pp over the stronger P0/P1 control, but its raw aux_zero score is 0.4986 pp below P0. C2/C3 failed; C4/C5 were conditionally skipped. Matched P0/P1/P2 seed17 replication code and queue are now prepared for server execution. Val2 exploratory; Test6 frozen.",
       "evidence_status": "archived_original_summaries_offline_audit_passed",
       "records": [
         "records/rebuild_v1_d18_d19_compact_20260928/",
         "docs/experiments/D18_D19_RESULTS_20260928.md"
       ]
+    },
+    {
+      "id": "D18_MATCHED_SEED17_REPLICATION_20260928",
+      "name": "frozen_dino_rgb_gray_dsm_matched_replication_and_paired_errors",
+      "status": "code_ready_server_smoke_and_formal_run_pending",
+      "protocol": "docs/protocols/D18_MATCHED_SEED17_REPLICATION_PLAN_20260928.md",
+      "execution": "docs/protocols/D18_SEED17_EXECUTION_20260928.md",
+      "config": "configs/rebuild_v1/d18_replication_seed17_20260928.json",
+      "queue": "scripts/run_rebuild_v1_d18_replication_queue.sh",
+      "seeds": [42, 17],
+      "new_training_seed": 17,
+      "arms": ["P0", "P1", "P2"],
+      "training": "three new matched frozen-DINO 8000-step runs; original seed42 runs reused",
+      "evaluation": "Val2 nine standard conditions plus two fixed diagnostics; same seed42 corruption keys; paired-pixel error and matched P0 absence fallback",
+      "test6_policy": "prohibited",
+      "gpu": "physical_0_and_1_independent_workers_user_authorized",
+      "server_records": "records/rebuild_v1_d18_replication_20260928/ and records/rebuild_v1_d18_replication_queue_20260928/",
+      "compact_archive": "records/rebuild_v1_d18_replication_compact_20260928/",
+      "decision": "Pending server smoke and execution. P2 must pass original prespecified gain and guards separately in both seeds. Report raw DSM absence cost and same-seed P0 paired errors. Do not infer independent validation from reused Val2."
     }
   ],
   "handoff_entry": "docs/START_HERE.md",
@@ -1037,6 +1056,6 @@
     "physical_gpu": 0,
     "cuda_visible_devices": "0",
     "persistent_scope_root": "/home/jovyan/zzx",
-    "dual_worker_exception": "User authorized physical GPU0 and GPU1 for D15, D16/D17 and D18/D19. Their queues apply explicit independent-worker device checks; the older GPU0-only machine policy and validator remain for historical queues."
+    "dual_worker_exception": "User authorized physical GPU0 and GPU1 for D15, D16/D17, D18/D19, and the matched D18 seed17 replication. Their queues apply explicit independent-worker device checks; the older GPU0-only machine policy and validator remain for historical queues."
   }
 }

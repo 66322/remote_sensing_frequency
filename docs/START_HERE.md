@@ -1,13 +1,18 @@
 # Start Here
 
-**Latest, 2026-09-28: D18/D19 seed42 complete and archived.** Eight formal
+**Latest, 2026-09-28: D18 seed17 replication code ready for server launch.**
+Matched P0/P1/P2 training, fixed seed42 evaluation perturbations, two-GPU queue,
+paired error analysis and compact GitHub archival are implemented. Local CPU
+checks passed; server CUDA smoke and full execution have not been observed.
+Read the [execution instructions](protocols/D18_SEED17_EXECUTION_20260928.md)
+and [current handoff](current/HANDOFF.md). Test6 remains sealed.
+
+**D18/D19 seed42 completed and archived.** Eight formal
 training/evaluation pairs completed with zero failures. Offline audit of the
 original summaries passed. P2 passed the within-D18 single-seed screen;
 C2/C3 failed and C4/C5 were skipped. P2 is a replication candidate, not a
-confirmed method. Read [results](experiments/D18_D19_RESULTS_20260928.md) and
-[current handoff](current/HANDOFF.md). The next proposed batch is matched
-P0/P1/P2 seed17; its code and queue are not yet implemented. Do not relaunch
-the seed42 queue.
+confirmed method. Read [results](experiments/D18_D19_RESULTS_20260928.md).
+Do not relaunch the seed42 queue.
 
 **Historical launch note, 2026-09-27:** Follow the
 [single-seed execution instructions](protocols/D18_D19_EXECUTION_20260927.md):

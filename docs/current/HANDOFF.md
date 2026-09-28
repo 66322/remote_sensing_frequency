@@ -1,4 +1,4 @@
-# Current handoff — 2026-09-28, D18/D19 seed42 complete
+# Current handoff — 2026-09-28, D18 seed17 replication ready
 
 ## 当前事实与下一步
 
@@ -11,20 +11,23 @@
 原始 `status.tsv`、`conditional_gate.json`、`decision.json` 和8份正式评估
 `summary.json` 已由服务器上传至GitHub；离线重算审计通过，见
 [`offline_audit.json`](../../records/rebuild_v1_d18_d19_compact_20260928/offline_audit.json)。
-**立即下一步：**按同一冻结协议设计 P0/P1/P2 匹配seed17复验，不要只复验P2；
-具体矩阵、判据、配对诊断和资源安排已写入
+**立即下一步：**服务器拉取本分支，按
+[D18 seed17执行说明](../protocols/D18_SEED17_EXECUTION_20260928.md)
+启动 P0/P1/P2 匹配复验。代码、双GPU队列、配对诊断和精简归档已实现；
+本机通过旧版9项和新复验3项CPU检查，服务器短流程与正式运行尚未观察到。
+研究矩阵和判据见
 [D18匹配复验计划](../protocols/D18_MATCHED_SEED17_REPLICATION_PLAN_20260928.md)。
-复验代码和队列尚未实现或启动。P2在DSM完全缺失时原模型比P0低约0.50 pp，
+P2在DSM完全缺失时原模型比P0低约0.50 pp，
 不能将辅助质量组的harm检查扩展成普遍缺失鲁棒性结论。
 C2/C3本轮变体停止，C4/C5不启动。Test6继续冻结。服务器队列已结束，
 不应按下文历史启动说明再次运行。
 
-以下旧交接内容仅保留作时间线背景，不是当前启动指令。
+以下旧交接内容仅保留作时间线背景，**不是当前启动指令**。
 
 最新用户要求：多方案单seed初筛；本批仅seed42，有信号后再选候选及必要对照补seed。
 训练后必须自动重载、评估与汇总，物理GPU0/1共享任务，可跨一天继续。
 
-## 立即下一步
+## 历史：旧D18/D19队列启动说明（已完成，禁止重启）
 
 代码已实现，本地9项CPU测试通过、2项CUDA检查待服务器；还核对官方DINOv2架构接口。
 服务器尚未观测新队列启动。按 [执行说明](../protocols/D18_D19_EXECUTION_20260927.md)
