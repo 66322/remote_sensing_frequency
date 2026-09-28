@@ -1049,7 +1049,7 @@
     "protocol": "docs/protocols/D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928.md",
     "immediate_action": "Run CPU-only revised GAMUS three-city metadata and sample-triplet audit; verify upstream rights and freeze a truly geographic split before any new training. Preserve failed Vaihingen seed42 gate and no-seed17 stop. Keep US3D transfer/terms pending.",
     "gamus_revised_stage_a": {
-      "status": "first_server_attempt_blocked_missing_h5py_before_download_isolated_dependency_retry_prepared",
+      "status": "second_server_attempt_blocked_hub_expand_limit_400_before_download_pagination_retry_prepared",
       "author_repository": "https://github.com/EarthNets/RSI-MMSegmentation",
       "dataset_repository": "https://huggingface.co/datasets/earthflow/GAMUS",
       "pinned_dataset_revision": "a3c0e2511f06d909612406f436cf8abb4da805f5",
@@ -1061,6 +1061,8 @@
       "protocol": "docs/protocols/D20_GAMUS_SOURCE_ACCEPTANCE_20260928.md",
       "runner": "scripts/run_rebuild_v1_d20_gamus_source_audit.sh",
       "first_attempt_cause": "remote_sensing_missing_h5py_before_any_sample_download",
+      "second_attempt_cause": "Hub_tree_API_expand_true_limit_1000_HTTP_400_before_sample_download",
+      "second_attempt_dependency": "isolated_h5py_3.14.0_numpy_1.26.4_success",
       "dependency_retry_scope": "isolated_h5py_wheel_under_experiment_record_no_training_environment_change",
       "server_data_directory": "/home/jovyan/zzx/datasets/rebuild_v1_d20_gamus/",
       "compact_archive": "records/rebuild_v1_d20_gamus_source_acceptance_compact_20260928/",

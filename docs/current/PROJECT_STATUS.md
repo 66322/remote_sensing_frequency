@@ -1,5 +1,9 @@
 # Current Project Status
 
+**GAMUS Stage A API 分页修订待执行：**第二次服务器运行已通过隔离依赖预检，
+随后在下载前遇到 Hub API `expand=true&limit=1000` 的 HTTP 400。
+经复现已改用正常返回 LFS 哈希的默认 1000 项分页；没有样本下载或 GPU 训练。
+
 **GAMUS Stage A 首次启动受缺少 `h5py` 阻塞：**报错发生在下载前；已准备只在
 实验记录目录安装该 CPU 读取依赖的修订启动器。样本内容和来源准入仍待服务器重试，
 没有使用 GPU 或修改训练环境。

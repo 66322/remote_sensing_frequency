@@ -1,5 +1,10 @@
 # Start Here
 
+**GAMUS Stage A pagination retry prepared.** The isolated HDF5 dependency
+passed on the server; the second attempt stopped before sample download due
+to a Hub API parameter combination returning HTTP 400. The audited source
+now uses working default pagination and reuses the installed dependency.
+
 **GAMUS Stage A retry prepared.** The first server attempt stopped before
 download because `remote_sensing` lacked `h5py`. The updated
 [source audit runner](protocols/D20_GAMUS_SOURCE_ACCEPTANCE_20260928.md)

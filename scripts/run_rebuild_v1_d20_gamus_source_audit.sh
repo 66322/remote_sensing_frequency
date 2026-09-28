@@ -39,16 +39,20 @@ git diff --cached --exit-code -- "$SOURCE" "$RUNNER" >/dev/null
 
 if ! python -c 'import h5py, numpy' >/dev/null 2>&1; then
   DEP_DIR="$RECORD/pydeps"
-  mkdir -p "$DEP_DIR" "$RECORD/tmp"
-  printf '%s\tDEPENDENCY\tSTART\tisolated_h5py_under_experiment_record\n' "$(date --iso-8601=seconds)" >> "$RECORD/status.tsv"
-  if ! TMPDIR="$RECORD/tmp" PIP_DISABLE_PIP_VERSION_CHECK=1 \
-    python -m pip install --no-input --no-cache-dir --only-binary=:all: --no-deps \
-      --target "$DEP_DIR" 'h5py>=3.11,<4' > "$RECORD/dependency_install.log" 2>&1; then
-    tail -n 30 "$RECORD/dependency_install.log" >&2
-    exit 1
+  if [ ! -d "$DEP_DIR/h5py" ]; then
+    mkdir -p "$DEP_DIR" "$RECORD/tmp"
+    printf '%s\tDEPENDENCY\tSTART\tisolated_h5py_under_experiment_record\n' "$(date --iso-8601=seconds)" >> "$RECORD/status.tsv"
+    if ! TMPDIR="$RECORD/tmp" PIP_DISABLE_PIP_VERSION_CHECK=1 \
+      python -m pip install --no-input --no-cache-dir --only-binary=:all: --no-deps \
+        --target "$DEP_DIR" 'h5py>=3.11,<4' > "$RECORD/dependency_install.log" 2>&1; then
+      tail -n 30 "$RECORD/dependency_install.log" >&2
+      exit 1
+    fi
+    printf '%s\tDEPENDENCY\tCOMPLETE\tisolated_h5py_under_experiment_record\n' "$(date --iso-8601=seconds)" >> "$RECORD/status.tsv"
+  else
+    printf '%s\tDEPENDENCY\tREUSED\tisolated_h5py_under_experiment_record\n' "$(date --iso-8601=seconds)" >> "$RECORD/status.tsv"
   fi
   export PYTHONPATH="$DEP_DIR${PYTHONPATH:+:$PYTHONPATH}"
-  printf '%s\tDEPENDENCY\tCOMPLETE\tisolated_h5py_under_experiment_record\n' "$(date --iso-8601=seconds)" >> "$RECORD/status.tsv"
 fi
 python - <<'PY' | tee -a "$RECORD/run_context.txt"
 import h5py, numpy

@@ -1,5 +1,9 @@
 # Current handoff — 2026-09-28, D20 Stage A server probe complete
 
+**GAMUS API 分页修复：**第二次审计隔离依赖通过（`h5py 3.14.0`、
+NumPy `1.26.4`），随后因 Hub `expand=true&limit=1000` 返回 400，
+在样本下载前停止。已移除不必要的 `expand` 并复用已安装依赖，服务器待拉取重试。
+
 **GAMUS 审计启动修复：**服务器首次运行在任何下载之前发现
 `ModuleNotFoundError: h5py`。已把启动器改为在本实验记录目录独立准备
 `h5py`，不改训练环境；服务器待拉取后重试。同一 `status.tsv` 保留首次失败。

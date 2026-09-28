@@ -1,5 +1,9 @@
 # Next research decision after audited D18 replication (2026-09-28)
 
+**当前动作：**GAMUS 第二次 Stage A 因 Hub API 分页参数返回 HTTP 400，
+发生在小样本下载前；已改为经验证可用的默认 1000 项分页。
+服务器拉取修订后重试，只复用原有隔离 `h5py`，不使用 GPU。
+
 **当前动作：**GAMUS 首次 Stage A 审计因服务器缺少 `h5py`，在下载前停止。
 拉取修订启动器后重试同一 CPU 小样本审计；独立依赖保存在实验记录目录，
 不修改训练环境，也不触发 GPU。

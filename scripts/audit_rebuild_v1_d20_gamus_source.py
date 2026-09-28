@@ -39,7 +39,9 @@ def get_json(url):
 
 
 def tree(modality, split):
-    url = f"{API}/tree/{REVISION}/{modality}/{split}?limit=1000&expand=true"
+    # The Hub tree API returns LFS metadata by default. expand=true rejects
+    # page sizes above 100 with HTTP 400, so use the default 1000-item pages.
+    url = f"{API}/tree/{REVISION}/{modality}/{split}?limit=1000"
     items = []
     while url:
         page, link = get_json(url)
