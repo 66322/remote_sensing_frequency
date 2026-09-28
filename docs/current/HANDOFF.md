@@ -1,4 +1,21 @@
-# Current handoff — 2026-09-27, D18/D19 ready for server launch
+# Current handoff — 2026-09-28, D18/D19 seed42 complete
+
+## 当前事实与下一步
+
+用户提供的服务器状态显示：2026-09-28 12:13:32 +08:00 队列 `QUEUE FINISHED`，
+8/8 基础训练及评估完成、失败0；C4/C5因结构门槛未触发而按计划跳过。
+用户提供的 `decision.json` 显示 P2 相对 P0/P1 中较强者综合 +1.0603 pp，
+通过单seed预设筛选；C2、C3未通过。见
+[D18/D19结果记录](../experiments/D18_D19_RESULTS_20260928.md)。
+
+**立即下一步：**从服务器归档原始 `status.tsv`、`conditional_gate.json`、
+`decision.json` 和8份正式评估 `summary.json` 到 GitHub，并做离线重算审计。
+当前 GitHub 仅保存用户粘贴的最终decision，不能宣称已完成原始摘要审计。
+审计通过后，按同一冻结协议为 P0/P1/P2 一起补 seed17；不要只复验 P2。
+C2/C3本轮变体停止，C4/C5不启动。Test6继续冻结。服务器队列已结束，
+不应按下文历史启动说明再次运行。
+
+以下旧交接内容仅保留作时间线背景，不是当前启动指令。
 
 最新用户要求：多方案单seed初筛；本批仅seed42，有信号后再选候选及必要对照补seed。
 训练后必须自动重载、评估与汇总，物理GPU0/1共享任务，可跨一天继续。

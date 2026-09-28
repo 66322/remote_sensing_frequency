@@ -993,7 +993,7 @@
     {
       "id": "D18_D19_NIGHT_SCREEN_20260927",
       "name": "single_seed_pretrained_adapter_and_intervention_structure_screen",
-      "status": "implemented_awaiting_server_launch",
+      "status": "user_reported_complete_partial_archive",
       "protocol": "docs/protocols/D18_D19_EXECUTION_20260927.md",
       "config": "configs/rebuild_v1/d18_d19_night_20260927.json",
       "queue": "scripts/run_rebuild_v1_d18_d19_queue.sh",
@@ -1005,8 +1005,14 @@
       "test6_policy": "prohibited",
       "server_records": "records/rebuild_v1_d18_d19_20260927/ and records/rebuild_v1_d18_d19_queue_20260927/",
       "server_started_at": null,
-      "completed_at": null,
-      "decision": "Await server branch-local CPU/CUDA/data train-save-reload-eval smoke; no result exists."
+      "completed_at": "2026-09-28T12:13:32+08:00",
+      "time_source": "user-supplied server status.tsv tail",
+      "decision": "Eight of eight formal seed42 training/evaluation pairs complete, zero failures. P2 passed the prespecified within-D18 single-seed screen by +1.0603 pp over the stronger P0/P1 control. C2/C3 failed; C4/C5 were conditionally skipped. Await original server summaries and offline audit before paired P0/P1/P2 seed17 replication. Val2 exploratory; Test6 frozen.",
+      "evidence_status": "user_reported_decision_only_original_summaries_pending",
+      "records": [
+        "records/rebuild_v1_d18_d19_compact_20260928/user_reported_decision.json",
+        "docs/experiments/D18_D19_RESULTS_20260928.md"
+      ]
     }
   ],
   "handoff_entry": "docs/START_HERE.md",
@@ -1030,6 +1036,6 @@
     "physical_gpu": 0,
     "cuda_visible_devices": "0",
     "persistent_scope_root": "/home/jovyan/zzx",
-    "d15_exception": "User authorized physical GPU0 and GPU1 for D15 and D16/D17. Their queues apply explicit independent-worker device checks; the older GPU0-only machine policy and validator remain for historical queues."
+    "dual_worker_exception": "User authorized physical GPU0 and GPU1 for D15, D16/D17 and D18/D19. Their queues apply explicit independent-worker device checks; the older GPU0-only machine policy and validator remain for historical queues."
   }
 }
