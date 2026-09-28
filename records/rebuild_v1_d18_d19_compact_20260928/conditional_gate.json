@@ -1,0 +1,209 @@
+{
+  "status": "COMPLETE",
+  "seed": 42,
+  "test6_loaded": false,
+  "val2_exploratory": true,
+  "config_sha256": "cb1c398acac6c9892aeee65bc5f331375a2395c0233654d7a3fc6ee58329ef0f",
+  "missing_base": [],
+  "missing_conditional": [],
+  "conditional_trigger": false,
+  "conditional_completed": [],
+  "decisions": [
+    {
+      "arm": "P2",
+      "status": "COMPLETE",
+      "passed": true,
+      "checks": {
+        "gain": true,
+        "clean": true,
+        "families": true,
+        "tile_clean": true,
+        "tile_families": true
+      },
+      "macro_gain_pp": 1.060298785916359,
+      "baseline": "P0",
+      "controls": [
+        "P0",
+        "P1"
+      ],
+      "family_delta_pp": {
+        "clean": 1.0045534906106184,
+        "rgb_quality": 1.2940520846316161,
+        "aux_quality": 1.0033206938500854
+      },
+      "tile_family_delta_pp": {
+        "3_11": {
+          "clean": 1.4975674431619956,
+          "rgb_quality": 1.865803651726797,
+          "aux_quality": 1.5105336805798064
+        },
+        "5_10": {
+          "clean": 0.5331338958118437,
+          "rgb_quality": 0.7676442303170494,
+          "aux_quality": 0.5171498294196719
+        }
+      },
+      "harm_percent": 4.617758283169544,
+      "rescue_percent": 3.68612325310173,
+      "negative_transfer_claim_supported": true
+    },
+    {
+      "arm": "C2",
+      "status": "COMPLETE",
+      "passed": false,
+      "checks": {
+        "gain": false,
+        "clean": false,
+        "families": true,
+        "tile_clean": false,
+        "tile_families": false
+      },
+      "macro_gain_pp": -0.257658604684309,
+      "baseline": "C0",
+      "controls": [
+        "C0",
+        "CP"
+      ],
+      "family_delta_pp": {
+        "clean": -0.24668906207178054,
+        "rgb_quality": -0.2757492053057575,
+        "aux_quality": -0.2505375466754316
+      },
+      "tile_family_delta_pp": {
+        "3_11": {
+          "clean": -0.5395721106107754,
+          "rgb_quality": -0.6004962806932995,
+          "aux_quality": -0.4921464849023671
+        },
+        "5_10": {
+          "clean": 0.006513419386799946,
+          "rgb_quality": -0.007111648651078606,
+          "aux_quality": -0.03201116344264121
+        }
+      },
+      "harm_percent": 2.730026973743975,
+      "rescue_percent": 2.9551749865125307,
+      "negative_transfer_claim_supported": false
+    },
+    {
+      "arm": "C3",
+      "status": "COMPLETE",
+      "passed": false,
+      "checks": {
+        "gain": false,
+        "clean": false,
+        "families": false,
+        "tile_clean": false,
+        "tile_families": false
+      },
+      "macro_gain_pp": -0.13209078577000355,
+      "baseline": "C0",
+      "controls": [
+        "C1",
+        "CP"
+      ],
+      "family_delta_pp": {
+        "clean": -0.3489556655299708,
+        "rgb_quality": -0.23200017160904451,
+        "aux_quality": -0.2576755041529708
+      },
+      "tile_family_delta_pp": {
+        "3_11": {
+          "clean": -0.6893287275452464,
+          "rgb_quality": -0.4976964129266015,
+          "aux_quality": -0.5355909422923855
+        },
+        "5_10": {
+          "clean": -0.08290383886428998,
+          "rgb_quality": -0.034635423064688364,
+          "aux_quality": -0.016092111034882173
+        }
+      },
+      "harm_percent": 2.865087561193811,
+      "rescue_percent": 2.9785798442949094,
+      "negative_transfer_claim_supported": false
+    },
+    {
+      "arm": "C4",
+      "status": "INCOMPLETE"
+    }
+  ],
+  "candidates": [
+    "P2"
+  ],
+  "score_rows": [
+    {
+      "arm": "P0",
+      "macro_percent": 81.35756400757673,
+      "families": {
+        "clean": 82.12094670351767,
+        "rgb_quality": 79.8307986156948,
+        "aux_quality": 82.12094670351767
+      }
+    },
+    {
+      "arm": "P1",
+      "macro_percent": 81.3979073113578,
+      "families": {
+        "clean": 82.08944746900524,
+        "rgb_quality": 80.0176383491112,
+        "aux_quality": 82.08663611595696
+      }
+    },
+    {
+      "arm": "P2",
+      "macro_percent": 82.45820609727416,
+      "families": {
+        "clean": 83.12550019412829,
+        "rgb_quality": 81.12485070032642,
+        "aux_quality": 83.12426739736776
+      }
+    },
+    {
+      "arm": "C0",
+      "macro_percent": 86.2853149545523,
+      "families": {
+        "clean": 86.87228344541313,
+        "rgb_quality": 86.47615931417728,
+        "aux_quality": 85.50750210406655
+      }
+    },
+    {
+      "arm": "C1",
+      "macro_percent": 86.09816926617323,
+      "families": {
+        "clean": 86.58912630960549,
+        "rgb_quality": 86.38730368259516,
+        "aux_quality": 85.31807780631902
+      }
+    },
+    {
+      "arm": "C2",
+      "macro_percent": 86.027656349868,
+      "families": {
+        "clean": 86.62559438334135,
+        "rgb_quality": 86.20041010887152,
+        "aux_quality": 85.25696455739111
+      }
+    },
+    {
+      "arm": "C3",
+      "macro_percent": 86.00577117412165,
+      "families": {
+        "clean": 86.52332777988316,
+        "rgb_quality": 86.24415914256824,
+        "aux_quality": 85.24982659991358
+      }
+    },
+    {
+      "arm": "CP",
+      "macro_percent": 86.13786195989165,
+      "families": {
+        "clean": 86.74580588693216,
+        "rgb_quality": 86.2588144330055,
+        "aux_quality": 85.4089655597373
+      }
+    }
+  ],
+  "seed17_policy": "not scheduled; inspect candidate and matched controls after review"
+}
