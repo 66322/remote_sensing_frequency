@@ -2,7 +2,7 @@
   "schema_version": "1.2",
   "project": "REBUILD_V1",
   "timezone": "UTC+08:00",
-  "last_updated": "2026-09-27",
+  "last_updated": "2026-09-28",
   "status_provenance_policy": "reported_complete and running_as_last_reported are user observations, not live server verification. expected_server_records are absent artifacts to collect, not archived evidence.",
   "timing_policy": {
     "started_at": "Actual launch time when directly evidenced; otherwise date/minute precision is stated explicitly.",
@@ -1043,6 +1043,18 @@
       "decision": "All three seed17 matched arms completed training/evaluation; paired analysis and compact archive completed. P2 passed the original five checks separately in seeds42/17 with macro gains +1.0603/+0.9229 pp over stronger P0/P1. Raw full DSM absence fell below same-seed P0 by 0.4986/0.4103 pp. Archived integer counts and both decisions independently recomputed offline. Keep P2 as a development baseline; resolve independent labelled scene access and protocol before another reliability-method GPU queue. Val2 exploratory; Test6 frozen."
     }
   ],
+  "next_plan": {
+    "id": "D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928",
+    "status": "planned_source_split_and_implementation_pending",
+    "protocol": "docs/protocols/D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928.md",
+    "immediate_action": "Bounded US3D source acceptance check; assess Houston once if US3D is unusable.",
+    "conditional_training": "P0/P1/P2 seed42 on accepted source; all three seed17 only after frozen dev gate passes.",
+    "final_evaluation": "Reserve independent geography until all methods and controls are frozen; never select reliability interventions on final scores.",
+    "queue": null,
+    "started_at": null,
+    "gpu": "physical_0_and_1_independent_workers",
+    "server_scope": "/home/jovyan/zzx"
+  },
   "handoff_entry": "docs/START_HERE.md",
   "duplicate_policy": {
     "rule": "Do not repeat a completed or closed fingerprint.",

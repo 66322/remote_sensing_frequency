@@ -6,7 +6,9 @@ screen in each seed, with gains of +1.0603/+0.9229 percentage points over
 the stronger matched control. Its raw score falls when DSM is fully absent.
 Read the [results](experiments/D18_REPLICATION_RESULTS_20260928.md) and
 [current handoff](current/HANDOFF.md). The next action is independent-source
-feasibility; no new GPU queue is scheduled. Val2 remains exploratory and Test6 sealed.
+feasibility; follow the [D20 staged plan](protocols/D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928.md)
+for source acceptance, external matched baselines and a reserved final evaluation region.
+No new GPU queue is implemented or scheduled. Val2 remains exploratory and Test6 sealed.
 
 **D18/D19 seed42 completed and archived.** Eight formal
 training/evaluation pairs completed with zero failures. Offline audit of the
