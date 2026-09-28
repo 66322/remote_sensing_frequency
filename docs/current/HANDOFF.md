@@ -12,6 +12,8 @@
 `summary.json` 已由服务器上传至GitHub；离线重算审计通过，见
 [`offline_audit.json`](../../records/rebuild_v1_d18_d19_compact_20260928/offline_audit.json)。
 **立即下一步：**按同一冻结协议设计 P0/P1/P2 匹配seed17复验，不要只复验P2；
+具体矩阵、判据、配对诊断和资源安排已写入
+[D18匹配复验计划](../protocols/D18_MATCHED_SEED17_REPLICATION_PLAN_20260928.md)。
 复验代码和队列尚未实现或启动。P2在DSM完全缺失时原模型比P0低约0.50 pp，
 不能将辅助质量组的harm检查扩展成普遍缺失鲁棒性结论。
 C2/C3本轮变体停止，C4/C5不启动。Test6继续冻结。服务器队列已结束，
