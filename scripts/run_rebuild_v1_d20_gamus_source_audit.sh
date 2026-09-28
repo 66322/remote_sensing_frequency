@@ -37,12 +37,26 @@ git diff --cached --exit-code -- "$SOURCE" "$RUNNER" >/dev/null
   sha256sum "$SOURCE" "$RUNNER"
 } > "$RECORD/run_context.txt"
 
-python - <<'PY'
+if ! python -c 'import h5py, numpy' >/dev/null 2>&1; then
+  DEP_DIR="$RECORD/pydeps"
+  mkdir -p "$DEP_DIR" "$RECORD/tmp"
+  printf '%s\tDEPENDENCY\tSTART\tisolated_h5py_under_experiment_record\n' "$(date --iso-8601=seconds)" >> "$RECORD/status.tsv"
+  if ! TMPDIR="$RECORD/tmp" PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    python -m pip install --no-input --no-cache-dir --only-binary=:all: --no-deps \
+      --target "$DEP_DIR" 'h5py>=3.11,<4' > "$RECORD/dependency_install.log" 2>&1; then
+    tail -n 30 "$RECORD/dependency_install.log" >&2
+    exit 1
+  fi
+  export PYTHONPATH="$DEP_DIR${PYTHONPATH:+:$PYTHONPATH}"
+  printf '%s\tDEPENDENCY\tCOMPLETE\tisolated_h5py_under_experiment_record\n' "$(date --iso-8601=seconds)" >> "$RECORD/status.tsv"
+fi
+python - <<'PY' | tee -a "$RECORD/run_context.txt"
 import h5py, numpy
 from pathlib import Path
 root=Path('/home/jovyan/zzx')
 assert root.is_dir()
 print('PREFLIGHT PASS: CPU dependencies and zzx root', h5py.__version__, numpy.__version__, flush=True)
+print('H5PY_PATH=' + str(Path(h5py.__file__).resolve()))
 PY
 printf '%s\tPREFLIGHT\tCOMPLETE\tCPU_dependencies_and_zzx_root\n' "$(date --iso-8601=seconds)" >> "$RECORD/status.tsv"
 CUDA_VISIBLE_DEVICES= python -B -u "$SOURCE" > "$RECORD/source_audit.log" 2>&1 || {

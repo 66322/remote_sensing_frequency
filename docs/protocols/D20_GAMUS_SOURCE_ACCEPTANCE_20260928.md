@@ -27,6 +27,12 @@ GAMUS Hub 的 CC BY 4.0 是数据卡上的声明；仍需核对原 DC/NYC/PHL �
 
 ## 服务器运行
 
+首次服务器运行在拉取 `9ff6c2e` 后、下载任何样本之前，因 `remote_sensing`
+缺少 `h5py` 在预检查处退出。修订启动器只在本实验记录目录下安装独立的
+`h5py` wheel，沿用现有 NumPy，不修改 `remote_sensing` 环境；安装输出、
+依赖版本和路径记入本轮记录。已有 `status.tsv` 会保留首次失败并追加新状态，
+无需删除或重跑任何模型。
+
 ```bash
 cd /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
 conda activate remote_sensing
@@ -34,7 +40,9 @@ git pull --ff-only origin rebuild-v1-protocol-20260915
 bash scripts/run_rebuild_v1_d20_gamus_source_audit.sh
 ```
 
-脚本只获取作者新版本中 9 个小样本；若环境缺少 `h5py`，会在下载前停止并记录失败状态。样本保存在 `/home/jovyan/zzx/datasets/rebuild_v1_d20_gamus/`；完整审计与日志位于项目 `records/rebuild_v1_d20_gamus_source_acceptance_20260928/`，适合跨电脑接力的 JSON、状态和运行绑定复制到 `records/rebuild_v1_d20_gamus_source_acceptance_compact_20260928/`。GitHub 不归档原始 HDF5。
+脚本只获取作者新版本中 9 个小样本；若缺少 `h5py`，会在
+`records/rebuild_v1_d20_gamus_source_acceptance_20260928/pydeps/` 下准备独立依赖，
+安装失败会在下载前停止。样本保存在 `/home/jovyan/zzx/datasets/rebuild_v1_d20_gamus/`；完整审计与日志位于项目 `records/rebuild_v1_d20_gamus_source_acceptance_20260928/`，适合跨电脑接力的 JSON、状态和运行绑定复制到 `records/rebuild_v1_d20_gamus_source_acceptance_compact_20260928/`。GitHub 不归档原始 HDF5 或依赖目录。
 
 完成后检查 `audit.json` 的状态、三城三元组和原划分计数，再提交紧凑证据：
 

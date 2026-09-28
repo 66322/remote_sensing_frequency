@@ -1,5 +1,9 @@
 # Current Project Status
 
+**GAMUS Stage A 首次启动受缺少 `h5py` 阻塞：**报错发生在下载前；已准备只在
+实验记录目录安装该 CPU 读取依赖的修订启动器。样本内容和来源准入仍待服务器重试，
+没有使用 GPU 或修改训练环境。
+
 **D20 新来源 Stage A 审计待服务器执行：**作者链接的 GAMUS 新版公开元数据包括
 DC、NYC、PHL 三城 RGB／高度／标签文件；原提供的 train/val/test 混城。
 已准备[9 文件 CPU 小样本审计](../protocols/D20_GAMUS_SOURCE_ACCEPTANCE_20260928.md)。

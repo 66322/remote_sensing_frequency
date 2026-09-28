@@ -1,5 +1,9 @@
 # Current handoff — 2026-09-28, D20 Stage A server probe complete
 
+**GAMUS 审计启动修复：**服务器首次运行在任何下载之前发现
+`ModuleNotFoundError: h5py`。已把启动器改为在本实验记录目录独立准备
+`h5py`，不改训练环境；服务器待拉取后重试。同一 `status.tsv` 保留首次失败。
+
 **新增来源复核，服务器待运行：**作者[修订版 GAMUS Stage A 准入审计](../protocols/D20_GAMUS_SOURCE_ACCEPTANCE_20260928.md)
 已准备。公开元数据出现 DC、NYC、PHL 三城匹配的 RGB／高度／标签文件；作者新版
 移除了 DFC2019 JAX/OMA 样本，不能把 GAMUS 旧版与新版混同。先运行仅 CPU 的

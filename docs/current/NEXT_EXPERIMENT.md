@@ -1,5 +1,9 @@
 # Next research decision after audited D18 replication (2026-09-28)
 
+**当前动作：**GAMUS 首次 Stage A 审计因服务器缺少 `h5py`，在下载前停止。
+拉取修订启动器后重试同一 CPU 小样本审计；独立依赖保存在实验记录目录，
+不修改训练环境，也不触发 GPU。
+
 **当前可执行：**运行[修订版 GAMUS 来源 Stage A 小样本核查](../protocols/D20_GAMUS_SOURCE_ACCEPTANCE_20260928.md)，
 只检查三城各一组 RGB／高度／标签及全量文件名配对，不训练。若通过，还需
 独立核对原始数据权利、空间来源和城市级切分，不能使用原混城 train/val/test

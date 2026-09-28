@@ -1,5 +1,11 @@
 # Start Here
 
+**GAMUS Stage A retry prepared.** The first server attempt stopped before
+download because `remote_sensing` lacked `h5py`. The updated
+[source audit runner](protocols/D20_GAMUS_SOURCE_ACCEPTANCE_20260928.md)
+prepares this dependency inside the experiment record and keeps the training
+environment unchanged. Pull the new commit, then rerun the CPU audit.
+
 **D20 source priority revised for Stage A, 2026-09-28.** The author-linked
 revised [GAMUS source audit](protocols/D20_GAMUS_SOURCE_ACCEPTANCE_20260928.md)
 is prepared for a CPU-only server run. Its published files offer RGB, height
