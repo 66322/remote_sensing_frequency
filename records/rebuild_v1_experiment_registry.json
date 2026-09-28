@@ -1047,7 +1047,18 @@
     "id": "D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928",
     "status": "stage_a_source_probe_complete_transfer_terms_pending",
     "protocol": "docs/protocols/D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928.md",
-    "immediate_action": "Preserve failed Vaihingen per-tile gate and no-seed17 stop; optionally audit tiles 12/14 read-only for input quality; independently resolve US3D data transfer/use terms and assess Houston once if US3D becomes unusable.",
+    "immediate_action": "Run the prepared CPU-only Vaihingen 17-tile input/prediction audit with focus on failed tiles 12/14; preserve the failed gate and no-seed17 stop; independently resolve US3D data transfer/use terms.",
+    "vaihingen_failure_input_audit": {
+      "status": "prepared_server_run_pending",
+      "script": "scripts/run_rebuild_v1_d20_vaihingen_failure_inputs_audit.sh",
+      "protocol": "docs/protocols/D20_VAIHINGEN_FAILURE_INPUT_AUDIT_20260928.md",
+      "target_failure_ids": [12, 14],
+      "comparison_population": "all_17_frozen_development_tiles",
+      "scope": "cpu_only_read_only_exploratory_diagnostic",
+      "gate_unchanged": true,
+      "seed17_auto_launch": false,
+      "compact_archive": "records/rebuild_v1_d20_vaihingen_failure_inputs_compact_20260928/"
+    },
     "stage_a_probe": {
       "source_commit": "6c7c0d14290197e6741c48342d5f4f82111473ab",
       "status": "BLOCKED_DATA_TRANSFER_AND_TERMS_PENDING",

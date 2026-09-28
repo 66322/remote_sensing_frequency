@@ -1,5 +1,11 @@
 # Start Here
 
+**D20 seed42 failure-input audit prepared, awaiting server CPU run.** The
+[read-only audit](protocols/D20_VAIHINGEN_FAILURE_INPUT_AUDIT_20260928.md)
+checks all 17 development tiles and focuses on 12/14, binding raw input and
+clean predictions to the archived hashes. It does not change the failed gate
+or start seed17. US3D access and terms remain an independent blocker.
+
 **D20 Vaihingen seed42 development screen completed and failed the frozen
 per-tile gate, 2026-09-28.** All three 8,000-step arms and 17-tile/11-condition
 evaluations completed; archived-count audit passed. P2 gained +1.0261 pp over

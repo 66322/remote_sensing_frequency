@@ -1,5 +1,10 @@
 # Current handoff — 2026-09-28, D20 Stage A server probe complete
 
+**接力更新：**针对 D20 Vaihingen seed42 的 12/14 号块，已准备
+[17块统一口径的只读输入与预测核查](../protocols/D20_VAIHINGEN_FAILURE_INPUT_AUDIT_20260928.md)，
+服务器尚未执行。先运行该 CPU 审计，提交紧凑结果后解释失败区域；
+原定逐块门槛失败及不启动 seed17 的决定保持不变。US3D 独立来源仍需解决。
+
 **最新结论：**D20 Vaihingen seed42三组8,000步及17块×11条件完整开发评价已于
 17:42:26 +08:00完成，服务器证据归档`5538bf3`，离线整数计数/门槛复算`PASS`。
 P2相对最强P0综合+1.0261pp，但12、14号块触发逐块clean/家族门槛失败，

@@ -1,5 +1,11 @@
 # Next research decision after audited D18 replication (2026-09-28)
 
+**当前可执行项：**在服务器运行
+[D20 Vaihingen 失败区域 CPU 只读核查](../protocols/D20_VAIHINGEN_FAILURE_INPUT_AUDIT_20260928.md)，
+将全部 17 块作为参照，重点核查 12/14 号块的输入和 clean 预测。
+此项不重训、不改门槛；归档后判断是否存在明确的数据异常，
+并继续独立处理 US3D 数据传输和使用条件。
+
 **最新决定：**D20 Vaihingen seed42正式同域开发已完成、归档并离线复算。
 P2总体+1.0261pp，但12/14号块未过预设局部门槛，整体验收为失败。
 按冻结规则停止自动seed17；不删块、不改阈值重筛。下一步优先完成
