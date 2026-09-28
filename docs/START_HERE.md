@@ -5,6 +5,8 @@ official Track-1 torrent metadata reachable; GRSS/DataPort server proxy: 403.
 Actual data transfer and terms remain pending. Vaihingen is available for
 same-area development, with prior scene exposure and NIR/red/green inputs to account for.
 Read the [Stage A result and next action](current/D20_STAGE_A_SOURCE_ACCEPTANCE_20260928.md).
+The runnable [Vaihingen content audit](current/D20_VAIHINGEN_CONTENT_AUDIT_20260928.md)
+checks the development source while US3D transfer terms are resolved.
 No D20 training queue exists yet.
 
 **Latest, 2026-09-28: D18 seed17 replication complete and offline-audited.**

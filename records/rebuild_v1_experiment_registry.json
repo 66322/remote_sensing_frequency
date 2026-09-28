@@ -1056,6 +1056,12 @@
       "official_torrent_metadata": "reachable_http_200",
       "evidence": "records/rebuild_v1_d20_source_acceptance_compact_20260928/user_reported_stage_a.json"
     },
+    "vaihingen_development_audit": {
+      "status": "prepared_not_run",
+      "script": "scripts/run_rebuild_v1_d20_vaihingen_content_audit.sh",
+      "instructions": "docs/current/D20_VAIHINGEN_CONTENT_AUDIT_20260928.md",
+      "evidence_level": "same_mosaic_development_only"
+    },
     "conditional_training": "P0/P1/P2 seed42 on accepted source; all three seed17 only after frozen dev gate passes.",
     "final_evaluation": "Reserve independent geography until all methods and controls are frozen; never select reliability interventions on final scores.",
     "queue": null,
