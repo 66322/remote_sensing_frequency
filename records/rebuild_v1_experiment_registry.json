@@ -1071,6 +1071,18 @@
       "archive": "records/rebuild_v1_d20_vaihingen_content_compact_20260928/",
       "evidence_level": "same_mosaic_development_only"
     },
+    "vaihingen_development_smoke": {
+      "status": "implemented_server_cuda_pending",
+      "config": "configs/rebuild_v1/d20_vaihingen_development_smoke_20260928.json",
+      "protocol": "docs/protocols/D20_VAIHINGEN_MATCHED_SMOKE_20260928.md",
+      "queue": "scripts/run_rebuild_v1_d20_vaihingen_smoke.sh",
+      "arms": ["P0", "P1", "P2"],
+      "steps_per_arm": 1,
+      "training_seed": 42,
+      "evidence_level": "same_mosaic_infrastructure_only",
+      "formal_training_auto_launch": false,
+      "server_started_at": null
+    },
     "conditional_training": "P0/P1/P2 seed42 on accepted source; all three seed17 only after frozen dev gate passes.",
     "final_evaluation": "Reserve independent geography until all methods and controls are frozen; never select reliability interventions on final scores.",
     "queue": null,

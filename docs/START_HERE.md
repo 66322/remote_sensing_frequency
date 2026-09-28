@@ -5,6 +5,8 @@ candidate tiles passed sampled content checks, archived in `66ac041`.
 Geographic alignment is unverified and the tiles share a mosaic with historical
 experiments. Freeze the NIR/red/green input and development split before a
 matched P0/P1/P2 smoke. [Read the audit and limitations](current/D20_VAIHINGEN_CONTENT_AUDIT_20260928.md).
+The [one-step matched P0/P1/P2 smoke](protocols/D20_VAIHINGEN_MATCHED_SMOKE_20260928.md)
+is implemented and awaits server CUDA execution; it cannot launch formal training.
 
 **D20 Stage A server probe completed, 2026-09-28.** Local DFC19 triplets: zero;
 official Track-1 torrent metadata reachable; GRSS/DataPort server proxy: 403.

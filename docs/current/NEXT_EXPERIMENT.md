@@ -5,14 +5,16 @@
 地理对齐无可读坐标，结果不构成独立最终确认。下一步冻结NIR/红/绿输入方案、
 Vaihingen训练/开发区域及标签/DSM处理，再做P0/P1/P2匹配短流程；
 US3D传输与使用条件仍需独立落实。见[检查结果](D20_VAIHINGEN_CONTENT_AUDIT_20260928.md)。
+P0/P1/P2 的[同域匹配一步短流程](../protocols/D20_VAIHINGEN_MATCHED_SMOKE_20260928.md)
+现已实现，等待服务器 CUDA 验证；它不会自动启动正式训练。
 
 **2026-09-28 D20 Stage A 已执行：**服务器检查结果为DFC19本地三元组0，
 官方torrent元数据可达，GRSS/DataPort在服务器代理下403；所需数据包及
 使用/传输条件仍待落实。见[Stage A 实测及 Vaihingen 角色](D20_STAGE_A_SOURCE_ACCEPTANCE_20260928.md)。
-当前无D20训练队列。Vaihingen 服务器已有数据，可用于同域开发和短流程；
+当前已实现D20一步短流程，尚无正式训练队列。Vaihingen 服务器已有数据，可用于同域开发和短流程；
 旧实验已用区域与候选区域同属一幅镶嵌图，不能直接作为独立最终确认。
-当前可运行的下一项是[Vaihingen 内容检查](D20_VAIHINGEN_CONTENT_AUDIT_20260928.md)：
-核实完整标签、光学/DSM 像素内容与各块对齐，并准备 GitHub 紧凑记录。
+Vaihingen [内容检查](D20_VAIHINGEN_CONTENT_AUDIT_20260928.md)已完成；
+下一项是服务器执行上面的一步短流程，并把结果归档到 GitHub。
 以下原“先做来源准入”步骤是本轮计划背景；现在应从实际传输与条款检查继续。
 
 **已完成：**P0/P1/P2 seed17匹配复验和seed42配对诊断；服务器于
