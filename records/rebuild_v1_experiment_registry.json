@@ -1057,12 +1057,18 @@
       "evidence": "records/rebuild_v1_d20_source_acceptance_compact_20260928/user_reported_stage_a.json"
     },
     "vaihingen_development_audit": {
-      "status": "first_run_path_error_archived_fix_pending_server_rerun",
+      "status": "content_sample_checks_pass_development_only",
       "script": "scripts/run_rebuild_v1_d20_vaihingen_content_audit.sh",
       "instructions": "docs/current/D20_VAIHINGEN_CONTENT_AUDIT_20260928.md",
       "failed_run_commit": "5299318",
       "failed_run_cause": "First version selected nonexistent gts_complete directory; existing repository source specifies gts_complete_full. No label pixels read.",
-      "failed_run_evidence": "records/rebuild_v1_d20_vaihingen_content_compact_20260928/audit.json",
+      "failed_run_evidence": "5299318:records/rebuild_v1_d20_vaihingen_content_compact_20260928/audit.json",
+      "corrected_run_commit": "5c6283b",
+      "archive_commit": "66ac041",
+      "ready_development_ids": [2, 4, 6, 8, 10, 12, 14, 16, 20, 22, 24, 27, 29, 31, 33, 35, 38],
+      "geographic_alignment": "unknown_missing_readable_header_coordinates",
+      "palette_validation": "sample_only",
+      "archive": "records/rebuild_v1_d20_vaihingen_content_compact_20260928/",
       "evidence_level": "same_mosaic_development_only"
     },
     "conditional_training": "P0/P1/P2 seed42 on accepted source; all three seed17 only after frozen dev gate passes.",

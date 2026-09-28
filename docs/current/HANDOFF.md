@@ -9,10 +9,11 @@ torrent 元数据可达并确认 RGB/Truth 两个所需包；GRSS/DataPort 代�
 [GitHub 紧凑记录](../../records/rebuild_v1_d20_source_acceptance_compact_20260928/user_reported_stage_a.json)。
 Vaihingen 已有部分可用三元组，可作开发实验；其旧实验曝光及同一镶嵌图邻近关系
 限制了独立最终确认结论，TOP 输入是近红外/红/绿，需单独冻结通道协议。
-[Vaihingen 内容检查入口](D20_VAIHINGEN_CONTENT_AUDIT_20260928.md)已准备，
-首次服务器运行的17项全部在路径检查处失败：脚本将完整标签目录误写为
-`gts_complete`，已据仓库现有代码修为`gts_complete_full`。失败原件在`5299318`，
-修正版待服务器重跑；这次还没有标签内容判断。
+[Vaihingen 内容检查](D20_VAIHINGEN_CONTENT_AUDIT_20260928.md)修正版已于服务器通过：
+17/17同域开发候选块的三类影像尺寸一致、DSM样本有限、FullGT标签颜色样本均
+属于既有调色板；原始结果归档`66ac041`。地理坐标对齐仍未知，标签为采样检查。
+首次路径错误记录在`5299318`。下一步冻结Vaihingen输入通道、训练/开发区域与
+评价协议，再实现匹配短流程；US3D独立来源传输和条款问题单独继续。
 
 服务器 D18 seed17 队列于 2026-09-28 14:52:05 +08:00 完成：P0/P1/P2
 三组短流程、正式训练、评估、配对分析及精简归档均成功。服务器原始六份

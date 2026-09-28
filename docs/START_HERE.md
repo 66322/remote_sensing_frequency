@@ -1,5 +1,11 @@
 # Start Here
 
+**D20 Vaihingen development-source audit completed, 2026-09-28.** All 17
+candidate tiles passed sampled content checks, archived in `66ac041`.
+Geographic alignment is unverified and the tiles share a mosaic with historical
+experiments. Freeze the NIR/red/green input and development split before a
+matched P0/P1/P2 smoke. [Read the audit and limitations](current/D20_VAIHINGEN_CONTENT_AUDIT_20260928.md).
+
 **D20 Stage A server probe completed, 2026-09-28.** Local DFC19 triplets: zero;
 official Track-1 torrent metadata reachable; GRSS/DataPort server proxy: 403.
 Actual data transfer and terms remain pending. Vaihingen is available for

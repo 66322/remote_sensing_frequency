@@ -166,7 +166,8 @@ def main() -> int:
             stream.write("\t".join([str(r["id"]), str(r["id"] in result["ready_development_ids"]),
                 (r["paths"] or {}).get("full_gt", ""), str(r["checks"].get("same_pixel_shape")),
                 str(r["checks"].get("geographic_header_alignment")),
-                str(r.get("full_gt", {}).get("sample_unknown_count")), " | ".join(r["errors"])]) + "\n")
+                str(r.get("full_gt", {}).get("sample_unknown_count")),
+                " | ".join(r["errors"]) if r["errors"] else "-"]) + "\n")
     print(json.dumps({"status": status, "ready_development_ids": result["ready_development_ids"],
                       "review_ids": [r["id"] for r in rows if r["id"] not in result["ready_development_ids"]],
                       "record": str(output / "audit.json")}, ensure_ascii=False))

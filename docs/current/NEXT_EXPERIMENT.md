@@ -1,5 +1,11 @@
 # Next research decision after audited D18 replication (2026-09-28)
 
+**Vaihingen 同域开发内容检查已完成，2026-09-28：**服务器修正版17/17块通过
+尺寸、DSM有限值及FullGT颜色采样检查，精简结果归档`66ac041`。
+地理对齐无可读坐标，结果不构成独立最终确认。下一步冻结NIR/红/绿输入方案、
+Vaihingen训练/开发区域及标签/DSM处理，再做P0/P1/P2匹配短流程；
+US3D传输与使用条件仍需独立落实。见[检查结果](D20_VAIHINGEN_CONTENT_AUDIT_20260928.md)。
+
 **2026-09-28 D20 Stage A 已执行：**服务器检查结果为DFC19本地三元组0，
 官方torrent元数据可达，GRSS/DataPort在服务器代理下403；所需数据包及
 使用/传输条件仍待落实。见[Stage A 实测及 Vaihingen 角色](D20_STAGE_A_SOURCE_ACCEPTANCE_20260928.md)。
