@@ -1,11 +1,12 @@
 # Start Here
 
-**Latest, 2026-09-28: D18 seed17 replication code ready for server launch.**
-Matched P0/P1/P2 training, fixed seed42 evaluation perturbations, two-GPU queue,
-paired error analysis and compact GitHub archival are implemented. Local CPU
-checks passed; server CUDA smoke and full execution have not been observed.
-Read the [execution instructions](protocols/D18_SEED17_EXECUTION_20260928.md)
-and [current handoff](current/HANDOFF.md). Test6 remains sealed.
+**Latest, 2026-09-28: D18 seed17 replication complete and offline-audited.**
+The seed42/17 P0/P1/P2 summaries are archived. P2 passed the prespecified
+screen in each seed, with gains of +1.0603/+0.9229 percentage points over
+the stronger matched control. Its raw score falls when DSM is fully absent.
+Read the [results](experiments/D18_REPLICATION_RESULTS_20260928.md) and
+[current handoff](current/HANDOFF.md). The next action is independent-source
+feasibility; no new GPU queue is scheduled. Val2 remains exploratory and Test6 sealed.
 
 **D18/D19 seed42 completed and archived.** Eight formal
 training/evaluation pairs completed with zero failures. Offline audit of the

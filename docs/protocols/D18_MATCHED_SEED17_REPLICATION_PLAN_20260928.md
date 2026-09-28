@@ -5,7 +5,7 @@
 - Origin Skill: academic-research-suite / experiment-agent
 - Origin Mode: plan
 - Origin Date: 2026-09-28
-- Verification Status: CODE_READY; seed42 evidence offline-audited; local CPU checks passed; server CUDA smoke and formal execution pending
+- Verification Status: EXECUTED_AND_OFFLINE_AUDITED; both seeds passed the prespecified screen; see results
 - Version Label: v1
 
 ## 要回答的问题
@@ -95,6 +95,7 @@ seed42实测P0/P1/P2训练为32.60/35.43/35.38分钟，评估约13.4分钟/项�
 结束后按`EXPERIMENT_GITHUB_HANDOFF.md`归档全部对照结果、整数计数、
 决策、运行版本和失败信息，更新报告、交接、登记表及下一步。
 
-新配置、训练/评估适配、队列、短流程门槛和归档脚本已实现，
-见 [服务器执行说明](D18_SEED17_EXECUTION_20260928.md)。本机仅完成CPU检查；
-服务器CUDA短流程、正式训练和结果仍待执行。
+新配置、训练/评估适配、队列、短流程门槛和归档脚本已实现。
+服务器已于2026-09-28 14:52:05 +08:00完成，六份摘要上传并离线审计通过；
+本文件保留执行前制定的门槛和设计，事后结果见
+[结果报告](../experiments/D18_REPLICATION_RESULTS_20260928.md)。

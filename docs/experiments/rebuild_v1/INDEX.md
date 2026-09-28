@@ -2,7 +2,7 @@
 
 | ID | Purpose | Status | Primary evidence |
 |---|---|---|---|
-| D18 seed17 replication | matched frozen-DINO P0/P1/P2 and paired error analysis across seeds42/17 | code ready; server smoke and formal run pending | `docs/protocols/D18_SEED17_EXECUTION_20260928.md` |
+| D18 seed17 replication | matched frozen-DINO P0/P1/P2 and paired error analysis across seeds42/17 | complete; originals archived and offline-audited; P2 passes both seeds with DSM absence cost | `docs/experiments/D18_REPLICATION_RESULTS_20260928.md` |
 | D18/D19 | single-seed pretrained adapters and intervention structures | 8/8 complete, originals archived and offline-audited; P2 seed42 candidate; C2/C3 fail | `docs/experiments/D18_D19_RESULTS_20260928.md` |
 | D16/D17 | intervention consistency and geometry auxiliary supervision; matched controls | 16/16 reported complete; archive audit passed; A2/B1 gates failed | `docs/experiments/D16_D17_RESULTS_20260927.md` |
 | D14 | inference-only DSM-content sensitivity of frozen D13 heads | user-reported complete; sensitivity found, no benefit gate | `docs/experiments/D14_RESULTS_20260926.md` |

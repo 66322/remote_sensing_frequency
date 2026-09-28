@@ -2,6 +2,12 @@ D11 completed 12/12 with zero queue failures by user report, but no model passed
 
 # Completed, Closed, or Do-Not-Repeat Work
 
+D18 seed17的P0/P1/P2匹配复验已全部完成，六份摘要归档并通过离线审计；
+P2在两个种子分别通过原门槛，完整DSM缺失代价也已记录。保留两种子的检查点、
+预测与完整服务器记录；不重跑该队列，不为了提高Val2分数追加seed或改门槛。
+下一步先核对独立数据源和冻结评价协议。见
+`docs/experiments/D18_REPLICATION_RESULTS_20260928.md`。
+
 D18/D19 seed42的8项基础训练与评估已完成，零失败；原始摘要归档和离线审计通过。
 P2是待seed17匹配复验的单seed候选；不重跑seed42或只给P2
 补seed。C2/C3未通过冻结门槛，不为挽救它们改阈值或追加C4/C5。

@@ -1018,7 +1018,7 @@
     {
       "id": "D18_MATCHED_SEED17_REPLICATION_20260928",
       "name": "frozen_dino_rgb_gray_dsm_matched_replication_and_paired_errors",
-      "status": "code_ready_server_smoke_and_formal_run_pending",
+      "status": "complete_original_summaries_offline_audited",
       "protocol": "docs/protocols/D18_MATCHED_SEED17_REPLICATION_PLAN_20260928.md",
       "execution": "docs/protocols/D18_SEED17_EXECUTION_20260928.md",
       "config": "configs/rebuild_v1/d18_replication_seed17_20260928.json",
@@ -1032,7 +1032,15 @@
       "gpu": "physical_0_and_1_independent_workers_user_authorized",
       "server_records": "records/rebuild_v1_d18_replication_20260928/ and records/rebuild_v1_d18_replication_queue_20260928/",
       "compact_archive": "records/rebuild_v1_d18_replication_compact_20260928/",
-      "decision": "Pending server smoke and execution. P2 must pass original prespecified gain and guards separately in both seeds. Report raw DSM absence cost and same-seed P0 paired errors. Do not infer independent validation from reused Val2."
+      "source_commit": "b66a9017129b0d6adc45c71cc6e9ca042548fc0b",
+      "completed_at": "2026-09-28T14:52:05+08:00",
+      "archive_commit": "705d8d2",
+      "evidence_status": "six_original_summaries_archived_offline_audit_passed",
+      "records": [
+        "records/rebuild_v1_d18_replication_compact_20260928/",
+        "docs/experiments/D18_REPLICATION_RESULTS_20260928.md"
+      ],
+      "decision": "All three seed17 matched arms completed training/evaluation; paired analysis and compact archive completed. P2 passed the original five checks separately in seeds42/17 with macro gains +1.0603/+0.9229 pp over stronger P0/P1. Raw full DSM absence fell below same-seed P0 by 0.4986/0.4103 pp. Archived integer counts and both decisions independently recomputed offline. Keep P2 as a development baseline; resolve independent labelled scene access and protocol before another reliability-method GPU queue. Val2 exploratory; Test6 frozen."
     }
   ],
   "handoff_entry": "docs/START_HERE.md",

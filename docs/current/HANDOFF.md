@@ -1,26 +1,22 @@
-# Current handoff — 2026-09-28, D18 seed17 replication ready
+# Current handoff — 2026-09-28, D18 seed17 replication audited
 
 ## 当前事实与下一步
 
-用户提供的服务器状态显示：2026-09-28 12:13:32 +08:00 队列 `QUEUE FINISHED`，
-8/8 基础训练及评估完成、失败0；C4/C5因结构门槛未触发而按计划跳过。
-用户提供的 `decision.json` 显示 P2 相对 P0/P1 中较强者综合 +1.0603 pp，
-通过单seed预设筛选；C2、C3未通过。见
-[D18/D19结果记录](../experiments/D18_D19_RESULTS_20260928.md)。
+服务器 D18 seed17 队列于 2026-09-28 14:52:05 +08:00 完成：P0/P1/P2
+三组短流程、正式训练、评估、配对分析及精简归档均成功。服务器原始六份
+seed42/17 评估摘要已在 GitHub 提交 `705d8d2`；本机离线审计 `PASS`，
+见 [结果报告](../experiments/D18_REPLICATION_RESULTS_20260928.md)及
+[`offline_audit.json`](../../records/rebuild_v1_d18_replication_compact_20260928/offline_audit.json)。
+P2相对同seed最强P0/P1的综合增益分别为+1.0603／+0.9229 pp，
+两个seed各自通过五项预设门槛。P2原模型完整DSM缺失时分别比P0
+低0.4986／0.4103 pp；显式切换P0只验证availability策略。
 
-原始 `status.tsv`、`conditional_gate.json`、`decision.json` 和8份正式评估
-`summary.json` 已由服务器上传至GitHub；离线重算审计通过，见
-[`offline_audit.json`](../../records/rebuild_v1_d18_d19_compact_20260928/offline_audit.json)。
-**立即下一步：**服务器拉取本分支，按
-[D18 seed17执行说明](../protocols/D18_SEED17_EXECUTION_20260928.md)
-启动 P0/P1/P2 匹配复验。代码、双GPU队列、配对诊断和精简归档已实现；
-本机通过旧版9项和新复验3项CPU检查，服务器短流程与正式运行尚未观察到。
-研究矩阵和判据见
-[D18匹配复验计划](../protocols/D18_MATCHED_SEED17_REPLICATION_PLAN_20260928.md)。
-P2在DSM完全缺失时原模型比P0低约0.50 pp，
-不能将辅助质量组的harm检查扩展成普遍缺失鲁棒性结论。
-C2/C3本轮变体停止，C4/C5不启动。Test6继续冻结。服务器队列已结束，
-不应按下文历史启动说明再次运行。
+**立即下一步：**先确认可用的独立场景来源、既往曝光、RGB/高度/语义标签配对、
+类别映射和使用条件；依据
+[独立来源决策](INDEPENDENT_SOURCE_DECISION_20260923.md)
+评估US3D，若不具备条件再评估Houston。数据来源和切分落实后，冻结可靠性
+方法及匹配对照协议。当前不排新GPU训练，不重启D18/D19或seed17队列。
+Val2只有两个场景且已反复使用，两种子通过仍是开发证据；Test6保持冻结。
 
 以下旧交接内容仅保留作时间线背景，**不是当前启动指令**。
 

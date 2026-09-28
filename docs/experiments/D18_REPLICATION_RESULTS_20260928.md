@@ -46,3 +46,39 @@ Full server evaluations: `records/rebuild_v1_d18_replication_20260928/`; trainin
 Val2 contains only two scenes and was used repeatedly. Seed17 replication does not constitute independent Test6 validation.
 The old C0 score is from a different backbone and training start, so absolute performance differences are not attributable to DSM alone.
 Check manifest hashes and all six summaries before making another research decision.
+
+## 离线审计与研究判断（2026-09-28）
+
+[`offline_audit.json`](../../records/rebuild_v1_d18_replication_compact_20260928/offline_audit.json)
+记录 `PASS`：本机从六份服务器原始摘要复核了各条件的整数混淆矩阵、
+两种子的主分数和全部预设门槛，并核对逐图块及逐类配对计数。
+归档 `manifest.json` 的状态为 `COMPLETE`、缺项为空；服务器队列三组正式训练、
+评估和分析均成功。审计使用的执行提交为 `b66a9017129b0d6adc45c71cc6e9ca042548fc0b`。
+本机未取得服务器的原始影像、预测数组或检查点，故这仍是摘要的独立复算，
+不是重新推理。
+
+| 训练种子 | P2相对较强P0/P1综合增益 | P2相对P0 clean | P2相对P0 RGB down4 | P2相对P0完整DSM缺失 |
+|---:|---:|---:|---:|---:|
+| 42 | +1.0603 pp | +1.0046 pp | +1.5944 pp | −0.4986 pp |
+| 17 | +0.9229 pp | +1.0913 pp | +1.7081 pp | −0.4103 pp |
+
+两种子各自通过 `gain`、`clean`、`families`、`tile_clean` 和
+`tile_families` 五项预设检查。P2在clean下比同种子P0多纠正
+1,168,212／1,236,022个像素，也新增727,251／681,277个错误；
+净正确像素增加440,961／554,745。完整DSM缺失时，P0独有正确像素
+909,804／807,255，多于P2独有正确像素683,813／728,137。
+这说明综合收益可以重复，同时错误并未对每个像素单调减少。
+
+clean条件的Building IoU相对P0分别提高3.528／3.950 pp；
+完整DSM缺失时Building IoU分别下降0.949／0.242 pp，
+Car IoU分别下降0.580／1.361 pp。逐类、逐图块和受损区域完整整数计数
+见归档 `decision.json`。不同类别的变化不完全同向，不能把综合门槛
+解释成所有类别的安全保证。
+
+**当前决定：** 将P2作为可重复的DSM信息增益开发基线，并明确报告原模型的
+缺失代价。已知availability mask时切换同seed P0可作为显式回退对照，
+它不是P2自身学得的鲁棒性，也不构成新的方法贡献。下一步先确认一个未参与
+本项目方法选择的带标注RGB/高度数据源、空间独立场景及类别映射，
+再冻结可靠性干预与匹配对照的下一轮协议。Potsdam Val2只有两幅且反复使用，
+跨种子重复仍属于开发证据；Test6继续冻结。外部数据可行性条件见
+[独立来源决策](../current/INDEPENDENT_SOURCE_DECISION_20260923.md)。
