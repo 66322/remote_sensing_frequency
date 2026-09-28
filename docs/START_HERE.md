@@ -1,5 +1,12 @@
 # Start Here
 
+**Latest, 2026-09-28:** The nine-file revised GAMUS HDF5 metadata audit
+completed at 22:17:36 +08:00 and was archived in `4cdb91f`. All nine samples
+are bound to the earlier Stage A hashes; their HDF5 root and `image` dataset
+attribute dictionaries are empty. Read the [result and limits](experiments/D20_GAMUS_SAMPLE_METADATA_RESULTS_20260928.md).
+The next evidence must link file stems to source rights and geographic bounds.
+No new GPU training is authorized; the prepared audit command below is historical.
+
 **Next CPU action prepared, 2026-09-28:** Inspect HDF5 attributes in the nine
 already downloaded revised GAMUS samples for coordinate and source metadata.
 Read the [bounded execution protocol](protocols/D20_GAMUS_SAMPLE_METADATA_AUDIT_20260928.md).

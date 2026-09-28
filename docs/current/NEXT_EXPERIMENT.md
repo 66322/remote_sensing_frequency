@@ -1,5 +1,11 @@
 # Next research decision after audited D18 replication (2026-09-28)
 
+**当前下一步：**九文件 HDF5 属性审计已完成、归档且与 Stage A SHA 核对；
+样本文件内没有地理或来源属性。先获取三城原始 RGB／高度／标签来源、
+使用条件和文件名到地理范围的映射；再审计城市级空间泄漏和全量类别，
+冻结 fit/dev/final。见[结果](../experiments/D20_GAMUS_SAMPLE_METADATA_RESULTS_20260928.md)。
+不重跑元数据审计，不启动新 GPU，Test6 保持封存。
+
 **下一可执行核查：**先运行[修订版 GAMUS 九文件 HDF5 属性审计](../protocols/D20_GAMUS_SAMPLE_METADATA_AUDIT_20260928.md)，
 只读取已下载样本的元数据和文件 SHA，不下载、不启动 GPU。若没有地理属性，
 仍需从发布方取得文件名到原始区域的映射；不能靠城市前缀证明空间独立。

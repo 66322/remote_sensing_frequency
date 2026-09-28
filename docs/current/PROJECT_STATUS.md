@@ -1,5 +1,12 @@
 # Current Project Status
 
+**最新观测，2026-09-28 22:17:36 +08:00：**修订版 GAMUS 九文件 CPU 元数据核查
+`AUDIT COMPLETE 0`，原始证据归档 `4cdb91f`。九个样本均与 Stage A 的 SHA 绑定；
+HDF5 根节点和 `image` 数据集属性全空，文件内没有可直接利用的地理／来源属性。
+来源权利、文件名至地理范围映射、全量类别和空间泄漏仍待核对；不启动新 GPU 训练。
+见[核查结果](../experiments/D20_GAMUS_SAMPLE_METADATA_RESULTS_20260928.md)。
+下方“待运行”核查段落是历史准备状态。
+
 **当前状态，2026-09-28：**修订版 GAMUS Stage A 已在服务器完成，最后归档观测
 18:33:49 +08:00，`AUDIT COMPLETE 0`；DC、PHL、NYC 各一组三元组内容通过，
 状态 `SAMPLE_CONTENT_PASS_SOURCE_ACCEPTANCE_PENDING`。执行提交 `83808a9`，

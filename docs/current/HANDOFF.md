@@ -1,5 +1,16 @@
 # Current handoff — 2026-09-28, revised GAMUS Stage A sample audit complete
 
+**最新接力：**九文件 HDF5 元数据核查在服务器 `ed4186a` 完成，最后归档观测
+2026-09-28 22:17:36 +08:00、退出码 0，证据归档 `4cdb91f`。DC／PHL／NYC
+各一组三元组全部与 Stage A SHA 相符，HDF5 根节点及 `image` 数据集均无属性。
+该结果不能给出文件地理范围或原始授权，也不能推出全量数据性质。
+
+**下一步：**向作者或原始发布方核对三城每种模态的原始数据集及许可，取得
+文件 stem 至地理范围／CRS 的映射，再审计空间重叠与全量类别。先记录
+证据缺口和可核验来源，不因城市前缀冻结 final、不启动新 GPU。
+详见[结果](../experiments/D20_GAMUS_SAMPLE_METADATA_RESULTS_20260928.md)。
+下方“元数据审计待执行”段落已被本次结果覆盖。
+
 **下一条服务器操作已准备、尚未执行：**运行[九文件 HDF5 属性只读核查](../protocols/D20_GAMUS_SAMPLE_METADATA_AUDIT_20260928.md)，
 检查已下载样本有无坐标和来源属性。只用 CPU，不下载、不训练；已有 Stage A
 审计和文件 SHA 绑定。完成后先归档紧凑证据，再判断能否从文件内恢复空间位置。

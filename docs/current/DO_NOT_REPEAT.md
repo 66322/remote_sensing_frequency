@@ -2,6 +2,11 @@ D11 completed 12/12 with zero queue failures by user report, but no model passed
 
 # Completed, Closed, or Do-Not-Repeat Work
 
+D20 修订版 GAMUS 九文件 HDF5 属性审计已于 2026-09-28 22:17:36 +08:00
+完成并归档 `4cdb91f`。九文件与 Stage A SHA 相符，根节点及 `image`
+数据集属性均为空；不重跑同一只读核查。地理来源与授权须由外部映射
+及原始发布信息核对，见 `docs/experiments/D20_GAMUS_SAMPLE_METADATA_RESULTS_20260928.md`。
+
 D20 修订版 GAMUS Stage A 三城 CPU 小样本审计已于 2026-09-28 18:33:49 +08:00
 完成并归档。不要因入口文档的历史“待重试”段落再运行同一审计；
 样本内容通过不等于来源准入。先核查上游权利、地理来源与城市级独立切分，
