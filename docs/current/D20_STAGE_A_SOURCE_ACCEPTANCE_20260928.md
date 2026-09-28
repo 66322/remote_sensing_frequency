@@ -93,3 +93,26 @@ bash scripts/run_rebuild_v1_d20_stage_a_source_audit.sh
 
 本文件只冻结“来源事实 + 执行入口”，不会提前冻结 fit/dev/final tile ID；
 地理 ID 必须由实际 Track-1 文件清单与坐标覆盖检查后再写死。
+
+
+## 2026-09-28 15:22 +08:00 服务器实测更新
+
+服务器在 commit `6c7c0d1` 执行 Stage-A source audit 成功，结果为
+`BLOCKED_DATA_TRANSFER_AND_TERMS_PENDING`：
+
+- 本地 DFC19 TIFF：0；RGB/AGL/CLS 三元组：0。
+- GRSS 与 IEEE DataPort 从服务器访问均被代理返回 403；这是网络访问阻塞，不是数据不合格。
+- 官方 JHU/APL GitHub Track-1 torrent metadata 可达（HTTP 200），SHA256
+  `7ef1c26b14ed66e257e549c4278f053ac8cb582d477bce738e333b074572a028`。
+- Track-1 torrent 总量约 48.68 GB；D20 实际仅需
+  `Train-Track1-RGB.zip` 7,073,992,673 bytes 与
+  `Train-Track1-Truth.zip` 8,774,684,120 bytes，合计 15,848,676,793 bytes。
+- 服务器剩余约 5,769.96 GiB，因此存储不是阻塞。
+- GPU 未使用，Test6 未加载，Google Drive 未重试。
+
+下一步不是立即启动 BitTorrent 下载。2019 DFC 条款禁止注册用户分发数据包，
+而常规 BitTorrent 客户端在下载中可能上传 pieces；先运行
+`scripts/run_rebuild_v1_d20_torrent_route_preflight.sh`，检查 torrent 是否包含
+HTTP webseed，以及官方 tracker 的直接传输可达性。该预检不会 announce、不会请求
+数据块、不会上传或下载数据包。若没有无上传的直接路线，优先走注册后的
+DataPort/数据所有者直接下载，再将来源和条款状态写入 Stage-A 记录。
