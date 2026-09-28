@@ -1,5 +1,13 @@
 # Current Project Status
 
+**当前状态，2026-09-28：**修订版 GAMUS Stage A 已在服务器完成，最后归档观测
+18:33:49 +08:00，`AUDIT COMPLETE 0`；DC、PHL、NYC 各一组三元组内容通过，
+状态 `SAMPLE_CONTENT_PASS_SOURCE_ACCEPTANCE_PENDING`。执行提交 `83808a9`，
+紧凑结果归档 `70344a4`；没有 GPU 训练，Test6 未加载。
+先核对底层权利、城市来源、全量类别及空间泄漏，再冻结城市级 fit/dev/final；
+原混城划分不能直接用作外部最终评价。详见[结果](../experiments/D20_GAMUS_STAGE_A_SOURCE_AUDIT_RESULTS_20260928.md)。
+以下“待执行／待重试”段落是历史过程，不代表当前状态。
+
 **GAMUS Stage A API 分页修订待执行：**第二次服务器运行已通过隔离依赖预检，
 随后在下载前遇到 Hub API `expand=true&limit=1000` 的 HTTP 400。
 经复现已改用正常返回 LFS 哈希的默认 1000 项分页；没有样本下载或 GPU 训练。

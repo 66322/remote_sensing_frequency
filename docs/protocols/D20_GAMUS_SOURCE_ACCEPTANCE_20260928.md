@@ -1,5 +1,11 @@
 # D20 新候选来源：修订版 GAMUS Stage A 准入
 
+**结果更新，2026-09-28：**第三次服务器尝试已于 18:33:49 +08:00 完成；
+三城各一组三元组内容通过，状态为 `SAMPLE_CONTENT_PASS_SOURCE_ACCEPTANCE_PENDING`。
+原始紧凑证据归档 `70344a4`，见[结果报告](../experiments/D20_GAMUS_STAGE_A_SOURCE_AUDIT_RESULTS_20260928.md)。
+下方启动和重试命令保留为历史执行记录，不再运行。底层权利、地理来源和
+城市级独立切分仍待审查；没有新 GPU 训练。
+
 ## 为什么新增候选
 
 原计划首选 US3D/DFC2019 Track 1，但服务器没有原始三元组，官方页面受代理 403，原始包第三方中转与科研发表条件仍待确认。经查[作者 GAMUS 仓库](https://github.com/EarthNets/RSI-MMSegmentation)，修订版公开说明已从其数据中移除 DFC2019 的 Omaha/Jacksonville 样本，理由是标签质量。修订版数据由作者仓库链接到[公开的 Hugging Face GAMUS](https://huggingface.co/datasets/earthflow/GAMUS)，页面标有 CC BY 4.0。原[论文](https://arxiv.org/abs/2305.14914)描述配准的 RGB、nDSM 与语义标签；当前公开版本及其来源须以实际文件重新核查，不能直接沿用论文旧版的城市数和指标。

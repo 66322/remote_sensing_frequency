@@ -1,4 +1,17 @@
-# Current handoff — 2026-09-28, D20 Stage A server probe complete
+# Current handoff — 2026-09-28, revised GAMUS Stage A sample audit complete
+
+**最后观测：**服务器归档的 `status.tsv` 于 2026-09-28 18:33:49 +08:00
+记录 `AUDIT COMPLETE 0`；审计执行 `83808a9`，紧凑证据在 `70344a4`。
+修订版 GAMUS 的 DC／PHL／NYC 各一组影像、高度、标签内容通过，状态为
+`SAMPLE_CONTENT_PASS_SOURCE_ACCEPTANCE_PENDING`。这是 CPU 来源探针，
+没有新 GPU 训练，也未加载 Potsdam Test6。
+
+**立即下一步：**核查三城上游数据权利、地理来源、全量类别覆盖与空间重复／邻接，
+再预先冻结城市级 fit/dev/final 和类别映射。现成 GAMUS train/val/test 混城，
+不能直接作为独立最终验证。未完成来源准入前不启动新 GPU 队列。
+US3D/DFC2019 获取与论文使用条件仍待决；D20 Vaihingen seed42 逐块门槛失败，
+不补 seed17。见[Stage A 结果](../experiments/D20_GAMUS_STAGE_A_SOURCE_AUDIT_RESULTS_20260928.md)。
+下方修复、重试和旧训练接力段落均为历史过程。
 
 **GAMUS API 分页修复：**第二次审计隔离依赖通过（`h5py 3.14.0`、
 NumPy `1.26.4`），随后因 Hub `expand=true&limit=1000` 返回 400，

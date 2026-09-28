@@ -1,5 +1,13 @@
 # Start Here
 
+**Current, 2026-09-28: revised GAMUS Stage A sample audit completed.** The
+server's last archived status is `AUDIT COMPLETE 0` at 18:33:49 +08:00.
+Three city sample triplets passed content checks, while upstream rights,
+geographic provenance and a city-separated fit/dev/final split remain pending.
+No GPU training followed. Read the [result and decision boundary](experiments/D20_GAMUS_STAGE_A_SOURCE_AUDIT_RESULTS_20260928.md)
+and [current handoff](current/HANDOFF.md). Earlier retry instructions below
+are historical; do not rerun the completed Stage A audit.
+
 **GAMUS Stage A pagination retry prepared.** The isolated HDF5 dependency
 passed on the server; the second attempt stopped before sample download due
 to a Hub API parameter combination returning HTTP 400. The audited source

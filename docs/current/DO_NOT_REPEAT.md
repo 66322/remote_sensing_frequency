@@ -2,6 +2,11 @@ D11 completed 12/12 with zero queue failures by user report, but no model passed
 
 # Completed, Closed, or Do-Not-Repeat Work
 
+D20 修订版 GAMUS Stage A 三城 CPU 小样本审计已于 2026-09-28 18:33:49 +08:00
+完成并归档。不要因入口文档的历史“待重试”段落再运行同一审计；
+样本内容通过不等于来源准入。先核查上游权利、地理来源与城市级独立切分，
+见 `docs/experiments/D20_GAMUS_STAGE_A_SOURCE_AUDIT_RESULTS_20260928.md`。
+
 D18 seed17的P0/P1/P2匹配复验已全部完成，六份摘要归档并通过离线审计；
 P2在两个种子分别通过原门槛，完整DSM缺失代价也已记录。保留两种子的检查点、
 预测与完整服务器记录；不重跑该队列，不为了提高Val2分数追加seed或改门槛。

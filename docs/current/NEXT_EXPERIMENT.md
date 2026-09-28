@@ -1,5 +1,11 @@
 # Next research decision after audited D18 replication (2026-09-28)
 
+**当前动作，2026-09-28：**修订版 GAMUS Stage A CPU 小样本审计已完成并归档；
+三城样本内容通过，但来源准入仍待完成。先核查上游权利、城市来源、全量类别
+与空间泄漏，形成城市级 fit/dev/final 与类别映射草案；在批准匹配短流程和
+训练预算前，不启动 GPU。详见[审计结果](../experiments/D20_GAMUS_STAGE_A_SOURCE_AUDIT_RESULTS_20260928.md)。
+以下“拉取修订后重试”及旧来源实验动作均已过时。
+
 **当前动作：**GAMUS 第二次 Stage A 因 Hub API 分页参数返回 HTTP 400，
 发生在小样本下载前；已改为经验证可用的默认 1000 项分页。
 服务器拉取修订后重试，只复用原有隔离 `h5py`，不使用 GPU。
