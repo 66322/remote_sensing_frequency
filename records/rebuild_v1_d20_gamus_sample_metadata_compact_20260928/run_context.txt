@@ -1,0 +1,7 @@
+2026-09-28T22:17:35+08:00
+HEAD=ed4186a4fa0d28d486b7ffa43741b47386c1a702
+BRANCH=rebuild-v1-protocol-20260915
+PYTHON=/home/jovyan/miniconda3/envs/remote_sensing/bin/python
+Python 3.9.21
+a8ec145b65e60238241f1f37ee45c5ea6b5a494950211f1d2e590c1fc740e017  scripts/audit_rebuild_v1_d20_gamus_sample_metadata.py
+a636a358414fd1d73d7594d6552f4f16da089ad3d0720e4247947ebb51b7c5be  scripts/run_rebuild_v1_d20_gamus_sample_metadata.sh
