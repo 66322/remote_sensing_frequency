@@ -1105,7 +1105,7 @@
       "host_peak_rss_gib": 2.258
     },
     "vaihingen_seed42_formal_development": {
-      "status": "implemented_server_cuda_pending",
+      "status": "running_as_last_reported",
       "config": "configs/rebuild_v1/d20_vaihingen_formal_seed42_20260928.json",
       "protocol": "docs/protocols/D20_VAIHINGEN_SEED42_FORMAL_20260928.md",
       "queue": "scripts/run_rebuild_v1_d20_vaihingen_seed42_queue.sh",
@@ -1114,7 +1114,17 @@
       "steps_per_arm": 8000,
       "evidence_level": "same_mosaic_development_only",
       "seed17_auto_launch": false,
-      "independent_final_loaded": false
+      "independent_final_loaded": false,
+      "server_queue_started_at": "2026-09-28T16:35:48+08:00",
+      "server_preflight": "87_input_hashes_passed",
+      "last_reported_progress": "P0 and P1 each at step 1000/8000 with 247.2 seconds elapsed; GPU utilization about 30 percent reported by user"
+    },
+    "d20_throughput_optimization_after_seed42": {
+      "status": "planned_after_current_queue",
+      "protocol": "docs/protocols/D20_THROUGHPUT_OPTIMIZATION_AFTER_SEED42_20260928.md",
+      "current_queue_source_changes_allowed": false,
+      "benchmark_scope": "fit_only_then_evaluation_equivalence",
+      "new_microbatch_requires_full_matched_rerun": true
     },
     "conditional_training": "P0/P1/P2 seed42 on accepted source; all three seed17 only after frozen dev gate passes.",
     "final_evaluation": "Reserve independent geography until all methods and controls are frozen; never select reliability interventions on final scores.",

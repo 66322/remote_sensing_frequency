@@ -1,5 +1,11 @@
 # Start Here
 
+**D20 Vaihingen seed42 queue running as last reported.** The server passed
+87 input hashes; P0/P1 each reached 1,000/8,000 training steps. Preserve the
+running code/config and archive its decision. A separate
+[throughput optimization plan](protocols/D20_THROUGHPUT_OPTIMIZATION_AFTER_SEED42_20260928.md)
+covers profiling and matched future versions after this queue finishes.
+
 **D20 Vaihingen seed42 matched development queue prepared, 2026-09-28.**
 The fit-only P2 timing probe completed and was archived in `abe10e4`.
 The common 8,000-step budget, 17 full development tiles and the gate are frozen in

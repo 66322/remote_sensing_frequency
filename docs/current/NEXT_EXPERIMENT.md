@@ -1,5 +1,10 @@
 # Next research decision after audited D18 replication (2026-09-28)
 
+**运行态：**服务器最近报告D20 seed42 P0/P1各1,000/8,000步，队列仍在运行。
+先等待训练、17块×11条件评价和decision完成并归档；随后根据预设门槛决定
+是否补seed17。[吞吐优化计划](../protocols/D20_THROUGHPUT_OPTIMIZATION_AFTER_SEED42_20260928.md)
+只用于后续版本，不改正在运行的源码和配置。
+
 **当前下一步：**P2训练区20步吞吐测量通过并归档`abe10e4`；
 三组seed42正式预算统一冻结为8,000步。运行[同域开发队列](../protocols/D20_VAIHINGEN_SEED42_FORMAL_20260928.md)，
 完成后按预设门槛判定是否值得全部补seed17。US3D独立地域数据与使用条件仍需解决。
