@@ -1057,9 +1057,12 @@
       "evidence": "records/rebuild_v1_d20_source_acceptance_compact_20260928/user_reported_stage_a.json"
     },
     "vaihingen_development_audit": {
-      "status": "prepared_not_run",
+      "status": "first_run_path_error_archived_fix_pending_server_rerun",
       "script": "scripts/run_rebuild_v1_d20_vaihingen_content_audit.sh",
       "instructions": "docs/current/D20_VAIHINGEN_CONTENT_AUDIT_20260928.md",
+      "failed_run_commit": "5299318",
+      "failed_run_cause": "First version selected nonexistent gts_complete directory; existing repository source specifies gts_complete_full. No label pixels read.",
+      "failed_run_evidence": "records/rebuild_v1_d20_vaihingen_content_compact_20260928/audit.json",
       "evidence_level": "same_mosaic_development_only"
     },
     "conditional_training": "P0/P1/P2 seed42 on accepted source; all three seed17 only after frozen dev gate passes.",

@@ -34,7 +34,7 @@ def tile_paths(root: Path, tile_id: int) -> dict[str, Path]:
     return {
         "optical": root / "top" / base,
         "dsm": root / "dsm" / f"dsm_09cm_matching_area{tile_id}.tif",
-        "full_gt": root / "gts_complete" / base,
+        "full_gt": root / "gts_complete_full" / base,
     }
 
 
@@ -59,7 +59,7 @@ def inspect_tile(tile_id: int) -> dict:
     row = {"id": tile_id, "historical_status": "unused_id_same_mosaic_development_only",
            "path_choices": choices, "paths": None, "checks": {}, "errors": []}
     if paths is None:
-        row["errors"].append("No single allowed root contains the exact TOP/DSM/gts_complete trio")
+        row["errors"].append("No single allowed root contains the exact TOP/DSM/gts_complete_full trio")
         return row
     row["paths"] = {k: str(v) for k, v in paths.items()}
     row["headers"] = {k: header(str(v)) for k, v in paths.items()}
@@ -149,7 +149,7 @@ def main() -> int:
         "status": status, "scope": "Vaihingen same-mosaic development source",
         "roots": [str(r) for r in ROOTS], "expected_ids": list(EXPECTED_IDS),
         "previously_used_train_ids": sorted(USED_TRAIN), "previously_used_eval_ids": sorted(USED_EVAL),
-        "label_choice": "Exact gts_complete/top_mosaic_09cm_area<ID>.tif; noBoundary excluded",
+        "label_choice": "Exact gts_complete_full/top_mosaic_09cm_area<ID>.tif; noBoundary excluded",
         "optical_band_meaning": ["near infrared", "red", "green"],
         "sample_limit_per_tile": 100_000,
         "ready_development_ids": [r["id"] for r in ready], "tiles": rows,
