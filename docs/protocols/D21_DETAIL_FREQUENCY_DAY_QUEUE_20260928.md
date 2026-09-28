@@ -111,6 +111,13 @@ cat records/rebuild_v1_d21_queue_20260928/progress.json
 如需在当前任务结束后停止追加，创建 `records/rebuild_v1_d21_queue_20260928/STOP`；
 恢复前人工确认并移走这个标记，再运行同一启动器。重复启动由队列锁拦截；已完成模型和预测验证后复用。
 
+**已从旧版 48 任务队列启动的情况：**旧队列的源码与计划绑定必须保持不变。
+等 seed42 和 seed17 的 32 个正式任务全部启动后，在队列记录目录写入 `STOP`。
+旧队列会等待在运行的两项完成并以原计划 `32/48 INCOMPLETE` 退出；这是用户缩小范围的预期状态。
+结束后再拉取当前两种子版本，运行 `python -B scripts/finalize_rebuild_v1_d21_two_seed.py`。
+该脚本验证旧提交、原计划、32 个检查点和整数计数，保存原始队列状态并新增 `effective_scope.json` 记录当前 `32/32` 范围。
+旧队列运行中不得拉取新源码，也不得重启新队列覆盖旧计划。
+
 产物：`runs/rebuild_v1/D21_*` 权重和训练摘要；`records/rebuild_v1_d21_20260928/` 逐tile预测及计数；
 `records/rebuild_v1_d21_compact_20260928/` 自动汇总的 `metrics.csv`、`decision.json`、32组紧凑证据。
 紧凑目录不包含权重、图像、预测数组。结束后只提交这个目录：
