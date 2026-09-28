@@ -1,12 +1,17 @@
 # Next research decision after audited D18 replication (2026-09-28)
 
+**当前可执行：**D20 Vaihingen 三组一步短流程已通过并归档`8401bcd`。
+结果仅验证流程，不比较方法。下一步执行[训练区20步吞吐/显存测量](../protocols/D20_VAIHINGEN_FIT_BUDGET_PROBE_20260928.md)，
+然后冻结 P0/P1/P2 一致的正式预算和全区域开发评价；US3D独立来源仍阻塞。
+见[短流程结果](../experiments/D20_VAIHINGEN_SMOKE_RESULTS_20260928.md)。
+
 **Vaihingen 同域开发内容检查已完成，2026-09-28：**服务器修正版17/17块通过
 尺寸、DSM有限值及FullGT颜色采样检查，精简结果归档`66ac041`。
 地理对齐无可读坐标，结果不构成独立最终确认。下一步冻结NIR/红/绿输入方案、
 Vaihingen训练/开发区域及标签/DSM处理，再做P0/P1/P2匹配短流程；
 US3D传输与使用条件仍需独立落实。见[检查结果](D20_VAIHINGEN_CONTENT_AUDIT_20260928.md)。
 P0/P1/P2 的[同域匹配一步短流程](../protocols/D20_VAIHINGEN_MATCHED_SMOKE_20260928.md)
-现已实现，等待服务器 CUDA 验证；它不会自动启动正式训练。
+已于服务器通过；它没有自动启动正式训练。
 
 **2026-09-28 D20 Stage A 已执行：**服务器检查结果为DFC19本地三元组0，
 官方torrent元数据可达，GRSS/DataPort在服务器代理下403；所需数据包及
@@ -14,7 +19,7 @@ P0/P1/P2 的[同域匹配一步短流程](../protocols/D20_VAIHINGEN_MATCHED_SMO
 当前已实现D20一步短流程，尚无正式训练队列。Vaihingen 服务器已有数据，可用于同域开发和短流程；
 旧实验已用区域与候选区域同属一幅镶嵌图，不能直接作为独立最终确认。
 Vaihingen [内容检查](D20_VAIHINGEN_CONTENT_AUDIT_20260928.md)已完成；
-下一项是服务器执行上面的一步短流程，并把结果归档到 GitHub。
+一步短流程及其结果归档已完成；接续训练区吞吐测量。
 以下原“先做来源准入”步骤是本轮计划背景；现在应从实际传输与条款检查继续。
 
 **已完成：**P0/P1/P2 seed17匹配复验和seed42配对诊断；服务器于

@@ -1,5 +1,11 @@
 # D20：独立来源准入、匹配基线与可靠性后续计划
 
+**2026-09-28执行更新：**US3D来源探测已完成，数据传输与使用条件仍阻塞。
+Vaihingen同域17块内容采样通过，P0/P1/P2一步短流程已完成并归档`8401bcd`。
+当前接续[只读训练区的吞吐测量](D20_VAIHINGEN_FIT_BUDGET_PROBE_20260928.md)，
+测完才冻结Vaihingen正式训练预算；下文“A阶段立即下一步”等文字保留为原计划时间线。
+Vaihingen不替代本计划的跨地域最终确认。
+
 ## Material Passport
 
 - Origin Skill: academic-research-suite / experiment-agent

@@ -1,12 +1,19 @@
 # Start Here
 
+**D20 Vaihingen matched one-step smoke passed, 2026-09-28.** P0/P1/P2 each
+completed train, save, reload and development-crop evaluation; server evidence
+was archived in `8401bcd`. The one-step scores are infrastructure diagnostics.
+The next runnable task is the [fit-only timing and memory probe](protocols/D20_VAIHINGEN_FIT_BUDGET_PROBE_20260928.md)
+before freezing a common formal training budget. US3D transfer and terms remain
+pending for independent geographic confirmation.
+
 **D20 Vaihingen development-source audit completed, 2026-09-28.** All 17
 candidate tiles passed sampled content checks, archived in `66ac041`.
 Geographic alignment is unverified and the tiles share a mosaic with historical
 experiments. Freeze the NIR/red/green input and development split before a
 matched P0/P1/P2 smoke. [Read the audit and limitations](current/D20_VAIHINGEN_CONTENT_AUDIT_20260928.md).
 The [one-step matched P0/P1/P2 smoke](protocols/D20_VAIHINGEN_MATCHED_SMOKE_20260928.md)
-is implemented and awaits server CUDA execution; it cannot launch formal training.
+completed on server; it did not launch formal training.
 
 **D20 Stage A server probe completed, 2026-09-28.** Local DFC19 triplets: zero;
 official Track-1 torrent metadata reachable; GRSS/DataPort server proxy: 403.
@@ -15,7 +22,7 @@ same-area development, with prior scene exposure and NIR/red/green inputs to acc
 Read the [Stage A result and next action](current/D20_STAGE_A_SOURCE_ACCEPTANCE_20260928.md).
 The runnable [Vaihingen content audit](current/D20_VAIHINGEN_CONTENT_AUDIT_20260928.md)
 checks the development source while US3D transfer terms are resolved.
-No D20 training queue exists yet.
+No D20 formal training queue exists yet.
 
 **Latest, 2026-09-28: D18 seed17 replication complete and offline-audited.**
 The seed42/17 P0/P1/P2 summaries are archived. P2 passed the prespecified
