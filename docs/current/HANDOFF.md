@@ -1,5 +1,13 @@
 # Current handoff — 2026-09-28, D20 Stage A server probe complete
 
+**最新接力：**D20 Vaihingen 17 块 CPU 只读输入核查已在服务器完成并归档
+`21dbb2d`。原始文件和 P0/P2 clean 预测与冻结 SHA 一致；12 号块失分主要在
+边界四像素邻域外，14 号块总体正确像素增加但 Car 假阳性增加使该类 IoU 下降。
+无明确文件/标签/尺寸异常证据；GeoTIFF 空间标签缺失，不能据此证明配准。
+详见[结果报告](../experiments/D20_VAIHINGEN_FAILURE_INPUT_AUDIT_RESULTS_20260928.md)。
+冻结门槛仍失败，不补 seed17。接下来按[已备询问草稿](D20_US3D_ACCESS_AND_USE_INQUIRY_20260928.md)
+确认 US3D 数据获取、私有中转许可和论文使用程序；草稿尚未发送。
+
 **接力更新：**针对 D20 Vaihingen seed42 的 12/14 号块，已准备
 [17块统一口径的只读输入与预测核查](../protocols/D20_VAIHINGEN_FAILURE_INPUT_AUDIT_20260928.md)，
 服务器尚未执行。先运行该 CPU 审计，提交紧凑结果后解释失败区域；

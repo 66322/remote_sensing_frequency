@@ -4,12 +4,13 @@
 
 - Date: 2026-09-28
 - Protocol: `docs/protocols/D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928.md`
-- Status: **SOURCE_FIT_PASS / LOCAL_TRIPLETS_ABSENT / TERMS_FOR_TRANSFER_PENDING**
+- Status: **SOURCE_FIT_PASS / LOCAL_TRIPLETS_ABSENT / TRANSPORT_TECHNICALLY_AVAILABLE / TERMS_FOR_RELAY_PENDING**
 - Server probe: 2026-09-28 15:22 +08:00, executed commit `6c7c0d1`; compact result is in
   [`user_reported_stage_a.json`](../../records/rebuild_v1_d20_source_acceptance_compact_20260928/user_reported_stage_a.json)
 - GPU queue: none
 - Test6: sealed; not loaded
 - Google Drive: the previously failed proxy-403 route is explicitly excluded from the new probe
+- Current action: [confirm access, private-relay permission and publication procedure](D20_US3D_ACCESS_AND_USE_INQUIRY_20260928.md)
 
 ## 已确认的来源适配性
 

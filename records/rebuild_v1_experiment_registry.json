@@ -1047,16 +1047,29 @@
     "id": "D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928",
     "status": "stage_a_source_probe_complete_transfer_terms_pending",
     "protocol": "docs/protocols/D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928.md",
-    "immediate_action": "Run the prepared CPU-only Vaihingen 17-tile input/prediction audit with focus on failed tiles 12/14; preserve the failed gate and no-seed17 stop; independently resolve US3D data transfer/use terms.",
+    "immediate_action": "Preserve failed Vaihingen seed42 gate and no-seed17 stop. Resolve official US3D/DFC2019 Track-1 access, approved transport and publication-use terms before independent-source training; audit Houston once only if US3D becomes unusable.",
+    "us3d_access_and_use_inquiry": {
+      "status": "draft_prepared_not_sent",
+      "document": "docs/current/D20_US3D_ACCESS_AND_USE_INQUIRY_20260928.md",
+      "questions": ["current_registration_and_direct_download", "noncontest_research_use", "private_third_party_relay_permission", "publication_approval_procedure"],
+      "source_data_relay_authorized": false
+    },
     "vaihingen_failure_input_audit": {
-      "status": "prepared_server_run_pending",
+      "status": "complete_server_archived_hash_bound_descriptive_only",
       "script": "scripts/run_rebuild_v1_d20_vaihingen_failure_inputs_audit.sh",
       "protocol": "docs/protocols/D20_VAIHINGEN_FAILURE_INPUT_AUDIT_20260928.md",
+      "result": "docs/experiments/D20_VAIHINGEN_FAILURE_INPUT_AUDIT_RESULTS_20260928.md",
       "target_failure_ids": [12, 14],
       "comparison_population": "all_17_frozen_development_tiles",
       "scope": "cpu_only_read_only_exploratory_diagnostic",
       "gate_unchanged": true,
       "seed17_auto_launch": false,
+      "run_commit": "43dbbe3",
+      "archive_commit": "21dbb2d",
+      "server_completed_at": "2026-09-28T18:04:42+08:00",
+      "input_and_clean_prediction_sha256_checks": "passed_all_17_tiles",
+      "clear_file_label_or_shape_anomaly": false,
+      "geographic_alignment_proven": false,
       "compact_archive": "records/rebuild_v1_d20_vaihingen_failure_inputs_compact_20260928/"
     },
     "stage_a_probe": {

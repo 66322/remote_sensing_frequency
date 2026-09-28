@@ -1,5 +1,11 @@
 # Next research decision after audited D18 replication (2026-09-28)
 
+**当前下一步：**D20 Vaihingen 失败区域的 CPU 只读核查已完成并归档
+`21dbb2d`，见[核查结果](../experiments/D20_VAIHINGEN_FAILURE_INPUT_AUDIT_RESULTS_20260928.md)。
+没有发现足以撤销 12/14 号块失败的明确输入异常；保持 `passed=false`，
+不补 seed17、不重跑三组。转入 [US3D/DFC2019 Track 1 的官方获取与使用条件确认](D20_US3D_ACCESS_AND_USE_INQUIRY_20260928.md)；
+在受限数据的传输方式得到允许之前，不做第三方云中转或新 GPU 训练。
+
 **当前可执行项：**在服务器运行
 [D20 Vaihingen 失败区域 CPU 只读核查](../protocols/D20_VAIHINGEN_FAILURE_INPUT_AUDIT_20260928.md)，
 将全部 17 块作为参照，重点核查 12/14 号块的输入和 clean 预测。

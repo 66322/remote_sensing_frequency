@@ -1,5 +1,12 @@
 # Start Here
 
+**D20 Vaihingen failure-input audit complete, 2026-09-28.** The 17-tile
+CPU-only audit was archived in `21dbb2d`; raw inputs and clean predictions
+matched frozen hashes. It found no clear file/label/shape anomaly to explain
+tiles 12/14. The [result and evidence limits](experiments/D20_VAIHINGEN_FAILURE_INPUT_AUDIT_RESULTS_20260928.md)
+leave the failed gate and no-seed17 decision unchanged. Next resolve US3D
+access and usage terms before independent-source training.
+
 **D20 seed42 failure-input audit prepared, awaiting server CPU run.** The
 [read-only audit](protocols/D20_VAIHINGEN_FAILURE_INPUT_AUDIT_20260928.md)
 checks all 17 development tiles and focuses on 12/14, binding raw input and
