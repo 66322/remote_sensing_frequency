@@ -116,3 +116,26 @@ bash scripts/run_rebuild_v1_d20_stage_a_source_audit.sh
 HTTP webseed，以及官方 tracker 的直接传输可达性。该预检不会 announce、不会请求
 数据块、不会上传或下载数据包。若没有无上传的直接路线，优先走注册后的
 DataPort/数据所有者直接下载，再将来源和条款状态写入 Stage-A 记录。
+
+
+## 2026-09-28：Hugging Face / Colab 中转路线更新
+
+用户确认该服务器此前已经成功通过 Hugging Face 下载大型数据；既有成功流程包括
+Colab/外部网络获取数据后，经 Hugging Face 私有 dataset repo 中转，再由服务器使用
+`huggingface-cli download ... --repo-type dataset --local-dir ...` 拉取。因此从纯技术角度，
+当前 GRSS/DataPort 代理 403 **不再视为服务器无法获取外部数据的最终阻塞**。
+
+但是 DFC2019 官方条款明确禁止注册用户 dissemination/distribution of the data packages。
+把 `Train-Track1-RGB.zip` / `Train-Track1-Truth.zip` 上传到 Hugging Face（包括 private repo）
+会把原始受限数据复制到第三方平台，是否属于被禁止的 distribution 不能自行假定允许。
+因此当前执行边界为：
+
+- Hugging Face/Colab 作为 **已验证可工作的技术传输能力** 记录；
+- 未取得数据方/GRSS 对此中转方式的许可前，**不上传 DFC2019 原始 ZIP 到 Hugging Face**；
+- `torrent_route_preflight` 降为备用诊断，不再是当前优先执行项；
+- Stage A 当前准确状态改为 **SOURCE_FIT_PASS / TRANSPORT_TECHNICALLY_AVAILABLE / TERMS_FOR_RELAY_PENDING**；
+- 若获得许可，可直接复用既有 HF 私有 dataset relay，不需要再解决服务器到 GRSS/DataPort 的代理 403；
+- GitHub 只保存脚本、清单、哈希、路径和实验结果，不保存 DFC2019 原始数据。
+
+下一项 Stage-A 工作因此改为：确认官方注册/科研使用审批以及是否允许个人私有云/HF 中转。
+在此之前不启动 GPU，也不切换 Houston；US3D/DFC19 仍是第一候选。
