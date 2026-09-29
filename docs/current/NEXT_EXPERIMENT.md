@@ -1,7 +1,7 @@
 # 下一步：执行 D21 并据配对结果决定方向
 
-1. 启动[D21队列](../protocols/D21_DETAIL_FREQUENCY_DAY_QUEUE_20260928.md)：8设置×2数据集×2种子，每组16k。
-2. 自动完成环境/数据预检、16个train-only短流程、每个seed块的16项训练和全图评估。
+1. 当前D21继续按冻结配置运行，由已部署监视脚本停在两种子32项。旧队列退出前不拉取新代码。
+2. 退出后拉取，执行 `scripts/finalize_rebuild_v1_d21_two_seed.py` 核对并归档两种子范围。
 3. 汇总同时展示全部组、全部种子、逐tile和逐类结果；明确FullGT与NoBoundary口径。
 4. 若细尺度M0优于旧融合R1而F2不优于M0，研究重点转向精细融合；不归因于频率。
 5. 若F2优于原始/灰度/单频/打乱对照且跨seed稳定，再设计独立地域验证和必要机制深化。
@@ -11,3 +11,7 @@ GAMUS不是必选。GeoNRW可做后续影像+高程外部来源；LoveDA可做RG
 外部数据获取、类别映射和空间划分不阻塞本批已有数据开发；不以开发成绩冒充最终确认。
 
 原D20外部来源计划保留于[历史计划](../history/20260928_before_d21/NEXT_EXPERIMENT.md)。
+
+下一批立项前先填[实验准备表](../templates/EXPERIMENT_PREFLIGHT_TEMPLATE.md)，执行
+[实验规划与服务器准备规则](../protocols/EXPERIMENT_PLANNING_RULES.md)。新机制探索默认单seed42；
+多种子按具体稳定性问题另作说明。先说明下载和环境需求、解决服务器访问限制，再短测吞吐、冻结配置和排队。

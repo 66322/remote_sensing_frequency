@@ -1,5 +1,14 @@
 # Execution Boundaries
 
+## Experiment preparation policy
+
+For new experiments, follow [实验规划与服务器准备规则](EXPERIMENT_PLANNING_RULES.md).
+Benchmark throughput on the actual server before fixing the training configuration.
+Use one seed by default and document a concrete reason for additional seeds.
+Disclose downloads and environment changes before preparation; GitHub and Hugging Face
+are user-reported reachable sources, while redirects and other sites require checking.
+Separate resource preparation from training launch; launchers validate prepared artifacts.
+
 ## Persistent filesystem boundary
 
 All persistent project files must stay under:

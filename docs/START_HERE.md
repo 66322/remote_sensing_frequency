@@ -1,10 +1,14 @@
 # Start Here
 
-## 当前入口：D21 一昼夜以上开发队列
+## 先读实验准备规则
 
-2026-09-28 用户已授权 GPU0、GPU1 连续运行更久，要求推进真实实验。
-D21 已准备 8 组 × 2 数据集 × 2 种子 = 32 次 16k 训练，粗估20–35小时。
-**服务器尚未启动/未观测**；环境、完整batch smoke、保存重载通过后启动器会自动继续。
+[实验规划与服务器准备规则](protocols/EXPERIMENT_PLANNING_RULES.md)：正式排队前先测吞吐；
+探索默认单种子，多种子说明必要性；下载/环境提前说明并单独准备。
+服务器优先访问 GitHub/Hugging Face，不可达来源可经 Colab → Hugging Face 中转。
+[新实验准备表](templates/EXPERIMENT_PREFLIGHT_TEMPLATE.md)用于落实这些要求。
+
+D21 最近观测与当前操作见下面两份入口。正在运行的服务器检出不要拉取代码；
+旧48任务队列按监视脚本停在32项，退出后再拉取并运行两种子收尾脚本。
 
 - [当前交接](current/HANDOFF.md)
 - [执行协议和一键启动](protocols/D21_DETAIL_FREQUENCY_DAY_QUEUE_20260928.md)
