@@ -1,0 +1,32 @@
+{
+  "observed_at": "2026-09-29T18:35:35.495550+08:00",
+  "original_launch_commit": "10f63eaa21fe6ef109e1bdb72369496c0a88c719",
+  "effective_protocol_commit": "dc5e2b4b4fcbd3b085659f95332ae76110b83483",
+  "original_plan_jobs": 48,
+  "original_queue_status": "INCOMPLETE",
+  "scope_change": "User removed automatic third seed after the old queue started; STOP was set once all 32 matched jobs began.",
+  "effective_datasets": [
+    "potsdam",
+    "vaihingen"
+  ],
+  "effective_seeds": [
+    42,
+    17
+  ],
+  "effective_arms": [
+    "R0",
+    "R1",
+    "M0",
+    "M1",
+    "F0",
+    "F1",
+    "F2",
+    "F3"
+  ],
+  "completed": 32,
+  "planned": 32,
+  "effective_scope_status": "COMPLETE",
+  "integer_count_audit": "PASS",
+  "test6_loaded": false,
+  "independent_final_loaded": false
+}
