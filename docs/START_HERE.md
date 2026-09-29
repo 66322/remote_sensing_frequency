@@ -7,10 +7,11 @@
 服务器优先访问 GitHub/Hugging Face，不可达来源可经 Colab → Hugging Face 中转。
 [新实验准备表](templates/EXPERIMENT_PREFLIGHT_TEMPLATE.md)用于落实这些要求。
 
-D21 最近观测与当前操作见下面两份入口。正在运行的服务器检出不要拉取代码；
-旧48任务队列按监视脚本停在32项，退出后再拉取并运行两种子收尾脚本。
+D21 有效双种子范围已完成32/32并归档；F2未通过预设开发门槛。
+原48项队列的 `32/48 INCOMPLETE` 是停止第三种子后的历史状态。
 
 - [当前交接](current/HANDOFF.md)
+- [D21结果报告](experiments/D21_DETAIL_FREQUENCY_RESULTS_20260929.md)
 - [执行协议和一键启动](protocols/D21_DETAIL_FREQUENCY_DAY_QUEUE_20260928.md)
 - [当前状态](current/PROJECT_STATUS.md)
 - [下一步与结果判断](current/NEXT_EXPERIMENT.md)

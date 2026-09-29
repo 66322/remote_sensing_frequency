@@ -2,7 +2,7 @@
 
 | ID | Purpose | Status | Primary evidence |
 |---|---|---|---|
-| D21 | matched fine-scale height and low/high frequency controls; 32 jobs on two datasets and two seeds | prepared; CPU contracts passed; server not observed started | `docs/protocols/D21_DETAIL_FREQUENCY_DAY_QUEUE_20260928.md` |
+| D21 | matched fine-scale height and low/high frequency controls; 32 jobs on two datasets and two seeds | effective 32/32 complete and archived; F2 accuracy and missing-DSM safety gates failed | `docs/experiments/D21_DETAIL_FREQUENCY_RESULTS_20260929.md` |
 | D20 | independent source acceptance and matched external P0/P1/P2 baselines | revised GAMUS three-city sample content passed; nine HDF5 files have no root/image attributes, source/geographic acceptance pending; US3D terms pending; Vaihingen seed42 per-tile gate failed, no automatic seed17 | `docs/experiments/D20_GAMUS_STAGE_A_SOURCE_AUDIT_RESULTS_20260928.md`; `docs/experiments/D20_GAMUS_SAMPLE_METADATA_RESULTS_20260928.md`; `docs/experiments/D20_VAIHINGEN_SEED42_RESULTS_20260928.md` |
 | D18 seed17 replication | matched frozen-DINO P0/P1/P2 and paired error analysis across seeds42/17 | complete; originals archived and offline-audited; P2 passes both seeds with DSM absence cost | `docs/experiments/D18_REPLICATION_RESULTS_20260928.md` |
 | D18/D19 | single-seed pretrained adapters and intervention structures | 8/8 complete, originals archived and offline-audited; P2 seed42 candidate; C2/C3 fail | `docs/experiments/D18_D19_RESULTS_20260928.md` |

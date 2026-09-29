@@ -1044,8 +1044,18 @@
     }
   ],
   "next_plan": {
+    "id": "POST_D21_BOUNDED_THROUGHPUT_PROBE_20260929",
+    "status": "preparation_required_not_started",
+    "purpose": "Benchmark representative training and whole-image evaluation on physical GPUs 0/1 before freezing the next experiment configuration",
+    "protocol": "docs/protocols/EXPERIMENT_PLANNING_RULES.md",
+    "preflight": "docs/templates/EXPERIMENT_PREFLIGHT_TEMPLATE.md",
+    "max_gpu_use": "bounded short probe; resource and stop limit to be frozen before server execution",
+    "new_data_or_install": "none planned; disclose and prepare separately if needed",
+    "follow_on": "single-seed matched exploration of new DSM-absence reliability mechanism after probe"
+  },
+  "completed_d21_plan": {
     "id": "D21_DETAIL_FREQUENCY_DEVELOPMENT_20260928",
-    "status": "prepared_not_server_observed",
+    "status": "effective_32_of_32_complete_gates_failed",
     "protocol": "docs/protocols/D21_DETAIL_FREQUENCY_DAY_QUEUE_20260928.md",
     "config": "configs/rebuild_v1/d21_detail_frequency_20260928.json",
     "queue": "scripts/run_rebuild_v1_d21_queue.sh",
@@ -1077,8 +1087,14 @@
       20,
       35
     ],
-    "started_at": null,
-    "completed_at": null,
+    "started_at": "2026-09-28T22:53:29+08:00",
+    "completed_at": "2026-09-29T18:23:44+08:00",
+    "original_queue": "32/48 INCOMPLETE after STOP; effective two-seed scope 32/32 COMPLETE",
+    "server_original_commit": "10f63ea",
+    "archive_commit": "81dcc9e",
+    "result": "docs/experiments/D21_DETAIL_FREQUENCY_RESULTS_20260929.md",
+    "accuracy_gate_passed": false,
+    "missing_aux_safety_gate_passed": false,
     "authorization": "User explicitly requested at least one day of experiments and GPU0/GPU1 may run longer.",
     "new_mechanism": "quarter-resolution auxiliary detail injection with matched raw/gray/low/high/alignment controls",
     "budget_rationale": "matched new 16k development block; previous 8k baselines are not pooled as controls",

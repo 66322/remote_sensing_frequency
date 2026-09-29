@@ -1,6 +1,7 @@
-2026-09-28 D21授权更新：已有数据开发实验不再等待GAMUS来源验收。
-D21使用新的冻结DINO细尺度支路和全套16k匹配对照；不能将它写成D20旧8k复验或旧失败门槛通过。
-下文涉及“先等待独立来源”的旧顺序已由[D21协议](../protocols/D21_DETAIL_FREQUENCY_DAY_QUEUE_20260928.md)替代。
+2026-09-29 D21有效范围32/32完成并归档。[结果](../experiments/D21_DETAIL_FREQUENCY_RESULTS_20260929.md)
+显示 F2 的四块预设准确率增益和 DSM 缺失保护均失败；不要补第三种子、重调门槛、
+以开发结果作为独立最终验证，或把边界诊断信号写成通过门槛。
+已有数据开发实验不等待 GAMUS 来源验收。下文涉及“先等待独立来源”的旧顺序由当前下一步计划替代。
 
 D11 completed 12/12 with zero queue failures by user report, but no model passed the predeclared two-seed screen. Do not rerun D11 or alter its Val2 thresholds. D12 uses new frozen decoder context and a capacity control; it is not a D11 rerun. See docs/experiments/D11_RESULTS_20260923.md.
 
