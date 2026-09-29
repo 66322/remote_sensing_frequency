@@ -1044,15 +1044,25 @@
     }
   ],
   "next_plan": {
-    "id": "POST_D21_SINGLE_SEED_RELIABILITY_EXPLORATION",
-    "status": "draft_protocol_written_implementation_not_started",
-    "purpose": "Implement a spatial structure-alignment mechanism and matched single-seed controls anchored to D21 R0",
-    "draft_protocol": "docs/protocols/D22_STRUCTURE_ALIGNED_DSM_RELIABILITY_DRAFT_20260929.md",
+    "id": "POST_D21_MULTIDIRECTION_DAY_PLAN_20260929",
+    "status": "planning_only_implementation_and_runtime_calibration_pending",
+    "purpose": "At least one day of single-seed paired exploration across adaptation, DSM residuals, LR restoration and their interaction",
+    "draft_protocol": "docs/protocols/POST_D21_MULTIDIRECTION_DAY_PLAN_20260929.md",
+    "plan_manifest": "records/post_d21_day_plan_20260929/plan.json",
+    "planned_jobs_csv": "records/post_d21_day_plan_20260929/jobs.csv",
+    "main_jobs": 42,
+    "reserve_jobs": 8,
+    "main_optimizer_updates": 576000,
+    "seeds": [42],
+    "physical_gpus": [0, 1],
+    "target_wall_hours": [24, 48],
+    "runtime_verified": false,
+    "supersedes_unrun_draft": "docs/protocols/D22_STRUCTURE_ALIGNED_DSM_RELIABILITY_DRAFT_20260929.md",
     "results_motivating_plan": "docs/experiments/POST_D21_THROUGHPUT_PROBE_RESULTS_20260929.md",
     "preflight": "docs/templates/EXPERIMENT_PREFLIGHT_TEMPLATE.md",
     "new_data_or_install": "none planned; disclose and prepare separately if needed",
-    "provisional_training_configuration": "effective batch 16 as 16x1; short numerical and stability gate before formal queue; fallback 8x2 if needed",
-    "follow_on": "freeze the mechanism, controls, accuracy and safety gates before formal training"
+    "provisional_training_configuration": "effective batch 16; profile frozen, partial-unfreeze and joint restoration paths; do not extrapolate six-step frozen-F2 timing",
+    "follow_on": "implement matched blocks, verify gradients and data boundaries, measure throughput and freeze a queue scope expected to last at least 24 hours before launch"
   },
   "completed_post_d21_throughput_probe": {
     "id": "POST_D21_BOUNDED_THROUGHPUT_PROBE_20260929",

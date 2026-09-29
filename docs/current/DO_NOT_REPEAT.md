@@ -3,6 +3,10 @@
 以开发结果作为独立最终验证，或把边界诊断信号写成通过门槛。
 已有数据开发实验不等待 GAMUS 来源验收。下文涉及“先等待独立来源”的旧顺序由当前下一步计划替代。
 
+2026-09-29后续规划：未实施的D22固定Sobel门草案已被多方向方案替代。
+D9B固定边缘评分失败不能因更换名称变为可靠性证据；新的学习型RGB条件残差须保留
+灰度容量、原始DSM与位置打乱对照，缺失回退只记为工程保证，不称为学得的可靠性。
+
 D11 completed 12/12 with zero queue failures by user report, but no model passed the predeclared two-seed screen. Do not rerun D11 or alter its Val2 thresholds. D12 uses new frozen decoder context and a capacity control; it is not a D11 rerun. See docs/experiments/D11_RESULTS_20260923.md.
 
 # Completed, Closed, or Do-Not-Repeat Work

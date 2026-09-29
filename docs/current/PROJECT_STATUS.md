@@ -15,4 +15,4 @@ D21 原48项队列在32项完成后按 STOP 退出，原队列标记 `32/48 INCO
 
 用户已将[单卡吞吐短测结果](../experiments/POST_D21_THROUGHPUT_PROBE_RESULTS_20260929.md)的原始 JSON 与 GPU 采样 CSV 归档至 `6e45fce`：F2/Vaihingen 训练区的 `16×1` 为103.6有效样本/秒，原 `2×8` 为61.7；`8×2` 为101.0。服务器采样时钟为2026-09-29 18:54:40–18:55:00（文件未含时区）；这是短测历史观测，不是 GPU 实时状态，也不改变 D21 准确率失败结论。
 
-下一步实现[D22结构对齐可靠性草案](../protocols/D22_STRUCTURE_ALIGNED_DSM_RELIABILITY_DRAFT_20260929.md)并做 CPU/短 GPU 合同测试；正式队列尚未准备或启动。`16×1` 暂定，数值不通过则整体回退 `8×2`。遵循[实验准备规则](../protocols/EXPERIMENT_PLANNING_RULES.md)：下载和安装提前说明，优先检查 GitHub/Hugging Face 可达性，必要时可经 Colab 和 Hugging Face 中转。Test6 继续封存。
+用户要求先规划至少一天、多方向、非必要不多种子。[多方向计划](../protocols/POST_D21_MULTIDIRECTION_DAY_PLAN_20260929.md)已列42项主训练和8项备用，全部seed42；包括表征适配、DSM学习型残差、真实低分辨率恢复及交叉实验。目标24–48h，须用新模型吞吐冻结预计至少24h的范围；目前仅规划，代码与正式队列未实现/启动。旧D22固定Sobel门草案已被新计划取代。无新增下载计划；缺项仍先说明，Test6继续封存。
