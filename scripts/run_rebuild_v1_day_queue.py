@@ -15,6 +15,7 @@ import threading
 import time
 
 import day_portfolio_common as p
+from day_dino_compat import compatible_repo
 
 
 def now():
@@ -86,11 +87,21 @@ def prepare():
         raise RuntimeError('available host RAM below the 20 GiB protective floor')
     if shutil.disk_usage(p.ROOT).free/1024**3<cfg['minimum_free_disk_gib']:
         raise RuntimeError('free disk below the 25 GiB protective floor')
-    subprocess.run([sys.executable,'-B','-m','unittest','tests.test_day_portfolio','-v'],
+    subprocess.run([sys.executable,'-B','-m','unittest','tests.test_day_portfolio',
+                    'tests.test_day_dino_compat','-v'],
                    cwd=p.ROOT,check=True)
     # Binding checks only local pre-existing artifacts; no network or installer is called.
     subprocess.run([sys.executable,'-B','-c',
         'import sys; sys.path.insert(0,"scripts"); import d18_d19_night as d; d.binding("P0",False); print("DINO BINDING PASS")'],
+        cwd=p.ROOT,check=True)
+    import d18_d19_night as d18
+    _, compat_sha=compatible_repo(d18.artifacts()[0])
+    subprocess.run([sys.executable,'-B','-c',
+        'import sys; sys.path[:0]=[".","scripts"]; import d18_d19_night as d; '
+        'from day_dino_compat import compatible_repo; '
+        'from model.rebuild_v1_night_screen import load_dino; '
+        'repo,weights=d.artifacts(); mirror,_=compatible_repo(repo); '
+        'model=load_dino(mirror,weights); print("DINO IMPORT PASS",len(model.blocks))'],
         cwd=p.ROOT,check=True)
     source=p.source_snapshot()
     manifest_path=p.OUT/'input_manifest.json'
@@ -125,13 +136,24 @@ def prepare():
     devices=gpu_info()
     commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=p.ROOT,text=True).strip()
     plan=dict(source_sha256=source,input_manifest_sha256=p.sha(manifest_path),
+        dino_compat_manifest_sha256=compat_sha,
         jobs_sha256=p.sha(p.ROOT/cfg['job_manifest']),
         gpu_uuids={str(g):devices[g]['uuid'] for g in (0,1)},physical_gpus=[0,1],
         python=sys.executable,git_commit=commit,test6_loaded=False)
     path=p.OUT/'plan.json'
     if path.is_file():
         if p.read(path)!=plan:
-            raise RuntimeError('frozen queue plan changed; keep existing evidence and use a new run id')
+            old=p.read(path)
+            previous='4d5abb1b35056ab65ee57503094312e2e22104ac'
+            runs=p.ROOT/'runs/rebuild_v1'
+            produced=list(runs.glob('POST_D21_*/last_train_state.pth'))+list(runs.glob('POST_D21_*/summary.json'))
+            archived=p.OUT/'plan_failed_py39_import.json'
+            if old.get('git_commit')==previous and not (p.OUT/'scope.json').exists() and not produced and not archived.exists():
+                path.rename(archived)
+                p.write(path,plan)
+                print('ARCHIVED failed Python 3.9 import plan; no training checkpoint existed',flush=True)
+            else:
+                raise RuntimeError('frozen queue plan changed; preserve existing evidence and use a new run id')
     else:
         p.write(path,plan)
     p.write(p.OUT/'preflight.json',dict(observed_at=now(),git_commit=commit,
@@ -149,6 +171,10 @@ def verify_frozen(plan):
     p.verify_inputs(p.read(p.OUT/'input_manifest.json'))
     if p.sha(p.OUT/'input_manifest.json')!=plan['input_manifest_sha256']:
         raise RuntimeError('input manifest changed')
+    import d18_d19_night as d18
+    _, compat_sha=compatible_repo(d18.artifacts()[0])
+    if compat_sha!=plan['dino_compat_manifest_sha256']:
+        raise RuntimeError('DINO compatibility mirror changed')
     scope=p.OUT/'scope.json'
     if scope.is_file():
         stamp=p.OUT/'scope.sha256'

@@ -21,6 +21,7 @@ import run_rebuild_v1_d21_job as prior
 import train_rebuild_v1_r02_budget_pilot as r02
 from train_rebuild_v1_d16_d17 import sample, save
 from model.rebuild_v1_night_screen import load_dino
+from day_dino_compat import compatible_repo
 from model.rebuild_v1_day_portfolio import (
     AContinuation, BAnchoredResidual, CDRestorationSegmenter, ReconstructionAudit, highpass)
 from night_boundary_metrics import boundary_counts
@@ -59,6 +60,7 @@ def signature(job, smoke=False, profile=False, physical_micro_batch=None):
         raise RuntimeError('frozen source changed')
     p.verify_inputs(p.read(p.OUT/'input_manifest.json'))
     parent = d18.binding('P0', False)
+    compat_repo, compat_sha = compatible_repo(d18.artifacts()[0])
     source = anchor(job)
     if physical_micro_batch is None:
         physical_micro_batch=p.read(p.OUT/'scope.json')['physical_micro_batch']
@@ -68,6 +70,7 @@ def signature(job, smoke=False, profile=False, physical_micro_batch=None):
         input_manifest_sha256=p.sha(p.OUT/'input_manifest.json'),
         source_sha256=plan['source_sha256'], anchor=source,
         dino_commit=parent['dino_commit'], dino_sha256=parent['anchor_sha256'],
+        dino_import_repository=str(compat_repo), dino_compat_manifest_sha256=compat_sha,
         torch_version=torch.__version__, test6_loaded=False,
         independent_final_loaded=False, checkpoint_selection='fixed_final_step')
 
@@ -75,7 +78,8 @@ def signature(job, smoke=False, profile=False, physical_micro_batch=None):
 def build(job, state=None):
     r02.set_seed(job['seed'])
     repo, weights = d18.artifacts()
-    encoder = load_dino(repo, weights)
+    import_repo, _ = compatible_repo(repo)
+    encoder = load_dino(import_repo, weights)
     arm = model_arm(job)
     if job['direction'] == 'A':
         model = AContinuation(encoder, arm, job['arm'].endswith('last4'))
