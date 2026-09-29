@@ -198,12 +198,21 @@ def select_scope():
     estimated_main_hours=main_train_hours+main_eval_hours
     include_reserve=estimated_main_hours<24
     selected=main+(reserve if include_reserve else [])
+    reserve_train_hours=sum(j['steps']*sample[family(j)] for j in reserve)/2/3600
+    reserve_eval_hours=sum(sample_eval[family(j)]*len(p.datasets()[j['dataset']]['dev'])*4
+        for j in reserve)/2/3600
+    estimated_selected_hours=estimated_main_hours+(
+        reserve_train_hours+reserve_eval_hours if include_reserve else 0)
+    if estimated_selected_hours<24:
+        raise RuntimeError(f'predefined 42+8 work estimates only {estimated_selected_hours:.2f}h; '
+            'define another distinct research question before launching, never fill time with repeats')
     scope=dict(frozen_at=now(),profile_seconds_per_step=sample,
         profile_full_train_tile_eval_seconds=sample_eval,
         physical_micro_batch=physical_micro_batch,
         estimated_main_training_hours_lower_bound=main_train_hours,
         estimated_main_evaluation_hours=main_eval_hours,
         estimated_main_hours_before_io=estimated_main_hours,
+        estimated_selected_hours_before_io=estimated_selected_hours,
         include_full_reserve_block=include_reserve,
         selected_job_ids=[j['job_id'] for j in selected],
         decision_rule='include all E if measured main train plus train-tile-scaled dev evaluation <24h; before any dev accuracy',
