@@ -14,6 +14,7 @@ D21 有效双种子范围已完成32/32并归档；F2未通过预设开发门槛
 - [D21结果报告](experiments/D21_DETAIL_FREQUENCY_RESULTS_20260929.md)
 - [下一步有界吞吐测试](protocols/POST_D21_THROUGHPUT_PROBE_20260929.md)
 - [吞吐短测结果](experiments/POST_D21_THROUGHPUT_PROBE_RESULTS_20260929.md)
+- [D22 结构对齐可靠性草案](protocols/D22_STRUCTURE_ALIGNED_DSM_RELIABILITY_DRAFT_20260929.md)
 - [执行协议和一键启动](protocols/D21_DETAIL_FREQUENCY_DAY_QUEUE_20260928.md)
 - [当前状态](current/PROJECT_STATUS.md)
 - [下一步与结果判断](current/NEXT_EXPERIMENT.md)
