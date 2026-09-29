@@ -1044,14 +1044,30 @@
     }
   ],
   "next_plan": {
-    "id": "POST_D21_BOUNDED_THROUGHPUT_PROBE_20260929",
-    "status": "preparation_required_not_started",
-    "purpose": "Benchmark representative training and whole-image evaluation on physical GPUs 0/1 before freezing the next experiment configuration",
-    "protocol": "docs/protocols/POST_D21_THROUGHPUT_PROBE_20260929.md",
+    "id": "POST_D21_SINGLE_SEED_RELIABILITY_EXPLORATION",
+    "status": "mechanism_and_matched_controls_to_be_frozen_not_launched",
+    "purpose": "Design a new DSM-absence reliability mechanism and matched single-seed controls while archiving GPU telemetry in parallel",
+    "results_motivating_plan": "docs/experiments/POST_D21_THROUGHPUT_PROBE_RESULTS_20260929.md",
     "preflight": "docs/templates/EXPERIMENT_PREFLIGHT_TEMPLATE.md",
-    "max_gpu_use": "one physical GPU; internal 20-minute cap; external 25-minute timeout",
     "new_data_or_install": "none planned; disclose and prepare separately if needed",
-    "follow_on": "single-seed matched exploration of new DSM-absence reliability mechanism after probe"
+    "provisional_training_configuration": "effective batch 16 as 16x1; short numerical and stability gate before formal queue; fallback 8x2 if needed",
+    "follow_on": "freeze the mechanism, controls, accuracy and safety gates before formal training"
+  },
+  "completed_post_d21_throughput_probe": {
+    "id": "POST_D21_BOUNDED_THROUGHPUT_PROBE_20260929",
+    "status": "user_pasted_complete_raw_server_json_and_gpu_telemetry_pending",
+    "protocol": "docs/protocols/POST_D21_THROUGHPUT_PROBE_20260929.md",
+    "result": "docs/experiments/POST_D21_THROUGHPUT_PROBE_RESULTS_20260929.md",
+    "user_pasted_json": "records/rebuild_v1_d21_throughput_probe_20260929/user_pasted_gpu0_F2_vaihingen_seed42.json",
+    "server_commit": "8f315d2",
+    "dataset": "vaihingen_train",
+    "arm": "F2",
+    "seed": 42,
+    "measured_steps_per_candidate": 6,
+    "best_observed_micro_batch": 16,
+    "best_observed_accum_steps": 1,
+    "best_observed_effective_samples_per_second": 103.59268509315719,
+    "formal_configuration_frozen": false
   },
   "completed_d21_plan": {
     "id": "D21_DETAIL_FREQUENCY_DEVELOPMENT_20260928",
