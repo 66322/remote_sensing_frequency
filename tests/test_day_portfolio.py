@@ -4,6 +4,7 @@ from torch import nn
 from torch.nn import functional as F
 
 from model.rebuild_v1_day_portfolio import AContinuation, BAnchoredResidual, CDRestorationSegmenter, ReconstructionAudit, highpass
+from model.rebuild_v1_night_screen import FrozenDinoSegmenter
 
 
 class TinyEncoder(nn.Module):
@@ -33,20 +34,21 @@ class PortfolioTests(unittest.TestCase):
     def test_b_zero_aux_equals_anchor(self):
         torch.manual_seed(42)
         model = BAnchoredResidual(TinyEncoder(), 'B3').eval()
-        x = torch.rand(1, 3, 28, 28)
-        zero = torch.zeros(1, 28, 28)
+        baseline = FrozenDinoSegmenter(TinyEncoder(), auxiliary=False).eval()
+        baseline.load_state_dict({k:v for k,v in model.state_dict().items() if not k.startswith('residual.')})
+        x = torch.rand(1, 3, 30, 30)
+        zero = torch.zeros(1, 30, 30)
         with torch.no_grad():
             actual = model(x, zero)
-            feature = F.interpolate(model.rgb(__import__('model.rebuild_v1_day_portfolio', fromlist=['encoded_features']).encoded_features(model, x)), size=(7, 7), mode='nearest')
-            anchor = F.interpolate(model.decoder(feature), size=(28, 28), mode='nearest')
+            anchor = baseline(x, zero)
         self.assertTrue(torch.equal(actual, anchor))
 
     def test_c_ce_reaches_restoration_front(self):
         torch.manual_seed(42)
         model = CDRestorationSegmenter(TinyEncoder(), 'C1', 2)
-        x = torch.rand(1, 3, 28, 28)
-        logits, restored = model.forward_with_restored(x, torch.zeros(1, 28, 28))
-        F.cross_entropy(logits, torch.zeros(1, 28, 28, dtype=torch.long)).backward()
+        x = torch.rand(1, 3, 30, 30)
+        logits, restored = model.forward_with_restored(x, torch.zeros(1, 30, 30))
+        F.cross_entropy(logits, torch.zeros(1, 30, 30, dtype=torch.long)).backward()
         self.assertEqual(restored.shape, x.shape)
         self.assertGreater(model.front.net[-1].weight.grad.abs().sum().item(), 0)
         self.assertFalse(model.encoder.proj.weight.requires_grad)

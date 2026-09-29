@@ -1045,7 +1045,7 @@
   ],
   "next_plan": {
     "id": "POST_D21_MULTIDIRECTION_DAY_PLAN_20260929",
-    "status": "python39_import_failure_fixed_in_code_server_recheck_pending",
+    "status": "deterministic_padding_backward_failure_fixed_in_code_server_recheck_pending",
     "purpose": "At least one day of single-seed paired exploration across adaptation, DSM residuals, LR restoration and their interaction",
     "draft_protocol": "docs/protocols/POST_D21_MULTIDIRECTION_DAY_PLAN_20260929.md",
     "plan_manifest": "records/post_d21_day_plan_20260929/plan.json",
@@ -1065,6 +1065,9 @@
     "server_preflight_complete": false,
     "first_server_profile_started_at": "2026-09-29T19:47:48+08:00",
     "first_server_profile_result": "failed_before_training_at_DINO_import_due_to_Python_3_9_PEP604_annotation; no scope or formal checkpoint",
+    "second_server_profile_started_at": "2026-09-30T00:18:15+08:00",
+    "second_server_profile_result": "DINO import passed; first D backward failed because CUDA replication padding has no strict deterministic backward; no scope or training checkpoint",
+    "deterministic_padding_fix": "C/D/E differentiable DINO input padding and highpass boundary use fixed zero extension; A/B D21 anchor padding unchanged",
     "compatibility_fix": "scripts/day_dino_compat.py; original DINO source and weight remain unchanged; verified local mirror adds postponed annotations",
     "server_training_started": false,
     "supersedes_unrun_draft": "docs/protocols/D22_STRUCTURE_ALIGNED_DSM_RELIABILITY_DRAFT_20260929.md",

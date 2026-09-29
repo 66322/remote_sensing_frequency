@@ -15,6 +15,8 @@
 
 服务器现有 `remote_sensing` 为 Python 3.9；DINO 原始源码中的 `float | None` 注解不能在该版本导入。预检会在运行记录目录生成带逐文件 SHA256 清单的**本地兼容副本**，仅给 Python 源文件添加延迟解析注解声明；原始 DINO Git 仓库和权重不改动，既有提交/权重绑定仍须通过。预检随后实际实例化 DINO 模型；兼容处理失败则停止，不进入 GPU 短测。首次失败留下的 `4d5abb1` 计划文件仅在确认没有任何新训练检查点及冻结范围时自动归档为 `plan_failed_py39_import.json`。
 
+第二次短测在首步反传遇到 PyTorch 严格确定性模式不支持 CUDA `replication_pad2d_backward`。恢复路径 C/D/E 的 DINO 输入补边和固定高频算子的边界现统一用零填充，保留确定性开关；A/B 仍用 D21 的复制边界，确保原 R0 锚点计算一致。该边界约定在训练前固定并用于所有 C/D/E 对照。第二次失败计划同样仅在没有新检查点及冻结范围时归档，绝不覆盖已有训练。
+
 Potsdam 训练 Train16、开发 Val2（主分数 NoBoundary fg5 mIoU）；Vaihingen 训练12块、开发同镶嵌图17块（主分数 FullGT fg5 mIoU）。Test6 与独立 final 不加载。所有 checkpoint 固定最终步，没有以开发集挑选中途权重。每 tile 存 int64 `6×6` 与逐类原始计数，预测和大 checkpoint 留服务器，紧凑 JSON/CSV 可以同步 GitHub。
 
 ## 服务器上的三个阶段

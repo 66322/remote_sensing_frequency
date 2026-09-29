@@ -21,8 +21,12 @@ def last_four_trainable(encoder):
 
 def encoded_features(model, rgb):
     h, w = rgb.shape[-2:]
+    # CUDA replication-pad backward is unavailable with strict deterministic
+    # algorithms. C/D/E require gradients to the restored image; A/B retain
+    # the D21 replication pad so the frozen R0 anchor stays exactly matched.
+    pad_mode = 'constant' if getattr(model, 'differentiable_input_padding', False) else 'replicate'
     image = F.pad((rgb-model.mean)/model.std,
-                  (0, (-w) % 14, 0, (-h) % 14), mode='replicate')
+                  (0, (-w) % 14, 0, (-h) % 14), mode=pad_mode)
     # Do not use no_grad here: C/D need CE gradients through frozen early blocks.
     tokens = model.encoder.forward_features(image)['x_norm_patchtokens']
     return tokens.transpose(1, 2).reshape(len(rgb), 384, image.shape[-2]//14, image.shape[-1]//14)
@@ -118,7 +122,8 @@ def low_resolution_view(rgb, scale, blur_sigma=0.):
 
 
 def highpass(x):
-    return x-F.avg_pool2d(F.pad(x, (2, 2, 2, 2), mode='replicate'), 5, 1)
+    # The fixed zero extension has a deterministic CUDA backward to x.
+    return x-F.avg_pool2d(F.pad(x, (2, 2, 2, 2), mode='constant', value=0.), 5, 1)
 
 
 class CDRestorationSegmenter(FrozenDinoSegmenter):
@@ -128,6 +133,7 @@ class CDRestorationSegmenter(FrozenDinoSegmenter):
         super().__init__(encoder, auxiliary=False)
         last_four_trainable(self.encoder)
         self.arm, self.scale, self.blur_sigma = arm, scale, 0.
+        self.differentiable_input_padding = True
         self.front = None if arm == 'C0' else RestorationFront()
         self.residual = ConditionalResidual() if arm.startswith('D_') else None
 

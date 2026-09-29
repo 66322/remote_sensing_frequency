@@ -144,14 +144,17 @@ def prepare():
     if path.is_file():
         if p.read(path)!=plan:
             old=p.read(path)
-            previous='4d5abb1b35056ab65ee57503094312e2e22104ac'
             runs=p.ROOT/'runs/rebuild_v1'
             produced=list(runs.glob('POST_D21_*/last_train_state.pth'))+list(runs.glob('POST_D21_*/summary.json'))
-            archived=p.OUT/'plan_failed_py39_import.json'
-            if old.get('git_commit')==previous and not (p.OUT/'scope.json').exists() and not produced and not archived.exists():
+            old_commit=old.get('git_commit','unknown')
+            archived=p.OUT/f'plan_failed_{old_commit[:7]}.json'
+            same_assets=(old.get('jobs_sha256')==plan['jobs_sha256'] and
+                old.get('input_manifest_sha256')==plan['input_manifest_sha256'] and
+                old.get('gpu_uuids')==plan['gpu_uuids'])
+            if same_assets and not (p.OUT/'scope.json').exists() and not produced and not archived.exists():
                 path.rename(archived)
                 p.write(path,plan)
-                print('ARCHIVED failed Python 3.9 import plan; no training checkpoint existed',flush=True)
+                print('ARCHIVED unstarted failed plan',archived.name,'; no training checkpoint existed',flush=True)
             else:
                 raise RuntimeError('frozen queue plan changed; preserve existing evidence and use a new run id')
     else:
