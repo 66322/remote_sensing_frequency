@@ -22,7 +22,7 @@ import train_rebuild_v1_r02_budget_pilot as r02
 from train_rebuild_v1_d16_d17 import sample, save
 from model.rebuild_v1_night_screen import load_dino
 from model.rebuild_v1_day_portfolio import (
-    AContinuation, BAnchoredResidual, CDRestorationSegmenter, highpass)
+    AContinuation, BAnchoredResidual, CDRestorationSegmenter, ReconstructionAudit, highpass)
 from night_boundary_metrics import boundary_counts
 
 
@@ -261,12 +261,14 @@ def train(job, smoke=False, profile=False, physical_micro_batch=None):
         optical,dsm,_=cache[str(ids[0])]
         secondary=np.ascontiguousarray(optical.mean(2) if treatment_arm(job)=='P1' else dsm)
         eval_started=time.monotonic()
-        prediction=r02.infer_tile(model,np.ascontiguousarray(optical),secondary,
+        inference_model=model if job['direction'] in ('A','B') else ReconstructionAudit(model)
+        prediction=r02.infer_tile(inference_model,np.ascontiguousarray(optical),secondary,
             cfg['patch'],cfg['evaluation_stride'][job['dataset']],cfg['evaluation_batch'])
         torch.cuda.synchronize()
         profile_eval=dict(train_tile=str(ids[0]),shape=list(prediction.shape),
             full_train_tile_evaluation_seconds=time.monotonic()-eval_started,
-            prediction_checksum=int(prediction.astype(np.int64).sum()))
+            prediction_checksum=int(prediction.astype(np.int64).sum()),
+            reconstruction=None if inference_model is model else inference_model.summary())
     p.write(summary,dict(job=job,signature=binding,global_step=target_steps,
         checkpoint_sha256=p.sha(ck),clean_probe_sha256=p.sha(probe),
         treatment_counts=counts,training_seconds=training_seconds,
@@ -342,8 +344,10 @@ def evaluate(job,smoke=False):
             treated,aux,_=transformed(op,ds,job,[transform_condition],42+sum(map(ord,str(tile))))
             optical=np.ascontiguousarray(treated[0].permute(1,2,0).numpy())
             secondary=np.ascontiguousarray(aux[0].numpy())
-            pred=r02.infer_tile(model,optical,secondary,cfg['patch'],
+            inference_model=model if job['direction'] in ('A','B') else ReconstructionAudit(model)
+            pred=r02.infer_tile(inference_model,optical,secondary,cfg['patch'],
                     cfg['evaluation_stride'][job['dataset']],cfg['evaluation_batch'])
+            reconstruction=None if inference_model is model else inference_model.summary()
             if job['direction']=='B' and condition=='aux_zero' and not smoke:
                 old_job=dict(dataset=job['dataset'],arm='R0',seed=42)
                 reference=p.d21.eval_dir(old_job)/'aux_zero'/f'{tile}.npy'
@@ -370,6 +374,7 @@ def evaluate(job,smoke=False):
             os.replace(tmp,predpath)
             p.write(detail,dict(signature=signature_eval,tile=str(tile),condition=condition,
                 scopes=values,prediction_sha256=p.sha(predpath),boundary_counts=boundaries,
+                reconstruction=reconstruction,
                 model_scale=getattr(model,'scale',None),model_blur_sigma=getattr(model,'blur_sigma',None)))
             print('EVAL',job['job_id'],tile,condition,flush=True)
     results={}

@@ -1,4 +1,5 @@
 """Post-D21 A/B/C/D/E models. All candidates here are prospective designs."""
+import math
 import torch
 from torch import nn
 from torch.nn import functional as F
@@ -145,3 +146,29 @@ class CDRestorationSegmenter(FrozenDinoSegmenter):
 
     def forward(self, rgb, aux):
         return self.forward_with_restored(rgb, aux)[0]
+
+
+class ReconstructionAudit(nn.Module):
+    """Collect patch-weighted reconstruction errors without changing inference logits."""
+    def __init__(self, model):
+        super().__init__()
+        self.model = model
+        self.count = 0
+        self.absolute = 0.
+        self.squared = 0.
+        self.high_absolute = 0.
+
+    def forward(self, rgb, aux):
+        logits, restored = self.model.forward_with_restored(rgb, aux)
+        self.count += restored.numel()
+        self.absolute += float((restored-rgb).abs().sum())
+        self.squared += float(((restored-rgb)**2).sum())
+        self.high_absolute += float((highpass(restored)-highpass(rgb)).abs().sum())
+        return logits
+
+    def summary(self):
+        mse = self.squared/max(1, self.count)
+        return dict(pixel_l1=self.absolute/max(1, self.count), pixel_mse=mse,
+            psnr_db=None if mse == 0 else -10*math.log10(mse),
+            highpass_l1=self.high_absolute/max(1, self.count),
+            normalization='inference_patch_pixel_weighted; overlapping windows counted repeatedly')

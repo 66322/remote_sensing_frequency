@@ -3,7 +3,7 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 
-from model.rebuild_v1_day_portfolio import AContinuation, BAnchoredResidual, CDRestorationSegmenter, highpass
+from model.rebuild_v1_day_portfolio import AContinuation, BAnchoredResidual, CDRestorationSegmenter, ReconstructionAudit, highpass
 
 
 class TinyEncoder(nn.Module):
@@ -63,6 +63,18 @@ class PortfolioTests(unittest.TestCase):
         logits,restored=model.forward_with_restored(torch.rand(1,3,28,28),torch.rand(1,28,28))
         self.assertEqual(tuple(logits.shape),(1,6,28,28))
         self.assertEqual(tuple(restored.shape),(1,3,28,28))
+
+    def test_reconstruction_audit_preserves_logits(self):
+        torch.manual_seed(42)
+        model=CDRestorationSegmenter(TinyEncoder(),'C1',2).eval()
+        x=torch.rand(1,3,28,28)
+        aux=torch.zeros(1,28,28)
+        with torch.inference_mode():
+            reference=model(x,aux)
+            audit=ReconstructionAudit(model)
+            actual=audit(x,aux)
+        self.assertTrue(torch.equal(reference,actual))
+        self.assertGreater(audit.summary()['highpass_l1'],0)
 
 
 if __name__ == '__main__':
