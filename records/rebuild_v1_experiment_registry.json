@@ -1047,9 +1047,9 @@
     "id": "POST_D21_BOUNDED_THROUGHPUT_PROBE_20260929",
     "status": "preparation_required_not_started",
     "purpose": "Benchmark representative training and whole-image evaluation on physical GPUs 0/1 before freezing the next experiment configuration",
-    "protocol": "docs/protocols/EXPERIMENT_PLANNING_RULES.md",
+    "protocol": "docs/protocols/POST_D21_THROUGHPUT_PROBE_20260929.md",
     "preflight": "docs/templates/EXPERIMENT_PREFLIGHT_TEMPLATE.md",
-    "max_gpu_use": "bounded short probe; resource and stop limit to be frozen before server execution",
+    "max_gpu_use": "one physical GPU; internal 20-minute cap; external 25-minute timeout",
     "new_data_or_install": "none planned; disclose and prepare separately if needed",
     "follow_on": "single-seed matched exploration of new DSM-absence reliability mechanism after probe"
   },

@@ -11,4 +11,4 @@ D21 原48项队列在32项完成后按 STOP 退出，原队列标记 `32/48 INCO
 | GAMUS 九文件属性 | CPU核查完成，无地理/来源属性 | 不重复审计；外部来源仍需单独验收 |
 | D21 细尺度/频率 | 实验已验证的重复开发证据：F2 四块小幅增益，但准确率和 DSM 缺失保护门槛均失败 | [结果报告](../experiments/D21_DETAIL_FREQUENCY_RESULTS_20260929.md)；不进入确认性 test |
 
-下一步是有界吞吐测试的准备与执行方案，随后才决定新机制的单种子匹配探索。遵循[实验准备规则](../protocols/EXPERIMENT_PLANNING_RULES.md)：下载和安装提前说明，优先检查 GitHub/Hugging Face 可达性，必要时可经 Colab 和 Hugging Face 中转。Test6 继续封存。
+有界吞吐测试的[单卡执行协议](../protocols/POST_D21_THROUGHPUT_PROBE_20260929.md)已准备，服务器尚未执行；得到实测后再决定数据预取试验和新机制的单种子匹配探索。遵循[实验准备规则](../protocols/EXPERIMENT_PLANNING_RULES.md)：下载和安装提前说明，优先检查 GitHub/Hugging Face 可达性，必要时可经 Colab 和 Hugging Face 中转。Test6 继续封存。
