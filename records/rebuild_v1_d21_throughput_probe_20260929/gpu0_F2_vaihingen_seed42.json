@@ -1,0 +1,79 @@
+{
+  "kind": "bounded_throughput_not_accuracy_evidence",
+  "job": {
+    "dataset": "vaihingen",
+    "arm": "F2",
+    "seed": 42
+  },
+  "git_commit": "8f315d28e446fa854021e01951c04b20446b4a87",
+  "config_sha256": "e45fc63e50ba788d1685726d4215859cdbc2de27bd3535f33edae1a789a79c4f",
+  "dino_commit": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+  "dino_weights_sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9",
+  "device": "NVIDIA H100 80GB HBM3",
+  "visible_gpu": "0",
+  "torch_version": "2.2.2+cu121",
+  "effective_batch": 16,
+  "warmup": 2,
+  "measured": 6,
+  "max_minutes": 20.0,
+  "note": "Canonical per-sample data stream is shared across candidates; it differs from original D21 per-micro sampling. Throughput only.",
+  "candidates": [
+    {
+      "micro_batch": 2,
+      "accum_steps": 8,
+      "preparation_seconds": 0.08280265579620998,
+      "compute_seconds": 0.17653840904434523,
+      "total_seconds": 0.2593410648405552,
+      "effective_samples_per_second": 61.69481878944593,
+      "cuda_allocated_peak_mib": 603.49560546875,
+      "cuda_reserved_peak_mib": 774.0,
+      "host_ru_maxrss_kib": 2403120
+    },
+    {
+      "micro_batch": 4,
+      "accum_steps": 4,
+      "preparation_seconds": 0.08343760917584102,
+      "compute_seconds": 0.10175251215696335,
+      "total_seconds": 0.18519012133280435,
+      "effective_samples_per_second": 86.39769705235231,
+      "cuda_allocated_peak_mib": 631.88330078125,
+      "cuda_reserved_peak_mib": 1014.0,
+      "host_ru_maxrss_kib": 2553236
+    },
+    {
+      "micro_batch": 8,
+      "accum_steps": 2,
+      "preparation_seconds": 0.08191511034965515,
+      "compute_seconds": 0.07649887725710869,
+      "total_seconds": 0.15841398760676384,
+      "effective_samples_per_second": 101.00118204029633,
+      "cuda_allocated_peak_mib": 855.40087890625,
+      "cuda_reserved_peak_mib": 1462.0,
+      "host_ru_maxrss_kib": 2559312
+    },
+    {
+      "micro_batch": 16,
+      "accum_steps": 1,
+      "preparation_seconds": 0.08495047440131505,
+      "compute_seconds": 0.06950058539708455,
+      "total_seconds": 0.1544510597983996,
+      "effective_samples_per_second": 103.59268509315719,
+      "cuda_allocated_peak_mib": 1425.31201171875,
+      "cuda_reserved_peak_mib": 2306.0,
+      "host_ru_maxrss_kib": 2561336
+    }
+  ],
+  "evaluation": {
+    "split": "train",
+    "tile": "1",
+    "batch": 4,
+    "seconds": 0.33675169944763184,
+    "pixels": 4929911,
+    "pixels_per_second": 14639602.437304549,
+    "cuda_allocated_peak_mib": 516.10205078125,
+    "cuda_reserved_peak_mib": 592.0
+  },
+  "elapsed_seconds": 18.39925368130207,
+  "test6_loaded": false,
+  "development_labels_loaded": false
+}
