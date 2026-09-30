@@ -14,6 +14,7 @@ import time
 
 import day_portfolio_common as p
 from analyze_rebuild_v1_day import audit
+from mixed_followup_gate import require_original_complete
 from run_rebuild_v1_day_queue import available_ram_gib, gpu_info, verify_frozen
 
 
@@ -63,6 +64,7 @@ def prepare():
     binding = dict(previous_plan_sha256=p.sha(p.OUT / 'plan.json'),
                    previous_scope_sha256=p.sha(p.OUT / 'scope.json'),
                    runner_sha256=p.sha(runner), job_ids=IDS,
+                   completion_gate_sha256=p.sha(p.ROOT / 'scripts/mixed_followup_gate.py'),
                    job_manifest_sha256=p.sha(p.ROOT / cfg['job_manifest']),
                    physical_gpu_uuids=prior['gpu_uuids'],
                    selected_physical_micro_batch=scope['physical_micro_batch'],
@@ -70,7 +72,20 @@ def prepare():
     OUT.mkdir(parents=True, exist_ok=True)
     path = OUT / 'plan.json'
     if path.is_file() and p.read(path) != binding:
-        raise RuntimeError('follow-up plan changed; preserve existing evidence')
+        # The first launcher could already be waiting on the old queue. Allow a
+        # corrected runner binding only when no follow-up GPU work has begun.
+        produced = (OUT / 'status.tsv').exists() or any(
+            path.exists() for job in jobs for path in (
+                p.run_dir(job), p.run_dir(job, smoke=True),
+                p.eval_dir(job), p.eval_dir(job, smoke=True)))
+        if produced:
+            raise RuntimeError('follow-up plan changed after E work began; preserve evidence')
+        old = p.read(path)
+        archived = OUT / ('plan_before_final_audit_gate_' + old['runner_sha256'][:12] + '.json')
+        if archived.exists():
+            raise RuntimeError('follow-up plan migration already archived; inspect records')
+        path.rename(archived)
+        print('ARCHIVED unstarted follow-up plan before final-audit gate', flush=True)
     if not path.is_file():
         p.write(path, binding)
     p.write(OUT / 'preflight.json', dict(observed_at=now(), ready_jobs=len(jobs),
@@ -169,10 +184,9 @@ def main():
             summary_path = p.OUT / 'queue_summary.json'
             if not summary_path.is_file():
                 raise RuntimeError('original queue exited without a completion summary')
-            old_summary = p.read(summary_path)
-            if (old_summary['status'] != 'COMPLETE' or old_summary['completed'] != 42 or
-                    old_summary['planned'] != 42 or old_summary['failures']):
-                raise RuntimeError('original 42-job queue is incomplete; follow-up not started')
+            analysis_path = p.COMPACT / 'analysis.json'
+            require_original_complete(p.read(summary_path),
+                p.read(analysis_path) if analysis_path.is_file() else None)
             if p.read(OUT / 'plan.json') != binding:
                 raise RuntimeError('follow-up plan changed while waiting')
             verify_frozen(prior)

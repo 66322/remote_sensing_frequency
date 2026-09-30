@@ -27,6 +27,8 @@ python -B scripts/run_rebuild_v1_mixed_followup.py --prepare-only
 nohup python -B -u scripts/run_rebuild_v1_mixed_followup.py --launch > records/post_d21_mixed_followup_queue_20260930/launcher.log 2>&1 < /dev/null &
 ```
 
-启动器会等待原队列释放独占锁，然后检查其 `QUEUE COMPLETE 42/42` 及零失败。若原队列失败或未形成完成摘要，新组直接退出，不会占用 GPU。先做四项训练 tile smoke，再成对正式训练。队列 `status.tsv`、`progress.json`、`queue_summary.json` 在 `records/post_d21_mixed_followup_queue_20260930/`；整数审计和四条件成对差值在 `records/post_d21_mixed_followup_compact_20260930/analysis.json`。若准备阶段拒绝，检查报错，不修改原计划或重建已有产物。
+启动器会等待原队列释放独占锁，然后同时检查其 `queue_summary.json` 为 `COMPLETE 42/42`、零失败，以及最终 `analysis.json` 为 `42/42`、整数审计 `PASS`、两个数据集的 D 交互对照齐全。旧队列可能先写 `COMPLETE` 后做最终审计，故只看状态文件不够。若原队列失败或审计不全，新组直接退出，不会占用 GPU。先做四项训练 tile smoke，再成对正式训练。队列 `status.tsv`、`progress.json`、`queue_summary.json` 在 `records/post_d21_mixed_followup_queue_20260930/`；整数审计和四条件成对差值在 `records/post_d21_mixed_followup_compact_20260930/analysis.json`。若准备阶段拒绝，检查报错，不修改原计划或重建已有产物。
+
+首次等待进程只有 `WAITING`，尚未做新组训练。它已经通过 `STOP` 正常退出。更新后的准备阶段只有在没有任何 E smoke/训练/评价产物和新队列状态时，才把首次未启动计划归档为 `plan_before_final_audit_gate_*.json` 并建立新绑定。服务器再次启动前需移除新队列目录中的 `STOP`；原队列目录不做任何停止操作。
 
 下轮的设计与阶段证据见[早期分析](../experiments/POST_D21_EARLY_AB_C_RESULTS_20260930.md)。
