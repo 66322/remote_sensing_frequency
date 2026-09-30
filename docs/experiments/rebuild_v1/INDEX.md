@@ -2,6 +2,8 @@
 
 | ID | Purpose | Status | Primary evidence |
 |---|---|---|---|
+| Post-D21 A/B/C early analysis | 36/42 completed jobs, paired development comparisons while D continued | server-pasted early snapshot; integer audit PASS; not final D result | `docs/experiments/POST_D21_EARLY_AB_C_RESULTS_20260930.md` |
+| Post-D21 mixed-degradation follow-up | paired C0/C1 under mixed scale and blur, four E cells, separate queue | runner prepared; no server launch yet | `docs/protocols/POST_D21_MIXED_DEGRADATION_FOLLOWUP_20260930.md` |
 | Post-D21 throughput probe | one-GPU F2 training and train-tile inference throughput; four microbatch/accumulation combinations | short probe complete; raw JSON and GPU telemetry archived; not accuracy evidence | `docs/experiments/POST_D21_THROUGHPUT_PROBE_RESULTS_20260929.md` |
 | Post-D21 day portfolio | adaptation, conditional DSM residuals, joint LR restoration and factorial interaction | planned only; 42 main + 8 reserve single-seed jobs; runtime calibration pending | `docs/protocols/POST_D21_MULTIDIRECTION_DAY_PLAN_20260929.md` |
 | D22 original draft | RGB-anchored fixed Sobel gate | superseded before implementation; no run | `docs/protocols/D22_STRUCTURE_ALIGNED_DSM_RELIABILITY_DRAFT_20260929.md` |
