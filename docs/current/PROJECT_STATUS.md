@@ -1,9 +1,7 @@
 # 当前项目状态
 
-## 最后带时钟的服务器观测：2026-09-30 23:41:41+08:00
+## 最后带时钟的服务器观测：2026-10-01 04:53:40+08:00
 
-Post-D21 42项单种子队列已经完成 A/B/C 共36项；D最后两项训练中，等待0，原队列尚无最终完成证据。A/B/C 的[阶段结果](../experiments/POST_D21_EARLY_AB_C_RESULTS_20260930.md)来自用户贴出的 `analysis.json` 与 A clean 指标：整数审计 PASS，Test6未加载。A 最后4层解冻有同向强收益；B3 频率候选和 C3 高频监督均未过预设门槛；C1 可学习恢复在两数据集两倍率的固定退化条件下相对 C0 为正。D 尚未判定。
+Post-D21 原队列 `42/42 COMPLETE`；后续混合退化 C0/C1 四任务队列自动衔接并 `4/4 COMPLETE`、整数审计 `PASS`。这是用户贴出的服务器历史输出，不代表当前 GPU 实时状态。两份 `analysis.json` 皆报告 Test6 未加载；[开发集结果报告](../experiments/POST_D21_FINAL_AND_MIXED_FOLLOWUP_RESULTS_20261001.md)已写入并归档用户粘贴的 JSON。完整逐任务整数矩阵未在本地独立重算。
 
-[下一组混合退化 C0/C1](../protocols/POST_D21_MIXED_DEGRADATION_FOLLOWUP_20260930.md)已准备执行器，服务器初版仅完成预检与等待，尚无新训练；它必须等待原队列 `COMPLETE 42/42`、零失败与最终整数审计 PASS，不修改原范围。
-
-后续队列首次预检在服务器通过，等待器只输出 `WAITING`；补查发现旧队列先写完成标记再做最终整数审计，故新队列应同时检查完整 `analysis.json`。首次等待器已通过新队列 `STOP` 正常退出，日志明确 `STOP requested before follow-up launch`，无新训练。修正版待服务器拉取与预检；本地门禁3项单元测试通过。原队列最后带时钟的运行观测仍为上方 23:41:41。
+研究判断：A 的部分解冻是强基线改进而非 DSM 专属收益；B3 与 C3 未过冻结门槛；D 的联合恢复损失×DSM 交互为负；C1 可学习恢复相对 C0 在固定倍率四块及混合退化八个 pooled 条件均正，但 Vaihingen 局部 tile 退化。证据仅限单 seed42、Potsdam Val2 / Vaihingen 同镶嵌图开发区；Test6/独立 final 继续封存。下一门禁为[逐 tile 诊断](NEXT_EXPERIMENT.md)，暂无新训练队列。旧状态归档于[历史](../history/20261001_before_final_post_d21_results/PROJECT_STATUS.md)。

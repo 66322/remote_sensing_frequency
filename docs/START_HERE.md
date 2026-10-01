@@ -9,12 +9,14 @@
 
 D21 有效双种子范围已完成32/32并归档；F2未通过预设开发门槛。
 原48项队列的 `32/48 INCOMPLETE` 是停止第三种子后的历史状态。
+Post-D21 多方向42项与混合退化后续4项已在服务器报告完成，用户贴出的两份整数审计均为 PASS；见[最终开发集分析](experiments/POST_D21_FINAL_AND_MIXED_FOLLOWUP_RESULTS_20261001.md)。目前先查 C1 的局部退化，不自动追加训练。
 
 - [当前交接](current/HANDOFF.md)
+- [Post-D21 最终开发集分析](experiments/POST_D21_FINAL_AND_MIXED_FOLLOWUP_RESULTS_20261001.md)
 - [D21结果报告](experiments/D21_DETAIL_FREQUENCY_RESULTS_20260929.md)
 - [下一步有界吞吐测试](protocols/POST_D21_THROUGHPUT_PROBE_20260929.md)
 - [吞吐短测结果](experiments/POST_D21_THROUGHPUT_PROBE_RESULTS_20260929.md)
-- [当前：多方向一天以上实验计划](protocols/POST_D21_MULTIDIRECTION_DAY_PLAN_20260929.md)
+- [已执行的多方向一天以上实验计划](protocols/POST_D21_MULTIDIRECTION_DAY_PLAN_20260929.md)
 - [多方向实验服务器准备、短测与启动](protocols/POST_D21_DAY_EXECUTION_20260929.md)
 - [旧 D22 草案（已由多方向方案替代）](protocols/D22_STRUCTURE_ALIGNED_DSM_RELIABILITY_DRAFT_20260929.md)
 - [执行协议和一键启动](protocols/D21_DETAIL_FREQUENCY_DAY_QUEUE_20260928.md)

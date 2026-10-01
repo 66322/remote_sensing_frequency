@@ -1,5 +1,5 @@
-# 下一步：完成原 D 组，同时准备混合退化配对实验
+# 下一步：定位恢复收益的逐 tile 风险
 
-最后观测 2026-09-30 23:41:41+08:00：原42项队列只剩D最后两项在运行，等待0。无需为提前分析强杀这两项；A/B/C 阶段结果已[记录](../experiments/POST_D21_EARLY_AB_C_RESULTS_20260930.md)。新[四任务 C0/C1 混合退化组](../protocols/POST_D21_MIXED_DEGRADATION_FOLLOWUP_20260930.md)可先做服务器准备并后台等待原队列完成，原队列若 INCOMPLETE 则新组不会启动。新组只比较可学习恢复的退化泛化，不补 B3/C3 种子。
+原 42 项与后续 4 项均已完成，见[结果报告](../experiments/POST_D21_FINAL_AND_MIXED_FOLLOWUP_RESULTS_20261001.md)。当前不再启动训练。先检查混合退化 C0/C1 的逐 tile 整数矩阵与逐类 IoU，重点是 Vaihingen tile20（×2 clean −0.815 pp）、tile33（×2 未见模糊 −1.421 pp）和 Potsdam `5_10`（×2 未见模糊 −0.209 pp）；结合边界与恢复诊断辨别损失来源。
 
-新组首次等待器因补强最终审计门禁，已通过独立 `STOP` 在训练前退出。下一步拉取修正版，单独运行 `python -B scripts/run_rebuild_v1_mixed_followup.py --prepare-only`，确认未启动计划归档，然后移除 `records/post_d21_mixed_followup_queue_20260930/STOP`，重启新组后台等待器。不得向原队列写 STOP。若原队列最终审计不是 42/42 PASS，新组必须保持未启动并先诊断。
+若局部风险可以解释且预设保护可通过，再规划同起点、同预算的必要成对复验；外部地区数据需先独立验收并说明获取路线。不得用 Test6、补第三种子或开发集反复调参消除既有失败门槛。用户贴出的紧凑分析已经归档，完整评价产物仍在服务器；上一版下一步见[历史](../history/20261001_before_final_post_d21_results/NEXT_EXPERIMENT.md)。
