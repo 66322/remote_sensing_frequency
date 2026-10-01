@@ -1331,145 +1331,35 @@
       "last_observed_gpu1_at": "2026-10-01T15:12:58.837909+08:00",
       "formal_started": false,
       "decision": "Budget complete; user rejects more budget gates; proceed to formal development screen."
+    },
+    {
+      "id": "D23_B_FORMAL_EIGHT_ARM_20261001",
+      "status": "B_COMPLETE_DEVELOPMENT_GATE_FAILED_FULL_GITHUB_COUNT_REVIEW_PASS",
+      "source_commit": "60385207206ff1bd46fbdd0a5dbecce073f0e3c4",
+      "records": "records/research_d23_b_formal_20261001T152548_658274/evidence_20261001T220036381222_941244",
+      "report": "docs/experiments/D23_EIGHT_ARM_RESULTS_20261001.md",
+      "completed_at": "2026-10-01T21:59:26.843841+08:00",
+      "seed": 42,
+      "steps_per_arm": 4000,
+      "test6_loaded": false,
+      "independent_final_loaded": false,
+      "eligible_to_plan_confirmation": false,
+      "decision": "Close current TSF solution, retain problem-level exploration"
     }
   ],
   "next_plan": {
-    "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "B_GPU0_recovery_TS_process_started_training_progress_unobserved",
-    "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
-    "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
-    "stage_a": {
-      "new_inference": false,
-      "new_training": false,
-      "dataset": "potsdam",
-      "seeds": [
-        42
-      ],
-      "tiles": [
-        "3_11",
-        "5_10"
-      ],
-      "conditions": [
-        "clean",
-        "rgb_down4",
-        "aux_noise_std010",
-        "aux_zero",
-        "aux_local_zero_q1"
-      ],
-      "experts": [
-        "R0",
-        "M0"
-      ],
-      "prediction_file_count": 20,
-      "implementation": "scripts/audit_rebuild_v1_d23_complementarity.py",
-      "tests": "tests/test_d23_complementarity.py",
-      "local_synthetic_tests_passed": 7,
-      "server_profile_completed": true,
-      "real_counts_computed": true,
-      "result_source": "user_pasted_server_stdout",
-      "completed_at": "2026-10-01T12:44:35.075903+08:00",
-      "mean_available_gain_pp": 1.888456078355997,
-      "eligible_to_prepare_B": true,
-      "original_jsons_archived": false,
-      "archive_server_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_feasibility_20261001_20261001T124227_658274/light_evidence_20261001T130219_658274.tar.gz",
-      "archive_reported_sha256": "041bc0ad79c3c5f11fdbf4a29479b2c3cf68d60f898b5125d8cf2211e59084b1",
-      "original_jsons_received_locally": false
-    },
-    "stage_b": {
-      "conditional_on_stage_a": true,
-      "training_jobs": 8,
-      "steps_per_job": 4000,
-      "new_gate_updates": 32000,
-      "fixed_comparators": 6,
-      "experts_frozen": true,
-      "final_step_not_validation_selected": true,
-      "implemented": true,
-      "core_implemented": true,
-      "training_engine_implemented": true,
-      "local_CPU_tests_passed": 27,
-      "server_profile_completed": true,
-      "parameters_per_gate": 18145,
-      "formal_started": true,
-      "server_CPU_tests_completed": true,
-      "server_CPU_tests_elapsed_seconds": 5.48,
-      "crop_probe_implemented": true,
-      "crop_probe": "scripts/probe_rebuild_v1_d23_gate.py",
-      "crop_probe_started": true,
-      "user_authorized_physical_gpus": [
-        0,
-        1
-      ],
-      "crop_probe_per_gpu": true,
-      "record_scope_root": "/home/jovyan/zzx",
-      "crop_probe_output_pattern": "records/research_d23_b_crop_probe_<timestamp>_<pid>/{code,gpu0,gpu1}",
-      "server_CPU_tests_passed": 22,
-      "engine_admission_completed": true,
-      "engine_admission_source_commit": "d3829b600177304ae23865e2a15e22aa767e1f3f",
-      "engine_admission_report": "docs/experiments/D23_B_ENGINE_GITHUB_AUDIT_20261001.md",
-      "engine_record_directory": "records/research_d23_b_engine_admission_20261001T140528_658274/evidence_20261001T143256013644_712824",
-      "formal_runtime_admitted": true,
-      "runtime_lock_generated": true,
-      "expert_micro_batch": 8,
-      "gate_batch": 16,
-      "backward_calls_per_step": 1,
-      "budget_measurement_implemented": true,
-      "budget_measurement_started": true,
-      "budget_protocol": "docs/protocols/D23_B_DUAL_GPU_BUDGET_20261001.md",
-      "budget_launcher": "scripts/launch_rebuild_v1_d23_budget.py",
-      "budget_measurement_completed": true,
-      "budget_evidence_commit": "54e19cd16416b866bed7b152ba9a3a3f76ac4837",
-      "formal_queue_implemented": true,
-      "formal_queue": "scripts/launch_rebuild_v1_d23_formal.py",
-      "formal_protocol": "docs/protocols/D23_B_FORMAL_SCREEN_EXECUTION_20261001.md",
-      "queue_tests_passed": 5,
-      "formal_complete": false,
-      "last_observation": {
-        "source": "user_pasted_recovery_stdout_2026-10-01",
-        "observed_at": null,
-        "log_start_label": "20261001T183700_834385",
-        "recovery_controller_pid": 834840,
-        "TS_pid": 834884,
-        "TF_live_now_unverified": true,
-        "TS_training_progress_unverified": true,
-        "controller_commit": "48ab1e4a88eb175da965162859ae757cbe62d91c",
-        "live_now_unverified": true
-      },
-      "completed_arms": [
-        "TSF",
-        "T0"
-      ],
-      "failed_arms": {
-        "TS": "RuntimeError: refuse existing output directory at run_rebuild_v1_d23.py:24; launcher precreated output without checkpoint"
-      },
-      "remaining_arms": [
-        "TS",
-        "TF",
-        "TCAP",
-        "TSF_CE",
-        "TSF_shuffleS",
-        "TSF_shuffleF"
-      ]
-    },
-    "server_started_at": null,
-    "new_long_training_authorized_by_document": false,
-    "test6_loaded": false,
-    "historical_test6_independent_final_eligible": false,
-    "execution_document": "docs/current/NEXT_EXPERIMENT.md",
-    "next_action": "Continue existing recovery; observe TS progress when needed; helper preserves TF then resumes remaining four arms; do not relaunch.",
-    "queue": "scripts/launch_rebuild_v1_d23_formal.py",
-    "recovery_script": "scripts/recover_rebuild_v1_d23_gpu0.py",
-    "partial_scientific_review": {
-      "report": "docs/experiments/D23_TSF_T0_PARTIAL_RESULTS_20261001.md",
-      "source_commit": "9a70648affe105367e1b6e42ac4919f66140d7aa",
-      "TSF_minus_R0_pp": 1.1117894067547383,
-      "TSF_minus_M0_pp": -0.1489976826771624,
-      "TSF_minus_T0_pp": 0.0015775872284677916,
-      "rescue_retention": 0.6255700940688043,
-      "TSF_primary_gain_pass": false,
-      "TSF_rescue_retention_pass": false,
-      "eight_arm_screen_complete": false,
-      "route_changed": false
-    }
+    "id": "D24_PAIRED_TASK_ADAPTATION_DRAFT_20261001",
+    "status": "assistant_proposed_draft_not_implemented_not_launched",
+    "protocol": "docs/protocols/D24_PAIRED_TASK_ADAPTATION_DRAFT_20261001.md",
+    "hypothesis": "paired task-level constraints versus fixed hard utility supervision; representation adaptation as separate factor; preliminary D24 design, not launched",
+    "steps_and_gates_frozen": false,
+    "prior_complete_plan_id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
+    "physical_gpus": [
+      0,
+      1
+    ],
+    "server_scope": "/home/jovyan/zzx",
+    "test6_loaded": false
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -1818,19 +1708,19 @@
     "source": "User clarification in conversation: evaluate feasibility; allow a new solution, cross-cutting question, or direction.",
     "document": "docs/current/RESEARCH_DECISION.md",
     "stage": "feasibility_exploration",
-    "priority_candidate": "frequency and semantic reliability for optical-DSM fusion with missing/degraded modality training and inference",
+    "priority_candidate": "beneficial optical-DSM fusion under auxiliary quality changes and missingness; specific frequency/semantic recipe not promised",
     "c1_role": "side_branch_development_candidate_not_adopted_replacement",
     "partial_unfreezing_role": "strong_baseline_strategy",
     "final_method_and_chapters_frozen": false,
-    "next_action": "D23-A allocation passed; D23-B core tested locally, full implementation/resource preflight pending",
+    "next_action": "Prepare paired task/adaptation mechanism design after complete D23 negative screen; retain problem, close current specific solution",
     "next_action_document": "docs/current/NEXT_EXPERIMENT.md",
     "external_source_gate": "required for corresponding external confirmation, not a universal prerequisite for development exploration",
     "new_training_authorized_by_this_document": false
   },
   "proposed_d23": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "B_GPU0_recovery_TS_process_started_training_progress_unobserved",
-    "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
+    "status": "B_COMPLETE_DEVELOPMENT_GATE_FAILED_FULL_GITHUB_COUNT_REVIEW_PASS",
+    "evidence_report": "docs/experiments/D23_EIGHT_ARM_RESULTS_20261001.md",
     "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
     "stage_a": {
       "new_inference": false,
@@ -1916,40 +1806,37 @@
       "formal_queue": "scripts/launch_rebuild_v1_d23_formal.py",
       "formal_protocol": "docs/protocols/D23_B_FORMAL_SCREEN_EXECUTION_20261001.md",
       "queue_tests_passed": 5,
-      "formal_complete": false,
+      "formal_complete": true,
       "last_observation": {
-        "source": "user_pasted_recovery_stdout_2026-10-01",
-        "observed_at": null,
-        "log_start_label": "20261001T183700_834385",
-        "recovery_controller_pid": 834840,
-        "TS_pid": 834884,
-        "TF_live_now_unverified": true,
-        "TS_training_progress_unverified": true,
-        "controller_commit": "48ab1e4a88eb175da965162859ae757cbe62d91c",
-        "live_now_unverified": true
+        "source_commit": "60385207206ff1bd46fbdd0a5dbecce073f0e3c4",
+        "source": "GitHub uploaded queue_status and eight completed job originals",
+        "observed_at": "2026-10-01T21:59:26.843841+08:00",
+        "status": "COMPLETE",
+        "current_process_liveness_unchecked": true
       },
       "completed_arms": [
-        "TSF",
-        "T0"
-      ],
-      "failed_arms": {
-        "TS": "RuntimeError: refuse existing output directory at run_rebuild_v1_d23.py:24; launcher precreated output without checkpoint"
-      },
-      "remaining_arms": [
+        "T0",
         "TS",
         "TF",
+        "TSF",
         "TCAP",
         "TSF_CE",
         "TSF_shuffleS",
         "TSF_shuffleF"
-      ]
+      ],
+      "failed_arms": {},
+      "remaining_arms": [],
+      "historical_failed_arms": {
+        "TS": "RuntimeError: refuse existing output directory at run_rebuild_v1_d23.py:24; launcher precreated output without checkpoint"
+      },
+      "completed_at": "2026-10-01T21:59:26.843841+08:00"
     },
     "server_started_at": null,
     "new_long_training_authorized_by_document": false,
     "test6_loaded": false,
     "historical_test6_independent_final_eligible": false,
     "execution_document": "docs/current/NEXT_EXPERIMENT.md",
-    "next_action": "Continue existing recovery; observe TS progress when needed; helper preserves TF then resumes remaining four arms; do not relaunch.",
+    "next_action": "Prepare D24 paired task/adaptation draft; D23 current TSF solution closed for confirmation; no automatic new run.",
     "recovery_script": "scripts/recover_rebuild_v1_d23_gpu0.py",
     "partial_scientific_review": {
       "report": "docs/experiments/D23_TSF_T0_PARTIAL_RESULTS_20261001.md",
@@ -1962,6 +1849,55 @@
       "TSF_rescue_retention_pass": false,
       "eight_arm_screen_complete": false,
       "route_changed": false
+    },
+    "full_scientific_review": {
+      "source_commit": "60385207206ff1bd46fbdd0a5dbecce073f0e3c4",
+      "evidence_directory": "records/research_d23_b_formal_20261001T152548_658274/evidence_20261001T220036381222_941244",
+      "report": "docs/experiments/D23_EIGHT_ARM_RESULTS_20261001.md",
+      "analysis": "records/research_d23_full_review_20261001/analysis.json",
+      "tile_matrices": 3136,
+      "pooled_matrices": 1568,
+      "maximum_metric_absolute_error": 0,
+      "baseline_tile_model_checks": 1344,
+      "exact_count_pooling": true,
+      "net_correct_harm_rescue_identity": true,
+      "bindings_match": true,
+      "received_payload_sha256_verified": 59,
+      "arms_metadata_bindings_verified": 8,
+      "evaluation_log_pairs_verified": 224,
+      "execution_core_source_sha256_match": true,
+      "frozen_screen_checks_recomputed": 23,
+      "checkpoints_and_prediction_bytes_received": false,
+      "server_input_files_reread": false,
+      "TSF_minus_M0_pp": -0.1489976826771624,
+      "TSF_CE_minus_M0_pp": -0.011562485522688348,
+      "checks": {
+        "primary_gain": false,
+        "TS_increment": false,
+        "TF_increment": false,
+        "TSF_CE_increment": false,
+        "TSF_shuffleS_increment": false,
+        "TSF_shuffleF_increment": false,
+        "clean_protection": true,
+        "tile_3_11_clean": true,
+        "tile_3_11_rgb_quality": true,
+        "tile_3_11_aux_quality": true,
+        "tile_5_10_clean": true,
+        "tile_5_10_rgb_quality": true,
+        "tile_5_10_aux_quality": true,
+        "family_clean": true,
+        "family_rgb_quality": true,
+        "family_aux_quality": true,
+        "stress_aux_local_zero_stripe_eighth": true,
+        "stress_aux_noise_std020": true,
+        "stress_aux_shift16": true,
+        "harm_reduction": true,
+        "rescue_retention": false,
+        "worst_harm": false,
+        "missing_fallback": true
+      },
+      "eligible_to_plan_confirmation": false,
+      "route_changed_to_C1": false
     }
   },
   "completed_post_d21_plan": {

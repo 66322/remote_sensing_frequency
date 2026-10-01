@@ -1,31 +1,27 @@
-# 当前交接
+# 当前交接：D23八组已完成，主要解法关闭确认路径
 
-更新：2026-10-01 20:32（Asia/Shanghai），本次为远端原件分析与文献整理；没有新增服务器实时观测。分支rebuild-v1-protocol-20260915；此前证据/代码基准5c5a8a5。本次内容提交以GitHub页面所属提交为准。旧交接已[归档](../history/HANDOFF_20261001_BEFORE_LITERATURE.md)。
+更新2026-10-01 22:08（Asia/Shanghai）；共享分支rebuild-v1-protocol-20260915。原件提交6038520；本次分析提交以页面所属提交为准。旧交接已[归档](../history/HANDOFF_20261001_BEFORE_D23_COMPLETE.md)。
 
-## 研究阶段与结论
+## 最新证据
 
-仍为论文可行性探索，问题主线是辅助模态质量变化时保留有益融合、抑制负迁移、支持DSM缺失推理。频率/语义/门控可去留；C1恢复为旁支备选，部分解冻为强基线，不承诺历史章节各自有贡献。用户允许同题换解法、换问题/方向，但没有决定当前转向C1。
+服务器queue_status于21:59:26.843841+08:00记录COMPLETE，用户22:00:26查询8/8，每组4000步、28/28评价；用户上传60文件至GitHub。全部59个索引载荷SHA通过、8个summary已读取。3136逐tile/1568pooled矩阵、元计数、fg5/6指标和23冻结判定重算通过，224日志评价pair及8组完成/绑定一致。预测/权重二进制留服务器，本次没有服务器直连、重新推理/训练或资源探针。
 
-TSF/T0的已上传原件经阶段分析：TSF对M0_safe综合−0.148998pp，对T0+0.001578pp；rescue保留62.557%。主要候选TSF按原规则不满足确认门槛；既定剩余消融用于解释机制，不改阈值、不额外追训TSF。[阶段报告](../experiments/D23_TSF_T0_PARTIAL_RESULTS_20261001.md)；非完整八组结论。
+原目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274；
+原件records/research_d23_b_formal_20261001T152548_658274/evidence_20261001T220036381222_941244。
+旧TS启动失败已恢复完成，不能再照旧命令恢复/重跑。
 
-## 最后服务器观测与当前可执行工作
+## 科学结论与决定
 
-最后来自用户2026-10-01粘贴的TS_gpu0repair日志，无独立墙钟：D23_GATE_TRAIN TS 1 1.0572699308395386。GPU0恢复controller PID834840、TS PID834884是启动记录，不保证此刻存活；TF最后回传step1，后续状态未取得。TSF/T0完成证据在GitHub；其余六组未回读完成原件。
+[完整报告](../experiments/D23_EIGHT_ARM_RESULTS_20261001.md)：Potsdam Val2、NoBoundary fg5、seed42、固定4000步开发。
+M0_safe综合83.377811；TSF83.228814（−0.148998pp）；TSF_CE83.366249（−0.011562pp）。所有学习gate低于M0_safe。
+TSF相对TS/TF/shuffleS/shuffleF的增量+0.006086/−0.005766/+0.038132/+0.012652pp，均未到+0.1。效用项相对CE−0.137435pp。TSF harm减少56.396%，rescue保留62.557%，最差harm0.813006%超过0.5%；缺失mask回退及相对R0保护通过。
 
-原正式目录：
-/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274
+按已授权冻结规则关闭当前TSF解法的确认性路径；不追训、不追加确认种子、不改阈值，不把CE后验比较改为原主要赢家。当前S/F实现无实质独立贡献支持，不推及整个研究问题。C1仍旁支，部分解冻仍强基线；论文贡献/章节未冻结。
 
-恢复controller日志：同目录/nohup_recover_gpu0_20261001T183700_834385.log
-TS日志：同目录/TS_gpu0repair_20261001T183700466561.log
+## 下一步及未决问题
 
-恢复代码48ab1e4保留既有TF，TS/TF完成且旧controller退出后接续剩余四组。不要再运行旧启动/停机命令。先用[只读进度查询](../protocols/D23_PROGRESS_QUERY_20261001.md)看现有任务；结束后由用户前台上传对应轻量原件，助手从GitHub分析。助手没有服务器直连。
+准备[文献支持的D24草案](../protocols/D24_PAIRED_TASK_ADAPTATION_DRAFT_20261001.md)：配对任务目标×冻结/指定表示更新的2×2机制对照，回答纠错收益是否受当前目标/表示限制。是助手建议，未实现/启动、细节未冻结；先完成梯度链和匹配方案，再冻结新预算/阈值。若收益只来自通用适配/增强，则关闭目标贡献；无高信息量替代可换问题/方向。不强行保留频率，不自动转向C1。
 
-## 新的用户要求与尚未采纳建议
+沿用[近期文献记录](../literature/RECENT_MULTIMODAL_SEGMENTATION_20261001.md)，SGMA/STARS/区域校准为条件候选；RGSNet全文未核清，频率近邻差异未解决。当前没有新增服务器执行指令，旧队列无需重复查询或上传。
 
-用户明确要求实验参考最新论文、允许借鉴思想；已形成[近期文献及实验映射](../literature/RECENT_MULTIMODAL_SEGMENTATION_20261001.md)和[持续规则](../protocols/LITERATURE_TO_EXPERIMENT.md)。SGMA已核为TGRS2026；SimMLM为ICCV2025；STARS/RGSNet仅按已核预印本范围报告。文献思想不等于自己的实验验证。
-
-助手第一优先级候选为配对任务收益约束，并以冻结/固定范围表示更新×标准CE/配对损失的2×2对照检验目标与表示限制。是否采用及细节应结合D23剩余结果定稿；新损失、范围、预算和门槛未冻结，未实现、未启动。类原型、区域校准、缺失知识迁移为条件方案，不一次拼接。频率若无独立增量可撤回；若保留须核清RGSNet近邻差异。
-
-下一不确定性：D23剩余机制对照；新目标是否能保留rescue且胜过匹配强基线。收益仅来自增强/通用解冻则不成立；高信息量替代方案也失败可换问题/方向。新对话直接复用文献/验收，不重复长审计。
-
-持续执行：GPU0/1，两H10080GB，RAM/磁盘充足；长实验nohup、全部产物在对应zzx目录；Test6禁读；GitHub是共享记录，轻量原件与全部服务器产物分开报告。见[长期执行约定](../protocols/EXECUTION_CONTRACT.md)和[下一步](NEXT_EXPERIMENT.md)。
+持续资源：GPU0/1两H10080GB，RAM/磁盘充足；长运行nohup，全产物在对应zzx目录；GitHub为跨电脑共享来源。Test6禁读；本次仍单seed双开发tile，非独立确认。见[下一步](NEXT_EXPERIMENT.md)。
