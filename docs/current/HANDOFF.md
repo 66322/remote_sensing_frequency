@@ -1,26 +1,31 @@
-# 当前交接：GPU0恢复TS进程已创建，等待训练进度
+# 当前交接
 
-## 最新恢复启动观测（2026-10-01用户回传）
+更新：2026-10-01 20:32（Asia/Shanghai），本次为远端原件分析与文献整理；没有新增服务器实时观测。分支rebuild-v1-protocol-20260915；此前证据/代码基准5c5a8a5。本次内容提交以GitHub页面所属提交为准。旧交接已[归档](../history/HANDOFF_20261001_BEFORE_LITERATURE.md)。
 
-48ab1e4恢复入口已由用户nohup执行。恢复controller PID834840；GPU0空闲短等待通过，随后D23_RECOVERY_TS_STARTED，TS PID834884。当前只确认进程创建，尚未取得恢复后训练step或完成记录。没有独立回传墙钟；以下文件名中的18:37:00是启动标识，不作为实时存活保证。
+## 研究阶段与结论
 
-恢复controller日志：/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/nohup_recover_gpu0_20261001T183700_834385.log
-TS直接日志：同目录/TS_gpu0repair_20261001T183700466561.log
+仍为论文可行性探索，问题主线是辅助模态质量变化时保留有益融合、抑制负迁移、支持DSM缺失推理。频率/语义/门控可去留；C1恢复为旁支备选，部分解冻为强基线，不承诺历史章节各自有贡献。用户允许同题换解法、换问题/方向，但没有决定当前转向C1。
 
-下一步沿此恢复任务继续，不再次启动。TF保留由旧controller管理，其当前进度未新观测；恢复入口在TS与TF完成且旧controller退出后自动接续剩余四组。需查看训练步骤时只读TS直接日志；结束后按后台提示前台上传轻量原件。此前“恢复尚未执行”的表述现为历史背景，不覆盖本节。
+TSF/T0的已上传原件经阶段分析：TSF对M0_safe综合−0.148998pp，对T0+0.001578pp；rescue保留62.557%。主要候选TSF按原规则不满足确认门槛；既定剩余消融用于解释机制，不改阈值、不额外追训TSF。[阶段报告](../experiments/D23_TSF_T0_PARTIAL_RESULTS_20261001.md)；非完整八组结论。
 
-更新2026-10-01，用户回传TS日志确认RuntimeError: refuse existing output directory，位置run_rebuild_v1_d23.py:24。根因是接续启动器在无checkpoint时提前创建新输出目录；27789b2已修复此缺陷，11项队列检查通过。
+## 最后服务器观测与当前可执行工作
 
-TF最后观测为GPU1 PID815379，在后台controller PID815309的日志elapsed_minutes=2.0进入训练step1；本次TS错误回传没有新的TF步骤/完成证据和墙钟。TSF/T0既有4000步及评价完成保留，整八组尚未完成。
+最后来自用户2026-10-01粘贴的TS_gpu0repair日志，无独立墙钟：D23_GATE_TRAIN TS 1 1.0572699308395386。GPU0恢复controller PID834840、TS PID834884是启动记录，不保证此刻存活；TF最后回传step1，后续状态未取得。TSF/T0完成证据在GitHub；其余六组未回读完成原件。
 
-新增recover_rebuild_v1_d23_gpu0.py，可在保留TF执行的同时恢复GPU0 TS。入口核对失败队列、现有工作进程与执行绑定，使用本次目录独占恢复锁；不向既有TF或controller发送信号。若TF仍活跃，只启动TS；TS成功且TF与旧controller退出后，合并TS完成记录，再交给固定接续队列补剩余四组。若TF已完成且controller退出，直接普通双卡接续。若TF停止但无完成标记、TS恢复失败或状态发生冲突，停止新增任务并保留证据，不盲目重跑。恢复事件、TS日志、新执行快照、PID和nohup日志均在原zzx实验目录。
+原正式目录：
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274
 
-本地新增5项恢复检查通过，加上11项队列检查共16项；模拟覆盖TF运行/已完成两条路径、无重复TF、保留日志、异常状态及完成标记。服务器恢复尚未执行/观测，不声称GPU实测提速或全部完成。此为启动/调度修复，不混入prefetch开发；worker/model/engine/runtime lock和科学协议均未修改。
+恢复controller日志：同目录/nohup_recover_gpu0_20261001T183700_834385.log
+TS日志：同目录/TS_gpu0repair_20261001T183700466561.log
 
-研究仍为频率＋语义可靠性与RGB–DSM退化/缺失融合可行性探索；C1旁支、部分解冻强基线，冻结阈值和Test6禁读不变。下一步由用户nohup执行恢复入口，助手核对启动短输出；结束后上传八组轻量原件再作机制/风险分析。资源持续为GPU0/1两H10080GB，主机内存/磁盘充足；没有新增预算或smoke轮次。
+恢复代码48ab1e4保留既有TF，TS/TF完成且旧controller退出后接续剩余四组。不要再运行旧启动/停机命令。先用[只读进度查询](../protocols/D23_PROGRESS_QUERY_20261001.md)看现有任务；结束后由用户前台上传对应轻量原件，助手从GitHub分析。助手没有服务器直连。
 
-最新用户回传（2026-10-01，无独立观测墙钟）：TS_gpu0repair日志已出现D23_GATE_TRAIN TS 1 1.0572699308395386，确认恢复后已执行训练step1。此前“训练步骤尚未取得”是旧观测；TF当前进度未新回传。新增只读查询scripts/status_rebuild_v1_d23.py，覆盖旧队列及GPU0恢复任务，并按既有实际耗时估算ETA。[进度查询说明](../protocols/D23_PROGRESS_QUERY_20261001.md)。
+## 新的用户要求与尚未采纳建议
 
-## D23两组已上传结果的研究判断（2026-10-01）
+用户明确要求实验参考最新论文、允许借鉴思想；已形成[近期文献及实验映射](../literature/RECENT_MULTIMODAL_SEGMENTATION_20261001.md)和[持续规则](../protocols/LITERATURE_TO_EXPERIMENT.md)。SGMA已核为TGRS2026；SimMLM为ICCV2025；STARS/RGSNet仅按已核预印本范围报告。文献思想不等于自己的实验验证。
 
-[阶段报告](../experiments/D23_TSF_T0_PARTIAL_RESULTS_20261001.md)：主口径TSF相对R0综合+1.111789pp，但相对M0_safe−0.148998pp，相对T0+0.001578pp；rescue保留62.557%。主要候选TSF已不满足确认门槛。问题主线仍是辅助模态的有益融合/负迁移控制，语义与频率为可去留解法，不承诺模块组合；剩余既定对照继续用于解释机制，不改阈值或追加预算。C1旁支不自动升级。原件784逐tile矩阵/392pooled矩阵的加和与fg5重算通过，非全八组验收。
+助手第一优先级候选为配对任务收益约束，并以冻结/固定范围表示更新×标准CE/配对损失的2×2对照检验目标与表示限制。是否采用及细节应结合D23剩余结果定稿；新损失、范围、预算和门槛未冻结，未实现、未启动。类原型、区域校准、缺失知识迁移为条件方案，不一次拼接。频率若无独立增量可撤回；若保留须核清RGSNet近邻差异。
+
+下一不确定性：D23剩余机制对照；新目标是否能保留rescue且胜过匹配强基线。收益仅来自增强/通用解冻则不成立；高信息量替代方案也失败可换问题/方向。新对话直接复用文献/验收，不重复长审计。
+
+持续执行：GPU0/1，两H10080GB，RAM/磁盘充足；长实验nohup、全部产物在对应zzx目录；Test6禁读；GitHub是共享记录，轻量原件与全部服务器产物分开报告。见[长期执行约定](../protocols/EXECUTION_CONTRACT.md)和[下一步](NEXT_EXPERIMENT.md)。
