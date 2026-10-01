@@ -1092,6 +1092,11 @@
     "protocol": "docs/protocols/POST_D21_MIXED_DEGRADATION_FOLLOWUP_20260930.md",
     "result": "docs/experiments/POST_D21_FINAL_AND_MIXED_FOLLOWUP_RESULTS_20261001.md",
     "user_pasted_analysis": "records/post_d21_mixed_followup_compact_20260930/user_pasted_analysis_20261001.json",
+    "tile_risk_diagnostics": "records/post_d21_mixed_followup_compact_20260930/tile_risk_diagnostics.json",
+    "tile_risk_result": "docs/experiments/POST_D21_MIXED_TILE_RISK_RESULTS_20261001.md",
+    "tile_risk_generated_at": "2026-10-01T10:15:16+08:00",
+    "tile_risk_archive_commit": "3e17b6a",
+    "tile_risk_integer_reaudit": "PASS",
     "jobs": 4,
     "seed": 42,
     "physical_gpus": [0, 1],
@@ -1100,7 +1105,7 @@
     "worst_observed_tile": "Vaihingen tile 33, scale2_unseen_blur, C1-C0 = -1.4211 pp",
     "reported_integer_count_audit": "PASS",
     "test6_loaded": false,
-    "decision": "Development candidate for task-driven learned restoration; investigate per-tile harm and archive raw integer counts before confirmation."
+    "decision": "Development candidate for task-driven learned restoration; tile-risk compact audit found Car false-positive growth on Vaihingen tile20 and Building/LowVegetation misses with Tree false-positive growth on tile33 under unseen blur. Require independent-source acceptance before external paired evaluation; do not claim stable cross-region benefit."
   },
   "completed_post_d21_throughput_probe": {
     "id": "POST_D21_BOUNDED_THROUGHPUT_PROBE_20260929",

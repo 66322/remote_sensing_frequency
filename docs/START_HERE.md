@@ -9,10 +9,11 @@
 
 D21 有效双种子范围已完成32/32并归档；F2未通过预设开发门槛。
 原48项队列的 `32/48 INCOMPLETE` 是停止第三种子后的历史状态。
-Post-D21 多方向42项与混合退化后续4项已在服务器报告完成，用户贴出的两份整数审计均为 PASS；见[最终开发集分析](experiments/POST_D21_FINAL_AND_MIXED_FOLLOWUP_RESULTS_20261001.md)。目前先查 C1 的局部退化，不自动追加训练。
+Post-D21 多方向42项与混合退化后续4项已在服务器报告完成，整数审计均为 PASS；随后逐 tile CPU 审计也为 PASS；见[最终开发集分析](experiments/POST_D21_FINAL_AND_MIXED_FOLLOWUP_RESULTS_20261001.md)及[局部风险](experiments/POST_D21_MIXED_TILE_RISK_RESULTS_20261001.md)。目前准备独立来源验收，不自动追加训练。
 
 - [当前交接](current/HANDOFF.md)
 - [Post-D21 最终开发集分析](experiments/POST_D21_FINAL_AND_MIXED_FOLLOWUP_RESULTS_20261001.md)
+- [混合退化逐 tile 风险](experiments/POST_D21_MIXED_TILE_RISK_RESULTS_20261001.md)
 - [D21结果报告](experiments/D21_DETAIL_FREQUENCY_RESULTS_20260929.md)
 - [下一步有界吞吐测试](protocols/POST_D21_THROUGHPUT_PROBE_20260929.md)
 - [吞吐短测结果](experiments/POST_D21_THROUGHPUT_PROBE_RESULTS_20260929.md)

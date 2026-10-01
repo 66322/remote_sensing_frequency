@@ -48,5 +48,7 @@
 The JSON registry is the machine-readable authority. This index is the
 human-readable navigation layer.
 
-Post-D21 A/B/C/D/E portfolio: implementation and local CPU checks ready; server preflight,
-throughput and all training pending. See `docs/protocols/POST_D21_DAY_EXECUTION_20260929.md`.
+Post-D21 A/B/C/D 42/42 and mixed E 4/4 are server-reported complete; integer audits PASS.
+The C0/C1 tile-risk re-audit also passed. See
+`docs/experiments/POST_D21_FINAL_AND_MIXED_FOLLOWUP_RESULTS_20261001.md` and
+`docs/experiments/POST_D21_MIXED_TILE_RISK_RESULTS_20261001.md`.
