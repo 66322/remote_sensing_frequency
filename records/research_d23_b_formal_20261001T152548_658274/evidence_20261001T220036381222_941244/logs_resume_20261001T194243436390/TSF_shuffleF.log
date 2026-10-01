@@ -1,0 +1,82 @@
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/swiglu_ffn.py:45: UserWarning: xFormers is disabled (SwiGLU)
+  warnings.warn("xFormers is disabled (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/swiglu_ffn.py:51: UserWarning: xFormers is not available (SwiGLU)
+  warnings.warn("xFormers is not available (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py:29: UserWarning: xFormers is disabled (Attention)
+  warnings.warn("xFormers is disabled (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py:33: UserWarning: xFormers is not available (Attention)
+  warnings.warn("xFormers is not available (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/block.py:35: UserWarning: xFormers is disabled (Block)
+  warnings.warn("xFormers is disabled (Block)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/block.py:40: UserWarning: xFormers is not available (Block)
+  warnings.warn("xFormers is not available (Block)")
+D23_GATE_TRAIN TSF_shuffleF 1 1.0572699308395386
+D23_GATE_TRAIN TSF_shuffleF 100 0.9630267024040222
+D23_GATE_TRAIN TSF_shuffleF 200 0.978283703327179
+D23_GATE_TRAIN TSF_shuffleF 300 0.9663257598876953
+D23_GATE_TRAIN TSF_shuffleF 400 1.0365183353424072
+D23_GATE_TRAIN TSF_shuffleF 500 0.883281409740448
+D23_GATE_TRAIN TSF_shuffleF 600 1.0250200033187866
+D23_GATE_TRAIN TSF_shuffleF 700 0.9199298620223999
+D23_GATE_TRAIN TSF_shuffleF 800 0.8886889815330505
+D23_GATE_TRAIN TSF_shuffleF 900 0.9463486671447754
+D23_GATE_TRAIN TSF_shuffleF 1000 1.0114927291870117
+D23_GATE_TRAIN TSF_shuffleF 1100 1.04949152469635
+D23_GATE_TRAIN TSF_shuffleF 1200 0.9835615158081055
+D23_GATE_TRAIN TSF_shuffleF 1300 0.9673565030097961
+D23_GATE_TRAIN TSF_shuffleF 1400 0.9529518485069275
+D23_GATE_TRAIN TSF_shuffleF 1500 0.9697667360305786
+D23_GATE_TRAIN TSF_shuffleF 1600 0.9548072814941406
+D23_GATE_TRAIN TSF_shuffleF 1700 1.013814926147461
+D23_GATE_TRAIN TSF_shuffleF 1800 0.9673537015914917
+D23_GATE_TRAIN TSF_shuffleF 1900 0.950853168964386
+D23_GATE_TRAIN TSF_shuffleF 2000 0.9414548873901367
+D23_GATE_TRAIN TSF_shuffleF 2100 0.9606723785400391
+D23_GATE_TRAIN TSF_shuffleF 2200 0.8795262575149536
+D23_GATE_TRAIN TSF_shuffleF 2300 0.8896631002426147
+D23_GATE_TRAIN TSF_shuffleF 2400 0.9211083650588989
+D23_GATE_TRAIN TSF_shuffleF 2500 1.0981930494308472
+D23_GATE_TRAIN TSF_shuffleF 2600 0.9796032905578613
+D23_GATE_TRAIN TSF_shuffleF 2700 0.9020960330963135
+D23_GATE_TRAIN TSF_shuffleF 2800 1.0366487503051758
+D23_GATE_TRAIN TSF_shuffleF 2900 1.0309016704559326
+D23_GATE_TRAIN TSF_shuffleF 3000 0.8633562326431274
+D23_GATE_TRAIN TSF_shuffleF 3100 0.9127412438392639
+D23_GATE_TRAIN TSF_shuffleF 3200 0.9875862002372742
+D23_GATE_TRAIN TSF_shuffleF 3300 0.9197990894317627
+D23_GATE_TRAIN TSF_shuffleF 3400 0.9525794386863708
+D23_GATE_TRAIN TSF_shuffleF 3500 0.8729496598243713
+D23_GATE_TRAIN TSF_shuffleF 3600 1.024904727935791
+D23_GATE_TRAIN TSF_shuffleF 3700 0.9217771887779236
+D23_GATE_TRAIN TSF_shuffleF 3800 0.9499604105949402
+D23_GATE_TRAIN TSF_shuffleF 3900 0.9100779891014099
+D23_GATE_TRAIN TSF_shuffleF 4000 0.902058482170105
+D23_DEVELOPMENT_EVAL 3_11 clean
+D23_DEVELOPMENT_EVAL 3_11 rgb_down2
+D23_DEVELOPMENT_EVAL 3_11 rgb_down4
+D23_DEVELOPMENT_EVAL 3_11 rgb_blur5
+D23_DEVELOPMENT_EVAL 3_11 rgb_local_down4_q1
+D23_DEVELOPMENT_EVAL 3_11 aux_down4
+D23_DEVELOPMENT_EVAL 3_11 aux_noise_std010
+D23_DEVELOPMENT_EVAL 3_11 aux_zero
+D23_DEVELOPMENT_EVAL 3_11 aux_local_zero_q1
+D23_DEVELOPMENT_EVAL 3_11 rgb_contrast060
+D23_DEVELOPMENT_EVAL 3_11 aux_shift8
+D23_DEVELOPMENT_EVAL 3_11 aux_local_zero_stripe_eighth
+D23_DEVELOPMENT_EVAL 3_11 aux_noise_std020
+D23_DEVELOPMENT_EVAL 3_11 aux_shift16
+D23_DEVELOPMENT_EVAL 5_10 clean
+D23_DEVELOPMENT_EVAL 5_10 rgb_down2
+D23_DEVELOPMENT_EVAL 5_10 rgb_down4
+D23_DEVELOPMENT_EVAL 5_10 rgb_blur5
+D23_DEVELOPMENT_EVAL 5_10 rgb_local_down4_q1
+D23_DEVELOPMENT_EVAL 5_10 aux_down4
+D23_DEVELOPMENT_EVAL 5_10 aux_noise_std010
+D23_DEVELOPMENT_EVAL 5_10 aux_zero
+D23_DEVELOPMENT_EVAL 5_10 aux_local_zero_q1
+D23_DEVELOPMENT_EVAL 5_10 rgb_contrast060
+D23_DEVELOPMENT_EVAL 5_10 aux_shift8
+D23_DEVELOPMENT_EVAL 5_10 aux_local_zero_stripe_eighth
+D23_DEVELOPMENT_EVAL 5_10 aux_noise_std020
+D23_DEVELOPMENT_EVAL 5_10 aux_shift16
+D23_FORMAL_JOB_COMPLETE TSF_shuffleF

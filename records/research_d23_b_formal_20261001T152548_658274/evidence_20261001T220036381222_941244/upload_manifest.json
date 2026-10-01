@@ -1,0 +1,305 @@
+{
+  "created_at": "2026-10-01T22:00:40.022134+08:00",
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274",
+  "base_commit": "84abdddd92302ce37c3a1493cb8f046dc74ed52e",
+  "repository_directory": "records/research_d23_b_formal_20261001T152548_658274/evidence_20261001T220036381222_941244",
+  "files": [
+    {
+      "path": "execution_commit.txt",
+      "bytes": 41,
+      "sha256": "57ac8501c3d8035d720e678728e97e18c106c39a09fd1ec433c79da74b6bbde5"
+    },
+    {
+      "path": "plan.json",
+      "bytes": 652,
+      "sha256": "fb1c98feffc0a40ebfd63ad039388b4822437ca5262e22ea41ff47509db64557"
+    },
+    {
+      "path": "runtime_lock.json",
+      "bytes": 2045,
+      "sha256": "8ee5d47c651020dba001916f7c8ae084bff0894f812136177bb08fa41b693daf"
+    },
+    {
+      "path": "queue_status.json",
+      "bytes": 4641,
+      "sha256": "3e42489af4d12db5d88ace46f789be87781a539fc790010c7ede9695e4b369c2"
+    },
+    {
+      "path": "screen_manifest_20261001T194243436390.json",
+      "bytes": 1338,
+      "sha256": "5e9debd2e66526e9ffd50c22bdc85d65dc0a2d0117c6424c39779b084b4ed53b"
+    },
+    {
+      "path": "screen_result_20261001T194243436390.json",
+      "bytes": 1965,
+      "sha256": "933a00398588682674d986adc323c2bf90bb34b6dab509e417bbf0f8b25ffa9b"
+    },
+    {
+      "path": "logs_resume_20261001T194243436390/screen.log",
+      "bytes": 1758,
+      "sha256": "8b8f89c5b03e3add82113a79a70bb0b56585e81b9efb16899cda2bbbd8eb40e3"
+    },
+    {
+      "path": "resume_event_20261001T153823537963.json",
+      "bytes": 891,
+      "sha256": "ce9e939f746d504e371408e45ea34e8160d64bb32ef54824fa904273a5e0c42e"
+    },
+    {
+      "path": "resume_event_gpu0repair_20261001T183700466561.json",
+      "bytes": 3502,
+      "sha256": "13df361e7887cdf17be161a6732b115eb8d64d3e22d009c69aef854459ed29f2"
+    },
+    {
+      "path": "resume_event_20261001T175826664330.json",
+      "bytes": 2610,
+      "sha256": "bf8efa0d17d20768f3085d43faa17569ee63ac1184151cf053fb56098a2870d5"
+    },
+    {
+      "path": "resume_event_20261001T194243436390.json",
+      "bytes": 3113,
+      "sha256": "4905f65f6b51e1d270581ee51138f85713b6979a3dbaf08e9b17d3588da40f76"
+    },
+    {
+      "path": "logs_resume_20261001T153823537963/T0.log",
+      "bytes": 3627,
+      "sha256": "b89a3f9a44b5ab8e23eb9a4638f20077cb12ee211127c2f2ad82ebfb7df673ec"
+    },
+    {
+      "path": "jobs/T0_resume_20261001T153823537963/preflight.json",
+      "bytes": 2047,
+      "sha256": "fe061dd8e3f50e3d6f29455b4c39ede6c9dc1e07b368ec71f55cd58eaba6b2af"
+    },
+    {
+      "path": "jobs/T0_resume_20261001T153823537963/formal_fit_statistics.json",
+      "bytes": 3208,
+      "sha256": "6d74fa77ef39bee5c34030beaf60b254e76fe909f0c1a7d336753c27c081e531"
+    },
+    {
+      "path": "jobs/T0_resume_20261001T153823537963/formal_complete.json",
+      "bytes": 2699,
+      "sha256": "2989ee7c053bf2ee66889a6727364b583bdc6ecfd8ced5bc8b57b680b611793f"
+    },
+    {
+      "path": "jobs/T0_resume_20261001T153823537963/training/training_complete.json",
+      "bytes": 2624,
+      "sha256": "a57bfec7a5fbe08fe52e240773b2b9fc8610a1274ec38bb2e052cdfd6bd7374c"
+    },
+    {
+      "path": "jobs/T0_resume_20261001T153823537963/evaluation/summary.json",
+      "bytes": 2547068,
+      "sha256": "4388e4b60765fca1c5f33daae6c28ea406ab525e866c13571329d6290c8e92b1"
+    },
+    {
+      "path": "TS_gpu0repair_20261001T183700466561.log",
+      "bytes": 4073,
+      "sha256": "601eefea1c4c162fab8e6b365b7e5d768553cdd0eb9cc833056eff9938cc1659"
+    },
+    {
+      "path": "jobs/TS_resume_gpu0repair_20261001T183700466561/preflight.json",
+      "bytes": 2047,
+      "sha256": "bc09bdda2469de4f03dffb4fcccc8ddbe32239ab1e0841573913ba21caa2b62a"
+    },
+    {
+      "path": "jobs/TS_resume_gpu0repair_20261001T183700466561/formal_fit_statistics.json",
+      "bytes": 3208,
+      "sha256": "1f9f20bd843533b9ac55c4000226e5eda046319a52ebe8636b6c1a30a9436f68"
+    },
+    {
+      "path": "jobs/TS_resume_gpu0repair_20261001T183700466561/formal_complete.json",
+      "bytes": 2699,
+      "sha256": "d04e10163ee23e8723b37bb0980d3476c47e72038a13f5c117fc52c77b409498"
+    },
+    {
+      "path": "jobs/TS_resume_gpu0repair_20261001T183700466561/training/training_complete.json",
+      "bytes": 2624,
+      "sha256": "5e6c321d8ed6efe454f2ed40980274cb3b972ceaf86c7f641478c5fa94024bf6"
+    },
+    {
+      "path": "jobs/TS_resume_gpu0repair_20261001T183700466561/evaluation/summary.json",
+      "bytes": 2547055,
+      "sha256": "070be53f910a6b0a743ae4d45a7d5d1c950f2e1352fb6ae02be73ab9a0b2c14a"
+    },
+    {
+      "path": "logs_resume_20261001T175826664330/TF.log",
+      "bytes": 4075,
+      "sha256": "8cf2d681d862ce9f93e68134c8bc0276c218ee5ed69894aeddb1adb2a74ef813"
+    },
+    {
+      "path": "jobs/TF/preflight.json",
+      "bytes": 2047,
+      "sha256": "ed8eff1678d2021dbce25695e1996a4e07e4a75e036ac5fe1e2ba0b244402fad"
+    },
+    {
+      "path": "jobs/TF/formal_fit_statistics.json",
+      "bytes": 3208,
+      "sha256": "2ec169673347bf160c824d7e8100ca03b405319b195323b45e7a0266bd2805f6"
+    },
+    {
+      "path": "jobs/TF/formal_complete.json",
+      "bytes": 2699,
+      "sha256": "117128c496dc89679eaeccb1071386c1ec1eb72aa45e871cb1a52dae27a5acd7"
+    },
+    {
+      "path": "jobs/TF/training/training_complete.json",
+      "bytes": 2623,
+      "sha256": "ae58ff7bacef96933c2914ee429a3ae2dcc7094aaeecbbd639bb3a5d69d0ca2b"
+    },
+    {
+      "path": "jobs/TF/evaluation/summary.json",
+      "bytes": 2547089,
+      "sha256": "6b84010cffa8ac58e04701993b067f41fec5a1db9159719fa1f43ebe9c91dd06"
+    },
+    {
+      "path": "logs_resume_20261001T153823537963/TSF.log",
+      "bytes": 3656,
+      "sha256": "47e6de02fb2439e8256bb5150d5b0e7df2e9406a35dffb61eb79bbcb5802704d"
+    },
+    {
+      "path": "jobs/TSF_resume_20261001T153823537963/preflight.json",
+      "bytes": 2048,
+      "sha256": "00b4fe757b075699b40055f2172965c043553fa6fc5ebd3d79833009500ddbd8"
+    },
+    {
+      "path": "jobs/TSF_resume_20261001T153823537963/formal_fit_statistics.json",
+      "bytes": 3209,
+      "sha256": "984e55072058c6783492bbf5fab06783a3a7dc5c5f437d0b4f91d98c80202dae"
+    },
+    {
+      "path": "jobs/TSF_resume_20261001T153823537963/formal_complete.json",
+      "bytes": 2700,
+      "sha256": "d875c148278e2de271df4c1f1721d700c2d716f0d393d1447218c370cfee1cc7"
+    },
+    {
+      "path": "jobs/TSF_resume_20261001T153823537963/training/training_complete.json",
+      "bytes": 2624,
+      "sha256": "9c81d17f3d45452a63aaa17997269aed0853cbbd3afe18f8ea3490c50127afef"
+    },
+    {
+      "path": "jobs/TSF_resume_20261001T153823537963/evaluation/summary.json",
+      "bytes": 2547267,
+      "sha256": "98f95b93366449939c1185a35c8779f5a1bbdc992a7322b5eb3f3c1458fe9c09"
+    },
+    {
+      "path": "logs_resume_20261001T194243436390/TCAP.log",
+      "bytes": 4157,
+      "sha256": "7d8668dd92efdf23f78802f14b0477b9dbcc9a619e5b29d9ad4e11a799e3bc18"
+    },
+    {
+      "path": "jobs/TCAP/preflight.json",
+      "bytes": 2049,
+      "sha256": "2f6dcb00ab9f4cb99a673f7c04aa1c668797e00c9da9520c0fc086cf852f518a"
+    },
+    {
+      "path": "jobs/TCAP/formal_fit_statistics.json",
+      "bytes": 3210,
+      "sha256": "587819b6904ae8bfff7270f7a9a2cecc6c1a69169662f8c62a1a0e3cf87c8843"
+    },
+    {
+      "path": "jobs/TCAP/formal_complete.json",
+      "bytes": 2701,
+      "sha256": "79a1d808cef6ab11b8697bebb35709834b1af09b19e5385542f56229edfa99bb"
+    },
+    {
+      "path": "jobs/TCAP/training/training_complete.json",
+      "bytes": 2624,
+      "sha256": "d423ca2283e8c451391be6203156810840a5b501c24c399b16f7453ed671310d"
+    },
+    {
+      "path": "jobs/TCAP/evaluation/summary.json",
+      "bytes": 2547610,
+      "sha256": "9507d2948ee0c6937246aca8209f4e75d6df930ac489716a4ead637e4dbd31bb"
+    },
+    {
+      "path": "logs_resume_20261001T194243436390/TSF_CE.log",
+      "bytes": 4266,
+      "sha256": "276132337d0771ada145566d6e442f85b5597ec49757ffd4d0eab1a4dc168e65"
+    },
+    {
+      "path": "jobs/TSF_CE/preflight.json",
+      "bytes": 2051,
+      "sha256": "91533e31a5931bc0938e943490622a7dc21b1284861b0ffa9f4040a4610a9458"
+    },
+    {
+      "path": "jobs/TSF_CE/formal_fit_statistics.json",
+      "bytes": 3212,
+      "sha256": "1459b44a0ba05079a735afb978b7a6b89f8f88541f523c11f2241df3d85362ea"
+    },
+    {
+      "path": "jobs/TSF_CE/formal_complete.json",
+      "bytes": 2703,
+      "sha256": "c6a24b68074f559a0318b407303509d94ae30d3250459cd642306902423730ca"
+    },
+    {
+      "path": "jobs/TSF_CE/training/training_complete.json",
+      "bytes": 2628,
+      "sha256": "3c2d123c9226fc71bed5414f08423dc2b6f90eb3426b75a985a5967f41772eda"
+    },
+    {
+      "path": "jobs/TSF_CE/evaluation/summary.json",
+      "bytes": 2547701,
+      "sha256": "8a054846eed4b3eb91fe146f48c39926d5518da38e36daabfdcd1b7f2eae5c4f"
+    },
+    {
+      "path": "logs_resume_20261001T194243436390/TSF_shuffleS.log",
+      "bytes": 4493,
+      "sha256": "20b00524d547a76fef782c125b7f79c8b87f5c2d16c965131bbf7f1cf4cff395"
+    },
+    {
+      "path": "jobs/TSF_shuffleS/preflight.json",
+      "bytes": 2057,
+      "sha256": "36a6667cb6f0790fc9a177f502261baf86e77fa37776516b098177cdd423b5f1"
+    },
+    {
+      "path": "jobs/TSF_shuffleS/formal_fit_statistics.json",
+      "bytes": 3218,
+      "sha256": "f4ec5a2e523aa39f7f6377934539dcff33bd91dcac925cdeb6d71ab38a239d30"
+    },
+    {
+      "path": "jobs/TSF_shuffleS/formal_complete.json",
+      "bytes": 2709,
+      "sha256": "c133198c4253cc994d1d0cd08091b46167ad01031a70e52614bd4fd9995e0b36"
+    },
+    {
+      "path": "jobs/TSF_shuffleS/training/training_complete.json",
+      "bytes": 2633,
+      "sha256": "76b37c9611e02b0208969b22f219feb1a268fc4e57061269b77054f68f87fbf8"
+    },
+    {
+      "path": "jobs/TSF_shuffleS/evaluation/summary.json",
+      "bytes": 2549286,
+      "sha256": "83852ab85fd2a8e009ba9f9e9a7806a7687713bcc4da265b97aee6cb3069ebf7"
+    },
+    {
+      "path": "logs_resume_20261001T194243436390/TSF_shuffleF.log",
+      "bytes": 4491,
+      "sha256": "0d2f30049d34702c0b44ee0c68b2e565a75e5d2d651b67c2434e2faec5f1db2d"
+    },
+    {
+      "path": "jobs/TSF_shuffleF/preflight.json",
+      "bytes": 2057,
+      "sha256": "196fd6a0dbdeecdf284ca7d4938ea14e79f2081a549ba4091d91b7395cc60eec"
+    },
+    {
+      "path": "jobs/TSF_shuffleF/formal_fit_statistics.json",
+      "bytes": 3218,
+      "sha256": "8e1c269e8a89a6bd1d2f0d99582eab747c6f79244691aade33395e6e6ca15f26"
+    },
+    {
+      "path": "jobs/TSF_shuffleF/formal_complete.json",
+      "bytes": 2709,
+      "sha256": "b05c71fe0eb536da92fa1fec3fc705033c6798ff0fe974fbf556f0da08fbf982"
+    },
+    {
+      "path": "jobs/TSF_shuffleF/training/training_complete.json",
+      "bytes": 2634,
+      "sha256": "dedb797d9165c33bd7d00613905f142630432c04d6e76b803d0f18442c7ab595"
+    },
+    {
+      "path": "jobs/TSF_shuffleF/evaluation/summary.json",
+      "bytes": 2549407,
+      "sha256": "b499a0b66bcac10f53abfac221c13bdfd159b750406394c39e3bfec913a147e7"
+    }
+  ],
+  "predictions_and_checkpoints_uploaded": false,
+  "upload_launches_training": false
+}
