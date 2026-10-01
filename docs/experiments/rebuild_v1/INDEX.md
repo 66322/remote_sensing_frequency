@@ -4,6 +4,7 @@
 
 | ID | Purpose | Status | Primary evidence |
 |---|---|---|---|
+| D23 B engine admission | frozen expert8/gate16 single backward, 8-arm smoke and full-image profile | originals uploaded to GitHub; 8 hashes/107 matrices and CPU22 checks passed; formal budget pending | [audit](../D23_B_ENGINE_GITHUB_AUDIT_20261001.md) |
 | Post-D21 final and mixed follow-up | completed 42 A/B/C/D cells and four mixed-degradation C0/C1 cells | user-reported 42/42 and 4/4 complete; both integer audits PASS; single-seed development evidence | `docs/experiments/POST_D21_FINAL_AND_MIXED_FOLLOWUP_RESULTS_20261001.md` |
 | Post-D21 A/B/C early analysis | 36/42 completed jobs, paired development comparisons while D continued | server-pasted early snapshot; integer audit PASS; not final D result | `docs/experiments/POST_D21_EARLY_AB_C_RESULTS_20260930.md` |
 | Post-D21 mixed-degradation follow-up | paired C0/C1 under mixed scale and blur, four E cells, separate queue | 4/4 complete and audited per user log | `docs/protocols/POST_D21_MIXED_DEGRADATION_FOLLOWUP_20260930.md` |

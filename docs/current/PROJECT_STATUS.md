@@ -1,4 +1,4 @@
-# 当前状态：工程原件待上传与核验
+# 当前状态：D23双卡工程验收通过，正式实验待预算锁
 
 更新2026-10-01；分支rebuild-v1-protocol-20260915，实验基准1a8a840，D23工程执行入口40fca5adf4ded1277de264ffc361b67fbaaca0c8。用户服务器终端执行，助手无服务器直连。
 
@@ -8,8 +8,10 @@
 
 工程已实现专家固定8前向、gate batch16两视图合并loss单次backward，无gate梯度累积，8组/6固定/14条件和原机制/风险门槛不变。22项本地CPU检查通过。
 
-最新用户片段：GPU1最后观测2026-10-01T14:07:44.235024+08:00，profile ENGINE_ADMISSION_COMPLETE；TSF12步与重载相等，步中位0.18741658秒，整图3条件共98.162秒。CPU紧凑报告22项PASS。GPU0片段仍缺完整完成头部与身份，不能称双卡原件完整验收。服务器归档SHA e290548c50758e3d228f6e00e4e36bf4592efcf5daf2739994b6a28ee18278fa、29924字节；未上传原件。[证据边界](../experiments/D23_B_ENGINE_RECORD_UPLOAD_PREPARATION_20261001.md)。
+已从GitHub提交d3829b600177304ae23865e2a15e22aa767e1f3f取得本次9份轻量记录，8原文件402290字节/SHA全部匹配；7份源码/配置/split SHA一致；107条原矩阵/逐类计数/mIoU/区域harm-rescue复算一致。CPU原日志22项通过（5.480秒）。GPU0最后观测2026-10-01T14:06:05.496624+08:00，8组×2步/14条件；GPU1最后观测2026-10-01T14:07:44.235024+08:00，TSF12步/整图3条件。两卡重载、已知缺失回退与公共签名检查通过。本次工程验收完成，无需重跑。[审计与边界](../experiments/D23_B_ENGINE_GITHUB_AUDIT_20261001.md)。
 
-立即动作：用户执行轻量上传工具，从已有目录上传summary/preflight/日志/compact及索引到同一GitHub分支；助手读原件核验。工具本地模拟检查通过，真实上传未执行。随后解决12tile缓存/TCAP I/O和双卡并行预算，冻结runtime lock才生成8组4000步队列。最后记录formal_training_started=false，正式锁/队列尚未生成。[下一步](NEXT_EXPERIMENT.md)。
+原预测/权重/admission统计/D21 input_manifest和tar未上传；对应SHA和logits相等为运行原记录报告。smoke评价g=0.5、profile训练tile12步，不是Val2精度或贡献证据。正式训练/统计均未开始。
 
-频率无独立增量则撤回对应贡献；gate无收益关闭具体解法，不自动降阈值或补seed，C1不自动升级主线。光学整幅缺失、未知缺失识别、独立泛化及历史原件归档仍未解决；Test6历史暴露且禁读。此前完整交接保留docs/history/20261001_before_light_record_upload/，历史负结果不重复开启。
+立即动作：准备12tile缓存/256样本TCAP I/O及双卡并行的有界资源测量，给出正式4000步＋Val2×14条件的预算；通过后冻结runtime lock再生成8组队列。当前正式锁/队列未生成。长输出继续直接上传GitHub，用户仅回复提交号，不再重复收集/上传本次原件。[下一步](NEXT_EXPERIMENT.md)。
+
+频率无独立增量则撤回对应贡献；gate无收益关闭具体解法，不自动降阈值或补seed，C1不自动升级主线。光学整幅缺失、未知缺失识别、独立泛化及历史原件归档仍未解决；Test6历史暴露且禁读。此前完整交接保留docs/history/20261001_before_engine_github_audit/，历史负结果不重复开启。

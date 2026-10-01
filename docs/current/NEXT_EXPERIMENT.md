@@ -1,8 +1,10 @@
-# 下一步：上传已有轻量记录，从GitHub核验
+# 下一步：正式缓存、TCAP与双卡预算测量
 
-1. 在已有实验records/research_d23_b_engine_admission_20261001T140528_658274内执行scripts/upload_rebuild_v1_d23_engine_records.py，读取已生成compact_review_20261001T141936239377.json及7份原件。独立上传工作树也在该实验目录内；只上传9个明确文件，不重跑任务。用户回复提交号即可，不再粘贴长输出。[上传规则](../protocols/LIGHT_RECORD_UPLOAD_20261001.md)。
-2. 助手从上传提交读取原件，复核GPU0 smoke八组/14条件、CPU22项测试、GPU1 profile单次backward与整图3条件、重载/缺失回退/设备/源码与专家SHA。最新片段补了GPU1完成时钟与CPU报告；GPU0完整头部仍待原件。[本次补充边界](../experiments/D23_B_ENGINE_RECORD_UPLOAD_PREPARATION_20261001.md)。
-3. 完整绑定通过后，测12tile磁盘缓存/TCAP统计I/O及双卡并行预算，冻结正式wall/job/磁盘与资源锁，才生成8组各4000步队列。当前正式锁/队列未生成，最后回传无正式训练。GPU1小规模步速不能直接替代正式预算。
-4. 按冻结screen比较精度/机制/风险；训练tile工程指标不作为开发Val2或论文test结果。失败保持原门槛，允许关闭解法/撤回频率承诺，不自动续训或补seed。
+已有工程记录从GitHub核验通过，[原件审计](../experiments/D23_B_ENGINE_GITHUB_AUDIT_20261001.md)：GPU0八组接口/14条件、GPU1训练tile整图3条件、CPU22项及107原矩阵复算一致。无需重跑工程smoke/profile，也无需再次上传相同记录。当前无正式训练、无正式runtime lock/自动队列。
 
-共享记录以同一GitHub分支为准。所有服务器产物保持zzx对应实验目录；禁止读取旧Test6。大型预测/权重/归档留服务器，GitHub索引并不代表全部原件上传。
+1. 助手准备有界资源测量入口：复用正式12tile归一化磁盘缓存及256个TCAP统计样本执行链，测量缓存建立/校验/读取、统计耗时及主机/磁盘/GPU峰值；新增代码必须测试并固定执行快照。此阶段只准备，不从上传成功默认启动服务器任务。
+2. 用户在GPU0/1执行测量，记录双卡并行争用和各组步骤成本。运行前说明目的、总预算与停止条件；所有输出在zzx下新的对应实验目录，不覆盖已完成admission目录。资源测量不读取Test6，不用Val2选方案或改阈值。
+3. 根据实测数据加安全余量，估计每组4000步、checkpoint/缓存和Val2两tile×14条件推理耗时/磁盘。达标后按源码/专家/输入/torch/backend绑定生成FULL_ENGINE_RUNTIME_ADMITTED锁及8组队列；资源失败先修工程，不改研究判定门槛。
+4. 固定4000步screen仍比较8组、6固定、14条件与NoBoundary fg5，正式评价保存原int64矩阵/逐tile/配置/checkpoint绑定。精度、机制、风险分别判定。频率无独立增量撤回对应贡献，gate无收益关闭具体解法；C1不自动升主线，不自动降阈值/补seed。
+
+单tile0.1874秒步速不是12tile/双卡正式预算。预测、权重、归档仍在服务器；轻量记录直接上传同一GitHub分支，助手回读，用户只回传提交号。
