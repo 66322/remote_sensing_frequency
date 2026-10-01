@@ -6,8 +6,11 @@
 
 已完成：双卡工程验收与27项服务器CPU检查，错误导入旧model的launcher已在b02bb7b修复并保留失败日志。预算14条件整图任务已结束并上传54e19cd16416b866bed7b152ba9a3a3f76ac4837：两卡最后观测2026-10-01T15:12:41.571581/15:12:58.837909+08:00，13原文件校验/196原矩阵复算通过，两卡固定预测与TCAP统计一致。GPU峰值allocated约2.44GiB、主机RSS约12.60GiB。预算阶段不是正式精度结果；原缓存/预测/权重留服务器。
 
-用户明确不再把资源测量作为额外前置。立即动作：运行已交付的[8组×4000步正式开发对照入口](../protocols/D23_B_FORMAL_SCREEN_EXECUTION_20261001.md)。现有测量绑定已用于runtime lock，不新增smoke/probe/预算轮次。专家固定8前向，gate16单backward，seed42，固定final4000既定例外；Val2两tile×14条件、6固定＋每组，NoBoundary fg5，Test6禁读。当前只是入口READY，尚无正式训练已启动的服务器证据。
+用户明确不再把资源测量作为额外前置。立即动作：运行已交付的[8组×4000步正式开发对照入口](../protocols/D23_B_FORMAL_SCREEN_EXECUTION_20261001.md)。现有测量绑定已用于runtime lock，不新增smoke/probe/预算轮次。专家固定8前向，gate16单backward，seed42，固定final4000既定例外；Val2两tile×14条件、6固定＋每组，NoBoundary fg5，Test6禁读。用户已回传TSF/T0子进程启动，但无训练步骤/完成记录，不能写成4000步完成。
 
 GPU0依次TSF/TS/TCAP/shuffleS，GPU1依次T0/TF/CE/shuffleF；每30秒显示进度，完成后自动审计并上传轻量原件。单组保守8519秒，整队列约9.5小时预算（非精确ETA），单组hard wall3小时。新增队列5项本地模拟检查通过，真实队列尚待用户执行。[下一步](NEXT_EXPERIMENT.md)。
 
 机制与风险阈值不变。频率无独立增量撤回对应贡献；gate无收益关闭具体解法，不自动降阈值/补seed/C1升主线。光学整幅缺失、未知缺失识别、独立泛化及历史原件归档仍未解决；Test6历史暴露，不具独立final资格。旧交接归档docs/history/20261001_before_formal_queue/。
+
+
+最新执行约束（用户明确要求）：长实验必须nohup后台运行，stdin=/dev/null，stdout/stderr/PID保存在对应zzx实验目录；GPU0/1授权和服务器内存/显存/磁盘充足保持。用户最后回传已启动TSF/T0进程（无观测时钟、只到0.5分钟），正式运行已请求，尚无完成证据。当前入口补充--resume-queue以接续checkpoint/跳过完成组，旧产物保留；背景任务结束后前台认证上传。详见[后台接续](../protocols/D23_NOHUP_AND_RESUME_20261001.md)。

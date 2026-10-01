@@ -20,12 +20,19 @@ def main():
     if not base.name.startswith('research_d23_b_formal_'):raise ValueError('unexpected directory')
     names=['execution_commit.txt','plan.json','runtime_lock.json','queue_status.json',
            'screen_manifest.json','screen_result.json','screen.log']
+    state=json.loads((base/'queue_status.json').read_text())
+    for key in ('screen_manifest','screen_result','screen_log'):
+        if state.get(key):names.append(Path(state[key]).resolve().relative_to(base).as_posix())
+    names += [p.relative_to(base).as_posix() for p in base.glob('resume_event_*.json')]
     for arm in ARMS:
-        names += ['logs/'+arm+'.log']+['jobs/'+arm+'/'+p for p in (
+        row=state.get('jobs',{}).get(arm,{})
+        job=Path(row.get('job_directory',base/'jobs'/arm)).resolve().relative_to(base).as_posix()
+        logfile=Path(row.get('log_path',base/'logs'/(arm+'.log'))).resolve().relative_to(base).as_posix()
+        names += [logfile]+[job+'/'+p for p in (
           'preflight.json','formal_fit_statistics.json','formal_complete.json',
           'training/training_complete.json','evaluation/summary.json')]
     data={}
-    for name in names:
+    for name in dict.fromkeys(names):
         p=(base/name).resolve();p.relative_to(base)
         if not p.is_file():continue
         if p.stat().st_size>5*1024**2:raise ValueError('light evidence too large: '+name)
