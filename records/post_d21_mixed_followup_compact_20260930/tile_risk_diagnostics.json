@@ -1,0 +1,1341 @@
+{
+  "observed_at": "2026-10-01T10:15:16+08:00",
+  "source_sha256": {
+    "records/post_d21_mixed_followup_queue_20260930/queue_summary.json": "9e5fb93b3eaa6b4d564d6849cc8a1fc0ad84411c320cd60bd1f9122e6873c2d9",
+    "records/post_d21_mixed_followup_compact_20260930/analysis.json": "0697e7068db1a2a7929ce65d10f541747113513e929fce986333d7eff0071326",
+    "scripts/analyze_rebuild_v1_mixed_tile_risk.py": "d027461b415fc5bb762190e0ad57ba019a2f8c69ca412083da94a5b291f36a8c",
+    "runs/rebuild_v1/POST_D21_E_potsdam_bicubic_ce_scale0_seed42/summary.json": "7252d094749f53481a81c637ea1fded3835655ea49ca84ff1e9808818ca74410",
+    "records/post_d21_day_evaluation_20260929/E_potsdam_bicubic_ce_scale0_seed42/summary.json": "648dddbaecd26274504c345bcc95cff30f57b3a2cc12ada7cec1d649bcdf0b43",
+    "runs/rebuild_v1/POST_D21_E_potsdam_learned_ce_scale0_seed42/summary.json": "28e54229469551e697eb310c40f3b6d015c42e9224020444d2dc17b00184e1ce",
+    "records/post_d21_day_evaluation_20260929/E_potsdam_learned_ce_scale0_seed42/summary.json": "974c1c198403815699caa5414a36ff98d9fd94bb94eb1859bc810f2ff5b0d5b9",
+    "runs/rebuild_v1/POST_D21_E_vaihingen_bicubic_ce_scale0_seed42/summary.json": "681774ecff817fea6dc9c3195455aeab5d64f968102885b0dad50d50bece73a7",
+    "records/post_d21_day_evaluation_20260929/E_vaihingen_bicubic_ce_scale0_seed42/summary.json": "512fb5f01312dfa35377fd11750988c9485dd00203bab5106aa89eb7a992a6e2",
+    "runs/rebuild_v1/POST_D21_E_vaihingen_learned_ce_scale0_seed42/summary.json": "2ba074522730743930a815b1fc956a82fd8c79eace9c58336452389cc316ac42",
+    "records/post_d21_day_evaluation_20260929/E_vaihingen_learned_ce_scale0_seed42/summary.json": "53651807f2912ba644b48f5ddde064c5013058f5991db6d2bfc221b85dfd6f98"
+  },
+  "integer_count_reaudit": "PASS",
+  "checkpoint_summary_binding": "PASS; checkpoint binaries not rehashed",
+  "test6_loaded": false,
+  "condition_summaries": [
+    {
+      "dataset": "potsdam",
+      "condition": "scale2_clean",
+      "pooled_delta_pp": 0.38656886053293205,
+      "negative_tiles": 0,
+      "tile_count": 2,
+      "worst_tiles": [
+        {
+          "tile": "5_10",
+          "delta_pp": 0.045367760831749315
+        },
+        {
+          "tile": "3_11",
+          "delta_pp": 0.7295099768558355
+        }
+      ]
+    },
+    {
+      "dataset": "potsdam",
+      "condition": "scale4_clean",
+      "pooled_delta_pp": 0.9263720643726381,
+      "negative_tiles": 0,
+      "tile_count": 2,
+      "worst_tiles": [
+        {
+          "tile": "5_10",
+          "delta_pp": 0.27808508113565944
+        },
+        {
+          "tile": "3_11",
+          "delta_pp": 1.5724773202634656
+        }
+      ]
+    },
+    {
+      "dataset": "potsdam",
+      "condition": "scale2_unseen_blur",
+      "pooled_delta_pp": 0.4242474761358084,
+      "negative_tiles": 1,
+      "tile_count": 2,
+      "worst_tiles": [
+        {
+          "tile": "5_10",
+          "delta_pp": -0.20913950729124497
+        },
+        {
+          "tile": "3_11",
+          "delta_pp": 1.0598463547668802
+        }
+      ]
+    },
+    {
+      "dataset": "potsdam",
+      "condition": "scale4_unseen_blur",
+      "pooled_delta_pp": 0.9628120412978225,
+      "negative_tiles": 0,
+      "tile_count": 2,
+      "worst_tiles": [
+        {
+          "tile": "5_10",
+          "delta_pp": 0.5698193822923359
+        },
+        {
+          "tile": "3_11",
+          "delta_pp": 1.3705416832202721
+        }
+      ]
+    },
+    {
+      "dataset": "vaihingen",
+      "condition": "scale2_clean",
+      "pooled_delta_pp": 0.15096697960113037,
+      "negative_tiles": 6,
+      "tile_count": 17,
+      "worst_tiles": [
+        {
+          "tile": "20",
+          "delta_pp": -0.8148628941898273
+        },
+        {
+          "tile": "14",
+          "delta_pp": -0.4247477372495978
+        },
+        {
+          "tile": "4",
+          "delta_pp": -0.38697104518873315
+        }
+      ]
+    },
+    {
+      "dataset": "vaihingen",
+      "condition": "scale4_clean",
+      "pooled_delta_pp": 0.4254297012976638,
+      "negative_tiles": 3,
+      "tile_count": 17,
+      "worst_tiles": [
+        {
+          "tile": "33",
+          "delta_pp": -0.3316329661301243
+        },
+        {
+          "tile": "20",
+          "delta_pp": -0.21229155123525523
+        },
+        {
+          "tile": "29",
+          "delta_pp": -0.14817419313878366
+        }
+      ]
+    },
+    {
+      "dataset": "vaihingen",
+      "condition": "scale2_unseen_blur",
+      "pooled_delta_pp": 0.28779198784832927,
+      "negative_tiles": 5,
+      "tile_count": 17,
+      "worst_tiles": [
+        {
+          "tile": "33",
+          "delta_pp": -1.421079099297573
+        },
+        {
+          "tile": "10",
+          "delta_pp": -0.44490202560827363
+        },
+        {
+          "tile": "20",
+          "delta_pp": -0.2872230488053851
+        }
+      ]
+    },
+    {
+      "dataset": "vaihingen",
+      "condition": "scale4_unseen_blur",
+      "pooled_delta_pp": 0.5864713656449139,
+      "negative_tiles": 5,
+      "tile_count": 17,
+      "worst_tiles": [
+        {
+          "tile": "33",
+          "delta_pp": -0.6852870652457543
+        },
+        {
+          "tile": "14",
+          "delta_pp": -0.33731506502985287
+        },
+        {
+          "tile": "29",
+          "delta_pp": -0.2754028622381388
+        }
+      ]
+    }
+  ],
+  "focus_details": [
+    {
+      "dataset": "potsdam",
+      "tile": "5_10",
+      "condition": "scale2_clean",
+      "primary_scope": "noboundary",
+      "delta_fg5_pp": 0.045367760831749315,
+      "by_class": [
+        {
+          "class_id": 0,
+          "name": "Impervious",
+          "true_pixels": 9075065,
+          "fixed_iou": 0.8967740116613278,
+          "learned_iou": 0.897739730160175,
+          "delta_iou_pp": 0.09657184988473011,
+          "delta_correct_pixels": 7177,
+          "delta_false_positive": -2384,
+          "delta_false_negative": -7177
+        },
+        {
+          "class_id": 1,
+          "name": "Building",
+          "true_pixels": 7876254,
+          "fixed_iou": 0.9291615311008256,
+          "learned_iou": 0.9317035006054272,
+          "delta_iou_pp": 0.25419695046016155,
+          "delta_correct_pixels": 9745,
+          "delta_false_positive": -12108,
+          "delta_false_negative": -9745
+        },
+        {
+          "class_id": 2,
+          "name": "LowVegetation",
+          "true_pixels": 7883168,
+          "fixed_iou": 0.784781210764439,
+          "learned_iou": 0.7837806433179347,
+          "delta_iou_pp": -0.10005674465042302,
+          "delta_correct_pixels": -21783,
+          "delta_false_positive": -16137,
+          "delta_false_negative": 21783
+        },
+        {
+          "class_id": 3,
+          "name": "Tree",
+          "true_pixels": 7295650,
+          "fixed_iou": 0.8001075449756793,
+          "learned_iou": 0.8030986501466116,
+          "delta_iou_pp": 0.2991105170932373,
+          "delta_correct_pixels": 23759,
+          "delta_false_positive": 833,
+          "delta_false_negative": -23759
+        },
+        {
+          "class_id": 4,
+          "name": "Car",
+          "true_pixels": 285006,
+          "fixed_iou": 0.9305145375267954,
+          "learned_iou": 0.9272846998405061,
+          "delta_iou_pp": -0.3229837686289261,
+          "delta_correct_pixels": -187,
+          "delta_false_positive": 848,
+          "delta_false_negative": 187
+        },
+        {
+          "class_id": 5,
+          "name": "Clutter",
+          "true_pixels": 1060111,
+          "fixed_iou": 0.5838653305502615,
+          "learned_iou": 0.5771523278885103,
+          "delta_iou_pp": -0.6713002661751122,
+          "delta_correct_pixels": -1415,
+          "delta_false_positive": 11652,
+          "delta_false_negative": 1415
+        }
+      ],
+      "boundary_f1_fixed": {
+        "Impervious": 0.6423870676587853,
+        "Building": 0.6220038956542084,
+        "LowVegetation": 0.5091824409726803,
+        "Tree": 0.3118556982278131,
+        "Car": 0.907183589243522
+      },
+      "boundary_f1_learned": {
+        "Impervious": 0.643300938707411,
+        "Building": 0.6351990073173537,
+        "LowVegetation": 0.5087228927616306,
+        "Tree": 0.3163335469002704,
+        "Car": 0.9033888724911211
+      },
+      "reconstruction_fixed": {
+        "pixel_l1": 0.008631618827271552,
+        "pixel_mse": 0.0002393570010668863,
+        "psnr_db": 36.20953865110176,
+        "highpass_l1": 0.00915575546471293,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      },
+      "reconstruction_learned": {
+        "pixel_l1": 0.03196534899397323,
+        "pixel_mse": 0.0017120431470153614,
+        "psnr_db": 27.664852944050363,
+        "highpass_l1": 0.00943248732591772,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      }
+    },
+    {
+      "dataset": "potsdam",
+      "tile": "5_10",
+      "condition": "scale4_clean",
+      "primary_scope": "noboundary",
+      "delta_fg5_pp": 0.27808508113565944,
+      "by_class": [
+        {
+          "class_id": 0,
+          "name": "Impervious",
+          "true_pixels": 9075065,
+          "fixed_iou": 0.8841255079626832,
+          "learned_iou": 0.8841051780153523,
+          "delta_iou_pp": -0.0020329947330921527,
+          "delta_correct_pixels": 13543,
+          "delta_false_positive": 15543,
+          "delta_false_negative": -13543
+        },
+        {
+          "class_id": 1,
+          "name": "Building",
+          "true_pixels": 7876254,
+          "fixed_iou": 0.9269856700102262,
+          "learned_iou": 0.9269636083366594,
+          "delta_iou_pp": -0.0022061673566886597,
+          "delta_correct_pixels": -4086,
+          "delta_false_positive": -4211,
+          "delta_false_negative": 4086
+        },
+        {
+          "class_id": 2,
+          "name": "LowVegetation",
+          "true_pixels": 7883168,
+          "fixed_iou": 0.7602158845359979,
+          "learned_iou": 0.7642336040954971,
+          "delta_iou_pp": 0.40177195594992554,
+          "delta_correct_pixels": -5063,
+          "delta_false_positive": -55841,
+          "delta_false_negative": 5063
+        },
+        {
+          "class_id": 3,
+          "name": "Tree",
+          "true_pixels": 7295650,
+          "fixed_iou": 0.7504211723102818,
+          "learned_iou": 0.7588131791076415,
+          "delta_iou_pp": 0.839200679735963,
+          "delta_correct_pixels": 53513,
+          "delta_false_positive": -15895,
+          "delta_false_negative": -53513
+        },
+        {
+          "class_id": 4,
+          "name": "Car",
+          "true_pixels": 285006,
+          "fixed_iou": 0.8955620447325354,
+          "learned_iou": 0.897098964053358,
+          "delta_iou_pp": 0.15369193208225607,
+          "delta_correct_pixels": 278,
+          "delta_false_positive": -224,
+          "delta_false_negative": -278
+        },
+        {
+          "class_id": 5,
+          "name": "Clutter",
+          "true_pixels": 1060111,
+          "fixed_iou": 0.5419133824303612,
+          "learned_iou": 0.5480977003753653,
+          "delta_iou_pp": 0.618431794500407,
+          "delta_correct_pixels": 5653,
+          "delta_false_positive": -3210,
+          "delta_false_negative": -5653
+        }
+      ],
+      "boundary_f1_fixed": {
+        "Impervious": 0.6165669958313372,
+        "Building": 0.6105832881042916,
+        "LowVegetation": 0.4894566536050269,
+        "Tree": 0.2733916225429526,
+        "Car": 0.8810635755918651
+      },
+      "boundary_f1_learned": {
+        "Impervious": 0.6177831230732022,
+        "Building": 0.6197902090722427,
+        "LowVegetation": 0.49326950105010786,
+        "Tree": 0.27801494336297355,
+        "Car": 0.8800112447488975
+      },
+      "reconstruction_fixed": {
+        "pixel_l1": 0.016223042532003518,
+        "pixel_mse": 0.0008803334682193956,
+        "psnr_db": 30.553527869694577,
+        "highpass_l1": 0.014270466083934192,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      },
+      "reconstruction_learned": {
+        "pixel_l1": 0.03621765924236199,
+        "pixel_mse": 0.0023314222316688986,
+        "psnr_db": 26.32379066557487,
+        "highpass_l1": 0.014550140755463488,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      }
+    },
+    {
+      "dataset": "potsdam",
+      "tile": "5_10",
+      "condition": "scale2_unseen_blur",
+      "primary_scope": "noboundary",
+      "delta_fg5_pp": -0.20913950729124497,
+      "by_class": [
+        {
+          "class_id": 0,
+          "name": "Impervious",
+          "true_pixels": 9075065,
+          "fixed_iou": 0.8915963789971448,
+          "learned_iou": 0.8926559648661836,
+          "delta_iou_pp": 0.10595858690387594,
+          "delta_correct_pixels": 12962,
+          "delta_false_positive": 3000,
+          "delta_false_negative": -12962
+        },
+        {
+          "class_id": 1,
+          "name": "Building",
+          "true_pixels": 7876254,
+          "fixed_iou": 0.9273048212074207,
+          "learned_iou": 0.9279092646962631,
+          "delta_iou_pp": 0.060444348884236554,
+          "delta_correct_pixels": 474,
+          "delta_false_positive": -4880,
+          "delta_false_negative": -474
+        },
+        {
+          "class_id": 2,
+          "name": "LowVegetation",
+          "true_pixels": 7883168,
+          "fixed_iou": 0.7791339918153367,
+          "learned_iou": 0.7774564771003561,
+          "delta_iou_pp": -0.16775147149805658,
+          "delta_correct_pixels": -9793,
+          "delta_false_positive": 7199,
+          "delta_false_negative": 9793
+        },
+        {
+          "class_id": 3,
+          "name": "Tree",
+          "true_pixels": 7295650,
+          "fixed_iou": 0.7812785102857753,
+          "learned_iou": 0.7802219679651594,
+          "delta_iou_pp": -0.10565423206159164,
+          "delta_correct_pixels": -9560,
+          "delta_false_positive": -1762,
+          "delta_false_negative": 9560
+        },
+        {
+          "class_id": 4,
+          "name": "Car",
+          "true_pixels": 285006,
+          "fixed_iou": 0.9058586119496956,
+          "learned_iou": 0.8964716642628487,
+          "delta_iou_pp": -0.9386947686846892,
+          "delta_correct_pixels": -234,
+          "delta_false_positive": 2982,
+          "delta_false_negative": 234
+        },
+        {
+          "class_id": 5,
+          "name": "Clutter",
+          "true_pixels": 1060111,
+          "fixed_iou": 0.5655738902343217,
+          "learned_iou": 0.5653898505660083,
+          "delta_iou_pp": -0.01840396683133738,
+          "delta_correct_pixels": -285,
+          "delta_false_positive": -103,
+          "delta_false_negative": 285
+        }
+      ],
+      "boundary_f1_fixed": null,
+      "boundary_f1_learned": null,
+      "reconstruction_fixed": {
+        "pixel_l1": 0.01683730438642706,
+        "pixel_mse": 0.000961070390425214,
+        "psnr_db": 30.172448027021975,
+        "highpass_l1": 0.014052962169530036,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      },
+      "reconstruction_learned": {
+        "pixel_l1": 0.03634250814725411,
+        "pixel_mse": 0.0023500296406368075,
+        "psnr_db": 26.28926659990466,
+        "highpass_l1": 0.014204503183159802,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      }
+    },
+    {
+      "dataset": "potsdam",
+      "tile": "5_10",
+      "condition": "scale4_unseen_blur",
+      "primary_scope": "noboundary",
+      "delta_fg5_pp": 0.5698193822923359,
+      "by_class": [
+        {
+          "class_id": 0,
+          "name": "Impervious",
+          "true_pixels": 9075065,
+          "fixed_iou": 0.8795060440397054,
+          "learned_iou": 0.8844448198673819,
+          "delta_iou_pp": 0.4938775827676434,
+          "delta_correct_pixels": 15385,
+          "delta_false_positive": -37285,
+          "delta_false_negative": -15385
+        },
+        {
+          "class_id": 1,
+          "name": "Building",
+          "true_pixels": 7876254,
+          "fixed_iou": 0.9255356732193675,
+          "learned_iou": 0.9273988366345971,
+          "delta_iou_pp": 0.18631634152296295,
+          "delta_correct_pixels": -144,
+          "delta_false_positive": -16806,
+          "delta_false_negative": 144
+        },
+        {
+          "class_id": 2,
+          "name": "LowVegetation",
+          "true_pixels": 7883168,
+          "fixed_iou": 0.7587542592322691,
+          "learned_iou": 0.762986236085955,
+          "delta_iou_pp": 0.4231976853685815,
+          "delta_correct_pixels": 10462,
+          "delta_false_positive": -38121,
+          "delta_false_negative": -10462
+        },
+        {
+          "class_id": 3,
+          "name": "Tree",
+          "true_pixels": 7295650,
+          "fixed_iou": 0.7453793814564226,
+          "learned_iou": 0.7547636738120603,
+          "delta_iou_pp": 0.9384292355637758,
+          "delta_correct_pixels": 54741,
+          "delta_false_positive": -25144,
+          "delta_false_negative": -54741
+        },
+        {
+          "class_id": 4,
+          "name": "Car",
+          "true_pixels": 285006,
+          "fixed_iou": 0.8707361254255286,
+          "learned_iou": 0.8788088860879155,
+          "delta_iou_pp": 0.8072760662386935,
+          "delta_correct_pixels": 89,
+          "delta_false_positive": -2840,
+          "delta_false_negative": -89
+        },
+        {
+          "class_id": 5,
+          "name": "Clutter",
+          "true_pixels": 1060111,
+          "fixed_iou": 0.5255732083098639,
+          "learned_iou": 0.5425868516616009,
+          "delta_iou_pp": 1.7013643351737051,
+          "delta_correct_pixels": 27266,
+          "delta_false_positive": 12397,
+          "delta_false_negative": -27266
+        }
+      ],
+      "boundary_f1_fixed": null,
+      "boundary_f1_learned": null,
+      "reconstruction_fixed": {
+        "pixel_l1": 0.018707753669073842,
+        "pixel_mse": 0.0011729125289109117,
+        "psnr_db": 29.30734374608926,
+        "highpass_l1": 0.014657570038603475,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      },
+      "reconstruction_learned": {
+        "pixel_l1": 0.03763923864921986,
+        "pixel_mse": 0.0025763278703833797,
+        "psnr_db": 25.88998868316385,
+        "highpass_l1": 0.014891001141777412,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      }
+    },
+    {
+      "dataset": "vaihingen",
+      "tile": "20",
+      "condition": "scale2_clean",
+      "primary_scope": "full",
+      "delta_fg5_pp": -0.8148628941898273,
+      "by_class": [
+        {
+          "class_id": 0,
+          "name": "Impervious",
+          "true_pixels": 869283,
+          "fixed_iou": 0.7805770125929282,
+          "learned_iou": 0.7778925018300392,
+          "delta_iou_pp": -0.2684510762889003,
+          "delta_correct_pixels": -4815,
+          "delta_false_positive": -2861,
+          "delta_false_negative": 4815
+        },
+        {
+          "class_id": 1,
+          "name": "Building",
+          "true_pixels": 706010,
+          "fixed_iou": 0.7652635150342474,
+          "learned_iou": 0.764539550557518,
+          "delta_iou_pp": -0.07239644767293996,
+          "delta_correct_pixels": -986,
+          "delta_false_positive": -444,
+          "delta_false_negative": 986
+        },
+        {
+          "class_id": 2,
+          "name": "LowVegetation",
+          "true_pixels": 836022,
+          "fixed_iou": 0.6478244167339193,
+          "learned_iou": 0.6482130039401185,
+          "delta_iou_pp": 0.038858720619916465,
+          "delta_correct_pixels": 8728,
+          "delta_false_positive": 12892,
+          "delta_false_negative": -8728
+        },
+        {
+          "class_id": 3,
+          "name": "Tree",
+          "true_pixels": 1773847,
+          "fixed_iou": 0.8564084484997955,
+          "learned_iou": 0.8586460883679213,
+          "delta_iou_pp": 0.22376398681258625,
+          "delta_correct_pixels": -4080,
+          "delta_false_positive": -9830,
+          "delta_false_negative": 4080
+        },
+        {
+          "class_id": 4,
+          "name": "Car",
+          "true_pixels": 17858,
+          "fixed_iou": 0.6250989358895436,
+          "learned_iou": 0.5851380393453464,
+          "delta_iou_pp": -3.996089654419721,
+          "delta_correct_pixels": -58,
+          "delta_false_positive": 1454,
+          "delta_false_negative": 58
+        },
+        {
+          "class_id": 5,
+          "name": "Clutter",
+          "true_pixels": 116770,
+          "fixed_iou": 0.0,
+          "learned_iou": 0.0,
+          "delta_iou_pp": 0.0,
+          "delta_correct_pixels": 0,
+          "delta_false_positive": 0,
+          "delta_false_negative": 0
+        }
+      ],
+      "boundary_f1_fixed": {
+        "Impervious": 0.5512463660068786,
+        "Building": 0.6862899033901432,
+        "LowVegetation": 0.472922638646034,
+        "Tree": 0.5696150859019298,
+        "Car": 0.8106307344054925
+      },
+      "boundary_f1_learned": {
+        "Impervious": 0.5444428838195902,
+        "Building": 0.681550548190064,
+        "LowVegetation": 0.4856128446251576,
+        "Tree": 0.5818560543108774,
+        "Car": 0.7770862226807413
+      },
+      "reconstruction_fixed": {
+        "pixel_l1": 0.011422588676214217,
+        "pixel_mse": 0.00037281455006450416,
+        "psnr_db": 34.28507146507391,
+        "highpass_l1": 0.011972413957118988,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      },
+      "reconstruction_learned": {
+        "pixel_l1": 0.05717863241831462,
+        "pixel_mse": 0.004599321261048317,
+        "psnr_db": 23.373062540424783,
+        "highpass_l1": 0.012717672934134802,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      }
+    },
+    {
+      "dataset": "vaihingen",
+      "tile": "33",
+      "condition": "scale2_clean",
+      "primary_scope": "full",
+      "delta_fg5_pp": 0.1506971955627212,
+      "by_class": [
+        {
+          "class_id": 0,
+          "name": "Impervious",
+          "true_pixels": 1554472,
+          "fixed_iou": 0.8521839118110663,
+          "learned_iou": 0.8578312267167921,
+          "delta_iou_pp": 0.5647314905725787,
+          "delta_correct_pixels": 734,
+          "delta_false_positive": -10801,
+          "delta_false_negative": -734
+        },
+        {
+          "class_id": 1,
+          "name": "Building",
+          "true_pixels": 1170059,
+          "fixed_iou": 0.8701389735462636,
+          "learned_iou": 0.877174980879289,
+          "delta_iou_pp": 0.7036007333025451,
+          "delta_correct_pixels": 7928,
+          "delta_false_positive": -700,
+          "delta_false_negative": -7928
+        },
+        {
+          "class_id": 2,
+          "name": "LowVegetation",
+          "true_pixels": 621791,
+          "fixed_iou": 0.7268392792845074,
+          "learned_iou": 0.7291669163640334,
+          "delta_iou_pp": 0.23276370795259904,
+          "delta_correct_pixels": -3545,
+          "delta_false_positive": -7282,
+          "delta_false_negative": 3545
+        },
+        {
+          "class_id": 3,
+          "name": "Tree",
+          "true_pixels": 423228,
+          "fixed_iou": 0.7747747945061467,
+          "learned_iou": 0.7636299501862638,
+          "delta_iou_pp": -1.114484431988294,
+          "delta_correct_pixels": 1287,
+          "delta_false_positive": 8349,
+          "delta_false_negative": -1287
+        },
+        {
+          "class_id": 4,
+          "name": "Car",
+          "true_pixels": 51784,
+          "fixed_iou": 0.6075543957161256,
+          "learned_iou": 0.6112231404958678,
+          "delta_iou_pp": 0.3668744779742217,
+          "delta_correct_pixels": 1126,
+          "delta_false_positive": 1488,
+          "delta_false_negative": -1126
+        },
+        {
+          "class_id": 5,
+          "name": "Clutter",
+          "true_pixels": 218121,
+          "fixed_iou": 0.4178465784062624,
+          "learned_iou": 0.4227047917623848,
+          "delta_iou_pp": 0.48582133561224095,
+          "delta_correct_pixels": 1178,
+          "delta_false_positive": 238,
+          "delta_false_negative": -1178
+        }
+      ],
+      "boundary_f1_fixed": {
+        "Impervious": 0.6863696112935709,
+        "Building": 0.6339790979824195,
+        "LowVegetation": 0.6113409998818721,
+        "Tree": 0.6451326021311871,
+        "Car": 0.7710937545562857
+      },
+      "boundary_f1_learned": {
+        "Impervious": 0.7006533060350656,
+        "Building": 0.6526852919535825,
+        "LowVegetation": 0.6158565667457238,
+        "Tree": 0.628161438988047,
+        "Car": 0.7574466411344317
+      },
+      "reconstruction_fixed": {
+        "pixel_l1": 0.011032849674423535,
+        "pixel_mse": 0.0003809267577404777,
+        "psnr_db": 34.191585197756886,
+        "highpass_l1": 0.011391919230421384,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      },
+      "reconstruction_learned": {
+        "pixel_l1": 0.058691989382108053,
+        "pixel_mse": 0.004720962295929591,
+        "psnr_db": 23.259694680574366,
+        "highpass_l1": 0.012111976246039073,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      }
+    },
+    {
+      "dataset": "vaihingen",
+      "tile": "20",
+      "condition": "scale4_clean",
+      "primary_scope": "full",
+      "delta_fg5_pp": -0.21229155123525523,
+      "by_class": [
+        {
+          "class_id": 0,
+          "name": "Impervious",
+          "true_pixels": 869283,
+          "fixed_iou": 0.7785775001173335,
+          "learned_iou": 0.77306847632628,
+          "delta_iou_pp": -0.5509023791053558,
+          "delta_correct_pixels": -3763,
+          "delta_false_positive": 1965,
+          "delta_false_negative": 3763
+        },
+        {
+          "class_id": 1,
+          "name": "Building",
+          "true_pixels": 706010,
+          "fixed_iou": 0.7509128318873014,
+          "learned_iou": 0.752952568787654,
+          "delta_iou_pp": 0.203973690035264,
+          "delta_correct_pixels": -1196,
+          "delta_false_positive": -4036,
+          "delta_false_negative": 1196
+        },
+        {
+          "class_id": 2,
+          "name": "LowVegetation",
+          "true_pixels": 836022,
+          "fixed_iou": 0.6501003036105146,
+          "learned_iou": 0.6471999275222066,
+          "delta_iou_pp": -0.29003760883080654,
+          "delta_correct_pixels": 2550,
+          "delta_false_positive": 8256,
+          "delta_false_negative": -2550
+        },
+        {
+          "class_id": 3,
+          "name": "Tree",
+          "true_pixels": 1773847,
+          "fixed_iou": 0.8551759859369517,
+          "learned_iou": 0.8568842623428792,
+          "delta_iou_pp": 0.17082764059275224,
+          "delta_correct_pixels": -816,
+          "delta_false_positive": -4832,
+          "delta_false_negative": 816
+        },
+        {
+          "class_id": 4,
+          "name": "Car",
+          "true_pixels": 17858,
+          "fixed_iou": 0.532459797498511,
+          "learned_iou": 0.5265066065098292,
+          "delta_iou_pp": -0.5953190988681856,
+          "delta_correct_pixels": 554,
+          "delta_false_positive": 1318,
+          "delta_false_negative": -554
+        },
+        {
+          "class_id": 5,
+          "name": "Clutter",
+          "true_pixels": 116770,
+          "fixed_iou": 0.0,
+          "learned_iou": 0.0,
+          "delta_iou_pp": 0.0,
+          "delta_correct_pixels": 0,
+          "delta_false_positive": 0,
+          "delta_false_negative": 0
+        }
+      ],
+      "boundary_f1_fixed": {
+        "Impervious": 0.5341132366581692,
+        "Building": 0.6612797473389228,
+        "LowVegetation": 0.47344755350782286,
+        "Tree": 0.5692331384847765,
+        "Car": 0.7378374485173285
+      },
+      "boundary_f1_learned": {
+        "Impervious": 0.5382126737009088,
+        "Building": 0.6671412261344851,
+        "LowVegetation": 0.481740024840225,
+        "Tree": 0.5777269763414958,
+        "Car": 0.7344117954433006
+      },
+      "reconstruction_fixed": {
+        "pixel_l1": 0.022150217245022457,
+        "pixel_mse": 0.0013274361069003742,
+        "psnr_db": 28.76986373514585,
+        "highpass_l1": 0.019036956628163657,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      },
+      "reconstruction_learned": {
+        "pixel_l1": 0.06069873074690501,
+        "pixel_mse": 0.005524004871646563,
+        "psnr_db": 22.577459470868373,
+        "highpass_l1": 0.019404036551713945,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      }
+    },
+    {
+      "dataset": "vaihingen",
+      "tile": "33",
+      "condition": "scale4_clean",
+      "primary_scope": "full",
+      "delta_fg5_pp": -0.3316329661301243,
+      "by_class": [
+        {
+          "class_id": 0,
+          "name": "Impervious",
+          "true_pixels": 1554472,
+          "fixed_iou": 0.8401019122024354,
+          "learned_iou": 0.8445916854714977,
+          "delta_iou_pp": 0.44897732690623027,
+          "delta_correct_pixels": 1723,
+          "delta_false_positive": -7420,
+          "delta_false_negative": -1723
+        },
+        {
+          "class_id": 1,
+          "name": "Building",
+          "true_pixels": 1170059,
+          "fixed_iou": 0.8478930715224658,
+          "learned_iou": 0.8463767008227047,
+          "delta_iou_pp": -0.15163706997611825,
+          "delta_correct_pixels": -3375,
+          "delta_false_positive": -1781,
+          "delta_false_negative": 3375
+        },
+        {
+          "class_id": 2,
+          "name": "LowVegetation",
+          "true_pixels": 621791,
+          "fixed_iou": 0.7122578892209758,
+          "learned_iou": 0.7030150799383265,
+          "delta_iou_pp": -0.9242809282649311,
+          "delta_correct_pixels": -8362,
+          "delta_false_positive": -1733,
+          "delta_false_negative": 8362
+        },
+        {
+          "class_id": 3,
+          "name": "Tree",
+          "true_pixels": 423228,
+          "fixed_iou": 0.7452808162912361,
+          "learned_iou": 0.7273881060374857,
+          "delta_iou_pp": -1.7892710253750388,
+          "delta_correct_pixels": 841,
+          "delta_false_positive": 12535,
+          "delta_false_negative": -841
+        },
+        {
+          "class_id": 4,
+          "name": "Car",
+          "true_pixels": 51784,
+          "fixed_iou": 0.5686583075283009,
+          "learned_iou": 0.5762387761888926,
+          "delta_iou_pp": 0.7580468660591699,
+          "delta_correct_pixels": 1049,
+          "delta_false_positive": 1043,
+          "delta_false_negative": -1049
+        },
+        {
+          "class_id": 5,
+          "name": "Clutter",
+          "true_pixels": 218121,
+          "fixed_iou": 0.37553559025428696,
+          "learned_iou": 0.3930576183574662,
+          "delta_iou_pp": 1.7522028103179266,
+          "delta_correct_pixels": 4335,
+          "delta_false_positive": 1145,
+          "delta_false_negative": -4335
+        }
+      ],
+      "boundary_f1_fixed": {
+        "Impervious": 0.6545742587211277,
+        "Building": 0.5907493587740498,
+        "LowVegetation": 0.5832172191326616,
+        "Tree": 0.5973330559083004,
+        "Car": 0.7413390547376355
+      },
+      "boundary_f1_learned": {
+        "Impervious": 0.6756213032123372,
+        "Building": 0.5990909797302664,
+        "LowVegetation": 0.5854726467775782,
+        "Tree": 0.5892283247090199,
+        "Car": 0.746591247328951
+      },
+      "reconstruction_fixed": {
+        "pixel_l1": 0.022379819552103677,
+        "pixel_mse": 0.0015787123702466488,
+        "psnr_db": 28.0169698803693,
+        "highpass_l1": 0.01882892524202665,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      },
+      "reconstruction_learned": {
+        "pixel_l1": 0.06331862906614939,
+        "pixel_mse": 0.005963085343440374,
+        "psnr_db": 22.24528975004422,
+        "highpass_l1": 0.0192587914566199,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      }
+    },
+    {
+      "dataset": "vaihingen",
+      "tile": "20",
+      "condition": "scale2_unseen_blur",
+      "primary_scope": "full",
+      "delta_fg5_pp": -0.2872230488053851,
+      "by_class": [
+        {
+          "class_id": 0,
+          "name": "Impervious",
+          "true_pixels": 869283,
+          "fixed_iou": 0.7749875619712551,
+          "learned_iou": 0.7775451194646854,
+          "delta_iou_pp": 0.255755749343034,
+          "delta_correct_pixels": -2645,
+          "delta_false_positive": -6595,
+          "delta_false_negative": 2645
+        },
+        {
+          "class_id": 1,
+          "name": "Building",
+          "true_pixels": 706010,
+          "fixed_iou": 0.7550406769937531,
+          "learned_iou": 0.758719419302805,
+          "delta_iou_pp": 0.36787423090518523,
+          "delta_correct_pixels": 837,
+          "delta_false_positive": -3241,
+          "delta_false_negative": -837
+        },
+        {
+          "class_id": 2,
+          "name": "LowVegetation",
+          "true_pixels": 836022,
+          "fixed_iou": 0.6463500899437248,
+          "learned_iou": 0.6458734762066625,
+          "delta_iou_pp": -0.04766137370623147,
+          "delta_correct_pixels": 9285,
+          "delta_false_positive": 15079,
+          "delta_false_negative": -9285
+        },
+        {
+          "class_id": 3,
+          "name": "Tree",
+          "true_pixels": 1773847,
+          "fixed_iou": 0.855712477246867,
+          "learned_iou": 0.8570319070201209,
+          "delta_iou_pp": 0.1319429773253833,
+          "delta_correct_pixels": -5113,
+          "delta_false_positive": -8971,
+          "delta_false_negative": 5113
+        },
+        {
+          "class_id": 4,
+          "name": "Car",
+          "true_pixels": 17858,
+          "fixed_iou": 0.5399304082152253,
+          "learned_iou": 0.5184901399362826,
+          "delta_iou_pp": -2.1440268278942742,
+          "delta_correct_pixels": 133,
+          "delta_false_positive": 1231,
+          "delta_false_negative": -133
+        },
+        {
+          "class_id": 5,
+          "name": "Clutter",
+          "true_pixels": 116770,
+          "fixed_iou": 0.0,
+          "learned_iou": 0.0,
+          "delta_iou_pp": 0.0,
+          "delta_correct_pixels": 0,
+          "delta_false_positive": 0,
+          "delta_false_negative": 0
+        }
+      ],
+      "boundary_f1_fixed": null,
+      "boundary_f1_learned": null,
+      "reconstruction_fixed": {
+        "pixel_l1": 0.024111559987068175,
+        "pixel_mse": 0.0015341157093644142,
+        "psnr_db": 28.141418828620594,
+        "highpass_l1": 0.018909412870804467,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      },
+      "reconstruction_learned": {
+        "pixel_l1": 0.06100426216920217,
+        "pixel_mse": 0.005636741717656453,
+        "psnr_db": 22.48971864623919,
+        "highpass_l1": 0.01911112169424693,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      }
+    },
+    {
+      "dataset": "vaihingen",
+      "tile": "33",
+      "condition": "scale2_unseen_blur",
+      "primary_scope": "full",
+      "delta_fg5_pp": -1.421079099297573,
+      "by_class": [
+        {
+          "class_id": 0,
+          "name": "Impervious",
+          "true_pixels": 1554472,
+          "fixed_iou": 0.8433066657073591,
+          "learned_iou": 0.8414145642018702,
+          "delta_iou_pp": -0.1892101505488908,
+          "delta_correct_pixels": 1371,
+          "delta_false_positive": 5630,
+          "delta_false_negative": -1371
+        },
+        {
+          "class_id": 1,
+          "name": "Building",
+          "true_pixels": 1170059,
+          "fixed_iou": 0.8438293949498596,
+          "learned_iou": 0.8302737401915202,
+          "delta_iou_pp": -1.355565475833942,
+          "delta_correct_pixels": -17359,
+          "delta_false_positive": -877,
+          "delta_false_negative": 17359
+        },
+        {
+          "class_id": 2,
+          "name": "LowVegetation",
+          "true_pixels": 621791,
+          "fixed_iou": 0.7012404046566011,
+          "learned_iou": 0.6751034429313891,
+          "delta_iou_pp": -2.613696172521196,
+          "delta_correct_pixels": -20357,
+          "delta_false_positive": 309,
+          "delta_false_negative": 20357
+        },
+        {
+          "class_id": 3,
+          "name": "Tree",
+          "true_pixels": 423228,
+          "fixed_iou": 0.7507005309402075,
+          "learned_iou": 0.7224662288385377,
+          "delta_iou_pp": -2.8234302101669773,
+          "delta_correct_pixels": 4343,
+          "delta_false_positive": 23905,
+          "delta_false_negative": -4343
+        },
+        {
+          "class_id": 4,
+          "name": "Car",
+          "true_pixels": 51784,
+          "fixed_iou": 0.5692156930165388,
+          "learned_iou": 0.5679807581423699,
+          "delta_iou_pp": -0.12349348741689248,
+          "delta_correct_pixels": 1368,
+          "delta_false_positive": 2535,
+          "delta_false_negative": -1368
+        },
+        {
+          "class_id": 5,
+          "name": "Clutter",
+          "true_pixels": 218121,
+          "fixed_iou": 0.37761759183802107,
+          "learned_iou": 0.3719181808779953,
+          "delta_iou_pp": -0.5699410960025797,
+          "delta_correct_pixels": -1158,
+          "delta_false_positive": 290,
+          "delta_false_negative": 1158
+        }
+      ],
+      "boundary_f1_fixed": null,
+      "boundary_f1_learned": null,
+      "reconstruction_fixed": {
+        "pixel_l1": 0.0249232346812884,
+        "pixel_mse": 0.0019279721813897292,
+        "psnr_db": 27.148992368004578,
+        "highpass_l1": 0.018758508563041686,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      },
+      "reconstruction_learned": {
+        "pixel_l1": 0.06515415012836456,
+        "pixel_mse": 0.006319015721480052,
+        "psnr_db": 21.993505641258775,
+        "highpass_l1": 0.019071337580680848,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      }
+    },
+    {
+      "dataset": "vaihingen",
+      "tile": "20",
+      "condition": "scale4_unseen_blur",
+      "primary_scope": "full",
+      "delta_fg5_pp": 0.47056168761649975,
+      "by_class": [
+        {
+          "class_id": 0,
+          "name": "Impervious",
+          "true_pixels": 869283,
+          "fixed_iou": 0.7738934548077983,
+          "learned_iou": 0.7803183776509738,
+          "delta_iou_pp": 0.6424922843175529,
+          "delta_correct_pixels": 3568,
+          "delta_false_positive": -3348,
+          "delta_false_negative": -3568
+        },
+        {
+          "class_id": 1,
+          "name": "Building",
+          "true_pixels": 706010,
+          "fixed_iou": 0.7508002473744225,
+          "learned_iou": 0.7607352888442643,
+          "delta_iou_pp": 0.993504146984181,
+          "delta_correct_pixels": 2653,
+          "delta_false_positive": -8275,
+          "delta_false_negative": -2653
+        },
+        {
+          "class_id": 2,
+          "name": "LowVegetation",
+          "true_pixels": 836022,
+          "fixed_iou": 0.6393218857775997,
+          "learned_iou": 0.6425794905643086,
+          "delta_iou_pp": 0.325760478670889,
+          "delta_correct_pixels": 9530,
+          "delta_false_positive": 9958,
+          "delta_false_negative": -9530
+        },
+        {
+          "class_id": 3,
+          "name": "Tree",
+          "true_pixels": 1773847,
+          "fixed_iou": 0.8489240056021838,
+          "learned_iou": 0.8530430776933305,
+          "delta_iou_pp": 0.41190720911467027,
+          "delta_correct_pixels": -2738,
+          "delta_false_positive": -12684,
+          "delta_false_negative": 2738
+        },
+        {
+          "class_id": 4,
+          "name": "Car",
+          "true_pixels": 17858,
+          "fixed_iou": 0.49191112582233437,
+          "learned_iou": 0.4917025690122866,
+          "delta_iou_pp": -0.02085568100477775,
+          "delta_correct_pixels": 437,
+          "delta_false_positive": 899,
+          "delta_false_negative": -437
+        },
+        {
+          "class_id": 5,
+          "name": "Clutter",
+          "true_pixels": 116770,
+          "fixed_iou": 0.0,
+          "learned_iou": 0.0,
+          "delta_iou_pp": 0.0,
+          "delta_correct_pixels": 0,
+          "delta_false_positive": 0,
+          "delta_false_negative": 0
+        }
+      ],
+      "boundary_f1_fixed": null,
+      "boundary_f1_learned": null,
+      "reconstruction_fixed": {
+        "pixel_l1": 0.026876085003217063,
+        "pixel_mse": 0.00189163563773036,
+        "psnr_db": 27.231625126287785,
+        "highpass_l1": 0.019856372227271397,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      },
+      "reconstruction_learned": {
+        "pixel_l1": 0.06241551736990611,
+        "pixel_mse": 0.005992962668339412,
+        "psnr_db": 22.22358427623837,
+        "highpass_l1": 0.020081506421168644,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      }
+    },
+    {
+      "dataset": "vaihingen",
+      "tile": "33",
+      "condition": "scale4_unseen_blur",
+      "primary_scope": "full",
+      "delta_fg5_pp": -0.6852870652457543,
+      "by_class": [
+        {
+          "class_id": 0,
+          "name": "Impervious",
+          "true_pixels": 1554472,
+          "fixed_iou": 0.836375595659558,
+          "learned_iou": 0.8399972314647408,
+          "delta_iou_pp": 0.3621635805182821,
+          "delta_correct_pixels": -3843,
+          "delta_false_positive": -12290,
+          "delta_false_negative": 3843
+        },
+        {
+          "class_id": 1,
+          "name": "Building",
+          "true_pixels": 1170059,
+          "fixed_iou": 0.8363033213936828,
+          "learned_iou": 0.8274205319493999,
+          "delta_iou_pp": -0.888278944428289,
+          "delta_correct_pixels": -6940,
+          "delta_false_positive": 4800,
+          "delta_false_negative": 6940
+        },
+        {
+          "class_id": 2,
+          "name": "LowVegetation",
+          "true_pixels": 621791,
+          "fixed_iou": 0.68953780884645,
+          "learned_iou": 0.6727847586133494,
+          "delta_iou_pp": -1.6753050233100586,
+          "delta_correct_pixels": -11734,
+          "delta_false_positive": 2386,
+          "delta_false_negative": 11734
+        },
+        {
+          "class_id": 3,
+          "name": "Tree",
+          "true_pixels": 423228,
+          "fixed_iou": 0.7332280074607027,
+          "learned_iou": 0.7166540423590855,
+          "delta_iou_pp": -1.6573965101617238,
+          "delta_correct_pixels": 3241,
+          "delta_false_positive": 15223,
+          "delta_false_negative": -3241
+        },
+        {
+          "class_id": 4,
+          "name": "Car",
+          "true_pixels": 51784,
+          "fixed_iou": 0.5565979381443299,
+          "learned_iou": 0.5609217538558597,
+          "delta_iou_pp": 0.43238157115298437,
+          "delta_correct_pixels": 1392,
+          "delta_false_positive": 2033,
+          "delta_false_negative": -1392
+        },
+        {
+          "class_id": 5,
+          "name": "Clutter",
+          "true_pixels": 218121,
+          "fixed_iou": 0.35300630909123776,
+          "learned_iou": 0.3736842105263158,
+          "delta_iou_pp": 2.0677901435078025,
+          "delta_correct_pixels": 4890,
+          "delta_false_positive": 842,
+          "delta_false_negative": -4890
+        }
+      ],
+      "boundary_f1_fixed": null,
+      "boundary_f1_learned": null,
+      "reconstruction_fixed": {
+        "pixel_l1": 0.027968051532904308,
+        "pixel_mse": 0.0024001846089959145,
+        "psnr_db": 26.19755353461369,
+        "highpass_l1": 0.019804574300845465,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      },
+      "reconstruction_learned": {
+        "pixel_l1": 0.06686934133370717,
+        "pixel_mse": 0.006804458672801653,
+        "psnr_db": 21.672064192874473,
+        "highpass_l1": 0.020113567014535268,
+        "normalization": "inference_patch_pixel_weighted; overlapping windows counted repeatedly"
+      }
+    }
+  ],
+  "boundary_note": "boundary counts use FullGT; unavailable for unseen blur conditions",
+  "reconstruction_note": "inference patch pixel weighted; overlapping windows repeated"
+}
