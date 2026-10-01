@@ -1,15 +1,11 @@
-# 下一步：实现并启动D24四角度开发筛选
+# 下一步：在服务器nohup启动D24十五组
 
-更新2026-10-01 22:37:26（Asia/Shanghai）。D23已完成复核，不能恢复/重跑。用户要求今晚多组实验和多角度文献参考；[15组定稿协议](../protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md)与[机器计划](../../records/research_d24_overnight_plan_20261001/plan.json)已写明预算、loss、对照、选模和停止条件，替代旧四组草案。
+更新2026-10-01 23:57:09。用户已明确“按计划进行吧”。[15组科学协议](../protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md)及代码全部实现，15项本地CPU必要检查PASS；[执行说明](../protocols/D24_OVERNIGHT_EXECUTION_20261001.md)包含启动、进度、恢复和轻量上传命令。无新增服务器运行观测，不能称已经启动。
 
-**实现未完成、未启动。**立即工作是沿现有M0/R0和post-D21 last4链实现A/C/D目标与队列，B用同容量原型结构补入。不能把设计文件当成可执行训练程序。
+直接从固定执行提交导出standalone launcher，nohup运行；GPU0先A0，GPU1先A2。两H10080GB、内存/磁盘充足已确认，不跑资源/预算探针，不再征询这些已知条件。正式首步验证新梯度范围，8线程准备物理batch16，无梯度累积。4000步/组，合计60000；每job最多6h，失败留证并继续其他任务，不能把技术失败当科学负结果。
 
-1. 复用现有checkpoint/输入/split及已知环境；新M0载体显式mask，骨干冻结/last4两范围；clean固定R0参照Pair。物理batch16，无累积，BF16训练、FP32评价。
-2. C四组光学学生、固定M0/R0教师，同CE与KD预算；纠错区域和打乱区域数量完全相同。B四组同参数容量，类别/通用slot与类别CE两因素分别可消融。
-3. 仅检查新梯度/冻结、mask、容量、标签不进推理、恢复/防重复等必要正确性。无新资源探针、无重复D23统计审计、无再次询问GPU/RAM/磁盘。
-4. 发布执行提交；nohup控制器，GPU0/1各一job，独立zzx实验目录，全部日志/快照/轻量原计数上传GitHub。优先A四组，再C0/C2和D0/D2，补C1/C3/D1及B。未实现job明确排队待实现，不阻塞已有实现。
-5. 每组4000步，2000/4000clean Val2选checkpoint，选定后一次14条件评价；15次训练共60000更新。每job上限6h，失败留证并继续其他job；不承诺所有任务今夜完成，ETA用首批正常任务更新。
+全部产物在records/research_d24_overnight_<timestamp>_<pid>，属于/home/jovyan/zzx；D23目录保留不动。主Git工作副本只fetch，不checkout/reset。控制器锁与job锁防重复；断线不会终止nohup/独立worker，确需恢复时同一目录和同一执行提交，已完成组跳过、未完成同绑定checkpoint/RNG恢复。
 
-研究问题不变，论文贡献未采纳。机制须胜同预算强CE/容量对照；增强/适配收益单独报告。C按光学能力判断，不把不用DSM的结构事实包装成融合可靠性。Test6禁读，多次开发选择不能当独立确认；协议通过仅支持另规划最多两条候选复验。
+完成后自动screen_result/results.csv，手动终端运行uploader以便凭据交互，长输出直接GitHub读取。评价原计数/配置/绑定/轻量日志上传；模型/预测仍在服务器并索引。Val2选checkpoint，Test6禁读；C按光学能力比较，普通增强/更新单独判断，最多两条筛选通过假设另立确认，不自动开多种子。
 
-[当前交接](HANDOFF.md)、[状态](PROJECT_STATUS.md)、[近期论文](../literature/RECENT_MULTIMODAL_SEGMENTATION_20261001.md)。
+[当前交接](HANDOFF.md)、[机器计划](../../records/research_d24_overnight_plan_20261001/plan.json)、[本地检查记录](../../records/research_d24_overnight_plan_20261001/local_validation.json)。

@@ -11,7 +11,7 @@
 3. [当前状态](current/PROJECT_STATUS.md)：简要阶段表，不把旧PID当实时状态。
 4. [下一步](current/NEXT_EXPERIMENT.md)：接续既定任务，再定稿下一假设。
 
-当前仍为可行性探索。问题是辅助模态质量变化时保留DSM有益融合、控制负迁移并支持DSM缺失；频率/语义/门控可去留，C1恢复为旁支，部分解冻为强基线。[D23八组完整开发结果](experiments/D23_EIGHT_ARM_RESULTS_20261001.md)已完成并复核，当前TSF具体解法关闭确认路径；所有学习gate综合低于M0_safe。下一步实现[四角度15组夜间计划](protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md)：分组/科学协议已定稿，代码尚未完成、未启动；不再恢复或重跑D23。最终章节与贡献未冻结。
+当前仍为可行性探索。问题是辅助模态质量变化时保留DSM有益融合、控制负迁移并支持DSM缺失；频率/语义/门控可去留，C1恢复为旁支，部分解冻为强基线。[D23八组完整开发结果](experiments/D23_EIGHT_ARM_RESULTS_20261001.md)已完成并复核，当前TSF具体解法关闭确认路径；所有学习gate综合低于M0_safe。下一步实现[四角度15组夜间计划](protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md)：分组/科学协议及15组代码完成，本地15项CPU检查PASS，服务器尚未启动；直接执行[nohup说明](protocols/D24_OVERNIGHT_EXECUTION_20261001.md)；不再恢复或重跑D23。最终章节与贡献未冻结。
 
 用户新增要求：实质新实验须参考近期原论文并明确借鉴、差异、假设和对照。已完成[2025—2026文献映射](literature/RECENT_MULTIMODAL_SEGMENTATION_20261001.md)，按[文献到实验规则](protocols/LITERATURE_TO_EXPERIMENT.md)复用，不为每次接续重查或阻塞既定训练。
 

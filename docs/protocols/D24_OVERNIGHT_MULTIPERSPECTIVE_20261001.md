@@ -2,15 +2,15 @@
 origin_skill: experiment-agent
 mode: plan
 date: 2026-10-01
-verification_status: UNVERIFIED
+verification_status: LOCAL_SYNTHETIC_CPU_PASSED_GPU_PENDING
 version: code_plan_v1
 ---
 
 # D24：今晚四个角度、15组开发筛选
 
-记录2026-10-01 22:37:26（Asia/Shanghai）。**分组与科学比较协议已定稿；执行代码尚未完成，未启动。** 用户要求今晚多跑几组、借鉴不同角度论文；具体方法是本轮助手建议，不是最终方向采纳或已验证贡献。计划基于[完整D23结果](../experiments/D23_EIGHT_ARM_RESULTS_20261001.md)，基准提交746708281ecb4d291bb582efcef8f5890ea5b774。
+记录2026-10-01 22:37:26（Asia/Shanghai）。**分组与科学协议已定稿；15组代码已实现、15项本地CPU检查通过，服务器尚未启动。** 用户要求今晚多跑几组、借鉴不同角度论文；具体方法是本轮助手建议，不是最终方向采纳或已验证贡献。计划基于[完整D23结果](../experiments/D23_EIGHT_ARM_RESULTS_20261001.md)，基准提交746708281ecb4d291bb582efcef8f5890ea5b774。
 
-[机器计划](../../records/research_d24_overnight_plan_20261001/plan.json)和[15组清单](../../records/research_d24_overnight_plan_20261001/jobs.csv)为本轮实现合同。旧[四组草案](D24_PAIRED_TASK_ADAPTATION_DRAFT_20261001.md)保留历史；本协议替代其下一步地位。定稿不等于代码验收，更不等于服务器运行。
+[机器计划](../../records/research_d24_overnight_plan_20261001/plan.json)和[15组清单](../../records/research_d24_overnight_plan_20261001/jobs.csv)为本轮实现合同。旧[四组草案](D24_PAIRED_TASK_ADAPTATION_DRAFT_20261001.md)保留历史；本协议替代其下一步地位。本地必要行为检查完成；尚无新服务器训练或GPU验证证据。
 
 ## 问题与为何扩大实验角度
 
@@ -54,7 +54,7 @@ A0/A1只冻结DINO，RGB投影、DSM detail和decoder可训练；它们不是D23
 `0.1 * mean(max(0, CE_full_clean - stopgrad(CE_fixed_R0_clean)))`。
 目标只作用clean；固定参照避免通过恶化少模态分支改善排序。A0/A2也计算同一教师诊断以匹配前向开销，但不加入Pair。不得把此局部平均CE排序解释成mIoU单调保证。两更新范围各自CE是必须保留的主要对照。
 
-**B：同容量原型记忆。**两模态各6槽、每槽128维，以clean训练特征、EMA=.99更新并stop-gradient；类别槽用训练label归类，通用槽用确定性空间hash均匀分6桶。两者使用同shape投影：query/key拼接256→32，value256→128，6槽注意力，零初始化128→128输出投影，作为decoder前残差。DSM与记忆残差同乘可用mask；缺失不读取DSM派生残差。全部bank同一全局训练特征均值初始化；无支持的槽不更新。每组参数数目/初值完全一致，差异只在槽分配与CE reduction。EMA只用fit12，在validation/inference冻结。类别平衡CE为有效batch内每个出现类别的CE均值再等权平均，不改变crop采样次数。该实现是待开发建议，不预先宣称“可靠性”估计已校准。
+**B：同容量原型记忆。**两模态各6槽、每槽128维，以clean训练特征、EMA=.99更新并stop-gradient；类别槽用训练label归类，通用槽用确定性空间hash均匀分6桶。两者使用同shape投影：query/key拼接256→32，value256→128，6槽注意力，零初始化128→128输出投影，作为decoder前残差。DSM与记忆残差同乘可用mask；缺失不读取DSM派生残差。全部bank以同一首个clean物理batch的特征均值初始化；无支持的槽不更新。每组参数数目/初值完全一致，差异只在槽分配与CE reduction。EMA只用fit12，在validation/inference冻结。类别平衡CE为有效batch内每个出现类别的CE均值再等权平均，不改变crop采样次数。该实现是待开发建议，不预先宣称“可靠性”估计已校准。
 
 **C：固定教师知识迁移。**四组同一光学学生、同更新范围、同Q与CE；固定M0_safe教师看到对应两视图的光学＋DSM，固定R0提供比较。教师不训练，学生推理不加载DSM/教师/label。KD为温度2的`T² KL(p_teacher || p_student)`，权重.1。C1全有效区域；C2选择“教师预测正确且固定R0错误”的训练像素；C3对同一mask的有效像素序列作固定循环空间位移，严格保留选中数、保留原位置教师目标。KD在所选像素归一化、两视图平均；空区域为零并记录，不回退全域。C0也计算教师/R0诊断，但KD权重为零。区域标签只用于训练，不能进推理。C2若只胜C0、不胜C1/C3，不成立区域选择贡献。
 
@@ -76,7 +76,7 @@ harm/rescue同时保留两种参照：固定R0用于组间比较；模型自身D
 
 ## 夜间队列与启动边界
 
-GPU0/1各一任务，独立进程，控制器nohup，stdin=/dev/null。CPU tile cache、pin_memory、persistent_workers、每组8 workers和prefetch4提高供给；不重复资源/预算审计，不因短时利用率低就变更科学预算。中间log必须区分缓存、训练、选模、全图评价，不能只重复xFormers旧警告。
+GPU0/1各一任务，独立进程，控制器nohup，stdin=/dev/null。12个fit tile常驻CPU内存、pin_memory、每组8个持续CPU工作线程、4个逻辑batch预取提高供给；不重复资源/预算审计，不因短时利用率低就变更科学预算。中间log必须区分缓存、训练、选模、全图评价，不能只重复xFormers旧警告。
 
 优先次序按jobs.csv：
 - GPU0：A0 → A3 → C0 → D2 → C3 → D1 → B1 → B3。
@@ -86,4 +86,13 @@ GPU0/1各一任务，独立进程，控制器nohup，stdin=/dev/null。CPU tile 
 
 所有code、logs、PID、checkpoint、cache、轻量归档及临时文件在本轮独立`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_<timestamp>_<pid>`；不覆盖D23，禁止/tmp。每job最长6小时，超时保存状态并标技术未完成，只处置自己启动且绑定目录的进程；其他job继续，无自动重跑。不限制整队列只能熬到某个钟点，也不保证15组明早全部完成。新图耗时尚未知；只用首批正常任务进度更新ETA，无另行测量任务。
 
-启动前只需新行为必要检查：部分更新范围梯度确实非零/冻结层无梯度，教师无梯度，B同capacity/推理无label，C打乱mask数精确一致，mask缺失返回自身光学，checkpoint/RNG可恢复、队列不重复完成job。完成实现及这些检查后发布固定执行提交与nohup命令，直接接续已知环境。**目前没有新的可运行命令，也没有声称实验已经开始。**
+启动前只需新行为必要检查：部分更新范围梯度确实非零/冻结层无梯度，教师无梯度，B同capacity/推理无label，C打乱mask数精确一致，mask缺失返回自身光学，checkpoint/RNG可恢复、队列不重复完成job。完成实现及这些检查后发布固定执行提交与nohup命令，直接接续已知环境。**训练/队列入口已实现，GPU首步的梯度检查嵌入正式job，无单独资源探针。启动见[执行说明](D24_OVERNIGHT_EXECUTION_20261001.md)；服务器尚未启动。**
+
+
+## 23:57实现与验证补充
+
+用户随后明确“按计划进行吧”，本轮实现全部15组。模型、目标、队列、status、summary、轻量上传和15项本地检查已完成；[本地检查原件](../../records/research_d24_overnight_plan_20261001/cpu_checks.log)及[源码绑定](../../records/research_d24_overnight_plan_20261001/local_validation.json)共享。本地Python3.13.3/Torch2.7.1+cpu，检查包含Python3.10语法和实际15个目标的反传；不是服务器GPU或正式效果验证。服务器沿用D21指定的d18_dino环境，不安装/升级包。
+
+工程细化均在新结果产生前：bank初始化取共同首个clean batch全空间均值，避免单独全fit统计前置；tile常驻＋8线程/4batch预取，避免反复读取和大批量进程间数据传递；推理batch8保持既有固定参考的口径，训练物理batch16不累积。C学生不使用DSM，对aux-only条件复用clean预测，仍逐条件保留原计数与参考风险，不能将14条件记录数误当14次独立推理。已完成D23 T0的固定R0/M0_safe预测按绑定SHA读取，不重推8个旧gate。所有新协议预算/目标/阈值不变。
+
+全队列完成后自动生成screen_result.json/results.csv；轻量上传需在服务器终端显式执行自带uploader，以便Git凭据交互，后台不等待密码。权重/预测保留服务器并上传索引。精确恢复必须用同一执行提交，跳过已完成job；技术失败保留，不盲目重复。最终论文贡献和研究方向仍未采纳。

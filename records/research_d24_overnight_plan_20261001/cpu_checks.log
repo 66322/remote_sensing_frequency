@@ -1,0 +1,20 @@
+test_15_jobs_alias_and_queue_skip_completed_or_failed (test_d24.D24Tests.test_15_jobs_alias_and_queue_skip_completed_or_failed) ... ok
+test_balanced_ce_is_mean_of_present_classes (test_d24.D24Tests.test_balanced_ce_is_mean_of_present_classes) ... ok
+test_frozen_initialization_matches_M0_and_presence_is_explicit (test_d24.D24Tests.test_frozen_initialization_matches_M0_and_presence_is_explicit) ... ok
+test_full_and_local_missing_equal_own_optical_logits (test_d24.D24Tests.test_full_and_local_missing_equal_own_optical_logits) ... ok
+test_keyed_quality_dropout_factor_streams (test_d24.D24Tests.test_keyed_quality_dropout_factor_streams) ... ok
+test_last4_gradient_range_and_teacher_freeze (test_d24.D24Tests.test_last4_gradient_range_and_teacher_freeze) ... ok
+test_optimizer_and_bank_resume_reproduces_next_step (test_d24.D24Tests.test_optimizer_and_bank_resume_reproduces_next_step) ... ok
+test_original_int64_counts_pooling_and_harm_rescue_identity (test_d24.D24Tests.test_original_int64_counts_pooling_and_harm_rescue_identity) ... ok
+test_pair_hinge_sign_and_detached_reference (test_d24.D24Tests.test_pair_hinge_sign_and_detached_reference) ... ok
+test_real_training_objective_all_15_groups_has_valid_gradients (test_d24.D24Tests.test_real_training_objective_all_15_groups_has_valid_gradients) ... ok
+test_region_is_teacher_correct_reference_wrong (test_d24.D24Tests.test_region_is_teacher_correct_reference_wrong) ... ok
+test_same_capacity_initial_state_and_training_only_bank_updates (test_d24.D24Tests.test_same_capacity_initial_state_and_training_only_bank_updates) ... ok
+test_spatial_KD_counts_teacher_stopgrad_and_empty_region (test_d24.D24Tests.test_spatial_KD_counts_teacher_stopgrad_and_empty_region) ... ok
+test_standalone_snapshot_dependencies_exist_and_python310_syntax (test_d24.D24Tests.test_standalone_snapshot_dependencies_exist_and_python310_syntax) ... ok
+test_thread_prefetch_keeps_exact_sample_order_and_no_partial_batch (test_d24.D24Tests.test_thread_prefetch_keeps_exact_sample_order_and_no_partial_batch) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 6.507s
+
+OK

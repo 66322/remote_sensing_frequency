@@ -1349,7 +1349,7 @@
     {
       "id": "D24_OVERNIGHT_MULTIPERSPECTIVE_20261001",
       "name": "four_angle_overnight_development_portfolio",
-      "status": "design_ready_implementation_pending_not_launched",
+      "status": "code_ready_local_CPU_checked_not_launched",
       "started_at": null,
       "completed_at": null,
       "recorded_at": "2026-10-01T22:37:26+08:00",
@@ -1363,12 +1363,16 @@
       "optimizer_steps_planned": 60000,
       "result": null,
       "test6_loaded": false,
-      "evidence_level": "proposed_design_not_experimental_evidence"
+      "evidence_level": "proposed_design_not_experimental_evidence",
+      "implemented": true,
+      "execution_authorized_by_user": true,
+      "local_cpu_checks_passed": 15,
+      "server_GPU_verified": false
     }
   ],
   "next_plan": {
     "id": "D24_OVERNIGHT_MULTIPERSPECTIVE_20261001",
-    "status": "design_ready_implementation_pending_not_launched",
+    "status": "code_ready_local_CPU_checked_not_launched",
     "protocol": "docs/protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md",
     "manifest": "records/research_d24_overnight_plan_20261001/plan.json",
     "jobs_csv": "records/research_d24_overnight_plan_20261001/jobs.csv",
@@ -1377,7 +1381,7 @@
     "total_optimizer_steps": 60000,
     "seed": 42,
     "steps_and_gates_frozen": true,
-    "implemented": false,
+    "implemented": true,
     "launched": false,
     "prior_complete_plan_id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
     "supersedes": "D24_PAIRED_TASK_ADAPTATION_DRAFT_20261001",
@@ -1387,7 +1391,11 @@
     ],
     "server_scope": "/home/jovyan/zzx",
     "test6_loaded": false,
-    "decision_source": "user request for multi-angle overnight planning; assistant-proposed experimental design"
+    "decision_source": "user request for multi-angle overnight planning; assistant-proposed experimental design",
+    "execution_authorized_by_user": true,
+    "cpu_checks_passed": 15,
+    "controller": "scripts/launch_rebuild_v1_d24.py",
+    "execution_protocol": "docs/protocols/D24_OVERNIGHT_EXECUTION_20261001.md"
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -1741,7 +1749,7 @@
     "c1_role": "side_branch_development_candidate_not_adopted_replacement",
     "partial_unfreezing_role": "strong_baseline_strategy",
     "final_method_and_chapters_frozen": false,
-    "next_action": "Implement D24 four-angle 15-job development plan; D23 complete; new code not ready and no launch observed",
+    "next_action": "User-authorized manual server nohup launch of implemented D24 15-job queue; no new server observation",
     "next_action_document": "docs/current/NEXT_EXPERIMENT.md",
     "external_source_gate": "required for corresponding external confirmation, not a universal prerequisite for development exploration",
     "new_training_authorized_by_this_document": false

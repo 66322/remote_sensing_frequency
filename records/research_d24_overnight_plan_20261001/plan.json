@@ -2,8 +2,8 @@
   "schema_version": "1.0",
   "id": "D24_OVERNIGHT_MULTIPERSPECTIVE_20261001",
   "recorded_at": "2026-10-01T22:37:26+08:00",
-  "status": "design_ready_implementation_pending_not_launched",
-  "verification_status": "UNVERIFIED_NO_NEW_RUN",
+  "status": "code_ready_local_CPU_checked_not_launched",
+  "verification_status": "LOCAL_SYNTHETIC_CPU_ONLY_GPU_RUN_PENDING",
   "source_commit": "746708281ecb4d291bb582efcef8f5890ea5b774",
   "decision_source": "user requested a broader overnight portfolio informed by papers from different angles; method choices proposed by assistant",
   "problem": "Optical available: retain useful DSM fusion, control negative transfer under DSM quality changes, and support DSM missing inference",
@@ -24,13 +24,7 @@
   "aliases": {
     "D3": "A2"
   },
-  "implementation_required": [
-    "presence-masked M0 continuation with last-four-block gradient path",
-    "R0-anchored clean Pair objective",
-    "matched-capacity semantic/generic prototype memory",
-    "fixed-teacher optical regional distillation",
-    "detached dual-GPU queue with safe exact resume and direct light-record upload"
-  ],
+  "implementation_required": [],
   "data": {
     "dataset": "Potsdam",
     "input": "RGB plus existing per-tile normalized DSM",
@@ -62,7 +56,7 @@
     "test6_loaded": false,
     "independent_final_loaded": false,
     "patch": 512,
-    "sampling": "uniform tile then uniform aligned random crop; reuse canonical D23 sample RNG, horizontal/vertical flip; augment decisions keyed independently by crop/step"
+    "sampling": "D23 keyed fit stream: uniform fit12 tile, crop, scale0.5-2.0 and aligned flips from bound r05 augmentation; Q/D draws independently keyed"
   },
   "initialization": {
     "fusion": "existing D21 M0 checkpoint",
@@ -148,7 +142,7 @@
     "update": "training clean view only, detached features, fit12 labels only for semantic assignment; freeze bank for validation/inference",
     "generic_assignment": "deterministic uniform spatial hash into six buckets; no class labels",
     "common_architecture": "RGB and DSM 128ch stride4 features; concatenate query/bank pairs; q/k 256->32, v 256->128; six-slot attention; zero-initialized 128->128 residual projection before decoder; both DSM contribution and prototype residual multiplied by known presence mask",
-    "empty_bank": "initialized to same global clean fit-feature mean; EMA only where support exists",
+    "empty_bank": "all banks initialized to the same first clean physical-batch feature mean; EMA only where support exists; no full-fit statistics prepass",
     "capacity": "same parameter shapes/count and initial state across B0-B3; bank assignment and CE reduction are the two factors",
     "class_balanced_CE": "average per-class CE over classes present in valid batch pixels, all six training classes; no crop resampling"
   },
@@ -196,7 +190,9 @@
     ],
     "harm_rescue": "fixed R0 reference for cross-arm comparison, plus each new fusion model's own DSM-absent branch for within-model modality attribution; do not conflate the two",
     "C_primary": "clean optical-only fg5 versus C0; report RGB-family robustness; do not claim zero DSM sensitivity is learned robustness",
-    "raw_records": "int64 6x6 matrices, per-class TP/FP/FN/support, per-tile and condition counts, harm/rescue and availability counts, config/source/input/checkpoint SHA"
+    "raw_records": "int64 6x6 matrices, per-class TP/FP/FN/support, per-tile and condition counts, harm/rescue and availability counts, config/source/input/checkpoint SHA",
+    "batch": 8,
+    "optical_aux_only_optimization": "C students reuse the exactly DSM-independent clean prediction on auxiliary-only conditions; retain every condition's counts and reference comparisons"
   },
   "screen": {
     "evidence_level": "single_seed_development_screen; no p values or confirmation",
@@ -230,7 +226,9 @@
     "deadline_policy": "no promise all15 complete by morning; continue existing queue with bounded jobs, record timeout as technical failure not scientific negative",
     "failure_policy": "retain failure and continue other jobs; no automatic repeat; exact resume only from bound checkpoint/RNG",
     "progress": "every 60s persist state, phase, step, elapsed/ETA, last log timestamp; route-dependent train/eval timings",
-    "forbidden": "changing effective batch/steps/precision based on intermediate science results, duplicate D23, use Test6, files outside zzx"
+    "forbidden": "changing effective batch/steps/precision based on intermediate science results, duplicate D23, use Test6, files outside zzx",
+    "loader_worker_backend": "persistent shared-memory threads",
+    "prefetch_batches": 4
   },
   "jobs": [
     {
@@ -245,8 +243,8 @@
       "priority": 1,
       "seed": 42,
       "optimizer_steps": 4000,
-      "entrypoint": null,
-      "status": "design_ready_implementation_pending"
+      "entrypoint": "scripts/run_rebuild_v1_d24.py",
+      "status": "code_ready_not_launched"
     },
     {
       "id": "A2",
@@ -260,8 +258,8 @@
       "priority": 2,
       "seed": 42,
       "optimizer_steps": 4000,
-      "entrypoint": null,
-      "status": "design_ready_implementation_pending"
+      "entrypoint": "scripts/run_rebuild_v1_d24.py",
+      "status": "code_ready_not_launched"
     },
     {
       "id": "A3",
@@ -275,8 +273,8 @@
       "priority": 3,
       "seed": 42,
       "optimizer_steps": 4000,
-      "entrypoint": null,
-      "status": "design_ready_implementation_pending"
+      "entrypoint": "scripts/run_rebuild_v1_d24.py",
+      "status": "code_ready_not_launched"
     },
     {
       "id": "A1",
@@ -290,8 +288,8 @@
       "priority": 4,
       "seed": 42,
       "optimizer_steps": 4000,
-      "entrypoint": null,
-      "status": "design_ready_implementation_pending"
+      "entrypoint": "scripts/run_rebuild_v1_d24.py",
+      "status": "code_ready_not_launched"
     },
     {
       "id": "C0",
@@ -305,8 +303,8 @@
       "priority": 5,
       "seed": 42,
       "optimizer_steps": 4000,
-      "entrypoint": null,
-      "status": "design_ready_implementation_pending"
+      "entrypoint": "scripts/run_rebuild_v1_d24.py",
+      "status": "code_ready_not_launched"
     },
     {
       "id": "C2",
@@ -324,8 +322,8 @@
       "priority": 6,
       "seed": 42,
       "optimizer_steps": 4000,
-      "entrypoint": null,
-      "status": "design_ready_implementation_pending"
+      "entrypoint": "scripts/run_rebuild_v1_d24.py",
+      "status": "code_ready_not_launched"
     },
     {
       "id": "D2",
@@ -339,8 +337,8 @@
       "priority": 7,
       "seed": 42,
       "optimizer_steps": 4000,
-      "entrypoint": null,
-      "status": "design_ready_implementation_pending"
+      "entrypoint": "scripts/run_rebuild_v1_d24.py",
+      "status": "code_ready_not_launched"
     },
     {
       "id": "D0",
@@ -354,8 +352,8 @@
       "priority": 8,
       "seed": 42,
       "optimizer_steps": 4000,
-      "entrypoint": null,
-      "status": "design_ready_implementation_pending"
+      "entrypoint": "scripts/run_rebuild_v1_d24.py",
+      "status": "code_ready_not_launched"
     },
     {
       "id": "C3",
@@ -369,8 +367,8 @@
       "priority": 9,
       "seed": 42,
       "optimizer_steps": 4000,
-      "entrypoint": null,
-      "status": "design_ready_implementation_pending"
+      "entrypoint": "scripts/run_rebuild_v1_d24.py",
+      "status": "code_ready_not_launched"
     },
     {
       "id": "C1",
@@ -384,8 +382,8 @@
       "priority": 10,
       "seed": 42,
       "optimizer_steps": 4000,
-      "entrypoint": null,
-      "status": "design_ready_implementation_pending"
+      "entrypoint": "scripts/run_rebuild_v1_d24.py",
+      "status": "code_ready_not_launched"
     },
     {
       "id": "D1",
@@ -399,8 +397,8 @@
       "priority": 11,
       "seed": 42,
       "optimizer_steps": 4000,
-      "entrypoint": null,
-      "status": "design_ready_implementation_pending"
+      "entrypoint": "scripts/run_rebuild_v1_d24.py",
+      "status": "code_ready_not_launched"
     },
     {
       "id": "B0",
@@ -415,8 +413,8 @@
       "priority": 12,
       "seed": 42,
       "optimizer_steps": 4000,
-      "entrypoint": null,
-      "status": "design_ready_implementation_pending"
+      "entrypoint": "scripts/run_rebuild_v1_d24.py",
+      "status": "code_ready_not_launched"
     },
     {
       "id": "B1",
@@ -431,8 +429,8 @@
       "priority": 13,
       "seed": 42,
       "optimizer_steps": 4000,
-      "entrypoint": null,
-      "status": "design_ready_implementation_pending"
+      "entrypoint": "scripts/run_rebuild_v1_d24.py",
+      "status": "code_ready_not_launched"
     },
     {
       "id": "B2",
@@ -447,8 +445,8 @@
       "priority": 14,
       "seed": 42,
       "optimizer_steps": 4000,
-      "entrypoint": null,
-      "status": "design_ready_implementation_pending"
+      "entrypoint": "scripts/run_rebuild_v1_d24.py",
+      "status": "code_ready_not_launched"
     },
     {
       "id": "B3",
@@ -466,8 +464,19 @@
       "priority": 15,
       "seed": 42,
       "optimizer_steps": 4000,
-      "entrypoint": null,
-      "status": "design_ready_implementation_pending"
+      "entrypoint": "scripts/run_rebuild_v1_d24.py",
+      "status": "code_ready_not_launched"
     }
-  ]
+  ],
+  "implemented_entrypoints": {
+    "controller": "scripts/launch_rebuild_v1_d24.py",
+    "job": "scripts/run_rebuild_v1_d24.py",
+    "model": "model/rebuild_v1_d24.py",
+    "objectives": "scripts/d24_objectives.py",
+    "status": "scripts/status_rebuild_v1_d24.py",
+    "summary": "scripts/summarize_rebuild_v1_d24.py",
+    "upload": "scripts/upload_rebuild_v1_d24_records.py"
+  },
+  "execution_authorized_by_user": true,
+  "execution_authorization_source": "User: 按计划进行吧; known manual server terminal execution, no direct server connection"
 }
