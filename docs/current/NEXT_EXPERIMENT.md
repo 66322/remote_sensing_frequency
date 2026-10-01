@@ -1,6 +1,6 @@
 # 下一步：在服务器nohup启动D24十五组
 
-更新2026-10-01 23:57:09。用户已明确“按计划进行吧”。[15组科学协议](../protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md)及代码全部实现，15项本地CPU必要检查PASS；[执行说明](../protocols/D24_OVERNIGHT_EXECUTION_20261001.md)包含启动、进度、恢复和轻量上传命令。无新增服务器运行观测，不能称已经启动。
+更新2026-10-01 23:57:09。用户已明确“按计划进行吧”。[15组科学协议](../protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md)及代码全部实现，15项本地CPU必要检查PASS；[执行说明](../protocols/D24_OVERNIGHT_EXECUTION_20261001.md)包含启动、进度、恢复和轻量上传命令。固定执行提交cf1955d966163978b5c8af433f3845b5ca05da9e。无新增服务器运行观测，不能称已经启动。
 
 直接从固定执行提交导出standalone launcher，nohup运行；GPU0先A0，GPU1先A2。两H10080GB、内存/磁盘充足已确认，不跑资源/预算探针，不再征询这些已知条件。正式首步验证新梯度范围，8线程准备物理batch16，无梯度累积。4000步/组，合计60000；每job最多6h，失败留证并继续其他任务，不能把技术失败当科学负结果。
 

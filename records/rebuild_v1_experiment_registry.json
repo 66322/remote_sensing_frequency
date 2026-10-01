@@ -1395,7 +1395,8 @@
     "execution_authorized_by_user": true,
     "cpu_checks_passed": 15,
     "controller": "scripts/launch_rebuild_v1_d24.py",
-    "execution_protocol": "docs/protocols/D24_OVERNIGHT_EXECUTION_20261001.md"
+    "execution_protocol": "docs/protocols/D24_OVERNIGHT_EXECUTION_20261001.md",
+    "execution_commit": "cf1955d966163978b5c8af433f3845b5ca05da9e"
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",

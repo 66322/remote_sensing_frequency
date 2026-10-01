@@ -1,6 +1,6 @@
 # 当前交接：D24十五组代码就绪，等待服务器执行
 
-更新2026-10-01 23:57:09（Asia/Shanghai）；共享分支rebuild-v1-protocol-20260915，本页所属提交为最新文档版本。前交接[归档](../history/HANDOFF_20261001_BEFORE_D24_IMPLEMENTATION.md)。
+更新2026-10-01 23:57:09（Asia/Shanghai）；共享分支rebuild-v1-protocol-20260915，本页所属提交为最新文档版本。固定执行提交cf1955d966163978b5c8af433f3845b5ca05da9e；启动须绑定此版本。前交接[归档](../history/HANDOFF_20261001_BEFORE_D24_IMPLEMENTATION.md)。
 
 最后服务器观测仍为D23 2026-10-01T21:59:26.843841+08:00 COMPLETE，用户22:00:26查询8/8；原件6038520、完整分析7467082。本轮无服务器直连，没有新训练状态；旧恢复命令不得重复。
 
