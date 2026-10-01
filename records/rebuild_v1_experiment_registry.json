@@ -1335,7 +1335,7 @@
   ],
   "next_plan": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "B_formal_remaining_queue_nohup_requested_TS_process_started_TF_unobserved",
+    "status": "B_TS_output_directory_conflict_confirmed_TF_training_observed_recovery_ready",
     "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
     "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
     "stage_a": {
@@ -1424,22 +1424,20 @@
       "queue_tests_passed": 5,
       "formal_complete": false,
       "last_observation": {
-        "source": "user_pasted_stdout_2026-10-01",
+        "source": "user_pasted_TS_traceback_2026-10-01",
         "observed_at": null,
-        "log_start_label": "20261001T175826_811992",
+        "TF_pid": 815379,
+        "TF_last_observed_step": 1,
+        "TF_live_now_unverified": true,
         "controller_pid": 815309,
-        "TS_pid": 815349,
-        "TF_process_started_unverified": true,
-        "training_progress_unverified": true,
-        "controller_commit": "3c2d8e5d465272ba257b006e5b8f2926a2bca2f7",
-        "live_now_unverified": true
+        "TS_failure_confirmed": true
       },
       "completed_arms": [
         "TSF",
         "T0"
       ],
       "failed_arms": {
-        "TS": "GPU busy startup rejection; returncode 2"
+        "TS": "RuntimeError: refuse existing output directory at run_rebuild_v1_d23.py:24; launcher precreated output without checkpoint"
       },
       "remaining_arms": [
         "TS",
@@ -1455,8 +1453,9 @@
     "test6_loaded": false,
     "historical_test6_independent_final_eligible": false,
     "execution_document": "docs/current/NEXT_EXPERIMENT.md",
-    "next_action": "Continue existing nohup resume; do not relaunch; observe TF start and subsequent progress from log when needed; upload after completion.",
-    "queue": "scripts/launch_rebuild_v1_d23_formal.py"
+    "next_action": "Run nohup GPU0 recovery helper; preserve TF and completed TSF/T0; no resource probes; recovery server execution not yet observed.",
+    "queue": "scripts/launch_rebuild_v1_d23_formal.py",
+    "recovery_script": "scripts/recover_rebuild_v1_d23_gpu0.py"
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -1816,7 +1815,7 @@
   },
   "proposed_d23": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "B_formal_remaining_queue_nohup_requested_TS_process_started_TF_unobserved",
+    "status": "B_TS_output_directory_conflict_confirmed_TF_training_observed_recovery_ready",
     "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
     "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
     "stage_a": {
@@ -1905,22 +1904,20 @@
       "queue_tests_passed": 5,
       "formal_complete": false,
       "last_observation": {
-        "source": "user_pasted_stdout_2026-10-01",
+        "source": "user_pasted_TS_traceback_2026-10-01",
         "observed_at": null,
-        "log_start_label": "20261001T175826_811992",
+        "TF_pid": 815379,
+        "TF_last_observed_step": 1,
+        "TF_live_now_unverified": true,
         "controller_pid": 815309,
-        "TS_pid": 815349,
-        "TF_process_started_unverified": true,
-        "training_progress_unverified": true,
-        "controller_commit": "3c2d8e5d465272ba257b006e5b8f2926a2bca2f7",
-        "live_now_unverified": true
+        "TS_failure_confirmed": true
       },
       "completed_arms": [
         "TSF",
         "T0"
       ],
       "failed_arms": {
-        "TS": "GPU busy startup rejection; returncode 2"
+        "TS": "RuntimeError: refuse existing output directory at run_rebuild_v1_d23.py:24; launcher precreated output without checkpoint"
       },
       "remaining_arms": [
         "TS",
@@ -1936,7 +1933,8 @@
     "test6_loaded": false,
     "historical_test6_independent_final_eligible": false,
     "execution_document": "docs/current/NEXT_EXPERIMENT.md",
-    "next_action": "Continue existing nohup resume; do not relaunch; observe TF start and subsequent progress from log when needed; upload after completion."
+    "next_action": "Run nohup GPU0 recovery helper; preserve TF and completed TSF/T0; no resource probes; recovery server execution not yet observed.",
+    "recovery_script": "scripts/recover_rebuild_v1_d23_gpu0.py"
   },
   "completed_post_d21_plan": {
     "id": "POST_D21_MULTIDIRECTION_DAY_PLAN_20260929",
