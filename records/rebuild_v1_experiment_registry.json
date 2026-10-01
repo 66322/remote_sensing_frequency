@@ -1457,7 +1457,19 @@
     "execution_document": "docs/current/NEXT_EXPERIMENT.md",
     "next_action": "Continue existing recovery; observe TS progress when needed; helper preserves TF then resumes remaining four arms; do not relaunch.",
     "queue": "scripts/launch_rebuild_v1_d23_formal.py",
-    "recovery_script": "scripts/recover_rebuild_v1_d23_gpu0.py"
+    "recovery_script": "scripts/recover_rebuild_v1_d23_gpu0.py",
+    "partial_scientific_review": {
+      "report": "docs/experiments/D23_TSF_T0_PARTIAL_RESULTS_20261001.md",
+      "source_commit": "9a70648affe105367e1b6e42ac4919f66140d7aa",
+      "TSF_minus_R0_pp": 1.1117894067547383,
+      "TSF_minus_M0_pp": -0.1489976826771624,
+      "TSF_minus_T0_pp": 0.0015775872284677916,
+      "rescue_retention": 0.6255700940688043,
+      "TSF_primary_gain_pass": false,
+      "TSF_rescue_retention_pass": false,
+      "eight_arm_screen_complete": false,
+      "route_changed": false
+    }
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -1938,7 +1950,19 @@
     "historical_test6_independent_final_eligible": false,
     "execution_document": "docs/current/NEXT_EXPERIMENT.md",
     "next_action": "Continue existing recovery; observe TS progress when needed; helper preserves TF then resumes remaining four arms; do not relaunch.",
-    "recovery_script": "scripts/recover_rebuild_v1_d23_gpu0.py"
+    "recovery_script": "scripts/recover_rebuild_v1_d23_gpu0.py",
+    "partial_scientific_review": {
+      "report": "docs/experiments/D23_TSF_T0_PARTIAL_RESULTS_20261001.md",
+      "source_commit": "9a70648affe105367e1b6e42ac4919f66140d7aa",
+      "TSF_minus_R0_pp": 1.1117894067547383,
+      "TSF_minus_M0_pp": -0.1489976826771624,
+      "TSF_minus_T0_pp": 0.0015775872284677916,
+      "rescue_retention": 0.6255700940688043,
+      "TSF_primary_gain_pass": false,
+      "TSF_rescue_retention_pass": false,
+      "eight_arm_screen_complete": false,
+      "route_changed": false
+    }
   },
   "completed_post_d21_plan": {
     "id": "POST_D21_MULTIDIRECTION_DAY_PLAN_20260929",
