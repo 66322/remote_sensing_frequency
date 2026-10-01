@@ -1335,7 +1335,7 @@
   ],
   "next_plan": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "B_TS_output_directory_conflict_confirmed_TF_training_observed_recovery_ready",
+    "status": "B_GPU0_recovery_TS_process_started_training_progress_unobserved",
     "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
     "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
     "stage_a": {
@@ -1424,13 +1424,15 @@
       "queue_tests_passed": 5,
       "formal_complete": false,
       "last_observation": {
-        "source": "user_pasted_TS_traceback_2026-10-01",
+        "source": "user_pasted_recovery_stdout_2026-10-01",
         "observed_at": null,
-        "TF_pid": 815379,
-        "TF_last_observed_step": 1,
+        "log_start_label": "20261001T183700_834385",
+        "recovery_controller_pid": 834840,
+        "TS_pid": 834884,
         "TF_live_now_unverified": true,
-        "controller_pid": 815309,
-        "TS_failure_confirmed": true
+        "TS_training_progress_unverified": true,
+        "controller_commit": "48ab1e4a88eb175da965162859ae757cbe62d91c",
+        "live_now_unverified": true
       },
       "completed_arms": [
         "TSF",
@@ -1453,7 +1455,7 @@
     "test6_loaded": false,
     "historical_test6_independent_final_eligible": false,
     "execution_document": "docs/current/NEXT_EXPERIMENT.md",
-    "next_action": "Run nohup GPU0 recovery helper; preserve TF and completed TSF/T0; no resource probes; recovery server execution not yet observed.",
+    "next_action": "Continue existing recovery; observe TS progress when needed; helper preserves TF then resumes remaining four arms; do not relaunch.",
     "queue": "scripts/launch_rebuild_v1_d23_formal.py",
     "recovery_script": "scripts/recover_rebuild_v1_d23_gpu0.py"
   },
@@ -1815,7 +1817,7 @@
   },
   "proposed_d23": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "B_TS_output_directory_conflict_confirmed_TF_training_observed_recovery_ready",
+    "status": "B_GPU0_recovery_TS_process_started_training_progress_unobserved",
     "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
     "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
     "stage_a": {
@@ -1904,13 +1906,15 @@
       "queue_tests_passed": 5,
       "formal_complete": false,
       "last_observation": {
-        "source": "user_pasted_TS_traceback_2026-10-01",
+        "source": "user_pasted_recovery_stdout_2026-10-01",
         "observed_at": null,
-        "TF_pid": 815379,
-        "TF_last_observed_step": 1,
+        "log_start_label": "20261001T183700_834385",
+        "recovery_controller_pid": 834840,
+        "TS_pid": 834884,
         "TF_live_now_unverified": true,
-        "controller_pid": 815309,
-        "TS_failure_confirmed": true
+        "TS_training_progress_unverified": true,
+        "controller_commit": "48ab1e4a88eb175da965162859ae757cbe62d91c",
+        "live_now_unverified": true
       },
       "completed_arms": [
         "TSF",
@@ -1933,7 +1937,7 @@
     "test6_loaded": false,
     "historical_test6_independent_final_eligible": false,
     "execution_document": "docs/current/NEXT_EXPERIMENT.md",
-    "next_action": "Run nohup GPU0 recovery helper; preserve TF and completed TSF/T0; no resource probes; recovery server execution not yet observed.",
+    "next_action": "Continue existing recovery; observe TS progress when needed; helper preserves TF then resumes remaining four arms; do not relaunch.",
     "recovery_script": "scripts/recover_rebuild_v1_d23_gpu0.py"
   },
   "completed_post_d21_plan": {
