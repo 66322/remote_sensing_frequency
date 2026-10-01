@@ -1,6 +1,6 @@
 # D24十五组：固定版本nohup执行
 
-更新2026-10-02 00:15（Asia/Shanghai），对应2026-10-01夜间计划。用户已明确“按计划进行吧”。**本轮已由nohup启动；GPU0 A0/GPU1 A2最后观测initializing step=0，首步训练尚未观测。** 实际目录`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409`；见[启动证据](../../records/research_d24_launch_observation_20261002/user_reported_launch.json)。 无服务器连接，以下由用户服务器终端执行。复用已知GPU0/1、两H10080GB、充足RAM/硬盘，不新增安装、资源审计或预算探针。
+更新2026-10-02 00:19（Asia/Shanghai），对应2026-10-01夜间计划。用户已明确“按计划进行吧”。**本轮已由nohup启动并进入双卡训练；截至00:19附近，GPU0 A0 2360/4000、GPU1 A2 2140/4000，完成0/15，其余13组PENDING。** 实际目录`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409`；见[最新进度证据](../../records/research_d24_progress_20261002T001859/observation.json)。 无服务器连接，以下由用户服务器终端执行。复用已知GPU0/1、两H10080GB、充足RAM/硬盘，不新增安装、资源审计或预算探针。
 
 固定执行提交：[cf1955d966163978b5c8af433f3845b5ca05da9e](https://github.com/66322/remote_sensing_frequency/commit/cf1955d966163978b5c8af433f3845b5ca05da9e)；[科学协议](D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md)、[15组机器计划](../../records/research_d24_overnight_plan_20261001/plan.json)、[本地检查](../../records/research_d24_overnight_plan_20261001/local_validation.json)。
 

@@ -1349,7 +1349,7 @@
     {
       "id": "D24_OVERNIGHT_MULTIPERSPECTIVE_20261001",
       "name": "four_angle_overnight_development_portfolio",
-      "status": "running_as_last_reported_initializing",
+      "status": "running_as_last_reported_training",
       "started_at": null,
       "completed_at": null,
       "recorded_at": "2026-10-02T00:15:45+08:00",
@@ -1359,13 +1359,15 @@
         "records/research_d24_overnight_plan_20261001/plan.json",
         "records/research_d24_overnight_plan_20261001/jobs.csv",
         "records/research_d24_launch_observation_20261002/user_reported_launch.json",
-        "records/research_d24_launch_observation_20261002/launch_stdout.txt"
+        "records/research_d24_launch_observation_20261002/launch_stdout.txt",
+        "records/research_d24_progress_20261002T001859/observation.json",
+        "records/research_d24_progress_20261002T001859/user_status_stdout.txt"
       ],
       "unique_jobs": 15,
       "optimizer_steps_planned": 60000,
       "result": null,
       "test6_loaded": false,
-      "evidence_level": "user_reported_process_launch_only_no_training_or_scientific_result",
+      "evidence_level": "user_reported_sustained_training_progress_not_scientific_effect",
       "implemented": true,
       "execution_authorized_by_user": true,
       "local_cpu_checks_passed": 15,
@@ -1374,13 +1376,16 @@
       "time_source": "user_pasted_launch_stdout_directory_name_and_STARTED_rows",
       "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
       "execution_commit": "cf1955d966163978b5c8af433f3845b5ca05da9e",
-      "last_observation_record": "records/research_d24_launch_observation_20261002/user_reported_launch.json",
-      "first_training_step_observed": false
+      "last_observation_record": "records/research_d24_progress_20261002T001859/observation.json",
+      "first_training_step_observed": true,
+      "training_progress_observed": true,
+      "gradient_check_artifact_received": false,
+      "last_recorded_at": "2026-10-02T00:19:37+08:00"
     }
   ],
   "next_plan": {
     "id": "D24_OVERNIGHT_MULTIPERSPECTIVE_20261001",
-    "status": "running_as_last_reported_initializing",
+    "status": "running_as_last_reported_training",
     "protocol": "docs/protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md",
     "manifest": "records/research_d24_overnight_plan_20261001/plan.json",
     "jobs_csv": "records/research_d24_overnight_plan_20261001/jobs.csv",
@@ -1408,47 +1413,72 @@
     "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
     "last_observation": {
       "schema_version": "1.0",
-      "recorded_at": "2026-10-02T00:15:45+08:00",
-      "source": "user_pasted_server_stdout",
-      "source_attachment_basename": "c5bb2972-1e4c-4752-8d01-ab2b14d7144b/已粘贴的文本.txt",
-      "observed_at": null,
-      "observation_time_note": "Launch block has no explicit clock timestamp. Directory name records creation time 2026-10-02T00:08:43+08:00; do not equate it with exact process start or log observation time.",
-      "directory_created_at_from_name": "2026-10-02T00:08:43+08:00",
-      "status": "running_as_last_reported_initializing",
+      "recorded_at": "2026-10-02T00:19:37+08:00",
+      "source": "user_pasted_server_status_stdout_and_nohup_tail",
+      "queue_observed_at": "2026-10-02T00:18:59.788679+08:00",
+      "latest_job_progress_at": "2026-10-02T00:19:02.780409+08:00",
+      "status": "running_as_last_reported_training",
       "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
       "execution_commit": "cf1955d966163978b5c8af433f3845b5ca05da9e",
-      "reported_fetched_head": "b077fcb7f8bf713e068ab53350356c4af332261e",
-      "launch_mode": "nohup",
-      "controller_pid": null,
+      "completed_jobs": 0,
+      "total_jobs": 15,
       "jobs_last_reported": [
         {
           "id": "A0",
           "gpu": 0,
-          "pid": 1003559,
-          "phase": "initializing",
-          "step": 0,
-          "elapsed_minutes": 0
+          "status": "RUNNING",
+          "phase": "training",
+          "step": 2360,
+          "total_steps": 4000,
+          "progress_at": "2026-10-02T00:19:02.780409+08:00",
+          "training_fraction": 0.59,
+          "checkpoint_selection_step2000_observed": true
         },
         {
           "id": "A2",
           "gpu": 1,
-          "pid": 1003563,
-          "phase": "initializing",
-          "step": 0,
-          "elapsed_minutes": 0
+          "status": "RUNNING",
+          "phase": "training",
+          "step": 2140,
+          "total_steps": 4000,
+          "progress_at": "2026-10-02T00:19:01.680178+08:00",
+          "training_fraction": 0.535
         }
       ],
-      "remaining_jobs_status": "not observed in pasted launch excerpt",
-      "first_training_step_observed": false,
-      "gradient_check_received": false,
-      "traceback_in_D24_launch_excerpt": false,
-      "current_process_liveness_unchecked": true,
+      "pending_jobs": [
+        "A3",
+        "A1",
+        "C0",
+        "C2",
+        "D2",
+        "D0",
+        "C3",
+        "C1",
+        "D1",
+        "B0",
+        "B1",
+        "B2",
+        "B3"
+      ],
+      "training_progress_observed": true,
+      "gradient_check_artifact_received": false,
+      "traceback_in_excerpt": false,
       "hardware_metrics_received": false,
-      "server_runtime_artifacts_received": false,
       "scientific_results_received": false,
-      "next_action": "Query persisted progress in this existing directory; do not create a second queue or repeat resource admission."
+      "eta": {
+        "training_remaining_minutes_estimate": [
+          6,
+          8
+        ],
+        "scope": "A0/A2 remaining training only at pasted query time; excludes final checkpoint selection, 14-condition evaluation and queued jobs",
+        "method": "extrapolate observed minute-to-minute step growth; ordinary training speed roughly 260-300 steps/min A0 and 240-280 steps/min A2",
+        "queue_end_estimate": null,
+        "completed_matching_job_unavailable": true,
+        "zero_known_work_hours_means_unknown_not_zero_remaining": true
+      },
+      "next_action": "Continue existing nohup queue; check progress after first jobs finish and upload light records at completion. No restart or resource audit."
     },
-    "first_training_step_observed": false
+    "first_training_step_observed": true
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -1802,7 +1832,7 @@
     "c1_role": "side_branch_development_candidate_not_adopted_replacement",
     "partial_unfreezing_role": "strong_baseline_strategy",
     "final_method_and_chapters_frozen": false,
-    "next_action": "Query the existing user-reported nohup D24 directory; A0/A2 initializing as last reported; no duplicate launch or resource probes.",
+    "next_action": "Continue existing D24 nohup queue; A0 2360/A2 2140 training as reported near 00:19; query after first complete jobs, no restart or resources audit.",
     "next_action_document": "docs/current/NEXT_EXPERIMENT.md",
     "external_source_gate": "required for corresponding external confirmation, not a universal prerequisite for development exploration",
     "new_training_authorized_by_this_document": false

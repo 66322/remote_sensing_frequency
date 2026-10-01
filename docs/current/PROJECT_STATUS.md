@@ -1,6 +1,6 @@
 # 当前状态
 
-更新2026-10-02 00:15:45（Asia/Shanghai）。最后服务器观测来源为用户回传启动输出（目录创建时间2026-10-02 00:08:43 +08:00，由目录名推得；日志无精确观测时间）：GPU0 A0 pid=1003559、GPU1 A2 pid=1003563，均initializing step=0。已由nohup启动双卡队列，但首步TRAIN/gradient_check未收到；无D24 traceback。PID是历史观测，不是实时存活证明；未收到nvidia-smi数值。见[启动证据](../../records/research_d24_launch_observation_20261002/user_reported_launch.json)。
+更新2026-10-02 00:19:37（Asia/Shanghai）。最后观测：用户回传队列时间2026-10-02T00:18:59.788679+08:00，QUEUE=RUNNING、COMPLETE=0/15；A0 GPU0 training 2360/4000（00:19:02.780409），A2 GPU1 training 2140/4000（00:19:01.680178），其余13组PENDING。A0第2000步选模后已继续训练；双卡均有持续步数增长，初始化阶段已结束。见[进度证据](../../records/research_d24_progress_20261002T001859/observation.json)。这是用户回传最后观测，不是服务器实时直连；梯度检查原件与新效果指标尚未收到。
 
 | 项目 | 状态 |
 |---|---|
@@ -11,7 +11,7 @@
 | 结果复核 | 3136逐tile、1568pooled矩阵与指标及23冻结判定通过 |
 | 科学判定 | TSF未达确认门槛，关闭具体解法；所有学习gate综合低于M0_safe |
 | 机制 | 当前S/F增量不足；效用项相对CE减分，同时有减害作用 |
-| 下一候选 | D24四角度15组计划定稿：A目标/表示、B类别语义、C光学KD、D增强；代码全部实现、本地15项检查PASS；用户回传双卡已启动，A0/A2初始化step=0，首步训练尚未观测 |
+| 下一候选 | D24四角度15组计划定稿：A目标/表示、B类别语义、C光学KD、D增强；代码全部实现、本地15项检查PASS；用户回传A0 training 2360/4000、A2 training 2140/4000，其余13组PENDING，完成0/15 |
 | 资源 | GPU0/1，两H10080GB，RAM/磁盘充足；不重做资源审计 |
 | 边界 | 单seed42、Potsdam Val2；Test6禁读；权重/预测仍在服务器 |
 
