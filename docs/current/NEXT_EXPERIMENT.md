@@ -11,3 +11,5 @@ TS直接日志：同目录/TS_gpu0repair_20261001T183700466561.log
 
 
 资源、科学协议和完成TSF/T0均沿用；没有部署prefetch或新增资源审计。只读最新日志，不用旧PID或陈旧输出断言实时状态。
+
+最新用户回传（2026-10-01，无独立观测墙钟）：TS_gpu0repair日志已出现D23_GATE_TRAIN TS 1 1.0572699308395386，确认恢复后已执行训练step1。此前“训练步骤尚未取得”是旧观测；TF当前进度未新回传。新增只读查询scripts/status_rebuild_v1_d23.py，覆盖旧队列及GPU0恢复任务，并按既有实际耗时估算ETA。[进度查询说明](../protocols/D23_PROGRESS_QUERY_20261001.md)。
