@@ -1,0 +1,71 @@
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/swiglu_ffn.py:45: UserWarning: xFormers is disabled (SwiGLU)
+  warnings.warn("xFormers is disabled (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/swiglu_ffn.py:51: UserWarning: xFormers is not available (SwiGLU)
+  warnings.warn("xFormers is not available (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py:29: UserWarning: xFormers is disabled (Attention)
+  warnings.warn("xFormers is disabled (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py:33: UserWarning: xFormers is not available (Attention)
+  warnings.warn("xFormers is not available (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/block.py:35: UserWarning: xFormers is disabled (Block)
+  warnings.warn("xFormers is disabled (Block)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/block.py:40: UserWarning: xFormers is not available (Block)
+  warnings.warn("xFormers is not available (Block)")
+D23_GATE_TRAIN T0 1100 1.0210649967193604
+D23_GATE_TRAIN T0 1200 0.981103241443634
+D23_GATE_TRAIN T0 1300 0.9642767310142517
+D23_GATE_TRAIN T0 1400 0.9470502138137817
+D23_GATE_TRAIN T0 1500 0.9746631383895874
+D23_GATE_TRAIN T0 1600 0.9017103910446167
+D23_GATE_TRAIN T0 1700 1.0104081630706787
+D23_GATE_TRAIN T0 1800 0.9624059200286865
+D23_GATE_TRAIN T0 1900 0.9398676156997681
+D23_GATE_TRAIN T0 2000 0.9432523846626282
+D23_GATE_TRAIN T0 2100 0.9537878632545471
+D23_GATE_TRAIN T0 2200 0.8673146963119507
+D23_GATE_TRAIN T0 2300 0.8785008192062378
+D23_GATE_TRAIN T0 2400 0.913938045501709
+D23_GATE_TRAIN T0 2500 1.0927495956420898
+D23_GATE_TRAIN T0 2600 0.9677145481109619
+D23_GATE_TRAIN T0 2700 0.8707208037376404
+D23_GATE_TRAIN T0 2800 1.0259039402008057
+D23_GATE_TRAIN T0 2900 1.0459480285644531
+D23_GATE_TRAIN T0 3000 0.8511186838150024
+D23_GATE_TRAIN T0 3100 0.9040464162826538
+D23_GATE_TRAIN T0 3200 0.9967254400253296
+D23_GATE_TRAIN T0 3300 0.9074662923812866
+D23_GATE_TRAIN T0 3400 0.9435983896255493
+D23_GATE_TRAIN T0 3500 0.8638855218887329
+D23_GATE_TRAIN T0 3600 1.0255217552185059
+D23_GATE_TRAIN T0 3700 0.9037714600563049
+D23_GATE_TRAIN T0 3800 0.9516785740852356
+D23_GATE_TRAIN T0 3900 0.9120128154754639
+D23_GATE_TRAIN T0 4000 0.8844002485275269
+D23_DEVELOPMENT_EVAL 3_11 clean
+D23_DEVELOPMENT_EVAL 3_11 rgb_down2
+D23_DEVELOPMENT_EVAL 3_11 rgb_down4
+D23_DEVELOPMENT_EVAL 3_11 rgb_blur5
+D23_DEVELOPMENT_EVAL 3_11 rgb_local_down4_q1
+D23_DEVELOPMENT_EVAL 3_11 aux_down4
+D23_DEVELOPMENT_EVAL 3_11 aux_noise_std010
+D23_DEVELOPMENT_EVAL 3_11 aux_zero
+D23_DEVELOPMENT_EVAL 3_11 aux_local_zero_q1
+D23_DEVELOPMENT_EVAL 3_11 rgb_contrast060
+D23_DEVELOPMENT_EVAL 3_11 aux_shift8
+D23_DEVELOPMENT_EVAL 3_11 aux_local_zero_stripe_eighth
+D23_DEVELOPMENT_EVAL 3_11 aux_noise_std020
+D23_DEVELOPMENT_EVAL 3_11 aux_shift16
+D23_DEVELOPMENT_EVAL 5_10 clean
+D23_DEVELOPMENT_EVAL 5_10 rgb_down2
+D23_DEVELOPMENT_EVAL 5_10 rgb_down4
+D23_DEVELOPMENT_EVAL 5_10 rgb_blur5
+D23_DEVELOPMENT_EVAL 5_10 rgb_local_down4_q1
+D23_DEVELOPMENT_EVAL 5_10 aux_down4
+D23_DEVELOPMENT_EVAL 5_10 aux_noise_std010
+D23_DEVELOPMENT_EVAL 5_10 aux_zero
+D23_DEVELOPMENT_EVAL 5_10 aux_local_zero_q1
+D23_DEVELOPMENT_EVAL 5_10 rgb_contrast060
+D23_DEVELOPMENT_EVAL 5_10 aux_shift8
+D23_DEVELOPMENT_EVAL 5_10 aux_local_zero_stripe_eighth
+D23_DEVELOPMENT_EVAL 5_10 aux_noise_std020
+D23_DEVELOPMENT_EVAL 5_10 aux_shift16
+D23_FORMAL_JOB_COMPLETE T0
