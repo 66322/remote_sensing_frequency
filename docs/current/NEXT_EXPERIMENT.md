@@ -1,9 +1,9 @@
-# 下一步：接续现有D23正式队列
+# 下一步：检查完成结果并上传GitHub
 
-最后观测、目录、PID及日志见[当前交接](HANDOFF.md)。已进行nohup接续，**不再要求Ctrl+C，不新开队列，不重跑资源测量或工程smoke**。GPU0/1、H10080GB、内存/硬盘充足已明确。
+2026-10-01用户报告实验已跑完，尚未取得完成原件和指标。读取现有队列目录 records/research_d23_b_formal_20261001T152548_658274 的queue_status.json，按其中job_directory定位八组formal_complete.json、training/training_complete.json和evaluation/summary.json；从状态指定路径读取screen_result。仅读取记录，不启动训练、评价、资源探针。
 
-1. 现有任务继续执行。需要新状态时只读本次controller日志、对应任务日志/完成标记；核对接续后的实际step和错误。旧PID不能单独作为当前存活保证，也不能依据陈旧输出擅自重启。
-2. 训练及评价完成后，依据输出的D23_UPLOAD_PENDING / D23_UPLOAD_SCRIPT提示，在前台执行对应轻量上传，必要时交互认证；用户只回复GitHub提交号。助手读取原件，核验本次完成与指标，不重新训练或重新执行全部历史审计。
-3. 按冻结阈值比较八组、固定对照、机制消融和逐tile风险，更新去留结论及证据边界。失败则依据实际错误做局部修复，不回到资源准备起点。
+使用已有scripts/upload_rebuild_v1_d23_formal_records.py上传轻量JSON、日志及绑定清单，服务器前台认证，用户只回复D23_GITHUB_COMMIT。即便有技术失败也上传已有原件，不根据不完整状态自动重跑。大型预测/权重留服务器。
 
-提速方向为缓存/CPU数据预取/独立任务并发，详见[代码审阅](../experiments/D23_THROUGHPUT_CODE_REVIEW_20261001.md)。这些是尚未部署的改进建议；当前运行快照保持。改batch/精度/步数不能冒充无影响提速；新对话遵守[执行约定](../protocols/EXECUTION_CONTRACT.md)。
+助手读取上传原件，核验八组4000步、Val2两个tile/14条件、原始计数及冻结对照，分析独立语义/频率增量和风险并写回去留结论。screen_result的COMPLETE或eligible_to_plan_confirmation需以实际内容为准；当前尚未得到这些结果。
+
+本轮不切换提速版本。缓存与预取仍为本地未发布开发，未影响已完成服务器实验。[当前交接](HANDOFF.md)保留观察来源和边界。
