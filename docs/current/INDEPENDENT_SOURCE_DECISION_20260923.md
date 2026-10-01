@@ -1,3 +1,5 @@
+> 历史阶段记录：保留下文当时的判断、建议与条件，不是当前执行指令。研究定位以[研究决策说明](RESEARCH_DECISION.md)为准，待办以[下一步](NEXT_EXPERIMENT.md)为准。特别是外部来源等待、旧seed要求与旧GPU范围不得直接沿用到新任务。
+
 # Independent-source decision after D9B — 2026-09-23
 
 This decision uses only dataset documentation. No data, labels or historical

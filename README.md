@@ -1,47 +1,18 @@
 # Remote Sensing Frequency Segmentation
 
-Optical and DSM semantic-segmentation experiments on ISPRS Vaihingen and
-Potsdam.
+光学影像与DSM遥感语义分割研究。当前处于论文可行性探索：优先评估频率与语义可靠性融合及模态退化/缺失能力，允许同题换解法、换交叉问题或换方向。最终方法与章节未冻结；C1恢复是旁支候选，尚未取代原路线。
 
-## Start here
+研究分支：**`rebuild-v1-protocol-20260915`**。默认`main`不代表该分支最新记录。
 
-[Project documentation](docs/START_HERE.md)
+从[START_HERE](docs/START_HERE.md)进入，先读[研究定位与决策](docs/current/RESEARCH_DECISION.md)，再读[当前交接](docs/current/HANDOFF.md)、[状态](docs/current/PROJECT_STATUS.md)与[下一步](docs/current/NEXT_EXPERIMENT.md)。运行态只以带时间的证据为准；本仓库不是实时服务器监控。
 
-## Current work
+## 执行与证据
 
-The active line is REBUILD_V1 multimodal capacity and robustness analysis.
+遵守[执行边界](docs/protocols/EXECUTION_BOUNDARIES.md)和[实验准备规则](docs/protocols/EXPERIMENT_PLANNING_RULES.md)。GPU范围以对应已授权协议为准，历史GPU0限制或已完成两卡队列不能自动授权新任务。原始数据与预训练权重只读。大型checkpoint、预测和完整运行日志保留服务器，GitHub存放允许归档的摘要、配置与索引；不能据此声称全部原始产物已上传。
 
-Active research branch: **`rebuild-v1-protocol-20260915`**. The GitHub default
-is `main`; a bare repository link does not select this research branch.
+## 目录
 
-R01-R05, C-OO and C-OO-QD seed42 have committed compact evidence. A1/A2,
-seed17 and D1-D6 follow-ups are reported complete from server logs, with
-original compact artifacts still pending archival. B1 is **running as last
-reported on 2026-09-20; no final B1 conclusion is available**.
-Training code at launch: `e2ad594` (12:56 +08:00, fix2).
-
-Read the [current handoff](docs/current/HANDOFF.md) before proposing work.
-Do not restart B1 or interpret QUEUE FINISHED as every stage passing.
-This repository is a recorded snapshot, not a live server monitor.
-
-## Mandatory execution boundaries
-
-- Physical GPU 0 only.
-- `CUDA_VISIBLE_DEVICES=0` is required.
-- Persistent files must remain under `/home/jovyan/zzx`.
-- Project outputs must remain inside this repository.
-- Raw datasets and pretrained weights are read-only.
-- Checkpoints and complete run directories are not uploaded to GitHub.
-
-Full policy:
-
-[Execution boundaries](docs/protocols/EXECUTION_BOUNDARIES.md)
-
-## Main directories
-
-- `model/`: model implementations
-- `scripts/`: training, evaluation and audit scripts
-- `configs/`: configurations and execution policy
-- `runs/`: server-only runtime outputs
-- `records/`: compact frozen evidence
-- `docs/`: documentation and experiment reports
+- `model/`、`scripts/`、`configs/`：实现、执行入口与配置。
+- `runs/`：服务器运行产物。
+- `records/`：实验台账与紧凑证据。
+- `docs/`：研究决策、当前交接、冻结协议、结果与历史。
