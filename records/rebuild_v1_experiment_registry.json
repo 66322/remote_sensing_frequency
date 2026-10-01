@@ -1373,7 +1373,7 @@
       "implemented": true,
       "core_implemented": true,
       "training_engine_implemented": true,
-      "local_CPU_tests_passed": 22,
+      "local_CPU_tests_passed": 27,
       "server_profile_completed": true,
       "parameters_per_gate": 18145,
       "formal_started": false,
@@ -1398,14 +1398,18 @@
       "runtime_lock_generated": false,
       "expert_micro_batch": 8,
       "gate_batch": 16,
-      "backward_calls_per_step": 1
+      "backward_calls_per_step": 1,
+      "budget_measurement_implemented": true,
+      "budget_measurement_started": false,
+      "budget_protocol": "docs/protocols/D23_B_DUAL_GPU_BUDGET_20261001.md",
+      "budget_launcher": "scripts/launch_rebuild_v1_d23_budget.py"
     },
     "server_started_at": null,
     "new_long_training_authorized_by_document": false,
     "test6_loaded": false,
     "historical_test6_independent_final_eligible": false,
     "execution_document": "docs/protocols/D23_A_CPU_EXECUTION_20261001.md",
-    "next_action": "prepare bounded 12-fit-tile cache/256-sample TCAP and dual-GPU runtime measurement; no repeat of completed engine admission",
+    "next_action": "user runs bounded dual-H100 budget measurement; upload light originals and review before runtime lock",
     "queue": null
   },
   "completed_post_d21_mixed_followup": {
@@ -1817,7 +1821,7 @@
       "implemented": true,
       "core_implemented": true,
       "training_engine_implemented": true,
-      "local_CPU_tests_passed": 22,
+      "local_CPU_tests_passed": 27,
       "server_profile_completed": true,
       "parameters_per_gate": 18145,
       "formal_started": false,
@@ -1842,7 +1846,11 @@
       "runtime_lock_generated": false,
       "expert_micro_batch": 8,
       "gate_batch": 16,
-      "backward_calls_per_step": 1
+      "backward_calls_per_step": 1,
+      "budget_measurement_implemented": true,
+      "budget_measurement_started": false,
+      "budget_protocol": "docs/protocols/D23_B_DUAL_GPU_BUDGET_20261001.md",
+      "budget_launcher": "scripts/launch_rebuild_v1_d23_budget.py"
     },
     "server_started_at": null,
     "new_long_training_authorized_by_document": false,

@@ -15,7 +15,7 @@ def main():
     ap.add_argument('--root',type=Path,required=True)
     ap.add_argument('--gpu',type=int,required=True)
     ap.add_argument('--output',type=Path,required=True)
-    ap.add_argument('--mode',choices=('smoke','profile','formal'),required=True)
+    ap.add_argument('--mode',choices=('smoke','profile','budget','formal'),required=True)
     ap.add_argument('--arm',default='TSF')
     ap.add_argument('--runtime-lock',type=Path)
     ap.add_argument('--resume',action='store_true')
@@ -58,7 +58,7 @@ def main():
         torch.backends.cudnn.benchmark=False;torch.backends.cudnn.deterministic=True
         torch.manual_seed(42);torch.cuda.manual_seed_all(42)
         def guard():
-            caps=lock or dict(job_wall_seconds=1800,host_rss_bytes=24*1024**3,gpu_allocated_bytes=32*1024**3,gpu_reserved_bytes=40*1024**3,job_disk_bytes=32*1024**3)
+            caps=lock or dict(job_wall_seconds=1800,host_rss_bytes=(64 if args.mode=='budget' else 24)*1024**3,gpu_allocated_bytes=32*1024**3,gpu_reserved_bytes=40*1024**3,job_disk_bytes=32*1024**3)
             if time.monotonic()-began>caps['job_wall_seconds']:raise RuntimeError('wall limit')
             if resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024>caps['host_rss_bytes']:raise RuntimeError('host RSS limit')
             if torch.cuda.max_memory_allocated()>caps['gpu_allocated_bytes'] or torch.cuda.max_memory_reserved()>caps['gpu_reserved_bytes']:
@@ -101,7 +101,7 @@ def main():
             permitted=split['val2'] if need_nb and args.mode=='formal' else fit
             if tile not in permitted:raise RuntimeError('tile outside gate-fit/development phase')
             cache_root=out/'normalized_fit_cache'/tile
-            if args.mode=='formal' and not need_nb and tile in verified_cache:
+            if args.mode in ('formal','budget') and not need_nb and tile in verified_cache:
                 return {name:np.load(cache_root/(name+'.npy'),mmap_mode='r') for name in ('optical','dsm','full_gt')}
             a,b=map(int,tile.split('_'))
             paths={'optical':data/'2_Ortho_RGB'/('top_potsdam_'+tile+'_RGB.tif'),
@@ -126,7 +126,7 @@ def main():
                     region=np.all(arrays['noboundary_gt']==color,axis=-1);nb[region]=c;recognized|=region
                 if not recognized.all():raise RuntimeError('unknown NoBoundary color')
                 result['noboundary_gt']=nb
-            if args.mode=='formal' and not need_nb:
+            if args.mode in ('formal','budget') and not need_nb:
                 cache_root.mkdir(parents=True,exist_ok=True)
                 meta=cache_root/'binding.json'
                 source={name:sha(path) for name,path in paths.items()}
@@ -144,7 +144,8 @@ def main():
                 verified_cache[tile]=True
                 result={name:np.load(cache_root/(name+'.npy'),mmap_mode='r') for name in result}
             return result
-        tile='2_12';cache=e.TileCache(load,[tile]);item=cache.get(tile)
+        tile='2_12';initial_load_started=time.monotonic();cache=e.TileCache(load,[tile]);item=cache.get(tile)
+        initial_load_seconds=time.monotonic()-initial_load_started
         signature=dict(experts=bindings,sources={p.name:sha(p) for p in (Path(__file__),Path(e.__file__),Path(g.__file__),Path(probe.__file__),Path(__file__).parent/'d23_lifecycle.py')},
           base_sha256=sha(root/'configs/rebuild_v1/r05_quality_plus_dropout_16k.json'),split_sha256=sha(root/base['split_file']),
           input_manifest_sha256=sha(root/'records/rebuild_v1_d21_queue_20260928/input_manifest.json'),
@@ -199,26 +200,60 @@ def main():
             print('D23_FORMAL_JOB_COMPLETE',args.arm,flush=True)
             return 0
         write(out/'preflight.json',signature)
-        # Small admission statistics only: two logical batches from training tile.
-        # Formal TCAP statistics must use all 12 gate-fit tiles, not this smoke file.
-        moments=e.Moments()
-        for step in range(2):
-            clean,treated,labels=e.logical_batch(cache,[tile],step,base['augmentation'],stream='stats_admission')
-            for view in (clean,treated):
-                for sl in e.slices(16,8):
-                    inp=pair(view[0][sl].cuda(),view[1][sl].cuda());moments.add(inp['E']);del inp
-            guard()
-        stats=moments.result();stats.update(scope='ADMISSION_ONLY_TRAIN_TILE_2_12',formal_fit_statistics=False)
-        write(out/'admission_fit_statistics.json',stats)
-        train_rows={};selected=g.ARMS if args.mode=='smoke' else ('TSF',)
+        cache_measurement={};cache_seconds=initial_load_seconds
+        if args.mode=='budget':
+            # Measure the exact formal disk-cache loader and its mmap reopen path.
+            cache=e.TileCache(load,fit)
+            for fit_tile in fit:
+                started=time.monotonic();value=cache.get(fit_tile);guard()
+                cache_measurement[fit_tile]=dict(seconds=time.monotonic()-started,
+                    bytes=sum(v.nbytes for v in value.values()),shape=list(value['dsm'].shape))
+                del value
+            cache_seconds+=sum(v['seconds'] for v in cache_measurement.values())
+            write(out/'cache_measurement.json',dict(tiles=cache_measurement,seconds=cache_seconds,
+                initial_tile_load_seconds=initial_load_seconds,initial_tile=tile,
+                formal_cache_format=True,test6_loaded=False))
+        statistics_started=time.monotonic()
+        if args.mode=='budget':
+            moments=e.Moments()
+            for i in range(256):
+                spec=e.sample_spec(fit,e.key(42,'formal_stats',i),base['augmentation'])
+                spec['tile']=fit[i%len(fit)]
+                clean_op,clean_ds,_,treated=e.materialize(cache,spec)
+                if i%8==0:stats_samples=[]
+                stats_samples.append((clean_op,clean_ds,treated))
+                if i%8==7:
+                    for view in (0,1):
+                        op=torch.stack([v[0] if view==0 else v[2][0] for v in stats_samples]).cuda()
+                        ds=torch.stack([v[1] if view==0 else v[2][1] for v in stats_samples]).cuda()
+                        inp=pair(op,ds);moments.add(inp['E']);del inp,op,ds
+                    guard()
+            stats=moments.result()
+            stats.update(scope='BUDGET_ONLY_12_FIT_TILES_256_SAMPLES',fit_tiles=fit,
+                samples=256,formal_fit_statistics=False)
+            write(out/'budget_fit_statistics.json',stats)
+        else:
+            # Formal TCAP statistics must use all 12 gate-fit tiles, not this smoke file.
+            moments=e.Moments()
+            for step in range(2):
+                clean,treated,labels=e.logical_batch(cache,[tile],step,base['augmentation'],stream='stats_admission')
+                for view in (clean,treated):
+                    for sl in e.slices(16,8):
+                        inp=pair(view[0][sl].cuda(),view[1][sl].cuda());moments.add(inp['E']);del inp
+                guard()
+            stats=moments.result();stats.update(scope='ADMISSION_ONLY_TRAIN_TILE_2_12',formal_fit_statistics=False)
+            write(out/'admission_fit_statistics.json',stats)
+
+        statistics_seconds=time.monotonic()-statistics_started
+        train_rows={};selected=g.ARMS if args.mode in ('smoke','budget') else ('TSF',)
         for arm in selected:
             torch.manual_seed(42);gate=g.DenseBenefitGate(arm).cuda()
             if arm=='TCAP':gate.set_fit_statistics(stats['mean'],stats['std'])
             optimizer=torch.optim.AdamW(gate.parameters(),lr=3e-4,weight_decay=.01)
             torch.cuda.reset_peak_memory_stats();times=[]
-            for step in range(2 if args.mode=='smoke' else 12):
-                logical=e.logical_batch(cache,[tile],step,base['augmentation'])
+            for step in range(16 if args.mode=='budget' else (2 if args.mode=='smoke' else 12)):
                 torch.cuda.synchronize();started=time.monotonic()
+                logical=e.logical_batch(cache,fit if args.mode=='budget' else [tile],step,base['augmentation'])
                 value,counts=e.fit_update(pair,gate,optimizer,logical,g.loss_sums,combine=g.combine_loss_sums)
                 torch.cuda.synchronize();times.append(time.monotonic()-started);guard()
             # Check saved gate state reload independently of the original instance.
@@ -234,12 +269,16 @@ def main():
               checkpoint_sha256=sha(saved),checkpoint_reload_equal=True,train_steps=len(times))
             write(out/(arm+'_training.json'),train_rows[arm]);print('D23_ENGINE_TRAIN_ADMISSION',arm,flush=True)
             del clone,inp,z,z2,optimizer,logical;gc.collect()
-            if args.mode=='smoke':del gate
+            if args.mode in ('smoke','budget'):del gate
         # Profile uses full 6000x6000 training tile; smoke uses >patch image with tail.
         if args.mode=='smoke':
             gate=g.DenseBenefitGate('TSF').cuda()
             eval_item={name:value[:768,:768] for name,value in item.items()}
             kinds=e.CONDITIONS
+        elif args.mode=='budget':
+            gate=g.DenseBenefitGate('TSF').cuda()
+            gate.load_state_dict(torch.load(out/'TSF_admission_state.pth',map_location='cpu',weights_only=False)['model'],strict=True)
+            eval_item=item;kinds=e.CONDITIONS
         else:eval_item=item;kinds=('clean','aux_zero','aux_local_zero_stripe_eighth')
         evaluations={}
         op=torch.from_numpy(np.ascontiguousarray(eval_item['optical'].transpose(2,0,1)))[None]
@@ -248,7 +287,7 @@ def main():
             seed=e.key(42,'potsdam',tile,condition) if condition in ('aux_noise_std020',) else 42+sum(map(ord,tile))
             treated,aux,mask=e.treatment(op,ds,condition,seed,numpy_noise=condition=='aux_noise_std020')
             optical=np.ascontiguousarray(treated[0].permute(1,2,0).numpy());secondary=aux[0].numpy();available=mask[0].numpy()
-            models={name:None for name in e.FIXED} if args.mode=='smoke' else {'R0':None,'M0_safe':None}
+            models={name:None for name in e.FIXED} if args.mode in ('smoke','budget') else {'R0':None,'M0_safe':None}
             models['TSF']=gate;started=time.monotonic()
             scores=e.infer(pair,models,optical,secondary,available,g.fixed_blend,guard=guard)
             ref=scores['R0'].argmax(0).astype(np.uint8);rows={}
@@ -265,11 +304,15 @@ def main():
         for arm,expected in probe.EXPECTED.items():
             if sha(root/'runs/rebuild_v1'/('D21_potsdam_'+arm+'_seed42_16000_20260928')/'last_train_state.pth')!=expected:
                 raise RuntimeError('expert file changed during run')
-        write(out/'summary.json',dict(status='ENGINE_ADMISSION_COMPLETE',mode=args.mode,signature=signature,
+        write(out/'summary.json',dict(status='ENGINE_BUDGET_COMPLETE' if args.mode=='budget' else 'ENGINE_ADMISSION_COMPLETE',mode=args.mode,signature=signature,
           observed_at=datetime.now().astimezone().isoformat(),train=train_rows,evaluation=evaluations,
           rss_peak_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024,elapsed_seconds=time.monotonic()-began,
           gpu_peak_allocated_bytes=torch.cuda.max_memory_allocated(),gpu_peak_reserved_bytes=torch.cuda.max_memory_reserved(),
           formal_training_started=False,formal_fit_statistics=False,
+          cache_measurement=cache_measurement,cache_seconds=cache_seconds,statistics_seconds=statistics_seconds,
+          timing_scope='logical_batch_cpu_io_plus_cuda_step',
+          budget_statistics_samples=256 if args.mode=='budget' else 32,
+          train_fit_ids=fit if args.mode=='budget' else [tile],
           remaining=['server full-engine admission','formal 12-tile TCAP/data-cache measurement',
                      'server eight-arm screen binding verification','dual concurrency/runtime budget lock']))
         print('D23_ENGINE_ADMISSION_COMPLETE',str(out),flush=True)

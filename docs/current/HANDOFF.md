@@ -12,6 +12,6 @@
 
 原预测/权重/admission统计/D21 input_manifest和tar未上传；对应SHA和logits相等为运行原记录报告。smoke评价g=0.5、profile训练tile12步，不是Val2精度或贡献证据。正式训练/统计均未开始。
 
-立即动作：准备12tile缓存/256样本TCAP I/O及双卡并行的有界资源测量，给出正式4000步＋Val2×14条件的预算；通过后冻结runtime lock再生成8组队列。当前正式锁/队列未生成。长输出继续直接上传GitHub，用户仅回复提交号，不再重复收集/上传本次原件。[下一步](NEXT_EXPERIMENT.md)。
+立即动作：用户执行已实现的双卡budget入口，测12tile缓存/256样本TCAP、八组各16步及训练tile14条件整图评价；本地27项CPU检查通过，真实预算尚未运行。每卡30分钟上限，结果轻量原件自动上GitHub；助手回读后冻结runtime lock才生成8组4000步队列。当前正式锁/队列未生成。见[执行方案](../protocols/D23_B_DUAL_GPU_BUDGET_20261001.md)。长输出继续直接上传GitHub，用户仅回复提交号，不再重复收集/上传本次原件。[下一步](NEXT_EXPERIMENT.md)。
 
 频率无独立增量则撤回对应贡献；gate无收益关闭具体解法，不自动降阈值或补seed，C1不自动升级主线。光学整幅缺失、未知缺失识别、独立泛化及历史原件归档仍未解决；Test6历史暴露且禁读。此前完整交接保留docs/history/20261001_before_engine_github_audit/，历史负结果不重复开启。
