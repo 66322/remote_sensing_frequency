@@ -46,6 +46,35 @@ def prepare_resume_job(base,arm,old,stamp):
     # Partial evaluation and normalized cache remain in the old directory.
     return target,True
 
+def wait_for_gpu(gpu,expected_uuid,timeout=90):
+    """Wait for process teardown/utilization sampling; never stop another job."""
+    deadline=time.monotonic()+timeout;stable=0
+    while True:
+        raw=subprocess.check_output(['nvidia-smi',
+          '--query-gpu=index,uuid,memory.used,utilization.gpu',
+          '--format=csv,noheader,nounits'],text=True)
+        rows={}
+        for line in raw.splitlines():
+            index,uuid,memory,util=(v.strip() for v in line.split(','))
+            rows[int(index)]=(uuid,int(memory),int(util))
+        if gpu not in rows or rows[gpu][0]!=expected_uuid:
+            raise RuntimeError('physical GPU identity changed')
+        uuid,memory,util=rows[gpu]
+        apps=subprocess.check_output(['nvidia-smi','--query-compute-apps=gpu_uuid,pid',
+                                     '--format=csv,noheader'],text=True)
+        pids=[line.split(',',1)[1].strip() for line in apps.splitlines()
+              if ',' in line and line.split(',',1)[0].strip()==uuid]
+        ready=memory<=1024 and util<=5 and not pids
+        stable=stable+1 if ready else 0
+        if stable>=2:return
+        remaining=deadline-time.monotonic()
+        if remaining<=0:
+            raise RuntimeError('GPU %d unavailable after bounded handover wait: memory=%dMiB util=%d%% pids=%s'
+                               %(gpu,memory,util,pids))
+        print('D23_GPU_HANDOVER_WAIT',gpu,'memory_MiB='+str(memory),
+              'util_percent='+str(util),'compute_pids='+str(pids),flush=True)
+        time.sleep(min(2,remaining))
+
 def stop(process):
     if process.poll() is None:
         os.killpg(process.pid,signal.SIGTERM)
@@ -98,7 +127,7 @@ def main():
         for arm in arms:
             complete=job_paths[arm]/'formal_complete.json'
             if args.resume_queue and complete.exists() and json.loads(complete.read_text()).get('global_step')==4000:
-                pending[gpu].remove(arm);states[arm]=dict(gpu=gpu,status='COMPLETE',job_directory=str(job_paths[arm]))
+                pending[gpu].remove(arm);states[arm]=dict(previous['jobs'].get(arm,{}),gpu=gpu,status='COMPLETE',job_directory=str(job_paths[arm]))
     screen_manifest=base/('screen_manifest_'+stamp+'.json' if args.resume_queue else 'screen_manifest.json')
     screen_result=base/('screen_result_'+stamp+'.json' if args.resume_queue else 'screen_result.json')
     screen_log=logs/'screen.log'
@@ -107,6 +136,8 @@ def main():
           jobs=states,pending=pending,formal_training_requested=True,test6_loaded=False,
           screen_manifest=str(screen_manifest),screen_result=str(screen_result),screen_log=str(screen_log)))
     def launch(gpu):
+        expected_uuid=next(row['uuid'] for row in lock['gpus'] if row['gpu']==gpu)
+        wait_for_gpu(gpu,expected_uuid)
         arm=pending[gpu].pop(0)
         out,resume=(prepare_resume_job(base,arm,job_paths[arm],stamp) if args.resume_queue else (job_paths[arm],False))
         job_paths[arm]=out;log=(logs/(arm+'.log')).open('x')

@@ -1335,7 +1335,7 @@
   ],
   "next_plan": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "B_formal_training_started_nohup_resume_observed_completion_unverified",
+    "status": "B_formal_partial_complete_2_of_8_gpu_start_admission_failure",
     "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
     "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
     "stage_a": {
@@ -1424,33 +1424,34 @@
       "queue_tests_passed": 5,
       "formal_complete": false,
       "last_observation": {
-        "source": "user_pasted_server_stdout_2026-10-01",
-        "wall_clock": null,
-        "wall_clock_note": "No independent observation clock in latest paste; log filename is a launch label.",
-        "pre_nohup_reported_step": 1000,
-        "total_steps": 4000,
-        "controller_pid": 746195,
-        "child_pids": [
-          746207,
-          746208
-        ],
-        "log_start_label": "20261001T153823_658274",
-        "heartbeat_minutes": [
-          0.5,
-          1
-        ],
-        "post_resume_step_unverified": true,
-        "live_now_unverified": true,
-        "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274",
-        "launcher_commit": "846403ccc83c97731eceb199de99d9049039e64b"
-      }
+        "source_commit": "9a70648affe105367e1b6e42ac4919f66140d7aa",
+        "observed_at": "2026-10-01T16:35:53.227191+08:00",
+        "status": "TECHNICAL_FAILURE",
+        "screen_result_present": false,
+        "live_now_unverified": true
+      },
+      "completed_arms": [
+        "TSF",
+        "T0"
+      ],
+      "failed_arms": {
+        "TS": "GPU busy startup rejection; returncode 2"
+      },
+      "remaining_arms": [
+        "TS",
+        "TF",
+        "TCAP",
+        "TSF_CE",
+        "TSF_shuffleS",
+        "TSF_shuffleF"
+      ]
     },
     "server_started_at": null,
     "new_long_training_authorized_by_document": false,
     "test6_loaded": false,
     "historical_test6_independent_final_eligible": false,
     "execution_document": "docs/current/NEXT_EXPERIMENT.md",
-    "next_action": "Continue existing nohup queue; read current progress only when needed; do not interrupt/relaunch/repeat admission or budget; upload light evidence after completion.",
+    "next_action": "Resume remaining six arms under nohup with bounded GPU handover wait; retain TSF/T0; no probes or resource measurement.",
     "queue": "scripts/launch_rebuild_v1_d23_formal.py"
   },
   "completed_post_d21_mixed_followup": {
@@ -1811,7 +1812,7 @@
   },
   "proposed_d23": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "B_formal_training_started_nohup_resume_observed_completion_unverified",
+    "status": "B_formal_partial_complete_2_of_8_gpu_start_admission_failure",
     "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
     "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
     "stage_a": {
@@ -1900,33 +1901,34 @@
       "queue_tests_passed": 5,
       "formal_complete": false,
       "last_observation": {
-        "source": "user_pasted_server_stdout_2026-10-01",
-        "wall_clock": null,
-        "wall_clock_note": "No independent observation clock in latest paste; log filename is a launch label.",
-        "pre_nohup_reported_step": 1000,
-        "total_steps": 4000,
-        "controller_pid": 746195,
-        "child_pids": [
-          746207,
-          746208
-        ],
-        "log_start_label": "20261001T153823_658274",
-        "heartbeat_minutes": [
-          0.5,
-          1
-        ],
-        "post_resume_step_unverified": true,
-        "live_now_unverified": true,
-        "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274",
-        "launcher_commit": "846403ccc83c97731eceb199de99d9049039e64b"
-      }
+        "source_commit": "9a70648affe105367e1b6e42ac4919f66140d7aa",
+        "observed_at": "2026-10-01T16:35:53.227191+08:00",
+        "status": "TECHNICAL_FAILURE",
+        "screen_result_present": false,
+        "live_now_unverified": true
+      },
+      "completed_arms": [
+        "TSF",
+        "T0"
+      ],
+      "failed_arms": {
+        "TS": "GPU busy startup rejection; returncode 2"
+      },
+      "remaining_arms": [
+        "TS",
+        "TF",
+        "TCAP",
+        "TSF_CE",
+        "TSF_shuffleS",
+        "TSF_shuffleF"
+      ]
     },
     "server_started_at": null,
     "new_long_training_authorized_by_document": false,
     "test6_loaded": false,
     "historical_test6_independent_final_eligible": false,
     "execution_document": "docs/current/NEXT_EXPERIMENT.md",
-    "next_action": "Continue existing nohup queue; read current progress only when needed; do not interrupt/relaunch/repeat admission or budget; upload light evidence after completion."
+    "next_action": "Resume remaining six arms under nohup with bounded GPU handover wait; retain TSF/T0; no probes or resource measurement."
   },
   "completed_post_d21_plan": {
     "id": "POST_D21_MULTIDIRECTION_DAY_PLAN_20260929",
