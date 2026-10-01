@@ -1301,52 +1301,49 @@
     }
   ],
   "next_plan": {
-    "id": "POST_D21_MULTIDIRECTION_DAY_PLAN_20260929",
-    "status": "user_reported_complete_42_of_42_integer_audit_passed",
-    "purpose": "At least one day of single-seed paired exploration across adaptation, DSM residuals, LR restoration and their interaction",
-    "draft_protocol": "docs/protocols/POST_D21_MULTIDIRECTION_DAY_PLAN_20260929.md",
-    "plan_manifest": "records/post_d21_day_plan_20260929/plan.json",
-    "planned_jobs_csv": "records/post_d21_day_plan_20260929/jobs.csv",
-    "execution_protocol": "docs/protocols/POST_D21_DAY_EXECUTION_20260929.md",
-    "configuration": "configs/rebuild_v1/post_d21_day_portfolio_20260929.json",
-    "queue": "scripts/run_rebuild_v1_day_queue.sh",
-    "model": "model/rebuild_v1_day_portfolio.py",
-    "local_cpu_checks": "tests/test_day_portfolio.py",
-    "main_jobs": 42,
-    "reserve_jobs": 8,
-    "main_optimizer_updates": 576000,
-    "seeds": [
-      42
-    ],
-    "physical_gpus": [
-      0,
-      1
-    ],
-    "target_wall_hours": [
-      24,
-      48
-    ],
-    "runtime_verified": true,
-    "server_preflight_complete": true,
-    "first_server_profile_started_at": "2026-09-29T19:47:48+08:00",
-    "first_server_profile_result": "failed_before_training_at_DINO_import_due_to_Python_3_9_PEP604_annotation; no scope or formal checkpoint",
-    "second_server_profile_started_at": "2026-09-30T00:18:15+08:00",
-    "second_server_profile_result": "DINO import passed; first D backward failed because CUDA replication padding has no strict deterministic backward; no scope or training checkpoint",
-    "deterministic_padding_fix": "C/D/E differentiable DINO input padding and highpass boundary use fixed zero extension; A/B D21 anchor padding unchanged",
-    "compatibility_fix": "scripts/day_dino_compat.py; original DINO source and weight remain unchanged; verified local mirror adds postponed annotations",
-    "server_training_started": true,
-    "completed_at": "2026-10-01T01:19:17+08:00",
-    "completion_time_source": "user-pasted server status.tsv",
-    "final_result": "docs/experiments/POST_D21_FINAL_AND_MIXED_FOLLOWUP_RESULTS_20261001.md",
-    "user_pasted_final_analysis": "records/post_d21_day_compact_20260929/user_pasted_analysis_20261001.json",
-    "reported_integer_count_audit": "PASS",
+    "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
+    "status": "proposed_not_implemented_not_preflighted_not_started",
+    "evidence_report": "docs/experiments/RESEARCH_GAPS_AND_DECISION_20261001.md",
+    "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
+    "stage_a": {
+      "new_inference": false,
+      "new_training": false,
+      "dataset": "potsdam",
+      "seeds": [
+        42
+      ],
+      "tiles": [
+        "3_11",
+        "5_10"
+      ],
+      "conditions": [
+        "clean",
+        "rgb_down4",
+        "aux_noise_std010",
+        "aux_zero",
+        "aux_local_zero_q1"
+      ],
+      "experts": [
+        "R0",
+        "M0"
+      ],
+      "prediction_file_count": 20
+    },
+    "stage_b": {
+      "conditional_on_stage_a": true,
+      "training_jobs": 8,
+      "steps_per_job": 4000,
+      "new_gate_updates": 32000,
+      "fixed_comparators": 6,
+      "experts_frozen": true,
+      "final_step_not_validation_selected": true
+    },
+    "server_started_at": null,
+    "new_long_training_authorized_by_document": false,
     "test6_loaded": false,
-    "supersedes_unrun_draft": "docs/protocols/D22_STRUCTURE_ALIGNED_DSM_RELIABILITY_DRAFT_20260929.md",
-    "results_motivating_plan": "docs/experiments/POST_D21_THROUGHPUT_PROBE_RESULTS_20260929.md",
-    "preflight": "docs/templates/EXPERIMENT_PREFLIGHT_TEMPLATE.md",
-    "new_data_or_install": "none planned; disclose and prepare separately if needed",
-    "provisional_training_configuration": "effective batch 16; profile frozen, partial-unfreeze and joint restoration paths; do not extrapolate six-step frozen-F2 timing",
-    "follow_on": "Historical completed portfolio. Current follow-up is feasibility and mechanism evidence synthesis; C1 is a side-branch candidate, not an adopted new thesis direction. See docs/current/NEXT_EXPERIMENT.md."
+    "historical_test6_independent_final_eligible": false,
+    "next_action": "implement and review Stage A CPU existing-prediction diagnostic; no GPU queue",
+    "queue": null
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -1699,9 +1696,100 @@
     "c1_role": "side_branch_development_candidate_not_adopted_replacement",
     "partial_unfreezing_role": "strong_baseline_strategy",
     "final_method_and_chapters_frozen": false,
-    "next_action": "synthesize existing mechanism evidence and unresolved hypotheses before selecting a bounded experiment",
+    "next_action": "implement and audit proposed D23-A existing-prediction joint-count diagnostic; conditionally prepare D23-B after allocation gate, no new experiment started",
     "next_action_document": "docs/current/NEXT_EXPERIMENT.md",
     "external_source_gate": "required for corresponding external confirmation, not a universal prerequisite for development exploration",
     "new_training_authorized_by_this_document": false
+  },
+  "proposed_d23": {
+    "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
+    "status": "proposed_not_implemented_not_preflighted_not_started",
+    "evidence_report": "docs/experiments/RESEARCH_GAPS_AND_DECISION_20261001.md",
+    "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
+    "stage_a": {
+      "new_inference": false,
+      "new_training": false,
+      "dataset": "potsdam",
+      "seeds": [
+        42
+      ],
+      "tiles": [
+        "3_11",
+        "5_10"
+      ],
+      "conditions": [
+        "clean",
+        "rgb_down4",
+        "aux_noise_std010",
+        "aux_zero",
+        "aux_local_zero_q1"
+      ],
+      "experts": [
+        "R0",
+        "M0"
+      ],
+      "prediction_file_count": 20
+    },
+    "stage_b": {
+      "conditional_on_stage_a": true,
+      "training_jobs": 8,
+      "steps_per_job": 4000,
+      "new_gate_updates": 32000,
+      "fixed_comparators": 6,
+      "experts_frozen": true,
+      "final_step_not_validation_selected": true
+    },
+    "server_started_at": null,
+    "new_long_training_authorized_by_document": false,
+    "test6_loaded": false,
+    "historical_test6_independent_final_eligible": false
+  },
+  "completed_post_d21_plan": {
+    "id": "POST_D21_MULTIDIRECTION_DAY_PLAN_20260929",
+    "status": "user_reported_complete_42_of_42_integer_audit_passed",
+    "purpose": "At least one day of single-seed paired exploration across adaptation, DSM residuals, LR restoration and their interaction",
+    "draft_protocol": "docs/protocols/POST_D21_MULTIDIRECTION_DAY_PLAN_20260929.md",
+    "plan_manifest": "records/post_d21_day_plan_20260929/plan.json",
+    "planned_jobs_csv": "records/post_d21_day_plan_20260929/jobs.csv",
+    "execution_protocol": "docs/protocols/POST_D21_DAY_EXECUTION_20260929.md",
+    "configuration": "configs/rebuild_v1/post_d21_day_portfolio_20260929.json",
+    "queue": "scripts/run_rebuild_v1_day_queue.sh",
+    "model": "model/rebuild_v1_day_portfolio.py",
+    "local_cpu_checks": "tests/test_day_portfolio.py",
+    "main_jobs": 42,
+    "reserve_jobs": 8,
+    "main_optimizer_updates": 576000,
+    "seeds": [
+      42
+    ],
+    "physical_gpus": [
+      0,
+      1
+    ],
+    "target_wall_hours": [
+      24,
+      48
+    ],
+    "runtime_verified": true,
+    "server_preflight_complete": true,
+    "first_server_profile_started_at": "2026-09-29T19:47:48+08:00",
+    "first_server_profile_result": "failed_before_training_at_DINO_import_due_to_Python_3_9_PEP604_annotation; no scope or formal checkpoint",
+    "second_server_profile_started_at": "2026-09-30T00:18:15+08:00",
+    "second_server_profile_result": "DINO import passed; first D backward failed because CUDA replication padding has no strict deterministic backward; no scope or training checkpoint",
+    "deterministic_padding_fix": "C/D/E differentiable DINO input padding and highpass boundary use fixed zero extension; A/B D21 anchor padding unchanged",
+    "compatibility_fix": "scripts/day_dino_compat.py; original DINO source and weight remain unchanged; verified local mirror adds postponed annotations",
+    "server_training_started": true,
+    "completed_at": "2026-10-01T01:19:17+08:00",
+    "completion_time_source": "user-pasted server status.tsv",
+    "final_result": "docs/experiments/POST_D21_FINAL_AND_MIXED_FOLLOWUP_RESULTS_20261001.md",
+    "user_pasted_final_analysis": "records/post_d21_day_compact_20260929/user_pasted_analysis_20261001.json",
+    "reported_integer_count_audit": "PASS",
+    "test6_loaded": false,
+    "supersedes_unrun_draft": "docs/protocols/D22_STRUCTURE_ALIGNED_DSM_RELIABILITY_DRAFT_20260929.md",
+    "results_motivating_plan": "docs/experiments/POST_D21_THROUGHPUT_PROBE_RESULTS_20260929.md",
+    "preflight": "docs/templates/EXPERIMENT_PREFLIGHT_TEMPLATE.md",
+    "new_data_or_install": "none planned; disclose and prepare separately if needed",
+    "provisional_training_configuration": "effective batch 16; profile frozen, partial-unfreeze and joint restoration paths; do not extrapolate six-step frozen-F2 timing",
+    "follow_on": "Historical completed portfolio. Current follow-up is feasibility and mechanism evidence synthesis; C1 is a side-branch candidate, not an adopted new thesis direction. See docs/current/NEXT_EXPERIMENT.md."
   }
 }
