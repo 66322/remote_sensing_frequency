@@ -64,12 +64,76 @@ def guard(torch):
     return int(rss)
 
 
+def compare_logits(reference, candidate):
+    """Pixelwise diagnostics; aggregate utility counts cannot establish equality."""
+    import torch
+    if reference.shape != candidate.shape or not torch.isfinite(candidate).all():
+        raise RuntimeError("invalid diagnostic logits")
+    changed=reference.argmax(1)!=candidate.argmax(1)
+    margin=reference.topk(2,dim=1).values
+    margin=margin[:,0]-margin[:,1]
+    return {"pixels":changed.numel(),"changed_pixels":int(changed.sum()),
+            "max_abs_logit_delta":float((reference-candidate).abs().max()),
+            "changed_reference_margin_max":float(margin[changed].max()) if changed.any() else None}
+
+
+def decision_audit(torch, pair, views, truth, out):
+    """No gate optimization. Compare microbatch partitions and repeat each partition."""
+    references=[]
+    for optical,secondary,mask in views:
+        chunks={key:[] for key in ("z0","z1")}
+        for start in range(0,16,2):
+            inp=pair(optical[start:start+2],secondary[start:start+2])
+            for key in chunks: chunks[key].append(inp[key].cpu())
+            del inp
+        references.append({key:torch.cat(value) for key,value in chunks.items()})
+    rows=[]
+    for micro in (2,4,8,16):
+        repeats=[]
+        for repeat in range(2):
+            counts={"valid":0,"positive":0,"negative":0}; comparisons=[]; hashes=[]
+            for vi,(optical,secondary,mask) in enumerate(views):
+                digests={key:hashlib.sha256() for key in ("z0","z1")}
+                totals={key:{"pixels":0,"changed_pixels":0,"max_abs_logit_delta":0.,
+                             "changed_reference_margin_max":None} for key in digests}
+                for start in range(0,16,micro):
+                    stop=start+micro;inp=pair(optical[start:stop],secondary[start:stop])
+                    p0,p1=inp["z0"].argmax(1),inp["z1"].argmax(1)
+                    y=truth[start:stop];m=mask[start:stop]
+                    counts["valid"]+=y.numel()
+                    counts["positive"]+=int((m&(p1==y)&(p0!=y)).sum())
+                    counts["negative"]+=int((m&(p0==y)&(p1!=y)).sum())
+                    for key in digests:
+                        candidate=inp[key].cpu()
+                        digests[key].update(candidate.argmax(1).numpy().tobytes())
+                        comparison=compare_logits(references[vi][key][start:stop],candidate)
+                        for name in ("pixels","changed_pixels"):totals[key][name]+=comparison[name]
+                        totals[key]["max_abs_logit_delta"]=max(totals[key]["max_abs_logit_delta"],comparison["max_abs_logit_delta"])
+                        value=comparison["changed_reference_margin_max"]
+                        if value is not None:
+                            totals[key]["changed_reference_margin_max"]=max(totals[key]["changed_reference_margin_max"] or 0.,value)
+                        del candidate
+                    del inp,p0,p1
+                    guard(torch)
+                hashes.append({key:value.hexdigest() for key,value in digests.items()})
+                comparisons.append({"view":"clean" if vi==0 else "aux_local_zero", "experts":totals})
+            repeats.append({"utility_counts":counts,"prediction_sha256":hashes,"comparisons":comparisons})
+        stable=(repeats[0]["prediction_sha256"]==repeats[1]["prediction_sha256"] and
+                repeats[0]["utility_counts"]==repeats[1]["utility_counts"])
+        row={"micro_batch":micro,"reference_micro_batch":2,"repeat_prediction_stable":stable,"repeats":repeats}
+        write(out/("decision_micro%d.json"%micro),row);rows.append(row)
+        print("D23_B_DECISION_AUDIT",json.dumps(row),flush=True)
+        if not stable:raise RuntimeError("fixed-microbatch expert prediction not repeatable")
+    return rows
+
+
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--root",type=Path,required=True)
     ap.add_argument("--gate-module",type=Path,required=True)
     ap.add_argument("--gpu",type=int,required=True)
     ap.add_argument("--output",type=Path,required=True)
+    ap.add_argument("--decision-audit-only",action="store_true")
     args=ap.parse_args()
     root,out=args.root.resolve(),args.output.resolve()
     scope_root=Path("/home/jovyan/zzx").resolve()
@@ -181,6 +245,21 @@ def main():
         available=torch.ones_like(aux,dtype=torch.bool);available[:,128:384,128:384]=False
         treated=torch.where(available,aux,torch.zeros_like(aux))
         views=((op,aux,torch.ones_like(available)),(op,treated,available))
+        if args.decision_audit_only:
+            write(out/"preflight.json",{"observed_at":datetime.now().astimezone().isoformat(),
+                  "gpu":args.gpu,"uuid":uuid,"torch_version":torch.__version__,"bindings":bindings,
+                  "matmul_allow_tf32":torch.backends.cuda.matmul.allow_tf32,
+                  "cudnn_allow_tf32":torch.backends.cudnn.allow_tf32,
+                  "script_sha256":sha(Path(__file__)),"gate_sha256":sha(args.gate_module)})
+            rows=decision_audit(torch,pair,views,y,out)
+            for arm in EXPECTED:
+                if sha(root/"runs/rebuild_v1"/("D21_potsdam_"+arm+"_seed42_16000_20260928")/"last_train_state.pth")!=before[arm]:
+                    raise RuntimeError("expert checkpoint file changed")
+            write(out/"summary.json",{"status":"DECISION_AUDIT_COMPLETE","observed_at":datetime.now().astimezone().isoformat(),
+                  "gpu":args.gpu,"uuid":uuid,"rows":rows,"test6_loaded":False,
+                  "development_labels_loaded":False,"formal_training_started":False,
+                  "checkpoint_saved":False,"cross_microbatch_differences_are_diagnostic_only":True})
+            return 0
         rows=[];baseline_counts=None
         for micro in (2,4,8,16):
             torch.manual_seed(42);gate=g.DenseBenefitGate("TSF").cuda()

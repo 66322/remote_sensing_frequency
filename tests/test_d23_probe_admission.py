@@ -8,6 +8,24 @@ spec=importlib.util.spec_from_file_location("probe",Path(__file__).resolve().par
 p=importlib.util.module_from_spec(spec);spec.loader.exec_module(p)
 
 class ProbeAdmissionTests(unittest.TestCase):
+    def test_pixel_swaps_are_detected_even_with_equal_histograms(self):
+        import torch
+        reference=torch.tensor([[[[2.,0.]],[[0.,2.]]]])
+        candidate=reference.flip(-1)
+        result=p.compare_logits(reference,candidate)
+        self.assertEqual(result["changed_pixels"],2)
+        self.assertEqual(result["changed_reference_margin_max"],2.)
+        self.assertEqual(p.compare_logits(reference,reference)["changed_pixels"],0)
+
+    def test_logit_delta_without_decision_change_and_invalid_values(self):
+        import torch
+        reference=torch.tensor([[[[2.]],[[0.]]]])
+        result=p.compare_logits(reference,reference+.01)
+        self.assertEqual(result["changed_pixels"],0)
+        self.assertGreater(result["max_abs_logit_delta"],0)
+        self.assertIsNone(result["changed_reference_margin_max"])
+        with self.assertRaises(RuntimeError):p.compare_logits(reference,reference*float("nan"))
+
     def test_busy_gpu_and_existing_compute_are_rejected(self):
         for info in ({"used_mib":1025,"util_percent":0},{"used_mib":0,"util_percent":6}):
             with self.assertRaises(RuntimeError):p.require_idle(info)
@@ -30,4 +48,3 @@ class ProbeAdmissionTests(unittest.TestCase):
             self.assertEqual(p.sha(path),before)
 
 if __name__=="__main__":unittest.main()
-

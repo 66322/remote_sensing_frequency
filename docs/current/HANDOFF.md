@@ -1,17 +1,17 @@
-# 当前交接：D23-A通过投入门槛，B进入实现准备
+# D23当前状态与交接（2026-10-01）
 
-更新2026-10-01，分支rebuild-v1-protocol-20260915；实验快照1a8a840，A脚本来自961c719。用户通过服务器终端执行，本轮无直连。研究仍是可行性探索，频率/语义可靠性为优先候选，C1旁支，部分解冻强基线，方向/章节未冻结。
+分支rebuild-v1-protocol-20260915；实验基准1a8a840，A工具961c719，GPU吞吐探针526d5a0。用户终端执行，本地无服务器直连。
 
-最新用户回传观测2026-10-01T12:44:35.075903+08:00，D23-A COMPLETE，10pair，20个既有预测。Potsdam Val2、D21 R0/M0 seed42固定16000步、NoBoundary fg5不可部署互补诊断相对每条件较强同回退专家：clean1.5927371494/rgb_down4 2.4155417779/noise1.6570893077pp，平均1.8884560784pp，满足准备B规则。实际114.1585秒/RSS584.1758MiB，Test6/独立final false，无新训练或推理。详见[A结果](../experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md)。
+研究仍是可行性探索：优先频率＋语义可靠性、模态退化/缺失训练与推理；C1旁支，部分解冻强基线，允许换解法/交叉问题/方向。章节和贡献未冻结。见[决策](RESEARCH_DECISION.md)。
 
-原件仍在/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_feasibility_20261001_20261001T124227_658274；当前归档仅用户粘贴摘要、均值复算，不是全部联合张量已离线复核。用户已在服务器打包profile/full与日志，SHA041bc0ad79c3c5f11fdbf4a29479b2c3cf68d60f898b5125d8cf2211e59084b1；本地尚未收到，不重跑A。原Post-D21归档缺口仍存在。
+D23-A最后带时钟观测2026-10-01T12:44:35.075903+08:00 COMPLETE：Potsdam Val2、R0/M0 seed42 final16000、NoBoundary fg5，标签选择诊断clean +1.592737/rgb_down4 +2.415542/noise +1.657089pp，平均+1.888456pp，通过准备B投入条件。不是learned gate、语义或频率成立证据。原件仍服务器；A轻量归档报告SHA041bc0ad79c3c5f11fdbf4a29479b2c3cf68d60f898b5125d8cf2211e59084b1，尚未收到本地。不重跑A。
 
-B核心model/rebuild_v1_d23_gate.py与tests/test_d23_gate.py已实现，本地PyTorch2.7.1 CPU8项合成测试PASS，每gate18145参数。真实专家接入、服务器CPU兼容已通过，真实DINO GPU接入、训练/整图评价入口、TCAP gate-fit统计、滑窗后精确回退、吞吐/磁盘测量尚待完成；正式队列未实现/启动。[B准备记录](../protocols/D23_B_IMPLEMENTATION_PREPARATION_20261001.md)。
+最新用户回传GPU日志未给结束时钟：GPU0 micro2/4/8短测完成，micro16因expert decisions changed across steps/microbatches停止；GPU1未启动。无OOM证据，不能确认数值误差原因。用户确认两卡H100、内存/磁盘充足；仍须执行时核对空闲。原目录records/research_d23_b_crop_probe_20261001T131740_658274保留。见[GPU结果与诊断](../experiments/D23_B_GPU_DIAGNOSTIC_20261001.md)。
 
-立即工作：服务器CPU8项复验已PASS（1.732秒，结束时钟未提供）。scripts/probe_rebuild_v1_d23_gate.py已实现，3项本地准入检查PASS；下一步用户执行[单GPU训练crop短测](../protocols/D23_B_CROP_GPU_PROBE_20261001.md)。GPU尚未运行；crop probe不含正式增强流/整图评价，后续仍须完成单一入口、TCAP统计、整图测试、wall/job/显存/RSS/磁盘预算，才生成8组4000步命令。A只证明互补空间，不证明语义/频率/gate有效；收益/harm-rescue门槛不改。频率无独立增量撤回贡献，gate无收益关闭解法，不自动补seed/改半径。
+B核心CPU8测试在本地/服务器通过；probe准入及像素诊断本地5测试通过。已实现--decision-audit-only，下一步两卡分别对micro2/4/8/16逐像素比较并重复两次，不训练gate，不保存权重。跨微批差异原样记录，同一微批预测不稳定仍停止。旧crop吞吐矩阵不重跑，micro8仅候选，未冻结。
 
-旧Test6历史暴露，不具独立final资格，继续禁读。第一轮光学可用、已知DSM availability，未知缺失/光学全缺失及独立地区仍待检验。旧交接见固定[961c719](https://github.com/66322/remote_sensing_frequency/blob/961c7197d07a636c0d7d46bba7937e15395cf4f8/docs/current/HANDOFF.md)。
+完整训练/14条件整图评价入口、TCAP fit统计、固定采样流、滑窗拼接后精确回退、整图与双卡资源预算未完成，正式8组4000步队列未启动。原收益/风险/机制门槛保持；频率无独立增量撤回其贡献，gate无收益关闭解法，不自动补seed或调阈值。见[下一实验](NEXT_EXPERIMENT.md)。
 
-用户本轮明确授权GPU0和GPU1。下一命令将逐卡运行相同crop探针，每卡上限30分钟；正式双卡并行资源与整图预算仍待验收，不重复询问卡号权限。
+旧Test6已历史暴露，禁读且无独立final资格；Post-D21原摘要等归档缺口仍存在。第一轮光学可用、已知DSM mask回退；未知缺失、光学全缺失与独立来源泛化仍未验证。
 
-目录规则：用户要求所有服务器实验记录保存在/home/jovyan/zzx下的对应实验目录。本次B代码快照、两卡结果、日志统一在项目records/research_d23_b_crop_probe_<timestamp>_<pid>/下的code/gpu0/gpu1；A归档仍在A目录。后续不使用/tmp执行快照，不自动移动旧记录。
+全部服务器快照/日志/JSON/归档保存在/home/jovyan/zzx下的对应实验目录；新诊断目录records/research_d23_b_decision_audit_<timestamp>_<pid>。不覆盖或移动原产物。上一交接见固定526d5a0版本。
