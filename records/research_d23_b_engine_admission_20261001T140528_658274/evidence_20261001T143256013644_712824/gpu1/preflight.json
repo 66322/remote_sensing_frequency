@@ -1,0 +1,39 @@
+{
+  "experts": [
+    {
+      "arm": "R0",
+      "sha256": "29aa15f4cd149012996ddeadd7a5b40f593f99854318acd1d0d0acb286ed5975",
+      "saved_probe_reproduced": true
+    },
+    {
+      "arm": "M0",
+      "sha256": "23b2939ea50867c96c0a17626fd4a85a27100ebd8296b2fc96440ed8bc3d34de",
+      "saved_probe_reproduced": true
+    }
+  ],
+  "sources": {
+    "run_rebuild_v1_d23.py": "484830d7e6955c55527f069ab13c11fa5369ce72cd8e209a0bcb0ec4237d655f",
+    "d23_engine.py": "a4e496ffa63130dd1e3c1a48e50ba66185e66d06aef43815c077e5b61eba385c",
+    "rebuild_v1_d23_gate.py": "545596287f3e2619e906b5b01f71c25f1e2e6ef688e8c44222b4d9c71e3c7027",
+    "probe_rebuild_v1_d23_gate.py": "88e738d50ff6f36c39536f44e88fb8ac2369ea2e758527ab595f55e6ec5409fa",
+    "d23_lifecycle.py": "8747c16efb2eed2d6acb6f30bfc5ae09a6ac0f9034686692094189bd56a30090"
+  },
+  "base_sha256": "07dd4b7f224d2e036024dfb2ab57bac9fe312335a5eebb8173778cd5c11de133",
+  "split_sha256": "d9fe260f6b1be3807811e454c1673d1e69db235c32d4dea207e8724975e210ab",
+  "input_manifest_sha256": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295",
+  "torch_version": "2.2.2+cu121",
+  "matmul_allow_tf32": true,
+  "cudnn_allow_tf32": true,
+  "gpu": 1,
+  "uuid": "GPU-4b116760-e84c-2743-cee6-41cf76a01677",
+  "expert_micro_batch": 8,
+  "gate_batch": 16,
+  "backward_calls_per_step": 1,
+  "gpu_name": "NVIDIA H100 80GB HBM3",
+  "gpu_total_memory_bytes": 85019328512,
+  "gate_trainable_parameters": 18145,
+  "gate_convolution_macs_per_512_crop": 296222720,
+  "test6_loaded": false,
+  "development_labels_loaded": false,
+  "formal_training_started": false
+}

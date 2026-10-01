@@ -1,0 +1,27 @@
+test_counting_ignore_and_harm_rescue_by_region (test_d23_engine.EngineTests) ... ok
+test_keyed_sample_plan_cache_does_not_load_forbidden_tiles (test_d23_engine.EngineTests) ... ok
+test_masks_stress_geometry_and_rng (test_d23_engine.EngineTests) ... ok
+test_single_backward_with_frozen_experts_micro8_gate16 (test_d23_engine.EngineTests) ... ok
+test_split_fit_heldout_and_test_are_disjoint (test_d23_engine.EngineTests) ... ok
+test_statistics_matches_direct_and_ignores_partition (test_d23_engine.EngineTests) ... ok
+test_stitch_tail_padding_and_exact_missing_fallback (test_d23_engine.EngineTests) ... ok
+test_effective_batch_loss_and_gradient_are_partition_invariant (test_d23_gate.GateTests) ... ok
+test_fit_stats_required_and_input_validation (test_d23_gate.GateTests) ... ok
+test_frequency_constant_signal_and_odd_dimensions (test_d23_gate.GateTests) ... ok
+test_frozen_expert_hook_and_gate_only_optimization (test_d23_gate.GateTests) ... ok
+test_input_ablation_and_spatial_correspondence (test_d23_gate.GateTests) ... ok
+test_mask_exact_equality_all_gates_and_baselines (test_d23_gate.GateTests) ... ok
+test_matched_capacity_and_initialization (test_d23_gate.GateTests) ... ok
+test_utility_target_signs_and_empty_sets (test_d23_gate.GateTests) ... ok
+test_busy_gpu_and_existing_compute_are_rejected (test_d23_probe_admission.ProbeAdmissionTests) ... ok
+test_evidence_file_cannot_be_overwritten (test_d23_probe_admission.ProbeAdmissionTests) ... ok
+test_inventory_preserves_physical_index_and_uuid (test_d23_probe_admission.ProbeAdmissionTests) ... ok
+test_logit_delta_without_decision_change_and_invalid_values (test_d23_probe_admission.ProbeAdmissionTests) ... ok
+test_pixel_swaps_are_detected_even_with_equal_histograms (test_d23_probe_admission.ProbeAdmissionTests) ... ok
+test_missing_arm_baseline_mismatch_and_na (test_d23_screen.ScreenTests) ... ok
+test_positive_fixture_and_mechanism_failure (test_d23_screen.ScreenTests) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 5.480s
+
+OK
