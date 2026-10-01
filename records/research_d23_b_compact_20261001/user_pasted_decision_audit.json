@@ -1,0 +1,919 @@
+{
+  "evidence_kind": "user_pasted_server_stdout",
+  "executed_commit": "17be568bfcd4ad36ef4865cd3ab2ae5dfa623049",
+  "observed_at": null,
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_decision_audit_20261001T132944_658274",
+  "gpu_order_in_invoked_script": [
+    0,
+    1
+  ],
+  "rows": [
+    {
+      "micro_batch": 2,
+      "reference_micro_batch": 2,
+      "repeat_prediction_stable": true,
+      "repeats": [
+        {
+          "utility_counts": {
+            "valid": 8388608,
+            "positive": 107759,
+            "negative": 84429
+          },
+          "prediction_sha256": [
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "488d05181e7e2735a4ea14fa43b613328feeeb27994f3a473f4e8200393d2771"
+            },
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "4f5859e1110d9ec591ef5bd994f5cae0b63bc9219d2366f047a4756c6ceb8def"
+            }
+          ],
+          "comparisons": [
+            {
+              "view": "clean",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            },
+            {
+              "view": "aux_local_zero",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "utility_counts": {
+            "valid": 8388608,
+            "positive": 107759,
+            "negative": 84429
+          },
+          "prediction_sha256": [
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "488d05181e7e2735a4ea14fa43b613328feeeb27994f3a473f4e8200393d2771"
+            },
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "4f5859e1110d9ec591ef5bd994f5cae0b63bc9219d2366f047a4756c6ceb8def"
+            }
+          ],
+          "comparisons": [
+            {
+              "view": "clean",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            },
+            {
+              "view": "aux_local_zero",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "micro_batch": 4,
+      "reference_micro_batch": 2,
+      "repeat_prediction_stable": true,
+      "repeats": [
+        {
+          "utility_counts": {
+            "valid": 8388608,
+            "positive": 107759,
+            "negative": 84429
+          },
+          "prediction_sha256": [
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "488d05181e7e2735a4ea14fa43b613328feeeb27994f3a473f4e8200393d2771"
+            },
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "4f5859e1110d9ec591ef5bd994f5cae0b63bc9219d2366f047a4756c6ceb8def"
+            }
+          ],
+          "comparisons": [
+            {
+              "view": "clean",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            },
+            {
+              "view": "aux_local_zero",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "utility_counts": {
+            "valid": 8388608,
+            "positive": 107759,
+            "negative": 84429
+          },
+          "prediction_sha256": [
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "488d05181e7e2735a4ea14fa43b613328feeeb27994f3a473f4e8200393d2771"
+            },
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "4f5859e1110d9ec591ef5bd994f5cae0b63bc9219d2366f047a4756c6ceb8def"
+            }
+          ],
+          "comparisons": [
+            {
+              "view": "clean",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            },
+            {
+              "view": "aux_local_zero",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "micro_batch": 8,
+      "reference_micro_batch": 2,
+      "repeat_prediction_stable": true,
+      "repeats": [
+        {
+          "utility_counts": {
+            "valid": 8388608,
+            "positive": 107759,
+            "negative": 84429
+          },
+          "prediction_sha256": [
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "488d05181e7e2735a4ea14fa43b613328feeeb27994f3a473f4e8200393d2771"
+            },
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "4f5859e1110d9ec591ef5bd994f5cae0b63bc9219d2366f047a4756c6ceb8def"
+            }
+          ],
+          "comparisons": [
+            {
+              "view": "clean",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            },
+            {
+              "view": "aux_local_zero",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "utility_counts": {
+            "valid": 8388608,
+            "positive": 107759,
+            "negative": 84429
+          },
+          "prediction_sha256": [
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "488d05181e7e2735a4ea14fa43b613328feeeb27994f3a473f4e8200393d2771"
+            },
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "4f5859e1110d9ec591ef5bd994f5cae0b63bc9219d2366f047a4756c6ceb8def"
+            }
+          ],
+          "comparisons": [
+            {
+              "view": "clean",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            },
+            {
+              "view": "aux_local_zero",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "micro_batch": 16,
+      "reference_micro_batch": 2,
+      "repeat_prediction_stable": true,
+      "repeats": [
+        {
+          "utility_counts": {
+            "valid": 8388608,
+            "positive": 107810,
+            "negative": 84304
+          },
+          "prediction_sha256": [
+            {
+              "z0": "11867608c94224edfe2e087d037d34fcdabd39913d2343a1cd175439085374e6",
+              "z1": "956adc5104c451a983a2cff3431aa1a3c497297ea19af2087256095ead891ceb"
+            },
+            {
+              "z0": "11867608c94224edfe2e087d037d34fcdabd39913d2343a1cd175439085374e6",
+              "z1": "4bab80b02f39e7250ca39eee4e5951ee15f5eabd01afd1bdbecda0fd2d95a5c4"
+            }
+          ],
+          "comparisons": [
+            {
+              "view": "clean",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 624,
+                  "max_abs_logit_delta": 0.0635443925857544,
+                  "changed_reference_margin_max": 0.006249666213989258
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 464,
+                  "max_abs_logit_delta": 0.04184150695800781,
+                  "changed_reference_margin_max": 0.007585287094116211
+                }
+              }
+            },
+            {
+              "view": "aux_local_zero",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 624,
+                  "max_abs_logit_delta": 0.0635443925857544,
+                  "changed_reference_margin_max": 0.006249666213989258
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 736,
+                  "max_abs_logit_delta": 0.04395794868469238,
+                  "changed_reference_margin_max": 0.014072895050048828
+                }
+              }
+            }
+          ]
+        },
+        {
+          "utility_counts": {
+            "valid": 8388608,
+            "positive": 107810,
+            "negative": 84304
+          },
+          "prediction_sha256": [
+            {
+              "z0": "11867608c94224edfe2e087d037d34fcdabd39913d2343a1cd175439085374e6",
+              "z1": "956adc5104c451a983a2cff3431aa1a3c497297ea19af2087256095ead891ceb"
+            },
+            {
+              "z0": "11867608c94224edfe2e087d037d34fcdabd39913d2343a1cd175439085374e6",
+              "z1": "4bab80b02f39e7250ca39eee4e5951ee15f5eabd01afd1bdbecda0fd2d95a5c4"
+            }
+          ],
+          "comparisons": [
+            {
+              "view": "clean",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 624,
+                  "max_abs_logit_delta": 0.0635443925857544,
+                  "changed_reference_margin_max": 0.006249666213989258
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 464,
+                  "max_abs_logit_delta": 0.04184150695800781,
+                  "changed_reference_margin_max": 0.007585287094116211
+                }
+              }
+            },
+            {
+              "view": "aux_local_zero",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 624,
+                  "max_abs_logit_delta": 0.0635443925857544,
+                  "changed_reference_margin_max": 0.006249666213989258
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 736,
+                  "max_abs_logit_delta": 0.04395794868469238,
+                  "changed_reference_margin_max": 0.014072895050048828
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "micro_batch": 2,
+      "reference_micro_batch": 2,
+      "repeat_prediction_stable": true,
+      "repeats": [
+        {
+          "utility_counts": {
+            "valid": 8388608,
+            "positive": 107759,
+            "negative": 84429
+          },
+          "prediction_sha256": [
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "488d05181e7e2735a4ea14fa43b613328feeeb27994f3a473f4e8200393d2771"
+            },
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "4f5859e1110d9ec591ef5bd994f5cae0b63bc9219d2366f047a4756c6ceb8def"
+            }
+          ],
+          "comparisons": [
+            {
+              "view": "clean",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            },
+            {
+              "view": "aux_local_zero",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "utility_counts": {
+            "valid": 8388608,
+            "positive": 107759,
+            "negative": 84429
+          },
+          "prediction_sha256": [
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "488d05181e7e2735a4ea14fa43b613328feeeb27994f3a473f4e8200393d2771"
+            },
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "4f5859e1110d9ec591ef5bd994f5cae0b63bc9219d2366f047a4756c6ceb8def"
+            }
+          ],
+          "comparisons": [
+            {
+              "view": "clean",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            },
+            {
+              "view": "aux_local_zero",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "micro_batch": 4,
+      "reference_micro_batch": 2,
+      "repeat_prediction_stable": true,
+      "repeats": [
+        {
+          "utility_counts": {
+            "valid": 8388608,
+            "positive": 107759,
+            "negative": 84429
+          },
+          "prediction_sha256": [
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "488d05181e7e2735a4ea14fa43b613328feeeb27994f3a473f4e8200393d2771"
+            },
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "4f5859e1110d9ec591ef5bd994f5cae0b63bc9219d2366f047a4756c6ceb8def"
+            }
+          ],
+          "comparisons": [
+            {
+              "view": "clean",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            },
+            {
+              "view": "aux_local_zero",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "utility_counts": {
+            "valid": 8388608,
+            "positive": 107759,
+            "negative": 84429
+          },
+          "prediction_sha256": [
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "488d05181e7e2735a4ea14fa43b613328feeeb27994f3a473f4e8200393d2771"
+            },
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "4f5859e1110d9ec591ef5bd994f5cae0b63bc9219d2366f047a4756c6ceb8def"
+            }
+          ],
+          "comparisons": [
+            {
+              "view": "clean",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            },
+            {
+              "view": "aux_local_zero",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "micro_batch": 8,
+      "reference_micro_batch": 2,
+      "repeat_prediction_stable": true,
+      "repeats": [
+        {
+          "utility_counts": {
+            "valid": 8388608,
+            "positive": 107759,
+            "negative": 84429
+          },
+          "prediction_sha256": [
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "488d05181e7e2735a4ea14fa43b613328feeeb27994f3a473f4e8200393d2771"
+            },
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "4f5859e1110d9ec591ef5bd994f5cae0b63bc9219d2366f047a4756c6ceb8def"
+            }
+          ],
+          "comparisons": [
+            {
+              "view": "clean",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            },
+            {
+              "view": "aux_local_zero",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "utility_counts": {
+            "valid": 8388608,
+            "positive": 107759,
+            "negative": 84429
+          },
+          "prediction_sha256": [
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "488d05181e7e2735a4ea14fa43b613328feeeb27994f3a473f4e8200393d2771"
+            },
+            {
+              "z0": "a063efcf0ad713dd70f7c9239bc4016109cb833b6a9946ee781c0cd9fcc3dd05",
+              "z1": "4f5859e1110d9ec591ef5bd994f5cae0b63bc9219d2366f047a4756c6ceb8def"
+            }
+          ],
+          "comparisons": [
+            {
+              "view": "clean",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            },
+            {
+              "view": "aux_local_zero",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 0,
+                  "max_abs_logit_delta": 0,
+                  "changed_reference_margin_max": null
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "micro_batch": 16,
+      "reference_micro_batch": 2,
+      "repeat_prediction_stable": true,
+      "repeats": [
+        {
+          "utility_counts": {
+            "valid": 8388608,
+            "positive": 107810,
+            "negative": 84304
+          },
+          "prediction_sha256": [
+            {
+              "z0": "11867608c94224edfe2e087d037d34fcdabd39913d2343a1cd175439085374e6",
+              "z1": "956adc5104c451a983a2cff3431aa1a3c497297ea19af2087256095ead891ceb"
+            },
+            {
+              "z0": "11867608c94224edfe2e087d037d34fcdabd39913d2343a1cd175439085374e6",
+              "z1": "4bab80b02f39e7250ca39eee4e5951ee15f5eabd01afd1bdbecda0fd2d95a5c4"
+            }
+          ],
+          "comparisons": [
+            {
+              "view": "clean",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 624,
+                  "max_abs_logit_delta": 0.0635443925857544,
+                  "changed_reference_margin_max": 0.006249666213989258
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 464,
+                  "max_abs_logit_delta": 0.04184150695800781,
+                  "changed_reference_margin_max": 0.007585287094116211
+                }
+              }
+            },
+            {
+              "view": "aux_local_zero",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 624,
+                  "max_abs_logit_delta": 0.0635443925857544,
+                  "changed_reference_margin_max": 0.006249666213989258
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 736,
+                  "max_abs_logit_delta": 0.04395794868469238,
+                  "changed_reference_margin_max": 0.014072895050048828
+                }
+              }
+            }
+          ]
+        },
+        {
+          "utility_counts": {
+            "valid": 8388608,
+            "positive": 107810,
+            "negative": 84304
+          },
+          "prediction_sha256": [
+            {
+              "z0": "11867608c94224edfe2e087d037d34fcdabd39913d2343a1cd175439085374e6",
+              "z1": "956adc5104c451a983a2cff3431aa1a3c497297ea19af2087256095ead891ceb"
+            },
+            {
+              "z0": "11867608c94224edfe2e087d037d34fcdabd39913d2343a1cd175439085374e6",
+              "z1": "4bab80b02f39e7250ca39eee4e5951ee15f5eabd01afd1bdbecda0fd2d95a5c4"
+            }
+          ],
+          "comparisons": [
+            {
+              "view": "clean",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 624,
+                  "max_abs_logit_delta": 0.0635443925857544,
+                  "changed_reference_margin_max": 0.006249666213989258
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 464,
+                  "max_abs_logit_delta": 0.04184150695800781,
+                  "changed_reference_margin_max": 0.007585287094116211
+                }
+              }
+            },
+            {
+              "view": "aux_local_zero",
+              "experts": {
+                "z0": {
+                  "pixels": 4194304,
+                  "changed_pixels": 624,
+                  "max_abs_logit_delta": 0.0635443925857544,
+                  "changed_reference_margin_max": 0.006249666213989258
+                },
+                "z1": {
+                  "pixels": 4194304,
+                  "changed_pixels": 736,
+                  "max_abs_logit_delta": 0.04395794868469238,
+                  "changed_reference_margin_max": 0.014072895050048828
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "both_gpus_reported_rows_equal": true,
+  "formal_training_started": false,
+  "original_preflight_and_summary_received": false
+}

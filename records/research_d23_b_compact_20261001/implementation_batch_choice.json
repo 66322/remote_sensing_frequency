@@ -1,0 +1,13 @@
+{
+  "status": "IMPLEMENTATION_BATCH_CHOICE_NOT_FULL_RUNTIME_LOCK",
+  "micro_batch": 8,
+  "accum_steps": 2,
+  "effective_batch": 16,
+  "crop_size": 512,
+  "expert_forward_micro_batch": 8,
+  "precision": "FP32; preserve D21-compatible backend defaults; read actual TF32 flags before full runtime lock",
+  "reason": "micro2/4/8 logits identical for both GPUs on 16 crops of training tile 2_12, 2 views; micro8 fastest measured on GPU0",
+  "micro16_used": false,
+  "full_image_evaluation_batch_verified": false,
+  "formal_training_started": false
+}

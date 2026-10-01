@@ -6,9 +6,9 @@
 
 D23-A最后带时钟观测2026-10-01T12:44:35.075903+08:00 COMPLETE：Potsdam Val2、R0/M0 seed42 final16000、NoBoundary fg5，标签选择诊断clean +1.592737/rgb_down4 +2.415542/noise +1.657089pp，平均+1.888456pp，通过准备B投入条件。不是learned gate、语义或频率成立证据。原件仍服务器；A轻量归档报告SHA041bc0ad79c3c5f11fdbf4a29479b2c3cf68d60f898b5125d8cf2211e59084b1，尚未收到本地。不重跑A。
 
-最新用户回传GPU日志未给结束时钟：GPU0 micro2/4/8短测完成，micro16因expert decisions changed across steps/microbatches停止；GPU1未启动。无OOM证据，不能确认数值误差原因。用户确认两卡H100、内存/磁盘充足；仍须执行时核对空闲。原目录records/research_d23_b_crop_probe_20261001T131740_658274保留。见[GPU结果与诊断](../experiments/D23_B_GPU_DIAGNOSTIC_20261001.md)。
+最新用户回传：17be568两卡数值诊断均执行结束（结束时钟未给）。两卡统计/SHA相同，micro2/4/8在该批裁剪上logit完全相同；micro16有少量可重复判定差异；所有固定微批两次预测均稳定。原件仍服务器，见[双卡诊断结果](../experiments/D23_B_DECISION_AUDIT_RESULTS_20261001.md)。原短测/诊断均保留，目录records/research_d23_b_decision_audit_20261001T132944_658274；主机内存/磁盘充足、两卡H100为用户声明，运行时仍核对空闲。
 
-B核心CPU8测试在本地/服务器通过；probe准入及像素诊断本地5测试通过。已实现--decision-audit-only，下一步两卡分别对micro2/4/8/16逐像素比较并重复两次，不训练gate，不保存权重。跨微批差异原样记录，同一微批预测不稳定仍停止。旧crop吞吐矩阵不重跑，micro8仅候选，未冻结。
+B核心CPU8测试在本地/服务器通过；probe准入/像素诊断本地5测试通过。工程选择：下一实现固定训练微批8、累积2、有效batch16，8组同口径，不用micro16，不再追测16。根因未确认到TF32。此选择不是完整runtime lock，仅覆盖训练tile2_12的16个512裁剪/两视图；整图尾批、GPU1反传及双卡并行预算仍待验证。诊断不训练gate、不保存权重，不改原研究门槛。
 
 完整训练/14条件整图评价入口、TCAP fit统计、固定采样流、滑窗拼接后精确回退、整图与双卡资源预算未完成，正式8组4000步队列未启动。原收益/风险/机制门槛保持；频率无独立增量撤回其贡献，gate无收益关闭解法，不自动补seed或调阈值。见[下一实验](NEXT_EXPERIMENT.md)。
 
