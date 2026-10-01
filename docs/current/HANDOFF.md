@@ -1,17 +1,13 @@
-# 当前交接：证据整理完成，下一步准备D23可行性检验
+# 当前交接：D23-A通过投入门槛，B进入实现准备
 
-更新：2026-10-01；分支rebuild-v1-protocol-20260915。实验快照基准1a8a840，本轮证据读取固定37adbaf5fb11a56b41052d3685565f418e9df8cb；新提交仅文档与局部摘要审计记录，不是新训练结果。先读[研究决策](RESEARCH_DECISION.md)、[缺口报告](../experiments/RESEARCH_GAPS_AND_DECISION_20261001.md)、[下一步](NEXT_EXPERIMENT.md)、[D23方案](../protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md)。
+更新2026-10-01，分支rebuild-v1-protocol-20260915；实验快照1a8a840，A脚本来自961c719。用户通过服务器终端执行，本轮无直连。研究仍是可行性探索，频率/语义可靠性为优先候选，C1旁支，部分解冻强基线，方向/章节未冻结。
 
-用户目标是判断论文可否继续，允许换解法、换交叉问题或换方向；优先评估频率＋语义可靠性融合及模态缺失/退化训练与推理。C1恢复是旁支候选，部分解冻是强基线策略，最终方法与章节未冻结。本轮建议属于助手提出的解法检验，不等于用户已采纳最终论文方向。
+最新用户回传观测2026-10-01T12:44:35.075903+08:00，D23-A COMPLETE，10pair，20个既有预测。Potsdam Val2、D21 R0/M0 seed42固定16000步、NoBoundary fg5不可部署互补诊断相对每条件较强同回退专家：clean1.5927371494/rgb_down4 2.4155417779/noise1.6570893077pp，平均1.8884560784pp，满足准备B规则。实际114.1585秒/RSS584.1758MiB，Test6/独立final false，无新训练或推理。详见[A结果](../experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md)。
 
-证据：DSM在D18/D21匹配对照有信息增量；D12试过压缩语义统计，未充分检验当前DINO完整通道；D13单侧风险抑制丢失大部分rescue；旧F2、B3/C3等保留原失败决定。D21三份Potsdam seed42摘要共66个pooled scope重算一致，R0/M0训练16000步与评价SHA绑定一致；没有重hash权重二进制或重评价影像。
+原件仍在/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_feasibility_20261001_20261001T124227_658274；当前归档仅用户粘贴摘要、均值复算，不是全部联合张量已离线复核。先补profile/full JSON及日志轻量归档，不能重跑A。原Post-D21归档缺口仍存在。
 
-仍缺：新专家逐像素互补诊断、完整语义与频率独立增量、同时降低harm/保留rescue、未知缺失检测与未见退化、独立地区确认和最近邻方法差异。Post-D21完整42＋E四项摘要、预测、权重及日志仍在服务器；按需补归档，不重跑。
+B核心model/rebuild_v1_d23_gate.py与tests/test_d23_gate.py已实现，本地PyTorch2.7.1 CPU8项合成测试PASS，每gate18145参数。真实专家接入、服务器2.2.2兼容、训练/整图评价入口、TCAP gate-fit统计、滑窗后精确回退、吞吐/磁盘测量尚待完成；正式队列未实现/启动。[B准备记录](../protocols/D23_B_IMPLEMENTATION_PREPARATION_20261001.md)。
 
-最后服务器观测仍为2026-10-01 10:15:16+08:00逐tile CPU审计PASS。D21有效32/32；Post-D21 42/42与E 4/4报告完成。此后未直连，无实时GPU状态。
+立即工作：服务器CPU复验核心与补A原件；助手继续准备训练/整图评价单一入口，然后真实GPU短测、冻结wall/job/显存/RSS/磁盘预算，再生成8组4000步正式命令。A只证明互补空间，不证明语义/频率/gate有效；收益/harm-rescue门槛不改。频率无独立增量撤回贡献，gate无收益关闭解法，不自动补seed/改半径。
 
-立即工作：用户终端执行D23-A已实现轻量计数工具，复用R0/M0已有20预测文件，先一tile CPU测量再跑主范围；A工具scripts/audit_rebuild_v1_d23_complementarity.py已实现，tests/test_d23_complementarity.py本地7项合成检查PASS；真实服务器profile/计数未执行，B未实现。用户明确将在服务器终端执行[CPU说明](../protocols/D23_A_CPU_EXECUTION_20261001.md)，待回传profile、D23_A_DECISION和产物目录。A固定不可部署诊断满足新投入条件才准备B的8项4000步gate，6固定基线。先短测并冻结资源上限再安排长运行；不自动下载、推理回填、补seed或开GPU队列。A不足停止固定组合，B无增量停止此解法，频率无增量撤回对应贡献承诺。
-
-旧Test6历史上已参与开发，继续封存不恢复独立final资格；禁止加载。外部来源验收只约束对应外部确认。第一轮光学可用、DSM缺失/退化；已知mask回退不等于未知缺失识别，也不称任意模态缺失。大原件留服务器、仓库记索引与SHA。
-
-旧交接见固定[37adbaf版本](https://github.com/66322/remote_sensing_frequency/blob/37adbaf5fb11a56b41052d3685565f418e9df8cb/docs/current/HANDOFF.md)。
+旧Test6历史暴露，不具独立final资格，继续禁读。第一轮光学可用、已知DSM availability，未知缺失/光学全缺失及独立地区仍待检验。旧交接见固定[961c719](https://github.com/66322/remote_sensing_frequency/blob/961c7197d07a636c0d7d46bba7937e15395cf4f8/docs/current/HANDOFF.md)。

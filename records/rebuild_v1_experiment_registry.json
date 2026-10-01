@@ -1302,8 +1302,8 @@
   ],
   "next_plan": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "stage_a_implemented_synthetic_checks_passed_server_profile_pending",
-    "evidence_report": "docs/experiments/RESEARCH_GAPS_AND_DECISION_20261001.md",
+    "status": "stage_a_user_reported_complete_allocation_passed_B_core_local_tests_passed_preparation_only",
+    "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
     "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
     "stage_a": {
       "new_inference": false,
@@ -1331,8 +1331,13 @@
       "implementation": "scripts/audit_rebuild_v1_d23_complementarity.py",
       "tests": "tests/test_d23_complementarity.py",
       "local_synthetic_tests_passed": 7,
-      "server_profile_completed": false,
-      "real_counts_computed": false
+      "server_profile_completed": true,
+      "real_counts_computed": true,
+      "result_source": "user_pasted_server_stdout",
+      "completed_at": "2026-10-01T12:44:35.075903+08:00",
+      "mean_available_gain_pp": 1.888456078355997,
+      "eligible_to_prepare_B": true,
+      "original_jsons_archived": false
     },
     "stage_b": {
       "conditional_on_stage_a": true,
@@ -1342,14 +1347,20 @@
       "fixed_comparators": 6,
       "experts_frozen": true,
       "final_step_not_validation_selected": true,
-      "implemented": false
+      "implemented": false,
+      "core_implemented": true,
+      "training_engine_implemented": false,
+      "local_CPU_tests_passed": 8,
+      "server_profile_completed": false,
+      "parameters_per_gate": 18145,
+      "formal_started": false
     },
     "server_started_at": null,
     "new_long_training_authorized_by_document": false,
     "test6_loaded": false,
     "historical_test6_independent_final_eligible": false,
     "execution_document": "docs/protocols/D23_A_CPU_EXECUTION_20261001.md",
-    "next_action": "user executes bounded CPU profile then existing-prediction counts from documented terminal commands; await evidence",
+    "next_action": "archive A raw JSONs; user CPU tests B core; complete training/evaluation entry then bounded GPU resource preflight",
     "queue": null
   },
   "completed_post_d21_mixed_followup": {
@@ -1703,15 +1714,15 @@
     "c1_role": "side_branch_development_candidate_not_adopted_replacement",
     "partial_unfreezing_role": "strong_baseline_strategy",
     "final_method_and_chapters_frozen": false,
-    "next_action": "D23-A implementation tested locally; user terminal CPU diagnostic pending, stage B unimplemented",
+    "next_action": "D23-A allocation passed; D23-B core tested locally, full implementation/resource preflight pending",
     "next_action_document": "docs/current/NEXT_EXPERIMENT.md",
     "external_source_gate": "required for corresponding external confirmation, not a universal prerequisite for development exploration",
     "new_training_authorized_by_this_document": false
   },
   "proposed_d23": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "stage_a_implemented_synthetic_checks_passed_server_profile_pending",
-    "evidence_report": "docs/experiments/RESEARCH_GAPS_AND_DECISION_20261001.md",
+    "status": "stage_a_user_reported_complete_allocation_passed_B_core_local_tests_passed_preparation_only",
+    "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
     "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
     "stage_a": {
       "new_inference": false,
@@ -1739,8 +1750,13 @@
       "implementation": "scripts/audit_rebuild_v1_d23_complementarity.py",
       "tests": "tests/test_d23_complementarity.py",
       "local_synthetic_tests_passed": 7,
-      "server_profile_completed": false,
-      "real_counts_computed": false
+      "server_profile_completed": true,
+      "real_counts_computed": true,
+      "result_source": "user_pasted_server_stdout",
+      "completed_at": "2026-10-01T12:44:35.075903+08:00",
+      "mean_available_gain_pp": 1.888456078355997,
+      "eligible_to_prepare_B": true,
+      "original_jsons_archived": false
     },
     "stage_b": {
       "conditional_on_stage_a": true,
@@ -1750,7 +1766,13 @@
       "fixed_comparators": 6,
       "experts_frozen": true,
       "final_step_not_validation_selected": true,
-      "implemented": false
+      "implemented": false,
+      "core_implemented": true,
+      "training_engine_implemented": false,
+      "local_CPU_tests_passed": 8,
+      "server_profile_completed": false,
+      "parameters_per_gate": 18145,
+      "formal_started": false
     },
     "server_started_at": null,
     "new_long_training_authorized_by_document": false,

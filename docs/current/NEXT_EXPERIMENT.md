@@ -1,20 +1,10 @@
-# 下一步：D23有界可行性检验
+# 下一步：D23-B实现与预检准备
 
-证据梳理已完成，见[缺口、未决问题与去留判断](../experiments/RESEARCH_GAPS_AND_DECISION_20261001.md)。优先候选仍是频率与语义可靠性、模态退化/缺失能力；C1为旁支备选，最终问题与解法未冻结。
+D23-A已满足准备门槛，见[A结果](../experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md)：三条件平均互补空间1.888456pp。B核心已实现、本地CPU8测试PASS，完整训练/评价入口尚未实现，正式训练未启动。研究定位仍见[决策](RESEARCH_DECISION.md)。
 
-## 立即准备
+1. 补A原始profile/decision/10tile-condition JSON与日志轻量归档，不重跑A。
+2. 用户服务器CPU复验tests/test_d23_gate.py，确认实际Python/PyTorch兼容；[B准备记录](../protocols/D23_B_IMPLEMENTATION_PREPARATION_20261001.md)。
+3. 完成单一fit采样、TCAP fit统计、有效batch损失分母、4000步训练与14条件整图评价入口；真实D21冻结专家128通道hook、前向一致性与滑窗后缺失精确回退核对；保持原8组/6固定比较与门槛。
+4. 按[完整协议](../protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md)完成已分配单GPU有界短测，测真实吞吐/RSS/显存/磁盘并冻结wall/job cap，才生成正式队列命令。不从CPU A的两分钟外推B工时，不复用旧授权假定GPU空闲。
 
-1. D23-A轻量联合计数工具已完成实现与本地审计，接下来由用户终端执行：复用D21 R0/M0 seed42已有预测与绑定GT，Potsdam Val2五条件20个预测文件；不新推理、不训练。缺原件先补索引与绑定，不自动回填。
-2. 按[CPU执行说明](../protocols/D23_A_CPU_EXECUTION_20261001.md)做一tile CPU实测并冻结内存/I/O预算，再计算纠错与新增错误及固定不可部署的互补诊断。当前A工具已实现，7项本地合成测试通过，服务器profile/真实计数尚未执行；B gate与训练配置仍未实现。执行方式见[D23-A CPU命令](../protocols/D23_A_CPU_EXECUTION_20261001.md)。
-3. 只有A满足预设资源投入条件，才准备B：完整128通道语义/频率/效用监督8项gate对照，另有6个固定路由与平均基线；光学保持可用，DSM缺失/退化分别测。8项每项4000步、同seed42、最终步策略，共32k gate更新，冻结已有专家。
-4. B正式运行前核验复用权重原字节、实际执行链，完成短测和磁盘估算，填总wall cap与job cap；本方案不是启动命令，不默认启动GPU长队。
-
-这些新门槛只用于D23投入判断，不改D12/D13/D21等原失败决定。A不足就停该固定专家组合；B仅语义有效则建议删去频率承诺；learned gate不优于简单同回退方法则关闭此解法。通过才规划seed17必要配对与独立来源确认，不自动追加。
-
-## 补归档与独立评价
-
-先按研究问题补Post-D21 E四组完整摘要，再按需补42项；D11/D12缺上下文补文件，不重跑旧筛选。大权重/预测/日志留服务器、仓库保索引和SHA。
-
-旧Test6已有历史开发暴露，继续封存不能恢复其独立final资格。独立来源、城市/地域隔离及来源许可是后续确认的前置，不能阻塞已有数据的可行性检验。已知mask回退、未知缺失检测、未见退化、光学全缺失与跨地域泛化分别判定。
-
-研究决策见[RESEARCH_DECISION](RESEARCH_DECISION.md)，旧工作顺序见固定提交[37adbaf](https://github.com/66322/remote_sensing_frequency/blob/37adbaf5fb11a56b41052d3685565f418e9df8cb/docs/current/NEXT_EXPERIMENT.md)。
+A的label-informed互补诊断不能部署，不能当频率/语义/gate成立；B无增量关闭此解法，频率无独立增量撤回相应贡献。继续/换解法/换问题均按证据判断，C1不自动升级。旧Test6历史暴露，禁止读取，独立final资格另以独立来源建立。
