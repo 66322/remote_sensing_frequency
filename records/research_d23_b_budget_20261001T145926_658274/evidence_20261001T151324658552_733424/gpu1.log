@@ -1,0 +1,37 @@
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/swiglu_ffn.py:45: UserWarning: xFormers is disabled (SwiGLU)
+  warnings.warn("xFormers is disabled (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/swiglu_ffn.py:51: UserWarning: xFormers is not available (SwiGLU)
+  warnings.warn("xFormers is not available (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py:29: UserWarning: xFormers is disabled (Attention)
+  warnings.warn("xFormers is disabled (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py:33: UserWarning: xFormers is not available (Attention)
+  warnings.warn("xFormers is not available (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/block.py:35: UserWarning: xFormers is disabled (Block)
+  warnings.warn("xFormers is disabled (Block)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/block.py:40: UserWarning: xFormers is not available (Block)
+  warnings.warn("xFormers is not available (Block)")
+D23_ENGINE_TRAIN_ADMISSION T0
+D23_ENGINE_TRAIN_ADMISSION TS
+D23_ENGINE_TRAIN_ADMISSION TF
+D23_ENGINE_TRAIN_ADMISSION TSF
+D23_ENGINE_TRAIN_ADMISSION TCAP
+D23_ENGINE_TRAIN_ADMISSION TSF_CE
+D23_ENGINE_TRAIN_ADMISSION TSF_shuffleS
+D23_ENGINE_TRAIN_ADMISSION TSF_shuffleF
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_budget_20261001T145926_658274/code/scripts/run_rebuild_v1_d23.py:285: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at ../torch/csrc/utils/tensor_numpy.cpp:206.)
+  ds=torch.from_numpy(np.ascontiguousarray(eval_item['dsm']))[None]
+D23_ENGINE_EVAL_ADMISSION clean
+D23_ENGINE_EVAL_ADMISSION rgb_down2
+D23_ENGINE_EVAL_ADMISSION rgb_down4
+D23_ENGINE_EVAL_ADMISSION rgb_blur5
+D23_ENGINE_EVAL_ADMISSION rgb_local_down4_q1
+D23_ENGINE_EVAL_ADMISSION aux_down4
+D23_ENGINE_EVAL_ADMISSION aux_noise_std010
+D23_ENGINE_EVAL_ADMISSION aux_zero
+D23_ENGINE_EVAL_ADMISSION aux_local_zero_q1
+D23_ENGINE_EVAL_ADMISSION rgb_contrast060
+D23_ENGINE_EVAL_ADMISSION aux_shift8
+D23_ENGINE_EVAL_ADMISSION aux_local_zero_stripe_eighth
+D23_ENGINE_EVAL_ADMISSION aux_noise_std020
+D23_ENGINE_EVAL_ADMISSION aux_shift16
+D23_ENGINE_ADMISSION_COMPLETE /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_budget_20261001T145926_658274/gpu1
