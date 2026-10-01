@@ -1335,7 +1335,7 @@
   ],
   "next_plan": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "B_formal_partial_complete_2_of_8_gpu_start_admission_failure",
+    "status": "B_formal_remaining_queue_nohup_requested_TS_process_started_TF_unobserved",
     "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
     "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
     "stage_a": {
@@ -1424,10 +1424,14 @@
       "queue_tests_passed": 5,
       "formal_complete": false,
       "last_observation": {
-        "source_commit": "9a70648affe105367e1b6e42ac4919f66140d7aa",
-        "observed_at": "2026-10-01T16:35:53.227191+08:00",
-        "status": "TECHNICAL_FAILURE",
-        "screen_result_present": false,
+        "source": "user_pasted_stdout_2026-10-01",
+        "observed_at": null,
+        "log_start_label": "20261001T175826_811992",
+        "controller_pid": 815309,
+        "TS_pid": 815349,
+        "TF_process_started_unverified": true,
+        "training_progress_unverified": true,
+        "controller_commit": "3c2d8e5d465272ba257b006e5b8f2926a2bca2f7",
         "live_now_unverified": true
       },
       "completed_arms": [
@@ -1451,7 +1455,7 @@
     "test6_loaded": false,
     "historical_test6_independent_final_eligible": false,
     "execution_document": "docs/current/NEXT_EXPERIMENT.md",
-    "next_action": "Resume remaining six arms under nohup with bounded GPU handover wait; retain TSF/T0; no probes or resource measurement.",
+    "next_action": "Continue existing nohup resume; do not relaunch; observe TF start and subsequent progress from log when needed; upload after completion.",
     "queue": "scripts/launch_rebuild_v1_d23_formal.py"
   },
   "completed_post_d21_mixed_followup": {
@@ -1812,7 +1816,7 @@
   },
   "proposed_d23": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "B_formal_partial_complete_2_of_8_gpu_start_admission_failure",
+    "status": "B_formal_remaining_queue_nohup_requested_TS_process_started_TF_unobserved",
     "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
     "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
     "stage_a": {
@@ -1901,10 +1905,14 @@
       "queue_tests_passed": 5,
       "formal_complete": false,
       "last_observation": {
-        "source_commit": "9a70648affe105367e1b6e42ac4919f66140d7aa",
-        "observed_at": "2026-10-01T16:35:53.227191+08:00",
-        "status": "TECHNICAL_FAILURE",
-        "screen_result_present": false,
+        "source": "user_pasted_stdout_2026-10-01",
+        "observed_at": null,
+        "log_start_label": "20261001T175826_811992",
+        "controller_pid": 815309,
+        "TS_pid": 815349,
+        "TF_process_started_unverified": true,
+        "training_progress_unverified": true,
+        "controller_commit": "3c2d8e5d465272ba257b006e5b8f2926a2bca2f7",
         "live_now_unverified": true
       },
       "completed_arms": [
@@ -1928,7 +1936,7 @@
     "test6_loaded": false,
     "historical_test6_independent_final_eligible": false,
     "execution_document": "docs/current/NEXT_EXPERIMENT.md",
-    "next_action": "Resume remaining six arms under nohup with bounded GPU handover wait; retain TSF/T0; no probes or resource measurement."
+    "next_action": "Continue existing nohup resume; do not relaunch; observe TF start and subsequent progress from log when needed; upload after completion."
   },
   "completed_post_d21_plan": {
     "id": "POST_D21_MULTIDIRECTION_DAY_PLAN_20260929",
