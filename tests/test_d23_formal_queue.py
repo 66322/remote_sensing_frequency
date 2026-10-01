@@ -12,6 +12,14 @@ path=Path(__file__).resolve().parents[1]/'scripts/launch_rebuild_v1_d23_formal.p
 spec=importlib.util.spec_from_file_location('queue',path)
 q=importlib.util.module_from_spec(spec);spec.loader.exec_module(q)
 class QueueTests(unittest.TestCase):
+    def test_failed_preflight_without_checkpoint_keeps_retry_directory_absent(self):
+        with tempfile.TemporaryDirectory() as t:
+            base=Path(t);old=base/'jobs/TS';old.mkdir(parents=True)
+            (old/'failure.json').write_text('old failure')
+            target,resume=q.prepare_resume_job(base,'TS',old,'retry')
+            self.assertFalse(resume)
+            self.assertFalse(target.exists())
+            self.assertEqual((old/'failure.json').read_text(),'old failure')
     def test_handover_waits_for_utilization_decay_and_process_exit(self):
         inventories=iter(['0, GPU-0, 0, 30\n1, GPU-1, 5000, 90\n',
                           '0, GPU-0, 0, 0\n', '0, GPU-0, 0, 0\n', '0, GPU-0, 0, 0\n'])

@@ -1,7 +1,7 @@
-# 下一步：沿已启动的nohup接续任务继续
+# 下一步：读取TS错误，保留正在执行的TF
 
-2026-10-01最新用户回传controller PID815309，GPU0 TS PID815349已创建，GPU1首次空闲确认通过、TF创建尚未回传。日志为 /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/nohup_handover_20261001T175826_811992.log 。没有独立观测墙钟；这是最后观测，不是助手实时监控。
+2026-10-01最新用户回传：日志显示TS启动后TECHNICAL_FAILURE，GPU1 TF PID815379在elapsed_minutes=2.0打印D23_GATE_TRAIN TF 1。没有独立观测墙钟，不作为实时存活保证。GPU0空闲是TS失败所致；TF最后观测已开始训练，不应为诊断TS停止TF。
 
-不重复启动。需要状态时只读该日志，预期GPU1 TF创建及随后训练步骤；原TSF/T0完成保留。本次仅组间空闲短等待，不重跑smoke/资源预算。六组完成且screen_result生成后，前台运行输出的上传脚本，用户回复提交号，助手读取八组原件并按冻结机制/风险阈值分析。[当前交接](HANDOFF.md)。
+代码已确认prepare_resume_job在旧失败目录没有checkpoint时仍提前创建target，而worker新训练拒绝已有output目录，构成确定的接续缺陷。此缺陷已修复：仅有checkpoint才创建目标目录用于复制，否则把未创建路径交给worker。11项本地针对性检查通过，包括失败无checkpoint的新目录条件。该缺陷是否就是本次TS实际异常，仍需读取TS本次log_path中的末尾错误；不要把推断当作服务器错误原件。
 
-原失败证据9a70648、controller修复3c2d8e5；当前研究角色、4000步、micro8/gate16、Potsdam Val2口径和Test6禁读均沿既定协议。prefetch开发未发布，不混入本次。
+立即下一步仅读取queue_status中TS日志末尾，同时保留TF继续执行；暂不重复运行--resume-queue（TF工作进程仍可能存活）。上一空闲等待修复保留；模型/engine/runtime lock不变。修复代码已发布，服务器尚未执行此版。TSF/T0完成保留，八组仍未完成。

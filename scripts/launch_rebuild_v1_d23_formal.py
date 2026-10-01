@@ -35,9 +35,9 @@ def prepare_resume_job(base,arm,old,stamp):
     old=old.resolve();old.relative_to(base.resolve())
     target=base/'jobs'/(arm+'_resume_'+stamp)
     if not old.exists():return old,False
-    target.mkdir(parents=True,exist_ok=False)
     checkpoint=old/'training/last_train_state.pth'
     if not checkpoint.exists():return target,False
+    target.mkdir(parents=True,exist_ok=False)
     for name in ('preflight.json','formal_fit_statistics.json','training/last_train_state.pth','training/training_complete.json'):
         source=old/name
         if source.exists():
