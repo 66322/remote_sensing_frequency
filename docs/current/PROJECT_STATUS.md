@@ -1,6 +1,6 @@
 # 当前状态
 
-更新2026-10-01 23:57:09（Asia/Shanghai）。最后服务器队列记录2026-10-01T21:59:26.843841+08:00；用户查询22:00:26。无新增训练。
+更新2026-10-02 00:15:45（Asia/Shanghai）。最后服务器观测来源为用户回传启动输出（目录创建时间2026-10-02 00:08:43 +08:00，由目录名推得；日志无精确观测时间）：GPU0 A0 pid=1003559、GPU1 A2 pid=1003563，均initializing step=0。已由nohup启动双卡队列，但首步TRAIN/gradient_check未收到；无D24 traceback。PID是历史观测，不是实时存活证明；未收到nvidia-smi数值。见[启动证据](../../records/research_d24_launch_observation_20261002/user_reported_launch.json)。
 
 | 项目 | 状态 |
 |---|---|
@@ -11,10 +11,10 @@
 | 结果复核 | 3136逐tile、1568pooled矩阵与指标及23冻结判定通过 |
 | 科学判定 | TSF未达确认门槛，关闭具体解法；所有学习gate综合低于M0_safe |
 | 机制 | 当前S/F增量不足；效用项相对CE减分，同时有减害作用 |
-| 下一候选 | D24四角度15组计划定稿：A目标/表示、B类别语义、C光学KD、D增强；代码全部实现、本地15项检查PASS、服务器未启动 |
+| 下一候选 | D24四角度15组计划定稿：A目标/表示、B类别语义、C光学KD、D增强；代码全部实现、本地15项检查PASS；用户回传双卡已启动，A0/A2初始化step=0，首步训练尚未观测 |
 | 资源 | GPU0/1，两H10080GB，RAM/磁盘充足；不重做资源审计 |
 | 边界 | 单seed42、Potsdam Val2；Test6禁读；权重/预测仍在服务器 |
 
 [完整结果](../experiments/D23_EIGHT_ARM_RESULTS_20261001.md)；[交接](HANDOFF.md)；[下一步](NEXT_EXPERIMENT.md)。
 
-[夜间15组计划](../protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md)：15×4000=60000更新，seed42，物理batch16不累积；GPU0/1 nohup，对应zzx独立目录。旧四组草案被本轮计划取代；执行入口已发布，仍无新服务器运行证据，不重做资源审计。
+[夜间15组计划](../protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md)：15×4000=60000更新，seed42，物理batch16不累积；GPU0/1 nohup，对应zzx独立目录。旧四组草案被本轮计划取代；固定版本cf1955d已由nohup启动，已有目录`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409`；当前只需查询进度，不重复启动或资源审计。

@@ -1,14 +1,14 @@
 # D24十五组：固定版本nohup执行
 
-更新2026-10-02 00:03（Asia/Shanghai），对应2026-10-01夜间计划。用户已明确“按计划进行吧”。**代码已实现、本地15项必要CPU检查PASS；服务器尚未启动。** 无服务器连接，以下由用户服务器终端执行。复用已知GPU0/1、两H10080GB、充足RAM/硬盘，不新增安装、资源审计或预算探针。
+更新2026-10-02 00:15（Asia/Shanghai），对应2026-10-01夜间计划。用户已明确“按计划进行吧”。**本轮已由nohup启动；GPU0 A0/GPU1 A2最后观测initializing step=0，首步训练尚未观测。** 实际目录`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409`；见[启动证据](../../records/research_d24_launch_observation_20261002/user_reported_launch.json)。 无服务器连接，以下由用户服务器终端执行。复用已知GPU0/1、两H10080GB、充足RAM/硬盘，不新增安装、资源审计或预算探针。
 
 固定执行提交：[cf1955d966163978b5c8af433f3845b5ca05da9e](https://github.com/66322/remote_sensing_frequency/commit/cf1955d966163978b5c8af433f3845b5ca05da9e)；[科学协议](D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md)、[15组机器计划](../../records/research_d24_overnight_plan_20261001/plan.json)、[本地检查](../../records/research_d24_overnight_plan_20261001/local_validation.json)。
 
-## 启动一次
+## 历史启动方法（本轮已执行，不重复）
 
 目的：单seed开发筛选任务目标/表示、类别语义、光学知识迁移及普通增强四个角度。GPU0/1各一个job，训练物理batch16无累积，每组4000步，共60000更新；单job6h上限，技术失败留证并继续其他job。控制器与worker都有锁，nohup与独立worker会话防终端断开；全部快照、cache、临时文件、日志、PID、checkpoint和预测在本次zzx目录。主Git工作副本仅fetch，不切换/覆盖。
 
-复制一次：
+以下用于未来独立新运行；本轮继续查询已有目录，不再复制启动块：
 
 ```bash
 (
@@ -39,7 +39,7 @@ tail -n 12 "$D24_DIR/nohup.log"
 
 ```bash
 cd /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
-D24_DIR=$(python -c 'from pathlib import Path; p=[x for x in Path("records").glob("research_d24_overnight_[0-9]*") if (x/"code_manifest.json").is_file()]; assert p, "没有已准备的D24目录"; print(max(p, key=lambda x:x.name).resolve())')
+D24_DIR="$PWD/records/research_d24_overnight_20261002T000843_877409"
 python -B "$D24_DIR/code/scripts/status_rebuild_v1_d24.py" --directory "$D24_DIR"
 ```
 
@@ -51,7 +51,7 @@ python -B "$D24_DIR/code/scripts/status_rebuild_v1_d24.py" --directory "$D24_DIR
 
 ```bash
 cd /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
-D24_DIR=$(python -c 'from pathlib import Path; p=[x for x in Path("records").glob("research_d24_overnight_[0-9]*") if (x/"code_manifest.json").is_file()]; assert p, "没有已准备的D24目录"; print(max(p, key=lambda x:x.name).resolve())')
+D24_DIR="$PWD/records/research_d24_overnight_20261002T000843_877409"
 python -B "$D24_DIR/code/scripts/upload_rebuild_v1_d24_records.py" --root "$PWD" --directory "$D24_DIR"
 ```
 
@@ -63,7 +63,7 @@ python -B "$D24_DIR/code/scripts/upload_rebuild_v1_d24_records.py" --root "$PWD"
 
 ```bash
 cd /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
-D24_DIR=$(python -c 'from pathlib import Path; p=[x for x in Path("records").glob("research_d24_overnight_[0-9]*") if (x/"code_manifest.json").is_file()]; assert p, "没有已准备的D24目录"; print(max(p, key=lambda x:x.name).resolve())')
+D24_DIR="$PWD/records/research_d24_overnight_20261002T000843_877409"
 D24_PY=$(python -c 'import json; print(json.load(open("records/rebuild_v1_d21_queue_20260928/plan.json"))["python"])')
 D24_COMMIT=$(cat "$D24_DIR/execution_commit.txt")
 D24_STAMP=$(date +%Y%m%dT%H%M%S)_$$

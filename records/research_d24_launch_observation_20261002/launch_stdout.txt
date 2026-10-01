@@ -1,0 +1,6 @@
+D24_DIRECTORY=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409
+D24_LOG=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/nohup.log
+D24_STARTED 0 A0 pid=1003559
+D24_STARTED 1 A2 pid=1003563
+D24_PROGRESS 0 A0 initializing step=0 elapsed_minutes=0.0
+D24_PROGRESS 1 A2 initializing step=0 elapsed_minutes=0.0
