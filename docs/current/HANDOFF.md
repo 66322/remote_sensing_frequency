@@ -1,19 +1,15 @@
-# 当前交接：GitHub为共享记录，D23工程尾部已核对
+# 当前交接：长输出上GitHub，等待原件回读
 
-更新2026-10-01；分支rebuild-v1-protocol-20260915，执行入口40fca5adf4ded1277de264ffc361b67fbaaca0c8，实验基准1a8a840。用户终端执行，本地无服务器直连。
+更新2026-10-01；分支rebuild-v1-protocol-20260915，实验基准1a8a840，D23工程执行入口40fca5adf4ded1277de264ffc361b67fbaaca0c8。用户服务器终端执行，助手无服务器直连。
 
-用户决定：两台电脑轮流工作，记录以GitHub为准，可写回GitHub。本地仅工作副本；开始任务先读远端[START_HERE](../START_HERE.md)与[共享记录规则](../protocols/RECORD_SOURCE_AND_HANDOFF.md)，不使用旧main缓存推断状态。
+用户决定：两台电脑轮流工作，GitHub为共享记录权威入口；长输出直接上传GitHub，助手回读，用户仅回传提交号。所有服务器文件在/home/jovyan/zzx对应实验目录。两卡GPU0/1 H10080GB可用，内存/磁盘充足。见[共享规则](../protocols/RECORD_SOURCE_AND_HANDOFF.md)和[上传规则](../protocols/LIGHT_RECORD_UPLOAD_20261001.md)。
 
-研究仍为可行性探索：频率＋语义可靠性及缺失/退化训练推理优先候选，C1旁支，部分解冻强基线；允许换解法/问题/方向，章节和贡献未冻结。[研究决策](RESEARCH_DECISION.md)。
+研究阶段仍为可行性探索：频率＋语义可靠性与模态缺失/退化训练推理为优先候选；C1旁支，部分解冻强基线。允许换解法/问题/方向，章节贡献未冻结。[研究决策](RESEARCH_DECISION.md)。D23-A标签互补均值+1.888456pp只支持准备B；门控精度、频率独立增量和泛化尚未成立。
 
-D23-A最后有明确结束时钟观测2026-10-01T12:44:35.075903+08:00 COMPLETE，标签选择互补诊断均值+1.888456pp，仅通过B准备门槛。A原件归档报告SHA041bc0ad79c3c5f11fdbf4a29479b2c3cf68d60f898b5125d8cf2211e59084b1，尚未接收原件。
+工程已实现专家固定8前向、gate batch16两视图合并loss单次backward，无gate梯度累积，8组/6固定/14条件和原机制/风险门槛不变。22项本地CPU检查通过。
 
-17be568两卡数值诊断回传无结束时钟，训练tile2_12裁剪上micro2/4/8输出一致、micro16少量可重复差异。用户明确H10080GB后，本轮实现专家固定8前向＋gate batch16两视图合并loss单次backward；取消gate累积，不改变有效batch/研究门槛。[入口说明](../protocols/D23_B_ENGINE_ADMISSION_20261001.md)。22项本地CPU检查通过。
+最新用户片段：GPU1最后观测2026-10-01T14:07:44.235024+08:00，profile ENGINE_ADMISSION_COMPLETE；TSF12步与重载相等，步中位0.18741658秒，整图3条件共98.162秒。CPU紧凑报告22项PASS。GPU0片段仍缺完整完成头部与身份，不能称双卡原件完整验收。服务器归档SHA e290548c50758e3d228f6e00e4e36bf4592efcf5daf2739994b6a28ee18278fa、29924字节；未上传原件。[证据边界](../experiments/D23_B_ENGINE_RECORD_UPLOAD_PREPARATION_20261001.md)。
 
-最新用户粘贴仅工程summary尾部，目录records/research_d23_b_engine_admission_20261001T140528_658274：两项整图缺失条件的6条原矩阵/fg5复算一致，missing harm/rescue为0、logits相等为服务器报告；尾部98.162秒、显存allocated2.272GiB/reserved2.820GiB、RSS9.403GiB。附件缺设备身份、完成时钟、训练耗时/签名及CPU/GPU0完整头部，不能写成两卡完整验收PASS。详见[尾部核对](../experiments/D23_B_ENGINE_TAIL_AUDIT_20261001.md)与[解析原计数](../../records/research_d23_b_compact_20261001/user_pasted_engine_tail.json)。formal_training_started=false。
+立即动作：用户执行轻量上传工具，从已有目录上传summary/preflight/日志/compact及索引到同一GitHub分支；助手读原件核验。工具本地模拟检查通过，真实上传未执行。随后解决12tile缓存/TCAP I/O和双卡并行预算，冻结runtime lock才生成8组4000步队列。最后记录formal_training_started=false，正式锁/队列尚未生成。[下一步](NEXT_EXPERIMENT.md)。
 
-立即动作：读取已有两个summary/preflight和CPU日志，输出紧凑完整绑定及轻量索引，不重跑已做任务。完整验收后，继续12tile缓存/TCAP I/O与双卡预算，冻结runtime lock才生成8组4000步队列。正式锁/自动队列未生成，当前无正式训练。[下一步](NEXT_EXPERIMENT.md)。
-
-8组、6固定比较、14条件、NoBoundary fg5及机制/风险门槛保持。频率无独立增量撤回相应贡献；gate无收益关闭具体解法，不自动改阈值/加seed，C1不自动升主线。光学整幅缺失、未知缺失识别、独立泛化及旧原件归档仍未解决；Test6历史暴露且禁读。
-
-所有服务器记录在/home/jovyan/zzx对应实验目录，不覆盖或移动。原件在服务器不等于已上传GitHub，当前原计数JSON源为用户片段。旧交接归档docs/history/20261001_before_github_primary_engine_tail/。
+频率无独立增量则撤回对应贡献；gate无收益关闭具体解法，不自动降阈值或补seed，C1不自动升级主线。光学整幅缺失、未知缺失识别、独立泛化及历史原件归档仍未解决；Test6历史暴露且禁读。此前完整交接保留docs/history/20261001_before_light_record_upload/，历史负结果不重复开启。
