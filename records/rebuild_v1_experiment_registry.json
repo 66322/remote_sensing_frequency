@@ -1335,7 +1335,7 @@
   ],
   "next_plan": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "B_formal_queue_ready_not_observed_started",
+    "status": "B_formal_training_started_nohup_resume_observed_completion_unverified",
     "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
     "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
     "stage_a": {
@@ -1389,7 +1389,7 @@
       "local_CPU_tests_passed": 27,
       "server_profile_completed": true,
       "parameters_per_gate": 18145,
-      "formal_started": false,
+      "formal_started": true,
       "server_CPU_tests_completed": true,
       "server_CPU_tests_elapsed_seconds": 5.48,
       "crop_probe_implemented": true,
@@ -1421,14 +1421,36 @@
       "formal_queue_implemented": true,
       "formal_queue": "scripts/launch_rebuild_v1_d23_formal.py",
       "formal_protocol": "docs/protocols/D23_B_FORMAL_SCREEN_EXECUTION_20261001.md",
-      "queue_tests_passed": 5
+      "queue_tests_passed": 5,
+      "formal_complete": false,
+      "last_observation": {
+        "source": "user_pasted_server_stdout_2026-10-01",
+        "wall_clock": null,
+        "wall_clock_note": "No independent observation clock in latest paste; log filename is a launch label.",
+        "pre_nohup_reported_step": 1000,
+        "total_steps": 4000,
+        "controller_pid": 746195,
+        "child_pids": [
+          746207,
+          746208
+        ],
+        "log_start_label": "20261001T153823_658274",
+        "heartbeat_minutes": [
+          0.5,
+          1
+        ],
+        "post_resume_step_unverified": true,
+        "live_now_unverified": true,
+        "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274",
+        "launcher_commit": "846403ccc83c97731eceb199de99d9049039e64b"
+      }
     },
     "server_started_at": null,
     "new_long_training_authorized_by_document": false,
     "test6_loaded": false,
     "historical_test6_independent_final_eligible": false,
-    "execution_document": "docs/protocols/D23_A_CPU_EXECUTION_20261001.md",
-    "next_action": "user starts fixed eight-arm 4000-step formal development screen; no more budget probes",
+    "execution_document": "docs/current/NEXT_EXPERIMENT.md",
+    "next_action": "Continue existing nohup queue; read current progress only when needed; do not interrupt/relaunch/repeat admission or budget; upload light evidence after completion.",
     "queue": "scripts/launch_rebuild_v1_d23_formal.py"
   },
   "completed_post_d21_mixed_followup": {
@@ -1789,7 +1811,7 @@
   },
   "proposed_d23": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "B_formal_queue_ready_not_observed_started",
+    "status": "B_formal_training_started_nohup_resume_observed_completion_unverified",
     "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
     "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
     "stage_a": {
@@ -1843,7 +1865,7 @@
       "local_CPU_tests_passed": 27,
       "server_profile_completed": true,
       "parameters_per_gate": 18145,
-      "formal_started": false,
+      "formal_started": true,
       "server_CPU_tests_completed": true,
       "server_CPU_tests_elapsed_seconds": 5.48,
       "crop_probe_implemented": true,
@@ -1875,13 +1897,36 @@
       "formal_queue_implemented": true,
       "formal_queue": "scripts/launch_rebuild_v1_d23_formal.py",
       "formal_protocol": "docs/protocols/D23_B_FORMAL_SCREEN_EXECUTION_20261001.md",
-      "queue_tests_passed": 5
+      "queue_tests_passed": 5,
+      "formal_complete": false,
+      "last_observation": {
+        "source": "user_pasted_server_stdout_2026-10-01",
+        "wall_clock": null,
+        "wall_clock_note": "No independent observation clock in latest paste; log filename is a launch label.",
+        "pre_nohup_reported_step": 1000,
+        "total_steps": 4000,
+        "controller_pid": 746195,
+        "child_pids": [
+          746207,
+          746208
+        ],
+        "log_start_label": "20261001T153823_658274",
+        "heartbeat_minutes": [
+          0.5,
+          1
+        ],
+        "post_resume_step_unverified": true,
+        "live_now_unverified": true,
+        "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274",
+        "launcher_commit": "846403ccc83c97731eceb199de99d9049039e64b"
+      }
     },
     "server_started_at": null,
     "new_long_training_authorized_by_document": false,
     "test6_loaded": false,
     "historical_test6_independent_final_eligible": false,
-    "execution_document": "docs/protocols/D23_A_CPU_EXECUTION_20261001.md"
+    "execution_document": "docs/current/NEXT_EXPERIMENT.md",
+    "next_action": "Continue existing nohup queue; read current progress only when needed; do not interrupt/relaunch/repeat admission or budget; upload light evidence after completion."
   },
   "completed_post_d21_plan": {
     "id": "POST_D21_MULTIDIRECTION_DAY_PLAN_20260929",
@@ -1930,5 +1975,6 @@
     "new_data_or_install": "none planned; disclose and prepare separately if needed",
     "provisional_training_configuration": "effective batch 16; profile frozen, partial-unfreeze and joint restoration paths; do not extrapolate six-step frozen-F2 timing",
     "follow_on": "Historical completed portfolio. Current follow-up is feasibility and mechanism evidence synthesis; C1 is a side-branch candidate, not an adopted new thesis direction. See docs/current/NEXT_EXPERIMENT.md."
-  }
+  },
+  "execution_contract": "docs/protocols/EXECUTION_CONTRACT.md"
 }

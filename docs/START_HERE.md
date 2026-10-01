@@ -1,15 +1,17 @@
 # Start Here
 
-共享记录权威入口：66322/remote_sensing_frequency，分支`rebuild-v1-protocol-20260915`。实验快照基准`1a8a840`，D23核心执行链沿用已测量`b02bb7b`快照；正式队列与runtime lock见当前交接。用户两台电脑轮流工作，**以本远端分支为准，本地仅工作副本**。见[记录与交接规则](protocols/RECORD_SOURCE_AND_HANDOFF.md)。
+共享记录权威：66322/remote_sensing_frequency 的 `rebuild-v1-protocol-20260915` 分支；`1a8a840` 是历史实验基准，不是最新启动版本。两台电脑均从本入口进入，不能以本地旧交接覆盖远端。
 
-1. [研究定位与去留决策](current/RESEARCH_DECISION.md)：论文可行性探索，频率＋语义可靠性优先候选，C1旁支，允许换解法/问题/方向；最终章节未冻结。
-2. [当前交接](current/HANDOFF.md)与[当前状态](current/PROJECT_STATUS.md)：最新观测、证据边界与决定。
-3. [下一步](current/NEXT_EXPERIMENT.md)：D23-A已通过准备门槛；B完整轻量原件已上传并核验，双卡工程验收完成，双卡预算已完成并核验，当前[八组正式开发对照入口](protocols/D23_B_FORMAL_SCREEN_EXECUTION_20261001.md)已交付，等待服务器启动，不重跑已有诊断，不默认启动正式训练。
-4. [不可重复事项](current/DO_NOT_REPEAT.md)、[实验索引](experiments/rebuild_v1/INDEX.md)与[机器台账](../records/rebuild_v1_experiment_registry.json)。
-5. [D23原方案](protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md)、[B执行说明](protocols/D23_B_ENGINE_ADMISSION_20261001.md)、[工程尾部核对](experiments/D23_B_ENGINE_TAIL_AUDIT_20261001.md)。代码已实现、工程可运行、已知缺失回退、精度保护及独立泛化分别报告。
+**资源已明确：GPU0、GPU1，两张H100 80GB，主机内存和硬盘充足；长实验nohup，全部产物在 /home/jovyan/zzx 对应实验目录。新对话直接复用已完成验收，不从资源审计重新开始。**
 
-服务器大型预测/权重/日志仍在/home/jovyan/zzx，GitHub仅保存已接收的小型原计数/摘要/配置/索引。本次9份轻量记录已上传；8原文件校验与107矩阵复算通过，见[GitHub原件审计](experiments/D23_B_ENGINE_GITHUB_AUDIT_20261001.md)。预测/权重、D21输入manifest原件及tar仍未接收。长输出按[轻量上传规则](protocols/LIGHT_RECORD_UPLOAD_20261001.md)直接上传本分支，用户仅回复提交号。紧凑记录不是全部原件。Test6已历史暴露，保持禁读，不具独立final资格。
+按顺序读取：
 
-切换电脑先读远端入口；每次重要工作将交接/状态/下一步和证据写回同一分支并回读，回复给提交和链接。发布前核对最新分支头，不强制覆盖另一台新提交。技术事实与文档冲突时核对原证据并修正GitHub。
+1. [当前交接](current/HANDOFF.md)：最后观测、实验目的、执行绑定及证据边界。
+2. [下一步](current/NEXT_EXPERIMENT.md)：接续现有工作，不能照历史命令重复停机/启动。
+3. [长期执行约定](protocols/EXECUTION_CONTRACT.md)：资源、nohup、目录、禁止重复审计及吞吐优化边界。
 
-此前Post-D21/D21结论及局部负结果保留，见[证据缺口](experiments/RESEARCH_GAPS_AND_DECISION_20261001.md)、[Post-D21结果](experiments/POST_D21_FINAL_AND_MIXED_FOLLOWUP_RESULTS_20261001.md)、[逐tile风险](experiments/POST_D21_MIXED_TILE_RISK_RESULTS_20261001.md)。近期工程成功不自动证明语义/频率贡献。
+研究规划时读[研究决策](current/RESEARCH_DECISION.md)，而不是从最近的正结果推断方向。当前问题是频率与语义可靠性对RGB–DSM退化/缺失融合是否有独立收益；仍在可行性探索，C1任务驱动恢复为旁支，部分解冻为强基线，允许换解法/问题/方向，章节贡献未冻结。
+
+按任务需要查[状态](current/PROJECT_STATUS.md)、[不可重复事项](current/DO_NOT_REPEAT.md)、[机器台账](../records/rebuild_v1_experiment_registry.json)、[实验索引](experiments/rebuild_v1/INDEX.md)和[记录规则](protocols/RECORD_SOURCE_AND_HANDOFF.md)。只读核对已有证据不等于重跑审计。
+
+小型原计数、配置和轻量日志上传GitHub；大型预测/权重/归档留服务器并索引。GitHub有记录不代表已接收全部原件。Test6历史暴露，禁读且不具独立final资格。发布前检查远端最新头，非强制快进，发布后回读；更新精简交接，旧交接归档。

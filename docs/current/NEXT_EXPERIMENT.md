@@ -1,5 +1,9 @@
-# 下一步：把当前正式队列用nohup接续
+# 下一步：接续现有D23正式队列
 
-用户已前台启动GPU0 TSF/GPU1 T0，必须先在原终端Ctrl+C停止旧controller，再以--resume-queue接续同一实验目录。未完成组从最近checkpoint恢复，完成组跳过；不新开第二份八组实验。模型/数据/损失和4000步保持，原产物保留。
+最后观测、目录、PID及日志见[当前交接](HANDOFF.md)。已进行nohup接续，**不再要求Ctrl+C，不新开队列，不重跑资源测量或工程smoke**。GPU0/1、H10080GB、内存/硬盘充足已明确。
 
-具体规则见[nohup与接续](../protocols/D23_NOHUP_AND_RESUME_20261001.md)。nohup启动重定向stdin=/dev/null，stdout/stderr与PID落本次zzx目录。每30秒日志更新；训练/评价全部结束后前台运行打印的上传脚本，完成认证后原件上GitHub，不要求粘贴长输出。
+1. 现有任务继续执行。需要新状态时只读本次controller日志、对应任务日志/完成标记；核对接续后的实际step和错误。旧PID不能单独作为当前存活保证，也不能依据陈旧输出擅自重启。
+2. 训练及评价完成后，依据输出的D23_UPLOAD_PENDING / D23_UPLOAD_SCRIPT提示，在前台执行对应轻量上传，必要时交互认证；用户只回复GitHub提交号。助手读取原件，核验本次完成与指标，不重新训练或重新执行全部历史审计。
+3. 按冻结阈值比较八组、固定对照、机制消融和逐tile风险，更新去留结论及证据边界。失败则依据实际错误做局部修复，不回到资源准备起点。
+
+提速方向为缓存/CPU数据预取/独立任务并发，详见[代码审阅](../experiments/D23_THROUGHPUT_CODE_REVIEW_20261001.md)。这些是尚未部署的改进建议；当前运行快照保持。改batch/精度/步数不能冒充无影响提速；新对话遵守[执行约定](../protocols/EXECUTION_CONTRACT.md)。

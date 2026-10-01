@@ -1,16 +1,28 @@
-# 当前状态：D23正式八组入口READY，服务器未观测启动
+# 当前状态：沿现有D23后台队列接续，勿重复启动
 
-更新2026-10-01；分支rebuild-v1-protocol-20260915，实验基准1a8a840。用户在服务器终端执行，助手无服务器直连。GPU0/1两卡H10080GB授权，内存/磁盘充足；所有记录在/home/jovyan/zzx对应实验目录。GitHub为跨电脑共享记录，长输出直接上传，用户只回传提交号。
+更新：2026-10-01；来源为用户本对话回传，未直连服务器。最后观测没有独立墙钟时间；日志启动标识为20261001T153823，不能冒充实时状态或完成时间。
 
-研究仍为可行性探索：频率＋语义可靠性与DSM缺失/退化训练推理为优先候选，部分解冻强基线，C1旁支；允许换解法/交叉问题/方向，章节贡献未冻结。[研究决策](RESEARCH_DECISION.md)。D23-A标签互补均值+1.888456pp仅支持B准备，不是可部署门控收益。
+研究阶段：可行性探索。D23-B用冻结R0/M0专家的八组门控对照，判断语义/频率可靠性能否在退化与缺失条件下产生独立收益。C1仍为旁支，部分解冻为强基线，方向未改。见[研究决策](RESEARCH_DECISION.md)。
 
-已完成：双卡工程验收与27项服务器CPU检查，错误导入旧model的launcher已在b02bb7b修复并保留失败日志。预算14条件整图任务已结束并上传54e19cd16416b866bed7b152ba9a3a3f76ac4837：两卡最后观测2026-10-01T15:12:41.571581/15:12:58.837909+08:00，13原文件校验/196原矩阵复算通过，两卡固定预测与TCAP统计一致。GPU峰值allocated约2.44GiB、主机RSS约12.60GiB。预算阶段不是正式精度结果；原缓存/预测/权重留服务器。
+## 最后观测与执行绑定
 
-用户明确不再把资源测量作为额外前置。立即动作：运行已交付的[8组×4000步正式开发对照入口](../protocols/D23_B_FORMAL_SCREEN_EXECUTION_20261001.md)。现有测量绑定已用于runtime lock，不新增smoke/probe/预算轮次。专家固定8前向，gate16单backward，seed42，固定final4000既定例外；Val2两tile×14条件、6固定＋每组，NoBoundary fg5，Test6禁读。用户已回传TSF/T0子进程启动，但无训练步骤/完成记录，不能写成4000步完成。
+- 正式训练已启动，用户此前日志显示TSF/T0到1000/4000步；随后前台停止并进行nohup接续。
+- 最近回传：controller PID746195，GPU0 TSF PID746207，GPU1 T0 PID746208；后台日志有0.5和1.0分钟心跳、xFormers警告。已确认当时进程存在，尚未取得接续后超过1000步或4000步完成证据。
+- 唯一本次目录：/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274
+- 后台日志：该目录/nohup_20261001T153823_658274.log
+- 原启动提交6ba4b49608f6eaae182611f5757685506447c534；nohup接续入口846403ccc83c97731eceb199de99d9049039e64b；工程绑定和runtime lock沿用已验收快照。
+- 不再执行“先Ctrl+C再nohup”的历史迁移步骤，不重复启动八组，不修改正在运行的快照。下一步见[NEXT_EXPERIMENT](NEXT_EXPERIMENT.md)。
 
-GPU0依次TSF/TS/TCAP/shuffleS，GPU1依次T0/TF/CE/shuffleF；每30秒显示进度，完成后自动审计并上传轻量原件。单组保守8519秒，整队列约9.5小时预算（非精确ETA），单组hard wall3小时。新增队列5项本地模拟检查通过，真实队列尚待用户执行。[下一步](NEXT_EXPERIMENT.md)。
+## 已完成且复用
 
-机制与风险阈值不变。频率无独立增量撤回对应贡献；gate无收益关闭具体解法，不自动降阈值/补seed/C1升主线。光学整幅缺失、未知缺失识别、独立泛化及历史原件归档仍未解决；Test6历史暴露，不具独立final资格。旧交接归档docs/history/20261001_before_formal_queue/。
+D23-A互补诊断均值+1.888456pp仅支持准备B，不是可部署收益。CPU/双卡工程验收已完成；预算原件提交54e19cd16416b866bed7b152ba9a3a3f76ac4837已核验13原文件、196矩阵，两卡固定预测及TCAP统计一致。GPU allocated峰值约2.44GiB、主机RSS约12.60GiB。不要重跑smoke/probe/资源预算；新对话不是重验收理由。详见[不可重复事项](DO_NOT_REPEAT.md)。
 
+## 冻结协议与去留
 
-最新执行约束（用户明确要求）：长实验必须nohup后台运行，stdin=/dev/null，stdout/stderr/PID保存在对应zzx实验目录；GPU0/1授权和服务器内存/显存/磁盘充足保持。用户最后回传已启动TSF/T0进程（无观测时钟、只到0.5分钟），正式运行已请求，尚无完成证据。当前入口补充--resume-queue以接续checkpoint/跳过完成组，旧产物保留；背景任务结束后前台认证上传。详见[后台接续](../protocols/D23_NOHUP_AND_RESUME_20261001.md)。
+八组T0/TS/TF/TSF/TCAP/TSF_CE/TSF_shuffleS/TSF_shuffleF，seed42，每组4000步固定final的既定开发筛选例外。专家micro8、gate16、两视图联合损失一次backward，无梯度累积。GPU0依次TSF/TS/TCAP/shuffleS；GPU1依次T0/TF/CE/shuffleF。Val2两tile×14条件，六固定对照与每组，NoBoundary fg5主口径，Test6禁读。完整冻结约束见[正式执行协议](../protocols/D23_B_FORMAL_SCREEN_EXECUTION_20261001.md)。
+
+频率无独立增量则撤回对应贡献；gate无收益则关闭这个具体解法，不自动降阈值、补seed或把C1升主线。单seed Val2属于开发证据。光学整幅缺失、未知缺失识别、独立泛化及历史原件完整归档仍未解决。
+
+资源：用户授权GPU0/1两张H10080GB，主机内存/硬盘充足；全部记录在zzx对应目录；长实验nohup。后台无交互Git认证时计算完成后前台运行输出的上传脚本，用户只回传提交号，助手读取GitHub原件。
+
+本轮仅修正文档接续和吞吐决策约定，未启动、停止或修改服务器实验。用户不接受继续重复资源审计；提速建议见[代码审阅](../experiments/D23_THROUGHPUT_CODE_REVIEW_20261001.md)，尚未部署。旧交接归档docs/history/20261001_before_execution_contract/。
