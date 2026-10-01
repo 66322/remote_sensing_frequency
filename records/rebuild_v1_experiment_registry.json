@@ -1302,7 +1302,7 @@
   ],
   "next_plan": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "stage_a_user_reported_complete_allocation_passed_B_core_local_tests_passed_preparation_only",
+    "status": "B_core_server_CPU_passed_crop_GPU_probe_ready_not_started",
     "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
     "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
     "stage_a": {
@@ -1337,7 +1337,10 @@
       "completed_at": "2026-10-01T12:44:35.075903+08:00",
       "mean_available_gain_pp": 1.888456078355997,
       "eligible_to_prepare_B": true,
-      "original_jsons_archived": false
+      "original_jsons_archived": false,
+      "archive_server_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_feasibility_20261001_20261001T124227_658274/light_evidence_20261001T130219_658274.tar.gz",
+      "archive_reported_sha256": "041bc0ad79c3c5f11fdbf4a29479b2c3cf68d60f898b5125d8cf2211e59084b1",
+      "original_jsons_received_locally": false
     },
     "stage_b": {
       "conditional_on_stage_a": true,
@@ -1353,14 +1356,26 @@
       "local_CPU_tests_passed": 8,
       "server_profile_completed": false,
       "parameters_per_gate": 18145,
-      "formal_started": false
+      "formal_started": false,
+      "server_CPU_tests_completed": true,
+      "server_CPU_tests_elapsed_seconds": 1.732,
+      "crop_probe_implemented": true,
+      "crop_probe": "scripts/probe_rebuild_v1_d23_gate.py",
+      "crop_probe_started": false,
+      "user_authorized_physical_gpus": [
+        0,
+        1
+      ],
+      "crop_probe_per_gpu": true,
+      "record_scope_root": "/home/jovyan/zzx",
+      "crop_probe_output_pattern": "records/research_d23_b_crop_probe_<timestamp>_<pid>/{code,gpu0,gpu1}"
     },
     "server_started_at": null,
     "new_long_training_authorized_by_document": false,
     "test6_loaded": false,
     "historical_test6_independent_final_eligible": false,
     "execution_document": "docs/protocols/D23_A_CPU_EXECUTION_20261001.md",
-    "next_action": "archive A raw JSONs; user CPU tests B core; complete training/evaluation entry then bounded GPU resource preflight",
+    "next_action": "user executes same bounded crop probe sequentially on GPU0/GPU1; all snapshots/results/logs under zzx project records",
     "queue": null
   },
   "completed_post_d21_mixed_followup": {
@@ -1721,7 +1736,7 @@
   },
   "proposed_d23": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "stage_a_user_reported_complete_allocation_passed_B_core_local_tests_passed_preparation_only",
+    "status": "B_core_server_CPU_passed_crop_GPU_probe_ready_not_started",
     "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
     "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
     "stage_a": {
@@ -1756,7 +1771,10 @@
       "completed_at": "2026-10-01T12:44:35.075903+08:00",
       "mean_available_gain_pp": 1.888456078355997,
       "eligible_to_prepare_B": true,
-      "original_jsons_archived": false
+      "original_jsons_archived": false,
+      "archive_server_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_feasibility_20261001_20261001T124227_658274/light_evidence_20261001T130219_658274.tar.gz",
+      "archive_reported_sha256": "041bc0ad79c3c5f11fdbf4a29479b2c3cf68d60f898b5125d8cf2211e59084b1",
+      "original_jsons_received_locally": false
     },
     "stage_b": {
       "conditional_on_stage_a": true,
@@ -1772,7 +1790,19 @@
       "local_CPU_tests_passed": 8,
       "server_profile_completed": false,
       "parameters_per_gate": 18145,
-      "formal_started": false
+      "formal_started": false,
+      "server_CPU_tests_completed": true,
+      "server_CPU_tests_elapsed_seconds": 1.732,
+      "crop_probe_implemented": true,
+      "crop_probe": "scripts/probe_rebuild_v1_d23_gate.py",
+      "crop_probe_started": false,
+      "user_authorized_physical_gpus": [
+        0,
+        1
+      ],
+      "crop_probe_per_gpu": true,
+      "record_scope_root": "/home/jovyan/zzx",
+      "crop_probe_output_pattern": "records/research_d23_b_crop_probe_<timestamp>_<pid>/{code,gpu0,gpu1}"
     },
     "server_started_at": null,
     "new_long_training_authorized_by_document": false,
