@@ -35,7 +35,7 @@ def main():
     with (base/'cpu_checks.log').open('x') as log:
         subprocess.run([sys.executable,'-B','-m','unittest','discover','-s',str(code/'tests'),
                         '-p','test_d23*.py','-v'],env=dict(env,CUDA_VISIBLE_DEVICES=''),
-                       cwd=root,stdout=log,stderr=subprocess.STDOUT,timeout=120,check=True)
+                       cwd=code,stdout=log,stderr=subprocess.STDOUT,timeout=120,check=True)
     print('D23_BUDGET_DIRECTORY='+str(base),flush=True)
     jobs=[]
     try:
