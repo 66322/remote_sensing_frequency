@@ -1345,21 +1345,49 @@
       "independent_final_loaded": false,
       "eligible_to_plan_confirmation": false,
       "decision": "Close current TSF solution, retain problem-level exploration"
+    },
+    {
+      "id": "D24_OVERNIGHT_MULTIPERSPECTIVE_20261001",
+      "name": "four_angle_overnight_development_portfolio",
+      "status": "design_ready_implementation_pending_not_launched",
+      "started_at": null,
+      "completed_at": null,
+      "recorded_at": "2026-10-01T22:37:26+08:00",
+      "purpose": "Optical available: retain useful DSM fusion, control negative transfer under DSM quality changes, and support DSM missing inference",
+      "protocol": "docs/protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md",
+      "records": [
+        "records/research_d24_overnight_plan_20261001/plan.json",
+        "records/research_d24_overnight_plan_20261001/jobs.csv"
+      ],
+      "unique_jobs": 15,
+      "optimizer_steps_planned": 60000,
+      "result": null,
+      "test6_loaded": false,
+      "evidence_level": "proposed_design_not_experimental_evidence"
     }
   ],
   "next_plan": {
-    "id": "D24_PAIRED_TASK_ADAPTATION_DRAFT_20261001",
-    "status": "assistant_proposed_draft_not_implemented_not_launched",
-    "protocol": "docs/protocols/D24_PAIRED_TASK_ADAPTATION_DRAFT_20261001.md",
-    "hypothesis": "paired task-level constraints versus fixed hard utility supervision; representation adaptation as separate factor; preliminary D24 design, not launched",
-    "steps_and_gates_frozen": false,
+    "id": "D24_OVERNIGHT_MULTIPERSPECTIVE_20261001",
+    "status": "design_ready_implementation_pending_not_launched",
+    "protocol": "docs/protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md",
+    "manifest": "records/research_d24_overnight_plan_20261001/plan.json",
+    "jobs_csv": "records/research_d24_overnight_plan_20261001/jobs.csv",
+    "unique_jobs": 15,
+    "steps_per_job": 4000,
+    "total_optimizer_steps": 60000,
+    "seed": 42,
+    "steps_and_gates_frozen": true,
+    "implemented": false,
+    "launched": false,
     "prior_complete_plan_id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
+    "supersedes": "D24_PAIRED_TASK_ADAPTATION_DRAFT_20261001",
     "physical_gpus": [
       0,
       1
     ],
     "server_scope": "/home/jovyan/zzx",
-    "test6_loaded": false
+    "test6_loaded": false,
+    "decision_source": "user request for multi-angle overnight planning; assistant-proposed experimental design"
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -1701,7 +1729,8 @@
     "physical_gpu": 0,
     "cuda_visible_devices": "0",
     "persistent_scope_root": "/home/jovyan/zzx",
-    "dual_worker_exception": "User authorized physical GPU0 and GPU1 for D15, D16/D17, D18/D19, D18 seed17 replication, and the current D20 work. Their queues apply explicit independent-worker device checks; the older GPU0-only machine policy and validator remain for historical queues. D21 explicitly authorized on physical GPU0/GPU1 for a queue longer than one day; UUID binding and idle checks apply."
+    "dual_worker_exception": "User authorized physical GPU0 and GPU1 for D15, D16/D17, D18/D19, D18 seed17 replication, and the current D20 work. Their queues apply explicit independent-worker device checks; the older GPU0-only machine policy and validator remain for historical queues. D21 explicitly authorized on physical GPU0/GPU1 for a queue longer than one day; UUID binding and idle checks apply.",
+    "current_dual_worker_authorization": "User repeatedly confirmed physical GPU0/1, two H10080GB, ample RAM/disk; D24 plan reuses this authorization, nohup and zzx record scope; do not reinterpret historical GPU0-only policy as current restriction."
   },
   "research_decision": {
     "updated_at": "2026-10-01",
@@ -1712,7 +1741,7 @@
     "c1_role": "side_branch_development_candidate_not_adopted_replacement",
     "partial_unfreezing_role": "strong_baseline_strategy",
     "final_method_and_chapters_frozen": false,
-    "next_action": "Prepare paired task/adaptation mechanism design after complete D23 negative screen; retain problem, close current specific solution",
+    "next_action": "Implement D24 four-angle 15-job development plan; D23 complete; new code not ready and no launch observed",
     "next_action_document": "docs/current/NEXT_EXPERIMENT.md",
     "external_source_gate": "required for corresponding external confirmation, not a universal prerequisite for development exploration",
     "new_training_authorized_by_this_document": false
