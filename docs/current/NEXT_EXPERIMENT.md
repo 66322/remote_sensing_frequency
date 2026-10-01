@@ -1,8 +1,10 @@
-# 下一步：D23完整入口服务器工程验收
+# 下一步：补已有工程摘要绑定，再准备正式资源锁
 
-1. 用户终端顺序运行GPU0 smoke、GPU1 profile；每任务30分钟上限，先检查空闲与绑定，验证专家8/gate16单次backward、8组接口、14条件小图、3条件训练tile整图与已知缺失精确回退。全部文件留zzx对应records目录，无Val2/Test6，不是正式精度实验。
-2. 回传summary/preflight/failure及实际峰值/吞吐。CPU22检查通过；未取得服务器完成记录前不能称完整实验已通过，不能引用旧两遍crop速度代表新缓存路径。
-3. 核对完整12tile磁盘缓存与TCAP统计I/O、双卡并行资源、正式源码SHA和wall/job/磁盘预算，生成FULL_ENGINE_RUNTIME_ADMITTED锁后才生成8组各4000步命令。正式模式当前被预算锁拦住，没有默认启动。
-4. 完成8组后按原screen逐项比较，frequency无独立增量撤回相应承诺，不扫阈值/半径、不自动续训或补seed。继续补A/双卡诊断原件归档，不重跑已有诊断。
+1. 只读records/research_d23_b_engine_admission_20261001T140528_658274中gpu0/gpu1的summary.json、preflight.json和cpu_checks.log。输出status/mode/observed_at/UUID/torch/源码和专家SHA、反传方式、各组更新数/耗时、条件列表/尺寸/原计数合计、峰值内存/显存及fallback。轻量原件归档和索引留同目录，回传紧凑JSON用于GitHub核验；不重跑实验。
+2. 核对GPU0 smoke八组/14条件与服务器CPU22测试、GPU1 profile单次backward与训练tile整图3条件、重载/缺失回退/设备/时钟。当前粘贴尾部只覆盖两缺失条件及部分TSF片段，不能替代完整身份验收。[已核对范围](../experiments/D23_B_ENGINE_TAIL_AUDIT_20261001.md)。
+3. 完整绑定通过后，测12tile磁盘缓存/TCAP统计I/O及双卡并行预算；按当前源码冻结wall/job/磁盘与资源锁，才生成8组各4000步队列。当前正式锁/队列未生成，无正式训练。
+4. 按冻结screen比较真实精度/机制/风险，不把训练tile工程指标作为开发Val2或论文test结果。失败保持原门槛，允许关闭解法/撤回频率承诺，不自动续训或补seed。
 
-新源码与界限见[入口验收说明](../protocols/D23_B_ENGINE_ADMISSION_20261001.md)。80GB H100取消gate梯度累积，专家固定micro8以保留已验证数值口径；有效batch16不变。研究角色、Test6禁读和门槛不变。
+所有共享记录直接更新本GitHub分支，见[两电脑记录规则](../protocols/RECORD_SOURCE_AND_HANDOFF.md)。本地不是权威状态来源。全部服务器产物仍在zzx对应实验目录；禁止读取旧Test6。
+
+只读工具：scripts/collect_rebuild_v1_d23_engine_records.py；从固定提交提取到本次已有实验code/scripts，读取已有文件并在该实验目录生成compact_review及light_engine_evidence归档。无GPU依赖、无新数据加载。
