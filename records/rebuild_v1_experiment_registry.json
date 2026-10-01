@@ -1302,7 +1302,7 @@
   ],
   "next_plan": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "proposed_not_implemented_not_preflighted_not_started",
+    "status": "stage_a_implemented_synthetic_checks_passed_server_profile_pending",
     "evidence_report": "docs/experiments/RESEARCH_GAPS_AND_DECISION_20261001.md",
     "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
     "stage_a": {
@@ -1327,7 +1327,12 @@
         "R0",
         "M0"
       ],
-      "prediction_file_count": 20
+      "prediction_file_count": 20,
+      "implementation": "scripts/audit_rebuild_v1_d23_complementarity.py",
+      "tests": "tests/test_d23_complementarity.py",
+      "local_synthetic_tests_passed": 7,
+      "server_profile_completed": false,
+      "real_counts_computed": false
     },
     "stage_b": {
       "conditional_on_stage_a": true,
@@ -1336,13 +1341,15 @@
       "new_gate_updates": 32000,
       "fixed_comparators": 6,
       "experts_frozen": true,
-      "final_step_not_validation_selected": true
+      "final_step_not_validation_selected": true,
+      "implemented": false
     },
     "server_started_at": null,
     "new_long_training_authorized_by_document": false,
     "test6_loaded": false,
     "historical_test6_independent_final_eligible": false,
-    "next_action": "implement and review Stage A CPU existing-prediction diagnostic; no GPU queue",
+    "execution_document": "docs/protocols/D23_A_CPU_EXECUTION_20261001.md",
+    "next_action": "user executes bounded CPU profile then existing-prediction counts from documented terminal commands; await evidence",
     "queue": null
   },
   "completed_post_d21_mixed_followup": {
@@ -1696,14 +1703,14 @@
     "c1_role": "side_branch_development_candidate_not_adopted_replacement",
     "partial_unfreezing_role": "strong_baseline_strategy",
     "final_method_and_chapters_frozen": false,
-    "next_action": "implement and audit proposed D23-A existing-prediction joint-count diagnostic; conditionally prepare D23-B after allocation gate, no new experiment started",
+    "next_action": "D23-A implementation tested locally; user terminal CPU diagnostic pending, stage B unimplemented",
     "next_action_document": "docs/current/NEXT_EXPERIMENT.md",
     "external_source_gate": "required for corresponding external confirmation, not a universal prerequisite for development exploration",
     "new_training_authorized_by_this_document": false
   },
   "proposed_d23": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "proposed_not_implemented_not_preflighted_not_started",
+    "status": "stage_a_implemented_synthetic_checks_passed_server_profile_pending",
     "evidence_report": "docs/experiments/RESEARCH_GAPS_AND_DECISION_20261001.md",
     "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
     "stage_a": {
@@ -1728,7 +1735,12 @@
         "R0",
         "M0"
       ],
-      "prediction_file_count": 20
+      "prediction_file_count": 20,
+      "implementation": "scripts/audit_rebuild_v1_d23_complementarity.py",
+      "tests": "tests/test_d23_complementarity.py",
+      "local_synthetic_tests_passed": 7,
+      "server_profile_completed": false,
+      "real_counts_computed": false
     },
     "stage_b": {
       "conditional_on_stage_a": true,
@@ -1737,12 +1749,14 @@
       "new_gate_updates": 32000,
       "fixed_comparators": 6,
       "experts_frozen": true,
-      "final_step_not_validation_selected": true
+      "final_step_not_validation_selected": true,
+      "implemented": false
     },
     "server_started_at": null,
     "new_long_training_authorized_by_document": false,
     "test6_loaded": false,
-    "historical_test6_independent_final_eligible": false
+    "historical_test6_independent_final_eligible": false,
+    "execution_document": "docs/protocols/D23_A_CPU_EXECUTION_20261001.md"
   },
   "completed_post_d21_plan": {
     "id": "POST_D21_MULTIDIRECTION_DAY_PLAN_20260929",
