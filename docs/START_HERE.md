@@ -1,10 +1,10 @@
 # Start Here
 
-共享记录权威入口：66322/remote_sensing_frequency，分支`rebuild-v1-protocol-20260915`。实验快照基准`1a8a840`，D23执行入口`40fca5a`。用户两台电脑轮流工作，**以本远端分支为准，本地仅工作副本**。见[记录与交接规则](protocols/RECORD_SOURCE_AND_HANDOFF.md)。
+共享记录权威入口：66322/remote_sensing_frequency，分支`rebuild-v1-protocol-20260915`。实验快照基准`1a8a840`，D23核心执行链沿用已测量`b02bb7b`快照；正式队列与runtime lock见当前交接。用户两台电脑轮流工作，**以本远端分支为准，本地仅工作副本**。见[记录与交接规则](protocols/RECORD_SOURCE_AND_HANDOFF.md)。
 
 1. [研究定位与去留决策](current/RESEARCH_DECISION.md)：论文可行性探索，频率＋语义可靠性优先候选，C1旁支，允许换解法/问题/方向；最终章节未冻结。
 2. [当前交接](current/HANDOFF.md)与[当前状态](current/PROJECT_STATUS.md)：最新观测、证据边界与决定。
-3. [下一步](current/NEXT_EXPERIMENT.md)：D23-A已通过准备门槛；B完整轻量原件已上传并核验，双卡工程验收完成，当前[双卡预算测量入口](protocols/D23_B_DUAL_GPU_BUDGET_20261001.md)已实现、本地27项CPU检查通过，等待服务器运行，不重跑已有诊断，不默认启动正式训练。
+3. [下一步](current/NEXT_EXPERIMENT.md)：D23-A已通过准备门槛；B完整轻量原件已上传并核验，双卡工程验收完成，双卡预算已完成并核验，当前[八组正式开发对照入口](protocols/D23_B_FORMAL_SCREEN_EXECUTION_20261001.md)已交付，等待服务器启动，不重跑已有诊断，不默认启动正式训练。
 4. [不可重复事项](current/DO_NOT_REPEAT.md)、[实验索引](experiments/rebuild_v1/INDEX.md)与[机器台账](../records/rebuild_v1_experiment_registry.json)。
 5. [D23原方案](protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md)、[B执行说明](protocols/D23_B_ENGINE_ADMISSION_20261001.md)、[工程尾部核对](experiments/D23_B_ENGINE_TAIL_AUDIT_20261001.md)。代码已实现、工程可运行、已知缺失回退、精度保护及独立泛化分别报告。
 

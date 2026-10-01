@@ -1318,11 +1318,24 @@
       "formal_started": false,
       "test6_loaded": false,
       "decision": "Engineering admission passed; prepare formal data-cache/TCAP and dual-concurrency budget. No accuracy or frequency-contribution conclusion."
+    },
+    {
+      "id": "D23_B_BUDGET_20261001",
+      "status": "complete_github_originals_audited_engineering_only",
+      "source_commit": "54e19cd16416b866bed7b152ba9a3a3f76ac4837",
+      "execution_commit": "b02bb7b4b923364e0c12774f28f4a3e5831f4a2e",
+      "matrix_records_audited": 196,
+      "raw_file_hashes_passed": 13,
+      "records": "records/research_d23_b_budget_20261001T145926_658274/evidence_20261001T151324658552_733424",
+      "last_observed_gpu0_at": "2026-10-01T15:12:41.571581+08:00",
+      "last_observed_gpu1_at": "2026-10-01T15:12:58.837909+08:00",
+      "formal_started": false,
+      "decision": "Budget complete; user rejects more budget gates; proceed to formal development screen."
     }
   ],
   "next_plan": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "B_engine_admission_originals_github_audited_formal_budget_pending",
+    "status": "B_formal_queue_ready_not_observed_started",
     "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
     "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
     "stage_a": {
@@ -1394,23 +1407,29 @@
       "engine_admission_source_commit": "d3829b600177304ae23865e2a15e22aa767e1f3f",
       "engine_admission_report": "docs/experiments/D23_B_ENGINE_GITHUB_AUDIT_20261001.md",
       "engine_record_directory": "records/research_d23_b_engine_admission_20261001T140528_658274/evidence_20261001T143256013644_712824",
-      "formal_runtime_admitted": false,
-      "runtime_lock_generated": false,
+      "formal_runtime_admitted": true,
+      "runtime_lock_generated": true,
       "expert_micro_batch": 8,
       "gate_batch": 16,
       "backward_calls_per_step": 1,
       "budget_measurement_implemented": true,
-      "budget_measurement_started": false,
+      "budget_measurement_started": true,
       "budget_protocol": "docs/protocols/D23_B_DUAL_GPU_BUDGET_20261001.md",
-      "budget_launcher": "scripts/launch_rebuild_v1_d23_budget.py"
+      "budget_launcher": "scripts/launch_rebuild_v1_d23_budget.py",
+      "budget_measurement_completed": true,
+      "budget_evidence_commit": "54e19cd16416b866bed7b152ba9a3a3f76ac4837",
+      "formal_queue_implemented": true,
+      "formal_queue": "scripts/launch_rebuild_v1_d23_formal.py",
+      "formal_protocol": "docs/protocols/D23_B_FORMAL_SCREEN_EXECUTION_20261001.md",
+      "queue_tests_passed": 5
     },
     "server_started_at": null,
     "new_long_training_authorized_by_document": false,
     "test6_loaded": false,
     "historical_test6_independent_final_eligible": false,
     "execution_document": "docs/protocols/D23_A_CPU_EXECUTION_20261001.md",
-    "next_action": "user runs bounded dual-H100 budget measurement; upload light originals and review before runtime lock",
-    "queue": null
+    "next_action": "user starts fixed eight-arm 4000-step formal development screen; no more budget probes",
+    "queue": "scripts/launch_rebuild_v1_d23_formal.py"
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -1770,7 +1789,7 @@
   },
   "proposed_d23": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "status": "B_engine_admission_originals_github_audited_formal_budget_pending",
+    "status": "B_formal_queue_ready_not_observed_started",
     "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
     "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
     "stage_a": {
@@ -1842,15 +1861,21 @@
       "engine_admission_source_commit": "d3829b600177304ae23865e2a15e22aa767e1f3f",
       "engine_admission_report": "docs/experiments/D23_B_ENGINE_GITHUB_AUDIT_20261001.md",
       "engine_record_directory": "records/research_d23_b_engine_admission_20261001T140528_658274/evidence_20261001T143256013644_712824",
-      "formal_runtime_admitted": false,
-      "runtime_lock_generated": false,
+      "formal_runtime_admitted": true,
+      "runtime_lock_generated": true,
       "expert_micro_batch": 8,
       "gate_batch": 16,
       "backward_calls_per_step": 1,
       "budget_measurement_implemented": true,
-      "budget_measurement_started": false,
+      "budget_measurement_started": true,
       "budget_protocol": "docs/protocols/D23_B_DUAL_GPU_BUDGET_20261001.md",
-      "budget_launcher": "scripts/launch_rebuild_v1_d23_budget.py"
+      "budget_launcher": "scripts/launch_rebuild_v1_d23_budget.py",
+      "budget_measurement_completed": true,
+      "budget_evidence_commit": "54e19cd16416b866bed7b152ba9a3a3f76ac4837",
+      "formal_queue_implemented": true,
+      "formal_queue": "scripts/launch_rebuild_v1_d23_formal.py",
+      "formal_protocol": "docs/protocols/D23_B_FORMAL_SCREEN_EXECUTION_20261001.md",
+      "queue_tests_passed": 5
     },
     "server_started_at": null,
     "new_long_training_authorized_by_document": false,

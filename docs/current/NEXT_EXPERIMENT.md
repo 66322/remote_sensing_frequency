@@ -1,10 +1,9 @@
-# 下一步：运行双卡资源测量，结果直接上GitHub
+# 下一步：启动八组正式开发对照
 
-[执行方案](../protocols/D23_B_DUAL_GPU_BUDGET_20261001.md)已实现，本地27项CPU检查通过。入口scripts/launch_rebuild_v1_d23_budget.py，实际服务器预算未运行。
+预算已完成并从GitHub核验，不再测量资源。已交付scripts/launch_rebuild_v1_d23_formal.py与现有formal接口runtime lock，新增5项队列模拟检查通过。当前没有正式训练已启动证据。
 
-1. 从固定提交提取launch入口到新的zzx对应实验目录，GPU0/1空闲时执行。controller先跑CPU检查，再同时测两卡12tile缓存、256个TCAP样本、八组各16步和训练tile14条件整图评价。每卡30分钟限制，失败保留记录并停止另一worker。
-2. 完成后自动将13份轻量原件和1份manifest上传同一GitHub分支。用户仅回复提交号；不再次粘贴长JSON。大型缓存/预测/权重留本次服务器目录。
-3. 助手复核绑定、两卡固定预测一致性、缓存/统计/整图预算与数据读取成本；估计中的NoBoundary/Val2读取余量单独报告。结果只为BUDGET_MEASURED_REVIEW_REQUIRED，不自动准入正式训练。
-4. 满足工程预算后冻结源码/backend/输入绑定及runtime lock，准备8组各4000步固定final screen。研究阈值、8组/6固定/14条件不变，Test6禁读；工程成功不等于门控/频率贡献成立。
+用户从固定提交提取入口到新的zzx/research_d23_b_formal目录，GPU0/1执行四轮8组各4000步；开始即正式训练，不再跑smoke/probe或CPU重复验收。目的、预算、停止条件与完整[执行方案](../protocols/D23_B_FORMAL_SCREEN_EXECUTION_20261001.md)已记录。原骨干/数据划分/退化/keyed样本/seed42与研究阈值不变。
 
-此前双卡工程验收已完成，[GitHub原件审计](../experiments/D23_B_ENGINE_GITHUB_AUDIT_20261001.md)，不再重跑。
+两卡各四组，单组预算8519秒，队列保守约9.5小时；每job3小时hard wall。固定final checkpoint后评价Val23_11/5_10×14条件，6固定与该组，保存Full/NoBoundary原整数计数。全部完成才冻结screen结论，不能从中途精度加任务/改方向。
+
+每30秒显示组名、耗时与最新日志，技术失败停止新任务并保留当前另一卡工作。完成或worker技术失败后，将明确轻量JSON/日志上传同一GitHub分支，预测/缓存/checkpoint留服务器。用户只回传提交号。助手回读后判断门控、独立语义/频率增量和缺失/退化风险；工程成功不等于贡献成立，Test6继续禁读。
