@@ -1,0 +1,495 @@
+D24_STARTED 0 A0 pid=1003559
+D24_STARTED 1 A2 pid=1003563
+D24_PROGRESS 0 A0 initializing step=0 elapsed_minutes=0.0
+D24_PROGRESS 1 A2 initializing step=0 elapsed_minutes=0.0
+D24_PROGRESS 0 A0 loading_fit_tiles step=0 elapsed_minutes=1.0
+D24_PROGRESS 1 A2 loading_fit_tiles step=0 elapsed_minutes=1.0
+D24_PROGRESS 0 A0 training step=160 elapsed_minutes=2.0
+D24_PROGRESS 1 A2 training step=160 elapsed_minutes=2.0
+D24_PROGRESS 0 A0 training step=460 elapsed_minutes=3.0
+D24_PROGRESS 1 A2 training step=420 elapsed_minutes=3.0
+D24_PROGRESS 0 A0 training step=720 elapsed_minutes=4.0
+D24_PROGRESS 1 A2 training step=680 elapsed_minutes=4.0
+D24_PROGRESS 0 A0 training step=1020 elapsed_minutes=5.0
+D24_PROGRESS 1 A2 training step=940 elapsed_minutes=5.0
+D24_PROGRESS 0 A0 training step=1300 elapsed_minutes=6.0
+D24_PROGRESS 1 A2 training step=1200 elapsed_minutes=6.0
+D24_PROGRESS 0 A0 training step=1600 elapsed_minutes=7.0
+D24_PROGRESS 1 A2 training step=1460 elapsed_minutes=7.0
+D24_PROGRESS 0 A0 training step=1880 elapsed_minutes=8.0
+D24_PROGRESS 1 A2 training step=1720 elapsed_minutes=8.0
+D24_PROGRESS 0 A0 checkpoint_selection step=2000 elapsed_minutes=9.0
+D24_PROGRESS 1 A2 training step=1980 elapsed_minutes=9.0
+D24_PROGRESS 0 A0 training step=2260 elapsed_minutes=10.0
+D24_PROGRESS 1 A2 training step=2060 elapsed_minutes=10.0
+D24_PROGRESS 0 A0 training step=2560 elapsed_minutes=11.0
+D24_PROGRESS 1 A2 training step=2320 elapsed_minutes=11.0
+D24_PROGRESS 0 A0 training step=2860 elapsed_minutes=12.0
+D24_PROGRESS 1 A2 training step=2600 elapsed_minutes=12.0
+D24_PROGRESS 0 A0 training step=3140 elapsed_minutes=13.0
+D24_PROGRESS 1 A2 training step=2880 elapsed_minutes=13.0
+D24_PROGRESS 0 A0 training step=3440 elapsed_minutes=14.0
+D24_PROGRESS 1 A2 training step=3140 elapsed_minutes=14.0
+D24_PROGRESS 0 A0 training step=3740 elapsed_minutes=15.0
+D24_PROGRESS 1 A2 training step=3420 elapsed_minutes=15.0
+D24_PROGRESS 0 A0 checkpoint_selection step=4000 elapsed_minutes=16.0
+D24_PROGRESS 1 A2 training step=3680 elapsed_minutes=16.0
+D24_PROGRESS 0 A0 full_evaluation step=4000 elapsed_minutes=17.1
+D24_PROGRESS 1 A2 training step=3960 elapsed_minutes=17.1
+D24_PROGRESS 0 A0 full_evaluation step=4000 elapsed_minutes=18.1
+D24_PROGRESS 1 A2 checkpoint_selection step=4000 elapsed_minutes=18.1
+D24_PROGRESS 0 A0 full_evaluation step=4000 elapsed_minutes=19.1
+D24_PROGRESS 1 A2 full_evaluation step=4000 elapsed_minutes=19.1
+D24_PROGRESS 0 A0 full_evaluation step=4000 elapsed_minutes=20.1
+D24_PROGRESS 1 A2 full_evaluation step=4000 elapsed_minutes=20.1
+D24_PROGRESS 0 A0 full_evaluation step=4000 elapsed_minutes=21.1
+D24_PROGRESS 1 A2 full_evaluation step=4000 elapsed_minutes=21.1
+D24_PROGRESS 0 A0 full_evaluation step=4000 elapsed_minutes=22.1
+D24_PROGRESS 1 A2 full_evaluation step=4000 elapsed_minutes=22.1
+D24_PROGRESS 0 A0 full_evaluation step=4000 elapsed_minutes=23.1
+D24_PROGRESS 1 A2 full_evaluation step=4000 elapsed_minutes=23.1
+D24_PROGRESS 0 A0 full_evaluation step=4000 elapsed_minutes=24.1
+D24_PROGRESS 1 A2 full_evaluation step=4000 elapsed_minutes=24.1
+D24_PROGRESS 0 A0 full_evaluation step=4000 elapsed_minutes=25.1
+D24_PROGRESS 1 A2 full_evaluation step=4000 elapsed_minutes=25.1
+D24_PROGRESS 0 A0 full_evaluation step=4000 elapsed_minutes=26.1
+D24_PROGRESS 1 A2 full_evaluation step=4000 elapsed_minutes=26.1
+D24_PROGRESS 0 A0 full_evaluation step=4000 elapsed_minutes=27.1
+D24_PROGRESS 1 A2 full_evaluation step=4000 elapsed_minutes=27.1
+D24_PROGRESS 0 A0 full_evaluation step=4000 elapsed_minutes=28.1
+D24_PROGRESS 1 A2 full_evaluation step=4000 elapsed_minutes=28.1
+D24_JOB_STATUS A0 COMPLETE
+D24_STARTED 0 A3 pid=1020985
+D24_PROGRESS 1 A2 full_evaluation step=4000 elapsed_minutes=29.1
+D24_PROGRESS 0 A3 loading_fit_tiles step=0 elapsed_minutes=0.2
+D24_JOB_STATUS A2 COMPLETE
+D24_STARTED 1 A1 pid=1021771
+D24_PROGRESS 0 A3 loading_fit_tiles step=0 elapsed_minutes=1.2
+D24_PROGRESS 1 A1 initializing step=0 elapsed_minutes=0.0
+D24_PROGRESS 0 A3 training step=220 elapsed_minutes=2.2
+D24_PROGRESS 1 A1 loading_fit_tiles step=0 elapsed_minutes=1.0
+D24_PROGRESS 0 A3 training step=480 elapsed_minutes=3.2
+D24_PROGRESS 1 A1 training step=200 elapsed_minutes=2.0
+D24_PROGRESS 0 A3 training step=740 elapsed_minutes=4.2
+D24_PROGRESS 1 A1 training step=480 elapsed_minutes=3.0
+D24_PROGRESS 0 A3 training step=1000 elapsed_minutes=5.2
+D24_PROGRESS 1 A1 training step=760 elapsed_minutes=4.0
+D24_PROGRESS 0 A3 training step=1240 elapsed_minutes=6.2
+D24_PROGRESS 1 A1 training step=1040 elapsed_minutes=5.0
+D24_PROGRESS 0 A3 training step=1500 elapsed_minutes=7.2
+D24_PROGRESS 1 A1 training step=1320 elapsed_minutes=6.0
+D24_PROGRESS 0 A3 training step=1760 elapsed_minutes=8.2
+D24_PROGRESS 1 A1 training step=1600 elapsed_minutes=7.0
+D24_PROGRESS 0 A3 checkpoint_selection step=2000 elapsed_minutes=9.2
+D24_PROGRESS 1 A1 training step=1900 elapsed_minutes=8.0
+D24_PROGRESS 0 A3 training step=2080 elapsed_minutes=10.2
+D24_PROGRESS 1 A1 checkpoint_selection step=2000 elapsed_minutes=9.0
+D24_PROGRESS 0 A3 training step=2360 elapsed_minutes=11.2
+D24_PROGRESS 1 A1 training step=2260 elapsed_minutes=10.0
+D24_PROGRESS 0 A3 training step=2620 elapsed_minutes=12.2
+D24_PROGRESS 1 A1 training step=2560 elapsed_minutes=11.0
+D24_PROGRESS 0 A3 training step=2900 elapsed_minutes=13.2
+D24_PROGRESS 1 A1 training step=2860 elapsed_minutes=12.0
+D24_PROGRESS 0 A3 training step=3160 elapsed_minutes=14.2
+D24_PROGRESS 1 A1 training step=3160 elapsed_minutes=13.0
+D24_PROGRESS 0 A3 training step=3420 elapsed_minutes=15.2
+D24_PROGRESS 1 A1 training step=3460 elapsed_minutes=14.1
+D24_PROGRESS 0 A3 training step=3700 elapsed_minutes=16.2
+D24_PROGRESS 1 A1 training step=3760 elapsed_minutes=15.1
+D24_PROGRESS 0 A3 training step=3960 elapsed_minutes=17.2
+D24_PROGRESS 1 A1 checkpoint_selection step=4000 elapsed_minutes=16.1
+D24_PROGRESS 0 A3 checkpoint_selection step=4000 elapsed_minutes=18.2
+D24_PROGRESS 1 A1 full_evaluation step=4000 elapsed_minutes=17.1
+D24_PROGRESS 0 A3 full_evaluation step=4000 elapsed_minutes=19.2
+D24_PROGRESS 1 A1 full_evaluation step=4000 elapsed_minutes=18.1
+D24_PROGRESS 0 A3 full_evaluation step=4000 elapsed_minutes=20.2
+D24_PROGRESS 1 A1 full_evaluation step=4000 elapsed_minutes=19.1
+D24_PROGRESS 0 A3 full_evaluation step=4000 elapsed_minutes=21.2
+D24_PROGRESS 1 A1 full_evaluation step=4000 elapsed_minutes=20.1
+D24_PROGRESS 0 A3 full_evaluation step=4000 elapsed_minutes=22.3
+D24_PROGRESS 1 A1 full_evaluation step=4000 elapsed_minutes=21.1
+D24_PROGRESS 0 A3 full_evaluation step=4000 elapsed_minutes=23.3
+D24_PROGRESS 1 A1 full_evaluation step=4000 elapsed_minutes=22.1
+D24_PROGRESS 0 A3 full_evaluation step=4000 elapsed_minutes=24.3
+D24_PROGRESS 1 A1 full_evaluation step=4000 elapsed_minutes=23.1
+D24_PROGRESS 0 A3 full_evaluation step=4000 elapsed_minutes=25.3
+D24_PROGRESS 1 A1 full_evaluation step=4000 elapsed_minutes=24.1
+D24_PROGRESS 0 A3 full_evaluation step=4000 elapsed_minutes=26.3
+D24_PROGRESS 1 A1 full_evaluation step=4000 elapsed_minutes=25.1
+D24_PROGRESS 0 A3 full_evaluation step=4000 elapsed_minutes=27.3
+D24_PROGRESS 1 A1 full_evaluation step=4000 elapsed_minutes=26.1
+D24_PROGRESS 0 A3 full_evaluation step=4000 elapsed_minutes=28.3
+D24_PROGRESS 1 A1 full_evaluation step=4000 elapsed_minutes=27.1
+D24_PROGRESS 0 A3 full_evaluation step=4000 elapsed_minutes=29.3
+D24_PROGRESS 1 A1 full_evaluation step=4000 elapsed_minutes=28.1
+D24_JOB_STATUS A1 COMPLETE
+D24_STARTED 1 C2 pid=1037576
+D24_JOB_STATUS A3 COMPLETE
+D24_STARTED 0 C0 pid=1037766
+D24_PROGRESS 1 C2 loading_fit_tiles step=0 elapsed_minutes=0.3
+D24_PROGRESS 0 C0 loading_fit_tiles step=0 elapsed_minutes=0.1
+D24_PROGRESS 1 C2 training step=1 elapsed_minutes=1.3
+D24_PROGRESS 0 C0 loading_fit_tiles step=0 elapsed_minutes=1.1
+D24_PROGRESS 1 C2 training step=200 elapsed_minutes=2.3
+D24_PROGRESS 0 C0 training step=160 elapsed_minutes=2.1
+D24_PROGRESS 1 C2 training step=400 elapsed_minutes=3.4
+D24_PROGRESS 0 C0 training step=340 elapsed_minutes=3.1
+D24_PROGRESS 1 C2 training step=600 elapsed_minutes=4.4
+D24_PROGRESS 0 C0 training step=560 elapsed_minutes=4.1
+D24_PROGRESS 1 C2 training step=800 elapsed_minutes=5.4
+D24_PROGRESS 0 C0 training step=760 elapsed_minutes=5.1
+D24_PROGRESS 1 C2 training step=1000 elapsed_minutes=6.4
+D24_PROGRESS 0 C0 training step=960 elapsed_minutes=6.1
+D24_PROGRESS 1 C2 training step=1180 elapsed_minutes=7.4
+D24_PROGRESS 0 C0 training step=1160 elapsed_minutes=7.1
+D24_PROGRESS 1 C2 training step=1380 elapsed_minutes=8.4
+D24_PROGRESS 0 C0 training step=1360 elapsed_minutes=8.1
+D24_PROGRESS 1 C2 training step=1580 elapsed_minutes=9.4
+D24_PROGRESS 0 C0 training step=1560 elapsed_minutes=9.1
+D24_PROGRESS 1 C2 training step=1780 elapsed_minutes=10.4
+D24_PROGRESS 0 C0 training step=1760 elapsed_minutes=10.2
+D24_PROGRESS 1 C2 training step=1980 elapsed_minutes=11.4
+D24_PROGRESS 0 C0 training step=1960 elapsed_minutes=11.2
+D24_PROGRESS 1 C2 training step=2040 elapsed_minutes=12.4
+D24_PROGRESS 0 C0 training step=2020 elapsed_minutes=12.2
+D24_PROGRESS 1 C2 training step=2240 elapsed_minutes=13.4
+D24_PROGRESS 0 C0 training step=2220 elapsed_minutes=13.2
+D24_PROGRESS 1 C2 training step=2440 elapsed_minutes=14.4
+D24_PROGRESS 0 C0 training step=2420 elapsed_minutes=14.2
+D24_PROGRESS 1 C2 training step=2640 elapsed_minutes=15.5
+D24_PROGRESS 0 C0 training step=2620 elapsed_minutes=15.2
+D24_PROGRESS 1 C2 training step=2840 elapsed_minutes=16.5
+D24_PROGRESS 0 C0 training step=2840 elapsed_minutes=16.2
+D24_PROGRESS 1 C2 training step=3040 elapsed_minutes=17.5
+D24_PROGRESS 0 C0 training step=3040 elapsed_minutes=17.2
+D24_PROGRESS 1 C2 training step=3260 elapsed_minutes=18.5
+D24_PROGRESS 0 C0 training step=3240 elapsed_minutes=18.3
+D24_PROGRESS 1 C2 training step=3460 elapsed_minutes=19.6
+D24_PROGRESS 0 C0 training step=3460 elapsed_minutes=19.3
+D24_PROGRESS 1 C2 training step=3660 elapsed_minutes=20.6
+D24_PROGRESS 0 C0 training step=3660 elapsed_minutes=20.3
+D24_PROGRESS 1 C2 training step=3860 elapsed_minutes=21.6
+D24_PROGRESS 0 C0 training step=3860 elapsed_minutes=21.3
+D24_PROGRESS 1 C2 checkpoint_selection step=4000 elapsed_minutes=22.6
+D24_PROGRESS 0 C0 checkpoint_selection step=4000 elapsed_minutes=22.3
+D24_PROGRESS 1 C2 full_evaluation step=4000 elapsed_minutes=23.6
+D24_PROGRESS 0 C0 full_evaluation step=4000 elapsed_minutes=23.3
+D24_PROGRESS 1 C2 full_evaluation step=4000 elapsed_minutes=24.6
+D24_PROGRESS 0 C0 full_evaluation step=4000 elapsed_minutes=24.3
+D24_PROGRESS 1 C2 full_evaluation_reused_optical step=4000 elapsed_minutes=25.6
+D24_PROGRESS 0 C0 full_evaluation_reused_optical step=4000 elapsed_minutes=25.3
+D24_PROGRESS 1 C2 full_evaluation step=4000 elapsed_minutes=26.6
+D24_PROGRESS 0 C0 full_evaluation step=4000 elapsed_minutes=26.3
+D24_PROGRESS 1 C2 full_evaluation_reused_optical step=4000 elapsed_minutes=27.6
+D24_PROGRESS 0 C0 full_evaluation_reused_optical step=4000 elapsed_minutes=27.3
+D24_PROGRESS 1 C2 full_evaluation step=4000 elapsed_minutes=28.6
+D24_PROGRESS 0 C0 full_evaluation step=4000 elapsed_minutes=28.3
+D24_PROGRESS 1 C2 full_evaluation step=4000 elapsed_minutes=29.6
+D24_PROGRESS 0 C0 full_evaluation step=4000 elapsed_minutes=29.3
+D24_PROGRESS 1 C2 full_evaluation_reused_optical step=4000 elapsed_minutes=30.6
+D24_PROGRESS 0 C0 full_evaluation_reused_optical step=4000 elapsed_minutes=30.4
+D24_PROGRESS 1 C2 full_evaluation_reused_optical step=4000 elapsed_minutes=31.6
+D24_PROGRESS 0 C0 full_evaluation_reused_optical step=4000 elapsed_minutes=31.4
+D24_JOB_STATUS C0 COMPLETE
+D24_JOB_STATUS C2 COMPLETE
+D24_STARTED 0 D2 pid=1054196
+D24_STARTED 1 D0 pid=1054202
+D24_PROGRESS 0 D2 loading_fit_tiles step=0 elapsed_minutes=0.1
+D24_PROGRESS 1 D0 loading_fit_tiles step=0 elapsed_minutes=0.1
+D24_PROGRESS 0 D2 loading_fit_tiles step=0 elapsed_minutes=1.1
+D24_PROGRESS 1 D0 loading_fit_tiles step=0 elapsed_minutes=1.1
+D24_PROGRESS 0 D2 training step=240 elapsed_minutes=2.1
+D24_PROGRESS 1 D0 training step=240 elapsed_minutes=2.1
+D24_PROGRESS 0 D2 training step=540 elapsed_minutes=3.1
+D24_PROGRESS 1 D0 training step=540 elapsed_minutes=3.1
+D24_PROGRESS 0 D2 training step=840 elapsed_minutes=4.1
+D24_PROGRESS 1 D0 training step=840 elapsed_minutes=4.1
+D24_PROGRESS 0 D2 training step=1160 elapsed_minutes=5.1
+D24_PROGRESS 1 D0 training step=1120 elapsed_minutes=5.1
+D24_PROGRESS 0 D2 training step=1460 elapsed_minutes=6.1
+D24_PROGRESS 1 D0 training step=1420 elapsed_minutes=6.1
+D24_PROGRESS 0 D2 training step=1780 elapsed_minutes=7.1
+D24_PROGRESS 1 D0 training step=1720 elapsed_minutes=7.1
+D24_PROGRESS 0 D2 checkpoint_selection step=2000 elapsed_minutes=8.1
+D24_PROGRESS 1 D0 checkpoint_selection step=2000 elapsed_minutes=8.1
+D24_PROGRESS 0 D2 training step=2160 elapsed_minutes=9.1
+D24_PROGRESS 1 D0 training step=2120 elapsed_minutes=9.1
+D24_PROGRESS 0 D2 training step=2480 elapsed_minutes=10.1
+D24_PROGRESS 1 D0 training step=2420 elapsed_minutes=10.1
+D24_PROGRESS 0 D2 training step=2800 elapsed_minutes=11.1
+D24_PROGRESS 1 D0 training step=2740 elapsed_minutes=11.1
+D24_PROGRESS 0 D2 training step=3100 elapsed_minutes=12.1
+D24_PROGRESS 1 D0 training step=3040 elapsed_minutes=12.1
+D24_PROGRESS 0 D2 training step=3400 elapsed_minutes=13.1
+D24_PROGRESS 1 D0 training step=3360 elapsed_minutes=13.1
+D24_PROGRESS 0 D2 training step=3720 elapsed_minutes=14.1
+D24_PROGRESS 1 D0 training step=3680 elapsed_minutes=14.1
+D24_PROGRESS 0 D2 checkpoint_selection step=4000 elapsed_minutes=15.1
+D24_PROGRESS 1 D0 checkpoint_selection step=4000 elapsed_minutes=15.1
+D24_PROGRESS 0 D2 full_evaluation step=4000 elapsed_minutes=16.1
+D24_PROGRESS 1 D0 full_evaluation step=4000 elapsed_minutes=16.1
+D24_PROGRESS 0 D2 full_evaluation step=4000 elapsed_minutes=17.1
+D24_PROGRESS 1 D0 full_evaluation step=4000 elapsed_minutes=17.1
+D24_PROGRESS 0 D2 full_evaluation step=4000 elapsed_minutes=18.1
+D24_PROGRESS 1 D0 full_evaluation step=4000 elapsed_minutes=18.1
+D24_PROGRESS 0 D2 full_evaluation step=4000 elapsed_minutes=19.2
+D24_PROGRESS 1 D0 full_evaluation step=4000 elapsed_minutes=19.2
+D24_PROGRESS 0 D2 full_evaluation step=4000 elapsed_minutes=20.2
+D24_PROGRESS 1 D0 full_evaluation step=4000 elapsed_minutes=20.2
+D24_PROGRESS 0 D2 full_evaluation step=4000 elapsed_minutes=21.2
+D24_PROGRESS 1 D0 full_evaluation step=4000 elapsed_minutes=21.2
+D24_PROGRESS 0 D2 full_evaluation step=4000 elapsed_minutes=22.2
+D24_PROGRESS 1 D0 full_evaluation step=4000 elapsed_minutes=22.2
+D24_PROGRESS 0 D2 full_evaluation step=4000 elapsed_minutes=23.2
+D24_PROGRESS 1 D0 full_evaluation step=4000 elapsed_minutes=23.2
+D24_PROGRESS 0 D2 full_evaluation step=4000 elapsed_minutes=24.2
+D24_PROGRESS 1 D0 full_evaluation step=4000 elapsed_minutes=24.2
+D24_PROGRESS 0 D2 full_evaluation step=4000 elapsed_minutes=25.2
+D24_PROGRESS 1 D0 full_evaluation step=4000 elapsed_minutes=25.2
+D24_PROGRESS 0 D2 full_evaluation step=4000 elapsed_minutes=26.2
+D24_PROGRESS 1 D0 full_evaluation step=4000 elapsed_minutes=26.2
+D24_PROGRESS 0 D2 full_evaluation step=4000 elapsed_minutes=27.2
+D24_PROGRESS 1 D0 full_evaluation step=4000 elapsed_minutes=27.2
+D24_JOB_STATUS D2 COMPLETE
+D24_STARTED 0 C3 pid=1068287
+D24_JOB_STATUS D0 COMPLETE
+D24_STARTED 1 C1 pid=1068438
+D24_PROGRESS 0 C3 loading_fit_tiles step=0 elapsed_minutes=0.3
+D24_PROGRESS 1 C1 loading_fit_tiles step=0 elapsed_minutes=0.1
+D24_PROGRESS 0 C3 training step=1 elapsed_minutes=1.3
+D24_PROGRESS 1 C1 loading_fit_tiles step=0 elapsed_minutes=1.1
+D24_PROGRESS 0 C3 training step=180 elapsed_minutes=2.3
+D24_PROGRESS 1 C1 training step=160 elapsed_minutes=2.1
+D24_PROGRESS 0 C3 training step=380 elapsed_minutes=3.3
+D24_PROGRESS 1 C1 training step=340 elapsed_minutes=3.1
+D24_PROGRESS 0 C3 training step=560 elapsed_minutes=4.3
+D24_PROGRESS 1 C1 training step=540 elapsed_minutes=4.1
+D24_PROGRESS 0 C3 training step=760 elapsed_minutes=5.3
+D24_PROGRESS 1 C1 training step=740 elapsed_minutes=5.1
+D24_PROGRESS 0 C3 training step=960 elapsed_minutes=6.3
+D24_PROGRESS 1 C1 training step=920 elapsed_minutes=6.1
+D24_PROGRESS 0 C3 training step=1160 elapsed_minutes=7.3
+D24_PROGRESS 1 C1 training step=1120 elapsed_minutes=7.1
+D24_PROGRESS 0 C3 training step=1360 elapsed_minutes=8.3
+D24_PROGRESS 1 C1 training step=1320 elapsed_minutes=8.1
+D24_PROGRESS 0 C3 training step=1560 elapsed_minutes=9.3
+D24_PROGRESS 1 C1 training step=1500 elapsed_minutes=9.1
+D24_PROGRESS 0 C3 training step=1740 elapsed_minutes=10.3
+D24_PROGRESS 1 C1 training step=1700 elapsed_minutes=10.1
+D24_PROGRESS 0 C3 training step=1940 elapsed_minutes=11.3
+D24_PROGRESS 1 C1 training step=1900 elapsed_minutes=11.1
+D24_PROGRESS 0 C3 checkpoint_selection step=2000 elapsed_minutes=12.3
+D24_PROGRESS 1 C1 checkpoint_selection step=2000 elapsed_minutes=12.1
+D24_PROGRESS 0 C3 training step=2200 elapsed_minutes=13.3
+D24_PROGRESS 1 C1 training step=2160 elapsed_minutes=13.1
+D24_PROGRESS 0 C3 training step=2400 elapsed_minutes=14.3
+D24_PROGRESS 1 C1 training step=2360 elapsed_minutes=14.1
+D24_PROGRESS 0 C3 training step=2600 elapsed_minutes=15.3
+D24_PROGRESS 1 C1 training step=2560 elapsed_minutes=15.1
+D24_PROGRESS 0 C3 training step=2800 elapsed_minutes=16.3
+D24_PROGRESS 1 C1 training step=2760 elapsed_minutes=16.1
+D24_PROGRESS 0 C3 training step=3000 elapsed_minutes=17.3
+D24_PROGRESS 1 C1 training step=2960 elapsed_minutes=17.1
+D24_PROGRESS 0 C3 training step=3200 elapsed_minutes=18.3
+D24_PROGRESS 1 C1 training step=3160 elapsed_minutes=18.1
+D24_PROGRESS 0 C3 training step=3400 elapsed_minutes=19.3
+D24_PROGRESS 1 C1 training step=3360 elapsed_minutes=19.1
+D24_PROGRESS 0 C3 training step=3600 elapsed_minutes=20.3
+D24_PROGRESS 1 C1 training step=3560 elapsed_minutes=20.1
+D24_PROGRESS 0 C3 training step=3800 elapsed_minutes=21.3
+D24_PROGRESS 1 C1 training step=3760 elapsed_minutes=21.1
+D24_PROGRESS 0 C3 checkpoint_selection step=4000 elapsed_minutes=22.3
+D24_PROGRESS 1 C1 training step=3960 elapsed_minutes=22.1
+D24_PROGRESS 0 C3 full_evaluation step=4000 elapsed_minutes=23.3
+D24_PROGRESS 1 C1 checkpoint_selection step=4000 elapsed_minutes=23.1
+D24_PROGRESS 0 C3 full_evaluation step=4000 elapsed_minutes=24.3
+D24_PROGRESS 1 C1 full_evaluation step=4000 elapsed_minutes=24.1
+D24_PROGRESS 0 C3 full_evaluation_reused_optical step=4000 elapsed_minutes=25.3
+D24_PROGRESS 1 C1 full_evaluation step=4000 elapsed_minutes=25.1
+D24_PROGRESS 0 C3 full_evaluation step=4000 elapsed_minutes=26.3
+D24_PROGRESS 1 C1 full_evaluation_reused_optical step=4000 elapsed_minutes=26.1
+D24_PROGRESS 0 C3 full_evaluation_reused_optical step=4000 elapsed_minutes=27.3
+D24_PROGRESS 1 C1 full_evaluation_reused_optical step=4000 elapsed_minutes=27.1
+D24_PROGRESS 0 C3 full_evaluation step=4000 elapsed_minutes=28.3
+D24_PROGRESS 1 C1 full_evaluation step=4000 elapsed_minutes=28.1
+D24_PROGRESS 0 C3 full_evaluation step=4000 elapsed_minutes=29.3
+D24_PROGRESS 1 C1 full_evaluation step=4000 elapsed_minutes=29.1
+D24_PROGRESS 0 C3 full_evaluation_reused_optical step=4000 elapsed_minutes=30.3
+D24_PROGRESS 1 C1 full_evaluation_reused_optical step=4000 elapsed_minutes=30.1
+D24_PROGRESS 0 C3 full_evaluation step=4000 elapsed_minutes=31.3
+D24_PROGRESS 1 C1 full_evaluation step=4000 elapsed_minutes=31.1
+D24_PROGRESS 0 C3 full_evaluation_reused_optical step=4000 elapsed_minutes=32.3
+D24_PROGRESS 1 C1 full_evaluation_reused_optical step=4000 elapsed_minutes=32.1
+D24_JOB_STATUS C3 COMPLETE
+D24_STARTED 0 D1 pid=1084932
+D24_JOB_STATUS C1 COMPLETE
+D24_STARTED 1 B0 pid=1085124
+D24_PROGRESS 0 D1 loading_fit_tiles step=0 elapsed_minutes=0.8
+D24_PROGRESS 1 B0 loading_fit_tiles step=0 elapsed_minutes=0.5
+D24_PROGRESS 0 D1 training step=140 elapsed_minutes=1.8
+D24_PROGRESS 1 B0 training step=60 elapsed_minutes=1.5
+D24_PROGRESS 0 D1 training step=440 elapsed_minutes=2.8
+D24_PROGRESS 1 B0 training step=340 elapsed_minutes=2.5
+D24_PROGRESS 0 D1 training step=740 elapsed_minutes=3.8
+D24_PROGRESS 1 B0 training step=640 elapsed_minutes=3.5
+D24_PROGRESS 0 D1 training step=1060 elapsed_minutes=4.8
+D24_PROGRESS 1 B0 training step=920 elapsed_minutes=4.5
+D24_PROGRESS 0 D1 training step=1360 elapsed_minutes=5.8
+D24_PROGRESS 1 B0 training step=1200 elapsed_minutes=5.5
+D24_PROGRESS 0 D1 training step=1660 elapsed_minutes=6.8
+D24_PROGRESS 1 B0 training step=1480 elapsed_minutes=6.5
+D24_PROGRESS 0 D1 training step=1960 elapsed_minutes=7.8
+D24_PROGRESS 1 B0 training step=1760 elapsed_minutes=7.5
+D24_PROGRESS 0 D1 training step=2040 elapsed_minutes=8.8
+D24_PROGRESS 1 B0 checkpoint_selection step=2000 elapsed_minutes=8.5
+D24_PROGRESS 0 D1 training step=2360 elapsed_minutes=9.8
+D24_PROGRESS 1 B0 training step=2100 elapsed_minutes=9.5
+D24_PROGRESS 0 D1 training step=2680 elapsed_minutes=10.8
+D24_PROGRESS 1 B0 training step=2400 elapsed_minutes=10.5
+D24_PROGRESS 0 D1 training step=2980 elapsed_minutes=11.8
+D24_PROGRESS 1 B0 training step=2700 elapsed_minutes=11.5
+D24_PROGRESS 0 D1 training step=3300 elapsed_minutes=12.8
+D24_PROGRESS 1 B0 training step=3000 elapsed_minutes=12.5
+D24_PROGRESS 0 D1 training step=3620 elapsed_minutes=13.8
+D24_PROGRESS 1 B0 training step=3300 elapsed_minutes=13.5
+D24_PROGRESS 0 D1 training step=3940 elapsed_minutes=14.8
+D24_PROGRESS 1 B0 training step=3600 elapsed_minutes=14.5
+D24_PROGRESS 0 D1 checkpoint_selection step=4000 elapsed_minutes=15.8
+D24_PROGRESS 1 B0 training step=3900 elapsed_minutes=15.5
+D24_PROGRESS 0 D1 full_evaluation step=4000 elapsed_minutes=16.8
+D24_PROGRESS 1 B0 checkpoint_selection step=4000 elapsed_minutes=16.5
+D24_PROGRESS 0 D1 full_evaluation step=4000 elapsed_minutes=17.8
+D24_PROGRESS 1 B0 full_evaluation step=4000 elapsed_minutes=17.5
+D24_PROGRESS 0 D1 full_evaluation step=4000 elapsed_minutes=18.8
+D24_PROGRESS 1 B0 full_evaluation step=4000 elapsed_minutes=18.5
+D24_PROGRESS 0 D1 full_evaluation step=4000 elapsed_minutes=19.8
+D24_PROGRESS 1 B0 full_evaluation step=4000 elapsed_minutes=19.5
+D24_PROGRESS 0 D1 full_evaluation step=4000 elapsed_minutes=20.8
+D24_PROGRESS 1 B0 full_evaluation step=4000 elapsed_minutes=20.5
+D24_PROGRESS 0 D1 full_evaluation step=4000 elapsed_minutes=21.8
+D24_PROGRESS 1 B0 full_evaluation step=4000 elapsed_minutes=21.5
+D24_PROGRESS 0 D1 full_evaluation step=4000 elapsed_minutes=22.8
+D24_PROGRESS 1 B0 full_evaluation step=4000 elapsed_minutes=22.5
+D24_PROGRESS 0 D1 full_evaluation step=4000 elapsed_minutes=23.8
+D24_PROGRESS 1 B0 full_evaluation step=4000 elapsed_minutes=23.5
+D24_PROGRESS 0 D1 full_evaluation step=4000 elapsed_minutes=24.8
+D24_PROGRESS 1 B0 full_evaluation step=4000 elapsed_minutes=24.5
+D24_PROGRESS 0 D1 full_evaluation step=4000 elapsed_minutes=25.8
+D24_PROGRESS 1 B0 full_evaluation step=4000 elapsed_minutes=25.5
+D24_PROGRESS 0 D1 full_evaluation step=4000 elapsed_minutes=26.8
+D24_PROGRESS 1 B0 full_evaluation step=4000 elapsed_minutes=26.5
+D24_JOB_STATUS D1 COMPLETE
+D24_PROGRESS 1 B0 full_evaluation step=4000 elapsed_minutes=27.5
+D24_STARTED 0 B1 pid=1099020
+D24_PROGRESS 1 B0 full_evaluation step=4000 elapsed_minutes=28.5
+D24_PROGRESS 0 B1 loading_fit_tiles step=0 elapsed_minutes=0.9
+D24_JOB_STATUS B0 COMPLETE
+D24_STARTED 1 B2 pid=1099710
+D24_PROGRESS 0 B1 training step=180 elapsed_minutes=1.9
+D24_PROGRESS 1 B2 loading_fit_tiles step=0 elapsed_minutes=0.7
+D24_PROGRESS 0 B1 training step=440 elapsed_minutes=2.9
+D24_PROGRESS 1 B2 training step=100 elapsed_minutes=1.7
+D24_PROGRESS 0 B1 training step=700 elapsed_minutes=3.9
+D24_PROGRESS 1 B2 training step=400 elapsed_minutes=2.7
+D24_PROGRESS 0 B1 training step=960 elapsed_minutes=4.9
+D24_PROGRESS 1 B2 training step=680 elapsed_minutes=3.7
+D24_PROGRESS 0 B1 training step=1240 elapsed_minutes=5.9
+D24_PROGRESS 1 B2 training step=980 elapsed_minutes=4.7
+D24_PROGRESS 0 B1 training step=1500 elapsed_minutes=6.9
+D24_PROGRESS 1 B2 training step=1260 elapsed_minutes=5.7
+D24_PROGRESS 0 B1 training step=1780 elapsed_minutes=7.9
+D24_PROGRESS 1 B2 training step=1540 elapsed_minutes=6.7
+D24_PROGRESS 0 B1 checkpoint_selection step=2000 elapsed_minutes=8.9
+D24_PROGRESS 1 B2 training step=1820 elapsed_minutes=7.7
+D24_PROGRESS 0 B1 training step=2140 elapsed_minutes=9.9
+D24_PROGRESS 1 B2 checkpoint_selection step=2000 elapsed_minutes=8.7
+D24_PROGRESS 0 B1 training step=2400 elapsed_minutes=10.9
+D24_PROGRESS 1 B2 training step=2160 elapsed_minutes=9.7
+D24_PROGRESS 0 B1 training step=2680 elapsed_minutes=11.9
+D24_PROGRESS 1 B2 training step=2440 elapsed_minutes=10.7
+D24_PROGRESS 0 B1 training step=2960 elapsed_minutes=12.9
+D24_PROGRESS 1 B2 training step=2740 elapsed_minutes=11.7
+D24_PROGRESS 0 B1 training step=3240 elapsed_minutes=13.9
+D24_PROGRESS 1 B2 training step=3020 elapsed_minutes=12.7
+D24_PROGRESS 0 B1 training step=3520 elapsed_minutes=14.9
+D24_PROGRESS 1 B2 training step=3300 elapsed_minutes=13.7
+D24_PROGRESS 0 B1 training step=3800 elapsed_minutes=15.9
+D24_PROGRESS 1 B2 training step=3580 elapsed_minutes=14.7
+D24_PROGRESS 0 B1 checkpoint_selection step=4000 elapsed_minutes=16.9
+D24_PROGRESS 1 B2 training step=3860 elapsed_minutes=15.7
+D24_PROGRESS 0 B1 full_evaluation step=4000 elapsed_minutes=17.9
+D24_PROGRESS 1 B2 checkpoint_selection step=4000 elapsed_minutes=16.7
+D24_PROGRESS 0 B1 full_evaluation step=4000 elapsed_minutes=18.9
+D24_PROGRESS 1 B2 full_evaluation step=4000 elapsed_minutes=17.7
+D24_PROGRESS 0 B1 full_evaluation step=4000 elapsed_minutes=19.9
+D24_PROGRESS 1 B2 full_evaluation step=4000 elapsed_minutes=18.7
+D24_PROGRESS 0 B1 full_evaluation step=4000 elapsed_minutes=20.9
+D24_PROGRESS 1 B2 full_evaluation step=4000 elapsed_minutes=19.7
+D24_PROGRESS 0 B1 full_evaluation step=4000 elapsed_minutes=22.0
+D24_PROGRESS 1 B2 full_evaluation step=4000 elapsed_minutes=20.7
+D24_PROGRESS 0 B1 full_evaluation step=4000 elapsed_minutes=23.0
+D24_PROGRESS 1 B2 full_evaluation step=4000 elapsed_minutes=21.7
+D24_PROGRESS 0 B1 full_evaluation step=4000 elapsed_minutes=24.0
+D24_PROGRESS 1 B2 full_evaluation step=4000 elapsed_minutes=22.7
+D24_PROGRESS 0 B1 full_evaluation step=4000 elapsed_minutes=25.0
+D24_PROGRESS 1 B2 full_evaluation step=4000 elapsed_minutes=23.7
+D24_PROGRESS 0 B1 full_evaluation step=4000 elapsed_minutes=26.0
+D24_PROGRESS 1 B2 full_evaluation step=4000 elapsed_minutes=24.7
+D24_PROGRESS 0 B1 full_evaluation step=4000 elapsed_minutes=27.0
+D24_PROGRESS 1 B2 full_evaluation step=4000 elapsed_minutes=25.7
+D24_PROGRESS 0 B1 full_evaluation step=4000 elapsed_minutes=28.0
+D24_PROGRESS 1 B2 full_evaluation step=4000 elapsed_minutes=26.7
+D24_PROGRESS 0 B1 full_evaluation step=4000 elapsed_minutes=29.0
+D24_PROGRESS 1 B2 full_evaluation step=4000 elapsed_minutes=27.7
+D24_JOB_STATUS B1 COMPLETE
+D24_STARTED 0 B3 pid=1114066
+D24_PROGRESS 1 B2 full_evaluation step=4000 elapsed_minutes=28.7
+D24_PROGRESS 0 B3 loading_fit_tiles step=0 elapsed_minutes=0.3
+D24_JOB_STATUS B2 COMPLETE
+D24_PROGRESS 0 B3 training step=1 elapsed_minutes=1.3
+D24_PROGRESS 0 B3 training step=280 elapsed_minutes=2.3
+D24_PROGRESS 0 B3 training step=580 elapsed_minutes=3.3
+D24_PROGRESS 0 B3 training step=860 elapsed_minutes=4.3
+D24_PROGRESS 0 B3 training step=1140 elapsed_minutes=5.3
+D24_PROGRESS 0 B3 training step=1420 elapsed_minutes=6.3
+D24_PROGRESS 0 B3 training step=1700 elapsed_minutes=7.3
+D24_PROGRESS 0 B3 training step=1980 elapsed_minutes=8.3
+D24_PROGRESS 0 B3 training step=2060 elapsed_minutes=9.3
+D24_PROGRESS 0 B3 training step=2340 elapsed_minutes=10.3
+D24_PROGRESS 0 B3 training step=2640 elapsed_minutes=11.3
+D24_PROGRESS 0 B3 training step=2940 elapsed_minutes=12.4
+D24_PROGRESS 0 B3 training step=3220 elapsed_minutes=13.4
+D24_PROGRESS 0 B3 training step=3520 elapsed_minutes=14.4
+D24_PROGRESS 0 B3 training step=3800 elapsed_minutes=15.4
+D24_PROGRESS 0 B3 checkpoint_selection step=4000 elapsed_minutes=16.4
+D24_PROGRESS 0 B3 full_evaluation step=4000 elapsed_minutes=17.4
+D24_PROGRESS 0 B3 full_evaluation step=4000 elapsed_minutes=18.4
+D24_PROGRESS 0 B3 full_evaluation step=4000 elapsed_minutes=19.4
+D24_PROGRESS 0 B3 full_evaluation step=4000 elapsed_minutes=20.4
+D24_PROGRESS 0 B3 full_evaluation step=4000 elapsed_minutes=21.4
+D24_PROGRESS 0 B3 full_evaluation step=4000 elapsed_minutes=22.4
+D24_PROGRESS 0 B3 full_evaluation step=4000 elapsed_minutes=23.4
+D24_PROGRESS 0 B3 full_evaluation step=4000 elapsed_minutes=24.4
+D24_PROGRESS 0 B3 full_evaluation step=4000 elapsed_minutes=25.4
+D24_PROGRESS 0 B3 full_evaluation step=4000 elapsed_minutes=26.4
+D24_PROGRESS 0 B3 full_evaluation step=4000 elapsed_minutes=27.4
+D24_PROGRESS 0 B3 full_evaluation step=4000 elapsed_minutes=28.4
+D24_JOB_STATUS B3 COMPLETE
+D24_RESULT A0 clean=83.9813 composite=83.3071
+D24_RESULT A2 clean=86.9035 composite=86.2939
+D24_RESULT A3 clean=86.9022 composite=86.2925
+D24_RESULT A1 clean=83.9813 composite=83.3071
+D24_RESULT C0 clean=86.0217 composite=85.5487
+D24_RESULT C2 clean=85.7929 composite=85.2726
+D24_RESULT D2 clean=86.9134 composite=85.9513
+D24_RESULT D0 clean=86.8346 composite=85.8657
+D24_RESULT C3 clean=85.8554 composite=85.3923
+D24_RESULT C1 clean=85.9199 composite=85.4447
+D24_RESULT D1 clean=87.0707 composite=86.4448
+D24_RESULT B0 clean=86.8535 composite=86.2482
+D24_RESULT B1 clean=86.8519 composite=86.2466
+D24_RESULT B2 clean=83.3711 composite=82.7984
+D24_RESULT B3 clean=83.3691 composite=82.7973
+D24_SCREEN_COMPLETE 15 /15 test6_loaded=False
+D24_QUEUE_FINISHED COMPLETE summary_exit=0
+D24_UPLOAD_READY /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/code/scripts/upload_rebuild_v1_d24_records.py

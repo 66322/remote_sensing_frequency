@@ -1,0 +1,101 @@
+{
+  "signature": {
+    "job": {
+      "id": "A2",
+      "route": "A",
+      "name": "last4_CE",
+      "last4": true,
+      "objective": "CE",
+      "augmentation": "QD",
+      "control": "A0",
+      "gpu": 1,
+      "priority": 2,
+      "seed": 42,
+      "optimizer_steps": 4000,
+      "entrypoint": "scripts/run_rebuild_v1_d24.py",
+      "status": "code_ready_not_launched"
+    },
+    "plan_sha256": "30815aaf0bf536a8cc19a298d2f3705c54f6494efb4c58a4f29b1b90a7e78936",
+    "sources": {
+      "model/rebuild_v1_night_screen.py": "95ba4785eaeb7e0c0009ade5328de6d11b4f137e9df34e95b2793efc0ce8a6d6",
+      "model/rebuild_v1_d21_detail.py": "6a3dad4e37d3f572f93f4d2b906287f4964fd6842f75b2691b6cdfe0967339ae",
+      "model/rebuild_v1_d24.py": "8e79e6c933a3298ec0305cf96d2be85dbc386de4d1a117af205f341f95557c1b",
+      "scripts/d23_engine.py": "a4e496ffa63130dd1e3c1a48e50ba66185e66d06aef43815c077e5b61eba385c",
+      "scripts/d23_lifecycle.py": "8747c16efb2eed2d6acb6f30bfc5ae09a6ac0f9034686692094189bd56a30090",
+      "scripts/d24_common.py": "3381d3143332a5cdafa2cc1f119a4d8c630c92fc30d3d6940c0842ac567fc8eb",
+      "scripts/d24_data.py": "a92f254fb4f0f37b2d9b0b6e47771b3e4d9511b3faf9b4343ff0977bca204761",
+      "scripts/d24_objectives.py": "b541b3094ae9cd4170178d8fcc21c4e13be7124a58ca3b530f1a9316a4081473",
+      "scripts/d24_evaluation.py": "f06de9d3ab80146953b0ca5c480088c9980ae87f9b968ea87ef13056f8e3d824",
+      "scripts/run_rebuild_v1_d24.py": "469f7c1cef545c76f10eb71b7bd33ef981dd575dfac710d518dfbbd790979be7",
+      "scripts/launch_rebuild_v1_d24.py": "68733afee1fb0101fa948db10a3009453aeae1d43b555b730108073e115d2528",
+      "scripts/status_rebuild_v1_d24.py": "85eb9b275cb9e3bcdfac2d0c748dd1c8b6162cccbde58b23403850ca66bcdb47",
+      "scripts/summarize_rebuild_v1_d24.py": "7cb4933d600caeab96dd240469cf75428551eb448be1c0061d91db9c503e8e2c",
+      "scripts/upload_rebuild_v1_d24_records.py": "22815591637bb90f72e9ba0b443abf850bdb3fd95621fbd580d4f9dd32acb881",
+      "tests/test_d24.py": "ef97e55a6c1a3dda86174adc0e3d928e2f8ef19fc4fbc405be225a098aa8f0c8",
+      "records/research_d24_overnight_plan_20261001/plan.json": "0743db0279cf5e46d7d74246833390a05829d7e530f5ab95bca735e15660c970",
+      "records/research_d24_overnight_plan_20261001/jobs.csv": "1bd12f6380964e66603b54a923b7de0cccb2eab956198d95f66389ea60e02015"
+    },
+    "execution_commit": "cf1955d966163978b5c8af433f3845b5ca05da9e",
+    "anchors": {
+      "R0": {
+        "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/D21_potsdam_R0_seed42_16000_20260928/last_train_state.pth",
+        "sha256": "29aa15f4cd149012996ddeadd7a5b40f593f99854318acd1d0d0acb286ed5975",
+        "step": 16000
+      },
+      "M0": {
+        "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/D21_potsdam_M0_seed42_16000_20260928/last_train_state.pth",
+        "sha256": "23b2939ea50867c96c0a17626fd4a85a27100ebd8296b2fc96440ed8bc3d34de",
+        "step": 16000
+      }
+    },
+    "torch_version": "2.2.2+cu121",
+    "base_config_sha256": "07dd4b7f224d2e036024dfb2ab57bac9fe312335a5eebb8173778cd5c11de133",
+    "dino_config_sha256": "cb1c398acac6c9892aeee65bc5f331375a2395c0233654d7a3fc6ee58329ef0f",
+    "dino_commit": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+    "split_sha256": "d9fe260f6b1be3807811e454c1673d1e69db235c32d4dea207e8724975e210ab",
+    "input_manifest_sha256": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295",
+    "physical_batch": 16,
+    "gradient_accumulation": false,
+    "train_precision": "bf16",
+    "eval_precision": "fp32_tf32",
+    "validation_batch": 8,
+    "checkpoint_selection": "best_clean_Val2_NoBoundary_fg5",
+    "test6_loaded": false,
+    "independent_final_loaded": false
+  },
+  "selected": {
+    "step": 2000,
+    "metric": 0.8690346593233903,
+    "checkpoint_sha256": "60889ee1ae7c521b8e2b90f317a449cb58ca4d73dbd2b8bb3b41e2b0d74e26cf"
+  },
+  "selected_checkpoint_sha256": "60889ee1ae7c521b8e2b90f317a449cb58ca4d73dbd2b8bb3b41e2b0d74e26cf",
+  "global_step": 4000,
+  "gradient_check": {
+    "trainable_parameters": 7303974,
+    "encoder_gradient_nonzero": true,
+    "head_gradient_nonzero": true,
+    "frozen_gradients_absent": true,
+    "teacher_gradients_absent": true
+  },
+  "treatment_counts": {
+    "Pair:penalty_sum": 15.66371982631972,
+    "Pair:steps": 4000,
+    "Q:aux_down4": 9171,
+    "Q:rgb_down2": 9027,
+    "Q:rgb_local_down4_q1": 9172,
+    "Q:rgb_down4": 9136,
+    "Q:rgb_blur5": 9202,
+    "Q:aux_noise_std010": 9078,
+    "D:aux_local_zero_q1": 16060,
+    "D:clean": 32026,
+    "D:aux_zero": 15914,
+    "Q:clean": 9214
+  },
+  "evaluation_summary_sha256": "017c3006a2f6146559f4b8bf6948592ab750e320148e7c7fdec9fc4fa23cbf88",
+  "last_checkpoint_sha256": "88c13eed9fb0147a98032a34b5ee821c888f364e1453ca039de69c5c62dede6e",
+  "final_training_prototype_support": null,
+  "selected_prototype_support": null,
+  "completed_at": "2026-10-02T00:38:41.348517+08:00",
+  "test6_loaded": false,
+  "independent_final_loaded": false
+}
