@@ -1654,7 +1654,7 @@
     {
       "id": "D26_BIDIRECTIONAL_FEATURE_20261002",
       "name": "bidirectional_feature_interaction_reusing_existing_unimodal_experts",
-      "status": "IMPLEMENTED_LOCAL_CPU_CHECKED_NOT_LAUNCHED",
+      "status": "LAUNCHED_INITIALIZING_USER_REPORTED",
       "started_at": null,
       "completed_at": null,
       "implemented": true,
@@ -1666,7 +1666,7 @@
       ],
       "result": null,
       "execution_authorized": true,
-      "launched": false,
+      "launched": true,
       "execution_commit": "52f94388b1a9c7557e9ef533075661139cd55eda",
       "execution_protocol": "docs/protocols/D26_EXECUTION_20261002.md",
       "local_CPU_tests_passed": 16,
@@ -1674,7 +1674,56 @@
       "unique_jobs": 9,
       "total_optimizer_steps": 72000,
       "new_unimodal_training": 0,
-      "server_directory": null
+      "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109",
+      "controller_pid": 1571946,
+      "last_observation": {
+        "schema_version": "1.0",
+        "experiment": "D26_BIDIRECTIONAL_FEATURE_20261002",
+        "source": "user_pasted_server_terminal_stdout",
+        "recorded_date": "2026-10-02",
+        "directory_creation_at": "2026-10-02T19:12:53+08:00",
+        "directory_creation_time_source": "directory name; not precise worker start or observation timestamp",
+        "last_observed_at": null,
+        "observation_time_precision": "console lines have no timestamps; observed after directory creation; no invented exact timestamp",
+        "execution_commit": "52f94388b1a9c7557e9ef533075661139cd55eda",
+        "fetched_branch_head": "90f37124eaebda283028df9fb101c55fd273babe",
+        "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109",
+        "controller_pid": 1571946,
+        "controller_log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109/nohup.log",
+        "status": "LAUNCHED_INITIALIZING_USER_REPORTED",
+        "jobs": [
+          {
+            "id": "J0",
+            "physical_gpu": 0,
+            "pid": 1571983,
+            "phase": "initializing",
+            "step": 0
+          },
+          {
+            "id": "B0",
+            "physical_gpu": 1,
+            "pid": 1571989,
+            "phase": "initializing",
+            "step": 0
+          }
+        ],
+        "completed_jobs": 0,
+        "total_jobs": 9,
+        "first_training_step_observed": false,
+        "real_checkpoint_load_verified": false,
+        "server_gpu_forward_verified": false,
+        "gradient_check_received": false,
+        "precision_result_received": false,
+        "pid_live_query_performed": false,
+        "nohup_used": true,
+        "physical_batch": 16,
+        "gradient_accumulation": false,
+        "test6_loaded": false,
+        "test6_claim_source": "fixed execution protocol; no completed server artifact received",
+        "next_action": "Query this existing queue only; do not relaunch or probe resources"
+      },
+      "last_observation_record": "records/research_d26_launch_observation_20261002/user_reported_launch.json",
+      "started_at_precision": "after directory creation2026-10-02T19:12:53+08:00; exact start not retained"
     }
   ],
   "next_plan": {
@@ -1686,7 +1735,7 @@
     },
     "schema_version": "1.0",
     "id": "D26_BIDIRECTIONAL_FEATURE_20261002",
-    "status": "IMPLEMENTED_LOCAL_CPU_CHECKED_NOT_LAUNCHED",
+    "status": "LAUNCHED_INITIALIZING_USER_REPORTED",
     "execution_authorized": true,
     "source_commit": "c5aca5bbe6b9677666fd732c0f965b25c0565f90",
     "user_direction": "Both RGB and DSM information; reuse already completed unimodal experiments",
@@ -2005,7 +2054,9 @@
       "joint_counts_encoding": "lossless sparse flat index/count int64 shape6^4, omitted bins exactly0; decode helper supplied; per condition/tile/scope/availability"
     },
     "verification_status": "LOCAL_SYNTHETIC_CPU_AND_NATIVE_DSM_INTERFACE_ONLY_SERVER_CHECKPOINT_CUDA_PENDING",
-    "execution_commit": "52f94388b1a9c7557e9ef533075661139cd55eda"
+    "execution_commit": "52f94388b1a9c7557e9ef533075661139cd55eda",
+    "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109",
+    "last_observation_record": "records/research_d26_launch_observation_20261002/user_reported_launch.json"
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -3024,5 +3075,12 @@
       "projection_shared": false,
       "Pair_corrected": false
     }
+  },
+  "d26_execution_state": {
+    "server_started": true,
+    "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109",
+    "controller_pid": 1571946,
+    "execution_commit": "52f94388b1a9c7557e9ef533075661139cd55eda",
+    "first_training_step_observed": false
   }
 }

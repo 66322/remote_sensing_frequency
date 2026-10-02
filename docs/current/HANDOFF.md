@@ -1,6 +1,6 @@
-# 当前交接：D26固定九组已获授权、实现和CPU检查
+# 当前交接：D26已nohup启动，首batch待观测
 
-更新2026-10-02；[前次交接](../history/HANDOFF_20261002_BEFORE_D26_IMPLEMENTATION.md)。用户明确“按上述实验规划进行具体实验”，执行范围仅D26九组×8000=72000更新。代码52f94388b1a9c7557e9ef533075661139cd55eda；尚未收到服务器D26启动观测，不能说已经运行。下一动作是[一次nohup启动](../protocols/D26_EXECUTION_20261002.md)，不再资源探针、重训单模态或重复询问许可。
+更新2026-10-02；[前次交接](../history/HANDOFF_20261002_BEFORE_D26_LAUNCH.md)。用户明确“按上述实验规划进行具体实验”，执行范围仅D26九组×8000=72000更新。代码52f94388b1a9c7557e9ef533075661139cd55eda；最后服务器观测：2026-10-02本次用户回传，controller PID1571946；GPU0 J0 PID1571983、GPU1 B0 PID1571989，均initializing step=0。目录创建19:12:53+08:00来自目录名，日志行无精确观测时间；不表述为实时PID状态或已完成首batch。本次目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109，日志nohup.log。[启动证据](../../records/research_d26_launch_observation_20261002/user_reported_launch.json)。下一动作查询已有队列，不再新建目录启动、资源探针、重训单模态或重复询问许可。
 
 研究阶段为可行性探索。主问题RGB–DSM双方互补和任一方退化/缺失。频率/语义有独立容量/空间/打乱对照，不承诺都成立；J0联合适配强对照，C1任务恢复仍旁支，最终贡献未冻结。没有方向变更，D23—D25旧失败判定不改。
 
@@ -8,7 +8,7 @@
 
 D26使用P6 selected2000 SHA bef8dda6537b68fc51f300bc3789bbbef57682baedf92a3f7665217a4a2fde71和D15 seed42 best15000 SHA d597f1adf3ca0291dcd7d063af941bebf3db1e61205cfdaf13271fbba9437e84；真实路径和原预处理已绑定。两真实独立专家、异构预训练/历史，所有九组同一对；J0只更新两末四block/decoder，其余冻结。分类前特征投影stride4/派生stride8，双向交互，与旧R0/M0输出gate不同。
 
-机读[plan](../../records/research_d26_plan_20261002/plan.json)与[实现细化](../protocols/D26_EXECUTION_20261002.md)均在看D26结果前冻结。16CPU行为、原DSM random64 forward/梯度93/93、26Python3.10语法、27快照/5CLI通过。未加载服务器权重、未执行GPU/真实DINO训练；GPU2.2.2首正常batch内验证梯度。J0保留原DSM bilinear decoder CUDA非确定性warning，不声明比特重复；所有BN统计/专家dropout固定eval。
+机读[plan](../../records/research_d26_plan_20261002/plan.json)与[实现细化](../protocols/D26_EXECUTION_20261002.md)均在看D26结果前冻结。16CPU行为、原DSM random64 forward/梯度93/93、26Python3.10语法、27快照/5CLI通过。本地检查未读取服务器权重。本次服务器回传只有initializing，权重加载完成/首GPU forward/梯度文件尚未收到；正常首batch内验证。J0保留原DSM bilinear decoder CUDA非确定性warning，不声明比特重复；所有BN统计/专家dropout固定eval。
 
 两GPU动态队列，物理batch16无累积，8线程常驻tile预取，不测资源预算。8000步固定，两时刻以三状态Val2 NoBoundary fg5 mean选模；固定8000十主条件诊断、selected22条件，双方退化/整幅局部缺失、互补缺失/双缺失无效区均保存。预测、6×6原计数、6^4 lossless sparse joint、SHA绑定可离线重算；共享只读原专家cache避免重复推理。冻结全缺失回退是工程保证，不是新精度贡献。
 

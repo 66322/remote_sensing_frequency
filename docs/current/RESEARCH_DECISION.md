@@ -123,3 +123,8 @@ P0普通last4/QD对同初始化P6有阶段融合收益，但整幅DSM缺失输�
 看结果前锁定原checkpoint SHA、native分类前hook、stride4/派生stride8、交错供体group布局、语义×频率同容量/打乱、双mask邻域/逐像素回退、三状态4000/8000选模、fixed8000诊断、lossless6^4计数及动态两GPU队列。J0保留native bilinear CUDA反传警告并披露非严格比特重复；冻结组严格。GPU首batch验证仍未发生，不把CPU行为检查写成实验精度结论。
 
 去留/预算/增强/seed按原D26提案冻结；失败不自动扫参，多seed和独立场景不自动启动，最多一条机制另立确认。当前主问题范围、C1旁支、强基线角色与D23—D25关闭决定保持；共享GitHub入口/台账已同步，服务器真实观测随后更新。
+
+
+## 2026-10-02 D26实际启动观测
+
+最后服务器观测：2026-10-02本次用户回传，controller PID1571946；GPU0 J0 PID1571983、GPU1 B0 PID1571989，均initializing step=0。目录创建19:12:53+08:00来自目录名，日志行无精确观测时间；不表述为实时PID状态或已完成首batch。本次目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109；[启动证据](../../records/research_d26_launch_observation_20261002/user_reported_launch.json)绑定固定代码52f94388b1a9c7557e9ef533075661139cd55eda。此前“未启动”仅历史阶段，当前只查询已有队列，不重复启动、资源审计或单模态训练。研究问题/九组预算/预设门槛不变，尚无新科学结论。

@@ -1,11 +1,17 @@
-# 下一步：一次nohup启动已授权的D26九组
+# 下一步：查询已启动的D26，不重复启动
 
-更新2026-10-02。固定实现52f94388b1a9c7557e9ef533075661139cd55eda；[执行指令](../protocols/D26_EXECUTION_20261002.md)，[机读配置](../../records/research_d26_plan_20261002/plan.json)，[CPU检查](../../records/research_d26_plan_20261002/local_validation.json)。当前已实现/检查，**没有服务器启动观测**。
+更新2026-10-02。最后服务器观测：2026-10-02本次用户回传，controller PID1571946；GPU0 J0 PID1571983、GPU1 B0 PID1571989，均initializing step=0。目录创建19:12:53+08:00来自目录名，日志行无精确观测时间；不表述为实时PID状态或已完成首batch。本次目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109。[启动证据](../../records/research_d26_launch_observation_20261002/user_reported_launch.json)；固定执行52f94388b1a9c7557e9ef533075661139cd55eda。
 
-1. 在既定服务器root一次新建records/research_d26_bidirectional_<timestamp>_<pid>并nohup启动固定九组，两GPU动态领取；复用P6/D15 checkpoint，batch16无累积，不另做资源/预算探针或单模态训练。
-2. 回传controller PID、目录、D26_STARTED两行，之后从本目录status查看最后观测时间、阶段、step和窗进度。正常首batch自动验证专家/交互梯度，异常保留日志，不自动缩batch/加累积/重试。
-3. 每组8000，4000/8000以三状态Val2均值选模；selected22条件＋固定8000十主条件诊断，全保存int64矩阵/计数/预测和checkpoint绑定。首正常完整任务结束后估计ETA，不声称开始前精确耗时。
-4. 九组结束查看screen_result.json、results.csv和失败尾日志，再运行upload_rebuild_v1_d26_records.py上传轻量原件；不再贴大量输出，由GitHub直接读取和独立重算预设门槛。
-5. 比较XSF与B0/CAP/X/J0及S/F消融/打乱，分别报告完整、双方退化/全缺失/局部缺失和双方独有正确区域；最多一条通过后另立多seed/独立来源协议。没有通过不自动扫参数或增budget，不重开D23—D25旧配方。
+九组×8000、GPU0/1两H10080GB、物理batch16无累积、nohup、zzx目录约定不变，不再资源/预算审计。J0/B0已启动，剩余七组由动态队列领取；首训练步/梯度验收尚未收到。按照[冻结协议](../protocols/D26_BIDIRECTIONAL_FEATURE_PLAN_20261002.md)推进，不重训单模态、扩预算或自动扫参。
 
-主问题仍双方互补，C1旁支，章节/贡献未冻结。两单模态专家异构和历史held4暴露保留；Test6禁读，Val2开发不独立泛化。服务器状态待真实回传，不能把“代码发布”写成“运行中”。
+```bash
+cd /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+D26_DIR="/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109"
+D26_PY=$(python -c 'import json; print(json.load(open("records/rebuild_v1_d21_queue_20260928/plan.json"))["python"])')
+"$D26_PY" -B "$D26_DIR/code/scripts/status_rebuild_v1_d26.py" --directory "$D26_DIR"
+tail -n 20 "$D26_DIR/nohup.log"
+```
+
+出现训练step>0和实际gradient记录后再更新训练验收；若TECHNICAL_FAILURE，先读该任务日志尾，不重开队列。第一正常完整任务结束后ETA采用实际耗时。九组结束查看screen_result.json/results.csv并按[执行说明](../protocols/D26_EXECUTION_20261002.md)上传轻量原件；从GitHub直接读长输出、离线核对矩阵与预设gate。最多一条成立机制另立seed/独立场景协议，失败不自动追训。
+
+研究阶段仍可行性探索，双方信息互补主问题不变，C1旁支、强基线和最终贡献角色不变。历史held4不独立、Test6禁读。启动不是精度结果。
