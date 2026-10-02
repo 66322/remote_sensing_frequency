@@ -1,0 +1,18 @@
+{
+  "job": "P4",
+  "step": 4000,
+  "target": 4000,
+  "phase": "complete",
+  "observed_at": "2026-10-02T14:41:16.218242+08:00",
+  "session_elapsed_seconds": 1943.2830690145493,
+  "loss": 0.1821024864912033,
+  "objective_counts": {
+    "present_pixels": 7077888,
+    "missing_pixels": 1310720,
+    "Pair:enabled_steps": 0,
+    "Pair:weighted_loss_sum": 0.0
+  },
+  "seconds_per_train_step": 0.2139192010127008,
+  "remaining_training_hours": 0.0,
+  "gpu_peak_allocated_bytes": 6037823488
+}
