@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "id": "D26_BIDIRECTIONAL_FEATURE_20261002",
+  "status": "PROPOSED_NOT_IMPLEMENTED_NOT_LAUNCHED",
+  "execution_authorized": false,
+  "source_commit": "39ed1838c9e22bcc17409766a4618ae6d5b33097",
+  "user_direction": "Both RGB and DSM information; reuse already completed unimodal experiments",
+  "superseded_suggestion": "Retraining fresh RGB-only and DSM-only anchors is withdrawn",
+  "protocol": "docs/protocols/D26_BIDIRECTIONAL_FEATURE_PLAN_20261002.md",
+  "evidence_review": "docs/experiments/RESEARCH_SYNTHESIS_D15_D25_20261002.md",
+  "literature": "docs/literature/D26_BIDIRECTIONAL_COMPLEMENTARITY_20261002.md",
+  "experts": {
+    "rgb": "D25 P6 seed42 selected step2000",
+    "dsm": "D15 DSM_ONLY seed42 selected checkpoint",
+    "binding": "Resolve original complete/summary checkpoint paths and SHA during implementation, no invented path",
+    "heterogeneous_architectures": true,
+    "historical_held4_exposure": true
+  },
+  "new_unimodal_training": 0,
+  "jobs": [
+    {
+      "id": "J0",
+      "name": "joint_adaptation_plain_concat",
+      "steps": 8000,
+      "seed": 42,
+      "status": "PROPOSED"
+    },
+    {
+      "id": "B0",
+      "name": "frozen_experts_plain_concat",
+      "steps": 8000,
+      "seed": 42,
+      "status": "PROPOSED"
+    },
+    {
+      "id": "CAP",
+      "name": "matched_self_processing",
+      "steps": 8000,
+      "seed": 42,
+      "status": "PROPOSED"
+    },
+    {
+      "id": "X",
+      "name": "bidirectional_spatial",
+      "steps": 8000,
+      "seed": 42,
+      "status": "PROPOSED"
+    },
+    {
+      "id": "XS",
+      "name": "bidirectional_spatial_semantic",
+      "steps": 8000,
+      "seed": 42,
+      "status": "PROPOSED"
+    },
+    {
+      "id": "XF",
+      "name": "bidirectional_frequency",
+      "steps": 8000,
+      "seed": 42,
+      "status": "PROPOSED"
+    },
+    {
+      "id": "XSF",
+      "name": "bidirectional_frequency_semantic",
+      "steps": 8000,
+      "seed": 42,
+      "status": "PROPOSED"
+    },
+    {
+      "id": "XSF-shS",
+      "name": "spatially_mismatched_semantic",
+      "steps": 8000,
+      "seed": 42,
+      "status": "PROPOSED"
+    },
+    {
+      "id": "XSF-shF",
+      "name": "spatially_mismatched_frequency",
+      "steps": 8000,
+      "seed": 42,
+      "status": "PROPOSED"
+    }
+  ],
+  "unique_training_jobs": 9,
+  "total_optimizer_steps": 72000,
+  "batch": 16,
+  "gradient_accumulation": false,
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "nohup": true,
+  "server_root": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+  "directory_pattern": "records/research_d26_bidirectional_<timestamp>_<pid>",
+  "repeat_resource_probe": false,
+  "test6_loaded": false,
+  "automatic_followup": false,
+  "selection": "mean complete clean, RGB-only clean, DSM-only clean on Val2 at4000/8000, earliest ties; fixed8000 diagnostic retained",
+  "primary_candidate": "XSF",
+  "new_contribution_established": false
+}

@@ -1650,14 +1650,123 @@
       "test6_loaded": false,
       "server_GPU_verified": true,
       "server_GPU_verified_scope": "pinned completion and first-step gradient records, not live GPU inspection"
+    },
+    {
+      "id": "D26_BIDIRECTIONAL_FEATURE_20261002",
+      "name": "bidirectional_feature_interaction_reusing_existing_unimodal_experts",
+      "status": "PROPOSED_NOT_IMPLEMENTED_NOT_LAUNCHED",
+      "started_at": null,
+      "completed_at": null,
+      "implemented": false,
+      "execution_authorized_by_user": false,
+      "protocol": "docs/protocols/D26_BIDIRECTIONAL_FEATURE_PLAN_20261002.md",
+      "records": [
+        "records/research_d26_plan_20261002/plan.json"
+      ],
+      "result": null
     }
   ],
   "next_plan": {
-    "id": "POST_D25_QUESTION_AND_MECHANISM_DECISION",
-    "status": "NOT_ADOPTED_NOT_IMPLEMENTED_NO_NEW_TRAINING_AUTHORIZATION",
-    "source": "docs/experiments/D25_MISSINGNESS_RESULTS_20261002.md",
-    "next": "docs/current/NEXT_EXPERIMENT.md",
-    "no_automatic_extension": true
+    "schema_version": "1.0",
+    "id": "D26_BIDIRECTIONAL_FEATURE_20261002",
+    "status": "PROPOSED_NOT_IMPLEMENTED_NOT_LAUNCHED",
+    "execution_authorized": false,
+    "source_commit": "39ed1838c9e22bcc17409766a4618ae6d5b33097",
+    "user_direction": "Both RGB and DSM information; reuse already completed unimodal experiments",
+    "superseded_suggestion": "Retraining fresh RGB-only and DSM-only anchors is withdrawn",
+    "protocol": "docs/protocols/D26_BIDIRECTIONAL_FEATURE_PLAN_20261002.md",
+    "evidence_review": "docs/experiments/RESEARCH_SYNTHESIS_D15_D25_20261002.md",
+    "literature": "docs/literature/D26_BIDIRECTIONAL_COMPLEMENTARITY_20261002.md",
+    "experts": {
+      "rgb": "D25 P6 seed42 selected step2000",
+      "dsm": "D15 DSM_ONLY seed42 selected checkpoint",
+      "binding": "Resolve original complete/summary checkpoint paths and SHA during implementation, no invented path",
+      "heterogeneous_architectures": true,
+      "historical_held4_exposure": true
+    },
+    "new_unimodal_training": 0,
+    "jobs": [
+      {
+        "id": "J0",
+        "name": "joint_adaptation_plain_concat",
+        "steps": 8000,
+        "seed": 42,
+        "status": "PROPOSED"
+      },
+      {
+        "id": "B0",
+        "name": "frozen_experts_plain_concat",
+        "steps": 8000,
+        "seed": 42,
+        "status": "PROPOSED"
+      },
+      {
+        "id": "CAP",
+        "name": "matched_self_processing",
+        "steps": 8000,
+        "seed": 42,
+        "status": "PROPOSED"
+      },
+      {
+        "id": "X",
+        "name": "bidirectional_spatial",
+        "steps": 8000,
+        "seed": 42,
+        "status": "PROPOSED"
+      },
+      {
+        "id": "XS",
+        "name": "bidirectional_spatial_semantic",
+        "steps": 8000,
+        "seed": 42,
+        "status": "PROPOSED"
+      },
+      {
+        "id": "XF",
+        "name": "bidirectional_frequency",
+        "steps": 8000,
+        "seed": 42,
+        "status": "PROPOSED"
+      },
+      {
+        "id": "XSF",
+        "name": "bidirectional_frequency_semantic",
+        "steps": 8000,
+        "seed": 42,
+        "status": "PROPOSED"
+      },
+      {
+        "id": "XSF-shS",
+        "name": "spatially_mismatched_semantic",
+        "steps": 8000,
+        "seed": 42,
+        "status": "PROPOSED"
+      },
+      {
+        "id": "XSF-shF",
+        "name": "spatially_mismatched_frequency",
+        "steps": 8000,
+        "seed": 42,
+        "status": "PROPOSED"
+      }
+    ],
+    "unique_training_jobs": 9,
+    "total_optimizer_steps": 72000,
+    "batch": 16,
+    "gradient_accumulation": false,
+    "physical_gpus": [
+      0,
+      1
+    ],
+    "nohup": true,
+    "server_root": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+    "directory_pattern": "records/research_d26_bidirectional_<timestamp>_<pid>",
+    "repeat_resource_probe": false,
+    "test6_loaded": false,
+    "automatic_followup": false,
+    "selection": "mean complete clean, RGB-only clean, DSM-only clean on Val2 at4000/8000, earliest ties; fixed8000 diagnostic retained",
+    "primary_candidate": "XSF",
+    "new_contribution_established": false
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -2015,7 +2124,12 @@
     "next_action_document": "docs/current/NEXT_EXPERIMENT.md",
     "external_source_gate": "required for corresponding external confirmation, not a universal prerequisite for development exploration",
     "new_training_authorized_by_this_document": true,
-    "latest_recommendation": "docs/protocols/D25_MISSINGNESS_OPTIMIZATION_PLAN_20261002.md"
+    "latest_recommendation": "docs/protocols/D25_MISSINGNESS_OPTIMIZATION_PLAN_20261002.md",
+    "entry": "docs/current/RESEARCH_DECISION.md",
+    "current_scope": "RGB-DSM bidirectional complementary information and either-modality degradation/missingness",
+    "scope_source": "User correction2026-10-02",
+    "do_not_repeat_unimodal_capability_training": true,
+    "final_contribution_frozen": false
   },
   "proposed_d23": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
