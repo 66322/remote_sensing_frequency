@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "observed_at": "2026-10-02",
+  "python": "3.13.3",
+  "torch": "2.7.1+cpu",
+  "device": "CPU",
+  "behavior_tests": 15,
+  "behavior_seconds": 16.273,
+  "python310_syntax_files": 25,
+  "snapshot_files": 26,
+  "native_dsm": {
+    "random_weights": true,
+    "crop": 64,
+    "logits_shape": [
+      1,
+      6,
+      64,
+      64
+    ],
+    "feature_shape": [
+      1,
+      16,
+      64,
+      64
+    ],
+    "exact_native_logits_preserved": true,
+    "joint_trainable_tensors": 93,
+    "gradient_tensors": 93,
+    "bn_statistics_frozen": true
+  },
+  "server_started": false,
+  "server_anchor_bytes_loaded": false,
+  "cuda_executed": false,
+  "test6_loaded": false,
+  "precision_evidence": false,
+  "sources_lf_sha256": {
+    "model/rebuild_v1_night_screen.py": "5874155641f04ccdf808d9705a7b6dc746290fcc3af2d33c909443dde081bb80",
+    "model/rebuild_v1_d21_detail.py": "383ed8aa87752b180302cb4e0e488a8879822c2aa8d470fd9582249337ba73a5",
+    "model/rebuild_v1_d24.py": "50df670ae799dfb224ec2ffdcadf161402531c428ebf22bca60b01fbc792389d",
+    "model/rebuild_v1_d25.py": "b558944ea0028281695d73995eccbc5245ec5b909b95d9da6e2946e900033db0",
+    "scripts/d23_engine.py": "c3d688c72b386e49dc464f55b784a00dde9feb74812b1a044dfbfd6aface1baf",
+    "scripts/d24_common.py": "812630a55e9a56c49ef283f1bec208158710bb9e3a76e7f02247e64cb19c1f30",
+    "scripts/d24_data.py": "020eb9fdb6d43be3409ef6f753ddea1eccab3a12cf48dc09ba4779520dafa7f9",
+    "model/rebuild_v1_optical_only.py": "1c65d0591ac2bd88b08a3d8c51561fb5f76e1e8f2644ba7b00891ff00c8a019c",
+    "model/vit_seg_configs.py": "bfaa0008e822905d8941f01c39e0dd51047129a135ad95f967bf4982171b6fb2",
+    "model/vit_seg_modeling_resnet_skip.py": "319c848d5ce1b5585d267bca50a46aa6084bfb71dd6afa402043f01c077aab8a",
+    "model/dynamic_conv.py": "c8407f1c99b10c6e0b0f608b156c14147bc0328c131e1558c553f0b898e401d0",
+    "model/vitcross_seg_modeling_freqfusion.py": "a2e2faaed3960cefad324030e8aff1405af56a3815b9d37d2424d7616d91689b",
+    "model/vitcross_seg_modeling_freq_ablation.py": "feeab997b22809e4300f517304ea38a63d7e535176cc9cb6934e49375c06c031",
+    "model/FreqFusion_reference.py": "9afd57a2ec5829a175d804322622044854ef52e5f97c64cc23afe99a2c0621f9",
+    "model/rebuild_v1_d26.py": "79999b613bfad7fc6db37230b588a138540692763fcb16d3752b8b95aaeafcf9",
+    "scripts/d26_common.py": "f3cc94d44e8a68cb58baa1545edbb105532fda28f43327c08df00c61f67e9167",
+    "scripts/d26_data.py": "e7249e29cf4712ac3ca79bf05d7fd2065b74fa4574db2b5e65f3f02ba150f45a",
+    "scripts/d26_evaluation.py": "c6893e89e79b7ca26483784a50f2fa960cb22ef2a79fe2ce546a727aac13cb65",
+    "scripts/run_rebuild_v1_d26.py": "67f2df14258d973ac8673411ecdc58bf09bb0718ae8b1f8e3286801abe9e29ed",
+    "scripts/launch_rebuild_v1_d26.py": "a392445b84d0fb7101ed5ededbb07d3397870c845e7cb7d02b7792e3b9d3cda3",
+    "scripts/status_rebuild_v1_d26.py": "4f4b33b63df31d157eec33c41e7770c05abc8fdfc52b5e1453271dc4331d2bed",
+    "scripts/summarize_rebuild_v1_d26.py": "1c99b9bcdccbf3b1063c5a6571cb2c67a32737f3cc1a50f275e8a24d83f8fd51",
+    "scripts/upload_rebuild_v1_d26_records.py": "b39bb512575a51ab991e83564e3349a42b868397218b473333d80785a2db49da",
+    "tests/test_d26.py": "f1eda4c8962d85e215f740e9c6a59644b10ce3547113b66d9aab0059bfed2fd9",
+    "records/research_d26_plan_20261002/plan.json": "d0bc59ef713c51902e2cb00935a7bbfef9ef1d35f4c4333f09caad4832defc18",
+    "tests/check_d26_native_dsm.py": "efdf33a6a4a228ef821727303520ece51101370fec9087fcad5336bf7d2bb8e1"
+  },
+  "checks": [
+    "bilateral exact own-logit fallback and hidden input independence",
+    "Haar/polyphase inverse and energy, constant high bands and gradients",
+    "matched capacity and common initialized head",
+    "CAP no cross donor; cross interaction responsive",
+    "semantic/frequency alignment shuffles change actual forward",
+    "all trainable gradient paths and frozen expert absence",
+    "all22 interventions; independent keyed streams",
+    "raw metrics and sparse joint counts exact reconstruction",
+    "stitch, evidence binding, prediction corruption detection and resume",
+    "predeclared gate boundary/protection failure",
+    "dynamic queue no duplicate assignment"
+  ],
+  "limitations": [
+    "CPU Torch2.7.1 differs from bound serverTorch2.2.2",
+    "native DSM interface checked at64 with random weights; actual checkpoint512 loading in ordinary worker initialization",
+    "real DINO checkpoint interface and CUDA throughput pending first normal server batch",
+    "J0 retains native nondeterministic bilinear CUDA backward warning; no strict bitwise reproducibility claim"
+  ]
+}

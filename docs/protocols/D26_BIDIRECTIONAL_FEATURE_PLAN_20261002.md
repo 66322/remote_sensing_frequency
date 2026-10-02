@@ -1,13 +1,13 @@
-# D26建议：复用现有单模态专家，检验双向特征互补
+# D26冻结执行协议：复用现有单模态专家，检验双向特征互补
 
 ## Material Passport
 - Origin Skill: academic-research-suite / experiment-agent
-- Origin Mode: plan
+- Origin Mode: execute
 - Origin Date: 2026-10-02
-- Verification Status: EVIDENCE_AND_PRIMARY_SOURCES_REVIEWED_PLAN_ONLY
-- Version Label: D26_proposal_v1_after_user_unimodal_correction
+- Verification Status: IMPLEMENTED_LOCAL_CPU_CHECKED_SERVER_NOT_OBSERVED
+- Version Label: D26_execution_v1_after_explicit_user_authorization
 
-本次用户要求规划并纠正双模态范围；**尚未实现或启动D26**。这是具体建议，不把本轮规划自动写成新长训练授权。[证据汇总](../experiments/RESEARCH_SYNTHESIS_D15_D25_20261002.md)、[文献映射](../literature/D26_BIDIRECTIONAL_COMPLEMENTARITY_20261002.md)。新协议独立于D23—D25，不修改旧门槛或重开旧失败配方。
+用户随后明确“按上述实验规划进行具体实验”，**固定九组执行已获授权，代码已实现并通过15项CPU行为检查及原DSM接口检查；尚未收到服务器启动观测**。此前建议阶段为历史状态。[执行命令与精确接口](D26_EXECUTION_20261002.md)。[证据汇总](../experiments/RESEARCH_SYNTHESIS_D15_D25_20261002.md)、[文献映射](../literature/D26_BIDIRECTIONAL_COMPLEMENTARITY_20261002.md)。新协议独立于D23—D25，不修改旧门槛或重开旧失败配方。
 
 ## 1. 主问题和不重复的工作
 
@@ -65,7 +65,7 @@ shS/shF在训练和评价都采用同一预声明的半宽/半高循环位移，
 
 ## 5. 训练与预算
 
-建议九组各8000次更新，共72000，seed42；新融合头从共同初始化起点训练。选择8000是新特征载体固定开发预算，不是给D25失败配方追训。所有组相同fit12、crop512、物理batch16、无累积、BF16，AdamW head LR2e-4；J0 encoder末层LR2e-5，weight_decay=.01，betas(.9,.999)，warmup100后线性衰减至8000。不得从某候选赢家继续而其他组从头。
+已授权并冻结九组各8000次更新，共72000，seed42；新融合头从共同初始化起点训练。选择8000是新特征载体固定开发预算，不是给D25失败配方追训。所有组相同fit12、crop512、物理batch16、无累积、BF16，AdamW head LR2e-4；J0 encoder末层LR2e-5，weight_decay=.01，betas(.9,.999)，warmup100后线性衰减至8000。不得从某候选赢家继续而其他组从头。
 
 每crop clean/aug两视图，融合CE各0.5。J0再加0.5倍双单模态CE均值；只在该模态有有效输入区域监督其单模态分支，各区域计数与分母显式保存。J0比冻结组训练参数更多，这是预定表示更新对照，不解释成仅结构区别。J0内部单模态与固定原专家比较属于能力变化诊断，不冒充新增同预算独立单模态训练比较。
 
@@ -91,7 +91,7 @@ C、Q_R、Q_D、Q_J共10个主可用条件；S_available=四族等权均值。�
 
 原有D25条件可另报以保持历史可比，但不混合新旧score。全缺失时用只剩的同条件单模态为参照，不能要求DSM-only达到双模态或RGB-only绝对水平。
 
-## 7. 预设去留规则（建议，执行前冻结）
+## 7. 预设去留规则（执行前冻结，不改旧门槛）
 
 主要候选XSF，必须同时超过B0、CAP、X中的各个对照：S_available至少+0.2pp；C相对各对照≥−0.1pp；Q_R/Q_D/Q_J各族≥−0.2pp；所有主可用condition×tile最小差≥−0.5pp。再与J0比较：S_available≥J0−0.1pp；若明显输J0，不能称新机制优于双模态联合适配。若要声称方法整体领先，需超过J0至少+0.2pp，而非仅追平。
 
