@@ -1667,7 +1667,7 @@
       "result": null,
       "execution_authorized": true,
       "launched": false,
-      "execution_commit": "e6500576b2c9507c8d6e3c63bace8be31c5b3cec",
+      "execution_commit": "52f94388b1a9c7557e9ef533075661139cd55eda",
       "execution_protocol": "docs/protocols/D26_EXECUTION_20261002.md",
       "local_CPU_tests_passed": 16,
       "server_GPU_verified": false,
@@ -2005,7 +2005,7 @@
       "joint_counts_encoding": "lossless sparse flat index/count int64 shape6^4, omitted bins exactly0; decode helper supplied; per condition/tile/scope/availability"
     },
     "verification_status": "LOCAL_SYNTHETIC_CPU_AND_NATIVE_DSM_INTERFACE_ONLY_SERVER_CHECKPOINT_CUDA_PENDING",
-    "execution_commit": "e6500576b2c9507c8d6e3c63bace8be31c5b3cec"
+    "execution_commit": "52f94388b1a9c7557e9ef533075661139cd55eda"
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
