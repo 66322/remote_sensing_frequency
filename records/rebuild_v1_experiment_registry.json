@@ -1349,9 +1349,9 @@
     {
       "id": "D24_OVERNIGHT_MULTIPERSPECTIVE_20261001",
       "name": "four_angle_overnight_development_portfolio",
-      "status": "running_as_last_reported_training",
+      "status": "reported_complete_pending_light_evidence",
       "started_at": null,
-      "completed_at": null,
+      "completed_at": "2026-10-02T04:06:59.332637+08:00",
       "recorded_at": "2026-10-02T00:15:45+08:00",
       "purpose": "Optical available: retain useful DSM fusion, control negative transfer under DSM quality changes, and support DSM missing inference",
       "protocol": "docs/protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md",
@@ -1361,13 +1361,140 @@
         "records/research_d24_launch_observation_20261002/user_reported_launch.json",
         "records/research_d24_launch_observation_20261002/launch_stdout.txt",
         "records/research_d24_progress_20261002T001859/observation.json",
-        "records/research_d24_progress_20261002T001859/user_status_stdout.txt"
+        "records/research_d24_progress_20261002T001859/user_status_stdout.txt",
+        "records/research_d24_completion_observation_20261002/observation.json",
+        "records/research_d24_completion_observation_20261002/stdout_excerpt.txt"
       ],
       "unique_jobs": 15,
       "optimizer_steps_planned": 60000,
-      "result": null,
+      "result": {
+        "source": "user_stdout_four_decimal",
+        "rows": [
+          {
+            "id": "A0",
+            "status": "COMPLETE",
+            "step": 4000,
+            "progress_at": "2026-10-02T00:37:32.286066+08:00",
+            "clean_fg5_pp_printed": 83.9813,
+            "composite_pp_printed": 83.3071
+          },
+          {
+            "id": "A2",
+            "status": "COMPLETE",
+            "step": 4000,
+            "progress_at": "2026-10-02T00:38:41.349130+08:00",
+            "clean_fg5_pp_printed": 86.9035,
+            "composite_pp_printed": 86.2939
+          },
+          {
+            "id": "A3",
+            "status": "COMPLETE",
+            "step": 4000,
+            "progress_at": "2026-10-02T01:07:45.862010+08:00",
+            "clean_fg5_pp_printed": 86.9022,
+            "composite_pp_printed": 86.2925
+          },
+          {
+            "id": "A1",
+            "status": "COMPLETE",
+            "step": 4000,
+            "progress_at": "2026-10-02T01:07:28.841977+08:00",
+            "clean_fg5_pp_printed": 83.9813,
+            "composite_pp_printed": 83.3071
+          },
+          {
+            "id": "C0",
+            "status": "COMPLETE",
+            "step": 4000,
+            "progress_at": "2026-10-02T01:40:03.873086+08:00",
+            "clean_fg5_pp_printed": 86.0217,
+            "composite_pp_printed": 85.5487
+          },
+          {
+            "id": "C2",
+            "status": "COMPLETE",
+            "step": 4000,
+            "progress_at": "2026-10-02T01:40:00.318731+08:00",
+            "clean_fg5_pp_printed": 85.7929,
+            "composite_pp_printed": 85.2726
+          },
+          {
+            "id": "D2",
+            "status": "COMPLETE",
+            "step": 4000,
+            "progress_at": "2026-10-02T02:07:56.538063+08:00",
+            "clean_fg5_pp_printed": 86.9134,
+            "composite_pp_printed": 85.9513
+          },
+          {
+            "id": "D0",
+            "status": "COMPLETE",
+            "step": 4000,
+            "progress_at": "2026-10-02T02:08:07.884216+08:00",
+            "clean_fg5_pp_printed": 86.8346,
+            "composite_pp_printed": 85.8657
+          },
+          {
+            "id": "C3",
+            "status": "COMPLETE",
+            "step": 4000,
+            "progress_at": "2026-10-02T02:40:31.444158+08:00",
+            "clean_fg5_pp_printed": 85.8554,
+            "composite_pp_printed": 85.3923
+          },
+          {
+            "id": "C1",
+            "status": "COMPLETE",
+            "step": 4000,
+            "progress_at": "2026-10-02T02:40:48.607204+08:00",
+            "clean_fg5_pp_printed": 85.9199,
+            "composite_pp_printed": 85.4447
+          },
+          {
+            "id": "D1",
+            "status": "COMPLETE",
+            "step": 4000,
+            "progress_at": "2026-10-02T03:08:23.033985+08:00",
+            "clean_fg5_pp_printed": 87.0707,
+            "composite_pp_printed": 86.4448
+          },
+          {
+            "id": "B0",
+            "status": "COMPLETE",
+            "step": 4000,
+            "progress_at": "2026-10-02T03:09:39.152509+08:00",
+            "clean_fg5_pp_printed": 86.8535,
+            "composite_pp_printed": 86.2482
+          },
+          {
+            "id": "B1",
+            "status": "COMPLETE",
+            "step": 4000,
+            "progress_at": "2026-10-02T03:37:59.876976+08:00",
+            "clean_fg5_pp_printed": 86.8519,
+            "composite_pp_printed": 86.2466
+          },
+          {
+            "id": "B2",
+            "status": "COMPLETE",
+            "step": 4000,
+            "progress_at": "2026-10-02T03:38:44.644918+08:00",
+            "clean_fg5_pp_printed": 83.3711,
+            "composite_pp_printed": 82.7984
+          },
+          {
+            "id": "B3",
+            "status": "COMPLETE",
+            "step": 4000,
+            "progress_at": "2026-10-02T04:06:53.704712+08:00",
+            "clean_fg5_pp_printed": 83.3691,
+            "composite_pp_printed": 82.7973
+          }
+        ],
+        "full_raw_review_complete": false
+      },
       "test6_loaded": false,
-      "evidence_level": "user_reported_sustained_training_progress_not_scientific_effect",
+      "evidence_level": "user_reported_complete_metrics_pending_original_evidence_review",
       "implemented": true,
       "execution_authorized_by_user": true,
       "local_cpu_checks_passed": 15,
@@ -1376,16 +1503,18 @@
       "time_source": "user_pasted_launch_stdout_directory_name_and_STARTED_rows",
       "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
       "execution_commit": "cf1955d966163978b5c8af433f3845b5ca05da9e",
-      "last_observation_record": "records/research_d24_progress_20261002T001859/observation.json",
+      "last_observation_record": "records/research_d24_completion_observation_20261002/observation.json",
       "first_training_step_observed": true,
       "training_progress_observed": true,
       "gradient_check_artifact_received": false,
-      "last_recorded_at": "2026-10-02T00:19:37+08:00"
+      "last_recorded_at": "2026-10-02T12:10:21+08:00",
+      "completed_at_meaning": "queue completion observation; latest job completion progress at 04:06:53.704712",
+      "completed_jobs": 15
     }
   ],
   "next_plan": {
     "id": "D24_OVERNIGHT_MULTIPERSPECTIVE_20261001",
-    "status": "running_as_last_reported_training",
+    "status": "reported_complete_pending_light_evidence",
     "protocol": "docs/protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md",
     "manifest": "records/research_d24_overnight_plan_20261001/plan.json",
     "jobs_csv": "records/research_d24_overnight_plan_20261001/jobs.csv",
@@ -1412,73 +1541,153 @@
     "execution_commit": "cf1955d966163978b5c8af433f3845b5ca05da9e",
     "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
     "last_observation": {
-      "schema_version": "1.0",
-      "recorded_at": "2026-10-02T00:19:37+08:00",
-      "source": "user_pasted_server_status_stdout_and_nohup_tail",
-      "queue_observed_at": "2026-10-02T00:18:59.788679+08:00",
-      "latest_job_progress_at": "2026-10-02T00:19:02.780409+08:00",
-      "status": "running_as_last_reported_training",
+      "recorded_at": "2026-10-02T12:10:21+08:00",
+      "source": "user_pasted_status_and_nohup_tail",
+      "queue_observed_at": "2026-10-02T04:06:59.332637+08:00",
+      "last_job_complete_progress_at": "2026-10-02T04:06:53.704712+08:00",
+      "status": "reported_complete",
       "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
       "execution_commit": "cf1955d966163978b5c8af433f3845b5ca05da9e",
-      "completed_jobs": 0,
+      "completed_jobs": 15,
       "total_jobs": 15,
-      "jobs_last_reported": [
+      "summary_exit": 0,
+      "test6_loaded_reported": false,
+      "rows": [
         {
           "id": "A0",
-          "gpu": 0,
-          "status": "RUNNING",
-          "phase": "training",
-          "step": 2360,
-          "total_steps": 4000,
-          "progress_at": "2026-10-02T00:19:02.780409+08:00",
-          "training_fraction": 0.59,
-          "checkpoint_selection_step2000_observed": true
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T00:37:32.286066+08:00",
+          "clean_fg5_pp_printed": 83.9813,
+          "composite_pp_printed": 83.3071
         },
         {
           "id": "A2",
-          "gpu": 1,
-          "status": "RUNNING",
-          "phase": "training",
-          "step": 2140,
-          "total_steps": 4000,
-          "progress_at": "2026-10-02T00:19:01.680178+08:00",
-          "training_fraction": 0.535
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T00:38:41.349130+08:00",
+          "clean_fg5_pp_printed": 86.9035,
+          "composite_pp_printed": 86.2939
+        },
+        {
+          "id": "A3",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T01:07:45.862010+08:00",
+          "clean_fg5_pp_printed": 86.9022,
+          "composite_pp_printed": 86.2925
+        },
+        {
+          "id": "A1",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T01:07:28.841977+08:00",
+          "clean_fg5_pp_printed": 83.9813,
+          "composite_pp_printed": 83.3071
+        },
+        {
+          "id": "C0",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T01:40:03.873086+08:00",
+          "clean_fg5_pp_printed": 86.0217,
+          "composite_pp_printed": 85.5487
+        },
+        {
+          "id": "C2",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T01:40:00.318731+08:00",
+          "clean_fg5_pp_printed": 85.7929,
+          "composite_pp_printed": 85.2726
+        },
+        {
+          "id": "D2",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T02:07:56.538063+08:00",
+          "clean_fg5_pp_printed": 86.9134,
+          "composite_pp_printed": 85.9513
+        },
+        {
+          "id": "D0",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T02:08:07.884216+08:00",
+          "clean_fg5_pp_printed": 86.8346,
+          "composite_pp_printed": 85.8657
+        },
+        {
+          "id": "C3",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T02:40:31.444158+08:00",
+          "clean_fg5_pp_printed": 85.8554,
+          "composite_pp_printed": 85.3923
+        },
+        {
+          "id": "C1",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T02:40:48.607204+08:00",
+          "clean_fg5_pp_printed": 85.9199,
+          "composite_pp_printed": 85.4447
+        },
+        {
+          "id": "D1",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T03:08:23.033985+08:00",
+          "clean_fg5_pp_printed": 87.0707,
+          "composite_pp_printed": 86.4448
+        },
+        {
+          "id": "B0",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T03:09:39.152509+08:00",
+          "clean_fg5_pp_printed": 86.8535,
+          "composite_pp_printed": 86.2482
+        },
+        {
+          "id": "B1",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T03:37:59.876976+08:00",
+          "clean_fg5_pp_printed": 86.8519,
+          "composite_pp_printed": 86.2466
+        },
+        {
+          "id": "B2",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T03:38:44.644918+08:00",
+          "clean_fg5_pp_printed": 83.3711,
+          "composite_pp_printed": 82.7984
+        },
+        {
+          "id": "B3",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T04:06:53.704712+08:00",
+          "clean_fg5_pp_printed": 83.3691,
+          "composite_pp_printed": 82.7973
         }
       ],
-      "pending_jobs": [
-        "A3",
-        "A1",
-        "C0",
-        "C2",
-        "D2",
-        "D0",
-        "C3",
-        "C1",
-        "D1",
-        "B0",
-        "B1",
-        "B2",
-        "B3"
-      ],
-      "training_progress_observed": true,
-      "gradient_check_artifact_received": false,
-      "traceback_in_excerpt": false,
-      "hardware_metrics_received": false,
-      "scientific_results_received": false,
-      "eta": {
-        "training_remaining_minutes_estimate": [
-          6,
-          8
-        ],
-        "scope": "A0/A2 remaining training only at pasted query time; excludes final checkpoint selection, 14-condition evaluation and queued jobs",
-        "method": "extrapolate observed minute-to-minute step growth; ordinary training speed roughly 260-300 steps/min A0 and 240-280 steps/min A2",
-        "queue_end_estimate": null,
-        "completed_matching_job_unavailable": true,
-        "zero_known_work_hours_means_unknown_not_zero_remaining": true
-      },
-      "next_action": "Continue existing nohup queue; check progress after first jobs finish and upload light records at completion. No restart or resource audit."
+      "metric_definition_from_bound_summary_code": "Potsdam Val2 pooled noboundary mIoU_fg5; composite=(clean+mean four RGB degradation conditions+mean two auxiliary degradation conditions)/3; four-decimal printed metrics only",
+      "full_server_light_records_uploaded": false,
+      "raw_matrices_received": false,
+      "checkpoint_selection_received": false,
+      "screen_decisions_received": false,
+      "scientific_confirmation": false,
+      "reported_rough_queue_end": "2026-10-02 12:09:19.683292+08:00",
+      "rough_queue_end_interpretation": "completed queue displays query clock plus zero remaining; not actual completion time",
+      "next_action": "Upload existing D24 light evidence with snapshot uploader; read full matched comparisons, condition/tile risks and frozen screens before planning another run."
     },
-    "first_training_step_observed": true
+    "first_training_step_observed": true,
+    "completed_at": "2026-10-02T04:06:59.332637+08:00",
+    "completed_at_meaning": "queue completion observation; latest job completion progress at 04:06:53.704712",
+    "light_evidence_uploaded": false
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -1832,7 +2041,7 @@
     "c1_role": "side_branch_development_candidate_not_adopted_replacement",
     "partial_unfreezing_role": "strong_baseline_strategy",
     "final_method_and_chapters_frozen": false,
-    "next_action": "Continue existing D24 nohup queue; A0 2360/A2 2140 training as reported near 00:19; query after first complete jobs, no restart or resources audit.",
+    "next_action": "Upload existing completed D24 light evidence and review frozen matched screens; no new training or direction change.",
     "next_action_document": "docs/current/NEXT_EXPERIMENT.md",
     "external_source_gate": "required for corresponding external confirmation, not a universal prerequisite for development exploration",
     "new_training_authorized_by_this_document": false
@@ -1956,7 +2165,7 @@
     "test6_loaded": false,
     "historical_test6_independent_final_eligible": false,
     "execution_document": "docs/current/NEXT_EXPERIMENT.md",
-    "next_action": "D23 closed; D24 existing 15-job queue launched as reported; query current D24 progress.",
+    "next_action": "D23 closed; D24 complete 15/15 as reported; upload and analyze D24 light evidence.",
     "recovery_script": "scripts/recover_rebuild_v1_d23_gpu0.py",
     "partial_scientific_review": {
       "report": "docs/experiments/D23_TSF_T0_PARTIAL_RESULTS_20261001.md",

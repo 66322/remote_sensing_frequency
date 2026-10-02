@@ -1,20 +1,16 @@
 # 当前状态
 
-更新2026-10-02 00:19:37（Asia/Shanghai）。最后观测：用户回传队列时间2026-10-02T00:18:59.788679+08:00，QUEUE=RUNNING、COMPLETE=0/15；A0 GPU0 training 2360/4000（00:19:02.780409），A2 GPU1 training 2140/4000（00:19:01.680178），其余13组PENDING。A0第2000步选模后已继续训练；双卡均有持续步数增长，初始化阶段已结束。见[进度证据](../../records/research_d24_progress_20261002T001859/observation.json)。这是用户回传最后观测，不是服务器实时直连；梯度检查原件与新效果指标尚未收到。
+更新2026-10-02 12:10:21（Asia/Shanghai）。最后观测：用户回传队列记录2026-10-02T04:06:59.332637+08:00，COMPLETE 15/15；所有组4000/4000，最后B3完成标记04:06:53.704712，汇总summary_exit=0、test6_loaded=False。见[完成观测](../../records/research_d24_completion_observation_20261002/observation.json)。已收到15组四位小数指标；完整screen_result、逐tile/条件原计数、选模绑定与梯度检查尚未上传/复核。查询显示的12:09 ROUGH_QUEUE_END是查询时间加零剩余，不是实际完成时间。
 
 | 项目 | 状态 |
 |---|---|
 | 阶段/问题 | 可行性探索；DSM有益融合、负迁移与缺失；贡献未冻结 |
-| D23-A | 完成互补性诊断，不是部署收益保证 |
-| D23-B | 8/8完成4000步及28/28评价，TS恢复成功 |
-| 轻量原件 | GitHub提交6038520；60文件，59索引载荷SHA全部通过 |
-| 结果复核 | 3136逐tile、1568pooled矩阵与指标及23冻结判定通过 |
-| 科学判定 | TSF未达确认门槛，关闭具体解法；所有学习gate综合低于M0_safe |
-| 机制 | 当前S/F增量不足；效用项相对CE减分，同时有减害作用 |
-| 下一候选 | D24四角度15组计划定稿：A目标/表示、B类别语义、C光学KD、D增强；代码全部实现、本地15项检查PASS；用户回传A0 training 2360/4000、A2 training 2140/4000，其余13组PENDING，完成0/15 |
-| 资源 | GPU0/1，两H10080GB，RAM/磁盘充足；不重做资源审计 |
-| 边界 | 单seed42、Potsdam Val2；Test6禁读；权重/预测仍在服务器 |
+| D23 | 8/8原件6038520、完整分析7467082；TSF确认路径关闭 |
+| D24 | 用户回传15/15完成，全部4000步，summarizer正常退出 |
+| D24指标 | 已收到四位小数clean/composite；部分解冻/增强有初步信号，不能当机制结论 |
+| D24完整原件 | 待上传screen_result、逐tile/条件计数、风险、配置/选模/梯度检查 |
+| 下一步 | 使用本次snapshot uploader上传，然后按冻结匹配比较分析；不追加训练 |
+| 资源 | GPU0/1，两H10080GB，RAM/磁盘充足；不重做审计 |
+| 边界 | 单seed42、Potsdam重复开发Val2；Test6禁读；二进制留服务器 |
 
-[完整结果](../experiments/D23_EIGHT_ARM_RESULTS_20261001.md)；[交接](HANDOFF.md)；[下一步](NEXT_EXPERIMENT.md)。
-
-[夜间15组计划](../protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md)：15×4000=60000更新，seed42，物理batch16不累积；GPU0/1 nohup，对应zzx独立目录。旧四组草案被本轮计划取代；固定版本cf1955d已由nohup启动，已有目录`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409`；当前只需查询进度，不重复启动或资源审计。
+[交接](HANDOFF.md)、[上传指令](NEXT_EXPERIMENT.md)、[D24协议](../protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md)。
