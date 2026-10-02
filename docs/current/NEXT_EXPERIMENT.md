@@ -1,13 +1,16 @@
-# 下一步：在服务器一次nohup启动D27后接controller
+# 下一步：查询已有D26/D27，等待自动接力
 
-用户已授权新实验接在D26后。代码/固定plan实现完成，14CPU行为、30文件独立快照、11文件Python3.10语法与五入口检查通过。没有SSH，服务器排队/运行尚未观测。
+最后服务器观测：D27于2026-10-02T23:32:23.937672+08:00为WAITING_D26，controller PID1703686存活，查询时心跳24.6秒、LIVE_WORKERS=[]；D26于2026-10-02T23:32:46.158787+08:00为RUNNING、COMPLETE3/9，九任务终态False、controller锁未释放。查询绝对时间未输出，不能把24.6秒推成精确时间戳。
 
-使用本次固定执行commit提取scripts/launch_rebuild_v1_d27.py；--parent=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109；
---directory=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_after_d26_20261002T191253_1513109。
-详见[执行说明](../protocols/D27_SAFE_ROUTING_EXECUTION_20261002.md)。
+D27实际排队已确认，正常nohup等待，当前执行范围为原D26九组→新D27十组，不需再次启动或切换。九原job结束且controller锁释放，D27在下一轮60秒检查后开始领取GPU0/1。若原controller中断而worker仍活着，先诊断原队列，不创建第二个后接controller。
 
-一次后台启动后，D27_WAITING_D26为正常状态；原队列完成并退出后自动开始G0/G1及其余组。两卡独立动态领取十组，每组8000，不扩大预算。不得重复nohup创建第二个同任务目录。
+查询后接进度：
+```bash
+D27_DIR=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_after_d26_20261002T191253_1513109
+python -B "$D27_DIR/code/scripts/status_rebuild_v1_d27.py" --directory "$D27_DIR"
+python -B "$D27_DIR/check_handover_2e7a678.py" --directory "$D27_DIR"
+```
 
-状态查询：新目录code/scripts/status_rebuild_v1_d27.py --directory新目录；日志nohup_<stamp>.log及各job logs。完成后用新目录code/scripts/upload_rebuild_v1_d27_records.py上传轻量原件，无需聊天粘长输出。代码、JSON/矩阵/联合计数写GitHub，weights/预测服务器留索引。
+D27_WAITING_D26为等待；D27_PREDECESSOR_FINISHED/D27_STARTED为接力启动；D27_TRAIN和step>0才证明训练推进。只读诊断确认PID/心跳/锁，不测资源预算。
 
-最后上传的服务器观测仍为2026-10-02T22:22:14.689169+08:00：D26 RUNNING、COMPLETE1/9；没有更新实时PID信息。 原D26最终结果仍按原门槛判定，不用新D27规则改旧结论。新实验安全、路由、局部、类别各有匹配对照和独立去留，最多一条另立确认；不自动追训/扫参/Test6。GPU0/1两H100、内存磁盘充足、batch16、nohup、zzx边界不再询问或审计。
+两轮完成或失败后，各用自身code/scripts/upload_rebuild_v1_d26_records.py或upload_rebuild_v1_d27_records.py --root工程根目录 --directory对应目录，把原轻量评价/矩阵/日志/绑定写回GitHub，weights/predictions留服务器索引。按原D26/D27各自冻结gate判断，不自动追训/扫参或访问Test6。[当前观测](../../records/research_d27_queue_observation_20261002T2332/observation.json)不代表全量运行产物已归档。

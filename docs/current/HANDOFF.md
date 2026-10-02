@@ -1,20 +1,17 @@
-# 当前交接：D27十组已实现，按授权接在D26之后
+# 当前交接：D27实际后台排队已确认
 
-更新2026-10-02；研究可行性探索，最终贡献未冻结。用户明确“按照规划进行实验，添加到已有实验后面，之前跑完就进行这组”，已授权十组80k更新。GPU0/1 H10080GB、RAM/磁盘充足、nohup、batch16无累积、zzx对应目录均为已知约定。
+更新2026-10-02。研究仍可行性探索，主问题安全融合→动态专家→局部/类别适配，双方信息与退化/缺失保留。最终贡献未冻结。用户已授权十组后接执行。
 
-最后上传的服务器观测仍为2026-10-02T22:22:14.689169+08:00：D26 RUNNING、COMPLETE1/9；没有更新实时PID信息。 原D26目录research_d26_bidirectional_20261002T191253_1513109，固定52f94388b1a9c7557e9ef533075661139cd55eda，原九组不变。[B0部分复核](../experiments/D26_B0_PARTIAL_REVIEW_20261002.md)：clean+0.726782pp、down4+2.017157pp，但DSM错位3_11−0.496337pp。其他完整结果未收到，不能宣称新机制。
+最后服务器观测：D27于2026-10-02T23:32:23.937672+08:00为WAITING_D26，controller PID1703686存活，查询时心跳24.6秒、LIVE_WORKERS=[]；D26于2026-10-02T23:32:46.158787+08:00为RUNNING、COMPLETE3/9，九任务终态False、controller锁未释放。查询绝对时间未输出，不能把24.6秒推成精确时间戳。
 
-[D27方案](../protocols/D27_SAFE_ROUTING_PLAN_20261002.md)、[实际执行说明](../protocols/D27_SAFE_ROUTING_EXECUTION_20261002.md)、[固定plan](../../records/research_d27_plan_20261002/plan.json)与代码已实现；[本地验证](../../records/research_d27_plan_20261002/local_validation.json)14行为检查通过，30文件独立快照检查通过，11文件Python3.10语法、全部五入口可加载。服务器nohup尚未观测，本地CPU不算GPU运行/精度。
+[只读诊断观测](../../records/research_d27_queue_observation_20261002T2332/observation.json)、[用户回传原输出](../../records/research_d27_queue_observation_20261002T2332/user_diagnostic_stdout.txt)支持ACTIVE_QUEUED_WAITING_PREDECESSOR。此前“未观测启动”仅历史阶段，当前新等待controller确实运行；D27训练/实际接力尚未发生。此为运行证据，没有新精度/频率/语义贡献。
 
-十组S0/S1/G0/G1/L0/L1/C0/C1/L1-sh/C1-sh，每组8000。G0/G1先运行；冻结现有RGB/DSM原专家，三个轻量残差专家；静态/图像级/局部/类别路由×CE/保护恢复目标及打乱。每个job只接收自己的GPU。新controller等待原D26九个job终结及旧controller锁释放，才领取GPU0/1；不修改D26记录/worker/queue，不重复资源审计。
+固定D27执行9e316adc2fa6fd1f2ee0a554d86c9b3f27d1f64c，独立目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_after_d26_20261002T191253_1513109，日志nohup_20261002T232423_1703136.log。固定D26执行52f94388b1a9c7557e9ef533075661139cd55eda，原目录research_d26_bidirectional_20261002T191253_1513109。只获总完成3/9，未获本次逐job身份及新评价指标，不推测谁完成。
 
-服务器一次nohup启动新launcher --parent原D26目录 --directory固定records/research_d27_safe_routing_after_d26_20261002T191253_1513109；具体完整指令按本次交付的执行SHA。不再等待单独许可或重问资源，但无SSH，仍由用户终端执行。看D27_WAITING_D26是正常排队，不是挂住；D26结束后输出D27_PREDECESSOR_FINISHED和D27_STARTED。已有plan目录不能重新创建并重复排队；中断后依执行说明同commit恢复。
+接力条件：原九job终态+原controller锁释放，D27每60秒轮询，随后动态GPU0/1领任务；设备仍有其他存活进程则等待。预期接力已配置且等待controller存活，不等于实际接力已验证。用户可正常断开终端，既有nohup继续；当前只查询已排队实例，不重新启动。
 
-执行前冻结细化：保护/恢复/专家辅助权重各0.1；first clean fit统计存checkpoint；所有专家dense计算、零残差/均匀route初始化，500步起学习路径须活跃；类别条件每sample keyed随机置换，局部场半图shift；局部伤害评估boundary16邻域；额外2项present-DSM诊断不选模。24条件评价保留原矩阵/联合计数、预测、绑定，五入口完整。没有新贡献确认。
+十组S0/S1/G0/G1/L0/L1/C0/C1/L1-sh/C1-sh各8000，G0/G1先跑，80k总更新、batch16无累积。[协议](../protocols/D27_SAFE_ROUTING_PLAN_20261002.md)、[执行说明](../protocols/D27_SAFE_ROUTING_EXECUTION_20261002.md)、[固定plan](../../records/research_d27_plan_20261002/plan.json)。14CPU+30文件自包含/五入口检查通过；CPU不代表CUDA精度。冻结原单模态anchors、三个轻量残差专家、路由×CE/保护恢复与打乱，已知缺失结构回退，新增24条件包含2项present-DSM诊断，不改选模。
 
-主问题优先级按用户：安全融合→动态专家选择→局部/类别适配；双方信息/退化与缺失保留，缺失结构回退不冒称补偿精度。D27:C1是类别候选任务名，与历史第2章恢复C1旁支不同。D23/D25具体失败配方继续关闭。频率待D26独立增量；STARS缺失补偿另立问题；GLFRNet原文未读，不据其定模块。Test6禁读、Val2/历史held4不独立final。共享以GitHub为准，完成后现有D27上传脚本直接上传长轻量原件，weights/预测留服务器索引。
+后续从已有目录status脚本查询进度或check_handover_2e7a678.py复核PID/心跳/锁；结束后两轮各用原上传脚本同步长轻量原件。原D26旧门槛不改；D27按自己的对照/去留，最多一条另立确认。只读诊断和状态证明不重启资源审计、不扩大budget。
 
-
-## 2026-10-02接力条件复核
-
-用户要求确认实际排队和自动接力。原9e316adc固定launcher的九任务终态+前驱锁释放条件再次核对，针对前驱条件检查通过；新只读scripts/check_rebuild_v1_d27_handover.py核对PID命令所属目录/僵尸状态、180秒心跳、前驱终态和锁、活跃worker与日志，7项诊断逻辑检查通过。查询不触发GPU任务或资源测量。实际服务器排队输出仍未收到，GitHub只有实现提交，不能宣称“已在排队”。后接执行code/plan仍固定9e316adc2fa6fd1f2ee0a554d86c9b3f27d1f64c；新提交只增加诊断与记录，不改变执行绑定。
+资源GPU0/1 H10080GB，RAM/磁盘充足，nohup和zzx对应目录约定不再询问。服务器由用户操作，无SSH。D23/D25具体失败配方关闭，恢复C1旁支不升级（D27:C1只是类别任务id）。频率待独立增量，STARS补偿另立；GLFRNet原文未核验。不读Test6，Val2/历史held4不作独立final。GitHub为共享事实源，本观测不意味着全服务器日志/weights/predictions已上传。

@@ -1,12 +1,9 @@
-# 当前状态（2026-10-02：后接D27已实现）
+# 当前状态：D27后台排队正常（最后观测2026-10-02）
 
-最后上传的服务器观测仍为2026-10-02T22:22:14.689169+08:00：D26 RUNNING、COMPLETE1/9；没有更新实时PID信息。 D26固定九组继续；完整频率/语义对照结果尚未收到。[B0复核](../experiments/D26_B0_PARTIAL_REVIEW_20261002.md)是阶段普通融合证据。
+最后服务器观测：D27于2026-10-02T23:32:23.937672+08:00为WAITING_D26，controller PID1703686存活，查询时心跳24.6秒、LIVE_WORKERS=[]；D26于2026-10-02T23:32:46.158787+08:00为RUNNING、COMPLETE3/9，九任务终态False、controller锁未释放。查询绝对时间未输出，不能把24.6秒推成精确时间戳。
 
-D27：用户授权十组接在D26后，代码已实现、本地检查通过、服务器排队/运行尚未观测。新controller独立目录等待前驱九个终态及锁释放，随后自动GPU0/1运行80k更新。[固定执行说明](../protocols/D27_SAFE_ROUTING_EXECUTION_20261002.md)、[plan](../../records/research_d27_plan_20261002/plan.json)、[验证](../../records/research_d27_plan_20261002/local_validation.json)。本地14CPU不当正式test或GPU精度。
+排队判定ACTIVE_QUEUED_WAITING_PREDECESSOR，[观测/原输出](../../records/research_d27_queue_observation_20261002T2332/observation.json)。D27控制器已实际启动并等待，十组训练尚未开始，GPU worker为0。D26总完成3/9，本次未提供逐任务状态或指标，不能更新精度结论。
 
-科学路线：安全融合为目标，动态专家、局部/类别选择为待验证解法。双方模态信息/退化保留；已知缺失精确回退，补偿精度另检。D27:C1类别任务与旧恢复C1旁支不同。旧D23/D25失败配方关闭、频率须独立消融，不因新队列启动改变贡献。共享GitHub为准；Test6禁读、开发Val2不独立final。服务器由用户终端启动一次nohup，无需重复资源预算审计。
+D27固定执行9e316adc，原D26执行52f94388；两独立目录，九原任务结束并锁释放后自动轮询接力。后接日志nohup_20261002T232423_1703136.log，PID1703686是最后观测，未来不能当实时存活结论。只查询已有实例，不重复nohup。
 
-
-## 2026-10-02接力条件复核
-
-用户要求确认实际排队和自动接力。原9e316adc固定launcher的九任务终态+前驱锁释放条件再次核对，针对前驱条件检查通过；新只读scripts/check_rebuild_v1_d27_handover.py核对PID命令所属目录/僵尸状态、180秒心跳、前驱终态和锁、活跃worker与日志，7项诊断逻辑检查通过。查询不触发GPU任务或资源测量。实际服务器排队输出仍未收到，GitHub只有实现提交，不能宣称“已在排队”。后接执行code/plan仍固定9e316adc2fa6fd1f2ee0a554d86c9b3f27d1f64c；新提交只增加诊断与记录，不改变执行绑定。
+科学问题/十组80k/现有14CPU验证及[执行约定](../protocols/D27_SAFE_ROUTING_EXECUTION_20261002.md)不变。本次是实际排队证据，实际接力与CUDA训练待下一观测，尚无新贡献。GitHub权威、GPU0/1与资源充足、nohup/zzx无需再审计；Test6禁读。
