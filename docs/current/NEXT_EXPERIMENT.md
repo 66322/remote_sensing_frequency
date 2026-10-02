@@ -1,11 +1,13 @@
-# 下一步：按实际证据落实安全融合研究
+# 下一步：在服务器一次nohup启动D27后接controller
 
-最后上传观测：2026-10-02T22:22:14.689169+08:00，D26 RUNNING、COMPLETE1/9；B0完成，J0/CAP处于评价阶段，其余待执行。不是实时PID状态。原队列固定代码52f94388b1a9c7557e9ef533075661139cd55eda及九组预算不变。
+用户已授权新实验接在D26后。代码/固定plan实现完成，14CPU行为、30文件独立快照、11文件Python3.10语法与五入口检查通过。没有SSH，服务器排队/运行尚未观测。
 
-1. D26原九组继续按原协议；最终screen_result/results及逐tile轻量原件由现有上传脚本同步GitHub。现有B0已按36原件重算，不等待重复资源或单模态审计。
-2. 新增研究按用户优先级及[文献映射](../literature/D27_SAFE_ROUTING_RECENT_LITERATURE_20261002.md)落实[D27十组计划](../protocols/D27_SAFE_ROUTING_PLAN_20261002.md)：安全目标×静态/图像级/局部/类别路由，另两打乱。当前为建议，不是已实现或已启动。
-3. 实现前将路由容量、三个专家子监督、损失分母、随机类别打乱与预设去留绑定plan；只做相应行为回归。给出具体可执行nohup入口后才能说新增队列已准备好，不用本地压力评价草案替代主实验。
-4. D26完整结果若改变载体选择，单独记录理由并重写方案；不会事后改D26门槛，不按最新正结果自动换主线。
-5. 最多一条机制另立多seed/未暴露场景确认。频率为条件专家后续，STARS式缺失补偿另立能力检验；本轮缺失等值回退不算补偿提升。
+使用本次固定执行commit提取scripts/launch_rebuild_v1_d27.py；--parent=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109；
+--directory=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_after_d26_20261002T191253_1513109。
+详见[执行说明](../protocols/D27_SAFE_ROUTING_EXECUTION_20261002.md)。
 
-运行边界：GPU0/1两H10080GB，RAM/磁盘充足，physical batch16无累积，nohup，所有code/cache/log/PID/light records在zzx对应独立目录；不再预算资源探针、从头重训单模态、自动扫参或读Test6。
+一次后台启动后，D27_WAITING_D26为正常状态；原队列完成并退出后自动开始G0/G1及其余组。两卡独立动态领取十组，每组8000，不扩大预算。不得重复nohup创建第二个同任务目录。
+
+状态查询：新目录code/scripts/status_rebuild_v1_d27.py --directory新目录；日志nohup_<stamp>.log及各job logs。完成后用新目录code/scripts/upload_rebuild_v1_d27_records.py上传轻量原件，无需聊天粘长输出。代码、JSON/矩阵/联合计数写GitHub，weights/预测服务器留索引。
+
+最后上传的服务器观测仍为2026-10-02T22:22:14.689169+08:00：D26 RUNNING、COMPLETE1/9；没有更新实时PID信息。 原D26最终结果仍按原门槛判定，不用新D27规则改旧结论。新实验安全、路由、局部、类别各有匹配对照和独立去留，最多一条另立确认；不自动追训/扫参/Test6。GPU0/1两H100、内存磁盘充足、batch16、nohup、zzx边界不再询问或审计。
