@@ -7,7 +7,7 @@
 - Verification Status: IMPLEMENTED_LOCAL_CPU_CHECKED_SERVER_NOT_OBSERVED
 - Version Label: D26_execution_v1_after_explicit_user_authorization
 
-用户随后明确“按上述实验规划进行具体实验”，**固定九组执行已获授权，代码已实现并通过15项CPU行为检查及原DSM接口检查；尚未收到服务器启动观测**。此前建议阶段为历史状态。[执行命令与精确接口](D26_EXECUTION_20261002.md)。[证据汇总](../experiments/RESEARCH_SYNTHESIS_D15_D25_20261002.md)、[文献映射](../literature/D26_BIDIRECTIONAL_COMPLEMENTARITY_20261002.md)。新协议独立于D23—D25，不修改旧门槛或重开旧失败配方。
+用户随后明确“按上述实验规划进行具体实验”，**固定九组执行已获授权，代码已实现并通过16项CPU行为检查及原DSM接口检查；尚未收到服务器启动观测**。此前建议阶段为历史状态。[执行命令与精确接口](D26_EXECUTION_20261002.md)。[证据汇总](../experiments/RESEARCH_SYNTHESIS_D15_D25_20261002.md)、[文献映射](../literature/D26_BIDIRECTIONAL_COMPLEMENTARITY_20261002.md)。新协议独立于D23—D25，不修改旧门槛或重开旧失败配方。
 
 ## 1. 主问题和不重复的工作
 

@@ -1,6 +1,6 @@
 # 下一步：一次nohup启动已授权的D26九组
 
-更新2026-10-02。固定实现20ff8b3e49d187afaa5a226ceb0e9be6a5cdbfed；[执行指令](../protocols/D26_EXECUTION_20261002.md)，[机读配置](../../records/research_d26_plan_20261002/plan.json)，[CPU检查](../../records/research_d26_plan_20261002/local_validation.json)。当前已实现/检查，**没有服务器启动观测**。
+更新2026-10-02。固定实现e6500576b2c9507c8d6e3c63bace8be31c5b3cec；[执行指令](../protocols/D26_EXECUTION_20261002.md)，[机读配置](../../records/research_d26_plan_20261002/plan.json)，[CPU检查](../../records/research_d26_plan_20261002/local_validation.json)。当前已实现/检查，**没有服务器启动观测**。
 
 1. 在既定服务器root一次新建records/research_d26_bidirectional_<timestamp>_<pid>并nohup启动固定九组，两GPU动态领取；复用P6/D15 checkpoint，batch16无累积，不另做资源/预算探针或单模态训练。
 2. 回传controller PID、目录、D26_STARTED两行，之后从本目录status查看最后观测时间、阶段、step和窗进度。正常首batch自动验证专家/交互梯度，异常保留日志，不自动缩batch/加累积/重试。
