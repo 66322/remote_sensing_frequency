@@ -9,3 +9,6 @@
 [D27十组协议](protocols/D27_SAFE_ROUTING_PLAN_20261002.md)、[执行说明](protocols/D27_SAFE_ROUTING_EXECUTION_20261002.md)、[固定plan](../records/research_d27_plan_20261002/plan.json)、[验证](../records/research_d27_plan_20261002/local_validation.json)。GPU0/1 H10080GB、RAM/磁盘充足、batch16无累积、nohup、zzx目录是已知约定，不重问资源或重做预算审计。
 
 研究安全融合→专家选择→局部/类别适配；双方信息与退化保留。B0普通融合阶段有益但局部有害，见[复核](experiments/D26_B0_PARTIAL_REVIEW_20261002.md)；本次仅进度，没有新增精度证据。旧D23/D25失败配方关闭，恢复旁支保持；Test6禁读，开发Val2/历史held4不作独立final。
+
+
+2026-10-03：[实验与2025—2026论文的假设复核](experiments/ASSUMPTIONS_AND_RESEARCH_OPPORTUNITIES_20261003.md)已完成。建议关注相关失效、未知局部不一致与双方信息保留；这是研究建议，不是新增运行或方向变更。先收齐D26/D27结果，再决定有限压力评价。最新服务器状态仍仅上列23:32观测。
