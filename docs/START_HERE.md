@@ -10,6 +10,6 @@
 5. [已有D15—D25结论](experiments/RESEARCH_SYNTHESIS_D15_D25_20261002.md)
 6. [冻结D26方案](protocols/D26_BIDIRECTIONAL_FEATURE_PLAN_20261002.md)、[实际执行接口和启动](protocols/D26_EXECUTION_20261002.md)、[文献映射](literature/D26_BIDIRECTIONAL_COMPLEMENTARITY_20261002.md)
 
-D26代码CODE_COMMIT_PENDING：J0/B0/CAP/X/XS/XF/XSF/shS/shF各8000，共72k；复用D25 P6第2000步RGB与D15 seed42第15000步DSM，不重训单模态。15行为CPU及原DSM接口检查通过，真实GPU首batch待观测。两H100 GPU0/1、batch16无累积、nohup、所有产物zzx对应新目录；无需资源审计或重问执行许可。固定队列不自动扩展。
+D26代码20ff8b3e49d187afaa5a226ceb0e9be6a5cdbfed：J0/B0/CAP/X/XS/XF/XSF/shS/shF各8000，共72k；复用D25 P6第2000步RGB与D15 seed42第15000步DSM，不重训单模态。15行为CPU及原DSM接口检查通过，真实GPU首batch待观测。两H100 GPU0/1、batch16无累积、nohup、所有产物zzx对应新目录；无需资源审计或重问执行许可。固定队列不自动扩展。
 
 最后服务器观测仍2026-10-02T15:14:54.351476+08:00 D25 COMPLETE8/8；尚无D26启动记录。D23—D25失败配方关闭保持，C1旁支，Test6禁读，反复开发Val2/历史held4不独立final。长结果轻量原件上传GitHub再读，checkpoint/预测留服务器并索引。
