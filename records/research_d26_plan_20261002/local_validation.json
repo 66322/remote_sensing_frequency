@@ -6,8 +6,8 @@
   "device": "CPU",
   "behavior_tests": 16,
   "behavior_seconds": null,
-  "python310_syntax_files": 25,
-  "snapshot_files": 26,
+  "python310_syntax_files": 26,
+  "snapshot_files": 27,
   "native_dsm": {
     "random_weights": true,
     "crop": 64,
@@ -53,13 +53,14 @@
     "scripts/d26_data.py": "e7249e29cf4712ac3ca79bf05d7fd2065b74fa4574db2b5e65f3f02ba150f45a",
     "scripts/d26_evaluation.py": "bd18bf3f57c894eb833e0501f27e2576e9ab8529e7b12a6a2e4a5a70d433899e",
     "scripts/run_rebuild_v1_d26.py": "67f2df14258d973ac8673411ecdc58bf09bb0718ae8b1f8e3286801abe9e29ed",
-    "scripts/launch_rebuild_v1_d26.py": "a392445b84d0fb7101ed5ededbb07d3397870c845e7cb7d02b7792e3b9d3cda3",
+    "scripts/launch_rebuild_v1_d26.py": "bcd414c5046f8daec4f288a77c64cba3e022825ded0e5a7b080f5f379ede207d",
     "scripts/status_rebuild_v1_d26.py": "4f4b33b63df31d157eec33c41e7770c05abc8fdfc52b5e1453271dc4331d2bed",
     "scripts/summarize_rebuild_v1_d26.py": "1c99b9bcdccbf3b1063c5a6571cb2c67a32737f3cc1a50f275e8a24d83f8fd51",
     "scripts/upload_rebuild_v1_d26_records.py": "b39bb512575a51ab991e83564e3349a42b868397218b473333d80785a2db49da",
     "tests/test_d26.py": "3ff2ab4da97ed6df1944989baefb131d013c228966b74b367c3e72537158fed3",
     "records/research_d26_plan_20261002/plan.json": "d0bc59ef713c51902e2cb00935a7bbfef9ef1d35f4c4333f09caad4832defc18",
-    "tests/check_d26_native_dsm.py": "efdf33a6a4a228ef821727303520ece51101370fec9087fcad5336bf7d2bb8e1"
+    "tests/check_d26_native_dsm.py": "efdf33a6a4a228ef821727303520ece51101370fec9087fcad5336bf7d2bb8e1",
+    "model/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "checks": [
     "bilateral exact own-logit fallback and hidden input independence",
@@ -86,5 +87,6 @@
   "performance_only_changes": [
     "constant-size minimum filter replaces full-tile33x33 average pool",
     "shared fixed/own prediction metric cache and duplicate/empty region count reuse, same raw counts"
-  ]
+  ],
+  "package_marker": "Snapshot includes original empty model/__init__.py to prevent any later PYTHONPATH model package overriding the snapshot namespace."
 }
