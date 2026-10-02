@@ -16,3 +16,8 @@
 [逐任务观测](../../records/research_d26_progress_20261002T191819/observation.json)、[用户输出](../../records/research_d26_progress_20261002T191819/user_status_stdout.txt)、[暂估结束时间](../../records/research_d26_progress_20261002T191819/eta_estimate.json)已提交。controller PID1571946及本次目录保持，不重复启动。当前只有运行推进证据，D26没有新增精度/频率/语义贡献结论；既有D15—D25结论已在GitHub记录，不因本轮运行改变。
 
 截至本次回传，整轮暂估还需8–12小时，约10月3日03:00–07:00；这是早期速度外推，后续交互/完整评价尚未计时，服务端仍报告ETA_PENDING。第一正常任务完整结束后更新，不额外资源探针。以本分支共享记录为准，不能只留本地或聊天；checkpoint/预测/完整实时日志仍在服务器，完成后上传轻量评价原件再分析。
+
+
+## 2026-10-02近期文献阅读补充
+
+[双向互补、缺失补偿与频率机制阅读](../literature/D26_RECENT_PAPERS_MECHANISM_READING_20261002.md)补充KTB、DIS2、SGMA、功能熵、MFFNet/FDAM、EBMC和SynIB的机制边界。新增建议为独有信息保持、双向任务补偿与编码频率衰减的条件检验，均未采纳为新运行/贡献。D26固定九组及去留规则不变；完成后优先用现有结果定位瓶颈，按证据选择至多一项，不重启资源审计或重复单模态训练。最后服务器状态仍以已归档观测为准。
