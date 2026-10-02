@@ -1,0 +1,23 @@
+{
+  "source_commit": "acd2dbfbcf18ef792840bfe3f5465207a74a13c2",
+  "execution_commit": "cf1955d966163978b5c8af433f3845b5ca05da9e",
+  "bound_original_objective_sha256": "b541b3094ae9cd4170178d8fcc21c4e13be7124a58ca3b530f1a9316a4081473",
+  "test": "tests/test_d24_pair_dispatch.py",
+  "original": {
+    "tests": 2,
+    "failures": 3,
+    "Pair_A1_loss_delta": 0,
+    "Pair_A3_loss_delta": 0,
+    "expected_positive_loss_delta": 0.25151379108428956,
+    "unknown_objective_not_rejected": true
+  },
+  "fixed": {
+    "tests": 2,
+    "status": "PASS",
+    "actual_plan_Pair_changes_loss_and_gradient": true,
+    "unknown_objective_rejected": true
+  },
+  "environment": "local Python3.13 CPU synthetic tensors; no server rerun",
+  "scientific_Pair_result": "UNDETERMINED_INVALID_ABLATION",
+  "scope": "Only route A Pair activation; old evidence immutable; D25 not executed"
+}

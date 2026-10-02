@@ -1349,7 +1349,7 @@
     {
       "id": "D24_OVERNIGHT_MULTIPERSPECTIVE_20261001",
       "name": "four_angle_overnight_development_portfolio",
-      "status": "reported_complete_pending_light_evidence",
+      "status": "complete_raw_record_review_pair_ablation_invalid",
       "started_at": null,
       "completed_at": "2026-10-02T04:06:59.332637+08:00",
       "recorded_at": "2026-10-02T00:15:45+08:00",
@@ -1363,7 +1363,9 @@
         "records/research_d24_progress_20261002T001859/observation.json",
         "records/research_d24_progress_20261002T001859/user_status_stdout.txt",
         "records/research_d24_completion_observation_20261002/observation.json",
-        "records/research_d24_completion_observation_20261002/stdout_excerpt.txt"
+        "records/research_d24_completion_observation_20261002/stdout_excerpt.txt",
+        "records/research_d24_overnight_20261002T000843_877409/evidence_20261002T121402814506_1365054/screen_result.json",
+        "records/research_d24_review_20261002/analysis.json"
       ],
       "unique_jobs": 15,
       "optimizer_steps_planned": 60000,
@@ -1494,11 +1496,11 @@
         "full_raw_review_complete": false
       },
       "test6_loaded": false,
-      "evidence_level": "user_reported_complete_metrics_pending_original_evidence_review",
+      "evidence_level": "single_seed_development_raw_counts_recomputed_Pair_ablation_invalid",
       "implemented": true,
       "execution_authorized_by_user": true,
       "local_cpu_checks_passed": 15,
-      "server_GPU_verified": false,
+      "server_GPU_verified": true,
       "time_precision": "directory_creation_second_launch_timestamp_unknown",
       "time_source": "user_pasted_launch_stdout_directory_name_and_STARTED_rows",
       "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
@@ -1509,185 +1511,153 @@
       "gradient_check_artifact_received": false,
       "last_recorded_at": "2026-10-02T12:10:21+08:00",
       "completed_at_meaning": "queue completion observation; latest job completion progress at 04:06:53.704712",
-      "completed_jobs": 15
+      "completed_jobs": 15,
+      "review": "docs/experiments/D24_REVIEW_AND_PAIR_CORRECTION_20261002.md",
+      "invalid_scientific_arms": [
+        "A1",
+        "A3"
+      ],
+      "server_GPU_verified_scope": "user-run completion signatures and gradient-check records; not new live GPU inspection"
+    },
+    {
+      "id": "D25_MISSINGNESS_OPTIMIZATION_20261002",
+      "name": "missingness_optimization_matched_screen",
+      "status": "proposed_not_implemented_not_launched",
+      "started_at": null,
+      "completed_at": null,
+      "protocol": "docs/protocols/D25_MISSINGNESS_OPTIMIZATION_PLAN_20261002.md",
+      "records": [
+        "records/research_d25_plan_20261002/plan.json"
+      ],
+      "result": null,
+      "implemented": false,
+      "execution_authorized_by_user": false
     }
   ],
   "next_plan": {
-    "id": "D24_OVERNIGHT_MULTIPERSPECTIVE_20261001",
-    "status": "reported_complete_pending_light_evidence",
-    "protocol": "docs/protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md",
-    "manifest": "records/research_d24_overnight_plan_20261001/plan.json",
-    "jobs_csv": "records/research_d24_overnight_plan_20261001/jobs.csv",
-    "unique_jobs": 15,
-    "steps_per_job": 4000,
-    "total_optimizer_steps": 60000,
-    "seed": 42,
-    "steps_and_gates_frozen": true,
-    "implemented": true,
-    "launched": true,
-    "prior_complete_plan_id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
-    "supersedes": "D24_PAIRED_TASK_ADAPTATION_DRAFT_20261001",
+    "schema_version": "1.0",
+    "id": "D25_MISSINGNESS_OPTIMIZATION_20261002",
+    "status": "PROPOSED_NOT_IMPLEMENTED_NOT_LAUNCHED",
+    "decision_source": "user asked next experiment planning from D24 and recent papers; design is assistant recommendation",
+    "execution_authorized": false,
+    "source_evidence_commit": "acd2dbfbcf18ef792840bfe3f5465207a74a13c2",
+    "source_evidence": "records/research_d24_overnight_20261002T000843_877409/evidence_20261002T121402814506_1365054",
+    "source_review": "docs/experiments/D24_REVIEW_AND_PAIR_CORRECTION_20261002.md",
+    "protocol": "docs/protocols/D25_MISSINGNESS_OPTIMIZATION_PLAN_20261002.md",
+    "unique_jobs": 8,
+    "optimizer_updates": 32000,
+    "seeds": [
+      42
+    ],
+    "jobs": [
+      {
+        "id": "P0",
+        "name": "last4_shared_decoder_CE_QD",
+        "role": "fresh matched CE anchor",
+        "gpu": 0,
+        "priority": 1,
+        "seed": 42,
+        "steps": 4000,
+        "status": "proposed_not_implemented"
+      },
+      {
+        "id": "P1",
+        "name": "P0_with_fixed_anchored_Pair",
+        "role": "technical correction; compare P0",
+        "gpu": 1,
+        "priority": 2,
+        "seed": 42,
+        "steps": 4000,
+        "status": "proposed_not_implemented"
+      },
+      {
+        "id": "P2",
+        "name": "availability_separate_decoders",
+        "role": "H1 decoder separation; compare P0/P5",
+        "gpu": 0,
+        "priority": 3,
+        "seed": 42,
+        "steps": 4000,
+        "status": "proposed_not_implemented"
+      },
+      {
+        "id": "P3",
+        "name": "separate_decoders_one_sided_projection",
+        "role": "H2; compare P2/P7 and P0",
+        "gpu": 1,
+        "priority": 4,
+        "seed": 42,
+        "steps": 4000,
+        "status": "proposed_not_implemented"
+      },
+      {
+        "id": "P4",
+        "name": "shared_decoder_one_sided_projection",
+        "role": "H2 without decoder separation; compare P0",
+        "gpu": 0,
+        "priority": 5,
+        "seed": 42,
+        "steps": 4000,
+        "status": "proposed_not_implemented"
+      },
+      {
+        "id": "P5",
+        "name": "two_active_shared_decoders_averaged",
+        "role": "parameter-count control for P2; not full functional capacity equivalence",
+        "gpu": 1,
+        "priority": 6,
+        "seed": 42,
+        "steps": 4000,
+        "status": "proposed_not_implemented"
+      },
+      {
+        "id": "P6",
+        "name": "optical_only_same_M0_initialization_Q",
+        "role": "matched initialization optical baseline; not R0 initialized C0",
+        "gpu": 0,
+        "priority": 7,
+        "seed": 42,
+        "steps": 4000,
+        "status": "proposed_not_implemented"
+      },
+      {
+        "id": "P7",
+        "name": "separate_decoders_gradient_norm_sham",
+        "role": "same missing-gradient norm as projection but original direction; compare P3",
+        "gpu": 1,
+        "priority": 8,
+        "seed": 42,
+        "steps": 4000,
+        "status": "proposed_not_implemented"
+      }
+    ],
     "physical_gpus": [
       0,
       1
     ],
-    "server_scope": "/home/jovyan/zzx",
-    "test6_loaded": false,
-    "decision_source": "user request for multi-angle overnight planning; assistant-proposed experimental design",
-    "execution_authorized_by_user": true,
-    "cpu_checks_passed": 15,
-    "controller": "scripts/launch_rebuild_v1_d24.py",
-    "execution_protocol": "docs/protocols/D24_OVERNIGHT_EXECUTION_20261001.md",
-    "execution_commit": "cf1955d966163978b5c8af433f3845b5ca05da9e",
-    "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
-    "last_observation": {
-      "recorded_at": "2026-10-02T12:10:21+08:00",
-      "source": "user_pasted_status_and_nohup_tail",
-      "queue_observed_at": "2026-10-02T04:06:59.332637+08:00",
-      "last_job_complete_progress_at": "2026-10-02T04:06:53.704712+08:00",
-      "status": "reported_complete",
-      "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
-      "execution_commit": "cf1955d966163978b5c8af433f3845b5ca05da9e",
-      "completed_jobs": 15,
-      "total_jobs": 15,
-      "summary_exit": 0,
-      "test6_loaded_reported": false,
-      "rows": [
-        {
-          "id": "A0",
-          "status": "COMPLETE",
-          "step": 4000,
-          "progress_at": "2026-10-02T00:37:32.286066+08:00",
-          "clean_fg5_pp_printed": 83.9813,
-          "composite_pp_printed": 83.3071
-        },
-        {
-          "id": "A2",
-          "status": "COMPLETE",
-          "step": 4000,
-          "progress_at": "2026-10-02T00:38:41.349130+08:00",
-          "clean_fg5_pp_printed": 86.9035,
-          "composite_pp_printed": 86.2939
-        },
-        {
-          "id": "A3",
-          "status": "COMPLETE",
-          "step": 4000,
-          "progress_at": "2026-10-02T01:07:45.862010+08:00",
-          "clean_fg5_pp_printed": 86.9022,
-          "composite_pp_printed": 86.2925
-        },
-        {
-          "id": "A1",
-          "status": "COMPLETE",
-          "step": 4000,
-          "progress_at": "2026-10-02T01:07:28.841977+08:00",
-          "clean_fg5_pp_printed": 83.9813,
-          "composite_pp_printed": 83.3071
-        },
-        {
-          "id": "C0",
-          "status": "COMPLETE",
-          "step": 4000,
-          "progress_at": "2026-10-02T01:40:03.873086+08:00",
-          "clean_fg5_pp_printed": 86.0217,
-          "composite_pp_printed": 85.5487
-        },
-        {
-          "id": "C2",
-          "status": "COMPLETE",
-          "step": 4000,
-          "progress_at": "2026-10-02T01:40:00.318731+08:00",
-          "clean_fg5_pp_printed": 85.7929,
-          "composite_pp_printed": 85.2726
-        },
-        {
-          "id": "D2",
-          "status": "COMPLETE",
-          "step": 4000,
-          "progress_at": "2026-10-02T02:07:56.538063+08:00",
-          "clean_fg5_pp_printed": 86.9134,
-          "composite_pp_printed": 85.9513
-        },
-        {
-          "id": "D0",
-          "status": "COMPLETE",
-          "step": 4000,
-          "progress_at": "2026-10-02T02:08:07.884216+08:00",
-          "clean_fg5_pp_printed": 86.8346,
-          "composite_pp_printed": 85.8657
-        },
-        {
-          "id": "C3",
-          "status": "COMPLETE",
-          "step": 4000,
-          "progress_at": "2026-10-02T02:40:31.444158+08:00",
-          "clean_fg5_pp_printed": 85.8554,
-          "composite_pp_printed": 85.3923
-        },
-        {
-          "id": "C1",
-          "status": "COMPLETE",
-          "step": 4000,
-          "progress_at": "2026-10-02T02:40:48.607204+08:00",
-          "clean_fg5_pp_printed": 85.9199,
-          "composite_pp_printed": 85.4447
-        },
-        {
-          "id": "D1",
-          "status": "COMPLETE",
-          "step": 4000,
-          "progress_at": "2026-10-02T03:08:23.033985+08:00",
-          "clean_fg5_pp_printed": 87.0707,
-          "composite_pp_printed": 86.4448
-        },
-        {
-          "id": "B0",
-          "status": "COMPLETE",
-          "step": 4000,
-          "progress_at": "2026-10-02T03:09:39.152509+08:00",
-          "clean_fg5_pp_printed": 86.8535,
-          "composite_pp_printed": 86.2482
-        },
-        {
-          "id": "B1",
-          "status": "COMPLETE",
-          "step": 4000,
-          "progress_at": "2026-10-02T03:37:59.876976+08:00",
-          "clean_fg5_pp_printed": 86.8519,
-          "composite_pp_printed": 86.2466
-        },
-        {
-          "id": "B2",
-          "status": "COMPLETE",
-          "step": 4000,
-          "progress_at": "2026-10-02T03:38:44.644918+08:00",
-          "clean_fg5_pp_printed": 83.3711,
-          "composite_pp_printed": 82.7984
-        },
-        {
-          "id": "B3",
-          "status": "COMPLETE",
-          "step": 4000,
-          "progress_at": "2026-10-02T04:06:53.704712+08:00",
-          "clean_fg5_pp_printed": 83.3691,
-          "composite_pp_printed": 82.7973
-        }
-      ],
-      "metric_definition_from_bound_summary_code": "Potsdam Val2 pooled noboundary mIoU_fg5; composite=(clean+mean four RGB degradation conditions+mean two auxiliary degradation conditions)/3; four-decimal printed metrics only",
-      "full_server_light_records_uploaded": false,
-      "raw_matrices_received": false,
-      "checkpoint_selection_received": false,
-      "screen_decisions_received": false,
-      "scientific_confirmation": false,
-      "reported_rough_queue_end": "2026-10-02 12:09:19.683292+08:00",
-      "rough_queue_end_interpretation": "completed queue displays query clock plus zero remaining; not actual completion time",
-      "next_action": "Upload existing D24 light evidence with snapshot uploader; read full matched comparisons, condition/tile risks and frozen screens before planning another run."
-    },
-    "first_training_step_observed": true,
-    "completed_at": "2026-10-02T04:06:59.332637+08:00",
-    "completed_at_meaning": "queue completion observation; latest job completion progress at 04:06:53.704712",
-    "light_evidence_uploaded": false
+    "hardware": "two H10080GB; RAM/disk sufficient, no repeated resource probe",
+    "server_root": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+    "output_pattern": "records/research_d25_missingness_<timestamp>_<pid>",
+    "launch": "nohup; bound code/config; no training started in planning task",
+    "initialization": "same D21 M0 last_train_state, SHA23b2939ea50867c96c0a17626fd4a85a27100ebd8296b2fc96440ed8bc3d34de; fresh optimizer; no D24 winner continuation",
+    "training": "reuse D24 4000-step batch16 BF16 AdamW and keyed fit12 crop/QD stream; P6 uses matching optical Q stream; same budget/selection",
+    "selection": "clean Val2 NoBoundary pooled fg5 at 2000/4000, ties earlier; source records retained",
+    "new_hypotheses": [
+      "availability_decoder_specialization",
+      "present_missing_shared_parameter_gradient_interference"
+    ],
+    "technical_repair": "Pair activation verified by actual-config loss and gradient difference; only last4 retested",
+    "new_test6_access": false,
+    "first_stage_estimated_wall_hours": [
+      3,
+      5
+    ],
+    "estimate_basis": "D24 15 jobs took about3h58 on dual GPU; new gradient graph cost uncertain; estimate not resource-admission gate",
+    "stop": "per-job6h technical timeout, no auto retry or sweep; after8 jobs offline screen before any replication",
+    "confirmation": "at most2 supported hypotheses, separately plan seed17/2026 and genuinely independent data; no automatic new training",
+    "manifest": "records/research_d25_plan_20261002/plan.json",
+    "implemented": false,
+    "launched": false
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -2041,10 +2011,11 @@
     "c1_role": "side_branch_development_candidate_not_adopted_replacement",
     "partial_unfreezing_role": "strong_baseline_strategy",
     "final_method_and_chapters_frozen": false,
-    "next_action": "Upload existing completed D24 light evidence and review frozen matched screens; no new training or direction change.",
+    "next_action": "Implement the proposed D25 eight-job matched study; Pair activation corrected but D25 not run; no resource re-audit.",
     "next_action_document": "docs/current/NEXT_EXPERIMENT.md",
     "external_source_gate": "required for corresponding external confirmation, not a universal prerequisite for development exploration",
-    "new_training_authorized_by_this_document": false
+    "new_training_authorized_by_this_document": false,
+    "latest_recommendation": "docs/protocols/D25_MISSINGNESS_OPTIMIZATION_PLAN_20261002.md"
   },
   "proposed_d23": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
@@ -2165,7 +2136,7 @@
     "test6_loaded": false,
     "historical_test6_independent_final_eligible": false,
     "execution_document": "docs/current/NEXT_EXPERIMENT.md",
-    "next_action": "D23 closed; D24 complete 15/15 as reported; upload and analyze D24 light evidence.",
+    "next_action": "D23 closed; D24 reviewed with invalid Pair ablation correction; D25 suggested implementation next.",
     "recovery_script": "scripts/recover_rebuild_v1_d23_gpu0.py",
     "partial_scientific_review": {
       "report": "docs/experiments/D23_TSF_T0_PARTIAL_RESULTS_20261001.md",
@@ -2277,5 +2248,190 @@
     "provisional_training_configuration": "effective batch 16; profile frozen, partial-unfreeze and joint restoration paths; do not extrapolate six-step frozen-F2 timing",
     "follow_on": "Historical completed portfolio. Current follow-up is feasibility and mechanism evidence synthesis; C1 is a side-branch candidate, not an adopted new thesis direction. See docs/current/NEXT_EXPERIMENT.md."
   },
-  "execution_contract": "docs/protocols/EXECUTION_CONTRACT.md"
+  "execution_contract": "docs/protocols/EXECUTION_CONTRACT.md",
+  "completed_d24_plan": {
+    "id": "D24_OVERNIGHT_MULTIPERSPECTIVE_20261001",
+    "status": "complete_raw_record_review_pair_ablation_invalid",
+    "protocol": "docs/protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md",
+    "manifest": "records/research_d24_overnight_plan_20261001/plan.json",
+    "jobs_csv": "records/research_d24_overnight_plan_20261001/jobs.csv",
+    "unique_jobs": 15,
+    "steps_per_job": 4000,
+    "total_optimizer_steps": 60000,
+    "seed": 42,
+    "steps_and_gates_frozen": true,
+    "implemented": true,
+    "launched": true,
+    "prior_complete_plan_id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
+    "supersedes": "D24_PAIRED_TASK_ADAPTATION_DRAFT_20261001",
+    "physical_gpus": [
+      0,
+      1
+    ],
+    "server_scope": "/home/jovyan/zzx",
+    "test6_loaded": false,
+    "decision_source": "user request for multi-angle overnight planning; assistant-proposed experimental design",
+    "execution_authorized_by_user": true,
+    "cpu_checks_passed": 15,
+    "controller": "scripts/launch_rebuild_v1_d24.py",
+    "execution_protocol": "docs/protocols/D24_OVERNIGHT_EXECUTION_20261001.md",
+    "execution_commit": "cf1955d966163978b5c8af433f3845b5ca05da9e",
+    "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
+    "last_observation": {
+      "recorded_at": "2026-10-02T12:10:21+08:00",
+      "source": "user_pasted_status_and_nohup_tail",
+      "queue_observed_at": "2026-10-02T04:06:59.332637+08:00",
+      "last_job_complete_progress_at": "2026-10-02T04:06:53.704712+08:00",
+      "status": "reported_complete",
+      "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
+      "execution_commit": "cf1955d966163978b5c8af433f3845b5ca05da9e",
+      "completed_jobs": 15,
+      "total_jobs": 15,
+      "summary_exit": 0,
+      "test6_loaded_reported": false,
+      "rows": [
+        {
+          "id": "A0",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T00:37:32.286066+08:00",
+          "clean_fg5_pp_printed": 83.9813,
+          "composite_pp_printed": 83.3071
+        },
+        {
+          "id": "A2",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T00:38:41.349130+08:00",
+          "clean_fg5_pp_printed": 86.9035,
+          "composite_pp_printed": 86.2939
+        },
+        {
+          "id": "A3",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T01:07:45.862010+08:00",
+          "clean_fg5_pp_printed": 86.9022,
+          "composite_pp_printed": 86.2925
+        },
+        {
+          "id": "A1",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T01:07:28.841977+08:00",
+          "clean_fg5_pp_printed": 83.9813,
+          "composite_pp_printed": 83.3071
+        },
+        {
+          "id": "C0",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T01:40:03.873086+08:00",
+          "clean_fg5_pp_printed": 86.0217,
+          "composite_pp_printed": 85.5487
+        },
+        {
+          "id": "C2",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T01:40:00.318731+08:00",
+          "clean_fg5_pp_printed": 85.7929,
+          "composite_pp_printed": 85.2726
+        },
+        {
+          "id": "D2",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T02:07:56.538063+08:00",
+          "clean_fg5_pp_printed": 86.9134,
+          "composite_pp_printed": 85.9513
+        },
+        {
+          "id": "D0",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T02:08:07.884216+08:00",
+          "clean_fg5_pp_printed": 86.8346,
+          "composite_pp_printed": 85.8657
+        },
+        {
+          "id": "C3",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T02:40:31.444158+08:00",
+          "clean_fg5_pp_printed": 85.8554,
+          "composite_pp_printed": 85.3923
+        },
+        {
+          "id": "C1",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T02:40:48.607204+08:00",
+          "clean_fg5_pp_printed": 85.9199,
+          "composite_pp_printed": 85.4447
+        },
+        {
+          "id": "D1",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T03:08:23.033985+08:00",
+          "clean_fg5_pp_printed": 87.0707,
+          "composite_pp_printed": 86.4448
+        },
+        {
+          "id": "B0",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T03:09:39.152509+08:00",
+          "clean_fg5_pp_printed": 86.8535,
+          "composite_pp_printed": 86.2482
+        },
+        {
+          "id": "B1",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T03:37:59.876976+08:00",
+          "clean_fg5_pp_printed": 86.8519,
+          "composite_pp_printed": 86.2466
+        },
+        {
+          "id": "B2",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T03:38:44.644918+08:00",
+          "clean_fg5_pp_printed": 83.3711,
+          "composite_pp_printed": 82.7984
+        },
+        {
+          "id": "B3",
+          "status": "COMPLETE",
+          "step": 4000,
+          "progress_at": "2026-10-02T04:06:53.704712+08:00",
+          "clean_fg5_pp_printed": 83.3691,
+          "composite_pp_printed": 82.7973
+        }
+      ],
+      "metric_definition_from_bound_summary_code": "Potsdam Val2 pooled noboundary mIoU_fg5; composite=(clean+mean four RGB degradation conditions+mean two auxiliary degradation conditions)/3; four-decimal printed metrics only",
+      "full_server_light_records_uploaded": false,
+      "raw_matrices_received": false,
+      "checkpoint_selection_received": false,
+      "screen_decisions_received": false,
+      "scientific_confirmation": false,
+      "reported_rough_queue_end": "2026-10-02 12:09:19.683292+08:00",
+      "rough_queue_end_interpretation": "completed queue displays query clock plus zero remaining; not actual completion time",
+      "next_action": "Upload existing D24 light evidence with snapshot uploader; read full matched comparisons, condition/tile risks and frozen screens before planning another run."
+    },
+    "first_training_step_observed": true,
+    "completed_at": "2026-10-02T04:06:59.332637+08:00",
+    "completed_at_meaning": "queue completion observation; latest job completion progress at 04:06:53.704712",
+    "light_evidence_uploaded": true,
+    "evidence_commit": "acd2dbfbcf18ef792840bfe3f5465207a74a13c2",
+    "evidence_directory": "records/research_d24_overnight_20261002T000843_877409/evidence_20261002T121402814506_1365054",
+    "review": "docs/experiments/D24_REVIEW_AND_PAIR_CORRECTION_20261002.md",
+    "invalid_mechanism_arms": [
+      "A1",
+      "A3"
+    ],
+    "light_record_recomputed": true
+  }
 }

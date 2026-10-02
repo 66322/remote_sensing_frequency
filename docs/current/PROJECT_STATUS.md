@@ -1,16 +1,17 @@
 # 当前状态
 
-更新2026-10-02 12:10:21（Asia/Shanghai）。最后观测：用户回传队列记录2026-10-02T04:06:59.332637+08:00，COMPLETE 15/15；所有组4000/4000，最后B3完成标记04:06:53.704712，汇总summary_exit=0、test6_loaded=False。见[完成观测](../../records/research_d24_completion_observation_20261002/observation.json)。已收到15组四位小数指标；完整screen_result、逐tile/条件原计数、选模绑定与梯度检查尚未上传/复核。查询显示的12:09 ROUGH_QUEUE_END是查询时间加零剩余，不是实际完成时间。
+2026-10-02更新；最后服务器队列观测04:06:59.332637 +08，D24 COMPLETE 15/15；无新训练。
 
 | 项目 | 状态 |
 |---|---|
-| 阶段/问题 | 可行性探索；DSM有益融合、负迁移与缺失；贡献未冻结 |
-| D23 | 8/8原件6038520、完整分析7467082；TSF确认路径关闭 |
-| D24 | 用户回传15/15完成，全部4000步，summarizer正常退出 |
-| D24指标 | 已收到四位小数clean/composite；部分解冻/增强有初步信号，不能当机制结论 |
-| D24完整原件 | 待上传screen_result、逐tile/条件计数、风险、配置/选模/梯度检查 |
-| 下一步 | 使用本次snapshot uploader上传，然后按冻结匹配比较分析；不追加训练 |
-| 资源 | GPU0/1，两H10080GB，RAM/磁盘充足；不重做审计 |
-| 边界 | 单seed42、Potsdam重复开发Val2；Test6禁读；二进制留服务器 |
+| 阶段与问题 | 可行性探索；DSM有益融合、退化和缺失；最终贡献未冻结 |
+| D23 | 已完成，当前TSF具体解法确认路径关闭 |
+| D24原件 | acd2dbf，564文件已上传；所读64载荷、3360逐tile/1680pooled矩阵与绑定复核通过 |
+| Pair纠错 | A1/A3开关未启用，属于无效消融；不是Pair负结果。代码已修，真实配置回归测试通过 |
+| 有效信号 | last4与质量增强支持强基线；缺失训练显著改善本次缺失状态，但完整精度略降 |
+| 未支持机制 | 当前EMA类别原型/类别平衡/旧教师区域KD；不扩大为整个研究问题失败 |
+| D25 | 8组32k更新建议计划；分头与梯度干扰两个假设＋Pair修正；未实现/未启动 |
+| 资源 | GPU0/1，两H10080GB、RAM/磁盘充足，nohup，zzx对应目录 |
+| 边界 | Potsdam seed42重复开发Val2；Test6禁读；原二进制留服务器，非独立确认 |
 
-[交接](HANDOFF.md)、[上传指令](NEXT_EXPERIMENT.md)、[D24协议](../protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md)。
+[复核](../experiments/D24_REVIEW_AND_PAIR_CORRECTION_20261002.md)；[文献](../literature/D25_OPTIMIZATION_AND_MISSINGNESS_20261002.md)；[交接](HANDOFF.md)；[下一步](NEXT_EXPERIMENT.md)。

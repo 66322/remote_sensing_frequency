@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0",
+  "id": "D25_MISSINGNESS_OPTIMIZATION_20261002",
+  "status": "PROPOSED_NOT_IMPLEMENTED_NOT_LAUNCHED",
+  "decision_source": "user asked next experiment planning from D24 and recent papers; design is assistant recommendation",
+  "execution_authorized": false,
+  "source_evidence_commit": "acd2dbfbcf18ef792840bfe3f5465207a74a13c2",
+  "source_evidence": "records/research_d24_overnight_20261002T000843_877409/evidence_20261002T121402814506_1365054",
+  "source_review": "docs/experiments/D24_REVIEW_AND_PAIR_CORRECTION_20261002.md",
+  "protocol": "docs/protocols/D25_MISSINGNESS_OPTIMIZATION_PLAN_20261002.md",
+  "unique_jobs": 8,
+  "optimizer_updates": 32000,
+  "seeds": [
+    42
+  ],
+  "jobs": [
+    {
+      "id": "P0",
+      "name": "last4_shared_decoder_CE_QD",
+      "role": "fresh matched CE anchor",
+      "gpu": 0,
+      "priority": 1,
+      "seed": 42,
+      "steps": 4000,
+      "status": "proposed_not_implemented"
+    },
+    {
+      "id": "P1",
+      "name": "P0_with_fixed_anchored_Pair",
+      "role": "technical correction; compare P0",
+      "gpu": 1,
+      "priority": 2,
+      "seed": 42,
+      "steps": 4000,
+      "status": "proposed_not_implemented"
+    },
+    {
+      "id": "P2",
+      "name": "availability_separate_decoders",
+      "role": "H1 decoder separation; compare P0/P5",
+      "gpu": 0,
+      "priority": 3,
+      "seed": 42,
+      "steps": 4000,
+      "status": "proposed_not_implemented"
+    },
+    {
+      "id": "P3",
+      "name": "separate_decoders_one_sided_projection",
+      "role": "H2; compare P2/P7 and P0",
+      "gpu": 1,
+      "priority": 4,
+      "seed": 42,
+      "steps": 4000,
+      "status": "proposed_not_implemented"
+    },
+    {
+      "id": "P4",
+      "name": "shared_decoder_one_sided_projection",
+      "role": "H2 without decoder separation; compare P0",
+      "gpu": 0,
+      "priority": 5,
+      "seed": 42,
+      "steps": 4000,
+      "status": "proposed_not_implemented"
+    },
+    {
+      "id": "P5",
+      "name": "two_active_shared_decoders_averaged",
+      "role": "parameter-count control for P2; not full functional capacity equivalence",
+      "gpu": 1,
+      "priority": 6,
+      "seed": 42,
+      "steps": 4000,
+      "status": "proposed_not_implemented"
+    },
+    {
+      "id": "P6",
+      "name": "optical_only_same_M0_initialization_Q",
+      "role": "matched initialization optical baseline; not R0 initialized C0",
+      "gpu": 0,
+      "priority": 7,
+      "seed": 42,
+      "steps": 4000,
+      "status": "proposed_not_implemented"
+    },
+    {
+      "id": "P7",
+      "name": "separate_decoders_gradient_norm_sham",
+      "role": "same missing-gradient norm as projection but original direction; compare P3",
+      "gpu": 1,
+      "priority": 8,
+      "seed": 42,
+      "steps": 4000,
+      "status": "proposed_not_implemented"
+    }
+  ],
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "hardware": "two H10080GB; RAM/disk sufficient, no repeated resource probe",
+  "server_root": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+  "output_pattern": "records/research_d25_missingness_<timestamp>_<pid>",
+  "launch": "nohup; bound code/config; no training started in planning task",
+  "initialization": "same D21 M0 last_train_state, SHA23b2939ea50867c96c0a17626fd4a85a27100ebd8296b2fc96440ed8bc3d34de; fresh optimizer; no D24 winner continuation",
+  "training": "reuse D24 4000-step batch16 BF16 AdamW and keyed fit12 crop/QD stream; P6 uses matching optical Q stream; same budget/selection",
+  "selection": "clean Val2 NoBoundary pooled fg5 at 2000/4000, ties earlier; source records retained",
+  "new_hypotheses": [
+    "availability_decoder_specialization",
+    "present_missing_shared_parameter_gradient_interference"
+  ],
+  "technical_repair": "Pair activation verified by actual-config loss and gradient difference; only last4 retested",
+  "new_test6_access": false,
+  "first_stage_estimated_wall_hours": [
+    3,
+    5
+  ],
+  "estimate_basis": "D24 15 jobs took about3h58 on dual GPU; new gradient graph cost uncertain; estimate not resource-admission gate",
+  "stop": "per-job6h technical timeout, no auto retry or sweep; after8 jobs offline screen before any replication",
+  "confirmation": "at most2 supported hypotheses, separately plan seed17/2026 and genuinely independent data; no automatic new training"
+}

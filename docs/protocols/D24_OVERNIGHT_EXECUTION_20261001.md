@@ -1,6 +1,8 @@
 # D24十五组：固定版本nohup执行
 
-更新2026-10-02 12:10（Asia/Shanghai）。**用户回传队列04:06:59 COMPLETE 15/15；所有4000步及汇总完成。** [完成观测](../../records/research_d24_completion_observation_20261002/observation.json)已保存，完整轻量原件待上传。不要再次启动/恢复已完成队列。无服务器连接，以下由用户服务器终端执行。复用已知GPU0/1、两H10080GB、充足RAM/硬盘，不新增安装、资源审计或预算探针。
+> 2026-10-02更新：本轮15/15已完成，完整轻量记录已上传acd2dbf。A1/A3的Pair损失开关未生效，见[纠错报告](../experiments/D24_REVIEW_AND_PAIR_CORRECTION_20261002.md)。本页为历史执行说明，不重新启动/恢复；新工作按[D25计划](D25_MISSINGNESS_OPTIMIZATION_PLAN_20261002.md)。
+
+更新2026-10-02 12:10（Asia/Shanghai）。**用户回传队列04:06:59 COMPLETE 15/15；所有4000步及汇总完成。** [完成观测](../../records/research_d24_completion_observation_20261002/observation.json)已保存，完整轻量原件已上传至acd2dbf，已完成离线指标复核；A1/A3的Pair科学消融无效，详见上方纠错报告。不要再次启动/恢复已完成队列。无服务器连接，以下由用户服务器终端执行。复用已知GPU0/1、两H10080GB、充足RAM/硬盘，不新增安装、资源审计或预算探针。
 
 固定执行提交：[cf1955d966163978b5c8af433f3845b5ca05da9e](https://github.com/66322/remote_sensing_frequency/commit/cf1955d966163978b5c8af433f3845b5ca05da9e)；[科学协议](D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md)、[15组机器计划](../../records/research_d24_overnight_plan_20261001/plan.json)、[本地检查](../../records/research_d24_overnight_plan_20261001/local_validation.json)。
 
@@ -8,7 +10,7 @@
 
 目的：单seed开发筛选任务目标/表示、类别语义、光学知识迁移及普通增强四个角度。GPU0/1各一个job，训练物理batch16无累积，每组4000步，共60000更新；单job6h上限，技术失败留证并继续其他job。控制器与worker都有锁，nohup与独立worker会话防终端断开；全部快照、cache、临时文件、日志、PID、checkpoint和预测在本次zzx目录。主Git工作副本仅fetch，不切换/覆盖。
 
-以下用于未来独立新运行；本轮继续查询已有目录，不再复制启动块：
+以下仅保存历史启动命令；包含已知Pair开关问题，不用于未来新运行，也不再复制启动块：
 
 ```bash
 (

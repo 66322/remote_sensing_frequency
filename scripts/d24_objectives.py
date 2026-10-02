@@ -69,10 +69,14 @@ def step_objective(model, teachers, job, tensors, plan, mixed=True):
     counts={}
     if job['route']=='A':
         with torch.no_grad():reference=teachers['R0'](tensors['rgb'],tensors['aux'])
-        active='Pair' in job['objective']
+        if job['objective'] not in ('CE', 'CE+clean_R0_anchored_pair'):
+            raise ValueError('unknown route A objective: ' + job['objective'])
+        active = job['objective'] == 'CE+clean_R0_anchored_pair'
         ordering=anchored_pair(clean[0] if active else clean[0].detach(),reference,gt)
         counts['Pair:penalty_sum']=float(ordering.detach())
         counts['Pair:steps']=1
+        counts['Pair:enabled_steps']=int(active)
+        counts['Pair:weighted_loss_sum']=float(plan['pair']['weight']*ordering.detach()) if active else 0.
         if active:loss=loss+plan['pair']['weight']*ordering
     elif job['route']=='C':
         distill=[]

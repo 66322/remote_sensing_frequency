@@ -1,17 +1,11 @@
-# 下一步：上传D24完成证据并分析匹配对照
+# 下一步：实现D25八组机制检验
 
-更新2026-10-02 12:10:21（Asia/Shanghai）。最后观测：用户回传队列记录2026-10-02T04:06:59.332637+08:00，COMPLETE 15/15；所有组4000/4000，最后B3完成标记04:06:53.704712，汇总summary_exit=0、test6_loaded=False。见[完成观测](../../records/research_d24_completion_observation_20261002/observation.json)。已收到15组四位小数指标；完整screen_result、逐tile/条件原计数、选模绑定与梯度检查尚未上传/复核。查询显示的12:09 ROUGH_QUEUE_END是查询时间加零剩余，不是实际完成时间。
+2026-10-02更新。用户要求结合D24结果与近年论文规划；本次已完成[原记录复核与Pair纠错](../experiments/D24_REVIEW_AND_PAIR_CORRECTION_20261002.md)、[文献映射](../literature/D25_OPTIMIZATION_AND_MISSINGNESS_20261002.md)和[完整方案](../protocols/D25_MISSINGNESS_OPTIMIZATION_PLAN_20261002.md)。D24原件已上传acd2dbf，15/15完成，不重复上传/恢复。
 
-```bash
-cd /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
-D24_DIR="$PWD/records/research_d24_overnight_20261002T000843_877409"
-python -B "$D24_DIR/code/scripts/upload_rebuild_v1_d24_records.py" --root "$PWD" --directory "$D24_DIR"
-```
+按[八组机器计划](../../records/research_d25_plan_20261002/plan.json)准备：P0共享CE强基线、P1正确启用Pair、P2分头、P3分头+投影、P4共享头+投影、P5参数数量控制、P6同初始化光学基线、P7同梯度模长否证。H1/H2为两个新解释，Pair是修复无效消融；P1不构成原论文完整复现。
 
-上传器复用本次快照，不启动训练；将screen_result.json、results.csv、15组评价原计数/逐tile/条件/风险/缺失记录、选模/checkpoint绑定、gradient_check、轻量日志及产物索引写回同一分支。Git凭据在终端交互；预测/权重留服务器。全部上传准备文件也在本次zzx目录。
+每组4000、总32000更新，复用D21 M0同初始化、D24 fit12/Val2、seed42/512/物理batch16，单job6h上限；双H10080GB与nohup/zzx目录约定不再询问或审计。粗估3–5小时只作排程，不保证完工。新执行代码尚未实现/未启动；不得用旧D24 launcher冒充D25。
 
-贴回提交与记录链接后读取完整原件：先确认manifest与绑定，再重算配对差值、原矩阵/pooled和冻结screen；分开报告部分解冻强基线、普通增强、Pair、同容量原型、区域KD。每组训练完成不等于机制通过。不得从打印榜单追训赢家或新增扫描。
+实现前把梯度分解/投影集合、同模长对照、head初始化、loss有效像素分母及4新压力条件按协议写清；必要验证随代码完成，无需服务器资源预跑。P1局部修复和两项回归检查已做好。所有条件/阈值在看D25结果前锁定；技术失败单列，原计数/绑定/轻量日志上GitHub、二进制留服务器。
 
-初步综合信号：A2-A0约+2.9868pp；Pair和类别原型近零；类别平衡明显减分；C2低于C0；D1-D0约+0.5791pp且D1打印最高。完整精度/风险约束未收到，不决定确认候选，不改主线、阈值或最终贡献承诺。最多两条通过假设再单独规划确认。
-
-[科学协议](../protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md)、[执行说明](../protocols/D24_OVERNIGHT_EXECUTION_20261001.md)、[当前交接](HANDOFF.md)。
+筛选必须同时看完整/退化与全幅/局部缺失，不能只按available composite排榜。详细双终点门槛、匹配比较、对容量/梯度幅度的否证及停止条件见协议；最多两条通过后再另立多seed/独立地域验证。当前不自动执行新长训练。

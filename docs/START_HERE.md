@@ -11,7 +11,7 @@
 3. [当前状态](current/PROJECT_STATUS.md)：简要阶段表，不把旧PID当实时状态。
 4. [下一步](current/NEXT_EXPERIMENT.md)：接续既定任务，再定稿下一假设。
 
-当前仍为可行性探索。问题是辅助模态质量变化时保留DSM有益融合、控制负迁移并支持DSM缺失；频率/语义/门控可去留，C1恢复为旁支，部分解冻为强基线。[D23八组完整开发结果](experiments/D23_EIGHT_ARM_RESULTS_20261001.md)已完成并复核，当前TSF具体解法关闭确认路径；所有学习gate综合低于M0_safe。当前执行[四角度15组夜间计划](protocols/D24_OVERNIGHT_MULTIPERSPECTIVE_20261001.md)：分组/科学协议及15组代码完成，本地15项CPU检查PASS；用户已回传2026-10-02T04:06:59队列COMPLETE 15/15，全部4000步，summarizer正常退出；[完成观测](../records/research_d24_completion_observation_20261002/observation.json)已保存。完整轻量原件尚待[上传与分析](current/NEXT_EXPERIMENT.md)，不再启动或恢复D24；不再恢复或重跑D23。最终章节与贡献未冻结。
+当前为可行性探索，主问题仍是光学可用时DSM有益融合、负迁移及缺失能力。D23当前TSF解法关闭；D24十五组已完成并上传acd2dbf，见[完整复核与Pair纠错](experiments/D24_REVIEW_AND_PAIR_CORRECTION_20261002.md)。A1/A3因开关大小写错误未启用Pair，必须撤回Pair无效判断；其他比较支持部分解冻/增强强基线，以及完整与缺失精度的取舍。基于[近期原论文](literature/D25_OPTIMIZATION_AND_MISSINGNESS_20261002.md)，下一建议是[D25八组机制检验](protocols/D25_MISSINGNESS_OPTIMIZATION_PLAN_20261002.md)，尚未实现/启动。直接接续实现，不重跑D23/D24或资源审计；C1恢复仍旁支，最终解法/章节未冻结。
 
 用户新增要求：实质新实验须参考近期原论文并明确借鉴、差异、假设和对照。已完成[2025—2026文献映射](literature/RECENT_MULTIMODAL_SEGMENTATION_20261001.md)，按[文献到实验规则](protocols/LITERATURE_TO_EXPERIMENT.md)复用，不为每次接续重查或阻塞既定训练。
 
