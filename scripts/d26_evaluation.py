@@ -14,17 +14,22 @@ def metric(cm):
     return dict(cm=cm.tolist(),support=support.tolist(),TP=tp.tolist(),FP=fp.tolist(),FN=fn.tolist(),IoU=[float(v) if np.isfinite(v) else None for v in iou],mIoU_fg5=avg(iou[:5]),mIoU_6=avg(iou),valid=int(cm.sum()))
 
 def counts(gt,pred,region):
+    if not region.any():return metric(np.zeros((6,6),np.int64))
     keep=(gt<6)&region&(pred<6)
     return metric(np.bincount(6*gt[keep].astype(np.int64)+pred[keep].astype(np.int64),minlength=36).reshape(6,6))
 
 def regions(rm,dm):
+    from scipy.ndimage import minimum_filter
     both=rm&dm;valid=rm|dm
     # A declared 16px border diagnostic, not a complete expert receptive field.
-    t=torch.from_numpy(both.astype(np.float32))[None,None]
-    interior=(torch.nn.functional.avg_pool2d(torch.nn.functional.pad(t,(16,16,16,16)),33,1)==1)[0,0].numpy()
+    interior=minimum_filter(both,size=33,mode='constant',cval=0)
+    if rm.all() and dm.all():
+        empty=np.zeros_like(both)
+        return dict(valid=both,both=both,rgb_only=empty,dsm_only=empty,neither=empty,missing_union=empty,boundary16=both&~interior)
     return dict(valid=valid,both=both,rgb_only=rm&~dm,dsm_only=dm&~rm,neither=~valid,missing_union=~both&valid,boundary16=valid&~interior)
 
 def joint_counts(gt,rgb,dsm,candidate,region):
+    if not region.any():return np.zeros((6,)*4,np.int64)
     keep=(gt<6)&region&(rgb<6)&(dsm<6)&(candidate<6)
     g,r,d,f=(x[keep].astype(np.int64) for x in (gt,rgb,dsm,candidate))
     return np.bincount(((g*6+r)*6+d)*6+f,minlength=6**4).reshape((6,)*4).astype(np.int64)
@@ -166,13 +171,23 @@ def evaluate(model,loader,refs,plan,out,binding,progress,conditions=None,tag='ev
             report();preds,identity=infer(model,view,rm,dm,report)
             fixed,provenance=refs.get(tile,condition,view,rm,dm,provided=preds if model.arm!='J0' else None,progress=report)
             # Own branches of J0 are diagnostic; scientific partitions use fixed anchors.
-            preds.update({'fixed_'+n:p for n,p in fixed.items()})
+            preds.update({'fixed_'+n:(preds[n] if model.arm!='J0' else p) for n,p in fixed.items()})
             hashes={n:save_prediction(out/condition/n/(tile+'.npy'),p) for n,p in preds.items()}
             scopes={};rgs=regions(rm,dm)
             for scope in ('full','noboundary'):
                 gt=item[scope+'_gt']
-                metrics={n:{region:counts(gt,p,mask) for region,mask in rgs.items()} for n,p in preds.items()}
-                joints={region:joint_counts(gt,fixed['rgb'],fixed['dsm'],preds['candidate'],mask) for region,mask in rgs.items() if region!='neither'}
+                metric_cache={};joint_cache={};metrics={};joints={}
+                for n,p in preds.items():
+                    metrics[n]={}
+                    for region,mask in rgs.items():
+                        key=(id(p),id(mask))
+                        if key not in metric_cache:metric_cache[key]=counts(gt,p,mask)
+                        metrics[n][region]=metric_cache[key]
+                for region,mask in rgs.items():
+                    if region=='neither':continue
+                    key=id(mask)
+                    if key not in joint_cache:joint_cache[key]=joint_counts(gt,fixed['rgb'],fixed['dsm'],preds['candidate'],mask)
+                    joints[region]=joint_cache[key]
                 scopes[scope]=dict(metrics=metrics,joint={r:encode_joint(v) for r,v in joints.items()},joint_reports={r:joint_report(v) for r,v in joints.items()})
             row=dict(binding=binding,tile=tile,condition=condition,scopes=scopes,predictions=hashes,fixed_reference=provenance,fallback_logits_equal_own=identity,coverage={r:int(m.sum()) for r,m in rgs.items()},confusion_matrix_dtype='int64',joint_axes=['truth','fixed_rgb','fixed_dsm','candidate'],observed_at=now())
             write(record,row);tiles.setdefault(condition,{})[tile]=row;print('D26_EVAL',tag,tile,condition,flush=True)

@@ -15,7 +15,7 @@ sys.path[:0]=[str(ROOT),str(ROOT/'scripts')]
 from model.rebuild_v1_d26 import ARMS,D26Segmenter,Expert,Interaction,pack,unpack
 from d26_common import validate_plan
 from d26_data import treatment,views,objective
-from d26_evaluation import counts,joint_counts,joint_report,infer,encode_joint,decode_joint,evaluate
+from d26_evaluation import counts,joint_counts,joint_report,infer,encode_joint,decode_joint,evaluate,regions
 from run_rebuild_v1_d26 import verify_gradients,optimizer_for
 from summarize_rebuild_v1_d26 import pair_gate,protections,screen
 from launch_rebuild_v1_d26 import next_job
@@ -132,6 +132,14 @@ class Tests(unittest.TestCase):
         np.testing.assert_array_equal(decode_joint(encode_joint(joint)),joint)
         report=joint_report(joint);self.assertEqual(report['only_rgb_correct']['fused_correct'],1);self.assertEqual(report['only_dsm_correct']['fused_correct'],1);self.assertEqual(report['both_wrong']['fused_correct'],1)
         row=counts(g,f,region);self.assertEqual(row['valid'],3);self.assertEqual(row['mIoU_fg5'],1.)
+    def test_fast_boundary_mask_matches_exact_pool_definition(self):
+        for missing in (False,True):
+            rm=torch.ones(1,1,64,68)
+            if missing:rm[:,:,24:28,20:25]=0
+            expected=(F.avg_pool2d(F.pad(rm,(16,16,16,16)),33,1)==1)[0,0].numpy()
+            mask=rm[0,0].bool().numpy();dm=np.ones_like(mask)
+            actual=regions(mask,dm)['boundary16']
+            np.testing.assert_array_equal(actual,(mask|dm)&~expected)
     def test_dynamic_queue_never_duplicates_assigned_job(self):
         jobs=self.plan['jobs'];state={'jobs':{j['id']:{'status':'PENDING'} for j in jobs}}
         first=next_job(jobs,state,0);state['jobs'][first['id']]['status']='RUNNING';second=next_job(jobs,state,1)
