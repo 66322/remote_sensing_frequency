@@ -1654,7 +1654,7 @@
     {
       "id": "D26_BIDIRECTIONAL_FEATURE_20261002",
       "name": "bidirectional_feature_interaction_reusing_existing_unimodal_experts",
-      "status": "LAUNCHED_INITIALIZING_USER_REPORTED",
+      "status": "RUNNING_TRAINING_USER_REPORTED",
       "started_at": null,
       "completed_at": null,
       "implemented": true,
@@ -1662,7 +1662,10 @@
       "protocol": "docs/protocols/D26_BIDIRECTIONAL_FEATURE_PLAN_20261002.md",
       "records": [
         "records/research_d26_plan_20261002/plan.json",
-        "records/research_d26_plan_20261002/local_validation.json"
+        "records/research_d26_plan_20261002/local_validation.json",
+        "records/research_d26_progress_20261002T191819/observation.json",
+        "records/research_d26_progress_20261002T191819/user_status_stdout.txt",
+        "records/research_d26_progress_20261002T191819/eta_estimate.json"
       ],
       "result": null,
       "execution_authorized": true,
@@ -1679,51 +1682,108 @@
       "last_observation": {
         "schema_version": "1.0",
         "experiment": "D26_BIDIRECTIONAL_FEATURE_20261002",
-        "source": "user_pasted_server_terminal_stdout",
-        "recorded_date": "2026-10-02",
-        "directory_creation_at": "2026-10-02T19:12:53+08:00",
-        "directory_creation_time_source": "directory name; not precise worker start or observation timestamp",
-        "last_observed_at": null,
-        "observation_time_precision": "console lines have no timestamps; observed after directory creation; no invented exact timestamp",
+        "source": "user_pasted_server_status_and_nohup_tail",
+        "queue_last_observed_at": "2026-10-02T19:18:19.427139+08:00",
+        "latest_worker_progress_at": "2026-10-02T19:18:23.902610+08:00",
+        "timestamp_note": "queue snapshot and worker progress are read separately; B0 worker timestamp is newer than queue snapshot, both retained",
+        "status": "RUNNING_TRAINING_USER_REPORTED",
+        "queue_status": "RUNNING",
+        "completed_jobs": 0,
+        "total_jobs": 9,
         "execution_commit": "52f94388b1a9c7557e9ef533075661139cd55eda",
-        "fetched_branch_head": "90f37124eaebda283028df9fb101c55fd273babe",
         "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109",
         "controller_pid": 1571946,
-        "controller_log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109/nohup.log",
-        "status": "LAUNCHED_INITIALIZING_USER_REPORTED",
         "jobs": [
           {
             "id": "J0",
             "physical_gpu": 0,
-            "pid": 1571983,
-            "phase": "initializing",
-            "step": 0
+            "status": "RUNNING",
+            "phase": "training",
+            "step": 180,
+            "target": 8000,
+            "progress_at": "2026-10-02T19:18:12.689409+08:00",
+            "pid_from_launch": 1571983
           },
           {
             "id": "B0",
             "physical_gpu": 1,
-            "pid": 1571989,
-            "phase": "initializing",
-            "step": 0
+            "status": "RUNNING",
+            "phase": "training",
+            "step": 580,
+            "target": 8000,
+            "progress_at": "2026-10-02T19:18:23.902610+08:00",
+            "pid_from_launch": 1571989
+          },
+          {
+            "id": "CAP",
+            "status": "PENDING",
+            "physical_gpu": null,
+            "step": 0,
+            "target": 8000
+          },
+          {
+            "id": "X",
+            "status": "PENDING",
+            "physical_gpu": null,
+            "step": 0,
+            "target": 8000
+          },
+          {
+            "id": "XS",
+            "status": "PENDING",
+            "physical_gpu": null,
+            "step": 0,
+            "target": 8000
+          },
+          {
+            "id": "XF",
+            "status": "PENDING",
+            "physical_gpu": null,
+            "step": 0,
+            "target": 8000
+          },
+          {
+            "id": "XSF",
+            "status": "PENDING",
+            "physical_gpu": null,
+            "step": 0,
+            "target": 8000
+          },
+          {
+            "id": "XSF-shS",
+            "status": "PENDING",
+            "physical_gpu": null,
+            "step": 0,
+            "target": 8000
+          },
+          {
+            "id": "XSF-shF",
+            "status": "PENDING",
+            "physical_gpu": null,
+            "step": 0,
+            "target": 8000
           }
         ],
-        "completed_jobs": 0,
-        "total_jobs": 9,
-        "first_training_step_observed": false,
-        "real_checkpoint_load_verified": false,
-        "server_gpu_forward_verified": false,
-        "gradient_check_received": false,
-        "precision_result_received": false,
+        "first_training_step_observed": true,
+        "server_gpu_training_observed": true,
+        "checkpoint_load_completed_inferred_from_training": true,
+        "checkpoint_or_prediction_bytes_received": false,
+        "gradient_check_artifacts_received": false,
+        "validation_or_accuracy_results_received": false,
+        "scientific_conclusion_established": false,
         "pid_live_query_performed": false,
-        "nohup_used": true,
-        "physical_batch": 16,
-        "gradient_accumulation": false,
+        "server_status_script_eta": "ETA_PENDING_FIRST_NORMAL_COMPLETED_JOB; no extra probe",
         "test6_loaded": false,
-        "test6_claim_source": "fixed execution protocol; no completed server artifact received",
-        "next_action": "Query this existing queue only; do not relaunch or probe resources"
+        "test6_source": "frozen protocol, not a received completed server signature"
       },
-      "last_observation_record": "records/research_d26_launch_observation_20261002/user_reported_launch.json",
-      "started_at_precision": "after directory creation2026-10-02T19:12:53+08:00; exact start not retained"
+      "last_observation_record": "records/research_d26_progress_20261002T191819/observation.json",
+      "started_at_precision": "after directory creation2026-10-02T19:12:53+08:00; exact start not retained",
+      "training_progress_observed": true,
+      "first_training_step_observed": true,
+      "completed_jobs": 0,
+      "gradient_check_artifact_received": false,
+      "server_GPU_verified_scope": "user-pasted training updates; no new live inspection or raw gradient/checkpoint artifact review",
+      "eta_estimate_record": "records/research_d26_progress_20261002T191819/eta_estimate.json"
     }
   ],
   "next_plan": {
@@ -1735,7 +1795,7 @@
     },
     "schema_version": "1.0",
     "id": "D26_BIDIRECTIONAL_FEATURE_20261002",
-    "status": "LAUNCHED_INITIALIZING_USER_REPORTED",
+    "status": "RUNNING_TRAINING_USER_REPORTED",
     "execution_authorized": true,
     "source_commit": "c5aca5bbe6b9677666fd732c0f965b25c0565f90",
     "user_direction": "Both RGB and DSM information; reuse already completed unimodal experiments",
@@ -2056,7 +2116,7 @@
     "verification_status": "LOCAL_SYNTHETIC_CPU_AND_NATIVE_DSM_INTERFACE_ONLY_SERVER_CHECKPOINT_CUDA_PENDING",
     "execution_commit": "52f94388b1a9c7557e9ef533075661139cd55eda",
     "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109",
-    "last_observation_record": "records/research_d26_launch_observation_20261002/user_reported_launch.json"
+    "last_observation_record": "records/research_d26_progress_20261002T191819/observation.json"
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -3081,6 +3141,10 @@
     "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109",
     "controller_pid": 1571946,
     "execution_commit": "52f94388b1a9c7557e9ef533075661139cd55eda",
-    "first_training_step_observed": false
+    "first_training_step_observed": true,
+    "status": "RUNNING_TRAINING_USER_REPORTED",
+    "last_observed_at": "2026-10-02T19:18:19.427139+08:00",
+    "latest_worker_progress_at": "2026-10-02T19:18:23.902610+08:00",
+    "gradient_check_artifact_received": false
   }
 }

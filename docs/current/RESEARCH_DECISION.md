@@ -128,3 +128,8 @@ P0普通last4/QD对同初始化P6有阶段融合收益，但整幅DSM缺失输�
 ## 2026-10-02 D26实际启动观测
 
 最后服务器观测：2026-10-02本次用户回传，controller PID1571946；GPU0 J0 PID1571983、GPU1 B0 PID1571989，均initializing step=0。目录创建19:12:53+08:00来自目录名，日志行无精确观测时间；不表述为实时PID状态或已完成首batch。本次目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109；[启动证据](../../records/research_d26_launch_observation_20261002/user_reported_launch.json)绑定固定代码52f94388b1a9c7557e9ef533075661139cd55eda。此前“未启动”仅历史阶段，当前只查询已有队列，不重复启动、资源审计或单模态训练。研究问题/九组预算/预设门槛不变，尚无新科学结论。
+
+
+## 2026-10-02 19:18训练进度和GitHub同步
+
+最后服务器观测：queue_status为2026-10-02T19:18:19.427139+08:00 RUNNING、COMPLETE0/9；GPU0 J0 training180/8000（19:18:12.689409+08:00），GPU1 B0 training580/8000（19:18:23.902610+08:00）。queue与worker为分别读取的时间戳，B0行更新稍晚；其余七组PENDING。已收到实际训练步，尚无选模/评价指标或原始gradient文件，不作为实时PID查询和精度结论。[观测原件](../../records/research_d26_progress_20261002T191819/observation.json)。本次只能更新执行状态，不作新方向或机制结论。D26预设阈值、预算、专家、主问题/旁支角色均不变；既有D15—D25结论保留。用户再次明确实验同步以GitHub为主，后续重要进度、失败、完成及评价分析及时写回同一分支并回读；本地仅工作副本。全量checkpoint/预测留服务器并索引，不把用户进度摘录说成全部原始产物已上传。

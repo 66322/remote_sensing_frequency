@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0",
+  "experiment": "D26_BIDIRECTIONAL_FEATURE_20261002",
+  "source": "user_pasted_server_status_and_nohup_tail",
+  "queue_last_observed_at": "2026-10-02T19:18:19.427139+08:00",
+  "latest_worker_progress_at": "2026-10-02T19:18:23.902610+08:00",
+  "timestamp_note": "queue snapshot and worker progress are read separately; B0 worker timestamp is newer than queue snapshot, both retained",
+  "status": "RUNNING_TRAINING_USER_REPORTED",
+  "queue_status": "RUNNING",
+  "completed_jobs": 0,
+  "total_jobs": 9,
+  "execution_commit": "52f94388b1a9c7557e9ef533075661139cd55eda",
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109",
+  "controller_pid": 1571946,
+  "jobs": [
+    {
+      "id": "J0",
+      "physical_gpu": 0,
+      "status": "RUNNING",
+      "phase": "training",
+      "step": 180,
+      "target": 8000,
+      "progress_at": "2026-10-02T19:18:12.689409+08:00",
+      "pid_from_launch": 1571983
+    },
+    {
+      "id": "B0",
+      "physical_gpu": 1,
+      "status": "RUNNING",
+      "phase": "training",
+      "step": 580,
+      "target": 8000,
+      "progress_at": "2026-10-02T19:18:23.902610+08:00",
+      "pid_from_launch": 1571989
+    },
+    {
+      "id": "CAP",
+      "status": "PENDING",
+      "physical_gpu": null,
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "X",
+      "status": "PENDING",
+      "physical_gpu": null,
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "XS",
+      "status": "PENDING",
+      "physical_gpu": null,
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "XF",
+      "status": "PENDING",
+      "physical_gpu": null,
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "XSF",
+      "status": "PENDING",
+      "physical_gpu": null,
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "XSF-shS",
+      "status": "PENDING",
+      "physical_gpu": null,
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "XSF-shF",
+      "status": "PENDING",
+      "physical_gpu": null,
+      "step": 0,
+      "target": 8000
+    }
+  ],
+  "first_training_step_observed": true,
+  "server_gpu_training_observed": true,
+  "checkpoint_load_completed_inferred_from_training": true,
+  "checkpoint_or_prediction_bytes_received": false,
+  "gradient_check_artifacts_received": false,
+  "validation_or_accuracy_results_received": false,
+  "scientific_conclusion_established": false,
+  "pid_live_query_performed": false,
+  "server_status_script_eta": "ETA_PENDING_FIRST_NORMAL_COMPLETED_JOB; no extra probe",
+  "test6_loaded": false,
+  "test6_source": "frozen protocol, not a received completed server signature"
+}
