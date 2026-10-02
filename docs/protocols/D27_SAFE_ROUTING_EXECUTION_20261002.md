@@ -36,3 +36,8 @@ records/research_d27_safe_routing_after_d26_20261002T191253_1513109。
 
 查询：D27_DIR/code/scripts/status_rebuild_v1_d27.py --directory D27_DIR，读取最后观测与worker进度。
 完成后：D27_DIR/code/scripts/upload_rebuild_v1_d27_records.py --root ROOT --directory D27_DIR。上传原JSON/logs/矩阵/绑定，预测及weights只索引留服务器。GitHub为共享事实源；Test6禁读、Val2反复开发、held4历史暴露均不作独立final。
+
+
+## 2026-10-02接力条件复核
+
+用户要求确认实际排队和自动接力。原9e316adc固定launcher的九任务终态+前驱锁释放条件再次核对，针对前驱条件检查通过；新只读scripts/check_rebuild_v1_d27_handover.py核对PID命令所属目录/僵尸状态、180秒心跳、前驱终态和锁、活跃worker与日志，7项诊断逻辑检查通过。查询不触发GPU任务或资源测量。实际服务器排队输出仍未收到，GitHub只有实现提交，不能宣称“已在排队”。后接执行code/plan仍固定9e316adc2fa6fd1f2ee0a554d86c9b3f27d1f64c；新提交只增加诊断与记录，不改变执行绑定。
