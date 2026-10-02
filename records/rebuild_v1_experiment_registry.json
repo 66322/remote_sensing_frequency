@@ -1522,7 +1522,7 @@
     {
       "id": "D25_MISSINGNESS_OPTIMIZATION_20261002",
       "name": "missingness_optimization_matched_screen",
-      "status": "proposed_not_implemented_not_launched",
+      "status": "implemented_local_CPU_pass_user_authorized_not_launched",
       "started_at": null,
       "completed_at": null,
       "protocol": "docs/protocols/D25_MISSINGNESS_OPTIMIZATION_PLAN_20261002.md",
@@ -1530,16 +1530,22 @@
         "records/research_d25_plan_20261002/plan.json"
       ],
       "result": null,
-      "implemented": false,
-      "execution_authorized_by_user": false
+      "implemented": true,
+      "execution_authorized_by_user": false,
+      "execution_authorized": true,
+      "launched": false,
+      "execution_commit": "0c31167d0fdb57f03459ea18981c1ee02bcee9f2",
+      "local_CPU_tests_passed": 12,
+      "execution_protocol": "docs/protocols/D25_EXECUTION_20261002.md",
+      "result_summary": null
     }
   ],
   "next_plan": {
     "schema_version": "1.0",
     "id": "D25_MISSINGNESS_OPTIMIZATION_20261002",
-    "status": "PROPOSED_NOT_IMPLEMENTED_NOT_LAUNCHED",
-    "decision_source": "user asked next experiment planning from D24 and recent papers; design is assistant recommendation",
-    "execution_authorized": false,
+    "status": "IMPLEMENTED_LOCAL_CPU_PASS_USER_AUTHORIZED_NOT_LAUNCHED",
+    "decision_source": "User explicitly authorized concrete D25 eight-arm execution",
+    "execution_authorized": true,
     "source_evidence_commit": "acd2dbfbcf18ef792840bfe3f5465207a74a13c2",
     "source_evidence": "records/research_d24_overnight_20261002T000843_877409/evidence_20261002T121402814506_1365054",
     "source_review": "docs/experiments/D24_REVIEW_AND_PAIR_CORRECTION_20261002.md",
@@ -1558,7 +1564,15 @@
         "priority": 1,
         "seed": 42,
         "steps": 4000,
-        "status": "proposed_not_implemented"
+        "status": "CONFIGURED",
+        "optimizer_steps": 4000,
+        "last4": true,
+        "route": "D25",
+        "decoder_mode": "shared",
+        "gradient_mode": "none",
+        "optical_only": false,
+        "pair": false,
+        "augmentation": "QD"
       },
       {
         "id": "P1",
@@ -1568,7 +1582,15 @@
         "priority": 2,
         "seed": 42,
         "steps": 4000,
-        "status": "proposed_not_implemented"
+        "status": "CONFIGURED",
+        "optimizer_steps": 4000,
+        "last4": true,
+        "route": "D25",
+        "decoder_mode": "shared",
+        "gradient_mode": "none",
+        "optical_only": false,
+        "pair": true,
+        "augmentation": "QD"
       },
       {
         "id": "P2",
@@ -1578,7 +1600,15 @@
         "priority": 3,
         "seed": 42,
         "steps": 4000,
-        "status": "proposed_not_implemented"
+        "status": "CONFIGURED",
+        "optimizer_steps": 4000,
+        "last4": true,
+        "route": "D25",
+        "decoder_mode": "separate",
+        "gradient_mode": "none",
+        "optical_only": false,
+        "pair": false,
+        "augmentation": "QD"
       },
       {
         "id": "P3",
@@ -1588,7 +1618,15 @@
         "priority": 4,
         "seed": 42,
         "steps": 4000,
-        "status": "proposed_not_implemented"
+        "status": "CONFIGURED",
+        "optimizer_steps": 4000,
+        "last4": true,
+        "route": "D25",
+        "decoder_mode": "separate",
+        "gradient_mode": "project",
+        "optical_only": false,
+        "pair": false,
+        "augmentation": "QD"
       },
       {
         "id": "P4",
@@ -1598,7 +1636,15 @@
         "priority": 5,
         "seed": 42,
         "steps": 4000,
-        "status": "proposed_not_implemented"
+        "status": "CONFIGURED",
+        "optimizer_steps": 4000,
+        "last4": true,
+        "route": "D25",
+        "decoder_mode": "shared",
+        "gradient_mode": "project",
+        "optical_only": false,
+        "pair": false,
+        "augmentation": "QD"
       },
       {
         "id": "P5",
@@ -1608,7 +1654,15 @@
         "priority": 6,
         "seed": 42,
         "steps": 4000,
-        "status": "proposed_not_implemented"
+        "status": "CONFIGURED",
+        "optimizer_steps": 4000,
+        "last4": true,
+        "route": "D25",
+        "decoder_mode": "average",
+        "gradient_mode": "none",
+        "optical_only": false,
+        "pair": false,
+        "augmentation": "QD"
       },
       {
         "id": "P6",
@@ -1618,7 +1672,15 @@
         "priority": 7,
         "seed": 42,
         "steps": 4000,
-        "status": "proposed_not_implemented"
+        "status": "CONFIGURED",
+        "optimizer_steps": 4000,
+        "last4": true,
+        "route": "D25",
+        "decoder_mode": "shared",
+        "gradient_mode": "none",
+        "optical_only": true,
+        "pair": false,
+        "augmentation": "Q"
       },
       {
         "id": "P7",
@@ -1628,7 +1690,15 @@
         "priority": 8,
         "seed": 42,
         "steps": 4000,
-        "status": "proposed_not_implemented"
+        "status": "CONFIGURED",
+        "optimizer_steps": 4000,
+        "last4": true,
+        "route": "D25",
+        "decoder_mode": "separate",
+        "gradient_mode": "norm_sham",
+        "optical_only": false,
+        "pair": false,
+        "augmentation": "QD"
       }
     ],
     "physical_gpus": [
@@ -1638,7 +1708,7 @@
     "hardware": "two H10080GB; RAM/disk sufficient, no repeated resource probe",
     "server_root": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
     "output_pattern": "records/research_d25_missingness_<timestamp>_<pid>",
-    "launch": "nohup; bound code/config; no training started in planning task",
+    "launch": "fixed-version nohup; manual server terminal launch observation pending",
     "initialization": "same D21 M0 last_train_state, SHA23b2939ea50867c96c0a17626fd4a85a27100ebd8296b2fc96440ed8bc3d34de; fresh optimizer; no D24 winner continuation",
     "training": "reuse D24 4000-step batch16 BF16 AdamW and keyed fit12 crop/QD stream; P6 uses matching optical Q stream; same budget/selection",
     "selection": "clean Val2 NoBoundary pooled fg5 at 2000/4000, ties earlier; source records retained",
@@ -1656,8 +1726,15 @@
     "stop": "per-job6h technical timeout, no auto retry or sweep; after8 jobs offline screen before any replication",
     "confirmation": "at most2 supported hypotheses, separately plan seed17/2026 and genuinely independent data; no automatic new training",
     "manifest": "records/research_d25_plan_20261002/plan.json",
-    "implemented": false,
-    "launched": false
+    "implemented": true,
+    "launched": false,
+    "execution_commit": "0c31167d0fdb57f03459ea18981c1ee02bcee9f2",
+    "execution_protocol": "docs/protocols/D25_EXECUTION_20261002.md",
+    "controller": "scripts/launch_rebuild_v1_d25.py",
+    "local_CPU_tests_passed": 12,
+    "server_GPU_verified": false,
+    "server_directory": null,
+    "last_observation": null
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -2011,10 +2088,10 @@
     "c1_role": "side_branch_development_candidate_not_adopted_replacement",
     "partial_unfreezing_role": "strong_baseline_strategy",
     "final_method_and_chapters_frozen": false,
-    "next_action": "Implement the proposed D25 eight-job matched study; Pair activation corrected but D25 not run; no resource re-audit.",
+    "next_action": "Execute user-authorized fixed eight-job D25 via manual server nohup; no resource re-audit.",
     "next_action_document": "docs/current/NEXT_EXPERIMENT.md",
     "external_source_gate": "required for corresponding external confirmation, not a universal prerequisite for development exploration",
-    "new_training_authorized_by_this_document": false,
+    "new_training_authorized_by_this_document": true,
     "latest_recommendation": "docs/protocols/D25_MISSINGNESS_OPTIMIZATION_PLAN_20261002.md"
   },
   "proposed_d23": {
@@ -2136,7 +2213,7 @@
     "test6_loaded": false,
     "historical_test6_independent_final_eligible": false,
     "execution_document": "docs/current/NEXT_EXPERIMENT.md",
-    "next_action": "D23 closed; D24 reviewed with invalid Pair ablation correction; D25 suggested implementation next.",
+    "next_action": "D23 closed; D24 reviewed with Pair correction; D25 eight-arm concrete execution authorized and implemented.",
     "recovery_script": "scripts/recover_rebuild_v1_d23_gpu0.py",
     "partial_scientific_review": {
       "report": "docs/experiments/D23_TSF_T0_PARTIAL_RESULTS_20261001.md",

@@ -1,17 +1,9 @@
 # 当前状态
 
-2026-10-02更新；最后服务器队列观测04:06:59.332637 +08，D24 COMPLETE 15/15；无新训练。
+更新2026-10-02。论文可行性探索：优先DSM有益融合、质量变化与缺失能力；部分解冻强基线，C1恢复旁支，最终贡献未冻结。
 
-| 项目 | 状态 |
-|---|---|
-| 阶段与问题 | 可行性探索；DSM有益融合、退化和缺失；最终贡献未冻结 |
-| D23 | 已完成，当前TSF具体解法确认路径关闭 |
-| D24原件 | acd2dbf，564文件已上传；所读64载荷、3360逐tile/1680pooled矩阵与绑定复核通过 |
-| Pair纠错 | A1/A3开关未启用，属于无效消融；不是Pair负结果。代码已修，真实配置回归测试通过 |
-| 有效信号 | last4与质量增强支持强基线；缺失训练显著改善本次缺失状态，但完整精度略降 |
-| 未支持机制 | 当前EMA类别原型/类别平衡/旧教师区域KD；不扩大为整个研究问题失败 |
-| D25 | 8组32k更新建议计划；分头与梯度干扰两个假设＋Pair修正；未实现/未启动 |
-| 资源 | GPU0/1，两H10080GB、RAM/磁盘充足，nohup，zzx对应目录 |
-| 边界 | Potsdam seed42重复开发Val2；Test6禁读；原二进制留服务器，非独立确认 |
+D24最后观测2026-10-02T04:06:59.332637+08:00 COMPLETE15/15，原件acd2dbf已上传并复核。[Pair纠错](../experiments/D24_REVIEW_AND_PAIR_CORRECTION_20261002.md)：A1/A3实际未启用Pair，相关机制判断无效；其他13组比较保留。
 
-[复核](../experiments/D24_REVIEW_AND_PAIR_CORRECTION_20261002.md)；[文献](../literature/D25_OPTIMIZATION_AND_MISSINGNESS_20261002.md)；[交接](HANDOFF.md)；[下一步](NEXT_EXPERIMENT.md)。
+D25用户已授权八组具体执行，代码已实现，12本地CPU行为测试PASS。[固定执行提交0c31167d0fdb57f03459ea18981c1ee02bcee9f2](https://github.com/66322/remote_sensing_frequency/commit/0c31167d0fdb57f03459ea18981c1ee02bcee9f2)；[执行说明](../protocols/D25_EXECUTION_20261002.md)。尚无服务器启动/首步观测，无新结果。GPU0/1双H10080GB、充足RAM/磁盘、batch16无累积、nohup、对应zzx新目录，不重复资源测量。
+
+Test6禁读，重复Val2及历史暴露held4不独立确认。下一步一次启动，后续查询既有目录并上传原件；[交接](HANDOFF.md)、[研究决定](RESEARCH_DECISION.md)、[待办](NEXT_EXPERIMENT.md)。

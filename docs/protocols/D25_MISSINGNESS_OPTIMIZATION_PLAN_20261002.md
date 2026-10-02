@@ -5,9 +5,9 @@
 - Origin Skill: academic-research-suite / experiment-agent
 - Origin Mode: plan
 - Origin Date: 2026-10-02
-- Verification Status: PROPOSED；D24原计数已离线复核，D25未实现/未启动
-- Version Label: D25_plan_v1
-- 决定来源：用户要求结合本次实验和近期论文规划下一次；以下设计是助手建议，不等于贡献采纳或新长训练已启动。
+- Verification Status: IMPLEMENTED_LOCAL_CPU_PASS；用户已授权，服务器启动观测待回传
+- Version Label: D25_execution_v1
+- 决定来源：用户进一步明确“按上述实验规划进行具体实验”，八组执行已授权；不等于贡献已成立。固定执行见[D25执行说明](D25_EXECUTION_20261002.md)。
 
 ## 问题、证据与两个假设
 
@@ -70,4 +70,6 @@ P3共享参数是last4和RGB投影；P4还包含共享decoder。P2/P7各decoder�
 
 建议GPU0 P0→P2→P4→P6；GPU1 P1→P3→P5→P7。两张H10080GB、RAM/磁盘充足沿用；nohup，所有快照/log/cache/checkpoint/轻量归档在/home/jovyan/zzx下新的D25对应目录。正常job估时，不作资源探针。以D24单组约28–33分钟为参照，本轮8组含额外梯度计算粗估3–5小时，非完成承诺；每job6h硬上限，技术失败留证并继续其他组，不自动重试。
 
-本次只完成文献/结果分析、Pair局部代码纠错与计划。D25执行入口和新模型尚未实现；无伪造启动命令，不启动长训练。实现时必要检查为：真实配置Pair改变loss/梯度；L_present+L_missing与原CE相等；投影符号/零梯度/方向和norm-sham；局部缺失像素精确回退；两头及共享参数梯度范围；恢复绑定。通过后直接使用已知双卡执行条件，不再重新测资源。
+D25执行入口和新模型已实现，12项本地CPU检查PASS；五入口与Python3.10语法检查通过。尚无服务器启动观测。已完成必要行为检查：真实配置Pair改变loss/梯度；L_present+L_missing与原CE相等；投影符号/零梯度/方向和norm-sham；局部缺失像素精确回退；两头及共享参数梯度范围；恢复绑定。现在直接按[D25固定版本nohup命令](D25_EXECUTION_20261002.md)使用已知双卡条件执行，不重新测资源。
+
+实现细化：P1单独计算冻结R0教师，其他组不增加无效教师计算；相同更新预算/数据流，实际成本另记。梯度每100步采样，4压力条件的冻结参考在本次shared_reference正常推理并缓存复用，不新增训练，非资源审计。
