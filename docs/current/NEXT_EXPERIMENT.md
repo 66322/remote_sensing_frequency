@@ -1,29 +1,11 @@
-# 下一步：查询已启动的D26，不重复启动
+# 下一步：按实际证据落实安全融合研究
 
-更新2026-10-02。最后服务器观测：queue_status为2026-10-02T19:18:19.427139+08:00 RUNNING、COMPLETE0/9；GPU0 J0 training180/8000（19:18:12.689409+08:00），GPU1 B0 training580/8000（19:18:23.902610+08:00）。queue与worker为分别读取的时间戳，B0行更新稍晚；其余七组PENDING。已收到实际训练步，尚无选模/评价指标或原始gradient文件，不作为实时PID查询和精度结论。本次目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109。[启动证据](../../records/research_d26_launch_observation_20261002/user_reported_launch.json)；固定执行52f94388b1a9c7557e9ef533075661139cd55eda。
+最后上传观测：2026-10-02T22:22:14.689169+08:00，D26 RUNNING、COMPLETE1/9；B0完成，J0/CAP处于评价阶段，其余待执行。不是实时PID状态。原队列固定代码52f94388b1a9c7557e9ef533075661139cd55eda及九组预算不变。
 
-九组×8000、GPU0/1两H10080GB、物理batch16无累积、nohup、zzx目录约定不变，不再资源/预算审计。J0/B0已进入训练，剩余七组由动态队列领取；首训练步已观测，原始gradient文件及评价结果尚未收到。按照[冻结协议](../protocols/D26_BIDIRECTIONAL_FEATURE_PLAN_20261002.md)推进，不重训单模态、扩预算或自动扫参。
+1. D26原九组继续按原协议；最终screen_result/results及逐tile轻量原件由现有上传脚本同步GitHub。现有B0已按36原件重算，不等待重复资源或单模态审计。
+2. 新增研究按用户优先级及[文献映射](../literature/D27_SAFE_ROUTING_RECENT_LITERATURE_20261002.md)落实[D27十组计划](../protocols/D27_SAFE_ROUTING_PLAN_20261002.md)：安全目标×静态/图像级/局部/类别路由，另两打乱。当前为建议，不是已实现或已启动。
+3. 实现前将路由容量、三个专家子监督、损失分母、随机类别打乱与预设去留绑定plan；只做相应行为回归。给出具体可执行nohup入口后才能说新增队列已准备好，不用本地压力评价草案替代主实验。
+4. D26完整结果若改变载体选择，单独记录理由并重写方案；不会事后改D26门槛，不按最新正结果自动换主线。
+5. 最多一条机制另立多seed/未暴露场景确认。频率为条件专家后续，STARS式缺失补偿另立能力检验；本轮缺失等值回退不算补偿提升。
 
-```bash
-cd /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
-D26_DIR="/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109"
-D26_PY=$(python -c 'import json; print(json.load(open("records/rebuild_v1_d21_queue_20260928/plan.json"))["python"])')
-"$D26_PY" -B "$D26_DIR/code/scripts/status_rebuild_v1_d26.py" --directory "$D26_DIR"
-tail -n 20 "$D26_DIR/nohup.log"
-```
-
-训练step>0已观测，原始gradient记录仍待回传后再核验；若TECHNICAL_FAILURE，先读该任务日志尾，不重开队列。第一正常完整任务结束后ETA采用实际耗时。九组结束查看screen_result.json/results.csv并按[执行说明](../protocols/D26_EXECUTION_20261002.md)上传轻量原件；从GitHub直接读长输出、离线核对矩阵与预设gate。最多一条成立机制另立seed/独立场景协议，失败不自动追训。
-
-研究阶段仍可行性探索，双方信息互补主问题不变，C1旁支、强基线和最终贡献角色不变。历史held4不独立、Test6禁读。启动不是精度结果。
-
-
-## 2026-10-02 19:18进度同步与结论边界
-
-[逐任务观测](../../records/research_d26_progress_20261002T191819/observation.json)、[用户输出](../../records/research_d26_progress_20261002T191819/user_status_stdout.txt)、[暂估结束时间](../../records/research_d26_progress_20261002T191819/eta_estimate.json)已提交。controller PID1571946及本次目录保持，不重复启动。当前只有运行推进证据，D26没有新增精度/频率/语义贡献结论；既有D15—D25结论已在GitHub记录，不因本轮运行改变。
-
-截至本次回传，整轮暂估还需8–12小时，约10月3日03:00–07:00；这是早期速度外推，后续交互/完整评价尚未计时，服务端仍报告ETA_PENDING。第一正常任务完整结束后更新，不额外资源探针。以本分支共享记录为准，不能只留本地或聊天；checkpoint/预测/完整实时日志仍在服务器，完成后上传轻量评价原件再分析。
-
-
-## 2026-10-02近期文献阅读补充
-
-[双向互补、缺失补偿与频率机制阅读](../literature/D26_RECENT_PAPERS_MECHANISM_READING_20261002.md)补充KTB、DIS2、SGMA、功能熵、MFFNet/FDAM、EBMC和SynIB的机制边界。新增建议为独有信息保持、双向任务补偿与编码频率衰减的条件检验，均未采纳为新运行/贡献。D26固定九组及去留规则不变；完成后优先用现有结果定位瓶颈，按证据选择至多一项，不重启资源审计或重复单模态训练。最后服务器状态仍以已归档观测为准。
+运行边界：GPU0/1两H10080GB，RAM/磁盘充足，physical batch16无累积，nohup，所有code/cache/log/PID/light records在zzx对应独立目录；不再预算资源探针、从头重训单模态、自动扫参或读Test6。

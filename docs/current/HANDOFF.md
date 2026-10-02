@@ -1,29 +1,13 @@
-# 当前交接：D26双GPU已进入训练，0/9完成
+# 当前交接（2026-10-02：B0部分复核与新增问题规划）
 
-更新2026-10-02；[前次交接](../history/HANDOFF_20261002_BEFORE_D26_LAUNCH.md)。用户明确“按上述实验规划进行具体实验”，执行范围仅D26九组×8000=72000更新。代码52f94388b1a9c7557e9ef533075661139cd55eda；最后服务器观测：queue_status为2026-10-02T19:18:19.427139+08:00 RUNNING、COMPLETE0/9；GPU0 J0 training180/8000（19:18:12.689409+08:00），GPU1 B0 training580/8000（19:18:23.902610+08:00）。queue与worker为分别读取的时间戳，B0行更新稍晚；其余七组PENDING。已收到实际训练步，尚无选模/评价指标或原始gradient文件，不作为实时PID查询和精度结论。本次目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109，日志nohup.log。[启动证据](../../records/research_d26_launch_observation_20261002/user_reported_launch.json)。下一动作查询已有队列，不再新建目录启动、资源探针、重训单模态或重复询问许可。
+研究阶段：可行性探索，最终贡献未冻结。用户明确新增优先级：安全双模态融合→动态专家选择→局部/类别自适应。前者是问题，后二者是待验证解法；RGB退化/缺失仍保留，双向互补主问题未撤回。C1恢复旁支、部分解冻强基线，D23/D25失败具体配方仍关闭。
 
-研究阶段为可行性探索。主问题RGB–DSM双方互补和任一方退化/缺失。频率/语义有独立容量/空间/打乱对照，不承诺都成立；J0联合适配强对照，C1任务恢复仍旁支，最终贡献未冻结。没有方向变更，D23—D25旧失败判定不改。
+最后上传观测：2026-10-02T22:22:14.689169+08:00，D26 RUNNING、COMPLETE1/9；B0完成，J0/CAP处于评价阶段，其余待执行。不是实时PID状态。原队列固定代码52f94388b1a9c7557e9ef533075661139cd55eda及九组预算不变。
 
-历史已有结论见[汇总](../experiments/RESEARCH_SYNTHESIS_D15_D25_20261002.md)，不是实验全部无效；未确立的是超出强基线、可归因且有独立泛化的新机制。最后服务器观测2026-10-02T15:14:54.351476+08:00：D25 COMPLETE8/8，原件2290b39、复核39ed183，旧目录records/research_d25_missingness_20261002T130253_1358078，不重新启动。
+[原件](https://github.com/66322/remote_sensing_frequency/tree/872e246c99559d1777b03e329a1febee0c52a976/records/research_d26_bidirectional_20261002T191253_1513109/evidence_20261002T222229992478_1671572)；[B0复核](../experiments/D26_B0_PARTIAL_REVIEW_20261002.md)。clean相对固定RGB+0.726782pp、down4+2.017157pp，但错位在3_11−0.496337pp。36原件/432联合计数区域复核，不是超大summary或247文件全量SHA审计，未下载权重。其他D26候选完整评价未收到，不能排最终赢家。
 
-D26使用P6 selected2000 SHA bef8dda6537b68fc51f300bc3789bbbef57682baedf92a3f7665217a4a2fde71和D15 seed42 best15000 SHA d597f1adf3ca0291dcd7d063af941bebf3db1e61205cfdaf13271fbba9437e84；真实路径和原预处理已绑定。两真实独立专家、异构预训练/历史，所有九组同一对；J0只更新两末四block/decoder，其余冻结。分类前特征投影stride4/派生stride8，双向交互，与旧R0/M0输出gate不同。
+用户要求结合具体实验与近年论文进行检索和规划。已完成[定向文献映射](../literature/D27_SAFE_ROUTING_RECENT_LITERATURE_20261002.md)和[D27十组建议](../protocols/D27_SAFE_ROUTING_PLAN_20261002.md)：四路由粒度×CE/保护恢复目标八组、两打乱对照，每组8000；载体复用现有独立专家，单模态重训0。是规划，尚未实现/启动。BiXFormer、WAMNet、STARS、MultiMoE、SimMLM可核对原始来源；GLFRNet指定2026论文原文未成功读取，不落实其具体模块。压力评价本地草案仅配套诊断，不是本轮主实验，也未运行。
 
-机读[plan](../../records/research_d26_plan_20261002/plan.json)与[实现细化](../protocols/D26_EXECUTION_20261002.md)均在看D26结果前冻结。16CPU行为、原DSM random64 forward/梯度93/93、26Python3.10语法、27快照/5CLI通过。本地检查未读取服务器权重。服务器已回传训练步，加载和训练执行完成由进度推断；原始权重验收/gradient文件仍未收到，不能冒充原件审计。J0保留原DSM bilinear decoder CUDA非确定性warning，不声明比特重复；所有BN统计/专家dropout固定eval。
+下一步：从GitHub读D26最终原件并依原门槛判断，不改旧运行；实现新D27计划前冻结专家池、损失分母、类别随机打乱与运行plan。不得把计划写成代码已实现。D26最终证据若否定载体可行性，显式修订D27建议及依据，不能悄悄换主线；频率只有独立增量才条件加入，STARS补偿另立问题。
 
-两GPU动态队列，物理batch16无累积，8线程常驻tile预取，不测资源预算。8000步固定，两时刻以三状态Val2 NoBoundary fg5 mean选模；固定8000十主条件诊断、selected22条件，双方退化/整幅局部缺失、互补缺失/双缺失无效区均保存。预测、6×6原计数、6^4 lossless sparse joint、SHA绑定可离线重算；共享只读原专家cache避免重复推理。冻结全缺失回退是工程保证，不是新精度贡献。
-
-去留见[协议第7节](../protocols/D26_BIDIRECTIONAL_FEATURE_PLAN_20261002.md)：主要XSF超过B0/CAP/X、保护clean/各质量族/tile/缺失并与J0比较；S/F各独立增量和打乱，only-correct保留率独立门槛。阈值不变，失败关闭本轮载体/机制，不自动扫参或追训；通过最多一条另立seed与真正独立来源确认。
-
-资源沿用GPU0/1两H10080GB、RAM/磁盘充足；所有新产物/code/临时/cache/PID在/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_<timestamp>_<pid>，nohup。无SSH由用户执行命令，启动/完成回传再更新服务器状态；不把发布当启动。Test6禁读，D15 Train16使held4不是未见final，Val2仅开发。新对话只需读上述GitHub入口，不重做审计。
-
-
-## 2026-10-02 19:18进度同步与结论边界
-
-[逐任务观测](../../records/research_d26_progress_20261002T191819/observation.json)、[用户输出](../../records/research_d26_progress_20261002T191819/user_status_stdout.txt)、[暂估结束时间](../../records/research_d26_progress_20261002T191819/eta_estimate.json)已提交。controller PID1571946及本次目录保持，不重复启动。当前只有运行推进证据，D26没有新增精度/频率/语义贡献结论；既有D15—D25结论已在GitHub记录，不因本轮运行改变。
-
-截至本次回传，整轮暂估还需8–12小时，约10月3日03:00–07:00；这是早期速度外推，后续交互/完整评价尚未计时，服务端仍报告ETA_PENDING。第一正常任务完整结束后更新，不额外资源探针。以本分支共享记录为准，不能只留本地或聊天；checkpoint/预测/完整实时日志仍在服务器，完成后上传轻量评价原件再分析。
-
-
-## 2026-10-02近期文献阅读补充
-
-[双向互补、缺失补偿与频率机制阅读](../literature/D26_RECENT_PAPERS_MECHANISM_READING_20261002.md)补充KTB、DIS2、SGMA、功能熵、MFFNet/FDAM、EBMC和SynIB的机制边界。新增建议为独有信息保持、双向任务补偿与编码频率衰减的条件检验，均未采纳为新运行/贡献。D26固定九组及去留规则不变；完成后优先用现有结果定位瓶颈，按证据选择至多一项，不重启资源审计或重复单模态训练。最后服务器状态仍以已归档观测为准。
+已知资源GPU0/1 H10080GB、RAM/磁盘充足。nohup，physical batch16无累积，所有服务器记录/code/cache归档在zzx对应目录。不重新资源审计、重复单模态实验或重问资源。服务器由用户操作，没有SSH。Test6禁读；开发Val2和历史暴露held4不独立final。后续重要工作继续写回本分支并回读。
