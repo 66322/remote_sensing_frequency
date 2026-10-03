@@ -44,6 +44,16 @@ def strata(kinds,tag,device):
         rows.append([not rq and not dq,dq,rq])
     return torch.tensor(rows,device=device)
 
+def training_batch(batch, device='cuda'):
+    """Move tensors while retaining treatment metadata required by the loss."""
+    kinds = batch['treatment']
+    if len(kinds) != batch['rgb'].shape[0] or not all(isinstance(k, str) for k in kinds):
+        raise ValueError('treatment metadata must match the physical batch')
+    moved = {k: v.to(device=device, non_blocking=True)
+             for k, v in batch.items() if torch.is_tensor(v)}
+    moved['treatment'] = list(kinds)
+    return moved
+
 def objective(model,batch):
     target=batch['gt'];full=torch.ones_like(target,dtype=torch.bool);result=[];counts={}
     for tag,rgb,ds,rm,dm in (('clean',batch['rgb'],batch['aux'],full,full),('aug',batch['rgb2'],batch['aux2'],batch['rm2'],batch['dm2'])):

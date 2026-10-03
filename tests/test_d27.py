@@ -13,7 +13,7 @@ import model
 if PARENT.exists():model.__path__.append(str(PARENT/'model'))
 spec=importlib.util.spec_from_file_location('d27model',BASE/'model/rebuild_v1_d27.py')
 m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
-from d27_data import safety,strata,objective,treatment
+from d27_data import safety,strata,objective,treatment,training_batch
 from d27_common import validate_plan,parent_terminal
 torch.set_num_threads(1)
 class FakeExpert(nn.Module):
@@ -90,6 +90,20 @@ class Checks(unittest.TestCase):
     def test_expert_strata(self):
         s=strata(['clean+clean+clean','rgb_down4+aux_noise_std010+clean','clean+clean+dsm_missing'],'aug','cpu')
         self.assertEqual(s.tolist(),[[True,False,False],[False,True,True],[True,False,False]])
+    def test_worker_transfer_preserves_treatment_for_actual_objective(self):
+        x,d,mask=inputs()
+        batch=dict(rgb=x,aux=d,gt=torch.randint(0,6,d.shape),rgb2=x*.5,
+                   aux2=d+.1,rm2=mask,dm2=mask,
+                   treatment=['rgb_down4+aux_noise_std010+clean']*2)
+        moved=training_batch(batch,device='cpu')
+        self.assertEqual(moved['treatment'],batch['treatment'])
+        net=make('G1')
+        loss,counts=objective(net,moved)
+        loss.backward()
+        self.assertTrue(torch.isfinite(loss))
+        broken=dict(batch,treatment=['clean'])
+        with self.assertRaises(ValueError):training_batch(broken,device='cpu')
+
     def test_objective_frozen_anchors_and_learned_gradients(self):
         x,d,mask=inputs();gt=torch.randint(0,6,d.shape)
         batch=dict(rgb=x,aux=d,gt=gt,rgb2=x*.5,aux2=d+.1,rm2=mask,dm2=mask,treatment=['rgb_down4+aux_noise_std010+clean']*2)

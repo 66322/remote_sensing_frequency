@@ -16,7 +16,7 @@ import torch
 from model.rebuild_v1_d27 import D27Segmenter
 from model.rebuild_v1_d26 import build_experts
 from d27_common import read,write,sha,now,within,directories,validate_plan
-from d27_data import Loader,Crops,PrefetchedBatches,objective
+from d27_data import Loader,Crops,PrefetchedBatches,objective,training_batch
 from d27_evaluation import References,FixedPair,selection,evaluate
 
 def seed_all(seed=42):
@@ -137,7 +137,7 @@ def main():
             optimizer.zero_grad(set_to_none=True)
             factor=.1+.9*step/100 if step<=100 else (8000-step)/7900
             for group in optimizer.param_groups:group['lr']=group['initial_lr']*factor
-            tensors={k:v.cuda(non_blocking=True) for k,v in batch.items() if torch.is_tensor(v)}
+            tensors=training_batch(batch)
             loss,denominators=objective(model,tensors)
             if not torch.isfinite(loss):raise RuntimeError('nonfinite loss')
             if step==1:write(out/'fit_condition.json',dict(values=model.fit_condition.detach().float().cpu().flatten().tolist(),source='first common cleanfit physical batch; no validation',signature=signature))
