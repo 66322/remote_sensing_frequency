@@ -14,4 +14,6 @@ D27四gate、D28压力gate保持失败；原D29不激活。D30继续已授权损
 
 只使用物理GPU0/1，两张H10080GB；RAM/磁盘充足，无资源探针。seed42、8000步、batch16无累积、nohup。快照、临时、缓存、日志全部在/home/jovyan/zzx对应实验目录。用户在服务器终端执行，无SSH；Test6与独立final禁读。重复开发Val2不是确认性泛化证据。GitHub本分支为共享权威，大预测/checkpoint本体留服务器并索引。
 
-历史角色与去留框架完整保留在[旧决定](../history/pre_post_D30_execution_20261003/RESEARCH_DECISION.md)。新机制失败不扩大为整个研究问题无效；通过单seed开发gate后只选一条另立确认协议。D30最新直接运行观测仍为2026-10-03T23:17:45.146029+08:00，控制器2349619存活，PR_area2860/8000、PR_pixel2420/8000；这不是实时状态。随后用户回传S0/S1/P/R的selected及fixed8000完成指标，未包含PR_area/PR_pixel、重放效果或原矩阵。新18＋4队列已实现并通过10项CPU检查，**尚无服务器启动、排队或存活观测**；必须执行下一步里的nohup指令后才可称排队。
+历史角色与去留框架完整保留在[旧决定](../history/pre_post_D30_execution_20261003/RESEARCH_DECISION.md)。新机制失败不扩大为整个研究问题无效；通过单seed开发gate后只选一条另立确认协议。最后用户回传为2026-10-04 00:08启动日志（时间取目录名，日志行无独立时间戳）：Post-D30控制器PID2450552已由nohup启动，CPU检查通过，记录`PORTFOLIO_WAITING_D30 RUNNING`，即已排队等待D30。执行commit固定01ec8dee82f7e272f6a650aaf9f3e619a0e7c516，新目录`research_post_d30_mechanisms_20261004T000812_2446364`；所给日志尚无新GPU worker启动。没有/proc直接存活检查或完整queue_status回传，不能把此次日志当作持续实时存活保证。D30在该日志中被间接观测为RUNNING；其最后直接进度仍为10月3日23:17，随后四项完成指标已分析，PR_area/PR_pixel、重放效果及原矩阵待收。
+
+[本次启动观测](../../records/research_post_d30_mechanisms_20261004T000812_2446364/launch_observation_20261004T000812.json)。

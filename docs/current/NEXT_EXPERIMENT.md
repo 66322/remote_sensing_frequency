@@ -1,37 +1,16 @@
-# 下一步：一次启动18＋4后接队列，并收齐D30原件
+# 下一步：查询已排队的18＋4机制队列，收齐D30原件
 
-D30最新直接运行观测仍为2026-10-03T23:17:45.146029+08:00，控制器2349619存活，PR_area2860/8000、PR_pixel2420/8000；这不是实时状态。随后用户回传S0/S1/P/R的selected及fixed8000完成指标，未包含PR_area/PR_pixel、重放效果或原矩阵。新18＋4队列已实现并通过10项CPU检查，**尚无服务器启动、排队或存活观测**；必须执行下一步里的nohup指令后才可称排队。
+最后用户回传为2026-10-04 00:08启动日志（时间取目录名，日志行无独立时间戳）：Post-D30控制器PID2450552已由nohup启动，CPU检查通过，记录`PORTFOLIO_WAITING_D30 RUNNING`，即已排队等待D30。执行commit固定01ec8dee82f7e272f6a650aaf9f3e619a0e7c516，新目录`research_post_d30_mechanisms_20261004T000812_2446364`；所给日志尚无新GPU worker启动。没有/proc直接存活检查或完整queue_status回传，不能把此次日志当作持续实时存活保证。D30在该日志中被间接观测为RUNNING；其最后直接进度仍为10月3日23:17，随后四项完成指标已分析，PR_area/PR_pixel、重放效果及原矩阵待收。
 
-执行下面一次即可。把FETCH_HEAD解析为不可变执行commit并保存到新目录；只在D30已完成且释放后使用GPU0/1。当前D30科学gate失败或成功都可执行独立新机制诊断，但技术失败会HOLD。
-
-```bash
-(
-set -e
-cd /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
-git fetch origin rebuild-v1-protocol-20260915
-POST_COMMIT=$(git rev-parse FETCH_HEAD)
-POST_PY=$(python -c 'import json; print(json.load(open("/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/rebuild_v1_d21_queue_20260928/plan.json"))["python"])')
-test -x "$POST_PY"
-POST_DIR="$PWD/records/research_post_d30_mechanisms_$(date +%Y%m%dT%H%M%S)_$$"
-mkdir "$POST_DIR"
-git show "$POST_COMMIT":scripts/launch_post_d30.py > "$POST_DIR/launch.py"
-nohup "$POST_PY" -u -B "$POST_DIR/launch.py" \
-  --root "$PWD" --directory "$POST_DIR" --commit "$POST_COMMIT" \
-  > "$POST_DIR/nohup.log" 2>&1 < /dev/null &
-POST_PID=$!
-printf '%s\n' "$POST_PID" > "$POST_DIR/controller.pid"
-printf 'POST_PID=%s\nPOST_DIRECTORY=%s\nPOST_LOG=%s\n' "$POST_PID" "$POST_DIR" "$POST_DIR/nohup.log"
-sleep 5
-tail -n 15 "$POST_DIR/nohup.log"
-)
-```
+已于00:08启动，不要重复执行创建目录或nohup启动指令。当前只做查询；控制器会在D30六job完成、有效汇总、锁释放且无前序worker后自动接力。D30科学gate失败或成功都可执行新机制诊断，技术失败则HOLD。
 
 用启动打印的绝对POST_DIRECTORY查询，不依赖当前目录：
 
 ```bash
-POST_DIR=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_实际时间_PID
+POST_DIR=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364
 POST_PY=$(python -c 'import json; print(json.load(open("/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/rebuild_v1_d21_queue_20260928/plan.json"))["python"])')
 "$POST_PY" -B "$POST_DIR/code/scripts/status_post_d30.py" --directory "$POST_DIR"
+ps -p 2450552 -o pid,etime,stat,args
 tail -n 20 "$POST_DIR/nohup.log"
 ```
 
@@ -51,3 +30,5 @@ D30原件仍用已有目录下upload_rebuild_v1_d30_records.py显式上传；科
 [四项结果分析](../experiments/D30_FOUR_ARM_REVIEW_20261003.md)、[执行协议](../protocols/POST_D30_EXECUTION_20261003.md)、[机读计划](../../records/research_post_d30_design_20261003/plan.json)。
 
 [旧下一步](../history/pre_post_D30_execution_20261003/NEXT_EXPERIMENT.md)。
+
+[本次启动观测](../../records/research_post_d30_mechanisms_20261004T000812_2446364/launch_observation_20261004T000812.json)。
