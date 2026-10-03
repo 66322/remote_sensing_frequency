@@ -1,6 +1,13 @@
-# 研究决定：D30获授权实施，后接D28
+# 研究决定：D30授权范围内已接力启动
 
-用户2026-10-03明确“按上述规划进行，随后加入已进行的队列后面”。D30已实现、执行授权已记录；**待用户服务器执行下面一次nohup命令，尚未收到D30 PID/队列观测，不能写成已在排队**。执行commit固定9db12dfb7ee85dff91dd6c246c7f161b60aca603。本地18项行为检查17通过、1项Linux文件锁检查跳过；服务器启动时自动执行全部18项CPU检查。未在本地或服务器启动训练。
+## D30最新服务器观测：2026-10-03 20:52
+
+用户已执行nohup启动，控制器PID2349619，CPU检查PASS；GPU0 replay_G0 PID2349792、GPU1 replay_G1 PID2349798已开始uniform固定混合评价。最后worker观测20:52:55.972803+08:00。D30已经完成自动接力并进入重放，四组新训练尚未观测开始；不是仍待启动，也不需要重复启动。当前时刻存活情况须用只读查询确认。
+
+运行目录：/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d30_loss_decomposition_20261003T205144_2349167。按冻结控制器执行链，开始worker表示D28终态、summary、锁释放与残留worker检查已通过；D28完整科学结果仍未读取，不能据此判断现象/gate。查询报错源于启动括号内cd不保留，当前shell在jovyan、相对plan路径不存在；错误只影响查询，不影响后台作业。查询改用绝对plan路径。[启动原件](../../records/research_d30_loss_decomposition_20261003T205144_2349167/startup_observation.json)。
+
+
+用户已执行固定commit 9db12dfb7ee85dff91dd6c246c7f161b60aca603，收到CPU检查PASS和两个重放worker日志；最后观测见上。四组训练尚未观测开始，D27失败门槛与D30原设计不变。
 
 采用范围仅为D27保护/恢复及归一化拆解，复用S0/S1、无新单模态训练；原D29未激活，旧D27四gate失败不修改。D28技术完成后接力，与其科学是否正结果分开。完整[实现检查](../experiments/D30_IMPLEMENTATION_20261003.md)。下面前阶段建议保留为历史，执行授权以上述最新用户指令为准。
 

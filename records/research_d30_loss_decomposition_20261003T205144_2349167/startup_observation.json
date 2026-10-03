@@ -1,0 +1,50 @@
+{
+  "source": "user pasted server terminal output",
+  "startup_directory_timestamp": "2026-10-03T20:51:44+08:00",
+  "last_worker_observed_at": "2026-10-03T20:52:55.972803+08:00",
+  "execution_commit": "9db12dfb7ee85dff91dd6c246c7f161b60aca603",
+  "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d30_loss_decomposition_20261003T205144_2349167",
+  "controller_pid": 2349619,
+  "cpu_checks": "D30_CPU_CHECKS_PASS",
+  "phase": "replay",
+  "workers": [
+    {
+      "job": "replay_G0",
+      "physical_gpu": 0,
+      "pid": 2349792,
+      "last_progress": {
+        "mode": "uniform",
+        "done": 0,
+        "total": 24,
+        "observed_at": "2026-10-03T20:52:41.988511+08:00",
+        "phase": "evaluation",
+        "tile": "3_11",
+        "condition": "clean",
+        "windows_done": 529,
+        "windows_total": 529
+      }
+    },
+    {
+      "job": "replay_G1",
+      "physical_gpu": 1,
+      "pid": 2349798,
+      "last_progress": {
+        "mode": "uniform",
+        "done": 0,
+        "total": 24,
+        "observed_at": "2026-10-03T20:52:55.972803+08:00",
+        "phase": "evaluation",
+        "tile": "3_11",
+        "condition": "rgb_down4"
+      }
+    }
+  ],
+  "query_error": {
+    "cause": "launch subshell cd did not persist; next relative plan path resolved from /home/jovyan",
+    "impact": "read-only status commands did not execute; detached queue continued"
+  },
+  "predecessor": "D30 start implies frozen controller D28 handover checks passed; D28 full results not yet read",
+  "training_started": false,
+  "test6_loaded": false,
+  "live_status_now": "not claimed; last user observation only"
+}
