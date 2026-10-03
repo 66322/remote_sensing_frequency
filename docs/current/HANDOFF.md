@@ -1,23 +1,17 @@
-# 当前交接：D30后接方案已设计，未排队
+# 当前交接：D30实现完成，等待一次服务器nohup启动
 
-研究仍处可行性探索：RGB–DSM双方条件互补、任一模态退化/缺失可靠分割。频率和专家是候选解法，任务驱动恢复仍旁支，未决定转向或冻结论文贡献。
+用户2026-10-03明确“按上述规划进行，随后加入已进行的队列后面”。D30已实现、执行授权已记录；**待用户服务器执行下面一次nohup命令，尚未收到D30 PID/队列观测，不能写成已在排队**。执行commit固定9db12dfb7ee85dff91dd6c246c7f161b60aca603。本地18项行为检查17通过、1项Linux文件锁检查跳过；服务器启动时自动执行全部18项CPU检查。未在本地或服务器启动训练。
 
-D27修复轮已完成10/10并上传cedbc594d4e438d3c220ee80d3e82f563a8c2ae3，500份tile原件复核支持当前四gate失败。保护/恢复使综合下降约1.8pp；DSM独有正确保留增加伴随更大的RGB正确计数损失；动态/局部/类别增量不足。known missing回退成立但不代表未知失效鲁棒性。证据限开发Val2/seed42，不能扩大为研究问题失败。
+研究阶段：论文可行性探索。主问题仍是RGB–DSM双方条件互补和任一模态退化/缺失可靠分割；频率/专家为候选，任务驱动恢复旁支。D27原件复核验证了当前保护/恢复配方的收益伤害取舍失败；没有分项目标证据证明唯一根因。旧安全/动态/局部/类别四gate失败不修改。
 
-D28最后收到的服务器观测为2026-10-03T18:34:10.615615+08:00：RUNNING、0/7，RGB_anchor在GPU0、DSM_anchor在GPU1。尚未收到更晚状态，不能推定当前完成。既定七模型、238次tile评价继续，禁止重复启动。
+最新决定来源：用户明确要求按D30规划实施并后接现有队列。实现冻结48次G0/G1固定混合评价、P/R/PR_area/PR_pixel四静态训练、原S0/S1复用；两项目标全因子与单因素归一化对照。仅恢复S0为修复结论，不承诺新贡献；无开发实用增量停止配方，无自动扫参、旧D29不激活。
 
-## 最新工作与下一步
+服务器最后观测：D27 repair 2026-10-03 18:22 COMPLETE10/10，原件cedbc59已复核；D28 2026-10-03T18:34:10.615615+08:00 RUNNING0/7，GPU0 RGB_anchor、GPU1 DSM_anchor。没有更晚观测。D30还未收到PID/排队状态。下一助手不能假定服务器已挂入D30。
 
-用户要规划新增队列；[D30协议](../protocols/D30_LOSS_DECOMPOSITION_AFTER_D28_20261003.md)与[机器计划](../../records/research_d30_plan_20261003/plan.json)已整理。48次G0/G1固定路由诊断；4组静态S训练P、R、PR_area、PR_pixel，复用S0/S1，8000步/组，总32000步。两卡两轮约3.5—4.5小时，仅按旧作业估计。
+实际路径：root=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro。D27=records/research_d27_safe_routing_repair_20261003T092243758628_2001983，D28=records/research_d28_pressure_20261003T092243758628_2001983。D30启动后独立records/research_d30_loss_decomposition_<时间>_<PID>。现有D27/D28执行绑定ba7088e；D30执行固定9db12dfb7ee85dff91dd6c246c7f161b60aca603。
 
-当前为PLANNED_NOT_IMPLEMENTED_NOT_QUEUED。没有D30控制器/PID或启动命令。下一实施需实现并验证目标数值兼容、checkpoint绑定、D28锁释放后接、分项loss/梯度日志；不可宣称已有队列接力。D28科学负结果不阻止独立损失诊断，技术失败则HOLD。原D29不自动启动。
+用户终端执行，无SSH。[下一步](NEXT_EXPERIMENT.md)含一次nohup启动与只读存活/进度/上传命令。controller等待D28全部COMPLETE、summary有效、锁释放、worker退出再接力；D28科学负结果不阻断独立诊断，技术失败HOLD。独立D30控制锁防重复，异常不杀现有队列。
 
-研究边界：D27已经失败的是当前配方和机制，未证明唯一根因；新设计拆开保护、恢复、交互及恢复归一化。仅修复回到S0不构成新贡献；新筛选规则只用于后续资源分配，不修改原gate。未采纳继续堆MoE/频率、自动扫权重、多seed追训、用D28挽救D27等做法。
+仅GPU0/1 H10080GB，内存/硬盘充足，batch16无累积，不资源审计；快照/临时/缓存/日志均在zzx相应目录。Test6禁读，Val2反复开发不是独立final。轻量原件同分支GitHub同步；权重/预测保留服务器索引。
 
-## 绑定与事实来源
-
-D27运行research_d27_safe_routing_repair_20261003T092243758628_2001983；执行ba7088ec05be7b85dd45e5896a8407506bcca14d；原件cedbc594d4e438d3c220ee80d3e82f563a8c2ae3。[完整复核](../experiments/D27_FINAL_REVIEW_20261003.md)。D28运行research_d28_pressure_20261003T092243758628_2001983，均在工程records下。
-
-服务器由用户终端操作，无SSH。仅GPU0/1，两卡H10080GB；RAM/硬盘充足，无资源审计。物理batch16无累积；长任务nohup，所有快照/临时/缓存/日志在/home/jovyan/zzx相应实验目录。Test6禁读，开发Val2非独立final。GitHub此分支为共享权威，权重/预测本体服务器保留索引。
-
-[前版交接](../history/pre_D30_plan_20261003/HANDOFF.md)。不重做资源审计，不重复启动D27/D28，不把旧失败目录当新repair科学结果。
+[协议](../protocols/D30_LOSS_DECOMPOSITION_AFTER_D28_20261003.md)、[实现检查](../experiments/D30_IMPLEMENTATION_20261003.md)、[原件复核](../experiments/D27_FINAL_REVIEW_20261003.md)、[前版交接](../history/pre_D30_implementation_20261003/HANDOFF.md)。下一工作是接收D30启动/排队观测和D28结果，不重复资源审计或重复启动。
