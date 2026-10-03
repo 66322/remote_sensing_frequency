@@ -1,4 +1,11 @@
-# 当前状态：D30已接力进入checkpoint重放
+# 当前状态：D30重放12/48，D28 COMPLETE
+
+## 最新实际存活检查：2026-10-03 20:56:13
+
+用户只读查询确认D30控制器2349619 LIVE=True，两个重放worker存活，ACTIVE_RUNNING。queue最后观测20:56:08.886753+08:00；replay_G0 GPU0 6/24、replay_G1 GPU1 6/24，共12/48（25%），uniform模式已完成，expert0开始。四训练P/R/PR_area/PR_pixel仍PENDING，这是设计的重放阶段屏障。查询已正常，无新技术错误，不重复启动。
+
+D28现在有直接状态观测：COMPLETE、controller.lock free；其state最后观测2026-10-03T19:27:53.313658+08:00。科学结果仍待上传/读取，不能从队列完成推出研究gate通过。以上是最后收到的状态，不宣称实时存活。[本次观测](../../records/research_d30_loss_decomposition_20261003T205144_2349167/progress_observation_20261003T205613.json)。
+
 
 ## D30最新服务器观测：2026-10-03 20:52
 
@@ -18,9 +25,9 @@ D28最后收到的服务器观测为2026-10-03T18:34:10.615615+08:00：RUNNING�
 | D26 | 2026-10-03 04:04 COMPLETE9/9 | 已复核，原主候选门槛未过，保留普通融合 |
 | 原D27 | 2026-10-03 04:12，全部step0失败 | 技术失败，无科学结果，目录保留 |
 | D27 repair | 2026-10-03 18:22 COMPLETE10/10；原件已上传复核 | 当前四科学gate失败，known missing回退维持 |
-| D28 | 2026-10-03 18:34 RUNNING0/7 | 已真实后接；其后状态未知 |
+| D28 | 最后state观测2026-10-03 19:27 COMPLETE；20:56确认锁已释放 | 队列完成，完整科学结果待上传读取 |
 | D29 | 条件计划 | 未实现/未排队，旧前提未过 |
-| D30 | 2026-10-03 20:52已接力进入重放 | 控制器2349619，GPU0/1两个重放worker已开始；CPU suite PASS，训练尚未观测 |
+| D30 | 2026-10-03 20:56存活确认，RUNNING replay | GPU0/1各6/24，总12/48；四组训练PENDING，CPU PASS |
 
 [D27复核](../experiments/D27_FINAL_REVIEW_20261003.md)、[D30计划](../protocols/D30_LOSS_DECOMPOSITION_AFTER_D28_20261003.md)、[当前交接](HANDOFF.md)。服务器由用户终端操作，无SSH。仅GPU0/1，两卡H10080GB；RAM/硬盘充足，无资源审计。物理batch16无累积；长任务nohup，所有快照/临时/缓存/日志在/home/jovyan/zzx相应实验目录。Test6禁读，开发Val2非独立final。GitHub此分支为共享权威，权重/预测本体服务器保留索引。
 

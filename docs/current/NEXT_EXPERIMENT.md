@@ -1,4 +1,11 @@
-# D30已接力：只读查询进度，勿重复启动
+# D30正常运行：继续只读查询，D28结果可上传
+
+## 最新实际存活检查：2026-10-03 20:56:13
+
+用户只读查询确认D30控制器2349619 LIVE=True，两个重放worker存活，ACTIVE_RUNNING。queue最后观测20:56:08.886753+08:00；replay_G0 GPU0 6/24、replay_G1 GPU1 6/24，共12/48（25%），uniform模式已完成，expert0开始。四训练P/R/PR_area/PR_pixel仍PENDING，这是设计的重放阶段屏障。查询已正常，无新技术错误，不重复启动。
+
+D28现在有直接状态观测：COMPLETE、controller.lock free；其state最后观测2026-10-03T19:27:53.313658+08:00。科学结果仍待上传/读取，不能从队列完成推出研究gate通过。以上是最后收到的状态，不宣称实时存活。[本次观测](../../records/research_d30_loss_decomposition_20261003T205144_2349167/progress_observation_20261003T205613.json)。
+
 
 ## D30最新服务器观测：2026-10-03 20:52
 
