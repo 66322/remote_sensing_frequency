@@ -1,15 +1,15 @@
-# 共享入口：D28复核完成，D30继续既定诊断
+# 共享入口：D30部分结果已分析，18＋4后接机制实验已实现
 
-## 2026-10-03新增规划：12组主体＋4组条件实验
+权威仓库66322/remote_sensing_frequency，分支rebuild-v1-protocol-20260915。先读[研究决定](current/RESEARCH_DECISION.md)→[交接](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)，再核对原始记录和源码；本地只作工作副本。
 
-用户要求结合实验与近期论文多规划几组，已形成[后续组合计划](protocols/POST_D30_PORTFOLIO_20261003.md)及[论文核对](literature/POST_D28_MECHANISM_READING_20261003.md)。A四组比较全特征/共享对齐与错配；B四新组＋复用A0构成局部对应×增强及错配对照；C四组比较双向缺失任务适配/蒸馏/教师正确筛选/同mask硬CE；F四组仅在B通过后检验两侧高频。先A/B八组，再C四组；每组拟seed42、8000步，未新增多seed。普通单模态锚点复用。
+主问题仍为RGB外观/语义与DSM高度/几何的双向条件互补及任一模态退化/缺失下的可靠分割。处于论文可行性探索，频率、语义可靠性、专家与共享/私有只是候选解法；任务驱动SR/恢复仍为旁支，没有自动转向或确认性贡献。
 
-状态明确：**仅规划，未实现、未排队、未启动**。这是用户要求下的新机制建议，不改变D27/D28旧门槛，不激活D29，不改D30队列。计划写明匹配对照、继承预算、额外计算、候选停止条件与未实现接口；执行授权和真实排队状态另记录。主问题/候选/旁支角色不变，不能把规划中的新机制当已验证贡献。D30最新用户回传检查为2026-10-03 23:17；P/R与重放完成，最后两组仍运行，科学指标尚未收到。
+D30四项结果支持“当前恢复项引入明显信息取舍”，不能归因整个DSM无用；P仅+0.041pp、R−2.013pp，交互项+0.177pp，不是负交互。原始逐tile重算和最后两项结果待收齐。[分析](experiments/D30_FOUR_ARM_REVIEW_20261003.md)。
 
-权威仓库66322/remote_sensing_frequency，分支rebuild-v1-protocol-20260915。先读[研究决定](current/RESEARCH_DECISION.md)→[交接](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)，再沿证据链接核对代码和原件；本地仅工作副本。
+用户授权执行原12＋4规划并增加组数，已实现A6＋B6＋C6主体和B3通过才运行的F4。固定候选/门槛不由敏感性最佳结果替代，不重新开放旧失败配方或D29。[协议](protocols/POST_D30_EXECUTION_20261003.md)。
 
-D28完成并上传38b85f5。238份tile原件重算一致：普通融合仍有益，共同受损额外损失仅0.014570pp，未过0.3pp筛选，复杂路由没有被新条件救活。[完整分析](experiments/D28_FINAL_REVIEW_20261003.md)。
+D30最新直接运行观测仍为2026-10-03T23:17:45.146029+08:00，控制器2349619存活，PR_area2860/8000、PR_pixel2420/8000；这不是实时状态。随后用户回传S0/S1/P/R的selected及fixed8000完成指标，未包含PR_area/PR_pixel、重放效果或原矩阵。新18＋4队列已实现并通过10项CPU检查，**尚无服务器启动、排队或存活观测**；必须执行下一步里的nohup指令后才可称排队。
 
-D30最后直接存活检查2026-10-03T23:17:45.146029+08:00：控制器2349619 LIVE=True、ACTIVE_RUNNING；队列23:17:41记录training。replay_G0/G1均24/24 COMPLETE，P/R均8000步且COMPLETE；GPU0 PR_area2860/8000、GPU1 PR_pixel2420/8000。粗估剩余1.47小时，对应10月4日00:46左右，非结束承诺。本次未收到评价指标，results.csv尚未生成，不能从训练loss比较效果。[观测原件](../records/research_d30_loss_decomposition_20261003T205144_2349167/progress_observation_20261003T231745.json)。
+只使用物理GPU0/1，两张H10080GB；RAM/磁盘充足，无资源探针。seed42、8000步、batch16无累积、nohup。快照、临时、缓存、日志全部在/home/jovyan/zzx对应实验目录。用户在服务器终端执行，无SSH；Test6与独立final禁读。重复开发Val2不是确认性泛化证据。GitHub本分支为共享权威，大预测/checkpoint本体留服务器并索引。
 
-主问题与候选/旁支角色未改变。仅GPU0/1 H10080GB、RAM/磁盘充足、batch16无累积、nohup、zzx对应实验目录；Test6禁读。旧入口已[归档](history/pre_D28_review_20261003/START_HERE.md)，旧“D28未读取/18:34 RUNNING”不作为当前事实。
+旧入口全文已[归档](history/pre_post_D30_execution_20261003/START_HERE.md)。

@@ -1,0 +1,29 @@
+{
+  "status": "LOCAL_CPU_BEHAVIOR_CHECKED_SERVER_PENDING",
+  "generated_at": "2026-10-03 16:02:04 UTC",
+  "tests": 10,
+  "test_output": "test_C_full_teacher_identity_bilateral_heads_and_own_inputs (test_post_d30.Tests.test_C_full_teacher_identity_bilateral_heads_and_own_inputs) ... ok\r\ntest_all_shared_alignment_stop_gradient_and_shuffle (test_post_d30.Tests.test_all_shared_alignment_stop_gradient_and_shuffle) ... ok\r\ntest_capacity_initialization_matched_and_predictors_active (test_post_d30.Tests.test_capacity_initialization_matched_and_predictors_active) ... ok\r\ntest_correct_mask_global_denominator_and_teacher_detach (test_post_d30.Tests.test_correct_mask_global_denominator_and_teacher_detach) ... ok\r\ntest_correspondence_zero_padding_mask_and_nontrivial_gradients (test_post_d30.Tests.test_correspondence_zero_padding_mask_and_nontrivial_gradients) ... ok\r\ntest_every_arm_exact_missing_fallback_and_gradient (test_post_d30.Tests.test_every_arm_exact_missing_fallback_and_gradient) ... ok\r\ntest_frequency_suppression_removes_bypass_high_signal (test_post_d30.Tests.test_frequency_suppression_removes_bypass_high_signal) ... ok\r\ntest_frozen_gate_requires_increment_over_plain_and_augmentation (test_post_d30.Tests.test_frozen_gate_requires_increment_over_plain_and_augmentation) ... ok\r\ntest_native_halo_keeps_labels_and_no_wrap (test_post_d30.Tests.test_native_halo_keeps_labels_and_no_wrap) ... ok\r\ntest_phase_barrier_and_no_premature_handover (test_post_d30.Tests.test_phase_barrier_and_no_premature_handover) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 10 tests in 2.008s\r\n\r\nOK\r\n",
+  "python_compatibility": "Python3.10 AST feature_version passed 10 code files; runtime local Python3.13.3 torch2.7.1 CPU; bound server Python3.10 Torch2.2.2+cu121 not yet executed",
+  "runtime_plan_validation": "22 configured =18 main+4 conditional,30 unique selected eval conditions,22 fixed8000 (10primary+4geometry+8missing),GPU0/1 only,batch16,noaccumulation,Val2 only",
+  "server_launched": false,
+  "server_enqueued": false,
+  "checkpoints_loaded_locally": false,
+  "CUDA_verified": false,
+  "test6_loaded": false,
+  "files_sha256": {
+    "model/rebuild_v1_post_d30.py": "b953b71e11859ec1ead12da617702236a18b51aacd306a635bd37bb519f8cada",
+    "scripts/post_d30_common.py": "49eb2a8b8dbda156437cbb4da81d5a3f6d6a39a74d275efa191f432f9c5ee0ae",
+    "scripts/post_d30_data.py": "9f57a0c738a8721e4183cd292f02433fbfad39b27bd5c191faa3c8c9f9016b7b",
+    "scripts/post_d30_evaluation.py": "25472ba1e92648e94d3bac3b12fc5d167d432c0b9e396e40f673494d5d6519c6",
+    "scripts/run_post_d30.py": "e447f86ccf28c2bb392ff2b603b44db13ec627cdf6d0530f033844e7a546b2fb",
+    "scripts/summarize_post_d30.py": "9c55068a3ee9274e46812fb9b6562339d0ba38b2f3e423a5b064694c83678faa",
+    "scripts/launch_post_d30.py": "f606a21ff10d571cd3bf127989f32d2c68cd45126f46c3ace95f6d9015ff3c8e",
+    "scripts/status_post_d30.py": "a9ed2e139b21827f5ba1ebfa2164e5a7eaa44dedea4ca138c9b6ef6538a2c26a",
+    "scripts/upload_post_d30_records.py": "fdda21c88069b3e7f3e94e543e1c90fd899a991c125ac6a62ecbbdd519c6096c",
+    "tests/test_post_d30.py": "fd03c99f685d5011ddc2a86212b190e5ffc5d01d94489d5d75c6a32919fcbca0",
+    "records/research_post_d30_design_20261003/plan.json": "193c5061c54bff4f88809d1799f8340185d23ee5c41b2938c2fb747dbe9e9da7",
+    "records/research_d30_loss_decomposition_20261003T205144_2349167/user_reported_four_arms_20261003.json": "f04b0ab8fc7841f883d0dd8badcc69e711f87f026d8b99ae860d28db1f76119d",
+    "docs/experiments/D30_FOUR_ARM_REVIEW_20261003.md": "a276cedcca069c433b669e4b67876403b8266eb251a69c684914f04c74747a98",
+    "docs/protocols/POST_D30_EXECUTION_20261003.md": "6be48c08fc3370d16ae99db5f84d322e5edd157c6567f424102bb3c6f3032f69"
+  }
+}

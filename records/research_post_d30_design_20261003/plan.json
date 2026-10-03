@@ -1,0 +1,466 @@
+{
+  "id": "POST_D30_MECHANISMS_20261003",
+  "authorization": "User: analyze D30 then implement 12+4 plan; add more groups, experiment time ample.",
+  "jobs": [
+    {
+      "id": "A0",
+      "phase": "A",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "none",
+      "align_weight": 0.1,
+      "radius": 0,
+      "geometry_aug": false,
+      "shuffle": false
+    },
+    {
+      "id": "A1",
+      "phase": "A",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "all",
+      "align_weight": 0.1,
+      "radius": 0,
+      "geometry_aug": false,
+      "shuffle": false
+    },
+    {
+      "id": "A2",
+      "phase": "A",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "shared",
+      "align_weight": 0.1,
+      "radius": 0,
+      "geometry_aug": false,
+      "shuffle": false
+    },
+    {
+      "id": "A3",
+      "phase": "A",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "shuffled",
+      "align_weight": 0.1,
+      "radius": 0,
+      "geometry_aug": false,
+      "shuffle": false
+    },
+    {
+      "id": "A4",
+      "phase": "A",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "shared",
+      "align_weight": 0.03,
+      "radius": 0,
+      "geometry_aug": false,
+      "shuffle": false
+    },
+    {
+      "id": "A5",
+      "phase": "A",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "shared",
+      "align_weight": 0.3,
+      "radius": 0,
+      "geometry_aug": false,
+      "shuffle": false
+    },
+    {
+      "id": "B1",
+      "phase": "B",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "none",
+      "align_weight": 0.1,
+      "radius": 0,
+      "geometry_aug": true,
+      "shuffle": false
+    },
+    {
+      "id": "B2",
+      "phase": "B",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "none",
+      "align_weight": 0.1,
+      "radius": 2,
+      "geometry_aug": false,
+      "shuffle": false
+    },
+    {
+      "id": "B3",
+      "phase": "B",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "none",
+      "align_weight": 0.1,
+      "radius": 2,
+      "geometry_aug": true,
+      "shuffle": false
+    },
+    {
+      "id": "B4",
+      "phase": "B",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "none",
+      "align_weight": 0.1,
+      "radius": 2,
+      "geometry_aug": true,
+      "shuffle": true
+    },
+    {
+      "id": "B5",
+      "phase": "B",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "none",
+      "align_weight": 0.1,
+      "radius": 1,
+      "geometry_aug": true,
+      "shuffle": false
+    },
+    {
+      "id": "B6",
+      "phase": "B",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "none",
+      "align_weight": 0.1,
+      "radius": 3,
+      "geometry_aug": true,
+      "shuffle": false
+    },
+    {
+      "id": "C0",
+      "phase": "C",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "none",
+      "align_weight": 0.1,
+      "radius": 0,
+      "geometry_aug": false,
+      "shuffle": false,
+      "distill": "none"
+    },
+    {
+      "id": "C1",
+      "phase": "C",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "none",
+      "align_weight": 0.1,
+      "radius": 0,
+      "geometry_aug": false,
+      "shuffle": false,
+      "distill": "all"
+    },
+    {
+      "id": "C2",
+      "phase": "C",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "none",
+      "align_weight": 0.1,
+      "radius": 0,
+      "geometry_aug": false,
+      "shuffle": false,
+      "distill": "correct"
+    },
+    {
+      "id": "C3",
+      "phase": "C",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "none",
+      "align_weight": 0.1,
+      "radius": 0,
+      "geometry_aug": false,
+      "shuffle": false,
+      "distill": "hard"
+    },
+    {
+      "id": "C4",
+      "phase": "C",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "none",
+      "align_weight": 0.1,
+      "radius": 0,
+      "geometry_aug": false,
+      "shuffle": false,
+      "distill": "correct",
+      "directions": [
+        "rgb"
+      ]
+    },
+    {
+      "id": "C5",
+      "phase": "C",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "none",
+      "align_weight": 0.1,
+      "radius": 0,
+      "geometry_aug": false,
+      "shuffle": false,
+      "distill": "correct",
+      "directions": [
+        "dsm"
+      ]
+    },
+    {
+      "id": "F0",
+      "phase": "F",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "none",
+      "align_weight": 0.1,
+      "radius": 2,
+      "geometry_aug": true,
+      "shuffle": false,
+      "conditional": true
+    },
+    {
+      "id": "F1",
+      "phase": "F",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "none",
+      "align_weight": 0.1,
+      "radius": 2,
+      "geometry_aug": true,
+      "shuffle": false,
+      "conditional": true
+    },
+    {
+      "id": "F2",
+      "phase": "F",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "none",
+      "align_weight": 0.1,
+      "radius": 2,
+      "geometry_aug": true,
+      "shuffle": false,
+      "conditional": true
+    },
+    {
+      "id": "F3",
+      "phase": "F",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "align": "none",
+      "align_weight": 0.1,
+      "radius": 2,
+      "geometry_aug": true,
+      "shuffle": false,
+      "conditional": true
+    }
+  ],
+  "main_new_jobs": 18,
+  "conditional_new_jobs": 4,
+  "main_updates": 144000,
+  "conditional_updates": 32000,
+  "architecture": {
+    "stride": 4,
+    "width": 128,
+    "structural_shared": 64,
+    "structural_private": 64,
+    "shared_aux_CE_weight": 0.1,
+    "alignment_weight": 0.1,
+    "alignment": "predict counterpart shared feature; target stop-gradient; normalized cosine, mean two directions, whole both-valid denominator",
+    "private": "original 128 features bypass correspondence; only donor shared64 searched; private64 not spatially warped",
+    "correspondence": "bidirectional soft cosine, temperature .1, 5x5 stride4 neighborhood, padded cells excluded",
+    "C": "frozen D26 B0 selected4000 teacher; residual head on each frozen available preclassifier feature; full-input output exactly B0 at FP32 eval; learned single paths replace exact fallback",
+    "C_distill": "T=2, T^2 KL, total .1, teacher-correct mask training only, denominator all valid; C3 same mask extra .1 hard CE",
+    "frequency": "matched band-blocks after stride4 projection before search; polyphase vs Haar, nonlinear coefficient processing; suppressed donor high bands also removed from bypass before decoder"
+  },
+  "geometry_conditions": [
+    "geom_dx8",
+    "geom_dy8",
+    "geom_warp8",
+    "geom_warp8+rgb_down4"
+  ],
+  "C_conditions": {
+    "rgb": [
+      "dsm_missing",
+      "dsm_missing+rgb_down2",
+      "dsm_missing+rgb_down4",
+      "dsm_missing+rgb_blur5",
+      "dsm_missing+rgb_contrast060"
+    ],
+    "dsm": [
+      "rgb_missing",
+      "rgb_missing+aux_down4",
+      "rgb_missing+aux_noise_std010"
+    ]
+  },
+  "missing_conditions": [
+    "dsm_missing",
+    "dsm_missing+rgb_down2",
+    "dsm_missing+rgb_down4",
+    "dsm_missing+rgb_blur5",
+    "dsm_missing+rgb_contrast060",
+    "rgb_missing",
+    "rgb_missing+aux_down4",
+    "rgb_missing+aux_noise_std010"
+  ],
+  "geometry_training": {
+    "shift_probability": 0.5,
+    "nonzero_shifts": [
+      [
+        2,
+        0
+      ],
+      [
+        -2,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        -4,
+        0
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        -2
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        -4
+      ]
+    ],
+    "probability_each": 0.0625,
+    "stream": "independent keyed post_D30_geometry; all arms share same halo-safe crop coordinates, native DSM shifted before flip/resize, optical and labels fixed",
+    "historical_shift8": "removed from ALL new-arm quality choices to isolate new explicit augmentation",
+    "evaluation": "inverse nearest at native whole tile; phase0 512px sinusoid; clip global exterior; all availability masks unchanged; score geom only on 8px interior support; support mask is never a model input"
+  },
+  "gates": {
+    "A2": {
+      "S_vs_A0": 0.2,
+      "S_vs_A1": 0.2,
+      "S_vs_A3": 0.1,
+      "clean_vs_A0": -0.1,
+      "worst_old_tile_vs_A0": -0.2,
+      "each_retention_vs_A0_pp": -0.5,
+      "both_direction_harm": "not increased vs A0",
+      "fixed8000_delta": "positive"
+    },
+    "B3": {
+      "geometry_vs_B1": 0.5,
+      "geometry_vs_B4": 0.2,
+      "each_geometric_tile": "positive vs B1",
+      "old_S_vs_A0": -0.1,
+      "clean_vs_A0": -0.1,
+      "worst_old_tile_vs_A0": -0.2,
+      "each_retention_vs_B1_pp": -0.5,
+      "both_direction_harm": "not increased vs A0",
+      "fixed8000_geometry_vs_B1": "positive"
+    },
+    "C2": {
+      "each_remaining_direction_vs_C0_C1_C3": 0.3,
+      "each_vs_own_anchor": -0.1,
+      "worst_tile_vs_C0": -0.2,
+      "each_fixed8000_vs_C0": "positive"
+    },
+    "F1": {
+      "S_vs_F0": 0.2,
+      "clean_vs_F0": -0.1,
+      "worst_vs_F0": -0.2,
+      "each_retention_floor_pp": -0.5,
+      "harm": "not increase either direction",
+      "fixed8000_delta": "positive"
+    }
+  },
+  "extra_groups": "A4/A5 strength sensitivity .03/.3, B5/B6 search radius1/3, C4/C5 directional KD. They do not replace fixed gate candidates; no best-of sweep confirmation. C4/C5 keep per-direction KD weight identical, total KD mass halves; diagnostic only.",
+  "training": {
+    "steps": 8000,
+    "batch": 16,
+    "gradient_accumulation": false,
+    "seed": 42,
+    "validation": [
+      4000,
+      8000
+    ],
+    "selection": "clean, RGB-only clean, DSM-only clean arithmetic mean pooled NoBoundary fg5; earlier ties"
+  },
+  "resources": {
+    "physical_gpus": [
+      0,
+      1
+    ],
+    "nohup": true,
+    "no_resource_probe": true,
+    "main_estimated_hours": [
+      17,
+      25
+    ],
+    "conditional_extra_hours": [
+      4,
+      7
+    ],
+    "server_record_root": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records"
+  },
+  "test6_loaded": false,
+  "independent_final_loaded": false,
+  "new_contribution_established": false
+}
