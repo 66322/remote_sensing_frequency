@@ -1,0 +1,61 @@
+{
+  "source": "user pasted persisted status and controller logs",
+  "D27": {
+    "observed_at": "2026-10-03T12:30:41.878164+08:00",
+    "status": "RUNNING",
+    "complete": 2,
+    "total": 10,
+    "jobs": {
+      "G0": {
+        "status": "COMPLETE",
+        "gpu": 0,
+        "completed_progress_at": "2026-10-03T11:10:00.449344+08:00"
+      },
+      "G1": {
+        "status": "COMPLETE",
+        "gpu": 1,
+        "completed_progress_at": "2026-10-03T11:10:44.117153+08:00"
+      },
+      "S0": {
+        "status": "RUNNING",
+        "gpu": 0,
+        "phase": "evaluation",
+        "step": 8000,
+        "progress_at": "2026-10-03T12:30:29.781447+08:00"
+      },
+      "S1": {
+        "status": "RUNNING",
+        "gpu": 1,
+        "phase": "evaluation",
+        "step": 8000,
+        "progress_at": "2026-10-03T12:30:36.694890+08:00"
+      }
+    },
+    "pending": [
+      "L0",
+      "L1",
+      "C0",
+      "C1",
+      "L1-sh",
+      "C1-sh"
+    ],
+    "rough_remaining_hours": 5.85,
+    "rough_queue_end": "2026-10-03T18:21:47.663144+08:00"
+  },
+  "D28": {
+    "observed_at": "2026-10-03T12:30:36.694172+08:00",
+    "status": "WAITING_D27",
+    "complete": 0,
+    "total": 7,
+    "predecessor_status": "RUNNING",
+    "predecessor_observed_at": "2026-10-03T12:30:31.867602+08:00"
+  },
+  "limitations": {
+    "D27_ETA_includes_D28": false,
+    "D28_ETA_available": false,
+    "scientific_metrics_received": false,
+    "live_SSH_verified": false,
+    "D29_queued": false
+  },
+  "execution_commit": "ba7088ec05be7b85dd45e5896a8407506bcca14d"
+}
