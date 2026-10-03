@@ -1,0 +1,22 @@
+{
+  "status": "LOCAL_CPU_SYNTHETIC_PASS_SERVER_PENDING",
+  "python": "3.13.3",
+  "torch": "2.7.1+cpu",
+  "tests_run": 18,
+  "passed": 17,
+  "skipped": 1,
+  "skip_reason": "Linux fcntl lock test runs in server CPU suite",
+  "python310_syntax": "PASS",
+  "legacy_S0_S1_loss_and_gradient": "exact equality on matched synthetic batches",
+  "server_training_started": false,
+  "server_cuda_verified": false,
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "new_training_updates": 32000,
+  "new_checkpoint_tile_replays": 48,
+  "authorization": "user: 按上述规划进行，随后加入已进行的队列后面",
+  "test6_loaded": false,
+  "independent_final_loaded": false
+}

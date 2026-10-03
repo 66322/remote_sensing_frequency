@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "PLANNED_NOT_IMPLEMENTED_NOT_QUEUED",
+  "status": "IMPLEMENTED_SERVER_LAUNCH_PENDING",
   "date": "2026-10-03",
   "name": "D30_loss_decomposition_after_D28",
   "purpose": "Separate protect/recover effects and recovery normalization; diagnose fixed-checkpoint routing. Not a new contribution claim.",
@@ -180,5 +180,8 @@
       4.5
     ]
   },
-  "decision": "Diagnostic round. Recovery to S0 alone is repair evidence, not method novelty. Do not revive D27 gates. If simple variants cannot improve the preservation tradeoff, close this protect/recover recipe and reassess with D28."
+  "decision": "Diagnostic round. Recovery to S0 alone is repair evidence, not method novelty. Do not revive D27 gates. If simple variants cannot improve the preservation tradeoff, close this protect/recover recipe and reassess with D28.",
+  "execution_authorized": true,
+  "decision_source": "2026-10-03 user: 按上述规划进行，随后加入已进行的队列后面"
 }
+
