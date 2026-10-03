@@ -1,6 +1,6 @@
 # 下一步：查询已排队的18＋4机制队列，收齐D30原件
 
-最后用户回传为2026-10-04 00:08启动日志（时间取目录名，日志行无独立时间戳）：Post-D30控制器PID2450552已由nohup启动，CPU检查通过，记录`PORTFOLIO_WAITING_D30 RUNNING`，即已排队等待D30。执行commit固定01ec8dee82f7e272f6a650aaf9f3e619a0e7c516，新目录`research_post_d30_mechanisms_20261004T000812_2446364`；所给日志尚无新GPU worker启动。没有/proc直接存活检查或完整queue_status回传，不能把此次日志当作持续实时存活保证。D30在该日志中被间接观测为RUNNING；其最后直接进度仍为10月3日23:17，随后四项完成指标已分析，PR_area/PR_pixel、重放效果及原矩阵待收。
+最后用户回传检查：Post-D30队列2026-10-04T00:11:46.062560+08:00为WAITING_D30，控制器PID2450552 LIVE=True，18主体0完成、22配置任务均PENDING且无活跃worker；D30队列2026-10-04T00:11:52.142311+08:00仍RUNNING、LOCK_FREE=False。正常等待前序释放，尚未开始新GPU训练。执行commit固定01ec8dee82f7e272f6a650aaf9f3e619a0e7c516，目录`research_post_d30_mechanisms_20261004T000812_2446364`。这次未提供D30各job步数/评价进度，不能继续引用23:17的步数为当前进度，不能更新剩余时间估计；四项完成指标已分析，PR_area/PR_pixel、重放效果及原矩阵待收。ps的ELAPSED字段数值异常，不作为运行时长或ETA依据。
 
 已于00:08启动，不要重复执行创建目录或nohup启动指令。当前只做查询；控制器会在D30六job完成、有效汇总、锁释放且无前序worker后自动接力。D30科学gate失败或成功都可执行新机制诊断，技术失败则HOLD。
 
@@ -32,3 +32,5 @@ D30原件仍用已有目录下upload_rebuild_v1_d30_records.py显式上传；科
 [旧下一步](../history/pre_post_D30_execution_20261003/NEXT_EXPERIMENT.md)。
 
 [本次启动观测](../../records/research_post_d30_mechanisms_20261004T000812_2446364/launch_observation_20261004T000812.json)。
+
+[00:11存活与等待观测](../../records/research_post_d30_mechanisms_20261004T000812_2446364/progress_observation_20261004T001146.json)。
