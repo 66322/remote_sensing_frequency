@@ -1,21 +1,11 @@
-# 下一步：查询已有D26/D27，等待自动接力
+# 下一步：重传D26/D27原件并整理结果
 
-最后服务器观测：D27于2026-10-02T23:32:23.937672+08:00为WAITING_D26，controller PID1703686存活，查询时心跳24.6秒、LIVE_WORKERS=[]；D26于2026-10-02T23:32:46.158787+08:00为RUNNING、COMPLETE3/9，九任务终态False、controller锁未释放。查询绝对时间未输出，不能把24.6秒推成精确时间戳。
+D26最后观测2026-10-03T04:04:45.239849+08:00 COMPLETE9/9。旧上传因原文总量超过512MiB停止，D27查询尚未执行；D27最后已知10-02 23:32 WAITING_D26，须新status/queue记录确认。
 
-D27实际排队已确认，正常nohup等待，当前执行范围为原D26九组→新D27十组，不需再次启动或切换。九原job结束且controller锁释放，D27在下一轮60秒检查后开始领取GPU0/1。若原controller中断而worker仍活着，先诊断原队列，不创建第二个后接controller。
+使用本次提交scripts/upload_rebuild_v1_d26_records.py与upload_rebuild_v1_d27_records.py写入对应实验目录后执行--root工程根目录 --directory对应目录。先各自运行已有status脚本。若一轮失败，另一轮独立上传，不因set -e遗漏第二轮。
 
-查询后接进度：
-```bash
-D27_DIR=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_after_d26_20261002T191253_1513109
-python -B "$D27_DIR/code/scripts/status_rebuild_v1_d27.py" --directory "$D27_DIR"
-python -B "$D27_DIR/check_handover_2e7a678.py" --directory "$D27_DIR"
-```
+D26目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109；D27目录同根records/research_d27_safe_routing_after_d26_20261002T191253_1513109。修正版不重新训练/预测，原件不修改；[无损编码与解码说明](../experiments/D26_COMPLETE_UPLOAD_FIX_20261003.md)。用户回传两提交号即可，助手从GitHub读取、解码核验、整理结果并更新共享状态。
 
-D27_WAITING_D26为等待；D27_PREDECESSOR_FINISHED/D27_STARTED为接力启动；D27_TRAIN和step>0才证明训练推进。只读诊断确认PID/心跳/锁，不测资源预算。
+结果复核先验证完整标记、checkpoint/SHA、selected与fixed8000差别、逐tile原矩阵与屏幕指标，随后按D26/D27各自冻结gate判断，不跨实验任意改阈值。读到record_encoding=gzip-base64-exact-v1时必须解码并验证原文SHA，不能把信封当指标JSON。
 
-两轮完成或失败后，各用自身code/scripts/upload_rebuild_v1_d26_records.py或upload_rebuild_v1_d27_records.py --root工程根目录 --directory对应目录，把原轻量评价/矩阵/日志/绑定写回GitHub，weights/predictions留服务器索引。按原D26/D27各自冻结gate判断，不自动追训/扫参或访问Test6。[当前观测](../../records/research_d27_queue_observation_20261002T2332/observation.json)不代表全量运行产物已归档。
-
-
-## 完整结果后的候选，尚未排队
-
-[假设复核及有限下一步设计](../experiments/ASSUMPTIONS_AND_RESEARCH_OPPORTUNITIES_20261003.md)建议先复用D26/D27原矩阵，再以原选模checkpoint比较同边际、不同错误相关性。首批候选6模型×8条件×2开发tile，不训练，不资源探针；具体幅度/随机实现/门槛另立执行协议后才能运行。该建议不替代现有冻结gate，不自动追加第三队列。只有现象成立才做增强×机制2×2训练；强简单对照解释全部收益则停止复杂机制。不可将报告建议写成已授权新运行。
+[假设复核候选](../experiments/ASSUMPTIONS_AND_RESEARCH_OPPORTUNITIES_20261003.md)尚未排队；先收齐结果再决定有限压力评价。Test6禁读，GPU仅0/1、nohup/zzx不变；不资源探针、不重启现有队列。

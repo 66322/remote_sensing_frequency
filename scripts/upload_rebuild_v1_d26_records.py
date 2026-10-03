@@ -1,11 +1,42 @@
 """Explicit interactive upload of D26 light records; never launches training."""
 import argparse
+import base64
+import gzip
 from datetime import datetime
 import hashlib
 import json
 import os
 from pathlib import Path
 import subprocess
+
+RECORD_ENCODING = 'gzip-base64-exact-v1'
+
+def encode_record(raw):
+    """Preserve original bytes exactly; keep small JSON directly readable."""
+    if len(raw) < 1024 * 1024:
+        return raw
+    packed = gzip.compress(raw, compresslevel=6, mtime=0)
+    envelope = dict(record_encoding=RECORD_ENCODING,
+                    original_bytes=len(raw),
+                    original_sha256=hashlib.sha256(raw).hexdigest(),
+                    payload_base64=base64.b64encode(packed).decode('ascii'))
+    encoded = (json.dumps(envelope, separators=(',', ':')) + '\n').encode()
+    if len(encoded) >= len(raw):
+        return raw
+    if decode_record(encoded) != raw:
+        raise ValueError('lossless record round-trip failed')
+    return encoded
+
+def decode_record(raw):
+    value = json.loads(raw)
+    if not isinstance(value, dict) or value.get('record_encoding') != RECORD_ENCODING:
+        return raw
+    decoded = gzip.decompress(base64.b64decode(value['payload_base64'], validate=True))
+    if len(decoded) != value['original_bytes']:
+        raise ValueError('decoded size mismatch')
+    if hashlib.sha256(decoded).hexdigest() != value['original_sha256']:
+        raise ValueError('decoded SHA256 mismatch')
+    return decoded
 
 def git(root,*args,capture=False):
     return subprocess.run(['git','-C',str(root),*args],check=True,text=True,
@@ -46,13 +77,22 @@ def main():
             artifacts.append(dict(path=str(path),bytes=path.stat().st_size,sha256=digest,storage='server_only'))
     raw_index=(json.dumps(dict(server_directory=str(base),artifacts=artifacts),indent=2)+'\n').encode()
     data={'server_artifact_index.json':raw_index}
+    source_files=[]
+    source_total=0
     for name in dict.fromkeys(names):
         path=(base/name).resolve();path.relative_to(base)
         if not path.is_file():continue
         raw=path.read_bytes();raw.decode('utf-8')
         if name.endswith('.json'):json.loads(raw)
-        if len(raw)>80*1024**2:raise ValueError('unexpected oversized text record: '+name)
-        data[name]=raw
+        source_total += len(raw)
+        uploaded = encode_record(raw) if name.endswith('.json') else raw
+        if len(uploaded)>80*1024**2:raise ValueError('unexpected oversized encoded record: '+name)
+        data[name]=uploaded
+        source_files.append(dict(path=name, original_bytes=len(raw),
+                                 original_sha256=hashlib.sha256(raw).hexdigest(),
+                                 encoded=(uploaded != raw)))
+    print('D26_UPLOAD_PREPARED source_bytes=%d upload_bytes=%d files=%d' %
+          (source_total, sum(map(len,data.values())), len(data)), flush=True)
     if sum(map(len,data.values()))>512*1024**2:raise ValueError('unexpected oversized light bundle')
     if not all(name in data for name in ('plan.json','execution_commit.txt','code_manifest.json','queue_status.json')):
         raise ValueError('queue provenance missing')
@@ -74,6 +114,10 @@ def main():
         with path.open('xb') as f:f.write(raw)
     manifest=dict(created_at=datetime.now().astimezone().isoformat(),server_directory=str(base),base_commit=parent,
                   files=[dict(path=n,bytes=len(v),sha256=hashlib.sha256(v).hexdigest()) for n,v in data.items()],
+                  source_files=source_files, source_total_bytes=source_total,
+                  upload_total_bytes=sum(map(len,data.values())),
+                  record_encoding=RECORD_ENCODING, originals_preserved_on_server=True,
+                  decoder_script='scripts/decode_rebuild_light_record.py',
                   predictions_and_checkpoints_uploaded=False,upload_launches_training=False)
     (target/'upload_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     paths=[(relative/n).as_posix() for n in data]+[(relative/'upload_manifest.json').as_posix()]
