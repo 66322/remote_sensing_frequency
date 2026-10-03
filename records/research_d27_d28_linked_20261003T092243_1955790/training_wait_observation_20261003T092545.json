@@ -1,0 +1,67 @@
+{
+  "kind": "USER_PASTED_STATUS_AND_CONTROLLER_LOGS",
+  "execution_commit": "ba7088ec05be7b85dd45e5896a8407506bcca14d",
+  "D27": {
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983",
+    "observed_at": "2026-10-03T09:25:44.908530+08:00",
+    "status": "RUNNING",
+    "complete": 0,
+    "total": 10,
+    "predecessor_status": "COMPLETE",
+    "running_jobs": {
+      "G0": {
+        "physical_gpu": 0,
+        "pid": 2002029,
+        "phase": "training",
+        "step": 220,
+        "target": 8000,
+        "progress_at": "2026-10-03T09:25:49.587334+08:00"
+      },
+      "G1": {
+        "physical_gpu": 1,
+        "pid": 2002032,
+        "phase": "training",
+        "step": 200,
+        "target": 8000,
+        "progress_at": "2026-10-03T09:25:40.677921+08:00"
+      }
+    },
+    "pending": [
+      "S0",
+      "S1",
+      "L0",
+      "L1",
+      "C0",
+      "C1",
+      "L1-sh",
+      "C1-sh"
+    ]
+  },
+  "D28": {
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d28_pressure_20261003T092243758628_2001983",
+    "observed_at": "2026-10-03T09:25:45.014090+08:00",
+    "status": "WAITING_D27",
+    "complete": 0,
+    "total": 7,
+    "predecessor_status": "RUNNING",
+    "predecessor_observed_at": "2026-10-03T09:25:44.908530+08:00"
+  },
+  "boundary": {
+    "source": "user supplied persisted status and controller logs; not direct live SSH",
+    "note": "G0 worker progress is later than controller observation because status reads progress separately",
+    "initial_treatment_failure_passed": true,
+    "training_complete": false,
+    "scientific_results_received": false,
+    "D28_handover_completed": false,
+    "D29_queued": false,
+    "eta": "pending first normal completed job; no extra probe"
+  },
+  "raw_controller_lines": [
+    "D27_PREDECESSOR_FINISHED COMPLETE",
+    "D27_STARTED 0 G0 pid=2002029",
+    "D27_STARTED 1 G1 pid=2002032",
+    "D27_PROGRESS 0 G0 training step=200 elapsed_minutes=3.0",
+    "D27_PROGRESS 1 G1 training step=200 elapsed_minutes=3.0",
+    "D28_WAITING_D27 RUNNING"
+  ]
+}
