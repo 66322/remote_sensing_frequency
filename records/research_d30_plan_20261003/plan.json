@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "status": "PLANNED_NOT_IMPLEMENTED_NOT_QUEUED",
+  "date": "2026-10-03",
+  "name": "D30_loss_decomposition_after_D28",
+  "purpose": "Separate protect/recover effects and recovery normalization; diagnose fixed-checkpoint routing. Not a new contribution claim.",
+  "predecessor": "records/research_d28_pressure_20261003T092243758628_2001983",
+  "handover": {
+    "require": "technical COMPLETE, controller lock released, no live predecessor workers; verify bound D27 evidence",
+    "scientific_positive_required": false,
+    "on_technical_failure": "HOLD_WITH_REASON"
+  },
+  "resources": {
+    "physical_gpus": [
+      0,
+      1
+    ],
+    "gpu": "H100 80GB",
+    "ram_disk": "ample, user confirmed",
+    "resource_probe": false,
+    "nohup": true,
+    "server_root": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+    "directory_pattern": "records/research_d30_loss_decomposition_<timestamp>_<pid>",
+    "all_temp_cache_logs_snapshots_under_zzx": true
+  },
+  "reuse": {
+    "execution_commit": "ba7088ec05be7b85dd45e5896a8407506bcca14d",
+    "evidence_commit": "cedbc594d4e438d3c220ee80d3e82f563a8c2ae3",
+    "run": "research_d27_safe_routing_repair_20261003T092243758628_2001983",
+    "controls": [
+      "S0",
+      "S1"
+    ],
+    "initial_fusion_sha256": "16abcd8338a0fae16584d6a70030cb1db5c8a3df741ba7076da77e12e9432281",
+    "require": "same init/data/augmentation stream/optimizer/precision/selection; original loss and gradient equivalence regression",
+    "on_mismatch": "hold comparison; no automatic baseline retraining"
+  },
+  "replay": {
+    "checkpoints": [
+      "G0:selected4000",
+      "G1:selected4000"
+    ],
+    "modes": [
+      "uniform",
+      "expert0",
+      "expert1",
+      "expert2"
+    ],
+    "conditions": [
+      "clean",
+      "rgb_down4",
+      "aux_noise_std010"
+    ],
+    "tiles": [
+      "3_11",
+      "5_10"
+    ],
+    "new_tile_evaluations": 48,
+    "original_route_reused_tile_evaluations": 12,
+    "alter_only": "post-softmax mixture weights, keeping residuals and availability fallback",
+    "not_oracle": true
+  },
+  "training": {
+    "architecture": "D27 static S, frozen RGB/DSM anchors, same three dual-modal residual experts",
+    "steps": 8000,
+    "seed": 42,
+    "physical_batch": 16,
+    "gradient_accumulation": false,
+    "views_per_crop": 2,
+    "precision": "bf16",
+    "validation_steps": [
+      4000,
+      8000
+    ],
+    "selection": "original clean/dsm_missing/rgb_missing mean pooled NoBoundary fg5; ties earlier",
+    "expert_auxiliary_weight": 0.1,
+    "protect_weight": 0.1,
+    "recover_weight": 0.1,
+    "total_new_updates": 32000
+  },
+  "jobs": [
+    {
+      "id": "P",
+      "gpu": 0,
+      "wave": 1,
+      "protect": true,
+      "recover": false,
+      "comparison": "S0; factorial cell10"
+    },
+    {
+      "id": "R",
+      "gpu": 1,
+      "wave": 1,
+      "protect": false,
+      "recover": true,
+      "recover_mode": "class_balanced_region_mean",
+      "comparison": "S0; factorial cell01"
+    },
+    {
+      "id": "PR_area",
+      "gpu": 0,
+      "wave": 2,
+      "protect": true,
+      "recover": true,
+      "recover_mode": "class_balanced_region_mean_times_recovery_fraction_of_both_valid",
+      "comparison": "S1; only area scaling changes"
+    },
+    {
+      "id": "PR_pixel",
+      "gpu": 1,
+      "wave": 2,
+      "protect": true,
+      "recover": true,
+      "recover_mode": "pixel_mean_within_same_recovery_mask",
+      "comparison": "S1; only class balancing changes"
+    }
+  ],
+  "analysis": {
+    "factorial_cells": {
+      "10": "P",
+      "11": "D27_S1",
+      "00": "D27_S0",
+      "01": "R"
+    },
+    "interaction": "Y11-Y10-Y01+Y00",
+    "primary": "selected S_available and primary paired condition/tile deltas",
+    "sensitivity": "fixed8000 identical metrics",
+    "also": [
+      "only_RGB_correct retention",
+      "only_DSM_correct retention",
+      "QD harm rate",
+      "worst tile/condition delta",
+      "per-class IoU",
+      "known missing fallback"
+    ],
+    "single_seed_no_significance_claim": true,
+    "continuation_screen": {
+      "reference": "D27_S0",
+      "selected_S_delta_pp_min": 0.2,
+      "clean_delta_pp_min": -0.1,
+      "worst_primary_tile_condition_delta_pp_min": -0.2,
+      "QD_harm_rate_not_above_reference": true,
+      "fixed8000_S_delta_positive": true,
+      "interpretation": "engineering allocation, not confirmation or replacement of D27 gates"
+    }
+  },
+  "logging": {
+    "loss_components": "raw and weighted CE/aux/protect/recover; masks, denominators, classes, clean/aug separate",
+    "gradient_diagnostics_steps": [
+      1,
+      100,
+      500,
+      1000,
+      1500,
+      2000,
+      2500,
+      3000,
+      3500,
+      4000,
+      4500,
+      5000,
+      5500,
+      6000,
+      6500,
+      7000,
+      7500,
+      8000
+    ],
+    "gradient_components": "norms and cosines; autograd.grad without altering optimizer .grad or RNG",
+    "records": "int64 6x6 matrices, raw counts, joint correctness tables, per-tile results, config/source/checkpoint binding"
+  },
+  "limits": {
+    "test6": false,
+    "independent_final": false,
+    "new_multiseed": false,
+    "automatic_weight_sweep": false,
+    "D29_activated": false,
+    "estimated_wall_hours_after_D28": [
+      3.5,
+      4.5
+    ]
+  },
+  "decision": "Diagnostic round. Recovery to S0 alone is repair evidence, not method novelty. Do not revive D27 gates. If simple variants cannot improve the preservation tradeoff, close this protect/recover recipe and reassess with D28."
+}
