@@ -1,0 +1,66 @@
+{
+  "source": "user_terminal_attachment",
+  "source_attachment": "0113d9f8-f68b-4c4b-a38a-6117e9f22e41/已粘贴的文本.txt",
+  "checked_at": "2026-10-03T23:17:45.146029+08:00",
+  "queue_observed_at": "2026-10-03T23:17:41.062340+08:00",
+  "status": "RUNNING",
+  "phase": "training",
+  "controller_pid": 2349619,
+  "controller_live": true,
+  "verdict": "ACTIVE_RUNNING",
+  "live_workers": [
+    "PR_area",
+    "PR_pixel"
+  ],
+  "D28_status": "COMPLETE",
+  "D28_lock_free": true,
+  "jobs": {
+    "replay_G0": {
+      "gpu": 0,
+      "status": "COMPLETE",
+      "done": 24,
+      "total": 24,
+      "observed_at": "2026-10-03T21:06:36.061480+08:00"
+    },
+    "replay_G1": {
+      "gpu": 1,
+      "status": "COMPLETE",
+      "done": 24,
+      "total": 24,
+      "observed_at": "2026-10-03T21:06:28.300828+08:00"
+    },
+    "P": {
+      "gpu": 0,
+      "status": "COMPLETE",
+      "step": 8000,
+      "observed_at": "2026-10-03T22:54:00.075186+08:00"
+    },
+    "R": {
+      "gpu": 1,
+      "status": "COMPLETE",
+      "step": 8000,
+      "observed_at": "2026-10-03T22:57:05.536079+08:00"
+    },
+    "PR_area": {
+      "gpu": 0,
+      "status": "RUNNING",
+      "step": 2860,
+      "target": 8000,
+      "observed_at": "2026-10-03T23:17:34.373114+08:00"
+    },
+    "PR_pixel": {
+      "gpu": 1,
+      "status": "RUNNING",
+      "step": 2420,
+      "target": 8000,
+      "observed_at": "2026-10-03T23:17:36.480597+08:00"
+    }
+  },
+  "rough_remaining_hours": 1.47,
+  "derived_rough_queue_end": "2026-10-04T00:45:57+08:00",
+  "eta_interpretation": "rounded estimate around00:46; includes job runtime inferred from completed jobs, not guaranteed; training-step log estimates exclude later evaluation",
+  "results_csv_present": false,
+  "metrics_received": false,
+  "scientific_decision": "No new D30 effect conclusion; completed P/R and replay can be read without changing running jobs",
+  "new_portfolio": "planned only; not implemented or queued"
+}
