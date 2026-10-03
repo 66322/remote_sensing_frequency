@@ -1,13 +1,15 @@
-# 当前交接：D26已判定，D27十组需技术修复补跑
+# 当前交接：D27修复与D28接力代码已实现，服务器待执行
 
-更新2026-10-03。研究仍可行性探索，主问题RGB–DSM双方条件互补及退化/缺失可靠分割。D26九组已完成，按原冻结规则关闭XSF/XS/XF本轮确认路径；整个问题不关闭，恢复C1仍旁支，D27:C1是类别路由任务。
+2026-10-03用户明确要求“一起实现”：D27修复补跑与D28自动后接已实现并完成23项CPU行为检查（D27 15项、D28 8项），新增代码通过Python3.10语法检查。**尚无本次服务器启动观测，不能写成已运行或已经排队。**
 
-[完整复核](../experiments/D26_COMPLETE_D27_FAILURE_REVIEW_20261003.md)：D26原件d3f264182f9ec8d76b1d6df4972d410fb74686f0，D27原件f3d2be839d4f7f73da4389ad49d2524402c62b6c。D26最后观测2026-10-03T04:04:45.239849+08:00 COMPLETE9/9；180份主条件tile矩阵重算与汇总一致。XSF对B0 S+0.156829低于+0.2，语义未过，selected频率有信号但fixed8000错配对照+0.073522不足，DSM独有正确保留相对X−0.919307。强普通融合保留，不重训/改门槛。
+研究仍处论文可行性探索，主问题RGB–DSM双方条件互补、退化/缺失可靠分割。安全融合、动态专家、局部类别为待验候选；频率可选，任务驱动恢复旁支，不自动改主线。
 
-D27最后观测2026-10-03T04:12:45.117489+08:00 COMPLETE_WITH_TECHNICAL_FAILURES，0/10；04:05实际接力，十组全部step0失败，无科学结果。run入口过滤tensor字典丢掉treatment字符串列表，objective读字段报KeyError。旧“仍WAITING/待上传”过期。本次修复training_batch保留字段并校验长度；原数据/损失/预算/专家/gate不变。实际CPU接口检查通过，新增完整模型回归尚未执行，服务器补跑未观测。
+[D26完整判定](../experiments/D26_COMPLETE_D27_FAILURE_REVIEW_20261003.md)：最后观测2026-10-03T04:04:45.239849+08:00 COMPLETE9/9，180份主条件tile矩阵独立重算一致。XSF对B0 S+0.156829不足原+0.2，语义不足，selected频率有有限线索但fixed8000错配+0.073522不足；DSM独有正确保留相对X−0.919307。保留普通融合强基线，不重跑D26/增加seed/改门槛。
 
-原十组已获用户授权，必要接口修复后新目录research_d27_safe_routing_repair_<stamp>补跑，不改变原失败快照、不用旧resume跨commit、不重跑D26。具体一次nohup命令见[NEXT](NEXT_EXPERIMENT.md)。运行前已有launcher会检查GPU进程防冲突，不加资源预算审计。保留新运行与旧失败索引，后续原轻量上传。
+原D27最后观测2026-10-03T04:12:45.117489+08:00 COMPLETE_WITH_TECHNICAL_FAILURES、0/10；全部step0因worker丢treatment，未更新优化器，没有科学负结果。根因修复及完整CPU反传回归已通过。原失败目录保留；新repair目录原10组×8000、batch16无累积、seed42、原选模/增强/loss/gate不变。
 
-服务器由用户执行，无SSH；工程/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro。D26原目录research_d26_bidirectional_20261002T191253_1513109；D27原失败目录research_d27_safe_routing_after_d26_20261002T191253_1513109。仅GPU0/1 H10080GB，RAM/磁盘充足，batch16无累积，nohup，所有产物在zzx对应目录。
+[连续设计](../protocols/D27_D28_LINKED_RESEARCH_PLAN_20261003.md)、[实现验证](../experiments/D27_D28_IMPLEMENTATION_20261003.md)和[NEXT一次nohup命令](NEXT_EXPERIMENT.md)。联合bootstrap写linked_execution.json关联新D27与独立D28目录。D28控制器等待原十组终态+锁释放，再绑固定7模型selected SHA；缺项停在WAITING_EVIDENCE，不替换。224压力+14clean共238次tile、无训练，clean整数矩阵/预测SHA先重现，同边际相关性输入label-free；D29未实现或排队。不把CPU/mock检查写成真实GPU运行。
 
-用户要求已组织[D27→D28→条件D29连续安排](../protocols/D27_D28_LINKED_RESEARCH_PLAN_20261003.md)。D27原十组修复先跑；D28固定七模型含S1静态对照，224次tile评价、无训练，单侧空间边际精确匹配；D29只在现象和机制支持后另冻4组。设计/case矩阵已校验，D28生成器/evaluator/controller尚未实现，未真正排队；D29未冻结或授权长训练。安全/MoE/局部类别路线未被技术失败判定。Test6禁读，Val2/历史held4不独立；权重/预测未上传，服务器索引不等于实际收到本体。[前交接](../history/HANDOFF_before_D26_D27_results_20261003.md)。
+用户服务器执行，无SSH；根/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro。D26目录research_d26_bidirectional_20261002T191253_1513109；旧D27目录research_d27_safe_routing_after_d26_20261002T191253_1513109。仅GPU0/1 H10080GB，RAM/磁盘充足、nohup、缓存/临时/快照/日志在zzx对应目录，无资源测量。Test6禁读；Val2反复开发、DSM曾暴露held4，非独立final。权重/预测只服务器索引，轻量原件GitHub为准。原门槛失败不能由D28挽救；D29仅待支持后单独冻结。
+
+[上次交接](../history/HANDOFF_before_D27_D28_implementation_20261003.md)。下一助手先读五入口和实际新目录观测，不重新资源审计、不重复启动、不用旧失败目录跨commit resume。当前仍缺服务器新PID/首步/WAITING_D27观测和D27/D28科学结果。

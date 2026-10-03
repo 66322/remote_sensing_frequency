@@ -1,12 +1,11 @@
-# START HERE：D26结果已复核，D27接力后十组技术失败
+# START HERE：D27补跑与D28自动后接已实现，待服务器启动观测
 
-权威分支rebuild-v1-protocol-20260915，更新2026-10-03。读[研究决定](current/RESEARCH_DECISION.md)→[交接](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)。
+权威分支rebuild-v1-protocol-20260915，2026-10-03更新。读[研究决定](current/RESEARCH_DECISION.md)→[交接](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)。
 
-[完整结果与失败复核](experiments/D26_COMPLETE_D27_FAILURE_REVIEW_20261003.md)：D26最后观测2026-10-03T04:04:45.239849+08:00 COMPLETE9/9，180份主tile矩阵独立重算一致；XSF相对B0 S+0.156829pp未过原+0.2，语义不足，频率有有限线索，双方独有信息门槛失败。关闭当前候选确认路径，不改阈值/追训；保留普通融合强基线和主问题。
+2026-10-03用户明确要求“一起实现”：D27修复补跑与D28自动后接已实现并完成23项CPU行为检查（D27 15项、D28 8项），新增代码通过Python3.10语法检查。**尚无本次服务器启动观测，不能写成已运行或已经排队。**
 
-D27最后观测2026-10-03T04:12:45.117489+08:00 COMPLETE_WITH_TECHNICAL_FAILURES，0/10，全部首次objective因treatment字段在转GPU时被丢弃失败。接力确实发生，不能写成仍等待/已获得精度结果/研究假设失败。原件f3d2be8已上传；根因已修并补回归。修复未在服务器执行，补跑用新目录，原记录保留，见NEXT。
+执行范围：D27原十组修复补跑→D28固定七模型224压力+14clean评价；两个独立目录、一次nohup联合入口，D27终态+控制器锁释放+所需selected SHA齐全才接力。D29不自动启动。[代码/检查说明](experiments/D27_D28_IMPLEMENTATION_20261003.md)、[冻结连续协议](protocols/D27_D28_LINKED_RESEARCH_PLAN_20261003.md)。
 
-仅GPU0/1 H10080GB，RAM/磁盘充足，nohup和zzx对应目录持续有效，无资源探针，不重跑D26。GitHub原件与权重/预测服务器索引分开；Test6禁读，开发Val2/暴露held4不作独立final。[假设研究建议](experiments/ASSUMPTIONS_AND_RESEARCH_OPPORTUNITIES_20261003.md)待D27有效结果后决定，尚未排队。
+[D26完整复核/原D27根因](experiments/D26_COMPLETE_D27_FAILURE_REVIEW_20261003.md)：D26最后观测04:04:45 COMPLETE9/9，当前主候选原门槛未过，不重跑；原D2704:12:45全十组step0技术失败，无科学结果。新运行保留原快照，不旧目录跨提交resume、不把失败改写已完成。
 
-
-2026-10-03用户要求将上轮结果与D27组织成[连续研究安排](protocols/D27_D28_LINKED_RESEARCH_PLAN_20261003.md)：D27修复补跑→D28七模型224次tile相关失效评价→条件D29增强×机制4组。设计/配对矩阵已校验，D28运行代码/队列尚未实现，D29未冻结执行；勿误写已排队。原D26关闭与原D27门槛保持，先执行NEXT的D27修复。
+仅GPU0/1 H10080GB、内存/磁盘充足、所有缓存/临时/记录/代码快照在zzx相应目录。无需资源审计；禁止Test6、Val2不独立final。原负结果与原门槛保留，频率可选、任务驱动恢复仍旁支。轻量记录同步GitHub，预测/checkpoint保留服务器索引。

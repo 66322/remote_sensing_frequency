@@ -1,7 +1,7 @@
 {
   "version": "D27_D28_linked_plan_v1",
   "date": "2026-10-03",
-  "status": "DESIGN_ORGANIZED_NOT_QUEUED",
+  "status": "IMPLEMENTED_CPU_CHECKS_PASS_SERVER_EXECUTION_NOT_OBSERVED",
   "decision_source": "User requested integration of latest D26 results, assumption review and D27",
   "known_state": {
     "D26": "COMPLETE 9/9; primary candidates failed original gate",
@@ -34,7 +34,7 @@
     {
       "id": "D28",
       "type": "checkpoint-only pressure evaluation",
-      "implementation_status": "PROTOCOL_AND_CASE_MATRIX_ONLY; evaluator not yet implemented or queued",
+      "implementation_status": "GENERATOR_EVALUATOR_QUEUE_SUMMARY_UPLOAD_IMPLEMENTED_CPU_CHECKS_PASS",
       "models": [
         "RGB_anchor",
         "DSM_anchor",
@@ -161,7 +161,7 @@
       "formula": "7 models * 2 recipes * 2 severities * 4 support pairs * 2 tiles",
       "logical_regime_conditions": 8,
       "weighting": "sum raw integer matrices over tiles and equally over regime's support pairs, then compute IoU; do not average pair/tile IoUs for pooled",
-      "clean_control": "one clean per model per tile; reuse only if binding and evaluator input/geometry/precision match, otherwise add at most14 tile evaluations",
+      "clean_control": "Always 14 clean tile evaluations; reproduce original matrices and prediction SHA before pressure",
       "training": false,
       "test6_loaded": false,
       "raw_records": [
@@ -203,7 +203,8 @@
             "G1"
           ]
         }
-      }
+      },
+      "total_tile_evaluations_including_clean": 238
     },
     {
       "id": "D29_CONDITIONAL",
@@ -235,6 +236,7 @@
     "server_root": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
     "artifacts_under": "/home/jovyan/zzx",
     "test6": "forbidden",
-    "new_runtime_controller": "not created"
+    "new_runtime_controller": "scripts/launch_rebuild_v1_d27_d28.py",
+    "observed_running": false
   }
 }

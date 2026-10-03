@@ -1,38 +1,55 @@
-# 下一步：D27接口修复后补跑原十组，D26不重跑
+# 下一步：一次启动D27修复补跑与D28自动后接
 
-[D26完整判定/D27根因](../experiments/D26_COMPLETE_D27_FAILURE_REVIEW_20261003.md)。D27十组全部第一次objective失败，没有优化器更新，原科学预算/锚点/选模/gate不变。原授权涵盖必要技术修复；用新目录保留失败快照，禁止在旧目录跨commit resume。
+2026-10-03用户明确要求“一起实现”：D27修复补跑与D28自动后接已实现并完成23项CPU行为检查（D27 15项、D28 8项），新增代码通过Python3.10语法检查。**尚无本次服务器启动观测，不能写成已运行或已经排队。**
 
-执行一次（先fetch最新修复，解析并冻结该提交；所有产物在zzx新实验目录）：
+目的：D27兑现原10组安全/专家/局部类别研究投入；D28检验同边际、共同失效是否使收益失效。预算80k原授权更新+238次Val2 tile评价，GPU0/1 H10080GB；内存/磁盘充足，无资源探针。缺必需checkpoint、clean无法重现或技术错误明确失败，保留记录；Test6禁读。D26不重跑，D29未排队。
+
+执行一次：
 
 ```bash
 (
 set -e
 cd /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
 git fetch origin rebuild-v1-protocol-20260915
-D27_COMMIT=$(git rev-parse FETCH_HEAD)
-D27_PY=$(python -c 'import json; print(json.load(open("records/rebuild_v1_d21_queue_20260928/plan.json"))["python"])')
-D27_DIR="$PWD/records/research_d27_safe_routing_repair_$(date +%Y%m%dT%H%M%S)_$$"
-mkdir "$D27_DIR"
-git show "$D27_COMMIT":scripts/launch_rebuild_v1_d27.py > "$D27_DIR/launch.py"
-nohup "$D27_PY" -u -B "$D27_DIR/launch.py" \
-  --root "$PWD" --directory "$D27_DIR" --commit "$D27_COMMIT" \
-  --parent "$PWD/records/research_d26_bidirectional_20261002T191253_1513109" \
-  > "$D27_DIR/nohup.log" 2>&1 < /dev/null &
-D27_PID=$!
-printf '%s\n' "$D27_PID" > "$D27_DIR/controller.pid"
-printf 'D27_PID=%s\nD27_DIRECTORY=%s\nD27_LOG=%s\n' "$D27_PID" "$D27_DIR" "$D27_DIR/nohup.log"
+LINK_COMMIT=$(git rev-parse FETCH_HEAD)
+LINK_PY=$(python -c 'import json; print(json.load(open("records/rebuild_v1_d21_queue_20260928/plan.json"))["python"])')
+test -x "$LINK_PY"
+LINK_DIR="$PWD/records/research_d27_d28_linked_$(date +%Y%m%dT%H%M%S)_$$"
+mkdir "$LINK_DIR"
+git show "$LINK_COMMIT":scripts/launch_rebuild_v1_d27_d28.py > "$LINK_DIR/launch.py"
+nohup "$LINK_PY" -u -B "$LINK_DIR/launch.py" \
+  --root "$PWD" --directory "$LINK_DIR" --commit "$LINK_COMMIT" \
+  > "$LINK_DIR/nohup.log" 2>&1 < /dev/null &
+LINK_PID=$!
+printf '%s\n' "$LINK_PID" > "$LINK_DIR/controller.pid"
+printf 'LINK_PID=%s\nLINK_DIRECTORY=%s\nLINK_LOG=%s\n' "$LINK_PID" "$LINK_DIR" "$LINK_DIR/nohup.log"
 )
 ```
 
-此为待执行命令，助手无服务器直连，尚未观测补跑。不要执行旧resume或重复第二次nohup。首batch应产生D27_TRAIN step1，KeyError不再出现；CPU局部接口通过不等于GPU已验证。异常保留新日志。
+保存LINK_DIRECTORY。bootstrap需生成linked_execution.json，里面才是两阶段真正路径。此命令为待执行，当前不声称已运行。若已有repair控制器在跑，入口拒绝重复；检查现有目录，勿反复新建队列。
 
-原D26已判定，无追加训练/seed。D27完成后新目录用修正版upload_rebuild_v1_d27_records.py上传原轻量记录，用户给提交即可。安全/全局/局部/类别组按原冻结协议读结果。
+启动后查询（将首行替换为输出的实际LINK_DIRECTORY）：
 
-若要执行新增完整模型接口回归，使用新快照tests/test_d27.py（转移→objective→backward），不要重做资源审计。GPU仅0/1 H10080GB、资源充足、nohup/zzx不变，Test6禁读。[相关失效候选](../experiments/ASSUMPTIONS_AND_RESEARCH_OPPORTUNITIES_20261003.md)待有效D27结果后决定，未新增队列。
+```bash
+LINK_DIR=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_d28_linked_实际时间_PID
+LINK_PY=$(python -c 'import json; print(json.load(open("records/rebuild_v1_d21_queue_20260928/plan.json"))["python"])')
+cat "$LINK_DIR/linked_execution.json"
+tail -n 20 "$LINK_DIR/nohup.log"
+D27_DIR=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["D27"])' "$LINK_DIR/linked_execution.json")
+D28_DIR=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["D28"])' "$LINK_DIR/linked_execution.json")
+"$LINK_PY" -B "$D27_DIR/code/scripts/status_rebuild_v1_d27.py" --directory "$D27_DIR"
+"$LINK_PY" -B "$D28_DIR/code/scripts/status_rebuild_v1_d28.py" --directory "$D28_DIR"
+tail -n 10 "$D27_DIR/nohup.log"
+tail -n 10 "$D28_DIR/nohup.log"
+```
 
+D28等待期间status脚本已在快照，无需等依赖复制。D27完成后D28须同时核验十组终态和controller.lock释放；缺S1/G0/G1/L1任一所需checkpoint写WAITING_EVIDENCE，不替换。非终态控制器死亡写PREDECESSOR_CONTROLLER_STOPPED。锁竞争检查无权杀掉其他任务。
 
-## 接续研究安排
+两阶段结束后（沿用上面的变量）：
 
-按[D27—D28连续协议](../protocols/D27_D28_LINKED_RESEARCH_PLAN_20261003.md)，D27训练时可落实D28评价代码，完成后再后接，不能修改运行D27的科学设置。D28新plan见[机器可读设计](../../records/research_d28_pressure_plan_20261003/plan.json)，16种输入支持配对生成8个逻辑分布，固定七模型共224次tile评价；匹配clean最多另14次，不训练。后接必须先获得实际D27 repair目录，核验原job终态/锁释放/所需selected SHA；失败缺项不替换模型。
+```bash
+"$LINK_PY" -B "$D27_DIR/code/scripts/upload_rebuild_v1_d27_records.py" --root "$PWD" --directory "$D27_DIR"
+"$LINK_PY" -B "$D28_DIR/code/scripts/upload_rebuild_v1_d28_records.py" --root "$PWD" --directory "$D28_DIR"
+```
 
-当前只是设计与case矩阵已完成，生成器/evaluator/controller待实现，尚无可执行的D28排队命令，不能说已经会自动接力。D29仅条件草案。旧96次草案已由本协议替代；不重新扫强度、增加频率组或重训单模态。当前可执行仍为上面的D27修复命令。
+失败时也保留日志；D28启动绑定前失败尚无完整code_manifest，不能伪装为已完成轻量包。[实现与检查](../experiments/D27_D28_IMPLEMENTATION_20261003.md)、[冻结研究设计](../protocols/D27_D28_LINKED_RESEARCH_PLAN_20261003.md)。D29待两阶段结果后另冻结。
