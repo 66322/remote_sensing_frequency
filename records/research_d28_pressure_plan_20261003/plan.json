@@ -1,0 +1,240 @@
+{
+  "version": "D27_D28_linked_plan_v1",
+  "date": "2026-10-03",
+  "status": "DESIGN_ORGANIZED_NOT_QUEUED",
+  "decision_source": "User requested integration of latest D26 results, assumption review and D27",
+  "known_state": {
+    "D26": "COMPLETE 9/9; primary candidates failed original gate",
+    "D27": "original attempt technical failure 0/10; repaired source ready, rerun not observed"
+  },
+  "phases": [
+    {
+      "id": "D27_REPAIR",
+      "type": "previously authorized training repair",
+      "jobs": [
+        "S0",
+        "S1",
+        "G0",
+        "G1",
+        "L0",
+        "L1",
+        "C0",
+        "C1",
+        "L1-sh",
+        "C1-sh"
+      ],
+      "steps_per_job": 8000,
+      "physical_batch": 16,
+      "gradient_accumulation": false,
+      "seed": 42,
+      "protocol": "docs/protocols/D27_SAFE_ROUTING_PLAN_20261002.md",
+      "new_directory_prefix": "research_d27_safe_routing_repair_",
+      "reuse_D26": true
+    },
+    {
+      "id": "D28",
+      "type": "checkpoint-only pressure evaluation",
+      "implementation_status": "PROTOCOL_AND_CASE_MATRIX_ONLY; evaluator not yet implemented or queued",
+      "models": [
+        "RGB_anchor",
+        "DSM_anchor",
+        "D26_B0",
+        "D27_S1",
+        "D27_G0",
+        "D27_G1",
+        "D27_L1"
+      ],
+      "checkpoint_selection": "original frozen selection only; selected SHA bound before first D28 forward; no substitution if missing",
+      "tiles": [
+        "3_11",
+        "5_10"
+      ],
+      "mask_pool_size": 2,
+      "per_modality_affected_fraction": 0.25,
+      "availability": "both present; stress support masks not model inputs",
+      "pairs": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "regimes": {
+        "shared_support": {
+          "pairs": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "weights": [
+            0.5,
+            0.5
+          ]
+        },
+        "independent_support_draws": {
+          "pairs": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "weights": [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ]
+        }
+      },
+      "recipes": [
+        {
+          "id": "P1",
+          "rgb": "local average blur",
+          "dsm": "local average smoothing",
+          "levels": {
+            "mild": {
+              "rgb_kernel": 5,
+              "dsm_kernel": 5
+            },
+            "strong": {
+              "rgb_kernel": 9,
+              "dsm_kernel": 9
+            }
+          }
+        },
+        {
+          "id": "P2",
+          "rgb": "local contrast attenuation about full-tile per-channel mean",
+          "dsm": "local normalized height bias then clamp[0,1]",
+          "levels": {
+            "mild": {
+              "rgb_factor": 0.75,
+              "dsm_abs_bias": 0.05
+            },
+            "strong": {
+              "rgb_factor": 0.5,
+              "dsm_abs_bias": 0.1
+            }
+          }
+        }
+      ],
+      "mask_seed": 203103,
+      "generation": "label-free per-tile balanced shuffled 16x16 blocks; two disjoint masks of floor(H*W/4) pixels; partial last block raster fill, exact area persisted",
+      "bias_sign": "tile-keyed deterministic + or - independent of labels and model",
+      "generation_location": "after frozen input normalization, full tile before sliding windows",
+      "native_window": 512,
+      "stride": 256,
+      "report_scope": [
+        "full",
+        "noboundary"
+      ],
+      "main_metric": "pooled mIoU_fg5",
+      "physical_tile_evaluations": 224,
+      "formula": "7 models * 2 recipes * 2 severities * 4 support pairs * 2 tiles",
+      "logical_regime_conditions": 8,
+      "weighting": "sum raw integer matrices over tiles and equally over regime's support pairs, then compute IoU; do not average pair/tile IoUs for pooled",
+      "clean_control": "one clean per model per tile; reuse only if binding and evaluator input/geometry/precision match, otherwise add at most14 tile evaluations",
+      "training": false,
+      "test6_loaded": false,
+      "raw_records": [
+        "int64 6x6 matrices",
+        "truth,R,D,candidate int64 joint counts",
+        "class counts",
+        "tile results",
+        "stress support regions",
+        "availability",
+        "checkpoint and source SHA",
+        "actual mask area/overlap/sha",
+        "regime weighting",
+        "fallback and route summaries"
+      ],
+      "readiness_gate": "D27 required completed checkpoints bound, no live overlapping workers; incomplete slots marked missing, no checkpoint replacements",
+      "hypothesis_gate": {
+        "B0_mean_ind_minus_shared_pp": 0.3,
+        "both_tile_gaps_positive": true,
+        "recipe_severity_cells_positive_at_least": 3,
+        "cells": 4,
+        "meaning": "development engineering screen, not statistical significance or proof of natural correlated failures"
+      },
+      "transfer_gate": {
+        "G1_B0_gain_drop_shared_vs_ind_pp": 0.2,
+        "meaning": "loss of gain under shared errors is a diagnostic; not automatically attributable to routing"
+      },
+      "candidate_gain_gate": {
+        "shared_gain_vs_matched_control_pp": 0.2,
+        "independent_gain_floor_pp": -0.1,
+        "both_tiles_gain_floor_pp": -0.2,
+        "unique_correct_retention_floor_pp": -0.5,
+        "meaning": "candidate must also pass original D27 gate; cannot revive failed original claim",
+        "matched_control_by_candidate": {
+          "G1": [
+            "G0",
+            "S1"
+          ],
+          "L1": [
+            "G1"
+          ]
+        }
+      }
+    },
+    {
+      "id": "D29_CONDITIONAL",
+      "type": "not authorized or implemented new training",
+      "activate_only": "D27 valid mechanism and D28 reproducible target problem, frozen final plan before launch",
+      "design": "2x2 independent/correlated augmentation x static/dynamic routing; identical experts, expert pool, loss, parameters, training age",
+      "number_of_jobs": 4,
+      "provisional_steps_per_job": 8000,
+      "seed": 42,
+      "same_initialization": true,
+      "default_comparison": "S1 vs G1 with identical protection/recovery and expert auxiliary losses; if local chosen, static vs local with same losses",
+      "unseen_failure_boundary": "training-unseen is distinct from development-unseen; reserve a failure family before training, do not call already-read Val2 an independent final",
+      "stop_conditions": [
+        "simple correlated augmentation fully explains gain",
+        "original candidate gates fail",
+        "harm reduction sacrifices both unique information paths",
+        "no reproducible pressure phenomenon"
+      ]
+    }
+  ],
+  "execution": {
+    "gpus": [
+      0,
+      1
+    ],
+    "gpu_type": "H10080GB",
+    "ram_disk": "sufficient, no resource probes",
+    "nohup": true,
+    "server_root": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+    "artifacts_under": "/home/jovyan/zzx",
+    "test6": "forbidden",
+    "new_runtime_controller": "not created"
+  }
+}

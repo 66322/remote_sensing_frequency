@@ -7,3 +7,6 @@
 D27最后观测2026-10-03T04:12:45.117489+08:00 COMPLETE_WITH_TECHNICAL_FAILURES，0/10，全部首次objective因treatment字段在转GPU时被丢弃失败。接力确实发生，不能写成仍等待/已获得精度结果/研究假设失败。原件f3d2be8已上传；根因已修并补回归。修复未在服务器执行，补跑用新目录，原记录保留，见NEXT。
 
 仅GPU0/1 H10080GB，RAM/磁盘充足，nohup和zzx对应目录持续有效，无资源探针，不重跑D26。GitHub原件与权重/预测服务器索引分开；Test6禁读，开发Val2/暴露held4不作独立final。[假设研究建议](experiments/ASSUMPTIONS_AND_RESEARCH_OPPORTUNITIES_20261003.md)待D27有效结果后决定，尚未排队。
+
+
+2026-10-03用户要求将上轮结果与D27组织成[连续研究安排](protocols/D27_D28_LINKED_RESEARCH_PLAN_20261003.md)：D27修复补跑→D28七模型224次tile相关失效评价→条件D29增强×机制4组。设计/配对矩阵已校验，D28运行代码/队列尚未实现，D29未冻结执行；勿误写已排队。原D26关闭与原D27门槛保持，先执行NEXT的D27修复。

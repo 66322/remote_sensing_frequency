@@ -10,4 +10,4 @@ D27最后观测2026-10-03T04:12:45.117489+08:00 COMPLETE_WITH_TECHNICAL_FAILURES
 
 服务器由用户执行，无SSH；工程/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro。D26原目录research_d26_bidirectional_20261002T191253_1513109；D27原失败目录research_d27_safe_routing_after_d26_20261002T191253_1513109。仅GPU0/1 H10080GB，RAM/磁盘充足，batch16无累积，nohup，所有产物在zzx对应目录。
 
-[假设复核](../experiments/ASSUMPTIONS_AND_RESEARCH_OPPORTUNITIES_20261003.md)仍是候选，先获得D27有效比较；安全/MoE/局部类别路线未被技术失败判定。Test6禁读，Val2/历史held4不独立；权重/预测未上传，服务器索引不等于实际收到本体。[前交接](../history/HANDOFF_before_D26_D27_results_20261003.md)。
+用户要求已组织[D27→D28→条件D29连续安排](../protocols/D27_D28_LINKED_RESEARCH_PLAN_20261003.md)。D27原十组修复先跑；D28固定七模型含S1静态对照，224次tile评价、无训练，单侧空间边际精确匹配；D29只在现象和机制支持后另冻4组。设计/case矩阵已校验，D28生成器/evaluator/controller尚未实现，未真正排队；D29未冻结或授权长训练。安全/MoE/局部类别路线未被技术失败判定。Test6禁读，Val2/历史held4不独立；权重/预测未上传，服务器索引不等于实际收到本体。[前交接](../history/HANDOFF_before_D26_D27_results_20261003.md)。

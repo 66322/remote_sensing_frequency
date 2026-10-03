@@ -29,3 +29,10 @@ printf 'D27_PID=%s\nD27_DIRECTORY=%s\nD27_LOG=%s\n' "$D27_PID" "$D27_DIR" "$D27_
 原D26已判定，无追加训练/seed。D27完成后新目录用修正版upload_rebuild_v1_d27_records.py上传原轻量记录，用户给提交即可。安全/全局/局部/类别组按原冻结协议读结果。
 
 若要执行新增完整模型接口回归，使用新快照tests/test_d27.py（转移→objective→backward），不要重做资源审计。GPU仅0/1 H10080GB、资源充足、nohup/zzx不变，Test6禁读。[相关失效候选](../experiments/ASSUMPTIONS_AND_RESEARCH_OPPORTUNITIES_20261003.md)待有效D27结果后决定，未新增队列。
+
+
+## 接续研究安排
+
+按[D27—D28连续协议](../protocols/D27_D28_LINKED_RESEARCH_PLAN_20261003.md)，D27训练时可落实D28评价代码，完成后再后接，不能修改运行D27的科学设置。D28新plan见[机器可读设计](../../records/research_d28_pressure_plan_20261003/plan.json)，16种输入支持配对生成8个逻辑分布，固定七模型共224次tile评价；匹配clean最多另14次，不训练。后接必须先获得实际D27 repair目录，核验原job终态/锁释放/所需selected SHA；失败缺项不替换模型。
+
+当前只是设计与case矩阵已完成，生成器/evaluator/controller待实现，尚无可执行的D28排队命令，不能说已经会自动接力。D29仅条件草案。旧96次草案已由本协议替代；不重新扫强度、增加频率组或重训单模态。当前可执行仍为上面的D27修复命令。
