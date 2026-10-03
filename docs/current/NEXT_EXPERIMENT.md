@@ -1,4 +1,11 @@
-# 下一步：D27已上传并复核，接收D28完成记录
+# 下一步：先收齐D28，必要时48次checkpoint原因定位，暂不新增训练
+
+## 下一步澄清（2026-10-03，用户要求用完成实验验证结论）
+
+D27已验证：当前安全loss的精度/伤害取舍失败，DSM独有信息有恢复但更多RGB正确计数丢失；当前动态/局部/类别增量不足，CE条件G0−S0 −0.026059、L0−G0 +0.022846、C0−L0 +0.005590pp也未形成实用增量；known missing工程回退维持。限于当前开发Val2/seed42/冻结专家，不升级为独立泛化，也不扩大到整个问题失败。
+
+第一步收齐既有D28结果并上传，以同边际支持配对检验相关受损问题。第二步仅在结果值得继续且会改变设计时，用G0/G1原checkpoint做均匀/单残差专家固定路由的48次重放诊断，尚未实现或排队，不训练、不修改当前队列。原D29前提未过，不自动启动；新的训练只在有效问题证据后另冻结最简单匹配对照。计划见[已成立结论与下一步](../protocols/D27_POSTHOC_AND_D28_NEXT_STEPS_20261003.md)。D28最后观测仍18:34 RUNNING，未收到后续服务器状态。
+
 
 ## 最新原件复核：D27上传cedbc59，四项科学门槛均失败
 
@@ -80,3 +87,22 @@ RESULT_PY=$(python -c 'import json; print(json.load(open("records/rebuild_v1_d21
 ```
 
 收到D27_GITHUB_COMMIT后从GitHub直接读取原件。无需粘贴长JSON，D28继续运行，完成后再上传其轻量包。
+
+
+## D28当前查询与完成后上传
+
+```bash
+cd /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+D28_DIR="$PWD/records/research_d28_pressure_20261003T092243758628_2001983"
+RESULT_PY=$(python -c 'import json; print(json.load(open("records/rebuild_v1_d21_queue_20260928/plan.json"))["python"])')
+"$RESULT_PY" -B "$D28_DIR/code/scripts/status_rebuild_v1_d28.py" --directory "$D28_DIR"
+tail -n 15 "$D28_DIR/nohup.log"
+```
+
+若日志D28_QUEUE_FINISHED COMPLETE summary_exit=0，运行：
+
+```bash
+"$RESULT_PY" -B "$D28_DIR/code/scripts/upload_rebuild_v1_d28_records.py" --root "$PWD" --directory "$D28_DIR"
+```
+
+失败则先保留并读取错误尾日志，不能将技术失败当科学失败。D27完整包已上传，无需再传；只需给D28_GITHUB_COMMIT即可从远端读完整记录。
