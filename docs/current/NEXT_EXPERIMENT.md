@@ -1,20 +1,8 @@
-# D30正常运行：继续只读查询，D28结果可上传
+# 下一步：查询既有D30，完成后读损失拆解结果
 
-## 最新实际存活检查：2026-10-03 20:56:13
+D28已上传38b85f5并[分析完成](../experiments/D28_FINAL_REVIEW_20261003.md)，不重复上传或启动。D27四gate及D28现象/候选压力gate均未通过，保持冻结阈值；不激活原D29，不对失败配方加种子、扫权重或扩故障寻找正结果。D30是已获用户授权的独立损失机制诊断，不以D28正结果为前提，继续原48次固定混合评价与P/R/PR_area/PR_pixel四静态训练，复用S0/S1。它不是多种子验证，也不是重新开放旧路由贡献。若仅追平S0，报告配方修复；无组达到原预设实用增量/伤害底线则停止本配方，真正通过后另立确认协议。没有新增队列或方向决定。
 
-用户只读查询确认D30控制器2349619 LIVE=True，两个重放worker存活，ACTIVE_RUNNING。queue最后观测20:56:08.886753+08:00；replay_G0 GPU0 6/24、replay_G1 GPU1 6/24，共12/48（25%），uniform模式已完成，expert0开始。四训练P/R/PR_area/PR_pixel仍PENDING，这是设计的重放阶段屏障。查询已正常，无新技术错误，不重复启动。
-
-D28现在有直接状态观测：COMPLETE、controller.lock free；其state最后观测2026-10-03T19:27:53.313658+08:00。科学结果仍待上传/读取，不能从队列完成推出研究gate通过。以上是最后收到的状态，不宣称实时存活。[本次观测](../../records/research_d30_loss_decomposition_20261003T205144_2349167/progress_observation_20261003T205613.json)。
-
-
-## D30最新服务器观测：2026-10-03 20:52
-
-用户已执行nohup启动，控制器PID2349619，CPU检查PASS；GPU0 replay_G0 PID2349792、GPU1 replay_G1 PID2349798已开始uniform固定混合评价。最后worker观测20:52:55.972803+08:00。D30已经完成自动接力并进入重放，四组新训练尚未观测开始；不是仍待启动，也不需要重复启动。当前时刻存活情况须用只读查询确认。
-
-运行目录：/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d30_loss_decomposition_20261003T205144_2349167。按冻结控制器执行链，开始worker表示D28终态、summary、锁释放与残留worker检查已通过；D28完整科学结果仍未读取，不能据此判断现象/gate。查询报错源于启动括号内cd不保留，当前shell在jovyan、相对plan路径不存在；错误只影响查询，不影响后台作业。查询改用绝对plan路径。[启动原件](../../records/research_d30_loss_decomposition_20261003T205144_2349167/startup_observation.json)。
-
-
-## 当前可执行查询（不依赖当前目录）
+D30最后存活检查2026-10-03T20:56:13.761513+08:00：重放12/48，四训练PENDING；没有更新的实时观测。查询不依赖当前目录：
 
 ```bash
 D30_DIR=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d30_loss_decomposition_20261003T205144_2349167
@@ -24,21 +12,17 @@ D30_PY=$(python -c 'import json; print(json.load(open("/home/jovyan/zzx/paper_re
 tail -n 15 "$D30_DIR/nohup.log"
 ```
 
-ACTIVE_RUNNING表示控制器在运行。先48次checkpoint重放，再GPU0 P→PR_area、GPU1 R→PR_pixel；共32000训练更新，物理batch16无累积。日志done按整种混合模式结束后每6次递增，单个tile已完成但done=0不表示停滞；结合tile/condition/windows和observed_at判断。
+先48次固定checkpoint评价，再GPU0 P→PR_area、GPU1 R→PR_pixel，共32000训练步、seed42、物理batch16无累积。PENDING阶段屏障与日志按六次评价递增的done不等于停滞，结合时间戳和windows。此前3.5—4.5小时只是自启动的粗估，最新结束时刻应读status，不拿20:56进度充当当前值。
 
-完成后上传：
+完成后同分支上传轻量原件：
 
 ```bash
-"$D30_PY" -B "$D30_DIR/code/scripts/upload_rebuild_v1_d30_records.py" \\
+"$D30_PY" -B "$D30_DIR/code/scripts/upload_rebuild_v1_d30_records.py" \
   --root /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro --directory "$D30_DIR"
 ```
 
-D28原件也需上传，才能分析相关失效结果：
+结果读取顺序：plan/checkpoint/complete/source绑定→48重放与原路由→P/R/S0/S1的2×2→PR_area/PR_pixel单因素→selected/fixed8000→分项loss/梯度/分母→双方独有信息、QD伤害及逐tile/逐类→冻结gate。不只报最高分。D30若通过才另立确认协议，不自动加seed。
 
-```bash
-D28_DIR=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d28_pressure_20261003T092243758628_2001983
-"$D30_PY" -B "$D28_DIR/code/scripts/upload_rebuild_v1_d28_records.py" \\
-  --root /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro --directory "$D28_DIR"
-```
+仅物理GPU0/1、两张H10080GB；内存/磁盘充足，无资源探针。物理训练batch16无累积，长任务nohup。快照、临时、缓存、日志均在/home/jovyan/zzx对应实验目录。用户终端操作，无SSH；Test6与独立final禁读，重复开发Val2不是确认性证据。GitHub本分支为共享权威，预测/checkpoint本体留服务器并索引。
 
-仅GPU0/1 H10080GB；RAM/磁盘充足；nohup，快照/缓存/临时/日志在zzx对应目录。无资源探针，Test6禁读，原D29未激活，D27四gate失败保留。旧启动命令已[归档](../history/D30_before_startup_observation_20261003/NEXT_EXPERIMENT.md)，不要重复执行。[设计](../protocols/D30_LOSS_DECOMPOSITION_AFTER_D28_20261003.md)。
+[原设计与门槛](../protocols/D30_LOSS_DECOMPOSITION_AFTER_D28_20261003.md)、[实现检查](../experiments/D30_IMPLEMENTATION_20261003.md)、[旧下一步归档](../history/pre_D28_review_20261003/NEXT_EXPERIMENT.md)。

@@ -1,6 +1,6 @@
 # D30：D28后接的损失拆解与固定路由诊断计划
 
-状态：**已获执行授权并实现；等待服务器启动，尚无排队观测**。2026-10-03用户要求根据已完成实验规划新增后接队列。具体设计属于重写版方案；CPU行为检查已完成，服务器GPU执行仍待用户启动。机器计划见[plan.json](../../records/research_d30_plan_20261003/plan.json)。
+状态：**已获执行授权、已实现并实际接力运行**。最后直接存活观测2026-10-03T20:56:13.761513+08:00：控制器存活、重放12/48，四训练PENDING；不宣称实时进度。D28原件现已复核，相关性现象筛选未过，仍不改变本轮独立诊断。2026-10-03用户要求后接该固定队列；CPU检查PASS，设计/门槛保持冻结。机器计划见[plan.json](../../records/research_d30_plan_20261003/plan.json)。
 
 ## 为什么增加这轮
 
@@ -62,4 +62,4 @@ G0/G1原selected4000，各做均匀权重、仅专家0、仅专家1、仅专家2
 
 一次nohup控制器、stdin断开，独立records/research_d30_loss_decomposition_<时间>_<PID>目录；日志、快照、缓存、临时文件全部在/home/jovyan/zzx下对应目录。实现时绑定现有D27执行commit ba7088e与原件cedbc59、原checkpoint SHA。轻量结果同步同一GitHub分支；预测/权重保留服务器索引。Test6及独立final均不访问。
 
-启动/查询/上传见[下一步](../current/NEXT_EXPERIMENT.md)，实现检查见[实施记录](../experiments/D30_IMPLEMENTATION_20261003.md)。执行commit 9db12dfb7ee85dff91dd6c246c7f161b60aca603；当前没有服务器D30 PID或排队观测，不能把代码已实现当成已在排队。
+启动/查询/上传见[下一步](../current/NEXT_EXPERIMENT.md)，实现检查见[实施记录](../experiments/D30_IMPLEMENTATION_20261003.md)。执行commit 9db12dfb7ee85dff91dd6c246c7f161b60aca603；用户已启动控制器2349619，GPU0/1重放worker已观测；查询只针对现有实例，不重复启动。最新状态见current入口。
