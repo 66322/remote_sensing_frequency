@@ -1,0 +1,21 @@
+{
+  "signature": {
+    "model": "D27_S1",
+    "checkpoint": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/selected.pth",
+      "sha256": "d8f2705c710ef2895195a30107115f7b7e4aa4fb1a9af1461f80df8d407e92c9",
+      "step": 4000
+    },
+    "binding_sha256": "52a5534da3c1e8153eec7ce4cd3ed78c61aa3c4e5369902827c7b70a20fb4f6f",
+    "plan_sha256": "092e54ff035f5fbaefa959c47a2abe2e3ab8ae23ddbb9bab88bbe9804f44dd54",
+    "source_sha256": "dda9ffe356caed856e3e71414ce912eb88e03e1b0fcd4a8bcd75a284ef680980",
+    "precision": "FP32_TF32",
+    "batch": 8,
+    "window": 512,
+    "stride": 256,
+    "test6_loaded": false
+  },
+  "tile_evaluations": 34,
+  "observed_at": "2026-10-03T18:54:07.968534+08:00",
+  "test6_loaded": false
+}
