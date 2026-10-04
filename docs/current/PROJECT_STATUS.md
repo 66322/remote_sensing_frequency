@@ -1,20 +1,13 @@
-# 当前状态与证据接收
+# 状态与证据接收
 
-最后服务器观测：2026-10-04T17:21:47.568226+08:00（用户终端查询回传），Post-D30为RUNNING，控制器2720259 LIVE=True，主体12/18完成：A0—A5、B1—B6全部COMPLETE；C0在GPU0训练3760/8000步，C1在GPU1训练3780/8000步，两worker PID_LIVE=True；C2—C5 PENDING，F0—F3仍有条件。原队列已进入C，禁止重复恢复或新建队列。旧08:12日志的model导入错误仅作历史记录。本次仍未收到上传提交，GitHub没有新增A/B原生结果；固定A2/B3门槛尚待原件分析，不能由技术完成判定科学成立。
+最后服务器记录快照：2026-10-04T18:07:21.987874+08:00，queue_status=RUNNING，主体12/18完成，A0—A5及B1—B6 COMPLETE；C0/C1在GPU0/1训练至8000步，phase=checkpoint_selection，尚非COMPLETE；C2—C5 PENDING，F仍PENDING。该快照未新查PID存活；最近存活证据为17:21用户查询。不把18:08上传时间当运行完成时间。
 
-| 范围 | 最后确认状态 | 证据情况 |
-|---|---|---|
-| D23/D24/D25/D26 | 完成并分析 | 轻量原件和离线计数复核已在GitHub；D24 Pair无效结论已纠正保留 |
-| D27原/修复 | 原step0失败；修复10/10完成 | 原失败不是科学负结果；修复四机制gate均False |
-| D28 | 七模型评价完成 | 无新训练；共同受损假设未过门槛，原D29未激活 |
-| D30 | 2026-10-04T00:47:08.030508+08:00 COMPLETE 6/6 | 214eb158a59cf8248910ba5e46492189d3a6f953上传156紧凑文件；梯度原件已到，全部逐tile原矩阵未到 |
-| Post-D30 | 17:21观测12/18主体完成 | A/B原生结果待收；A/B全完成，C0/C1运行，C2—C5待接续；F待固定B3门槛核验 |
+固定A2 gate=False：综合对A0+0.101643pp（要求≥+0.2）、对A1−0.044694pp（要求≥+0.2）、对A3−0.023958pp（要求≥+0.1）；其余原生安全/fixed检查通过。固定B3 gate=False：几何对B1+0.021260pp（要求≥+0.5）、对B4−0.012852pp（要求≥+0.2）；DSM锚点正确伤害率较A0增加0.011997pp。F触发条件不成立；不追加A/B种子、追训、扫参或换敏感性最佳组救gate。原C继续。
 
-原Post科学执行01ec8dee82f7e272f6a650aaf9f3e619a0e7c516；第一次评价恢复9df2bf44a03955a0db43de1538aff1c91bfae33d；第二次汇总路径修复2a15ef163c3df7e96ee52c81cb677ebdb1305935。原plan/code不覆盖；完成A不重训/不重评价，原队列进入C已观测，禁止再次启动恢复，修复manifest仍待核验。
+D23—D28保持已整理结论；D30紧凑原件已收，完整逐tile矩阵未到。Post A/B十二组技术完成，原件上传成功，关键七组整数计数复核PASS；C0/C1选模中，余C待接；F条件False但实际跳过标记未见。
 
-服务器由用户在终端操作，无可用SSH。根目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro；只用物理GPU0/1，两张H10080GB，RAM/磁盘充足。长任务nohup；记录、临时、缓存、执行快照均在/home/jovyan/zzx对应实验目录。当前协议seed42、8000步、物理batch16、无累积。不重复资源审计、容量探针、单模态训练或自动追加多seed。Test6/独立final禁止访问；Val2重复开发，不称独立确认。
+efba23a56eb7f508c0485332cc03c6476bfc8d59上传1769文件，manifest创建18:08:15，原件1899293890字节、上传165121503字节。实际回读plan、portfolio_screen、queue、最新repair_manifest及A0/A1/A2/A3/B1/B3/B4七组complete、selected/fixed8000共14份summary；核对上传与原始SHA、plan/执行绑定和complete的summary SHA，离线核对54432组6×6矩阵tile→pooled及fg5重算、5292组joint汇总和candidate边际一致。A4/A5/B2/B5/B6仅读原生阶段汇总，未逐份验收全部1769文件；未读取服务器权重/预测本体。
 
-[实验总索引](../experiments/rebuild_v1/INDEX.md)、[机读registry](../../records/rebuild_v1_experiment_registry.json)、[整理报告](../experiments/COMPLETED_EXPERIMENTS_HANDOFF_20261004.md)。未知新状态先查询，不据旧PID或GPU空闲自行猜测。
+上传体积修复服务器成功：165121503字节，低于门禁。修复manifest已收到确认2a15ef与A_optimizer_updates=0。具体口径与结论见[报告](../experiments/POST_D30_AB_RESULTS_20261004.md)。
 
-
-2026-10-04上传接收更新：用户执行上传器，在准备阶段因761504860字节超过512 MiB失败，尚无A/B原件上传，未改动训练。JSON/log无损压缩阈值修复与准备报告已实现，本地6项回归通过，服务器实际体积/push待回报。沿原C队列继续；按[NEXT](NEXT_EXPERIMENT.md)读取最新上传器重试上传，不再使用旧脚本。详见[说明](../experiments/POST_D30_UPLOAD_SIZE_REPAIR_20261004.md)。
+主线仍RGB–DSM双向条件互补与退化/缺失分割，恢复是旁支，仍处于可行性探索，无确认性新贡献。用户终端操作无SSH，只用GPU0/1两张H10080GB、nohup、seed42/8000步/batch16无累积，全部记录/缓存/快照在zzx对应目录。不重复资源审计，不加seed，不读取Test6/独立final。

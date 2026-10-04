@@ -1840,14 +1840,14 @@
     },
     {
       "id": "POST_D30_MECHANISMS_20261004",
-      "status": "RUNNING_USER_REPORTED_AB12_COMPLETE_C_RUNNING",
+      "status": "AB_COMPLETE_GATES_FALSE_C_CHECKPOINT_SELECTION",
       "purpose": "全特征/共享特征对齐、打乱与权重对照",
-      "result_summary": "A/B12项技术完成，C0/C1训练；仍未收到结果上传，A2/B3科学门槛待原件核验",
+      "result_summary": "固定A2 gate=False：综合对A0+0.101643pp（要求≥+0.2）、对A1−0.044694pp（要求≥+0.2）、对A3−0.023958pp（要求≥+0.1）；其余原生安全/fixed检查通过。固定B3 gate=False：几何对B1+0.021260pp（要求≥+0.5）、对B4−0.012852pp（要求≥+0.2）；DSM锚点正确伤害率较A0增加0.011997pp。F触发条件不成立；不追加A/B种子、追训、扫参或换敏感性最佳组救gate。原C继续。",
       "completed_at": null,
-      "review": "docs/experiments/POST_D30_SUMMARY_IMPORT_REPAIR_20261004.md",
+      "review": "docs/experiments/POST_D30_AB_RESULTS_20261004.md",
       "evidence_class": "user_reported_completion_results_pending",
       "live_query": false,
-      "last_observed_at": "2026-10-04T17:21:47.568226+08:00",
+      "last_observed_at": "2026-10-04T18:07:21.987874+08:00",
       "completed_jobs": 12,
       "total_main_jobs": 18,
       "conditional_jobs": 4,
@@ -1868,10 +1868,75 @@
           "completed_jobs": 8,
           "second_recovery_observed": true,
           "last_observation_record": "records/research_post_d30_mechanisms_20261004T000812_2446364/progress_observation_20261004T120536.json"
+        },
+        {
+          "status": "RUNNING_USER_REPORTED_AB12_COMPLETE_C_RUNNING",
+          "last_observed_at": "2026-10-04T17:21:47.568226+08:00",
+          "last_observation_record": "records/research_post_d30_mechanisms_20261004T000812_2446364/progress_observation_20261004T172147.json"
         }
       ],
       "controller_pid": 2720259,
-      "last_observation_record": "records/research_post_d30_mechanisms_20261004T000812_2446364/progress_observation_20261004T172147.json"
+      "last_observation_record": "records/research_post_d30_mechanisms_20261004T000812_2446364/evidence_20261004T180809837028_3002648/queue_status.json",
+      "evidence_commit": "efba23a56eb7f508c0485332cc03c6476bfc8d59",
+      "native_AB_results_received": true,
+      "repair_manifest_received": true,
+      "independent_integer_audit": {
+        "jobs": [
+          "A0",
+          "A1",
+          "A2",
+          "A3",
+          "B1",
+          "B3",
+          "B4"
+        ],
+        "summaries": 14,
+        "cm_pairs": 54432,
+        "joint_pairs": 5292
+      },
+      "screens": {
+        "A2": {
+          "passed": false,
+          "checks": {
+            "clean": true,
+            "worst_tile": true,
+            "keep_rgb": true,
+            "keep_dsm": true,
+            "harm_rgb": true,
+            "harm_dsm": true,
+            "vs_plain": false,
+            "vs_all": false,
+            "vs_shuffled": false,
+            "fixed_same_sign": true
+          },
+          "delta_vs_plain_pp": 0.10164318753894008,
+          "delta_vs_all_pp": -0.04469438179407348
+        },
+        "B3": {
+          "passed": false,
+          "checks": {
+            "clean": true,
+            "worst_tile": true,
+            "keep_rgb": true,
+            "keep_dsm": true,
+            "harm_rgb": true,
+            "harm_dsm": false,
+            "vs_augmentation": false,
+            "vs_shuffle": false,
+            "each_tile_positive": true,
+            "old_composite": true,
+            "fixed_same_sign": true
+          },
+          "geometry_vs_augmentation_pp": 0.0212595267715443,
+          "geometry_vs_shuffle_pp": -0.01285199118932212,
+          "per_tile_pp": {
+            "3_11": 0.01127162345341548,
+            "5_10": 0.027743053969264686
+          }
+        }
+      },
+      "F_trigger": false,
+      "F_actual_skipped_observed": false
     }
   ],
   "next_plan": {

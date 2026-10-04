@@ -1,32 +1,12 @@
-# 下一步：上传A原生结果，沿原B/C队列继续
+# 下一步：原C完成后接收最终稳定快照
 
-最后服务器观测：2026-10-04T17:21:47.568226+08:00（用户终端查询回传），Post-D30为RUNNING，控制器2720259 LIVE=True，主体12/18完成：A0—A5、B1—B6全部COMPLETE；C0在GPU0训练3760/8000步，C1在GPU1训练3780/8000步，两worker PID_LIVE=True；C2—C5 PENDING，F0—F3仍有条件。原队列已进入C，禁止重复恢复或新建队列。旧08:12日志的model导入错误仅作历史记录。本次仍未收到上传提交，GitHub没有新增A/B原生结果；固定A2/B3门槛尚待原件分析，不能由技术完成判定科学成立。
+最后服务器记录快照：2026-10-04T18:07:21.987874+08:00，queue_status=RUNNING，主体12/18完成，A0—A5及B1—B6 COMPLETE；C0/C1在GPU0/1训练至8000步，phase=checkpoint_selection，尚非COMPLETE；C2—C5 PENDING，F仍PENDING。该快照未新查PID存活；最近存活证据为17:21用户查询。不把18:08上传时间当运行完成时间。
 
-## 上传阶段原件
+固定A2 gate=False：综合对A0+0.101643pp（要求≥+0.2）、对A1−0.044694pp（要求≥+0.2）、对A3−0.023958pp（要求≥+0.1）；其余原生安全/fixed检查通过。固定B3 gate=False：几何对B1+0.021260pp（要求≥+0.5）、对B4−0.012852pp（要求≥+0.2）；DSM锚点正确伤害率较A0增加0.011997pp。F触发条件不成立；不追加A/B种子、追训、扫参或换敏感性最佳组救gate。原C继续。
 
-此前上传准备失败：761504860字节超过512 MiB，尚无A/B原件上传。最新上传器已降低JSON/log无损压缩阈值并增加准备报告，服务器实际体积待回报。见[体积修复](../experiments/POST_D30_UPLOAD_SIZE_REPAIR_20261004.md)。重新执行下方上传命令，先fetch最新脚本，禁止重复使用旧upload_stage脚本。
+A/B上传验收已完成，不重复上传同阶段，不重训/重评价，不恢复或另建队列。原C继续，固定C2双侧按C0/C1/C3及自身锚点门槛判定。F不手动启动；等待原控制器实际SKIPPED_GATE。
 
-命令只上传，不训练、不评价、不重启。最新上传器保留修复manifest、A汇总、complete/checkpoint绑定及逐tile JSON，权重/预测仅索引。运行中B记录为阶段快照，不当最终结果；如写入中的JSON或非快进push报错，保留现场回传错误，不重启训练、不force push。
-
-```bash
-(
-set -e
-cd /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
-git fetch origin rebuild-v1-protocol-20260915
-UPLOAD_COMMIT=$(git rev-parse FETCH_HEAD)
-POST_DIR="$PWD/records/research_post_d30_mechanisms_20261004T000812_2446364"
-STAMP=$(date +%Y%m%dT%H%M%S)_$$
-UPLOAD_SCRIPT="$POST_DIR/upload_stage_records_$STAMP.py"
-git show "$UPLOAD_COMMIT":scripts/upload_post_d30_records.py > "$UPLOAD_SCRIPT"
-python -u -B "$UPLOAD_SCRIPT" --root "$PWD" --directory "$POST_DIR"
-)
-```
-
-回传PORTFOLIO_GITHUB_COMMIT及PORTFOLIO_GITHUB_RECORDS即可。助手回读manifest/SHA及A固定A2对A0/A1/A3；A4/A5仅敏感性，不能替代主候选。B阶段已全部技术完成，同时核对固定B3对B1/B4与A0的完整gate，B5/B6不替换B3。本次回传仅为查询，尚无结果上传。完成A不重训、不重评价。
-
-## 沿原队列继续及只读查询
-
-禁止再执行旧2a15ef恢复指令或另建队列。B完成原控制器接C，F仅固定B3全部gate通过触发；未知错误先诊断，不自动重跑。
+## 后续只读查询
 
 ```bash
 (
@@ -48,8 +28,24 @@ PY
 )
 ```
 
+## C稳定完成后上传
 
+确认C评价与完成绑定及F实际跳过记录后执行，不需要现在再次上传；失败先诊断，不重跑训练或force push。
 
-17:21脚本估算主体剩余6.70小时、结束约2026-10-05 00:03，仅粗排期，F未包含，不承诺完成时间。
+```bash
+(
+set -e
+cd /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+git fetch origin rebuild-v1-protocol-20260915
+UPLOAD_COMMIT=$(git rev-parse FETCH_HEAD)
+POST_DIR="$PWD/records/research_post_d30_mechanisms_20261004T000812_2446364"
+STAMP=$(date +%Y%m%dT%H%M%S)_$$
+UPLOAD_SCRIPT="$POST_DIR/upload_stage_records_$STAMP.py"
+git show "$UPLOAD_COMMIT":scripts/upload_post_d30_records.py > "$UPLOAD_SCRIPT"
+python -u -B "$UPLOAD_SCRIPT" --root "$PWD" --directory "$POST_DIR"
+)
+```
 
-用户终端执行无SSH；只用物理GPU0/1两张H10080GB、nohup、seed42、8000步、batch16无累积，全部记录/临时/缓存/快照保存在zzx对应目录。资源充足，不重复资源审计、不加seed、不访问Test6/独立final，Val2重复开发不称独立确认。主线不变，见[研究决定](RESEARCH_DECISION.md)。
+回传提交号，助手回读C完成绑定与原始计数后分析。当前step8000不写COMPLETE。[A/B结果](../experiments/POST_D30_AB_RESULTS_20261004.md)。
+
+主线仍RGB–DSM双向条件互补与退化/缺失分割，恢复是旁支，仍处于可行性探索，无确认性新贡献。用户终端操作无SSH，只用GPU0/1两张H10080GB、nohup、seed42/8000步/batch16无累积，全部记录/缓存/快照在zzx对应目录。不重复资源审计，不加seed，不读取Test6/独立final。
