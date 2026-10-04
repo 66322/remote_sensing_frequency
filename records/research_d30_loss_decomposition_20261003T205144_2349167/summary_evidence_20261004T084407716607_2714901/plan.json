@@ -1,0 +1,492 @@
+{
+  "input_manifest_sha256": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295",
+  "expected_configs": {
+    "base_config_sha256": "07dd4b7f224d2e036024dfb2ab57bac9fe312335a5eebb8173778cd5c11de133",
+    "dino_config_sha256": "cb1c398acac6c9892aeee65bc5f331375a2395c0233654d7a3fc6ee58329ef0f",
+    "split_sha256": "d9fe260f6b1be3807811e454c1673d1e69db235c32d4dea207e8724975e210ab"
+  },
+  "schema_version": "1.0",
+  "id": "D30_LOSS_DECOMPOSITION",
+  "status": "EXECUTION_CONFIGURED",
+  "execution_authorized": true,
+  "source_commit": "8457b3d838d35440d4028f031756d4d9b8fe36f8",
+  "user_direction": "Both RGB and DSM information; reuse already completed unimodal experiments",
+  "superseded_suggestion": "Retraining fresh RGB-only and DSM-only anchors is withdrawn",
+  "protocol": "docs/protocols/D27_SAFE_ROUTING_PLAN_20261002.md",
+  "evidence_review": "docs/experiments/RESEARCH_SYNTHESIS_D15_D25_20261002.md",
+  "literature": "docs/literature/D27_SAFE_ROUTING_RECENT_LITERATURE_20261002.md",
+  "experts": {
+    "rgb": {
+      "path": "records/research_d25_missingness_20261002T130253_1358078/jobs/P6/selected.pth",
+      "sha256": "bef8dda6537b68fc51f300bc3789bbbef57682baedf92a3f7665217a4a2fde71",
+      "step": 2000,
+      "kind": "D25_P6_DINOv2_vits14_RGB_only",
+      "normalization": "native RGB ImageNet mean/std"
+    },
+    "dsm": {
+      "path": "runs/rebuild_v1/D15_dsm_only_seed42_sched16000_stop16000/best_model.pth",
+      "sha256": "d597f1adf3ca0291dcd7d063af941bebf3db1e61205cfdaf13271fbba9437e84",
+      "step": 15000,
+      "kind": "D15_seed42_R50_ViT_B16_DSM_only",
+      "normalization": "native per-tile minmax DSM repeated3; no ImageNet normalization"
+    },
+    "heterogeneous_architectures": true,
+    "historical_held4_exposure": true
+  },
+  "new_unimodal_training": 0,
+  "jobs": [
+    {
+      "id": "P",
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "gpu": 0,
+      "priority": 0
+    },
+    {
+      "id": "R",
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "gpu": 1,
+      "priority": 1
+    },
+    {
+      "id": "PR_area",
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "gpu": 0,
+      "priority": 2
+    },
+    {
+      "id": "PR_pixel",
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "gpu": 1,
+      "priority": 3
+    }
+  ],
+  "unique_training_jobs": 4,
+  "total_optimizer_steps": 32000,
+  "batch": 16,
+  "gradient_accumulation": false,
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "nohup": true,
+  "server_root": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+  "directory_pattern": "records/research_d30_loss_decomposition_<timestamp>_<pid>",
+  "repeat_resource_probe": false,
+  "test6_loaded": false,
+  "automatic_followup": false,
+  "selection": "mean complete clean, RGB-only clean, DSM-only clean on Val2 at4000/8000, earliest ties; fixed8000 diagnostic retained",
+  "primary_candidate": "G1",
+  "new_contribution_established": false,
+  "decision_source": "2026-10-02 user: \u6309\u7167\u89c4\u5212\u8fdb\u884c\u5b9e\u9a8c\uff0c\u6dfb\u52a0\u5230\u5df2\u6709\u5b9e\u9a8c\u7684\u540e\u9762\uff0c\u4e4b\u524d\u7684\u8dd1\u5b8c\u5c31\u8fdb\u884c\u8fd9\u7ec4\u5b9e\u9a8c",
+  "data": {
+    "dataset": "Potsdam",
+    "input": "RGB plus existing per-tile normalized DSM",
+    "fit12": [
+      "2_12",
+      "2_10",
+      "7_8",
+      "3_12",
+      "5_12",
+      "7_9",
+      "6_9",
+      "7_7",
+      "4_12",
+      "6_8",
+      "6_12",
+      "6_7"
+    ],
+    "train_held4": [
+      "4_11",
+      "6_10",
+      "7_10",
+      "7_11"
+    ],
+    "validation": [
+      "3_11",
+      "5_10"
+    ],
+    "held4_policy": "not loaded this round; historical Train16 checkpoint exposure means not an independent holdout",
+    "test6_loaded": false,
+    "independent_final_loaded": false,
+    "patch": 512,
+    "sampling": "D23 aligned keyed fit crop stream; D26 independent keyed R-quality/D-quality/availability draws"
+  },
+  "training": {
+    "steps": 8000,
+    "physical_batch": 16,
+    "gradient_accumulation": false,
+    "views_per_crop": 2,
+    "head_lr": 0.0002,
+    "encoder_last4_lr": 2e-05,
+    "weight_decay": 0.01,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "warmup_steps": 100,
+    "checkpoint_every": 500,
+    "validation_steps": [
+      4000,
+      8000
+    ],
+    "selection_states": [
+      "clean",
+      "dsm_missing",
+      "rgb_missing"
+    ],
+    "selection": "mean pooled NoBoundary fg5 across three states; ties earlier",
+    "joint_single_ce_weight": 0.5,
+    "precision": "bf16",
+    "validation_batch": 8,
+    "seed": 42,
+    "gradient_diagnostic_every": 500
+  },
+  "runtime": {
+    "per_job_timeout_hours": 8,
+    "queue": "D28 COMPLETE and released lock, replay wave then two training lanes GPU0/1",
+    "estimated_hours": [
+      3.5,
+      4.5
+    ],
+    "host_prefetch_workers": 8,
+    "host_prefetch_batches": 4,
+    "automatic_retries": false,
+    "automatic_new_jobs": false,
+    "automatic_batch_resize": false,
+    "determinism": "strict frozen arms; J0 warn_only for native DSM bilinear CUDA backward; no bitwise multiGPU promise"
+  },
+  "architecture": {
+    "residual_experts": 3,
+    "expert_states": [
+      "complete_clean",
+      "dsm_quality_degraded",
+      "rgb_quality_degraded"
+    ],
+    "expert_specialization": "common auxiliary supervision on training stratum; both-quality receives expert1/2 supervision",
+    "frozen_original_anchors": true,
+    "projection_channels": 128,
+    "expert_head": "concat256 ->Conv3x3 128->GroupNorm8->GELU->Conv1x1 6 zero initialized",
+    "router": "20 detached probabilities/disagreement/known-mask ->Conv1x1 64->GELU->Conv1x1 18 zero initialized",
+    "route": "6classes x3experts; static fit token/image pooling/local class-average/local class-specific",
+    "fit_statistic": "first common clean fit batch mean detached20channels stored checkpoint buffer; not an extra probe",
+    "anchor": "RGB plus three weighted residuals; known single-modality pixels exact native-logit fallback",
+    "dense_moe": true,
+    "sparse_speedup_claim": false,
+    "class_shuffle": "per sample deterministic input-fingerprint random semantic channel permutation, availability unchanged",
+    "spatial_shuffle": "halfheight/halfwidth routing field roll, training andevaluation"
+  },
+  "augmentation": {
+    "rgb_probability": 0.5,
+    "rgb": [
+      "rgb_down2",
+      "rgb_down4",
+      "rgb_blur5",
+      "rgb_contrast060"
+    ],
+    "dsm_probability": 0.5,
+    "dsm": [
+      "aux_down4",
+      "aux_noise_std010",
+      "aux_shift8"
+    ],
+    "availability": {
+      "full": 0.5,
+      "rgb_missing": 0.1,
+      "dsm_missing": 0.1,
+      "rgb_local": 0.15,
+      "dsm_local": 0.15
+    },
+    "local_shapes": [
+      "q1",
+      "stripe_eighth"
+    ],
+    "both_missing_training": false
+  },
+  "evaluation": {
+    "primary": [
+      "clean",
+      "rgb_down2",
+      "rgb_down4",
+      "rgb_blur5",
+      "rgb_contrast060",
+      "aux_down4",
+      "aux_noise_std010",
+      "aux_shift8",
+      "rgb_down4+aux_noise_std010",
+      "rgb_blur5+aux_shift8"
+    ],
+    "families": {
+      "C": [
+        "clean"
+      ],
+      "QR": [
+        "rgb_down2",
+        "rgb_down4",
+        "rgb_blur5",
+        "rgb_contrast060"
+      ],
+      "QD": [
+        "aux_down4",
+        "aux_noise_std010",
+        "aux_shift8"
+      ],
+      "QJ": [
+        "rgb_down4+aux_noise_std010",
+        "rgb_blur5+aux_shift8"
+      ]
+    },
+    "missing": [
+      "rgb_missing",
+      "dsm_missing"
+    ],
+    "local": {
+      "LR": [
+        "rgb_local_q1",
+        "rgb_local_stripe_eighth",
+        "rgb_local_center_quarter"
+      ],
+      "LD": [
+        "dsm_local_q1",
+        "dsm_local_stripe_eighth",
+        "dsm_local_center_quarter"
+      ]
+    },
+    "diagnostic": [
+      "dsm_missing+rgb_down4",
+      "rgb_missing+aux_noise_std010",
+      "complementary_halves",
+      "both_center_missing",
+      "dsm_present_zero",
+      "dsm_present_shift_half"
+    ],
+    "fixed8000": "10 primary conditions; selected evaluates all22 conditions",
+    "window": 512,
+    "stride": 256,
+    "precision": "FP32 logits uniform stitch, TF32 enabled",
+    "metric": "NoBoundary mIoU_fg5 pooled; full and6class diagnostic",
+    "fixed_references": [
+      "rgb",
+      "dsm",
+      "probability_average",
+      "availability_switch"
+    ],
+    "joint_counts": "6^4 truth,rgb,dsm,candidate int64 per availability partition per scope/tile; references same masked input",
+    "joint_counts_encoding": "lossless sparse flat index/count int64 shape6^4, omitted bins exactly0; decode helper supplied; per condition/tile/scope/availability"
+  },
+  "verification_status": "LOCAL_SYNTHETIC_CPU_14_CHECKS_PASS_SERVER_CUDA_PENDING",
+  "inherited_execution_commit": "52f94388b1a9c7557e9ef533075661139cd55eda",
+  "predecessor_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d28_pressure_20261003T092243758628_2001983",
+  "safety_weights": {
+    "protect": 0.1,
+    "recover": 0.1,
+    "expert_auxiliary": 0.1
+  },
+  "development_gates": {
+    "reference": "D27_S0",
+    "selected_S_delta_pp_min": 0.2,
+    "clean_delta_pp_min": -0.1,
+    "worst_primary_tile_condition_delta_pp_min": -0.2,
+    "QD_harm_rate_not_above_reference": true,
+    "fixed8000_S_delta_positive": true,
+    "interpretation": "engineering allocation, not confirmation or replacement of D27 gates"
+  },
+  "execution_commit": "9db12dfb7ee85dff91dd6c246c7f161b60aca603",
+  "created_at": "2026-10-03T20:51:45.009325+08:00",
+  "parent_D27_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983",
+  "design": {
+    "schema_version": 1,
+    "status": "IMPLEMENTED_SERVER_LAUNCH_PENDING",
+    "date": "2026-10-03",
+    "name": "D30_loss_decomposition_after_D28",
+    "purpose": "Separate protect/recover effects and recovery normalization; diagnose fixed-checkpoint routing. Not a new contribution claim.",
+    "predecessor": "records/research_d28_pressure_20261003T092243758628_2001983",
+    "handover": {
+      "require": "technical COMPLETE, controller lock released, no live predecessor workers; verify bound D27 evidence",
+      "scientific_positive_required": false,
+      "on_technical_failure": "HOLD_WITH_REASON"
+    },
+    "resources": {
+      "physical_gpus": [
+        0,
+        1
+      ],
+      "gpu": "H100 80GB",
+      "ram_disk": "ample, user confirmed",
+      "resource_probe": false,
+      "nohup": true,
+      "server_root": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+      "directory_pattern": "records/research_d30_loss_decomposition_<timestamp>_<pid>",
+      "all_temp_cache_logs_snapshots_under_zzx": true
+    },
+    "reuse": {
+      "execution_commit": "ba7088ec05be7b85dd45e5896a8407506bcca14d",
+      "evidence_commit": "cedbc594d4e438d3c220ee80d3e82f563a8c2ae3",
+      "run": "research_d27_safe_routing_repair_20261003T092243758628_2001983",
+      "controls": [
+        "S0",
+        "S1"
+      ],
+      "initial_fusion_sha256": "16abcd8338a0fae16584d6a70030cb1db5c8a3df741ba7076da77e12e9432281",
+      "require": "same init/data/augmentation stream/optimizer/precision/selection; original loss and gradient equivalence regression",
+      "on_mismatch": "hold comparison; no automatic baseline retraining"
+    },
+    "replay": {
+      "checkpoints": [
+        "G0:selected4000",
+        "G1:selected4000"
+      ],
+      "modes": [
+        "uniform",
+        "expert0",
+        "expert1",
+        "expert2"
+      ],
+      "conditions": [
+        "clean",
+        "rgb_down4",
+        "aux_noise_std010"
+      ],
+      "tiles": [
+        "3_11",
+        "5_10"
+      ],
+      "new_tile_evaluations": 48,
+      "original_route_reused_tile_evaluations": 12,
+      "alter_only": "post-softmax mixture weights, keeping residuals and availability fallback",
+      "not_oracle": true
+    },
+    "training": {
+      "architecture": "D27 static S, frozen RGB/DSM anchors, same three dual-modal residual experts",
+      "steps": 8000,
+      "seed": 42,
+      "physical_batch": 16,
+      "gradient_accumulation": false,
+      "views_per_crop": 2,
+      "precision": "bf16",
+      "validation_steps": [
+        4000,
+        8000
+      ],
+      "selection": "original clean/dsm_missing/rgb_missing mean pooled NoBoundary fg5; ties earlier",
+      "expert_auxiliary_weight": 0.1,
+      "protect_weight": 0.1,
+      "recover_weight": 0.1,
+      "total_new_updates": 32000
+    },
+    "jobs": [
+      {
+        "id": "P",
+        "gpu": 0,
+        "wave": 1,
+        "protect": true,
+        "recover": false,
+        "comparison": "S0; factorial cell10"
+      },
+      {
+        "id": "R",
+        "gpu": 1,
+        "wave": 1,
+        "protect": false,
+        "recover": true,
+        "recover_mode": "class_balanced_region_mean",
+        "comparison": "S0; factorial cell01"
+      },
+      {
+        "id": "PR_area",
+        "gpu": 0,
+        "wave": 2,
+        "protect": true,
+        "recover": true,
+        "recover_mode": "class_balanced_region_mean_times_recovery_fraction_of_both_valid",
+        "comparison": "S1; only area scaling changes"
+      },
+      {
+        "id": "PR_pixel",
+        "gpu": 1,
+        "wave": 2,
+        "protect": true,
+        "recover": true,
+        "recover_mode": "pixel_mean_within_same_recovery_mask",
+        "comparison": "S1; only class balancing changes"
+      }
+    ],
+    "analysis": {
+      "factorial_cells": {
+        "10": "P",
+        "11": "D27_S1",
+        "00": "D27_S0",
+        "01": "R"
+      },
+      "interaction": "Y11-Y10-Y01+Y00",
+      "primary": "selected S_available and primary paired condition/tile deltas",
+      "sensitivity": "fixed8000 identical metrics",
+      "also": [
+        "only_RGB_correct retention",
+        "only_DSM_correct retention",
+        "QD harm rate",
+        "worst tile/condition delta",
+        "per-class IoU",
+        "known missing fallback"
+      ],
+      "single_seed_no_significance_claim": true,
+      "continuation_screen": {
+        "reference": "D27_S0",
+        "selected_S_delta_pp_min": 0.2,
+        "clean_delta_pp_min": -0.1,
+        "worst_primary_tile_condition_delta_pp_min": -0.2,
+        "QD_harm_rate_not_above_reference": true,
+        "fixed8000_S_delta_positive": true,
+        "interpretation": "engineering allocation, not confirmation or replacement of D27 gates"
+      }
+    },
+    "logging": {
+      "loss_components": "raw and weighted CE/aux/protect/recover; masks, denominators, classes, clean/aug separate",
+      "gradient_diagnostics_steps": [
+        1,
+        100,
+        500,
+        1000,
+        1500,
+        2000,
+        2500,
+        3000,
+        3500,
+        4000,
+        4500,
+        5000,
+        5500,
+        6000,
+        6500,
+        7000,
+        7500,
+        8000
+      ],
+      "gradient_components": "norms and cosines; autograd.grad without altering optimizer .grad or RNG",
+      "records": "int64 6x6 matrices, raw counts, joint correctness tables, per-tile results, config/source/checkpoint binding"
+    },
+    "limits": {
+      "test6": false,
+      "independent_final": false,
+      "new_multiseed": false,
+      "automatic_weight_sweep": false,
+      "D29_activated": false,
+      "estimated_wall_hours_after_D28": [
+        3.5,
+        4.5
+      ]
+    },
+    "decision": "Diagnostic round. Recovery to S0 alone is repair evidence, not method novelty. Do not revive D27 gates. If simple variants cannot improve the preservation tradeoff, close this protect/recover recipe and reassess with D28.",
+    "execution_authorized": true,
+    "decision_source": "2026-10-03 user: \u6309\u4e0a\u8ff0\u89c4\u5212\u8fdb\u884c\uff0c\u968f\u540e\u52a0\u5165\u5df2\u8fdb\u884c\u7684\u961f\u5217\u540e\u9762"
+  },
+  "source_D27_plan_sha256": "9dd1c13e46b3dab32b24ed4230863cc0802ae0ba2afa77659a1f9089520a77d7",
+  "initial_fusion_sha256": "16abcd8338a0fae16584d6a70030cb1db5c8a3df741ba7076da77e12e9432281"
+}
