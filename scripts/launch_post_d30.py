@@ -5,7 +5,7 @@ from datetime import datetime
 FILES=['model/rebuild_v1_post_d30.py','scripts/post_d30_common.py','scripts/post_d30_data.py',
        'scripts/post_d30_evaluation.py','scripts/run_post_d30.py','scripts/summarize_post_d30.py',
        'scripts/launch_post_d30.py','scripts/status_post_d30.py','scripts/upload_post_d30_records.py',
-       'tests/test_post_d30.py','records/research_post_d30_design_20261003/plan.json']
+       'tests/test_post_d30.py','scripts/post_d30_eval_compat.py','records/research_post_d30_design_20261003/plan.json']
 PREFIX='research_post_d30_mechanisms_'
 PREDECESSOR='research_d30_loss_decomposition_20261003T205144_2349167'
 def read(p):return json.loads(Path(p).read_text(encoding='utf-8'))
@@ -59,6 +59,11 @@ def main():
     for name,digest in read(base/'code_manifest.json')['files'].items():
         if sha(code/name)!=digest:raise RuntimeError('immutable snapshot changed '+name)
     if sha(parent/'plan.json')!=plan['source_D30_plan_sha256']:raise RuntimeError('source D30 plan changed')
+    sys.path.insert(0,str(code))
+    from post_d30_eval_compat import check_conditions
+    from post_d30_data import treatment
+    checked=check_conditions(plan,treatment)
+    print('PORTFOLIO_CONDITION_INTERFACE_PASS',len(checked),flush=True)
     for d in ('temporary','cache/torch','logs','jobs'):(base/d).mkdir(parents=True,exist_ok=True)
     env=dict(os.environ,CUDA_VISIBLE_DEVICES='',OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',MKL_NUM_THREADS='1',PYTHONDONTWRITEBYTECODE='1',TMPDIR=str(base/'temporary'),XDG_CACHE_HOME=str(base/'cache'),TORCH_HOME=str(base/'cache/torch'))
     state=read(base/'queue_status.json') if (base/'queue_status.json').exists() else dict(jobs={j['id']:dict(status='PENDING',gpu=j['gpu'],phase=j['phase']) for j in plan['jobs']})

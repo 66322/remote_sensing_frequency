@@ -1,26 +1,24 @@
-# 状态：Post-D30已启动并排队等待D30
+# 状态：D30已完成；Post-D30技术停止
 
-最后用户回传检查：Post-D30队列2026-10-04T00:11:46.062560+08:00为WAITING_D30，控制器PID2450552 LIVE=True，18主体0完成、22配置任务均PENDING且无活跃worker；D30队列2026-10-04T00:11:52.142311+08:00仍RUNNING、LOCK_FREE=False。正常等待前序释放，尚未开始新GPU训练。执行commit固定01ec8dee82f7e272f6a650aaf9f3e619a0e7c516，目录`research_post_d30_mechanisms_20261004T000812_2446364`。这次未提供D30各job步数/评价进度，不能继续引用23:17的步数为当前进度，不能更新剩余时间估计；四项完成指标已分析，PR_area/PR_pixel、重放效果及原矩阵待收。ps的ELAPSED字段数值异常，不作为运行时长或ETA依据。
+最后服务器观测：D30在2026-10-04T00:47:08.030508+08:00为COMPLETE，六项全部完成。Post-D30在2026-10-04T06:04:04.397991+08:00为COMPLETE_WITH_TECHNICAL_FAILURES；原控制器2450552已退出（Z、LIVE=False），无活跃worker。A0—A5均训练至8000步，均因评价条件`dsm_present_zero`未被处理而失败；0/18正式完成，B/C未启动，F仍待条件。不能据此评价A机制效果。原执行commit为01ec8dee82f7e272f6a650aaf9f3e619a0e7c516，原目录为`research_post_d30_mechanisms_20261004T000812_2446364`。修复已实现并通过本地检查，尚未收到服务器恢复启动证据。
 
-| 阶段 | 最后证据 | 科学状态 |
+| 阶段 | 最后证据 | 结论边界 |
 |---|---|---|
-| D26 | 2026-10-03 04:04 COMPLETE9/9 | 已复核，普通融合保留，当前复杂主候选未过gate |
-| 原D27 | 2026-10-03 04:12 step0技术失败 | 无效果结论，原目录保留 |
-| D27 repair | 2026-10-03 18:22 COMPLETE10/10 | 四科学gate失败 |
-| D28 | 2026-10-03 19:27 COMPLETE7/7 | 238原件重算、压力gate失败 |
-| D29 | 无启动观测 | 条件不成立，未排队 |
-| D30 | 23:17运行观测＋随后四项完成指标 | P小增益、R明显损失，PR_area/PR_pixel等待收；原件未独立重算 |
-| Post-D30 A/B/C/F | 2026-10-04 00:11检查 | PID2450552 LIVE=True；WAITING_D30；0/18主体完成、无新worker |
-| D30后续状态 | 2026-10-04 00:11:52 | RUNNING、LOCK_FREE=False；本次未提供job进度/新科学结果 |
+| D26 | 2026-10-03 04:04，9/9完成 | 普通融合保留；复杂主候选未过gate |
+| 原D27 | step0技术失败 | 不产生效果结论 |
+| D27 repair | 2026-10-03 18:22，10/10完成 | 四科学gate失败 |
+| D28 | 2026-10-03 19:27，7/7完成 | 压力gate失败，原件已重算 |
+| D29 | 无启动证据 | 不激活 |
+| D30 | 2026-10-04 00:47，六项完成 | P/R/PR_area/PR_pixel continue均False；完整原件待上传 |
+| Post-D30 A | 2026-10-04 06:04 | 6/6训练到8000；6项评价失败；0项正式完成 |
+| Post-D30 B/C | 同上 | 12项主体未开始 |
+| Post-D30 F | 同上 | 4项条件待定，不可默认为必跑 |
+| 评价修复 | 本地实现与检查通过 | 尚无服务器恢复观测 |
 
-主问题仍为RGB外观/语义与DSM高度/几何的双向条件互补及任一模态退化/缺失下的可靠分割。处于论文可行性探索，频率、语义可靠性、专家与共享/私有只是候选解法；任务驱动SR/恢复仍为旁支，没有自动转向或确认性贡献。
+D30终端汇总：P综合86.092396，R84.037805，PR_area85.986496，PR_pixel84.759540，四项continue均False。相对S0综合86.051214，PR_area−0.064718pp、PR_pixel−1.291674pp；不同归一化未达到预设增量门槛。P的小改善与R的信息取舍仍成立，但不能据此认定唯一根因或整个双模态问题无效。指标为Potsdam开发Val2、native512/stride256、NoBoundary fg5的selected口径，来自用户终端；完整原矩阵尚待上传与独立重算。
 
-[四项结果分析](../experiments/D30_FOUR_ARM_REVIEW_20261003.md)、[执行协议](../protocols/POST_D30_EXECUTION_20261003.md)、[机读计划](../../records/research_post_d30_design_20261003/plan.json)。
+[故障与恢复说明](../experiments/POST_D30_EVALUATION_REPAIR_20261004.md)、[原执行协议](../protocols/POST_D30_EXECUTION_20261003.md)、[机读设计](../../records/research_post_d30_design_20261003/plan.json)。
 
-只使用物理GPU0/1，两张H10080GB；RAM/磁盘充足，无资源探针。seed42、8000步、batch16无累积、nohup。快照、临时、缓存、日志全部在/home/jovyan/zzx对应实验目录。用户在服务器终端执行，无SSH；Test6与独立final禁读。重复开发Val2不是确认性泛化证据。GitHub本分支为共享权威，大预测/checkpoint本体留服务器并索引。
+只使用物理GPU0/1，两张H10080GB，RAM与磁盘充足；seed42、8000步、物理batch16、无累积、nohup。快照/临时/缓存/日志均在/home/jovyan/zzx对应实验目录。用户在服务器终端执行，无SSH；不重复资源审计或预算探针。Test6及独立final禁止访问；重复开发Val2不等于独立泛化。GitHub本分支为共享权威，大预测/checkpoint保留服务器并索引。
 
-[历史状态全文](../history/pre_post_D30_execution_20261003/PROJECT_STATUS.md)。
-
-[本次启动观测](../../records/research_post_d30_mechanisms_20261004T000812_2446364/launch_observation_20261004T000812.json)。
-
-[00:11存活与等待观测](../../records/research_post_d30_mechanisms_20261004T000812_2446364/progress_observation_20261004T001146.json)。
+[原始终端观测](../../records/research_post_d30_mechanisms_20261004T000812_2446364/failure_observation_20261004T060404.json)；[上一版状态](../history/pre_post_D30_evaluation_repair_20261004/PROJECT_STATUS.md)。

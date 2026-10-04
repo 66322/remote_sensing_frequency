@@ -1,27 +1,19 @@
-# 当前交接：D30四项解读与后接18＋4实现
+# 当前交接：补A评价后恢复B/C队列
 
-主问题仍为RGB外观/语义与DSM高度/几何的双向条件互补及任一模态退化/缺失下的可靠分割。处于论文可行性探索，频率、语义可靠性、专家与共享/私有只是候选解法；任务驱动SR/恢复仍为旁支，没有自动转向或确认性贡献。
+主问题保持RGB外观/语义与DSM高度/几何的双向条件互补，以及任一侧退化/缺失时的可靠分割。处于可行性探索，频率、可靠性、专家、共享/私有均是候选解法；任务驱动SR/恢复仍是旁支，未自动变更方向，也没有确认性贡献。
 
-最后用户回传检查：Post-D30队列2026-10-04T00:11:46.062560+08:00为WAITING_D30，控制器PID2450552 LIVE=True，18主体0完成、22配置任务均PENDING且无活跃worker；D30队列2026-10-04T00:11:52.142311+08:00仍RUNNING、LOCK_FREE=False。正常等待前序释放，尚未开始新GPU训练。执行commit固定01ec8dee82f7e272f6a650aaf9f3e619a0e7c516，目录`research_post_d30_mechanisms_20261004T000812_2446364`。这次未提供D30各job步数/评价进度，不能继续引用23:17的步数为当前进度，不能更新剩余时间估计；四项完成指标已分析，PR_area/PR_pixel、重放效果及原矩阵待收。ps的ELAPSED字段数值异常，不作为运行时长或ETA依据。
+最后服务器观测：D30在2026-10-04T00:47:08.030508+08:00为COMPLETE，六项全部完成。Post-D30在2026-10-04T06:04:04.397991+08:00为COMPLETE_WITH_TECHNICAL_FAILURES；原控制器2450552已退出（Z、LIVE=False），无活跃worker。A0—A5均训练至8000步，均因评价条件`dsm_present_zero`未被处理而失败；0/18正式完成，B/C未启动，F仍待条件。不能据此评价A机制效果。原执行commit为01ec8dee82f7e272f6a650aaf9f3e619a0e7c516，原目录为`research_post_d30_mechanisms_20261004T000812_2446364`。修复已实现并通过本地检查，尚未收到服务器恢复启动证据。
 
-用户授权：根据D30结果执行已规划机制并增加有解释价值的组数。实现A→B→C→条件F，等D30六项全部完成、有效screen、锁释放且无其活跃worker后接力；新目录独立、全局后继锁防重复。D30失败HOLD，新阶段技术失败停止后继，不自动杀进程或重复训练。断线用nohup；显式resume恢复保存状态，完成结果保留。
+恢复在同一目录建立独立、带SHA清单的评价补丁快照，原plan和code快照保持不变。补丁按D27原语义支持present_zero及present_shift_half：DSM虽坏，但两侧可用性mask仍为True，不把未知坏数据当已知缺失。A必须加载8000步保存状态，新增优化器更新数为0，补评价前后核对selected/step8000权重SHA；相同checkpoint的已有评价可校验后复用。补齐A后仍按A→B→C→条件F；F仅由固定B3全部gate通过触发，不新增多seed、D29或新模块。
 
-四项效果：P−S0综合+0.041182/+0.066432pp，R−S0−2.013409/−2.053585pp（selected/fixed8000）。R多保留DSM独有正确但损害RGB原正确；保护仍丢DSM有用信息。2×2交互+0.176568/+0.162126pp，不能称负交互根因。指标来自用户终端回传，尚未从原矩阵独立重算。
+D30终端汇总：P综合86.092396，R84.037805，PR_area85.986496，PR_pixel84.759540，四项continue均False。相对S0综合86.051214，PR_area−0.064718pp、PR_pixel−1.291674pp；不同归一化未达到预设增量门槛。P的小改善与R的信息取舍仍成立，但不能据此认定唯一根因或整个双模态问题无效。指标为Potsdam开发Val2、native512/stride256、NoBoundary fg5的selected口径，来自用户终端；完整原矩阵尚待上传与独立重算。
 
-[四项结果分析](../experiments/D30_FOUR_ARM_REVIEW_20261003.md)、[执行协议](../protocols/POST_D30_EXECUTION_20261003.md)、[机读计划](../../records/research_post_d30_design_20261003/plan.json)。
+已实现：评价兼容层、显式故障恢复控制器、权重/原快照绑定和补丁来源记录、修复来源上传、排除评价-only任务作为训练ETA样本。未来启动器检查实际继承计划的32个条件，而不是只检查D26基础计划。验证：5项修复测试、10项原机制CPU测试及Python3.10语法检查通过；不是服务器CUDA修复成功证明。服务器还需要用户执行[NEXT](NEXT_EXPERIMENT.md)中的nohup指令并回传恢复日志。
 
-新增6诊断组：A4/A5=.03/.3、B5/B6=3×3/7×7、C4/C5=单向KD。主体共18组144000更新；F4再32000，仅固定B3全部通过才运行。原D27/D28/D30阈值和D29关闭状态不变，未自动多seed。代码实现＋10项CPU合成测试通过；原生checkpoint/CUDA真实运行待服务器首个正常组。
+用户授权18主体＋4条件组、GPU0/1、已有队列后接。A对齐范围/强度、B局部对应与普通增强、C双向缺失蒸馏保持原对照和阈值；失败不扩大为研究问题无效，敏感性最佳组不替代固定主候选。已有6组训练保留，剩余12主体训练仍待启动。
 
-实现澄清：所有新组去掉质量候选aux_shift8，统一halo-safe裁剪，隔离小错位增强；A0是新匹配基线。C两个缺失学生只看自身模态，全模态沿冻结B0；F去HF在旁路前，避免绕过。几何8px评分支持不送入模型。主protocol机读配置/代码一致。
+[故障与恢复说明](../experiments/POST_D30_EVALUATION_REPAIR_20261004.md)、[原执行协议](../protocols/POST_D30_EXECUTION_20261003.md)、[机读设计](../../records/research_post_d30_design_20261003/plan.json)。
 
-root=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro；D30=records/research_d30_loss_decomposition_20261003T205144_2349167，执行9db12dfb7ee85dff91dd6c246c7f161b60aca603；新目录records/research_post_d30_mechanisms_20261004T000812_2446364，控制器PID2450552，执行01ec8dee82f7e272f6a650aaf9f3e619a0e7c516。固定teacher为D26 B0 selected4000，原RGB/DSM checkpoint与SHA继承D30计划。
+只使用物理GPU0/1，两张H10080GB，RAM与磁盘充足；seed42、8000步、物理batch16、无累积、nohup。快照/临时/缓存/日志均在/home/jovyan/zzx对应实验目录。用户在服务器终端执行，无SSH；不重复资源审计或预算探针。Test6及独立final禁止访问；重复开发Val2不等于独立泛化。GitHub本分支为共享权威，大预测/checkpoint保留服务器并索引。
 
-下一步：按[NEXT](NEXT_EXPERIMENT.md)只读查询已有队列，核对存活和D30释放后的接力；不要重复创建队列；收齐D30最后两项与原件；不重审资源。全部新结果可用upload_post_d30_records.py写回同分支。
-
-只使用物理GPU0/1，两张H10080GB；RAM/磁盘充足，无资源探针。seed42、8000步、batch16无累积、nohup。快照、临时、缓存、日志全部在/home/jovyan/zzx对应实验目录。用户在服务器终端执行，无SSH；Test6与独立final禁读。重复开发Val2不是确认性泛化证据。GitHub本分支为共享权威，大预测/checkpoint本体留服务器并索引。
-
-[历史交接](../history/pre_post_D30_execution_20261003/HANDOFF.md)。
-
-[本次启动观测](../../records/research_post_d30_mechanisms_20261004T000812_2446364/launch_observation_20261004T000812.json)。
-
-[00:11存活与等待观测](../../records/research_post_d30_mechanisms_20261004T000812_2446364/progress_observation_20261004T001146.json)。
+[原始终端观测](../../records/research_post_d30_mechanisms_20261004T000812_2446364/failure_observation_20261004T060404.json)；[上一版交接](../history/pre_post_D30_evaluation_repair_20261004/HANDOFF.md)。

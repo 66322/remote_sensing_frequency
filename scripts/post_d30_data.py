@@ -84,6 +84,11 @@ def geometry(ds,kind):
 
 
 def treatment(op,ds,kind,seed):
+    # Inherited D27/D30 diagnostic: present-but-bad DSM is NOT known missing.
+    if kind in ('dsm_present_zero','dsm_present_shift_half'):
+        mask=torch.ones_like(ds,dtype=torch.bool)
+        bad=torch.zeros_like(ds) if kind=='dsm_present_zero' else torch.roll(ds,(ds.shape[-2]//2,ds.shape[-1]//2),(-2,-1))
+        return op.clone(),bad,mask,mask.clone()
     from d26_data import treatment as original
     result=[]
     for part in kind.split('+'):

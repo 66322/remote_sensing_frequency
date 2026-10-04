@@ -32,4 +32,8 @@ F沿固定B3结构/增强从相同seed重训8k，不叠加A2/C2。两个band blo
 
 物理GPU0仅A0/A3/A4、B1/B4/B5、C0/C3/C4、F0/F2；GPU1仅A1/A2/A5、B2/B3/B6、C1/C2/C5、F1/F3。主体144000更新，条件再32000；RAM/磁盘充足，不重复资源审计，不启动预算探针。粗估主体17—25小时、F额外4—7小时，只作排期；C与搜索算子可能更慢，以首批正常完成组更新ETA，不承诺具体时刻。任何test6/独立final均禁读。
 
-代码与10项合成CPU检查已通过；2026-10-04 00:08用户回传已nohup启动，PID2450552，CPU检查通过并WAITING_D30；新GPU训练和原生权重/CUDA首次真实训练验收尚无回传证据。启动和查询见[下一步](../current/NEXT_EXPERIMENT.md)。GitHub为共享权威，轻量原件可显式上传同分支，大预测/checkpoint留服务器附大小/SHA/路径；执行快照、临时、缓存、日志均在zzx对应实验目录。
+2026-10-04更新：最后服务器观测：D30在2026-10-04T00:47:08.030508+08:00为COMPLETE，六项全部完成。Post-D30在2026-10-04T06:04:04.397991+08:00为COMPLETE_WITH_TECHNICAL_FAILURES；原控制器2450552已退出（Z、LIVE=False），无活跃worker。A0—A5均训练至8000步，均因评价条件`dsm_present_zero`未被处理而失败；0/18正式完成，B/C未启动，F仍待条件。不能据此评价A机制效果。原执行commit为01ec8dee82f7e272f6a650aaf9f3e619a0e7c516，原目录为`research_post_d30_mechanisms_20261004T000812_2446364`。修复已实现并通过本地检查，尚未收到服务器恢复启动证据。
+
+恢复在同一目录建立独立、带SHA清单的评价补丁快照，原plan和code快照保持不变。补丁按D27原语义支持present_zero及present_shift_half：DSM虽坏，但两侧可用性mask仍为True，不把未知坏数据当已知缺失。A必须加载8000步保存状态，新增优化器更新数为0，补评价前后核对selected/step8000权重SHA；相同checkpoint的已有评价可校验后复用。补齐A后仍按A→B→C→条件F；F仅由固定B3全部gate通过触发，不新增多seed、D29或新模块。
+
+原训练协议与选模/筛选阈值不变。错误与修复证据见[评价修复说明](../experiments/POST_D30_EVALUATION_REPAIR_20261004.md)，启动见[下一步](../current/NEXT_EXPERIMENT.md)。

@@ -52,6 +52,8 @@ def main():
     names=['plan.json','execution_commit.txt','code_manifest.json','queue_status.json','screen_result.json','results.csv','predecessor_binding.json','portfolio_screen.json','cpu_checks.log']
     names+=[p.relative_to(base).as_posix() for p in (base/'reused').rglob('*.json')]
     names+=[p.relative_to(base).as_posix() for p in base.glob('nohup*.log')]
+    for repair in base.glob('evaluation_repair_*'):
+        names+=[p.relative_to(base).as_posix() for p in repair.iterdir() if p.is_file() and p.suffix in ('.json','.py','.log')]
     names+=[p.relative_to(base).as_posix() for p in (base/'logs').glob('*.log')]
     names+=[p.relative_to(base).as_posix() for p in (base/'shared_reference').rglob('*.json')]
     artifacts=[]

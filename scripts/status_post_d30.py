@@ -1,7 +1,9 @@
 """Read persisted progress and PID liveness; never launch inference/probes."""
-import argparse,json,time
+import argparse,json,time,sys
 from pathlib import Path
 from datetime import datetime,timedelta
+overlay_base=Path(__file__).resolve().parent.parent
+if (overlay_base/'code/scripts').is_dir():sys.path[:0]=[str(overlay_base/'code/scripts'),str(overlay_base/'code')]
 from post_d30_common import PHASES,read
 from d30_common import live_owned,lock_free
 def main():
@@ -17,9 +19,12 @@ def main():
         p=row.get('progress',{});file=base/'jobs'/j/'progress.json'
         if file.exists():p=read(file)
         print(j,'GPU'+str(row['gpu']),row['status'],p.get('phase',''),'step=%s/8000'%p.get('step',0),'windows=%s/%s'%(p.get('windows_done','-'),p.get('windows_total','-')),'progress_at='+p.get('observed_at','-'),'PID_LIVE='+str(live_owned(row.get('pid',-1),base)))
-        if row['status']=='COMPLETE' and 'started_at' in row:
+        repair_binding=base/'jobs'/j/'evaluation_repair_binding.json'
+        evaluation_only=repair_binding.exists() and read(repair_binding).get('optimizer_updates')==0
+        if row['status']=='COMPLETE' and 'started_at' in row and not evaluation_only:
             normal.append((datetime.fromisoformat(row['completed_at'])-datetime.fromisoformat(row['started_at'])).total_seconds())
     if state['status']=='COMPLETE':print('REMAINING=0; QUEUE_COMPLETED_AT='+state['completed_at']);return
+    if 'FAILURE' in state['status'] or state['status']=='CONTROLLER_INTERRUPTED':print('ETA_HALTED; inspect error, queue is not actively finishing');return
     if state['status'].startswith('WAITING'):print('ETA_WAITING_D30; will not estimate from stale predecessor logs');return
     if not normal:print('ETA_PENDING_FIRST_NORMAL_COMPLETED_JOB; no extra probe');return
     duration=sum(normal)/len(normal);hours=0.
