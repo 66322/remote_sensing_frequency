@@ -17,7 +17,7 @@
 | D28 | 7/7模型评价完成；无新训练 | 相同边际损伤下，共同受损与独立受损 | B0独立−共同仅+0.014570pp，未过0.3pp；本轮不支持共同受损主假设，未触发原D29。 | [报告](../D28_FINAL_REVIEW_20261003.md) |
 | D30 | 6/6完成（4训练＋2重放，另复用S0/S1） | 保护/恢复损失拆解、面积/像素归一化、固定checkpoint路由干预 | P对S0综合+0.041182pp；R−2.013409pp；PR_area−0.064718pp；PR_pixel−1.291674pp。四项继续门槛均False；归一化缓解损失但未建立贡献。 | [报告](../D30_COMPLETED_REVIEW_20261004.md) |
 | Post-D30 A | 6/6完成、原件已收 | 对齐范围/错配/权重 | A2对A0仅+0.101643pp、低于A1/A3，gate=False；关键组整数复核PASS | [报告](../POST_D30_AB_RESULTS_20261004.md) |
-| Post-D30 B/C/F | B6/6完成；18:07 C0/C1选模，余C待接；F gate=False | 对应/增强、缺失迁移、条件频率 | B3对B1几何+0.021260pp、对B4−0.012852pp且DSM harm增加，gate=False；F实际跳过标记待确认 | [报告](../POST_D30_AB_RESULTS_20261004.md) |
+| Post-D30 B/C/F | B6/6完成；最后观测18:24 C0/C1 fixed8000评价未COMPLETE，余C待接；F gate=False | 对应/增强、缺失迁移、条件频率 | B3对B1几何+0.021260pp、对B4−0.012852pp且DSM harm增加，gate=False；F实际跳过标记待确认 | [报告](../POST_D30_AB_RESULTS_20261004.md) |
 
 ## 历史索引（保留原证据）
 
@@ -74,3 +74,7 @@ Post-D21 A/B/C/D 42/42 and mixed E 4/4 are server-reported complete; integer aud
 The C0/C1 tile-risk re-audit also passed. See
 `docs/experiments/POST_D21_FINAL_AND_MIXED_FOLLOWUP_RESULTS_20261001.md` and
 `docs/experiments/POST_D21_MIXED_TILE_RISK_RESULTS_20261001.md`.
+
+## 后续规划（不计入已运行实验）
+
+[Post-A/B候选池](../../protocols/POST_AB_FOLLOWUP_PLAN_20261004.md)：用户要求扩展规划，2类评估、6类训练研究、最多26配置；未启动，条件触发，不修改原C/F决定。
