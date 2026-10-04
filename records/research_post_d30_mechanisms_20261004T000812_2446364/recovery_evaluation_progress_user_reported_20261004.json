@@ -1,0 +1,43 @@
+{
+  "source": "user_pasted_server_worker_log",
+  "observed_at": null,
+  "time_boundary": "Latest worker log excerpt has no new observed_at; previous timestamped queue snapshot 2026-10-04T08:14:26.221138+08:00 is historical, not this log observation time",
+  "repair_commit": "9df2bf44a03955a0db43de1538aff1c91bfae33d",
+  "jobs": {
+    "A0": {
+      "reported_status": "RUNNING",
+      "physical_gpu": 0,
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/logs/A0_20261004T081225462004.log",
+      "evidence": [
+        "PORTFOLIO_REPAIR_EVAL_ONLY A0 optimizer_updates=0 reused_rows=20",
+        "D26_EVAL evaluation 3_11 dsm_present_zero",
+        "D26_EVAL evaluation 3_11 dsm_present_shift_half",
+        "D26_EVAL evaluation 5_10 rgb_local_q1"
+      ],
+      "new_optimizer_updates": 0,
+      "reused_rows": 20,
+      "original_failure_point_passed": true,
+      "full_completion_verified": false,
+      "post_evaluation_checkpoint_hash_verification_observed": false
+    },
+    "A1": {
+      "reported_status": "RUNNING",
+      "physical_gpu": 1,
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/logs/A1_20261004T081225641642.log",
+      "evidence": [
+        "PORTFOLIO_REPAIR_EVAL_ONLY A1 optimizer_updates=0 reused_rows=20",
+        "D26_EVAL evaluation 3_11 dsm_present_zero",
+        "D26_EVAL evaluation 3_11 dsm_present_shift_half",
+        "D26_EVAL evaluation 5_10 rgb_local_q1"
+      ],
+      "new_optimizer_updates": 0,
+      "reused_rows": 20,
+      "original_failure_point_passed": true,
+      "full_completion_verified": false,
+      "post_evaluation_checkpoint_hash_verification_observed": false
+    }
+  },
+  "training_restart": false,
+  "restart_needed": false,
+  "method_effectiveness_conclusion": false
+}
