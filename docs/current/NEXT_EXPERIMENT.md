@@ -1,6 +1,6 @@
 # 下一步：上传A原生结果，沿原B/C队列继续
 
-最后服务器观测：2026-10-04T12:05:36.507045+08:00（用户终端查询回传），Post-D30为RUNNING，控制器2720259 LIVE=True，主体8/18完成：A0—A5与B1/B2 COMPLETE；B4在GPU0训练5940/8000步，B3在GPU1训练4000/8000步，两worker PID_LIVE=True；B5/B6及C0—C5 PENDING，F0—F3仍有条件。第二次汇总修复已恢复原队列并进入B，无需重复启动。旧08:12日志的model导入错误仅作历史记录。A原生结果及修复manifest仍待上传核验，不能由运行恢复推断科学门槛通过。
+最后服务器观测：2026-10-04T17:21:47.568226+08:00（用户终端查询回传），Post-D30为RUNNING，控制器2720259 LIVE=True，主体12/18完成：A0—A5、B1—B6全部COMPLETE；C0在GPU0训练3760/8000步，C1在GPU1训练3780/8000步，两worker PID_LIVE=True；C2—C5 PENDING，F0—F3仍有条件。原队列已进入C，禁止重复恢复或新建队列。旧08:12日志的model导入错误仅作历史记录。本次仍未收到上传提交，GitHub没有新增A/B原生结果；固定A2/B3门槛尚待原件分析，不能由技术完成判定科学成立。
 
 ## 上传阶段原件
 
@@ -20,7 +20,7 @@ python -u -B "$UPLOAD_SCRIPT" --root "$PWD" --directory "$POST_DIR"
 )
 ```
 
-回传PORTFOLIO_GITHUB_COMMIT及PORTFOLIO_GITHUB_RECORDS即可。助手回读manifest/SHA及A固定A2对A0/A1/A3；A4/A5仅敏感性，不能替代主候选。完成A不重训、不重评价。
+回传PORTFOLIO_GITHUB_COMMIT及PORTFOLIO_GITHUB_RECORDS即可。助手回读manifest/SHA及A固定A2对A0/A1/A3；A4/A5仅敏感性，不能替代主候选。B阶段已全部技术完成，同时核对固定B3对B1/B4与A0的完整gate，B5/B6不替换B3。本次回传仅为查询，尚无结果上传。完成A不重训、不重评价。
 
 ## 沿原队列继续及只读查询
 
@@ -48,6 +48,6 @@ PY
 
 
 
-12:05脚本估算主体剩余10.63小时、结束约22:43，仅粗排期，C耗时可能不同，F未包含，不承诺完成时间。
+17:21脚本估算主体剩余6.70小时、结束约2026-10-05 00:03，仅粗排期，F未包含，不承诺完成时间。
 
 用户终端执行无SSH；只用物理GPU0/1两张H10080GB、nohup、seed42、8000步、batch16无累积，全部记录/临时/缓存/快照保存在zzx对应目录。资源充足，不重复资源审计、不加seed、不访问Test6/独立final，Val2重复开发不称独立确认。主线不变，见[研究决定](RESEARCH_DECISION.md)。

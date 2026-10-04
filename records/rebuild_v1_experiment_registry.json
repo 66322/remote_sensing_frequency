@@ -1840,15 +1840,15 @@
     },
     {
       "id": "POST_D30_MECHANISMS_20261004",
-      "status": "RUNNING_USER_REPORTED_A6_B2_COMPLETE",
+      "status": "RUNNING_USER_REPORTED_AB12_COMPLETE_C_RUNNING",
       "purpose": "全特征/共享特征对齐、打乱与权重对照",
-      "result_summary": "A6与B1/B2技术完成，B3/B4训练；A原件及修复manifest待上传，无科学门槛结论",
+      "result_summary": "A/B12项技术完成，C0/C1训练；仍未收到结果上传，A2/B3科学门槛待原件核验",
       "completed_at": null,
       "review": "docs/experiments/POST_D30_SUMMARY_IMPORT_REPAIR_20261004.md",
       "evidence_class": "user_reported_completion_results_pending",
       "live_query": false,
-      "last_observed_at": "2026-10-04T12:05:36.507045+08:00",
-      "completed_jobs": 8,
+      "last_observed_at": "2026-10-04T17:21:47.568226+08:00",
+      "completed_jobs": 12,
       "total_main_jobs": 18,
       "conditional_jobs": 4,
       "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364",
@@ -1861,10 +1861,17 @@
           "status": "CONTROLLER_INTERRUPTED_A6_COMPLETE_BC_PENDING",
           "completed_jobs": 6,
           "second_recovery_observed": false
+        },
+        {
+          "last_observed_at": "2026-10-04T12:05:36.507045+08:00",
+          "status": "RUNNING_USER_REPORTED_A6_B2_COMPLETE",
+          "completed_jobs": 8,
+          "second_recovery_observed": true,
+          "last_observation_record": "records/research_post_d30_mechanisms_20261004T000812_2446364/progress_observation_20261004T120536.json"
         }
       ],
       "controller_pid": 2720259,
-      "last_observation_record": "records/research_post_d30_mechanisms_20261004T000812_2446364/progress_observation_20261004T120536.json"
+      "last_observation_record": "records/research_post_d30_mechanisms_20261004T000812_2446364/progress_observation_20261004T172147.json"
     }
   ],
   "next_plan": {

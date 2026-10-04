@@ -1,0 +1,60 @@
+{
+  "source": "user_pasted_server_status_and_nohup_tails",
+  "observed_at": "2026-10-04T17:21:47.568226+08:00",
+  "queue": "RUNNING",
+  "controller_pid": 2720259,
+  "controller_live": true,
+  "completed_main_jobs": 12,
+  "total_main_jobs": 18,
+  "completed": [
+    "A0",
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5",
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6"
+  ],
+  "running": [
+    {
+      "job": "C0",
+      "physical_gpu": 0,
+      "step": 3760,
+      "target": 8000,
+      "progress_at": "2026-10-04T17:21:46.731668+08:00",
+      "pid_live": true
+    },
+    {
+      "job": "C1",
+      "physical_gpu": 1,
+      "step": 3780,
+      "target": 8000,
+      "progress_at": "2026-10-04T17:21:42.784552+08:00",
+      "pid_live": true
+    }
+  ],
+  "pending": [
+    "C2",
+    "C3",
+    "C4",
+    "C5"
+  ],
+  "conditional_F": [
+    "F0",
+    "F1",
+    "F2",
+    "F3"
+  ],
+  "newest_log": "nohup_summary_repair_20261004T085441_2687798.log",
+  "historical_error_log": "nohup_repair_20261004T081218_2687798.log",
+  "native_AB_results_received": false,
+  "repair_manifest_received": false,
+  "scientific_conclusion_established": false,
+  "training_launched_by_this_chat": false,
+  "test6_accessed_by_this_chat": false
+}
