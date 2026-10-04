@@ -67,3 +67,7 @@ REPAIR_DIR=$(python -c 'from pathlib import Path; p=Path("/home/jovyan/zzx/paper
 ```
 
 上一估时为规划范围而非运行测量：N1尚未开始，没有新结构的真实速度，26项仍为有条件预约。
+
+## 记录完整性与本轮决定
+
+[GitHub归档核对](../experiments/GITHUB_RECORD_COMPLETENESS_20261004.md)：10份清单5726项载荷路径/大小匹配，未发现清单内漏传；D30逐tile矩阵、C结果原件及F实际跳过仍待接，历史部分原件仍待补。用户取消追加N1代码/GPU预检，草稿未发布、未在服务器安装，既有99acf754队列保持不变；本次没有服务器操作或新实验。

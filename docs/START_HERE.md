@@ -17,3 +17,5 @@
 N1完成后验整数计数及固定门槛，保存下一匹配基座并停在阶段交接。C2双侧失败会跳过N6。新队列代码/本地CPU8项检查通过，真实权重GPU前向反向尚无服务器执行回报。**已收到服务器登记回报**：执行提交99acf754aaf3f6b1d119f42a5dab7297a263e4b4；目录`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_20261004T185950_3029215`；派生控制器PID3029372；日志`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_20261004T185950_3029215/nohup_20261004T185950714312.log`。登记N1_EXECUTABLE=4、CONDITIONAL_RESERVED=22。20:27用户状态回报确认后继仍存活且WAITING_PREDECESSOR，N1未开始；无需再次登记或恢复。20:30已收到原队列14/18与C2/C3进度，继续正常等待；下一关键动作是原C完成及F跳过后上传稳定快照。原队列结束并释放后自动执行N1四组；N1后其余22项仍待匹配协议/实现，不能声称26项会全部自动运行。
 
 全部代码/日志/缓存在zzx新实验目录；不访问Test6，不重问资源或已给授权。
+
+[记录完整性核对](experiments/GITHUB_RECORD_COMPLETENESS_20261004.md)：已上传清单内未发现漏传，但D30逐tile矩阵与C/F最终原件待接；详见范围和证据边界。本轮用户取消追加N1预检，未发布/安装预检草稿，既有队列不重启。
