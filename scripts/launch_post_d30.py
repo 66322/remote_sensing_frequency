@@ -66,6 +66,7 @@ def main():
     print('PORTFOLIO_CONDITION_INTERFACE_PASS',len(checked),flush=True)
     for d in ('temporary','cache/torch','logs','jobs'):(base/d).mkdir(parents=True,exist_ok=True)
     env=dict(os.environ,CUDA_VISIBLE_DEVICES='',OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',MKL_NUM_THREADS='1',PYTHONDONTWRITEBYTECODE='1',TMPDIR=str(base/'temporary'),XDG_CACHE_HOME=str(base/'cache'),TORCH_HOME=str(base/'cache/torch'))
+    env['PYTHONPATH']=os.pathsep.join((str(code),str(code/'scripts')))
     state=read(base/'queue_status.json') if (base/'queue_status.json').exists() else dict(jobs={j['id']:dict(status='PENDING',gpu=j['gpu'],phase=j['phase']) for j in plan['jobs']})
     for j,row in state['jobs'].items():
         if live_owned(row.get('pid',-1),base):raise RuntimeError('detached worker still live '+j)

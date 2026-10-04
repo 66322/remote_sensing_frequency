@@ -1,5 +1,5 @@
 """Regression tests for the inherited condition interface and evaluation-only repair."""
-import json,os,sys,tempfile,unittest
+import json,os,sys,tempfile,unittest,subprocess
 from pathlib import Path
 import torch
 
@@ -17,6 +17,12 @@ def write(p,v):
     p=Path(p);p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(v),encoding='utf-8')
 
 class RepairTests(unittest.TestCase):
+    def test_actual_summary_subprocess_imports_snapshot_model(self):
+        code=BASE/'code' if os.environ.get('POST_D30_BASE') else BASE
+        env=dict(os.environ,PYTHONPATH=os.pathsep.join((str(code),str(code/'scripts'))),CUDA_VISIBLE_DEVICES='',PYTHONDONTWRITEBYTECODE='1')
+        result=subprocess.run([sys.executable,'-B',str(code/'scripts/summarize_post_d30.py'),'--help'],cwd=code,env=env,capture_output=True,text=True,timeout=60)
+        self.assertEqual(result.returncode,0,result.stderr)
+        self.assertIn('--directory',result.stdout)
     def test_present_bad_dsm_matches_previous_protocol_without_missing_mask(self):
         op=torch.rand(1,3,33,35);ds=torch.rand(1,33,35)
         for kind in ('dsm_present_zero','dsm_present_shift_half'):

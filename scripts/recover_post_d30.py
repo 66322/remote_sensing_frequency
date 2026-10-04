@@ -29,13 +29,16 @@ def main():
     controller=transform_controller((base/'code/scripts/launch_post_d30.py').read_text(),repair/'run_post_d30_repaired.py')
     (repair/'controller_transformed.py').write_text(controller)
     write(repair/'repair_manifest.json',dict(repair_commit=commit,original_execution_commit=ORIGINAL,original_plan_sha256=sha(base/'plan.json'),
-      original_code_manifest_sha256=sha(base/'code_manifest.json'),original_controller_pid=state.get('controller_pid'),diagnosed_error='ValueError: dsm_present_zero',
+      original_code_manifest_sha256=sha(base/'code_manifest.json'),original_controller_pid=state.get('controller_pid'),diagnosed_error='ValueError: dsm_present_zero; subsequent summary subprocess missing model import root',
       files={p.name:sha(p) for p in repair.iterdir() if p.is_file()},condition_interface_checked=names,
-      training_changes=False,A_optimizer_updates=0,original_snapshots_preserved=True,scope='evaluation compatibility and worker dispatch only; original signatures preserved with additional explicit overlay binding'))
+      training_changes=False,A_optimizer_updates=0,original_snapshots_preserved=True,subprocess_pythonpath=[str(base/'code'),str(base/'code/scripts')],scope='evaluation compatibility, worker dispatch, and immutable snapshot import roots; original signatures preserved with additional explicit overlay binding'))
     os.environ['POST_D30_REPAIR_DIRECTORY']=str(repair)
+    # Child scripts get their own sys.path; cwd=code alone does not expose model/.
+    os.environ['PYTHONPATH']=os.pathsep.join((str(base/'code'),str(base/'code/scripts')))
     env=dict(os.environ,CUDA_VISIBLE_DEVICES='',OMP_NUM_THREADS='1',PYTHONDONTWRITEBYTECODE='1',POST_D30_BASE=str(base))
     with (repair/'cpu_checks.log').open('w') as log:
         subprocess.run([sys.executable,'-B','-m','unittest','discover','-s',str(repair),'-p','test_post_d30_repair.py','-v'],cwd=repair,env=env,stdout=log,stderr=subprocess.STDOUT,timeout=120,check=True)
+    print('PORTFOLIO_SUMMARY_IMPORT_PASS',flush=True)
     print('PORTFOLIO_REPAIR_CHECKS_PASS','runtime_conditions='+str(len(names)),repair,flush=True)
     sys.argv=[str(repair/'controller_transformed.py'),'--root',str(root),'--directory',str(base),'--commit',ORIGINAL,'--resume-queue']
     namespace=dict(__name__='__main__',__file__=str(repair/'controller_transformed.py'),repairable_row=repairable_row)

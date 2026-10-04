@@ -1,6 +1,7 @@
 """Fixed development screens. Old D27/D28/D30 gates remain unchanged."""
-import argparse,csv
+import argparse,csv,sys
 from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 import numpy as np
 from post_d30_common import read,write,sha,now,validate_plan,PHASES
 from post_d30_evaluation import metric,decode_joint,joint_report

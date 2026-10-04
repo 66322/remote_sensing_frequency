@@ -1,6 +1,6 @@
 # D30完成阶段分析：保护、恢复与损失归一化
 
-D30于服务器最后观测2026-10-04T00:47:08.030508+08:00全部完成，6个job为两个固定权重重放＋四个新训练；S0/S1沿用D27匹配对照，并非D30再训练两遍。四个新配方P/R/PR_area/PR_pixel的continue均False。科学结论先依据用户已上传终端汇总，完整screen、逐tile原矩阵、梯度原件尚未进入GitHub，不能把完成当作独立重算完成。
+D30于服务器最后观测2026-10-04T00:47:08.030508+08:00全部完成，6个job为两个固定权重重放＋四个新训练；S0/S1沿用D27匹配对照，并非D30再训练两遍。四个新配方P/R/PR_area/PR_pixel的continue均False。科学结论先依据用户已上传终端汇总，2026-10-04 08:44完整screen及loss/梯度紧凑原件已上传并回读；逐tile原矩阵本体尚未上传，不能把screen回读当作全部矩阵独立重算。
 
 ## 研究问题与真实执行链
 
@@ -59,6 +59,15 @@ D30于服务器最后观测2026-10-04T00:47:08.030508+08:00全部完成，6个jo
 
 ## 下一步收齐紧凑证据
 
-GitHub树已核对：目前没有D30完整screen_result.json、results.csv或逐tile评价原件。新增upload_rebuild_v1_d30_summary.py只读取并上传既有screen、配对tile差值、重放汇总、loss/梯度诊断及配置/完成绑定，保留原字节与SHA，不重训、不新推理、不访问GPU，不上传权重/预测或全部原矩阵。上传后可继续完成第1—3项分析；第4项仍须原评价记录的归档，不能以紧凑screen代替。
+更新：完整screen_result.json、results.csv、配置/完成绑定和loss/梯度原件已于214eb158a59cf8248910ba5e46492189d3a6f953上传；完整逐tile矩阵本体仍未上传。新增upload_rebuild_v1_d30_summary.py只读取并上传既有screen、配对tile差值、重放汇总、loss/梯度诊断及配置/完成绑定，保留原字节与SHA，不重训、不新推理、不访问GPU，不上传权重/预测或全部原矩阵。上传后可继续完成第1—3项分析；第4项仍须原评价记录的归档，不能以紧凑screen代替。
 
 执行指令见[下一步](../current/NEXT_EXPERIMENT.md)。科学边界和当前队列状态分开维护，D30完成不代表Post-D30已完成。
+
+
+## 08:44原生紧凑证据补充
+
+[156个原生文件](../../records/research_d30_loss_decomposition_20261003T205144_2349167/summary_evidence_20261004T084407716607_2714901/upload_manifest.json)和[screen_result](../../records/research_d30_loss_decomposition_20261003T205144_2349167/summary_evidence_20261004T084407716607_2714901/screen_result.json)已回读，来源是214eb158a59cf8248910ba5e46492189d3a6f953；以下补充第1—2项未决问题，不将它称为全矩阵重算。
+
+P仅综合门槛未过，其余clean/最差tile/伤害/fixed正向通过；最差−0.076827pp。PR_area还未过最差tile底线（−0.298852pp），fixed8000对S0为−0.067831pp。仅RGB正确保留96.0531%，仅DSM正确37.0000%，QD伤害1.2785%；它保留了保守取舍，仍有局部损失。PR_pixel仅RGB正确90.1002%、仅DSM正确65.7654%、QD伤害3.0660%，fixed8000对S0−1.451772pp、最差−2.706244pp，进一步支持恢复信息与保护原正确预测之间的取舍。R最差为aux_shift8/3_11−4.109689pp，不能由噪声条件个别正改善掩盖。
+
+固定checkpoint路由重放：G1改成uniform后，clean +1.248164pp、rgb_down4 +0.873346pp，但aux_noise_std010 −0.101485pp；expert2在clean +1.391441pp却使噪声条件−0.450396pp。G0换uniform时clean−0.017488pp、rgb_down4−0.003333pp、噪声+0.169502pp。可观察到原G1混合权重在部分条件存在损失，并没有一个固定替代在三种条件全优。强制某专家不是对应单模态模型，不得据此宣称RGB或DSM本身退化到该分数；也不能只看三条件的pooled重放替代全部十条件和逐tile安全验证。梯度原件尚待汇总解释，独立泛化仍未验证。
