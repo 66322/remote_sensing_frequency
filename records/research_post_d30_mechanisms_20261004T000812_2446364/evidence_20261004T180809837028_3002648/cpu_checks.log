@@ -1,0 +1,45 @@
+test_C_full_teacher_identity_bilateral_heads_and_own_inputs (test_post_d30.Tests) ... ok
+test_all_shared_alignment_stop_gradient_and_shuffle (test_post_d30.Tests) ... ok
+test_capacity_initialization_matched_and_predictors_active (test_post_d30.Tests) ... ok
+test_correct_mask_global_denominator_and_teacher_detach (test_post_d30.Tests) ... ok
+test_correspondence_zero_padding_mask_and_nontrivial_gradients (test_post_d30.Tests) ... ok
+test_every_arm_exact_missing_fallback_and_gradient (test_post_d30.Tests) ... ok
+test_frequency_suppression_removes_bypass_high_signal (test_post_d30.Tests) ... ok
+test_frozen_gate_requires_increment_over_plain_and_augmentation (test_post_d30.Tests) ... ok
+test_native_halo_keeps_labels_and_no_wrap (test_post_d30.Tests) ... ok
+test_phase_barrier_and_no_premature_handover (test_post_d30.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.850s
+
+OK
+test_C_full_teacher_identity_bilateral_heads_and_own_inputs (test_post_d30.Tests) ... ok
+test_all_shared_alignment_stop_gradient_and_shuffle (test_post_d30.Tests) ... ok
+test_capacity_initialization_matched_and_predictors_active (test_post_d30.Tests) ... ok
+test_correct_mask_global_denominator_and_teacher_detach (test_post_d30.Tests) ... ok
+test_correspondence_zero_padding_mask_and_nontrivial_gradients (test_post_d30.Tests) ... ok
+test_every_arm_exact_missing_fallback_and_gradient (test_post_d30.Tests) ... ok
+test_frequency_suppression_removes_bypass_high_signal (test_post_d30.Tests) ... ok
+test_frozen_gate_requires_increment_over_plain_and_augmentation (test_post_d30.Tests) ... ok
+test_native_halo_keeps_labels_and_no_wrap (test_post_d30.Tests) ... ok
+test_phase_barrier_and_no_premature_handover (test_post_d30.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.948s
+
+OK
+test_C_full_teacher_identity_bilateral_heads_and_own_inputs (test_post_d30.Tests) ... ok
+test_all_shared_alignment_stop_gradient_and_shuffle (test_post_d30.Tests) ... ok
+test_capacity_initialization_matched_and_predictors_active (test_post_d30.Tests) ... ok
+test_correct_mask_global_denominator_and_teacher_detach (test_post_d30.Tests) ... ok
+test_correspondence_zero_padding_mask_and_nontrivial_gradients (test_post_d30.Tests) ... ok
+test_every_arm_exact_missing_fallback_and_gradient (test_post_d30.Tests) ... ok
+test_frequency_suppression_removes_bypass_high_signal (test_post_d30.Tests) ... ok
+test_frozen_gate_requires_increment_over_plain_and_augmentation (test_post_d30.Tests) ... ok
+test_native_halo_keeps_labels_and_no_wrap (test_post_d30.Tests) ... ok
+test_phase_barrier_and_no_premature_handover (test_post_d30.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.882s
+
+OK
