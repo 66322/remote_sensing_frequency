@@ -1,0 +1,20 @@
+{
+  "source": "user-pasted read-only status output",
+  "last_observed": "2026-10-04T20:27:32.472006+08:00",
+  "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_20261004T185950_3029215",
+  "queue": "WAITING_PREDECESSOR",
+  "pid": 3029372,
+  "live": true,
+  "n1": {
+    "status": "PENDING",
+    "jobs": 4,
+    "steps_all": 0
+  },
+  "reserved_protocol_pending_jobs": 22,
+  "raw_tail": {
+    "lines": 40,
+    "repeated_line": "POST_AB_HANDOVER WAITING_PREDECESSOR RUNNING"
+  },
+  "original_C_progress_received": false,
+  "n1_speed_measured": false
+}
