@@ -19,3 +19,6 @@ D30终端汇总：P综合86.092396，R84.037805，PR_area85.986496，PR_pixel84.
 [故障与恢复说明](../experiments/POST_D30_EVALUATION_REPAIR_20261004.md)、[原执行协议](../protocols/POST_D30_EXECUTION_20261003.md)、[机读设计](../../records/research_post_d30_design_20261003/plan.json)。
 
 只使用物理GPU0/1，两张H10080GB，RAM与磁盘充足；seed42、8000步、物理batch16、无累积、nohup。快照/临时/缓存/日志均在/home/jovyan/zzx对应实验目录。用户在服务器终端执行，无SSH；不重复资源审计或预算探针。Test6及独立final禁止访问；重复开发Val2不等于独立泛化。GitHub本分支为共享权威，大预测/checkpoint保留服务器并索引。
+
+
+D30分析更新：六组selected汇总已整理；面积缩放PR_area对S1提高1.730941pp，但仍低于S0 0.064718pp，PR_pixel仍低于S0 1.291674pp，四项新配方continue均False。静态保护/恢复取舍明确，归一化缓解下降但未形成增量；固定checkpoint重放及loss/梯度原件尚未上传，不宣称唯一根因。[完成阶段分析](../experiments/D30_COMPLETED_REVIEW_20261004.md)。原Post-D30队列与gate保持不变。

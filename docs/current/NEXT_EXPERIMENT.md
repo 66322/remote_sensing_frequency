@@ -49,3 +49,24 @@ REPAIR_DIR=$(python -c 'from pathlib import Path; p=Path("/home/jovyan/zzx/paper
 只使用物理GPU0/1，两张H10080GB，RAM与磁盘充足；seed42、8000步、物理batch16、无累积、nohup。快照/临时/缓存/日志均在/home/jovyan/zzx对应实验目录。用户在服务器终端执行，无SSH；不重复资源审计或预算探针。Test6及独立final禁止访问；重复开发Val2不等于独立泛化。GitHub本分支为共享权威，大预测/checkpoint保留服务器并索引。
 
 [故障与恢复说明](../experiments/POST_D30_EVALUATION_REPAIR_20261004.md)、[原执行协议](../protocols/POST_D30_EXECUTION_20261003.md)、[机读设计](../../records/research_post_d30_design_20261003/plan.json)。
+
+
+D30分析更新：六组selected汇总已整理；面积缩放PR_area对S1提高1.730941pp，但仍低于S0 0.064718pp，PR_pixel仍低于S0 1.291674pp，四项新配方continue均False。静态保护/恢复取舍明确，归一化缓解下降但未形成增量；固定checkpoint重放及loss/梯度原件尚未上传，不宣称唯一根因。[完成阶段分析](../experiments/D30_COMPLETED_REVIEW_20261004.md)。原Post-D30队列与gate保持不变。
+
+D30紧凑结果上传（只读D30原件并写GitHub，不调用GPU、不影响当前恢复队列；执行后回传D30_SUMMARY_COMMIT即可）：
+
+```bash
+(
+set -e
+cd /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+git fetch origin rebuild-v1-protocol-20260915
+SUMMARY_COMMIT=$(git rev-parse FETCH_HEAD)
+D30_DIR="$PWD/records/research_d30_loss_decomposition_20261003T205144_2349167"
+EXP_PY=$(python -c 'import json; print(json.load(open("/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/rebuild_v1_d21_queue_20260928/plan.json"))["python"])')
+SUMMARY_SCRIPT="$D30_DIR/upload_summary_$(date +%Y%m%dT%H%M%S)_$$.py"
+git show "$SUMMARY_COMMIT":scripts/upload_rebuild_v1_d30_summary.py > "$SUMMARY_SCRIPT"
+"$EXP_PY" -B "$SUMMARY_SCRIPT" --root "$PWD" --directory "$D30_DIR"
+)
+```
+
+此次只上传紧凑分析证据，未上传完整逐tile矩阵；原矩阵全面重算仍待后续归档。
