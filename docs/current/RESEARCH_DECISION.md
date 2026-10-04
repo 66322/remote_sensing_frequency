@@ -26,3 +26,7 @@ A固定A2对A0/A1/A3；B固定B3对普通增强与打乱对照；C按原教师/�
 N1完成后验整数计数及固定门槛，保存下一匹配基座并停在阶段交接。C2双侧失败会跳过N6。新队列代码/本地CPU8项检查通过，真实权重GPU前向反向尚无服务器执行回报。**已收到服务器登记回报**：执行提交99acf754aaf3f6b1d119f42a5dab7297a263e4b4；目录`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_20261004T185950_3029215`；派生控制器PID3029372；日志`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_20261004T185950_3029215/nohup_20261004T185950714312.log`。登记N1_EXECUTABLE=4、CONDITIONAL_RESERVED=22。19:02用户状态回报确认控制器存活且WAITING_PREDECESSOR，32项条件接口通过，N1未开始；继续等待，无需再次登记或恢复。原队列结束并释放后自动执行N1四组；N1后其余22项仍待匹配协议/实现，不能声称26项会全部自动运行。
 
 全部代码/日志/缓存在zzx新实验目录；不访问Test6，不重问资源或已给授权。
+
+## 最新运行观测（不改变科学门槛）
+
+最后服务器观测：2026-10-04T20:30:20.922212+08:00，用户粘贴原Post-D30状态：QUEUE=RUNNING、PID2720259、LIVE=True，主体14/18完成。A0—A5/B1—B6保持COMPLETE，C0/C1分别于19:16:14/19:16:05 COMPLETE；C2 GPU1 training step7300/8000、C3 GPU0 step7360/8000，worker均存活；C4 GPU0/C5 GPU1 PENDING。F0—F3仍PENDING，B3 gate=False但实际跳过标记未见。C0/C1仅收到完成状态回报，指标/原始绑定尚未上传验收，不判C2 gate。原状态脚本粗估剩余3.68小时、结束2026-10-05T00:11:12+08:00，非完成承诺。后继最后单独观测仍为20:27:32，PID3029372存活、WAITING_PREDECESSOR，N1四组均未开始，22项条件预约；没有20:30的后继新观测。
