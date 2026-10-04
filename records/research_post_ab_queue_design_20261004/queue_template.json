@@ -1,0 +1,362 @@
+{
+  "training": {
+    "steps": 8000,
+    "seed": 42,
+    "physical_batch": 16,
+    "gradient_accumulation": false,
+    "validation_steps": [
+      4000,
+      8000
+    ],
+    "selection_states": [
+      "clean",
+      "dsm_missing",
+      "rgb_missing"
+    ]
+  },
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "data": {
+    "validation": [
+      "3_11",
+      "5_10"
+    ],
+    "test6_loaded": false,
+    "independent_final_loaded": false
+  },
+  "runtime": {
+    "estimated_hours": null,
+    "queue": "Post-D30 released -> offline E0 -> N1 four cells -> evidence handoff; conditional reservations N2-N6"
+  },
+  "design": {
+    "followup_reservations": {
+      "N2": "matched base specified by N1 screen; exact relation implementation pending",
+      "N3": "alternative to stacking N2; exact region partition and historical D12 comparison pending",
+      "N4": "requires exposure evidence distinct from D8, sampler/update logs and frozen protocol",
+      "N5": "requires E1 matched-content missingness gap and frozen train/eval mask definitions",
+      "N6": "requires original C2 bilateral gate and frozen matched teacher implementation"
+    }
+  },
+  "id": "POST_AB_CONDITIONAL_QUEUE",
+  "execution_commit": "RUNTIME_COMMIT_BOUND_BY_ENQUEUE",
+  "execution_authorized": true,
+  "predecessor_directory": "\\home\\jovyan\\zzx\\paper_rebuild\\08_thesis_full_repro\\records\\research_post_d30_mechanisms_20261004T000812_2446364",
+  "protocol": "docs/protocols/POST_AB_QUEUE_EXECUTION_20261004.md",
+  "unique_training_jobs": 26,
+  "currently_executable_training_jobs": 4,
+  "total_optimizer_steps": 208000,
+  "initial_stage_optimizer_steps": 32000,
+  "automatic_followup": "N1 only; later stages reserved pending matched implementation and evidence",
+  "jobs": [
+    {
+      "id": "N1-0",
+      "phase": "N1",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "name": "late_frozen",
+      "priority": 0,
+      "executable": true,
+      "dependency": "original queue COMPLETE and released",
+      "information_entry": "late",
+      "adaptation": "frozen"
+    },
+    {
+      "id": "N1-1",
+      "phase": "N1",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "name": "depth_scale_frozen",
+      "priority": 1,
+      "executable": true,
+      "dependency": "original queue COMPLETE and released",
+      "information_entry": "encoder_depth_scale",
+      "adaptation": "frozen"
+    },
+    {
+      "id": "N1-2",
+      "phase": "N1",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "name": "late_last4_heads",
+      "priority": 2,
+      "executable": true,
+      "dependency": "original queue COMPLETE and released",
+      "information_entry": "late",
+      "adaptation": "last4_and_heads"
+    },
+    {
+      "id": "N1-3",
+      "phase": "N1",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "name": "depth_scale_last4_heads",
+      "priority": 3,
+      "executable": true,
+      "dependency": "original queue COMPLETE and released",
+      "information_entry": "encoder_depth_scale",
+      "adaptation": "last4_and_heads"
+    },
+    {
+      "id": "N2-0",
+      "phase": "N2",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "name": "spatial_relation",
+      "priority": 4,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N2-1",
+      "phase": "N2",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "name": "height_to_rgb",
+      "priority": 5,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N2-2",
+      "phase": "N2",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "name": "semantic_to_dsm",
+      "priority": 6,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N2-3",
+      "phase": "N2",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "name": "bilateral_relation",
+      "priority": 7,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N2-4",
+      "phase": "N2",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "name": "shuffle_height_relation",
+      "priority": 8,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N2-5",
+      "phase": "N2",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "name": "shuffle_semantic_relation",
+      "priority": 9,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N3-0",
+      "phase": "N3",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "name": "pixel_aggregation",
+      "priority": 10,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N3-1",
+      "phase": "N3",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "name": "fixed_grid",
+      "priority": 11,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N3-2",
+      "phase": "N3",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "name": "rgb_regions",
+      "priority": 12,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N3-3",
+      "phase": "N3",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "name": "dsm_regions",
+      "priority": 13,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N3-4",
+      "phase": "N3",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "name": "bilateral_regions",
+      "priority": 14,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N4-0",
+      "phase": "N4",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "name": "original_allocation",
+      "priority": 15,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N4-1",
+      "phase": "N4",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "name": "fixed_quota",
+      "priority": 16,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N4-2",
+      "phase": "N4",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "name": "quota_loss_weights",
+      "priority": 17,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N4-3",
+      "phase": "N4",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "name": "bounded_dynamic_allocation",
+      "priority": 18,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N5-0",
+      "phase": "N5",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "name": "original_missingness",
+      "priority": 19,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N5-1",
+      "phase": "N5",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "name": "matched_random_missingness",
+      "priority": 20,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N5-2",
+      "phase": "N5",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "name": "content_missingness",
+      "priority": 21,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N5-3",
+      "phase": "N5",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "name": "half_random_half_content",
+      "priority": 22,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N6-0",
+      "phase": "N6",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "name": "unimodal_teacher",
+      "priority": 23,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N6-1",
+      "phase": "N6",
+      "gpu": 1,
+      "steps": 8000,
+      "seed": 42,
+      "name": "common_correct_unimodal_teacher",
+      "priority": 24,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    },
+    {
+      "id": "N6-2",
+      "phase": "N6",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "name": "common_correct_multimodal_teacher",
+      "priority": 25,
+      "executable": false,
+      "dependency": "stage result/implementation specified in followup_reservations"
+    }
+  ],
+  "repeat_resource_probe": false,
+  "new_unimodal_training": 0,
+  "development_gates": {
+    "N1": {
+      "vs_N1_1_pp": 0.3,
+      "vs_N1_2_pp": 0.3,
+      "clean_missing_floor_pp": -0.1,
+      "worst_tile_floor_pp": -0.2,
+      "tile_same_sign": true,
+      "fixed_same_sign": true
+    }
+  },
+  "status": "IMPLEMENTED_QUEUE_NOT_SERVER_REGISTERED",
+  "execution_authorization_source": "user: 按规划进行队列排队吧, 2026-10-04"
+}

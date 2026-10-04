@@ -77,4 +77,6 @@ The C0/C1 tile-risk re-audit also passed. See
 
 ## 后续规划（不计入已运行实验）
 
-[Post-A/B候选池](../../protocols/POST_AB_FOLLOWUP_PLAN_20261004.md)：用户要求扩展规划，2类评估、6类训练研究、最多26配置；未启动，条件触发，不修改原C/F决定。
+[Post-A/B候选池](../../protocols/POST_AB_FOLLOWUP_PLAN_20261004.md)：用户要求扩展规划，2类评估、6类训练研究、最多26配置；2026-10-04已授权条件排队；N1四组可执行，另22项预约，服务器登记回报待收，不修改原C/F决定。
+
+[Post-A/B队列包](../../protocols/POST_AB_QUEUE_EXECUTION_20261004.md)：CPU8项检查PASS，无GPU运行/精度结论；设计登记记录records/research_post_ab_queue_design_20261004/queue_template.json。
