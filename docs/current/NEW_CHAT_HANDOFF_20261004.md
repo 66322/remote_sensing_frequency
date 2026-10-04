@@ -1,7 +1,9 @@
-请继续66322/remote_sensing_frequency，分支rebuild-v1-protocol-20260915，以GitHub为准。先读docs/START_HERE.md及docs/current/RESEARCH_DECISION.md、HANDOFF.md、PROJECT_STATUS.md、NEXT_EXPERIMENT.md，再读docs/experiments/rebuild_v1/INDEX.md和COMPLETED_EXPERIMENTS_HANDOFF_20261004.md。
+# 新对话承接
 
-主线仍是RGB–DSM双向条件互补与退化/缺失分割；频率、门控、MoE、共享私有是候选解法，任务驱动恢复只是旁支。D23—D28已分析；D30六项完成、紧凑原件已上传，四项新损失continue均False，完整逐tile矩阵仍在服务器。不要自动加种子或重跑失败配方。
+继续66322/remote_sensing_frequency，rebuild-v1-protocol-20260915，以GitHub为准。先读START_HERE及研究决定、HANDOFF、PROJECT_STATUS、NEXT_EXPERIMENT和实验整理。
 
-最新服务器观测2026-10-04 08:41:43：Post-D30 A0—A5六项完成，6/18主体，B/C待运行、F仅B3过gate触发；汇总导入错误使控制器退出。第二次修复2a15ef163c3df7e96ee52c81cb677ebdb1305935已发布但尚无执行回报。先查询原队列；若已恢复就沿用，若仍停止按NEXT_EXPERIMENT同目录恢复，不重训/重评价A。接收A原生结果后按固定候选分析。
+最后服务器观测：2026-10-04T12:05:36.507045+08:00（用户终端查询回传），Post-D30为RUNNING，控制器2720259 LIVE=True，主体8/18完成：A0—A5与B1/B2 COMPLETE；B4在GPU0训练5940/8000步，B3在GPU1训练4000/8000步，两worker PID_LIVE=True；B5/B6及C0—C5 PENDING，F0—F3仍有条件。第二次汇总修复已恢复原队列并进入B，无需重复启动。旧08:12日志的model导入错误仅作历史记录。A原生结果及修复manifest仍待上传核验，不能由运行恢复推断科学门槛通过。
 
-服务器由我执行终端，无SSH；根目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro，Post目录records/research_post_d30_mechanisms_20261004T000812_2446364。只用GPU0/1，两张H10080GB，RAM/硬盘充足；nohup，8000步、batch16、无累积。全部记录/缓存/快照在zzx对应目录。不要重复资源审计；不读Test6/独立final。后续重要记录、结论与交接继续写回同一GitHub分支并回读验证。
+主线RGB–DSM双向条件互补与退化/缺失分割；任务驱动恢复是旁支，仍在可行性探索，没有确认性新贡献。D23—D30失败配方不重跑，不自动加seed。A2固定主候选，A4/A5敏感性；B3固定gate决定F；C2对原教师/硬标签对照。上传阶段原件后分析A，原B/C沿原控制器继续，不再恢复或另建队列。
+
+用户终端操作无SSH；GPU0/1两张H10080GB，nohup、seed42、8000步、batch16无累积，全部记录/缓存/快照在zzx对应实验目录。资源充足不重复审计，不访问Test6/独立final。重要记录继续同步同一GitHub分支并核验。

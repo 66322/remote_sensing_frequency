@@ -4,7 +4,7 @@
 
 按顺序读[研究决定](current/RESEARCH_DECISION.md)→[当前交接](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)→[实验总索引](experiments/rebuild_v1/INDEX.md)。[新对话可直接使用的说明](current/NEW_CHAT_HANDOFF_20261004.md)。
 
-最后服务器观测：2026-10-04T08:41:43.586227+08:00，Post-D30为CONTROLLER_INTERRUPTED，控制器2698383已退出；A0—A5六项COMPLETE，B1—B6/C0—C5待运行，F0—F3有条件。无活跃worker是该时刻的观测，不代表此刻状态。A评价修复已成功，无新增优化器更新；随后A阶段汇总因缺少model导入路径退出。第二次修复2a15ef163c3df7e96ee52c81cb677ebdb1305935已发布并通过本地6项回归，但尚无服务器启动回报。
+最后服务器观测：2026-10-04T12:05:36.507045+08:00（用户终端查询回传），Post-D30为RUNNING，控制器2720259 LIVE=True，主体8/18完成：A0—A5与B1/B2 COMPLETE；B4在GPU0训练5940/8000步，B3在GPU1训练4000/8000步，两worker PID_LIVE=True；B5/B6及C0—C5 PENDING，F0—F3仍有条件。第二次汇总修复已恢复原队列并进入B，无需重复启动。旧08:12日志的model导入错误仅作历史记录。A原生结果及修复manifest仍待上传核验，不能由运行恢复推断科学门槛通过。
 
 主问题保持RGB外观/语义与DSM高度/几何的双向条件互补，及任一侧退化/缺失时的分割能力。仍处于可行性探索；频率、可靠性、MoE、共享/私有是候选解法，任务驱动SR/恢复是旁支，不因任务顺序改变主线。普通融合、部分解冻与增强是强基线；旧机制未过门槛不等于整个问题失败。目前没有确认性新贡献。
 
