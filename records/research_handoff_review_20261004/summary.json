@@ -1,0 +1,16 @@
+{
+  "recorded_date": "2026-10-04",
+  "source_head": "2a15ef163c3df7e96ee52c81cb677ebdb1305935",
+  "operation": "documentation_consolidation_only",
+  "new_server_observation": false,
+  "new_training": false,
+  "new_inference": false,
+  "last_server_observed_at": "2026-10-04T08:41:43.586227+08:00",
+  "remaining_evidence": [
+    "Post-D30 A native results",
+    "D30 complete per-tile evaluation matrices",
+    "large predictions/checkpoints remain server-only"
+  ],
+  "updated_ledger": "docs/experiments/rebuild_v1/INDEX.md",
+  "new_chat_prompt": "docs/current/NEW_CHAT_HANDOFF_20261004.md"
+}

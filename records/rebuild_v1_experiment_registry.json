@@ -2,7 +2,7 @@
   "schema_version": "1.2",
   "project": "REBUILD_V1",
   "timezone": "UTC+08:00",
-  "last_updated": "2026-10-02",
+  "last_updated": "2026-10-04",
   "status_provenance_policy": "reported_complete and running_as_last_reported are user observations, not live server verification. expected_server_records are absent artifacts to collect, not archived evidence.",
   "timing_policy": {
     "started_at": "Actual launch time when directly evidenced; otherwise date/minute precision is stated explicitly.",
@@ -1654,9 +1654,9 @@
     {
       "id": "D26_BIDIRECTIONAL_FEATURE_20261002",
       "name": "bidirectional_feature_interaction_reusing_existing_unimodal_experts",
-      "status": "RUNNING_TRAINING_USER_REPORTED",
+      "status": "COMPLETE_DEVELOPMENT_GATES_FAILED",
       "started_at": null,
-      "completed_at": null,
+      "completed_at": "2026-10-03T04:04:45.239849+08:00",
       "implemented": true,
       "execution_authorized_by_user": true,
       "protocol": "docs/protocols/D26_BIDIRECTIONAL_FEATURE_PLAN_20261002.md",
@@ -1667,123 +1667,194 @@
         "records/research_d26_progress_20261002T191819/user_status_stdout.txt",
         "records/research_d26_progress_20261002T191819/eta_estimate.json"
       ],
-      "result": null,
+      "result": "B0有效；XSF增量不足且双侧保留门槛失败",
       "execution_authorized": true,
       "launched": true,
       "execution_commit": "52f94388b1a9c7557e9ef533075661139cd55eda",
       "execution_protocol": "docs/protocols/D26_EXECUTION_20261002.md",
       "local_CPU_tests_passed": 16,
-      "server_GPU_verified": false,
+      "server_GPU_verified": true,
       "unique_jobs": 9,
       "total_optimizer_steps": 72000,
       "new_unimodal_training": 0,
       "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109",
       "controller_pid": 1571946,
       "last_observation": {
-        "schema_version": "1.0",
-        "experiment": "D26_BIDIRECTIONAL_FEATURE_20261002",
-        "source": "user_pasted_server_status_and_nohup_tail",
-        "queue_last_observed_at": "2026-10-02T19:18:19.427139+08:00",
-        "latest_worker_progress_at": "2026-10-02T19:18:23.902610+08:00",
-        "timestamp_note": "queue snapshot and worker progress are read separately; B0 worker timestamp is newer than queue snapshot, both retained",
-        "status": "RUNNING_TRAINING_USER_REPORTED",
-        "queue_status": "RUNNING",
-        "completed_jobs": 0,
+        "observed_at": "2026-10-03T04:04:45.239849+08:00",
+        "queue_status": "COMPLETE",
+        "completed_jobs": 9,
         "total_jobs": 9,
-        "execution_commit": "52f94388b1a9c7557e9ef533075661139cd55eda",
-        "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109",
-        "controller_pid": 1571946,
-        "jobs": [
-          {
-            "id": "J0",
-            "physical_gpu": 0,
-            "status": "RUNNING",
-            "phase": "training",
-            "step": 180,
-            "target": 8000,
-            "progress_at": "2026-10-02T19:18:12.689409+08:00",
-            "pid_from_launch": 1571983
-          },
-          {
-            "id": "B0",
-            "physical_gpu": 1,
-            "status": "RUNNING",
-            "phase": "training",
-            "step": 580,
-            "target": 8000,
-            "progress_at": "2026-10-02T19:18:23.902610+08:00",
-            "pid_from_launch": 1571989
-          },
-          {
-            "id": "CAP",
-            "status": "PENDING",
-            "physical_gpu": null,
-            "step": 0,
-            "target": 8000
-          },
-          {
-            "id": "X",
-            "status": "PENDING",
-            "physical_gpu": null,
-            "step": 0,
-            "target": 8000
-          },
-          {
-            "id": "XS",
-            "status": "PENDING",
-            "physical_gpu": null,
-            "step": 0,
-            "target": 8000
-          },
-          {
-            "id": "XF",
-            "status": "PENDING",
-            "physical_gpu": null,
-            "step": 0,
-            "target": 8000
-          },
-          {
-            "id": "XSF",
-            "status": "PENDING",
-            "physical_gpu": null,
-            "step": 0,
-            "target": 8000
-          },
-          {
-            "id": "XSF-shS",
-            "status": "PENDING",
-            "physical_gpu": null,
-            "step": 0,
-            "target": 8000
-          },
-          {
-            "id": "XSF-shF",
-            "status": "PENDING",
-            "physical_gpu": null,
-            "step": 0,
-            "target": 8000
-          }
-        ],
-        "first_training_step_observed": true,
-        "server_gpu_training_observed": true,
-        "checkpoint_load_completed_inferred_from_training": true,
-        "checkpoint_or_prediction_bytes_received": false,
-        "gradient_check_artifacts_received": false,
-        "validation_or_accuracy_results_received": false,
-        "scientific_conclusion_established": false,
-        "pid_live_query_performed": false,
-        "server_status_script_eta": "ETA_PENDING_FIRST_NORMAL_COMPLETED_JOB; no extra probe",
-        "test6_loaded": false,
-        "test6_source": "frozen protocol, not a received completed server signature"
+        "source": "docs/experiments/D26_COMPLETE_D27_FAILURE_REVIEW_20261003.md",
+        "live_query": false
       },
       "last_observation_record": "records/research_d26_progress_20261002T191819/observation.json",
       "started_at_precision": "after directory creation2026-10-02T19:12:53+08:00; exact start not retained",
       "training_progress_observed": true,
       "first_training_step_observed": true,
-      "completed_jobs": 0,
+      "completed_jobs": 9,
       "gradient_check_artifact_received": false,
       "server_GPU_verified_scope": "user-pasted training updates; no new live inspection or raw gradient/checkpoint artifact review",
-      "eta_estimate_record": "records/research_d26_progress_20261002T191819/eta_estimate.json"
+      "eta_estimate_record": "records/research_d26_progress_20261002T191819/eta_estimate.json",
+      "historical_observations": [
+        {
+          "schema_version": "1.0",
+          "experiment": "D26_BIDIRECTIONAL_FEATURE_20261002",
+          "source": "user_pasted_server_status_and_nohup_tail",
+          "queue_last_observed_at": "2026-10-02T19:18:19.427139+08:00",
+          "latest_worker_progress_at": "2026-10-02T19:18:23.902610+08:00",
+          "timestamp_note": "queue snapshot and worker progress are read separately; B0 worker timestamp is newer than queue snapshot, both retained",
+          "status": "RUNNING_TRAINING_USER_REPORTED",
+          "queue_status": "RUNNING",
+          "completed_jobs": 0,
+          "total_jobs": 9,
+          "execution_commit": "52f94388b1a9c7557e9ef533075661139cd55eda",
+          "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109",
+          "controller_pid": 1571946,
+          "jobs": [
+            {
+              "id": "J0",
+              "physical_gpu": 0,
+              "status": "RUNNING",
+              "phase": "training",
+              "step": 180,
+              "target": 8000,
+              "progress_at": "2026-10-02T19:18:12.689409+08:00",
+              "pid_from_launch": 1571983
+            },
+            {
+              "id": "B0",
+              "physical_gpu": 1,
+              "status": "RUNNING",
+              "phase": "training",
+              "step": 580,
+              "target": 8000,
+              "progress_at": "2026-10-02T19:18:23.902610+08:00",
+              "pid_from_launch": 1571989
+            },
+            {
+              "id": "CAP",
+              "status": "PENDING",
+              "physical_gpu": null,
+              "step": 0,
+              "target": 8000
+            },
+            {
+              "id": "X",
+              "status": "PENDING",
+              "physical_gpu": null,
+              "step": 0,
+              "target": 8000
+            },
+            {
+              "id": "XS",
+              "status": "PENDING",
+              "physical_gpu": null,
+              "step": 0,
+              "target": 8000
+            },
+            {
+              "id": "XF",
+              "status": "PENDING",
+              "physical_gpu": null,
+              "step": 0,
+              "target": 8000
+            },
+            {
+              "id": "XSF",
+              "status": "PENDING",
+              "physical_gpu": null,
+              "step": 0,
+              "target": 8000
+            },
+            {
+              "id": "XSF-shS",
+              "status": "PENDING",
+              "physical_gpu": null,
+              "step": 0,
+              "target": 8000
+            },
+            {
+              "id": "XSF-shF",
+              "status": "PENDING",
+              "physical_gpu": null,
+              "step": 0,
+              "target": 8000
+            }
+          ],
+          "first_training_step_observed": true,
+          "server_gpu_training_observed": true,
+          "checkpoint_load_completed_inferred_from_training": true,
+          "checkpoint_or_prediction_bytes_received": false,
+          "gradient_check_artifacts_received": false,
+          "validation_or_accuracy_results_received": false,
+          "scientific_conclusion_established": false,
+          "pid_live_query_performed": false,
+          "server_status_script_eta": "ETA_PENDING_FIRST_NORMAL_COMPLETED_JOB; no extra probe",
+          "test6_loaded": false,
+          "test6_source": "frozen protocol, not a received completed server signature"
+        }
+      ],
+      "validation_or_accuracy_results_received": true,
+      "gradient_check_artifacts_received": true,
+      "review": "docs/experiments/D26_COMPLETE_D27_FAILURE_REVIEW_20261003.md"
+    },
+    {
+      "id": "D27_ORIGINAL_20261003",
+      "status": "TECHNICAL_FAILURE_NO_TRAINING",
+      "purpose": "安全/全局/局部/类别路由",
+      "result_summary": "KeyError treatment导致未训练，不构成科学负结果；修复队列另记。",
+      "completed_at": null,
+      "review": "docs/experiments/D26_COMPLETE_D27_FAILURE_REVIEW_20261003.md",
+      "evidence_class": "development_evidence",
+      "live_query": false
+    },
+    {
+      "id": "D27_REPAIR_20261003",
+      "status": "COMPLETE_ALL_FOUR_GATES_FAILED",
+      "purpose": "保护与恢复、动态专家、局部/类别路由",
+      "result_summary": "保护＋恢复相对匹配对照损失约1.77—1.89pp；更多DSM独有信息保留伴随RGB原正确损失，四项机制门槛均未过。",
+      "completed_at": "2026-10-03T18:22:10.948452+08:00",
+      "review": "docs/experiments/D27_FINAL_REVIEW_20261003.md",
+      "evidence_class": "development_evidence",
+      "live_query": false
+    },
+    {
+      "id": "D28_PRESSURE_20261003",
+      "status": "COMPLETE_PRESSURE_GATES_FAILED",
+      "purpose": "相同边际损伤下，共同受损与独立受损",
+      "result_summary": "B0独立−共同仅+0.014570pp，未过0.3pp；本轮不支持共同受损主假设，未触发原D29。",
+      "completed_at": null,
+      "review": "docs/experiments/D28_FINAL_REVIEW_20261003.md",
+      "evidence_class": "development_evidence",
+      "live_query": false
+    },
+    {
+      "id": "D30_LOSS_DECOMPOSITION_20261003",
+      "status": "COMPLETE_ALL_CONTINUATION_GATES_FALSE",
+      "purpose": "保护/恢复损失拆解、面积/像素归一化、固定checkpoint路由干预",
+      "result_summary": "P对S0综合+0.041182pp；R−2.013409pp；PR_area−0.064718pp；PR_pixel−1.291674pp。四项继续门槛均False；归一化缓解损失但未建立贡献。",
+      "completed_at": "2026-10-04T00:47:08.030508+08:00",
+      "review": "docs/experiments/D30_COMPLETED_REVIEW_20261004.md",
+      "evidence_class": "development_evidence",
+      "live_query": false
+    },
+    {
+      "id": "POST_D30_MECHANISMS_20261004",
+      "status": "CONTROLLER_INTERRUPTED_A6_COMPLETE_BC_PENDING",
+      "purpose": "全特征/共享特征对齐、打乱与权重对照",
+      "result_summary": "已训练并补完评价；本次没有收到原生A结果，不能宣布机制成功或失败。其后汇总导入失败，B/C尚待续跑。",
+      "completed_at": null,
+      "review": "docs/experiments/POST_D30_SUMMARY_IMPORT_REPAIR_20261004.md",
+      "evidence_class": "user_reported_completion_results_pending",
+      "live_query": false,
+      "last_observed_at": "2026-10-04T08:41:43.586227+08:00",
+      "completed_jobs": 6,
+      "total_main_jobs": 18,
+      "conditional_jobs": 4,
+      "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364",
+      "scientific_execution_commit": "01ec8dee82f7e272f6a650aaf9f3e619a0e7c516",
+      "latest_repair_commit": "2a15ef163c3df7e96ee52c81cb677ebdb1305935",
+      "second_recovery_observed": false
     }
   ],
   "next_plan": {
@@ -1962,7 +2033,7 @@
       "gradient_accumulation": false,
       "views_per_crop": 2,
       "head_lr": 0.0002,
-      "encoder_last4_lr": 0.00002,
+      "encoder_last4_lr": 2e-05,
       "weight_decay": 0.01,
       "betas": [
         0.9,
@@ -3146,5 +3217,17 @@
     "last_observed_at": "2026-10-02T19:18:19.427139+08:00",
     "latest_worker_progress_at": "2026-10-02T19:18:23.902610+08:00",
     "gradient_check_artifact_received": false
+  },
+  "recent_review": "docs/experiments/COMPLETED_EXPERIMENTS_HANDOFF_20261004.md",
+  "current_execution_budget": {
+    "scope": "Post-D30 only; historical frozen_budget retained for old protocol",
+    "steps": 8000,
+    "seed": 42,
+    "physical_batch": 16,
+    "gradient_accumulation": 1,
+    "gpus": [
+      0,
+      1
+    ]
   }
 }

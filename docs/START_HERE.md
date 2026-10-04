@@ -1,21 +1,13 @@
-# 共享入口：D30完成；Post-D30评价故障待恢复
+# 共享入口（2026-10-04交接整理）
 
-最新服务器观测2026-10-04T08:41:43.586227+08:00：队列CONTROLLER_INTERRUPTED，控制器2698383 LIVE=False；A0—A5已全部COMPLETE（分别08:22/08:31/08:41），6/18主体完成，B/C全PENDING、F待门槛，无活跃worker。A评价恢复已成功且未重训；阶段A汇总子进程抛出ModuleNotFoundError: No module named 'model'，随后控制器退出。这是脚本搜索路径缺失：cwd=code不自动把code加入独立脚本的sys.path。导入路径修复已本地实现并通过6项回归（含实际汇总子进程--help）；尚无服务器第二次恢复启动观测。恢复在同目录建立新覆盖快照，保留原plan/code及A完成标记，不重跑A，重新生成A阶段汇总后接B/C，仅GPU0/1。
+权威为66322/remote_sensing_frequency的rebuild-v1-protocol-20260915，两台电脑以GitHub同步。本次为记录整理，不启动服务器任务。
 
-权威仓库66322/remote_sensing_frequency，分支rebuild-v1-protocol-20260915。先读[研究决定](current/RESEARCH_DECISION.md)→[交接](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)，再核对证据和源码。
+按顺序读[研究决定](current/RESEARCH_DECISION.md)→[当前交接](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)→[实验总索引](experiments/rebuild_v1/INDEX.md)。[新对话可直接使用的说明](current/NEW_CHAT_HANDOFF_20261004.md)。
 
-主问题保持RGB外观/语义与DSM高度/几何的双向条件互补，以及任一侧退化/缺失时的可靠分割。处于可行性探索，频率、可靠性、专家、共享/私有均是候选解法；任务驱动SR/恢复仍是旁支，未自动变更方向，也没有确认性贡献。
+最后服务器观测：2026-10-04T08:41:43.586227+08:00，Post-D30为CONTROLLER_INTERRUPTED，控制器2698383已退出；A0—A5六项COMPLETE，B1—B6/C0—C5待运行，F0—F3有条件。无活跃worker是该时刻的观测，不代表此刻状态。A评价修复已成功，无新增优化器更新；随后A阶段汇总因缺少model导入路径退出。第二次修复2a15ef163c3df7e96ee52c81cb677ebdb1305935已发布并通过本地6项回归，但尚无服务器启动回报。
 
-历史运行观测：D30在2026-10-04T00:47:08.030508+08:00为COMPLETE，六项全部完成。Post-D30在2026-10-04T06:04:04.397991+08:00为COMPLETE_WITH_TECHNICAL_FAILURES；原控制器2450552已退出（Z、LIVE=False），无活跃worker。A0—A5均训练至8000步，均因评价条件`dsm_present_zero`未被处理而失败；0/18正式完成，B/C未启动，F仍待条件。不能据此评价A机制效果。原执行commit为01ec8dee82f7e272f6a650aaf9f3e619a0e7c516，原目录为`research_post_d30_mechanisms_20261004T000812_2446364`。该失败观测为06:04历史状态；08:41六项A完整完成，随后阶段汇总导入错误令控制器停止，第二次恢复待执行。
+主问题保持RGB外观/语义与DSM高度/几何的双向条件互补，及任一侧退化/缺失时的分割能力。仍处于可行性探索；频率、可靠性、MoE、共享/私有是候选解法，任务驱动SR/恢复是旁支，不因任务顺序改变主线。普通融合、部分解冻与增强是强基线；旧机制未过门槛不等于整个问题失败。目前没有确认性新贡献。
 
-D30终端汇总：P综合86.092396，R84.037805，PR_area85.986496，PR_pixel84.759540，四项continue均False。相对S0综合86.051214，PR_area−0.064718pp、PR_pixel−1.291674pp；不同归一化未达到预设增量门槛。P的小改善与R的信息取舍仍成立，但不能据此认定唯一根因或整个双模态问题无效。指标为Potsdam开发Val2、native512/stride256、NoBoundary fg5的selected口径，来自用户终端；完整原矩阵尚待上传与独立重算。
+服务器由用户在终端操作，无可用SSH。根目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro；只用物理GPU0/1，两张H10080GB，RAM/磁盘充足。长任务nohup；记录、临时、缓存、执行快照均在/home/jovyan/zzx对应实验目录。当前协议seed42、8000步、物理batch16、无累积。不重复资源审计、容量探针、单模态训练或自动追加多seed。Test6/独立final禁止访问；Val2重复开发，不称独立确认。
 
-只使用物理GPU0/1，两张H10080GB，RAM与磁盘充足；seed42、8000步、物理batch16、无累积、nohup。快照/临时/缓存/日志均在/home/jovyan/zzx对应实验目录。用户在服务器终端执行，无SSH；不重复资源审计或预算探针。Test6及独立final禁止访问；重复开发Val2不等于独立泛化。GitHub本分支为共享权威，大预测/checkpoint保留服务器并索引。
-
-下一步执行[同目录评价恢复](current/NEXT_EXPERIMENT.md)，不是创建新队列或重训A。见[故障说明](experiments/POST_D30_EVALUATION_REPAIR_20261004.md)及[服务器终端观测](../records/research_post_d30_mechanisms_20261004T000812_2446364/failure_observation_20261004T060404.json)。
-
-
-D30分析更新：六组selected汇总已整理；面积缩放PR_area对S1提高1.730941pp，但仍低于S0 0.064718pp，PR_pixel仍低于S0 1.291674pp，四项新配方continue均False。静态保护/恢复取舍明确，归一化缓解下降但未形成增量；固定checkpoint重放及loss/梯度原件尚未上传，不宣称唯一根因。[完成阶段分析](experiments/D30_COMPLETED_REVIEW_20261004.md)。原Post-D30队列与gate保持不变。
-
-
-D30原生紧凑证据已于214eb158a59cf8248910ba5e46492189d3a6f953上传，156文件、1134456字节；screen_result已回读。P仅综合门槛失败，最差tile/condition−0.076827pp；PR_area还存在最差−0.298852pp及fixed8000对S0−0.067831pp，不能称完全恢复安全性。PR_pixel仅DSM正确保留65.7654%、仅RGB正确90.1002%，QD伤害3.0660%，仍是明显信息取舍。完整逐tile原矩阵本体未上传，梯度原件已上传但尚未完成综合分析。
+D23—D28已完成分析；D30已完成六项且紧凑原件已上传；A六项完成但原生结果待接收。不同轮预算、选模与综合定义不同，不跨表排名次。详见[完成实验整理](experiments/COMPLETED_EXPERIMENTS_HANDOFF_20261004.md)。权重/预测仍在服务器；D30全逐tile矩阵尚未上传。

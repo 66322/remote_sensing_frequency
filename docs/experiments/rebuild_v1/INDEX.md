@@ -2,9 +2,28 @@
 
 本索引列实验事实，不决定论文主线。路线角色与去留原则见[研究决策说明](../../current/RESEARCH_DECISION.md)，执行待办见[下一步](../../current/NEXT_EXPERIMENT.md)。C1是旁支候选；已关闭方案保持原门槛。
 
+## 2026-10-04近期补全
+
+本表逐轮说明目的、结论和证据范围，详细内容见[已完成实验整理](../COMPLETED_EXPERIMENTS_HANDOFF_20261004.md)。以下状态是带时间戳的历史观测，不是实时服务器查询。
+
+| 实验 | 状态 | 做了什么 | 得到什么结论/边界 | 证据 |
+|---|---|---|---|---|
+| D23 | 8/8完成 | 冻结专家＋语义/频率/效用门控是否优于强融合 | TSF综合比M0_safe低0.148998pp；减害同时丢失纠错，全部机制门槛未过。已知DSM缺失回退为工程能力。 | [报告](../D23_EIGHT_ARM_RESULTS_20261001.md) |
+| D24 | 15/15技术完成；2项Pair消融无效 | 适配、增强、配对约束和语义/KD | 部分解冻与普通增强是强基线。A1/A3损失开关未启用，不能当Pair负结果；其他比较保留。 | [报告](../D24_REVIEW_AND_PAIR_CORRECTION_20261002.md) |
+| D25 | 8/8完成 | 修正Pair、状态分头、完整/缺失梯度投影 | 四项预设机制筛选均未过；真实Pair已启用，采样梯度不支持全局冲突是当前主要瓶颈。 | [报告](../D25_MISSINGNESS_RESULTS_20261002.md) |
+| D26 | 9/9完成 | 双向特征交互、容量及语义/频率打乱对照 | 普通B0融合对RGB综合+0.690973pp；XSF对B0仅+0.156829pp，未过增量与双侧保留门槛。 | [报告](../D26_COMPLETE_D27_FAILURE_REVIEW_20261003.md) |
+| D27原队列 | 10项step0技术失败 | 安全/全局/局部/类别路由 | KeyError treatment导致未训练，不构成科学负结果；修复队列另记。 | [报告](../D26_COMPLETE_D27_FAILURE_REVIEW_20261003.md) |
+| D27修复队列 | 10/10完成 | 保护与恢复、动态专家、局部/类别路由 | 保护＋恢复相对匹配对照损失约1.77—1.89pp；更多DSM独有信息保留伴随RGB原正确损失，四项机制门槛均未过。 | [报告](../D27_FINAL_REVIEW_20261003.md) |
+| D28 | 7/7模型评价完成；无新训练 | 相同边际损伤下，共同受损与独立受损 | B0独立−共同仅+0.014570pp，未过0.3pp；本轮不支持共同受损主假设，未触发原D29。 | [报告](../D28_FINAL_REVIEW_20261003.md) |
+| D30 | 6/6完成（4训练＋2重放，另复用S0/S1） | 保护/恢复损失拆解、面积/像素归一化、固定checkpoint路由干预 | P对S0综合+0.041182pp；R−2.013409pp；PR_area−0.064718pp；PR_pixel−1.291674pp。四项继续门槛均False；归一化缓解损失但未建立贡献。 | [报告](../D30_COMPLETED_REVIEW_20261004.md) |
+| Post-D30 A | A0—A5六项完成；尚待接收汇总 | 全特征/共享特征对齐、打乱与权重对照 | 已训练并补完评价；本次没有收到原生A结果，不能宣布机制成功或失败。其后汇总导入失败，B/C尚待续跑。 | [报告](../POST_D30_SUMMARY_IMPORT_REPAIR_20261004.md) |
+| Post-D30 B/C/F | 12项主体最后观测为PENDING；F4项有条件 | 局部对应修正与缺失知识迁移；条件频率干预 | 已授权并实现，尚不能写成完成；F仅固定B3全部gate通过触发。 | [报告](../../protocols/POST_D30_EXECUTION_20261003.md) |
+
+## 历史索引（保留原证据）
+
 | ID | Purpose | Status | Primary evidence |
 |---|---|---|---|
-| D23 B engine admission | frozen expert8/gate16 single backward, 8-arm smoke and full-image profile | originals uploaded to GitHub; 8 hashes/107 matrices and CPU22 checks passed; formal budget pending | [audit](../D23_B_ENGINE_GITHUB_AUDIT_20261001.md) |
+| D23 B engine admission | frozen expert8/gate16 single backward, 8-arm smoke and full-image profile | originals uploaded to GitHub; 8 hashes/107 matrices and CPU22 checks passed; formal budget subsequently completed; see D23 eight-arm review | [audit](../D23_B_ENGINE_GITHUB_AUDIT_20261001.md) |
 | Post-D21 final and mixed follow-up | completed 42 A/B/C/D cells and four mixed-degradation C0/C1 cells | user-reported 42/42 and 4/4 complete; both integer audits PASS; single-seed development evidence | `docs/experiments/POST_D21_FINAL_AND_MIXED_FOLLOWUP_RESULTS_20261001.md` |
 | Post-D21 A/B/C early analysis | 36/42 completed jobs, paired development comparisons while D continued | server-pasted early snapshot; integer audit PASS; not final D result | `docs/experiments/POST_D21_EARLY_AB_C_RESULTS_20260930.md` |
 | Post-D21 mixed-degradation follow-up | paired C0/C1 under mixed scale and blur, four E cells, separate queue | 4/4 complete and audited per user log | `docs/protocols/POST_D21_MIXED_DEGRADATION_FOLLOWUP_20260930.md` |
