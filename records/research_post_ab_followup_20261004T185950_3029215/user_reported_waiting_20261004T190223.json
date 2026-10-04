@@ -1,0 +1,191 @@
+{
+  "source": "user-pasted read-only status_post_ab.py and tail -n 40 output",
+  "execution_commit": "99acf754aaf3f6b1d119f42a5dab7297a263e4b4",
+  "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_20261004T185950_3029215",
+  "last_observed": "2026-10-04T19:02:23.778603+08:00",
+  "queue": "WAITING_PREDECESSOR",
+  "controller_pid": 3029372,
+  "controller_live": true,
+  "jobs": {
+    "N1-0": {
+      "gpu": 0,
+      "status": "PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N1-1": {
+      "gpu": 1,
+      "status": "PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N1-2": {
+      "gpu": 0,
+      "status": "PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N1-3": {
+      "gpu": 1,
+      "status": "PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N2-0": {
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N2-1": {
+      "gpu": 1,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N2-2": {
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N2-3": {
+      "gpu": 1,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N2-4": {
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N2-5": {
+      "gpu": 1,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N3-0": {
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N3-1": {
+      "gpu": 1,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N3-2": {
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N3-3": {
+      "gpu": 1,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N3-4": {
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N4-0": {
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N4-1": {
+      "gpu": 1,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N4-2": {
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N4-3": {
+      "gpu": 1,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N5-0": {
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N5-1": {
+      "gpu": 1,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N5-2": {
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N5-3": {
+      "gpu": 1,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N6-0": {
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N6-1": {
+      "gpu": 1,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    "N6-2": {
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    }
+  },
+  "conditions_interface": {
+    "pass": true,
+    "count": 32
+  },
+  "cpu_checks": {
+    "passed_by_controller_control_flow": true,
+    "log_independently_read": false
+  },
+  "predecessor": {
+    "handover_log_status": "RUNNING",
+    "new_job_breakdown_received": false,
+    "new_pid_liveness_received": false
+  },
+  "n1_started": false,
+  "test6_access_observed": false,
+  "raw_log_tail": [
+    "POST_AB_CONDITIONS_PASS 32",
+    "POST_AB_HANDOVER WAITING_PREDECESSOR RUNNING",
+    "POST_AB_HANDOVER WAITING_PREDECESSOR RUNNING",
+    "POST_AB_HANDOVER WAITING_PREDECESSOR RUNNING",
+    "POST_AB_HANDOVER WAITING_PREDECESSOR RUNNING",
+    "POST_AB_HANDOVER WAITING_PREDECESSOR RUNNING",
+    "POST_AB_HANDOVER WAITING_PREDECESSOR RUNNING"
+  ]
+}
