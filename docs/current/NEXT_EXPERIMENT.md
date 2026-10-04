@@ -4,6 +4,8 @@
 
 ## 上传阶段原件
 
+此前上传准备失败：761504860字节超过512 MiB，尚无A/B原件上传。最新上传器已降低JSON/log无损压缩阈值并增加准备报告，服务器实际体积待回报。见[体积修复](../experiments/POST_D30_UPLOAD_SIZE_REPAIR_20261004.md)。重新执行下方上传命令，先fetch最新脚本，禁止重复使用旧upload_stage脚本。
+
 命令只上传，不训练、不评价、不重启。最新上传器保留修复manifest、A汇总、complete/checkpoint绑定及逐tile JSON，权重/预测仅索引。运行中B记录为阶段快照，不当最终结果；如写入中的JSON或非快进push报错，保留现场回传错误，不重启训练、不force push。
 
 ```bash

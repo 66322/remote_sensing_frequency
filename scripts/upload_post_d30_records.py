@@ -13,7 +13,7 @@ RECORD_ENCODING = 'gzip-base64-exact-v1'
 
 def encode_record(raw):
     """Preserve original bytes exactly; keep small JSON directly readable."""
-    if len(raw) < 1024 * 1024:
+    if len(raw) < 4096:
         return raw
     packed = gzip.compress(raw, compresslevel=6, mtime=0)
     envelope = dict(record_encoding=RECORD_ENCODING,
@@ -44,7 +44,9 @@ def git(root,*args,capture=False):
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,required=True)
-    ap.add_argument('--directory',type=Path,required=True);args=ap.parse_args()
+    ap.add_argument('--directory',type=Path,required=True)
+    ap.add_argument('--prepare-only',action='store_true',help='write size report only; no Git writes or push')
+    args=ap.parse_args()
     root=args.root.resolve();root.relative_to(Path('/home/jovyan/zzx').resolve())
     base=args.directory.resolve();base.relative_to(root/'records')
     if not base.name.startswith('research_post_d30_mechanisms_'):raise ValueError('unexpected directory')
@@ -94,7 +96,7 @@ def main():
         raw=path.read_bytes();raw.decode('utf-8')
         if name.endswith('.json'):json.loads(raw)
         source_total += len(raw)
-        uploaded = encode_record(raw) if name.endswith('.json') else raw
+        uploaded = encode_record(raw) if name.endswith(('.json','.log')) else raw
         if len(uploaded)>80*1024**2:raise ValueError('unexpected oversized encoded record: '+name)
         data[name]=uploaded
         source_files.append(dict(path=name, original_bytes=len(raw),
@@ -102,7 +104,23 @@ def main():
                                  encoded=(uploaded != raw)))
     print('PORTFOLIO_UPLOAD_PREPARED source_bytes=%d upload_bytes=%d files=%d' %
           (source_total, sum(map(len,data.values())), len(data)), flush=True)
-    if sum(map(len,data.values()))>512*1024**2:raise ValueError('unexpected oversized light bundle')
+    preparation=dict(created_at=datetime.now().astimezone().isoformat(),
+                     source_bytes=source_total,upload_bytes=sum(map(len,data.values())),
+                     files=len(data),limit_bytes=512*1024**2,
+                     largest_uploaded=sorted(
+                         [dict(path=n,bytes=len(v)) for n,v in data.items()],
+                         key=lambda r:r['bytes'],reverse=True)[:20],
+                     source_files=source_files,upload_launches_training=False)
+    preparation_path=base/('upload_preparation_'+datetime.now().strftime('%Y%m%dT%H%M%S%f')+'_'+str(os.getpid())+'.json')
+    preparation_path.write_text(json.dumps(preparation,indent=2)+'\n')
+    print('PORTFOLIO_PREPARATION_REPORT='+str(preparation_path),flush=True)
+    if preparation['upload_bytes']>512*1024**2:
+        for row in preparation['largest_uploaded']:
+            print('PORTFOLIO_LARGEST',row['bytes'],row['path'],flush=True)
+        raise ValueError('unexpected oversized light bundle; inspect preparation report')
+    if args.prepare_only:
+        print('PORTFOLIO_PREPARE_ONLY_PASS; no Git writes or push',flush=True)
+        return
     if not all(name in data for name in ('plan.json','execution_commit.txt','code_manifest.json','queue_status.json')):
         raise ValueError('queue provenance missing')
     origin=git(root,'remote','get-url','origin',capture=True).strip()
@@ -125,7 +143,8 @@ def main():
                   files=[dict(path=n,bytes=len(v),sha256=hashlib.sha256(v).hexdigest()) for n,v in data.items()],
                   source_files=source_files, source_total_bytes=source_total,
                   upload_total_bytes=sum(map(len,data.values())),
-                  record_encoding=RECORD_ENCODING, originals_preserved_on_server=True,
+                  record_encoding=RECORD_ENCODING, compression_threshold_bytes=4096,
+                  compressed_source_extensions=['.json','.log'], originals_preserved_on_server=True,
                   decoder_script='scripts/decode_rebuild_light_record.py',
                   predictions_and_checkpoints_uploaded=False,upload_launches_training=False)
     (target/'upload_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')

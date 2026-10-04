@@ -11,3 +11,6 @@
 服务器由用户在终端操作，无可用SSH。根目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro；只用物理GPU0/1，两张H10080GB，RAM/磁盘充足。长任务nohup；记录、临时、缓存、执行快照均在/home/jovyan/zzx对应实验目录。当前协议seed42、8000步、物理batch16、无累积。不重复资源审计、容量探针、单模态训练或自动追加多seed。Test6/独立final禁止访问；Val2重复开发，不称独立确认。
 
 D23—D28已完成分析；D30已完成六项且紧凑原件已上传；A六项完成但原生结果待接收。不同轮预算、选模与综合定义不同，不跨表排名次。详见[完成实验整理](experiments/COMPLETED_EXPERIMENTS_HANDOFF_20261004.md)。权重/预测仍在服务器；D30全逐tile矩阵尚未上传。
+
+
+2026-10-04上传接收更新：用户执行上传器，在准备阶段因761504860字节超过512 MiB失败，尚无A/B原件上传，未改动训练。JSON/log无损压缩阈值修复与准备报告已实现，本地6项回归通过，服务器实际体积/push待回报。沿原C队列继续；按[NEXT](current/NEXT_EXPERIMENT.md)读取最新上传器重试上传，不再使用旧脚本。详见[说明](experiments/POST_D30_UPLOAD_SIZE_REPAIR_20261004.md)。
