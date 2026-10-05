@@ -137,3 +137,11 @@ The C0/C1 tile-risk re-audit also passed. See
 本次[登记观测](../../../records/research_post_n2_diagnostics_20261005T131434_3591073/registration_observation.json)来源为用户粘贴终端输出，不替代原日志/运行原件验收；下一步只读查询，不重复启动。
 
 2026-10-05T13:20:35.646566+08:00用户只读回报：诊断后继WAITING_N2、PID3591245 LIVE=True，E0/MASKS及五worker全部PENDING，新增训练0；nohup持续WAITING_N2 RUNNING_N2。等待正常，不启动/修复，不称新推理已运行。原N2详细完成数未提供，原控制器独立存活最后观测13:14:31。见[等待观测](../../../records/research_post_n2_diagnostics_20261005T131434_3591073/waiting_observation_20261005T132035.json)。
+
+## 2026-10-06收到本轮完成回报（完成时刻2026-10-05 23:27）
+
+最后服务器观测（用户2026-10-06回传）：queue_status观测时间2026-10-05T23:27:15.831648+08:00，诊断后继DIAGNOSTICS_COMPLETE_AWAITING_REVIEW，PID3591245 LIVE=False；E0/MASKS COMPLETE，E1_A0/B1及E2_N1-2/N2-0/N2-3五项全部COMPLETE，worker均LIVE=False，新增optimizer更新0。nohup已记录READY N2_COMPLETE_AWAITING_STAGE_PROTOCOL和完整派发/完成序列，无本次故障回报。POST_N2_DIAGNOSTICS_SCREEN True True对应N5问题触发=True、N3问题触发=True，不是两种训练方法有效。N2原科学gate、诊断数值/原件尚待上传回读；不可称已独立验收或确认贡献。
+
+E0读取已有预测完成，掩码准备完成；E1两worker分别436.28/441.19秒，E2三worker430.03/431.00/427.27秒，五任务实测均约7.1–7.4分钟。E1/E2三个派发波次从约23:05至23:27完成（起始按progress elapsed推算），新增60次tile推理/0训练。CPU E0最后进度23:05:12.250016，缺少CPU开始记录，不能据此推算E0总时长或原N2完成时间。
+
+N2/E0/E1/E2原轻量summary/矩阵仍待[上传](../../current/NEXT_EXPERIMENT.md)，此条只有用户终端完成状态与日志，不是独立原件验收。两个问题门槛不代表方法贡献；保持原N2科学gate，未启新N5/N3/N4训练。N2上传器补收controller-only修复轻量原件，不修改科学快照。

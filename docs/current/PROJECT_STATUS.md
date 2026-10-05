@@ -1,29 +1,21 @@
-# 状态与证据接收
+# 状态：本轮技术完成，待接收并分析原件
 
-最后服务器观测（用户终端回传）：2026-10-05T13:20:35.646566+08:00，诊断后继QUEUE=WAITING_N2，PID3591245 LIVE=True；E0=PENDING、MASKS=PENDING、五项E1/E2 worker全部PENDING、PID=-1/LIVE=False，NEW_OPTIMIZER_UPDATES=0。nohup日志持续DIAG_HANDOVER WAITING_N2 RUNNING_N2，确认控制器正常等待原N2，尚无CPU准备或新GPU评价。原N2控制器独立LIVE=True最后来自13:14:31.018288（PID3467202）；13:20后继读取的前队列仍RUNNING_N2，但未提供原队列六组详细进度或完成数。执行提交883fccc0b97714cfe0a87b54bfeb2a2fc09820d7、后继目录records/research_post_n2_diagnostics_20261005T131434_3591073保持。
+最后服务器观测（用户2026-10-06回传）：queue_status观测时间2026-10-05T23:27:15.831648+08:00，诊断后继DIAGNOSTICS_COMPLETE_AWAITING_REVIEW，PID3591245 LIVE=False；E0/MASKS COMPLETE，E1_A0/B1及E2_N1-2/N2-0/N2-3五项全部COMPLETE，worker均LIVE=False，新增optimizer更新0。nohup已记录READY N2_COMPLETE_AWAITING_STAGE_PROTOCOL和完整派发/完成序列，无本次故障回报。POST_N2_DIAGNOSTICS_SCREEN True True对应N5问题触发=True、N3问题触发=True，不是两种训练方法有效。N2原科学gate、诊断数值/原件尚待上传回读；不可称已独立验收或确认贡献。
 
+| 阶段 | 技术状态 | 科学判断/验收状态 |
+|---|---|---|
+| 原Post-D30 A/B/C | 已完成，F跳过 | A2/B3 gate=False；C2 gate=False，已接收相应关键原件 |
+| N1四组 | 已完成，N6跳过 | 固定N1-3 gate=False；N1-2为预定N2基座 |
+| N2六组 | 后继日志已读到N2_COMPLETE_AWAITING_STAGE_PROTOCOL并通过接续验收 | 原科学gate和精度尚未回传；后继服务器验收不替代助手GitHub独立回读 |
+| E0/MASKS | COMPLETE | 空间问题筛选报告True；效应/分母待读原件 |
+| E1两worker | COMPLETE | 内容缺失问题筛选报告True；具体规则/方向/效应待读原件 |
+| E2三worker | COMPLETE | 标记可靠性诊断成本未回传 |
+| N5/N3/N4 | 未登记新的训练 | 等原件分析、匹配控制与完整执行协议，不自动全跑 |
 
-最后服务器记录：原Post-D30于2026-10-05T00:26:01.590322+08:00 COMPLETE（18/18主体、F四项实际SKIPPED_GATE）；N1于07:21:14.003184 COMPLETE_AWAITING_STAGE_PROTOCOL（四项8000步、固定门槛False、N6三项实际SKIPPED_GATE）。两阶段轻量原件已上传并回读；C0—C5/N1-0—3十组20份summary的绑定、整数汇总和固定门槛复算通过。没有本次助手实时服务器查询。N2修复控制器12:15:02存活，N2-0最终评价、N2-1训练7800步，后续四组待运行；N3/N4/N5仍待各自诊断和协议，不把旧预约状态当可执行。
+E0读取已有预测完成，掩码准备完成；E1两worker分别436.28/441.19秒，E2三worker430.03/431.00/427.27秒，五任务实测均约7.1–7.4分钟。E1/E2三个派发波次从约23:05至23:27完成（起始按progress elapsed推算），新增60次tile推理/0训练。CPU E0最后进度23:05:12.250016，缺少CPU开始记录，不能据此推算E0总时长或原N2完成时间。
 
-固定C2剩RGB对C0仅+0.041525pp、对C1−0.004058pp、对C3+0.028336pp；剩DSM对C0−0.041961pp、对C1−0.016106pp、对C3−0.026610pp，双侧门槛False。普通C0已解释DSM锚点改善，完整输入复用固定B0，不承诺蒸馏增量。N1-3对N1-2综合−0.881059pp、clean−0.852801pp、DSM缺失−0.156095pp，最差tile差−2.054791pp；固定gate=False。N2按事前规则使用N1-2作为匹配基座，不叠加失败多深度入口。
+C/N1已接收原件和独立复核范围仍以[验收报告](../experiments/POST_C_N1_RESULTS_20261005.md)为准：十组20份summary、原gate复算。N2/E0/E1/E2当前仅完成状态和紧凑日志已回传，原summary/screen/矩阵未上传GitHub；不能扩大为全结果已接收。D23—D30整理和旧去留保持，D30完整逐tile矩阵/部分早期原件仍待补。
 
-已接收原C轻量归档2535文件（2534载荷＋manifest），N1归档615文件（614载荷＋manifest）。两份清单路径/大小全部匹配；独立验收36份载荷上传/解码SHA、十份complete与20份summary执行/plan/完成绑定，77760矩阵tile→pooled、233280指标/原始计数记录、7560joint汇总及candidate边际；C2/N1checks重算一致。[审计和指标表](../experiments/POST_C_N1_RESULTS_20261005.md)。
+当前[下一步](NEXT_EXPERIMENT.md)为上传两个目录记录，回读后先判断N2成立与适用边界，再解读两个问题筛选和E2成本。T不提前评价、N4不凭非零梯度bool日志触发；N5若只是混合增强有效，先定位强基线，不能自动称方法创新。
 
-A2/B3 gate保持False；A/B原件已收、旧关键七组复核保持，另外五组未在本次独立扩审。D23—D30既有整理保持，D30完整逐tile矩阵和部分早期原件仍未齐。
-
-N2六组执行代码已实现，CPU8项检查与语法检查PASS；GPU0/1于12:15:02均存活，N2-0已8000步并最终评价、N2-1为7800步；真实训练速度已有回报，尚无完成与精度结果。新增六组各8000步，不将已完成N1追训；N3/N4/N5没有可执行worker，N6三项实际跳过。[协议](../protocols/POST_AB_N2_EXECUTION_20261005.md)。
-
-主线仍RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复是旁支；仍为可行性探索，无确认性新贡献。不重训A/B/C/N1、不增加seed或扫参、不启动F/N6、不访问Test6/independent final。服务器由用户终端执行，无SSH；只用GPU0/1两张H10080GB，每卡一worker，nohup；全部记录/快照/缓存在zzx对应独立目录，不重复资源审计。
-
-
-本次控制器修复：None超时按原定8小时处理；验证PID/启动tick/任务参数、完成SHA及待派发目录。修复文件另存原N2实验的controller_repair_*，worker仍执行原86b6快照。CPU恢复11项（含实际监控循环）与原N2八项检查通过，七文件语法检查通过；这些不代表真实CUDA任务成功。详见[修复说明](../experiments/POST_AB_N2_CONTROLLER_REPAIR_20261005.md)。
-
-
-
-## 2026-10-05最新后继安排：用户已授权实施，后继已登记，正常等待N2
-
-2026-10-05用户在兼容检查后明确“那开始吧”，已落实E0/E1/E2无训练后继执行包；16项CPU契约/实际控制循环集成检查及10个Python文件语法检查通过。**代码已实现、服务器登记已回报；控制器13:20:35已确认WAITING_N2/LIVE=True；真实CUDA评价尚未启动。** 新目录research_post_n2_diagnostics_<timestamp>_<pid>，独立nohup控制器先等待N2六组完成、原controller/worker退出和两锁释放，再复核原N2计数/绑定/gate，执行CPU E0→GPU E1→E2。重复登记只报告已有目录，不重启旧队列。
-
-E1固定A0/B1×两方向×U/H/L×Val2共24新tile推理；E2固定N1-2/N2-0/N2-3，复用clean，新增36次，共60新推理、0新训练。只用GPU0/1一worker/卡；T预留规则不评价，N5/N3/N4仍待问题证据及完整族协议，gate只输出问题提示，不自动训练。科学研究角色和旧失败去留不变。真实CUDA兼容性/耗时仍待首项回报；CPU检查不保证服务器任务成功。
-
-[冻结执行协议](../protocols/POST_N2_DIAGNOSTICS_EXECUTION_20261005.md)；[下一步](NEXT_EXPERIMENT.md)。
+研究阶段仍为可行性探索；主线RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复旁支。Potsdam fit12/Val2=3_11、5_10，native512/stride256、NoBoundary fg5为主、Full为诊断；单seed42开发证据。只用GPU0/1、nohup、全部产物留zzx对应目录；无SSH、无Test6/independent final、无追加种子、无失败配方自动追训，F/N6保持跳过。

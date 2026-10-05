@@ -51,11 +51,17 @@ def main():
     base=args.directory.resolve();base.relative_to(root/'records')
     if not base.name.startswith('research_post_ab_followup_n2_'):raise ValueError('unexpected directory')
     plan=json.loads((base/'plan.json').read_text())
-    names=['plan.json','execution_commit.txt','code_manifest.json','queue_status.json','screen_result.json','results.csv','predecessor_binding.json','portfolio_screen.json','cpu_checks.log','n1_screen.json','n2_screen.json','n1_base_binding.json','e0_diagnostic.json']
+    names=['plan.json','execution_commit.txt','code_manifest.json','queue_status.json','screen_result.json','results.csv','predecessor_binding.json','portfolio_screen.json','cpu_checks.log','n1_screen.json','n2_screen.json','n1_base_binding.json','e0_diagnostic.json','launch.json','controller.pid']
     names+=[p.relative_to(base).as_posix() for p in (base/'reused').rglob('*.json')]
     names+=[p.relative_to(base).as_posix() for p in base.glob('nohup*.log')]
     for repair in base.glob('evaluation_repair_*'):
         names+=[p.relative_to(base).as_posix() for p in repair.iterdir() if p.is_file() and p.suffix in ('.json','.py','.log')]
+    # Preserve the controller-only recovery and bootstrap evidence as well.
+    # These directories contain scripts/logs/manifests, never model artifacts.
+    for pattern in ('controller_repair_*','repair_bootstrap_*'):
+        for repair in base.glob(pattern):
+            names += [p.relative_to(base).as_posix() for p in repair.rglob('*')
+                      if p.is_file() and p.suffix in ('.json','.py','.log','.txt')]
     names+=[p.relative_to(base).as_posix() for p in (base/'logs').glob('*.log')]
     names+=[p.relative_to(base).as_posix() for p in (base/'shared_reference').rglob('*.json')]
     artifacts=[]

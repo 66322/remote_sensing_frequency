@@ -1,29 +1,17 @@
-# 共享入口：N2继续原队列，E0/E1/E2后继已登记、已确认正常等待N2
+# 共享入口：N2与E0/E1/E2已完成，先上传原件分析
 
-最后服务器观测（用户终端回传）：2026-10-05T13:20:35.646566+08:00，诊断后继QUEUE=WAITING_N2，PID3591245 LIVE=True；E0=PENDING、MASKS=PENDING、五项E1/E2 worker全部PENDING、PID=-1/LIVE=False，NEW_OPTIMIZER_UPDATES=0。nohup日志持续DIAG_HANDOVER WAITING_N2 RUNNING_N2，确认控制器正常等待原N2，尚无CPU准备或新GPU评价。原N2控制器独立LIVE=True最后来自13:14:31.018288（PID3467202）；13:20后继读取的前队列仍RUNNING_N2，但未提供原队列六组详细进度或完成数。执行提交883fccc0b97714cfe0a87b54bfeb2a2fc09820d7、后继目录records/research_post_n2_diagnostics_20261005T131434_3591073保持。
+最后服务器观测（用户2026-10-06回传）：queue_status观测时间2026-10-05T23:27:15.831648+08:00，诊断后继DIAGNOSTICS_COMPLETE_AWAITING_REVIEW，PID3591245 LIVE=False；E0/MASKS COMPLETE，E1_A0/B1及E2_N1-2/N2-0/N2-3五项全部COMPLETE，worker均LIVE=False，新增optimizer更新0。nohup已记录READY N2_COMPLETE_AWAITING_STAGE_PROTOCOL和完整派发/完成序列，无本次故障回报。POST_N2_DIAGNOSTICS_SCREEN True True对应N5问题触发=True、N3问题触发=True，不是两种训练方法有效。N2原科学gate、诊断数值/原件尚待上传回读；不可称已独立验收或确认贡献。
 
+按[研究决定](current/RESEARCH_DECISION.md)→[HANDOFF](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)→[索引](experiments/rebuild_v1/INDEX.md)读取。权威仍为66322/remote_sensing_frequency的rebuild-v1-protocol-20260915。
 
-按[研究决定](current/RESEARCH_DECISION.md)→[HANDOFF](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)→[索引](experiments/rebuild_v1/INDEX.md)读取。权威为66322/remote_sensing_frequency的rebuild-v1-protocol-20260915。
+E0读取已有预测完成，掩码准备完成；E1两worker分别436.28/441.19秒，E2三worker430.03/431.00/427.27秒，五任务实测均约7.1–7.4分钟。E1/E2三个派发波次从约23:05至23:27完成（起始按progress elapsed推算），新增60次tile推理/0训练。CPU E0最后进度23:05:12.250016，缺少CPU开始记录，不能据此推算E0总时长或原N2完成时间。
 
-最后服务器记录：原Post-D30于2026-10-05T00:26:01.590322+08:00 COMPLETE（18/18主体、F四项实际SKIPPED_GATE）；N1于07:21:14.003184 COMPLETE_AWAITING_STAGE_PROTOCOL（四项8000步、固定门槛False、N6三项实际SKIPPED_GATE）。两阶段轻量原件已上传并回读；C0—C5/N1-0—3十组20份summary的绑定、整数汇总和固定门槛复算通过。没有本次助手实时服务器查询。N2最近简报13:14:31仍运行，作业详细进度最后来自12:15:02（N2-0最终评价、N2-1训练7800步、四组待运行），勿当实时进度；N3/N4/N5仍待各自诊断和协议，不把旧预约状态当可执行。
+当前应上传原N2六组记录及诊断E0/E1/E2记录，再复核原计数/绑定/gate并分析问题。已补齐N2上传器对controller_repair_*/repair_bootstrap_*轻量日志、脚本及manifest的收集，不修改原86b6科学快照、9b196a2修复或883fccc诊断快照。具体终端命令见[下一步](current/NEXT_EXPERIMENT.md)。不上新训练队列、不重启已完成任务。
 
-固定C2剩RGB对C0仅+0.041525pp、对C1−0.004058pp、对C3+0.028336pp；剩DSM对C0−0.041961pp、对C1−0.016106pp、对C3−0.026610pp，双侧门槛False。普通C0已解释DSM锚点改善，完整输入复用固定B0，不承诺蒸馏增量。N1-3对N1-2综合−0.881059pp、clean−0.852801pp、DSM缺失−0.156095pp，最差tile差−2.054791pp；固定gate=False。N2按事前规则使用N1-2作为匹配基座，不叠加失败多深度入口。
+两个问题筛选均触发是值得分析的开发信号；须先看效应大小、两tile一致性、类别/对象分母和混杂。若E1缺口成立优先完整冻结N5四组；若有独立区域问题再考虑N3五组，N4仍等待更新暴露证据。T预留规则不提前评价，13组是条件上限，不自动全跑，不以诊断问题门槛替代N2科学gate。
 
-[结果、配置口径与验收范围](experiments/POST_C_N1_RESULTS_20261005.md)。C原件53c8d3d、N1原件e3d7612；3148项上传载荷清单内无缺失/大小不符，实际独立读取范围是十组20份summary，不冒称全量载荷已重新验收。D30完整逐tile矩阵与部分早期原件仍待补。
+C/N1原件已验收十组20份summary；C2正确掩码KL与N1-3多深度入口固定gate失败，A2/B3固定gate失败，去留不变。[C/N1结果](experiments/POST_C_N1_RESULTS_20261005.md)、[A/B结果](experiments/POST_D30_AB_RESULTS_20261004.md)。D30部分完整矩阵仍待补。
 
-[N2执行协议](protocols/POST_AB_N2_EXECUTION_20261005.md)：六组同N1-2完整state，每组新增8000更新、合计48000；空间控制/两单向关系/固定双向候选/两打乱控制。CPU8项检查PASS，两卡真实训练与首段速度已收到服务器回报，尚无精度结果；异常停止派发、无自动重试。按已有排队授权接续，不重启旧控制器。接管后只读查询见下一步。
+研究阶段仍为可行性探索；主线RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复旁支。Potsdam fit12/Val2=3_11、5_10，native512/stride256、NoBoundary fg5为主、Full为诊断；单seed42开发证据。只用GPU0/1、nohup、全部产物留zzx对应目录；无SSH、无Test6/independent final、无追加种子、无失败配方自动追训，F/N6保持跳过。
 
-主线仍RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复是旁支；仍为可行性探索，无确认性新贡献。不重训A/B/C/N1、不增加seed或扫参、不启动F/N6、不访问Test6/independent final。服务器由用户终端执行，无SSH；只用GPU0/1两张H10080GB，每卡一worker，nohup；全部记录/快照/缓存在zzx对应独立目录，不重复资源审计。
-
-
-本次控制器修复：None超时按原定8小时处理；验证PID/启动tick/任务参数、完成SHA及待派发目录。修复文件另存原N2实验的controller_repair_*，worker仍执行原86b6快照。CPU恢复11项（含实际监控循环）与原N2八项检查通过，七文件语法检查通过；这些不代表真实CUDA任务成功。详见[修复说明](experiments/POST_AB_N2_CONTROLLER_REPAIR_20261005.md)。
-
-
-
-## 2026-10-05最新后继安排：用户已授权实施，后继已登记，正常等待N2
-
-2026-10-05用户在兼容检查后明确“那开始吧”，已落实E0/E1/E2无训练后继执行包；16项CPU契约/实际控制循环集成检查及10个Python文件语法检查通过。**代码已实现、服务器登记已回报；控制器13:20:35已确认WAITING_N2/LIVE=True；真实CUDA评价尚未启动。** 新目录research_post_n2_diagnostics_<timestamp>_<pid>，独立nohup控制器先等待N2六组完成、原controller/worker退出和两锁释放，再复核原N2计数/绑定/gate，执行CPU E0→GPU E1→E2。重复登记只报告已有目录，不重启旧队列。
-
-E1固定A0/B1×两方向×U/H/L×Val2共24新tile推理；E2固定N1-2/N2-0/N2-3，复用clean，新增36次，共60新推理、0新训练。只用GPU0/1一worker/卡；T预留规则不评价，N5/N3/N4仍待问题证据及完整族协议，gate只输出问题提示，不自动训练。科学研究角色和旧失败去留不变。真实CUDA兼容性/耗时仍待首项回报；CPU检查不保证服务器任务成功。
-
-[冻结执行协议](protocols/POST_N2_DIAGNOSTICS_EXECUTION_20261005.md)；[下一步](current/NEXT_EXPERIMENT.md)。
+[诊断冻结执行协议](protocols/POST_N2_DIAGNOSTICS_EXECUTION_20261005.md)；[本次完成观测](../records/research_post_n2_diagnostics_20261005T131434_3591073/completion_observation_20261006.json)。
