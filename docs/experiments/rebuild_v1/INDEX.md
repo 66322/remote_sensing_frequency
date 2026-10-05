@@ -129,3 +129,7 @@ The C0/C1 tile-risk re-audit also passed. See
 最后服务器观测（用户终端回传）：2026-10-05T12:15:02.465274+08:00，QUEUE=RUNNING_N2，修复控制器PID3467202 LIVE=True。GPU0 N2-0原worker PID3457210 LIVE=True，训练已达8000/8000，正在fixed8000评价；progress观测12:14:49.587910，tile=3_11、condition=geom_warp8+rgb_down4、windows529/529，仅当前条件/tile窗口完成，不是作业COMPLETE。GPU1 N2-1 PID3467394 LIVE=True，training7800/8000，progress观测12:14:52.484868，剩200步约4.4分钟（不含之后验证/评价）。N2-2—5仍PENDING，当前完成标记0/6；没有新中断回报或精度结果。两卡当前训练每步约1.309/1.316秒，后续各两项纯训练约5.82/5.85小时；从12:15开始不计评价的训练完成下界约18:10。计入当前及后续checkpoint选模、fixed8000/selected条件评价与汇总，整队暂估2026-10-05北京时间20:00—22:00（规划范围、非已测评价耗时或保证）；首轮COMPLETE与评价耗时回报后再校准。科学86b6、控制器修复9b196a2、N2-0原worker接管保留；继续现有队列，按需只读查询，不重启。
 
 [原始状态转录与估时假设](../../../records/research_post_ab_followup_n2_20261005T085829_3456726/user_reported_running_20261005T121502.json)。估时只覆盖当前N2六组，不包括未激活E0/E1/E2及N3/N4/N5；后续新算子/选模checkpoint复用条件可能改变耗时。
+
+## 2026-10-05：E0/E1/E2后继执行包已就绪
+
+用户“那开始吧”授权实施；[执行协议](../../protocols/POST_N2_DIAGNOSTICS_EXECUTION_20261005.md)和[CPU就绪记录](../../../records/research_post_n2_diagnostics_plan_20261005/validation.json)。代码已实现，16项CPU检查/10文件语法通过；服务器尚无登记回报，不能写为运行成功。原N2最后观测仍12:15:02、0/6 COMPLETE。N2完成并释放后复核原件、E0读已有预测，E1/E2共60次新tile推理/0训练。GPU0/1、nohup、zzx独立目录；不读T预留规则/Test6、不自动训练N5/N3/N4、不重启旧队列。
