@@ -1,11 +1,11 @@
-# 共享入口：N2继续原队列，E0/E1/E2后继执行包已就绪
+# 共享入口：N2继续原队列，E0/E1/E2后继已登记、等待状态待确认
 
-最后服务器观测（用户终端回传）：2026-10-05T12:15:02.465274+08:00，QUEUE=RUNNING_N2，修复控制器PID3467202 LIVE=True。GPU0 N2-0原worker PID3457210 LIVE=True，训练已达8000/8000，正在fixed8000评价；progress观测12:14:49.587910，tile=3_11、condition=geom_warp8+rgb_down4、windows529/529，仅当前条件/tile窗口完成，不是作业COMPLETE。GPU1 N2-1 PID3467394 LIVE=True，training7800/8000，progress观测12:14:52.484868，剩200步约4.4分钟（不含之后验证/评价）。N2-2—5仍PENDING，当前完成标记0/6；没有新中断回报或精度结果。两卡当前训练每步约1.309/1.316秒，后续各两项纯训练约5.82/5.85小时；从12:15开始不计评价的训练完成下界约18:10。计入当前及后续checkpoint选模、fixed8000/selected条件评价与汇总，整队暂估2026-10-05北京时间20:00—22:00（规划范围、非已测评价耗时或保证）；首轮COMPLETE与评价耗时回报后再校准。科学86b6、控制器修复9b196a2、N2-0原worker接管保留；继续现有队列，按需只读查询，不重启。
+最后服务器观测（用户终端回传）：2026-10-05T13:14:31.018288+08:00，原N2 QUEUE=RUNNING_N2，修复控制器PID3467202 LIVE=True。该次登记输出未给六组step/COMPLETE计数，不从旧12:15完整进度推断当前作业状态。随后后继E0/E1/E2成功登记：目录records/research_post_n2_diagnostics_20261005T131434_3591073，返回控制器PID3591245、执行提交883fccc0b97714cfe0a87b54bfeb2a2fc09820d7。已收到登记标识，但尚无该控制器LIVE/WAITING_N2状态回报；待只读查询，不冒称E0或GPU评价已启动。
 
 
 按[研究决定](current/RESEARCH_DECISION.md)→[HANDOFF](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)→[索引](experiments/rebuild_v1/INDEX.md)读取。权威为66322/remote_sensing_frequency的rebuild-v1-protocol-20260915。
 
-最后服务器记录：原Post-D30于2026-10-05T00:26:01.590322+08:00 COMPLETE（18/18主体、F四项实际SKIPPED_GATE）；N1于07:21:14.003184 COMPLETE_AWAITING_STAGE_PROTOCOL（四项8000步、固定门槛False、N6三项实际SKIPPED_GATE）。两阶段轻量原件已上传并回读；C0—C5/N1-0—3十组20份summary的绑定、整数汇总和固定门槛复算通过。没有本次助手实时服务器查询。N2修复控制器12:15:02存活，N2-0最终评价、N2-1训练7800步，后续四组待运行；N3/N4/N5仍待各自诊断和协议，不把旧预约状态当可执行。
+最后服务器记录：原Post-D30于2026-10-05T00:26:01.590322+08:00 COMPLETE（18/18主体、F四项实际SKIPPED_GATE）；N1于07:21:14.003184 COMPLETE_AWAITING_STAGE_PROTOCOL（四项8000步、固定门槛False、N6三项实际SKIPPED_GATE）。两阶段轻量原件已上传并回读；C0—C5/N1-0—3十组20份summary的绑定、整数汇总和固定门槛复算通过。没有本次助手实时服务器查询。N2最近简报13:14:31仍运行，作业详细进度最后来自12:15:02（N2-0最终评价、N2-1训练7800步、四组待运行），勿当实时进度；N3/N4/N5仍待各自诊断和协议，不把旧预约状态当可执行。
 
 固定C2剩RGB对C0仅+0.041525pp、对C1−0.004058pp、对C3+0.028336pp；剩DSM对C0−0.041961pp、对C1−0.016106pp、对C3−0.026610pp，双侧门槛False。普通C0已解释DSM锚点改善，完整输入复用固定B0，不承诺蒸馏增量。N1-3对N1-2综合−0.881059pp、clean−0.852801pp、DSM缺失−0.156095pp，最差tile差−2.054791pp；固定gate=False。N2按事前规则使用N1-2作为匹配基座，不叠加失败多深度入口。
 
@@ -20,9 +20,9 @@
 
 
 
-## 2026-10-05最新后继安排：用户已授权实施，服务器待登记
+## 2026-10-05最新后继安排：用户已授权实施，后继已登记，待状态查询
 
-2026-10-05用户在兼容检查后明确“那开始吧”，已落实E0/E1/E2无训练后继执行包；16项CPU契约/实际控制循环集成检查及10个Python文件语法检查通过。**代码已实现；服务器登记尚待用户终端回报，不称已经排队或CUDA成功。** 新目录research_post_n2_diagnostics_<timestamp>_<pid>，独立nohup控制器先等待N2六组完成、原controller/worker退出和两锁释放，再复核原N2计数/绑定/gate，执行CPU E0→GPU E1→E2。重复登记只报告已有目录，不重启旧队列。
+2026-10-05用户在兼容检查后明确“那开始吧”，已落实E0/E1/E2无训练后继执行包；16项CPU契约/实际控制循环集成检查及10个Python文件语法检查通过。**代码已实现、服务器登记已回报；控制器存活/等待状态待查询，不称CUDA成功。** 新目录research_post_n2_diagnostics_<timestamp>_<pid>，独立nohup控制器先等待N2六组完成、原controller/worker退出和两锁释放，再复核原N2计数/绑定/gate，执行CPU E0→GPU E1→E2。重复登记只报告已有目录，不重启旧队列。
 
 E1固定A0/B1×两方向×U/H/L×Val2共24新tile推理；E2固定N1-2/N2-0/N2-3，复用clean，新增36次，共60新推理、0新训练。只用GPU0/1一worker/卡；T预留规则不评价，N5/N3/N4仍待问题证据及完整族协议，gate只输出问题提示，不自动训练。科学研究角色和旧失败去留不变。真实CUDA兼容性/耗时仍待首项回报；CPU检查不保证服务器任务成功。
 

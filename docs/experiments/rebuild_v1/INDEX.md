@@ -132,4 +132,6 @@ The C0/C1 tile-risk re-audit also passed. See
 
 ## 2026-10-05：E0/E1/E2后继执行包已就绪
 
-用户“那开始吧”授权实施；[执行协议](../../protocols/POST_N2_DIAGNOSTICS_EXECUTION_20261005.md)和[CPU就绪记录](../../../records/research_post_n2_diagnostics_plan_20261005/validation.json)。代码已实现，16项CPU检查/10文件语法通过；服务器尚无登记回报，不能写为运行成功。原N2最后观测仍12:15:02、0/6 COMPLETE。N2完成并释放后复核原件、E0读已有预测，E1/E2共60次新tile推理/0训练。GPU0/1、nohup、zzx独立目录；不读T预留规则/Test6、不自动训练N5/N3/N4、不重启旧队列。
+用户“那开始吧”授权实施；[执行协议](../../protocols/POST_N2_DIAGNOSTICS_EXECUTION_20261005.md)和[CPU就绪记录](../../../records/research_post_n2_diagnostics_plan_20261005/validation.json)。代码已实现，16项CPU检查/10文件语法通过；2026-10-05本次回报已确认诊断目录research_post_n2_diagnostics_20261005T131434_3591073登记、返回PID3591245；控制器LIVE/等待状态未查询，不能写为运行成功。原N2最后简报13:14:31.018288+08:00为RUNNING_N2/PID3467202 LIVE=True，作业完成数未报告。N2完成并释放后复核原件、E0读已有预测，E1/E2共60次新tile推理/0训练。GPU0/1、nohup、zzx独立目录；不读T预留规则/Test6、不自动训练N5/N3/N4、不重启旧队列。
+
+本次[登记观测](../../../records/research_post_n2_diagnostics_20261005T131434_3591073/registration_observation.json)来源为用户粘贴终端输出，不替代原日志/运行原件验收；下一步只读查询，不重复启动。
