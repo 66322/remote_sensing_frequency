@@ -115,3 +115,10 @@ The C0/C1 tile-risk re-audit also passed. See
 最后服务器观测（用户终端回传）：2026-10-05T09:21:05.606873+08:00，QUEUE=RUNNING_N2，修复控制器PID3467202 LIVE=True。GPU0 N2-0原worker PID3457210 LIVE=True，training 940/8000（progress观测09:20:52.566194，1.309439秒/训练步）；GPU1 N2-1新worker PID3467394 LIVE=True，training 60/8000（progress观测09:20:47.378619，1.347363秒/训练步）。N2-2—5 PENDING，两卡各一个worker；两组均已加载12/12训练tile。日志确认ADOPT原N2-0、CONDITIONS_PASS 32、HANDOVER READY COMPLETE和START N2-1，原N2 CPU8项复查PASS。接管后两卡实际训练已确认，未重训N2-0，暂无N2完成或精度结果。科学快照86b6a70e5c3482314986fb1259e2fccbd0a5a38b、修复9b196a204e6a45cb54244b4deb5437ff44bd074e与原plan保留。继续已有队列，只读观察，不重复登记或重启。
 
 [原始回报转录](../../../records/research_post_ab_followup_n2_20261005T085829_3456726/user_reported_running_20261005T092105.json)。首段吞吐只覆盖训练，不包括4000/8000验证和末尾评价；训练启动与工程恢复不等同机制门槛通过。
+
+
+## 2026-10-05后续规划（助手建议，尚未激活）
+
+根据用户本次要求，已核对相关原始论文并形成[条件实验规划](../../protocols/POST_N2_EVIDENCE_LED_PLAN_20261005.md)：N2完成后先E0空间诊断与E1内容相关缺失，建议E1触发N5四组优先；N3五组需区域问题证据，N4四组需实际条件更新暴露证据。新增E2物理缺失×标记可靠性只作无训练诊断。潜在训练仍最多13组，不默认全部运行。当前每批两侧own CE和抽样非零梯度记录不足以证明弱侧更新缺口；不重做D25分头/PCGrad或D8类别采样。
+
+上述是建议优先级与待冻结设计，不是N3/N4/N5已实现/排队，也未修改旧N2协议、旧预约或当前队列。最后服务器观测仍09:21:05，未获得新的精度回报。研究主线、旁支角色与C/N1失败去留不变；无新增训练、seed或Test6访问。
