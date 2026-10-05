@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-10-05",
+  "python": "3.13.3",
+  "torch": "2.7.1+cpu",
+  "CPU_tests_passed": 8,
+  "syntax_compilation_passed": true,
+  "checks": [
+    "matched capacity and finite/nonzero gradients all six arms",
+    "constant relations equal spatial control",
+    "height input acts only on intended direction",
+    "masked donors/empty rows finite and excluded",
+    "all-missing relation propagation exactly zero",
+    "fixed base/mode/seed/job contract rejects changes",
+    "shuffled-reference and missing-state gate failures rejected",
+    "actual N1/N2 forward wiring with synthetic expert interfaces, base-state hash/load and exact missing fallback"
+  ],
+  "server_GPU_executed": false,
+  "server_checkpoint_bytes_read_by_assistant": false,
+  "new_training": false,
+  "new_inference": false,
+  "stage_update_budget": 48000,
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "source_N1_checkpoint_sha256": "28bc6f8ca5e1221392598b0a6f2d160e8c633a6a9cf63827067df3e7b81a144b",
+  "automatic_retries": false,
+  "test6_loaded": false
+}

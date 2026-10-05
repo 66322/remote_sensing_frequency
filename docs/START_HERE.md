@@ -1,27 +1,13 @@
-# 共享入口：N1完成，接收原C/N1结果并接续N2协议
+# 共享入口：C/N1已验收，接续N2双向关系条件聚合
 
-最后服务器观测：2026-10-05T07:21:14.003184+08:00（用户粘贴后继状态）。N1-0—N1-3均COMPLETE、8000/8000；QUEUE=N1_COMPLETE_AWAITING_STAGE_PROTOCOL，PID3029372 LIVE=False。控制器按既有协议在N1阶段汇总后正常退出，19项N2—N5仍RESERVED_PROTOCOL_PENDING；N6三项SKIPPED_GATE。日志N1_SCREEN=False：固定N1-3的S_available对N1-1 +2.789491678491075pp，对N1-2 −0.8810586089503829pp。这是用户回报，尚未接收n1_screen及逐tile/计数/完成绑定原件，不声称独立验收通过。原队列日志READY COMPLETE说明后继通过了原18组完成与释放门禁；具体C指标、方向性gate及F实际跳过原件仍待上传，不能仅由N6跳过断言C两方向各自均失败。
+按[研究决定](current/RESEARCH_DECISION.md)→[HANDOFF](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)→[索引](experiments/rebuild_v1/INDEX.md)读取。权威为66322/remote_sensing_frequency的rebuild-v1-protocol-20260915。
 
-[本轮状态、解释与上传命令](experiments/POST_AB_N1_COMPLETION_OBSERVATION_20261005.md)。N2按原规则使用N1-2匹配基座；先验收原件再落实接续，不重启旧控制器。以下10月4日内容为历史记录，若涉及运行态，以本段为最新观测。
+最后服务器记录：原Post-D30于2026-10-05T00:26:01.590322+08:00 COMPLETE（18/18主体、F四项实际SKIPPED_GATE）；N1于07:21:14.003184 COMPLETE_AWAITING_STAGE_PROTOCOL（四项8000步、固定门槛False、N6三项实际SKIPPED_GATE）。两阶段轻量原件已上传并回读；C0—C5/N1-0—3十组20份summary的绑定、整数汇总和固定门槛复算通过。没有本次助手实时服务器查询。N2六组执行包已实现发布，**服务器登记/训练回报尚未收到**；N3/N4/N5仍待各自诊断和协议，不把旧预约状态当可执行。
 
-## 2026-10-04历史记录与既有科学决定
+固定C2剩RGB对C0仅+0.041525pp、对C1−0.004058pp、对C3+0.028336pp；剩DSM对C0−0.041961pp、对C1−0.016106pp、对C3−0.026610pp，双侧门槛False。普通C0已解释DSM锚点改善，完整输入复用固定B0，不承诺蒸馏增量。N1-3对N1-2综合−0.881059pp、clean−0.852801pp、DSM缺失−0.156095pp，最差tile差−2.054791pp；固定gate=False。N2按事前规则使用N1-2作为匹配基座，不叠加失败多深度入口。
 
-按[研究决定](current/RESEARCH_DECISION.md)→[HANDOFF](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)→[索引](experiments/rebuild_v1/INDEX.md)读取。权威66322/remote_sensing_frequency的rebuild-v1-protocol-20260915。
+[结果、配置口径与验收范围](experiments/POST_C_N1_RESULTS_20261005.md)。C原件53c8d3d、N1原件e3d7612；3148项上传载荷清单内无缺失/大小不符，实际独立读取范围是十组20份summary，不冒称全量载荷已重新验收。D30完整逐tile矩阵与部分早期原件仍待补。
 
-最后服务器观测：2026-10-04T20:30:20.922212+08:00，用户粘贴原Post-D30状态：QUEUE=RUNNING、PID2720259、LIVE=True，主体14/18完成。A0—A5/B1—B6保持COMPLETE，C0/C1分别于19:16:14/19:16:05 COMPLETE；C2 GPU1 training step7300/8000、C3 GPU0 step7360/8000，worker均存活；C4 GPU0/C5 GPU1 PENDING。F0—F3仍PENDING，B3 gate=False但实际跳过标记未见。C0/C1仅收到完成状态回报，指标/原始绑定尚未上传验收，不判C2 gate。原状态脚本粗估剩余3.68小时、结束2026-10-05T00:11:12+08:00，非完成承诺。后继最后单独观测仍为20:27:32，PID3029372存活、WAITING_PREDECESSOR，N1四组均未开始，22项条件预约；没有20:30的后继新观测。
+[N2执行协议](protocols/POST_AB_N2_EXECUTION_20261005.md)：六组同N1-2完整state，每组新增8000更新、合计48000；空间控制/两单向关系/固定双向候选/两打乱控制。CPU8项检查PASS，真实权重CUDA与速度待服务器首个作业记录；异常停止派发、无自动重试。按已有排队授权接续，不重启旧控制器。登记与只读查询见下一步。
 
-固定A2 gate=False：综合对A0+0.101643pp（要求≥+0.2）、对A1−0.044694pp（要求≥+0.2）、对A3−0.023958pp（要求≥+0.1）；其余原生安全/fixed检查通过。固定B3 gate=False：几何对B1+0.021260pp（要求≥+0.5）、对B4−0.012852pp（要求≥+0.2）；DSM锚点正确伤害率较A0增加0.011997pp。F触发条件不成立；不追加A/B种子、追训、扫参或换敏感性最佳组救gate。原C继续。
-
-原件efba23a已接收，关键七组14份summary计数及绑定复核PASS，[结果与范围](experiments/POST_D30_AB_RESULTS_20261004.md)。不再要求重复上传A/B；C完成后上传稳定快照。D30完整逐tile矩阵尚未收到。
-
-主线仍RGB–DSM双向条件互补与退化/缺失分割，恢复是旁支，仍处于可行性探索，无确认性新贡献。用户终端操作无SSH，只用GPU0/1两张H10080GB、nohup、seed42/8000步/batch16无累积，全部记录/缓存/快照在zzx对应目录。不重复资源审计，不加seed，不读取Test6/独立final。
-
-## Post-A/B后继条件队列（2026-10-04用户授权）
-
-用户明确要求“按规划进行队列排队吧”。已实现并发布[后继登记与执行协议](protocols/POST_AB_QUEUE_EXECUTION_20261004.md)：26个训练ID登记，N1四组为可执行首批，其余22组条件预约且执行协议/实现待阶段结果接续。E0只提取已有结果报告，E1待锁定评价条件。登记器先查询原队列，重复登记返回已有目录；nohup等待原18组全部完成、F实际跳过、控制器/worker退出且锁释放，再只用GPU0/1运行N1。首批32000更新，seed42/8000步/batch16，无累积；失败暂停、不自动重试。
-
-N1完成后验整数计数及固定门槛，保存下一匹配基座并停在阶段交接。C2双侧失败会跳过N6。新队列代码/本地CPU8项检查通过，真实权重GPU前向反向尚无服务器执行回报。**已收到服务器登记回报**：执行提交99acf754aaf3f6b1d119f42a5dab7297a263e4b4；目录`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_20261004T185950_3029215`；派生控制器PID3029372；日志`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_20261004T185950_3029215/nohup_20261004T185950714312.log`。登记N1_EXECUTABLE=4、CONDITIONAL_RESERVED=22。20:27用户状态回报确认后继仍存活且WAITING_PREDECESSOR，N1未开始；无需再次登记或恢复。20:30已收到原队列14/18与C2/C3进度，继续正常等待；下一关键动作是原C完成及F跳过后上传稳定快照。原队列结束并释放后自动执行N1四组；N1后其余22项仍待匹配协议/实现，不能声称26项会全部自动运行。
-
-全部代码/日志/缓存在zzx新实验目录；不访问Test6，不重问资源或已给授权。
-
-[记录完整性核对](experiments/GITHUB_RECORD_COMPLETENESS_20261004.md)：已上传清单内未发现漏传，但D30逐tile矩阵与C/F最终原件待接；详见范围和证据边界。本轮用户取消追加N1预检，未发布/安装预检草稿，既有队列不重启。
+主线仍RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复是旁支；仍为可行性探索，无确认性新贡献。不重训A/B/C/N1、不增加seed或扫参、不启动F/N6、不访问Test6/independent final。服务器由用户终端执行，无SSH；只用GPU0/1两张H10080GB，每卡一worker，nohup；全部记录/快照/缓存在zzx对应独立目录，不重复资源审计。

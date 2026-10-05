@@ -1840,15 +1840,15 @@
     },
     {
       "id": "POST_D30_MECHANISMS_20261004",
-      "status": "RUNNING_USER_REPORTED_AB12_C2_COMPLETE_C_RAW_PENDING",
+      "status": "COMPLETE_AB_C_GATES_FALSE_F_SKIPPED",
       "purpose": "全特征/共享特征对齐、打乱与权重对照",
       "result_summary": "固定A2 gate=False：综合对A0+0.101643pp（要求≥+0.2）、对A1−0.044694pp（要求≥+0.2）、对A3−0.023958pp（要求≥+0.1）；其余原生安全/fixed检查通过。固定B3 gate=False：几何对B1+0.021260pp（要求≥+0.5）、对B4−0.012852pp（要求≥+0.2）；DSM锚点正确伤害率较A0增加0.011997pp。F触发条件不成立；不追加A/B种子、追训、扫参或换敏感性最佳组救gate。原C继续。",
-      "completed_at": null,
-      "review": "docs/experiments/POST_D30_AB_RESULTS_20261004.md",
-      "evidence_class": "AB_NATIVE_LIGHT_EVIDENCE_RECEIVED_C_USER_REPORTED_RAW_PENDING",
+      "completed_at": "2026-10-05T00:26:01.590306+08:00",
+      "review": "docs/experiments/POST_C_N1_RESULTS_20261005.md",
+      "evidence_class": "FINAL_LIGHT_EVIDENCE_RECEIVED_C_COUNTS_AUDITED",
       "live_query": false,
-      "last_observed_at": "2026-10-04T20:30:20.922212+08:00",
-      "completed_jobs": 14,
+      "last_observed_at": "2026-10-05T00:26:01.590322+08:00",
+      "completed_jobs": 18,
       "total_main_jobs": 18,
       "conditional_jobs": 4,
       "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364",
@@ -1882,8 +1882,8 @@
         }
       ],
       "controller_pid": 2720259,
-      "last_observation_record": "records/research_post_d30_mechanisms_20261004T000812_2446364/user_reported_progress_20261004T203020.json",
-      "evidence_commit": "efba23a56eb7f508c0485332cc03c6476bfc8d59",
+      "last_observation_record": "records/research_post_d30_mechanisms_20261004T000812_2446364/evidence_20261005T082038486648_3437394/queue_status.json",
+      "evidence_commit": "53c8d3d149767d79dc4cdb9e99f19f8032918cf1",
       "native_AB_results_received": true,
       "repair_manifest_received": true,
       "independent_integer_audit": {
@@ -1939,15 +1939,44 @@
             "3_11": 0.01127162345341548,
             "5_10": 0.027743053969264686
           }
+        },
+        "C2": {
+          "checks": {
+            "rgb_vs_C0": false,
+            "rgb_vs_C1": false,
+            "rgb_vs_C3": false,
+            "rgb_anchor_floor": false,
+            "rgb_worst_tile": true,
+            "rgb_fixed_same_sign": true,
+            "dsm_vs_C0": false,
+            "dsm_vs_C1": false,
+            "dsm_vs_C3": false,
+            "dsm_anchor_floor": true,
+            "dsm_worst_tile": true,
+            "dsm_fixed_same_sign": false
+          },
+          "passed": false,
+          "deltas_pp": {
+            "rgb": {
+              "C0": 0.04152527147506646,
+              "C1": -0.004058304129159751,
+              "C3": 0.028335749550961964
+            },
+            "dsm": {
+              "C0": -0.04196055625874351,
+              "C1": -0.016105631617101324,
+              "C3": -0.02660975938110255
+            }
+          }
         }
       },
       "F_trigger": false,
-      "F_actual_skipped_observed": false,
+      "F_actual_skipped_observed": true,
       "C_complete_reported": [
         "C0",
         "C1"
       ],
-      "C_native_results_received": false,
+      "C_native_results_received": true,
       "latest_successor_admission_report": {
         "source": "records/research_post_ab_followup_20261004T185950_3029215/user_reported_n1_complete_20261005T072114.json",
         "predecessor_status": "COMPLETE",
@@ -1955,6 +1984,35 @@
         "raw_final_evidence_received": false,
         "C2_bilateral_gate_reported": false,
         "directional_metrics_received": false
+      },
+      "final_C_screen": {
+        "checks": {
+          "rgb_vs_C0": false,
+          "rgb_vs_C1": false,
+          "rgb_vs_C3": false,
+          "rgb_anchor_floor": false,
+          "rgb_worst_tile": true,
+          "rgb_fixed_same_sign": true,
+          "dsm_vs_C0": false,
+          "dsm_vs_C1": false,
+          "dsm_vs_C3": false,
+          "dsm_anchor_floor": true,
+          "dsm_worst_tile": true,
+          "dsm_fixed_same_sign": false
+        },
+        "passed": false,
+        "deltas_pp": {
+          "rgb": {
+            "C0": 0.04152527147506646,
+            "C1": -0.004058304129159751,
+            "C3": 0.028335749550961964
+          },
+          "dsm": {
+            "C0": -0.04196055625874351,
+            "C1": -0.016105631617101324,
+            "C3": -0.02660975938110255
+          }
+        }
       }
     },
     {
@@ -1962,9 +2020,9 @@
       "status": "N1_COMPLETE_AWAITING_STAGE_PROTOCOL",
       "completed_jobs": 4,
       "last_observed_at": "2026-10-05T07:21:14.003184+08:00",
-      "last_observation_record": "records/research_post_ab_followup_20261004T185950_3029215/user_reported_n1_complete_20261005T072114.json",
-      "review": "docs/experiments/POST_AB_N1_COMPLETION_OBSERVATION_20261005.md",
-      "evidence_class": "USER_REPORTED_COMPLETE_RAW_RESULTS_PENDING",
+      "last_observation_record": "records/research_post_ab_followup_20261004T185950_3029215/evidence_20261005T082217593799_3437245/queue_status.json",
+      "review": "docs/experiments/POST_C_N1_RESULTS_20261005.md",
+      "evidence_class": "LIGHT_EVIDENCE_RECEIVED_COUNTS_AUDITED",
       "execution_commit": "99acf754aaf3f6b1d119f42a5dab7297a263e4b4",
       "primary_candidate": "N1-3",
       "gate_reported": false,
@@ -1975,27 +2033,82 @@
       "next_matched_base": "N1-2",
       "N6_status": "SKIPPED_GATE",
       "live_query": false,
+      "new_contribution_established": false,
+      "evidence_commit": "e3d76128ece3c0402f330389e94bab487d42e6c4",
+      "raw_results_received": true,
+      "screen": {
+        "primary_candidate": "N1-3",
+        "passed": false,
+        "checks": {
+          "S_vs_N1-1": true,
+          "fixed_sign_vs_N1-1": true,
+          "clean_floor_vs_N1-1": true,
+          "dsm_missing_floor_vs_N1-1": false,
+          "rgb_missing_floor_vs_N1-1": true,
+          "worst_vs_N1-1": true,
+          "both_tiles_positive_vs_N1-1": true,
+          "S_vs_N1-2": false,
+          "fixed_sign_vs_N1-2": false,
+          "clean_floor_vs_N1-2": false,
+          "dsm_missing_floor_vs_N1-2": false,
+          "rgb_missing_floor_vs_N1-2": true,
+          "worst_vs_N1-2": false,
+          "both_tiles_positive_vs_N1-2": false
+        },
+        "deltas_pp": {
+          "N1-1": 2.789491678491075,
+          "N1-2": -0.8810586089503829
+        },
+        "scores_pp": {
+          "N1-0": 85.65966370411158,
+          "N1-1": 82.56914628090948,
+          "N1-2": 86.23969656835094,
+          "N1-3": 85.35863795940055
+        },
+        "frozen_multiscale_pp": -3.090517423202101,
+        "adaptation_late_pp": 0.5800328642393566,
+        "interaction_pp": 2.209458814251718,
+        "baseline_for_reserved_N2": "N1-2",
+        "baseline_rule": "fixed primary if all gates pass, otherwise predefined ordinary adapted late-feature baseline; never post-hoc maximum",
+        "observed_at": "2026-10-05T07:21:13.630844+08:00",
+        "single_seed_development": true,
+        "new_contribution_established": false,
+        "test6_loaded": false
+      }
+    },
+    {
+      "id": "POST_AB_N2_RELATION_20261005",
+      "status": "IMPLEMENTED_SERVER_REGISTRATION_PENDING",
+      "execution_authorized_by_user": true,
+      "protocol": "docs/protocols/POST_AB_N2_EXECUTION_20261005.md",
+      "CPU_tests_passed": 8,
+      "server_GPU_executed": false,
+      "review_source": "docs/experiments/POST_C_N1_RESULTS_20261005.md",
+      "base": "N1-2",
+      "unique_jobs": 6,
+      "total_optimizer_steps": 48000,
       "new_contribution_established": false
     }
   ],
   "next_plan": {
-    "id": "POST_AB_FOLLOWUP_20261004",
-    "status": "N1_COMPLETE_AWAITING_STAGE_PROTOCOL",
-    "last_observed_at": "2026-10-05T07:21:14.003184+08:00",
-    "execution_commit": "99acf754aaf3f6b1d119f42a5dab7297a263e4b4",
-    "executable_jobs": 0,
-    "conditional_reserved_jobs": 19,
-    "started_jobs": 4,
-    "protocol": "docs/protocols/POST_AB_QUEUE_EXECUTION_20261004.md",
-    "last_observation_record": "records/research_post_ab_followup_20261004T185950_3029215/user_reported_n1_complete_20261005T072114.json",
-    "live_query": false,
-    "completed_jobs": 4,
-    "skipped_gate_jobs": 3,
-    "n1_gate_user_reported": false,
-    "n1_raw_results_received": false,
-    "next_matched_base": "N1-2",
-    "next_stage_id": "N2",
-    "next_stage_implementation_status": "PROTOCOL_AND_IMPLEMENTATION_PENDING_AFTER_RESULT_REVIEW"
+    "id": "POST_AB_N2_RELATION_20261005",
+    "status": "IMPLEMENTED_PUBLISHED_SERVER_REGISTRATION_PENDING",
+    "execution_authorized": true,
+    "executable_jobs": 6,
+    "total_optimizer_steps": 48000,
+    "steps_per_job": 8000,
+    "physical_gpus": [
+      0,
+      1
+    ],
+    "seed": 42,
+    "base": "N1-2",
+    "base_checkpoint_sha256": "28bc6f8ca5e1221392598b0a6f2d160e8c633a6a9cf63827067df3e7b81a144b",
+    "protocol": "docs/protocols/POST_AB_N2_EXECUTION_20261005.md",
+    "bootstrap": "scripts/enqueue_post_ab_n2.py",
+    "CPU_tests_passed": 8,
+    "server_GPU_executed": false,
+    "automatic_followup": false
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -3403,5 +3516,33 @@
     "protocol": "docs/protocols/POST_AB_QUEUE_EXECUTION_20261004.md",
     "last_observation_record": "records/research_post_ab_followup_20261004T185950_3029215/user_reported_waiting_20261004T202732.json",
     "live_query": false
+  },
+  "completed_post_ab_n1_plan": {
+    "id": "POST_AB_FOLLOWUP_20261004",
+    "status": "N1_COMPLETE_AWAITING_STAGE_PROTOCOL",
+    "last_observed_at": "2026-10-05T07:21:14.003184+08:00",
+    "execution_commit": "99acf754aaf3f6b1d119f42a5dab7297a263e4b4",
+    "executable_jobs": 0,
+    "conditional_reserved_jobs": 19,
+    "started_jobs": 4,
+    "protocol": "docs/protocols/POST_AB_QUEUE_EXECUTION_20261004.md",
+    "last_observation_record": "records/research_post_ab_followup_20261004T185950_3029215/user_reported_n1_complete_20261005T072114.json",
+    "live_query": false,
+    "completed_jobs": 4,
+    "skipped_gate_jobs": 3,
+    "n1_gate_user_reported": false,
+    "n1_raw_results_received": false,
+    "next_matched_base": "N1-2",
+    "next_stage_id": "N2",
+    "next_stage_implementation_status": "PROTOCOL_AND_IMPLEMENTATION_PENDING_AFTER_RESULT_REVIEW"
+  },
+  "latest_record_review": {
+    "report": "docs/experiments/POST_C_N1_RESULTS_20261005.md",
+    "record": "records/post_c_n1_offline_audit_20261005/audit_result.json",
+    "summaries": 20,
+    "complete_bindings": 10,
+    "cm_pairs": 77760,
+    "joint_pairs": 7560,
+    "all_payloads_reaudited": false
   }
 }

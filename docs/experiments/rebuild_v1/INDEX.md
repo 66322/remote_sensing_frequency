@@ -17,7 +17,7 @@
 | D28 | 7/7模型评价完成；无新训练 | 相同边际损伤下，共同受损与独立受损 | B0独立−共同仅+0.014570pp，未过0.3pp；本轮不支持共同受损主假设，未触发原D29。 | [报告](../D28_FINAL_REVIEW_20261003.md) |
 | D30 | 6/6完成（4训练＋2重放，另复用S0/S1） | 保护/恢复损失拆解、面积/像素归一化、固定checkpoint路由干预 | P对S0综合+0.041182pp；R−2.013409pp；PR_area−0.064718pp；PR_pixel−1.291674pp。四项继续门槛均False；归一化缓解损失但未建立贡献。 | [报告](../D30_COMPLETED_REVIEW_20261004.md) |
 | Post-D30 A | 6/6完成、原件已收 | 对齐范围/错配/权重 | A2对A0仅+0.101643pp、低于A1/A3，gate=False；关键组整数复核PASS | [报告](../POST_D30_AB_RESULTS_20261004.md) |
-| Post-D30 B/C/F | B6/6原件已收；10月5日后继日志READY COMPLETE，原C最终原件待接；F gate=False、实际标记原件待接 | 对应/增强、缺失迁移、条件频率 | B3对B1几何+0.021260pp、对B4−0.012852pp且DSM harm增加，gate=False；F实际跳过标记待确认 | [报告](../POST_D30_AB_RESULTS_20261004.md) |
+| Post-D30 B/C/F | B6/6原件已收；10月5日00:26原18项COMPLETE，C最终原件已收；F四项实际SKIPPED_GATE | 对应/增强、缺失迁移、条件频率 | B3 gate=False；C2双側门槛False，N6实际跳过；[C原件验收](../POST_C_N1_RESULTS_20261005.md) | [报告](../POST_D30_AB_RESULTS_20261004.md) |
 
 ## 历史索引（保留原证据）
 
@@ -77,9 +77,9 @@ The C0/C1 tile-risk re-audit also passed. See
 
 ## 后续规划（不计入已运行实验）
 
-[Post-A/B候选池](../../protocols/POST_AB_FOLLOWUP_PLAN_20261004.md)：用户要求扩展规划，2类评估、6类训练研究、最多26配置；2026-10-04已授权条件排队；最后观测10月5日07:21 N1四组COMPLETE、固定gate=False；N2—N5共19项预约，N6三项SKIPPED_GATE；原件待接，不修改原C/F门槛。
+[Post-A/B候选池](../../protocols/POST_AB_FOLLOWUP_PLAN_20261004.md)：用户要求扩展规划，2类评估、6类训练研究、最多26配置；2026-10-04已授权条件排队；最后观测10月5日07:21 N1四组COMPLETE、固定gate=False、原件已验收；N2六组实现发布待新目录登记，N3—N5共13项仍预约，N6三项SKIPPED_GATE，不修改原C/F门槛。
 
-[Post-A/B队列包](../../protocols/POST_AB_QUEUE_EXECUTION_20261004.md)：CPU8项检查PASS；N1四组已有服务器COMPLETE回报，原始结果待独立验收；设计登记记录records/research_post_ab_queue_design_20261004/queue_template.json。
+[Post-A/B队列包](../../protocols/POST_AB_QUEUE_EXECUTION_20261004.md)：CPU8项检查PASS；N1四组原件已独立验收，固定gate=False；设计登记记录records/research_post_ab_queue_design_20261004/queue_template.json。
 
 ## 记录完整性
 
@@ -88,3 +88,7 @@ The C0/C1 tile-risk re-audit also passed. See
 ## 2026-10-05最新阶段
 
 [N1完成回报与接续](../POST_AB_N1_COMPLETION_OBSERVATION_20261005.md)：四组8000步完成；N1-3对N1-1 +2.789492pp、对N1-2 −0.881059pp，固定门槛False（用户回报，原件待验收）。控制器按设计退出；N2匹配基座为N1-2，19项预约不等于可执行，N6三项跳过。
+
+## C/N1验收与N2接续（2026-10-05）
+
+[C/N1最终报告](../POST_C_N1_RESULTS_20261005.md)：十组20份summary整数与绑定复核PASS，C2双侧门槛及N1-3门槛False；N2固定N1-2基座。[N2可执行协议](../../protocols/POST_AB_N2_EXECUTION_20261005.md)和六组worker/controller已实现、CPU8项PASS，服务器登记待收，不声称正在运行。旧N1预约不改写，新N2目录是实际执行状态来源。

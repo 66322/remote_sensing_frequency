@@ -1,12 +1,14 @@
-# 下一步：上传原C与N1最终记录，再落实N2匹配协议
+# 下一步：按既有授权登记N2六组，原队列不重启
 
-最后服务器观测：2026-10-05T07:21:14.003184+08:00（用户粘贴后继状态）。N1-0—N1-3均COMPLETE、8000/8000；QUEUE=N1_COMPLETE_AWAITING_STAGE_PROTOCOL，PID3029372 LIVE=False。控制器按既有协议在N1阶段汇总后正常退出，19项N2—N5仍RESERVED_PROTOCOL_PENDING；N6三项SKIPPED_GATE。日志N1_SCREEN=False：固定N1-3的S_available对N1-1 +2.789491678491075pp，对N1-2 −0.8810586089503829pp。这是用户回报，尚未接收n1_screen及逐tile/计数/完成绑定原件，不声称独立验收通过。原队列日志READY COMPLETE说明后继通过了原18组完成与释放门禁；具体C指标、方向性gate及F实际跳过原件仍待上传，不能仅由N6跳过断言C两方向各自均失败。
+最后服务器记录：原Post-D30于2026-10-05T00:26:01.590322+08:00 COMPLETE（18/18主体、F四项实际SKIPPED_GATE）；N1于07:21:14.003184 COMPLETE_AWAITING_STAGE_PROTOCOL（四项8000步、固定门槛False、N6三项实际SKIPPED_GATE）。两阶段轻量原件已上传并回读；C0—C5/N1-0—3十组20份summary的绑定、整数汇总和固定门槛复算通过。没有本次助手实时服务器查询。N2六组执行包已实现发布，**服务器登记/训练回报尚未收到**；N3/N4/N5仍待各自诊断和协议，不把旧预约状态当可执行。
 
-来源为用户终端状态及日志；原C与N1的最终轻量原件待上传验收。执行提交99acf754；N1完成后正常阶段停止，N2—N5共19项仍为预约，N6三项跳过。下一基座按原规则为N1-2，先复核原C/N1再落实N2六组协议，不重启旧控制器、不重训已完成组。只用GPU0/1、nohup、zzx对应目录；无SSH、无Test6、不追加seed。
+固定C2剩RGB对C0仅+0.041525pp、对C1−0.004058pp、对C3+0.028336pp；剩DSM对C0−0.041961pp、对C1−0.016106pp、对C3−0.026610pp，双侧门槛False。普通C0已解释DSM锚点改善，完整输入复用固定B0，不承诺蒸馏增量。N1-3对N1-2综合−0.881059pp、clean−0.852801pp、DSM缺失−0.156095pp，最差tile差−2.054791pp；固定gate=False。N2按事前规则使用N1-2作为匹配基座，不叠加失败多深度入口。
 
-[本轮解释与下一步](../experiments/POST_AB_N1_COMPLETION_OBSERVATION_20261005.md)。
+## 已落实的新增实验
 
-## 已完成记录上传
+[N2冻结协议](../protocols/POST_AB_N2_EXECUTION_20261005.md)：同一N1-2初始state、六组同预算/容量，检验双向关系是否超过空间/单向/打乱。CPU8项检查PASS；GPU0/1两卡、每组8000步、batch16无累积、seed42，总48000更新。新结构真实速度待首个实际作业，不作精确完工承诺。技术失败或单作业8小时超时停止新派发，另卡已运行任务收尾；不自动重试。所有记录/代码/缓存只放zzx新独立目录。
+
+## 服务器登记
 
 ```bash
 (
@@ -14,16 +16,19 @@ set -e
 ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
 cd "$ROOT"
 git fetch origin rebuild-v1-protocol-20260915
-UPLOAD_COMMIT=$(git rev-parse FETCH_HEAD)
+COMMIT=本轮回复给出的完整提交号
 EXP_PY=$(python -c 'import json; print(json.load(open("/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/rebuild_v1_d21_queue_20260928/plan.json"))["python"])')
-POST_DIR="$ROOT/records/research_post_d30_mechanisms_20261004T000812_2446364"
-NEXT_DIR="$ROOT/records/research_post_ab_followup_20261004T185950_3029215"
-STAMP=$(date +%Y%m%dT%H%M%S)_$$
-git show "$UPLOAD_COMMIT":scripts/upload_post_d30_records.py > "$POST_DIR/upload_final_records_$STAMP.py"
-"$EXP_PY" -u -B "$POST_DIR/upload_final_records_$STAMP.py" --root "$ROOT" --directory "$POST_DIR"
-git show "$UPLOAD_COMMIT":scripts/upload_post_ab_records.py > "$NEXT_DIR/upload_n1_records_$STAMP.py"
-"$EXP_PY" -u -B "$NEXT_DIR/upload_n1_records_$STAMP.py" --root "$ROOT" --directory "$NEXT_DIR"
+BOOT_DIR="$ROOT/records/post_ab_n2_bootstrap_$(date +%Y%m%dT%H%M%S)_$$"
+mkdir -p "$BOOT_DIR"
+git show "$COMMIT":scripts/enqueue_post_ab_n2.py > "$BOOT_DIR/enqueue_post_ab_n2.py"
+"$EXP_PY" -u -B "$BOOT_DIR/enqueue_post_ab_n2.py" --root "$ROOT" --commit "$COMMIT"
 )
 ```
 
-回传两个提交号后按原完整/缺失、双向退化、逐tile/类及fixed8000复核；不以终端两项差值替代全部门槛。落实N2前冻结六组匹配控制、输入关系和打乱对照；其余预约按各自诊断门槛决定。上传是现有原件归档，不是新训练/推理。
+回传POST_AB_N2_QUEUE_REGISTERED和POST_AB_N2_LOG行。COMMIT使用助手本轮回读核验的提交号。若ALREADY_REGISTERED只看已有目录，不再创建；异常先诊断，不重启旧N1控制器。新阶段控制器nohup运行。
+
+登记后可只读查询：EXP_PY -B 新目录/code/scripts/status_post_ab.py --directory 新目录，并查看显示的nohup日志尾部；不要把旧N1目录的19预约状态当新N2进度。N2完成后新目录/code/scripts/upload_post_ab_n2_records.py --root ROOT --directory 新目录前台上传，再按冻结gate回读。
+
+原C/N1最终原件已验收，无需再次上传本阶段；[完整结果与边界](../experiments/POST_C_N1_RESULTS_20261005.md)。N6实际跳过，N3/N4/N5保持条件研究；不追加C/N1配方救gate。
+
+主线仍RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复是旁支；仍为可行性探索，无确认性新贡献。不重训A/B/C/N1、不增加seed或扫参、不启动F/N6、不访问Test6/independent final。服务器由用户终端执行，无SSH；只用GPU0/1两张H10080GB，每卡一worker，nohup；全部记录/快照/缓存在zzx对应独立目录，不重复资源审计。
