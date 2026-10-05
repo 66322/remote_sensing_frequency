@@ -1,0 +1,30 @@
+{
+  "total_parameters": 128827074,
+  "trainable_parameters": 622150,
+  "trainable_names": [
+    "project_rgb.0.weight",
+    "project_rgb.0.bias",
+    "project_rgb.1.weight",
+    "project_rgb.1.bias",
+    "project_rgb.2.weight",
+    "project_rgb.2.bias",
+    "project_dsm.0.weight",
+    "project_dsm.0.bias",
+    "project_dsm.1.weight",
+    "project_dsm.1.bias",
+    "project_dsm.2.weight",
+    "project_dsm.2.bias",
+    "merge_rgb.weight",
+    "merge_rgb.bias",
+    "merge_dsm.weight",
+    "merge_dsm.bias",
+    "fusion.0.weight",
+    "fusion.0.bias",
+    "fusion.1.weight",
+    "fusion.1.bias",
+    "fusion.3.weight",
+    "fusion.3.bias"
+  ],
+  "arm": "N1-0",
+  "initial_fusion_state_sha256": "3f07ceed0796fcfc47b517b7c28c4b765ce0667006608048ea81c4a6472a51cd"
+}

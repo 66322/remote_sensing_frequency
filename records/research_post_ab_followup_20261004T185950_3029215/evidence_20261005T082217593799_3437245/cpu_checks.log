@@ -1,0 +1,13 @@
+test_capacity_and_gradient_flow (test_post_ab_queue.ModelTests) ... ok
+test_missing_input_is_inaccessible_and_fallback_exact (test_post_ab_queue.ModelTests) ... ok
+test_reserved_models_cannot_run (test_post_ab_queue.ModelTests) ... ok
+test_complete_does_not_mean_released (test_post_ab_queue.QueueTests) ... ok
+test_failure_and_unexpected_frequency_hold (test_post_ab_queue.QueueTests) ... ok
+test_reservations_never_dispatched (test_post_ab_queue.QueueTests) ... ok
+test_count_audit_rejects_pooled_and_float_corruption (test_post_ab_queue.ScreenTests) ... ok
+test_gate_uses_fixed_candidate_and_both_controls (test_post_ab_queue.ScreenTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.481s
+
+OK
