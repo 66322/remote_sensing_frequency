@@ -1,0 +1,231 @@
+{
+  "schema_version": "1.0",
+  "source": "user_pasted_server_status_and_nohup_tail",
+  "queue_last_observed_at": "2026-10-05T07:21:14.003184+08:00",
+  "status": "N1_COMPLETE_AWAITING_STAGE_PROTOCOL",
+  "controller_pid": 3029372,
+  "controller_live_reported": false,
+  "execution_commit": "99acf754aaf3f6b1d119f42a5dab7297a263e4b4",
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_20261004T185950_3029215",
+  "jobs": [
+    {
+      "id": "N1-0",
+      "gpu": 0,
+      "status": "COMPLETE",
+      "phase": "complete",
+      "step": 8000,
+      "target": 8000
+    },
+    {
+      "id": "N1-1",
+      "gpu": 1,
+      "status": "COMPLETE",
+      "phase": "complete",
+      "step": 8000,
+      "target": 8000
+    },
+    {
+      "id": "N1-2",
+      "gpu": 0,
+      "status": "COMPLETE",
+      "phase": "complete",
+      "step": 8000,
+      "target": 8000
+    },
+    {
+      "id": "N1-3",
+      "gpu": 1,
+      "status": "COMPLETE",
+      "phase": "complete",
+      "step": 8000,
+      "target": 8000
+    },
+    {
+      "id": "N2-0",
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N2-1",
+      "gpu": 1,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N2-2",
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N2-3",
+      "gpu": 1,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N2-4",
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N2-5",
+      "gpu": 1,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N3-0",
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N3-1",
+      "gpu": 1,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N3-2",
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N3-3",
+      "gpu": 1,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N3-4",
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N4-0",
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N4-1",
+      "gpu": 1,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N4-2",
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N4-3",
+      "gpu": 1,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N5-0",
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N5-1",
+      "gpu": 1,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N5-2",
+      "gpu": 0,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N5-3",
+      "gpu": 1,
+      "status": "RESERVED_PROTOCOL_PENDING",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N6-0",
+      "gpu": 0,
+      "status": "SKIPPED_GATE",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N6-1",
+      "gpu": 1,
+      "status": "SKIPPED_GATE",
+      "step": 0,
+      "target": 8000
+    },
+    {
+      "id": "N6-2",
+      "gpu": 0,
+      "status": "SKIPPED_GATE",
+      "step": 0,
+      "target": 8000
+    }
+  ],
+  "log_events": [
+    "POST_AB_HANDOVER READY COMPLETE",
+    "POST_AB_START 0 N1-0 3196001",
+    "POST_AB_START 1 N1-1 3196007",
+    "POST_AB_JOB N1-1 COMPLETE",
+    "POST_AB_START 1 N1-3 3273498",
+    "POST_AB_JOB N1-0 COMPLETE",
+    "POST_AB_START 0 N1-2 3276043",
+    "POST_AB_JOB N1-3 COMPLETE",
+    "POST_AB_JOB N1-2 COMPLETE",
+    "POST_AB_N1_SCREEN False {'N1-1': 2.789491678491075, 'N1-2': -0.8810586089503829}",
+    "POST_AB_N1_COMPLETE_UPLOAD_AND_REVIEW remaining reservations are not runnable placeholders"
+  ],
+  "n1_screen_reported": {
+    "passed": false,
+    "primary_candidate": "N1-3",
+    "deltas_pp": {
+      "N1-1": 2.789491678491075,
+      "N1-2": -0.8810586089503829
+    },
+    "semantics_verified_from": "scripts/summarize_post_ab_n1.py",
+    "raw_screen_received": false,
+    "independent_offline_audit_complete": false
+  },
+  "next_base_by_existing_rule": "N1-2",
+  "predecessor_status_from_log": "COMPLETE",
+  "predecessor_complete_bindings": "validated by server controller before READY execution; raw final evidence not yet received on GitHub",
+  "C2_bilateral_gate_from_N6_skip": false,
+  "C2_directional_metrics_received": false,
+  "exact_predecessor_completion_time_received": false,
+  "original_F_skip": "inferred from inspected predecessor admission contract; raw skip record pending",
+  "new_training_started_by_assistant": false,
+  "test6_accessed_by_assistant": false
+}

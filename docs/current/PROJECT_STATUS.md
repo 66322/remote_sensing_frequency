@@ -1,5 +1,11 @@
 # 状态与证据接收
 
+最后服务器观测：2026-10-05T07:21:14.003184+08:00（用户粘贴后继状态）。N1-0—N1-3均COMPLETE、8000/8000；QUEUE=N1_COMPLETE_AWAITING_STAGE_PROTOCOL，PID3029372 LIVE=False。控制器按既有协议在N1阶段汇总后正常退出，19项N2—N5仍RESERVED_PROTOCOL_PENDING；N6三项SKIPPED_GATE。日志N1_SCREEN=False：固定N1-3的S_available对N1-1 +2.789491678491075pp，对N1-2 −0.8810586089503829pp。这是用户回报，尚未接收n1_screen及逐tile/计数/完成绑定原件，不声称独立验收通过。原队列日志READY COMPLETE说明后继通过了原18组完成与释放门禁；具体C指标、方向性gate及F实际跳过原件仍待上传，不能仅由N6跳过断言C两方向各自均失败。
+
+[本轮状态、解释与上传命令](../experiments/POST_AB_N1_COMPLETION_OBSERVATION_20261005.md)。N2按原规则使用N1-2匹配基座；先验收原件再落实接续，不重启旧控制器。以下10月4日内容为历史记录，若涉及运行态，以本段为最新观测。
+
+## 2026-10-04历史记录与既有科学决定
+
 最后服务器观测：2026-10-04T20:30:20.922212+08:00，用户粘贴原Post-D30状态：QUEUE=RUNNING、PID2720259、LIVE=True，主体14/18完成。A0—A5/B1—B6保持COMPLETE，C0/C1分别于19:16:14/19:16:05 COMPLETE；C2 GPU1 training step7300/8000、C3 GPU0 step7360/8000，worker均存活；C4 GPU0/C5 GPU1 PENDING。F0—F3仍PENDING，B3 gate=False但实际跳过标记未见。C0/C1仅收到完成状态回报，指标/原始绑定尚未上传验收，不判C2 gate。原状态脚本粗估剩余3.68小时、结束2026-10-05T00:11:12+08:00，非完成承诺。后继最后单独观测仍为20:27:32，PID3029372存活、WAITING_PREDECESSOR，N1四组均未开始，22项条件预约；没有20:30的后继新观测。
 
 固定A2 gate=False：综合对A0+0.101643pp（要求≥+0.2）、对A1−0.044694pp（要求≥+0.2）、对A3−0.023958pp（要求≥+0.1）；其余原生安全/fixed检查通过。固定B3 gate=False：几何对B1+0.021260pp（要求≥+0.5）、对B4−0.012852pp（要求≥+0.2）；DSM锚点正确伤害率较A0增加0.011997pp。F触发条件不成立；不追加A/B种子、追训、扫参或换敏感性最佳组救gate。原C继续。

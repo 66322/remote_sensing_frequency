@@ -1,4 +1,10 @@
-# 共享入口：原C继续，Post-A/B后继条件队列已授权
+# 共享入口：N1完成，接收原C/N1结果并接续N2协议
+
+最后服务器观测：2026-10-05T07:21:14.003184+08:00（用户粘贴后继状态）。N1-0—N1-3均COMPLETE、8000/8000；QUEUE=N1_COMPLETE_AWAITING_STAGE_PROTOCOL，PID3029372 LIVE=False。控制器按既有协议在N1阶段汇总后正常退出，19项N2—N5仍RESERVED_PROTOCOL_PENDING；N6三项SKIPPED_GATE。日志N1_SCREEN=False：固定N1-3的S_available对N1-1 +2.789491678491075pp，对N1-2 −0.8810586089503829pp。这是用户回报，尚未接收n1_screen及逐tile/计数/完成绑定原件，不声称独立验收通过。原队列日志READY COMPLETE说明后继通过了原18组完成与释放门禁；具体C指标、方向性gate及F实际跳过原件仍待上传，不能仅由N6跳过断言C两方向各自均失败。
+
+[本轮状态、解释与上传命令](experiments/POST_AB_N1_COMPLETION_OBSERVATION_20261005.md)。N2按原规则使用N1-2匹配基座；先验收原件再落实接续，不重启旧控制器。以下10月4日内容为历史记录，若涉及运行态，以本段为最新观测。
+
+## 2026-10-04历史记录与既有科学决定
 
 按[研究决定](current/RESEARCH_DECISION.md)→[HANDOFF](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)→[索引](experiments/rebuild_v1/INDEX.md)读取。权威66322/remote_sensing_frequency的rebuild-v1-protocol-20260915。
 

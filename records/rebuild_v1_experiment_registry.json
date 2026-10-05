@@ -2,7 +2,7 @@
   "schema_version": "1.2",
   "project": "REBUILD_V1",
   "timezone": "UTC+08:00",
-  "last_updated": "2026-10-04",
+  "last_updated": "2026-10-05",
   "status_provenance_policy": "reported_complete and running_as_last_reported are user observations, not live server verification. expected_server_records are absent artifacts to collect, not archived evidence.",
   "timing_policy": {
     "started_at": "Actual launch time when directly evidenced; otherwise date/minute precision is stated explicitly.",
@@ -1947,20 +1947,55 @@
         "C0",
         "C1"
       ],
-      "C_native_results_received": false
+      "C_native_results_received": false,
+      "latest_successor_admission_report": {
+        "source": "records/research_post_ab_followup_20261004T185950_3029215/user_reported_n1_complete_20261005T072114.json",
+        "predecessor_status": "COMPLETE",
+        "final_complete_jobs_inferred_from_inspected_admission_contract": 18,
+        "raw_final_evidence_received": false,
+        "C2_bilateral_gate_reported": false,
+        "directional_metrics_received": false
+      }
+    },
+    {
+      "id": "POST_AB_N1_20261004",
+      "status": "N1_COMPLETE_AWAITING_STAGE_PROTOCOL",
+      "completed_jobs": 4,
+      "last_observed_at": "2026-10-05T07:21:14.003184+08:00",
+      "last_observation_record": "records/research_post_ab_followup_20261004T185950_3029215/user_reported_n1_complete_20261005T072114.json",
+      "review": "docs/experiments/POST_AB_N1_COMPLETION_OBSERVATION_20261005.md",
+      "evidence_class": "USER_REPORTED_COMPLETE_RAW_RESULTS_PENDING",
+      "execution_commit": "99acf754aaf3f6b1d119f42a5dab7297a263e4b4",
+      "primary_candidate": "N1-3",
+      "gate_reported": false,
+      "deltas_pp": {
+        "N1-1": 2.789491678491075,
+        "N1-2": -0.8810586089503829
+      },
+      "next_matched_base": "N1-2",
+      "N6_status": "SKIPPED_GATE",
+      "live_query": false,
+      "new_contribution_established": false
     }
   ],
   "next_plan": {
     "id": "POST_AB_FOLLOWUP_20261004",
-    "status": "WAITING_PREDECESSOR_USER_REPORTED",
-    "last_observed_at": "2026-10-04T20:27:32.472006+08:00",
+    "status": "N1_COMPLETE_AWAITING_STAGE_PROTOCOL",
+    "last_observed_at": "2026-10-05T07:21:14.003184+08:00",
     "execution_commit": "99acf754aaf3f6b1d119f42a5dab7297a263e4b4",
-    "executable_jobs": 4,
-    "conditional_reserved_jobs": 22,
-    "started_jobs": 0,
+    "executable_jobs": 0,
+    "conditional_reserved_jobs": 19,
+    "started_jobs": 4,
     "protocol": "docs/protocols/POST_AB_QUEUE_EXECUTION_20261004.md",
-    "last_observation_record": "records/research_post_ab_followup_20261004T185950_3029215/user_reported_waiting_20261004T202732.json",
-    "live_query": false
+    "last_observation_record": "records/research_post_ab_followup_20261004T185950_3029215/user_reported_n1_complete_20261005T072114.json",
+    "live_query": false,
+    "completed_jobs": 4,
+    "skipped_gate_jobs": 3,
+    "n1_gate_user_reported": false,
+    "n1_raw_results_received": false,
+    "next_matched_base": "N1-2",
+    "next_stage_id": "N2",
+    "next_stage_implementation_status": "PROTOCOL_AND_IMPLEMENTATION_PENDING_AFTER_RESULT_REVIEW"
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -3356,5 +3391,17 @@
     "size_mismatches": 0,
     "all_historical_originals_received": false,
     "all_payloads_independently_reaudited": false
+  },
+  "historical_post_ab_waiting_plan": {
+    "id": "POST_AB_FOLLOWUP_20261004",
+    "status": "WAITING_PREDECESSOR_USER_REPORTED",
+    "last_observed_at": "2026-10-04T20:27:32.472006+08:00",
+    "execution_commit": "99acf754aaf3f6b1d119f42a5dab7297a263e4b4",
+    "executable_jobs": 4,
+    "conditional_reserved_jobs": 22,
+    "started_jobs": 0,
+    "protocol": "docs/protocols/POST_AB_QUEUE_EXECUTION_20261004.md",
+    "last_observation_record": "records/research_post_ab_followup_20261004T185950_3029215/user_reported_waiting_20261004T202732.json",
+    "live_query": false
   }
 }
