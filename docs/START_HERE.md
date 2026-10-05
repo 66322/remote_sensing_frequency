@@ -1,6 +1,6 @@
-# 共享入口：N2继续原队列，E0/E1/E2后继已登记、等待状态待确认
+# 共享入口：N2继续原队列，E0/E1/E2后继已登记、已确认正常等待N2
 
-最后服务器观测（用户终端回传）：2026-10-05T13:14:31.018288+08:00，原N2 QUEUE=RUNNING_N2，修复控制器PID3467202 LIVE=True。该次登记输出未给六组step/COMPLETE计数，不从旧12:15完整进度推断当前作业状态。随后后继E0/E1/E2成功登记：目录records/research_post_n2_diagnostics_20261005T131434_3591073，返回控制器PID3591245、执行提交883fccc0b97714cfe0a87b54bfeb2a2fc09820d7。已收到登记标识，但尚无该控制器LIVE/WAITING_N2状态回报；待只读查询，不冒称E0或GPU评价已启动。
+最后服务器观测（用户终端回传）：2026-10-05T13:20:35.646566+08:00，诊断后继QUEUE=WAITING_N2，PID3591245 LIVE=True；E0=PENDING、MASKS=PENDING、五项E1/E2 worker全部PENDING、PID=-1/LIVE=False，NEW_OPTIMIZER_UPDATES=0。nohup日志持续DIAG_HANDOVER WAITING_N2 RUNNING_N2，确认控制器正常等待原N2，尚无CPU准备或新GPU评价。原N2控制器独立LIVE=True最后来自13:14:31.018288（PID3467202）；13:20后继读取的前队列仍RUNNING_N2，但未提供原队列六组详细进度或完成数。执行提交883fccc0b97714cfe0a87b54bfeb2a2fc09820d7、后继目录records/research_post_n2_diagnostics_20261005T131434_3591073保持。
 
 
 按[研究决定](current/RESEARCH_DECISION.md)→[HANDOFF](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)→[索引](experiments/rebuild_v1/INDEX.md)读取。权威为66322/remote_sensing_frequency的rebuild-v1-protocol-20260915。
@@ -20,9 +20,9 @@
 
 
 
-## 2026-10-05最新后继安排：用户已授权实施，后继已登记，待状态查询
+## 2026-10-05最新后继安排：用户已授权实施，后继已登记，正常等待N2
 
-2026-10-05用户在兼容检查后明确“那开始吧”，已落实E0/E1/E2无训练后继执行包；16项CPU契约/实际控制循环集成检查及10个Python文件语法检查通过。**代码已实现、服务器登记已回报；控制器存活/等待状态待查询，不称CUDA成功。** 新目录research_post_n2_diagnostics_<timestamp>_<pid>，独立nohup控制器先等待N2六组完成、原controller/worker退出和两锁释放，再复核原N2计数/绑定/gate，执行CPU E0→GPU E1→E2。重复登记只报告已有目录，不重启旧队列。
+2026-10-05用户在兼容检查后明确“那开始吧”，已落实E0/E1/E2无训练后继执行包；16项CPU契约/实际控制循环集成检查及10个Python文件语法检查通过。**代码已实现、服务器登记已回报；控制器13:20:35已确认WAITING_N2/LIVE=True；真实CUDA评价尚未启动。** 新目录research_post_n2_diagnostics_<timestamp>_<pid>，独立nohup控制器先等待N2六组完成、原controller/worker退出和两锁释放，再复核原N2计数/绑定/gate，执行CPU E0→GPU E1→E2。重复登记只报告已有目录，不重启旧队列。
 
 E1固定A0/B1×两方向×U/H/L×Val2共24新tile推理；E2固定N1-2/N2-0/N2-3，复用clean，新增36次，共60新推理、0新训练。只用GPU0/1一worker/卡；T预留规则不评价，N5/N3/N4仍待问题证据及完整族协议，gate只输出问题提示，不自动训练。科学研究角色和旧失败去留不变。真实CUDA兼容性/耗时仍待首项回报；CPU检查不保证服务器任务成功。
 

@@ -1,10 +1,10 @@
 # 下一步：查询已登记诊断后继，不再次启动
 
-最后服务器观测（用户终端回传）：2026-10-05T13:14:31.018288+08:00，原N2 QUEUE=RUNNING_N2，修复控制器PID3467202 LIVE=True。该次登记输出未给六组step/COMPLETE计数，不从旧12:15完整进度推断当前作业状态。随后后继E0/E1/E2成功登记：目录records/research_post_n2_diagnostics_20261005T131434_3591073，返回控制器PID3591245、执行提交883fccc0b97714cfe0a87b54bfeb2a2fc09820d7。已收到登记标识，但尚无该控制器LIVE/WAITING_N2状态回报；待只读查询，不冒称E0或GPU评价已启动。
+最后服务器观测（用户终端回传）：2026-10-05T13:20:35.646566+08:00，诊断后继QUEUE=WAITING_N2，PID3591245 LIVE=True；E0=PENDING、MASKS=PENDING、五项E1/E2 worker全部PENDING、PID=-1/LIVE=False，NEW_OPTIMIZER_UPDATES=0。nohup日志持续DIAG_HANDOVER WAITING_N2 RUNNING_N2，确认控制器正常等待原N2，尚无CPU准备或新GPU评价。原N2控制器独立LIVE=True最后来自13:14:31.018288（PID3467202）；13:20后继读取的前队列仍RUNNING_N2，但未提供原队列六组详细进度或完成数。执行提交883fccc0b97714cfe0a87b54bfeb2a2fc09820d7、后继目录records/research_post_n2_diagnostics_20261005T131434_3591073保持。
 
-## 现在只读查询
+## 保持原队列；按需只读查询
 
-登记已成功，前置CPU检查未阻止启动；cpu_checks.log原件尚未上传。原N2未被重启，新诊断新增训练0。控制器应按协议等待N2六组完成/原控制器及worker退出/两锁释放，再验收原件、CPU E0和GPU E1/E2；这描述预定行为，真实等待状态需下面输出确认。
+登记已成功，13:20:35只读回报确认WAITING_N2/LIVE=True，E0/MASKS和五项worker均PENDING；cpu_checks.log原件尚未上传。现在无需任何启动/修复操作。原N2未被重启，新诊断新增训练0。控制器应按协议等待N2六组完成/原控制器及worker退出/两锁释放，再验收原件、CPU E0和GPU E1/E2；等待状态已确认，后续接续仍需完成与原件验收；下面命令仅按需查询，不需要现在重复执行。
 
 ```bash
 (
