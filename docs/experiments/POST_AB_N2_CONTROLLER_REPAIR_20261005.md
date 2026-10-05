@@ -1,6 +1,6 @@
 # N2控制器故障与保留科学快照的接管修复
 
-最后服务器接管回报（用户终端）：2026-10-05，修复目录时间标记09:17:55（不是queue observed_at或精确训练进度时间）。修复控制器PID3467202已登记，目录controller_repair_20261005T091755_3467074；日志出现POST_AB_ADOPT 0 N2-0 3457210，确认接管原GPU0 worker，没有重启N2-0。ACCEPT_COMPLETE=[]，没有新增完成回报。安装器启动前恢复CPU检查已通过（按登记前执行链推断，未收单独测试日志）；本次只收到控制器日志首条ADOPT，尚未收到后续状态、N2-0实际训练步数或N2-1启动记录，不声称两卡训练已确认。原科学快照86b6a70e5c3482314986fb1259e2fccbd0a5a38b与修复9b196a204e6a45cb54244b4deb5437ff44bd074e分开保留。下一步只读查询状态/进度/日志，不重复登记或再次运行修复。
+最后服务器观测（用户终端回传）：2026-10-05T09:21:05.606873+08:00，QUEUE=RUNNING_N2，修复控制器PID3467202 LIVE=True。GPU0 N2-0原worker PID3457210 LIVE=True，training 940/8000（progress观测09:20:52.566194，1.309439秒/训练步）；GPU1 N2-1新worker PID3467394 LIVE=True，training 60/8000（progress观测09:20:47.378619，1.347363秒/训练步）。N2-2—5 PENDING，两卡各一个worker；两组均已加载12/12训练tile。日志确认ADOPT原N2-0、CONDITIONS_PASS 32、HANDOVER READY COMPLETE和START N2-1，原N2 CPU8项复查PASS。接管后两卡实际训练已确认，未重训N2-0，暂无N2完成或精度结果。科学快照86b6a70e5c3482314986fb1259e2fccbd0a5a38b、修复9b196a204e6a45cb54244b4deb5437ff44bd074e与原plan保留。继续已有队列，只读观察，不重复登记或重启。
 
 ## 原始异常与边界
 
@@ -16,4 +16,4 @@ RUNNING有精确脚本/目录/job/gpu参数及kernel starttick才接管；PID复
 
 Python3.13标准库CPU恢复11项PASS，包括None真实监控循环、接管完成不重复派发、另一卡失败阻断派发、死进程无完成HOLD、待运行已有产物HOLD、PID启动tick复用、错误完成绑定、无自动重试。原N2 CPU八项（Torch2.7.1 CPU）PASS；七文件语法解析PASS。服务器安装器再运行恢复11项CPU检查才启动nohup修复控制器；未声称服务器真实CUDA/速度/精度验证通过。旧科学代码8项检查已在原派发前执行，故障不是模型CPU检查失败。
 
-修复已在服务器登记并接管原worker；下一步按[只读命令](../current/NEXT_EXPERIMENT.md)回传状态和日志。若HOLD，先分析N2-0日志和现存产物，再单独制定技术恢复；不会无条件重训。N2去留仍按原冻结六臂协议，不改变主线、seed、预算、门槛或基座。
+修复已接管原worker，09:21:05两卡实际训练已确认；下一步按[只读命令](../current/NEXT_EXPERIMENT.md)回传状态和日志。若HOLD，先分析N2-0日志和现存产物，再单独制定技术恢复；不会无条件重训。N2去留仍按原冻结六臂协议，不改变主线、seed、预算、门槛或基座。
