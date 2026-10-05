@@ -2078,7 +2078,7 @@
     },
     {
       "id": "POST_AB_N2_RELATION_20261005",
-      "status": "IMPLEMENTED_SERVER_REGISTRATION_PENDING",
+      "status": "REGISTERED_USER_REPORTED_START_PENDING",
       "execution_authorized_by_user": true,
       "protocol": "docs/protocols/POST_AB_N2_EXECUTION_20261005.md",
       "CPU_tests_passed": 8,
@@ -2087,12 +2087,22 @@
       "base": "N1-2",
       "unique_jobs": 6,
       "total_optimizer_steps": 48000,
-      "new_contribution_established": false
+      "new_contribution_established": false,
+      "server_registered_user_reported": true,
+      "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_n2_20261005T085829_3456726",
+      "controller_pid": 3456909,
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_n2_20261005T085829_3456726/nohup_20261005T085831972742.log",
+      "execution_commit": "86b6a70e5c3482314986fb1259e2fccbd0a5a38b",
+      "registration_record": "records/research_post_ab_followup_n2_20261005T085829_3456726/user_reported_registration_20261005.json",
+      "registration_directory_timestamp_label": "20261005T085829",
+      "last_observed_at": null,
+      "training_started_verified": false,
+      "live_query": false
     }
   ],
   "next_plan": {
     "id": "POST_AB_N2_RELATION_20261005",
-    "status": "IMPLEMENTED_PUBLISHED_SERVER_REGISTRATION_PENDING",
+    "status": "REGISTERED_USER_REPORTED_START_PENDING",
     "execution_authorized": true,
     "executable_jobs": 6,
     "total_optimizer_steps": 48000,
@@ -2108,7 +2118,17 @@
     "bootstrap": "scripts/enqueue_post_ab_n2.py",
     "CPU_tests_passed": 8,
     "server_GPU_executed": false,
-    "automatic_followup": false
+    "automatic_followup": false,
+    "server_registered_user_reported": true,
+    "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_n2_20261005T085829_3456726",
+    "controller_pid": 3456909,
+    "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_n2_20261005T085829_3456726/nohup_20261005T085831972742.log",
+    "execution_commit": "86b6a70e5c3482314986fb1259e2fccbd0a5a38b",
+    "registration_record": "records/research_post_ab_followup_n2_20261005T085829_3456726/user_reported_registration_20261005.json",
+    "registration_directory_timestamp_label": "20261005T085829",
+    "last_observed_at": null,
+    "training_started_verified": false,
+    "live_query": false
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",

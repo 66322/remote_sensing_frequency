@@ -77,7 +77,7 @@ The C0/C1 tile-risk re-audit also passed. See
 
 ## 后续规划（不计入已运行实验）
 
-[Post-A/B候选池](../../protocols/POST_AB_FOLLOWUP_PLAN_20261004.md)：用户要求扩展规划，2类评估、6类训练研究、最多26配置；2026-10-04已授权条件排队；最后观测10月5日07:21 N1四组COMPLETE、固定gate=False、原件已验收；N2六组实现发布待新目录登记，N3—N5共13项仍预约，N6三项SKIPPED_GATE，不修改原C/F门槛。
+[Post-A/B候选池](../../protocols/POST_AB_FOLLOWUP_PLAN_20261004.md)：用户要求扩展规划，2类评估、6类训练研究、最多26配置；2026-10-04已授权条件排队；最后观测10月5日07:21 N1四组COMPLETE、固定gate=False、原件已验收；N2六组已登记于独立新目录，实际进度待查询，N3—N5共13项仍预约，N6三项SKIPPED_GATE，不修改原C/F门槛。
 
 [Post-A/B队列包](../../protocols/POST_AB_QUEUE_EXECUTION_20261004.md)：CPU8项检查PASS；N1四组原件已独立验收，固定gate=False；设计登记记录records/research_post_ab_queue_design_20261004/queue_template.json。
 
@@ -91,4 +91,6 @@ The C0/C1 tile-risk re-audit also passed. See
 
 ## C/N1验收与N2接续（2026-10-05）
 
-[C/N1最终报告](../POST_C_N1_RESULTS_20261005.md)：十组20份summary整数与绑定复核PASS，C2双侧门槛及N1-3门槛False；N2固定N1-2基座。[N2可执行协议](../../protocols/POST_AB_N2_EXECUTION_20261005.md)和六组worker/controller已实现、CPU8项PASS，服务器登记待收，不声称正在运行。旧N1预约不改写，新N2目录是实际执行状态来源。
+[C/N1最终报告](../POST_C_N1_RESULTS_20261005.md)：十组20份summary整数与绑定复核PASS，C2双侧门槛及N1-3门槛False；N2固定N1-2基座。[N2可执行协议](../../protocols/POST_AB_N2_EXECUTION_20261005.md)和六组worker/controller已实现、CPU8项PASS，服务器登记回报已收，实际训练状态待查询，不声称正在运行。旧N1预约不改写，新N2目录是实际执行状态来源。
+
+2026-10-05 N2[登记回报](../../../records/research_post_ab_followup_n2_20261005T085829_3456726/user_reported_registration_20261005.json)已收：目录时间标记08:58:29，PID3456909，EXECUTABLE=6；无首步/存活查询回报。下一步只读状态与日志，不重复登记。
