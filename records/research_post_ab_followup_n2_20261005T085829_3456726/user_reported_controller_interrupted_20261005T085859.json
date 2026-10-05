@@ -1,0 +1,25 @@
+{
+  "source": "user pasted server terminal",
+  "observed_at": "2026-10-05T08:58:59.848681+08:00",
+  "queue": "CONTROLLER_INTERRUPTED",
+  "controller_pid": 3456909,
+  "controller_live": false,
+  "science_execution_commit": "86b6a70e5c3482314986fb1259e2fccbd0a5a38b",
+  "dispatched_job": "N2-0",
+  "dispatched_gpu": 0,
+  "worker_pid": 3457210,
+  "worker_current_live": null,
+  "worker_current_step": null,
+  "pending": [
+    "N2-1",
+    "N2-2",
+    "N2-3",
+    "N2-4",
+    "N2-5"
+  ],
+  "error": "TypeError: unsupported operand type(s) for *: int and NoneType",
+  "location": "control_post_ab_n2.py:90",
+  "cause": "per_job_timeout_hours=null multiplied by3600",
+  "repair_server_feedback_received": false,
+  "test6_loaded": false
+}

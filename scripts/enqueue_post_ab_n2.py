@@ -2,7 +2,7 @@
 import argparse,datetime,fcntl,json,os,subprocess,sys
 from pathlib import Path
 FILES=['model/post_ab_n2_relation.py','model/rebuild_v1_post_ab_n2.py','scripts/post_ab_n2_common.py',
- 'scripts/run_post_ab_n2.py','scripts/control_post_ab_n2.py','scripts/summarize_post_ab_n2.py',
+ 'scripts/run_post_ab_n2.py','scripts/post_ab_n2_recovery.py','scripts/control_post_ab_n2.py','scripts/summarize_post_ab_n2.py',
  'scripts/enqueue_post_ab_n2.py','scripts/upload_post_ab_n2_records.py','tests/test_post_ab_n2.py','docs/protocols/POST_AB_N2_EXECUTION_20261005.md']
 SOURCE='research_post_ab_followup_20261004T185950_3029215'
 EXPECTED_N1_COMMIT='99acf754aaf3f6b1d119f42a5dab7297a263e4b4'
@@ -66,3 +66,4 @@ def main():
         print('POST_AB_N2_LOG',log,flush=True)
     return 0
 if __name__=='__main__':sys.exit(main())
+

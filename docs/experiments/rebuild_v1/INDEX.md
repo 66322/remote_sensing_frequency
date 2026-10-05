@@ -94,3 +94,10 @@ The C0/C1 tile-risk re-audit also passed. See
 [C/N1最终报告](../POST_C_N1_RESULTS_20261005.md)：十组20份summary整数与绑定复核PASS，C2双侧门槛及N1-3门槛False；N2固定N1-2基座。[N2可执行协议](../../protocols/POST_AB_N2_EXECUTION_20261005.md)和六组worker/controller已实现、CPU8项PASS，服务器登记回报已收，实际训练状态待查询，不声称正在运行。旧N1预约不改写，新N2目录是实际执行状态来源。
 
 2026-10-05 N2[登记回报](../../../records/research_post_ab_followup_n2_20261005T085829_3456726/user_reported_registration_20261005.json)已收：目录时间标记08:58:29，PID3456909，EXECUTABLE=6；无首步/存活查询回报。下一步只读状态与日志，不重复登记。
+
+
+## 2026-10-05 N2控制器技术故障
+
+最后服务器观测（用户回传）：2026-10-05T08:58:59.848681+08:00，N2控制器PID3456909已退出，QUEUE=CONTROLLER_INTERRUPTED。N2-0已派发到GPU0（worker PID3457210），其实际存活/训练步数待核对；不能把旧step=0快照当成当前进度。N2-1—5尚待派发。原科学执行提交86b6a70e5c3482314986fb1259e2fccbd0a5a38b保留。故障为per_job_timeout_hours=null被直接乘3600；这是控制器技术失败，不是N2科学负结果。控制器专用修复和安全接管工具已发布，尚无服务器恢复执行回报。先接管已有worker或验收绑定完成记录；已退出且未有效完成则HOLD、输出日志，不自动重训。不重复登记N2，不重启原C/N1。
+
+[控制器修复说明](../POST_AB_N2_CONTROLLER_REPAIR_20261005.md)：CPU恢复11项及原N2八项通过；修复单独安装、科学快照保留，不把派发或CPU检查记为实验完成。

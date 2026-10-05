@@ -1,16 +1,28 @@
-# 下一步：查询已登记N2状态与日志，不重复登记
+# 下一步：修复并接管原N2队列
 
-最后服务器记录：原Post-D30于2026-10-05T00:26:01.590322+08:00 COMPLETE（18/18主体、F四项实际SKIPPED_GATE）；N1于07:21:14.003184 COMPLETE_AWAITING_STAGE_PROTOCOL（四项8000步、固定门槛False、N6三项实际SKIPPED_GATE）。两阶段轻量原件已上传并回读；C0—C5/N1-0—3十组20份summary的绑定、整数汇总和固定门槛复算通过。没有本次助手实时服务器查询。N2六组已登记，**实际训练状态/首步回报尚未收到**；N3/N4/N5仍待各自诊断和协议，不把旧预约状态当可执行。
+最后服务器观测（用户回传）：2026-10-05T08:58:59.848681+08:00，N2控制器PID3456909已退出，QUEUE=CONTROLLER_INTERRUPTED。N2-0已派发到GPU0（worker PID3457210），其实际存活/训练步数待核对；不能把旧step=0快照当成当前进度。N2-1—5尚待派发。原科学执行提交86b6a70e5c3482314986fb1259e2fccbd0a5a38b保留。故障为per_job_timeout_hours=null被直接乘3600；这是控制器技术失败，不是N2科学负结果。控制器专用修复和安全接管工具已发布，尚无服务器恢复执行回报。先接管已有worker或验收绑定完成记录；已退出且未有效完成则HOLD、输出日志，不自动重训。不重复登记N2，不重启原C/N1。
 
-固定C2剩RGB对C0仅+0.041525pp、对C1−0.004058pp、对C3+0.028336pp；剩DSM对C0−0.041961pp、对C1−0.016106pp、对C3−0.026610pp，双侧门槛False。普通C0已解释DSM锚点改善，完整输入复用固定B0，不承诺蒸馏增量。N1-3对N1-2综合−0.881059pp、clean−0.852801pp、DSM缺失−0.156095pp，最差tile差−2.054791pp；固定gate=False。N2按事前规则使用N1-2作为匹配基座，不叠加失败多深度入口。
+按已授权N2六组执行范围继续，仅GPU0/1、每组8000步、batch16、seed42，不追加实验。先运行以下专用工具；它验证旧控制器已释放锁、原manifest和plan、已派发worker身份与完成绑定。接管仍活着的N2-0或接受已完成结果，继续原待运行N2-1—5。若N2-0已退出且未有效完成，输出N2_RECOVERY_HOLD和worker日志，不自动重启/续训。
 
-## 已落实的新增实验
+```bash
+(
+set -e
+ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+NEXT_DIR="$ROOT/records/research_post_ab_followup_n2_20261005T085829_3456726"
+cd "$ROOT"
+git fetch origin rebuild-v1-protocol-20260915
+FIX_COMMIT=$(git rev-parse FETCH_HEAD)
+EXP_PY=$(python -c 'import json; print(json.load(open("/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/rebuild_v1_d21_queue_20260928/plan.json"))["python"])')
+BOOT_DIR="$NEXT_DIR/repair_bootstrap_$(date +%Y%m%dT%H%M%S)_$$"
+mkdir -p "$BOOT_DIR"
+git show "$FIX_COMMIT":scripts/repair_post_ab_n2_controller.py > "$BOOT_DIR/repair_post_ab_n2_controller.py"
+"$EXP_PY" -u -B "$BOOT_DIR/repair_post_ab_n2_controller.py" --root "$ROOT" --directory "$NEXT_DIR" --commit "$FIX_COMMIT"
+)
+```
 
-[N2冻结协议](../protocols/POST_AB_N2_EXECUTION_20261005.md)：同一N1-2初始state、六组同预算/容量，检验双向关系是否超过空间/单向/打乱。CPU8项检查PASS；GPU0/1两卡、每组8000步、batch16无累积、seed42，总48000更新。新结构真实速度待首个实际作业，不作精确完工承诺。技术失败或单作业8小时超时停止新派发，另卡已运行任务收尾；不自动重试。所有记录/代码/缓存只放zzx新独立目录。
+成功会打印N2_CONTROLLER_REPAIR_REGISTERED和N2_REPAIR_LOG，控制器日志应有POST_AB_ADOPT或POST_AB_ACCEPT_COMPLETE。回传整段输出核对；尚无服务器执行反馈。重复运行时若控制器存活仅报告ALREADY_LIVE。修复保存到原实验controller_repair_*，原plan、execution_commit、code_manifest、code和模型结果保留，worker/summary imports仅来自原科学快照。
 
-## 当前N2只读查询
-
-最后服务器登记回报：2026-10-05，目录时间标记08:58:29、日志名08:58:31（不是queue observed_at或精确训练开始时间）。N2六项登记成功，执行提交86b6a70e5c3482314986fb1259e2fccbd0a5a38b，目录`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_n2_20261005T085829_3456726`，控制器PID3456909，日志`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_n2_20261005T085829_3456726/nohup_20261005T085831972742.log`。本次未收到队列状态/首步训练/真实CUDA梯度回报，控制器存活及训练启动尚未独立确认；无需再次登记，不重启原C/N1。
+随后只读查询：
 
 ```bash
 (
@@ -18,13 +30,10 @@ set -e
 ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
 NEXT_DIR="$ROOT/records/research_post_ab_followup_n2_20261005T085829_3456726"
 EXP_PY=$(python -c 'import json; print(json.load(open("/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/rebuild_v1_d21_queue_20260928/plan.json"))["python"])')
-"$EXP_PY" -B "$NEXT_DIR/code/scripts/status_post_ab.py" --directory "$NEXT_DIR"
-tail -n 60 "$NEXT_DIR/nohup_20261005T085831972742.log"
+REPAIR_DIR=$(python -c 'from pathlib import Path; p=Path("/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_n2_20261005T085829_3456726"); a=sorted(x.parent for x in p.glob("controller_repair_*/repair_manifest.json")); print(a[-1])')
+"$EXP_PY" -B "$REPAIR_DIR/scripts/status_post_ab.py" --directory "$NEXT_DIR"
+tail -n 60 "$REPAIR_DIR/nohup_controller.log"
 )
 ```
 
-回传状态及日志末尾，确认服务器CPU检查、原队列释放及首个N2作业训练进度。查询不启动、恢复或重建任务；出现异常先诊断，不再次登记或重启旧队列。N2完成后使用新目录/code/scripts/upload_post_ab_n2_records.py --root ROOT --directory 新目录前台上传已有轻量结果。
-
-原C/N1最终原件已验收，无需再次上传本阶段；[完整结果与边界](../experiments/POST_C_N1_RESULTS_20261005.md)。N6实际跳过，N3/N4/N5保持条件研究；不追加C/N1配方救gate。
-
-主线仍RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复是旁支；仍为可行性探索，无确认性新贡献。不重训A/B/C/N1、不增加seed或扫参、不启动F/N6、不访问Test6/independent final。服务器由用户终端执行，无SSH；只用GPU0/1两张H10080GB，每卡一worker，nohup；全部记录/快照/缓存在zzx对应独立目录，不重复资源审计。
+8小时包含训练与评价；超时或技术失败停止新派发，另卡已运行任务收尾，无自动重试。N2结束后上传现有轻量记录并复算固定门槛；N3/N4/N5仍待自身诊断/冻结协议；F/N6跳过不改。不访问Test6/independent final，不重训A/B/C/N1、不增加种子或扫参。主线和C/N1科学去留不变，见[研究决定](RESEARCH_DECISION.md)、[C/N1验收](../experiments/POST_C_N1_RESULTS_20261005.md)、[修复说明](../experiments/POST_AB_N2_CONTROLLER_REPAIR_20261005.md)。

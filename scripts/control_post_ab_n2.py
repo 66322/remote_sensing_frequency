@@ -1,9 +1,11 @@
-"""Wait for the original queue; run only four implemented matched N2 cells."""
+"""Run six N2 cells; safely adopt interrupted-controller workers without restart."""
 import argparse,os,subprocess,sys,time
 from datetime import datetime
 from pathlib import Path
 from post_ab_n2_common import read,write,sha,now,validate_plan,directories,predecessor_verdict,next_job,N2
 from d30_common import live_owned,lock_free
+from post_ab_n2_recovery import timeout_hours,reconcile,unknown_workers,verify_complete
+import contextlib
 
 def verified_parent(parent,plan):
     if sha(parent/'plan.json')!=plan['source_post_d30_plan_sha256']:raise RuntimeError('original plan changed')
@@ -22,21 +24,31 @@ def verified_parent(parent,plan):
         completion[j]=sha(folder/'complete.json')
     return dict(directory=str(parent),queue_sha256=sha(parent/'queue_status.json'),plan_sha256=sha(parent/'plan.json'),screen_sha256=sha(parent/'portfolio_screen.json'),completion=completion,observed_at=now()),screen
 
+def close_handle(handle):
+    if hasattr(handle,'close'):handle.close()
+
 def main():
     p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--directory',type=Path,required=True);a=p.parse_args()
     root,base=directories(a.root,a.directory);plan=read(base/'plan.json');validate_plan(plan);code=base/'code';parent=Path(plan['predecessor_directory'])
     import fcntl
     lock=(base/'controller.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     common=(root/'records/post_ab_successor.lock').open('a');fcntl.flock(common,fcntl.LOCK_EX|fcntl.LOCK_NB)
-    state=read(base/'queue_status.json');state.update(controller_pid=os.getpid(),observed_at=now())
+    state=read(base/'queue_status.json');state.update(controller_pid=os.getpid(),observed_at=now(),controller_repair_directory=str(Path(__file__).resolve().parents[1]))
     active={}
+    timeout=timeout_hours(plan['runtime'].get('per_job_timeout_hours'))
     try:
         for name,digest in read(base/'code_manifest.json')['files'].items():
             if sha(code/name)!=digest:raise RuntimeError('execution snapshot changed '+name)
-        for j,row in state['jobs'].items():
-            if live_owned(row.get('pid',-1),base):raise RuntimeError('worker still live '+j)
-            if row['status'] in ('TECHNICAL_FAILURE','TIMEOUT'):raise RuntimeError('worker needs explicit diagnosis '+j)
-            if row['status']=='RUNNING':raise RuntimeError('interrupted worker needs explicit diagnosis '+j)
+        unknown_workers(base,{r.get('pid',-1) for r in state['jobs'].values()})
+        adopted,completed=reconcile(base,plan,state)
+        for j in completed:
+            state['jobs'][j].update(status='COMPLETE',reconciled_at=now())
+            print('POST_AB_ACCEPT_COMPLETE',j,flush=True)
+        for gpu,proc in adopted.items():
+            active[gpu]=(proc.job,proc,contextlib.nullcontext())
+            state['jobs'][proc.job]['adopted_at']=now()
+            print('POST_AB_ADOPT',gpu,proc.job,proc.pid,flush=True)
+        state['effective_per_job_timeout_hours']=timeout
         state.update(status='CPU_VERIFYING');write(base/'queue_status.json',state)
         with (base/'cpu_checks.log').open('a') as log:
             subprocess.run([sys.executable,'-B','-m','unittest','discover','-s',str(code/'tests'),'-p','test_post_ab_n2.py','-v'],cwd=code,stdout=log,stderr=subprocess.STDOUT,check=True,timeout=180)
@@ -68,9 +80,11 @@ def main():
         uuids={int(x.split(',')[0]):x.split(',')[1].strip() for x in subprocess.check_output(['nvidia-smi','--query-gpu=index,uuid','--format=csv,noheader'],text=True).splitlines()}
         if 0 not in uuids or 1 not in uuids:raise RuntimeError('authorized GPU0/1 absent')
         env=dict(os.environ);env.pop('CUDA_VISIBLE_DEVICES',None);state['gpu_uuids']={str(g):uuids[g] for g in (0,1)}
+        # Worker and summarizer imports use only the immutable science snapshot.
+        env['PYTHONPATH']=os.pathsep.join([str(code),str(code/'scripts')])
         state.update(status='RUNNING_N2',phase='N2');write(base/'queue_status.json',state)
         while True:
-            for gpu in (0,1):
+            for gpu in sorted((0,1),key=lambda g:g not in active):
                 failed=any(state['jobs'][j]['status'] in ('TECHNICAL_FAILURE','TIMEOUT') for j in N2)
                 if gpu not in active and not failed:
                     j=next_job(state,gpu)
@@ -87,17 +101,16 @@ def main():
                 if gpu in active:
                     j,proc,handle=active[gpu];progress=base/'jobs'/j/'progress.json'
                     if progress.exists():state['jobs'][j]['progress']=read(progress)
-                    if proc.poll() is None and not state['jobs'][j].get('timed_out',False) and (datetime.now().astimezone()-datetime.fromisoformat(state['jobs'][j]['started_at'])).total_seconds()>3600*plan['runtime']['per_job_timeout_hours']:
+                    if proc.poll() is None and not state['jobs'][j].get('timed_out',False) and (datetime.now().astimezone()-datetime.fromisoformat(state['jobs'][j]['started_at'])).total_seconds()>3600*timeout:
                         proc.terminate();state['jobs'][j]['timed_out']=True
                     rc=proc.poll()
                     if rc is not None:
                         done=base/'jobs'/j/'complete.json'
                         if rc==0 and done.exists():
-                            r=read(done)
-                            if r['global_step']!=8000 or r['signature']['execution_commit']!=plan['execution_commit'] or r['signature']['plan_sha256']!=sha(base/'plan.json'):raise RuntimeError('new completion binding differs')
+                            verify_complete(base,j,plan)
                             status='COMPLETE'
                         else:status='TIMEOUT' if state['jobs'][j].get('timed_out',False) else 'TECHNICAL_FAILURE'
-                        state['jobs'][j].update(status=status,returncode=rc,completed_at=now());handle.close();del active[gpu]
+                        state['jobs'][j].update(status=status,returncode=rc,completed_at=now());close_handle(handle);del active[gpu]
                         print('POST_AB_JOB',j,status,flush=True)
             state['observed_at']=now();write(base/'queue_status.json',state)
             if not active:
@@ -115,5 +128,5 @@ def main():
         state.update(status='CONTROLLER_INTERRUPTED',observed_at=now(),error='diagnose before resume; detached workers may still be alive')
         write(base/'queue_status.json',state);raise
     finally:
-        for _,_,handle in active.values():handle.close()
+        for _,_,handle in active.values():close_handle(handle)
 if __name__=='__main__':sys.exit(main())

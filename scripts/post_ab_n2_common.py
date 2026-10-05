@@ -1,5 +1,6 @@
 """Frozen six-cell N2 stage; old 26 reservations are not mutated or restarted."""
 import copy
+from post_ab_n2_recovery import timeout_hours
 from pathlib import Path
 from post_ab_queue_common import read,write,sha,within,now,predecessor_verdict
 PREFIX='research_post_ab_followup_n2_'
@@ -25,11 +26,13 @@ def runtime_plan(parent,commit,base):
         shuffle='half_grid_roll_affinity_fields',semantic_gradient='detached',both_valid_required=True)
     p['development_gates']={'N2':dict(vs_spatial_pp=.3,directional_and_shuffle_pp=.2,clean_missing_floor_pp=-.1,worst_tile_floor_pp=-.2)}
     p['runtime']['estimated_hours']=None
+    p['runtime']['per_job_timeout_hours']=8
     p['runtime']['queue']='GPU0 N2-0/2/4; GPU1 N2-1/3/5, one worker per card'
     p.setdefault('design',{}).setdefault('followup_reservations',{})['N2']='activated six-cell matched N1-2 stage; see POST_AB_N2_EXECUTION_20261005.md'
     p['new_unimodal_training']=0
     return p
 def validate_plan(p):
+    timeout_hours(p['runtime'].get('per_job_timeout_hours'))
     if [j['id'] for j in p['jobs']]!=N2:raise ValueError('six N2 arms changed')
     t=p['training']
     if t['steps']!=8000 or t['seed']!=42 or t['physical_batch']!=16 or t['gradient_accumulation']:raise ValueError('budget changed')
@@ -48,3 +51,4 @@ def next_job(state,gpu):
     return next((j for j in N2 if state['jobs'][j]['gpu']==gpu and state['jobs'][j]['status']=='PENDING'),None)
 def initial_state(p):
     return dict(status='REGISTERED_N2',observed_at=now(),jobs={j['id']:dict(status='PENDING',gpu=j['gpu'],phase='N2') for j in p['jobs']},evaluations={})
+

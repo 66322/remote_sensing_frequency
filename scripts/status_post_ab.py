@@ -11,5 +11,13 @@ def main():
     for j,row in state['jobs'].items():
         progress=row.get('progress',{})
         print(j,'GPU'+str(row['gpu']),row['status'],progress.get('phase',''),'step='+str(progress.get('step',0))+'/8000')
-    print('Original queue is never restarted here; only N1 four cells are currently executable.')
+    for j,row in state['jobs'].items():
+        worker=row.get('pid',-1)
+        try:worker_live=str(base).encode() in (Path('/proc')/str(worker)/'cmdline').read_bytes()
+        except FileNotFoundError:worker_live=False
+        print('WORKER',j,'PID='+str(worker),'LIVE='+str(worker_live))
+        progress=base/'jobs'/j/'progress.json'
+        if progress.exists():print('WORKER_PROGRESS',j,progress.read_text().strip())
+    print('Read-only status. Pending protocol reservations are never dispatched here.')
 if __name__=='__main__':main()
+
