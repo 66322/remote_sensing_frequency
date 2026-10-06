@@ -1,25 +1,25 @@
-# 当前交接：本轮全部完成，上传N2与诊断原件后分析
+# 当前交接：N2固定配方失败，诊断支持N5优先，原件已验收
 
-最后服务器观测（用户2026-10-06回传）：queue_status观测时间2026-10-05T23:27:15.831648+08:00，诊断后继DIAGNOSTICS_COMPLETE_AWAITING_REVIEW，PID3591245 LIVE=False；E0/MASKS COMPLETE，E1_A0/B1及E2_N1-2/N2-0/N2-3五项全部COMPLETE，worker均LIVE=False，新增optimizer更新0。nohup已记录READY N2_COMPLETE_AWAITING_STAGE_PROTOCOL和完整派发/完成序列，无本次故障回报。POST_N2_DIAGNOSTICS_SCREEN True True对应N5问题触发=True、N3问题触发=True，不是两种训练方法有效。N2原科学gate、诊断数值/原件尚待上传回读；不可称已独立验收或确认贡献。
+最后服务器记录以已上传原件为准：N2 queue观测2026-10-05T22:11:34.641183+08:00，N2_COMPLETE_AWAITING_STAGE_PROTOCOL、六组COMPLETE；诊断queue观测23:27:15.831648，DIAGNOSTICS_COMPLETE_AWAITING_REVIEW、E0/MASKS和五worker COMPLETE、新增训练0。2026-10-06已收到N2 a33872c和诊断7c47c49两次原件上传；本次助手只做GitHub回读/离线复算，没有新的服务器运行查询。
 
-## 本次事实与证据边界
+## 本次工作、证据与决定来源
 
-E0读取已有预测完成，掩码准备完成；E1两worker分别436.28/441.19秒，E2三worker430.03/431.00/427.27秒，五任务实测均约7.1–7.4分钟。E1/E2三个派发波次从约23:05至23:27完成（起始按progress elapsed推算），新增60次tile推理/0训练。CPU E0最后进度23:05:12.250016，缺少CPU开始记录，不能据此推算E0总时长或原N2完成时间。
+独立验收PASS：1199载荷清单路径/大小无缺项，连两manifest共1201文件；298已读载荷上传/适用解码SHA通过，148618条矩阵/原始指标、19008次joint校验及固定gate复算匹配。未重读全部载荷、服务器权重/影像/预测/掩码本体。N2固定双向候选gate=False，S对空间控制−0.007028pp，方向/打乱增量均未过；按原门槛停止该3×3关系配方，不救窗口/预算/seed。
 
-后继登记目录research_post_n2_diagnostics_20261005T131434_3591073，执行883fccc0b97714cfe0a87b54bfeb2a2fc09820d7；原N2目录research_post_ab_followup_n2_20261005T085829_3456726，科学86b6a70e5c3482314986fb1259e2fccbd0a5a38b、控制器单独修复9b196a204e6a45cb54244b4deb5437ff44bd074e。任务已正常结束，不重新登记或重训。本次回报来自用户终端，原GitHub轻量summary/计数尚未收到。
+E1仅RGB缺失/H高DSM变化满足原N5问题门槛（A0/B1比U低0.651883/0.656097pp，两tile同号），L在RGB方向更容易；E0 N1-2 clean Full边界伤害率高于内部14.236/14.703pp，分母支持充足，但不能证明跨区传播是原因。E2 RGB漏报比硬回退约高1pp，误报完整RGB损失约6.4pp，DSM漏报效应小且跨tile异号；exact fallback不等于精度最优。
 
-## 决定、来源与未采纳建议
+[完整结果](../experiments/POST_N2_E0_E1_E2_RESULTS_20261006.md)列原件提交、计数/签名/掩码绑定、N2六臂固定门槛、E0分母、E1四组合和E2所有成本。固定N2失败去留来自事前协议，不是助手另改门槛。N5优先/N3随后来自原证据驱动计划条件顺序；既有按规划条件排队授权保持；本次尚未启动新训练，具体族代码/登记仍待落实。N5若混合增强有效先定位强基线，不自动承诺双向互补贡献。
 
-用户先前“那开始吧”授权落实无训练诊断；本次2026-10-06回报证明实际执行完成。日志True True经冻结汇总代码核对分别为N5_problem_trigger和N3_problem_trigger。它们只是问题存在的筛选，不是对应新训练方法gate通过。先上传N2原科学结果与诊断原计数，回读核验后只落实一个证据充分研究族；优先N5、N3需独立区域问题证据，N4需条件更新暴露证据。未采纳直接全跑13组、换seed/窗口/教师救旧gate、提前读T/Test6。
+## 下一步不确定性及未采纳建议
 
-N2科学gate是否成立、E1哪个规则/方向更难及类别混杂、E0伤害分母与跨tile一致性、E2误报/漏报成本是下一不确定性。Full空间筛选不替换NoBoundary主指标；语义连通块不是实例对象，E2 own适应分支不是原固定锚点。
+优先检验固定N5-3混合暴露能否超过N5-1随机暴露且在预留T和原条件保护通过；每族同N1-2完整state重新开始，不按后验最高N2初始化，不因只RGB/H过问题门槛改成易赢配方。原四组、预算与match条件先完整落实。N3的问题提示很大，但边界本来更难，需局部/网格/单侧/双侧控制证明区域归属增量；N4仍无条件更新暴露证据。E2负的RGB漏报成本否定“硬回退总精度最优”的推断，不自动改模型或训练新置信网络。
 
-## 立即下一步
+未采纳N2扩大窗口/系数/预算/seed救gate、直接全跑13组、提前T/Test6、把多条件/像素当独立重复、纯高度因果/MNAR声明。当前主线不因N5普通增强问题触发而改变，失败是具体实现，不扩大为整个双模态问题失败。
 
-[上传命令](NEXT_EXPERIMENT.md)串行上传原N2和诊断两个目录。N2上传器本次只补齐controller_repair/repair_bootstrap及launch/PID轻量收集，语法检查通过；新上传脚本放实验upload_bootstrap内，原科学code/manifest不覆盖。权重/预测/掩码保留服务器，GitHub只上传原计数/日志、无损编码及SHA索引。上传后回读清单/绑定/矩阵/gate并同步结论与下一协议。需要认证由用户交互输入；不存凭据。
+## 执行、原件与交接
 
-C2/N1-3与A2/B3失败去留仍按[原验收](../experiments/POST_C_N1_RESULTS_20261005.md)/[A/B结果](../experiments/POST_D30_AB_RESULTS_20261004.md)；不从某个正诊断升级主线或方法贡献。
+原N2科学86b6、修复9b196a2、原目录research_post_ab_followup_n2_20261005T085829_3456726；诊断883fccc及research_post_n2_diagnostics_20261005T131434_3591073已完成，不重启。两原件归档a33872c/7c47c49已接收，N2 controller_repair轻量证据已在归档中保留。actual fixed22/selected32已按86b6实际执行链校正说明；不改原plan/manifest。旧C/N1已验收、旧失败去留不变，D30全矩阵未由本轮补齐。
 
-研究阶段仍为可行性探索；主线RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复旁支。Potsdam fit12/Val2=3_11、5_10，native512/stride256、NoBoundary fg5为主、Full为诊断；单seed42开发证据。只用GPU0/1、nohup、全部产物留zzx对应目录；无SSH、无Test6/independent final、无追加种子、无失败配方自动追训，F/N6保持跳过。
+[下一步](NEXT_EXPERIMENT.md)；[独立审计](../../records/post_n2_offline_audit_20261006/README.md)；[上一交接归档](../history/HANDOFF_PRE_N2_RESULT_AUDIT_20261006.md)。
 
-[诊断协议](../protocols/POST_N2_DIAGNOSTICS_EXECUTION_20261005.md)；[本次观测](../../records/research_post_n2_diagnostics_20261005T131434_3591073/completion_observation_20261006.json)；[上一交接归档](../history/HANDOFF_WAITING_N2_BEFORE_COMPLETION_20261006.md)。
+研究阶段可行性探索；主线RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复旁支。Potsdam fit12/Val2=3_11、5_10，native512/stride256、NoBoundary fg5主指标，Full诊断，seed42开发证据。只用GPU0/1，长任务nohup，全部记录/执行快照在zzx对应独立目录；用户执行终端，无SSH、无Test6/T提前评价/independent final、无追加seed或失败配方自动重跑，F/N6保持跳过。

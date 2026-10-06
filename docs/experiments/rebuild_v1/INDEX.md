@@ -145,3 +145,13 @@ The C0/C1 tile-risk re-audit also passed. See
 E0读取已有预测完成，掩码准备完成；E1两worker分别436.28/441.19秒，E2三worker430.03/431.00/427.27秒，五任务实测均约7.1–7.4分钟。E1/E2三个派发波次从约23:05至23:27完成（起始按progress elapsed推算），新增60次tile推理/0训练。CPU E0最后进度23:05:12.250016，缺少CPU开始记录，不能据此推算E0总时长或原N2完成时间。
 
 N2/E0/E1/E2原轻量summary/矩阵仍待[上传](../../current/NEXT_EXPERIMENT.md)，此条只有用户终端完成状态与日志，不是独立原件验收。两个问题门槛不代表方法贡献；保持原N2科学gate，未启新N5/N3/N4训练。N2上传器补收controller-only修复轻量原件，不修改科学快照。
+
+## 2026-10-06：N2与E0/E1/E2原件已接收/独立验收
+
+最后服务器记录以已上传原件为准：N2 queue观测2026-10-05T22:11:34.641183+08:00，N2_COMPLETE_AWAITING_STAGE_PROTOCOL、六组COMPLETE；诊断queue观测23:27:15.831648，DIAGNOSTICS_COMPLETE_AWAITING_REVIEW、E0/MASKS和五worker COMPLETE、新增训练0。2026-10-06已收到N2 a33872c和诊断7c47c49两次原件上传；本次助手只做GitHub回读/离线复算，没有新的服务器运行查询。
+
+独立验收PASS：1199载荷清单路径/大小无缺项，连两manifest共1201文件；298已读载荷上传/适用解码SHA通过，148618条矩阵/原始指标、19008次joint校验及固定gate复算匹配。未重读全部载荷、服务器权重/影像/预测/掩码本体。N2固定双向候选gate=False，S对空间控制−0.007028pp，方向/打乱增量均未过；按原门槛停止该3×3关系配方，不救窗口/预算/seed。
+
+E1仅RGB缺失/H高DSM变化满足原N5问题门槛（A0/B1比U低0.651883/0.656097pp，两tile同号），L在RGB方向更容易；E0 N1-2 clean Full边界伤害率高于内部14.236/14.703pp，分母支持充足，但不能证明跨区传播是原因。E2 RGB漏报比硬回退约高1pp，误报完整RGB损失约6.4pp，DSM漏报效应小且跨tile异号；exact fallback不等于精度最优。
+
+[完整报告](../POST_N2_E0_E1_E2_RESULTS_20261006.md)与[审计](../../../records/post_n2_offline_audit_20261006/README.md)。actual fixed22/selected32，与原代码/原件一致，继承文字已补正。关闭当前N2关系实现的新增贡献承诺，优先N5原四组匹配控制、N3随后；新族代码/训练未派发，N4不触发。研究路线角色、失败不追训、无T/Test6/追加seed保持。此前“待上传/等待/问题门槛”条目是带时间历史，不是当前状态。

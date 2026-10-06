@@ -1,0 +1,7 @@
+# 已接收N2/诊断原件的独立CPU计数验收
+
+基准head 7c47c49c1eafb347749303a763a0a0bba6f2b03e；N2目录records/research_post_ab_followup_n2_20261005T085829_3456726/evidence_20261006T080320959480_4155830，诊断目录records/research_post_n2_diagnostics_20261005T131434_3591073/evidence_20261006T080443116298_4155644。audit_result.json为gzip-base64-exact-v1包络，包含原始120797字节JSON及SHA256。可用仓库scripts/decode_rebuild_light_record.py读取，或按payload_base64→base64→gzip解码后验original_bytes/original_sha256。
+
+独立脚本scripts/audit_post_n2_received_records.py接受--input-directory /path/received --output-directory /path/analysis；只依赖stdlib/NumPy，不导入模型、影像或训练。将原件目录文件分别映射到received/N2、received/DIAG，将本目录git_tree_N2.json/git_tree_DIAG.json分别复制到对应received/<tag>/git_tree.json。脚本read_files在audit_result解码后列出实际读取路径，可仅准备这些输入；目录统计来自保存的未截断Git树。输出audit.json为明文计算结果。
+
+验收范围298载荷、全部N2十二summary及六complete、五诊断summary/complete、60新case和200E0case；1199清单路径/大小，148618矩阵/指标记录、19008joint校验，N2/E0/E1/E2原固定gate复算PASS。SHA/索引核验不等同下载权重/预测/npz本体；未重训/重推理，无Test6。统计解释见[结果报告](../../docs/experiments/POST_N2_E0_E1_E2_RESULTS_20261006.md)。

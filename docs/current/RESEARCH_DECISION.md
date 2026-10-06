@@ -1,16 +1,20 @@
 # 研究阶段与决定
 
-最后服务器观测（用户2026-10-06回传）：queue_status观测时间2026-10-05T23:27:15.831648+08:00，诊断后继DIAGNOSTICS_COMPLETE_AWAITING_REVIEW，PID3591245 LIVE=False；E0/MASKS COMPLETE，E1_A0/B1及E2_N1-2/N2-0/N2-3五项全部COMPLETE，worker均LIVE=False，新增optimizer更新0。nohup已记录READY N2_COMPLETE_AWAITING_STAGE_PROTOCOL和完整派发/完成序列，无本次故障回报。POST_N2_DIAGNOSTICS_SCREEN True True对应N5问题触发=True、N3问题触发=True，不是两种训练方法有效。N2原科学gate、诊断数值/原件尚待上传回读；不可称已独立验收或确认贡献。
+最后服务器记录以已上传原件为准：N2 queue观测2026-10-05T22:11:34.641183+08:00，N2_COMPLETE_AWAITING_STAGE_PROTOCOL、六组COMPLETE；诊断queue观测23:27:15.831648，DIAGNOSTICS_COMPLETE_AWAITING_REVIEW、E0/MASKS和五worker COMPLETE、新增训练0。2026-10-06已收到N2 a33872c和诊断7c47c49两次原件上传；本次助手只做GitHub回读/离线复算，没有新的服务器运行查询。
 
-研究阶段仍为可行性探索；主线RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复旁支。Potsdam fit12/Val2=3_11、5_10，native512/stride256、NoBoundary fg5为主、Full为诊断；单seed42开发证据。只用GPU0/1、nohup、全部产物留zzx对应目录；无SSH、无Test6/independent final、无追加种子、无失败配方自动追训，F/N6保持跳过。
+研究阶段可行性探索；主线RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复旁支。Potsdam fit12/Val2=3_11、5_10，native512/stride256、NoBoundary fg5主指标，Full诊断，seed42开发证据。只用GPU0/1，长任务nohup，全部记录/执行快照在zzx对应独立目录；用户执行终端，无SSH、无Test6/T提前评价/independent final、无追加seed或失败配方自动重跑，F/N6保持跳过。
 
-## 2026-10-06：技术完成后先接收与分析，不直接增加训练
+## 2026-10-06已验收后的去留及来源
 
-本轮N2已被后继读取为完成、诊断全部技术完成。N3/N5问题筛选报告均True；先复核原N2科学gate、E0分母/跨tile效果、E1规则/方向/类别构成和E2成本，再按原[规划](../protocols/POST_N2_EVIDENCE_LED_PLAN_20261005.md)只落实证据充分的一族。该顺序来自此前冻结协议和用户开始授权，不把简报中的True写成方法有效或方向变更。
+独立验收PASS：1199载荷清单路径/大小无缺项，连两manifest共1201文件；298已读载荷上传/适用解码SHA通过，148618条矩阵/原始指标、19008次joint校验及固定gate复算匹配。未重读全部载荷、服务器权重/影像/预测/掩码本体。N2固定双向候选gate=False，S对空间控制−0.007028pp，方向/打乱增量均未过；按原门槛停止该3×3关系配方，不救窗口/预算/seed。
 
-未采纳直接启动全部13组、扩窗口/预算/种子救N2、重训A/B/C/N1、把E2漏报信号自动升级置信网络贡献。T仍预留到N5完整协议冻结后。当前没有新的科学去留结论；N2原件未接收，不能提前称其成功或失败。C正确掩码KL、N1-3多深度入口、A2/B3旧固定gate失败去留保持。
+N2按[原固定协议](../protocols/POST_AB_N2_EXECUTION_20261005.md)停止本次3×3关系配方，跨侧关系问题不整体关闭；N2 ordinary空间控制增加8000训练阶段带来约0.397pp对旧N1-2收益，不能归功条件关系。E0/E1是区域/缺失位置问题证据，不是方法门槛或正式独立泛化证据。E2精确回退工程能力不等于精度最优，暂作解释性结论。
 
-[下一步](NEXT_EXPERIMENT.md)上传原件；[交接](HANDOFF.md)列研究问题、来源、未采纳建议与不确定性。
+沿[原条件规划](../protocols/POST_N2_EVIDENCE_LED_PLAN_20261005.md)优先N5四组；N3在N5验收后按独立区域问题再判断，N4待更新暴露。各族固定N1-2基座和同预算匹配控制，不从后验最佳N2、失败N2模块或新seed起步。T规则在完整N5协议锁定后才执行。具体新训练仍未实现/排队，既有按规划条件排队授权保持；执行前仍需落实完整族协议、代码与检查。N5若只是混合增强有效先作强基线，不替代当前双向互补主线。
+
+未采纳扩大N2窗口/参数/训练救gate、改候选/删不利L方向、自动13组、提前Test6/T、把边界困难直接叫传播因果机制或把合成缺失叫真实MNAR。下一待解问题是N5匹配暴露是否超过随机控制并泛化到预留规则，及区域归属能否超过网格/单侧强控制。
+
+[结果与11项谬误检查](../experiments/POST_N2_E0_E1_E2_RESULTS_20261006.md)；[交接](HANDOFF.md)；[下一步](NEXT_EXPERIMENT.md)。
 
 ## 历史科学决定（运行态以本页最新观测为准）
 
