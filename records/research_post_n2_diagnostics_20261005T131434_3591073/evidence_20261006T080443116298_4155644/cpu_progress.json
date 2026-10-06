@@ -1,0 +1,7 @@
+{
+  "phase": "E0",
+  "model": "N2-5",
+  "tile": "5_10",
+  "condition": "rgb_blur5+aux_shift8",
+  "observed_at": "2026-10-05T23:05:12.250016+08:00"
+}
