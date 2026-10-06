@@ -1,20 +1,21 @@
-# 当前交接：N5已登记，查询既有队列
+# 当前交接：N5已验收失败，补构成与边界诊断后决定N3
 
-## 2026-10-06掩码准备观测
+最后服务器回报：N5 queue观测2026-10-06T21:16:59.632381+08:00，N5_COMPLETE_AWAITING_REVIEW，四组COMPLETE/8000且selected全8000；用户status查询controller/worker LIVE=False（查询时刻未单列）。2026-10-06原件1bd58b6已收到，本次只做GitHub回读/离线复算，未新训练或GPU推理。
 
-用户只读回报（2026-10-06）：queue LAST_OBSERVED=2026-10-06T11:48:28.739479+08:00，PREPARING_MASKS，controller PID72265 LIVE=True；N5四组PENDING、0/8000、worker PID−1。queue时间是进入CPU准备阶段时刻，不代表日志后续进度时刻。preparation.log已有13个唯一tile的N5_MASKS_COMPLETE，fit12全部12个及Val2 3_11已报告，预定5_10尚无完成行；未收到精确日志时间/准备完成标记/worker首步，未见本回报错误。准备结束自动派发GPU0 N5-0、GPU1 N5-1；只读继续观察，不重复启动。
+## 本次工作与证据边界
+科学执行2e565cc、原目录research_post_n5_20261006T114819_71934不改。原件上传1bd58b6已接收。独立审计PASS：871载荷清单路径/大小匹配（连manifest872文件）；50载荷及manifest独立回读，124464次矩阵/原始指标与12304次joint校验，560个嵌入case重建匹配原源SHA，5040个预测索引绑定，固定gate/选模/监督与规则配额复算一致。未读取全部871载荷或服务器权重/影像/预测/mask本体；12项固定发布源码SHA匹配，44 mask元数据绑定匹配。
+[完整结果](../experiments/POST_N5_RESULTS_20261006.md)、[独立审计](../../records/post_n5_offline_audit_20261006/README.md)。
 
+## 研究阶段、决定与来源
+可行性探索；RGB–DSM双向条件互补与退化/缺失分割主线、恢复旁支。固定N5-3 gate=False、bilateral_candidate=False：T对随机N5-1仅+0.041878pp（要求≥0.5），clean/DSM全缺失对N5-0 −0.191071/−0.152271pp（底线−0.1）。RGB T在3_11负、5_10正。沿原冻结门槛关闭本次混合缺失配方的增量承诺，不换N5-2救gate、不扫比例/强度/预算/seed。普通适应仍是强控制，位置问题不整体关闭。
+去留来自冻结协议，不是新阈值；保留增强局部能力/原条件代价，失败不扩大为问题不成立。N5技术完整，不需要修复或重跑。
 
-最后服务器登记回报（用户终端，2026-10-06）：N5_QUEUE_REGISTERED，目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_20261006T114819_71934，controller PID72265，TRAINING_JOBS=4，GPU0/1，NEW_STEPS=32000；nohup_20261006T114827023329.log。目录时间标记11:48:19、日志名11:48:27，不替代queue observed_at。未收到queue状态、controller/worker存活、mask进度或CUDA首步，不能声称正在训练。下一步只读查询这条N5，不重复登记或重启旧队列。
+## 下一步不确定性
+先用现有预测补E3构成和N5-0/N5-3 clean Full边界复查；N3只有两者仍达原≥1pp与支持分母条件才落实五组。这个后继执行包尚未实现/登记。N3重新从N1-2完整state开始，不从N5后验最佳或失败配方续训。E4独立拆解清零/回退；R1仅其门槛成立后考虑；N4无实际更新暴露；R2因N5前提失败不激活。E5只限定形状边界。既有按规划条件执行授权保持，不重复索取批准，但不可宣称未实现条件族已排队。
 
-## 本次接收与立即下一步
-科学执行提交2e565cca04d84d8605a96105d12fb6c0871e464d不变。登记确认服务器入口完成来源检查及CPU检查后发起nohup（按已发布执行链推断，独立cpu_checks.log尚未回读），不等于CUDA训练成功。[登记转录](../../records/research_post_n5_20261006T114819_71934/registration_observation.json)。
+未采纳混合比例/强度/预算/seed扫参、挑N5-2救gate、全跑21组、T调方案、Test6、伪重复显著性。N5/旧N2/诊断均已结束，不重启。两tile/seed42不是论文确认性或独立地理检验。
 
-先运行该目录code/scripts/status_post_n5.py，查看nohup与preparation.log。若PREPARING_MASKS，CPU生成44个整tile掩码阶段可能尚未使用GPU；只有实际状态能确定。出现CONTROLLER_INTERRUPTED/HOLD则先保留日志与worker身份，明确恢复，不自动重训。无需重新git fetch/安装/登记N5。
+## 执行与交接
+N5四组32k新增更新，两波GPU0/1；登记至queue完成实测约9h28m。所有轻量结果已上传，权重/预测/mask本体在zzx原目录并带索引。只GPU0/1、nohup、用户终端无SSH，无重复资源审计/新seed/Test6/independent final/held4读取；技术故障无自动重试。
 
-## 研究与执行边界
-可行性探索，RGB–DSM双向条件互补与退化/缺失分割主线，恢复旁支。N2固定gate失败去留保持；N5沿E1问题证据四组匹配控制，固定N1-2完整state，新8000步/组，seed42/batch16。共同native512新增槽、精确25%缺失，T不训练/选模。四组完成后接收原件、按固定gate分析，再准备N3及其余条件族，不自动全跑21组或未实现占位项。
-
-只GPU0/1、每卡一worker、nohup；全部快照/临时/记录在zzx独立目录；用户执行终端，无SSH/重复资源审计、新seed/Test6/independent final或失败配方重跑。代码CPU15项与语法11文件仅就绪验证。登记没有新的实验结果。
-
-[下一步](NEXT_EXPERIMENT.md)；[协议](../protocols/POST_N5_EXECUTION_20261006.md)；[验收结果](../experiments/POST_N2_E0_E1_E2_RESULTS_20261006.md)；[扩展规划](../protocols/POST_N2_EXPANDED_PORTFOLIO_20261006.md)；[上一交接](../history/HANDOFF_PRE_N5_REGISTRATION_20261006.md)。
+[下一步](NEXT_EXPERIMENT.md)、[研究决定](RESEARCH_DECISION.md)、[状态](PROJECT_STATUS.md)、[扩展规划](../protocols/POST_N2_EXPANDED_PORTFOLIO_20261006.md)、[上一交接](../history/HANDOFF_PRE_N5_RESULTS_20261006.md)。其他历史证据缺口仍按原索引，不因本轮冒称全部历史审计完成。

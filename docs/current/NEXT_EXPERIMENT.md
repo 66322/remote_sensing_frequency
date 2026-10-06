@@ -1,17 +1,16 @@
-# 下一步：只读查询已登记N5，避免重复启动
+# 下一步：复用已有预测诊断构成与边界，再决定N3
 
-## 2026-10-06掩码准备观测
+最后服务器回报：N5 queue观测2026-10-06T21:16:59.632381+08:00，N5_COMPLETE_AWAITING_REVIEW，四组COMPLETE/8000且selected全8000；用户status查询controller/worker LIVE=False（查询时刻未单列）。2026-10-06原件1bd58b6已收到，本次只做GitHub回读/离线复算，未新训练或GPU推理。
 
-用户只读回报（2026-10-06）：queue LAST_OBSERVED=2026-10-06T11:48:28.739479+08:00，PREPARING_MASKS，controller PID72265 LIVE=True；N5四组PENDING、0/8000、worker PID−1。queue时间是进入CPU准备阶段时刻，不代表日志后续进度时刻。preparation.log已有13个唯一tile的N5_MASKS_COMPLETE，fit12全部12个及Val2 3_11已报告，预定5_10尚无完成行；未收到精确日志时间/准备完成标记/worker首步，未见本回报错误。准备结束自动派发GPU0 N5-0、GPU1 N5-1；只读继续观察，不重复启动。
+固定N5-3 gate=False、bilateral_candidate=False：T对随机N5-1仅+0.041878pp（要求≥0.5），clean/DSM全缺失对N5-0 −0.191071/−0.152271pp（底线−0.1）。RGB T在3_11负、5_10正。沿原冻结门槛关闭本次混合缺失配方的增量承诺，不换N5-2救gate、不扫比例/强度/预算/seed。普通适应仍是强控制，位置问题不整体关闭。
 
+N5轻量原件已上传并独立验收，无需再次上传同一批、重训或重新登记。[报告](../experiments/POST_N5_RESULTS_20261006.md)、[原件](../../records/research_post_n5_20261006T114819_71934/evidence_20261006T222506485434_398074)。
 
-最后服务器登记回报（用户终端，2026-10-06）：N5_QUEUE_REGISTERED，目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_20261006T114819_71934，controller PID72265，TRAINING_JOBS=4，GPU0/1，NEW_STEPS=32000；nohup_20261006T114827023329.log。目录时间标记11:48:19、日志名11:48:27，不替代queue observed_at。未收到queue状态、controller/worker存活、mask进度或CUDA首步，不能声称正在训练。下一步只读查询这条N5，不重复登记或重启旧队列。
+1. 落实E3：A0/B1及必要N5扩展的同面积缺失类别×边界构成诊断；标签仅事后评价，不能从全局CM伪造分层。原问题gate保持，不把标准化描述当纯因果。
+2. 用N5-0/N5-3的现有clean预测，按原E0 Full/4px边界、锚点正确并集harm/支持分母条件复查。两模型两个tile仍达门槛才准备N3五组。当前尚无这个后继回报/执行包，不能说N3已启动。
+3. N3匹配局部/网格/RGB区域/DSM区域/双侧区域，从固定N1-2完整state、新8000/batch16/seed42重新开始，不叠失败N5。区域问题证据不等于方法有效。
+4. E4可独立拆分清零与回退；R1只在新门槛通过后。N4等真实参数更新暴露；R2因N5不成立不激活。E5作边界诊断，不挽救原门槛。
 
-服务器目录：/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_20261006T114819_71934
-只读入口：该目录code/scripts/status_post_n5.py --directory <同目录>，使用D21 plan中绑定python。查看nohup_20261006T114827023329.log及存在时preparation.log；需要时cpu_checks.log。不要再次运行enqueue、不要重启N1/N2/诊断。
+既有按[扩展规划](../protocols/POST_N2_EXPANDED_PORTFOLIO_20261006.md)条件执行授权保持。后继须实现完整独立协议/代码、CPU与真实派发路径检查后再给服务器固定提交指令。不要重复运行已完成N5/N2/诊断。
 
-控制器正常应先PREPARING_MASKS再RUNNING_N5。准备在CPU生成fit12 U/H/L及Val2 U/H/L/T，共44个整tile掩码；此时GPU空闲可能正常，但没有日志前不作此断言。真实CUDA首步及controller/worker存活待本次查询确认。
-
-四组结束N5_COMPLETE_AWAITING_REVIEW后上传轻量原件，按冻结gate决定后继；技术故障先查询worker存活/日志并明确接管，不自动重训。全部旧路线去留与N3/R1/N4/R2条件门槛保持。本次登记不是21组已派发。
-
-GPU0/1、nohup、zzx记录、用户终端无SSH；无Test6/independent final/held4、新seed或重复资源审计。[执行协议](../protocols/POST_N5_EXECUTION_20261006.md)、[交接](HANDOFF.md)。
+研究阶段可行性探索，主线双向条件互补与退化/缺失分割，恢复旁支。Potsdam fit12/Val2两tile、native512/stride256、NoBoundary fg5主/Full诊断，仅GPU0/1、nohup、zzx对应目录；用户终端无SSH、无Test6/independent final/held4读取、追加seed/失败重跑/重复资源审计。

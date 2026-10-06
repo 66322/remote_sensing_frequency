@@ -1,0 +1,30 @@
+{
+  "status": "LOCAL_CPU_CHECKED_SERVER_REGISTRATION_PENDING",
+  "basis_commit": "05df66aeca9ba21618cda5de75a60a851317a8ee",
+  "cpu_test_count": 15,
+  "syntax_file_count": 11,
+  "local_environment": "Python3.13 Torch2.7.1+cpu; server registration reruns checks with bound experiment Python",
+  "new_files_sha256": {
+    "scripts/control_post_n5.py": "9fa9beccf2f5863b7a1ca32836db7c190b7d9b27bf4e8ac678ddbd509904d133",
+    "scripts/enqueue_post_n5.py": "87eaabd8542dbe3a95741c2601e7b9f2c5be59bf728555db82705684d0dc98ca",
+    "scripts/post_n5_common.py": "766d79edc6ffe795d4422e6c9ff97d6db65aca57f2d0af156317b20c86b796f9",
+    "scripts/post_n5_data.py": "71cd429c12f14170896f78714f79c0025c9fce6d76c2a0c2405074843d787cfb",
+    "scripts/post_n5_evaluation.py": "65ab6f41e36ae142902a0ad44ca4c956771cd81045f2079a44bf00ea3bb6edaf",
+    "scripts/prepare_post_n5.py": "f81c6b5aac006e867b62554da1d21fa64cdb3831c76fbd8e00896b53c89ec4e6",
+    "scripts/run_post_n5.py": "c1f767ce54e2206c1b1c570bc9d34c6b9920aae4f3af00ac434b0f5a9619e7e5",
+    "scripts/status_post_n5.py": "106c491dd194c831c8143b8e1f1af9d000db3240216fb413b8fada544165dae4",
+    "scripts/summarize_post_n5.py": "96721c3acdfb2c6daf103b31e9c1a1c326a3d795e5fb78d9638f898137a2a180",
+    "scripts/upload_post_n5_records.py": "d99e24b52fa453969fd266b8a2f64f40b04cd91273d82d8f11a717bbc64d683d",
+    "tests/test_post_n5.py": "2c980b1611b49b5be7b187179d9c68857d0f188bab4333d46ba441babce8ad9f",
+    "docs/protocols/POST_N5_EXECUTION_20261006.md": "491d633ed4034ef616da78faff61ba6c511770cece4118e7771d0f1f2e82af6b"
+  },
+  "real_cuda_run": false,
+  "server_directory_created": false,
+  "training_jobs": 4,
+  "total_new_steps": 32000,
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "followup_jobs_automatically_executable": 0
+}

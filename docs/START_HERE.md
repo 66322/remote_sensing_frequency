@@ -1,31 +1,15 @@
-# 共享入口：N5四组已登记，实际进度待只读查询
+# 共享入口：N5已完成验收，固定混合配方失败
 
-## 2026-10-06掩码准备观测
+最后服务器回报：N5 queue观测2026-10-06T21:16:59.632381+08:00，N5_COMPLETE_AWAITING_REVIEW，四组COMPLETE/8000且selected全8000；用户status查询controller/worker LIVE=False（查询时刻未单列）。2026-10-06原件1bd58b6已收到，本次只做GitHub回读/离线复算，未新训练或GPU推理。
 
-用户只读回报（2026-10-06）：queue LAST_OBSERVED=2026-10-06T11:48:28.739479+08:00，PREPARING_MASKS，controller PID72265 LIVE=True；N5四组PENDING、0/8000、worker PID−1。queue时间是进入CPU准备阶段时刻，不代表日志后续进度时刻。preparation.log已有13个唯一tile的N5_MASKS_COMPLETE，fit12全部12个及Val2 3_11已报告，预定5_10尚无完成行；未收到精确日志时间/准备完成标记/worker首步，未见本回报错误。准备结束自动派发GPU0 N5-0、GPU1 N5-1；只读继续观察，不重复启动。
+按[研究决定](current/RESEARCH_DECISION.md)→[HANDOFF](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)→[索引](experiments/rebuild_v1/INDEX.md)读取；GitHub 66322/remote_sensing_frequency、rebuild-v1-protocol-20260915为共享权威。
 
+固定N5-3 gate=False、bilateral_candidate=False：T对随机N5-1仅+0.041878pp（要求≥0.5），clean/DSM全缺失对N5-0 −0.191071/−0.152271pp（底线−0.1）。RGB T在3_11负、5_10正。沿原冻结门槛关闭本次混合缺失配方的增量承诺，不换N5-2救gate、不扫比例/强度/预算/seed。普通适应仍是强控制，位置问题不整体关闭。
 
-最后服务器登记回报（用户终端，2026-10-06）：N5_QUEUE_REGISTERED，目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_20261006T114819_71934，controller PID72265，TRAINING_JOBS=4，GPU0/1，NEW_STEPS=32000；nohup_20261006T114827023329.log。目录时间标记11:48:19、日志名11:48:27，不替代queue observed_at。未收到queue状态、controller/worker存活、mask进度或CUDA首步，不能声称正在训练。下一步只读查询这条N5，不重复登记或重启旧队列。
+独立审计PASS：871载荷清单路径/大小匹配（连manifest872文件）；50载荷及manifest独立回读，124464次矩阵/原始指标与12304次joint校验，560个嵌入case重建匹配原源SHA，5040个预测索引绑定，固定gate/选模/监督与规则配额复算一致。未读取全部871载荷或服务器权重/影像/预测/mask本体；12项固定发布源码SHA匹配，44 mask元数据绑定匹配。
 
+[完整N5报告](experiments/POST_N5_RESULTS_20261006.md)、[审计原件与复算](../records/post_n5_offline_audit_20261006/README.md)。普通N5-0 S=86.687264，随机/内容/混合86.365394/86.484846/86.392995；对旧模型不同年龄/共同裁剪的提升不能归给新内容机制。
 
-最后服务器记录以已上传原件为准：N2 queue观测2026-10-05T22:11:34.641183+08:00，N2_COMPLETE_AWAITING_STAGE_PROTOCOL、六组COMPLETE；诊断queue观测23:27:15.831648，DIAGNOSTICS_COMPLETE_AWAITING_REVIEW、E0/MASKS和五worker COMPLETE、新增训练0。2026-10-06已收到N2 a33872c和诊断7c47c49两次原件上传；本次助手只做GitHub回读/离线复算，没有新的服务器运行查询。
+下一步按[扩展规划](protocols/POST_N2_EXPANDED_PORTFOLIO_20261006.md)用已有预测补E3构成和N5-0/N5-3 clean Full边界复查；N3须两者仍过原边界问题门槛后准备五组。E4独立拆解回退，R1仅新门槛通过触发；N4无实际更新暴露，R2因N5不成立不激活。尚未登记新后继。原N5、N2、诊断均不重启。
 
-按[研究决定](current/RESEARCH_DECISION.md)→[HANDOFF](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)→[索引](experiments/rebuild_v1/INDEX.md)读取。权威为66322/remote_sensing_frequency的rebuild-v1-protocol-20260915。
-
-独立验收PASS：1199载荷清单路径/大小无缺项，连两manifest共1201文件；298已读载荷上传/适用解码SHA通过，148618条矩阵/原始指标、19008次joint校验及固定gate复算匹配。未重读全部载荷、服务器权重/影像/预测/掩码本体。N2固定双向候选gate=False，S对空间控制−0.007028pp，方向/打乱增量均未过；按原门槛停止该3×3关系配方，不救窗口/预算/seed。
-
-E1仅RGB缺失/H高DSM变化满足原N5问题门槛（A0/B1比U低0.651883/0.656097pp，两tile同号），L在RGB方向更容易；E0 N1-2 clean Full边界伤害率高于内部14.236/14.703pp，分母支持充足，但不能证明跨区传播是原因。E2 RGB漏报比硬回退约高1pp，误报完整RGB损失约6.4pp，DSM漏报效应小且跨tile异号；exact fallback不等于精度最优。
-
-完整指标、分母、混杂和11/11统计/因果谬误检查见[已验收结果](experiments/POST_N2_E0_E1_E2_RESULTS_20261006.md)。原N2继承文字“fixed10/selected22”与实际86b6 worker不一致；实际fixed22/selected32，执行/原件覆盖匹配，gate口径不改，原plan/code不覆盖。
-
-下一阶段沿既有条件顺序优先落实N5四组，再依据N5验收与独立区域问题判断N3五组；N4仍等条件更新暴露证据。每族固定N1-2基座、不叠失败N2、不选后验最高组；T只在完整N5协议冻结后执行。具体新训练代码/排队尚未实施，两个问题门槛不是方法有效证明，13组不是自动全跑。
-
-研究阶段可行性探索；主线RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复旁支。Potsdam fit12/Val2=3_11、5_10，native512/stride256、NoBoundary fg5主指标，Full诊断，seed42开发证据。只用GPU0/1，长任务nohup，全部记录/执行快照在zzx对应独立目录；用户执行终端，无SSH、无Test6/T提前评价/independent final、无追加seed或失败配方自动重跑，F/N6保持跳过。
-
-C2/N1-3与A2/B3旧失败去留保持；[C/N1报告](experiments/POST_C_N1_RESULTS_20261005.md)、[A/B报告](experiments/POST_D30_AB_RESULTS_20261004.md)。本次接收不补齐D30全部历史矩阵。
-
-
-2026-10-06用户要求扩展后续实验，见[扩展规划](protocols/POST_N2_EXPANDED_PORTFOLIO_20261006.md)：原N5/N3/N4共13组，加R1/R2各4组条件储备，理论上限21组；另列四项无训练诊断。第一批仍N5四组，尚未实现/登记新队列。新增储备不自动执行；本页前述13组是原规划范围。
-
-
-2026-10-06用户已授权按规划实验：第一批N5四组[执行包与协议](protocols/POST_N5_EXECUTION_20261006.md)现已实现，15项CPU/11文件语法通过；服务器登记/真实CUDA尚无回报。此项更新替代上文N5“尚未实施”的准备态，旧结果/最后观测保持。请按[下一步](current/NEXT_EXPERIMENT.md)在用户终端登记，入口自查原队列与既有N5防重复；其余条件族未自动派发。
+研究阶段可行性探索；主线RGB–DSM双向条件互补与退化/缺失分割，恢复旁支。Potsdam fit12/Val2=3_11、5_10、native512/stride256、NoBoundary fg5主、Full诊断、seed42开发证据。仅GPU0/1、nohup、zzx对应目录；用户终端无SSH，无重复资源审计/Test6/independent final/held4读取、追加seed或失败配方重跑。N5失败不否定整个问题；N2/C/N1/A/B旧失败去留保持。
