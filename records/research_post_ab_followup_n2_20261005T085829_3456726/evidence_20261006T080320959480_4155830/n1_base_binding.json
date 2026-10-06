@@ -1,0 +1,12 @@
+{
+  "source_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_20261004T185950_3029215",
+  "source_plan_sha256": "be8a81b8b1c24833d5221b23dce30c949061a05923725c4126342f956c43359f",
+  "source_screen_sha256": "f290b14d6f04876b3482029566d4bd6d9a3eeba10196a55bdbdfafd88bb448a7",
+  "selected_checkpoint_sha256": "28bc6f8ca5e1221392598b0a6f2d160e8c633a6a9cf63827067df3e7b81a144b",
+  "completion_sha256": {
+    "N1-0": "ae09ec81ae3ac87e2ead60e2ea92fb7fb9a54aed452edebc5115442e55eaa6d2",
+    "N1-1": "21d53e3c0e8d6af00abe465d4ddeac5b8c5ed6a9051ce9dc9425b6ff36f4eda9",
+    "N1-2": "7bde58f2beff0e10036f6e07d896ee62ac7057c54a572cbcd0bceaa26ed01749",
+    "N1-3": "a015af923d33bdf13c6587d85ffe9c52aed8062c55995cfefe35fb1578f1b5d4"
+  }
+}
