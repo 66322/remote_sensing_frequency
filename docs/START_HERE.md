@@ -15,3 +15,6 @@ E1仅RGB缺失/H高DSM变化满足原N5问题门槛（A0/B1比U低0.651883/0.656
 研究阶段可行性探索；主线RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复旁支。Potsdam fit12/Val2=3_11、5_10，native512/stride256、NoBoundary fg5主指标，Full诊断，seed42开发证据。只用GPU0/1，长任务nohup，全部记录/执行快照在zzx对应独立目录；用户执行终端，无SSH、无Test6/T提前评价/independent final、无追加seed或失败配方自动重跑，F/N6保持跳过。
 
 C2/N1-3与A2/B3旧失败去留保持；[C/N1报告](experiments/POST_C_N1_RESULTS_20261005.md)、[A/B报告](experiments/POST_D30_AB_RESULTS_20261004.md)。本次接收不补齐D30全部历史矩阵。
+
+
+2026-10-06用户要求扩展后续实验，见[扩展规划](protocols/POST_N2_EXPANDED_PORTFOLIO_20261006.md)：原N5/N3/N4共13组，加R1/R2各4组条件储备，理论上限21组；另列四项无训练诊断。第一批仍N5四组，尚未实现/登记新队列。新增储备不自动执行；本页前述13组是原规划范围。
