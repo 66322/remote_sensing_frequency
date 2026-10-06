@@ -1,14 +1,11 @@
-# 下一步：三处缺失处理分解与空间复查，再选8—9组条件训练
+# 下一步：登记交叉问题诊断包，按结果接续条件训练
 
-最后服务器观测2026-10-06T21:16:59.632381+08:00：N5_COMPLETE_AWAITING_REVIEW，4/4完成。原件1bd58b6已接收并独立审计，结果见[N5报告](../experiments/POST_N5_RESULTS_20261006.md)。没有本次新运行观测。
+最后服务器观测仍2026-10-06T21:16:59.632381+08:00，N5_COMPLETE_AWAITING_REVIEW、4/4完成；本次仅执行包/CPU准备，无新服务器登记或运行回报。
 
-按用户最新要求，采用[一到两天交叉问题规划](../protocols/POST_N5_CROSS_QUESTION_48H_PLAN_20261006.md)作为当前建议优先级：
-1. 实现E3构成与N5-0/N5-3原Full/4px边界复查，复用原预测，不从全局CM捏造分层。
-2. 实现E4-v2：输入清零×内部特征删除×局部输出回退，8路径、最多192推理单元、0训练。固定输入/掩码与checkpoint，分别验证三个操作，不能把E2漏报收益直接全归因输出回退。
-3. 输出门槛成立优先R1四组；内部特征门槛成立可用新增S1四组替代；N5后边界问题仍过原条件才落实N3五组。
-4. 本窗口至多两个训练族，8—9个新8000步作业；13组是规划候选池。默认R1+N3含诊断计算25—38h、交接余量后目标27—44h；实现时间另计、首完整作业后校准。
-5. 诊断均不成立或匹配训练再失败则暂停相似模块堆叠，不为跑满显卡续训。N5/N2失败配方不复活；N4/R2不激活。更远任务驱动恢复交叉问题只作候选，须审查旧失败差异后另定协议。
+1. 从固定发布提交提取scripts/enqueue_post_n5_cross.py，用原plan绑定Python执行。入口先查旧队列完成/身份/锁与本类登记，幂等防重复；不重启原N5/N2/诊断。
+2. 新目录records/research_post_n5_cross_<timestamp>_<pid>，服务器CPU17项通过后nohup；先E3/N5边界CPU读取原预测，再E4-v2三模型192推理单元，新增optimizer更新0。只有GPU0/1。
+3. 查询scripts/status_post_n5_cross.py与nohup/preparation日志。记录QUERY_OBSERVED及LAST_OBSERVED；待收实际PID/进度，不以发布当运行。
+4. 最终CROSS_DIAGNOSTICS_COMPLETE_AWAITING_REVIEW时，显式执行upload_post_n5_cross_records.py。轻量原件接收/复算后，按R1→N3→S1问题门槛取至多两族继续冻结/实现训练。既有执行授权保持，不重复索取批准；训练包尚未实现，不能称已等待自动派发。
+5. 任何HOLD/CONTROLLER_INTERRUPTED先保留日志并查询原worker，不自动重试或重复登记。本包CPU6h/模型8h正有限超时，目的诊断，估2—4h非实测。训练窗口8—9组预算沿[规划](../protocols/POST_N5_CROSS_QUESTION_48H_PLAN_20261006.md)。
 
-新执行包尚未实现、无服务器后继登记。既有条件执行授权保持；实现完整协议、开关语义、容量/监督匹配、CPU及控制器派发/超时/汇总路径检查后，才给固定提交服务器命令。不要重复登记N5/N2或旧诊断。
-
-主线RGB–DSM条件互补与退化/缺失分割、恢复旁支，可行性探索。Potsdam fit12/Val2两tile、native512/stride256、NoBoundary fg5主/Full诊断，seed42。仅GPU0/1，每卡一worker、nohup、zzx对应独立目录，用户终端无SSH；无Test6/independent final/held4、新seed或重复资源审计。新布局与旧T复用均不称独立地理检验。
+[冻结执行协议](../protocols/POST_N5_CROSS_DIAGNOSTICS_EXECUTION_20261006.md)、[本地检查](../../records/research_post_n5_cross_design_20261006/validation.json)。E4 baseline111必须与原E2三预测精确一致；B明确覆盖N2中心/donor，避免假隔离。原N5/N2/E2科学gate不改判，N4/R2不激活，无新seed/Test6/independent final/held4或资源重审。主线双模态条件互补、恢复旁支；所有快照/缓存/临时文件在zzx对应新目录。
