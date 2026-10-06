@@ -1,0 +1,64 @@
+{
+  "source": "user pasted read-only server status and log tails",
+  "query_observed_at": "2026-10-07T00:00:27.985817+08:00",
+  "queue_last_observed_at": "2026-10-07T00:00:27.169441+08:00",
+  "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_cross_20261006T235526_442218",
+  "queue_status": "RUNNING_E4",
+  "controller_pid": 442590,
+  "controller_live": true,
+  "cpu_status": "COMPLETE",
+  "optimizer_updates": 0,
+  "cpu_progress": {
+    "phase": "existing_predictions",
+    "model": "N5-3",
+    "tile": "5_10",
+    "observed_at": "2026-10-06T23:57:40.711538+08:00"
+  },
+  "jobs": {
+    "E4_N1-2": {
+      "gpu": 0,
+      "status": "RUNNING",
+      "pid": 443709,
+      "live": true,
+      "phase": "inference",
+      "tile": "3_11",
+      "condition": "rgb_known_missing_A1B0C0",
+      "progress_observed_at": "2026-10-07T00:00:11.655822+08:00",
+      "elapsed_seconds": 149.16747687011957
+    },
+    "E4_N2-0": {
+      "gpu": 1,
+      "status": "RUNNING",
+      "pid": 443712,
+      "live": true,
+      "phase": "inference",
+      "tile": "3_11",
+      "condition": "rgb_known_missing_A1B0C0",
+      "progress_observed_at": "2026-10-07T00:00:16.910685+08:00",
+      "elapsed_seconds": 154.25633820146322
+    },
+    "E4_N2-3": {
+      "gpu": 0,
+      "status": "PENDING",
+      "pid": -1,
+      "live": false
+    }
+  },
+  "controller_log_tail": [
+    "CROSS_START 0 E4_N1-2 443709",
+    "CROSS_START 1 E4_N2-0 443712"
+  ],
+  "preparation_log_tail": [
+    "CROSS_CPU_MODEL_TILE A0 3_11",
+    "CROSS_CPU_MODEL_TILE B1 3_11",
+    "CROSS_CPU_MODEL_TILE N5-0 3_11",
+    "CROSS_CPU_MODEL_TILE N5-3 3_11",
+    "CROSS_CPU_MODEL_TILE A0 5_10",
+    "CROSS_CPU_MODEL_TILE B1 5_10",
+    "CROSS_CPU_MODEL_TILE N5-0 5_10",
+    "CROSS_CPU_MODEL_TILE N5-3 5_10"
+  ],
+  "scientific_screens_received": false,
+  "completed_model_jobs_observed": 0,
+  "interpretation": "CPU technical preparation complete; two E4 inference workers live; no scientific gate/accuracy conclusion; continue existing queue"
+}

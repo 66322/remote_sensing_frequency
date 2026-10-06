@@ -203,3 +203,8 @@ E1仅RGB缺失/H高DSM变化满足原N5问题门槛（A0/B1比U低0.651883/0.656
 ## 2026-10-06 23:55诊断登记回报（不是进度观测）
 最新服务器登记回报（用户终端）：2026-10-06，新诊断目录research_post_n5_cross_20261006T235526_442218，控制器PID442590，NEW_TRAINING=0、E4_TILE_UNITS=192、GPU=0,1。目录时间标记23:55:26，nohup文件名时间23:55:38.454869；它们不是queue observed_at，尚未收到状态/存活/CPU阶段或GPU进度回报。原N5最后queue观测21:16:59已完成，未重启。
 [登记摘录](../../../records/research_post_n5_cross_20261006T235526_442218/user_reported_registration_20261006.json)。下一步只读status及nohup/preparation日志；服务器CPU17项启动前成功返回为执行链推断，未单收检查日志。R1/N3/S1未派发，不重复登记或重启旧实验。
+
+
+## 2026-10-07 00:00诊断两卡推理回报
+最后服务器观测（用户终端）：QUERY_OBSERVED=2026-10-07T00:00:27.985817+08:00，queue LAST_OBSERVED=2026-10-07T00:00:27.169441+08:00，RUNNING_E4，控制器PID442590 LIVE=True；CPU=COMPLETE，新增optimizer更新0。GPU0 E4_N1-2 PID443709、GPU1 E4_N2-0 PID443712均RUNNING/LIVE=True，当前3_11、rgb_known_missing_A1B0C0；E4_N2-3在GPU0 PENDING。没有完成模型/科学gate回报。
+CPU八条模型×tile准备日志已收，最后N5-3/5_10进度23:57:40；技术完成不等于问题gate过。未收E3/边界/screen计数或完整E4结果。继续已有队列，不重新登记、无新训练。[原始转录](../../../records/research_post_n5_cross_20261006T235526_442218/user_reported_running_20261007T000027.json)。
