@@ -165,3 +165,10 @@ E1仅RGB缺失/H高DSM变化满足原N5问题门槛（A0/B1比U低0.651883/0.656
 ## 2026-10-06 N5执行包已实现（运行结果待回报）
 
 用户授权按扩展规划执行；第一批N5四组[冻结执行协议](../../protocols/POST_N5_EXECUTION_20261006.md)、code与CPU15项/语法11文件通过，[就绪记录](../../../records/post_n5_execution_design_20261006/validation.json)。尚无服务器登记/首步，不增加已完成数量。只GPU0/1、新8000步/组，固定N1-2state；先查原队列/锁，重复登记只返回既有N5。T在完整协议冻结后评价，不选模；后续条件族待证据与独立实现，不自动21组。
+
+
+## 2026-10-06 N5登记已回报
+
+最后服务器登记回报（用户终端，2026-10-06）：N5_QUEUE_REGISTERED，目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_20261006T114819_71934，controller PID72265，TRAINING_JOBS=4，GPU0/1，NEW_STEPS=32000；nohup_20261006T114827023329.log。目录时间标记11:48:19、日志名11:48:27，不替代queue observed_at。未收到queue状态、controller/worker存活、mask进度或CUDA首步，不能声称正在训练。下一步只读查询这条N5，不重复登记或重启旧队列。
+
+[登记原件转录](../../../records/research_post_n5_20261006T114819_71934/registration_observation.json)。登记不增加完成数量；前述待登记条目为历史准备态。

@@ -1,5 +1,10 @@
 # 状态：N2与E0/E1/E2原件已接收并独立验收
 
+## 2026-10-06 N5登记更新
+
+最后服务器登记回报（用户终端，2026-10-06）：N5_QUEUE_REGISTERED，目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_20261006T114819_71934，controller PID72265，TRAINING_JOBS=4，GPU0/1，NEW_STEPS=32000；nohup_20261006T114827023329.log。目录时间标记11:48:19、日志名11:48:27，不替代queue observed_at。未收到queue状态、controller/worker存活、mask进度或CUDA首步，不能声称正在训练。下一步只读查询这条N5，不重复登记或重启旧队列。
+
+
 最后服务器记录以已上传原件为准：N2 queue观测2026-10-05T22:11:34.641183+08:00，N2_COMPLETE_AWAITING_STAGE_PROTOCOL、六组COMPLETE；诊断queue观测23:27:15.831648，DIAGNOSTICS_COMPLETE_AWAITING_REVIEW、E0/MASKS和五worker COMPLETE、新增训练0。2026-10-06已收到N2 a33872c和诊断7c47c49两次原件上传；本次助手只做GitHub回读/离线复算，没有新的服务器运行查询。
 
 独立验收PASS：1199载荷清单路径/大小无缺项，连两manifest共1201文件；298已读载荷上传/适用解码SHA通过，148618条矩阵/原始指标、19008次joint校验及固定gate复算匹配。未重读全部载荷、服务器权重/影像/预测/掩码本体。N2固定双向候选gate=False，S对空间控制−0.007028pp，方向/打乱增量均未过；按原门槛停止该3×3关系配方，不救窗口/预算/seed。
@@ -10,7 +15,8 @@
 | E1内容缺失 | 只有RGB/H通过；A0/B1 gap0.651883/0.656097pp，地物/边缘构成仍有混杂 | 优先N5原四组，建同预算强控制 |
 | E0空间诊断 | N1-2 clean边界/内部伤害差14.236/14.703pp，两tile支持足够 | N3问题提示，先N5后重新判断 |
 | E2标记可靠性 | RGB漏报成本约−1pp，误报损失约6.4pp；DSM漏报不一致 | 解释fallback边界，不自动加置信网络 |
-| N5/N3/N4训练 | 仍未登记/运行新训练 | 待完整族实现/冻结协议；N4无更新暴露证据 |
+| N5训练 | 四组已登记，controller PID72265；首步/存活待查询 | 只读N5状态，不重复启动 |
+| N3/N4等条件族 | 尚未登记新训练 | 依原门槛后续准备；N4无更新暴露证据 |
 
 [结果与审计范围](../experiments/POST_N2_E0_E1_E2_RESULTS_20261006.md)。N2 server源验收的46656 pooled矩阵组与本地复算一致；完整上传清单并不表示全部载荷都独立读取。权重/预测/掩码本体留服务器，索引SHA绑定不冒称本体重新验证。
 
