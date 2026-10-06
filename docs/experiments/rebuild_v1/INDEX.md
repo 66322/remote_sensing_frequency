@@ -208,3 +208,9 @@ E1仅RGB缺失/H高DSM变化满足原N5问题门槛（A0/B1比U低0.651883/0.656
 ## 2026-10-07 00:00诊断两卡推理回报
 最后服务器观测（用户终端）：QUERY_OBSERVED=2026-10-07T00:00:27.985817+08:00，queue LAST_OBSERVED=2026-10-07T00:00:27.169441+08:00，RUNNING_E4，控制器PID442590 LIVE=True；CPU=COMPLETE，新增optimizer更新0。GPU0 E4_N1-2 PID443709、GPU1 E4_N2-0 PID443712均RUNNING/LIVE=True，当前3_11、rgb_known_missing_A1B0C0；E4_N2-3在GPU0 PENDING。没有完成模型/科学gate回报。
 CPU八条模型×tile准备日志已收，最后N5-3/5_10进度23:57:40；技术完成不等于问题gate过。未收E3/边界/screen计数或完整E4结果。继续已有队列，不重新登记、无新训练。[原始转录](../../../records/research_post_n5_cross_20261006T235526_442218/user_reported_running_20261007T000027.json)。
+
+
+## 2026-10-07 07:38诊断完成回报（轻量原件待收）
+最后服务器查询（用户终端）：QUERY_OBSERVED=2026-10-07T07:38:05.617099+08:00；queue最后更新2026-10-07T01:08:32.994625+08:00，CROSS_DIAGNOSTICS_COMPLETE_AWAITING_REVIEW。CPU完成，三个E4作业COMPLETE，查询时控制器及worker均LIVE=False，新增optimizer更新0。回报screen output=False、feature=True、boundary=True，NEXT_FAMILIES=['N3','S1']；原计数/绑定尚未上传验收。
+RGB固定output增量N1-2/N2-0 −0.299884/+0.401156pp且两tile异号，不触发R1；C=0下feature增量+1.307603/+0.577591pp且两tile正，触发S1问题。DSM不支持双向收益。boundary screen=True，候选N3五组＋S1四组；原边界分母/192case未独立接收，先上传，不派发未实现训练。诊断约1h13m，各worker约35m。
+[用户终端转录](../../../records/research_post_n5_cross_20261006T235526_442218/user_reported_complete_20261007T073805.json)。

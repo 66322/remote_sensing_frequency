@@ -1,20 +1,11 @@
-# 下一步：查询已登记交叉问题诊断包，按结果接续条件训练
+# 下一步：上传诊断原件，复算后落实N3/S1九组
 
-最后服务器观测（用户终端）：QUERY_OBSERVED=2026-10-07T00:00:27.985817+08:00，queue LAST_OBSERVED=2026-10-07T00:00:27.169441+08:00，RUNNING_E4，控制器PID442590 LIVE=True；CPU=COMPLETE，新增optimizer更新0。GPU0 E4_N1-2 PID443709、GPU1 E4_N2-0 PID443712均RUNNING/LIVE=True，当前3_11、rgb_known_missing_A1B0C0；E4_N2-3在GPU0 PENDING。没有完成模型/科学gate回报。
+最后服务器查询（用户终端）：QUERY_OBSERVED=2026-10-07T07:38:05.617099+08:00；queue最后更新2026-10-07T01:08:32.994625+08:00，CROSS_DIAGNOSTICS_COMPLETE_AWAITING_REVIEW。CPU完成，三个E4作业COMPLETE，查询时控制器及worker均LIVE=False，新增optimizer更新0。回报screen output=False、feature=True、boundary=True，NEXT_FAMILIES=['N3','S1']；原计数/绑定尚未上传验收。
 
-## 2026-10-07 00:00两卡实际推理回报
+1. 在原目录research_post_n5_cross_20261006T235526_442218显式调用code/scripts/upload_post_n5_cross_records.py --root ROOT --directory DIR。脚本已经在固定科学快照中，无需重装/登记。保留SHA/大小/服务器索引，轻量原件推同一GitHub分支；数组/权重不入Git。
+2. 接收并独立复算192case、完成/模型/输入/掩码/源码绑定、CM/joint及tile池化、A负控制/C上游/原E2 parity证据；同时核对E3类别×边界构成、N5-0/N5-3原Full边界门槛及分母。本次只有screen转录，不称独立验收。
+3. 若原件支持当前回报，按原优先级接续N3五组＋S1四组，共9新8000训练。执行包尚未实现，无GPU训练等待自动派发；已有用户授权，不再次求许可。R1输出gate=False本轮跳过，不能挑N2-0 pooled正救门槛。
+4. S1问题目前只在RGB缺失、C=0对比成立，DSM不支持；匹配四格训练才可判断训练增量与保护线。N3问题gate不是区域方法有效，仍需局部/网格/两单侧控制。
+5. 继续只用GPU0/1、nohup、zzx对应独立目录；无Test6/independent final/held4、新seed、失败自动重试或资源重审。旧N5/N2/诊断均不重启。N4/R2不激活。
 
-最后服务器观测（用户终端）：QUERY_OBSERVED=2026-10-07T00:00:27.985817+08:00，queue LAST_OBSERVED=2026-10-07T00:00:27.169441+08:00，RUNNING_E4，控制器PID442590 LIVE=True；CPU=COMPLETE，新增optimizer更新0。GPU0 E4_N1-2 PID443709、GPU1 E4_N2-0 PID443712均RUNNING/LIVE=True，当前3_11、rgb_known_missing_A1B0C0；E4_N2-3在GPU0 PENDING。没有完成模型/科学gate回报。
-
-CPU最后进度2026-10-06T23:57:40.711538+08:00，为N5-3/5_10的existing_predictions；八条CPU模型×tile日志已收到，说明准备阶段技术完成，不代表E3/N3科学门槛通过（尚未接收原计数/screen）。N1-2 progress观测00:00:11.655822，elapsed149.167秒；N2-0观测00:00:16.910685，elapsed154.256秒。此时只有当前case名称，无窗口数/末尾评价或完整作业耗时，不精确外推结束时间。
-
-继续同一目录research_post_n5_cross_20261006T235526_442218，仅只读status/nohup及需要时worker日志；不重新enqueue。两卡各一个推理worker，N2-3待GPU0当前作业完成后由控制器派发。R1/N3/S1训练未派发，完成后上传/复算诊断再按已有授权接续。原始回报转录见user_reported_running_20261007T000027.json。
-
-
-1. 只读查询已登记目录research_post_n5_cross_20261006T235526_442218：运行code/scripts/status_post_n5_cross.py，读取返回的nohup/preparation日志，不重复enqueue。
-2. 新目录records/research_post_n5_cross_<timestamp>_<pid>，已nohup，E3/N5边界CPU技术完成；当前E4-v2三模型192推理单元阶段，新增optimizer更新0。只有GPU0/1。
-3. 查询scripts/status_post_n5_cross.py与nohup/preparation日志。记录QUERY_OBSERVED及LAST_OBSERVED；两卡已确认存活/推理，待后续完成进度，不以发布当运行。
-4. 最终CROSS_DIAGNOSTICS_COMPLETE_AWAITING_REVIEW时，显式执行upload_post_n5_cross_records.py。轻量原件接收/复算后，按R1→N3→S1问题门槛取至多两族继续冻结/实现训练。既有执行授权保持，不重复索取批准；训练包尚未实现，不能称已等待自动派发。
-5. 任何HOLD/CONTROLLER_INTERRUPTED先保留日志并查询原worker，不自动重试或重复登记。本包CPU6h/模型8h正有限超时，目的诊断，估2—4h非实测。训练窗口8—9组预算沿[规划](../protocols/POST_N5_CROSS_QUESTION_48H_PLAN_20261006.md)。
-
-[冻结执行协议](../protocols/POST_N5_CROSS_DIAGNOSTICS_EXECUTION_20261006.md)、[本地检查](../../records/research_post_n5_cross_design_20261006/validation.json)。E4 baseline111必须与原E2三预测精确一致；B明确覆盖N2中心/donor，避免假隔离。原N5/N2/E2科学gate不改判，N4/R2不激活，无新seed/Test6/independent final/held4或资源重审。主线双模态条件互补、恢复旁支；所有快照/缓存/临时文件在zzx对应新目录。
+[规划](../protocols/POST_N5_CROSS_QUESTION_48H_PLAN_20261006.md)、[冻结诊断协议](../protocols/POST_N5_CROSS_DIAGNOSTICS_EXECUTION_20261006.md)。诊断墙钟约1h13m，完整模型各约35m，已结束；原2—4h为事前估计。后续两训练族约23—34h计算粗估，具体新算子/评价量须首完整作业后校准，协议实现/交接另计，不保证效果。
