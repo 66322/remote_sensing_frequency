@@ -1,26 +1,15 @@
-# 下一步：优先落实N5完整四组，当前不重启旧队列
+# 下一步：用户终端登记已就绪N5四组
 
-最后服务器记录以已上传原件为准：N2 queue观测2026-10-05T22:11:34.641183+08:00，N2_COMPLETE_AWAITING_STAGE_PROTOCOL、六组COMPLETE；诊断queue观测23:27:15.831648，DIAGNOSTICS_COMPLETE_AWAITING_REVIEW、E0/MASKS和五worker COMPLETE、新增训练0。2026-10-06已收到N2 a33872c和诊断7c47c49两次原件上传；本次助手只做GitHub回读/离线复算，没有新的服务器运行查询。
+用户2026-10-06授权“按上述规划进行实验”。第一批[执行协议](../protocols/POST_N5_EXECUTION_20261006.md)、训练/掩码/普通与预留评价/汇总/队列/上传已实现，15项CPU与11文件语法通过。服务器登记/首步尚无回报，不称正在训练。最新服务器观测仍N2 10月5日22:11、诊断23:27全部完成。
 
-N2与诊断两份原件已上传并回读验收，不需再次上传同一结果或再次运行已完成任务。[结果报告](../experiments/POST_N2_E0_E1_E2_RESULTS_20261006.md)确认N2原科学gate失败；E1只有RGB/H问题成立，E0提示边界困难，E2硬回退非精度最优。
+运行scripts/enqueue_post_n5.py，使用本次发布的固定执行提交，不git checkout覆盖服务器原工作副本。该入口先核对原N1/N2/诊断完成/存活/锁与N5既有登记；只派发四组，两波GPU0/1，所有代码/临时/掩码/记录在zzx新目录。重复执行入口只报告已有N5，不自动再建一条队列。登记输出N5_QUEUE_REGISTERED和N5_LOG；随后用返回目录的code/scripts/status_post_n5.py只读查询，并查看返回nohup日志。
 
-## 下一研究族：按原规划先N5
+每组固定N1-2模型state、同新8000步/seed42/batch16。新增8/16槽native512网格对齐、U/H/L规则与方向预算配对，N5-3为固定候选。选模仍原clean/两全缺失三状态；Val2 T在完整协议冻结后生成，评价结果不改训练或选checkpoint。
 
-N5不是本次已经派发的任务。沿既有条件计划先落实完整执行协议/代码与匹配CPU检查，再由用户服务器终端登记四组；主线不改、暂不同时启动N3/N4。
+四组完成后退出N5_COMPLETE_AWAITING_REVIEW；使用该目录code/scripts/upload_post_n5_records.py上传轻量原件，接收复算再按规划判定下一族。N3需要N5后独立边界问题仍在；R1需要E4；N4需要真实更新暴露；R2需要N5/N3各自通过。E3/E4/E5/E6及其余族尚未成为本批可执行任务，不能把条件预约当自动排队。无需重复确认已有条件执行授权。
 
-- 四组固定：N5-0原条件序列；N5-1 U随机块；N5-2 H/L内容块各半；N5-3 U半、H/L各四分之一的固定候选。
-- 每族所有组重新从固定N1-2完整state SHA28bc6f8ca5e1221392598b0a6f2d160e8c633a6a9cf63827067df3e7b81a144b出发，同新8000步/batch16/seed42、同augmentation槽/方向/面积和有效监督口径。不沿失败N2继续、不按后验最优初始化。
-- mask仅fit12输入内容，无标签/Val2错误选位；U/H/L whole-tile定义/配对形状固定。T规则不提前评价，必须完整N5训练配方、掩码、预算和判定冻结后再执行预留评价。
-- 主比较N5-3对N5-1，T平均≥0.5pp、两tile正，同年龄同号；方向分开报告及clean/全缺失/旧条件保护底线保持。仅训H/L变好或U追平则关闭当前混合暴露的增量承诺。
-- 不因E1只RGB/H通过就事后删L或只选方向、改T/强度救gate。若需要另立专门单向问题，明确新假设/协议，不能当原N5成功。
+技术故障停止新派发，可能已有worker继续；先status/log定位，不自动重训/重登记/改超时。具体超时12h/job、6h mask CPU；无效null在Popen前拒绝。CPU检查不是真实CUDA验证。
 
-完整gate、对照和停止条件以[原规划](../protocols/POST_N2_EVIDENCE_LED_PLAN_20261005.md)为准；目前此页为落实待办，不是可执行服务器命令。N3五组等N5完成后独立区域问题，N4四组仍无更新暴露证据，13配置是条件上限。N5若普通混合增强有效先定位强基线，不直接称双向互补机制创新。
+研究阶段可行性探索，主线RGB–DSM双向条件互补与退化/缺失分割；恢复旁支。Potsdam fit12/Val2=3_11、5_10，native512/stride256、NoBoundary fg5主。只GPU0/1、nohup、用户终端、无SSH/重复资源审计/新增seed/Test6/independent final。大权重/预测/mask留服务器SHA索引。
 
-研究阶段可行性探索；主线RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复旁支。Potsdam fit12/Val2=3_11、5_10，native512/stride256、NoBoundary fg5主指标，Full诊断，seed42开发证据。只用GPU0/1，长任务nohup，全部记录/执行快照在zzx对应独立目录；用户执行终端，无SSH、无Test6/T提前评价/independent final、无追加seed或失败配方自动重跑，F/N6保持跳过。
-
-[独立审计结果/复算方式](../../records/post_n2_offline_audit_20261006/README.md)；[研究决定](RESEARCH_DECISION.md)；[交接](HANDOFF.md)。
-
-
-## 2026-10-06扩展规划（尚未登记）
-
-用户要求基于已验收结果多规划后续实验，已形成[扩展规划](../protocols/POST_N2_EXPANDED_PORTFOLIO_20261006.md)：N5四组优先，N3五组条件随后，N4四组仍需真实更新暴露证据；新增R1局部回退×标记扰动四组、R2增强×区域四组为条件储备，共21组理论上限。原13组指N5/N3/N4，不是当前总储备数，也不是自动派发数量。增加E3构成标准化、E4清零/回退拆解、E5同面积条带迁移、E6零更新梯度诊断。E4未触发前不运行R1，N5/N3未各自通过不运行R2；原门槛、固定基座、T冻结规则保持。当前无新训练实现/登记或服务器观测，立即下一步仍N5完整协议与代码。主线及恢复旁支角色不改。
+[扩展规划](../protocols/POST_N2_EXPANDED_PORTFOLIO_20261006.md)；[已验收结果](../experiments/POST_N2_E0_E1_E2_RESULTS_20261006.md)；[交接](HANDOFF.md)。

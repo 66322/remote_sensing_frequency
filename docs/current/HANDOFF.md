@@ -1,21 +1,20 @@
-# 当前交接：扩展规划已归档，先落实N5四组
+# 当前交接：N5四组执行包就绪，等待用户服务器登记回报
 
-最后服务器观测保持：N2 2026-10-05T22:11:34.641183+08:00六组完成；诊断23:27:15.831648全部完成，0新训练。原件a33872c/7c47c49已于972e127独立验收；本次只规划并同步文档，没有新服务器查询或新队列登记。
+## 最后观测与工作
+最后服务器观测：N2 2026-10-05T22:11:34.641183+08:00六组COMPLETE；诊断23:27:15.831648全部COMPLETE。原件已独立验收；本次没有新的服务器查询/登记或训练结果。
 
-## 研究阶段、证据与决定来源
+用户2026-10-06明确“按上述规划进行实验”。已落实第一批N5四组完整独立执行包：[协议](../protocols/POST_N5_EXECUTION_20261006.md)，CPU15项、语法11文件通过，[记录](../../records/post_n5_execution_design_20261006/validation.json)。覆盖actual controller派发/失败阻断/汇总调用与退出、null timeout、固定完整基座、whole-tile mask及裁剪/监督匹配、fixed gate和上传编码。局部测试环境Python3.13/Torch2.7.1+cpu；服务器登记再用原EXP_PY复查，真实CUDA首步待回报。每批8原槽、8新增槽；所有组新增槽共同native512/128格对齐，保证每个缺失样本25%，T不参与训练/选模。
 
-仍为可行性探索，主线RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复旁支。N2固定关系对空间−0.007028pp，按原gate停止该实现；E1仅RGB/H问题通过，E0提示边界困难，E2说明硬回退不保证精度最优。完整证据范围见[验收报告](../experiments/POST_N2_E0_E1_E2_RESULTS_20261006.md)，本次未扩大历史原件审计范围。
+## 研究阶段、决定与去留
+可行性探索；主线RGB–DSM双向条件互补与退化/缺失分割，恢复旁支。N2固定gate失败，不救当前3×3实现；E1仅RGB/H问题触发，E0提示边界困难，E2说明硬回退不保证最优。沿原顺序N5先执行；21组是条件储备上限，增加数量不构成方法成立。N5各组固定N1-2完整state、新8000更新，同容量/训练预算；候选N5-3对随机N5-1，T与旧保护线冻结。不选N2后验最高，不删L或方向救gate。
 
-用户要求“根据目前结果，规划下一阶段实验，可以多规划些实验”。已新增[扩展规划](../protocols/POST_N2_EXPANDED_PORTFOLIO_20261006.md)：原N5/N3/N4共13组，加R1/R2各4组储备，理论上限21；E3构成标准化、E4清零/回退拆解、E5条带迁移、E6零更新梯度诊断。数量是候选上限，不是已实现/排队。具体扩展是助手研究建议，问题门槛不代表贡献；既有条件执行授权保持。
+N5完成后先接收分析，再落实E3/E5及N3边界筛选；E4/E6与R1/N4/R2按各自条件独立准备。它们尚未被本次入口派发；N5控制器完成后退出，不默认接续未实现占位项。未采纳直接全跑21组、N2追训/窗口/seed、T调参、Test6或伪重复显著性。
 
-## 下一步、去留与未采纳建议
+## 立即执行与故障处理
+用户终端从本次固定提交提取scripts/enqueue_post_n5.py执行；不用checkout替换服务器源码。入口先查询原N1/N2/诊断queue、完成绑定、controller/worker及锁；已有N5则只报告，不重复登记。登记成功返回新目录、controller PID和nohup log。下一步用返回目录的status_post_n5.py和日志检查，不能无回报声称已运行。
 
-首先落实N5完整四组协议/代码与控制器测试；固定N1-2基座、8000步同预算、固定N5-3对U控制，T在完整协议冻结后才评价。不因E1仅RGB/H通过删L或方向。E3可随准备阶段做已有预测分析。N5验收后边界问题仍存在才准备N3，族之间不串接checkpoint。R1须E4隔离出回退路径问题；N4须真实更新暴露证据（静态梯度范数不足）；R2须N5/N3各自原gate通过。每次一个训练族。
+只GPU0/1、每卡一worker、两波；nohup，所有快照/缓存/临时/记录在zzx新实验目录。用户执行终端，无SSH，不重复资源审计；无Test6/independent final/held4、新seed或失败配方重跑。超时12h/job、6h CPU，拒绝null；技术故障停止派发，已有worker可能继续，明确诊断/接管，不重复入口挽救。
 
-未采纳全跑21组、N2追训/窗口/seed救gate、后验最佳基座、提前T选配方或Test6。扩展全文明确控制、实用门槛、停止规则、状态和估时；R1/R2细节仍PROTOCOL_PENDING，不能把占位项直接派发。
+Potsdam fit12/Val2=3_11、5_10，native512/stride256、NoBoundary fg5主、Full诊断。四组完成N5_COMPLETE_AWAITING_REVIEW后上传轻量原件，权重/预测/mask仅服务器索引；原N2/诊断无需重启。
 
-## 资源与交接
-
-Potsdam fit12/Val2=3_11、5_10，native512/stride256、NoBoundary fg5主、Full诊断，seed42开发证据。只GPU0/1、每卡一worker、nohup，全部记录/快照在zzx对应独立目录；用户执行终端，无SSH，无重复资源审计。登记前查旧队列/worker与锁，避免重复；技术失败停派发，无自动重试。
-
-[状态](PROJECT_STATUS.md)；[下一步](NEXT_EXPERIMENT.md)；[研究决定](RESEARCH_DECISION.md)；[上一交接归档](../history/HANDOFF_PRE_EXPANDED_PLAN_20261006.md)。本次没有新增训练结果，旧N2/E0/E1/E2无需重启。
+[下一步](NEXT_EXPERIMENT.md)；[研究决定](RESEARCH_DECISION.md)；[扩展规划](../protocols/POST_N2_EXPANDED_PORTFOLIO_20261006.md)；[上一交接](../history/HANDOFF_PRE_N5_EXECUTION_20261006.md)。
