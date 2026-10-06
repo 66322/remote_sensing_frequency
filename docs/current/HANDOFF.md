@@ -1,12 +1,19 @@
 # 当前交接：交叉问题诊断包已就绪，先登记并接收结果
 
-最后服务器观测仍2026-10-06T21:16:59.632381+08:00，N5_COMPLETE_AWAITING_REVIEW、4/4完成；本次仅执行包/CPU准备，无新服务器登记或运行回报。
+最新服务器登记回报（用户终端）：2026-10-06，新诊断目录research_post_n5_cross_20261006T235526_442218，控制器PID442590，NEW_TRAINING=0、E4_TILE_UNITS=192、GPU=0,1。目录时间标记23:55:26，nohup文件名时间23:55:38.454869；它们不是queue observed_at，尚未收到状态/存活/CPU阶段或GPU进度回报。原N5最后queue观测21:16:59已完成，未重启。
 
-## 2026-10-06：诊断执行包已实现，等待服务器登记回报
+## 2026-10-06 诊断已登记，实际阶段待只读查询
+
+日志位于/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_cross_20261006T235526_442218/nohup_20261006T235538454869.log。登记回报只能确认安装器返回PID；按冻结启动链可推断启动前CPU检查成功返回，但未单收服务器cpu_checks.log，不能当CPU分析完成或GPU推理开始。若显卡空闲，可能尚在E3/边界CPU阶段，需status/preparation日志验证。
+
+下一步仅运行该目录code/scripts/status_post_n5_cross.py并读取nohup/preparation日志；不要再次enqueue，不修改原N5/N2。R1/N3/S1训练未派发，诊断结束后接收原件再按已授权条件接续。登记原始摘录见records/research_post_n5_cross_20261006T235526_442218/user_reported_registration_20261006.json。
+
+
+## 2026-10-06：诊断执行包已登记，等待状态回报
 
 用户“按上述规划进行吧”已授权落实第一阶段。[冻结执行协议](../protocols/POST_N5_CROSS_DIAGNOSTICS_EXECUTION_20261006.md)：E3/原N5边界复查复用预测，E4-v2八路径×三固定模型×两状态×两方向×两tile=192推理单元，新增训练更新0。CPU17项及10文件语法通过；包含实际N1/N2前向配合合成专家的路径一致性/全缺失保护、两lane派发/失败/超时、完整192模拟case独立汇总退出。非真实DINO/checkpoint/GPU验证；登记前服务器同包再检查。
 
-新入口enqueue_post_n5_cross.py幂等查询旧队列/本类登记，继承原N5快照并逐SHA核验，再nohup。新目录research_post_n5_cross_<timestamp>_<pid>；只GPU0/1，CPU6h/每模型8h有限超时，技术故障HOLD、不自动重试。预计诊断2—4h非实测。当前尚无服务器登记/PID/存活/精度回报；不得说已运行。
+新入口enqueue_post_n5_cross.py幂等查询旧队列/本类登记，继承原N5快照并逐SHA核验，再nohup。新目录research_post_n5_cross_<timestamp>_<pid>；只GPU0/1，CPU6h/每模型8h有限超时，技术故障HOLD、不自动重试。预计诊断2—4h非实测。当前已收登记/PID，尚无存活/阶段/精度回报；不得说GPU已运行。
 
 完成态CROSS_DIAGNOSTICS_COMPLETE_AWAITING_REVIEW，原件接收/复算后按已授权条件继续至多两训练族。R1/N3/S1训练代码仍未实现，不伪造为可派发预约，也不是再次等待训练许可。旧N5/N2/诊断不重启；旧gate/主线不变。
 

@@ -1,12 +1,19 @@
 # 研究阶段与当前决定：N5固定配方停止，区域问题待复查
 
-最后服务器回报：N5 queue观测2026-10-06T21:16:59.632381+08:00，N5_COMPLETE_AWAITING_REVIEW，四组COMPLETE/8000且selected全8000；用户status查询controller/worker LIVE=False（查询时刻未单列）。2026-10-06原件1bd58b6已收到，本次只做GitHub回读/离线复算，未新训练或GPU推理。
+最新服务器登记回报（用户终端）：2026-10-06，新诊断目录research_post_n5_cross_20261006T235526_442218，控制器PID442590，NEW_TRAINING=0、E4_TILE_UNITS=192、GPU=0,1。目录时间标记23:55:26，nohup文件名时间23:55:38.454869；它们不是queue observed_at，尚未收到状态/存活/CPU阶段或GPU进度回报。原N5最后queue观测21:16:59已完成，未重启。
 
-## 2026-10-06：诊断执行包已实现，等待服务器登记回报
+## 2026-10-06 诊断已登记，实际阶段待只读查询
+
+日志位于/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_cross_20261006T235526_442218/nohup_20261006T235538454869.log。登记回报只能确认安装器返回PID；按冻结启动链可推断启动前CPU检查成功返回，但未单收服务器cpu_checks.log，不能当CPU分析完成或GPU推理开始。若显卡空闲，可能尚在E3/边界CPU阶段，需status/preparation日志验证。
+
+下一步仅运行该目录code/scripts/status_post_n5_cross.py并读取nohup/preparation日志；不要再次enqueue，不修改原N5/N2。R1/N3/S1训练未派发，诊断结束后接收原件再按已授权条件接续。登记原始摘录见records/research_post_n5_cross_20261006T235526_442218/user_reported_registration_20261006.json。
+
+
+## 2026-10-06：诊断执行包已登记，等待状态回报
 
 用户“按上述规划进行吧”已授权落实第一阶段。[冻结执行协议](../protocols/POST_N5_CROSS_DIAGNOSTICS_EXECUTION_20261006.md)：E3/原N5边界复查复用预测，E4-v2八路径×三固定模型×两状态×两方向×两tile=192推理单元，新增训练更新0。CPU17项及10文件语法通过；包含实际N1/N2前向配合合成专家的路径一致性/全缺失保护、两lane派发/失败/超时、完整192模拟case独立汇总退出。非真实DINO/checkpoint/GPU验证；登记前服务器同包再检查。
 
-新入口enqueue_post_n5_cross.py幂等查询旧队列/本类登记，继承原N5快照并逐SHA核验，再nohup。新目录research_post_n5_cross_<timestamp>_<pid>；只GPU0/1，CPU6h/每模型8h有限超时，技术故障HOLD、不自动重试。预计诊断2—4h非实测。当前尚无服务器登记/PID/存活/精度回报；不得说已运行。
+新入口enqueue_post_n5_cross.py幂等查询旧队列/本类登记，继承原N5快照并逐SHA核验，再nohup。新目录research_post_n5_cross_<timestamp>_<pid>；只GPU0/1，CPU6h/每模型8h有限超时，技术故障HOLD、不自动重试。预计诊断2—4h非实测。当前已收登记/PID，尚无存活/阶段/精度回报；不得说GPU已运行。
 
 完成态CROSS_DIAGNOSTICS_COMPLETE_AWAITING_REVIEW，原件接收/复算后按已授权条件继续至多两训练族。R1/N3/S1训练代码仍未实现，不伪造为可派发预约，也不是再次等待训练许可。旧N5/N2/诊断不重启；旧gate/主线不变。
 
@@ -17,7 +24,7 @@
 
 候选训练R1四组、N3五组、新S1四组，共13组设计；本窗口至多两族8—9组，诊断通过才启动。默认R1+N3预计计算/诊断25—38h，含交接余量目标27—44h，执行包实现时间另计、非时限保证。S1作为上下文特征可用性替代问题，不把13组全跑。优先级变化来自N5/N2匹配增量失败与E2约1pp待归因现象；主线角色不变，新研究问题为建议，旧gate不改判。
 
-当前诊断执行包已实现，但无新服务器登记；最后服务器观测仍为上文N5完成。既有条件执行授权保持。N4无更新暴露、R2因N5失败不激活，不重训失败族、不加seed/Test6。下一步用户登记已验证诊断包，再接收原件依结果选择研究族。
+当前诊断执行包已实现并已收登记回报；最后服务器观测仍为上文N5完成。既有条件执行授权保持。N4无更新暴露、R2因N5失败不激活，不重训失败族、不加seed/Test6。下一步只读查询已登记诊断包，再接收原件依结果选择研究族。
 
 
 研究阶段仍可行性探索；主线RGB–DSM双向条件互补与退化/缺失分割；任务驱动恢复旁支。本次不改变论文章节或承诺新方法。
