@@ -1,5 +1,10 @@
 # 研究阶段与决定
 
+## 2026-10-06掩码准备观测
+
+用户只读回报（2026-10-06）：queue LAST_OBSERVED=2026-10-06T11:48:28.739479+08:00，PREPARING_MASKS，controller PID72265 LIVE=True；N5四组PENDING、0/8000、worker PID−1。queue时间是进入CPU准备阶段时刻，不代表日志后续进度时刻。preparation.log已有13个唯一tile的N5_MASKS_COMPLETE，fit12全部12个及Val2 3_11已报告，预定5_10尚无完成行；未收到精确日志时间/准备完成标记/worker首步，未见本回报错误。准备结束自动派发GPU0 N5-0、GPU1 N5-1；只读继续观察，不重复启动。
+
+
 ## 2026-10-06 N5登记更新
 
 最后服务器登记回报（用户终端，2026-10-06）：N5_QUEUE_REGISTERED，目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_20261006T114819_71934，controller PID72265，TRAINING_JOBS=4，GPU0/1，NEW_STEPS=32000；nohup_20261006T114827023329.log。目录时间标记11:48:19、日志名11:48:27，不替代queue observed_at。未收到queue状态、controller/worker存活、mask进度或CUDA首步，不能声称正在训练。下一步只读查询这条N5，不重复登记或重启旧队列。
