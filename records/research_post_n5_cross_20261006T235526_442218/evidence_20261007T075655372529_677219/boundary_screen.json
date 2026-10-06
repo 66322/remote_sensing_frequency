@@ -1,0 +1,41 @@
+{
+  "models": {
+    "N5-0": {
+      "N3_problem_trigger": true,
+      "checks": {
+        "3_11": {
+          "supported": true,
+          "boundary_minus_interior_harm_pp": 14.101202051403405,
+          "passed": true
+        },
+        "5_10": {
+          "supported": true,
+          "boundary_minus_interior_harm_pp": 15.04011824151549,
+          "passed": true
+        }
+      },
+      "scope": "full",
+      "model": "N5-0",
+      "automatic_training": false
+    },
+    "N5-3": {
+      "N3_problem_trigger": true,
+      "checks": {
+        "3_11": {
+          "supported": true,
+          "boundary_minus_interior_harm_pp": 13.985683746298793,
+          "passed": true
+        },
+        "5_10": {
+          "supported": true,
+          "boundary_minus_interior_harm_pp": 14.95912709191508,
+          "passed": true
+        }
+      },
+      "scope": "full",
+      "model": "N5-3",
+      "automatic_training": false
+    }
+  },
+  "N3_problem_trigger": true
+}
