@@ -222,3 +222,10 @@ RGB固定output增量N1-2/N2-0 −0.299884/+0.401156pp且两tile异号，不触�
 
 用户授权接续九组；[冻结协议](../../protocols/POST_N3_S1_EXECUTION_20261007.md)，CPU17项/语法11执行Python文件通过，READY_NOT_REGISTERED，无新服务器运行回报。固定N1-2完整state/new8000×9/seed42/GPU0/1；23—34h粗范围首组校准。此前待上传/未实现条目为带时间历史，当前以START_HERE为准。
 
+
+
+## 2026-10-07：九组服务器登记已回报
+
+用户终端返回N3_S1_QUEUE_REGISTERED：目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293，controller PID694658，TRAINING_JOBS=9、NEW_STEPS=72000、GPU=0,1；日志nohup_20261007T083216182460.log。目录08:32:03与日志08:32:16.182460是命名时间标记，不是queue observed_at。登记前同包CPU检查成功返回由执行链推断，尚未单收服务器检查日志。当前REGISTERED_PROGRESS_NOT_YET_QUERIED：未收到controller/worker存活、CPU准备状态、首步或完成回报，不能写为两卡训练已确认。此前READY_NOT_REGISTERED为发布时历史状态。
+
+下一步只读新目录code/scripts/status_post_n3_s1.py与nohup/preparation日志；不再次enqueue、不重启旧N5/N2/cross。记录见records/research_post_n3_s1_20261007T083203_694293/registration_observation.json。估时23—34h仍为规划范围；只有实际启动/首个完整作业回报后校准，不能从登记PID推断精度结果或实时运行。
