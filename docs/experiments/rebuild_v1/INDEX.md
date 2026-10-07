@@ -214,3 +214,11 @@ CPU八条模型×tile准备日志已收，最后N5-3/5_10进度23:57:40；技术
 最后服务器查询（用户终端）：QUERY_OBSERVED=2026-10-07T07:38:05.617099+08:00；queue最后更新2026-10-07T01:08:32.994625+08:00，CROSS_DIAGNOSTICS_COMPLETE_AWAITING_REVIEW。CPU完成，三个E4作业COMPLETE，查询时控制器及worker均LIVE=False，新增optimizer更新0。回报screen output=False、feature=True、boundary=True，NEXT_FAMILIES=['N3','S1']；原计数/绑定尚未上传验收。
 RGB固定output增量N1-2/N2-0 −0.299884/+0.401156pp且两tile异号，不触发R1；C=0下feature增量+1.307603/+0.577591pp且两tile正，触发S1问题。DSM不支持双向收益。boundary screen=True，候选N3五组＋S1四组；原边界分母/192case未独立接收，先上传，不派发未实现训练。诊断约1h13m，各worker约35m。
 [用户终端转录](../../../records/research_post_n5_cross_20261006T235526_442218/user_reported_complete_20261007T073805.json)。
+
+
+## 2026-10-07：诊断原件验收与N3/S1执行包
+
+诊断f60491f原件已收，独立复算PASS（352载荷路径/大小，238JSON+manifest，4128矩阵/1168joint，192case/576预测索引/106源码索引）。[完整结果](../POST_N5_CROSS_RESULTS_20261007.md)；原件/数组核验范围见审计README。R1跳过、N3/S1问题门槛通过，S1仅RGB C=0条件线索。N5/N2旧失败不改判。
+
+用户授权接续九组；[冻结协议](../../protocols/POST_N3_S1_EXECUTION_20261007.md)，CPU17项/语法11执行Python文件通过，READY_NOT_REGISTERED，无新服务器运行回报。固定N1-2完整state/new8000×9/seed42/GPU0/1；23—34h粗范围首组校准。此前待上传/未实现条目为带时间历史，当前以START_HERE为准。
+

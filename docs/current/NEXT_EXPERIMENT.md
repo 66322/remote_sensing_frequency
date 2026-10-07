@@ -1,11 +1,19 @@
-# 下一步：上传诊断原件，复算后落实N3/S1九组
+# 下一步：登记N3/S1九组，自动双卡续排
 
-最后服务器查询（用户终端）：QUERY_OBSERVED=2026-10-07T07:38:05.617099+08:00；queue最后更新2026-10-07T01:08:32.994625+08:00，CROSS_DIAGNOSTICS_COMPLETE_AWAITING_REVIEW。CPU完成，三个E4作业COMPLETE，查询时控制器及worker均LIVE=False，新增optimizer更新0。回报screen output=False、feature=True、boundary=True，NEXT_FAMILIES=['N3','S1']；原计数/绑定尚未上传验收。
+最后服务器查询：2026-10-07T07:38:05.617099+08:00；queue最后更新2026-10-07T01:08:32.994625+08:00，CROSS_DIAGNOSTICS_COMPLETE_AWAITING_REVIEW。三个E4作业COMPLETE、查询时controller/worker LIVE=False，新增训练0。此后只收到GitHub上传，没有新服务器运行观测。
 
-1. 在原目录research_post_n5_cross_20261006T235526_442218显式调用code/scripts/upload_post_n5_cross_records.py --root ROOT --directory DIR。脚本已经在固定科学快照中，无需重装/登记。保留SHA/大小/服务器索引，轻量原件推同一GitHub分支；数组/权重不入Git。
-2. 接收并独立复算192case、完成/模型/输入/掩码/源码绑定、CM/joint及tile池化、A负控制/C上游/原E2 parity证据；同时核对E3类别×边界构成、N5-0/N5-3原Full边界门槛及分母。本次只有screen转录，不称独立验收。
-3. 若原件支持当前回报，按原优先级接续N3五组＋S1四组，共9新8000训练。执行包尚未实现，无GPU训练等待自动派发；已有用户授权，不再次求许可。R1输出gate=False本轮跳过，不能挑N2-0 pooled正救门槛。
-4. S1问题目前只在RGB缺失、C=0对比成立，DSM不支持；匹配四格训练才可判断训练增量与保护线。N3问题gate不是区域方法有效，仍需局部/网格/两单侧控制。
-5. 继续只用GPU0/1、nohup、zzx对应独立目录；无Test6/independent final/held4、新seed、失败自动重试或资源重审。旧N5/N2/诊断均不重启。N4/R2不激活。
+原件f60491fc1091eb7d272e081e821d9e6397aa9c82已收，独立复算PASS：352载荷路径/大小全匹配，238 JSON载荷及manifest回读，4128矩阵/1168 joint、192 case、576预测索引、106源码索引绑定。没有GPU复跑或服务器大数组/权重本体重新求SHA；3个继承plan JSON仅代码manifest索引，A负控制/C首batch/旧E2 parity为上传元数据验收。[结果报告](../experiments/POST_N5_CROSS_RESULTS_20261007.md)。
 
-[规划](../protocols/POST_N5_CROSS_QUESTION_48H_PLAN_20261006.md)、[冻结诊断协议](../protocols/POST_N5_CROSS_DIAGNOSTICS_EXECUTION_20261006.md)。诊断墙钟约1h13m，完整模型各约35m，已结束；原2—4h为事前估计。后续两训练族约23—34h计算粗估，具体新算子/评价量须首完整作业后校准，协议实现/交接另计，不保证效果。
+N3边界问题与S1 RGB条件特征问题通过，R1 output问题未过。S1收益仅在C=0条件下RGB：N1-2/N2-0/N2-3 +1.307603/+0.577591/+0.595287pp，两tile正；DSM未过，不写双向贡献。N5后边界伤害差约14—15pp且分母足够，E3标准化仍有RGB高DSM变化压力；均不能挽救N5固定配方。
+
+研究阶段可行性探索；主线RGB–DSM条件互补与退化/缺失分割，恢复旁支。用户已授权按规划执行：接续N3五组+S1四组，R1跳过，N4/R2不激活。既有N5/N2/C/N1/A/B去留保持，不调预算/窗口/seed救失败，不因最新问题screen承诺论文创新。
+
+[九组冻结协议](../protocols/POST_N3_S1_EXECUTION_20261007.md)和训练包已实现，CPU17项/11执行Python文件语法PASS（本地合成专家/数据，不是H100科学结果）；服务器登记前同包再验。当前为READY_NOT_REGISTERED，没有新PID/首步，不增加完成数量。
+
+下一步用户终端从本次发布提交取scripts/enqueue_post_n3_s1.py执行--root与--commit。先查原队列/锁、校验已完成cross绑定与固定N1-2完整state；幂等返回已有本类目录，绝不重复登记。CPU准备后nohup自动跑九组，按GPU0/1交替每lane FIFO，N3-4与S1-0可异卡并行，无跨族参数继承。每组新8000/batch16/seed42，72000新增更新，预估23—34h粗范围，首组完整完成后校准。
+
+记录新目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_<timestamp>_<pid>；代码快照/日志/cache/temporary/checkpoint/预测/原矩阵都在对应目录。只GPU0/1，两H10080GB；用户终端无SSH，无重复资源审计。CPU6h/每job12h正有限超时，技术失败停止后续派发，不自动重试。完成N3_S1_COMPLETE_AWAITING_REVIEW后显式轻量上传、GitHub复算；不自动派发别族。
+
+Potsdam fit12/Val2=3_11、5_10，native512/stride256，NoBoundary fg5主/Full诊断，seed42开发证据。沿原三状态4000/8000选模、selected32/fixed22条件，另评冻结U两方向，不读T/H/L新规则、Test6/independent final/held4。工程回退、精度保护、开发机制及独立泛化分别报告。
+
+只读查询用新目录code/scripts/status_post_n3_s1.py --directory对应目录并看launch.json所列nohup日志。无需再次enqueue已有登记。完成上传器为code/scripts/upload_post_n3_s1_records.py --root ROOT --directory新目录；保留原统计/代码/服务器预测权重索引，发布轻量原件。
