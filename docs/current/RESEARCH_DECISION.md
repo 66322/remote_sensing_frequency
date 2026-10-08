@@ -1,5 +1,16 @@
 # 研究决定：诊断已验收，接续N3与S1九组
 
+## 2026-10-08：九组正常完成，原计数待上传验收
+
+最后服务器查询（用户终端）：QUERY_OBSERVED=2026-10-08T22:11:10.555448+08:00；queue LAST_OBSERVED=2026-10-08T06:37:48.607436+08:00，N3_S1_COMPLETE_AWAITING_REVIEW，controller PID694658 LIVE=False。N3-0…4/S1-0…3九组全部COMPLETE、8000/8000，查询时全部worker LIVE=False。nohup完整派发/完成序列及独立汇总正常退出，无本次技术故障回报；不是控制器中断导致显卡空闲。
+
+日志N3_S1_SCREEN False False False：N3固定候选、S1固定候选及bilateral_candidate均False（服务器汇总回报，尚未独立接收CM/joint/checkpoint/选模绑定）。不猜具体失败项或把loss当评价，不宣称两个研究问题整体不成立。原冻结门槛与主线保持，暂不扩大预算/区域超参/seed或换后验候选救门槛。完成态不自动派发后继族。
+
+原执行0e22438a7131a0a1f28098e675c3367d40236398，原目录research_post_n3_s1_20261007T083203_694293保持。首波各约4h39m、其余完整worker约4h19m—4h23m；日志名2026-10-07 08:32:16.182460至queue完成2026-10-08 06:37:48.607436，粗墙钟约22h05m32s，命名起点不是独立精确启动观测。此前23—34h规划不再作为剩余ETA。
+
+立即下一步：用户终端运行原目录code/scripts/upload_post_n3_s1_records.py --root ROOT --directory DIR，显式上传轻量原件；无需再次fetch/enqueue，不启动训练。接收原件后独立复算selected/fixed8000的S_available、QR/QD、U方向/tile、保护底线、单因素/网格控制、所有绑定与原始分母；区分增量不足、保护失败、方向不一致或简单控制已解释，再决定去留。科学原件与GPU权重/预测保留服务器，无Test6/independent final/held4、追加seed或重复资源审计。
+
+
 ## 2026-10-07 08:41：N3双卡实际训练已确认
 
 最后服务器只读查询（用户终端）：QUERY_OBSERVED=2026-10-07T08:41:47.885238+08:00，queue LAST_OBSERVED=2026-10-07T08:41:46.005396+08:00，RUNNING_N3_S1，controller PID694658 LIVE=True。GPU0 N3-0 PID694733 LIVE=True，training360/8000，progress08:41:42.634794、1.324986秒/步、训练剩2.811914h；GPU1 N3-1 PID694739 LIVE=True，training360/8000，progress08:41:43.547025、1.328100秒/步、训练剩2.818524h。两worker各加载12/12训练tile，峰值分配约36.79/36.80GB。N3-2/3/4与S1-0/1/2/3七项PENDING；0/9作业COMPLETE。日志确认两个START，无本次故障回报，没有精度或机制gate结果。

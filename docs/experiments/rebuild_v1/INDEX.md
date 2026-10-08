@@ -240,3 +240,14 @@ RGB固定output增量N1-2/N2-0 −0.299884/+0.401156pp且两tile异号，不触�
 当前两组纯训练剩约2h49m，不含4000/8000验证及fixed/selected/U评价。假定后续步速相同，GPU0共五组（当前+四组）、GPU1共四组（当前+三组），训练本身最长lane剩约14.59h；这不是整队ETA，未测后续条件区域/S1及完整评价耗时。九组完整粗范围仍23—34h，从08:32登记参照约2026-10-08 07:30—18:30，非保证，首个完整作业后校准。不能把loss或360步可运行当方法有效。
 
 下一步继续既有nohup队列，按需只读新目录status及日志；失败时保留worker与目录、明确诊断/接管，不自动重试/追加seed/别族。仅GPU0/1，zzx对应目录，无SSH/Test6/independent final/held4或重复资源审计。
+
+
+## 2026-10-08：九组正常完成，原计数待上传验收
+
+最后服务器查询（用户终端）：QUERY_OBSERVED=2026-10-08T22:11:10.555448+08:00；queue LAST_OBSERVED=2026-10-08T06:37:48.607436+08:00，N3_S1_COMPLETE_AWAITING_REVIEW，controller PID694658 LIVE=False。N3-0…4/S1-0…3九组全部COMPLETE、8000/8000，查询时全部worker LIVE=False。nohup完整派发/完成序列及独立汇总正常退出，无本次技术故障回报；不是控制器中断导致显卡空闲。
+
+日志N3_S1_SCREEN False False False：N3固定候选、S1固定候选及bilateral_candidate均False（服务器汇总回报，尚未独立接收CM/joint/checkpoint/选模绑定）。不猜具体失败项或把loss当评价，不宣称两个研究问题整体不成立。原冻结门槛与主线保持，暂不扩大预算/区域超参/seed或换后验候选救门槛。完成态不自动派发后继族。
+
+原执行0e22438a7131a0a1f28098e675c3367d40236398，原目录research_post_n3_s1_20261007T083203_694293保持。首波各约4h39m、其余完整worker约4h19m—4h23m；日志名2026-10-07 08:32:16.182460至queue完成2026-10-08 06:37:48.607436，粗墙钟约22h05m32s，命名起点不是独立精确启动观测。此前23—34h规划不再作为剩余ETA。
+
+立即下一步：用户终端运行原目录code/scripts/upload_post_n3_s1_records.py --root ROOT --directory DIR，显式上传轻量原件；无需再次fetch/enqueue，不启动训练。接收原件后独立复算selected/fixed8000的S_available、QR/QD、U方向/tile、保护底线、单因素/网格控制、所有绑定与原始分母；区分增量不足、保护失败、方向不一致或简单控制已解释，再决定去留。科学原件与GPU权重/预测保留服务器，无Test6/independent final/held4、追加seed或重复资源审计。
