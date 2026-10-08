@@ -264,3 +264,9 @@ N3-4 S对局部−0.000078pp/网格+0.001937pp，增量门槛失败；S1-3 RGB U
 [规划](../../protocols/POST_S1_SUPPORT_GPU0_PLAN_20261008.md)：基于已验收S1 RGB局部+4.102pp及退化保护失败，先D0复用/拼接与D1固定权重×策略诊断，再P十组（更新隔离×上下文支持×修正区域八组，另空间打乱/简单校准两组），E六压力条件；Q镜像DSM四组仅条件储备。P统一S1-0/new8000/seed42，固定8000主比较，P7候选事前指定。首轮约33—57h单卡预算，无科学总时限，不靠重跑/加seed填时长。
 
 用户本次要求只能GPU0，覆盖所有后续GPU活动；旧GPU0/1文字是历史执行证据。本条是PLANNED_NOT_IMPLEMENTED_NOT_REGISTERED，无新队列/PID，不改变已完成数或旧gate。主线角色保持，具体去留/压力门槛/文献边界见规划。
+
+## 2026-10-08：Post-S1 GPU0单卡执行包就绪（未登记）
+
+用户授权按规划实施，[冻结协议](../../protocols/POST_S1_SUPPORT_EXECUTION_20261008.md)及model/worker/D0/D1/E/controller/status/summary/upload入口已实现，CPU22项和12Python语法通过，覆盖基座/冻结/原CE等价/空间打乱/native跨窗/单卡FIFO失败超时/原计数与完整汇总。合成CPU检查，非真实backbone/权重/GPU科学结果；服务器登记前同包再验。
+
+READY_NOT_REGISTERED，无新服务器PID/目录/进度，不增加已完成数。只GPU0，十组新8000/seed42/固定S1-0、fixed8000主比较；D1 48新tile、E144新tile，Q仅条件储备不自动派发。入口幂等核原队列与锁，nohup，zzx新目录，故障停止后继无重试。旧N3/S1 gate和主线角色保持。[就绪记录](../../../records/post_s1_support_execution_design_20261008/validation.json)。

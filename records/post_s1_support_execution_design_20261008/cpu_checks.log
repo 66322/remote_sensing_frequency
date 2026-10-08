@@ -1,0 +1,59 @@
+SUPPORT_START GPU0 D1 12
+SUPPORT_JOB D1 TECHNICAL_FAILURE
+test_acceptance_failure_holds_queue (test_post_s1_support.SupportTests.test_acceptance_failure_holds_queue) ... ok
+test_actual_objective_matches_inherited_and_views_logged (test_post_s1_support.SupportTests.test_actual_objective_matches_inherited_and_views_logged) ... ok
+test_calibration_feature_slots_inactive (test_post_s1_support.SupportTests.test_calibration_feature_slots_inactive) ... ok
+test_entries_help_no_gpu_or_server_needed (test_post_s1_support.SupportTests.test_entries_help_no_gpu_or_server_needed) ... ok
+test_exact_same_base_and_zero_head_all_ten (test_post_s1_support.SupportTests.test_exact_same_base_and_zero_head_all_ten) ... ok
+test_existing_artifacts_require_recovery (test_post_s1_support.SupportTests.test_existing_artifacts_require_recovery) ... ok
+SUPPORT_START GPU0 D1 101
+SUPPORT_JOB D1 TECHNICAL_FAILURE
+test_failure_stops_before_next_no_retry (test_post_s1_support.SupportTests.test_failure_stops_before_next_no_retry) ... ok
+SUPPORT_START GPU0 D1 101
+SUPPORT_JOB D1 COMPLETE
+SUPPORT_START GPU0 P6 101
+SUPPORT_JOB P6 COMPLETE
+SUPPORT_START GPU0 P7 101
+SUPPORT_JOB P7 COMPLETE
+SUPPORT_START GPU0 P8 101
+SUPPORT_JOB P8 COMPLETE
+SUPPORT_START GPU0 P9 101
+SUPPORT_JOB P9 COMPLETE
+SUPPORT_START GPU0 P4 101
+SUPPORT_JOB P4 COMPLETE
+SUPPORT_START GPU0 P5 101
+SUPPORT_JOB P5 COMPLETE
+SUPPORT_START GPU0 P2 101
+SUPPORT_JOB P2 COMPLETE
+SUPPORT_START GPU0 P3 101
+SUPPORT_JOB P3 COMPLETE
+SUPPORT_START GPU0 P0 101
+SUPPORT_JOB P0 COMPLETE
+SUPPORT_START GPU0 P1 101
+SUPPORT_JOB P1 COMPLETE
+SUPPORT_START GPU0 E 101
+SUPPORT_JOB E COMPLETE
+test_fifo_all_twelve_only_gpu0_and_finish (test_post_s1_support.SupportTests.test_fifo_all_twelve_only_gpu0_and_finish) ... ok
+test_frozen_local_native_support_and_full_missing (test_post_s1_support.SupportTests.test_frozen_local_native_support_and_full_missing) ... ok
+test_frozen_stats_parameters_optimizer_and_zero_exposure (test_post_s1_support.SupportTests.test_frozen_stats_parameters_optimizer_and_zero_exposure) ... ok
+test_gate_uniform_no_gain_rejected_and_no_Q (test_post_s1_support.SupportTests.test_gate_uniform_no_gain_rejected_and_no_Q) ... ok
+test_gpu0_budget_timeout_contract (test_post_s1_support.SupportTests.test_gpu0_budget_timeout_contract) ... ok
+test_native_stitch_outside_support_equal (test_post_s1_support.SupportTests.test_native_stitch_outside_support_equal) ... ok
+test_raw_integer_summary_rejects_corruption (test_post_s1_support.SupportTests.test_raw_integer_summary_rejects_corruption) ... ok
+test_route_guards_and_transition_denominators (test_post_s1_support.SupportTests.test_route_guards_and_transition_denominators) ... ok
+test_same_weight_policy_invariants (test_post_s1_support.SupportTests.test_same_weight_policy_invariants) ... ok
+test_shared_parameters_can_receive_gradient (test_post_s1_support.SupportTests.test_shared_parameters_can_receive_gradient) ... ok
+test_shuffle_changes_missing_context_preserves_strata (test_post_s1_support.SupportTests.test_shuffle_changes_missing_context_preserves_strata) ... ok
+SUPPORT_SCREEN False False SKIPPED_GATE
+test_standalone_summary_complete_twelve_tasks_exit (test_post_s1_support.SupportTests.test_standalone_summary_complete_twelve_tasks_exit) ... ok
+test_stress_geometry_frozen_and_label_free (test_post_s1_support.SupportTests.test_stress_geometry_frozen_and_label_free) ... ok
+SUPPORT_START GPU0 D1 101
+SUPPORT_HARD_TIMEOUT D1
+SUPPORT_JOB D1 TIMEOUT
+test_timeout_rc_zero_still_failure_and_stops (test_post_s1_support.SupportTests.test_timeout_rc_zero_still_failure_and_stops) ... ok
+test_worker_completion_binding_and_tamper (test_post_s1_support.SupportTests.test_worker_completion_binding_and_tamper) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 38.583s
+
+OK

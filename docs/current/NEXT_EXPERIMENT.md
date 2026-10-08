@@ -1,17 +1,15 @@
-# 下一步：实施前冻结Post-S1单卡执行包
+# 下一步：启动已冻结Post-S1 GPU0队列，回报登记与状态
 
-新[Post-S1单卡规划](../protocols/POST_S1_SUPPORT_GPU0_PLAN_20261008.md)为PLANNED_NOT_IMPLEMENTED_NOT_REGISTERED：D0复用预测＋D1权重/策略诊断→P十组（2×2×2配对＋2机制控制）→E六压力条件；Q四组仅条件储备。约33—57h首轮单卡预算，首个隔离/共享作业后校准，无科学总时间上限。新代码、可运行入口、队列和PID均未建立，不能运行旧双卡enqueue。
+用户已授权按GPU0[规划](../protocols/POST_S1_SUPPORT_GPU0_PLAN_20261008.md)实施。[冻结执行包](../protocols/POST_S1_SUPPORT_EXECUTION_20261008.md)已实现，READY_NOT_REGISTERED：D0复用/拼接→D1四权重四策略→P十组→E六条件→独立汇总。P7固定候选、S1-0基座SHA、新8000×10/seed42、fixed8000主比较、原科学门槛保持。CPU合成检查22项及12Python语法通过；没有真实服务器权重/backbone/GPU复跑，服务器登记前再跑同包检查。
 
-P十组统一旧S1-0 selected8000完整state、新8000步、seed42、原数据/增强/损失、固定8000主比较（4000仅诊断），共80000新更新。比较共享/冻结基座、掩码/保留上下文、全域/局部修正；P7固定为冻结基座＋保留上下文＋局部修正，P8支持分层空间打乱、P9仅logit/mask校准。D0同时建立零训练双模型拼接R0。冻结局部保护是构造属性，贡献必须超越P6/P8/P9/R0并通过未参与训练的六合成压力条件；具体门槛见规划。
+下一步：用户从本次执行提交提取scripts/enqueue_post_s1_support.py到zzx bootstrap，使用原plan绑定的Python运行--root ROOT --commit固定提交。入口先核原队列与源码/权重SHA/锁，再CPU检查、幂等登记并nohup。重复调用只回报已有队列；失败/部分目录先诊断，不另登记第二条。新目录records/research_post_s1_support_<timestamp>_<pid>，只读status_post_s1_support.py，完成/失败后显式upload_post_s1_support_records.py。
 
-计划顺序：D0 CPU复用预测及R0；D1最多48新tile推理；P6→P7→P8→P9→P4→P5→P2→P3→P0→P1单卡串行；E全部十组及两参考共144新tile推理。D1不挑新初始化，P7失败不换后验最高项。首轮约33—57h，Q若后续触发另约12—24h。
+仅物理GPU0，physical_gpus=[0]、CUDA_VISIBLE_DEVICES=0、单worker FIFO，所有诊断/训练/推理/恢复均不得使用GPU1。nohup、全部记录/快照/cache/temporary/上传worktree在zzx对应新目录；用户终端执行，无SSH，无Test6/独立final/held4、追加seed或失败配方自动重跑。旧双卡入口不适用于本轮。
 
-P7须RGB_U对S1-0≥2pp、对P6/P8/P9各≥0.3pp且两tile正，对R0≥−0.2pp；保留clean/全缺失−0.1和最差primary tile−0.2保护线，DSM_U≥−0.1。E全部六条件保护并在两个clean-DSM新形状≥0.5pp/两tile正，才进入下一泛化安排。精确保护只属工程属性，不能单独宣称创新；E不是独立测试集。
+FIFO次序D1→P6→P7→P8→P9→P4→P5→P2→P3→P0→P1→E；CPU D0在D1前。D1 64逻辑U单元（16复用、48新增tile推理），E 144新增tile推理。总10新训练/80000更新，Q四组不在可运行任务列表。CPU掩码/预测整理期间GPU空闲属正常准备态，必须看带时间status，不从空闲推断中断。
 
-后续用户要求执行时，先实现残差支路、固定8000选模、支持分层打乱和全部记录绑定，完成CPU零初始化/冻结/跨窗/全缺失/零暴露/控制器汇总与单GPU FIFO检查，冻结掩码与代码后给出新入口。现阶段没有可执行启动命令、没有登记或新PID。不把旧双卡enqueue拿来直接运行。
+固定8000主比较、4000仅诊断；ordinary32和fixed22＋U，全部原计数/逐tile/权重/源码/输入/mask绑定保存。P7须RGB_U对基座≥2pp、对P6/P8/P9≥.3pp且两tile正、对R0≥−.2pp；clean/fullmissing保护−.1、最差primary tile−.2、DSM_U−.1；E六条件保护及两个clean-DSM新形状≥.5pp/两tile正。精确非支持保护是工程属性，不能单独作创新，E仍非独立测试集。
 
-用户2026-10-08最新指令：本轮只能物理GPU0，覆盖诊断、测试、推理、训练及恢复，physical_gpus=[0]、CUDA_VISIBLE_DEVICES=0，单worker串行；GPU1不得使用。旧记录中的GPU0/1仅为历史。服务器由用户终端执行，无SSH；nohup，全部记录/快照/缓存/临时文件在zzx对应新实验目录。无Test6/independent final/held4、失败配方重跑、追加seed或重复资源审计。
+可行性探索，主线仍RGB–DSM条件互补与退化/缺失分割，任务恢复旁支。N3当前区域增量不足，S1 RGB局部+4.102047pp但aux_shift8/3_11−0.391546pp保护失败，旧gate维持False；本轮研究缺失支持与参数隔离，不自动升级单向收益为双向贡献。N5/N2/C旧去留保持，R1/N4/R2不激活。
 
-前置[完整结果](../experiments/POST_N3_S1_RESULTS_20261008.md)已独立验收，原件38d205591abe00179bebfb36a17595d4d7b75f47，验收提交4163107e55bc560a8ba83784e3759caa3a4a299b。N3固定候选相对局部−0.000078pp、相对网格+0.001937pp，关闭该区域配方的增量承诺。S1-3 RGB局部U对S1-0 +4.102047pp，两tile正；DSM −0.023201pp且tile异号；aux_shift8/3_11 −0.391546pp违反原−0.2pp保护线。两旧gate维持False，S1是单向收益与退化代价的开发线索。
-
-最后服务器查询（用户终端）：2026-10-08T22:11:10.555448+08:00；queue最后观测2026-10-08T06:37:48.607436+08:00，N3_S1_COMPLETE_AWAITING_REVIEW。九组全部COMPLETE/8000，查询时controller/worker LIVE=False。本次只做规划，没有新的服务器运行观测。
+最后服务器查询仍为2026-10-08T22:11:10.555448+08:00；原queue最后观测06:37:48.607436，N3_S1_COMPLETE_AWAITING_REVIEW，九组COMPLETE/8000，查询时controller/worker LIVE=False。本次没有新的服务器登记、PID或GPU进度回报。

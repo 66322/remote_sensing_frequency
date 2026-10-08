@@ -1,22 +1,20 @@
-# 项目状态：N3/S1已验收，GPU0后续方案仅规划
+# 项目状态：Post-S1执行包CPU通过，服务器待登记
 
-最后服务器查询（用户终端）：2026-10-08T22:11:10.555448+08:00；queue最后观测2026-10-08T06:37:48.607436+08:00，N3_S1_COMPLETE_AWAITING_REVIEW。九组全部COMPLETE/8000，查询时controller/worker LIVE=False。本次只做规划，没有新的服务器运行观测。
+最后服务器查询仍为2026-10-08T22:11:10.555448+08:00；原queue最后观测06:37:48.607436，N3_S1_COMPLETE_AWAITING_REVIEW，九组COMPLETE/8000，查询时controller/worker LIVE=False。本次没有新的服务器登记、PID或GPU进度回报。
 
-前置[完整结果](../experiments/POST_N3_S1_RESULTS_20261008.md)已独立验收，原件38d205591abe00179bebfb36a17595d4d7b75f47，验收提交4163107e55bc560a8ba83784e3759caa3a4a299b。N3固定候选相对局部−0.000078pp、相对网格+0.001937pp，关闭该区域配方的增量承诺。S1-3 RGB局部U对S1-0 +4.102047pp，两tile正；DSM −0.023201pp且tile异号；aux_shift8/3_11 −0.391546pp违反原−0.2pp保护线。两旧gate维持False，S1是单向收益与退化代价的开发线索。
+用户已授权按GPU0[规划](../protocols/POST_S1_SUPPORT_GPU0_PLAN_20261008.md)实施。[冻结执行包](../protocols/POST_S1_SUPPORT_EXECUTION_20261008.md)已实现，READY_NOT_REGISTERED：D0复用/拼接→D1四权重四策略→P十组→E六条件→独立汇总。P7固定候选、S1-0基座SHA、新8000×10/seed42、fixed8000主比较、原科学门槛保持。CPU合成检查22项及12Python语法通过；没有真实服务器权重/backbone/GPU复跑，服务器登记前再跑同包检查。
 
-验收范围：1508载荷+manifest路径/大小核对，79选定JSON+manifest回读，227556矩阵、22140原joint边际/池化、1044case、9396预测索引绑定；12科学源/协议与执行0e22438逐字一致。未回读全部原件或服务器数组/权重/mask本体，未GPU复跑，joint_reports派生字段未穷举复算。
-
-|阶段|状态|去留|
+|阶段|状态|预算/边界|
 |---|---|---|
-|N3五组|已完成/已验收|固定区域配方增量不足，关闭|
-|S1四组|已完成/已验收|单向收益，保护失败，保留线索|
-|D0/D1|仅规划、0新训练|区分位置/推理/参数效应|
-|P0—P9|仅规划、10组、新8000各|GPU0串行，P7预先固定|
-|E|仅规划、6条件|检验形状与DSM质量边界|
-|Q0—Q3|条件储备、未实现|无足够DSM证据不触发|
+|旧N3五组/S1四组|完成并独立验收|原gateFalse，报告见N3/S1结果|
+|D0|实现、服务器待执行|CPU复用，0更新|
+|D1|实现、服务器待执行|48新tile推理，0更新|
+|P0—P9|实现、服务器待执行|10×8000更新，GPU0 FIFO|
+|E|实现、服务器待执行|6条件×12模型×2tile，0更新|
+|Q镜像DSM|条件储备、无可运行协议|最多4组，资格不自动启动|
 
-新[Post-S1单卡规划](../protocols/POST_S1_SUPPORT_GPU0_PLAN_20261008.md)为PLANNED_NOT_IMPLEMENTED_NOT_REGISTERED：D0复用预测＋D1权重/策略诊断→P十组（2×2×2配对＋2机制控制）→E六压力条件；Q四组仅条件储备。约33—57h首轮单卡预算，首个隔离/共享作业后校准，无科学总时间上限。新代码、可运行入口、队列和PID均未建立，不能运行旧双卡enqueue。
+可行性探索，主线仍RGB–DSM条件互补与退化/缺失分割，任务恢复旁支。N3当前区域增量不足，S1 RGB局部+4.102047pp但aux_shift8/3_11−0.391546pp保护失败，旧gate维持False；本轮研究缺失支持与参数隔离，不自动升级单向收益为双向贡献。N5/N2/C旧去留保持，R1/N4/R2不激活。
 
-研究阶段仍为可行性探索，主线RGB–DSM条件互补与退化/缺失分割，恢复旁支。Potsdam fit12/Val2=3_11、5_10、native512/stride256、NoBoundary fg5主/Full诊断、seed42；两Val tile反复开发，不宣称独立泛化/显著性。N5/N2/C旧配方去留保持，R1/N4/R2不自动激活。
+仅物理GPU0，physical_gpus=[0]、CUDA_VISIBLE_DEVICES=0、单worker FIFO，所有诊断/训练/推理/恢复均不得使用GPU1。nohup、全部记录/快照/cache/temporary/上传worktree在zzx对应新目录；用户终端执行，无SSH，无Test6/独立final/held4、追加seed或失败配方自动重跑。旧双卡入口不适用于本轮。
 
-用户2026-10-08最新指令：本轮只能物理GPU0，覆盖诊断、测试、推理、训练及恢复，physical_gpus=[0]、CUDA_VISIBLE_DEVICES=0，单worker串行；GPU1不得使用。旧记录中的GPU0/1仅为历史。服务器由用户终端执行，无SSH；nohup，全部记录/快照/缓存/临时文件在zzx对应新实验目录。无Test6/independent final/held4、失败配方重跑、追加seed或重复资源审计。
+本次工程检查范围为合成CPU数据/专家/模拟进程、真实入口导入/help与汇总流程，真实backbone/权重/GPU尚未检查。前置[已验收结果](../experiments/POST_N3_S1_RESULTS_20261008.md)的原件范围/限制保持，不因执行包就绪增加完成实验数。

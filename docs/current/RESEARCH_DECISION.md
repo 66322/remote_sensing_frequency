@@ -4,7 +4,7 @@
 
 研究阶段仍为可行性探索，主线RGB–DSM条件互补与退化/缺失分割，恢复旁支。Potsdam fit12/Val2=3_11、5_10、native512/stride256、NoBoundary fg5主/Full诊断、seed42；两Val tile反复开发，不宣称独立泛化/显著性。N5/N2/C旧配方去留保持，R1/N4/R2不自动激活。
 
-新[Post-S1单卡规划](../protocols/POST_S1_SUPPORT_GPU0_PLAN_20261008.md)为PLANNED_NOT_IMPLEMENTED_NOT_REGISTERED：D0复用预测＋D1权重/策略诊断→P十组（2×2×2配对＋2机制控制）→E六压力条件；Q四组仅条件储备。约33—57h首轮单卡预算，首个隔离/共享作业后校准，无科学总时间上限。新代码、可运行入口、队列和PID均未建立，不能运行旧双卡enqueue。
+新[Post-S1单卡规划](../protocols/POST_S1_SUPPORT_GPU0_PLAN_20261008.md)已获用户“按上述规划进行”授权，[执行协议](../protocols/POST_S1_SUPPORT_EXECUTION_20261008.md)和独立单卡包CPU检查通过，READY_NOT_REGISTERED：D0复用预测＋D1权重/策略诊断→P十组（2×2×2配对＋2机制控制）→E六压力条件；Q四组仅条件储备。约33—57h首轮单卡预算，首个隔离/共享作业后校准，无科学总时间上限。新代码/单卡入口已建立，服务器队列和新PID尚未回报；Q仅条件储备，不运行旧双卡enqueue。
 
 P十组统一旧S1-0 selected8000完整state、新8000步、seed42、原数据/增强/损失、固定8000主比较（4000仅诊断），共80000新更新。比较共享/冻结基座、掩码/保留上下文、全域/局部修正；P7固定为冻结基座＋保留上下文＋局部修正，P8支持分层空间打乱、P9仅logit/mask校准。D0同时建立零训练双模型拼接R0。冻结局部保护是构造属性，贡献必须超越P6/P8/P9/R0并通过未参与训练的六合成压力条件；具体门槛见规划。
 

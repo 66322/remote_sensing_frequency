@@ -7,7 +7,7 @@
 - Verification Status: UNVERIFIED（新方案仅规划；前置N3/S1结果已独立验收）
 - Version Label: post_s1_gpu0_plan_v1
 - 用户请求：根据现有结果规划下一轮，时间不设总上限、起步一天；本轮只用物理GPU0。
-- 状态：PLANNED_NOT_IMPLEMENTED_NOT_REGISTERED。本次没有改旧执行快照、启动GPU或建立可运行预约。
+- 状态：执行包已按用户授权实现并通过CPU检查，READY_NOT_REGISTERED；见[冻结执行协议](POST_S1_SUPPORT_EXECUTION_20261008.md)。尚无新的服务器登记/运行回报。本文件保留规划口径，真实GPU证据待收。
 
 ## 1. 决定、现有证据与新问题
 [已验收N3/S1结果](../experiments/POST_N3_S1_RESULTS_20261008.md)：N3固定区域增量不足，停止该配方。S1-3的RGB局部U收益+4.102047pp，对两个单因素仍+4.098627/+2.916980pp；DSM−0.023201pp且tile异号，aux_shift8/3_11−0.391546pp越过−0.2保护线。旧gate维持False，不将单向收益自动升级双向主线。
@@ -109,6 +109,6 @@ P7通过U不等于同时缺失＋DSM退化可靠：E六条件均需相对S1-0池
 潜在贡献只能由“条件上下文超过mask/logit基线、局部隔离跨压力仍可靠、可观测成本合理”共同支持。文献只提供设计依据，不证明本方案有效。
 
 ## 9. 工程执行与交接
-本次是规划，尚无入口命令/新PID。后续实现必须把physical_gpus写成[0]，CUDA_VISIBLE_DEVICES=0；程序内部cuda:0对应物理0，拒绝--gpu1/双lane或自动分配空闲GPU1。不能直接运行旧N3/S1双卡enqueue。登记前仅核原队列状态/拥有锁/设备绑定，避免重复启动；无需重复资源审计。
+本方案已落实[独立执行包](POST_S1_SUPPORT_EXECUTION_20261008.md)，入口enqueue_post_s1_support.py，尚无新PID或服务器登记回报。执行包把physical_gpus写成[0]，CUDA_VISIBLE_DEVICES=0；程序内部cuda:0对应物理0，拒绝--gpu1/双lane或自动分配空闲GPU1。不能直接运行旧N3/S1双卡enqueue。登记前仅核原队列状态/拥有锁/设备绑定，避免重复启动；无需重复资源审计。
 新目录建议/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_<timestamp>_<pid>，源码快照、临时文件、缓存、日志、mask、预测、权重、轻量记录全在对应目录，nohup。CPU检查覆盖原图复用、冻结梯度与参数不变、native mask支持/跨窗一致性、全缺失守卫、零暴露batch、单卡FIFO、汇总退出和幂等登记。工程超时须正有限值（建议每job24h，不能null），无科学总时限；故障停止后续派发，不自动重试，既有worker先查再接管。
 独立验收、阶段问题和停止原因继续同步同GitHub分支并回读；只记录最后服务器观测，不把本次规划时间写成新运行态。

@@ -1,13 +1,13 @@
 {
   "schema": "research_planning_only_v1",
-  "status": "PLANNED_NOT_IMPLEMENTED_NOT_REGISTERED",
+  "status": "EXECUTION_PACKAGE_READY_NOT_REGISTERED",
   "date": "2026-10-08",
   "protocol": "docs/protocols/POST_S1_SUPPORT_GPU0_PLAN_20261008.md",
   "physical_gpus": [
     0
   ],
   "max_gpu_workers": 1,
-  "training_authorized_by_this_request": false,
+  "training_authorized_by_this_request": true,
   "seed": 42,
   "core_training_jobs": 10,
   "new_steps_each": 8000,
@@ -40,9 +40,10 @@
     33,
     57
   ],
-  "new_executable_entry": null,
+  "new_executable_entry": "scripts/enqueue_post_s1_support.py",
   "server_pid": null,
   "latest_server_query": "2026-10-08T22:11:10.555448+08:00",
   "test_release": false,
-  "new_training_seeds": false
+  "new_training_seeds": false,
+  "execution_protocol": "docs/protocols/POST_S1_SUPPORT_EXECUTION_20261008.md"
 }
