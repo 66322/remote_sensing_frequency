@@ -1,13 +1,15 @@
-# 项目状态：Post-S1执行包CPU通过，服务器待登记
+# 项目状态：Post-S1执行包CPU通过，登记已回报，进度待查询
 
-最后服务器查询仍为2026-10-08T22:11:10.555448+08:00；原queue最后观测06:37:48.607436，N3_S1_COMPLETE_AWAITING_REVIEW，九组COMPLETE/8000，查询时controller/worker LIVE=False。本次没有新的服务器登记、PID或GPU进度回报。
+最新服务器登记回报（用户终端，2026-10-08）：SUPPORT_QUEUE_REGISTERED，目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161，controller PID1890742，GPU=0 ONLY，TRAINING_JOBS=10、NEW_STEPS=80000、Q_RESERVED_NOT_RUNNABLE=4；日志nohup_20261008T234938791083.log。目录23:49:21及日志23:49:38.791083为命名时间标记，不是queue observed_at。当前REGISTERED_PROGRESS_NOT_YET_QUERIED，尚无controller/worker存活、D0/D1进度、CUDA首步或完成回报，不能写为训练已确认。
 
-用户已授权按GPU0[规划](../protocols/POST_S1_SUPPORT_GPU0_PLAN_20261008.md)实施。[冻结执行包](../protocols/POST_S1_SUPPORT_EXECUTION_20261008.md)已实现，READY_NOT_REGISTERED：D0复用/拼接→D1四权重四策略→P十组→E六条件→独立汇总。P7固定候选、S1-0基座SHA、新8000×10/seed42、fixed8000主比较、原科学门槛保持。CPU合成检查22项及12Python语法通过；没有真实服务器权重/backbone/GPU复跑，服务器登记前再跑同包检查。
+原队列登记前检查回报：最后观测2026-10-08T06:37:48.607436+08:00，COMPLETE RELEASED。登记前CPU检查成功返回由执行入口链推断，服务器cpu_checks.log尚未单独接收；本地22项/12Python语法检查保持其合成CPU范围。
+
+用户已授权按GPU0[规划](../protocols/POST_S1_SUPPORT_GPU0_PLAN_20261008.md)实施。[冻结执行包](../protocols/POST_S1_SUPPORT_EXECUTION_20261008.md)已实现，REGISTERED_PROGRESS_NOT_YET_QUERIED：D0复用/拼接→D1四权重四策略→P十组→E六条件→独立汇总。P7固定候选、S1-0基座SHA、新8000×10/seed42、fixed8000主比较、原科学门槛保持。CPU合成检查22项及12Python语法通过；没有真实服务器权重/backbone/GPU复跑，登记前同包CPU检查已成功返回（执行链推断，原log待收）。
 
 |阶段|状态|预算/边界|
 |---|---|---|
 |旧N3五组/S1四组|完成并独立验收|原gateFalse，报告见N3/S1结果|
-|D0|实现、服务器待执行|CPU复用，0更新|
+|D0|实现、已登记，进度待查询|CPU复用，0更新|
 |D1|实现、服务器待执行|48新tile推理，0更新|
 |P0—P9|实现、服务器待执行|10×8000更新，GPU0 FIFO|
 |E|实现、服务器待执行|6条件×12模型×2tile，0更新|

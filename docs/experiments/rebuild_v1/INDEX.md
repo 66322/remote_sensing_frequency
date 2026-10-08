@@ -270,3 +270,11 @@ N3-4 S对局部−0.000078pp/网格+0.001937pp，增量门槛失败；S1-3 RGB U
 用户授权按规划实施，[冻结协议](../../protocols/POST_S1_SUPPORT_EXECUTION_20261008.md)及model/worker/D0/D1/E/controller/status/summary/upload入口已实现，CPU22项和12Python语法通过，覆盖基座/冻结/原CE等价/空间打乱/native跨窗/单卡FIFO失败超时/原计数与完整汇总。合成CPU检查，非真实backbone/权重/GPU科学结果；服务器登记前同包再验。
 
 READY_NOT_REGISTERED，无新服务器PID/目录/进度，不增加已完成数。只GPU0，十组新8000/seed42/固定S1-0、fixed8000主比较；D1 48新tile、E144新tile，Q仅条件储备不自动派发。入口幂等核原队列与锁，nohup，zzx新目录，故障停止后继无重试。旧N3/S1 gate和主线角色保持。[就绪记录](../../../records/post_s1_support_execution_design_20261008/validation.json)。
+
+## 2026-10-08 23:49：Post-S1 GPU0队列服务器登记回报
+
+最新服务器登记回报（用户终端，2026-10-08）：SUPPORT_QUEUE_REGISTERED，目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161，controller PID1890742，GPU=0 ONLY，TRAINING_JOBS=10、NEW_STEPS=80000、Q_RESERVED_NOT_RUNNABLE=4；日志nohup_20261008T234938791083.log。目录23:49:21及日志23:49:38.791083为命名时间标记，不是queue observed_at。当前REGISTERED_PROGRESS_NOT_YET_QUERIED，尚无controller/worker存活、D0/D1进度、CUDA首步或完成回报，不能写为训练已确认。
+
+原队列登记前检查回报：最后观测2026-10-08T06:37:48.607436+08:00，COMPLETE RELEASED。登记前CPU检查成功返回由执行入口链推断，服务器cpu_checks.log尚未单独接收；本地22项/12Python语法检查保持其合成CPU范围。
+
+执行2c5e7d6f383cfe454415d4e106179930264f1141保持；D0→D1→P十组→E已登记，Q四组仅不可运行储备。只GPU0、nohup、zzx对应目录，无新增科学完成数。下一步只读既有队列，不重复enqueue，不从PID或显卡占用推断方法有效。[登记摘录](../../../records/research_post_s1_support_20261008T234921_1890161/registration_observation.json)。
