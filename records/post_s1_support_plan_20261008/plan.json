@@ -1,0 +1,48 @@
+{
+  "schema": "research_planning_only_v1",
+  "status": "PLANNED_NOT_IMPLEMENTED_NOT_REGISTERED",
+  "date": "2026-10-08",
+  "protocol": "docs/protocols/POST_S1_SUPPORT_GPU0_PLAN_20261008.md",
+  "physical_gpus": [
+    0
+  ],
+  "max_gpu_workers": 1,
+  "training_authorized_by_this_request": false,
+  "seed": 42,
+  "core_training_jobs": 10,
+  "new_steps_each": 8000,
+  "core_new_steps": 80000,
+  "primary_checkpoint_step": 8000,
+  "diagnostic_checkpoint_step": 4000,
+  "base": {
+    "job": "S1-0",
+    "run": "research_post_n3_s1_20261007T083203_694293",
+    "sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f"
+  },
+  "candidate": "P7",
+  "proposed_order": [
+    "P6",
+    "P7",
+    "P8",
+    "P9",
+    "P4",
+    "P5",
+    "P2",
+    "P3",
+    "P0",
+    "P1"
+  ],
+  "D1_new_tile_inference_max": 48,
+  "E_new_tile_inference": 144,
+  "conditional_Q_jobs": 4,
+  "conditional_Q_auto_start": false,
+  "core_wall_hours_estimate": [
+    33,
+    57
+  ],
+  "new_executable_entry": null,
+  "server_pid": null,
+  "latest_server_query": "2026-10-08T22:11:10.555448+08:00",
+  "test_release": false,
+  "new_training_seeds": false
+}

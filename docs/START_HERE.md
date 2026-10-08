@@ -1,11 +1,11 @@
-# 共享入口：N3/S1九组完成并独立验收
+# 共享入口：N3/S1已验收，下一轮仅GPU0
 
 按[研究决定](current/RESEARCH_DECISION.md)→[HANDOFF](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)→[索引](experiments/rebuild_v1/INDEX.md)读取。GitHub 66322/remote_sensing_frequency / rebuild-v1-protocol-20260915为共享权威。
 
-最后服务器查询2026-10-08T22:11:10.555448+08:00，queue完成06:37:48.607436，九组COMPLETE/8000，controller/worker LIVE=False。约22h05m32s粗墙钟，正常结束。
+最后服务器查询（用户终端）：2026-10-08T22:11:10.555448+08:00；queue最后观测2026-10-08T06:37:48.607436+08:00，N3_S1_COMPLETE_AWAITING_REVIEW。九组全部COMPLETE/8000，查询时controller/worker LIVE=False。本次只做规划，没有新的服务器运行观测。
 
-原件38d2055已收到，[独立验收报告](experiments/POST_N3_S1_RESULTS_20261008.md)：1508载荷+manifest、79JSON+manifest回读、227556矩阵/22140joint原计数与池化、1044case/9396预测索引绑定、12科学源/协议与执行提交一致。范围不包括全部原件或服务器数组/权重/mask本体重新求SHA/GPU复跑。
+[已验收结果](experiments/POST_N3_S1_RESULTS_20261008.md)：N3当前区域配方增量不足；S1-3 RGB局部U +4.102pp，但DSM无稳定收益、aux_shift8/3_11 −0.392pp违反保护。旧gate不改判，单向线索不自动升级双向贡献。验收范围及限制见结果报告。
 
-N3区域配方相对控制几乎持平，关闭当前增量承诺。S1联合策略RGB U +4.102pp，但DSM无稳定收益，aux_shift8/3_11 −0.392pp违反原−0.2pp保护线；两固定gate维持False。S1是有单向收益与退化代价的线索，不能概括完全无效果或自动升级双向贡献。
+[下一轮规划](protocols/POST_S1_SUPPORT_GPU0_PLAN_20261008.md)：D0/D1零训练诊断→10组缺失支持×参数隔离配对训练→6条件压力评价，首轮约33—57h；DSM镜像4组仅条件储备。方案未实现、未登记、未启动，不增加已完成实验数。主线仍RGB–DSM条件互补与退化/缺失分割，恢复旁支。
 
-下一建议复用预测分析S1收益/伤害位置与可靠性边界，尚未实现或登记。无新训练/seed/失败配方救gate。主线RGB–DSM条件互补与退化/缺失分割，恢复旁支，可行性探索；旧N5/N2/C去留保持，R1/N4/R2不激活。仅GPU0/1、zzx对应目录、用户终端无SSH，无Test6/independent final/held4或重复资源审计。
+用户2026-10-08最新指令：本轮只能物理GPU0，覆盖诊断、测试、推理、训练及恢复，physical_gpus=[0]、CUDA_VISIBLE_DEVICES=0，单worker串行；GPU1不得使用。旧记录中的GPU0/1仅为历史。服务器由用户终端执行，无SSH；nohup，全部记录/快照/缓存/临时文件在zzx对应新实验目录。无Test6/independent final/held4、失败配方重跑、追加seed或重复资源审计。
