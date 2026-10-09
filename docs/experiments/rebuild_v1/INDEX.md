@@ -300,3 +300,10 @@ CPU/D1完成且七worker已完整返回，其余P3评价→P0/P1→E继续自动
 ## 2026-10-09 21:31：用户授权先上传完整作业快照并分析
 
 CPU/D1与七P完整，P3在fixed8000评价3_11/aux_down4，controller LIVE，P0/P1/E待运行。[独立上传入口](../../protocols/POST_S1_COMPLETED_SNAPSHOT_ANALYSIS_20261009.md)只冻结COMPLETE名单与D0/R0/基线轻量原件，6项stdlib检查通过，不改科学快照/不暂停训练。当前未收到上传commit/精度数据，待用户终端执行后离线复算；未齐E/共享八格不得判最终gate或双向贡献。记录见records/research_post_s1_support_20261008T234921_1890161/user_reported_progress_20261009T213111.json。
+
+
+## 2026-10-09：七P完整快照已接收并独立分析
+
+原件77d3970f，快照21:43:00、queue最后观测21:42:23，D1/P6/P7/P8/P9/P4/P5/P2完整，P3 RUNNING、P0/P1/E PENDING。[阶段结果](../POST_S1_PARTIAL_RESULTS_20261009.md)，[独立审计](../../../records/post_s1_partial_offline_audit_20261009/README.md)。1474路径/大小、145次JSON读取（3重读）、203292矩阵/22176joint、1032case/8328预测索引、12科学源执行回读通过；非全载荷/数组本体重hash或GPU复跑。
+
+P7 RGB_U 83.575357%，对基线+2.562756、P6+1.759726、P8+1.952962、P9+2.207993pp，两tile正；普通/全缺失/DSM_U保护0变化。R0 85.001650%，P7−R0 −1.426292pp（两tile负）违反固定−0.2pp必要条件。P7具体gate失败；E未收，完整压力未验。D1固定DSM信号−0.050601pp且tile异号，Q必要条件失败、仍不运行。保留单向上下文线索，主线/旧gate不变；剩余三P/E继续原GPU0 FIFO，不能后验换候选/追加seed。此前“尚无科学原件”条目是历史状态。
