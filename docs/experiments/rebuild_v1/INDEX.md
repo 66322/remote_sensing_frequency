@@ -2,11 +2,11 @@
 
 本索引列实验事实，不决定论文主线。路线角色与去留原则见[研究决策说明](../../current/RESEARCH_DECISION.md)，执行待办见[下一步](../../current/NEXT_EXPERIMENT.md)。C1是旁支候选；已关闭方案保持原门槛。
 
-## 2026-10-10 GPU0后继计划
+## 2026-10-10 GPU0后继已注册
 
 |实验|状态|问题与边界|证据|
 |---|---|---|---|
-|Post-S1私有解码器移植T0—T9|协议/代码/CPU检查完成，待服务器注册；注册后等前序技术完成自动接续|五种初始化×两种上下文支持，10×新8000，固定T7；检验共享冻结特征能否接近R0。原P7失败保持，Q不运行；Val2开发结果尚未产生|[协议](../../protocols/POST_S1_TRANSFER_GPU0_20261009.md)、[验证](../../../records/post_s1_transfer_validation_20261010/README.md)|
+|Post-S1私有解码器移植T0—T9|用户服务器已注册（10月10日07:33前序RUNNING_E，WAITING_PREDECESSOR）；待原阶段释放自动接续|五种初始化×两种上下文支持，10×新8000，固定T7；检验共享冻结特征能否接近R0。原P7失败保持，Q不运行；Val2开发结果尚未产生|[协议](../../protocols/POST_S1_TRANSFER_GPU0_20261009.md)、[验证](../../../records/post_s1_transfer_validation_20261010/README.md)|
 
 ## 2026-10-04近期补全
 
@@ -313,3 +313,5 @@ CPU/D1与七P完整，P3在fixed8000评价3_11/aux_down4，controller LIVE，P0/
 原件77d3970f，快照21:43:00、queue最后观测21:42:23，D1/P6/P7/P8/P9/P4/P5/P2完整，P3 RUNNING、P0/P1/E PENDING。[阶段结果](../POST_S1_PARTIAL_RESULTS_20261009.md)，[独立审计](../../../records/post_s1_partial_offline_audit_20261009/README.md)。1474路径/大小、145次JSON读取（3重读）、203292矩阵/22176joint、1032case/8328预测索引、12科学源执行回读通过；非全载荷/数组本体重hash或GPU复跑。
 
 P7 RGB_U 83.575357%，对基线+2.562756、P6+1.759726、P8+1.952962、P9+2.207993pp，两tile正；普通/全缺失/DSM_U保护0变化。R0 85.001650%，P7−R0 −1.426292pp（两tile负）违反固定−0.2pp必要条件。P7具体gate失败；E未收，完整压力未验。D1固定DSM信号−0.050601pp且tile异号，Q必要条件失败、仍不运行。保留单向上下文线索，主线/旧gate不变；剩余三P/E继续原GPU0 FIFO，不能后验换候选/追加seed。此前“尚无科学原件”条目是历史状态。
+
+最新注册依据：[终端回报](../../../records/post_s1_transfer_registration_20261010/observation.json)；执行目录research_post_s1_transfer_20261010T073327_2852696，PID2852987，未收到后续存活或T0训练回报。
