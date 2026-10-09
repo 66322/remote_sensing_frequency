@@ -286,3 +286,13 @@ READY_NOT_REGISTERED，无新服务器PID/目录/进度，不增加已完成数�
 既有登记保持：执行2c5e7d6f383cfe454415d4e106179930264f1141，目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161，nohup_20261008T234938791083.log，GPU0 ONLY，10训练/80000新步；Q四组不可运行储备。登记前CPU检查成功返回由入口执行链推断，服务器检查日志未单收。
 
 此前登记/进度待查询条目为带时间历史。0/10新训练完成、0个GPU作业启动回报；不更新科学gate或独立验收范围。继续已有nohup队列，按需同一status只读检查，不重新enqueue、不自动追加Q/GPU1/seed。[用户只读回报](../../../records/research_post_s1_support_20261008T234921_1890161/user_reported_d0_progress_20261008T235314.json)。
+
+## 2026-10-09 21:25：Post-S1 GPU0运行P3，七训练作业完整结束
+
+最后服务器只读查询（用户终端）：QUERY_OBSERVED=2026-10-09T21:25:10.899578+08:00；queue LAST_OBSERVED=21:25:10.879724，RUNNING_P3，controller PID1890742 LIVE=True，仅GPU0。CPU=COMPLETE、D1 COMPLETE（0更新，约43分01秒）；P6/P7/P8/P9/P4/P5/P2七组COMPLETE/8000，worker LIVE=False。P3 PID2437737 LIVE=True、8000/8000，checkpoint_selection阶段，正在3_11/dsm_missing的验证/评价；该标签继承旧进度命名，本轮主比较仍固定8000。P0/P1和E PENDING；Q=RESERVED_NOT_AUTOMATIC。没有本次故障回报，尚无科学分数/屏幕门槛/轻量原件验收，不能用loss或完成状态判有效。
+
+截至21:25的条件估时：还需约10—14h，参照约2026-10-10 07:25—11:25（Asia/Shanghai），非保证。六冻结完整worker实测约1h56m—2h31m，P2共享更新完整worker3h57m53s；P3已训练完但完整评价剩余未测，另两共享组预计各约4h，E仍按1.5—4h规划及汇总开销估算。不是只用remaining_train_hours=0推断整队已完，也不含Q四组。
+
+执行2c5e7d6f383cfe454415d4e106179930264f1141、目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161、controller1890742、nohup_20261008T234938791083.log保持，不重复enqueue或重启旧队列。十P各new8000/seed42/固定S1-0 state、fixed8000主比较，P7为事前指定候选；本次只是带时间进度，不更改科学协议或去留。
+
+CPU/D1完成且七worker已完整返回，其余P3评价→P0/P1→E继续自动串行。科学原计数/门槛未收到，不从loss宣称P7有效或增论文验证数。[用户终端进度](../../../records/research_post_s1_support_20261008T234921_1890161/user_reported_progress_20261009T212510.json)。此前CPU准备/待首步条目为历史观测。

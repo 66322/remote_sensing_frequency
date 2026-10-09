@@ -1,24 +1,24 @@
-# 项目状态：Post-S1执行包CPU通过，登记已回报，CPU准备已确认
+# 项目状态：Post-S1 7/10完整作业完成，GPU0评价P3
 
-最后服务器只读查询（用户终端）：QUERY_OBSERVED=2026-10-08T23:53:14.323317+08:00，queue LAST_OBSERVED=2026-10-08T23:49:50.130388+08:00，PREPARING_D0_MASKS，controller PID1890742 LIVE=True；CPU=RUNNING。CPU_PROGRESS在23:51:48.651736报告D0 / 3_11 / rgb_U。D1、P6/P7/P8/P9/P4/P5/P2/P3/P0/P1、E十二项全部PENDING、PID−1、LIVE=False，无CUDA首步或科学结果。Q=RESERVED_NOT_AUTOMATIC。当前显卡空闲符合CPU准备阶段，未见本次错误回报；不能据此宣布D0完成或训练已开始。
+最后服务器只读查询（用户终端）：QUERY_OBSERVED=2026-10-09T21:25:10.899578+08:00；queue LAST_OBSERVED=21:25:10.879724，RUNNING_P3，controller PID1890742 LIVE=True，仅GPU0。CPU=COMPLETE、D1 COMPLETE（0更新，约43分01秒）；P6/P7/P8/P9/P4/P5/P2七组COMPLETE/8000，worker LIVE=False。P3 PID2437737 LIVE=True、8000/8000，checkpoint_selection阶段，正在3_11/dsm_missing的验证/评价；该标签继承旧进度命名，本轮主比较仍固定8000。P0/P1和E PENDING；Q=RESERVED_NOT_AUTOMATIC。没有本次故障回报，尚无科学分数/屏幕门槛/轻量原件验收，不能用loss或完成状态判有效。
 
-既有登记保持：执行2c5e7d6f383cfe454415d4e106179930264f1141，目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161，nohup_20261008T234938791083.log，GPU0 ONLY，10训练/80000新步；Q四组不可运行储备。登记前CPU检查成功返回由入口执行链推断，服务器检查日志未单收。
-
-原队列登记前检查回报：最后观测2026-10-08T06:37:48.607436+08:00，COMPLETE RELEASED。登记前CPU检查成功返回由执行入口链推断，服务器cpu_checks.log尚未单独接收；本地22项/12Python语法检查保持其合成CPU范围。
-
-用户已授权按GPU0[规划](../protocols/POST_S1_SUPPORT_GPU0_PLAN_20261008.md)实施。[冻结执行包](../protocols/POST_S1_SUPPORT_EXECUTION_20261008.md)已实现，PREPARING_D0_MASKS：D0复用/拼接→D1四权重四策略→P十组→E六条件→独立汇总。P7固定候选、S1-0基座SHA、新8000×10/seed42、fixed8000主比较、原科学门槛保持。CPU合成检查22项及12Python语法通过；没有真实服务器权重/backbone/GPU复跑，登记前同包CPU检查已成功返回（执行链推断，原log待收）。
-
-|阶段|状态|预算/边界|
+|阶段|最后观测状态|证据边界|
 |---|---|---|
-|旧N3五组/S1四组|完成并独立验收|原gateFalse，报告见N3/S1结果|
-|D0|CPU运行已确认|CPU复用，0更新|
-|D1|已登记PENDING，未启动|48新tile推理，0更新|
-|P0—P9|已登记PENDING，未启动|10×8000更新，GPU0 FIFO|
-|E|已登记PENDING，未启动|6条件×12模型×2tile，0更新|
-|Q镜像DSM|条件储备、无可运行协议|最多4组，资格不自动启动|
+|D0|CPU COMPLETE|准备进度00:18:11；完成由queue/后继派发确认|
+|D1|COMPLETE，0更新|01:10:07完成，约43m；指标与gate未接收|
+|P6/P7/P8/P9/P4/P5|COMPLETE/8000|冻结六组完整约1h56m—2h31m|
+|P2|COMPLETE/8000|共享更新，完整3h57m53s|
+|P3|RUNNING，8000步checkpoint_selection|worker LIVE；验证/评价尚未完成|
+|P0/P1|PENDING|未启动|
+|E|PENDING|六压力条件/144 tile推理未启动|
+|Q|RESERVED_NOT_AUTOMATIC|四镜像DSM储备不自动运行|
 
-可行性探索，主线仍RGB–DSM条件互补与退化/缺失分割，任务恢复旁支。N3当前区域增量不足，S1 RGB局部+4.102047pp但aux_shift8/3_11−0.391546pp保护失败，旧gate维持False；本轮研究缺失支持与参数隔离，不自动升级单向收益为双向贡献。N5/N2/C旧去留保持，R1/N4/R2不激活。
+截至21:25的条件估时：还需约10—14h，参照约2026-10-10 07:25—11:25（Asia/Shanghai），非保证。六冻结完整worker实测约1h56m—2h31m，P2共享更新完整worker3h57m53s；P3已训练完但完整评价剩余未测，另两共享组预计各约4h，E仍按1.5—4h规划及汇总开销估算。不是只用remaining_train_hours=0推断整队已完，也不含Q四组。
 
-仅物理GPU0，physical_gpus=[0]、CUDA_VISIBLE_DEVICES=0、单worker FIFO，所有诊断/训练/推理/恢复均不得使用GPU1。nohup、全部记录/快照/cache/temporary/上传worktree在zzx对应新目录；用户终端执行，无SSH，无Test6/独立final/held4、追加seed或失败配方自动重跑。旧双卡入口不适用于本轮。
+执行2c5e7d6f383cfe454415d4e106179930264f1141、目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161、controller1890742、nohup_20261008T234938791083.log保持，不重复enqueue或重启旧队列。十P各new8000/seed42/固定S1-0 state、fixed8000主比较，P7为事前指定候选；本次只是带时间进度，不更改科学协议或去留。
 
-本次工程检查范围为合成CPU数据/专家/模拟进程、真实入口导入/help与汇总流程，真实backbone/权重/GPU尚未检查。前置[已验收结果](../experiments/POST_N3_S1_RESULTS_20261008.md)的原件范围/限制保持，不因执行包就绪增加完成实验数。
+可行性探索；主线仍RGB–DSM条件互补与退化/缺失分割，任务恢复旁支，参数隔离与局部支持是本轮待验证交叉问题。旧N3区域配方关闭；S1 RGB局部U+4.102047pp但aux_shift8/3_11−0.391546pp保护失败，旧gate=False，不升级单向线索为双向贡献。N5/N2/C旧去留保持，R1/N4/R2不自动激活。
+
+本轮所有训练/推理/恢复只用物理GPU0，CUDA_VISIBLE_DEVICES=0、单worker FIFO。nohup，源码/temporary/cache/记录/预测/权重/轻量上传在zzx对应目录；服务器用户终端执行，无SSH，无GPU1/Test6/independent final/held4/追加seed、失败自动重试或重复资源审计。
+
+本批7完成仅为用户终端技术状态，尚无轻量原计数上传/独立验收，不能增加论文确认性结论。前置[九组结果](../experiments/POST_N3_S1_RESULTS_20261008.md)的验收范围不变。
