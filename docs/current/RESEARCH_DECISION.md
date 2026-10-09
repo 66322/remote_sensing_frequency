@@ -14,8 +14,14 @@ P十组统一旧S1-0 selected8000完整state、新8000步、seed42、原数据/�
 
 用户2026-10-08最新指令：本轮只能物理GPU0，覆盖诊断、测试、推理、训练及恢复，physical_gpus=[0]、CUDA_VISIBLE_DEVICES=0，单worker串行；GPU1不得使用。旧记录中的GPU0/1仅为历史。服务器由用户终端执行，无SSH；nohup，全部记录/快照/缓存/临时文件在zzx对应新实验目录。无Test6/independent final/held4、失败配方重跑、追加seed或重复资源审计。
 
-最后服务器只读查询（用户终端）：QUERY_OBSERVED=2026-10-09T21:25:10.899578+08:00；queue LAST_OBSERVED=21:25:10.879724，RUNNING_P3，controller PID1890742 LIVE=True，仅GPU0。CPU=COMPLETE、D1 COMPLETE（0更新，约43分01秒）；P6/P7/P8/P9/P4/P5/P2七组COMPLETE/8000，worker LIVE=False。P3 PID2437737 LIVE=True、8000/8000，checkpoint_selection阶段，正在3_11/dsm_missing的验证/评价；该标签继承旧进度命名，本轮主比较仍固定8000。P0/P1和E PENDING；Q=RESERVED_NOT_AUTOMATIC。没有本次故障回报，尚无科学分数/屏幕门槛/轻量原件验收，不能用loss或完成状态判有效。
+最后服务器只读查询（用户终端）：QUERY_OBSERVED=2026-10-09T21:31:11.112511+08:00；queue LAST_OBSERVED=21:31:07.216349，RUNNING_P3，controller PID1890742 LIVE=True，仅GPU0。CPU=COMPLETE、D1 COMPLETE（0更新，约43分01秒）；P6/P7/P8/P9/P4/P5/P2七组COMPLETE/8000，worker LIVE=False。P3 PID2437737 LIVE=True、8000/8000，fixed8000阶段，正在3_11/aux_down4评价，本轮主比较仍固定8000。P0/P1和E PENDING；Q=RESERVED_NOT_AUTOMATIC。没有本次故障回报，尚无科学分数/屏幕门槛/轻量原件验收，不能用loss或完成状态判有效。
 
 截至21:25的条件估时：还需约10—14h，参照约2026-10-10 07:25—11:25（Asia/Shanghai），非保证。六冻结完整worker实测约1h56m—2h31m，P2共享更新完整worker3h57m53s；P3已训练完但完整评价剩余未测，另两共享组预计各约4h，E仍按1.5—4h规划及汇总开销估算。不是只用remaining_train_hours=0推断整队已完，也不含Q四组。
 
 继续已有队列，只读同目录code/scripts/status_post_s1_support.py和nohup日志；下一步P3完整验收→P0→P1→E→独立汇总。到SUPPORT_COMPLETE_AWAITING_REVIEW后，用code/scripts/upload_post_s1_support_records.py --root ROOT --directory DIR显式上传轻量原件，再独立复算D1/U、八格因素、P8/P9/R0、保护底线与E。完成/失败都保留原目录，不重启已完成P。Q只有D1固定DSM信号及P7/U/E均过才标资格，还需冻结方向协议，不自动训练。
+
+## 2026-10-09：用户授权运行中完整记录快照并分析
+
+最新查询21:31:11（queue21:31:07）RUNNING_P3、controller LIVE，七P完整，P3在8000步fixed8000评价3_11/aux_down4；P0/P1/E未启动。用户要求先上传并分析已完成作业。[完整作业快照入口及分析口径](../protocols/POST_S1_COMPLETED_SNAPSHOT_ANALYSIS_20261009.md)已实现，6项stdlib回归/help通过；原科学快照不改，队列继续，尚无上传提交或精度原件回报。下一步用户从本次发布commit提取scripts/upload_post_s1_completed_records.py到本实验zzx目录下独立bootstrap并运行，返回COMPLETED_GITHUB_COMMIT后离线复算。
+
+先分析D0/D1、P7对S1-0/P6/P8/P9/R0与保护，未齐共享八格/E不能判全族/最终gate通过；P3只有完整complete后才纳入，不按8000步直接上传。工具冻结COMPLETE名单、跳过RUNNING目录，独立上传worktree，不暂停/重启/启GPU。只GPU0，Q仍储备。

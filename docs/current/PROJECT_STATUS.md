@@ -1,6 +1,6 @@
 # 项目状态：Post-S1 7/10完整作业完成，GPU0评价P3
 
-最后服务器只读查询（用户终端）：QUERY_OBSERVED=2026-10-09T21:25:10.899578+08:00；queue LAST_OBSERVED=21:25:10.879724，RUNNING_P3，controller PID1890742 LIVE=True，仅GPU0。CPU=COMPLETE、D1 COMPLETE（0更新，约43分01秒）；P6/P7/P8/P9/P4/P5/P2七组COMPLETE/8000，worker LIVE=False。P3 PID2437737 LIVE=True、8000/8000，checkpoint_selection阶段，正在3_11/dsm_missing的验证/评价；该标签继承旧进度命名，本轮主比较仍固定8000。P0/P1和E PENDING；Q=RESERVED_NOT_AUTOMATIC。没有本次故障回报，尚无科学分数/屏幕门槛/轻量原件验收，不能用loss或完成状态判有效。
+最后服务器只读查询（用户终端）：QUERY_OBSERVED=2026-10-09T21:31:11.112511+08:00；queue LAST_OBSERVED=21:31:07.216349，RUNNING_P3，controller PID1890742 LIVE=True，仅GPU0。CPU=COMPLETE、D1 COMPLETE（0更新，约43分01秒）；P6/P7/P8/P9/P4/P5/P2七组COMPLETE/8000，worker LIVE=False。P3 PID2437737 LIVE=True、8000/8000，fixed8000阶段，正在3_11/aux_down4评价，本轮主比较仍固定8000。P0/P1和E PENDING；Q=RESERVED_NOT_AUTOMATIC。没有本次故障回报，尚无科学分数/屏幕门槛/轻量原件验收，不能用loss或完成状态判有效。
 
 |阶段|最后观测状态|证据边界|
 |---|---|---|
@@ -8,7 +8,7 @@
 |D1|COMPLETE，0更新|01:10:07完成，约43m；指标与gate未接收|
 |P6/P7/P8/P9/P4/P5|COMPLETE/8000|冻结六组完整约1h56m—2h31m|
 |P2|COMPLETE/8000|共享更新，完整3h57m53s|
-|P3|RUNNING，8000步checkpoint_selection|worker LIVE；验证/评价尚未完成|
+|P3|RUNNING，8000步fixed8000|worker LIVE；验证/评价尚未完成|
 |P0/P1|PENDING|未启动|
 |E|PENDING|六压力条件/144 tile推理未启动|
 |Q|RESERVED_NOT_AUTOMATIC|四镜像DSM储备不自动运行|
@@ -22,3 +22,9 @@
 本轮所有训练/推理/恢复只用物理GPU0，CUDA_VISIBLE_DEVICES=0、单worker FIFO。nohup，源码/temporary/cache/记录/预测/权重/轻量上传在zzx对应目录；服务器用户终端执行，无SSH，无GPU1/Test6/independent final/held4/追加seed、失败自动重试或重复资源审计。
 
 本批7完成仅为用户终端技术状态，尚无轻量原计数上传/独立验收，不能增加论文确认性结论。前置[九组结果](../experiments/POST_N3_S1_RESULTS_20261008.md)的验收范围不变。
+
+## 2026-10-09：用户授权运行中完整记录快照并分析
+
+最新查询21:31:11（queue21:31:07）RUNNING_P3、controller LIVE，七P完整，P3在8000步fixed8000评价3_11/aux_down4；P0/P1/E未启动。用户要求先上传并分析已完成作业。[完整作业快照入口及分析口径](../protocols/POST_S1_COMPLETED_SNAPSHOT_ANALYSIS_20261009.md)已实现，6项stdlib回归/help通过；原科学快照不改，队列继续，尚无上传提交或精度原件回报。下一步用户从本次发布commit提取scripts/upload_post_s1_completed_records.py到本实验zzx目录下独立bootstrap并运行，返回COMPLETED_GITHUB_COMMIT后离线复算。
+
+先分析D0/D1、P7对S1-0/P6/P8/P9/R0与保护，未齐共享八格/E不能判全族/最终gate通过；P3只有完整complete后才纳入，不按8000步直接上传。工具冻结COMPLETE名单、跳过RUNNING目录，独立上传worktree，不暂停/重启/启GPU。只GPU0，Q仍储备。

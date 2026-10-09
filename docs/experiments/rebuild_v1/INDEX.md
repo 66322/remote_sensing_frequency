@@ -296,3 +296,7 @@ READY_NOT_REGISTERED，无新服务器PID/目录/进度，不增加已完成数�
 执行2c5e7d6f383cfe454415d4e106179930264f1141、目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161、controller1890742、nohup_20261008T234938791083.log保持，不重复enqueue或重启旧队列。十P各new8000/seed42/固定S1-0 state、fixed8000主比较，P7为事前指定候选；本次只是带时间进度，不更改科学协议或去留。
 
 CPU/D1完成且七worker已完整返回，其余P3评价→P0/P1→E继续自动串行。科学原计数/门槛未收到，不从loss宣称P7有效或增论文验证数。[用户终端进度](../../../records/research_post_s1_support_20261008T234921_1890161/user_reported_progress_20261009T212510.json)。此前CPU准备/待首步条目为历史观测。
+
+## 2026-10-09 21:31：用户授权先上传完整作业快照并分析
+
+CPU/D1与七P完整，P3在fixed8000评价3_11/aux_down4，controller LIVE，P0/P1/E待运行。[独立上传入口](../../protocols/POST_S1_COMPLETED_SNAPSHOT_ANALYSIS_20261009.md)只冻结COMPLETE名单与D0/R0/基线轻量原件，6项stdlib检查通过，不改科学快照/不暂停训练。当前未收到上传commit/精度数据，待用户终端执行后离线复算；未齐E/共享八格不得判最终gate或双向贡献。记录见records/research_post_s1_support_20261008T234921_1890161/user_reported_progress_20261009T213111.json。

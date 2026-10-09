@@ -1,0 +1,226 @@
+{
+  "source": "user_terminal_read_only_transcript",
+  "query_observed_at": "2026-10-09T21:31:11.112511+08:00",
+  "queue_last_observed": "2026-10-09T21:31:07.216349+08:00",
+  "queue_status": "RUNNING_P3",
+  "controller_pid": 1890742,
+  "controller_live": true,
+  "CPU": "COMPLETE",
+  "physical_gpus": [
+    0
+  ],
+  "Q": "RESERVED_NOT_AUTOMATIC",
+  "jobs": {
+    "D1": {
+      "status": "COMPLETE",
+      "physical_gpu": 0,
+      "pid": 1909170,
+      "live": false,
+      "progress": {
+        "job": "D1",
+        "physical_gpu": 0,
+        "optimizer_updates": 0,
+        "elapsed_seconds": 2581.477156996727,
+        "observed_at": "2026-10-09T01:10:07.141969+08:00",
+        "phase": "complete"
+      }
+    },
+    "P6": {
+      "status": "COMPLETE",
+      "physical_gpu": 0,
+      "pid": 1930552,
+      "live": false,
+      "progress": {
+        "job": "P6",
+        "step": 8000,
+        "target": 8000,
+        "physical_gpu": 0,
+        "phase": "complete",
+        "observed_at": "2026-10-09T03:41:09.909527+08:00",
+        "session_elapsed_seconds": 9052.680654235184,
+        "tiles_loaded": 12,
+        "tiles_total": 12,
+        "loss": 0.31194645166397095,
+        "seconds_per_train_step": 0.43202069667726756,
+        "remaining_train_hours": 0,
+        "gpu_peak_allocated_bytes": 12647239168
+      }
+    },
+    "P7": {
+      "status": "COMPLETE",
+      "physical_gpu": 0,
+      "pid": 2005980,
+      "live": false,
+      "progress": {
+        "job": "P7",
+        "step": 8000,
+        "target": 8000,
+        "physical_gpu": 0,
+        "phase": "complete",
+        "observed_at": "2026-10-09T05:57:36.694467+08:00",
+        "session_elapsed_seconds": 8173.33323585242,
+        "tiles_loaded": 12,
+        "tiles_total": 12,
+        "loss": 0.3043704926967621,
+        "seconds_per_train_step": 0.44143175963219256,
+        "remaining_train_hours": 0,
+        "gpu_peak_allocated_bytes": 12647353856
+      }
+    },
+    "P8": {
+      "status": "COMPLETE",
+      "physical_gpu": 0,
+      "pid": 2074114,
+      "live": false,
+      "progress": {
+        "job": "P8",
+        "step": 8000,
+        "target": 8000,
+        "physical_gpu": 0,
+        "phase": "complete",
+        "observed_at": "2026-10-09T08:11:48.904248+08:00",
+        "session_elapsed_seconds": 8040.082242496312,
+        "tiles_loaded": 12,
+        "tiles_total": 12,
+        "loss": 0.30904722213745117,
+        "seconds_per_train_step": 0.44963463915046303,
+        "remaining_train_hours": 0,
+        "gpu_peak_allocated_bytes": 12647353856
+      }
+    },
+    "P9": {
+      "status": "COMPLETE",
+      "physical_gpu": 0,
+      "pid": 2141139,
+      "live": false,
+      "progress": {
+        "job": "P9",
+        "step": 8000,
+        "target": 8000,
+        "physical_gpu": 0,
+        "phase": "complete",
+        "observed_at": "2026-10-09T10:25:53.691032+08:00",
+        "session_elapsed_seconds": 8034.962094724178,
+        "tiles_loaded": 12,
+        "tiles_total": 12,
+        "loss": 0.31238359212875366,
+        "seconds_per_train_step": 0.44132489046733825,
+        "remaining_train_hours": 0,
+        "gpu_peak_allocated_bytes": 12647353856
+      }
+    },
+    "P4": {
+      "status": "COMPLETE",
+      "physical_gpu": 0,
+      "pid": 2208157,
+      "live": false,
+      "progress": {
+        "job": "P4",
+        "step": 8000,
+        "target": 8000,
+        "physical_gpu": 0,
+        "phase": "complete",
+        "observed_at": "2026-10-09T12:22:23.795907+08:00",
+        "session_elapsed_seconds": 6976.110260255635,
+        "tiles_loaded": 12,
+        "tiles_total": 12,
+        "loss": 0.31280016899108887,
+        "seconds_per_train_step": 0.42898563174158333,
+        "remaining_train_hours": 0,
+        "gpu_peak_allocated_bytes": 12647239168
+      }
+    },
+    "P5": {
+      "status": "COMPLETE",
+      "physical_gpu": 0,
+      "pid": 2266472,
+      "live": false,
+      "progress": {
+        "job": "P5",
+        "step": 8000,
+        "target": 8000,
+        "physical_gpu": 0,
+        "phase": "complete",
+        "observed_at": "2026-10-09T14:19:59.766020+08:00",
+        "session_elapsed_seconds": 7041.467265404761,
+        "tiles_loaded": 12,
+        "tiles_total": 12,
+        "loss": 0.3056882321834564,
+        "seconds_per_train_step": 0.43471254779119045,
+        "remaining_train_hours": 0,
+        "gpu_peak_allocated_bytes": 12647353856
+      }
+    },
+    "P2": {
+      "status": "COMPLETE",
+      "physical_gpu": 0,
+      "pid": 2325153,
+      "live": false,
+      "progress": {
+        "job": "P2",
+        "step": 8000,
+        "target": 8000,
+        "physical_gpu": 0,
+        "phase": "complete",
+        "observed_at": "2026-10-09T18:18:03.443304+08:00",
+        "session_elapsed_seconds": 14273.0009476915,
+        "tiles_loaded": 12,
+        "tiles_total": 12,
+        "loss": 0.27745985984802246,
+        "seconds_per_train_step": 1.31648084721528,
+        "remaining_train_hours": 0,
+        "gpu_peak_allocated_bytes": 36909157376
+      }
+    },
+    "P3": {
+      "status": "RUNNING",
+      "physical_gpu": 0,
+      "pid": 2437737,
+      "live": true,
+      "progress": {
+        "job": "P3",
+        "step": 8000,
+        "target": 8000,
+        "physical_gpu": 0,
+        "phase": "fixed8000",
+        "observed_at": "2026-10-09T21:31:03.757584+08:00",
+        "session_elapsed_seconds": 11566.494685277343,
+        "tiles_loaded": 12,
+        "tiles_total": 12,
+        "loss": 0.27129724621772766,
+        "seconds_per_train_step": 1.3420452525224538,
+        "remaining_train_hours": 0,
+        "gpu_peak_allocated_bytes": 37929462784,
+        "tile": "3_11",
+        "condition": "aux_down4",
+        "windows_done": 529,
+        "windows_total": 529
+      }
+    },
+    "P0": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "pid": -1,
+      "live": false,
+      "progress": {}
+    },
+    "P1": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "pid": -1,
+      "live": false,
+      "progress": {}
+    },
+    "E": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "pid": -1,
+      "live": false,
+      "progress": {}
+    }
+  },
+  "new_training_complete": 7,
+  "scientific_results_received": false,
+  "partial_upload_requested_by_user": true,
+  "upload_commit_received": false
+}
