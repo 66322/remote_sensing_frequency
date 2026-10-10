@@ -1,0 +1,24 @@
+{
+  "execution_commit": "4bf69489f789e998b7bf3181d3b3057c6ff7c04e",
+  "plan_sha256": "ac39e220a80df3d09757a681c0e7dc0c258d83e50ad51458673915d851a4a655",
+  "code_manifest_sha256": "570aa1daa299365bd1d0be6bd0db242d4f660de9e42796fa4810978eff1f092c",
+  "mask_manifest_sha256": "1024da567263d7f74ed0465ca52a8f53e29d92ec4bd08fd4d711fc48fd72a57d",
+  "initial_checkpoint_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
+  "donor_checkpoint_sha256": "c51b934c175d6aee8f681e78951ffe7dec28b8e881408ed217426a5865141824",
+  "job": {
+    "id": "T3",
+    "gpu": 0,
+    "steps": 8000,
+    "seed": 42,
+    "donor": "S1-1",
+    "frozen_base": true,
+    "support_preserved": true,
+    "local_only": true,
+    "control": "none",
+    "geometry_aug": false
+  },
+  "physical_gpu": 0,
+  "primary_checkpoint_step": 8000,
+  "test6_loaded": false,
+  "independent_final_loaded": false
+}
