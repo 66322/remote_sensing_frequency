@@ -1,5 +1,9 @@
 # REBUILD_V1 Experiment Index
 
+2026-10-10用户报告：原Post-S1今天早上已全部完成，后继T0—T9已自动接力并运行一部分。此为用户终端概述，没有精确新观测时间、已完成T编号或指标原件；截至本次读取，远端8e6a216仍只有注册交接及前次七P分析，尚未收到原全批/新部分结果，不能报新指标或宣称新门槛通过。
+
+立即接收：原目录code/scripts/upload_post_s1_support_records.py上传原阶段完整轻量记录；新辅助scripts/upload_post_s1_transfer_completed_records.py --root ROOT --directory 新目录 --commit 辅助发布提交，只采集队列快照时COMPLETE的T组。先冻结成员、核验完成产物/代码/mask/reference绑定，绝不读取RUNNING/PENDING worker目录或修改训练。完成项不足或绑定异常停止上传，不启动任何GPU任务。
+
 本索引列实验事实，不决定论文主线。路线角色与去留原则见[研究决策说明](../../current/RESEARCH_DECISION.md)，执行待办见[下一步](../../current/NEXT_EXPERIMENT.md)。C1是旁支候选；已关闭方案保持原门槛。
 
 ## 2026-10-10 GPU0后继已注册

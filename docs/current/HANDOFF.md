@@ -1,5 +1,9 @@
 # 当前交接：原Post-S1继续，十格解码移植后继已注册等待前序
 
+2026-10-10用户报告：原Post-S1今天早上已全部完成，后继T0—T9已自动接力并运行一部分。此为用户终端概述，没有精确新观测时间、已完成T编号或指标原件；截至本次读取，远端8e6a216仍只有注册交接及前次七P分析，尚未收到原全批/新部分结果，不能报新指标或宣称新门槛通过。
+
+立即接收：原目录code/scripts/upload_post_s1_support_records.py上传原阶段完整轻量记录；新辅助scripts/upload_post_s1_transfer_completed_records.py --root ROOT --directory 新目录 --commit 辅助发布提交，只采集队列快照时COMPLETE的T组。先冻结成员、核验完成产物/代码/mask/reference绑定，绝不读取RUNNING/PENDING worker目录或修改训练。完成项不足或绑定异常停止上传，不启动任何GPU任务。
+
 后继已由用户服务器终端注册：目录`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696`，controller PID2852987，日志`nohup_20261010T073335566918.log`，执行提交4bf69489f789e998b7bf3181d3b3057c6ff7c04e。注册时前序最后观测2026-10-10T07:33:24.785318+08:00、RUNNING_E，接续判断WAITING_PREDECESSOR。注册成功尚不等于T0已启动；没有后续PID存活或新训练进度回报。
 
 现在无需重复enqueue。原阶段E、最终汇总及技术验收完成，controller/worker退出并释放锁后，后继取得共享租约、确认GPU0空闲，自动运行T0—T9；异常HOLD。原科学P7 gate=False不改变此次新问题授权。仅GPU0、无失败自动重试、新seed、Q或其他家族。
