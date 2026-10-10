@@ -1,16 +1,13 @@
 # REBUILD_V1 Experiment Index
 
-2026-10-10用户报告：原Post-S1今天早上已全部完成，后继T0—T9已自动接力并运行一部分。此为用户终端概述，没有精确新观测时间、已完成T编号或指标原件；截至本次读取，远端8e6a216仍只有注册交接及前次七P分析，尚未收到原全批/新部分结果，不能报新指标或宣称新门槛通过。
+## 2026-10-10 旧Post-S1完整与T0—T4部分验收
 
-立即接收：原目录code/scripts/upload_post_s1_support_records.py上传原阶段完整轻量记录；新辅助scripts/upload_post_s1_transfer_completed_records.py --root ROOT --directory 新目录 --commit 辅助发布提交，只采集队列快照时COMPLETE的T组。先冻结成员、核验完成产物/代码/mask/reference绑定，绝不读取RUNNING/PENDING worker目录或修改训练。完成项不足或绑定异常停止上传，不启动任何GPU任务。
-
-本索引列实验事实，不决定论文主线。路线角色与去留原则见[研究决策说明](../../current/RESEARCH_DECISION.md)，执行待办见[下一步](../../current/NEXT_EXPERIMENT.md)。C1是旁支候选；已关闭方案保持原门槛。
-
-## 2026-10-10 GPU0后继已注册
-
-|实验|状态|问题与边界|证据|
+|阶段|最后观测与状态|结论|证据|
 |---|---|---|---|
-|Post-S1私有解码器移植T0—T9|用户服务器已注册（10月10日07:33前序RUNNING_E，WAITING_PREDECESSOR）；待原阶段释放自动接续|五种初始化×两种上下文支持，10×新8000，固定T7；检验共享冻结特征能否接近R0。原P7失败保持，Q不运行；Val2开发结果尚未产生|[协议](../../protocols/POST_S1_TRANSFER_GPU0_20261009.md)、[验证](../../../records/post_s1_transfer_validation_20261010/README.md)|
+|Post-S1十P+D0/D1/E|10月10日08:13:57，完成待复核|上下文四对正收益；P7总门槛失败、E通过、Q跳过；P3仍低于R0|[完整报告](../POST_S1_FULL_TRANSFER_PARTIAL_RESULTS_20261010.md)|
+|GPU0后继T0—T9|10月10日21:28:41，T0—T4完成/T5运行/T6—T9待运行|两对上下文收益复现；T3≈T1，迁移收益未成立；T7未收到，不判整轮|[协议](../../protocols/POST_S1_TRANSFER_GPU0_20261009.md)、[审计](../../../records/post_s1_result_analysis_20261010/audit.json)|
+
+本索引不决定论文主线。路线角色见[研究决定](../../current/RESEARCH_DECISION.md)。以下为历史阶段记录。
 
 ## 2026-10-04近期补全
 

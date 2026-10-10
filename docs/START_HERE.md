@@ -1,25 +1,13 @@
-# 共享入口：Post-S1后继解码移植已注册等待前序，GPU0自动接续
+# 共享入口：旧Post-S1完整分析，GPU0后继T0—T4部分验收
 
-2026-10-10用户报告：原Post-S1今天早上已全部完成，后继T0—T9已自动接力并运行一部分。此为用户终端概述，没有精确新观测时间、已完成T编号或指标原件；截至本次读取，远端8e6a216仍只有注册交接及前次七P分析，尚未收到原全批/新部分结果，不能报新指标或宣称新门槛通过。
+截至收到的原件：旧阶段最后观测2026-10-10T08:13:57.270242+08:00，SUPPORT_COMPLETE_AWAITING_REVIEW；新阶段最后观测2026-10-10T21:28:41.841837+08:00，RUNNING_T5。上传成员T0—T4；T5运行、T6—T9待运行，固定T7尚未收到。仅GPU0；这是历史观测，非实时服务器查询。
 
-立即接收：原目录code/scripts/upload_post_s1_support_records.py上传原阶段完整轻量记录；新辅助scripts/upload_post_s1_transfer_completed_records.py --root ROOT --directory 新目录 --commit 辅助发布提交，只采集队列快照时COMPLETE的T组。先冻结成员、核验完成产物/代码/mask/reference绑定，绝不读取RUNNING/PENDING worker目录或修改训练。完成项不足或绑定异常停止上传，不启动任何GPU任务。
+旧十P全部完成。四个上下文匹配对RGB_U增益+1.614～+2.844pp且两tile均正；固定P7=83.575357%，比R0=85.001650%低1.426292pp。旧E形状检验通过、整体P7=False，Q跳过。P3=84.399508%也未达到R0路线底线。
 
-后继已由用户服务器终端注册：目录`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696`，controller PID2852987，日志`nohup_20261010T073335566918.log`，执行提交4bf69489f789e998b7bf3181d3b3057c6ff7c04e。注册时前序最后观测2026-10-10T07:33:24.785318+08:00、RUNNING_E，接续判断WAITING_PREDECESSOR。注册成功尚不等于T0已启动；没有后续PID存活或新训练进度回报。
+新T1/T3=83.856616/83.858189%，匹配上下文收益+1.436170/+1.431901pp；T3−T1仅+0.001573pp，逐tile一正一负，未支持S1-1额外迁移收益。两者仍低于R0约1.145/1.143pp。T0—T4底座/支持外保护与常规条件一致；固定T7/随机控制未收到，整轮科学门槛尚不能裁决。
 
-现在无需重复enqueue。原阶段E、最终汇总及技术验收完成，controller/worker退出并释放锁后，后继取得共享租约、确认GPU0空闲，自动运行T0—T9；异常HOLD。原科学P7 gate=False不改变此次新问题授权。仅GPU0、无失败自动重试、新seed、Q或其他家族。
+所有数值是Potsdam fit12→Val2=3_11/5_10、seed42、固定8000、NoBoundary mIoU_fg5的开发结果。不是独立最终检验或双向有效承诺。完整口径、绑定、原件与审计边界见[结果报告](experiments/POST_S1_FULL_TRANSFER_PARTIAL_RESULTS_20261010.md)。
 
-当前无需再注册，先用新目录code/scripts/status_post_s1_transfer.py及nohup日志只读观察。原Post-S1全批仍需原上传脚本上传后分析E与剩余P记录；不因注册输出代替原件验收。
+按[研究决定](current/RESEARCH_DECISION.md)→[HANDOFF](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)→[实验索引](experiments/rebuild_v1/INDEX.md)读取。GitHub同分支为共享权威。
 
-按[研究决定](current/RESEARCH_DECISION.md)→[HANDOFF](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)→[索引](experiments/rebuild_v1/INDEX.md)读取；GitHub同分支为共享权威。
-
-2026-10-09用户授权规划并自动接续；2026-10-10完成实现与发布。新增冻结S1-0主干的私有解码器移植，五种初始化（S1-0/1/2/3及随机）×屏蔽/保留上下文，共T0—T9十组，各新8000步、seed42，固定T7。只用GPU0、单worker；不重训原P、不触发Q。执行协议见[GPU0后继协议](protocols/POST_S1_TRANSFER_GPU0_20261009.md)。
-
-后继代码已实现并完成CPU检查，**已收到2026-10-10服务器注册成功回报**。本次已执行enqueue_post_s1_transfer.py；nohup控制器自动等待前序SUPPORT_COMPLETE_AWAITING_REVIEW、CPU/D1/十P/E全部COMPLETE、原产物及SHA验收、原controller/worker退出和锁释放，再取得共享租约及GPU0空闲才接续。技术异常HOLD，不重启原队列；前序P7科学gate=False不阻断这个新研究问题。
-
-已验收七P结果：P7 RGB_U 83.575357%，比匹配P6 +1.759726pp，两tile正；但低于零训练R0 1.426292pp，原固定门槛失败。D1 DSM必要信号失败，Q不运行。P3/P0/P1/E尚未收全，不后验换候选或改旧结论。[阶段分析](experiments/POST_S1_PARTIAL_RESULTS_20261009.md)。
-
-此前部分分析采用的快照捕获2026-10-09T21:43:00.478470+08:00，queue最后观测21:42:23.635611、RUNNING_P3、PID1890742；P6/P7/P8/P9/P4/P5/P2完成，P3运行，P0/P1/E待执行。这是历史观测，不是本次实时服务器查询。
-
-主线仍RGB–DSM条件互补与退化/缺失分割，可行性探索；任务驱动恢复旁支。冻结旁路与解码移植不是创新承诺。本轮仅检验局部RGB缺失，Potsdam fit12/Val2 3_11、5_10，native512/stride256、NoBoundary fg5主，Full/六类诊断；Val2和E是重复开发证据。禁止GPU1、Test6、held4、独立final、预留T规则、增加seed或失败自动复跑。
-
-[CPU验证](../records/post_s1_transfer_validation_20261010/README.md)。本次已收到服务器注册回报；尚未收到新训练启动/进度回报。
+继续已注册GPU0队列，不重复enqueue、不重训P、不新增seed、不触发Q。下一次接收完成T记录，按预定T7−T1/T6/T9、R0、保护及六E验收。路线角色不变。
