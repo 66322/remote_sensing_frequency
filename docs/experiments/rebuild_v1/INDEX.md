@@ -1,3 +1,23 @@
+# 2026-10-11 13:48：机制诊断26/26完成，原件待上传
+
+最后服务器查询（用户粘贴终端回报）：QUERY_OBSERVED=2026-10-11T13:48:26.474610+08:00；queue LAST_OBSERVED=2026-10-11T13:42:45.195415+08:00，MECHANISM_COMPLETE_AWAITING_REVIEW。CPU完成，M16＋L10全部26项COMPLETE；查询时controller PID3626108及全部worker LIVE=False，仅GPU0，NEW_OPTIMIZER_UPDATES=0。nohup完整派发/完成并NO_FURTHER_DISPATCH，未见本次故障回报。这是最后观测，不代表新的实时查询。
+
+服务器DIAGNOSTIC_SCREEN回报matched_budget_study_supported=True、representation_followup_signal=True；next_training_launched=False、automatic_retry=False。此为未独立验收的汇总回报，未收到本轮精度、原计数、checkpoint绑定或R0同源端点原件；不能判新方法有效或把信号当作双向贡献。来源：[完成回报](../../../records/research_post_t_mechanism_20261011T094823_3625851/user_reported_completion_20261011T134826.json)。
+
+执行提交cd958925cb5d4292dd15802830e97493c9c67033保持，目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_t_mechanism_20261011T094823_3625851。M333_context完成观测13:04:28；L十项worker实测206.411—210.024秒/项，最后L_T9完成观测13:42:23。旧剩余估时已失效。
+
+立即下一步：在用户服务器终端用原目录code/scripts/upload_post_t_mechanism_records.py --root ROOT --directory DIR显式上传轻量原件，无需再次登记或启动。仅上传轻量JSON/计数/配置/代码/日志及服务器大文件索引，权重和预测数组保留原目录；用户返回上传提交号后助手从GitHub回读。
+
+先核验清单/无损解码SHA、26项完成与执行绑定、M333_context对全部16个R0 case逐像素同源端点、int64 6×6计数及tile→pooled；再复算固定模块配对与全部因素配对、保护底线、0→4000→8000 RGB_U/DSM_U轨迹和4000 checkpoint绑定。未校准交换负结果不能证明信息缺失。
+
+原件通过后，依据专家包信号与T1/T7固定后段信号制定真正的配对训练协议：明确待训练参数、同预算普通控制、冻结/简单解冻/容量控制、主指标、保护与停止门槛及学习率日程。下一轮尚未定型、未登记、未启动；不直接续跑已衰减到零的8000步日程救旧gate。
+
+服务器由用户执行、无SSH；仅GPU0，不访问Test6/held4/final，不自动重跑失败配方、加seed或GPU1。所有记录/执行快照/归档在/home/jovyan/zzx对应目录。重要结论与交接继续写同一GitHub分支并回读。
+
+---
+
+以下为历史阶段记录，当前状态以START_HERE为准。
+
 # 2026-10-11 12:55：15项M完成，最后M运行，L10待运行
 
 最后服务器只读查询（用户终端粘贴，未接收本轮指标原件）：QUERY_OBSERVED=2026-10-11T12:55:27.487901+08:00，queue LAST_OBSERVED=2026-10-11T12:55:15.361980+08:00，RUNNING_M333_context；controller PID3626108 LIVE=True，CPU=COMPLETE，仅GPU0。15/26整项COMPLETE、1项RUNNING、10项PENDING；前15个M已完成并退出，M333_context PID3718262 LIVE=True，phase=inference，tile=3_11，condition=rgb_lines64w8__aux_down4，windows=529/529，progress观测12:55:24.648101，elapsed=158.271144秒，optimizer_updates=0。单tile/条件窗口完成不等于整项完成。L_T0—L_T9尚未启动。这是最后观测，不代表实时状态。
