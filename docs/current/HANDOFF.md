@@ -1,14 +1,18 @@
-# 当前交接：继续原双卡队列，下一阶段设计草案已归档
+# 当前交接：8k训练步数已满，R8终点评价与16k阶段等待
 
-权威共享源：66322/remote_sensing_frequency / rebuild-v1-protocol-20260915。本次仅综合评审用户附件，不启动新评价或训练。
+权威共享源：66322/remote_sensing_frequency / rebuild-v1-protocol-20260915。本次接收23:34进度并核对GPU排期；没有新启动/重启任务。
 
 ## 最后观测与当前执行
 
-最后服务器查询2026-10-11T18:54:08.952037+08:00，queue观测18:54:02.365173，RUNNING/controller LIVE=True。CONTENT_PRE COMPLETE并退出，H8 GPU0、F8 GPU1各180/8000且LIVE=True；R8/R16/H16/F16/CONTENT_POST PENDING。此为最后观测，不代表实时状态。没有新精度或内容诊断原件。H/F训练步速约0.663/0.653秒；只覆盖训练计算，R与整队耗时未校准。
+最后服务器只读查询2026-10-11T23:34:24.796568+08:00：queue观测23:34:17.832878、RUNNING、controller LIVE=True。CONTENT_PRE/H8/F8 COMPLETE且worker退出；H8/F8均8000步。R8 GPU1 RUNNING/LIVE=True、8000/8000、phase=endpoint_ordinary（3_11/aux_down4，529/529窗口仅指该case）。R16/H16/F16/CONTENT_POST PENDING。3/8整项完成、1项评价中、4项待办；训练更新回报24000/72000，R8尚未完成整项技术验收。此为最后观测，不代表实时状态。
+
+H8/F8完整worker耗时10338.760/10277.432秒（约2h52m/2h51m）；R8当前6936.955秒且仍评价。remaining_train_hours=0仅表示训练步数已满，不表示任务已结束。没有本轮精度或DSM内容原件，loss差不能作方法结论。
+
+GPU0空闲可由原8k→16k阶段依赖解释；status回报未包含gpu_blocked字段，不能仅据利用率断言release状态。控制器需H8/F8/R8整项COMPLETE并完成三组batch配对检查后才派发16k。若两卡启用、无外部占卡且技术检查通过，按现代码GPU0→R16、GPU1→H16，先完成卡→F16。无需重复enqueue、rejoin或手动启动worker。
 
 原目录research_post_t_paired_v2_20261011T182543_3880702、执行44e4df5afbaeb603e6441e7ef14ff09f228bc027、controller登记PID3881013不变。六训练F/H/R×8k/16k共72000更新，前后各24内容诊断case；固定R16主候选，8k后三组不按分数淘汰。继续原队列，不重复登记或启动。用户需要某卡时保存退出并移交剩余卡续跑，被释放卡显式rejoin前停用；无24h全队截止，失败HOLD不自动重试。
 
-[原查询](../../records/research_post_t_paired_v2_20261011T182543_3880702/user_reported_progress_20261011T185408.json)、[执行/查询/释放操作](../protocols/POST_T_PAIRED_V2_EXECUTION_20261011.md)、[科学配对细则](../protocols/POST_T_PAIRED_ADAPTATION_BUDGET_20261011.md)、[本次之前交接原文](../history/PRE_STRUCTURED_FAILURE_DESIGN_HANDOFF_20261011.md)。
+[原查询](../../records/research_post_t_paired_v2_20261011T182543_3880702/user_reported_progress_20261011T233424.json)、[执行/查询/释放操作](../protocols/POST_T_PAIRED_V2_EXECUTION_20261011.md)、[科学配对细则](../protocols/POST_T_PAIRED_ADAPTATION_BUDGET_20261011.md)、[本次之前交接原文](../history/PRE_STRUCTURED_FAILURE_DESIGN_HANDOFF_20261011.md)。
 
 ## 研究角色、依据与本次建议
 
@@ -24,6 +28,6 @@
 
 ## 立即下一步
 
-继续原双卡任务，由用户按需查询；完成后显式上传轻量原件，独立复算完整配对、轨迹、内容和保护。CPU开发可先行规划，新GPU诊断需生成器/计数/同源端点验收、原队列结束与资源查询后安排。用户释放的卡供用户使用，不自动接Phase 1。具体新训练组数和预算待证据后冻结，不填入执行registry。
+按[具体排期](../protocols/POST_T_PAIRED_RESOURCE_SCHEDULE_20261011.md)继续原队列：R8完成与三组配对检查通过后，预计双卡自动接R16/H16，再接F16；完成后显式上传轻量原件，独立复算完整配对、轨迹、内容和保护。CPU开发可先行规划，新GPU诊断需生成器/计数/同源端点验收、原队列结束与资源查询后安排。用户释放的卡供用户使用，不自动接Phase 1。具体新训练组数和预算待证据后冻结，不填入执行registry。
 
 服务器终端由用户执行、无SSH；全部运行记录与代码快照保存在/home/jovyan/zzx对应目录。Test6/held4/final保持关闭；不自动失败配方重跑、增加训练seed或开恢复旁支。

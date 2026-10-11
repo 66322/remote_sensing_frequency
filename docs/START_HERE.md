@@ -1,12 +1,16 @@
-# 共享入口：H8/F8双卡训练已确认
+# 共享入口：R8终点评价，原队列将自动进入16k
 
 2026-10-11新增[结构化缺失设计评审草案](protocols/STRUCTURED_FAILURE_EVAL_V0_20261011.md)，来源为用户要求综合分析所附规划；属于重写版建议，尚未实现、冻结或登记。建议先完成当前F/H/R验收，再做4系统×4掩码家族×20实现×2tile＝640缺失case＋8clean的零训练核心诊断。S1-3−S1-0不作纯上下文效应；改用同权重M000 masked/context；随机块与语义匹配twin分开；不自动20→40，不凭新评价改选R16。研究主线、旧门槛与现有队列不变。
 
 权威分支：66322/remote_sensing_frequency，rebuild-v1-protocol-20260915。
 
-最后服务器只读查询2026-10-11T18:54:08.952037+08:00：queue RUNNING、controller LIVE=True；CONTENT_PRE已COMPLETE退出（worker约20分52秒），H8 GPU0与F8 GPU1同时RUNNING/LIVE=True，各180/8000步。1/8整项完成、2运行、5待办。两卡训练派发确认；此为最后观测，不代表实时状态。
+最后服务器只读查询2026-10-11T23:34:24.796568+08:00：queue观测23:34:17.832878、RUNNING、controller LIVE=True。CONTENT_PRE/H8/F8 COMPLETE且worker退出；H8/F8均8000步。R8 GPU1 RUNNING/LIVE=True、8000/8000、phase=endpoint_ordinary（3_11/aux_down4，529/529窗口仅指该case）。R16/H16/F16/CONTENT_POST PENDING。3/8整项完成、1项评价中、4项待办；训练更新回报24000/72000，R8尚未完成整项技术验收。此为最后观测，不代表实时状态。
 
-H/F训练步速约0.663/0.653秒，peak_allocated约12.8/12.4GiB；各自约1.44/1.42h的剩余预测只含训练计算，不含后续验证/评价，整队及R步速未校准。前测原件、训练指标及完整机制结论尚未验收。[本次回报](../records/research_post_t_paired_v2_20261011T182543_3880702/user_reported_progress_20261011T185408.json)。原目录/执行44e4df5a保持，继续原双卡队列；按需要才release，不重复启动。
+H8/F8完整worker耗时10338.760/10277.432秒（约2h52m/2h51m）；R8当前6936.955秒且仍评价。remaining_train_hours=0仅表示训练步数已满，不表示任务已结束。没有本轮精度或DSM内容原件，loss差不能作方法结论。
+
+GPU0空闲可由原8k→16k阶段依赖解释；status回报未包含gpu_blocked字段，不能仅据利用率断言release状态。控制器需H8/F8/R8整项COMPLETE并完成三组batch配对检查后才派发16k。若两卡启用、无外部占卡且技术检查通过，按现代码GPU0→R16、GPU1→H16，先完成卡→F16。无需重复enqueue、rejoin或手动启动worker。
+
+[23:34进度回报](../records/research_post_t_paired_v2_20261011T182543_3880702/user_reported_progress_20261011T233424.json)、[具体排期](protocols/POST_T_PAIRED_RESOURCE_SCHEDULE_20261011.md)。原目录/执行44e4df5a保持，前测及训练精度原件仍待完整后验收。
 
 用户最新资源决定：GPU0＋GPU1，预留一天以上，未完成继续；需要其中一张卡时保存退出该卡任务，未完成部分与待运行任务转到另一张卡排队续跑。释放卡显式rejoin前不再接任务。这覆盖旧只GPU0限制；无SSH，仍由用户执行终端。
 
