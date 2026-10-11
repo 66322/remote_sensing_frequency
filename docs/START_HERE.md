@@ -1,25 +1,15 @@
-# 共享入口：Post-T原件验收，下一轮配对训练协议已制定
+# 共享入口：Post-T已验收，v2实验安排待实现
 
-权威共享源：66322/remote_sensing_frequency，rebuild-v1-protocol-20260915；本地仅工作副本。
+权威分支：66322/remote_sensing_frequency，rebuild-v1-protocol-20260915。
 
-本轮Post-T原件57ef5ad9e5238f69f94c5d8ede00023a20499144已接收并离线验收，Verification Status: ANALYZED。最后服务器查询2026-10-11T13:48:26.474610+08:00；queue完成观测13:42:45.195415，CPU完成、26/26 COMPLETE、查询时controller及全部worker LIVE=False，仅GPU0、0新优化器更新。此为最后服务器观测，上传与助手离线分析不构成实时查询。
+最后服务器查询2026-10-11T13:48:26.474610+08:00：原Post-T 26/26 COMPLETE，controller/workers已退出，0新训练。原件57ef5ad9已离线验收；这不是实时查询。主线仍RGB–DSM双向条件互补与退化/缺失分割，恢复为旁支；已验证线索限重复Val2/seed42下的已知RGB局部缺失。
 
-核验全部634个Git blob（633载荷＋manifest）、632份源字节/无损解码SHA、50860矩阵/11424 joint边际、296 case/888预测索引与1184 transition计数关系。M333_context全部16 case的候选预测SHA和计数复现R0，RGB_U=85.001650%。155份上传代码/文档按执行manifest核验；3份继承历史plan JSON不在本轮上传器范围，名单详见审计。CPU11项原日志OK已接收。权重/预测/影像本体留服务器，未独立重hash或GPU重跑。
+本轮按用户要求制定[实验安排v2](protocols/POST_T_RESEARCH_SEQUENCE_20261011.md)：6项核心F/H/R×8000/16000，共72000更新＋两批48 case的0训练DSM内容诊断，X两项转为不可自动派发储备。H修正为完整编码器后接口（net.rgb＋decoder[:-1]），R加末4编码块；主候选R16不变。v1尚未执行，此次事前修订理由和原文归档均已记录。
 
-固定RGB_U比较：只换解码器+0.504953pp，换RGB专家包+2.901426pp，换DSM专家包+0.005618pp；同S1-3解码器下换两包+2.521564pp，两tile均正；M333上下文对屏蔽+3.421234pp。RGB包来源在context下四对+2.519—2.901pp，masked下几乎无效，有强交互。包包含编码器与专家解码头，不能归因为纯编码尾部，也不能从DSM交换小效应否定DSM内容。
+顺序：内容前测→H8→F8→R8→R16→H16→F16→内容后测→原件分析。8k后不按成绩筛选长预算组。当前DESIGN_FROZEN_NOT_IMPLEMENTED_NOT_REGISTERED，设计清单不能作执行配置；下一步落实源码、完整配置、参数/梯度与数据流配对、干预复现及控制/上传流程。新训练尚未登记或启动。旧26项不重复运行。
 
-固定T1/T7后4000步RGB_U分别+0.334083/+0.321695pp，两tile正，两预定规划信号独立复算True。它们仅支持新配对研究，不证明延长旧T7必成。完整T原gate仍T7/U/E=False，旧失败不救援。0/8000计数与4000 validation绑定复用此前已验完整T审计，新4000 U原计数独立复算。
+[配对协议v2](protocols/POST_T_PAIRED_ADAPTATION_BUDGET_20261011.md)、[设计清单](../records/post_t_research_plan_v2_20261011/design.json)、[机制结果](experiments/POST_T_MECHANISM_RESULTS_20261011.md)、[完整T](experiments/POST_T_FULL_RESULTS_20261011.md)。T7/U/E原失败门槛保持；不声称双向、独立泛化或排除可训练容量解释。
 
-[机制结果](experiments/POST_T_MECHANISM_RESULTS_20261011.md)、[配对协议](protocols/POST_T_PAIRED_ADAPTATION_BUDGET_20261011.md)、[独立审计](../records/post_t_mechanism_offline_audit_20261011/audit.json)。
+只GPU0、无SSH、用户执行服务器终端，记录位于/home/jovyan/zzx对应目录；禁Test6/held4/final，不自动重跑/加seed/排DSM镜像。粗排新计划30—60小时未实测，以首个正式worker校准；不能据旧观测写实时状态。
 
-研究阶段：可行性探索与机制定位；主线仍RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复为旁支。实验已验证的机制线索限已知RGB局部缺失、重复Val2/seed42；不声称双向、未知可靠性或独立泛化。
-
-本次按用户要求制定下一轮真正配对训练协议，属于重写版建议：F普通私有解码、H只适应RGB专家pre-classifier解码头、R加RGB末4编码块、X与R等参数空间打乱控制，各新8000/16000，共8项/96000更新；固定候选R16。所有初值S1-0，同预算数据/优化器/日程配对，含保护/R0/最坏tile/六E底线。8k/16k为预算×日程联合比较，不是纯次数因果。协议PLANNED_NOT_IMPLEMENTED_NOT_REGISTERED，没有新队列、PID或训练启动。
-
-未采纳只延长旧T7、解码器迁移初值救gate、新seed、GPU1、DSM镜像族或恢复旁支扩张；没有改选M303/T5。下一不确定性是专家解码头还是末端编码适应能形成同预算增量、是否超过等容量/空间控制以及能否满足保护/R0底线。
-
-下一步按配对协议落实可执行源码、完整配置/参数名单、数据随机流及CPU契约验收，再冻结执行快照。禁止把协议文件当作已实现程序；尚无本轮8项登记/启动命令。旧26项已停止，无需重复查询、enqueue或再次上传同一原件。原M/T目录保留只读。新训练启动前说明GPU0资源、预计占用及停止条件；粗规划36—72h未实测，实际专家反传速度待第一正式worker校准，不默认额外探针或smoke。
-
-服务器终端由用户执行、无SSH，只用GPU0、不访问Test6/held4/final、不自动重跑失败配方/加seed，全部记录和代码快照在/home/jovyan/zzx对应目录。重要结论/交接写回同一GitHub分支并回读核验。
-
-读取顺序：[研究决定](current/RESEARCH_DECISION.md)→[HANDOFF](current/HANDOFF.md)→[PROJECT_STATUS](current/PROJECT_STATUS.md)→[NEXT_EXPERIMENT](current/NEXT_EXPERIMENT.md)→[实验索引](experiments/rebuild_v1/INDEX.md)。
+读取顺序：[新对话交接](current/NEW_CHAT_HANDOFF_20261011.md)→[研究决定](current/RESEARCH_DECISION.md)→[HANDOFF](current/HANDOFF.md)→[PROJECT_STATUS](current/PROJECT_STATUS.md)→[NEXT_EXPERIMENT](current/NEXT_EXPERIMENT.md)→[实验索引](experiments/rebuild_v1/INDEX.md)。

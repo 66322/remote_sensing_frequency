@@ -1,3 +1,11 @@
+# 2026-10-11：v2后续实验设计，尚未登记
+
+[研究排期](../../protocols/POST_T_RESEARCH_SEQUENCE_20261011.md)、[配对细则v2](../../protocols/POST_T_PAIRED_ADAPTATION_BUDGET_20261011.md)、[设计清单](../../../records/post_t_research_plan_v2_20261011/design.json)。六核心训练F/H/R×8k/16k共72000更新；48个0训练DSM内容诊断case；X8/X16转为不可自动派发储备。DESIGN_FROZEN_NOT_IMPLEMENTED_NOT_REGISTERED，没有新实验结果/服务器登记。核心顺序H8/F8/R8/R16/H16/F16，两批内容诊断分别置于前后。
+
+旧Post-T原件验收不变；最后服务器查询13:48:26+08:00，26项完整退出。v1八项提案已在新结果出现前修订；下方提及八项/96000的旧段落均为历史方案，当前以v2为准。H纳入net.rgb与decoder[:-1]，R再开启末4块；容量和内容敏感性边界明确，不能自动推成论文贡献。
+
+---
+
 # 2026-10-11：Post-T 26项原件验收与下一轮协议
 
 本轮Post-T原件57ef5ad9e5238f69f94c5d8ede00023a20499144已接收并离线验收，Verification Status: ANALYZED。最后服务器查询2026-10-11T13:48:26.474610+08:00；queue完成观测13:42:45.195415，CPU完成、26/26 COMPLETE、查询时controller及全部worker LIVE=False，仅GPU0、0新优化器更新。此为最后服务器观测，上传与助手离线分析不构成实时查询。

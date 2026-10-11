@@ -1,25 +1,19 @@
-# 项目状态：Post-T机制验收完成；新训练未启动
+# 项目状态：旧26项已验收，v2新实验尚未启动
 
 权威共享源：66322/remote_sensing_frequency，rebuild-v1-protocol-20260915；本地仅工作副本。
 
-本轮Post-T原件57ef5ad9e5238f69f94c5d8ede00023a20499144已接收并离线验收，Verification Status: ANALYZED。最后服务器查询2026-10-11T13:48:26.474610+08:00；queue完成观测13:42:45.195415，CPU完成、26/26 COMPLETE、查询时controller及全部worker LIVE=False，仅GPU0、0新优化器更新。此为最后服务器观测，上传与助手离线分析不构成实时查询。
+最后服务器查询仍为2026-10-11T13:48:26.474610+08:00：旧Post-T队列26/26 COMPLETE、CPU完成、controller及workers退出；0新训练。原件57ef5ad9已离线验收，当前不是新的实时服务器查询。审计范围和限制见[机制结果](../experiments/POST_T_MECHANISM_RESULTS_20261011.md)。
 
-核验全部634个Git blob（633载荷＋manifest）、632份源字节/无损解码SHA、50860矩阵/11424 joint边际、296 case/888预测索引与1184 transition计数关系。M333_context全部16 case的候选预测SHA和计数复现R0，RGB_U=85.001650%。155份上传代码/文档按执行manifest核验；3份继承历史plan JSON不在本轮上传器范围，名单详见审计。CPU11项原日志OK已接收。权重/预测/影像本体留服务器，未独立重hash或GPU重跑。
+主线保持RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复为旁支。现有实验已验证线索仅限Potsdam fit12→重复Val2 3_11/5_10、seed42、已知RGB局部缺失。DSM_U是保护结果，双向/未知可靠性/独立泛化均未验证。原T7/U/E=False不改，不后验挑T5/M303。
 
-固定RGB_U比较：只换解码器+0.504953pp，换RGB专家包+2.901426pp，换DSM专家包+0.005618pp；同S1-3解码器下换两包+2.521564pp，两tile均正；M333上下文对屏蔽+3.421234pp。RGB包来源在context下四对+2.519—2.901pp，masked下几乎无效，有强交互。包包含编码器与专家解码头，不能归因为纯编码尾部，也不能从DSM交换小效应否定DSM内容。
+用户本轮要求根据实验结果和论文问题规划安排。现采纳助手提出的v2研究设计：6项核心F/H/R×8000/16000，共72000新优化器调用，固定主候选R16；前后两批DSM内容推理诊断共48 case、0更新。X8/X16为RESERVED_NOT_AUTOMATIC。当前DESIGN_FROZEN_NOT_IMPLEMENTED_NOT_REGISTERED，尚无新执行代码验收、队列、PID或训练启动。
 
-固定T1/T7后4000步RGB_U分别+0.334083/+0.321695pp，两tile正，两预定规划信号独立复算True。它们仅支持新配对研究，不证明延长旧T7必成。完整T原gate仍T7/U/E=False，旧失败不救援。0/8000计数与4000 validation绑定复用此前已验完整T审计，新4000 U原计数独立复算。
+H定义为RGB编码器后的net.rgb投影＋net.decoder[:-1]接口，R加最后4编码块；真正最终分类器net.decoder[-1]冻结。v1遗漏投影且对分类层位置表述不充分，已按实际执行链修正。空间错位不能独立排除容量解释，因此移出核心训练并保留解释边界。本次是新结果产生前的协议修订，v1归档，非修改旧T gate。
 
-[机制结果](../experiments/POST_T_MECHANISM_RESULTS_20261011.md)、[配对协议](../protocols/POST_T_PAIRED_ADAPTATION_BUDGET_20261011.md)、[独立审计](../../records/post_t_mechanism_offline_audit_20261011/audit.json)。
+固定顺序：内容前测M000_context/M300_context → H8 → F8 → R8 → R16 → H16 → F16 → 内容后测F16/R16 → 上传原件/独立分析。8k后不按成绩筛选16k组。核心R16−F16/R16−H16各≥0.3pp、两tile正，另守R0/保护/六E底线；DSM内容敏感性独立报告。科学负结果不自动重试，技术失败HOLD。
 
-研究阶段：可行性探索与机制定位；主线仍RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复为旁支。实验已验证的机制线索限已知RGB局部缺失、重复Val2/seed42；不声称双向、未知可靠性或独立泛化。
+[研究安排与论文问题映射](../protocols/POST_T_RESEARCH_SEQUENCE_20261011.md)；[配对训练细则v2](../protocols/POST_T_PAIRED_ADAPTATION_BUDGET_20261011.md)；[设计清单](../../records/post_t_research_plan_v2_20261011/design.json)；[v1归档](../history/POST_T_PAIRED_ADAPTATION_BUDGET_V1_20261011.md)。
 
-本次按用户要求制定下一轮真正配对训练协议，属于重写版建议：F普通私有解码、H只适应RGB专家pre-classifier解码头、R加RGB末4编码块、X与R等参数空间打乱控制，各新8000/16000，共8项/96000更新；固定候选R16。所有初值S1-0，同预算数据/优化器/日程配对，含保护/R0/最坏tile/六E底线。8k/16k为预算×日程联合比较，不是纯次数因果。协议PLANNED_NOT_IMPLEMENTED_NOT_REGISTERED，没有新队列、PID或训练启动。
+唯一立即动作是落实v2执行包与完整配置、数据随机流、真实梯度名单、干预端点复现和GPU0控制/上传流程，冻结后再由用户在服务器执行。已有26项不重复登记/重跑/重复验收。粗排GPU0约30—60小时未实测，以每类首个正式worker校准；此刻尚未开工，不能给绝对完成时间。
 
-未采纳只延长旧T7、解码器迁移初值救gate、新seed、GPU1、DSM镜像族或恢复旁支扩张；没有改选M303/T5。下一不确定性是专家解码头还是末端编码适应能形成同预算增量、是否超过等容量/空间控制以及能否满足保护/R0底线。
-
-下一步按配对协议落实可执行源码、完整配置/参数名单、数据随机流及CPU契约验收，再冻结执行快照。禁止把协议文件当作已实现程序；尚无本轮8项登记/启动命令。旧26项已停止，无需重复查询、enqueue或再次上传同一原件。原M/T目录保留只读。新训练启动前说明GPU0资源、预计占用及停止条件；粗规划36—72h未实测，实际专家反传速度待第一正式worker校准，不默认额外探针或smoke。
-
-服务器终端由用户执行、无SSH，只用GPU0、不访问Test6/held4/final、不自动重跑失败配方/加seed，全部记录和代码快照在/home/jovyan/zzx对应目录。重要结论/交接写回同一GitHub分支并回读核验。
-
-决定来源：用户10月11日明确要求原队列结束后接收核验轻量原件、分析模块与轨迹、据此制定下一轮配对训练。本次研究协议由助手依据已验收结果提出，未将其冒记为用户已授权运行的8项训练。
+只用GPU0，无SSH；所有服务器记录在/home/jovyan/zzx对应独立目录。禁止Test6/held4/final、不自动重跑失败配方或增加种子。不自动排DSM镜像、新频域模块或恢复旁支。双向性下一步须有真实反向有效支持与简单参考，不能把DSM_U保护当成双向增益。后续独立来源/多seed只规划不擅自执行。
