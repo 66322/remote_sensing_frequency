@@ -2,7 +2,9 @@
 
 权威分支：66322/remote_sensing_frequency，rebuild-v1-protocol-20260915。
 
-最后服务器查询2026-10-11T13:48:26.474610+08:00：旧Post-T 26/26完整且进程退出。原件57ef5ad9已验收；这是最后观测。新队列已回报登记成功：research_post_t_paired_v2_20261011T182543_3880702，PID3881013，执行44e4df5a，GPU0/1。当前REGISTERED_PROGRESS_NOT_YET_QUERIED；目录/日志命名时间不等于最新status。尚无worker存活或步骤原件。前测CONTENT_PRE本身是单个串行任务，完成后训练阶段再双卡派发；默认两卡启用，按需才release。先查询原目录，不重复启动。
+最后服务器只读查询2026-10-11T18:35:43.956508+08:00：queue RUNNING、controller LIVE=True；CONTENT_PRE GPU0 RUNNING/LIVE=True、0训练更新；progress18:35:21，M000_context/S、5_10、rgb_lines64w8__clean、529/529窗口。前测整项未完成，六项训练与后测PENDING；0/8完成。此为最后观测，不代表实时状态。
+
+原目录research_post_t_paired_v2_20261011T182543_3880702、执行44e4df5a保持。前测是一个串行诊断任务，完成后训练阶段才向两卡派发，默认两卡启用、用户未release。继续原队列，勿重复启动。[查询回报](../records/research_post_t_paired_v2_20261011T182543_3880702/user_reported_progress_20261011T183543.json)。
 
 用户最新资源决定：GPU0＋GPU1，预留一天以上，未完成继续；需要其中一张卡时保存退出该卡任务，未完成部分与待运行任务转到另一张卡排队续跑。释放卡显式rejoin前不再接任务。这覆盖旧只GPU0限制；无SSH，仍由用户执行终端。
 

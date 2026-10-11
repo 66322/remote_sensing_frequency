@@ -1,3 +1,9 @@
+# 2026-10-11 18:35：前测GPU0运行确认，训练待前测完成
+
+QUERY_OBSERVED=2026-10-11T18:35:43.956508+08:00，queue观测18:35:35.350928、RUNNING，controller LIVE=True。CONTENT_PRE GPU0/LIVE=True、0更新；18:35:21 progress M000_context/S、5_10、rgb_lines64w8__clean、529/529，仅当前窗口完成。六训练与后测PENDING；0/8整项完成、1运行、7待办。前测阶段单卡符合冻结队列，完整后自动双卡训练。无release操作；GPU1健康未独立核验。继续原目录/原执行，不重复enqueue。[原查询回报](../../../records/research_post_t_paired_v2_20261011T182543_3880702/user_reported_progress_20261011T183543.json)。以下为历史条目。
+
+---
+
 # 2026-10-11：双卡队列登记成功，首项运行待查询
 
 用户回报PAIRED_QUEUE_REGISTERED，目录research_post_t_paired_v2_20261011T182543_3880702，controller PID3881013，执行44e4df5afbaeb603e6441e7ef14ff09f228bc027，GPU0/1，6项训练/72000计划步/48内容case。18:25目录/日志命名标记不是status查询时间；尚无worker/步骤原件。用户感觉仅GPU0活跃，未附nvidia-smi结果。代码中CONTENT_PRE只占单卡，完成后训练双卡派发，默认未停用任何卡；仅需要时release。查询原队列，勿重复登记。
