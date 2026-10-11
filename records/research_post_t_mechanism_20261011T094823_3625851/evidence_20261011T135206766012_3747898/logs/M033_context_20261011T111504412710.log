@@ -1,0 +1,28 @@
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/swiglu_ffn.py:45: UserWarning: xFormers is disabled (SwiGLU)
+  warnings.warn("xFormers is disabled (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/swiglu_ffn.py:51: UserWarning: xFormers is not available (SwiGLU)
+  warnings.warn("xFormers is not available (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py:29: UserWarning: xFormers is disabled (Attention)
+  warnings.warn("xFormers is disabled (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py:33: UserWarning: xFormers is not available (Attention)
+  warnings.warn("xFormers is not available (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/block.py:35: UserWarning: xFormers is disabled (Block)
+  warnings.warn("xFormers is disabled (Block)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/block.py:40: UserWarning: xFormers is not available (Block)
+  warnings.warn("xFormers is not available (Block)")
+MECHANISM_CASE M033_context 3_11 rgb_U
+MECHANISM_CASE M033_context 3_11 dsm_U
+MECHANISM_CASE M033_context 3_11 rgb_lines64w8__clean
+MECHANISM_CASE M033_context 3_11 rgb_lines64w8__aux_down4
+MECHANISM_CASE M033_context 3_11 rgb_lines64w8__aux_shift8
+MECHANISM_CASE M033_context 3_11 rgb_blocks64q25__clean
+MECHANISM_CASE M033_context 3_11 rgb_blocks64q25__aux_down4
+MECHANISM_CASE M033_context 3_11 rgb_blocks64q25__aux_shift8
+MECHANISM_CASE M033_context 5_10 rgb_U
+MECHANISM_CASE M033_context 5_10 dsm_U
+MECHANISM_CASE M033_context 5_10 rgb_lines64w8__clean
+MECHANISM_CASE M033_context 5_10 rgb_lines64w8__aux_down4
+MECHANISM_CASE M033_context 5_10 rgb_lines64w8__aux_shift8
+MECHANISM_CASE M033_context 5_10 rgb_blocks64q25__clean
+MECHANISM_CASE M033_context 5_10 rgb_blocks64q25__aux_down4
+MECHANISM_CASE M033_context 5_10 rgb_blocks64q25__aux_shift8

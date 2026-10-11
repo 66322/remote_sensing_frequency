@@ -1,0 +1,59 @@
+{
+  "execution_commit": "cd958925cb5d4292dd15802830e97493c9c67033",
+  "plan_sha256": "0b22ceb9836e14a13c1407bbe280b4a2a3745ec13e5a79c1273f5875e5d73d1c",
+  "code_manifest_sha256": "e5e0a5c66d0604b5d6dceb9bb974ba2e3daa00b2e1fd5d016178e08a8419087b",
+  "job": {
+    "id": "M333_context",
+    "gpu": 0,
+    "kind": "module",
+    "rgb": 3,
+    "dsm": 3,
+    "head": 3,
+    "context": true,
+    "keys": [
+      "rgb_U",
+      "dsm_U",
+      "rgb_lines64w8__clean",
+      "rgb_lines64w8__aux_down4",
+      "rgb_lines64w8__aux_shift8",
+      "rgb_blocks64q25__clean",
+      "rgb_blocks64q25__aux_down4",
+      "rgb_blocks64q25__aux_shift8"
+    ],
+    "optimizer_updates": 0
+  },
+  "checkpoint": {
+    "sources": {
+      "S1-0": {
+        "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293/jobs/S1-0/selected.pth",
+        "sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f"
+      },
+      "S1-3": {
+        "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293/jobs/S1-3/selected.pth",
+        "sha256": "c8b4d801da2a7a3937589aa3777885de810387a463009d4a8c6e23dc00d8d562"
+      }
+    },
+    "module_card": {
+      "id": "M333_context",
+      "gpu": 0,
+      "kind": "module",
+      "rgb": 3,
+      "dsm": 3,
+      "head": 3,
+      "context": true,
+      "keys": [
+        "rgb_U",
+        "dsm_U",
+        "rgb_lines64w8__clean",
+        "rgb_lines64w8__aux_down4",
+        "rgb_lines64w8__aux_shift8",
+        "rgb_blocks64q25__clean",
+        "rgb_blocks64q25__aux_down4",
+        "rgb_blocks64q25__aux_shift8"
+      ],
+      "optimizer_updates": 0
+    },
+    "native_output": "S1-0 outside observable RGB missing support"
+  },
+  "optimizer_updates": 0
+}

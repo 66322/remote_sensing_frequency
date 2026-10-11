@@ -1,0 +1,93 @@
+test_all_package_compositions_and_exact_endpoints (test_post_t_mechanism.MechanismTests) ... ok
+test_complete_requires_all_t_and_release (test_post_t_mechanism.MechanismTests) ... ok
+test_contract_26_zero_training_and_gpu0 (test_post_t_mechanism.MechanismTests) ... ok
+test_counts_recompute_and_signal_not_single_tile (test_post_t_mechanism.MechanismTests) ... ok
+test_fifo_26_only_one_gpu (test_post_t_mechanism.MechanismTests) ... MECHANISM_START GPU0 M000_masked 77
+MECHANISM_JOB M000_masked COMPLETE
+MECHANISM_START GPU0 M000_context 77
+MECHANISM_JOB M000_context COMPLETE
+MECHANISM_START GPU0 M003_masked 77
+MECHANISM_JOB M003_masked COMPLETE
+MECHANISM_START GPU0 M003_context 77
+MECHANISM_JOB M003_context COMPLETE
+MECHANISM_START GPU0 M030_masked 77
+MECHANISM_JOB M030_masked COMPLETE
+MECHANISM_START GPU0 M030_context 77
+MECHANISM_JOB M030_context COMPLETE
+MECHANISM_START GPU0 M033_masked 77
+MECHANISM_JOB M033_masked COMPLETE
+MECHANISM_START GPU0 M033_context 77
+MECHANISM_JOB M033_context COMPLETE
+MECHANISM_START GPU0 M300_masked 77
+MECHANISM_JOB M300_masked COMPLETE
+MECHANISM_START GPU0 M300_context 77
+MECHANISM_JOB M300_context COMPLETE
+MECHANISM_START GPU0 M303_masked 77
+MECHANISM_JOB M303_masked COMPLETE
+MECHANISM_START GPU0 M303_context 77
+MECHANISM_JOB M303_context COMPLETE
+MECHANISM_START GPU0 M330_masked 77
+MECHANISM_JOB M330_masked COMPLETE
+MECHANISM_START GPU0 M330_context 77
+MECHANISM_JOB M330_context COMPLETE
+MECHANISM_START GPU0 M333_masked 77
+MECHANISM_JOB M333_masked COMPLETE
+MECHANISM_START GPU0 M333_context 77
+MECHANISM_JOB M333_context COMPLETE
+MECHANISM_START GPU0 L_T0 77
+MECHANISM_JOB L_T0 COMPLETE
+MECHANISM_START GPU0 L_T1 77
+MECHANISM_JOB L_T1 COMPLETE
+MECHANISM_START GPU0 L_T2 77
+MECHANISM_JOB L_T2 COMPLETE
+MECHANISM_START GPU0 L_T3 77
+MECHANISM_JOB L_T3 COMPLETE
+MECHANISM_START GPU0 L_T4 77
+MECHANISM_JOB L_T4 COMPLETE
+MECHANISM_START GPU0 L_T5 77
+MECHANISM_JOB L_T5 COMPLETE
+MECHANISM_START GPU0 L_T6 77
+MECHANISM_JOB L_T6 COMPLETE
+MECHANISM_START GPU0 L_T7 77
+MECHANISM_JOB L_T7 COMPLETE
+MECHANISM_START GPU0 L_T8 77
+MECHANISM_JOB L_T8 COMPLETE
+MECHANISM_START GPU0 L_T9 77
+MECHANISM_JOB L_T9 COMPLETE
+ok
+test_plan_fixed_learning_curves_all_t (test_post_t_mechanism.MechanismTests) ... ok
+test_route_uses_availability_only_and_all_missing_guard (test_post_t_mechanism.MechanismTests) ... ok
+test_same_source_forward_identity_and_zero_training (test_post_t_mechanism.MechanismTests) ... ok
+test_wait_does_not_start_gpu (test_post_t_mechanism.MechanismTests) ... MECHANISM_HANDOVER WAITING_PREDECESSOR RUNNING_T5
+MECHANISM_HANDOVER READY TRANSFER_COMPLETE_AWAITING_REVIEW
+ok
+test_worker_end_to_end_with_synthetic_native_predictions (test_post_t_mechanism.MechanismTests) ... MECHANISM_CASE M333_context 3_11 rgb_U
+MECHANISM_CASE M333_context 3_11 dsm_U
+MECHANISM_CASE M333_context 3_11 rgb_lines64w8__clean
+MECHANISM_CASE M333_context 3_11 rgb_lines64w8__aux_down4
+MECHANISM_CASE M333_context 3_11 rgb_lines64w8__aux_shift8
+MECHANISM_CASE M333_context 3_11 rgb_blocks64q25__clean
+MECHANISM_CASE M333_context 3_11 rgb_blocks64q25__aux_down4
+MECHANISM_CASE M333_context 3_11 rgb_blocks64q25__aux_shift8
+MECHANISM_CASE M333_context 5_10 rgb_U
+MECHANISM_CASE M333_context 5_10 dsm_U
+MECHANISM_CASE M333_context 5_10 rgb_lines64w8__clean
+MECHANISM_CASE M333_context 5_10 rgb_lines64w8__aux_down4
+MECHANISM_CASE M333_context 5_10 rgb_lines64w8__aux_shift8
+MECHANISM_CASE M333_context 5_10 rgb_blocks64q25__clean
+MECHANISM_CASE M333_context 5_10 rgb_blocks64q25__aux_down4
+MECHANISM_CASE M333_context 5_10 rgb_blocks64q25__aux_shift8
+ok
+test_worker_failure_no_retry (test_post_t_mechanism.MechanismTests) ... MECHANISM_START GPU0 M000_masked 77
+MECHANISM_JOB M000_masked TECHNICAL_FAILURE
+MECHANISM_START GPU0 M000_masked 77
+MECHANISM_HARD_TIMEOUT M000_masked
+MECHANISM_JOB M000_masked TIMEOUT
+MECHANISM_START GPU0 M000_masked 77
+MECHANISM_JOB M000_masked TECHNICAL_FAILURE
+ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 3.549s
+
+OK

@@ -1,0 +1,50 @@
+{
+  "execution_commit": "cd958925cb5d4292dd15802830e97493c9c67033",
+  "plan_sha256": "0b22ceb9836e14a13c1407bbe280b4a2a3745ec13e5a79c1273f5875e5d73d1c",
+  "code_manifest_sha256": "e5e0a5c66d0604b5d6dceb9bb974ba2e3daa00b2e1fd5d016178e08a8419087b",
+  "job": {
+    "id": "M000_context",
+    "gpu": 0,
+    "kind": "module",
+    "rgb": 0,
+    "dsm": 0,
+    "head": 0,
+    "context": true,
+    "keys": [
+      "rgb_U",
+      "dsm_U",
+      "rgb_lines64w8__clean",
+      "rgb_lines64w8__aux_down4",
+      "rgb_lines64w8__aux_shift8",
+      "rgb_blocks64q25__clean",
+      "rgb_blocks64q25__aux_down4",
+      "rgb_blocks64q25__aux_shift8"
+    ],
+    "optimizer_updates": 0
+  },
+  "artifacts": {
+    "summary.json": "033b0d40dab3e00d410bb98794afa49feb5270a63b31315ce11e393b17fbcc19",
+    "checkpoint_binding.json": "23114b478bec75948fdd22d9a3eae76b353799d9e1fc35878f67cbfd96024173",
+    "endpoint_checks.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "rgb_U/3_11.json": "418d70bfb48f7da5102fb8e8a10c08d07bd095728744999023f90d4de5a44f75",
+    "dsm_U/3_11.json": "d9acedef90a1f57b1e2e52d817acbb3a9f52f5693b2843ae2663c19cf10be1b7",
+    "rgb_lines64w8__clean/3_11.json": "67af24cbf58e33576dec0a267df15b30b477c28dc29918ed680b5c872dcb21c6",
+    "rgb_lines64w8__aux_down4/3_11.json": "c8e063f831502d11a2c43efd82a4c784f34e4a08c524a5a5f8d42b34642a687f",
+    "rgb_lines64w8__aux_shift8/3_11.json": "b72265d7a144cbbf0ecfeadcbf3238914d239473c49b3077aa46e08cecf0f407",
+    "rgb_blocks64q25__clean/3_11.json": "071f6ad15c8ad7c85b27105cf79a137539e8f5b4e7cf4ceff3b5310fb9adc593",
+    "rgb_blocks64q25__aux_down4/3_11.json": "3859e4793bac4fd88d2d97711ae92f764ffbb596a906fd3f866ab2697822cae4",
+    "rgb_blocks64q25__aux_shift8/3_11.json": "81219c191727be769e68b3d261920bec9b30cf056dd8d91bde6ded415d7ef29a",
+    "rgb_U/5_10.json": "b03b90aafc71c3393e21048c5f9d5a91e4f79e3804a59d035d3d838582aba2f3",
+    "dsm_U/5_10.json": "ac42f2e8aaf9b8c65ae4227daf8fbc2775105493ed1f741068611c0e09540116",
+    "rgb_lines64w8__clean/5_10.json": "217e84fcb1ef9dddad21d4b38d7bafd88e7bcf64811edf70bccc37f05552ba12",
+    "rgb_lines64w8__aux_down4/5_10.json": "85b6d03b7ff66b2c0c8f789df671b16d0c29d5edfd918435b9dae43e60714695",
+    "rgb_lines64w8__aux_shift8/5_10.json": "ad28d862dda477b44985b9fa6741bb679e48a339feeeea86d3ba481ac2c1c51e",
+    "rgb_blocks64q25__clean/5_10.json": "b05561bdee2a3a0d7bc761266256e1d44a497020dd2c1747fa5254b9557316e5",
+    "rgb_blocks64q25__aux_down4/5_10.json": "d6acb9db6f79b770f6d56fae70000d85c7bfd37cb70f0a6c0518743f16c58c6e",
+    "rgb_blocks64q25__aux_shift8/5_10.json": "9eaa7163ccbca9aae1b2e11babbae2906d1681c3148adc4f36005041b05b808f"
+  },
+  "optimizer_updates": 0,
+  "test6_loaded": false,
+  "independent_final_loaded": false,
+  "completed_at": "2026-10-11T10:13:52.500344+08:00"
+}

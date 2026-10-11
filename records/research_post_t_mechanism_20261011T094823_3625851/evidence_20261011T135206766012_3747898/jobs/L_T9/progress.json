@@ -1,0 +1,8 @@
+{
+  "job": "L_T9",
+  "physical_gpu": 0,
+  "optimizer_updates": 0,
+  "elapsed_seconds": 208.0466246381402,
+  "observed_at": "2026-10-11T13:42:23.912740+08:00",
+  "phase": "complete"
+}
