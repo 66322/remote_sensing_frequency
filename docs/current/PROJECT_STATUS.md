@@ -1,10 +1,12 @@
-# 项目状态：双卡队列登记成功，运行进度待查询
+# 项目状态：H8/F8双卡训练运行确认
 
 权威共享源：66322/remote_sensing_frequency，rebuild-v1-protocol-20260915；本地仅工作副本。
 
-最后服务器只读查询2026-10-11T18:35:43.956508+08:00：queue LAST_OBSERVED=18:35:35.350928，RUNNING，controller LIVE=True。CONTENT_PRE在GPU0 RUNNING/LIVE=True、0优化器更新；progress观测18:35:21.772826、elapsed566.033441秒，phase=M000_context/S、tile5_10、rgb_lines64w8__clean、windows529/529。529/529只代表当前tile/条件窗口，整项前测尚未完成。H8/F8/R8/R16/H16/F16及CONTENT_POST均PENDING，当前0/8整项完成、1运行、7待办，新增训练0。此为最后观测，不是实时查询。
+最后服务器只读查询2026-10-11T18:54:08.952037+08:00：queue LAST_OBSERVED=18:54:02.365173、RUNNING、controller LIVE=True。CONTENT_PRE COMPLETE/GPU0/LIVE=False，完成progress18:46:47.983999、worker1252.244643秒（约20分52秒）、0更新。H8 GPU0 RUNNING/LIVE=True，F8 GPU1 RUNNING/LIVE=True，均step180/8000；R8/R16/H16/F16/CONTENT_POST PENDING。当前1/8整项完成、2运行、5待办；双卡正式训练派发已确认。这是最后观测，不代表实时状态。
 
-原目录research_post_t_paired_v2_20261011T182543_3880702、执行44e4df5afbaeb603e6441e7ef14ff09f228bc027、controller登记PID3881013保持。前测单队列任务形成阶段屏障，因此此刻GPU1没有可派发实验；CONTENT_PRE完整后自动进入最多两卡训练。代码默认两卡启用，用户尚未发出release；GPU1实际硬件可用性尚无nvidia-smi原件。继续原队列、稍后只读查询，不重复登记/启动，不为检测停卡而release。查询证据：[进度回报](../../records/research_post_t_paired_v2_20261011T182543_3880702/user_reported_progress_20261011T183543.json)。
+H8 progress18:53:55.848942、loss0.3198899031、0.663463秒/训练step、peak_allocated13738220032 bytes（约12.8GiB）；F8 progress18:53:54.098099、loss0.3209704161、0.653092秒/step、peak_allocated13294365184 bytes（约12.4GiB）。各自remaining_train_hours=1.441190/1.418660，仅训练计算、不含后续validation/终点评价/排队；不能作为整项或整队ETA，R步速未校准。训练loss不是分割精度或机制增量证据。
+
+原目录research_post_t_paired_v2_20261011T182543_3880702、执行44e4df5afbaeb603e6441e7ef14ff09f228bc027、controller登记PID3881013保持。日志确认CONTENT_PRE完整退出后H8 GPU0与F8 GPU1派发，无本次失败回报。controller已接收前测技术完成，但C端点复现/内容对比原件尚未独立接收，不据完成标记预判机制成立。查询证据：[进度回报](../../records/research_post_t_paired_v2_20261011T182543_3880702/user_reported_progress_20261011T185408.json)。
 
 研究阶段为可行性探索与机制定位。主线仍RGB–DSM双向条件互补与退化/缺失分割，恢复为旁支。已验线索限Potsdam fit12→重复Val2 3_11/5_10、seed42、已知RGB局部缺失；DSM_U为保护结果。旧T7/U/E=False保持，不后验换M303/T5，不声称双向、未知故障或独立泛化。
 
@@ -18,6 +20,6 @@ H训练私有RGB net.rgb与decoder[:-1]；R另开末4编码块；最终分类器
 
 [执行与操作说明](../protocols/POST_T_PAIRED_V2_EXECUTION_20261011.md)、[配对细则](../protocols/POST_T_PAIRED_ADAPTATION_BUDGET_20261011.md)、[研究排期](../protocols/POST_T_RESEARCH_SEQUENCE_20261011.md)、[机制结果](../experiments/POST_T_MECHANISM_RESULTS_20261011.md)、[实现验收](../../records/post_t_paired_v2_implementation_20261011/verification.json)、[此前交接归档](../history/POST_T_PAIRED_V2_PRE_EXECUTION_HANDOFF_20261011.md)。
 
-立即下一步：保留正在运行的CONTENT_PRE；稍后查询原目录manage status与nohup，确认前测完整并进入H8/F8双卡派发。无需重新登记，不主动release/rejoin，不测试占卡退出。已有队列继续执行。无SSH，所有记录在/home/jovyan/zzx对应目录，Test6/held4/final关闭。
+立即下一步：继续原H8/F8双卡任务，按需查询status与对应worker日志；阶段内空闲卡接R8，8k三组全部技术完整且配对通过后进入16k。只有用户需要用卡时才release，未完成任务在剩余卡排队续跑。无SSH、不重复登记/启动，不主动测试迁移。完整后显式上传轻量原件并独立验收，Test6/held4/final关闭。
 
 预留一天以上，无全队24h截止；完成固定任务后自动停。单臂累计活跃时间保护仍为8k 12h、16k 24h、内容批次4h，排队/主动释放等待不计。OOM/绑定/非有限/技术失败HOLD，保留现场且不自动重试；主动释放属于同一任务续跑。完整后显式上传轻量原件，再独立复算全部配对、轨迹、内容与保护并制定后继，不能把本地检查写为实验已验证。

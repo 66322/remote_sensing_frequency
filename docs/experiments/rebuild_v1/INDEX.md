@@ -1,3 +1,11 @@
+# 2026-10-11 18:54：H8/F8双卡训练运行确认
+
+QUERY_OBSERVED=2026-10-11T18:54:08.952037+08:00，queue观测18:54:02.365173、RUNNING，controller LIVE=True。CONTENT_PRE COMPLETE/GPU0/进程退出，worker1252.244643秒；H8 GPU0与F8 GPU1同时运行、LIVE=True，各180/8000。1/8整项完成、2运行、5待办。原目录/执行44e4df5a保持，无release操作或本次失败回报。
+
+H/F步速0.663463/0.653092秒，peak_allocated13738220032/13294365184 bytes（约12.8/12.4GiB）。remaining_train_hours1.441190/1.418660仅训练计算，不含未来validation/评价；R与整队未校准。前测C原件及诊断内容、训练精度仍待完成后上传独立验收；loss差不作机制判断。[原查询回报](../../../records/research_post_t_paired_v2_20261011T182543_3880702/user_reported_progress_20261011T185408.json)。继续双卡队列，按需才release。以下为历史条目。
+
+---
+
 # 2026-10-11 18:35：前测GPU0运行确认，训练待前测完成
 
 QUERY_OBSERVED=2026-10-11T18:35:43.956508+08:00，queue观测18:35:35.350928、RUNNING，controller LIVE=True。CONTENT_PRE GPU0/LIVE=True、0更新；18:35:21 progress M000_context/S、5_10、rgb_lines64w8__clean、529/529，仅当前窗口完成。六训练与后测PENDING；0/8整项完成、1运行、7待办。前测阶段单卡符合冻结队列，完整后自动双卡训练。无release操作；GPU1健康未独立核验。继续原目录/原执行，不重复enqueue。[原查询回报](../../../records/research_post_t_paired_v2_20261011T182543_3880702/user_reported_progress_20261011T183543.json)。以下为历史条目。
