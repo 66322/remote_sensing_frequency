@@ -1,3 +1,11 @@
+# 2026-10-12：Structured v0.1后继已实现，尚未服务器登记
+
+用户授权排在原配对之后。42任务：640缺失case＋8clean＋6旧端点；新训练0。17项CPU合成测试通过，真实mask可行性/权重/H100尚未验证。登记后先等待原八项完成并退出/释放锁，再CPU mask→clean/端点→正式推理；技术失败HOLD，不自动扩样或新训练。GPU0/1可释放并跨卡续跑，原释放标志继承。
+
+[执行协议](../../protocols/STRUCTURED_FAILURE_V0_EXECUTION_20261011.md)、[实现检查](../../../records/structured_failure_v0_implementation_20261012/verification.json)。READY_NOT_REGISTERED_SERVER_RUNTIME_UNVERIFIED，无新目录/PID。最后原队列查询仍2026-10-11T23:34:24.796568+08:00，下方为历史状态。
+
+---
+
 # 2026-10-11 23:34：H8/F8完成，R8满8000步正在终点评价
 
 最后服务器只读查询2026-10-11T23:34:24.796568+08:00：queue观测23:34:17.832878、RUNNING、controller LIVE=True。CONTENT_PRE/H8/F8 COMPLETE且worker退出；H8/F8均8000步。R8 GPU1 RUNNING/LIVE=True、8000/8000、phase=endpoint_ordinary（3_11/aux_down4，529/529窗口仅指该case）。R16/H16/F16/CONTENT_POST PENDING。3/8整项完成、1项评价中、4项待办；训练更新回报24000/72000，R8尚未完成整项技术验收。此为最后观测，不代表实时状态。
