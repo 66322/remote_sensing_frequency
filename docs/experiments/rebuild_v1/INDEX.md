@@ -1,3 +1,13 @@
+# 2026-10-11 09:51：机制诊断首项GPU0推理已确认
+
+最后服务器只读查询（用户终端）：QUERY_OBSERVED=2026-10-11T09:51:04.266613+08:00，queue LAST_OBSERVED=2026-10-11T09:50:54.789468+08:00，RUNNING_M000_masked；controller PID3626108 LIVE=True，CPU=COMPLETE，仅GPU0。首项M000_masked PID3626555 LIVE=True，phase=inference，tile=3_11，condition=dsm_U，windows=529/529，progress观测09:50:47.640628，elapsed=81.824804秒，optimizer_updates=0。
+
+前序已安全交接：READY、controller_live=False、workers_live=False，checked_at=2026-10-11T09:48:31.724509+08:00；原T最后观测08:45:44.211597。当前0/26整项完成、1项运行、25项PENDING；529/529仅为单tile单条件窗口进度，不代表整个M项或队列完成。暂无新精度/R0端点/机制结论，也无本次故障回报。
+
+继续现有nohup队列，使用原status按需只读观察，不重复enqueue。顺序M16→L10，GPU0单worker、0训练更新；接手后2—4h仍为规划估时，首个完整M后校准。失败保留worker/目录后诊断，不自动重试、追加seed或GPU1；完成后上传轻量原件再分析。
+
+---
+
 # 2026-10-11 09:48：机制诊断登记成功，进度待查询
 
 最新服务器登记回报（用户终端，2026-10-11）：MECHANISM_QUEUE_REGISTERED，目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_t_mechanism_20261011T094823_3625851，controller PID3626108，GPU=0 ONLY，DIAGNOSTIC_JOBS=26，NEW_STEPS=0；日志nohup_20261011T094831668881.log。目录09:48:23、日志09:48:31.668881为命名时间标记，不是queue observed_at。当前REGISTERED_PROGRESS_NOT_YET_QUERIED，尚无controller/worker存活、CPU准备或CUDA首项进度回报。
