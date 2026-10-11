@@ -1,4 +1,8 @@
-# 新对话交接：结构化缺失零训练后继已就绪，待用户一次登记
+# 当前交接：结构化诊断后继已登记，待查询运行状态
+
+2026-10-12用户终端已回报STRUCTURED_QUEUE_REGISTERED：目录`research_structured_failure_v0_20261012T073410_81887`、controller登记PID **82130**、日志`nohup_20261012T073413524451.log`，执行 **f2ad4a9f38b32058f3855c2d18aa6a9b81df6cdd**，WAIT_FOR_PAIRED=True、GPU0/1、0训练、640缺失＋8clean＋6旧端点。目录07:34:10和日志07:34:13.524451为命名时间，未提供QUERY_OBSERVED或queue observed_at。当前记录为REGISTERED_PROGRESS_NOT_YET_QUERIED：未确认controller存活、正在等待/准备/推理或技术HOLD；不据登记输出推断前序已完成。服务器CPU检查成功退出由登记执行链推断，原日志尚未接收。
+
+[登记回报](../../records/research_structured_failure_v0_20261012T073410_81887/user_reported_registration_20261012T0734.json)。下一步只读新目录manage_structured_v0.py --action status与nohup日志，并查询原配对目录status；不要再次enqueue或启动控制器。
 
 权威源66322/remote_sensing_frequency / rebuild-v1-protocol-20260915。发布准备日期2026-10-12（Asia/Shanghai）。
 
@@ -10,7 +14,7 @@
 
 ## 新授权及后继状态
 
-2026-10-12更新：用户已明确授权把下一阶段排在当前队列之后。[后继执行v0.1](../protocols/STRUCTURED_FAILURE_V0_EXECUTION_20261011.md)已实现、17项CPU合成检查通过，READY_NOT_REGISTERED_SERVER_RUNTIME_UNVERIFIED；尚无服务器新目录/PID回报。等待当前八项技术完成、进程及锁释放后，自动CPU掩码可行性→8clean与6旧端点→640缺失case，0训练。用户此授权覆盖此前“原件科学解读后才启动固定诊断”的排期建议，但科学结论仍须独立验收。
+2026-10-12更新：用户已明确授权把下一阶段排在当前队列之后。[后继执行v0.1](../protocols/STRUCTURED_FAILURE_V0_EXECUTION_20261011.md)已实现、17项CPU合成检查通过，已收到上述服务器登记回报；尚未收到新status/GPU运行回报。等待当前八项技术完成、进程及锁释放后，自动CPU掩码可行性→8clean与6旧端点→640缺失case，0训练。用户此授权覆盖此前“原件科学解读后才启动固定诊断”的排期建议，但科学结论仍须独立验收。
 
 固定范围为四系统（D25 P6 RGB-only、S1-0、M000_masked、M000_context）×四mask族（pixel/random/gradient/matched）×20掩码实现×两Val2。42队列任务：2clean/旧端点任务与40个tile×实现任务，每个后者16输出；Phase1B、尺寸扫描、GT边界族、Vaihingen、DSM镜像和新训练不登记。
 
@@ -26,6 +30,6 @@
 
 固定主PE为S1-0同支持damage的gradient−matched，CB为同权重context−masked；random与语义matched分开，后者GT仅参与诊断生成。20掩码不是20训练seed或地区。healthy空集合None；保存Full/NB原6×6矩阵、逐类计数、伤害/救回和预测SHA。掩码位置/匹配算法已在v0.1代码和说明冻结，不看模型结果调参。尚无本轮真实结果。
 
-立即下一步：用户执行本次给出的后继一次登记命令，并回传STRUCTURED_QUEUE_REGISTERED/日志/status；助手记录真实新目录/PID。当前配对队列继续原样运行。它完成后可显式上传原F/H/R轻量原件供独立验收；后继无须等待聊天端在线才按固定旧模型运行。新后继完成后也显式上传自己的轻量原件，再决定后续配对训练，不根据screen自动开启训练。
+立即下一步：只读查询已登记新目录status与nohup日志，同时查询原配对目录；助手记录带时间状态，不再次登记。当前配对队列继续原样运行。它完成后可显式上传原F/H/R轻量原件供独立验收；后继无须等待聊天端在线才按固定旧模型运行。新后继完成后也显式上传自己的轻量原件，再决定后续配对训练，不根据screen自动开启训练。
 
 服务器由用户执行、无SSH，全部记录快照在/home/jovyan/zzx对应目录。Test6/held4/final关闭。此前交接见[归档](../history/PRE_STRUCTURED_QUEUE_HANDOFF_20261012.md)，设计评审见[历史草案](../protocols/STRUCTURED_FAILURE_EVAL_V0_20261011.md)。

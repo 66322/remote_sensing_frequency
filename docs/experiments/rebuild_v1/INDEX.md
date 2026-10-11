@@ -1,3 +1,11 @@
+# 2026-10-12 07:34命名时间：结构化诊断后继登记回报
+
+2026-10-12用户终端已回报STRUCTURED_QUEUE_REGISTERED：目录`research_structured_failure_v0_20261012T073410_81887`、controller登记PID **82130**、日志`nohup_20261012T073413524451.log`，执行 **f2ad4a9f38b32058f3855c2d18aa6a9b81df6cdd**，WAIT_FOR_PAIRED=True、GPU0/1、0训练、640缺失＋8clean＋6旧端点。目录07:34:10和日志07:34:13.524451为命名时间，未提供QUERY_OBSERVED或queue observed_at。当前记录为REGISTERED_PROGRESS_NOT_YET_QUERIED：未确认controller存活、正在等待/准备/推理或技术HOLD；不据登记输出推断前序已完成。服务器CPU检查成功退出由登记执行链推断，原日志尚未接收。
+
+[登记原字段](../../../records/research_structured_failure_v0_20261012T073410_81887/user_reported_registration_20261012T0734.json)。原配对最近status仍2026-10-11T23:34:24.796568+08:00；本次登记不更新它的运行状态。新队列不重登，下一步查询两队列与新nohup。以下为历史记录。
+
+---
+
 # 2026-10-12：Structured v0.1后继已实现，尚未服务器登记
 
 用户授权排在原配对之后。42任务：640缺失case＋8clean＋6旧端点；新训练0。17项CPU合成测试通过，真实mask可行性/权重/H100尚未验证。登记后先等待原八项完成并退出/释放锁，再CPU mask→clean/端点→正式推理；技术失败HOLD，不自动扩样或新训练。GPU0/1可释放并跨卡续跑，原释放标志继承。
