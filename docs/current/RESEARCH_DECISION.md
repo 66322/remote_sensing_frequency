@@ -1,25 +1,25 @@
-# 研究决定：诊断完成，先验原件后冻结配对训练
+# 研究决定：先区分RGB专家解码头与编码尾部，再比较预算
 
 权威共享源：66322/remote_sensing_frequency，rebuild-v1-protocol-20260915；本地仅工作副本。
 
-最后服务器查询（用户粘贴终端回报）：QUERY_OBSERVED=2026-10-11T13:48:26.474610+08:00；queue LAST_OBSERVED=2026-10-11T13:42:45.195415+08:00，MECHANISM_COMPLETE_AWAITING_REVIEW。CPU完成，M16＋L10全部26项COMPLETE；查询时controller PID3626108及全部worker LIVE=False，仅GPU0，NEW_OPTIMIZER_UPDATES=0。nohup完整派发/完成并NO_FURTHER_DISPATCH，未见本次故障回报。这是最后观测，不代表新的实时查询。
+本轮Post-T原件57ef5ad9e5238f69f94c5d8ede00023a20499144已接收并离线验收，Verification Status: ANALYZED。最后服务器查询2026-10-11T13:48:26.474610+08:00；queue完成观测13:42:45.195415，CPU完成、26/26 COMPLETE、查询时controller及全部worker LIVE=False，仅GPU0、0新优化器更新。此为最后服务器观测，上传与助手离线分析不构成实时查询。
 
-服务器DIAGNOSTIC_SCREEN回报matched_budget_study_supported=True、representation_followup_signal=True；next_training_launched=False、automatic_retry=False。此为未独立验收的汇总回报，未收到本轮精度、原计数、checkpoint绑定或R0同源端点原件；不能判新方法有效或把信号当作双向贡献。来源：[完成回报](../../records/research_post_t_mechanism_20261011T094823_3625851/user_reported_completion_20261011T134826.json)。
+核验全部634个Git blob（633载荷＋manifest）、632份源字节/无损解码SHA、50860矩阵/11424 joint边际、296 case/888预测索引与1184 transition计数关系。M333_context全部16 case的候选预测SHA和计数复现R0，RGB_U=85.001650%。155份上传代码/文档按执行manifest核验；3份继承历史plan JSON不在本轮上传器范围，名单详见审计。CPU11项原日志OK已接收。权重/预测/影像本体留服务器，未独立重hash或GPU重跑。
 
-执行提交cd958925cb5d4292dd15802830e97493c9c67033保持，目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_t_mechanism_20261011T094823_3625851。M333_context完成观测13:04:28；L十项worker实测206.411—210.024秒/项，最后L_T9完成观测13:42:23。旧剩余估时已失效。
+固定RGB_U比较：只换解码器+0.504953pp，换RGB专家包+2.901426pp，换DSM专家包+0.005618pp；同S1-3解码器下换两包+2.521564pp，两tile均正；M333上下文对屏蔽+3.421234pp。RGB包来源在context下四对+2.519—2.901pp，masked下几乎无效，有强交互。包包含编码器与专家解码头，不能归因为纯编码尾部，也不能从DSM交换小效应否定DSM内容。
 
-研究阶段仍为可行性探索与机制定位。主线RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复为旁支；当前已验证线索偏RGB已知局部缺失。
+固定T1/T7后4000步RGB_U分别+0.334083/+0.321695pp，两tile正，两预定规划信号独立复算True。它们仅支持新配对研究，不证明延长旧T7必成。完整T原gate仍T7/U/E=False，旧失败不救援。0/8000计数与4000 validation绑定复用此前已验完整T审计，新4000 U原计数独立复算。
 
-完整T0—T9原件379f301f已完成此前离线验收；Potsdam fit12→Val2=3_11/5_10、seed42、fixed8000、native512/stride256、NoBoundary mIoU_fg5。T7 RGB_U=83.876407%，比R0=85.001650%低1.125243pp；五上下文匹配对+1.432—1.521pp且两tile正。原T7/U/E gate均False，解码器初始化额外收益未获支持。旧gate不变，不后验改选T5或扩大旧配方预算。
+[机制结果](../experiments/POST_T_MECHANISM_RESULTS_20261011.md)、[配对协议](../protocols/POST_T_PAIRED_ADAPTATION_BUDGET_20261011.md)、[独立审计](../../records/post_t_mechanism_offline_audit_20261011/audit.json)。
 
-[完整T报告](../experiments/POST_T_FULL_RESULTS_20261011.md)、[冻结诊断协议](../protocols/POST_T_MECHANISM_GPU0_20261010.md)。当前26项是推理诊断，无新训练；完成不自动启动下一轮。
+研究阶段：可行性探索与机制定位；主线仍RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复为旁支。实验已验证的机制线索限已知RGB局部缺失、重复Val2/seed42；不声称双向、未知可靠性或独立泛化。
 
-立即下一步：在用户服务器终端用原目录code/scripts/upload_post_t_mechanism_records.py --root ROOT --directory DIR显式上传轻量原件，无需再次登记或启动。仅上传轻量JSON/计数/配置/代码/日志及服务器大文件索引，权重和预测数组保留原目录；用户返回上传提交号后助手从GitHub回读。
+本次按用户要求制定下一轮真正配对训练协议，属于重写版建议：F普通私有解码、H只适应RGB专家pre-classifier解码头、R加RGB末4编码块、X与R等参数空间打乱控制，各新8000/16000，共8项/96000更新；固定候选R16。所有初值S1-0，同预算数据/优化器/日程配对，含保护/R0/最坏tile/六E底线。8k/16k为预算×日程联合比较，不是纯次数因果。协议PLANNED_NOT_IMPLEMENTED_NOT_REGISTERED，没有新队列、PID或训练启动。
 
-先核验清单/无损解码SHA、26项完成与执行绑定、M333_context对全部16个R0 case逐像素同源端点、int64 6×6计数及tile→pooled；再复算固定模块配对与全部因素配对、保护底线、0→4000→8000 RGB_U/DSM_U轨迹和4000 checkpoint绑定。未校准交换负结果不能证明信息缺失。
+未采纳只延长旧T7、解码器迁移初值救gate、新seed、GPU1、DSM镜像族或恢复旁支扩张；没有改选M303/T5。下一不确定性是专家解码头还是末端编码适应能形成同预算增量、是否超过等容量/空间控制以及能否满足保护/R0底线。
 
-原件通过后，依据专家包信号与T1/T7固定后段信号制定真正的配对训练协议：明确待训练参数、同预算普通控制、冻结/简单解冻/容量控制、主指标、保护与停止门槛及学习率日程。下一轮尚未定型、未登记、未启动；不直接续跑已衰减到零的8000步日程救旧gate。
+下一步按配对协议落实可执行源码、完整配置/参数名单、数据随机流及CPU契约验收，再冻结执行快照。禁止把协议文件当作已实现程序；尚无本轮8项登记/启动命令。旧26项已停止，无需重复查询、enqueue或再次上传同一原件。原M/T目录保留只读。新训练启动前说明GPU0资源、预计占用及停止条件；粗规划36—72h未实测，实际专家反传速度待第一正式worker校准，不默认额外探针或smoke。
 
-服务器由用户执行、无SSH；仅GPU0，不访问Test6/held4/final，不自动重跑失败配方、加seed或GPU1。所有记录/执行快照/归档在/home/jovyan/zzx对应目录。重要结论与交接继续写同一GitHub分支并回读。
+服务器终端由用户执行、无SSH，只用GPU0、不访问Test6/held4/final、不自动重跑失败配方/加seed，全部记录和代码快照在/home/jovyan/zzx对应目录。重要结论/交接写回同一GitHub分支并回读核验。
 
-决定及来源：用户10月11日要求先查询原队列、接收核验轻量原件，再分析模块与轨迹并制定配对训练。未采纳重跑失败配方、增加种子、扩预算救旧gate或更改研究主线。下一不确定性为同源端点与固定信号能否独立复算，及何种适应机制值得同预算训练。
+决定来源：用户10月11日明确要求原队列结束后接收核验轻量原件、分析模块与轨迹、据此制定下一轮配对训练。本次研究协议由助手依据已验收结果提出，未将其冒记为用户已授权运行的8项训练。

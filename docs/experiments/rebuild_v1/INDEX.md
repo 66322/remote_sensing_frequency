@@ -1,3 +1,25 @@
+# 2026-10-11：Post-T 26项原件验收与下一轮协议
+
+本轮Post-T原件57ef5ad9e5238f69f94c5d8ede00023a20499144已接收并离线验收，Verification Status: ANALYZED。最后服务器查询2026-10-11T13:48:26.474610+08:00；queue完成观测13:42:45.195415，CPU完成、26/26 COMPLETE、查询时controller及全部worker LIVE=False，仅GPU0、0新优化器更新。此为最后服务器观测，上传与助手离线分析不构成实时查询。
+
+核验全部634个Git blob（633载荷＋manifest）、632份源字节/无损解码SHA、50860矩阵/11424 joint边际、296 case/888预测索引与1184 transition计数关系。M333_context全部16 case的候选预测SHA和计数复现R0，RGB_U=85.001650%。155份上传代码/文档按执行manifest核验；3份继承历史plan JSON不在本轮上传器范围，名单详见审计。CPU11项原日志OK已接收。权重/预测/影像本体留服务器，未独立重hash或GPU重跑。
+
+固定RGB_U比较：只换解码器+0.504953pp，换RGB专家包+2.901426pp，换DSM专家包+0.005618pp；同S1-3解码器下换两包+2.521564pp，两tile均正；M333上下文对屏蔽+3.421234pp。RGB包来源在context下四对+2.519—2.901pp，masked下几乎无效，有强交互。包包含编码器与专家解码头，不能归因为纯编码尾部，也不能从DSM交换小效应否定DSM内容。
+
+固定T1/T7后4000步RGB_U分别+0.334083/+0.321695pp，两tile正，两预定规划信号独立复算True。它们仅支持新配对研究，不证明延长旧T7必成。完整T原gate仍T7/U/E=False，旧失败不救援。0/8000计数与4000 validation绑定复用此前已验完整T审计，新4000 U原计数独立复算。
+
+[结果](../POST_T_MECHANISM_RESULTS_20261011.md)、[四机制×两预算协议](../../protocols/POST_T_PAIRED_ADAPTATION_BUDGET_20261011.md)、[审计](../../../records/post_t_mechanism_offline_audit_20261011/audit.json)。
+
+研究阶段：可行性探索与机制定位；主线仍RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复为旁支。实验已验证的机制线索限已知RGB局部缺失、重复Val2/seed42；不声称双向、未知可靠性或独立泛化。
+
+本次按用户要求制定下一轮真正配对训练协议，属于重写版建议：F普通私有解码、H只适应RGB专家pre-classifier解码头、R加RGB末4编码块、X与R等参数空间打乱控制，各新8000/16000，共8项/96000更新；固定候选R16。所有初值S1-0，同预算数据/优化器/日程配对，含保护/R0/最坏tile/六E底线。8k/16k为预算×日程联合比较，不是纯次数因果。协议PLANNED_NOT_IMPLEMENTED_NOT_REGISTERED，没有新队列、PID或训练启动。
+
+未采纳只延长旧T7、解码器迁移初值救gate、新seed、GPU1、DSM镜像族或恢复旁支扩张；没有改选M303/T5。下一不确定性是专家解码头还是末端编码适应能形成同预算增量、是否超过等容量/空间控制以及能否满足保护/R0底线。
+
+以下为历史记录；待上传/旧进度条目不代表当前状态。
+
+---
+
 # 2026-10-11 13:48：机制诊断26/26完成，原件待上传
 
 最后服务器查询（用户粘贴终端回报）：QUERY_OBSERVED=2026-10-11T13:48:26.474610+08:00；queue LAST_OBSERVED=2026-10-11T13:42:45.195415+08:00，MECHANISM_COMPLETE_AWAITING_REVIEW。CPU完成，M16＋L10全部26项COMPLETE；查询时controller PID3626108及全部worker LIVE=False，仅GPU0，NEW_OPTIMIZER_UPDATES=0。nohup完整派发/完成并NO_FURTHER_DISPATCH，未见本次故障回报。这是最后观测，不代表新的实时查询。
