@@ -1,3 +1,17 @@
+# 2026-10-12 07:36：F16训练，结构化后继正常等待
+
+最后用户服务器查询：原配对2026-10-12T07:36:17.043567+08:00（queue观测07:36:11.273122），RUNNING/controller LIVE=True。CONTENT_PRE/H8/F8/R8/R16/H16共6/8 COMPLETE退出；F16 GPU1 RUNNING/LIVE=True，11680/16000、training；CONTENT_POST PENDING。训练更新回报67680/72000，不等于整轮评价完成比例，也不等于科学验收。R16 GPU0完成05:12:15.355236，H16 GPU1完成05:07:40.161959。原执行44e4df5afbaeb603e6441e7ef14ff09f228bc027和目录research_post_t_paired_v2_20261011T182543_3880702保持。
+
+后继查询2026-10-12T07:36:16.999949+08:00（queue观测07:36:13.698186），WAITING_PREDECESSOR/controller LIVE=True，GPU_BLOCKED={0:false,1:false}，42项全PENDING、0运行/0完成/0技术失败。前序controller/worker存活、lock_free=False，所以未开始CPU影像扫描或GPU诊断。新目录research_structured_failure_v0_20261012T073410_81887、登记PID82130、执行f2ad4a9f38b32058f3855c2d18aa6a9b81df6cdd保持。以上为最后观测，不代表实时状态。
+
+GPU0空闲由最后F16单任务及CONTENT_POST阶段依赖造成，不是卡被release或缺少已登记任务。R16完成后GPU0无本队列活动worker；H16较早结束的GPU1已接F16。F16技术完成后可用GPU0预计接CONTENT_POST，随后完整汇总/控制器与锁退出，后继才开始CPU准备；新后继clean两项及正式40任务按双卡共享队列派发。无需rejoin、重复enqueue、迁移F16或热改执行快照。
+
+耗时校准：R16完整worker16793.177秒≈4h40m，H16为16517.658秒≈4h35m。07:36时F16累计8888.089秒≈2h28m，剩4320训练步，纯训练预测0.776192h≈46.6分钟；另有12000/16000验证和完整终点评价。按已完成H/R整项耗时量级，F16预计还约2h上下，CONTENT_POST及汇总另留时间，可把09:45—10:30作为前序交接的粗观察窗口而非保证；选模评价分支、I/O、用户占卡或技术HOLD均会改变时间。后继真实mask CPU匹配耗时未测，即使前序退出也不代表立即进入GPU阶段。
+
+[配对原字段](../../../records/research_post_t_paired_v2_20261011T182543_3880702/user_reported_progress_20261012T073617.json)、[后继原字段](../../../records/research_structured_failure_v0_20261012T073410_81887/user_reported_progress_20261012T073616.json)。无新科学结果或运行改动。以下为历史记录。
+
+---
+
 # 2026-10-12 07:34命名时间：结构化诊断后继登记回报
 
 2026-10-12用户终端已回报STRUCTURED_QUEUE_REGISTERED：目录`research_structured_failure_v0_20261012T073410_81887`、controller登记PID **82130**、日志`nohup_20261012T073413524451.log`，执行 **f2ad4a9f38b32058f3855c2d18aa6a9b81df6cdd**，WAIT_FOR_PAIRED=True、GPU0/1、0训练、640缺失＋8clean＋6旧端点。目录07:34:10和日志07:34:13.524451为命名时间，未提供QUERY_OBSERVED或queue observed_at。当前记录为REGISTERED_PROGRESS_NOT_YET_QUERIED：未确认controller存活、正在等待/准备/推理或技术HOLD；不据登记输出推断前序已完成。服务器CPU检查成功退出由登记执行链推断，原日志尚未接收。

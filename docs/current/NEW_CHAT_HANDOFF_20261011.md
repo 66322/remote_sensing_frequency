@@ -1,35 +1,19 @@
-# 当前交接：结构化诊断后继已登记，待查询运行状态
+# 当前状态与交接：F16最后一组运行，后继正常等待
 
-2026-10-12用户终端已回报STRUCTURED_QUEUE_REGISTERED：目录`research_structured_failure_v0_20261012T073410_81887`、controller登记PID **82130**、日志`nohup_20261012T073413524451.log`，执行 **f2ad4a9f38b32058f3855c2d18aa6a9b81df6cdd**，WAIT_FOR_PAIRED=True、GPU0/1、0训练、640缺失＋8clean＋6旧端点。目录07:34:10和日志07:34:13.524451为命名时间，未提供QUERY_OBSERVED或queue observed_at。当前记录为REGISTERED_PROGRESS_NOT_YET_QUERIED：未确认controller存活、正在等待/准备/推理或技术HOLD；不据登记输出推断前序已完成。服务器CPU检查成功退出由登记执行链推断，原日志尚未接收。
+最后用户服务器查询：原配对2026-10-12T07:36:17.043567+08:00（queue观测07:36:11.273122），RUNNING/controller LIVE=True。CONTENT_PRE/H8/F8/R8/R16/H16共6/8 COMPLETE退出；F16 GPU1 RUNNING/LIVE=True，11680/16000、training；CONTENT_POST PENDING。训练更新回报67680/72000，不等于整轮评价完成比例，也不等于科学验收。R16 GPU0完成05:12:15.355236，H16 GPU1完成05:07:40.161959。原执行44e4df5afbaeb603e6441e7ef14ff09f228bc027和目录research_post_t_paired_v2_20261011T182543_3880702保持。
 
-[登记回报](../../records/research_structured_failure_v0_20261012T073410_81887/user_reported_registration_20261012T0734.json)。下一步只读新目录manage_structured_v0.py --action status与nohup日志，并查询原配对目录status；不要再次enqueue或启动控制器。
+后继查询2026-10-12T07:36:16.999949+08:00（queue观测07:36:13.698186），WAITING_PREDECESSOR/controller LIVE=True，GPU_BLOCKED={0:false,1:false}，42项全PENDING、0运行/0完成/0技术失败。前序controller/worker存活、lock_free=False，所以未开始CPU影像扫描或GPU诊断。新目录research_structured_failure_v0_20261012T073410_81887、登记PID82130、执行f2ad4a9f38b32058f3855c2d18aa6a9b81df6cdd保持。以上为最后观测，不代表实时状态。
 
-权威源66322/remote_sensing_frequency / rebuild-v1-protocol-20260915。发布准备日期2026-10-12（Asia/Shanghai）。
+GPU0空闲由最后F16单任务及CONTENT_POST阶段依赖造成，不是卡被release或缺少已登记任务。R16完成后GPU0无本队列活动worker；H16较早结束的GPU1已接F16。F16技术完成后可用GPU0预计接CONTENT_POST，随后完整汇总/控制器与锁退出，后继才开始CPU准备；新后继clean两项及正式40任务按双卡共享队列派发。无需rejoin、重复enqueue、迁移F16或热改执行快照。
 
-## 最后服务器状态
+耗时校准：R16完整worker16793.177秒≈4h40m，H16为16517.658秒≈4h35m。07:36时F16累计8888.089秒≈2h28m，剩4320训练步，纯训练预测0.776192h≈46.6分钟；另有12000/16000验证和完整终点评价。按已完成H/R整项耗时量级，F16预计还约2h上下，CONTENT_POST及汇总另留时间，可把09:45—10:30作为前序交接的粗观察窗口而非保证；选模评价分支、I/O、用户占卡或技术HOLD均会改变时间。后继真实mask CPU匹配耗时未测，即使前序退出也不代表立即进入GPU阶段。
 
-最后用户只读查询2026-10-11T23:34:24.796568+08:00，queue观测23:34:17.832878，RUNNING/controller LIVE=True。CONTENT_PRE/H8/F8 COMPLETE退出，R8 GPU1 8000/8000、endpoint_ordinary仍运行；R16/H16/F16/CONTENT_POST PENDING。3/8整项完成、1评价、4待办。GPU0空闲可由8k阶段等待解释，停用标志未在回报中提供。这是最后观测，不代表实时状态。
+[原队列回报](../../records/research_post_t_paired_v2_20261011T182543_3880702/user_reported_progress_20261012T073617.json)、[后继回报](../../records/research_structured_failure_v0_20261012T073410_81887/user_reported_progress_20261012T073616.json)。
 
-原目录research_post_t_paired_v2_20261011T182543_3880702、执行44e4df5afbaeb603e6441e7ef14ff09f228bc027保持。原六训练72000步、主候选R16及阶段检查不变。两卡可用时R8技术完成与配对检查后自动派发GPU0 R16/GPU1 H16，再先空闲卡F16。前测、训练精度和机制原件仍未接收。[原回报](../../records/research_post_t_paired_v2_20261011T182543_3880702/user_reported_progress_20261011T233424.json)、[原执行操作](../protocols/POST_T_PAIRED_V2_EXECUTION_20261011.md)。
+研究阶段仍为可行性探索与机制定位。主线RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复旁支。原六组配对、R16主候选与旧T7/U/E=False保持；当前loss不能用于比较训练效果。本轮精度、保护、R0差距、DSM内容原件均尚未接收独立验收，不因COMPLETE写科学成功。
 
-## 新授权及后继状态
+后继为用户已授权的固定Phase1A零训练诊断：四系统×四族×20实现×两Val2，640缺失＋8clean＋6旧端点检查，42任务。主PE固定S1-0，CB用同权重M000 masked/context；GT只参与匹配/评价，mask实现不等于训练seed或独立地区。17项CPU合成检查通过，真实mask可行性与H100端点未验证；失败HOLD，不自动换条件/重试/20→40/Phase1B/Phase2或新训练。后继在前序技术完成退出后自动接续，不要求聊天端在线；科学结论仍待轻量原件回读。
 
-2026-10-12更新：用户已明确授权把下一阶段排在当前队列之后。[后继执行v0.1](../protocols/STRUCTURED_FAILURE_V0_EXECUTION_20261011.md)已实现、17项CPU合成检查通过，已收到上述服务器登记回报；尚未收到新status/GPU运行回报。等待当前八项技术完成、进程及锁释放后，自动CPU掩码可行性→8clean与6旧端点→640缺失case，0训练。用户此授权覆盖此前“原件科学解读后才启动固定诊断”的排期建议，但科学结论仍须独立验收。
+用户需要某卡时才release，最新显式请求跨两队列生效，未完成推理case可在另一卡重做但0训练；已完成case复用。无全队24h截止，不自动恢复技术失败。服务器由用户执行、无SSH，记录和快照都在/home/jovyan/zzx对应实验目录；Test6/held4/final关闭。
 
-固定范围为四系统（D25 P6 RGB-only、S1-0、M000_masked、M000_context）×四mask族（pixel/random/gradient/matched）×20掩码实现×两Val2。42队列任务：2clean/旧端点任务与40个tile×实现任务，每个后者16输出；Phase1B、尺寸扫描、GT边界族、Vaihingen、DSM镜像和新训练不登记。
-
-[实现验收](../../records/structured_failure_v0_implementation_20261012/verification.json)。CPU合成通过不等于实际6000²影像匹配、真实权重/H100或精度通过。服务器注册重做CPU检查；真实mask只在前序退出后生成，匹配不可行/重复/梯度对比丢失即HOLD，不放宽阈值、不换seed。GPU正式阶段前8clean与6旧rgb_U端点复现必须成功。
-
-唯一登记入口scripts/enqueue_structured_v0.py，从本次发布提交抽取；重复登记只报已有目录。注册时只复制/散列轻量代码并做CPU合成检查，等待期不申请CUDA或扫描影像。前序必须八项COMPLETE、controller/worker退出、锁释放；取得全局lease并验证绑定后才准备。前序失败/停止即HOLD；不删除部分目录、不自动重启控制器或失败任务。
-
-显卡管理入口scripts/manage_structured_v0.py。原与新队列最新明确release/rejoin生效；新入口在原仍活动时同步该卡请求，原卡释放状态不会因队列切换失效。用户主动释放的任务在其他启用卡优先续跑，只复用已绑定完整case，部分case重推理、0训练。需等worker退出并确认卡空闲后给其他工作用。每GPU一worker、累计每任务8h保护、CPU准备4h，无全队24h截止。
-
-## 科学角色与下一步
-
-研究仍为可行性探索与机制定位，主线RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复旁支。旧T7/U/E=False保持，不后验改选高分模型。结构化缺失是RGB方向待检验子问题，已有证据限重复Potsdam Val2/seed42；不声称双向、未知故障或独立泛化。
-
-固定主PE为S1-0同支持damage的gradient−matched，CB为同权重context−masked；random与语义matched分开，后者GT仅参与诊断生成。20掩码不是20训练seed或地区。healthy空集合None；保存Full/NB原6×6矩阵、逐类计数、伤害/救回和预测SHA。掩码位置/匹配算法已在v0.1代码和说明冻结，不看模型结果调参。尚无本轮真实结果。
-
-立即下一步：只读查询已登记新目录status与nohup日志，同时查询原配对目录；助手记录带时间状态，不再次登记。当前配对队列继续原样运行。它完成后可显式上传原F/H/R轻量原件供独立验收；后继无须等待聊天端在线才按固定旧模型运行。新后继完成后也显式上传自己的轻量原件，再决定后续配对训练，不根据screen自动开启训练。
-
-服务器由用户执行、无SSH，全部记录快照在/home/jovyan/zzx对应目录。Test6/held4/final关闭。此前交接见[归档](../history/PRE_STRUCTURED_QUEUE_HANDOFF_20261012.md)，设计评审见[历史草案](../protocols/STRUCTURED_FAILURE_EVAL_V0_20261011.md)。
+立即下一步：继续两原目录队列，不启动其他任务；按需只读status与日志。原配对达到PAIRED_COMPLETE_AWAITING_REVIEW且进程退出后，显式上传原配对轻量证据，后继按门禁自动接续。操作见[原配对说明](../protocols/POST_T_PAIRED_V2_EXECUTION_20261011.md)、[后继管理与上传](../protocols/STRUCTURED_FAILURE_V0_EXECUTION_20261011.md)。[此前交接归档](../history/PRE_STRUCTURED_0736_HANDOFF_20261012.md)。

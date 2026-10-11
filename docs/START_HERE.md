@@ -1,15 +1,17 @@
-# 共享入口：结构化诊断后继已登记，待查询运行状态
+# 共享入口：F16运行，零训练后继存活并正常等待
 
-2026-10-12用户终端已回报STRUCTURED_QUEUE_REGISTERED：目录`research_structured_failure_v0_20261012T073410_81887`、controller登记PID **82130**、日志`nohup_20261012T073413524451.log`，执行 **f2ad4a9f38b32058f3855c2d18aa6a9b81df6cdd**，WAIT_FOR_PAIRED=True、GPU0/1、0训练、640缺失＋8clean＋6旧端点。目录07:34:10和日志07:34:13.524451为命名时间，未提供QUERY_OBSERVED或queue observed_at。当前记录为REGISTERED_PROGRESS_NOT_YET_QUERIED：未确认controller存活、正在等待/准备/推理或技术HOLD；不据登记输出推断前序已完成。服务器CPU检查成功退出由登记执行链推断，原日志尚未接收。
+最后用户服务器查询：原配对2026-10-12T07:36:17.043567+08:00（queue观测07:36:11.273122），RUNNING/controller LIVE=True。CONTENT_PRE/H8/F8/R8/R16/H16共6/8 COMPLETE退出；F16 GPU1 RUNNING/LIVE=True，11680/16000、training；CONTENT_POST PENDING。训练更新回报67680/72000，不等于整轮评价完成比例，也不等于科学验收。R16 GPU0完成05:12:15.355236，H16 GPU1完成05:07:40.161959。原执行44e4df5afbaeb603e6441e7ef14ff09f228bc027和目录research_post_t_paired_v2_20261011T182543_3880702保持。
 
-[登记回报](../records/research_structured_failure_v0_20261012T073410_81887/user_reported_registration_20261012T0734.json)。下一步只读新目录manage_structured_v0.py --action status与nohup日志，并查询原配对目录status；不要再次enqueue或启动控制器。
+后继查询2026-10-12T07:36:16.999949+08:00（queue观测07:36:13.698186），WAITING_PREDECESSOR/controller LIVE=True，GPU_BLOCKED={0:false,1:false}，42项全PENDING、0运行/0完成/0技术失败。前序controller/worker存活、lock_free=False，所以未开始CPU影像扫描或GPU诊断。新目录research_structured_failure_v0_20261012T073410_81887、登记PID82130、执行f2ad4a9f38b32058f3855c2d18aa6a9b81df6cdd保持。以上为最后观测，不代表实时状态。
 
-2026-10-12更新：用户已明确授权把下一阶段排在当前队列之后。[后继执行v0.1](protocols/STRUCTURED_FAILURE_V0_EXECUTION_20261011.md)已实现、17项CPU合成检查通过，已收到上述服务器登记回报；尚未收到新status/GPU运行回报。等待当前八项技术完成、进程及锁释放后，自动CPU掩码可行性→8clean与6旧端点→640缺失case，0训练。用户此授权覆盖此前“原件科学解读后才启动固定诊断”的排期建议，但科学结论仍须独立验收。
+GPU0空闲由最后F16单任务及CONTENT_POST阶段依赖造成，不是卡被release或缺少已登记任务。R16完成后GPU0无本队列活动worker；H16较早结束的GPU1已接F16。F16技术完成后可用GPU0预计接CONTENT_POST，随后完整汇总/控制器与锁退出，后继才开始CPU准备；新后继clean两项及正式40任务按双卡共享队列派发。无需rejoin、重复enqueue、迁移F16或热改执行快照。
 
-最后服务器查询仍2026-10-11T23:34:24.796568+08:00：CONTENT_PRE/H8/F8 COMPLETE，R8 GPU1满8000步正在终点评价；R16/H16/F16/CONTENT_POST待办。此为历史观测，不代表实时状态。原执行44e4df5a与目录research_post_t_paired_v2_20261011T182543_3880702不变，勿重复登记或重启。
+[配对07:36回报](../records/research_post_t_paired_v2_20261011T182543_3880702/user_reported_progress_20261012T073617.json)、[后继07:36回报](../records/research_structured_failure_v0_20261012T073410_81887/user_reported_progress_20261012T073616.json)。后继已经登记，不重复启动。预计前序交接粗观察窗口09:45—10:30（非承诺），其后先CPU mask可行性再GPU；详见[交接](current/HANDOFF.md)。
 
-[新后继登记/显卡控制/上传](protocols/STRUCTURED_FAILURE_V0_EXECUTION_20261011.md)、[17项CPU检查](../records/structured_failure_v0_implementation_20261012/verification.json)、[原队列操作](protocols/POST_T_PAIRED_V2_EXECUTION_20261011.md)。后继已登记，不重复登记；控制器按前序退出门禁等待，不抢原GPU；release状态跨队列延续。只有固定Phase1A，0新训练，不自动Phase1B/Phase2/20→40。
+研究阶段仍为可行性探索与机制定位。主线RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复旁支。原六组配对、R16主候选与旧T7/U/E=False保持；当前loss不能用于比较训练效果。本轮精度、保护、R0差距、DSM内容原件均尚未接收独立验收，不因COMPLETE写科学成功。
 
-研究主线RGB–DSM双向条件互补与退化/缺失分割，恢复旁支；结构失效为待检验RGB子问题。旧T7/U/E=False、R16原主候选和原保护门槛保持。新掩码生成器CPU真实可行性与H100端点尚待验收，失败HOLD、不改条件重试。禁Test6/held4/final，无SSH，服务器由用户执行；记录在/home/jovyan/zzx。
+后继为用户已授权的固定Phase1A零训练诊断：四系统×四族×20实现×两Val2，640缺失＋8clean＋6旧端点检查，42任务。主PE固定S1-0，CB用同权重M000 masked/context；GT只参与匹配/评价，mask实现不等于训练seed或独立地区。17项CPU合成检查通过，真实mask可行性与H100端点未验证；失败HOLD，不自动换条件/重试/20→40/Phase1B/Phase2或新训练。后继在前序技术完成退出后自动接续，不要求聊天端在线；科学结论仍待轻量原件回读。
 
-读取顺序：[新对话交接](current/NEW_CHAT_HANDOFF_20261011.md)→[研究决定](current/RESEARCH_DECISION.md)→[HANDOFF](current/HANDOFF.md)→[PROJECT_STATUS](current/PROJECT_STATUS.md)→[NEXT_EXPERIMENT](current/NEXT_EXPERIMENT.md)→[实验索引](experiments/rebuild_v1/INDEX.md)。已验证依据：[完整T](experiments/POST_T_FULL_RESULTS_20261011.md)、[Post-T机制](experiments/POST_T_MECHANISM_RESULTS_20261011.md)；本次尚无新精度原件。
+用户需要某卡时才release，最新显式请求跨两队列生效，未完成推理case可在另一卡重做但0训练；已完成case复用。无全队24h截止，不自动恢复技术失败。服务器由用户执行、无SSH，记录和快照都在/home/jovyan/zzx对应实验目录；Test6/held4/final关闭。
+
+读取顺序：[新对话交接](current/NEW_CHAT_HANDOFF_20261011.md)→[研究决定](current/RESEARCH_DECISION.md)→[HANDOFF](current/HANDOFF.md)→[PROJECT_STATUS](current/PROJECT_STATUS.md)→[NEXT_EXPERIMENT](current/NEXT_EXPERIMENT.md)→[实验索引](experiments/rebuild_v1/INDEX.md)。[原配对操作](protocols/POST_T_PAIRED_V2_EXECUTION_20261011.md)、[后继操作](protocols/STRUCTURED_FAILURE_V0_EXECUTION_20261011.md)。
