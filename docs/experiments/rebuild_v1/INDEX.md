@@ -1,3 +1,11 @@
+# 2026-10-11：下一阶段结构化缺失设计评审，未登记
+
+2026-10-11新增[结构化缺失设计评审草案](../../protocols/STRUCTURED_FAILURE_EVAL_V0_20261011.md)，来源为用户要求综合分析所附规划；属于重写版建议，尚未实现、冻结或登记。建议先完成当前F/H/R验收，再做4系统×4掩码家族×20实现×2tile＝640缺失case＋8clean的零训练核心诊断。S1-3−S1-0不作纯上下文效应；改用同权重M000 masked/context；随机块与语义匹配twin分开；不自动20→40，不凭新评价改选R16。研究主线、旧门槛与现有队列不变。
+
+新增原附件留档、[拟议清单](../../../records/structured_failure_design_review_20261011/planned_design.json)；生成器/真实掩码/known-answer测试均未实施，推理0、训练0。最后服务器查询仍18:54:08+08:00，无新运行结果。下方为此前带时间记录。
+
+---
+
 # 2026-10-11 18:54：H8/F8双卡训练运行确认
 
 QUERY_OBSERVED=2026-10-11T18:54:08.952037+08:00，queue观测18:54:02.365173、RUNNING，controller LIVE=True。CONTENT_PRE COMPLETE/GPU0/进程退出，worker1252.244643秒；H8 GPU0与F8 GPU1同时运行、LIVE=True，各180/8000。1/8整项完成、2运行、5待办。原目录/执行44e4df5a保持，无release操作或本次失败回报。

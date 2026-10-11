@@ -1,5 +1,7 @@
 # 项目状态：H8/F8双卡训练运行确认
 
+2026-10-11新增[结构化缺失设计评审草案](../protocols/STRUCTURED_FAILURE_EVAL_V0_20261011.md)，来源为用户要求综合分析所附规划；属于重写版建议，尚未实现、冻结或登记。建议先完成当前F/H/R验收，再做4系统×4掩码家族×20实现×2tile＝640缺失case＋8clean的零训练核心诊断。S1-3−S1-0不作纯上下文效应；改用同权重M000 masked/context；随机块与语义匹配twin分开；不自动20→40，不凭新评价改选R16。研究主线、旧门槛与现有队列不变。
+
 权威共享源：66322/remote_sensing_frequency，rebuild-v1-protocol-20260915；本地仅工作副本。
 
 最后服务器只读查询2026-10-11T18:54:08.952037+08:00：queue LAST_OBSERVED=18:54:02.365173、RUNNING、controller LIVE=True。CONTENT_PRE COMPLETE/GPU0/LIVE=False，完成progress18:46:47.983999、worker1252.244643秒（约20分52秒）、0更新。H8 GPU0 RUNNING/LIVE=True，F8 GPU1 RUNNING/LIVE=True，均step180/8000；R8/R16/H16/F16/CONTENT_POST PENDING。当前1/8整项完成、2运行、5待办；双卡正式训练派发已确认。这是最后观测，不代表实时状态。
