@@ -1,3 +1,11 @@
+# 2026-10-11：双卡执行包就绪，待服务器登记
+
+[操作说明](../../protocols/POST_T_PAIRED_V2_EXECUTION_20261011.md)、[实现检查](../../../records/post_t_paired_v2_implementation_20261011/verification.json)。6新训练/72000步＋2批48 case，GPU0/1共享队列；用户release任一卡，保存退出后断点与待办在另一卡排队，显式rejoin前停用原卡。无全队24h截止。当前READY_NOT_REGISTERED_GPU_RUNTIME_UNVERIFIED，无新目录/PID/真实GPU结果回报；本地CPU检查不是正式实验。
+
+原26项不重复运行。最新用户双卡授权覆盖下方历史只GPU0限制，科学v2不变；最后服务器查询仍13:48:26+08:00。以下为历史条目。
+
+---
+
 # 2026-10-11：v2后续实验设计，尚未登记
 
 [研究排期](../../protocols/POST_T_RESEARCH_SEQUENCE_20261011.md)、[配对细则v2](../../protocols/POST_T_PAIRED_ADAPTATION_BUDGET_20261011.md)、[设计清单](../../../records/post_t_research_plan_v2_20261011/design.json)。六核心训练F/H/R×8k/16k共72000更新；48个0训练DSM内容诊断case；X8/X16转为不可自动派发储备。DESIGN_FROZEN_NOT_IMPLEMENTED_NOT_REGISTERED，没有新实验结果/服务器登记。核心顺序H8/F8/R8/R16/H16/F16，两批内容诊断分别置于前后。
@@ -422,5 +430,3 @@ CPU/D1与七P完整，P3在fixed8000评价3_11/aux_down4，controller LIVE，P0/
 P7 RGB_U 83.575357%，对基线+2.562756、P6+1.759726、P8+1.952962、P9+2.207993pp，两tile正；普通/全缺失/DSM_U保护0变化。R0 85.001650%，P7−R0 −1.426292pp（两tile负）违反固定−0.2pp必要条件。P7具体gate失败；E未收，完整压力未验。D1固定DSM信号−0.050601pp且tile异号，Q必要条件失败、仍不运行。保留单向上下文线索，主线/旧gate不变；剩余三P/E继续原GPU0 FIFO，不能后验换候选/追加seed。此前“尚无科学原件”条目是历史状态。
 
 最新注册依据：[终端回报](../../../records/post_s1_transfer_registration_20261010/observation.json)；执行目录research_post_s1_transfer_20261010T073327_2852696，PID2852987，未收到后续存活或T0训练回报。
-
-

@@ -1,0 +1,293 @@
+{
+  "data": {
+    "dataset": "Potsdam",
+    "input": "RGB plus existing per-tile normalized DSM",
+    "fit12": [
+      "2_12",
+      "2_10",
+      "7_8",
+      "3_12",
+      "5_12",
+      "7_9",
+      "6_9",
+      "7_7",
+      "4_12",
+      "6_8",
+      "6_12",
+      "6_7"
+    ],
+    "train_held4": [
+      "4_11",
+      "6_10",
+      "7_10",
+      "7_11"
+    ],
+    "validation": [
+      "3_11",
+      "5_10"
+    ],
+    "held4_policy": "not loaded this round; historical Train16 checkpoint exposure means not an independent holdout",
+    "test6_loaded": false,
+    "independent_final_loaded": false,
+    "patch": 512,
+    "sampling": "D23 aligned keyed fit crop stream; D26 independent keyed R-quality/D-quality/availability draws"
+  },
+  "experts": {
+    "rgb": {
+      "path": "records/research_d25_missingness_20261002T130253_1358078/jobs/P6/selected.pth",
+      "sha256": "bef8dda6537b68fc51f300bc3789bbbef57682baedf92a3f7665217a4a2fde71",
+      "step": 2000,
+      "kind": "D25_P6_DINOv2_vits14_RGB_only",
+      "normalization": "native RGB ImageNet mean/std"
+    },
+    "dsm": {
+      "path": "runs/rebuild_v1/D15_dsm_only_seed42_sched16000_stop16000/best_model.pth",
+      "sha256": "d597f1adf3ca0291dcd7d063af941bebf3db1e61205cfdaf13271fbba9437e84",
+      "step": 15000,
+      "kind": "D15_seed42_R50_ViT_B16_DSM_only",
+      "normalization": "native per-tile minmax DSM repeated3; no ImageNet normalization"
+    },
+    "heterogeneous_architectures": true,
+    "historical_held4_exposure": true
+  },
+  "input_manifest_sha256": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295",
+  "expected_configs": {
+    "base_config_sha256": "07dd4b7f224d2e036024dfb2ab57bac9fe312335a5eebb8173778cd5c11de133",
+    "dino_config_sha256": "cb1c398acac6c9892aeee65bc5f331375a2395c0233654d7a3fc6ee58329ef0f",
+    "split_sha256": "d9fe260f6b1be3807811e454c1673d1e69db235c32d4dea207e8724975e210ab"
+  },
+  "augmentation": {
+    "rgb_probability": 0.5,
+    "rgb": [
+      "rgb_down2",
+      "rgb_down4",
+      "rgb_blur5",
+      "rgb_contrast060"
+    ],
+    "dsm_probability": 0.5,
+    "dsm": [
+      "aux_down4",
+      "aux_noise_std010"
+    ],
+    "availability": {
+      "full": 0.5,
+      "rgb_missing": 0.1,
+      "dsm_missing": 0.1,
+      "rgb_local": 0.15,
+      "dsm_local": 0.15
+    },
+    "local_shapes": [
+      "q1",
+      "stripe_eighth"
+    ],
+    "both_missing_training": false
+  },
+  "evaluation": {
+    "primary": [
+      "clean",
+      "rgb_down2",
+      "rgb_down4",
+      "rgb_blur5",
+      "rgb_contrast060",
+      "aux_down4",
+      "aux_noise_std010",
+      "aux_shift8",
+      "rgb_down4+aux_noise_std010",
+      "rgb_blur5+aux_shift8"
+    ],
+    "families": {
+      "C": [
+        "clean"
+      ],
+      "QR": [
+        "rgb_down2",
+        "rgb_down4",
+        "rgb_blur5",
+        "rgb_contrast060"
+      ],
+      "QD": [
+        "aux_down4",
+        "aux_noise_std010",
+        "aux_shift8"
+      ],
+      "QJ": [
+        "rgb_down4+aux_noise_std010",
+        "rgb_blur5+aux_shift8"
+      ]
+    },
+    "missing": [
+      "rgb_missing",
+      "dsm_missing"
+    ],
+    "local": {
+      "LR": [
+        "rgb_local_q1",
+        "rgb_local_stripe_eighth",
+        "rgb_local_center_quarter"
+      ],
+      "LD": [
+        "dsm_local_q1",
+        "dsm_local_stripe_eighth",
+        "dsm_local_center_quarter"
+      ]
+    },
+    "diagnostic": [
+      "dsm_missing+rgb_down4",
+      "rgb_missing+aux_noise_std010",
+      "complementary_halves",
+      "both_center_missing",
+      "dsm_present_zero",
+      "dsm_present_shift_half",
+      "geom_dx8",
+      "geom_dy8",
+      "geom_warp8",
+      "geom_warp8+rgb_down4",
+      "dsm_missing+rgb_down2",
+      "dsm_missing+rgb_blur5",
+      "dsm_missing+rgb_contrast060",
+      "rgb_missing+aux_down4"
+    ],
+    "fixed8000": "22 original ordinary conditions; all32 ordinary at fixed8000 in evaluation; U separate",
+    "window": 512,
+    "stride": 256,
+    "precision": "FP32 logits uniform stitch, TF32 enabled",
+    "metric": "NoBoundary mIoU_fg5 pooled; full and6class diagnostic",
+    "fixed_references": [
+      "rgb",
+      "dsm",
+      "probability_average",
+      "availability_switch"
+    ],
+    "joint_counts": "6^4 truth,rgb,dsm,candidate int64 per availability partition per scope/tile; references same masked input",
+    "joint_counts_encoding": "lossless sparse flat index/count int64 shape6^4, omitted bins exactly0; decode helper supplied; per condition/tile/scope/availability"
+  },
+  "fixed_conditions": [
+    "clean",
+    "rgb_down2",
+    "rgb_down4",
+    "rgb_blur5",
+    "rgb_contrast060",
+    "aux_down4",
+    "aux_noise_std010",
+    "aux_shift8",
+    "rgb_down4+aux_noise_std010",
+    "rgb_blur5+aux_shift8",
+    "geom_dx8",
+    "geom_dy8",
+    "geom_warp8",
+    "geom_warp8+rgb_down4",
+    "dsm_missing",
+    "dsm_missing+rgb_down2",
+    "dsm_missing+rgb_down4",
+    "dsm_missing+rgb_blur5",
+    "dsm_missing+rgb_contrast060",
+    "rgb_missing",
+    "rgb_missing+aux_down4",
+    "rgb_missing+aux_noise_std010"
+  ],
+  "initial_checkpoint": {
+    "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293/jobs/S1-0/selected.pth",
+    "sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f"
+  },
+  "reference_shas": {
+    "S1-0": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
+    "S1-1": "c51b934c175d6aee8f681e78951ffe7dec28b8e881408ed217426a5865141824",
+    "S1-2": "da1714c7af40e0a2e03a0d9278b574734348f8a45ae99123c747cdc16e61e0f0",
+    "S1-3": "c8b4d801da2a7a3937589aa3777885de810387a463009d4a8c6e23dc00d8d562"
+  },
+  "source_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293",
+  "source_execution_commit": "0e22438a7131a0a1f28098e675c3367d40236398",
+  "donors": {
+    "S1-0": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293/jobs/S1-0/selected.pth",
+      "sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f"
+    },
+    "S1-1": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293/jobs/S1-1/selected.pth",
+      "sha256": "c51b934c175d6aee8f681e78951ffe7dec28b8e881408ed217426a5865141824"
+    },
+    "S1-2": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293/jobs/S1-2/selected.pth",
+      "sha256": "da1714c7af40e0a2e03a0d9278b574734348f8a45ae99123c747cdc16e61e0f0"
+    },
+    "S1-3": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293/jobs/S1-3/selected.pth",
+      "sha256": "c8b4d801da2a7a3937589aa3777885de810387a463009d4a8c6e23dc00d8d562"
+    }
+  },
+  "job": {
+    "id": "F8",
+    "kind": "train",
+    "mechanism": "F",
+    "gpu": "available_0_or_1",
+    "steps": 8000,
+    "seed": 42,
+    "donor": "S1-0",
+    "frozen_base": true,
+    "support_preserved": true,
+    "local_only": true,
+    "geometry_aug": false,
+    "control": "none",
+    "timeout_hours": 12.0
+  },
+  "training": {
+    "steps": 8000,
+    "physical_batch": 16,
+    "gradient_accumulation": false,
+    "views_per_crop": 2,
+    "head_lr": 0.0002,
+    "encoder_last4_lr": 2e-05,
+    "weight_decay": 0.01,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "warmup_steps": 100,
+    "checkpoint_every": 500,
+    "validation_steps": [
+      4000,
+      8000
+    ],
+    "selection_states": [
+      "clean",
+      "dsm_missing",
+      "rgb_missing"
+    ],
+    "selection": "secondary protected Val2 rgb_U maximum; tie earlier; fixed endpoint primary",
+    "joint_single_ce_weight": 0.5,
+    "precision": "bf16",
+    "validation_batch": 8,
+    "seed": 42,
+    "gradient_diagnostic_every": 500,
+    "primary_checkpoint_step": 8000,
+    "steps_by_job": {
+      "H8": 8000,
+      "F8": 8000,
+      "R8": 8000,
+      "R16": 16000,
+      "H16": 16000,
+      "F16": 16000
+    }
+  },
+  "design": {
+    "E_keys": [
+      "rgb_lines64w8__clean",
+      "rgb_lines64w8__aux_down4",
+      "rgb_lines64w8__aux_shift8",
+      "rgb_blocks64q25__clean",
+      "rgb_blocks64q25__aux_down4",
+      "rgb_blocks64q25__aux_shift8"
+    ],
+    "matched_pp": 0.3,
+    "route_floor_pp": -0.2,
+    "protect_floor_pp": -0.1,
+    "worst_tile_floor_pp": -0.2,
+    "content_signal_pp": 0.3,
+    "reserved_not_automatic": [
+      "X8",
+      "X16"
+    ],
+    "estimand": "adaptation location and capacity jointly; budget and schedule jointly",
+    "output_support": "known local RGB missing and observed DSM and observable window"
+  }
+}

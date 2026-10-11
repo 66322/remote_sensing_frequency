@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
-  "state": "DESIGN_FROZEN_NOT_IMPLEMENTED_NOT_REGISTERED",
+  "state": "READY_NOT_REGISTERED_GPU_RUNTIME_UNVERIFIED",
   "artifact_kind": "research_design_not_execution_config",
   "repository": "66322/remote_sensing_frequency",
   "branch": "rebuild-v1-protocol-20260915",
-  "source_head": "e4ad44c82af2ced5e4a38c4016e4daef5be7257e",
+  "source_head": "9ac456d8bd7e40faf4914c12804e5a8aab478de1",
   "evidence_commits": [
     "379f301f255b9d2348cf11cad79e1374fedd1e7b",
     "57ef5ad9e5238f69f94c5d8ede00023a20499144"
@@ -13,9 +13,10 @@
   "last_server_query": "2026-10-11T13:48:26.474610+08:00",
   "new_queue_registered": false,
   "new_training_started": false,
-  "automatic_dispatch_allowed": false,
+  "automatic_dispatch_allowed": true,
   "gpu": [
-    0
+    0,
+    1
   ],
   "model_seed": 42,
   "schedule_seed": 42,
@@ -43,8 +44,8 @@
       "fresh_optimizer": true,
       "initial_state": "S1-0 step8000",
       "initial_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
-      "hardware": "physical GPU0",
-      "state": "PLANNED",
+      "hardware": "one of physical GPU0/GPU1; checkpoint migration allowed",
+      "state": "IMPLEMENTED_NOT_REGISTERED",
       "selected_by_8k_result": false
     },
     {
@@ -55,8 +56,8 @@
       "fresh_optimizer": true,
       "initial_state": "S1-0 step8000",
       "initial_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
-      "hardware": "physical GPU0",
-      "state": "PLANNED",
+      "hardware": "one of physical GPU0/GPU1; checkpoint migration allowed",
+      "state": "IMPLEMENTED_NOT_REGISTERED",
       "selected_by_8k_result": false
     },
     {
@@ -67,8 +68,8 @@
       "fresh_optimizer": true,
       "initial_state": "S1-0 step8000",
       "initial_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
-      "hardware": "physical GPU0",
-      "state": "PLANNED",
+      "hardware": "one of physical GPU0/GPU1; checkpoint migration allowed",
+      "state": "IMPLEMENTED_NOT_REGISTERED",
       "selected_by_8k_result": false
     },
     {
@@ -79,8 +80,8 @@
       "fresh_optimizer": true,
       "initial_state": "S1-0 step8000",
       "initial_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
-      "hardware": "physical GPU0",
-      "state": "PLANNED",
+      "hardware": "one of physical GPU0/GPU1; checkpoint migration allowed",
+      "state": "IMPLEMENTED_NOT_REGISTERED",
       "selected_by_8k_result": false
     },
     {
@@ -91,8 +92,8 @@
       "fresh_optimizer": true,
       "initial_state": "S1-0 step8000",
       "initial_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
-      "hardware": "physical GPU0",
-      "state": "PLANNED",
+      "hardware": "one of physical GPU0/GPU1; checkpoint migration allowed",
+      "state": "IMPLEMENTED_NOT_REGISTERED",
       "selected_by_8k_result": false
     },
     {
@@ -103,8 +104,8 @@
       "fresh_optimizer": true,
       "initial_state": "S1-0 step8000",
       "initial_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
-      "hardware": "physical GPU0",
-      "state": "PLANNED",
+      "hardware": "one of physical GPU0/GPU1; checkpoint migration allowed",
+      "state": "IMPLEMENTED_NOT_REGISTERED",
       "selected_by_8k_result": false
     }
   ],
@@ -181,10 +182,13 @@
     "reserved_excluded_optimizer_calls": 24000
   },
   "estimate": {
-    "hours_low": 30,
-    "hours_high": 60,
     "measured": false,
-    "calibration": "first formal worker of each adaptation type; no additional probe"
+    "reserve": "one day or more; no 24h cutoff",
+    "calibration": "first formal worker per mechanism; no additional probes",
+    "previous_single_gpu_unmeasured_hours": [
+      30,
+      60
+    ]
   },
   "stop": {
     "technical_failure": "HOLD_NO_AUTOMATIC_RETRY",
@@ -197,15 +201,24 @@
     "trainable and actual-gradient lists",
     "paired data RNG hashes",
     "CPU contracts",
-    "single-GPU FIFO with duplicate-registration guard and HOLD",
+    "dual-GPU shared queue, cooperative release and cross-device continuation with duplicate-registration guard and HOLD",
     "diagnostic C endpoint exact check",
     "evidence uploader and independent audit"
   ],
   "exclusions": [
-    "no server action in this planning turn",
+    "no server action by assistant; user executes terminal",
     "no automatic seed addition",
     "no failed recipe retry",
     "no DSM mirror training",
     "no recovery/frequency branch expansion"
-  ]
+  ],
+  "max_gpu_workers": 2,
+  "dispatch_prerequisite": "user runs registration; source completion/release/binding and CPU checks pass",
+  "runtime": {
+    "wall_deadline_hours": null,
+    "release": "save and exit then queue continuation on the other enabled GPU",
+    "rejoin": "explicit only",
+    "automatic_failed_retry": false
+  },
+  "execution_protocol": "docs/protocols/POST_T_PAIRED_V2_EXECUTION_20261011.md"
 }
