@@ -1,3 +1,15 @@
+# 2026-10-11 12:55：15项M完成，最后M运行，L10待运行
+
+最后服务器只读查询（用户终端粘贴，未接收本轮指标原件）：QUERY_OBSERVED=2026-10-11T12:55:27.487901+08:00，queue LAST_OBSERVED=2026-10-11T12:55:15.361980+08:00，RUNNING_M333_context；controller PID3626108 LIVE=True，CPU=COMPLETE，仅GPU0。15/26整项COMPLETE、1项RUNNING、10项PENDING；前15个M已完成并退出，M333_context PID3718262 LIVE=True，phase=inference，tile=3_11，condition=rgb_lines64w8__aux_down4，windows=529/529，progress观测12:55:24.648101，elapsed=158.271144秒，optimizer_updates=0。单tile/条件窗口完成不等于整项完成。L_T0—L_T9尚未启动。这是最后观测，不代表实时状态。
+
+前序已安全交接，原执行cd958925cb5d4292dd15802830e97493c9c67033与原目录research_post_t_mechanism_20261011T094823_3625851保持。所贴nohup日志确认依序完成15个M并启动M333_context，未见本次故障回报；没有精度、R0同源端点或训练轨迹原件，不能判机制成立。新增训练0。回报见[进度摘录](../../../records/research_post_t_mechanism_20261011T094823_3625851/user_reported_progress_20261011T125527.json)。
+
+已完成15个M的worker耗时704.836—760.205秒（约11.7—12.7分钟），替代未校准的2—4h估时。12:55时最后M约余9—10分钟；L每项只有4个tile单元，但加载/散列与汇总耗时未测，整队剩余仍须首个L实测校准。不得按条件数线性缩放承诺ETA。
+
+继续原队列；技术全部完成后显式上传轻量原件，核验R0端点/计数/绑定，再分析模块与0→4000→8000轨迹。主线、旧T gate和未定型训练状态不变。以下09:51及更早条目为历史观测。
+
+---
+
 # 2026-10-11 09:51：机制诊断首项GPU0推理已确认
 
 最后服务器只读查询（用户终端）：QUERY_OBSERVED=2026-10-11T09:51:04.266613+08:00，queue LAST_OBSERVED=2026-10-11T09:50:54.789468+08:00，RUNNING_M000_masked；controller PID3626108 LIVE=True，CPU=COMPLETE，仅GPU0。首项M000_masked PID3626555 LIVE=True，phase=inference，tile=3_11，condition=dsm_U，windows=529/529，progress观测09:50:47.640628，elapsed=81.824804秒，optimizer_updates=0。

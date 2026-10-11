@@ -1,8 +1,8 @@
 # 共享入口：T十组完整验收，下一阶段GPU0零训练机制诊断
 
-最后服务器只读查询（用户终端）：QUERY_OBSERVED=2026-10-11T09:51:04.266613+08:00，queue LAST_OBSERVED=2026-10-11T09:50:54.789468+08:00，RUNNING_M000_masked；controller PID3626108 LIVE=True，CPU=COMPLETE，仅GPU0。首项M000_masked PID3626555 LIVE=True，phase=inference，tile=3_11，condition=dsm_U，windows=529/529，progress观测09:50:47.640628，elapsed=81.824804秒，optimizer_updates=0。
+最后服务器只读查询（用户终端粘贴，未接收本轮指标原件）：QUERY_OBSERVED=2026-10-11T12:55:27.487901+08:00，queue LAST_OBSERVED=2026-10-11T12:55:15.361980+08:00，RUNNING_M333_context；controller PID3626108 LIVE=True，CPU=COMPLETE，仅GPU0。15/26整项COMPLETE、1项RUNNING、10项PENDING；前15个M已完成并退出，M333_context PID3718262 LIVE=True，phase=inference，tile=3_11，condition=rgb_lines64w8__aux_down4，windows=529/529，progress观测12:55:24.648101，elapsed=158.271144秒，optimizer_updates=0。单tile/条件窗口完成不等于整项完成。L_T0—L_T9尚未启动。这是最后观测，不代表实时状态。
 
-前序已安全交接：READY、controller_live=False、workers_live=False，checked_at=2026-10-11T09:48:31.724509+08:00；原T最后观测08:45:44.211597。当前0/26整项完成、1项运行、25项PENDING；529/529仅为单tile单条件窗口进度，不代表整个M项或队列完成。暂无新精度/R0端点/机制结论，也无本次故障回报。
+前序已安全交接，原执行cd958925cb5d4292dd15802830e97493c9c67033与原目录research_post_t_mechanism_20261011T094823_3625851保持。所贴nohup日志确认依序完成15个M并启动M333_context，未见本次故障回报；没有精度、R0同源端点或训练轨迹原件，不能判机制成立。新增训练0。回报见[进度摘录](../records/research_post_t_mechanism_20261011T094823_3625851/user_reported_progress_20261011T125527.json)。
 
 前序检查回报：LAST_OBSERVED=2026-10-11T08:45:44.211597+08:00，TRANSFER_COMPLETE_AWAITING_REVIEW，READY；它确认登记时前序已满足交接检查，不代表新诊断已有完成结果。执行提交cd958925cb5d4292dd15802830e97493c9c67033。登记前CPU检查成功返回由入口链推断，尚未单收服务器cpu_checks.log。
 
@@ -10,10 +10,10 @@
 
 整轮T7=False、U=False、E=False按原门槛保持：T7 RGB_U=83.876407%，相对T1 +0.019790pp、T9随机初始化 +0.059297pp（均逐tile异号），相对T6 +1.453117pp；相对基础+2.863806pp，但比R0=85.001650%低1.125243pp。所有五个上下文匹配对+1.432～+1.521pp且两tile均正；解码器初始化的额外收益未获支持。
 
-POST_T_MECHANISM已登记：16个权重模块包×上下文组合＋10个已有4000步U推理，共26项/296个模型×条件×tile单元/0优化器更新，仅GPU0。执行cd958925，目录research_post_t_mechanism_20261011T094823_3625851，PID3626108；CPU准备完成、首项GPU0推理已确认，尚无整项完成。
+POST_T_MECHANISM已登记：16个权重模块包×上下文组合＋10个已有4000步U推理，共26项/296个模型×条件×tile单元/0优化器更新，仅GPU0。执行cd958925，目录research_post_t_mechanism_20261011T094823_3625851，PID3626108；CPU完成，最新观测15/26项完成，M333_context运行，L10待运行。
 
 按[研究决定](current/RESEARCH_DECISION.md)→[交接](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)→[实验索引](experiments/rebuild_v1/INDEX.md)读取。
 
-[完整结果](experiments/POST_T_FULL_RESULTS_20261011.md)、[诊断协议](protocols/POST_T_MECHANISM_GPU0_20261010.md)。已确认首项GPU0推理；继续只读观察，不重复enqueue。
+[完整结果](experiments/POST_T_FULL_RESULTS_20261011.md)、[诊断协议](protocols/POST_T_MECHANISM_GPU0_20261010.md)。已观测15项M完成；继续只读观察，不重复enqueue。
 
 新对话可先读[简明交接](current/NEW_CHAT_HANDOFF_20261011.md)；此摘要中的服务器状态仅为最后观测，接手后查询原队列。

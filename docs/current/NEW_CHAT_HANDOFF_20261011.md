@@ -10,7 +10,11 @@ Potsdam fit12→Val2 `3_11/5_10`、seed42、native512/stride256、NoBoundary `mI
 
 ## 当前队列：最后一次服务器观测
 
-用户终端在2026-10-11 09:51:04+08:00查询：队列时间09:50:54，`RUNNING_M000_masked`，控制器PID3626108存活，CPU准备完成，GPU0 worker PID3626555正在推理；0/26整项完成。此为历史观测，**新对话必须重新查询，不能当作实时状态**。目录 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_t_mechanism_20261011T094823_3625851`，执行提交 `cd958925cb5d4292dd15802830e97493c9c67033`。26项是M16模块/上下文组合加L10现有4000步checkpoint诊断，共0次新优化器更新；并非26组新训练。GitHub目前仅有本轮登记与09:51进度，无完成指标原件；不要重复登记或重启。
+最后服务器只读查询（用户终端粘贴，未接收本轮指标原件）：QUERY_OBSERVED=2026-10-11T12:55:27.487901+08:00，queue LAST_OBSERVED=2026-10-11T12:55:15.361980+08:00，RUNNING_M333_context；controller PID3626108 LIVE=True，CPU=COMPLETE，仅GPU0。15/26整项COMPLETE、1项RUNNING、10项PENDING；前15个M已完成并退出，M333_context PID3718262 LIVE=True，phase=inference，tile=3_11，condition=rgb_lines64w8__aux_down4，windows=529/529，progress观测12:55:24.648101，elapsed=158.271144秒，optimizer_updates=0。单tile/条件窗口完成不等于整项完成。L_T0—L_T9尚未启动。这是最后观测，不代表实时状态。
+
+前序已安全交接，原执行cd958925cb5d4292dd15802830e97493c9c67033与原目录research_post_t_mechanism_20261011T094823_3625851保持。所贴nohup日志确认依序完成15个M并启动M333_context，未见本次故障回报；没有精度、R0同源端点或训练轨迹原件，不能判机制成立。新增训练0。回报见[进度摘录](../../records/research_post_t_mechanism_20261011T094823_3625851/user_reported_progress_20261011T125527.json)。
+
+目录 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_t_mechanism_20261011T094823_3625851`。26项=M16模块/上下文组合＋L10现有4000步checkpoint推理，0新训练。已完成15个M的worker耗时704.836—760.205秒（约11.7—12.7分钟），替代未校准的2—4h估时。12:55时最后M约余9—10分钟；L每项只有4个tile单元，但加载/散列与汇总耗时未测，整队剩余仍须首个L实测校准。不得按条件数线性缩放承诺ETA。
 
 只用物理GPU0；服务器由用户执行终端，无SSH；所有日志/代码快照/轻量归档在 `/home/jovyan/zzx` 对应实验目录。不开Test6、held4或最终集；不自动重跑失败配方、加种子或启用GPU1。可用队列目录内 `code/scripts/status_post_t_mechanism.py` 只读查询状态和nohup日志。
 
