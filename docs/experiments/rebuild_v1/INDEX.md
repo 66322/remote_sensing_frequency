@@ -1,3 +1,13 @@
+# 2026-10-11 09:48：机制诊断登记成功，进度待查询
+
+最新服务器登记回报（用户终端，2026-10-11）：MECHANISM_QUEUE_REGISTERED，目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_t_mechanism_20261011T094823_3625851，controller PID3626108，GPU=0 ONLY，DIAGNOSTIC_JOBS=26，NEW_STEPS=0；日志nohup_20261011T094831668881.log。目录09:48:23、日志09:48:31.668881为命名时间标记，不是queue observed_at。当前REGISTERED_PROGRESS_NOT_YET_QUERIED，尚无controller/worker存活、CPU准备或CUDA首项进度回报。
+
+前序检查回报：LAST_OBSERVED=2026-10-11T08:45:44.211597+08:00，TRANSFER_COMPLETE_AWAITING_REVIEW，READY；它确认登记时前序已满足交接检查，不代表新诊断已有完成结果。执行提交cd958925cb5d4292dd15802830e97493c9c67033。登记前CPU检查成功返回由入口链推断，尚未单收服务器cpu_checks.log。
+
+下一步只读新目录code/scripts/status_post_t_mechanism.py以及nohup/preparation日志，确认CPU准备、controller存活及首个M任务；不要重复enqueue或重启T。26项自动串行、仅GPU0、0训练更新，预计接手后2—4h为粗范围，尚待首项校准。失败时保留目录/worker并诊断，不自动重试。结束上传轻量原件，再定后续训练。
+
+---
+
 # 2026-10-11完整T验收与26项诊断采用
 
 最后服务器观测2026-10-11T08:45:44.211597+08:00，TRANSFER_COMPLETE_AWAITING_REVIEW；T0—T9十组全部COMPLETE/8000，CPU完成。快照2026-10-11T09:32:36.322168+08:00，原件379f301f255b9d2348cf11cad79e1374fedd1e7b。此为带时间证据，不是实时服务器查询。
