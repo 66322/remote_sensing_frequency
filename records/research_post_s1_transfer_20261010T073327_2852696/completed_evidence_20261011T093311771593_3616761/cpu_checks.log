@@ -1,0 +1,51 @@
+test_contract_gpu_budget_donor_and_timeouts (test_post_s1_transfer.TransferTests) ... ok
+test_entries_help_cpu_only (test_post_s1_transfer.TransferTests) ... ok
+test_failed_worker_stops_no_retry (test_post_s1_transfer.TransferTests) ... TRANSFER_START GPU0 T0 101
+TRANSFER_JOB T0 TECHNICAL_FAILURE
+ok
+test_fifo_ten_single_gpu0_no_reserved_tasks (test_post_s1_transfer.TransferTests) ... TRANSFER_START GPU0 T0 101
+TRANSFER_JOB T0 COMPLETE
+TRANSFER_START GPU0 T1 101
+TRANSFER_JOB T1 COMPLETE
+TRANSFER_START GPU0 T2 101
+TRANSFER_JOB T2 COMPLETE
+TRANSFER_START GPU0 T3 101
+TRANSFER_JOB T3 COMPLETE
+TRANSFER_START GPU0 T4 101
+TRANSFER_JOB T4 COMPLETE
+TRANSFER_START GPU0 T5 101
+TRANSFER_JOB T5 COMPLETE
+TRANSFER_START GPU0 T6 101
+TRANSFER_JOB T6 COMPLETE
+TRANSFER_START GPU0 T7 101
+TRANSFER_JOB T7 COMPLETE
+TRANSFER_START GPU0 T8 101
+TRANSFER_JOB T8 COMPLETE
+TRANSFER_START GPU0 T9 101
+TRANSFER_JOB T9 COMPLETE
+ok
+test_frozen_native_protection_all_ten (test_post_s1_transfer.TransferTests) ... ok
+test_gate_does_not_select_best_and_uniform_fails (test_post_s1_transfer.TransferTests) ... ok
+test_lossless_upload_record (test_post_s1_transfer.TransferTests) ... ok
+test_one_expert_pass_and_context_affects_missing_region (test_post_s1_transfer.TransferTests) ... ok
+test_predecessor_completion_requires_all_jobs_and_release (test_post_s1_transfer.TransferTests) ... ok
+test_private_donor_only_heads_not_encoder (test_post_s1_transfer.TransferTests) ... ok
+test_random_initialization_pair_identical_reproducible (test_post_s1_transfer.TransferTests) ... ok
+test_real_loss_backward_frozen_digest_and_zero_exposure (test_post_s1_transfer.TransferTests) ... ok
+test_same_capacity_all_ten_and_only_branch_trainable (test_post_s1_transfer.TransferTests) ... ok
+test_same_donor_context_matches_full_route_raw_on_support (test_post_s1_transfer.TransferTests) ... ok
+test_standalone_summary_writes_complete_gate (test_post_s1_transfer.TransferTests) ... TRANSFER_SCREEN False
+ok
+test_timeout_zero_return_still_stops (test_post_s1_transfer.TransferTests) ... TRANSFER_START GPU0 T0 101
+TRANSFER_HARD_TIMEOUT T0
+TRANSFER_JOB T0 TIMEOUT
+ok
+test_wait_then_release_and_failure_no_dispatch (test_post_s1_transfer.TransferTests) ... TRANSFER_HANDOVER WAITING_PREDECESSOR RUNNING_P3
+TRANSFER_HANDOVER READY COMPLETE
+TRANSFER_HANDOVER HOLD_PREDECESSOR_STOPPED BAD
+ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 6.432s
+
+OK
