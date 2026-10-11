@@ -15,3 +15,5 @@ POST_T_MECHANISM已登记：16个权重模块包×上下文组合＋10个已有4
 按[研究决定](current/RESEARCH_DECISION.md)→[交接](current/HANDOFF.md)→[状态](current/PROJECT_STATUS.md)→[下一步](current/NEXT_EXPERIMENT.md)→[实验索引](experiments/rebuild_v1/INDEX.md)读取。
 
 [完整结果](experiments/POST_T_FULL_RESULTS_20261011.md)、[诊断协议](protocols/POST_T_MECHANISM_GPU0_20261010.md)。已确认首项GPU0推理；继续只读观察，不重复enqueue。
+
+新对话可先读[简明交接](current/NEW_CHAT_HANDOFF_20261011.md)；此摘要中的服务器状态仅为最后观测，接手后查询原队列。
