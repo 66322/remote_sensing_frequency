@@ -1,8 +1,12 @@
-# 下一步：用户执行登记，核验首项与单卡释放
+# 下一步：查询现有队列，核验前测后双卡派发
 
 权威共享源：66322/remote_sensing_frequency，rebuild-v1-protocol-20260915；本地仅工作副本。
 
-最后服务器查询仍为2026-10-11T13:48:26.474610+08:00：旧Post-T 26/26 COMPLETE、CPU完成、controller/workers退出；0新训练。原件57ef5ad9已离线验收。本次实现和本地检查不构成新的服务器观测；尚未收到新队列目录、PID或启动回报。当前READY_NOT_REGISTERED_GPU_RUNTIME_UNVERIFIED。
+旧队列最后完整查询仍为2026-10-11T13:48:26.474610+08:00，26/26已完成退出、0新训练，原件57ef5ad9已验收。
+
+用户终端已回报PAIRED_QUEUE_REGISTERED：目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_t_paired_v2_20261011T182543_3880702，controller PID3881013，执行44e4df5afbaeb603e6441e7ef14ff09f228bc027，GPU=0,1，6训练/72000计划步/48内容case。目录18:25:43与nohup18:25:52.609577来自命名时间，并非queue observed_at；尚无status/controller存活/worker进度原件。当前REGISTERED_PROGRESS_NOT_YET_QUERIED。用户感觉只GPU0活跃，未提供nvidia-smi输出，不能据此确认具体阶段。
+
+已核对执行代码：CONTENT_PRE为单个串行诊断任务，完成前所有训练阻塞；这一阶段只用一张卡，完成后H8/F8可分别在GPU0/1派发。两卡默认均启用，仅显式release（或技术HOLD）才退出任务，不提前停用卡。用户本次仅启动/watch，无release命令。先查询原队列，不重复enqueue或启动worker。登记证据见[用户回报](../../records/research_post_t_paired_v2_20261011T182543_3880702/user_reported_registration_20261011.json)。
 
 研究阶段为可行性探索与机制定位。主线仍RGB–DSM双向条件互补与退化/缺失分割，恢复为旁支。已验线索限Potsdam fit12→重复Val2 3_11/5_10、seed42、已知RGB局部缺失；DSM_U为保护结果。旧T7/U/E=False保持，不后验换M303/T5，不声称双向、未知故障或独立泛化。
 
@@ -16,6 +20,6 @@ H训练私有RGB net.rgb与decoder[:-1]；R另开末4编码块；最终分类器
 
 [执行与操作说明](../protocols/POST_T_PAIRED_V2_EXECUTION_20261011.md)、[配对细则](../protocols/POST_T_PAIRED_ADAPTATION_BUDGET_20261011.md)、[研究排期](../protocols/POST_T_RESEARCH_SEQUENCE_20261011.md)、[机制结果](../experiments/POST_T_MECHANISM_RESULTS_20261011.md)、[实现验收](../../records/post_t_paired_v2_implementation_20261011/verification.json)、[此前交接归档](../history/POST_T_PAIRED_V2_PRE_EXECUTION_HANDOFF_20261011.md)。
 
-立即下一步：用户在服务器执行一次登记命令；入口先查是否已有本族目录，再检查原26项释放，冻结源码/配置、CPU复查后nohup派发。已有目录只报告，不重复启动。随后回传status和首项日志核验。无SSH，所有记录/快照/缓存/权重在/home/jovyan/zzx对应实验目录；不访问Test6/held4/final。
+立即下一步：查询已登记原目录manage status、nohup与当前worker日志，确认CONTENT_PRE/训练阶段及两卡派发。无需重新登记，不主动release/rejoin，不测试占卡退出。已有队列继续执行。无SSH，所有记录在/home/jovyan/zzx对应目录，Test6/held4/final关闭。
 
 预留一天以上，无全队24h截止；完成固定任务后自动停。单臂累计活跃时间保护仍为8k 12h、16k 24h、内容批次4h，排队/主动释放等待不计。OOM/绑定/非有限/技术失败HOLD，保留现场且不自动重试；主动释放属于同一任务续跑。完整后显式上传轻量原件，再独立复算全部配对、轨迹、内容与保护并制定后继，不能把本地检查写为实验已验证。

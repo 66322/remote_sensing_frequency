@@ -1,3 +1,11 @@
+# 2026-10-11：双卡队列登记成功，首项运行待查询
+
+用户回报PAIRED_QUEUE_REGISTERED，目录research_post_t_paired_v2_20261011T182543_3880702，controller PID3881013，执行44e4df5afbaeb603e6441e7ef14ff09f228bc027，GPU0/1，6项训练/72000计划步/48内容case。18:25目录/日志命名标记不是status查询时间；尚无worker/步骤原件。用户感觉仅GPU0活跃，未附nvidia-smi结果。代码中CONTENT_PRE只占单卡，完成后训练双卡派发，默认未停用任何卡；仅需要时release。查询原队列，勿重复登记。
+
+[回报](../../../records/research_post_t_paired_v2_20261011T182543_3880702/user_reported_registration_20261011.json)。以下为历史条目。
+
+---
+
 # 2026-10-11：双卡执行包就绪，待服务器登记
 
 [操作说明](../../protocols/POST_T_PAIRED_V2_EXECUTION_20261011.md)、[实现检查](../../../records/post_t_paired_v2_implementation_20261011/verification.json)。6新训练/72000步＋2批48 case，GPU0/1共享队列；用户release任一卡，保存退出后断点与待办在另一卡排队，显式rejoin前停用原卡。无全队24h截止。当前READY_NOT_REGISTERED_GPU_RUNTIME_UNVERIFIED，无新目录/PID/真实GPU结果回报；本地CPU检查不是正式实验。
