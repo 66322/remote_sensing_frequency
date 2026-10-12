@@ -1,44 +1,50 @@
-# 下一实验（当前：DESIGN_REVIEW_NOT_REGISTERED）
+# 下一实验：Phase 1.5 Recoverability Decomposition
 
-关键原件复核补充（2026-10-12）：2026-10-12关键原件复核补充：R16−H16=+0.348562pp，两tile分别+0.328642/+0.356335pp，原screen中这一配对passed=True；R16总gate=False的直接原因是六E相对R0的五项底线失败，不是R−H配对未过。F/H/R独立8k/16k预算比较未通过收益门槛；R16自身8k→16k轨迹仍+0.618217pp，因此只关闭当前配方下盲目延长预算的依据，不宣称后半程不学习或普遍收敛。DSM特征内容干预是已存在的更直接线索：R16在块缺失条件C−Z=+4.009563pp、C−S=+9.114377pp；仍是固定模型推理敏感性，不是同预算RGB-only配对训练因果结论。
+状态：**PHASE_1_5_FROZEN_AWAITING_SMOKE_IMPLEMENTATION**。
 
-详见[本次复核](../experiments/LATEST_RESULTS_KEY_REVIEW_20261012.md)。此前“关闭训练不够久”仅针对本轮独立预算方案；R−H局部门槛通过，不等于全screen成功。下一可靠性/路由仍是待设计候选。
+Post-T paired v2 与 Structured Failure v0.1 均已完成科学收口；当前没有运行中、已登记或自动等待的新实验。Phase 1A 的 structured-location vulnerability 按预注册规则关闭，不扩样、不改阈值、不换 mask 追正。
 
-当前没有已授权、已登记或后台等待的新实验。Post-T paired v2 与 Structured Failure v0.1 都已完成独立科学验收；两轮均不触发自动后继。
+新的唯一下一研究问题不是“直接训练 reliability/quality-aware fusion”，而是：
 
-## 已关闭的问题
+> **在局部 RGB missing 下，S1 剩余约 21 pp 的伤害有多少是当前输入/专家体系下可恢复的；25% missing 是否存在饱和；伤害主要位于 mask 边界还是内部；现有 frozen experts 之间是否存在足够且可学习的互补空间，值得重新打开 routing/reliability 主线？**
 
-- **训练预算线**：F/H/R 从 8k 延长到 16k 的固定端点变化分别约 +0.001 / +0.091 / -0.016 pp，继续加步数没有依据。
-- **Structured-location vulnerability 线**：S1 主 PE 只有 +0.123 pp，固定结论 `NO_SUPPORT_THIS_PROTOCOL`，不扩 20→40、不改 mask 追正。
-- **naive context rescue**：同权重 `M000_context` 比 `M000_masked` 在四类缺失族下都明显更差，不继续作为正向候选。
+完整冻结协议：
 
-结果分别见：
+- [Phase 1.5 — Recoverability Decomposition under Local RGB Failure](../protocols/PHASE_1_5_RECOVERABILITY_20261012.md)
 
-- [Post-T paired v2 结果](../experiments/POST_T_PAIRED_V2_RESULTS_20261012.md)
-- [Structured Failure v0.1 结果](../experiments/STRUCTURED_FAILURE_V0_RESULTS_20261012.md)
+## 固定子实验
 
-## 下一单一研究问题
+1. **1.5-E Spatial damage profile**：S1-0，按到 mask 边界距离分箱，区分 edge-dominant 与 approximately-uniform damage；优先复用 Phase1A 预测，能离线复算则不占 GPU。
+2. **1.5-A DSM intervention**：S1-0 primary，R16 secondary；DSM intact / crop-shuffle / tile-shuffle / zero，复用 Phase1A 20 realization，回答 DSM 内容/空间对应是否参与抑制结构敏感性。
+3. **1.5-B Ratio response**：S1-0，pixel mask only，严格 nested `M5 ⊂ M10 ⊂ M25`，20 realization；分析 dose-response 与 saturation，不把 block size 混进 ratio。
+4. **1.5-C Per-class decomposition**：五类全报，primary contrast = Car−Building；持久化 per-realization per-class confusion matrix。现有 D15 DSM-only 默认按 legacy checkpoint 处理，不能冒充 information-theoretic upper bound。
+5. **1.5-D Oracle headroom + learnability**：oracle pool `{S1-0, S1-3, DSM-only, RGB-only, R16}`；raw known-mask selector、GT per-pixel/per-patch oracle、条件胜率分析。GT class/真实 mask geometry 仅用于机制诊断，不能单独作为部署可学习性证据。
 
-优先设计：**模态可靠性估计 + 条件路由/抑制**。
+## Routing/reliability gate
 
-问题表述：
+raw 5-expert per-pixel oracle：
 
-> 当 RGB 或 DSM 的质量局部或整体下降时，模型能否仅根据部署时可获得的信息识别当前不可靠模态，并降低该模态对融合结果的负作用，同时保留正常双模态输入下的互补收益？
+- `<2 pp`：默认关闭；若结论受 legacy DSM-only 限制则只记 provisional close。
+- `2–6 pp`：gray zone，不自动训练 router。
+- `≥6 pp`：只获得 conditional entry；还必须看到 deployment-observable 条件下跨两 tile 可重复的 expert preference，才允许进入下一次独立设计评审。
 
-这比继续增加训练时间或再开放 encoder 更贴合现有证据：S1 已经能显著降低 RGB 缺失伤害，但错误的 context/routing 又会把损伤放大。
+`≥6 pp` 不是方法成功，更不是自动训练许可。
 
-## 新协议应至少包含
+## Smoke gate
 
-1. **可靠性信号**：明确来自输入统计、特征一致性、预测不确定性或跨模态一致性中的哪一种；推理时不得依赖 GT。
-2. **双向退化**：RGB 与 DSM 都覆盖 local missing、global missing、blur/downsample/noise/shift 等固定家族，避免只做单向鲁棒性。
-3. **严格对照**：同权重/同容量优先；若新增参数，另做 capacity-matched 对照，避免把容量收益误写成可靠性收益。
-4. **clean 保护**：正常输入性能必须有明确下限，同时看退化条件的 pooled 与 worst-tile 收益。
-5. **机制统计**：按类别、missing/healthy 区域、退化强度和路由权重/可靠性分数统计，验证机制是否真的随质量变化。
-6. **停止条件**：开发门槛提前冻结；若核心信号不存在，停止该线而不是追加 seed/改门槛。
-7. **数据隔离**：当前仍只用开发划分；Test6/held4/final 保持关闭，直到方法与协议完全冻结。
+正式全量前只允许 **1 个 realization** 做工程 smoke/known-answer；它不能用于估计 realization 方差或科学效应。
 
-## 现在不要做
+smoke 必须通过协议中固定的 archived replay、M25 SHA identity、nested mask、shuffle bijection、distance-transform toy、oracle toy、composition identity、seam smoothing containment、confusion conservation、zero-training、data isolation、checkpoint binding 等检查。
 
-不要启动 GPU；不要继续 Post-T 步数；不要重新跑 Structured v0；不要追加 realization/seed；不要扫 encoder block 数量；不要直接训练尚未定义的 reliability 模块；不要启用 Test6/held4/final。
+任一 FAIL：`SMOKE_FAILED_HOLD`，不得边跑全量边修。只有 smoke 全 PASS 后，才允许登记全量 Phase 1.5 zero-training 推理。
 
-只有新的设计文档明确写出问题、假设、输入可靠性定义、对照、预算、门槛和停止条件，并由用户显式决定执行后，才登记下一队列。
+## 当前不要做
+
+- 不训练 reliability estimator / αβγ soft gate。
+- 不新增 side branch / adapter。
+- 不盲目重训 DSM-only；matched DSM-only 只允许成为 Phase1.5 结束后的条件性后继。
+- 不追加 seed/realization，不改 Phase1A gate。
+- 不用 smoothed composition 覆盖 raw oracle gate。
+- 不访问 Test6 / held4 / final。
+
+Phase 1.5 全部结果回收后，再在 `capability-preserving residual context adaptation` 与 `conditional routing/reliability` 之间做正式主线选择。
