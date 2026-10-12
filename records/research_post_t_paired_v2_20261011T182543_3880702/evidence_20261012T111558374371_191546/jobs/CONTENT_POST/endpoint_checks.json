@@ -1,0 +1,58 @@
+[
+  {
+    "tile": "3_11",
+    "condition": "rgb_lines64w8__clean",
+    "exact": true,
+    "prediction_sha256": "ed8ea75dbac4dc9c2759f076b67fedc5910ebc7a0ffe1c1bd4bfac5f08c77923",
+    "model": "F16"
+  },
+  {
+    "tile": "3_11",
+    "condition": "rgb_blocks64q25__clean",
+    "exact": true,
+    "prediction_sha256": "dafde4380214a6232b692728e46278107e93e338fde416278eca8376d5e219e1",
+    "model": "F16"
+  },
+  {
+    "tile": "5_10",
+    "condition": "rgb_lines64w8__clean",
+    "exact": true,
+    "prediction_sha256": "0c8eee384ae33de3e7580838d9626d2c01f2823f44aee7ee70530e1258a70ad5",
+    "model": "F16"
+  },
+  {
+    "tile": "5_10",
+    "condition": "rgb_blocks64q25__clean",
+    "exact": true,
+    "prediction_sha256": "1475ce3606b8f44a81d1ca0a6f61cbe235ebe63bd9ecf7eb5bd78fadfc4d8041",
+    "model": "F16"
+  },
+  {
+    "tile": "3_11",
+    "condition": "rgb_lines64w8__clean",
+    "exact": true,
+    "prediction_sha256": "527cb7b6c9b48e5592e8da69424675a3928c7acb9edf1d9727510edf3930a8b1",
+    "model": "R16"
+  },
+  {
+    "tile": "3_11",
+    "condition": "rgb_blocks64q25__clean",
+    "exact": true,
+    "prediction_sha256": "e5e03a32f015063ec39b1f4bd4dca0fc57ed94b875e008c461bd4716dd9b7160",
+    "model": "R16"
+  },
+  {
+    "tile": "5_10",
+    "condition": "rgb_lines64w8__clean",
+    "exact": true,
+    "prediction_sha256": "0c8409226a5d059cccb0df259d977337fd446d688a0f86f9d042b5be50e0620e",
+    "model": "R16"
+  },
+  {
+    "tile": "5_10",
+    "condition": "rgb_blocks64q25__clean",
+    "exact": true,
+    "prediction_sha256": "a10f669a59d9470548749def2523d545bc39056df1df13a98b8d945a57feb3f2",
+    "model": "R16"
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "H8/F8": {
+    "common_steps": 8000,
+    "exact": true
+  },
+  "H8/R8": {
+    "common_steps": 8000,
+    "exact": true
+  },
+  "F8/R8": {
+    "common_steps": 8000,
+    "exact": true
+  }
+}
