@@ -2,7 +2,9 @@
 
 设计日期：2026-10-12（Asia/Shanghai）
 
-状态：**FROZEN_DESIGN / ZERO_TRAINING / SMOKE_REQUIRED / NO_FULL_DISPATCH_YET**。
+状态：**DESIGN_V1_1 / ZERO_TRAINING / AWAITING_IMPLEMENTATION_AND_SMOKE / NOT_REGISTERED**。
+
+2026-10-12执行前澄清v1.1：[双卡24–48小时规划](PHASE_1_5_TWO_GPU_PLAN_20261012.md)。下文未展开的clean参考、oracle支持域、缓存/熵计费、ECI非正分母、统计解释与后继设计以该文件为准。此前版本37353e1可追溯；尚无本阶段新科学结果。用户授权GPU0/1、超过一天继续，当前不处理单卡释放。
 
 本协议是 Structured Failure v0.1（Phase 1A）关闭后的唯一下一诊断阶段。Phase 1A 已按预注册规则判定 `NO_SUPPORT_THIS_PROTOCOL`；不得扩 realization、改阈值、换 mask 或追加 seed 追正。Post-T paired v2 也已完成验收；R−H 局部比较有正增量，但完整 E 条件保护 gate 失败。本阶段不把这些结果直接升级成新方法，而先回答一个更基础的问题：
 
@@ -67,7 +69,7 @@
 固定四档：
 
 1. **intact**：原 DSM。
-2. **crop-shuffle**：先在完整 tile 上按固定 512×512 非重叠网格切块，块内像素与局部结构保持不变，仅对 512 块的位置做事前固定的无放回置换；用于破坏长程/区域级空间对应，同时尽量保留块内局部纹理统计。边缘不足 512 的区域使用事前固定的 pad/crop 规则并写入 manifest。
+2. **crop-shuffle**：先在完整 tile 上按固定 512×512 非重叠网格切块，块内像素与局部结构保持不变，仅对 512 块的位置做事前固定的无放回置换；用于破坏长程/区域级空间对应，同时尽量保留块内局部纹理统计。边缘不足512的块按相同(h,w)形状分组置换，不padding再裁切；6000边长余368。原tile严格双射，保存固定点比例。
 3. **tile-shuffle**：在完整 tile 内使用事前固定的全像素双射 permutation，保持 DSM 像素值多重集合不变，但破坏局部与全局空间结构。保存 permutation seed/index SHA；输出必须由原 DSM 纯索引重排得到，不做插值。
 4. **zero**：严格复用当前仓库已有 robustness evaluator 的 DSM-zero 定义与输入阶段，不创建新的 zero 语义；用于“完全缺失/OOD”参照，不与 shuffle 视为对称干预。
 
@@ -77,7 +79,9 @@ crop-shuffle 与 tile-shuffle 的随机映射只由协议、tile、condition 决
 
 沿用 Phase 1A：
 
-`D = 100 × (mIoU_clean - mIoU_missing)`
+`D_j(M) = 100 × [mIoU(clean RGB, DSM_j; M∩NB) - mIoU(masked RGB, DSM_j; M∩NB)]`
+
+同DSM干预j的clean参考与RGB缺失条件配对；相对intact clean的总损伤另报，不混入主RGB缺失效应。
 
 主结构统计：
 
@@ -135,7 +139,7 @@ ratios：5% / 10% / 25%，20 realization × 两 tile。
 报告：
 
 - `D(r)`
-- `PE(r)`：在 pixel-only ratio sweep 中不再使用 gradient-vs-matched 主 PE；这里的结构位置效应不作为主量。主要看 corruption dose-response。
+- `PE(r)=NA`：pixel-only没有gradient/matched配对，不能计算该PE。分别报告整图D_NB、缺失区D_M与公共M5支持上的D_core；主要看corruption dose-response。
 - support-level error increment：`ΔErr_mask(r) / |M_r|`
 - `D(r)/r` 作为**剂量归一化 mIoU 效应**，仅为启发式，不称“每像素伤害”，因为 mIoU 对像素并非线性。
 
@@ -250,7 +254,7 @@ GT 只用于离线诊断选择，不进入模型或部署路径。
 - expert selection histogram
 - 每 tile / 每类来源比例
 
-per-pixel oracle 是最乐观互补 headroom；per-patch oracle 用来估计粗粒度 router 能捕获多少。
+per-pixel any-correct是固定专家池正确率上界及乐观mIoU诊断，不是全局最优mIoU上界；per-patch优化correct-count也不是直接优化mIoU。主gate在完整NB fg5上、先按realization池化两tile再计算、四族均值；缺失区/healthy区另报，2/6pp不可挪到缺失区。另报超过最佳固定专家的空间。
 
 ### 5.4 条件胜率 / learnability analysis
 
@@ -345,7 +349,7 @@ pixel family 不进入 distance-profile 主分析，因为孤立像素缺乏可�
 
 `ECI = damage_density_[0,4) / damage_density_[16,∞)`
 
-其中 denominator 将 `[16,64)` 与 `>=64` 按像素数池化；若内部支持不足则记 `INCONCLUSIVE_INTERIOR_SUPPORT`。
+其中 denominator 将 `[16,64)` 与 `>=64` 按像素数池化；若内部支持不足则记 `INCONCLUSIVE_INTERIOR_SUPPORT`。净damage分母≤0或bootstrap分母非正时记INCONCLUSIVE，不加epsilon制造ECI；另报新错密度比。
 
 预注册解释：
 
@@ -359,7 +363,7 @@ pixel family 不进入 distance-profile 主分析，因为孤立像素缺乏可�
 
 ## 7. Smoke / known-answer gate
 
-正式全量前只运行 **1 个冻结 realization** 做工程 smoke；默认 `realization_id=0`、tile=`3_11`。smoke 不用于科学效应估计、方差估计、模型选择或阈值修改。
+正式全量前只运行 **1 个冻结 realization** 做工程 smoke；默认 `realization_id=1`、tile=`3_11`。smoke 不用于科学效应估计、方差估计、模型选择或阈值修改。
 
 必须全部通过以下 known-answer tests：
 
@@ -466,4 +470,4 @@ Phase 1.5 完成与独立验收前：
 
 在此之前状态保持：
 
-`PHASE_1_5_FROZEN_AWAITING_SMOKE_IMPLEMENTATION`
+`PHASE_1_5_V1_1_PLANNED_AWAITING_IMPLEMENTATION_AND_SMOKE`

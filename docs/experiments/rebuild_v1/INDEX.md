@@ -1,3 +1,9 @@
+# 2026-10-12：Phase1.5执行前v1.1与双卡一天以上规划（未登记）
+
+[具体规划](../../protocols/PHASE_1_5_TWO_GPU_PLAN_20261012.md)、[主协议](../../protocols/PHASE_1_5_RECOVERABILITY_20261012.md)、[文献](../../literature/PHASE_1_5_METHOD_CANDIDATES_20261012.md)。5项零训练诊断，按现有缓存计约1538新增完整tile推理（含最多160熵补全重放），GPU0/1、24–48h预留且不设24h截止。没有执行包验证/服务器登记/新科学结果；smoke使用实际编号1。旧负gate保持。下一主线为可恢复性诊断，routing/residual均条件候选。下方旧“方案待设计/直接routing”或运行态为历史。
+
+---
+
 # 2026-10-12：两轮完成上传，关键汇总复核及解释修正
 
 Post-T上传快照11:03:22.917566+08:00，8/8 COMPLETE；Structured上传快照16:32:44.762198+08:00，42/42 COMPLETE。两轮已有结果报告，总gate分别False、NO_SUPPORT_THIS_PROTOCOL，无新自动任务。当前实时服务器未查询。下方07:36等均为历史观测。
