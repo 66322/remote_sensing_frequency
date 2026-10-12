@@ -1,3 +1,17 @@
+# 2026-10-12 23:38：Phase1.5修复版准备中，控制器存活
+
+## 最新观测：修复版CPU准备中（2026-10-12 23:38）
+
+用户终端只读查询 **QUERY_OBSERVED=2026-10-12T23:38:10.393107+08:00**；queue **LAST_OBSERVED=2026-10-12T23:38:08.675078+08:00**，**PREPARING_FIXED_CACHE_AND_MAPS**，**CONTROLLER_LIVE=True**，100批全部PENDING。原nohup tail无新输出/错误回报；这不单独证明准备完成或真实smoke通过。当前是固定缓存与映射准备，尚无GPU工作进度；显卡空闲符合该阶段。以上是最后观测，不代表实时状态。
+
+修复执行commit `45138f0f92c668bc86ce9532a4382b38d2b12b6d`，原新目录 `research_phase15_recoverability_20261012T233532_842792`、登记PID843079、日志 `nohup_20261012T233542741074.log` 保持；旧路径错误目录继续保留。GPU0/1、0训练、100工作批次、1540唯一逻辑case固定；准备成功后自动GPU0 smoke→GPU1一致性检查→全PASS才双卡全量。无24h总截止。24–48h为资源预留，准备耗时/真实case步速尚未收到，不能给实测剩余ETA。
+
+下一步继续既有控制器，稍后仅读取同一status/nohup；如准备迟迟不变，读 `preparation_progress.json` 与 `logs/prepare_phase15.log` 定位，不重复登记/重启/绕过smoke。不新增训练/seed，不访问Test6/held4/final。五项完整原件上传后再科学验收与选路。
+
+[本次用户进度原件](../../../records/research_phase15_recoverability_20261012T233532_842792/user_reported_preparation_20261012T233810.json)。
+
+---
+
 # 2026-10-12：Phase1.5修复版登记，进度待查询
 
 ## 最新登记：路径修复版已接管，进度待查询

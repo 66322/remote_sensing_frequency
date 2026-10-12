@@ -1,14 +1,14 @@
 # 下一实验：查询已登记Phase1.5，完成后接收原件
 
-## 最新登记：路径修复版已接管，进度待查询
+## 最新观测：修复版CPU准备中（2026-10-12 23:38）
 
-2026-10-12用户终端返回 `PHASE15_TECHNICAL_REPLACEMENT_OF` 原失败目录 `research_phase15_recoverability_20261012T232212_836118`，随后 `PHASE15_REGISTERED`。修复执行commit `45138f0f92c668bc86ce9532a4382b38d2b12b6d`；新目录 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792`，登记PID843079，日志 `nohup_20261012T233542741074.log`。当前证据状态 **REGISTERED_PROGRESS_NOT_YET_QUERIED**；目录23:35:32与日志23:35:42.741074仅命名时间标记，不是queue observed_at。无controller/worker存活确认、真实smoke结果或科学结果。
+用户终端只读查询 **QUERY_OBSERVED=2026-10-12T23:38:10.393107+08:00**；queue **LAST_OBSERVED=2026-10-12T23:38:08.675078+08:00**，**PREPARING_FIXED_CACHE_AND_MAPS**，**CONTROLLER_LIVE=True**，100批全部PENDING。原nohup tail无新输出/错误回报；这不单独证明准备完成或真实smoke通过。当前是固定缓存与映射准备，尚无GPU工作进度；显卡空闲符合该阶段。以上是最后观测，不代表实时状态。
 
-接管入口拒绝旧进程存活/锁未释放/原状态不符，由成功登记执行链推断这些检查与服务器同包22项CPU成功返回；检查日志和旧失败snapshot哈希尚未独立接收。原失败目录保留，不复用其case缓存。新执行仍GPU0/1、0训练、100工作批次、1540唯一逻辑case，两卡真实smoke全PASS后自动派发固定全量，无24h总截止；24–48h为资源预留，不是实测剩余ETA。
+修复执行commit `45138f0f92c668bc86ce9532a4382b38d2b12b6d`，原新目录 `research_phase15_recoverability_20261012T233532_842792`、登记PID843079、日志 `nohup_20261012T233542741074.log` 保持；旧路径错误目录继续保留。GPU0/1、0训练、100工作批次、1540唯一逻辑case固定；准备成功后自动GPU0 smoke→GPU1一致性检查→全PASS才双卡全量。无24h总截止。24–48h为资源预留，准备耗时/真实case步速尚未收到，不能给实测剩余ETA。
 
-下一步只读新目录 `code/scripts/status_phase15.py --directory DIR` 与上述nohup日志。不得再次bootstrap/enqueue，旧目录HOLD仅作历史失败证据。五项诊断完整上传后独立验收，再决定配对训练候选；不自动新增训练/seed或访问Test6/held4/final。
+下一步继续既有控制器，稍后仅读取同一status/nohup；如准备迟迟不变，读 `preparation_progress.json` 与 `logs/prepare_phase15.log` 定位，不重复登记/重启/绕过smoke。不新增训练/seed，不访问Test6/held4/final。五项完整原件上传后再科学验收与选路。
 
-[新接管登记原件](../../records/research_phase15_recoverability_20261012T233532_842792/registration_observation.json)。
+[本次用户进度原件](../../records/research_phase15_recoverability_20261012T233532_842792/user_reported_preparation_20261012T233810.json)。
 
 ---
 
