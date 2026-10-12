@@ -1,3 +1,19 @@
+# 2026-10-12 23:46：Phase1.5 GPU0 smoke持续推进
+
+## 最新观测：GPU0 smoke持续推进（2026-10-12 23:46）
+
+最后用户查询 **QUERY_OBSERVED=2026-10-12T23:46:42.157635+08:00**；queue **LAST_OBSERVED=2026-10-12T23:46:40.290014+08:00**，**SMOKE_GPU0 / CONTROLLER_LIVE=True**，100批全部PENDING。progress最后观测23:46:33.902794，case `S1_3_11_intact_01_random_25`、GPU0/inference、529/529窗口、optimizer_updates=0。前两次23:43:25为R16 tile_shuffle clean 424/529，23:46:15为S1 pixel缺失529/529；case变化证明这一观测区间内在推进，不能把同一标签/窗口数当全队完成比例或卡死证据。三次nohup tail均无新输出/错误回报。
+
+529/529仅当前case窗口推理结束，后续尚有计数/记录/缓存和检查。执行链进入random意味着前面pixel replay检查已返回，属于流程推断；尚未收到smoke PASS原件，不能宣布所有模型/条件验收。GPU1在GPU0全部smoke成功后自动同case检查，两份PASS之后双卡全量。以上是最后观测，不是实时查询；GPU1此时未派发符合阶段依赖。
+
+修复执行commit `45138f0f92c668bc86ce9532a4382b38d2b12b6d`、目录 `research_phase15_recoverability_20261012T233532_842792`、登记PID843079、日志 `nohup_20261012T233542741074.log` 保持；旧失败目录保留。固定0训练/100批/1540唯一逻辑case，无24h总截止；没有科学结果或实测全队ETA，24–48h仍为资源预留。
+
+继续既有控制器，稍后只读同一status/nohup，不重复登记、不另启GPU1、不绕过smoke。若后续HOLD，读取对应子日志并保留证据，不自动重试。全部轻量原件齐全后再科学复核、选配对训练候选；不追加seed，不访问Test6/held4/final。
+
+[三次用户进度原件](../../../records/research_phase15_recoverability_20261012T233532_842792/user_reported_gpu0_smoke_20261012T234642.json)。
+
+---
+
 # 2026-10-12 23:40：Phase1.5 GPU0真实smoke进行中
 
 ## 最新观测：GPU0真实smoke推理中（2026-10-12 23:40）
