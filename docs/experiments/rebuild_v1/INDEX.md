@@ -1,3 +1,13 @@
+# 2026-10-12：两轮完成上传，关键汇总复核及解释修正
+
+Post-T上传快照11:03:22.917566+08:00，8/8 COMPLETE；Structured上传快照16:32:44.762198+08:00，42/42 COMPLETE。两轮已有结果报告，总gate分别False、NO_SUPPORT_THIS_PROTOCOL，无新自动任务。当前实时服务器未查询。下方07:36等均为历史观测。
+
+2026-10-12关键原件复核补充：R16−H16=+0.348562pp，两tile分别+0.328642/+0.356335pp，原screen中这一配对passed=True；R16总gate=False的直接原因是六E相对R0的五项底线失败，不是R−H配对未过。F/H/R独立8k/16k预算比较未通过收益门槛；R16自身8k→16k轨迹仍+0.618217pp，因此只关闭当前配方下盲目延长预算的依据，不宣称后半程不学习或普遍收敛。DSM特征内容干预是已存在的更直接线索：R16在块缺失条件C−Z=+4.009563pp、C−S=+9.114377pp；仍是固定模型推理敏感性，不是同预算RGB-only配对训练因果结论。
+
+[Post-T结果](../POST_T_PAIRED_V2_RESULTS_20261012.md)、[Structured结果](../STRUCTURED_FAILURE_V0_RESULTS_20261012.md)、[关键复核](../LATEST_RESULTS_KEY_REVIEW_20261012.md)。下一方案待设计，不启动GPU。
+
+---
+
 # 2026-10-12 07:36：F16训练，结构化后继正常等待
 
 最后用户服务器查询：原配对2026-10-12T07:36:17.043567+08:00（queue观测07:36:11.273122），RUNNING/controller LIVE=True。CONTENT_PRE/H8/F8/R8/R16/H16共6/8 COMPLETE退出；F16 GPU1 RUNNING/LIVE=True，11680/16000、training；CONTENT_POST PENDING。训练更新回报67680/72000，不等于整轮评价完成比例，也不等于科学验收。R16 GPU0完成05:12:15.355236，H16 GPU1完成05:07:40.161959。原执行44e4df5afbaeb603e6441e7ef14ff09f228bc027和目录research_post_t_paired_v2_20261011T182543_3880702保持。
