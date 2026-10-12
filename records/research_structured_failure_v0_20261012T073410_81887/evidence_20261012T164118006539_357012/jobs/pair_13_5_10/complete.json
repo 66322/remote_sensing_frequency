@@ -1,0 +1,31 @@
+{
+  "job": "pair_13_5_10",
+  "plan_sha256": "3b9298a187a83a7fe9b49c4f3282f8d94418978c42a08cbc9c49364e8481cfe0",
+  "code_sha256": "9eda3cb812434f05c85b5764430e9fd7d73e0f762734888ce09f337e7f67213d",
+  "mask_manifest_sha256": "c631005f512f891f978385332f2092649a536ec0b7f1cee972914a1418afa275",
+  "source_plan_sha256": "c4d5248f3cd5cfe9b61a8544533bbc6cb4bbe65001605fd8a90c4fb9d06b08b9",
+  "records": {
+    "pixel_S1.json": "ef1bb23dff8954173f45079a876e895cc5c6fc91693b05686d2163fbabe6fe72",
+    "pixel_RGB.json": "f1c752ea5b7624cdb7b607d2b44654b84cd89673039b1bb4e09c8445a85ed950",
+    "pixel_MASKED.json": "c5f24c6659a71316fb4b7c5483d20108ab5dac3b6473180b05fd28b0197fbd85",
+    "pixel_CONTEXT.json": "bbeb4e19877c133ce3e2633bb167383b96eaada895f71f3dc35934afe817c8d9",
+    "random_S1.json": "bde5c24341bd83545f5e18517964a17c450feaab0cb24bbec1b6de23bee88710",
+    "random_RGB.json": "aef8a815e1b40df2f62d0f56b8f73868a56d53da5395c779d05b19af03f9573f",
+    "random_MASKED.json": "b432f422ffd89ea65f59920d597d48c29ea1d3b5f5fad8b3228334d0be3594b2",
+    "random_CONTEXT.json": "fc143072bf99790216fa40242083586b37e2412f301b21bfa7677da3e6b75ea2",
+    "gradient_S1.json": "f3e308b98af9017243460fa0688ee0f7c5ea2ae65b98cd61a9ecd401d3a2bc00",
+    "gradient_RGB.json": "f3cd255d9e3343324eb04983f04bc747e099457f785f86db61c1b5dfcb8034d7",
+    "gradient_MASKED.json": "4b90ca4ef5f81d2147ed8f5b890374420091cb0810f928ed208202ebbe6b0fe3",
+    "gradient_CONTEXT.json": "171f24c4467438be5d81299b0a8d919dc721e1bffaa253be2791e1aa4c6899a5",
+    "matched_S1.json": "b20a7575ff81a24a0e0e5a7a20c4a52eccf6c19ab72eb293886e17d8a8aba9b2",
+    "matched_RGB.json": "2a1593b09a4789005908dd826617d8b08351192f21442e45870b88c7a3da9072",
+    "matched_MASKED.json": "1187ae5598d875d8984214ad1f9c86a19ef862bcd4791c31e9257df7bcaaafbe",
+    "matched_CONTEXT.json": "4e18932e5aba5eee98dc4a17666be8a98bb1b15c470294ddc999cff7fa118e02"
+  },
+  "optimizer_updates": 0,
+  "endpoint_checks_sha256": null,
+  "input_binding_sha256": "f427f544acf912a8b3017f32a3e7cc5e4cb051ec8a6d882a958ee4d28dd69de3",
+  "test6_loaded": false,
+  "independent_final_loaded": false,
+  "completed_at": "2026-10-12T14:43:32.908645+08:00"
+}

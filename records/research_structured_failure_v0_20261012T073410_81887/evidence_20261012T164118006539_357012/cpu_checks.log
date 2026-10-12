@@ -1,0 +1,22 @@
+test_clean_stage_barrier (test_structured_v0.KnownAnswers) ... ok
+test_empty_healthy (test_structured_v0.KnownAnswers) ... ok
+test_fixed_classes_and_same_support (test_structured_v0.KnownAnswers) ... ok
+test_gate_and_ci (test_structured_v0.KnownAnswers) ... ok
+test_integer_counts (test_structured_v0.KnownAnswers) ... ok
+test_mask_support_scales_and_windows (test_structured_v0.KnownAnswers) ... ok
+test_pool_before_nonlinear_metric (test_structured_v0.KnownAnswers) ... ok
+test_predecessor_holds (test_structured_v0.KnownAnswers) ... ok
+test_prediction_archive_and_binding (test_structured_v0.KnownAnswers) ... ok
+test_rectangles (test_structured_v0.KnownAnswers) ... ok
+test_release_inheritance (test_structured_v0.KnownAnswers) ... ok
+test_rng_canonical (test_structured_v0.KnownAnswers) ... ok
+test_semantic_match (test_structured_v0.KnownAnswers) ... ok
+test_shared_weight_forward_and_zero_fill (test_structured_v0.KnownAnswers) ... ok
+test_failed_job_no_retry (test_structured_v0.Scheduling) ... ok
+test_release_resume_other_card (test_structured_v0.Scheduling) ... ok
+test_two_cards (test_structured_v0.Scheduling) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 2.216s
+
+OK
