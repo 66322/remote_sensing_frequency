@@ -1,16 +1,16 @@
 # 当前状态：Phase1.5已登记，进度待查询（2026-10-12）
 
-## 最新观测：GPU0 smoke持续推进（2026-10-12 23:46）
+## 最新观测：GPU0 smoke推进至R16 gradient（2026-10-12 23:50）
 
-最后用户查询 **QUERY_OBSERVED=2026-10-12T23:46:42.157635+08:00**；queue **LAST_OBSERVED=2026-10-12T23:46:40.290014+08:00**，**SMOKE_GPU0 / CONTROLLER_LIVE=True**，100批全部PENDING。progress最后观测23:46:33.902794，case `S1_3_11_intact_01_random_25`、GPU0/inference、529/529窗口、optimizer_updates=0。前两次23:43:25为R16 tile_shuffle clean 424/529，23:46:15为S1 pixel缺失529/529；case变化证明这一观测区间内在推进，不能把同一标签/窗口数当全队完成比例或卡死证据。三次nohup tail均无新输出/错误回报。
+用户查询 **QUERY_OBSERVED=2026-10-12T23:50:20.175802+08:00**；queue **LAST_OBSERVED=2026-10-12T23:50:19.106665+08:00**，**SMOKE_GPU0 / CONTROLLER_LIVE=True**，100批全部PENDING。progress观测23:50:16.983658，case `R16_3_11_intact_01_gradient_25`、GPU0/inference、529/529窗口、optimizer_updates=0。相较23:46 S1 random case已推进到后续R16干预；没有新错误回报。529/529是当前case窗口，不是整体smoke或100批完成。以上是最后观测，不代表实时状态。
 
-529/529仅当前case窗口推理结束，后续尚有计数/记录/缓存和检查。执行链进入random意味着前面pixel replay检查已返回，属于流程推断；尚未收到smoke PASS原件，不能宣布所有模型/条件验收。GPU1在GPU0全部smoke成功后自动同case检查，两份PASS之后双卡全量。以上是最后观测，不是实时查询；GPU1此时未派发符合阶段依赖。
+当前已有真实GPU0推理，整套smoke尚未通过。控制器按固定顺序：GPU0全部smoke→GPU1重放S1 pixel与R16 random检查标签/计数/熵一致性→两份PASS技术验收→RUNNING_ZERO_TRAINING双卡100批。GPU1此阶段未启动符合依赖，未release或缺少登记任务；不应手工启动GPU1或改immutable快照。此轮0训练，显卡任务是冻结模型推理诊断。CPU E可并行，原件未收不宣称完成。
 
-修复执行commit `45138f0f92c668bc86ce9532a4382b38d2b12b6d`、目录 `research_phase15_recoverability_20261012T233532_842792`、登记PID843079、日志 `nohup_20261012T233542741074.log` 保持；旧失败目录保留。固定0训练/100批/1540唯一逻辑case，无24h总截止；没有科学结果或实测全队ETA，24–48h仍为资源预留。
+修复commit `45138f0f92c668bc86ce9532a4382b38d2b12b6d`、目录 `research_phase15_recoverability_20261012T233532_842792`、登记PID843079、日志 `nohup_20261012T233542741074.log` 保持；旧失败目录保留。固定100批/1540唯一逻辑case，无24h截止；无新科学结果或实测全队ETA。
 
-继续既有控制器，稍后只读同一status/nohup，不重复登记、不另启GPU1、不绕过smoke。若后续HOLD，读取对应子日志并保留证据，不自动重试。全部轻量原件齐全后再科学复核、选配对训练候选；不追加seed，不访问Test6/held4/final。
+只读进度：`PY -B DIR/code/scripts/status_phase15.py --directory DIR`；可在用户终端watch每30秒刷新。主nohup主要报告批次启动/完成，smoke阶段安静不代表停止；详细smoke位于 `smoke/gpu0/progress.json` 和 `logs/smoke_gpu0.log`。case/窗口变化用于判断当前推理进度，CURRENT/LAST时间用于判断观测新鲜度，COMPLETE批次只有全量阶段增长；不能按批次数当等时耗百分比。失败HOLD读子日志且不自动retry。不增加seed，不访问Test6/held4/final。
 
-[三次用户进度原件](../../records/research_phase15_recoverability_20261012T233532_842792/user_reported_gpu0_smoke_20261012T234642.json)。
+[本次用户进度原件](../../records/research_phase15_recoverability_20261012T233532_842792/user_reported_gpu0_smoke_20261012T235020.json)。
 
 ---
 
