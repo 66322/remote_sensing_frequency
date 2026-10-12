@@ -1,0 +1,31 @@
+{
+  "record_type": "user_reported_registration",
+  "reported_on": "2026-10-12",
+  "status": "REGISTERED_PROGRESS_NOT_YET_QUERIED",
+  "execution_commit": "7b12fec6d7fb451e09316ba59f7d62ca8e0c316b",
+  "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T232212_836118",
+  "controller_pid_registered": 836482,
+  "controller_live_confirmed": false,
+  "gpu_ids": [
+    0,
+    1
+  ],
+  "trainings": 0,
+  "gpu_work_batches": 100,
+  "smoke_before_full": true,
+  "no24h_deadline": true,
+  "query_observed_at": null,
+  "queue_observed_at": null,
+  "naming_time_markers": {
+    "directory": "2026-10-12T23:22:12+08:00",
+    "log": "2026-10-12T23:22:27.296552+08:00",
+    "interpretation": "filename markers only; not runtime observation timestamps"
+  },
+  "log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T232212_836118/nohup_20261012T232227296552.log",
+  "server_cpu_checks_returned_success": "inferred from successful enqueue execution chain",
+  "server_cpu_checks_log_received": false,
+  "real_smoke_verified": false,
+  "scientific_results_received": false,
+  "raw_registration": "PHASE15_REGISTERED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T232212_836118 PID=836482 GPU=0,1 TRAININGS=0 JOBS=100 SMOKE_BEFORE_FULL=True NO24H_DEADLINE\nPHASE15_LOG /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T232212_836118/nohup_20261012T232227296552.log",
+  "next_action": "Read-only status and log in registered directory; no duplicate enqueue."
+}

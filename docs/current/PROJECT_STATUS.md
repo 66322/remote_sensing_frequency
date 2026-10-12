@@ -1,6 +1,8 @@
-# 当前状态：Phase1.5执行包就绪（2026-10-12）
+# 当前状态：Phase1.5已登记，进度待查询（2026-10-12）
 
-2026-10-12用户“按上述规划进行”并“继续”，已落实Phase1.5独立执行包。**READY_NOT_REGISTERED**：本地20项合成CPU检查与13新Python语法通过，尚无服务器登记/PID或真实权重/CUDA结果。GPU0/1、100工作批次、1540唯一逻辑case（两S1 clean缓存复用，按最多1538新tile推理计）；0训练/0优化器更新，24–48h预留且无24h总截止。
+2026-10-12用户终端已返回 **PHASE15_REGISTERED**，当前证据状态为 **REGISTERED_PROGRESS_NOT_YET_QUERIED**。执行commit `7b12fec6d7fb451e09316ba59f7d62ca8e0c316b`；目录 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T232212_836118`，登记controller PID836482，日志 `nohup_20261012T232227296552.log`。目录23:22:12与日志23:22:27.296552仅为命名时间标记，不是queue observed_at；尚无只读进度查询、controller/worker存活确认或真实smoke结果。
+
+GPU0/1、100工作批次、1540唯一逻辑case（两S1 clean缓存复用，按最多1538新tile推理计），0训练/0优化器更新。24–48h为预留范围，非当前剩余ETA；无24h总截止。登记前同包CPU检查成功返回由入口执行链推断，服务器cpu_checks.log尚未单独接收；本地20项合成CPU检查及13新Python语法通过不等于真实CUDA/权重验收。
 
 启动入口enqueue_phase15.py幂等检查旧完成队列/锁，继承immutable源码→CPU检查→准备→GPU0真实smoke(ID1/tile3_11)→GPU1同case一致性→自动技术验收全PASS→双卡全量→五项汇总。任一技术失败HOLD且停止拥有的children，不自动retry或加训练。用户终端执行、无SSH，全部记录/缓存/临时产物在/home/jovyan/zzx新目录。
 
@@ -8,6 +10,8 @@
 
 科学阶段为零训练可恢复性分解E/A/B/C/D：空间profile、DSM对应干预、比例曲线、类别分解、固定专家互补/可观测信号。可靠性/routing与残差context均为条件候选，下一训练草案未派发。
 
-本地验证只覆盖合成模型/数组/调度/完整模拟汇总；服务器同包CPU与真实smoke仍须执行。源模型严格保留S1-0/S1-3/R16图，DSM-only使用D15 legacy seed42；zero为existing dsm_present_zero且dm=True。没有Test6/held4/final、新seed、旧配方重跑。
+本地验证只覆盖合成模型/数组/调度/完整模拟汇总；服务器同包CPU成功返回仅由登记执行链推断，日志未单收；真实smoke进度/验收尚未查询。源模型严格保留S1-0/S1-3/R16图，DSM-only使用D15 legacy seed42；zero为existing dsm_present_zero且dm=True。没有Test6/held4/final、新seed、旧配方重跑。
 
 [执行协议](../protocols/PHASE_1_5_EXECUTION_20261012.md)、[完整设计](../protocols/PHASE_1_5_RECOVERABILITY_20261012.md)、[双卡规划](../protocols/PHASE_1_5_TWO_GPU_PLAN_20261012.md)、[CPU验证记录](../../records/phase15_execution_design_20261012/validation.json)。
+
+登记原始回报：[轻量摘录](../../records/research_phase15_recoverability_20261012T232212_836118/registration_observation.json)。下一步只读 `PY -B DIR/code/scripts/status_phase15.py --directory DIR` 与原nohup日志；进度未收前不认定双卡已开始。

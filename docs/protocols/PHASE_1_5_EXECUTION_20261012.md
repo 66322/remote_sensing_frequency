@@ -1,6 +1,6 @@
 # Phase 1.5 双卡零训练执行协议（2026-10-12）
 
-状态：READY_NOT_REGISTERED。用户“按上述规划进行”并“继续”授权落实执行包；服务器仍由用户终端执行，助手无SSH。GPU0/1并行，未完继续，无24小时总截止。本协议落实[主设计](PHASE_1_5_RECOVERABILITY_20261012.md)与[具体规划](PHASE_1_5_TWO_GPU_PLAN_20261012.md)，执行版本PHASE15_V1_2_EXECUTION。
+最新运行记录：REGISTERED_PROGRESS_NOT_YET_QUERIED（用户终端登记；[登记摘录](../../records/research_phase15_recoverability_20261012T232212_836118/registration_observation.json)）。执行包发布时状态为READY_NOT_REGISTERED。用户“按上述规划进行”并“继续”授权落实执行包；服务器仍由用户终端执行，助手无SSH。GPU0/1并行，未完继续，无24小时总截止。本协议落实[主设计](PHASE_1_5_RECOVERABILITY_20261012.md)与[具体规划](PHASE_1_5_TWO_GPU_PLAN_20261012.md)，执行版本PHASE15_V1_2_EXECUTION。
 
 ## 冻结范围
 
@@ -46,7 +46,7 @@
 
 20项合成CPU检查与13个新Python语法检查通过。包括原S1-3图等价、FP32 logit stitch/entropy、两卡调度与smoke前置、失败停止无retry、nested/bijection/EDT/oracle/seam/matrix known-answer、plan篡改拒绝、完整1540-case模拟汇总及legacy/高oracle均不派发训练。
 
-范围：本地Python3.13/Numpy2.2.6/SciPy1.15.3/Torch2.7.1+cpu；模拟模型/数组不是服务器原权重/DINO/CUDA科学结果。服务器在绑定d18_dino Torch2.2.2+cu121中启动前再跑同包CPU检查并进行真实smoke。尚无本阶段服务器PID或GPU结果；READY_NOT_REGISTERED不能写成实验已验证。
+范围：本地Python3.13/Numpy2.2.6/SciPy1.15.3/Torch2.7.1+cpu；模拟模型/数组不是服务器原权重/DINO/CUDA科学结果。服务器在绑定d18_dino Torch2.2.2+cu121中启动前再跑同包CPU检查并进行真实smoke。发布时尚无本阶段服务器PID或GPU结果；当前已收到登记PID，但无进度/真实smoke结果，不能写成实验已验证。
 
 ## 操作入口
 
