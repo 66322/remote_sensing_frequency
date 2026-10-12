@@ -120,3 +120,7 @@ STARS用于解释共享/特有与翻译可选机制；TokenFusion用于空间替
 已完成：结果与审查综合、执行前协议澄清、计算账本、双卡排期、文献映射、后继决策草案。
 未完成：新评估器/调度器实现及测试、服务器smoke、登记和科学结果；不得给不存在的enqueue命令或称GPU已启动。
 下一可执行工程工作：按上述固定清单复用Structured native评估和缓存，实现Phase1.5独立包及smoke，然后由用户终端执行。用户本次资源授权不重复询问；实际服务器执行仍由用户完成。
+
+
+## 2026-10-12落实更新
+用户“按上述规划进行”授权后，已实现[独立执行包](PHASE_1_5_EXECUTION_20261012.md)，20项合成CPU/13新Python语法通过。当前READY_NOT_REGISTERED，实际服务器smoke/GPU科学结果仍未取得。此前“未实现”段落为规划时历史，立即操作以执行协议/current入口为准。启动会自动验收真实smoke再接续全量，不派发任何训练；seed/模型/统计设计与24–48h资源账本保持，新增工程说明熵为softmax(mean stitched logits)，zero为present_zero/dm=True。

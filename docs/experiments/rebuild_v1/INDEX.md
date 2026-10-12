@@ -1,3 +1,9 @@
+# 2026-10-12：Phase1.5执行包就绪，未登记
+
+[执行协议](../../protocols/PHASE_1_5_EXECUTION_20261012.md)、[验证](../../../records/phase15_execution_design_20261012/validation.json)。100批/1540逻辑case、最多1538新tile推理，五项诊断0训练。合成CPU20项与新Python语法13文件通过；真实数据/权重/CUDA smoke待用户终端启动，READY_NOT_REGISTERED，无新PID或科学结果。GPU0/1，24h未完继续；技术smoke全PASS自动接续全量，负/高oracle不自动加训练。下方待实现条目为历史。
+
+---
+
 # 2026-10-12：Phase1.5执行前v1.1与双卡一天以上规划（未登记）
 
 [具体规划](../../protocols/PHASE_1_5_TWO_GPU_PLAN_20261012.md)、[主协议](../../protocols/PHASE_1_5_RECOVERABILITY_20261012.md)、[文献](../../literature/PHASE_1_5_METHOD_CANDIDATES_20261012.md)。5项零训练诊断，按现有缓存计约1538新增完整tile推理（含最多160熵补全重放），GPU0/1、24–48h预留且不设24h截止。没有执行包验证/服务器登记/新科学结果；smoke使用实际编号1。旧负gate保持。下一主线为可恢复性诊断，routing/residual均条件候选。下方旧“方案待设计/直接routing”或运行态为历史。

@@ -17,3 +17,12 @@ raw五expert完整NB headroom的2/6pp保留为资源分流阈值，不是统计�
 不采纳无证据的<2 GPU小时、单realization估方差、zero-init训练后恒等保护及“必然可发表”；完整分歧与修正写入双卡规划。未来四组残差或四组router只为条件设计储备，未登记、未实现，不自动训练。
 
 [双卡具体规划](../protocols/PHASE_1_5_TWO_GPU_PLAN_20261012.md)、[Phase1.5主协议v1.1](../protocols/PHASE_1_5_RECOVERABILITY_20261012.md)、[文献映射](../literature/PHASE_1_5_METHOD_CANDIDATES_20261012.md)、[关键原件复核](../experiments/LATEST_RESULTS_KEY_REVIEW_20261012.md)。
+
+## 2026-10-12执行落实
+2026-10-12用户“按上述规划进行”并“继续”，已落实Phase1.5独立执行包。**READY_NOT_REGISTERED**：本地20项合成CPU检查与13新Python语法通过，尚无服务器登记/PID或真实权重/CUDA结果。GPU0/1、100工作批次、1540唯一逻辑case（两S1 clean缓存复用，按最多1538新tile推理计）；0训练/0优化器更新，24–48h预留且无24h总截止。
+
+启动入口enqueue_phase15.py幂等检查旧完成队列/锁，继承immutable源码→CPU检查→准备→GPU0真实smoke(ID1/tile3_11)→GPU1同case一致性→自动技术验收全PASS→双卡全量→五项汇总。任一技术失败HOLD且停止拥有的children，不自动retry或加训练。用户终端执行、无SSH，全部记录/缓存/临时产物在/home/jovyan/zzx新目录。
+
+保留原科学问题和主线角色；状态由待实现改为READY_NOT_REGISTERED。用户授权落实整套执行，技术smoke自动验收并接续固定全量；五项结果齐全后的科学复核/方法选路仍独立进行。
+
+[执行协议](../protocols/PHASE_1_5_EXECUTION_20261012.md)、[完整设计](../protocols/PHASE_1_5_RECOVERABILITY_20261012.md)、[双卡规划](../protocols/PHASE_1_5_TWO_GPU_PLAN_20261012.md)、[CPU验证记录](../../records/phase15_execution_design_20261012/validation.json)。

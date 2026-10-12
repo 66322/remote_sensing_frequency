@@ -2,7 +2,9 @@
 
 设计日期：2026-10-12（Asia/Shanghai）
 
-状态：**DESIGN_V1_1 / ZERO_TRAINING / AWAITING_IMPLEMENTATION_AND_SMOKE / NOT_REGISTERED**。
+状态：**EXECUTION_V1_2_READY_NOT_REGISTERED / ZERO_TRAINING / REAL_SMOKE_REQUIRED**。
+
+落实说明：[执行协议](PHASE_1_5_EXECUTION_20261012.md)。用户2026-10-12“按上述规划进行”授权整套执行；技术smoke由控制器独立验收后自动接续全量，科学去留仍待完整原件人工复核。真实服务器smoke/登记尚未回报。
 
 2026-10-12执行前澄清v1.1：[双卡24–48小时规划](PHASE_1_5_TWO_GPU_PLAN_20261012.md)。下文未展开的clean参考、oracle支持域、缓存/熵计费、ECI非正分母、统计解释与后继设计以该文件为准。此前版本37353e1可追溯；尚无本阶段新科学结果。用户授权GPU0/1、超过一天继续，当前不处理单卡释放。
 
@@ -21,7 +23,7 @@
 冻结模型集合：
 
 - **S1-0**：Phase 1.5 primary model。
-- **R16**：仅用于 1.5-A 的 representation-depth 对照，不把其结果外推为 S1-0 机制。
+- **R16**：用于1.5-A的冻结模型representation-depth对照及1.5-D的固定expert pool，不把其结果外推为S1-0机制。
 - **S1-3**：仅进入 1.5-D oracle pool；其已知角色为“保留上下文 + 保留 fusion path”的旧开发候选。
 - **RGB-only**：进入 1.5-D oracle pool，并作为 Phase 1A 的结构敏感 sanity anchor。
 - **DSM-only**：优先使用仓库内可核验的冻结 checkpoint，但必须记录来源、训练 split、训练协议、backbone、seed 与 checkpoint SHA。
@@ -459,15 +461,15 @@ Phase 1.5 完成与独立验收前：
 
 ## 12. 当前执行状态
 
-截至本协议写入：**只冻结设计，不代表服务器已实现或已登记。**
+截至本次落实：**执行包已实现并通过20项合成CPU检查/13新Python语法；READY_NOT_REGISTERED，无服务器真实smoke或登记回报。**
 
 下一步只能是：
 
-1. 实现/复用评估代码；
-2. 运行第 7 节的 1-realization smoke + known-answer tests；
-3. 回传 smoke 原件并验收；
-4. 只有 smoke 全 PASS 后，才允许登记 Phase 1.5 全量 zero-training 推理队列。
+1. 用户运行固定commit的enqueue_phase15.py，幂等核旧队列与锁；
+2. 控制器运行同包CPU检查/准备及ID1真实smoke，并在GPU1复验同case；
+3. 独立技术验收smoke receipt全PASS后自动接续全量推理，任何FAIL即HOLD；
+4. 全量完成/HOLD后前台轻量上传原件；助手回读并做科学验收，不自动派发新训练。
 
 在此之前状态保持：
 
-`PHASE_1_5_V1_1_PLANNED_AWAITING_IMPLEMENTATION_AND_SMOKE`
+`PHASE_1_5_EXECUTION_READY_NOT_REGISTERED`
