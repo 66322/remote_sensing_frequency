@@ -1,10 +1,22 @@
 # 共享入口：Phase1.5已登记，进度待查询（2026-10-12）
 
-## 当前处理：已定位路径错误，修复版待终端接管
+## 最新登记：路径修复版已接管，进度待查询
+
+2026-10-12用户终端返回 `PHASE15_TECHNICAL_REPLACEMENT_OF` 原失败目录 `research_phase15_recoverability_20261012T232212_836118`，随后 `PHASE15_REGISTERED`。修复执行commit `45138f0f92c668bc86ce9532a4382b38d2b12b6d`；新目录 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792`，登记PID843079，日志 `nohup_20261012T233542741074.log`。当前证据状态 **REGISTERED_PROGRESS_NOT_YET_QUERIED**；目录23:35:32与日志23:35:42.741074仅命名时间标记，不是queue observed_at。无controller/worker存活确认、真实smoke结果或科学结果。
+
+接管入口拒绝旧进程存活/锁未释放/原状态不符，由成功登记执行链推断这些检查与服务器同包22项CPU成功返回；检查日志和旧失败snapshot哈希尚未独立接收。原失败目录保留，不复用其case缓存。新执行仍GPU0/1、0训练、100工作批次、1540唯一逻辑case，两卡真实smoke全PASS后自动派发固定全量，无24h总截止；24–48h为资源预留，不是实测剩余ETA。
+
+下一步只读新目录 `code/scripts/status_phase15.py --directory DIR` 与上述nohup日志。不得再次bootstrap/enqueue，旧目录HOLD仅作历史失败证据。五项诊断完整上传后独立验收，再决定配对训练候选；不自动新增训练/seed或访问Test6/held4/final。
+
+[新接管登记原件](../records/research_phase15_recoverability_20261012T233532_842792/registration_observation.json)。
+
+---
+
+## 历史修复记录：已定位路径错误，发布时待接管
 
 用户补充的GPU0子日志定位到 `phase15_inference.py` 输入绑定记录路径：`self.base/'input_binding_last_'+str(self.gpu)+'.json'`，因运算优先级先生成Path再加字符串，触发 `TypeError: unsupported operand type(s) for +: 'PosixPath' and 'str'`。已改为 `self.base/('input_binding_last_'+str(self.gpu)+'.json')`。xFormers提示不是该退出根因；没有smoke通过或方法有效性证据。失败发生在写出case记录之后、返回之前，原partial产物不能当smoke验收通过。
 
-本地22项CPU检查与13文件AST通过，新增实际绑定写入语句的GPU0/1回归、显式接管拒绝条件检查；不等于服务器真实CUDA验证。修复状态 **REPAIR_READY_NOT_REGISTERED**；原目录最后观测仍为SMOKE_FAILED_HOLD、100 PENDING、controller非存活（查询2026-10-12T23:28:06.269038+08:00，queue23:27:34.651175）。新PID/目录未回传。
+本地22项CPU检查与13文件AST通过，新增实际绑定写入语句的GPU0/1回归、显式接管拒绝条件检查；不等于服务器真实CUDA验证。发布时修复状态 **REPAIR_READY_NOT_REGISTERED**；原目录最后观测仍为SMOKE_FAILED_HOLD、100 PENDING、controller非存活（查询2026-10-12T23:28:06.269038+08:00，queue23:27:34.651175）。新PID/目录未回传。
 
 用户终端使用修复发布commit的enqueue入口及显式 `--replace-path-bug-directory OLD_DIR`。仅允许本次原commit/原目录/已确认错误、全100 PENDING、无GPU1 smoke、无存活controller/stage/E/job且锁释放的替代；只允许一个既有原目录。第二次调用发现替代目录就停止登记。保留旧源码/日志/产物，新技术执行目录记录旧plan/code/status/failure/log SHA，不复用失败case缓存；重做准备/CPU22项/真实smoke，smoke全PASS后继续相同100批/1540唯一逻辑case。不是新科学矩阵、追加seed或自动重试；以后任何新失败仍HOLD不自动接管。原旧队列不重启，不访问Test6/held4/final。
 

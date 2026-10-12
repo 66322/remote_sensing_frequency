@@ -1,3 +1,17 @@
+# 2026-10-12：Phase1.5修复版登记，进度待查询
+
+## 最新登记：路径修复版已接管，进度待查询
+
+2026-10-12用户终端返回 `PHASE15_TECHNICAL_REPLACEMENT_OF` 原失败目录 `research_phase15_recoverability_20261012T232212_836118`，随后 `PHASE15_REGISTERED`。修复执行commit `45138f0f92c668bc86ce9532a4382b38d2b12b6d`；新目录 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792`，登记PID843079，日志 `nohup_20261012T233542741074.log`。当前证据状态 **REGISTERED_PROGRESS_NOT_YET_QUERIED**；目录23:35:32与日志23:35:42.741074仅命名时间标记，不是queue observed_at。无controller/worker存活确认、真实smoke结果或科学结果。
+
+接管入口拒绝旧进程存活/锁未释放/原状态不符，由成功登记执行链推断这些检查与服务器同包22项CPU成功返回；检查日志和旧失败snapshot哈希尚未独立接收。原失败目录保留，不复用其case缓存。新执行仍GPU0/1、0训练、100工作批次、1540唯一逻辑case，两卡真实smoke全PASS后自动派发固定全量，无24h总截止；24–48h为资源预留，不是实测剩余ETA。
+
+下一步只读新目录 `code/scripts/status_phase15.py --directory DIR` 与上述nohup日志。不得再次bootstrap/enqueue，旧目录HOLD仅作历史失败证据。五项诊断完整上传后独立验收，再决定配对训练候选；不自动新增训练/seed或访问Test6/held4/final。
+
+[新接管登记原件](../../../records/research_phase15_recoverability_20261012T233532_842792/registration_observation.json)。
+
+---
+
 # 2026-10-12：Phase1.5路径错误修复就绪，原失败证据保留
 
 ## 当前处理：已定位路径错误，修复版待终端接管
