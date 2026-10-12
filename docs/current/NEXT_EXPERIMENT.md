@@ -1,14 +1,16 @@
 # 下一实验：查询已登记Phase1.5，完成后接收原件
 
-## 最新观测：修复版CPU准备中（2026-10-12 23:38）
+## 最新观测：GPU0真实smoke推理中（2026-10-12 23:40）
 
-用户终端只读查询 **QUERY_OBSERVED=2026-10-12T23:38:10.393107+08:00**；queue **LAST_OBSERVED=2026-10-12T23:38:08.675078+08:00**，**PREPARING_FIXED_CACHE_AND_MAPS**，**CONTROLLER_LIVE=True**，100批全部PENDING。原nohup tail无新输出/错误回报；这不单独证明准备完成或真实smoke通过。当前是固定缓存与映射准备，尚无GPU工作进度；显卡空闲符合该阶段。以上是最后观测，不代表实时状态。
+用户终端只读查询 **QUERY_OBSERVED=2026-10-12T23:40:41.372990+08:00**；queue **LAST_OBSERVED=2026-10-12T23:40:39.120305+08:00**，**SMOKE_GPU0**，**CONTROLLER_LIVE=True**，100批全部PENDING。GPU0 progress观测23:40:41.340853，case `S1_3_11_crop_shuffle_00_clean_25`、phase=inference、windows=200/529、optimizer_updates=0。200/529仅当前case的窗口进度，不是整个smoke或100批完成比例。nohup tail没有新输出/错误回报。这是最后观测，不代表实时状态。
 
-修复执行commit `45138f0f92c668bc86ce9532a4382b38d2b12b6d`，原新目录 `research_phase15_recoverability_20261012T233532_842792`、登记PID843079、日志 `nohup_20261012T233542741074.log` 保持；旧路径错误目录继续保留。GPU0/1、0训练、100工作批次、1540唯一逻辑case固定；准备成功后自动GPU0 smoke→GPU1一致性检查→全PASS才双卡全量。无24h总截止。24–48h为资源预留，准备耗时/真实case步速尚未收到，不能给实测剩余ETA。
+控制器已越过CPU准备阶段，成功返回由执行链推断，准备原件尚未单独验收。当前crop_shuffle case位于最先S1 intact clean case之后，说明流程已越过之前路径错误位置；尚不能宣布整套smoke或所有模型通过。GPU1 smoke未派发，GPU0检查完成后自动接续GPU1同case一致性检查，再由控制器验收两份PASS才双卡全量。
 
-下一步继续既有控制器，稍后仅读取同一status/nohup；如准备迟迟不变，读 `preparation_progress.json` 与 `logs/prepare_phase15.log` 定位，不重复登记/重启/绕过smoke。不新增训练/seed，不访问Test6/held4/final。五项完整原件上传后再科学验收与选路。
+修复执行commit `45138f0f92c668bc86ce9532a4382b38d2b12b6d`，目录 `research_phase15_recoverability_20261012T233532_842792`、登记PID843079、日志 `nohup_20261012T233542741074.log` 保持；旧失败目录保留。GPU0/1、0训练、100批、1540唯一逻辑case固定，无24h总截止。无新科学结果、无实测全队ETA；24–48h仍为资源预留。
 
-[本次用户进度原件](../../records/research_phase15_recoverability_20261012T233532_842792/user_reported_preparation_20261012T233810.json)。
+下一步继续既有控制器并稍后只读status/nohup；不重复登记、不手工另启GPU1、不绕过smoke。全量完成后上传轻量原件，五项诊断独立复核后才选配对训练候选。不新增seed或访问Test6/held4/final。
+
+[本次用户进度原件](../../records/research_phase15_recoverability_20261012T233532_842792/user_reported_gpu0_smoke_20261012T234041.json)。
 
 ---
 

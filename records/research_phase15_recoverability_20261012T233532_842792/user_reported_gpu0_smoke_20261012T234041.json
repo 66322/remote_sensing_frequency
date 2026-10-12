@@ -1,0 +1,28 @@
+{
+  "record_type": "user_reported_read_only_status",
+  "execution_commit": "45138f0f92c668bc86ce9532a4382b38d2b12b6d",
+  "query_observed_at": "2026-10-12T23:40:41.372990+08:00",
+  "queue_last_observed_at": "2026-10-12T23:40:39.120305+08:00",
+  "status": "SMOKE_GPU0",
+  "controller_live": true,
+  "counts": {
+    "PENDING": 100
+  },
+  "smoke_progress": {
+    "observed_at": "2026-10-12T23:40:41.340853+08:00",
+    "optimizer_updates": 0,
+    "case": "S1_3_11_crop_shuffle_00_clean_25",
+    "physical_gpu": 0,
+    "phase": "inference",
+    "windows_done": 200,
+    "windows_total": 529
+  },
+  "nohup_tail_output": "",
+  "preparation_returned_success": "inferred from controller flow; original preparation receipts not independently audited",
+  "previous_path_bug_position_passed": "inferred from current second case after first S1 intact clean Runner.run",
+  "real_smoke_complete": false,
+  "gpu1_smoke_started": false,
+  "full_gpu_batches_started": 0,
+  "scientific_results_received": false,
+  "next_action": "Continue existing controller; read-only status. GPU1 starts automatically after GPU0 smoke succeeds."
+}

@@ -1,3 +1,19 @@
+# 2026-10-12 23:40：Phase1.5 GPU0真实smoke进行中
+
+## 最新观测：GPU0真实smoke推理中（2026-10-12 23:40）
+
+用户终端只读查询 **QUERY_OBSERVED=2026-10-12T23:40:41.372990+08:00**；queue **LAST_OBSERVED=2026-10-12T23:40:39.120305+08:00**，**SMOKE_GPU0**，**CONTROLLER_LIVE=True**，100批全部PENDING。GPU0 progress观测23:40:41.340853，case `S1_3_11_crop_shuffle_00_clean_25`、phase=inference、windows=200/529、optimizer_updates=0。200/529仅当前case的窗口进度，不是整个smoke或100批完成比例。nohup tail没有新输出/错误回报。这是最后观测，不代表实时状态。
+
+控制器已越过CPU准备阶段，成功返回由执行链推断，准备原件尚未单独验收。当前crop_shuffle case位于最先S1 intact clean case之后，说明流程已越过之前路径错误位置；尚不能宣布整套smoke或所有模型通过。GPU1 smoke未派发，GPU0检查完成后自动接续GPU1同case一致性检查，再由控制器验收两份PASS才双卡全量。
+
+修复执行commit `45138f0f92c668bc86ce9532a4382b38d2b12b6d`，目录 `research_phase15_recoverability_20261012T233532_842792`、登记PID843079、日志 `nohup_20261012T233542741074.log` 保持；旧失败目录保留。GPU0/1、0训练、100批、1540唯一逻辑case固定，无24h总截止。无新科学结果、无实测全队ETA；24–48h仍为资源预留。
+
+下一步继续既有控制器并稍后只读status/nohup；不重复登记、不手工另启GPU1、不绕过smoke。全量完成后上传轻量原件，五项诊断独立复核后才选配对训练候选。不新增seed或访问Test6/held4/final。
+
+[本次用户进度原件](../../../records/research_phase15_recoverability_20261012T233532_842792/user_reported_gpu0_smoke_20261012T234041.json)。
+
+---
+
 # 2026-10-12 23:38：Phase1.5修复版准备中，控制器存活
 
 ## 最新观测：修复版CPU准备中（2026-10-12 23:38）
