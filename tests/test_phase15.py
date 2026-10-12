@@ -17,6 +17,47 @@ from structured_v0_metrics import cm,metric
 
 
 class KnownAnswers(unittest.TestCase):
+    def test_actual_input_binding_write_for_both_gpu_ids(self):
+        import ast
+        from types import SimpleNamespace
+        source=Path(__file__).resolve().parents[1]/'scripts/phase15_inference.py'
+        tree=ast.parse(source.read_text(encoding='utf-8'))
+        statements=[n for n in ast.walk(tree) if isinstance(n,ast.Expr) and
+            isinstance(n.value,ast.Call) and isinstance(n.value.func,ast.Name) and
+            n.value.func.id=='write' and 'input_binding_last_' in ast.unparse(n)]
+        self.assertEqual(len(statements),1)
+        with self.scratch() as tmp:
+            for gpu in (0,1):
+                obj=SimpleNamespace(base=Path(tmp),gpu=gpu,loader=SimpleNamespace(verified={'tile':'sha'}))
+                exec(compile(ast.Module(body=statements,type_ignores=[]),str(source),'exec'),
+                    dict(self=obj,write=write,str=str,dict=dict))
+                self.assertEqual(read(Path(tmp)/f'input_binding_last_{gpu}.json'),
+                    dict(files={'tile':'sha'},optimizer_updates=0))
+
+    def test_explicit_path_bug_replacement_guards(self):
+        from enqueue_phase15 import check_path_bug_replacement
+        with self.scratch() as tmp:
+            b=Path(tmp)/'research_phase15_recoverability_20261012T232212_836118';b.mkdir()
+            state=dict(status='SMOKE_FAILED_HOLD',error='smoke_phase15.py exit=1',
+                jobs={str(i):dict(status='PENDING') for i in range(100)})
+            write(b/'queue_status.json',state)
+            write(b/'plan.json',dict(execution_commit='7b12fec6d7fb451e09316ba59f7d62ca8e0c316b',optimizer_updates=0))
+            write(b/'code_manifest.json',dict(files={}))
+            write(b/'technical_failure.json',dict(error=state['error']))
+            (b/'logs').mkdir()
+            (b/'logs/smoke_gpu0.log').write_text("write(self.base/'input_binding_last_'+str(self.gpu)+'.json'\nTypeError: unsupported operand type(s) for +: 'PosixPath' and 'str'",encoding='utf-8')
+            receipt=check_path_bug_replacement(b,lambda *a:False,lambda *a:True)
+            self.assertTrue(receipt['original_preserved']);self.assertFalse(receipt['automatic_retry'])
+            self.assertFalse(receipt['old_case_cache_reused'])
+            for live,free in ((True,True),(False,False)):
+                with self.assertRaises(RuntimeError):
+                    check_path_bug_replacement(b,lambda *a:live,lambda *a:free)
+            state['jobs']['0']['status']='COMPLETE';write(b/'queue_status.json',state)
+            with self.assertRaises(RuntimeError):check_path_bug_replacement(b,lambda *a:False,lambda *a:True)
+            state['jobs']['0']['status']='PENDING';write(b/'queue_status.json',state)
+            (b/'logs/smoke_gpu0.log').write_text('different failure',encoding='utf-8')
+            with self.assertRaises(RuntimeError):check_path_bug_replacement(b,lambda *a:False,lambda *a:True)
+
     def scratch(self):
         p=Path(os.environ.get('PHASE15_TEST_DIRECTORY',str(Path(__file__).resolve().parents[1]/'test_scratch'))).resolve()
         p.mkdir(parents=True,exist_ok=True)

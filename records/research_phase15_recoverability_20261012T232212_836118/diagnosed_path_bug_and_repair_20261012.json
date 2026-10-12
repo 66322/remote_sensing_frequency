@@ -1,0 +1,31 @@
+{
+  "record_type": "user_reported_child_log_and_local_repair",
+  "reported_on": "2026-10-12",
+  "new_query_observed_at": null,
+  "old_execution_commit": "7b12fec6d7fb451e09316ba59f7d62ca8e0c316b",
+  "last_query_observed_at": "2026-10-12T23:28:06.269038+08:00",
+  "failure_observed_at_from_original_receipt": "2026-10-12T23:27:34.656979+08:00",
+  "root_cause": "Path filename concatenation precedence error in phase15_inference.py input binding write",
+  "exception": "TypeError: unsupported operand type(s) for +: 'PosixPath' and 'str'",
+  "old_statement": "write(self.base/'input_binding_last_'+str(self.gpu)+'.json',dict(files=self.loader.verified,optimizer_updates=0))",
+  "fixed_statement": "write(self.base/('input_binding_last_'+str(self.gpu)+'.json'),dict(files=self.loader.verified,optimizer_updates=0))",
+  "failure_not_caused_by_xformers_warnings": true,
+  "repair_state": "REPAIR_READY_NOT_REGISTERED",
+  "local_cpu_checks": {
+    "passed": 22,
+    "seconds": 53.7,
+    "new_regressions": [
+      "actual input binding write for both GPU IDs",
+      "explicit known-failure replacement guard rejection"
+    ],
+    "ast_files": 13
+  },
+  "real_server_smoke_verified": false,
+  "replacement_registered": false,
+  "original_preserved": true,
+  "original_case_cache_will_be_reused": false,
+  "automatic_retry": false,
+  "scientific_protocol_changed": false,
+  "trainings": 0,
+  "jobs": 100
+}

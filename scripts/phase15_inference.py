@@ -241,7 +241,7 @@ class Runner:
             optimizer_updates=0,test6_loaded=False,held4_loaded=False,independent_final_loaded=False,
             frozen_all_parameters=True,observed_at=now(),gpu_peak_allocated_bytes=torch.cuda.max_memory_allocated())
         write(target,row)
-        write(self.base/'input_binding_last_'+str(self.gpu)+'.json',dict(files=self.loader.verified,optimizer_updates=0))
+        write(self.base/('input_binding_last_'+str(self.gpu)+'.json'),dict(files=self.loader.verified,optimizer_updates=0))
         return row
 
     def finish(self):

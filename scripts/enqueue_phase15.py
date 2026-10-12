@@ -26,15 +26,48 @@ def sha(p):
     return h.hexdigest()
 
 
+def check_path_bug_replacement(base, live_owned, lock_free):
+    """One explicit technical replacement; preserve the original immutable attempt."""
+    if base.name != 'research_phase15_recoverability_20261012T232212_836118':
+        raise RuntimeError('replacement only applies to the reported path bug attempt')
+    state = read(base/'queue_status.json')
+    plan = read(base/'plan.json')
+    if (state['status'] != 'SMOKE_FAILED_HOLD' or
+        state.get('error') != 'smoke_phase15.py exit=1' or
+        plan['execution_commit'] != '7b12fec6d7fb451e09316ba59f7d62ca8e0c316b' or
+        plan['optimizer_updates'] != 0 or len(state['jobs']) != 100 or
+        any(j['status'] != 'PENDING' for j in state['jobs'].values()) or
+        (base/'smoke_pass.json').exists() or (base/'smoke/gpu1').exists()):
+        raise RuntimeError('replacement precondition changed; preserve and diagnose')
+    for pid in [state.get(n,-1) for n in ('controller_pid','current_stage_pid','E_pid')]+[j.get('pid',-1) for j in state['jobs'].values()]:
+        if live_owned(pid,base):raise RuntimeError('failed attempt still owns a live process')
+    if not lock_free(base):raise RuntimeError('failed attempt controller lock held')
+    log=(base/'logs/smoke_gpu0.log').read_text(encoding='utf-8')
+    expected="TypeError: unsupported operand type(s) for +: 'PosixPath' and 'str'"
+    if expected not in log or "write(self.base/'input_binding_last_'+str(self.gpu)+'.json'" not in log:
+        raise RuntimeError('failure is not the diagnosed input-binding path bug')
+    manifest=read(base/'code_manifest.json')
+    for name,digest in manifest['files'].items():
+        f=(base/'code'/name).resolve();f.relative_to((base/'code').resolve())
+        if sha(f)!=digest:raise RuntimeError('failed snapshot changed: '+name)
+    return dict(directory=str(base),status=state['status'],execution_commit=plan['execution_commit'],
+        reason='explicit replacement of known input-binding PosixPath+str bug; no scientific retry',
+        automatic_retry=False,original_preserved=True,old_case_cache_reused=False,
+        receipts={name:sha(base/name) for name in ('plan.json','code_manifest.json','queue_status.json',
+            'technical_failure.json','logs/smoke_gpu0.log')})
+
+
 def main():
     a=argparse.ArgumentParser();a.add_argument('--root',type=Path,required=True);a.add_argument('--commit',required=True)
+    a.add_argument('--replace-path-bug-directory',type=Path)
     x=a.parse_args();root=x.root.resolve();root.relative_to(Path('/home/jovyan/zzx').resolve())
     records=root/'records'
     import fcntl
     with (records/'phase15_registration.lock').open('a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         existing=sorted(records.glob('research_phase15_recoverability_*'))
-        if existing:
+        replacement=None
+        if existing and x.replace_path_bug_directory is None:
             for f in existing:
                 print('PHASE15_ALREADY_REGISTERED',f,read(f/'queue_status.json')['status'] if (f/'queue_status.json').exists() else 'HOLD_PARTIAL_REGISTRATION')
             return
@@ -42,6 +75,12 @@ def main():
         paired=records/'research_post_t_paired_v2_20261011T182543_3880702'
         sys.path.insert(0,str(structured/'code/scripts'))
         from d30_common import live_owned,lock_free
+        if x.replace_path_bug_directory is not None:
+            previous=x.replace_path_bug_directory.resolve();previous.relative_to(records.resolve())
+            if existing != [previous]:
+                print('PHASE15_REPLACEMENT_NOT_CREATED existing attempts:',*[str(f) for f in existing])
+                return
+            replacement=check_path_bug_replacement(previous,live_owned,lock_free)
         source_states={}
         for d,expected in ((structured,'STRUCTURED_COMPLETE_AWAITING_REVIEW'),(paired,'PAIRED_COMPLETE_AWAITING_REVIEW')):
             s=read(d/'queue_status.json')
@@ -66,6 +105,9 @@ def main():
             sys.path.insert(0,str(code/'scripts'))
             import phase15_common as c
             source_files={}
+            if replacement is not None:
+                c.write(base/'technical_replacement.json',replacement)
+                source_files['technical_replacement.json']=sha(base/'technical_replacement.json')
             for name,source in (('source_plan.json',structured/'source_plan.json'),('old_mask_manifest.json',structured/'mask_manifest.json'),
                                ('paired_plan.json',paired/'plan.json'),('R16_complete.json',paired/'jobs/R16/complete.json')):
                 (base/name).write_bytes(source.read_bytes());source_files[name]=sha(base/name)
@@ -101,6 +143,7 @@ def main():
             with logpath.open('x') as log:
                 proc=subprocess.Popen(['nohup',*cmd],cwd=code,env=env,stdin=subprocess.DEVNULL,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
             c.write(base/'launch.json',dict(controller_pid=proc.pid,log=str(logpath),command=cmd))
+            if replacement is not None:print('PHASE15_TECHNICAL_REPLACEMENT_OF',replacement['directory'],flush=True)
             print('PHASE15_REGISTERED',base,'PID='+str(proc.pid),'GPU=0,1 TRAININGS=0 JOBS=100 SMOKE_BEFORE_FULL=True NO24H_DEADLINE',flush=True)
             print('PHASE15_LOG',logpath,flush=True)
         except BaseException as exc:
