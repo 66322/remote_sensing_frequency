@@ -1,38 +1,53 @@
-# 当前研究决定（2026-10-12）
+# 当前研究决定（2026-10-12，两轮最新实验已联合验收）
 
 ## 主线
 
-研究主线保持为：**RGB–DSM 条件互补与模态退化/缺失鲁棒性**。任务驱动恢复仍为旁支；频率堆叠不是当前优先方向。
+研究主线保持为：**RGB–DSM 条件互补与模态退化/缺失鲁棒性**。下一阶段进一步收敛到：**模态可靠性估计 + 条件路由/抑制**。任务驱动恢复仍为旁支；频率模块堆叠、盲目延长训练或继续扩大 encoder 解冻范围都不是当前优先方向。
+
+## Post-T paired v2 的决定
+
+人工验收见：[Post-T paired v2 结果](../experiments/POST_T_PAIRED_V2_RESULTS_20261012.md)。权威总判定：**PAIRED_SCREEN=False / NO_FURTHER_DISPATCH**。
+
+固定端点显示 R/H 均明显好于 F，说明 RGB 专家接口参与适应比“只训练融合解码器”更有价值。但 8k→16k 对 F/H/R 的增益分别只有 +0.001/+0.091/-0.016 pp，因此**关闭“训练不够久”解释**。R16 相对 H16 只有约 +0.349 pp，且完整 paired screen 未通过，不把最后 4 个 encoder block 的开放写成已验证独立贡献。
+
+R16 的冻结 digest 与 support 外 native 输出保护正常；负总判定属于科学 gate，而不是技术实现破坏。
 
 ## Structured Failure v0.1 的决定
 
-本轮固定 Phase1A 已完成并验收，结论为 **NO_SUPPORT_THIS_PROTOCOL**。详见 [Structured Failure v0.1 结果](../experiments/STRUCTURED_FAILURE_V0_RESULTS_20261012.md)。
+人工验收见：[Structured Failure v0.1 结果](../experiments/STRUCTURED_FAILURE_V0_RESULTS_20261012.md)。固定结论为 **NO_SUPPORT_THIS_PROTOCOL**。
 
-冻结主假设“S1 对高梯度/结构位置 RGB 缺失存在可重复的额外脆弱性”不成立：主 PE 仅 +0.123 pp，两个 tile 的平均 PE 均未为正，no-Car 与类别支持条件也未建立。因此关闭该假设，不通过增加 realization、seed、改变 mask 或换 checkpoint 追正结果。
+冻结主假设“S1 对高梯度/结构位置 RGB 缺失存在稳定额外脆弱性”不成立：主 PE 仅 +0.123 pp，两个 tile 的平均 PE 均未为正，no-Car 与类别支持也未建立。因此关闭该假设，不通过增加 realization、seed、改变 mask 或换 checkpoint 追正。
 
-但本轮保留三个有价值的研究事实：
+但保留三个有价值事实：
 
 1. RGB-only 存在强而稳定的结构位置敏感性（PE +3.119 pp，20/20 realization 为正）。
-2. S1 的绝对缺失损伤远低于 RGB-only，说明 DSM/双模态融合对 RGB 退化具有明显补偿线索。
-3. 同权重 `M000_context` 在四类 mask 下均显著差于 `M000_masked`，当前 context 路由不是可推进的正向方案。
+2. S1 的 absolute missing damage 约 21 pp，远低于 RGB-only 的约 56–62 pp，说明 DSM/双模态融合对 RGB 退化具有明显补偿线索。
+3. 同权重 `M000_context` 在四类 mask 下均显著差于 `M000_masked`，当前 naive context route 会放大损伤，不能作为正向候选。
 
-## 对后续研究的含义
+## 两轮联合解释
 
-下一阶段不再问“能否证明 S1 有 structured-location failure”，而应问：
+当前最一致的问题不再是“是否训练足够久”或“能否证明 S1 有特殊结构位置故障”，而是：
 
-**当某一模态退化或缺失时，融合模型如何识别不可靠信息，并在保留互补收益的同时避免错误路由/错误上下文放大损伤？**
+> **当 RGB 或 DSM 局部/整体退化时，融合模型怎样判断当前模态是否可信，并在保留双模态互补收益的同时抑制错误模态、错误融合或错误上下文路由？**
 
-这与当前“模态可靠性”主线一致，也能解释本轮同时出现的两件事：S1 可以显著抵抗 RGB-only 的缺失伤害，但 naive context 路由又会严重恶化。
+下一方法若成立，贡献应来自**可靠性判断和条件使用信息**，而不是简单再增加一个模块或更多参数。
 
-## 与 Post-T paired v2 的关系
+## 下一设计的最低要求
 
-Structured Failure 不回溯改变 Post-T F/H/R 的冻结候选、保护门槛或 checkpoint 选择。Post-T paired v2 已有独立上传原件，必须先单独科学验收，再与本轮机制诊断合并决定下一实验。
+- RGB 与 DSM **双向**退化/缺失都必须覆盖，不能只优化 RGB 缺失。
+- 可靠性信号应来自部署时可获得的输入/特征/预测一致性，不把 GT 当推理输入。
+- 必须有同权重或严格配对对照，区分“可靠性机制”与“容量增加”。
+- 同时报告 clean 保护与退化收益，不能只提高坏输入而牺牲正常输入。
+- 保留按类别、按区域、按退化强度的机制统计。
+- 开发数据与最终测试严格隔离；当前不加载 Test6/held4/final。
+- 先设门槛与停止条件，再训练；负结果不后验换门槛追正。
 
 ## 当前执行决定
 
-- Structured Failure Phase1A：**CLOSED**。
-- 20→40：**禁止自动扩展**。
-- Phase1B / Phase2：**不派发**。
-- 新 seed / 新训练：**不派发**。
+- Post-T paired v2：**CLOSED / NOT_ACCEPTED_AS_SUCCESS**。
+- Structured Failure Phase1A：**CLOSED / NO_SUPPORT_THIS_PROTOCOL**。
+- 继续加 16k/更多步数：**不派发**。
+- Structured 20→40 / Phase1B / Phase2：**不派发**。
+- 新 seed / block 数扫描 / checkpoint 后验改选：**不派发**。
 - Test6 / held4 / final：**保持关闭**。
 - 下一实验：**DESIGN_REVIEW_NOT_REGISTERED**，没有后台队列、没有 GPU 任务。
