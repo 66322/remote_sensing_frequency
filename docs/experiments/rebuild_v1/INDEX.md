@@ -1,3 +1,17 @@
+# 2026-10-13 11:11：CPU双进程87/160，实测约10倍吞吐提升
+
+## 最新观测：并行加速实测87/160（2026-10-13 11:11）
+
+用户查询 **QUERY_OBSERVED=2026-10-13T11:11:48.801887+08:00**；queue **LAST_OBSERVED=2026-10-13T11:11:45.903760+08:00**，**CPU_ORACLE_AND_CONDITIONAL_COUNTS / CONTROLLER_LIVE=True**、GPU100 COMPLETE。D progress最后观测 **11:11:25.691283**：**87/160**，tile5_10/realization2/gradient，**parallel_workers=2 / preserved_completed_cases=63 / new_completed_cases=24 / elapsed_accelerated_seconds=414.922908**。保留63旧结果、双进程新产出24已确认；日志tail无新输出/错误。pixel/matched真实等价PASS回执再次收到，作用范围仍两个既有真实结果，不升级全160或科学gate验收。以上是最后观测，不是实时状态。
+
+双进程累计wall-clock吞吐=414.923/24=17.288秒/完成case，约6分55秒完成24个。此是合计吞吐，不是每个worker的单case耗时；对照接管前178.953秒/case，吞吐提升约10.35倍。非同一case/相同时段配对基准，包含算法/并行/缓存变化，不能单独归因其中一种优化。剩余73，按同速D约21.0分钟，预估2026-10-13 11:32–11:33左右；考虑第二tile/IO/族差异沟通11:30–11:45。此估计从progress观测出发，仅D，最终五项汇总耗时未测，不保证整轮该时刻完成。
+
+原目录 `research_phase15_recoverability_20261012T233532_842792`、加速子目录 `cpu_acceleration_20261013T110244_1189050`、PID1189233、commit4842b5eb保持。原GPU/plan/code绑定不改，0新训练/seed/case/GPU重跑/Test6/held4/final；旧控制停止证据保留。继续既有控制器，过10–15分钟只读原status/newlog/Dprogress；D结束自动调用原五项汇总，完成并进程锁退出后前台upload_phase15.py上传轻量原件，再独立科学验收和训练选路。不再次accelerate，不沿用旧16:00 ETA。
+
+[用户实测进度与吞吐估时](../../../records/research_phase15_recoverability_20261012T233532_842792/cpu_acceleration_20261013T110244_1189050/user_reported_parallel_progress_20261013T111148.json)。
+
+---
+
 # 2026-10-13 11:04：CPU加速两个真实case全字段等价通过
 
 ## 最新观测：真实等价检查通过，并行CPU分析阶段（2026-10-13 11:04）
