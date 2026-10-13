@@ -1,5 +1,11 @@
 # 当前交接：Phase2 双卡smoke完成，配对专家正在训练（2026-10-13）
 
+## 磁盘盘点（2026-10-13用户提供，无精确查询时间）
+
+df显示/home/jovyan容量10T、已用7.2T、可用2.9T、72%；这是整个挂载盘，不能用zzx占用解释全部7.2T。zzx 3.6T，paper_rebuild 3.2T，08_thesis_full_repro/records 2.8T。可用空间按现有约1TiB整轮预算暂有余量；状态会变化，不保证固定余量。[原始盘点](../../records/storage_inventory_20261013/user_disk_inventory.txt)。当前Phase2新目录当次du约17G，旧失败目录9.2G；这不是新的训练status。
+
+优先只读拆分最大五目录：research_post_d30_mechanisms_20261004T000812_2446364 527G、research_post_n3_s1_20261007T083203_694293 292G、research_post_s1_support_20261008T234921_1890161 268G、research_post_s1_transfer_20261010T073327_2852696 251G、research_d27_safe_routing_repair_20261003T092243758628_2001983 233G；合计约1.5T，大小不构成可删除证明。继续查看它们一级子目录占用后核验完成/失败原件、共享SHA绑定及当前依赖，才形成精确清理清单。不提供整目录删除，不因GitHub轻量证据已上传就假定大数组/权重无需保留。当前Phase2、数据、预训练和旧被绑定证据保留，无任何服务器删除/移动行为。
+
 ## 最新运行观测：配对专家正式训练已启动
 
 用户查询 **2026-10-13T15:17:32.976199+08:00**，队列更新15:17:31.773714：TRAINING_MATCHED_EXPERTS，controller LIVE=True。新目录research_phase2_matched_20261013T151120_1310582，代码e5641e07，controller1310878。prepare/smoke0/smoke1/legacy_counts均COMPLETE；A_RGB GPU0 PID1312176和A_DSM GPU1 PID1312177均RUNNING/LIVE=True。RGB step2180/16000、loss0.2066975385、elapsed223.911s、remaining_train_hours0.394298；DSM step1740/16000、loss0.4762486219、elapsed222.290s、remaining_train_hours0.506044。最近data_wait约65/61ms，峰值分配2612352000 bytes，各卡reserved3107979264 bytes。
