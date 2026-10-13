@@ -1,6 +1,17 @@
 # 当前交接：Phase1.5 GPU完成，等待CPU汇总与上传（2026-10-13）
 
-## 最新CPU进度与耗时解释（2026-10-13 10:44）
+## 最新工作：用户授权当前CPU加速，执行包就绪（2026-10-13）
+
+用户要求现在优化当前慢CPU分析，已实现有版本记录的接管包，**CPU_ACCELERATION_READY_NOT_APPLIED**。原GPU100批/已完成D结果保留，原plan/code不改；joint整数计数减少重复全图扫描，默认2CPU进程按RAM/affinity限制分派剩余case。4项合成CPU等价/拒绝检查与4Python AST通过；768×768一次本地统计基准5.725s→1.282s（4.47倍），不能当服务器整轮速度承诺。
+
+终端从新发布commit调用 `accelerate_phase15.py --root ROOT --directory DIR --commit COMMIT --workers 2`。先CPU检查与资源门禁，再严格核原D子进程身份并受控停止，保存原控制器HOLD回执、等待退出/锁释放，新nohup controller取得锁。可能重新处理停止时尚未写出的一个case，已完成JSON原样保留。用既有pixel/matched两个真实完成case做全result等价核验，全PASS才计算剩余case和原五项汇总。全部记录/新源码/缓存在原zzx目录下cpu_acceleration子树，原推理快照不变；不重跑GPU、不增加case/训练/seed。
+
+最后服务器进度仍10:44:37 D=57/160，最后queue查询10:17 CPU D/controller LIVE/GPU100 COMPLETE；当前未实时查询、新接管PID未回传。旧约16:00 D ETA只对旧速度条件估计，接管后需实际速度校准。完整新协议：[CPU加速接管](../protocols/PHASE_1_5_CPU_ACCELERATION_20261013.md)。下一步用户终端执行固定发布版本并回报CPU_ACCELERATION_REGISTERED目录/日志；若原D/整轮已完成则不接管，继续原汇总/上传。已有接管目录不重复启动，任何新失败HOLD不自动retry。主线与原科学gate不变，所有方法训练仍等完整轻量证据验收。
+
+---
+
+
+## 接管前最后CPU进度与耗时解释（2026-10-13 10:44）
 
 用户读取D progress：10:17:47.026717为48case，10:35:41.565092为54case，**最后progress观测2026-10-13T10:44:37.604759+08:00为57/160case**（tile3_11/realization15/pixel），analysis_D日志tail空。该回报没有新queue查询或controller存活检查；最后queue观测仍10:17:18.524905、CPU_ORACLE_AND_CONDITIONAL_COUNTS/controller LIVE=True、GPU100 COMPLETE。CPU计数持续增长，不能按显卡空闲认定停止；此为最后观测而非实时。
 
