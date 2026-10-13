@@ -1,3 +1,19 @@
+# 2026-10-13：CPU双进程加速接管登记，真实等价待查询
+
+## 最新登记：CPU双进程加速已接管，进度待查询（2026-10-13）
+
+用户终端返回 `CPU_ACCELERATION_CONTROLLED_STOP_D 1099918 PRESERVE_COMPLETED_CASES`，随后 **CPU_ACCELERATION_REGISTERED**，子目录 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792/cpu_acceleration_20261013T110244_1189050`，登记PID1189233、WORKERS=2，日志 `controller.log`。执行commit `4842b5eb38c62b19db97094d88526260f5fe3359`。当前证据状态 **CPU_ACCELERATION_REGISTERED_PROGRESS_NOT_YET_QUERIED**；目录11:02:44为命名时间标记，不是queue observed_at。尚无新控制器存活查询、真实pixel/matched等价回执或并行新case计数，不从PID宣称真实检查PASS。
+
+成功登记执行链推断：同包CPU检查、资源门禁、原D身份核对、受控停止、等待原controller/child退出及锁释放已返回；接管前后状态/完成case保留清单尚未独立接收。原GPU100批结果与原plan/code保持；原分析停止时的HOLD为明确受控接管历史，不能当新科学配方失败。新controller先扫描/绑定已完成case并对照两个真实结果，PASS后两CPU进程分派剩余case、最终调用原五项汇总。原D最后回传57/160（10:44:37）不是接管时保留数，应以后续progress为准。
+
+立即下一步只读原 `status_phase15.py --directory DIR`、新 `cpu_acceleration_20261013T110244_1189050/controller.log`，及 `analysis/D/progress.json`。如存在 `cpu_acceleration_20261013T110244_1189050/real_equivalence.json` 可读取。不要再次accelerate/enqueue/手工启动GPU；原nohup已停止，后续诊断看新日志。旧约16:00 D ETA仅是接管前旧步速估计，不能沿用新任务剩余ETA；实际新completed_cases/elapsed后再校准。
+
+固定0训练/100GPU批/160D case，0新增case/seed/Test6/held4/final，无GPU重跑。所有新增执行证据在原zzx目录子树，完成或HOLD且owned进程/锁退出后用原upload_phase15.py上传轻量原件，再做科学核验与配对训练选路。详见[CPU接管协议](../../protocols/PHASE_1_5_CPU_ACCELERATION_20261013.md)。
+
+[用户接管登记原件](../../../records/research_phase15_recoverability_20261012T233532_842792/cpu_acceleration_20261013T110244_1189050/registration_observation.json)。
+
+---
+
 # 2026-10-13：当前CPU分析加速接管包就绪（尚未执行）
 
 ## 最新工作：用户授权当前CPU加速，执行包就绪（2026-10-13）

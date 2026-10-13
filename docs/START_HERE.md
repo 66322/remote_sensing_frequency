@@ -1,12 +1,16 @@
 # 共享入口：Phase1.5 GPU完成，CPU分析中（2026-10-13）
 
-## 最新工作：用户授权当前CPU加速，执行包就绪（2026-10-13）
+## 最新登记：CPU双进程加速已接管，进度待查询（2026-10-13）
 
-用户要求现在优化当前慢CPU分析，已实现有版本记录的接管包，**CPU_ACCELERATION_READY_NOT_APPLIED**。原GPU100批/已完成D结果保留，原plan/code不改；joint整数计数减少重复全图扫描，默认2CPU进程按RAM/affinity限制分派剩余case。4项合成CPU等价/拒绝检查与4Python AST通过；768×768一次本地统计基准5.725s→1.282s（4.47倍），不能当服务器整轮速度承诺。
+用户终端返回 `CPU_ACCELERATION_CONTROLLED_STOP_D 1099918 PRESERVE_COMPLETED_CASES`，随后 **CPU_ACCELERATION_REGISTERED**，子目录 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792/cpu_acceleration_20261013T110244_1189050`，登记PID1189233、WORKERS=2，日志 `controller.log`。执行commit `4842b5eb38c62b19db97094d88526260f5fe3359`。当前证据状态 **CPU_ACCELERATION_REGISTERED_PROGRESS_NOT_YET_QUERIED**；目录11:02:44为命名时间标记，不是queue observed_at。尚无新控制器存活查询、真实pixel/matched等价回执或并行新case计数，不从PID宣称真实检查PASS。
 
-终端从新发布commit调用 `accelerate_phase15.py --root ROOT --directory DIR --commit COMMIT --workers 2`。先CPU检查与资源门禁，再严格核原D子进程身份并受控停止，保存原控制器HOLD回执、等待退出/锁释放，新nohup controller取得锁。可能重新处理停止时尚未写出的一个case，已完成JSON原样保留。用既有pixel/matched两个真实完成case做全result等价核验，全PASS才计算剩余case和原五项汇总。全部记录/新源码/缓存在原zzx目录下cpu_acceleration子树，原推理快照不变；不重跑GPU、不增加case/训练/seed。
+成功登记执行链推断：同包CPU检查、资源门禁、原D身份核对、受控停止、等待原controller/child退出及锁释放已返回；接管前后状态/完成case保留清单尚未独立接收。原GPU100批结果与原plan/code保持；原分析停止时的HOLD为明确受控接管历史，不能当新科学配方失败。新controller先扫描/绑定已完成case并对照两个真实结果，PASS后两CPU进程分派剩余case、最终调用原五项汇总。原D最后回传57/160（10:44:37）不是接管时保留数，应以后续progress为准。
 
-最后服务器进度仍10:44:37 D=57/160，最后queue查询10:17 CPU D/controller LIVE/GPU100 COMPLETE；当前未实时查询、新接管PID未回传。旧约16:00 D ETA只对旧速度条件估计，接管后需实际速度校准。完整新协议：[CPU加速接管](protocols/PHASE_1_5_CPU_ACCELERATION_20261013.md)。下一步用户终端执行固定发布版本并回报CPU_ACCELERATION_REGISTERED目录/日志；若原D/整轮已完成则不接管，继续原汇总/上传。已有接管目录不重复启动，任何新失败HOLD不自动retry。主线与原科学gate不变，所有方法训练仍等完整轻量证据验收。
+立即下一步只读原 `status_phase15.py --directory DIR`、新 `cpu_acceleration_20261013T110244_1189050/controller.log`，及 `analysis/D/progress.json`。如存在 `cpu_acceleration_20261013T110244_1189050/real_equivalence.json` 可读取。不要再次accelerate/enqueue/手工启动GPU；原nohup已停止，后续诊断看新日志。旧约16:00 D ETA仅是接管前旧步速估计，不能沿用新任务剩余ETA；实际新completed_cases/elapsed后再校准。
+
+固定0训练/100GPU批/160D case，0新增case/seed/Test6/held4/final，无GPU重跑。所有新增执行证据在原zzx目录子树，完成或HOLD且owned进程/锁退出后用原upload_phase15.py上传轻量原件，再做科学核验与配对训练选路。详见[CPU接管协议](protocols/PHASE_1_5_CPU_ACCELERATION_20261013.md)。
+
+[用户接管登记原件](../records/research_phase15_recoverability_20261012T233532_842792/cpu_acceleration_20261013T110244_1189050/registration_observation.json)。
 
 ---
 
