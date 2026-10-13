@@ -1,5 +1,11 @@
 # 当前记录：Phase2 B0评估与历史预测清理（最后观测2026-10-13 19:36）
 
+## 最新Phase2查询：2026-10-13 20:46:59
+
+用户status QUERY20:46:59.695116/LAST20:46:59.387908：EVALUATING_B0_16000，controller LIVE=True，GPU0/1 eval_B0 workers1441905/1441906均RUNNING/LIVE=True。A_RGB/A_DSM各16k、B0/B2各8k COMPLETE，平均融合8k/16k评估、gates及两head_cache完成。B0/B2训练19:35:49结束；到此次查询约71分钟仍在B0评估，不代表卡住，需要evaluation case completion/window progress核对。
+
+已回读冻结执行e5641e07 control_phase2/phase2_analysis：B0评估→B2评估→static_gate→summary。allow_dynamic严格需要C与L均True；现打印C=True/L=False，因此在门禁文件不变且流程正常的条件下不会派发B1/B3，非“可能再补2训练”。不改门禁、不增加训练。当前status未提供case完成数，无法可靠绝对ETA；需只读统计B0/B2 counts/complete及与已完成average_16000同面板case数，避免凭训练ETA估整轮。最新观察原件摘要见records/phase2_progress_20261013/observation_204659.json。
+
 ## 后续实验及时清理为用户明确要求（2026-10-13）
 
 用户授权实验跑完及时删除不再需要的中间产物。[保留与生命周期规则](../protocols/EXPERIMENT_ARTIFACT_RETENTION_20261013.md)已更新：新控制器派发前须实现登记清单、最后消费者释放后的缓存清理、原始计数核验后的无用途预测清理、选模/下游完成后的中间权重清理以及清理回执。默认不批量永久保存各条件/参考分支整图。保留最终原始计数/配置/代码/轨迹/必要权重，无需为预登记临时文件再逐次确认。当前冻结Phase2尚无自动清理，须查询消费者和原始结果后独立执行，不能改源封印或宣称已自动删除。

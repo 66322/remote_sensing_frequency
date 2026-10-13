@@ -1,5 +1,11 @@
 # 当前记录：Phase2 B0评估与历史预测清理（最后观测2026-10-13 19:36）
 
+## 最新Phase2查询：2026-10-13 20:46:59
+
+用户status QUERY20:46:59.695116/LAST20:46:59.387908：EVALUATING_B0_16000，controller LIVE=True，GPU0/1 eval_B0 workers1441905/1441906均RUNNING/LIVE=True。A_RGB/A_DSM各16k、B0/B2各8k COMPLETE，平均融合8k/16k评估、gates及两head_cache完成。B0/B2训练19:35:49结束；到此次查询约71分钟仍在B0评估，不代表卡住，需要evaluation case completion/window progress核对。
+
+已回读冻结执行e5641e07 control_phase2/phase2_analysis：B0评估→B2评估→static_gate→summary。allow_dynamic严格需要C与L均True；现打印C=True/L=False，因此在门禁文件不变且流程正常的条件下不会派发B1/B3，非“可能再补2训练”。不改门禁、不增加训练。当前status未提供case完成数，无法可靠绝对ETA；需只读统计B0/B2 counts/complete及与已完成average_16000同面板case数，避免凭训练ETA估整轮。最新观察原件摘要见records/phase2_progress_20261013/observation_204659.json。
+
 ## 最新观测与清理下一步（2026-10-13 19:36）
 用户终端扫描19:36:10–19:36:22：records=2957484469248 bytes（2.69TiB），不是整个zzx；挂载盘df10T/7.1T used/3.0T avail/71%。当前Phase2目录620860312576 bytes（578.2GiB），val_cache252110893056、head_cache243290112000、evaluation106213376000、inputs9792020480、jobs9448818688。两缓存约80%；此前约17G至此明显增长，但没有隔离整个挂载盘全部写入/回收来源，不能把净df变化完全归因某一任务。
 队列最后查询19:36:10：EVALUATING_B0_16000，controller与GPU0/1评估worker存活；A_RGB/A_DSM/B0/B2 COMPLETE。这是终端观测，不是实时状态或最终科学验收。gates_C_L打印C=True、L=False、STOP_OR_INCONCLUSIVE，仍需轻量原件核验，不升级为研究方向结论。主线及门禁不变，勿重复登记或额外训练。
