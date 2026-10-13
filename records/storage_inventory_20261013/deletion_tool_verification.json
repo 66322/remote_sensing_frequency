@@ -1,0 +1,13 @@
+{
+  "status": "LOCAL_CHECKS_PASS_SERVER_DELETION_NOT_EXECUTED",
+  "tests": 5,
+  "passed": 5,
+  "syntax_checked": 2,
+  "targets": "five audited historical jobs Val2 predictions only",
+  "user_decision": "delete without compression",
+  "archive_created": false,
+  "server_deletion_performed": false,
+  "unit_tests": "hardlink dedup and exact scope; changed-file rejection; external links; invalid header; outside-path rejection",
+  "runtime_checks": "Linux cmdline/maps/open fd, immutable path/stat inventory",
+  "predictions_retired_on_execution": true
+}

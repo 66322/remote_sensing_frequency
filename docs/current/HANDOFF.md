@@ -1,5 +1,9 @@
 # 当前交接：Phase2 双卡smoke完成，配对专家正在训练（2026-10-13）
 
+## 用户决定：不压缩，直接删除五组旧Val2预测
+
+用户明确拒绝压缩，要求删除不必要文件并继续。清理范围固定为已盘点五目录jobs下evaluation/support_evaluation的3_11.npy/5_10.npy，保留所有pth/配置/原计数/日志/masks/shared_reference及当前Phase2。工具已实现并通过5项本地检查；服务器删除**尚未执行**。将生成清单及退役标记，删除后旧预测路径不再可读，像素复核需保留权重重新推理。[执行协议](../protocols/HISTORICAL_PREDICTION_DELETION_20261013.md)。用户旧语“可以都删”不扩大为删除zzx全部数据。此前压缩规划为未采纳建议。
+
 ## 历史预测原件：去重完成，准备压缩预览
 
 用户确认五jobs的.npy去重1365.52GiB、重复路径13104，主要为Val2预测原件。已读保存代码uint8 argmax/255，并核对当前Phase2数据/旧JSON计数链。建议原字节gzip归档+原SHA恢复，先五样本压缩预览，非全量压缩或删除授权；外部硬链接/活跃依赖待清理前审计。未删任何文件，.pth/轻量证据及当前Phase2保留。[规划与边界](../protocols/HISTORICAL_PREDICTION_COMPACTION_20261013.md)。
