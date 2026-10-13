@@ -1,5 +1,16 @@
 # 共享入口：Phase1.5已完整完成，大内存并行策略已记录（2026-10-13）
 
+## 上传状态补充：本地归档已提交，GitHub推送认证失败（2026-10-13用户回报）
+
+用户粘贴上传尾部显示大量create mode，随后 `Invalid username or token` / `Password authentication is not supported for Git operations` / fatal Authentication failed；upload_phase15.py在git push（exit128）处退出。失败工作树 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792/github_upload_20261013T113931418057_1206639`，证据路径 `records/research_phase15_recoverability_20261012T233532_842792/evidence_20261013T113931418057_1206639`。这是上传认证故障，实验完整完成态不变，记录仍在服务器；没有PHASE15_GITHUB_COMMIT或成功push回报。仅凭错误无法确定输错/令牌失效/权限不足，凭据不接收或记录。
+
+下一步复用该worktree：fetch权威分支→将仅轻量记录的未推送本地提交rebase到FETCH_HEAD→正常push（不force）。不重跑upload_phase15.py，不重新生成或重复登记证据。读取最终rev-parse HEAD并回传，之后接收原件与独立分析。重要记录已同步远端导致head推进，恢复前fetch/rebase是保留共享入口更新所需。
+
+现有上传脚本按白名单递归保存全部JSON/JSONL/log/py/md/txt，JSON精确压缩编码，数组仅SHA/路径索引、不上传权重/预测本体。1540逻辑case的CM/逐类/绑定、100批凭据、280 CPU分析与smoke/故障/接管及源码导致文件多；继承完整旧源码/测试和部分进度/日志有冗余，不能把文件数当大小。每次重复运行会另建完整evidence快照，终端git commit还打印每个create mode。后续可设计精简manifest+JSONL打包/精确归档、源码引用+改动/故障日志优先、上传幂等/只retry现有提交及简洁输出，保留逐case原计数/SHA/去留证据；本次尚未修改冻结上传脚本或删除已归档文件。
+
+[用户上传失败摘录](../records/research_phase15_recoverability_20261012T233532_842792/upload_authentication_failure_20261013.json)。
+
+
 ## 最后观测与下一步
 
 最后用户只读查询 **2026-10-13T11:35:58.181880+08:00**；queue LAST_OBSERVED **2026-10-13T11:31:16.761032+08:00**，**PHASE15_COMPLETE_AWAITING_REVIEW / CONTROLLER_LIVE=False / GPU100 COMPLETE**。新controller.log回报 `PHASE15_COMPLETE NO_AUTOMATIC_TRAINING`。D progress **11:31:06.225282**：**160/160**，tile5_10/realization20/matched、parallel_workers2、preserved63/new97、elapsed1595.456915秒（26分35.5秒），合计吞吐16.448秒/完成case。保留63旧结果、计算97剩余已确认；两真实case等价PASS仍为11:04:30回执，非全160科学验收。
