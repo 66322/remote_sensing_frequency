@@ -1,5 +1,9 @@
 # 当前记录：Phase2 B0评估与历史预测清理（最后观测2026-10-13 19:36）
 
+## 20:51 case进度与估时（用户终端）
+
+B0完成590/1164（50.69%），created598；B2为0/1164。最新forward时间20:51:02.197701，两条windows529/529不等于CPU计数完成。以19:35:49训练结束后开始评估为近似锚点，约75分钟完成590 case，线性估计B0剩73分钟、B2约148分钟。正常流程及速度相近、L=False门禁不变时，含汇总暂估2026-10-14 00:40–01:30完成；这是预算窗口非保证，应随后续进度更新。未将forward窗口全完成算整轮完成。[进度与假设](../../records/phase2_progress_20261013/case_progress_205102.json)。
+
 ## 最新Phase2查询：2026-10-13 20:46:59
 
 用户status QUERY20:46:59.695116/LAST20:46:59.387908：EVALUATING_B0_16000，controller LIVE=True，GPU0/1 eval_B0 workers1441905/1441906均RUNNING/LIVE=True。A_RGB/A_DSM各16k、B0/B2各8k COMPLETE，平均融合8k/16k评估、gates及两head_cache完成。B0/B2训练19:35:49结束；到此次查询约71分钟仍在B0评估，不代表卡住，需要evaluation case completion/window progress核对。
