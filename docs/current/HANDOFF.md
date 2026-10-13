@@ -1,5 +1,11 @@
 # 当前交接：Phase2 双卡smoke完成，配对专家正在训练（2026-10-13）
 
+## 历史预测删除首次执行完成（用户终端原件）
+
+用户输出CLEANUP_COMPLETE **31956**，回执目录 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/storage_prediction_cleanup_20261013T192501_1424574`，执行代码42f9e91e。用户查看fd时打开deleted.jsonl，已处于删除阶段；之后正常返回提示符。df显示10T/7.5T used/2.6T avail/75%，不能将此与早先2.9T差值解释为删除无效或实际回收量，期间Phase2和共享盘有并发写入，另有可能外部链接继续占用。complete.json及plan.summary原件待用户回传，真实释放量尚未核验。
+
+本次仅删除白名单evaluation/support_evaluation子树的Val2.npy；输出显示jobs/S1/fixed8000/...等在skipped_paths内，未删除，这些不符合当时已审计结构规则。31956路径不等于31956独立inode，也不等于五jobs全部数组清理。需检查summary.external_link_inodes/estimated_fully_unlinked_bytes、剩余top-level评估目录及inode才能判断残余空间；禁止依总df盲目追加删。原pth/metrics/log/config/当前Phase2保持。原像素预测已退役，不再保证旧np.load绑定完整可读。[完成观测](../../records/storage_inventory_20261013/cleanup_completion_observation.json)。
+
 ## 用户决定：不压缩，直接删除五组旧Val2预测
 
 用户明确拒绝压缩，要求删除不必要文件并继续。清理范围固定为已盘点五目录jobs下evaluation/support_evaluation的3_11.npy/5_10.npy，保留所有pth/配置/原计数/日志/masks/shared_reference及当前Phase2。工具已实现并通过5项本地检查；服务器删除**尚未执行**。将生成清单及退役标记，删除后旧预测路径不再可读，像素复核需保留权重重新推理。[执行协议](../protocols/HISTORICAL_PREDICTION_DELETION_20261013.md)。用户旧语“可以都删”不扩大为删除zzx全部数据。此前压缩规划为未采纳建议。
