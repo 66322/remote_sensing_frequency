@@ -1,0 +1,30 @@
+{
+  "record_type": "user_reported_status_and_nohup_tail",
+  "execution_commit": "45138f0f92c668bc86ce9532a4382b38d2b12b6d",
+  "query_observed_at": "2026-10-13T10:17:19.241427+08:00",
+  "queue_last_observed_at": "2026-10-13T10:17:18.524905+08:00",
+  "status": "CPU_ORACLE_AND_CONDITIONAL_COUNTS",
+  "controller_live": true,
+  "counts": {
+    "COMPLETE": 100
+  },
+  "gpu_execution_complete": true,
+  "whole_queue_complete": false,
+  "optimizer_updates": 0,
+  "real_smoke_pass": "inferred from published controller stage dependency; original receipts not yet received",
+  "job_acceptance": "inferred from controller COMPLETE transitions; original bindings not independently received",
+  "cpu_E_complete": "inferred from stage dependency; original receipts not yet received",
+  "cpu_D_progress_received": false,
+  "cpu_D_total_cases": 160,
+  "summary_received": false,
+  "scientific_results_verified": false,
+  "no_error_in_user_report": true,
+  "last_nohup_lines": [
+    "PHASE15_START D_16_5_10 GPU 0",
+    "PHASE15_JOB_COMPLETE A_16_5_10_zero_R16 GPU 1",
+    "PHASE15_START B_16_5_10 GPU 1",
+    "PHASE15_JOB_COMPLETE B_16_5_10 GPU 1",
+    "PHASE15_JOB_COMPLETE D_16_5_10 GPU 0"
+  ],
+  "next_action": "Continue CPU D and full summary; read analysis/D/progress.json. Upload light originals only after terminal complete/hold with all owned processes exited."
+}
