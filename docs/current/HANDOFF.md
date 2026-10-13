@@ -1,5 +1,11 @@
 # 当前记录：Phase2 B0评估与历史预测清理（最后观测2026-10-13 19:36）
 
+## 第二批预测删除已完成（用户终端回执，目录时间2026-10-13 19:47）
+
+执行4b302de8，11项测试在服务器通过。CLEANUP_COMPLETE 21216，receipt为 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/storage_prediction_cleanup_second_20261013T194700_1447671`。SUMMARY：paths/unique_inodes=21216，unique_allocated_bytes与estimated_fully_unlinked_bytes均763781431296（711.33GiB），external_link_inodes=0，missing=0，skipped=660。两批累计删除53172路径；711.33GiB是第二批清单预计断链量，不是独立测得的净磁盘回收量。完成后挂载盘df6.8T used/3.3T available/68%，尚未收到complete.json精确前后字节。未获取新Phase2状态，最后仍为19:36观测。
+
+同一终端在第二批之前对整个zzx统计3.5T，paper_rebuild3.1T、projects_zys259G、four_paper_repro43G、pointcloud_data43G、projects40G、vaihingen_model_benchmark23G。这个3.5T不是第二批完成后的大小，不倒写为最新当前占用。剩余660样例来自post_s1_support jobs/E/<P或S1>/evaluation及jobs/D1/S1-*/A1B0C1/dsm_U等嵌套诊断预测，尚未删除；当前Phase2缓存与其他大型旧实验保持。下一步核对660完整路径与保存调用后再决定精确清单，其他旧实验按文件类型/依赖审计，不整目录清空。[终端摘录](../../records/storage_inventory_20261013/second_cleanup_terminal_excerpt.txt)。下方第二批尚未执行描述属于历史。
+
 ## 最新观测与清理下一步（2026-10-13 19:36）
 用户终端扫描19:36:10–19:36:22：records=2957484469248 bytes（2.69TiB），不是整个zzx；挂载盘df10T/7.1T used/3.0T avail/71%。当前Phase2目录620860312576 bytes（578.2GiB），val_cache252110893056、head_cache243290112000、evaluation106213376000、inputs9792020480、jobs9448818688。两缓存约80%；此前约17G至此明显增长，但没有隔离整个挂载盘全部写入/回收来源，不能把净df变化完全归因某一任务。
 队列最后查询19:36:10：EVALUATING_B0_16000，controller与GPU0/1评估worker存活；A_RGB/A_DSM/B0/B2 COMPLETE。这是终端观测，不是实时状态或最终科学验收。gates_C_L打印C=True、L=False、STOP_OR_INCONCLUSIVE，仍需轻量原件核验，不升级为研究方向结论。主线及门禁不变，勿重复登记或额外训练。
