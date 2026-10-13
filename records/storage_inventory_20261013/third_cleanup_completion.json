@@ -1,0 +1,15 @@
+{
+  "source": "user terminal completion excerpt",
+  "receipt_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/storage_prediction_cleanup_third_20261013T201011_1459275",
+  "receipt_directory_timestamp": "2026-10-13T20:10:11+08:00",
+  "completion_timestamp_not_provided": true,
+  "deleted": 22824,
+  "cumulative_deleted_paths": 75996,
+  "df": {
+    "used": "6.3T",
+    "available": "3.8T",
+    "percent": "63%"
+  },
+  "summary_received": false,
+  "skipped_reason_pending": true
+}

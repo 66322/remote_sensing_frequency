@@ -1,5 +1,11 @@
 # 当前记录：Phase2 B0评估与历史预测清理（最后观测2026-10-13 19:36）
 
+## 第三批已完成（用户终端回执，目录时间2026-10-13 20:10:11）
+
+CLEANUP_COMPLETE 22824；receipt `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/storage_prediction_cleanup_third_20261013T201011_1459275`。三批累计删除75996路径。用户df显示挂载盘10T、已用6.3T、可用3.8T、63%，不是zzx自身大小，也不代表独立测得回收量。尚未收到第三批SUMMARY及complete.json精确前后字节。
+
+候选24392比实际删除多1568，数量恰好等于D23 evaluation预测组，但原因仍须读取plan.skipped验证，不能断言缺计数或丢失。下一步只读当前receipt的summary、跳过原因计数/样例和complete；不重复运行删除。D23 normalized_fit_cache68.4GiB、全部权重及其下游依赖仍待核对，未删除。当前Phase2状态仍仅19:36观测。
+
 ## 六个旧实验盘点完成；第三批预测清理已准备（2026-10-13，源目录时间20:04:42）
 
 用户回传AUDIT_COMPLETE，六目录全部errors=0，源records/storage_old_experiments_audit_20261013T200442_1456518。主要占用为jobs/evaluation、fixed8000、N5 content_*、D30 replay modes预测；样例均Val2 uint8 6000²。另D23 normalized_fit_cache360个数组68.4GiB；权重较小，本批不动。组内统计未跨组inode去重，禁止直接加总当可回收量。
