@@ -1,0 +1,65 @@
+(remote_sensing) [root@h-aoji-aoji-h100-agent-2-w-0 08_thesis_full_repro]$ R=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records
+
+/usr/bin/du -h --max-depth=1 \
+  "$R/research_post_d30_mechanisms_20261004T000812_2446364" \
+  "$R/research_post_n3_s1_20261007T083203_694293" \
+  "$R/research_post_s1_support_20261008T234921_1890161" \
+  "$R/research_post_s1_transfer_20261010T073327_2852696" \
+  "$R/research_d27_safe_routing_repair_20261003T092243758628_2001983" \
+  | sort -h
+0       /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/cache
+0       /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/temporary
+0       /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/cache
+0       /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/temporary
+0       /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293/cache
+0       /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293/temporary
+0       /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/cache
+0       /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/temporary
+0       /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696/cache
+0       /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696/temporary
+11K     /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696/completed_upload_bootstrap_20261010T212851_3250723
+11K     /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696/completed_upload_bootstrap_20261011T093101_3616034
+12K     /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/completed_upload_bootstrap_20261009T214225_2542358
+45K     /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/evaluation_repair_20261004T085441046626_2720259
+47K     /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/evaluation_repair_20261004T081218353451_2698383
+154K    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293/masks
+212K    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/logs
+222K    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/masks
+222K    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696/masks
+229K    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293/logs
+245K    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696/logs
+247K    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/logs
+265K    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/code
+451K    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code
+454K    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/logs
+944K    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293/code
+1.2M    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/code
+1.3M    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696/code
+3.9M    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/D0
+209M    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696/references
+421M    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/R0_U
+899M    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/github_upload_20261003T184023096720_2284806
+1.2G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/github_upload_20261004T180809837028_3002648
+1.4G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/github_upload_20261005T082038486648_3437394
+1.8G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293/github_upload_20261008T221937481681_1846353
+2.0G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/github_completed_upload_20261009T214326804508_2545009
+2.2G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/github_upload_20261010T212714313891_3255817
+2.3G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696/github_completed_upload_20261010T212934461958_3255079
+2.5G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696/github_completed_upload_20261011T093311771593_3616761
+6.5G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/shared_reference
+6.6G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/R0_ordinary
+8.6G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/shared_reference
+9.2G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293/shared_reference
+11G     /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/shared_reference
+11G     /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696/shared_reference
+226G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs
+233G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983
+235G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696/jobs
+246G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/jobs
+251G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696
+268G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161
+281G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293/jobs
+292G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293
+516G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/jobs
+527G    /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364
+(remote_sensing) [root@h-aoji-aoji-h100-agent-2-w-0 08_thesis_full_repro]$ 

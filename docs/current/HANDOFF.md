@@ -1,5 +1,9 @@
 # 当前交接：Phase2 双卡smoke完成，配对专家正在训练（2026-10-13）
 
+## 清理盘点补充（用户输出，无精确查询时间）
+
+最大五实验jobs分别516G/281G/246G/235G/226G，合计1504GiB约1.47TiB；cache/temporary均0。主要占用并非已命名cache，不能直接称jobs全是缓存或无用。shared_reference约46GiB和upload worktree约14GiB需按实际依赖/未推送状态验收，不直接删除。下一步只读统计五jobs按扩展名/子任务占用与最大文件；确认中间checkpoint与必要best/final/下游绑定后才制定精确清理清单。当前Phase2及前置原件保留，未执行服务器删除。[原始输出](../../records/storage_inventory_20261013/top5_subdirectories.txt)。
+
 ## 磁盘盘点（2026-10-13用户提供，无精确查询时间）
 
 df显示/home/jovyan容量10T、已用7.2T、可用2.9T、72%；这是整个挂载盘，不能用zzx占用解释全部7.2T。zzx 3.6T，paper_rebuild 3.2T，08_thesis_full_repro/records 2.8T。可用空间按现有约1TiB整轮预算暂有余量；状态会变化，不保证固定余量。[原始盘点](../../records/storage_inventory_20261013/user_disk_inventory.txt)。当前Phase2新目录当次du约17G，旧失败目录9.2G；这不是新的训练status。
