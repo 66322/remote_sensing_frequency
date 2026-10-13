@@ -1,3 +1,9 @@
+# 已被Phase2具体设计替代（2026-10-13）
+
+当前按[Phase2匹配互补完整设计](PHASE_2_MATCHED_COMPLEMENTARITY_20261013.md)：核心2专家+2静态控制，C/L/静态后剩余差距通过后再派2动态头。以下为保留的初稿，不作当前执行配置；没有任何已登记运行因此被修改。
+
+---
+
 # 下一轮配对训练：可靠性互补可行性草案（2026-10-13）
 
 状态：**助手建议 / PLANNED_NOT_IMPLEMENTED_NOT_REGISTERED**。本次没有新训练、种子、queue或服务器操作。结果依据[Phase1.5完整分析](../experiments/PHASE_1_5_RESULTS_20261013.md)。本草案不宣告原routing门禁通过，不追认已上传模型为配对专家。

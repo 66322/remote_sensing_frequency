@@ -1,3 +1,9 @@
+# 2026-10-13：Phase2设计具体化与720份内部DSM身份回执补充核验
+
+[完整设计](../../protocols/PHASE_2_MATCHED_COMPLEMENTARITY_20261013.md)、[发现登记](../FINDINGS_REGISTRY_PHASE2_20261013.md)、[审计](../../../records/phase2_design_20261013/internal_dsm_identity_audit.json)。2×16k匹配专家，2×8k静态控制，条件性2×8k动态控制；GPU0/1、内存驻留/并行CPU与流水分析。DESIGN_SPECIFIED_NOT_IMPLEMENTED_NOT_REGISTERED，没有新队列。720个旧S1非clean案例已记录内部DSM logits exact identity，不新增GPU身份实验；已知缺失硬回退与未报告局部corruption分面板。下文为历史。
+
+---
+
 # 2026-10-13：Phase1.5上传成功，独立核验及科学分析完成
 
 [完整结果](../PHASE_1_5_RESULTS_20261013.md)；[复算程序/回执](../../../records/phase15_offline_audit_20261013/README.md)；[下一轮配对草案](../../protocols/PAIRED_RELIABILITY_FEASIBILITY_20261013.md)。上传9d7c27e88c510f2931ac125b7b6b3b0c60850dce，2388载荷核验PASS；routing尚未通过可观测选路门禁，ECI不支持强边界集中，旧geometry gate不改变。以下均为历史观测，后续成功上传与核验已覆盖“待上传/认证失败”状态；新建议未实现或启动。
