@@ -1,5 +1,9 @@
 # 当前记录：Phase2 B0评估与历史预测清理（最后观测2026-10-13 19:36）
 
+## 第三批清单大小已核对（用户补充终端原件）
+
+SUMMARY 22824路径、18648独立inode、671332773888 bytes（625.23GiB），预计完全断链字节相同、external_link_inodes=0、skipped1568、保留计数metrics_files2536。第三批多4176重复硬链接路径，不能按路径数乘单文件大小。三批累计75996路径，清单预计完全断链2113791031296 bytes（1.92248TiB）；这是清单回收预计，不等于隔离实测释放量。用户已提供SUMMARY，尚未提供complete.json精确空闲前后值及skipped原因。下方“缺SUMMARY”描述属于历史。
+
 ## 第三批已完成（用户终端回执，目录时间2026-10-13 20:10:11）
 
 CLEANUP_COMPLETE 22824；receipt `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/storage_prediction_cleanup_third_20261013T201011_1459275`。三批累计删除75996路径。用户df显示挂载盘10T、已用6.3T、可用3.8T、63%，不是zzx自身大小，也不代表独立测得回收量。尚未收到第三批SUMMARY及complete.json精确前后字节。

@@ -1,0 +1,15 @@
+{
+  "source": "user attachment 113989df-7bec-424d-94df-7fb56b469f12 SUMMARY and completion",
+  "third": {
+    "paths": 22824,
+    "unique_inodes": 18648,
+    "unique_allocated_bytes": 671332773888,
+    "estimated_fully_unlinked_bytes": 671332773888,
+    "external_link_inodes": 0,
+    "skipped_paths": 1568,
+    "metrics_files": 2536
+  },
+  "cumulative_paths": 75996,
+  "cumulative_estimated_fully_unlinked_bytes": 2113791031296,
+  "note": "1.92248 TiB estimated fully unlinked from inventories, not isolated observed physical reclamation; skipped reasons still pending"
+}
