@@ -1,5 +1,9 @@
 # 当前交接：Phase2 双卡smoke完成，配对专家正在训练（2026-10-13）
 
+## 历史预测原件：去重完成，准备压缩预览
+
+用户确认五jobs的.npy去重1365.52GiB、重复路径13104，主要为Val2预测原件。已读保存代码uint8 argmax/255，并核对当前Phase2数据/旧JSON计数链。建议原字节gzip归档+原SHA恢复，先五样本压缩预览，非全量压缩或删除授权；外部硬链接/活跃依赖待清理前审计。未删任何文件，.pth/轻量证据及当前Phase2保留。[规划与边界](../protocols/HISTORICAL_PREDICTION_COMPACTION_20261013.md)。
+
 ## jobs文件类型盘点及统计修正
 
 用户逐文件st_blocks统计：五目录.npy合计1804.87GiB，.pth127.41GiB，显示数组占主导。但前一du五jobs合计约1504GiB，与逐文件加总明显不一致。此前助手脚本没有按(st_dev,st_ino)去重，硬链接重复计数是待检解释；未证明数据增长或硬链接存在，不将1804.87GiB当可释放空间。下一步只读按inode去重并输出.npy常见文件名/样例路径，然后核验数组与metrics/binding/下游引用，形成具体清理清单。selected/final/源绑定checkpoint保留；当前Phase2无清理操作。[用户文件类型统计](../../records/storage_inventory_20261013/job_file_types.json)。
