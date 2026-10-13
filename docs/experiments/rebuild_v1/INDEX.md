@@ -1,3 +1,9 @@
+# 2026-10-13：Phase2执行包就绪，服务器尚未启动
+
+[执行协议](../../protocols/PHASE_2_EXECUTION_20261013.md)、[科学设计](../../protocols/PHASE_2_MATCHED_COMPLEMENTARITY_20261013.md)、[技术验收](../../../records/phase2_implementation_20261013/verification.json)。用户授权具体实验，核心4训练48k、条件性最多6训练64k。GPU0/1、实际batch16真实smoke自动先行、resident/mmap/共享cache/CPU流水、无24h强停或失败重试。9CPU/13语法检查通过；160旧D、720身份、120dose原计数重用核验完成，无新GPU或训练结果。等用户bootstrap登记回报后查询原目录，不重复登记。
+
+---
+
 # 2026-10-13：Phase2设计具体化与720份内部DSM身份回执补充核验
 
 [完整设计](../../protocols/PHASE_2_MATCHED_COMPLEMENTARITY_20261013.md)、[发现登记](../FINDINGS_REGISTRY_PHASE2_20261013.md)、[审计](../../../records/phase2_design_20261013/internal_dsm_identity_audit.json)。2×16k匹配专家，2×8k静态控制，条件性2×8k动态控制；GPU0/1、内存驻留/并行CPU与流水分析。DESIGN_SPECIFIED_NOT_IMPLEMENTED_NOT_REGISTERED，没有新队列。720个旧S1非clean案例已记录内部DSM logits exact identity，不新增GPU身份实验；已知缺失硬回退与未报告局部corruption分面板。下文为历史。
@@ -538,7 +544,7 @@ The C0/C1 tile-risk re-audit also passed. See
 
 ## 2026-10-05最新阶段
 
-[N1完成回报与接续](../POST_AB_N1_COMPLETION_OBSERVATION_20261005.md)：四组8000步完成；N1-3对N1-1 +2.789492pp、对N1-2 −0.881059pp，固定门槛False（用户回报，原件待验收）。控制器按设计退出；N2匹配基座为N1-2，19项预约不等于可执行，N6三项跳过。
+[N1完成回报与接续](../POST_AB_N1_COMPLETION_OBSERVATION_20261005.md)：四组8000步完成；N1-3对N1-1 +2.789492pp、对N1-2 −0.881059pp，固定门槛False（用户回报，原件待验收）。控制器按设计退出；N2匹配基座为N1-2，110项预约不等于可执行，N6三项跳过。
 
 ## C/N1验收与N2接续（2026-10-05）
 

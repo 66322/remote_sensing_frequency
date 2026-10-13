@@ -1,6 +1,6 @@
 # Phase 2：匹配专家、静态吸收与可观测互补（2026-10-13）
 
-状态：DESIGN_SPECIFIED / EXECUTION_NOT_IMPLEMENTED_NOT_REGISTERED。本文件替代同日PAIRED_RELIABILITY_FEASIBILITY草案的排程，属于本次用户请求下的下一阶段设计，不代表服务器已经开始训练。用户授权规划GPU0/1、至少一天可用窗口、超过一天继续，并要求内存驻留与并行分析；服务器仍由用户执行，无SSH。本轮不增加训练seed，不访问Test6/held4/final，不自动重试失败配方。
+状态：EXECUTION_IMPLEMENTED / READY_FOR_USER_LAUNCH / SERVER_GPU_SMOKE_REQUIRED。详见[执行协议](PHASE_2_EXECUTION_20261013.md)。本文件替代同日PAIRED_RELIABILITY_FEASIBILITY草案的排程，属于本次用户请求下的下一阶段设计，不代表服务器已经开始训练。用户授权规划GPU0/1、至少一天可用窗口、超过一天继续，并要求内存驻留与并行分析；服务器仍由用户执行，无SSH。本轮不增加训练seed，不访问Test6/held4/final，不自动重试失败配方。
 
 ## 1. 单一研究问题与修订依据
 
@@ -24,7 +24,7 @@
 | 2.3-A | B1动态可靠性、B3 DSM统计错位控制 | 条件性2×8000 | 全部结果汇总后停止，人工科研复核 |
 | 2.3-B | capability-preserving residual | 不登记 | 仅作为失败原因明确后的独立备选设计 |
 
-固定核心4训练/48000更新；条件性追加2训练/16000更新；最多6训练/64000更新。2.0—2.3-0中独立CPU分析与GPU工作并行；B1/B3有科学依赖，不能为填满GPU越过门禁。门禁失败只写STOP/INCONCLUSIVE，不调阈值、不换bin、不追加seed或自动转旁支。此文件没有enqueue脚本、运行ID或PID。
+固定核心4训练/48000更新；条件性追加2训练/16000更新；最多6训练/64000更新。2.0—2.3-0中独立CPU分析与GPU工作并行；B1/B3有科学依赖，不能为填满GPU越过门禁。门禁失败只写STOP/INCONCLUSIVE，不调阈值、不换bin、不追加seed或自动转旁支。已提供enqueue_phase2.py；当前没有服务器运行ID或PID。
 
 ## 3. Phase 2.0：复用既有证据
 
@@ -56,7 +56,7 @@ AdamW：encoder尾4块lr=2e-5，投影/decoder lr=2e-4，betas=(.9,.999)，weigh
 
 P-M：reported RGB missing与reported DSM missing，2方向×4族×20×2tile=320物理场景；缺失模态归一化后置零，availability如实报告。所有候选在单可用模态位置强制原专家logits回退，双缺失排除有效支持且另报coverage。分别报告full NB、missing ROI、healthy ROI（沿原固定定义）、common支持；不能期待B1在单可用ROI比B0更好。
 
-P-U：上述每个空间mask施加两种未报告局部破坏：归一化后置零、down4后覆盖mask；availability均保持True。共640场景。down4完全复用既有area下采样/上采样算子的定义，执行包逐项锁定库与参数。物理零和P-M完全相同，仅报告标志不同；必须配对保存，不能给路由暗传mask或condition。P-U分别报告RGB/DSM故障与两种破坏，不能只看最有利分支。
+P-U：上述每个空间mask施加两种未报告局部破坏：归一化后置零、down4后覆盖mask；availability均保持True。共640场景。down4完全复用既有bilinear下采样（antialias=True）及bilinear上采样（align_corners=False）的定义，执行包逐项锁定库与参数。物理零和P-M完全相同，仅报告标志不同；必须配对保存，不能给路由暗传mask或condition。P-U分别报告RGB/DSM故障与两种破坏，不能只看最有利分支。
 
 固定16k完整P-M/P-U；8k仅P-M和clean作预算轨迹，P-U不额外跑8k。Secondary：5/10% pixel嵌套missing（两方向×2比例×20×2tile=160）、全模态缺失两条件、原协议22普通条件（重叠只算一次）。主门禁只用注册P-U，P-M为连续性及保护。主分数=每realization先池化两tile CM计算NB fg5，再对4族、2方向、2破坏等权；Full/fg6、逐类、missing/healthy ROI和每tile独立保留。
 
@@ -126,4 +126,9 @@ CPU分析首选16个case进程，参数=min(16,max(1,floor((有效核数−预�
 
 上传仅manifest、summary、完整int64 CM/逐类/分层计数、batch/parameter/checkpoint/input绑定、必需日志和故障/完成回执；逐case计数批量JSONL无损打包并保留内部索引，源码引用固定commit与执行差异。数组/权重/完整性能日志保留服务器索引。上传幂等、失败重试既有worktree，同一run不能每次生成重复完整evidence。
 
-下一步是实现该设计并完成CPU及真实双卡技术核验，再发一次性启动命令。当前仅完成设计、源码审查和旧回执补充审计，没有在本地或服务器启动GPU训练。新方法贡献、双向改善、多seed/独立泛化均待后续证据，不写成当前已成立。
+执行包已实现并通过本地CPU核验；用户执行启动命令后，控制器先做真实双卡技术核验。当前没有服务器登记或GPU训练运行回报。新方法贡献、双向改善、多seed/独立泛化均待后续证据，不写成当前已成立。
+
+
+## 实现状态补充（2026-10-13）
+
+本次用户“按照上述规划进行具体实验吧”授权落地。执行包已实现并通过10项本地CPU检查，尚未收到服务器登记或真实GPU结果；以本段及执行协议为当前实现状态。核心4训练、条件性2训练、C/L和保护门禁保持。真实smoke自动通过后才正式派发，失败HOLD不自动重试。
