@@ -1,0 +1,51 @@
+{
+  "source": "user pasted file stat summary; no exact observed time",
+  "method": "sum st_blocks*512 per path, no inode deduplication",
+  "rows": [
+    {
+      "name": "research_post_d30_mechanisms_20261004T000812_2446364",
+      "npy_GiB": 586.6,
+      "npy_files": 17496,
+      "pth_GiB": 34.97,
+      "pth_files": 72,
+      "json_GiB": 2.7
+    },
+    {
+      "name": "research_post_n3_s1_20261007T083203_694293",
+      "npy_GiB": 315.03,
+      "npy_files": 9396,
+      "pth_GiB": 29.01,
+      "pth_files": 36,
+      "json_GiB": 1.68
+    },
+    {
+      "name": "research_post_s1_support_20261008T234921_1890161",
+      "npy_GiB": 352.04,
+      "npy_files": 10500,
+      "pth_GiB": 24.42,
+      "pth_files": 40,
+      "json_GiB": 2.19
+    },
+    {
+      "name": "research_post_s1_transfer_20261010T073327_2852696",
+      "npy_GiB": 346.01,
+      "npy_files": 10320,
+      "pth_GiB": 19.49,
+      "pth_files": 40,
+      "json_GiB": 2.05
+    },
+    {
+      "name": "research_d27_safe_routing_repair_20261003T092243758628_2001983",
+      "npy_GiB": 205.19,
+      "npy_files": 6120,
+      "pth_GiB": 19.52,
+      "pth_files": 40,
+      "json_GiB": 0.84
+    }
+  ],
+  "npy_sum_GiB": 1804.87,
+  "pth_sum_GiB": 127.41,
+  "inode_duplication_unverified": true,
+  "not_a_reclaimable_size_estimate": true,
+  "server_deletion_performed": false
+}

@@ -1,5 +1,9 @@
 # 当前交接：Phase2 双卡smoke完成，配对专家正在训练（2026-10-13）
 
+## jobs文件类型盘点及统计修正
+
+用户逐文件st_blocks统计：五目录.npy合计1804.87GiB，.pth127.41GiB，显示数组占主导。但前一du五jobs合计约1504GiB，与逐文件加总明显不一致。此前助手脚本没有按(st_dev,st_ino)去重，硬链接重复计数是待检解释；未证明数据增长或硬链接存在，不将1804.87GiB当可释放空间。下一步只读按inode去重并输出.npy常见文件名/样例路径，然后核验数组与metrics/binding/下游引用，形成具体清理清单。selected/final/源绑定checkpoint保留；当前Phase2无清理操作。[用户文件类型统计](../../records/storage_inventory_20261013/job_file_types.json)。
+
 ## 清理盘点补充（用户输出，无精确查询时间）
 
 最大五实验jobs分别516G/281G/246G/235G/226G，合计1504GiB约1.47TiB；cache/temporary均0。主要占用并非已命名cache，不能直接称jobs全是缓存或无用。shared_reference约46GiB和upload worktree约14GiB需按实际依赖/未推送状态验收，不直接删除。下一步只读统计五jobs按扩展名/子任务占用与最大文件；确认中间checkpoint与必要best/final/下游绑定后才制定精确清理清单。当前Phase2及前置原件保留，未执行服务器删除。[原始输出](../../records/storage_inventory_20261013/top5_subdirectories.txt)。
