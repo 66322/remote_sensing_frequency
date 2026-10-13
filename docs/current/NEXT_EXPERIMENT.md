@@ -1,5 +1,11 @@
 # 当前记录：Phase2 B0评估与历史预测清理（最后观测2026-10-13 19:36）
 
+## 六个旧实验盘点完成；第三批预测清理已准备（2026-10-13，源目录时间20:04:42）
+
+用户回传AUDIT_COMPLETE，六目录全部errors=0，源records/storage_old_experiments_audit_20261013T200442_1456518。主要占用为jobs/evaluation、fixed8000、N5 content_*、D30 replay modes预测；样例均Val2 uint8 6000²。另D23 normalized_fit_cache360个数组68.4GiB；权重较小，本批不动。组内统计未跨组inode去重，禁止直接加总当可回收量。
+
+第三批脚本delete_audited_old_predictions.py已通过15项本地检查，服务器未执行。按源manifest核对文件身份/头、对应JSON整数6×6原始计数、进程依赖，执行时统一inode核算后只删匹配预测。缺计数跳过、文件变更停止；保留全部权重/代码/JSON/log/shared_reference/训练缓存和当前Phase2。[协议](../protocols/HISTORICAL_PREDICTION_THIRD_CLEANUP_20261013.md)。下一步用户执行并回传SUMMARY/CLEANUP_COMPLETE；D23缓存及中间权重留待进一步依赖核对，不将尚未清理写成完成。
+
 ## 用户更新保留策略：大型旧实验精简保存（2026-10-13）
 
 用户要求继续核对其他大型旧实验，仅保留有用最终结果和代码。已据此记录[产物保留规则](../protocols/EXPERIMENT_ARTIFACT_RETENTION_20261013.md)：保留可重算指标的原始计数、配置/代码及必要selected/final/下游权重，优先退役可再生成数组与无依赖中间产物；不能将负结果视为无价值证据。旧代码按条件×输出×checkpoint反复保存整图且缺少结果验收后的清理闭环，后续新实验必须显式规划保留周期。当前Phase2不改冻结快照、不删运行缓存。
