@@ -1,3 +1,9 @@
+# 共享入口（最后观测2026-10-13 19:36）
+
+Phase2当前目录151120_1310582在19:36查询为EVALUATING_B0_16000，两卡评估worker存活；4项核心训练任务显示COMPLETE，科学结果待核验。records约2.69TiB，其中Phase2约578.2GiB，挂载盘可用3.0T。第一批旧预测删除31956完成，第二批脚本就绪但尚未执行。
+
+先读[研究决定](current/RESEARCH_DECISION.md)、[交接](current/HANDOFF.md)、[状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)和[第二批清理协议](protocols/HISTORICAL_PREDICTION_SECOND_CLEANUP_20261013.md)。研究主线与Phase2门禁保持，无新队列、自动重试或Test6访问。服务器由用户操作，无SSH。下方为此前入口说明。
+
 # 共享入口：Phase2配对专家训练已启动（最后观测2026-10-13 15:17:32）
 
 新目录151120_1310582，prepare/双卡smoke/legacy_counts COMPLETE，A_RGB GPU0 step2180、A_DSM GPU1 step1740，controller/两训练worker存活。无正式验证结果，status里的ETA仅纯训练步数。容量600GiB是启动下限；源码估算核心750–850GiB、完整条件6训练约1TiB，等待实际df确认。缓存不自动删。详见HANDOFF最新观测，以下15:11等待描述为历史。
