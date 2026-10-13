@@ -1,5 +1,9 @@
 # 当前交接：Phase2 双卡smoke完成，配对专家正在训练（2026-10-13）
 
+## 删除回执核验：磁盘可用空间净增约212GiB
+
+用户回读原summary/complete：2026-10-13T19:25:44.245968+08:00，31956/31956删除、31956独立inode；纳入清单占1071.42GiB，其中预计完全断链约632.07GiB，13104 inode有外部链接、约439.35GiB继续分配。skipped21876路径仍未删。disk_free由2623956582400增至2851560488960 bytes，净增约211.97GiB；不能将此直接等于删除独立回收量，expected与net差额原因未隔离（并发写入、文件系统回收等仅候选）。不把首次五目录旧df2.9T与最终2.6T比较当成删除无效。剩余任务从旧plan的skipped_paths只读归类阶段和实验，再审计扩展白名单，不盲目删固定预算结果或shared_reference。[原回执字段](../../records/storage_inventory_20261013/cleanup_receipt_192544.json)。
+
 ## 历史预测删除首次执行完成（用户终端原件）
 
 用户输出CLEANUP_COMPLETE **31956**，回执目录 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/storage_prediction_cleanup_20261013T192501_1424574`，执行代码42f9e91e。用户查看fd时打开deleted.jsonl，已处于删除阶段；之后正常返回提示符。df显示10T/7.5T used/2.6T avail/75%，不能将此与早先2.9T差值解释为删除无效或实际回收量，期间Phase2和共享盘有并发写入，另有可能外部链接继续占用。complete.json及plan.summary原件待用户回传，真实释放量尚未核验。
