@@ -1,5 +1,11 @@
 # 当前记录：Phase2 B0评估与历史预测清理（最后观测2026-10-13 19:36）
 
+## 用户更新保留策略：大型旧实验精简保存（2026-10-13）
+
+用户要求继续核对其他大型旧实验，仅保留有用最终结果和代码。已据此记录[产物保留规则](../protocols/EXPERIMENT_ARTIFACT_RETENTION_20261013.md)：保留可重算指标的原始计数、配置/代码及必要selected/final/下游权重，优先退役可再生成数组与无依赖中间产物；不能将负结果视为无价值证据。旧代码按条件×输出×checkpoint反复保存整图且缺少结果验收后的清理闭环，后续新实验必须显式规划保留周期。当前Phase2不改冻结快照、不删运行缓存。
+
+audit_old_experiment_storage.py已准备，三线程只读扫描六个大型旧实验，打印进度、逐阶段/扩展名占用与少量Val2头样例，并保存权重及证据索引。不扫描整个zzx，不删除。语法检查通过，服务器尚未执行；待用户回传summary形成精确清理清单。最新运行状态仍仅19:36，删除回执为19:47目录时间。
+
 ## 第二批预测删除已完成（用户终端回执，目录时间2026-10-13 19:47）
 
 执行4b302de8，11项测试在服务器通过。CLEANUP_COMPLETE 21216，receipt为 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/storage_prediction_cleanup_second_20261013T194700_1447671`。SUMMARY：paths/unique_inodes=21216，unique_allocated_bytes与estimated_fully_unlinked_bytes均763781431296（711.33GiB），external_link_inodes=0，missing=0，skipped=660。两批累计删除53172路径；711.33GiB是第二批清单预计断链量，不是独立测得的净磁盘回收量。完成后挂载盘df6.8T used/3.3T available/68%，尚未收到complete.json精确前后字节。未获取新Phase2状态，最后仍为19:36观测。
