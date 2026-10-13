@@ -1,3 +1,9 @@
+# 2026-10-13：Phase1.5上传成功，独立核验及科学分析完成
+
+[完整结果](../PHASE_1_5_RESULTS_20261013.md)；[复算程序/回执](../../../records/phase15_offline_audit_20261013/README.md)；[下一轮配对草案](../../protocols/PAIRED_RELIABILITY_FEASIBILITY_20261013.md)。上传9d7c27e88c510f2931ac125b7b6b3b0c60850dce，2388载荷核验PASS；routing尚未通过可观测选路门禁，ECI不支持强边界集中，旧geometry gate不改变。以下均为历史观测，后续成功上传与核验已覆盖“待上传/认证失败”状态；新建议未实现或启动。
+
+---
+
 # 2026-10-13 11:31：Phase1.5完整结束，等待轻量原件上传核验
 
 最后用户只读查询 **2026-10-13T11:35:58.181880+08:00**；queue LAST_OBSERVED **2026-10-13T11:31:16.761032+08:00**，**PHASE15_COMPLETE_AWAITING_REVIEW / CONTROLLER_LIVE=False / GPU100 COMPLETE**。新controller.log回报 `PHASE15_COMPLETE NO_AUTOMATIC_TRAINING`。D progress **11:31:06.225282**：**160/160**，tile5_10/realization20/matched、parallel_workers2、preserved63/new97、elapsed1595.456915秒（26分35.5秒），合计吞吐16.448秒/完成case。保留63旧结果、计算97剩余已确认；两真实case等价PASS仍为11:04:30回执，非全160科学验收。
