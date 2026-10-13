@@ -1,4 +1,6 @@
-# 共享入口：Phase2 CE技术替换已登记（2026-10-13）
+# 共享入口：Phase2配对专家训练已启动（最后观测2026-10-13 15:17:32）
+
+新目录151120_1310582，prepare/双卡smoke/legacy_counts COMPLETE，A_RGB GPU0 step2180、A_DSM GPU1 step1740，controller/两训练worker存活。无正式验证结果，status里的ETA仅纯训练步数。容量600GiB是启动下限；源码估算核心750–850GiB、完整条件6训练约1TiB，等待实际df确认。缓存不自动删。详见HANDOFF最新观测，以下15:11等待描述为历史。
 
 用户15:11启动回执确认新目录research_phase2_matched_20261013T151120_1310582、controller PID1310878、执行代码e5641e073bf4421e346f589199c291a6e94db8b2、GPU0/1。这是启动回执，不是实时status；准备、真实GPU CE/smoke和正式训练状态尚待新目录查询。原145903失败目录保留；勿重复enqueue或专项替换。
 

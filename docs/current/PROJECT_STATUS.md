@@ -1,4 +1,14 @@
-# 当前状态：Phase2 CE技术替换已登记，待查询新队列（2026-10-13）
+# 当前状态：Phase2 双卡smoke完成，配对专家正在训练（2026-10-13）
+
+## 最新运行观测：配对专家正式训练已启动
+
+用户查询 **2026-10-13T15:17:32.976199+08:00**，队列更新15:17:31.773714：TRAINING_MATCHED_EXPERTS，controller LIVE=True。新目录research_phase2_matched_20261013T151120_1310582，代码e5641e07，controller1310878。prepare/smoke0/smoke1/legacy_counts均COMPLETE；A_RGB GPU0 PID1312176和A_DSM GPU1 PID1312177均RUNNING/LIVE=True。RGB step2180/16000、loss0.2066975385、elapsed223.911s、remaining_train_hours0.394298；DSM step1740/16000、loss0.4762486219、elapsed222.290s、remaining_train_hours0.506044。最近data_wait约65/61ms，峰值分配2612352000 bytes，各卡reserved3107979264 bytes。
+
+控制器已通过两卡smoke门禁并派发训练；目前依据用户status/日志，smoke数值原件、参数清单、batch_hash和验证指标仍待接收核验，不据此声称论文结果。估时约RGB24分钟、DSM30分钟为脚本纯训练步数外推；不含后续定期全图验证、冻结面板、head缓存/训练和CPU分析，不是整轮ETA。单步两loss不能比较模态优劣。两卡速度不同允许，无逐step屏障；完整配对stream在双方完成后验hash。只读查询既有新目录，不重启/登记。
+
+**容量修正（源码估算，非服务器实测）**：600GiB仅启动下限，完整磁盘预算此前不足。按6000²、529窗口、保存FP32及紧凑原件，head缓存约227GiB、专家窗口cache约235GiB、核心面板原件约240GiB，外加checkpoint/输入等；核心建议750–850GiB，全6训练建议约1TiB。实际df尚未返回，不能保证磁盘充分。缓存无自动删除；核验/上传后明确清理清单，用户执行。保持正在运行配置，不自动删缓存、改batch或补训练凑24h。后续读取resource_profile实际free及df输出校准预算。
+
+登记和修复前的等待描述均属下方历史。[本次观测](../../records/phase2_ce_fix_20261013/training_observation_151732.json)。
 
 ## 最新：技术替换已登记（用户终端回执）
 
