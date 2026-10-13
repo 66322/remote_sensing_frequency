@@ -1,3 +1,19 @@
+# 2026-10-13 10:44：Phase1.5 CPU分析57/160，耗时校准
+
+## 最新CPU进度与耗时解释（2026-10-13 10:44）
+
+用户读取D progress：10:17:47.026717为48case，10:35:41.565092为54case，**最后progress观测2026-10-13T10:44:37.604759+08:00为57/160case**（tile3_11/realization15/pixel），analysis_D日志tail空。该回报没有新queue查询或controller存活检查；最后queue观测仍10:17:18.524905、CPU_ORACLE_AND_CONDITIONAL_COUNTS/controller LIVE=True、GPU100 COMPLETE。CPU计数持续增长，不能按显卡空闲认定停止；此为最后观测而非实时。
+
+检查修复执行commit45138f0f的analyze_phase15.py/phase15_numeric.py/control_phase15.py：D为单CPU子进程，OMP/OPENBLAS/MKL线程数1；每case校验/解压预测与熵，计算5专家及raw/smoothed组合、pixel/128/256 oracle，多区域int64 CM/新错恢复计数、距离变换、连通域、GT/可观测分箱。evidence与condition_counts存在重复全图扫描，当前实现可优化，但尚无函数级计时，不能指定实际唯一瓶颈或宣称CPU单核满载。线程设为1限制数值库并行，不意味着所有NumPy操作改线程就能提速。
+
+48→57历时1610.578秒，9case平均178.953秒（约2分59秒）；按同速剩103case约5h07m，D预计2026-10-13 15:52左右，用户沟通取16:00左右。仅条件线性估计，mask族/第二tile/IO速度变化均可改变；不包含随后五项汇总，不是全队完成保证。原24–48h为资源预留，不用于当前剩余ETA。
+
+保留现有执行快照与已完成57case，不中断/热改/自动重跑；未来技术优化可考虑缓存重复数组、复用valid/disagreement与联合计数、减少全图扫描，需严格整数结果等价检查，尚未实施。固定0训练/100GPU批/160D case，旧失败证据保留。继续只读D progress/status，全部分析汇总完成并owned进程/锁退出后上传轻量原件，独立科学验收后再制定配对训练；不自动新训练/seed/Test6/held4/final。
+
+[三次CPU进度与条件估时](../../../records/research_phase15_recoverability_20261012T233532_842792/user_reported_cpu_progress_20261013T104437.json)。
+
+---
+
 # 2026-10-13 10:17：Phase1.5 GPU100批完成，CPU分析中
 
 ## 最新观测：100批GPU完成，CPU分析进行中（2026-10-13 10:17）

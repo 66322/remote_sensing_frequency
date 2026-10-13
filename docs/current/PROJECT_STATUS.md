@@ -1,16 +1,16 @@
 # 当前状态：Phase1.5 GPU100批完成，CPU分析中（2026-10-13）
 
-## 最新观测：100批GPU完成，CPU分析进行中（2026-10-13 10:17）
+## 最新CPU进度与耗时解释（2026-10-13 10:44）
 
-用户只读查询 **QUERY_OBSERVED=2026-10-13T10:17:19.241427+08:00**；queue **LAST_OBSERVED=2026-10-13T10:17:18.524905+08:00**，**CPU_ORACLE_AND_CONDITIONAL_COUNTS / CONTROLLER_LIVE=True**，**COMPLETE=100**。nohup包含GPU0/1交错派发和完成，末尾 `PHASE15_JOB_COMPLETE B_16_5_10 GPU 1`、`PHASE15_JOB_COMPLETE D_16_5_10 GPU 0`；没有此次错误回报。两卡GPU批次全部返回完成，显卡空闲符合CPU阶段，并非单卡未启动或据此认定失败。以上为最后观测，不是实时状态。
+用户读取D progress：10:17:47.026717为48case，10:35:41.565092为54case，**最后progress观测2026-10-13T10:44:37.604759+08:00为57/160case**（tile3_11/realization15/pixel），analysis_D日志tail空。该回报没有新queue查询或controller存活检查；最后queue观测仍10:17:18.524905、CPU_ORACLE_AND_CONDITIONAL_COUNTS/controller LIVE=True、GPU100 COMPLETE。CPU计数持续增长，不能按显卡空闲认定停止；此为最后观测而非实时。
 
-按已发布控制器执行链，到达此阶段意味着两卡真实smoke自动验收、100批accept_job绑定检查、E子进程成功返回；这些是执行链推断，尚未独立接收PASS/CM/预测绑定/E原件，不等于科学验收或方法有效性。整轮尚未达到PHASE15_COMPLETE_AWAITING_REVIEW；当前CPU D对2tile×20旧mask ID×4family共160case做五专家互补/oracle及可观测条件计数，之后汇总A/B/C/D/E。D进度见 `analysis/D/progress.json`，日志 `logs/analysis_D.log`；completed_cases是CPU D的160case进度，不是新GPU批数。
+检查修复执行commit45138f0f的analyze_phase15.py/phase15_numeric.py/control_phase15.py：D为单CPU子进程，OMP/OPENBLAS/MKL线程数1；每case校验/解压预测与熵，计算5专家及raw/smoothed组合、pixel/128/256 oracle，多区域int64 CM/新错恢复计数、距离变换、连通域、GT/可观测分箱。evidence与condition_counts存在重复全图扫描，当前实现可优化，但尚无函数级计时，不能指定实际唯一瓶颈或宣称CPU单核满载。线程设为1限制数值库并行，不意味着所有NumPy操作改线程就能提速。
 
-修复commit `45138f0f92c668bc86ce9532a4382b38d2b12b6d`、目录 `research_phase15_recoverability_20261012T233532_842792`、登记PID843079、日志 `nohup_20261012T233542741074.log` 保持。0训练/100固定批/1540唯一逻辑case、无新增seed/Test6/held4/final；旧失败目录保留，不再登记/重启。当前GPU部分已完成，之前24–48h资源预留不能继续当剩余ETA；CPU D完成量/步速未回传，暂不报剩余小时。
+48→57历时1610.578秒，9case平均178.953秒（约2分59秒）；按同速剩103case约5h07m，D预计2026-10-13 15:52左右，用户沟通取16:00左右。仅条件线性估计，mask族/第二tile/IO速度变化均可改变；不包含随后五项汇总，不是全队完成保证。原24–48h为资源预留，不用于当前剩余ETA。
 
-下一步继续现有CPU分析→五项汇总，仅读取status及D进度。达到PHASE15_COMPLETE_AWAITING_REVIEW且owned进程/锁退出后，用原目录upload_phase15.py前台上传轻量原件，再独立核验、分析并据科学去留条件制定配对训练。不会自动派发新训练；若CPU/HOLD失败保留原件，不自动重试。
+保留现有执行快照与已完成57case，不中断/热改/自动重跑；未来技术优化可考虑缓存重复数组、复用valid/disagreement与联合计数、减少全图扫描，需严格整数结果等价检查，尚未实施。固定0训练/100GPU批/160D case，旧失败证据保留。继续只读D progress/status，全部分析汇总完成并owned进程/锁退出后上传轻量原件，独立科学验收后再制定配对训练；不自动新训练/seed/Test6/held4/final。
 
-[本次用户进度原件](../../records/research_phase15_recoverability_20261012T233532_842792/user_reported_cpu_analysis_20261013T101719.json)。
+[三次CPU进度与条件估时](../../records/research_phase15_recoverability_20261012T233532_842792/user_reported_cpu_progress_20261013T104437.json)。
 
 ---
 
