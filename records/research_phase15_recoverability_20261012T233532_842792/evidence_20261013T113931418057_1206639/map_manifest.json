@@ -1,0 +1,61 @@
+{
+  "tiles": {
+    "3_11": {
+      "crop_shuffle": {
+        "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792/maps/3_11/crop_shuffle.npz",
+        "sha256": "553c0ecd5e8df2b5afdb09ce42ed887b67ab5ea7617cb27ea17c4dd917aff51a",
+        "bijective": true,
+        "pixels": 36000000,
+        "fixed_points": 1487104,
+        "canonical_index_sha256": "d9bf928120d6b3c74c67af6e65309ef6f10c450470628542f32cc69996b04e17"
+      },
+      "tile_shuffle": {
+        "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792/maps/3_11/tile_shuffle.npz",
+        "sha256": "3933d3d7cbe7228c3529515cd0d2594bf1c3192b2da83576a811aba8b8cea1bd",
+        "bijective": true,
+        "pixels": 36000000,
+        "fixed_points": 3,
+        "canonical_index_sha256": "1a67ebf03478c20bfe2290e84b924ba754c7cce2e88c5d1a74dd44d42757ad50"
+      }
+    },
+    "5_10": {
+      "crop_shuffle": {
+        "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792/maps/5_10/crop_shuffle.npz",
+        "sha256": "23c488e1f547ff7b2d4f95a7e05048333d6b088f32b22f68cc42c6efc4ba72eb",
+        "bijective": true,
+        "pixels": 36000000,
+        "fixed_points": 323840,
+        "canonical_index_sha256": "03fdc31c2ff0c02abf9975e04c0fcea83c42f4d662bef8c55957aceab06e30d9"
+      },
+      "tile_shuffle": {
+        "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792/maps/5_10/tile_shuffle.npz",
+        "sha256": "627429b307c6670be6c246de9cd233aa92f4f5117d4cd1681f50f4c8f7d4703a",
+        "bijective": true,
+        "pixels": 36000000,
+        "fixed_points": 1,
+        "canonical_index_sha256": "6f5396a837d782aa1f7b8132ebb85af5d675faec75c087c4693ea624d189bf14"
+      }
+    }
+  },
+  "fixed_across_realizations_and_models": true,
+  "details": {
+    "3_11": {
+      "shape": [
+        6000,
+        6000
+      ],
+      "zero_definition": "post_d30_data.dsm_present_zero; normalized DSM=0, dm=True",
+      "optical_preprocessing": "uint8/255 before model ImageNet normalization",
+      "dsm_preprocessing": "original per-tile minmax before permutations"
+    },
+    "5_10": {
+      "shape": [
+        6000,
+        6000
+      ],
+      "zero_definition": "post_d30_data.dsm_present_zero; normalized DSM=0, dm=True",
+      "optical_preprocessing": "uint8/255 before model ImageNet normalization",
+      "dsm_preprocessing": "original per-tile minmax before permutations"
+    }
+  }
+}

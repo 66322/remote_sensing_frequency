@@ -1,0 +1,14 @@
+{
+  "plan_sha256": "46f171542c643589ec93429feea13d3bed3ba0897b4a9d6c72d8755f7a23baba",
+  "code_sha256": "7755b8e7c9e51cc62702e43be6c609a70a7d1e981458ae7d683648cb6d9164e8",
+  "files": {
+    "mask_manifest.json": "3cc964fa09c3b5a43ed557b7954dabb51c0d291a90a5182098c818c0aa4a1d56",
+    "map_manifest.json": "7f159ef193de75cacdcd7f12dc04591d383f73617a3c36313deccff5cecd7c1f",
+    "checkpoint_manifest.json": "af45af55891dfab2ed6f2b4bd434d255718f2b6952a55487f7f375561c80af8e",
+    "calibration.json": "768e481d7ce2cf8cdb7552795fbd212fc91ccccde0bd65e788b1a765a0c3c59f",
+    "old_cache.json": "e528c6a88f1a426083da8d1c69192f944736c02e345d8bb6dabb55d9fcb875eb",
+    "input_binding.json": "c8194bc7d9a354f36610b365da95f56868472df399b928b2e02f211ab4f3f54b"
+  },
+  "optimizer_updates": 0,
+  "prepared_at": "2026-10-12T23:39:55.106061+08:00"
+}

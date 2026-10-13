@@ -1,0 +1,12 @@
+{
+  "controller_pid": 843079,
+  "log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792/nohup_20261012T233542741074.log",
+  "command": [
+    "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+    "-u",
+    "-B",
+    "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792/code/scripts/control_phase15.py",
+    "--directory",
+    "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792"
+  ]
+}

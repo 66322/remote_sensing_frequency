@@ -1,0 +1,53 @@
+{
+  "binding": {
+    "plan.json": "46f171542c643589ec93429feea13d3bed3ba0897b4a9d6c72d8755f7a23baba",
+    "code_manifest.json": "7755b8e7c9e51cc62702e43be6c609a70a7d1e981458ae7d683648cb6d9164e8",
+    "preparation_complete.json": "3a635441c9a7c7aa180084b780121b9360c5a75c15d0696b540b3cbc0a6b9b02"
+  },
+  "cases": [
+    "R16_5_10_intact_16_pixel_25",
+    "R16_5_10_intact_16_random_25",
+    "R16_5_10_intact_16_gradient_25",
+    "R16_5_10_intact_16_matched_25",
+    "R16_5_10_intact_17_pixel_25",
+    "R16_5_10_intact_17_random_25",
+    "R16_5_10_intact_17_gradient_25",
+    "R16_5_10_intact_17_matched_25",
+    "R16_5_10_intact_18_pixel_25",
+    "R16_5_10_intact_18_random_25",
+    "R16_5_10_intact_18_gradient_25",
+    "R16_5_10_intact_18_matched_25",
+    "R16_5_10_intact_19_pixel_25",
+    "R16_5_10_intact_19_random_25",
+    "R16_5_10_intact_19_gradient_25",
+    "R16_5_10_intact_19_matched_25",
+    "R16_5_10_intact_20_pixel_25",
+    "R16_5_10_intact_20_random_25",
+    "R16_5_10_intact_20_gradient_25",
+    "R16_5_10_intact_20_matched_25"
+  ],
+  "records": {
+    "R16_5_10_intact_16_pixel_25": "c16411a6b0d68e9ddf434cfd2eb95001fa4e2d497e0ee7c4a838b2415375f44d",
+    "R16_5_10_intact_16_random_25": "7fb45e6317619c08da9c1240dc47ba1cd707fe74f55db6fd46d7243e11e20b87",
+    "R16_5_10_intact_16_gradient_25": "4db7c8fe4bf535fc35ddb8f52cd63c1b7b6da4e410fbbb1b99c280d7a1ebfdcc",
+    "R16_5_10_intact_16_matched_25": "810c94c3aba524da3d02c1fa621f4594eff806915b49e0ffcaf77625f42b340b",
+    "R16_5_10_intact_17_pixel_25": "75990c1a58739512f4201020c600c629d99c95373594ac4f0722ab5ee7b544c3",
+    "R16_5_10_intact_17_random_25": "40cab1accf97d6d2bed67429f14e84a1e1e1773977855fcc0a039de7473ba422",
+    "R16_5_10_intact_17_gradient_25": "d434d6f68a8260bc25ef2d0052314c9ad99eec95464b1f721133c8183772994c",
+    "R16_5_10_intact_17_matched_25": "dbe77467748889548dafebac7bd8e9956f67d5254d76bca5583b7e5807309df5",
+    "R16_5_10_intact_18_pixel_25": "32287e643cc0b21a6e801d7147d00d6d5b4b5e44ef9f7022043c7ce825fa6996",
+    "R16_5_10_intact_18_random_25": "23fe08e1246ca7dbb9208d1aaf2fe5454be250f003a4147e92a6a694f2675492",
+    "R16_5_10_intact_18_gradient_25": "fb734fd9248d4e71ca292a513263a88968243dec1f8158f9f311d7b1f9f96c58",
+    "R16_5_10_intact_18_matched_25": "3e6ab83cfdb4108e352534807966bdb1590ff84a6c1863ebcb96f9dd2174927a",
+    "R16_5_10_intact_19_pixel_25": "1846780b28c48a0e878a288eaec91d9a3db763c518ae93be1e34528dc294c0bb",
+    "R16_5_10_intact_19_random_25": "e77247579c3521ae5d4ac8f20015fefc96802fb414ac467c1a001921045507cf",
+    "R16_5_10_intact_19_gradient_25": "b9baf746a5c49c9fc4d22857fe2157972c8787f967b80b2040d3b18eb55a4a2c",
+    "R16_5_10_intact_19_matched_25": "2d77783511ca90424837660fb3de5ea812b1aebf961b90f50baf6609e761d79e",
+    "R16_5_10_intact_20_pixel_25": "51553a6e63207ca51bb44559f0c5dc3238efda536e4c58c3af0ee30d75697671",
+    "R16_5_10_intact_20_random_25": "48fc1938766a000c2b42731d4c636cc4d96bc8bf5d850cafe3c8690385c7bc2a",
+    "R16_5_10_intact_20_gradient_25": "22e31cd4d21be8eea7ae52cb7fa73c1d5fb9143311740163e559a4366ef17552",
+    "R16_5_10_intact_20_matched_25": "683da5e237de350f0de1b97de863e701b000f546f6b72503f21e36e170314bab"
+  },
+  "optimizer_updates": 0,
+  "completed_at": "2026-10-13T07:07:19.008694+08:00"
+}

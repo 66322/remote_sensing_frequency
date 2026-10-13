@@ -1,0 +1,9 @@
+{
+  "observed_at": "2026-10-12T23:59:40.710562+08:00",
+  "optimizer_updates": 0,
+  "case": "R16_3_11_intact_01_random_25",
+  "physical_gpu": 1,
+  "phase": "inference",
+  "windows_done": 529,
+  "windows_total": 529
+}

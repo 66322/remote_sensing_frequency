@@ -1,0 +1,33 @@
+{
+  "binding": {
+    "plan.json": "46f171542c643589ec93429feea13d3bed3ba0897b4a9d6c72d8755f7a23baba",
+    "code_manifest.json": "7755b8e7c9e51cc62702e43be6c609a70a7d1e981458ae7d683648cb6d9164e8",
+    "preparation_complete.json": "3a635441c9a7c7aa180084b780121b9360c5a75c15d0696b540b3cbc0a6b9b02"
+  },
+  "cases": [
+    "S1_3_11_intact_01_pixel_5",
+    "S1_3_11_intact_01_pixel_10",
+    "S1_3_11_intact_02_pixel_5",
+    "S1_3_11_intact_02_pixel_10",
+    "S1_3_11_intact_03_pixel_5",
+    "S1_3_11_intact_03_pixel_10",
+    "S1_3_11_intact_04_pixel_5",
+    "S1_3_11_intact_04_pixel_10",
+    "S1_3_11_intact_05_pixel_5",
+    "S1_3_11_intact_05_pixel_10"
+  ],
+  "records": {
+    "S1_3_11_intact_01_pixel_5": "add4d51f899ed0aaecd3328c80fde1db46c8509967083c1e6caa285a9658b315",
+    "S1_3_11_intact_01_pixel_10": "653a86e53adc7c8927556abe819af341b7ddf48afee695ff7db997a5c0379de7",
+    "S1_3_11_intact_02_pixel_5": "2f7f5eead091a61c144f145a983829712fb98ff57be16c40cbcb54cebf859647",
+    "S1_3_11_intact_02_pixel_10": "c805288ed023abd9fe7ae6578f88d79fe018ecd011ad7162b19a0c0e136956f6",
+    "S1_3_11_intact_03_pixel_5": "3af4088bc7da69bccc4196ebe17ada53e89a22d11d4cb933f98b833ebbe8367e",
+    "S1_3_11_intact_03_pixel_10": "cb6a2e6cb6385a13239e3eab34b4f8e0463ac39988124f56a4d8fa35a461e3a9",
+    "S1_3_11_intact_04_pixel_5": "482a327364663ab9f9852e997bc8484a7834d4bfb4f9f0be98104125e4ac3210",
+    "S1_3_11_intact_04_pixel_10": "7860da1a9474e3582612ee2c077a5a17863483f5f3d1f875bc3e2aa21f7a801a",
+    "S1_3_11_intact_05_pixel_5": "6b4510c2f0cd6fd9a420893f07e6ca62716142a49317cc486811a835779ce5bc",
+    "S1_3_11_intact_05_pixel_10": "d9ba4bf9f79437c9902f38a822156857b0e62ae05056ccfe2fd474c94eae6e1b"
+  },
+  "optimizer_updates": 0,
+  "completed_at": "2026-10-13T01:00:26.587959+08:00"
+}

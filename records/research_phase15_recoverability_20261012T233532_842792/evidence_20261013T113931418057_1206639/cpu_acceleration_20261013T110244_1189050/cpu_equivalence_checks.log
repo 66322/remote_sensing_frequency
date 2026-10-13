@@ -1,0 +1,9 @@
+test_all_oracle_fields_exact (test_phase15_acceleration.Equivalence) ... ok
+test_complete_agreement_and_absent_bins (test_phase15_acceleration.Equivalence) ... ok
+test_invalid_prediction_rejected (test_phase15_acceleration.Equivalence) ... ok
+test_takeover_stage_and_resource_guards (test_phase15_acceleration.Equivalence) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 2.448s
+
+OK

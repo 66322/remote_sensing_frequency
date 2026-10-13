@@ -1,0 +1,40 @@
+{
+  "binding": {
+    "plan.json": "46f171542c643589ec93429feea13d3bed3ba0897b4a9d6c72d8755f7a23baba",
+    "code_manifest.json": "7755b8e7c9e51cc62702e43be6c609a70a7d1e981458ae7d683648cb6d9164e8",
+    "preparation_complete.json": "3a635441c9a7c7aa180084b780121b9360c5a75c15d0696b540b3cbc0a6b9b02"
+  },
+  "checks": [
+    {
+      "check": "cross_gpu_exact",
+      "case": {
+        "model": "S1",
+        "tile": "3_11",
+        "dsm": "intact",
+        "realization": 1,
+        "family": "pixel",
+        "ratio": 25
+      },
+      "passed": true
+    },
+    {
+      "check": "cross_gpu_exact",
+      "case": {
+        "model": "R16",
+        "tile": "3_11",
+        "dsm": "intact",
+        "realization": 1,
+        "family": "random",
+        "ratio": 25
+      },
+      "passed": true
+    }
+  ],
+  "all_passed": true,
+  "optimizer_updates": 0,
+  "test6_loaded": false,
+  "held4_loaded": false,
+  "independent_final_loaded": false,
+  "role": "engineering only; not scientific selection",
+  "completed_at": "2026-10-13T00:00:02.696446+08:00"
+}
