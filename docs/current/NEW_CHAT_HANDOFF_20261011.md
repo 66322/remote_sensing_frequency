@@ -1,16 +1,16 @@
 # 新对话入口：Phase1.5 CPU分析中（更新2026-10-13）
 
-## 最新登记：CPU双进程加速已接管，进度待查询（2026-10-13）
+## 最新观测：真实等价检查通过，并行CPU分析阶段（2026-10-13 11:04）
 
-用户终端返回 `CPU_ACCELERATION_CONTROLLED_STOP_D 1099918 PRESERVE_COMPLETED_CASES`，随后 **CPU_ACCELERATION_REGISTERED**，子目录 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792/cpu_acceleration_20261013T110244_1189050`，登记PID1189233、WORKERS=2，日志 `controller.log`。执行commit `4842b5eb38c62b19db97094d88526260f5fe3359`。当前证据状态 **CPU_ACCELERATION_REGISTERED_PROGRESS_NOT_YET_QUERIED**；目录11:02:44为命名时间标记，不是queue observed_at。尚无新控制器存活查询、真实pixel/matched等价回执或并行新case计数，不从PID宣称真实检查PASS。
+用户查询 **QUERY_OBSERVED=2026-10-13T11:04:44.458399+08:00**，queue **LAST_OBSERVED=2026-10-13T11:04:41.001321+08:00**，**CPU_ORACLE_AND_CONDITIONAL_COUNTS / CONTROLLER_LIVE=True**，GPU100 COMPLETE。新加速日志tail无输出/错误回报。已接收real_equivalence.json摘录：**passed=True**，观测11:04:30.765609，固定 `3_11_01_pixel` 与 `3_11_01_matched` 两原完成case的 **all_result_fields_exact=True**。该证据验证两个真实样本的新旧全部result字段，不是全部160case或论文科学结论验收。
 
-成功登记执行链推断：同包CPU检查、资源门禁、原D身份核对、受控停止、等待原controller/child退出及锁释放已返回；接管前后状态/完成case保留清单尚未独立接收。原GPU100批结果与原plan/code保持；原分析停止时的HOLD为明确受控接管历史，不能当新科学配方失败。新controller先扫描/绑定已完成case并对照两个真实结果，PASS后两CPU进程分派剩余case、最终调用原五项汇总。原D最后回传57/160（10:44:37）不是接管时保留数，应以后续progress为准。
+D progress仍为旧观测 **2026-10-13T11:01:51.572905+08:00**，63case、tile3_11/realization16/gradient。其时间早于接管/等价通过，不是加速后新产出计数；最后回报旧完成数63，扫描实际保留数仍以新progress.preserved_completed_cases为准。等价PASS后约14秒即本次查询，尚未收到首个新case/parallel_workers/elapsed，不能用旧progress时间判断新控制器卡死或计算实测加速倍数。控制器阶段按执行链已进入CPU池，登记workers2，实际并行子进程/速度仍待进度回报。
 
-立即下一步只读原 `status_phase15.py --directory DIR`、新 `cpu_acceleration_20261013T110244_1189050/controller.log`，及 `analysis/D/progress.json`。如存在 `cpu_acceleration_20261013T110244_1189050/real_equivalence.json` 可读取。不要再次accelerate/enqueue/手工启动GPU；原nohup已停止，后续诊断看新日志。旧约16:00 D ETA仅是接管前旧步速估计，不能沿用新任务剩余ETA；实际新completed_cases/elapsed后再校准。
+目录 `research_phase15_recoverability_20261012T233532_842792` 与加速子目录 `cpu_acceleration_20261013T110244_1189050`、PID1189233、加速commit4842b5eb保持；原推理commit45138f0f/plan/code绑定不改。原GPU批和已完成统计保留，剩余固定D case之后自动原五项汇总；不追加训练/seed/GPU重跑/Test6/held4/final。
 
-固定0训练/100GPU批/160D case，0新增case/seed/Test6/held4/final，无GPU重跑。所有新增执行证据在原zzx目录子树，完成或HOLD且owned进程/锁退出后用原upload_phase15.py上传轻量原件，再做科学核验与配对训练选路。详见[CPU接管协议](../protocols/PHASE_1_5_CPU_ACCELERATION_20261013.md)。
+下一步保持运行，过3–5分钟只读status、新controller.log及analysis/D/progress.json。新progress会显示parallel_workers/preserved_completed_cases/new_completed_cases/elapsed_accelerated_seconds，收到后再校准ETA。完成后原upload_phase15.py上传轻量原件；当前原件仅用户终端摘录，尚未服务器全清单独立验收。旧16:00 ETA不作为接管后保证。
 
-[用户接管登记原件](../../records/research_phase15_recoverability_20261012T233532_842792/cpu_acceleration_20261013T110244_1189050/registration_observation.json)。
+[用户状态/真实等价摘录](../../records/research_phase15_recoverability_20261012T233532_842792/cpu_acceleration_20261013T110244_1189050/user_reported_equivalence_20261013T110444.json)。
 
 ---
 

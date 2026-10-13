@@ -1,3 +1,19 @@
+# 2026-10-13 11:04：CPU加速两个真实case全字段等价通过
+
+## 最新观测：真实等价检查通过，并行CPU分析阶段（2026-10-13 11:04）
+
+用户查询 **QUERY_OBSERVED=2026-10-13T11:04:44.458399+08:00**，queue **LAST_OBSERVED=2026-10-13T11:04:41.001321+08:00**，**CPU_ORACLE_AND_CONDITIONAL_COUNTS / CONTROLLER_LIVE=True**，GPU100 COMPLETE。新加速日志tail无输出/错误回报。已接收real_equivalence.json摘录：**passed=True**，观测11:04:30.765609，固定 `3_11_01_pixel` 与 `3_11_01_matched` 两原完成case的 **all_result_fields_exact=True**。该证据验证两个真实样本的新旧全部result字段，不是全部160case或论文科学结论验收。
+
+D progress仍为旧观测 **2026-10-13T11:01:51.572905+08:00**，63case、tile3_11/realization16/gradient。其时间早于接管/等价通过，不是加速后新产出计数；最后回报旧完成数63，扫描实际保留数仍以新progress.preserved_completed_cases为准。等价PASS后约14秒即本次查询，尚未收到首个新case/parallel_workers/elapsed，不能用旧progress时间判断新控制器卡死或计算实测加速倍数。控制器阶段按执行链已进入CPU池，登记workers2，实际并行子进程/速度仍待进度回报。
+
+目录 `research_phase15_recoverability_20261012T233532_842792` 与加速子目录 `cpu_acceleration_20261013T110244_1189050`、PID1189233、加速commit4842b5eb保持；原推理commit45138f0f/plan/code绑定不改。原GPU批和已完成统计保留，剩余固定D case之后自动原五项汇总；不追加训练/seed/GPU重跑/Test6/held4/final。
+
+下一步保持运行，过3–5分钟只读status、新controller.log及analysis/D/progress.json。新progress会显示parallel_workers/preserved_completed_cases/new_completed_cases/elapsed_accelerated_seconds，收到后再校准ETA。完成后原upload_phase15.py上传轻量原件；当前原件仅用户终端摘录，尚未服务器全清单独立验收。旧16:00 ETA不作为接管后保证。
+
+[用户状态/真实等价摘录](../../../records/research_phase15_recoverability_20261012T233532_842792/cpu_acceleration_20261013T110244_1189050/user_reported_equivalence_20261013T110444.json)。
+
+---
+
 # 2026-10-13：CPU双进程加速接管登记，真实等价待查询
 
 ## 最新登记：CPU双进程加速已接管，进度待查询（2026-10-13）
