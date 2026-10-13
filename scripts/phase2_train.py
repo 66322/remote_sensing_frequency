@@ -10,6 +10,38 @@ from phase2_common import *
 from phase2_data import *
 from model.phase2_matched import MatchedExpert,FusionHead,optimizer,factor,observables
 
+def segmentation_ce(logits,target):
+    """Unweighted FP32 mean CE, without CUDA NLLLoss's nondeterministic reduction.
+
+    Classwise where has no indexed backward accumulation. The denominator counts
+    every nonignored pixel across the batch, exactly as reduction='mean'.
+    """
+    if target.shape!=logits.shape[:1]+logits.shape[2:] or target.dtype!=torch.int64:
+        raise ValueError('CE target shape/dtype differs')
+    valid=target!=255
+    if bool((valid&((target<0)|(target>=logits.shape[1]))).any()):
+        raise ValueError('CE target outside class range')
+    logp=F.log_softmax(logits.float(),dim=1)
+    total=logp.new_zeros(())
+    for c in range(logits.shape[1]):
+        total=total+torch.where(target==c,-logp[:,c],0.).sum()
+    return total/valid.sum()
+
+def smoke_ce(device):
+    """Real-device repeatability and CPU-reference check before the costly smoke."""
+    x=torch.linspace(-2,2,2*6*7*9,device=device).reshape(2,6,7,9)
+    target=(torch.arange(2*7*9,device=device).reshape(2,7,9)%6).long();target[:,0]=255
+    results=[]
+    for _ in range(2):
+        z=x.clone().requires_grad_();loss=segmentation_ce(z,target);loss.backward()
+        results.append((loss.detach(),z.grad.detach()))
+    if not all(torch.equal(a,b) for a,b in zip(*results)):
+        raise RuntimeError('real-device CE repeatability failed')
+    ref=x.cpu().requires_grad_();loss=F.cross_entropy(ref,target.cpu(),ignore_index=255);loss.backward()
+    torch.testing.assert_close(results[0][0].cpu(),loss.detach(),rtol=1e-6,atol=1e-7)
+    torch.testing.assert_close(results[0][1].cpu(),ref.grad,rtol=1e-5,atol=1e-7)
+    return dict(formula='classwise_log_softmax_where_mean_valid',repeat_exact=True,cpu_reference_close=True)
+
 def model_digest(model):
     h=hashlib.sha256()
     for n,v in model.state_dict().items():
@@ -54,6 +86,7 @@ def gradients(model):
     return nonzero
 
 def smoke(base,gpu):
+    ce_check=smoke_ce('cuda')
     model=expert(base);out=Path(base)/'smoke'/('gpu'+str(gpu));out.mkdir(parents=True,exist_ok=False)
     init=model_digest(model);names=[(n,list(p.shape),p.numel()) for n,p in model.named_parameters() if p.requires_grad]
     sample_batch=Crops(base,'phase21',stop=1)
@@ -65,7 +98,7 @@ def smoke(base,gpu):
         with torch.no_grad():z=model(batch)
     if not torch.equal(z,F.interpolate(low,size=batch.shape[-2:],mode='nearest')):raise RuntimeError('compact logits not exact')
     train_logits=F.interpolate(low,batch.shape[-2:],mode='nearest')
-    loss=F.cross_entropy(train_logits.float(),target,ignore_index=255);loss.backward();nonzero=gradients(model)
+    loss=segmentation_ce(train_logits,target);loss.backward();nonzero=gradients(model)
     with torch.inference_mode():
         native_rgb=torch.stack([x['rgb'] for x in samples]).cuda();native_ds=torch.stack([x['dsm'] for x in samples]).cuda()
         full=torch.ones_like(native_ds,dtype=torch.bool)
@@ -80,7 +113,7 @@ def smoke(base,gpu):
             raise RuntimeError('head exact fallback failed')
     write(out/'result.json',dict(initial_state_sha256=init,trainable=names,total_trainable=sum(n[2] for n in names),
         compact_logit_exact=True,head_fallback_exact=True,gradient_nonzero=nonzero,physical_gpu=gpu,optimizer_updates=0,
-        actual_physical_batch=16,actual_observables_finite=True,**gpu_metrics()))
+        actual_physical_batch=16,actual_observables_finite=True,ce_check=ce_check,**gpu_metrics()))
     complete(base,out,dict(all_passed=True,optimizer_updates=0))
 
 def train_expert(base,job,gpu):
@@ -97,7 +130,7 @@ def train_expert(base,job,gpu):
             image=image.cuda(non_blocking=True);gt=batch['gt'].cuda(non_blocking=True)
             for g in opt.param_groups:g['lr']=g['initial_lr']*factor(step,16000)
             with torch.autocast('cuda',dtype=torch.bfloat16):z=model(image)
-            loss=F.cross_entropy(z.float(),gt,ignore_index=255);loss.backward()
+            loss=segmentation_ce(z,gt);loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(),float('inf'),error_if_nonfinite=True)
             if step==1 or step%500==0:seen.update(gradients(model))
             opt.step()
@@ -168,7 +201,7 @@ def train_head(base,job,gpu):
             x={n:a.cuda(non_blocking=True) for n,a in x.items()}
             opt.zero_grad(set_to_none=True)
             for g in opt.param_groups:g['lr']=g['initial_lr']*factor(step,8000)
-            z=model(x['r'],x['d'],x['obs'],x['rm'],x['dm']);loss=F.cross_entropy(z.float(),x['gt'],ignore_index=255)
+            z=model(x['r'],x['d'],x['obs'],x['rm'],x['dm']);loss=segmentation_ce(z,x['gt'])
             loss.backward();torch.nn.utils.clip_grad_norm_(model.parameters(),float('inf'),error_if_nonfinite=True);opt.step()
             hashes.write(json.dumps(dict(step=step,batch_hash=token))+'\n')
             if step==1 or step%20==0:

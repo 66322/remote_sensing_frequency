@@ -96,6 +96,9 @@ def main(base):
                 if proc.poll() is None:
                     try:proc.wait(timeout=10)
                     except subprocess.TimeoutExpired:os.killpg(proc.pid,signal.SIGKILL);proc.wait()
+            for name,proc in active:
+                if state['workers'][name]['status']=='RUNNING':
+                    state['workers'][name]['status']='COMPLETE' if proc.returncode==0 else 'INTERRUPTED_HOLD'
             status='EXTERNAL_INTERRUPTION_HOLD' if isinstance(exc,InterruptedError) else 'TECHNICAL_FAILURE_HOLD'
             update(status,error=str(exc));write(base/'technical_failure.json',dict(error=str(exc),automatic_retry=False,observed_at=now()))
             raise

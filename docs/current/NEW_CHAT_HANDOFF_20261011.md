@@ -1,14 +1,11 @@
-# 新对话交接：Phase2执行包就绪，等待用户服务器启动（2026-10-13）
+# 新对话交接：Phase2 CE技术修复就绪，旧队列停止（2026-10-13）
 
-用户2026-10-13已明确“按照上述规划进行具体实验吧”。Phase2执行包现已实现，状态 READY_FOR_USER_LAUNCH / SERVER_GPU_SMOKE_REQUIRED；尚无服务器登记、运行ID/PID或新训练结果。核心A_RGB/A_DSM各16k、B0/B2各8k（4训练48k）；C/L、静态后剩余差距及保护通过后自动派B1/B3各8k（最多6训练64k）。GPU0/1、无24h截止、失败HOLD且不自动重试/增seed。
+最后服务器查询 **2026-10-13T15:02:06.544744+08:00**：原Phase2为TECHNICAL_FAILURE_HOLD，controller/worker均退出；prepare与legacy_counts完成，两卡smoke均在CUDA交叉熵确定性归约失败，正式训练尚未派发。原目录 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase2_matched_20261013T145903_1304150`，代码f01f9e94，PID1304554是旧已退出进程。smoke1 RUNNING仅旧状态残留，不能当实时运行。
 
-[执行协议](../protocols/PHASE_2_EXECUTION_20261013.md)、[完整科学设计](../protocols/PHASE_2_MATCHED_COMPLEMENTARITY_20261013.md)、[技术验收](../../records/phase2_implementation_20261013/verification.json)。10项CPU检查/13个Python语法检查通过，旧160D/720身份/120dose计数重用另核验；真实DINO/Torch2.2.2+cu121/两卡数值与实际batch16烟雾检查由服务器完成，之前不派正式训练。down4明确沿既有bilinear+antialias算子，修正原设计“area”措辞；门禁使用与head输入一致的窗口熵差重建，空健康支持记NA。
+修复已实现：保持严格确定性及原mean CE/ignore255，改为classwise log_softmax/where归约；12项CPU检查通过，尚未在真实GPU验证。下一步用户显式执行enqueue_phase2.py --replace-ce-bug-directory指定上述原目录；专项门禁确认零训练产物、双卡同一缺陷、源封印不变且无活进程/锁后，在独立目录重新准备和双卡smoke。旧目录原件保留。**修复后的新队列尚未登记**；不得直接重启旧controller、重复普通enqueue或自行重跑其他失败配方。
 
-资源已落实：只读resident/mmap输入、每卡crop8/prefetch8、head 8batch读前、共享expert窗口cache文件锁、低网格FP32与3bit/bitpack无损证据、GPU完成case立即进入CPU进程计数；合计分析最多16进程且受quota限制，每数值库1线程。内存预算256GiB且≤实际可用50%，≥32GiB可用内存、各GPU至少16000MiB空闲、缓存/证据磁盘预留600GiB。资源不符停止准备，不强占剩余显卡或改batch。24–48h预留窗口，实际ETA待首批校准，无填时长追加实验。
+[技术修复协议](../protocols/PHASE_2_CE_TECHNICAL_FIX_20261013.md)、[完整执行协议](../protocols/PHASE_2_EXECUTION_20261013.md)、[科学设计](../protocols/PHASE_2_MATCHED_COMPLEMENTARITY_20261013.md)、[原始失败日志](../../records/phase2_ce_fix_20261013/server_smoke_failure.txt)、[修复CPU验收](../../records/phase2_ce_fix_20261013/verification.json)。用户启动后回传PHASE2_TECHNICAL_REPLACEMENT_OF/PHASE2_REGISTERED/PHASE2_LOG，再只读查询新目录status。无SSH，服务器由用户操作。
 
-启动脚本enqueue_phase2.py复用原完成快照、逐文件验SHA及固定Git提交生成独立目录 /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase2_matched_<time>_<pid>。先检查Phase1.5完整完成、进程/锁退出，唯一登记；再次调用只显示既有目录。用户执行一次性bootstrap后回传PHASE2_REGISTERED/PHASE2_LOG，再只读status_phase2.py。旧enqueue/accelerate不用于本轮；中断/故障保留目录，不能靠重复enqueue恢复。
+研究决定保持RGB–DSM双向条件互补与退化/缺失分割主线，任务驱动恢复旁支。这次是工程兼容性修复，不是研究假设失败或新方法正结果。核心A_RGB/A_DSM各16k与B0/B2各8k（4训练48k），C/L、静态剩余差距及保护通过才派B1/B3（最多6训练64k）；seed42、Fit12/Val2、GPU0/1、24–48h资源窗口但无截止。未知缺失动态选择与已知缺失硬回退分别报告，oracle不是可部署方法或mIoU上界。未访问Test6/held4/final，不增加seed。
 
-无SSH、Test6/held4/final或自动失败配方重跑；主线仍双向条件互补/退化缺失，恢复旁支。已知missing硬回退保护与unreported corruption的动态选择分开；oracle不是方法或mIoU上界。训练输出本地源码/计划不代表论文成功，最后旧服务器查询仍2026-10-13T11:35:58.181880+08:00，原Phase1.5完成观测11:31:16.761032。上传9d7c27e8及b3546315/3ce2495原件与设计均保留。
-
-新上传器完成后前台执行upload_phase2.py：精确JSONL gzip分块base64+manifest/summary，逐文件索引与SHA保留在流内；checkpoint/大数组/完整log留服务器。认证失败复用既有worktree，不重复快照、不force push。
-
+资源继续只读输入驻留/mmap、crop8/prefetch8、冻结窗口cache复用、GPU case完成即CPU多进程原始计数；分析合计最多16进程且受quota约束、数值库单线程，256GiB热缓存上限且不超过可用内存50%。启动校验至少32GiB可用内存、各卡16000MiB空闲、600GiB磁盘预留。修复损失在全部专家/融合头统一使用。进度和执行快照在/home/jovyan/zzx对应records独立目录；完成前台upload_phase2.py无损分块原件，数组/权重/完整log留服务器并索引。

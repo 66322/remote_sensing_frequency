@@ -766,3 +766,7 @@ CPU/D1与七P完整，P3在fixed8000评价3_11/aux_down4，controller LIVE，P0/
 P7 RGB_U 83.575357%，对基线+2.562756、P6+1.759726、P8+1.952962、P9+2.207993pp，两tile正；普通/全缺失/DSM_U保护0变化。R0 85.001650%，P7−R0 −1.426292pp（两tile负）违反固定−0.2pp必要条件。P7具体gate失败；E未收，完整压力未验。D1固定DSM信号−0.050601pp且tile异号，Q必要条件失败、仍不运行。保留单向上下文线索，主线/旧gate不变；剩余三P/E继续原GPU0 FIFO，不能后验换候选/追加seed。此前“尚无科学原件”条目是历史状态。
 
 最新注册依据：[终端回报](../../../records/post_s1_transfer_registration_20261010/observation.json)；执行目录research_post_s1_transfer_20261010T073327_2852696，PID2852987，未收到后续存活或T0训练回报。
+
+## 2026-10-13 Phase2首次smoke技术失败与修复
+
+原research_phase2_matched_20261013T145903_1304150于15:02:06查询TECHNICAL_FAILURE_HOLD、无活进程；两卡smoke均CUDA NLLLoss确定性归约不支持，prepare/legacy完成、无正式训练。保持原mean CE/ignore255改用log_softmax/where；12项CPU检查通过、真实GPU未验，新专项技术替换待用户执行。[原件](../../../records/phase2_ce_fix_20261013/server_smoke_failure.txt)、[技术验收](../../../records/phase2_ce_fix_20261013/verification.json)、[技术修复及零训练替换门禁](../../protocols/PHASE_2_CE_TECHNICAL_FIX_20261013.md)。不改变研究问题/预算/seed，不归类为方法失败或正式实验结果。

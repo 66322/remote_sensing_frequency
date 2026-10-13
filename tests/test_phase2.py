@@ -33,6 +33,35 @@ class Checks(unittest.TestCase):
         z.square().mean().backward()
         self.assertTrue(all(p.grad is not None for n,p in a.named_parameters() if p.requires_grad))
         self.assertTrue(all(p.grad is None for n,p in a.named_parameters() if not p.requires_grad))
+    def test_ce_reference_loss_and_gradients(self):
+        from phase2_train import segmentation_ce,smoke_ce
+        torch.use_deterministic_algorithms(True)
+        try:
+            for dtype in (torch.float32,torch.bfloat16):
+                a=torch.randn(3,6,9,11,dtype=dtype).requires_grad_();b=a.detach().clone().requires_grad_()
+                target=torch.randint(0,6,(3,9,11));target[0]=255;target[1,:4]=255
+                actual=segmentation_ce(a,target);expected=torch.nn.functional.cross_entropy(b.float(),target,ignore_index=255)
+                actual.backward();expected.backward()
+                torch.testing.assert_close(actual,expected,rtol=1e-6,atol=1e-7)
+                torch.testing.assert_close(a.grad,b.grad,rtol=1e-5 if dtype==torch.float32 else 0.02,atol=1e-7 if dtype==torch.float32 else 1e-5)
+                self.assertEqual(int(a.grad[0].count_nonzero()),0)
+            self.assertTrue(smoke_ce('cpu')['repeat_exact'])
+            with self.assertRaises(ValueError):segmentation_ce(a,torch.full_like(target,6))
+        finally:torch.use_deterministic_algorithms(False)
+    def test_ce_replacement_guard(self):
+        from enqueue_phase2 import ce_replacement_guard,sha
+        from phase2_common import write
+        with tempfile.TemporaryDirectory() as folder:
+            base=Path(folder);(base/'code').mkdir();(base/'jobs').mkdir();(base/'logs').mkdir()
+            write(base/'plan.json',dict(execution_commit='f01f9e94f1e9bdcc9c126b5bc3ffb2a7d3b492f5'))
+            (base/'code/one.py').write_text('pass\n');write(base/'code_manifest.json',dict(files={'one.py':sha(base/'code/one.py')}))
+            write(base/'registration.json',dict(plan_sha256=sha(base/'plan.json'),code_sha256=sha(base/'code_manifest.json')))
+            write(base/'queue_status.json',dict(status='TECHNICAL_FAILURE_HOLD',error='smoke0 exit=1; see logs/smoke0.log'))
+            write(base/'technical_failure.json',dict(automatic_retry=False))
+            for g in (0,1):(base/'logs'/('smoke%d.log'%g)).write_text('nll_loss2d_forward_out_cuda_template does not have a deterministic implementation')
+            self.assertEqual(ce_replacement_guard(base)['optimizer_updates'],0)
+            (base/'jobs/A_RGB').mkdir()
+            with self.assertRaises(RuntimeError):ce_replacement_guard(base)
     def test_head_fallback_and_controls(self):
         r=torch.randn(2,6,8,8);d=torch.randn_like(r);obs=torch.rand(2,12,8,8)
         rm=torch.ones(2,32,32,dtype=torch.bool);dm=rm.clone();rm[:,:16]=False;dm[:,16:24]=False

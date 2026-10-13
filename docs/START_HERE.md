@@ -1,7 +1,5 @@
-# 共享入口：Phase2执行包已实现（2026-10-13）
+# 共享入口：Phase2首次smoke失败，CE技术修复待用户执行（2026-10-13）
 
-用户已授权按规划执行，已于2026-10-13 14:59收到PHASE2_REGISTERED回执（不是实时status），目录/PID见HANDOFF；准备、双卡smoke与正式训练阶段尚待查询，勿重复enqueue。4核心训练48k，门禁通过后最多6训练64k，GPU0/1，无24h强停。
+最后查询2026-10-13T15:02:06.544744+08:00原队列TECHNICAL_FAILURE_HOLD、所有进程退出；两卡同一CUDA NLL确定性算子错误，正式训练尚未开始。修复保留严格确定性与原mean CE目标，12项CPU检查通过，真实GPU待重新smoke；新技术替换队列尚未登记。
 
-读取[研究决定](current/RESEARCH_DECISION.md)、[HANDOFF](current/HANDOFF.md)、[PROJECT_STATUS](current/PROJECT_STATUS.md)、[NEXT_EXPERIMENT](current/NEXT_EXPERIMENT.md)、[执行协议](protocols/PHASE_2_EXECUTION_20261013.md)、[科学设计](protocols/PHASE_2_MATCHED_COMPLEMENTARITY_20261013.md)、[技术验收](../records/phase2_implementation_20261013/verification.json)。10CPU检查通过，真实两卡batch16 smoke自动先行，失败HOLD不自动重试。
-
-只读输入驻留、GPU共享cache、CPU随case流水、固定流hash与精确回退已实现；启动检查内存/CPU quota/各卡空闲与600GiB磁盘预留。所有产物在/home/jovyan/zzx对应独立records目录，无SSH/Test6/held4/final/extra seed。用户已执行enqueue_phase2 bootstrap并返回真实目录/PID，不把本地CPU检查当GPU实验。[发现与旧结果](experiments/FINDINGS_REGISTRY_PHASE2_20261013.md)保持；旧入口已归档history/pre_phase2_execution_20261013。
+先读[研究决定](current/RESEARCH_DECISION.md)、[当前交接](current/HANDOFF.md)、[状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)、[技术修复门禁](protocols/PHASE_2_CE_TECHNICAL_FIX_20261013.md)、[执行协议](protocols/PHASE_2_EXECUTION_20261013.md)、[科学设计](protocols/PHASE_2_MATCHED_COMPLEMENTARITY_20261013.md)。旧目录保留，仅用户显式专项技术替换；不重复普通enqueue、不重启旧controller、不重跑其他配方或增seed。GPU0/1、无24h截止、无SSH/Test6/held4/final。主线及阶段证据边界保持。

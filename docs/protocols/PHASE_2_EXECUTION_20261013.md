@@ -43,3 +43,7 @@ python -B DIR/code/scripts/upload_phase2.py --directory DIR
 上传一个精确JSONL gzip流，按256KiB压缩字节分成ASCII base64块（每块约350KiB），保留全原始字节/逐file SHA/索引，manifest/summary可直接读。原始大数组、checkpoint及完整log留服务器并在回执索引，不提交完整继承源码。认证失败重跑同一upload命令复用已提交worktree，不重新生成证据或实验。不force push。
 
 本地10项CPU检查通过：匹配参数/初始化/反传；head回退和信号消融；可观测输入有限且无metadata；预算与mask库存；bitpack无损；流hash；训练配额；正确先pool CM；不合法专家oracle与availability oracle区别；C/L支持量、both-wrong分母及静态吸收后停止动态训练。13个新增Python文件语法检查。真实Torch2.2.2+cu121、DINO/checkpoint/数据/GPU数值检查由服务器smoke完成；CPU PASS不写成正式实验结果。
+
+## 首次GPU smoke技术修复
+
+2026-10-13首次两卡smoke失败在CUDA确定性NLLLoss，正式训练未派发。使用等价classwise log_softmax/where CE保持严格确定性与原目标；原目录保留、仅显式CE专项技术替换可新建目录。此专项例外不开放一般失败配方重跑。12项CPU检查通过、真实GPU检查待用户执行。[诊断、修复及替换门禁](PHASE_2_CE_TECHNICAL_FIX_20261013.md)。
