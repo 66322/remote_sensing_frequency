@@ -1,13 +1,5 @@
-# 共享入口（最后观测2026-10-13 19:36）
+# 共享入口：Phase2结果已验收，待执行产物清理（2026-10-14）
 
-Phase2当前目录151120_1310582在19:36查询为EVALUATING_B0_16000，两卡评估worker存活；4项核心训练任务显示COMPLETE，科学结果待核验。records约2.69TiB，其中Phase2约578.2GiB，挂载盘可用3.0T。第一批旧预测删除31956完成，第二批脚本就绪但尚未执行。
+最后已核验队列记录2026-10-14 00:39:03 +08为完成；上传dc335e0d。核心4训练48k，B1/B3未派发。先读[研究决定](current/RESEARCH_DECISION.md)、[交接](current/HANDOFF.md)、[状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)，再读[结果与验收边界](experiments/PHASE_2_RESULTS_20261014.md)、[产物清理协议](protocols/PHASE_2_ARTIFACT_RETIREMENT_20261014.md)。
 
-先读[研究决定](current/RESEARCH_DECISION.md)、[交接](current/HANDOFF.md)、[状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)和[第二批清理协议](protocols/HISTORICAL_PREDICTION_SECOND_CLEANUP_20261013.md)。研究主线与Phase2门禁保持，无新队列、自动重试或Test6访问。服务器由用户操作，无SSH。下方为此前入口说明。
-
-# 共享入口：Phase2配对专家训练已启动（最后观测2026-10-13 15:17:32）
-
-新目录151120_1310582，prepare/双卡smoke/legacy_counts COMPLETE，A_RGB GPU0 step2180、A_DSM GPU1 step1740，controller/两训练worker存活。无正式验证结果，status里的ETA仅纯训练步数。容量600GiB是启动下限；源码估算核心750–850GiB、完整条件6训练约1TiB，等待实际df确认。缓存不自动删。详见HANDOFF最新观测，以下15:11等待描述为历史。
-
-用户15:11启动回执确认新目录research_phase2_matched_20261013T151120_1310582、controller PID1310878、执行代码e5641e073bf4421e346f589199c291a6e94db8b2、GPU0/1。这是启动回执，不是实时status；准备、真实GPU CE/smoke和正式训练状态尚待新目录查询。原145903失败目录保留；勿重复enqueue或专项替换。
-
-先读[研究决定](current/RESEARCH_DECISION.md)、[当前交接](current/HANDOFF.md)、[状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)、[技术修复门禁](protocols/PHASE_2_CE_TECHNICAL_FIX_20261013.md)、[执行协议](protocols/PHASE_2_EXECUTION_20261013.md)、[科学设计](protocols/PHASE_2_MATCHED_COMPLEMENTARITY_20261013.md)。12项CPU检查通过不替代真实GPU验证。核心4训练48k，门禁通过最多6训练64k，无24h截止，无SSH/Test6/held4/final或额外seed。[登记回执](../records/phase2_ce_fix_20261013/replacement_registration.txt)。
+B0/B2在P-U主分数未超过平均；C通过但L与clean保护失败。主线仍RGB–DSM条件互补与退化/缺失分割，恢复旁支。清理已获用户授权，脚本就绪但服务器未执行；保留CM/轨迹/代码/配置/必要权重与L坐标证据。无新训练、自动重试/seed、SSH、Test6/held4访问。历史入口归档于archive/phase2_pre_review_20261014/START_HERE.md。

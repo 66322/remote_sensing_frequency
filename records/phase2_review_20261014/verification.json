@@ -1,0 +1,64 @@
+{
+  "upload_commit": "dc335e0d13d3a1bb4b58e253feaa22cc516275ef",
+  "archive_sha256": "cc9ea1d202110ebd281e95550d962d13d6adc64a16e0804e833f5f515b38a5e7",
+  "verified_parts": 309,
+  "verified_payloads": 24643,
+  "verified_original_bytes": 378352482,
+  "state": "PHASE2_COMPLETE_AWAITING_REVIEW",
+  "finished_observed_at": "2026-10-14T00:39:03.210695+08:00",
+  "case_counts": {
+    "average_8000": 322,
+    "average_16000": 1164,
+    "B0_16000": 1164,
+    "B2_16000": 1164
+  },
+  "confusion_matrices_checked": 183072,
+  "fallback_checks": 3814,
+  "recomputed_summary_values": 95,
+  "jobs": {
+    "A_RGB": {
+      "optimizer_updates": 16000,
+      "initial_state_sha256": "99b0a6d86a04959a7d47f7e419605ac11835a740b19d7f44578d2796a528327d"
+    },
+    "A_DSM": {
+      "optimizer_updates": 16000,
+      "initial_state_sha256": "99b0a6d86a04959a7d47f7e419605ac11835a740b19d7f44578d2796a528327d"
+    },
+    "B0": {
+      "optimizer_updates": 8000,
+      "initial_state_sha256": "4a3c4bafb567b46b71c30c4577b4b6b96906250d74ea14d2cf477048456d0a69"
+    },
+    "B2": {
+      "optimizer_updates": 8000,
+      "initial_state_sha256": "61edaf900fa80cf321b054602d3eeea1d30de6f9f426a238d2bdaea666a89e44"
+    }
+  },
+  "binding": {
+    "plan.json": "a4928fe58d25aa0ab1d3438db5686f5967333ea245bfdf365846ffc53e5ba2b3",
+    "code_manifest.json": "09d70a32b20dc18a3c51cf1b78c35255d55cc61df0cc20cbb52c315400f47711",
+    "prepared.json": "2772f2eb27cd77ff69f2ea89e5692c46667ff34158437bfeb60a300beb1c4e7e"
+  },
+  "parameter_scope_hashes": {
+    "A_RGB": "f8c074547064f4d2d7684226e1188bd4fc090969623370970e97b66c91f6b44d",
+    "A_DSM": "f8c074547064f4d2d7684226e1188bd4fc090969623370970e97b66c91f6b44d",
+    "B0": "da7d92905aa4a48e8240cdf5c989ccdd1af39cdec73d3f2aa7a4ac5fd77de8b3",
+    "B2": "965d09ffc519bc9b372eaf99e3e404a992c2175e3cc676a84c621d19b3effd2e"
+  },
+  "no_B1_B3": true,
+  "directions": {
+    "average": {
+      "rgb": 73.32205607822657,
+      "dsm": 78.97286581696605
+    },
+    "B0": {
+      "rgb": 73.10243052458996,
+      "dsm": 78.4106459307545
+    },
+    "B2": {
+      "rgb": 72.62113789035998,
+      "dsm": 79.0250495495174
+    }
+  },
+  "source_scope": "Potsdam Fit12/Val2, seed42; no Test6/held4; archive bytes and integer evidence verified, server arrays/weights not rehashed",
+  "passed": true
+}
