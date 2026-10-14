@@ -1,9 +1,9 @@
-# 共享入口：Phase2.4技术替换已登记，等待当前状态（2026-10-14）
+# 共享入口：Phase2.4已进入D1（2026-10-14）
 
-当前状态：**REGISTERED_LAUNCH_OBSERVED_AWAITING_STATUS**。新目录research_phase24_protected_20261014T193915_2149100，执行5a84f0ea，登记输出PID=2149894。根据固定登记脚本控制流，26项Linux CPU检查已全通过无skip；已创建控制器进程，真实GPU smoke/当前存活仍未观测。最后观测为用户回传登记输出：目录时间2026-10-14 19:39:15，日志文件名时间19:39:20.570637；尚未接收此后的status、CPU日志原件或真实GPU smoke结果，不表述为实时持续运行。
+最后观测：2026-10-14T19:47:03.296677+08:00；查询时间19:47:03.372369+08:00。用户回传status/日志，QUEUE=D1、控制器和GPU0/1均LIVE=True；这是该时刻观测，不是实时状态。
 
-先读[研究决定](current/RESEARCH_DECISION.md)、[交接](current/HANDOFF.md)、[状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)，再读[登记观测](../records/phase24_registration_20261014/observation_193920.json)、[执行协议](protocols/PHASE_24_EXECUTION_20261014.md)、[IPC修复](protocols/PHASE_24_IPC_PATH_FIX_20261014.md)、[科学门禁](protocols/PHASE_24_DIAGNOSIS_AND_CONDITIONAL_HEADS_20261014.md)。
+SMOKE=12；D1累计69/642，其中10个核心smoke复用，本阶段新完成59/632，剩573。CPU_PENDING=1是流水线在途任务。当前阶段估计剩0.70834小时（约42.5分钟，约20:30结束）；此估计仅覆盖D1，不覆盖后续分析和条件训练。
 
-下一动作是用户只读查询新目录status_phase24.py和nohup日志，不再登记/替换，不沿用185408旧失败目录查进度。原失败快照保留。无SSH；正式任务仍须输入核验和两卡真实smoke通过。
+先读[研究决定](current/RESEARCH_DECISION.md)、[交接](current/HANDOFF.md)、[状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)，再读[最新观测](../records/phase24_registration_20261014/observation_194703.json)、[执行协议](protocols/PHASE_24_EXECUTION_20261014.md)、[科学门禁](protocols/PHASE_24_DIAGNOSIS_AND_CONDITIONAL_HEADS_20261014.md)。
 
-主线RGB–DSM互补与退化/缺失分割、恢复旁支不变。GPU0/1、≥24h可续、最多4小头32k、0新专家/训练seed、原B1/B3门禁不改；无Test6/held4/final、自动失败重试或整轮磁盘cache。[登记前入口](history/20261014_before_phase24_registration/START_HERE.md)。
+保持原队列自动继续，后续只读查询，不重复登记或重启。研究主线RGB–DSM条件互补与退化/缺失分割不变，恢复旁支。原C/L和B1/B3门禁不改；T0 clean8k必做，T1/T2/T3按门禁，最多4小头32k，0新专家/训练seed。GPU0/1≥24h可续，无硬截止，无SSH/Test6/held4/final或自动失败重试。

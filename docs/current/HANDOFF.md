@@ -1,22 +1,17 @@
-# 当前交接：Phase2.4替换已登记，查询新目录（2026-10-14）
+# 当前交接：Phase2.4 D1运行观测（2026-10-14）
 
-## 已观测登记与下一动作
-**REGISTERED_LAUNCH_OBSERVED_AWAITING_STATUS**。用户回传新目录：
-/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase24_protected_20261014T193915_2149100
-执行5a84f0eacabe5d6f1c7ed1638e6a9291c58e151f；PID2149894；nohup_20261014T193920570637.log。最后观测为用户回传登记输出：目录时间2026-10-14 19:39:15，日志文件名时间19:39:20.570637；尚未接收此后的status、CPU日志原件或真实GPU smoke结果，不表述为实时持续运行。
+最后观测：2026-10-14T19:47:03.296677+08:00；查询时间19:47:03.372369+08:00。用户回传status/日志，QUEUE=D1、控制器和GPU0/1均LIVE=True；这是该时刻观测，不是实时状态。
 
-固定登记脚本只有全部26项Linux CPU测试成功且无skip、创建controller Popen后才打印REGISTERED，因此运输路径修复通过这一级准入；CPU日志/registration_cpu_checks.json原件未逐byte接收，双卡真实CUDA/12 CM桥接未验收，不把此记录写成正式case完成或持续存活。
+运行目录 /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase24_protected_20261014T193915_2149100；执行5a84f0eacabe5d6f1c7ed1638e6a9291c58e151f，控制器2149894，GPU0/1进程2149964/2149965，日志nohup_20261014T193920570637.log。
 
-唯一下一动作：用户用上述新目录code/scripts/status_phase24.py --directory <D>及tail新nohup日志只读查询，回传当前最后观测/存活/阶段。不要再次登记或替换，不重启controller。原185408_2127460是保留的失败快照，不再用于进度。
+SMOKE=12；D1累计69/642，其中10个核心smoke复用，本阶段新完成59/632，剩573。CPU_PENDING=1是流水线在途任务。当前阶段估计剩0.70834小时（约42.5分钟，约20:30结束）；此估计仅覆盖D1，不覆盖后续分析和条件训练。
 
-## 科学预算与资源
-D0–D3、T0 clean8k必做、校准不足且probe保护通过才派T1/T2各8k、再条件T3 8k；最多4头32k，0新专家/训练seed，GPU0/1≥24h可续无硬截止。原B1/B3及L=False不改，4k轨迹/8k固定主端点不挑年龄。输入核验及双卡真实smoke通过前不派正式任务。[执行](../protocols/PHASE_24_EXECUTION_20261014.md)、[科学门禁](../protocols/PHASE_24_DIAGNOSIS_AND_CONDITIONAL_HEADS_20261014.md)。
+D1进入意味着固定控制器的输入、双卡smoke和CM桥接门禁已通过；输入48/48完成。尚未独立接收smoke_pass等原始JSON逐字节验收，不能据控制台状态声称正式机制结论或训练结果。
 
-原9.792GB输入只读共享；每卡最多2匿名包、<1GiB clean缓存、mask LRU8；样本≤1GiB、CPU16/24/32按实际配额/同case基准选择。抽象AF_UNIX通信不创建文件，不改TMPDIR到/tmp；其他记录/临时仍在zzx对应新目录。不恢复旧整轮缓存，评价后计数复算及临时pth退役，必要端点暂留待审。
+同一匿名RAM case的CPU16/24/32进程基准分别5.7172/4.9965/4.9580秒，三者结果SHA完全一致，选择32进程，每个数值库1线程；不是全局单线程。两卡峰值allocated约5.54GiB，各包2.304GB是匿名RAM通信，非逐case磁盘产物。xFormers disabled/not available符合固定配置，本次日志未显示异常。
 
-## 工程事故与旧研究边界
-原research_phase24_protected_20261014T185408_2127460执行15f：18项通过、两项AF_UNIX路径失败，无launch、0正式推理/训练。此次用户显式单次技术替换，原seal/code/log保留、marker防重复；不属于已训练配方重试。[修复](../protocols/PHASE_24_IPC_PATH_FIX_20261014.md)、[登记](../../records/phase24_registration_20261014/observation_193920.json)。
+研究主线RGB–DSM条件互补与退化/缺失分割不变，恢复旁支。原C/L和B1/B3门禁不改；T0 clean8k必做，T1/T2/T3按门禁，最多4小头32k，0新专家/训练seed。GPU0/1≥24h可续，无硬截止，无SSH/Test6/held4/final或自动失败重试。
 
-主线RGB–DSM条件互补与退化/缺失分割，恢复旁支；两重复Val2/seed42仅开发证据。Phase2完成及35910文件退役是此前已验收记录；原缓存不能再假定在线，不重复旧队列/清理。工程准入成功不改变C/L、研究路线或新科学结论。
+原185408_2127460零更新IPC失败快照保留，不再用于进度；本次正常D1不需修复或再次启动。下一动作只读status查询，D1后等待source-only拟合、固定端点评价和T0/条件头的实际门禁。完成后用户显式upload_phase24.py，白名单轻量归档回读。旧Phase2大cache已退役，不恢复。
 
-服务器由用户执行，无SSH、Test6/held4/final或自动失败重跑。当前等待状态查询，成功结束后用户显式upload_phase24.py、白名单归档/回读，重要门禁与交接继续同分支同步。[登记前交接](../history/20261014_before_phase24_registration/HANDOFF.md)。
+[最新观测](../../records/phase24_registration_20261014/observation_194703.json)；[执行](../protocols/PHASE_24_EXECUTION_20261014.md)；[此前交接](../history/20261014_before_phase24_D1_observation/HANDOFF.md)。
