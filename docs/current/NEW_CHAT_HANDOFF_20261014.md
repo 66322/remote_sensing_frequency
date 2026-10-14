@@ -1,5 +1,7 @@
 # 新对话接续：Phase2.4原队列（2026-10-14）
 
+> 2026-10-15研究路线讨论：用户明确“暂时不受期限限制，优先研究问题和创新性”。已完成[路线复盘与相邻问题建议](../experiments/RESEARCH_ROUTE_REVIEW_20261015.md)，建议以Phase2.4收束当前统计信号/输出决策类，再考察真实几何质量的可观测性或高度表征的尺度机制。**这些是助手建议，用户尚未选择转向或授权新实验。** 原主线、恢复旁支角色、已冻结门禁和队列继续；本轮未新增服务器观测，不能由日期推断完成。
+
 以GitHub 66322/remote_sensing_frequency 的 rebuild-v1-protocol-20260915 分支最新内容为准；先读docs/START_HERE.md，再读docs/current/RESEARCH_DECISION.md、HANDOFF.md、PROJECT_STATUS.md、NEXT_EXPERIMENT.md，及本文件。勿依赖旧聊天记忆或历史开场指令GPU0-only。
 
 ## 原队列与最后观测
