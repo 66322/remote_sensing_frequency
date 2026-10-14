@@ -1,14 +1,12 @@
-# 下一步：落实Phase2.4规划的执行包（2026-10-14）
+# 下一步：用户登记Phase2.4固定执行快照（2026-10-14）
 
-当前仅[规划登记](../protocols/PHASE_24_DIAGNOSIS_AND_CONDITIONAL_HEADS_20261014.md)，**PLAN_ONLY_NOT_IMPLEMENTED_NOT_ENQUEUED**。用户目前先规划，不启动新队列；旧Phase2计算/35910文件清理已完成，删除旧执行清理动作。
+**IMPLEMENTED_CPU_CHECKED_AWAITING_SERVER_SMOKE**。用户已要求具体执行；[执行包](../protocols/PHASE_24_EXECUTION_20261014.md)与CPU检查完成，服务器尚未登记/启动，无新运行ID。
 
-若用户随后要求按规划执行：
-1. 检查原队列/锁，绑定已完成Phase2专家/头/输入/mask、原CM和retirement记录；不重启原队列，不假定已退役大缓存存在。
-2. 新执行包先实现GPU0/1动态case队列、原输入只读共享、直接联合计数、source/target分离、原始CM离线重算及有界RAM/消费者即时回收；GPU参数常驻，避免整轮磁盘cache与按头重复backbone forward。
-3. 12个真实case先在两卡做数值/CM/availability等价、异常清理和吞吐验收；CPU16/24/32实测选型、有效CPU/RAM配额确认，报告分阶段ETA/显存/RAM/磁盘峰值后冻结snapshot与科学manifest。工程变更不能静默改精度/微批/指标。
-4. D0–D3先做旧计数、642联合诊断、两fold温度/alpha/logistic及522补充端点；T0 clean分布对照与条件T1/T2/T3按具体门禁，最多4小头32k，不自动救原B1/B3或加seed。校准足够则停止复杂方法分支；部署信号失败则限定停止当前决策类。
-5. 服务器由用户执行nohup，所有记录在/home/jovyan/zzx对应新实验目录。GPU0/1资源窗口≥24h可续，取消一天硬截止；门禁失败不为凑时长加无意义任务。原始计数、轻量参数/来源/轨迹与必要模型保留，最后消费者完成即释放临时张量。上传只用轻量白名单，同分支回读核验。
+1. 用户在/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro fetch本分支，用包含本执行包的40位SHA取scripts/enqueue_phase24.py执行。唯一登记入口先查询research_phase24_protected_*、原队列锁/完成标记、GPU0/1；存在队列则查询原状态，忙卡则不登记。不要直接重跑controller或原Phase2。
+2. 自动核验原输入/源代码/权重/mask、有效CPU/RAM；Linux全部CPU检查、两卡backward-only梯度和各6个原CM桥接smoke先通过。CPU并发候选16/24/32在同匿名RAM case上基准选择。失败进入hold，保留现场，不自动替换或救配方。
+3. 自动D0–D3及T0；T1/T2/T3严格条件派发。资源窗口GPU0/1≥24h可续，无硬截止；最多4小头32k，0专家/额外训练seed。4k轨迹与固定8k共用前向评价，不挑年龄/seed。
+4. 用新目录code/scripts/status_phase24.py --directory <D>只读查询：最后观测、控制/worker存活、GPU窗口、CPUcase、当前阶段ETA；不能从旧日志或GPU0%判断完成。
+5. PHASE24_COMPLETE_AWAITING_REVIEW并确认进程退出后，用户运行code/scripts/upload_phase24.py --directory <D>；只上传白名单轻量原件归档，fetch回读每个分块。不要无交互后台等待GitHub密码；断线后同入口继续，不重复科学任务。
+6. 接收实际运行ID/计数/资源峰值，验原件及门禁后更新研究决定/结果/交接。校准充分停止复杂分支；无部署信号仅停止当前观察/决策类。8k小头评审后再定长期价值，不提前删除原专家。
 
-研究仍RGB–DSM双向条件互补与退化/缺失分割，保护强RGB的非对称操作只是候选解法。独立泛化/确认性多seed未开放；禁止Test6/held4/final、SSH及自动配方重试。旧D23/其他历史大型产物继续按独立依赖审计处理，不由新实验规划扩大删除范围。[存储执行规则](../protocols/EXPERIMENT_ARTIFACT_RETENTION_20261013.md)。
-
-旧下一步归档[history](../history/20261014_before_phase24_plan/NEXT_EXPERIMENT.md)。
+原大缓存已退役，新实验只读共享RAM和有界匿名包，最后消费者即回收。计数、配置、源参数/代码/轨迹/必要模型留证；自动删除仅该新目录的rolling resume及评价完成后的4k临时pth，先复算整数summary。无Test6/held4/final、SSH、自动重试或扩大旧文件删除范围。[原下一步归档](../history/20261014_before_phase24_execution/NEXT_EXPERIMENT.md)。

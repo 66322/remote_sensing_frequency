@@ -1,7 +1,7 @@
 # 研究决定：先拆解融合回归，再检验受保护条件补救（2026-10-14）
 
 ## 阶段、角色与决定来源
-主线仍RGB–DSM条件互补与退化/缺失分割，任务驱动恢复旁支。Phase2完成；用户本轮要求综合两份外部分析规划下一阶段、GPU0/1至少一天并及时回收缓存。当前只登记[Phase2.4及条件Phase2.5规划](../protocols/PHASE_24_DIAGNOSIS_AND_CONDITIONAL_HEADS_20261014.md)，**PLAN_ONLY_NOT_IMPLEMENTED_NOT_ENQUEUED**；不隐含已启动授权或方向切换。
+主线仍RGB–DSM条件互补与退化/缺失分割，任务驱动恢复旁支。Phase2完成；用户本轮要求综合两份外部分析规划下一阶段、GPU0/1至少一天并及时回收缓存。用户随后明确要求“按照上述规划安排具体实验”。[科学门禁规划](../protocols/PHASE_24_DIAGNOSIS_AND_CONDITIONAL_HEADS_20261014.md)已落实为[执行包](../protocols/PHASE_24_EXECUTION_20261014.md)，状态**IMPLEMENTED_CPU_CHECKED_AWAITING_SERVER_SMOKE**；服务器尚未登记/启动，授权不等于实时运行或方向切换。
 
 ## 实验已验证与代码事实
 [Phase2结果](../experiments/PHASE_2_RESULTS_20261014.md)和[原件验收](../../records/phase2_review_20261014/verification.json)：Potsdam Fit12/Val2、seed42、NB fg5；匹配两专家，核心4训练48k，B1/B3未派。C=True、L=False，静态clean保护不通过。两个模态专家不是三个seed-only专家；融合头训练时专家冻结，不能归因于DSM梯度伤RGB骨干。
@@ -19,4 +19,6 @@
 ## 产物决定及当前边界
 用户35910文件清理完成回执12:13:25已验收，旧缓存不再在线；confidence诊断需限定再推理，不恢复大缓存。新代码必须实现分批RAM/最后消费者回收，长期仅留原计数、绑定、参数/配置/代码、必要权重与轻量审计。[规则](../protocols/EXPERIMENT_ARTIFACT_RETENTION_20261013.md)。原服务器权重未本地重新hash，L坐标union仍限原服务器证据；保留坐标，不宣称独立验过。
 
-此前决定原文归档[history](../history/20261014_before_phase24_plan/RESEARCH_DECISION.md)。
+实现口径：原window头与新FP64 post-stitch决策分开；guarded source内层组仅用于源拟合选择，目标全tile评价；T1/T2名义架构一致但有效容量不同，T3统计固定错位256输入像素。0-init仅保证初态，不保证训练后clean；完整保护门禁仍必需。18项CPU检查和旧差值复算通过，Linux/CUDA真实验收待服务器。
+
+此前决定原文归档[history](../history/20261014_before_phase24_execution/RESEARCH_DECISION.md)。
