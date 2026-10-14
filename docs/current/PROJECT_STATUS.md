@@ -1,18 +1,15 @@
-# 当前状态：Phase2.4登记失败，IPC修复待服务器核验（2026-10-14）
+# 当前状态：Phase2.4替换登记成功，当前运行状态待查（2026-10-14）
 
-|项目|证据/状态|
+|项目|最后证据|
 |---|---|
-|原失败登记|research_phase24_protected_20261014T185408_2127460；15fdfa4c|
-|用户回传CPU检查|20项18通过、两项AF_UNIX path too long；无launch.json|
-|正式新实验|控制器/正式GPU推理/训练均未启动，0更新|
-|IPC修复包|IPC_PATH_FIX_READY_AWAITING_SERVER_REGISTRATION_CHECKS|
-|本地修复检查|26项23通过、3项真实Linux检查待执行；14文件编译|
-|替换登记|尚未执行/没有新目录观测；用户需显式技术替换参数|
+|新目录|research_phase24_protected_20261014T193915_2149100|
+|执行/PID|5a84f0ea / 2149894，Popen已创建|
+|Linux CPU准入|26项全通过且无skip，由固定登记脚本控制流和用户REGISTERED输出推断|
+|真实GPU/正式任务|输入完成、CUDA smoke、原CM桥接、case/训练进度尚未观测|
+|原失败快照|185408_2127460保留，显式技术替换完成登记；不是当前进度目录|
 
-18:54:08是原目录登记时间；失败结束时间未提供。上述为用户回传的最后证据，不是实时服务器查询。[用户摘录](../../records/phase24_ipc_path_fix_20261014/user_cpu_log_excerpt.txt)、[修复协议](../protocols/PHASE_24_IPC_PATH_FIX_20261014.md)、[修复审计](../../records/phase24_ipc_path_fix_20261014/fix_audit.json)。
+最后观测为用户回传登记输出：目录时间2026-10-14 19:39:15，日志文件名时间19:39:20.570637；尚未接收此后的status、CPU日志原件或真实GPU smoke结果，不表述为实时持续运行。 [登记信息](../../records/phase24_registration_20261014/observation_193920.json)。当前状态**REGISTERED_LAUNCH_OBSERVED_AWAITING_STATUS**，不推断控制器持续存活。
 
-科学口径/预算不变：GPU0/1 ≥24h可续、最多4头32k、0新专家/seed、原C/L与B1/B3不变。抽象socket不创建文件，其他记录/临时仍在zzx新目录；保留旧失败快照。新26检查及双卡真实smoke未通过前不派正式任务。
+下一步只读查询新目录status与nohup日志；不再执行登记/替换，不直接重启。GPU0/1、最多4小头32k、0新专家/训练seed，≥24h可续，无硬截止；实际进入哪些头仍按科学门禁。原C/L及B1/B3不改。
 
-旧Phase2最后完成2026-10-14T00:39:03.210695+08:00，核心4训练48k、上传dc335e0d；C=True、L=False。[结果](../experiments/PHASE_2_RESULTS_20261014.md)。旧35910文件清理回执12:13:25.974504+08:00，普通大cache已退役，不重复清理/重启。
-
-主线RGB–DSM互补与退化/缺失分割、恢复旁支；反复Val2/seed42为开发证据。无SSH、Test6/held4/final或自动配方重试。[修复前状态](../history/20261014_before_phase24_ipc_fix/PROJECT_STATUS.md)。
+原Phase2最后完成2026-10-14T00:39:03.210695+08:00；旧35910文件退役回执12:13:25.974504+08:00，普通cache已离线。[旧结果](../experiments/PHASE_2_RESULTS_20261014.md)。主线/开发证据边界不变，无SSH、Test6/held4/final、自动配方重试。[登记前状态](../history/20261014_before_phase24_registration/PROJECT_STATUS.md)。

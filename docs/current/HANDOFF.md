@@ -1,25 +1,22 @@
-# 当前交接：Phase2.4零更新登记失败的IPC技术替换（2026-10-14）
+# 当前交接：Phase2.4替换已登记，查询新目录（2026-10-14）
 
-## 当前事实与唯一下一动作
-**IPC_PATH_FIX_READY_AWAITING_SERVER_REGISTRATION_CHECKS**。用户回传原失败目录 research_phase24_protected_20261014T185408_2127460，执行15fdfa4c：20项中18数值检查ok、两项运输检查均OSError: AF_UNIX path too long；没有launch.json。0控制器、0正式GPU推理、0训练。18:54:08是目录登记时间，不是失败结束观测；用户未提供失败结束时间，不写成实时状态。
+## 已观测登记与下一动作
+**REGISTERED_LAUNCH_OBSERVED_AWAITING_STATUS**。用户回传新目录：
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase24_protected_20261014T193915_2149100
+执行5a84f0eacabe5d6f1c7ed1638e6a9291c58e151f；PID2149894；nohup_20261014T193920570637.log。最后观测为用户回传登记输出：目录时间2026-10-14 19:39:15，日志文件名时间19:39:20.570637；尚未接收此后的status、CPU日志原件或真实GPU smoke结果，不表述为实时持续运行。
 
-[修复协议](../protocols/PHASE_24_IPC_PATH_FIX_20261014.md)与[审计](../../records/phase24_ipc_path_fix_20261014/fix_audit.json)。用户使用修复提交的固定40位SHA，运行enqueue_phase24.py并显式指定--replace-ipc-path-bug-directory=<该原目录>。原代码/失败记录保留，不热改/删除；新独立目录先完整Linux CPU检查，成功才启动双卡smoke。当前尚无替换目录或smoke成功记录。
+固定登记脚本只有全部26项Linux CPU测试成功且无skip、创建controller Popen后才打印REGISTERED，因此运输路径修复通过这一级准入；CPU日志/registration_cpu_checks.json原件未逐byte接收，双卡真实CUDA/12 CM桥接未验收，不把此记录写成正式case完成或持续存活。
 
-## 工程修复与验证边界
-Python3.10默认文件socket的长TMPDIR路径超限，改为现有resource_sharer管理的短Linux抽象地址，带原process.authkey认证，保留FD claim/after-fork/关闭语义；无全局地址猴补丁、无/tmp回退、无新文件socket。未知ABI或已有文件listener明确hold。修复未登记状态查询和技术替换索引上传。
+唯一下一动作：用户用上述新目录code/scripts/status_phase24.py --directory <D>及tail新nohup日志只读查询，回传当前最后观测/存活/阶段。不要再次登记或替换，不重启controller。原185408_2127460是保留的失败快照，不再用于进度。
 
-显式替换仅接受该目录/15f版本、原20测试18pass+两项路径错误、seal/code一致、预算相同且无任何launch/科学产物/存活worker或另一个队列。marker保证再运行只查询同一替换目录，不能再次启动失败科学配方。替换仍失败则hold，不自动继续。
+## 科学预算与资源
+D0–D3、T0 clean8k必做、校准不足且probe保护通过才派T1/T2各8k、再条件T3 8k；最多4头32k，0新专家/训练seed，GPU0/1≥24h可续无硬截止。原B1/B3及L=False不改，4k轨迹/8k固定主端点不挑年龄。输入核验及双卡真实smoke通过前不派正式任务。[执行](../protocols/PHASE_24_EXECUTION_20261014.md)、[科学门禁](../protocols/PHASE_24_DIAGNOSIS_AND_CONDITIONAL_HEADS_20261014.md)。
 
-本地26项：23通过、3项真实Linux运输待服务器；14文件编译通过。CPython3.10私有生命周期源码已核对，不能代替实际Linux验证；新注册必须26项全通过无skip。之后两卡真实梯度/原CM桥接/吞吐仍必须先验收。初版D0旧六差值复算一致仍有效；本轮没有新科学结果。
+原9.792GB输入只读共享；每卡最多2匿名包、<1GiB clean缓存、mask LRU8；样本≤1GiB、CPU16/24/32按实际配额/同case基准选择。抽象AF_UNIX通信不创建文件，不改TMPDIR到/tmp；其他记录/临时仍在zzx对应新目录。不恢复旧整轮缓存，评价后计数复算及临时pth退役，必要端点暂留待审。
 
-## 科学队列及资源不变
-[原执行协议](../protocols/PHASE_24_EXECUTION_20261014.md)和[科学门禁](../protocols/PHASE_24_DIAGNOSIS_AND_CONDITIONAL_HEADS_20261014.md)：D0–D3、T0 clean8k、条件T1/T2各8k和再条件T3 8k；最多4小头32k，0新专家/训练seed，原B1/B3及L=False不重写。4k轨迹、8k固定主端点、不挑年龄或阈值。GPU0/1 ≥24h可续，无硬截止。
+## 工程事故与旧研究边界
+原research_phase24_protected_20261014T185408_2127460执行15f：18项通过、两项AF_UNIX路径失败，无launch、0正式推理/训练。此次用户显式单次技术替换，原seal/code/log保留、marker防重复；不属于已训练配方重试。[修复](../protocols/PHASE_24_IPC_PATH_FIX_20261014.md)、[登记](../../records/phase24_registration_20261014/observation_193920.json)。
 
-只读共享原9.792GB输入、每卡最多2匿名包/clean低logit缓存<1GiB/mask LRU8、source sample≤1GiB、CPU16/24/32按有效配额实测。临时产物用完回收，不恢复旧磁盘cache；计数复算后退役rolling/4k临时pth，必要8k及来源暂留待审。
+主线RGB–DSM条件互补与退化/缺失分割，恢复旁支；两重复Val2/seed42仅开发证据。Phase2完成及35910文件退役是此前已验收记录；原缓存不能再假定在线，不重复旧队列/清理。工程准入成功不改变C/L、研究路线或新科学结论。
 
-## 研究决定、旧结果与交接
-主线仍RGB–DSM双向条件互补与退化/缺失分割，恢复旁支；当前识别DSM条件补救并保护强RGB。两重复Val2/seed42仅开发证据，跨tile源拟合不等于独立泛化。不以工程失败或oracle差否定整个互补问题，不加seed/专家凑时间，不用附属alignment参照作路线gate。
-
-Phase2最后完成证据2026-10-14T00:39:03.210695+08:00，4核心训练48k、上传dc335e0d；原件/CM/汇总验收通过。[结果](../experiments/PHASE_2_RESULTS_20261014.md)。旧大缓存35910文件退役回执12:13:25.974504+08:00，必要权重/代码/原CM/输入/L坐标保留，不能再假设旧cache在线。服务器权重和L union仍限既有原件验收边界。
-
-用户服务器执行，无SSH、Test6/held4/final或自动失败重跑。接收新登记打印的真实目录和最后观测后更新当前入口；成功结束用户显式运行upload_phase24.py，白名单轻量归档及GitHub回读，原失败记录不删。[修复前交接](../history/20261014_before_phase24_ipc_fix/HANDOFF.md)。
+服务器由用户执行，无SSH、Test6/held4/final或自动失败重跑。当前等待状态查询，成功结束后用户显式upload_phase24.py、白名单归档/回读，重要门禁与交接继续同分支同步。[登记前交接](../history/20261014_before_phase24_registration/HANDOFF.md)。

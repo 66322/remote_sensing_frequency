@@ -1,11 +1,9 @@
-# 共享入口：Phase2.4登记期IPC修复待服务器核验（2026-10-14）
+# 共享入口：Phase2.4技术替换已登记，等待当前状态（2026-10-14）
 
-当前状态：**IPC_PATH_FIX_READY_AWAITING_SERVER_REGISTRATION_CHECKS**。用户回传失败登记目录research_phase24_protected_20261014T185408_2127460：18项通过、两项AF_UNIX路径错误，无launch.json，0正式推理/训练；不是正在跑的队列。修复已落实，尚无替换目录或真实Linux/CUDA通过证据。
+当前状态：**REGISTERED_LAUNCH_OBSERVED_AWAITING_STATUS**。新目录research_phase24_protected_20261014T193915_2149100，执行5a84f0ea，登记输出PID=2149894。根据固定登记脚本控制流，26项Linux CPU检查已全通过无skip；已创建控制器进程，真实GPU smoke/当前存活仍未观测。最后观测为用户回传登记输出：目录时间2026-10-14 19:39:15，日志文件名时间19:39:20.570637；尚未接收此后的status、CPU日志原件或真实GPU smoke结果，不表述为实时持续运行。
 
-先读[研究决定](current/RESEARCH_DECISION.md)、[交接](current/HANDOFF.md)、[状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)，再读[IPC修复及单次显式技术替换](protocols/PHASE_24_IPC_PATH_FIX_20261014.md)、[修复审计](../records/phase24_ipc_path_fix_20261014/fix_audit.json)、[原执行协议](protocols/PHASE_24_EXECUTION_20261014.md)、[科学门禁](protocols/PHASE_24_DIAGNOSIS_AND_CONDITIONAL_HEADS_20261014.md)。
+先读[研究决定](current/RESEARCH_DECISION.md)、[交接](current/HANDOFF.md)、[状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)，再读[登记观测](../records/phase24_registration_20261014/observation_193920.json)、[执行协议](protocols/PHASE_24_EXECUTION_20261014.md)、[IPC修复](protocols/PHASE_24_IPC_PATH_FIX_20261014.md)、[科学门禁](protocols/PHASE_24_DIAGNOSIS_AND_CONDITIONAL_HEADS_20261014.md)。
 
-下一动作：用户运行修复提交的enqueue_phase24.py，显式指定--replace-ipc-path-bug-directory为已观测失败目录。保留旧记录、严格验证0更新登记错误、单次marker防重复、新目录先跑全部26项Linux检查；再做双卡真实smoke，任何失败hold。不要热改/删除旧目录或直接重启controller。
+下一动作是用户只读查询新目录status_phase24.py和nohup日志，不再登记/替换，不沿用185408旧失败目录查进度。原失败快照保留。无SSH；正式任务仍须输入核验和两卡真实smoke通过。
 
-科学任务不变：GPU0/1、≥24h可续，无硬截止；D0–D3、T0及按门禁进入T1/T2/T3，最多4小头32k，0新专家/追加训练seed。抽象socket只在内核命名，不创建/tmp或文件socket；其他临时/记录仍在zzx对应目录，无整轮大缓存。
-
-主线RGB–DSM条件互补与退化/缺失分割，恢复旁支；无SSH、Test6/held4/final及自动配方重试。Phase2完成/旧35910文件退役仍是已验收旧证据，不重启旧队列/清理。[修复前入口归档](history/20261014_before_phase24_ipc_fix/START_HERE.md)。
+主线RGB–DSM互补与退化/缺失分割、恢复旁支不变。GPU0/1、≥24h可续、最多4小头32k、0新专家/训练seed、原B1/B3门禁不改；无Test6/held4/final、自动失败重试或整轮磁盘cache。[登记前入口](history/20261014_before_phase24_registration/START_HERE.md)。
