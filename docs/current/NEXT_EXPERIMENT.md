@@ -1,5 +1,9 @@
 # 下一步：执行已授权清理，再解释剩余互补（2026-10-14）
 
+## 后续缓存策略：用完即删（用户2026-10-14明确要求）
+
+默认避免整轮落盘，优先有界内存/分批预取，磁盘缓存须有必要性和容量上限、登记消费者，最后消费者使用完立即删除；评估优先直接留原始计数，减少整图预测。新队列启动前必须落实并验证数值/数据流和清理路径，不能仅沿用旧全量缓存设计。[执行规则](../protocols/EXPERIMENT_ARTIFACT_RETENTION_20261013.md)。当前Phase2大型缓存已清理，冻结快照不改；新的即时回收实现尚未建立，不写成自动执行完成。
+
 ## Phase2产物清理已完成（用户回执2026-10-14 12:13:25）
 
 complete.json deleted/total=35910/35910，observed_at2026-10-14T12:13:25.974504+08:00，receipt：/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase2_matched_20261013T151120_1310582/artifact_cleanup_20261014T120418_1928998。源SUMMARY：35910独立inode、752849031168 bytes（701.1453GiB）预计完全断链，外部硬链接0；evaluation26698、head_cache8000、val_cache1212。四项服务器测试和24643上传原件复核通过后删除。
