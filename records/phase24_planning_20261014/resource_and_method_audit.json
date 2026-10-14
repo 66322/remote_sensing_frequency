@@ -1,0 +1,131 @@
+{
+  "status": "PLAN_ONLY_NOT_IMPLEMENTED_NOT_ENQUEUED",
+  "date": "2026-10-14",
+  "branch": "rebuild-v1-protocol-20260915",
+  "basis_head": "d6b001af5e34d7bad7ab13e2c605a4bb0460fd38",
+  "source_run": "research_phase2_matched_20261013T151120_1310582",
+  "execution_commit": "e5641e073bf4421e346f589199c291a6e94db8b2",
+  "upload_commit": "dc335e0d13d3a1bb4b58e253feaa22cc516275ef",
+  "scope": "Potsdam Fit12/Val2 3_11,5_10; seed42; NoBoundary mIoU_fg5; condition-macro after pooled tile CMs",
+  "gap_decomposition": {
+    "rgb": {
+      "oracle_minus_best_fixed": 18.444090388631125,
+      "oracle_minus_B2": 14.195947161311665,
+      "B2_minus_best_fixed": 4.24814322731946
+    },
+    "dsm": {
+      "oracle_minus_best_fixed": 3.66526346771235,
+      "oracle_minus_B2": 11.274466268202545,
+      "B2_minus_best_fixed": -7.609202800490195
+    }
+  },
+  "historical_resources": {
+    "observed_at": "2026-10-13T15:13:22.397394+08:00",
+    "effective_cores": 192,
+    "available_bytes": 2038630453248,
+    "analysis_processes": 16,
+    "crop_workers": 8,
+    "numerical_threads_per_worker": 1,
+    "source": "Phase2 uploaded resource_profile.json and phase2_common.env"
+  },
+  "timing_from_completed_case_timestamps": [
+    {
+      "system": "average_8000",
+      "cases": 322,
+      "span_hours": 0.703645,
+      "forward_progress_to_counts_median_seconds": 28.8636,
+      "p95_seconds": 36.8615
+    },
+    {
+      "system": "average_16000",
+      "cases": 1164,
+      "span_hours": 2.63988,
+      "forward_progress_to_counts_median_seconds": 29.4217,
+      "p95_seconds": 37.0869
+    },
+    {
+      "system": "B0_16000",
+      "cases": 1164,
+      "span_hours": 2.439057,
+      "forward_progress_to_counts_median_seconds": 29.9608,
+      "p95_seconds": 37.5285
+    },
+    {
+      "system": "B2_16000",
+      "cases": 1164,
+      "span_hours": 2.578449,
+      "forward_progress_to_counts_median_seconds": 30.0203,
+      "p95_seconds": 37.531
+    }
+  ],
+  "timing_limitation": "Case-count span excludes some preparation. Forward-progress to counts latency includes scheduling, stitching, CPU analysis and writes; not isolated CPU service time, and not current observations.",
+  "phase15_history": {
+    "initial": "One analysis process with numerical threads=1 and repeated scans",
+    "acceleration": "Two processes, vectorized counts and tile-resident reuse; 63 cases preserved, 97 new cases in 1595.4569146856666 seconds",
+    "equivalence": "Two real completed cases had all result fields exact; do not attribute all improvement to worker count alone"
+  },
+  "cleanup": {
+    "observed_at": "2026-10-14T12:13:25.974504+08:00",
+    "deleted_paths": 35910,
+    "planned_fully_unlinked_bytes": 752849031168,
+    "full_caches_available": false,
+    "tail_coordinate_arrays_retained": true
+  },
+  "proposed_budget": {
+    "gpu_ids": [
+      0,
+      1
+    ],
+    "resource_window_hours": [
+      24,
+      48
+    ],
+    "hard_deadline_hours": null,
+    "new_expert_trainings": 0,
+    "new_training_seeds": 0,
+    "head_updates_per_run": 8000,
+    "maximum_new_head_trainings": 4,
+    "maximum_new_head_updates": 32000,
+    "diagnostic_cases": 642,
+    "additional_endpoint_cases": 522,
+    "full_panel_cases": 1164,
+    "disk_full_array_cache": false
+  },
+  "corrections": [
+    "Two RGB/DSM experts with same seed, not three seed-only experts",
+    "Experts frozen during head training, not joint end-to-end",
+    "Within-pixel expert permutation leaves union correctness invariant",
+    "mIoU null needs full class prediction marginals, not correctness bits alone",
+    "Temperature/probe fitting has fitted parameters even with zero segmentation updates",
+    "Two reused Val2 sites are development evidence, not independent test",
+    "Phase2 disk caches already retired; diagnostics require scoped reinference"
+  ],
+  "null_sanity": {
+    "example": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "row_swap_union_correct_before": 3,
+    "row_swap_union_correct_after": 3,
+    "each_expert_correct_count": 2,
+    "cross_pixel_realign_union_possible_range": [
+      2,
+      4
+    ],
+    "interpretation": "Illustrates an alignment null; it does not estimate unrecoverable stochastic oracle inflation."
+  }
+}

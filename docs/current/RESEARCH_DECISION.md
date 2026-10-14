@@ -1,17 +1,22 @@
-# 研究决定：匹配互补仍存在，当前静态与动态入场未通过（2026-10-14）
+# 研究决定：先拆解融合回归，再检验受保护条件补救（2026-10-14）
 
-## 阶段与路线角色
-主线仍RGB–DSM双向条件互补与退化/缺失分割，任务驱动恢复旁支。Phase2是公平专家与静态/可靠性可行性检验，非新方法已成立。用户当前授权查看已完成结果并清理无用产物，没有授权隐含更换研究方向或追加训练。
+## 阶段、角色与决定来源
+主线仍RGB–DSM条件互补与退化/缺失分割，任务驱动恢复旁支。Phase2完成；用户本轮要求综合两份外部分析规划下一阶段、GPU0/1至少一天并及时回收缓存。当前只登记[Phase2.4及条件Phase2.5规划](../protocols/PHASE_24_DIAGNOSIS_AND_CONDITIONAL_HEADS_20261014.md)，**PLAN_ONLY_NOT_IMPLEMENTED_NOT_ENQUEUED**；不隐含已启动授权或方向切换。
 
-## 已核验依据与边界
-[Phase2结果](../experiments/PHASE_2_RESULTS_20261014.md)、[验收](../../records/phase2_review_20261014/verification.json)：运行151120_1310582，执行e5641e07，上传dc335e0d，最后完成记录2026-10-14 00:39:03。两专家公平初值/参数/16k stream验收，核心4训练48k，B1/B3未派发。原件SHA/CM复算通过，但服务器数组/权重未本地重hash，L distinct-coordinate union尚仅原服务器证据，保留坐标数组待需要时再验。
+## 实验已验证与代码事实
+[Phase2结果](../experiments/PHASE_2_RESULTS_20261014.md)和[原件验收](../../records/phase2_review_20261014/verification.json)：Potsdam Fit12/Val2、seed42、NB fg5；匹配两专家，核心4训练48k，B1/B3未派。C=True、L=False，静态clean保护不通过。两个模态专家不是三个seed-only专家；融合头训练时专家冻结，不能归因于DSM梯度伤RGB骨干。
 
-## 结论与决定
-实验已验证：C=True且两方向互补差为正；B0/B2主P-U分别75.7565/75.8231，未超过平均76.1475；clean退化。L规则DSM方向负收益且静态clean保护失败，按原协议不派B1/B3。动态未训练不等于动态模型训练失败；L失败不等于所有可靠性特征不可用。保留匹配expert/静态对照证据，不扩预算救固定配方。
+采用同一bestFixed分解：B2在RGB-fault相对bestFixed +4.2481pp，DSM-fault −7.6092pp。oracle−B2不能全部称未利用互补。弱DSM能力/标度/选择作用为待检验机制，单次seed42和两重复Val2仅开发证据。
 
-用户决定：及时清理无用途中间产物；无研究/下游用途的旧配方仅保留代码配置及必要退役说明。本轮有有用的轻量负对照证据，保留CM/轨迹与必要模型，退役缓存/大数组。[清理](../protocols/PHASE_2_ARTIFACT_RETIREMENT_20261014.md)已实现但未执行。此为存储决策，不撤回科学结果。
+## 下一研究决定
+先复用CM/错误重叠，生成642case联合流/标度诊断，做两fold source→target温度/alpha/小logistic，再补522case固定端点。原专家16k不重训；校准若已解决则不训练复杂头；可部署信号有实际跨tile收益并保护clean/DSM方向后，才进入RGB-anchor信号头与无信号控制。T0 clean头对旧mixed是本轮训练分布控制；最多4小头×8k，原B1/B3门禁不重写，额外seed不自动派。
 
-## 未采纳建议与下一不确定性
-不改L阈值/分箱，不选更有利专家年龄，不加seed/延长训练，不自动转恢复旁支，不把oracle差当可部署提升或数学上界。下一步解释弱DSM混合损伤与训练评价分布、剩余互补的可观测性；下一训练协议需要具体对照和精度保护证据。两重复Val2、seed42只能给开发结论；Test6/held4/独立最终检验未开放。
+这种非对称保护是候选解法，仍需评估两方向，不倒写为主线已改为单模态恢复。当前观测/决策类失败只停止这一方案，不否定所有互补或自动转旁支。确认性多seed/独立场地需后续单独登记开放。
 
-此前决定已归档../archive/phase2_pre_review_20261014/RESEARCH_DECISION.md。
+## 未采纳建议
+像素内交换correctness不改变union，不能作唯一生死gate；改为附属固定完整预测边际的跨像素alignment参照，不能据此估计随机oracle噪声比例。LLM随机多响应研究不能把12–36%/0.096数值迁移到本确定性分割。旧C-OO异协议分数不能作本轮因果锚点；margin单变量无差不代表所有gate不可能；8k→16k小增益不证明永久收敛。外部文本两seed×三模型建议本轮不采纳自动派发。
+
+## 产物决定及当前边界
+用户35910文件清理完成回执12:13:25已验收，旧缓存不再在线；confidence诊断需限定再推理，不恢复大缓存。新代码必须实现分批RAM/最后消费者回收，长期仅留原计数、绑定、参数/配置/代码、必要权重与轻量审计。[规则](../protocols/EXPERIMENT_ARTIFACT_RETENTION_20261013.md)。原服务器权重未本地重新hash，L坐标union仍限原服务器证据；保留坐标，不宣称独立验过。
+
+此前决定原文归档[history](../history/20261014_before_phase24_plan/RESEARCH_DECISION.md)。
