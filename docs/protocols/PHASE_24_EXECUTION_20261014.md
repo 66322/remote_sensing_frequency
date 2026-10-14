@@ -1,6 +1,6 @@
 # Phase2.4/条件Phase2.5执行协议（2026-10-14）
 
-状态：**IMPLEMENTED_CPU_CHECKED_AWAITING_SERVER_SMOKE**。用户已要求“按照上述规划安排具体实验”；本提交完成代码与CPU检查，不代表服务器登记或运行。服务器由用户执行，无SSH。研究门禁以[规划协议](PHASE_24_DIAGNOSIS_AND_CONDITIONAL_HEADS_20261014.md)为准；下面冻结工程口径。
+状态：**IPC_PATH_FIX_READY_AWAITING_SERVER_REGISTRATION_CHECKS**。初版用户登记目录185408_2127460的18项检查通过、两项IPC路径失败，无launch.json、0正式推理/训练。当前只修复通信及显式单次技术替换，尚无替换运行成功证据；先读[修复协议](PHASE_24_IPC_PATH_FIX_20261014.md)。服务器由用户执行，无SSH。研究门禁以[规划协议](PHASE_24_DIAGNOSIS_AND_CONDITIONAL_HEADS_20261014.md)为准；下面冻结工程口径。
 
 ## 研究任务与预算
 
@@ -50,7 +50,7 @@ z=zRGB+tanh(h(features))*(zDSM-zRGB)，有符号系数[-1,1]，0.01 mean|gate|�
 
 ## 启动、状态、完成和失败
 
-用户取包含本执行包的40位提交SHA，取出scripts/enqueue_phase24.py执行。入口先查询research_phase24_protected_*；存在即输出原队列状态并返回，不重复登记/派发。无替换/重试参数。控制器只接受REGISTERED状态；工程失败或外部中断停止GPU worker并记TECHNICAL_FAILURE_HOLD，不自动续跑失败配方。Linux CPU与真实GPU检查全部通过后自动继续D0–E及条件头，不需要逐阶段手动启动。
+用户取包含本执行包的40位提交SHA，取出scripts/enqueue_phase24.py执行。入口先查询research_phase24_protected_*；存在即输出原队列状态并返回，不重复登记/派发。正常入口没有自动替换/重试；仅显式--replace-ipc-path-bug-directory可处理已观测的15f版本零更新登记事故，详见修复协议。控制器只接受REGISTERED状态；工程失败或外部中断停止GPU worker并记TECHNICAL_FAILURE_HOLD，不自动续跑失败配方。Linux CPU与真实GPU检查全部通过后自动继续D0–E及条件头，不需要逐阶段手动启动。
 
 新目录由登记入口打印，位于/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase24_protected_<timestamp>_<pid>。查看：
 python -B <D>/code/scripts/status_phase24.py --directory <D>
@@ -62,6 +62,6 @@ python -u -B <D>/code/scripts/upload_phase24.py --directory <D>
 
 ## 本地验证与尚未验证
 
-Windows/Python3.13.3/Torch2.7.1+cpu：20项测试中18项通过，2项Linux memfd测试跳过；14个Python文件编译通过。固定边际、分块CM/ROI/三系统流、特征halo、source/target分离、常数信号、原B0初态SHA、配对头初态、零初态非零梯度、Torch/NumPy导出及离线错误summary拒绝均检查。新D0从旧1164case原计数复算，640个P-U及六个gap差值与已验收结论在1e-10内一致。
+初版Windows/Python3.13.3/Torch2.7.1+cpu：20项中18通过、两项Linux测试跳过；用户服务器恰在这两项暴露路径错误。修复版26项中23通过、3项真实Linux运输检查仍待服务器；14文件编译通过。固定边际、分块CM/ROI/三系统流、特征halo、source/target分离、常数信号、原B0初态SHA、配对头初态、零初态非零梯度、Torch/NumPy导出及离线错误summary拒绝均检查。新D0从旧1164case原计数复算，640个P-U及六个gap差值与已验收结论在1e-10内一致。
 
-Linux跨进程memfd、Torch2.2.2+cu121、两卡真实CM/梯度/吞吐/峰值均**等待服务器smoke**，不是已验证实验结果。[本地检查清单](../../records/phase24_execution_20261014/implementation_audit.json)。
+Linux三项运输检查（含禁止get_temp_dir回退）、Torch2.2.2+cu121、两卡真实CM/梯度/吞吐/峰值均**等待修复后服务器smoke**，不是已验证实验结果。[本地检查清单](../../records/phase24_execution_20261014/implementation_audit.json)。

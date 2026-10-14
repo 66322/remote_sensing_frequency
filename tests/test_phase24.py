@@ -209,6 +209,69 @@ class Differentiable(unittest.TestCase):
   z=m(r,d,expected,rm,rm)[0];m.arm='T3'
   self.assertTrue(torch.equal(z,m(r,d,f,rm,rm)[0]))
 
+class IPCCompatibility(unittest.TestCase):
+ def fake_sharer(self):
+  import threading
+  from types import SimpleNamespace
+  done=threading.Event()
+  return SimpleNamespace(_lock=threading.Lock(),_address=None,_listener=None,_thread=None,_serve=done.set),done
+ def test_abstract_address_is_short_authenticated_and_idempotent(self):
+  from unittest.mock import patch
+  from phase24_ipc import ensure_abstract_resource_sharer
+  sharer,done=self.fake_sharer();calls=[]
+  class Listener:
+   def __init__(self,**kw):calls.append(kw);self.address=kw['address']
+   def close(self):pass
+  a=ensure_abstract_resource_sharer(sharer,Listener,platform='linux');b=ensure_abstract_resource_sharer(sharer,Listener,platform='linux')
+  self.assertEqual(a,b);self.assertTrue(a.startswith(b'\x00phase24-fd-'));self.assertLess(len(a),108)
+  self.assertEqual(len(calls),1);self.assertEqual(calls[0]['family'],'AF_UNIX');self.assertTrue(calls[0]['authkey'])
+  self.assertTrue(done.wait(2));sharer._thread.join(timeout=2)
+ def test_filesystem_listener_is_not_silently_reused(self):
+  from unittest.mock import patch
+  from phase24_ipc import ensure_abstract_resource_sharer
+  sharer,_=self.fake_sharer();sharer._address='/tmp/old_socket'
+  with self.assertRaisesRegex(RuntimeError,'filesystem socket'):
+   ensure_abstract_resource_sharer(sharer,lambda **kw:None,platform='linux')
+ def test_missing_private_lifecycle_is_rejected(self):
+  from unittest.mock import patch
+  from phase24_ipc import ensure_abstract_resource_sharer
+  with self.assertRaisesRegex(RuntimeError,'unsupported CPython'):
+   ensure_abstract_resource_sharer(object(),lambda **kw:None,platform='linux')
+
+class RegistrationReplacement(unittest.TestCase):
+ def fixture(self,root):
+  from phase24_common import write,sha,binding
+  d=root/'research_phase24_protected_20261014T185408_2127460';(d/'code').mkdir(parents=True)
+  commit='15fdfa4c64c4c50b631707a6d92de98642011bab';f=d/'code/fixture.py';f.write_text('# unit metadata only\n')
+  write(d/'plan.json',dict(execution_commit=commit,gpus=[0,1],seed=42,max_head_updates=32000,head_updates=8000,
+   automatic_retry=False,new_seeds=False,test6_loaded=False,held4_loaded=False,wall_deadline_hours=None))
+  write(d/'code_manifest.json',dict(commit=commit,files={'fixture.py':sha(f)}));write(d/'registration.json',dict(binding=binding(d)))
+  write(d/'registration_failure.json',dict(error='test_phase24.py exited with status 1',automatic_retry=False))
+  lines=['test_unit_%02d (unit.Test) ... ok'%i for i in range(18)]
+  lines+=['test_cross_process_readonly (test_phase24.Transport) ... ERROR','test_roundtrip_and_last_close (test_phase24.Transport) ... ERROR']
+  lines+=['OSError: AF_UNIX path too long']*2+['FAILED (errors=2)']
+  (d/'cpu_checks.log').write_text('\n'.join(lines)+'\n');return d
+ def test_only_prelaunch_path_failure_can_be_replaced(self):
+  import tempfile
+  from enqueue_phase24 import ipc_path_replacement_guard
+  parent=Path(__file__).resolve().parent/'temporary';parent.mkdir(exist_ok=True)
+  with tempfile.TemporaryDirectory(dir=parent) as root:
+   d=self.fixture(Path(root));self.assertEqual(ipc_path_replacement_guard(d)['optimizer_updates'],0)
+   (d/'launch.json').write_text('{}')
+   with self.assertRaisesRegex(RuntimeError,'post-registration'):ipc_path_replacement_guard(d)
+ def test_changed_science_or_other_test_failure_cannot_be_replaced(self):
+  import tempfile
+  from enqueue_phase24 import ipc_path_replacement_guard
+  from phase24_common import write,read,binding
+  parent=Path(__file__).resolve().parent/'temporary';parent.mkdir(exist_ok=True)
+  with tempfile.TemporaryDirectory(dir=parent) as root:
+   d=self.fixture(Path(root));p=read(d/'plan.json');p['seed']=43;write(d/'plan.json',p)
+   write(d/'registration.json',dict(binding=binding(d)))
+   with self.assertRaisesRegex(RuntimeError,'scientific contract'):ipc_path_replacement_guard(d)
+   p['seed']=42;write(d/'plan.json',p);write(d/'registration.json',dict(binding=binding(d)))
+   f=d/'cpu_checks.log';f.write_text(f.read_text().replace('test_unit_00 (unit.Test) ... ok','test_unit_00 (unit.Test) ... FAIL'))
+   with self.assertRaisesRegex(RuntimeError,'only the two'):ipc_path_replacement_guard(d)
+
 def receive_child(q,out):
  from phase24_ipc import Packet
  p=Packet.receive(q.get())
@@ -218,6 +281,19 @@ def receive_child(q,out):
 
 @unittest.skipUnless(hasattr(__import__('os'),'memfd_create'),'Linux memfd server transport required')
 class Transport(unittest.TestCase):
+ def test_listener_does_not_consult_long_filesystem_tempdir(self):
+  from unittest.mock import patch
+  from multiprocessing import resource_sharer
+  from phase24_ipc import Packet
+  resource_sharer.stop()
+  p=Packet.create({'x':np.arange(3,dtype=np.float32)})
+  try:
+   with patch('multiprocessing.util.get_temp_dir',side_effect=AssertionError('filesystem temporary socket requested')):
+    other=Packet.receive(p.descriptor())
+   try:np.testing.assert_array_equal(other.arrays['x'],np.arange(3,dtype=np.float32))
+   finally:other.close()
+   self.assertTrue(resource_sharer._resource_sharer._address.startswith(b'\x00'))
+  finally:p.close();resource_sharer.stop()
  def test_cross_process_readonly(self):
   import multiprocessing as mp
   from phase24_ipc import Packet

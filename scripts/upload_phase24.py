@@ -23,7 +23,7 @@ def main(base):
    for section in ('results','analysis','fits','jobs'):
     for f in (base/section).rglob('*'):
      if f.is_file() and f.suffix in ('.json','.jsonl') and f.name!='progress.json':allowed.append(f)
-   top=('plan.json','code_manifest.json','registration.json','registration_cpu_checks.json','launch.json','source_bindings.json','resource_profile.json',
+   top=('plan.json','code_manifest.json','registration.json','registration_cpu_checks.json','technical_replacement.json','launch.json','source_bindings.json','resource_profile.json',
     'prepared.json','gpu_inventory.json','cpu_benchmark.json','smoke_pass.json','summary.json','evidence_index.json',
     'result_verification.json','cpu_checks.log','fit_sample_retirement.json','ram_retirement.json','training_artifact_retirement.json','queue_status.json')
    allowed += [base/n for n in top if (base/n).is_file()]

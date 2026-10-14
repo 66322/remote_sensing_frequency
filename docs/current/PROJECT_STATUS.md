@@ -1,18 +1,18 @@
-# 当前状态：Phase2完成；Phase2.4执行包待服务器smoke（2026-10-14）
+# 当前状态：Phase2.4登记失败，IPC修复待服务器核验（2026-10-14）
 
-|项目|状态/最后观测|
+|项目|证据/状态|
 |---|---|
-|Phase2|最后验收完成2026-10-14T00:39:03.210695+08:00，4训练48k，上传dc335e0d|
-|原B1/B3|未派；C=True、L=False及clean保护失败保持|
-|旧大缓存清理|用户回执12:13:25.974504+08:00，35910/35910完成，不再假定在线|
-|Phase2.4/条件2.5执行包|IMPLEMENTED_CPU_CHECKED_AWAITING_SERVER_SMOKE|
-|本地验证|20项：18通过、2项Linux IPC待服务器；14个Python文件编译，旧六差值复算一致|
-|新服务器队列|尚无运行ID或实时观测；下一步用户登记，不重复启动|
+|原失败登记|research_phase24_protected_20261014T185408_2127460；15fdfa4c|
+|用户回传CPU检查|20项18通过、两项AF_UNIX path too long；无launch.json|
+|正式新实验|控制器/正式GPU推理/训练均未启动，0更新|
+|IPC修复包|IPC_PATH_FIX_READY_AWAITING_SERVER_REGISTRATION_CHECKS|
+|本地修复检查|26项23通过、3项真实Linux检查待执行；14文件编译|
+|替换登记|尚未执行/没有新目录观测；用户需显式技术替换参数|
 
-[执行协议](../protocols/PHASE_24_EXECUTION_20261014.md)、[科学门禁](../protocols/PHASE_24_DIAGNOSIS_AND_CONDITIONAL_HEADS_20261014.md)、[实现检查](../../records/phase24_execution_20261014/implementation_audit.json)。GPU0/1、≥24h可继续，无硬截止；最多4小头32k，0新专家/追加训练seed。只读共享输入、匿名RAM包、并行stripe，无整轮磁盘缓存；真实CUDA/CM/吞吐/资源仍待服务器验收。
+18:54:08是原目录登记时间；失败结束时间未提供。上述为用户回传的最后证据，不是实时服务器查询。[用户摘录](../../records/phase24_ipc_path_fix_20261014/user_cpu_log_excerpt.txt)、[修复协议](../protocols/PHASE_24_IPC_PATH_FIX_20261014.md)、[修复审计](../../records/phase24_ipc_path_fix_20261014/fix_audit.json)。
 
-[旧结果](../experiments/PHASE_2_RESULTS_20261014.md)：NB fg5 clean RGB86.6343、DSM62.4805、average84.8403、B0 84.3712、B2 84.2793；P-U average76.1475、B0 75.7565、B2 75.8231。B2−bestFixed RGB +4.2481pp、DSM −7.6092pp。[原件验收](../../records/phase2_review_20261014/verification.json)。
+科学口径/预算不变：GPU0/1 ≥24h可续、最多4头32k、0新专家/seed、原C/L与B1/B3不变。抽象socket不创建文件，其他记录/临时仍在zzx新目录；保留旧失败快照。新26检查及双卡真实smoke未通过前不派正式任务。
 
-[清理回执](../../records/phase2_review_20261014/artifact_cleanup_receipt_121325.json)：清单预计断链752849031168 bytes，整挂载盘净空闲增量289843183616 bytes不等于zzx实测回收；四轮累计111906路径、清单预计2.60719TiB，不倒写成净实测。原CM/轨迹/代码/配置/输入/必要模型/L坐标保留。
+旧Phase2最后完成2026-10-14T00:39:03.210695+08:00，核心4训练48k、上传dc335e0d；C=True、L=False。[结果](../experiments/PHASE_2_RESULTS_20261014.md)。旧35910文件清理回执12:13:25.974504+08:00，普通大cache已退役，不重复清理/重启。
 
-主线RGB–DSM条件互补与退化/缺失分割，恢复旁支。反复Val2/seed42只作开发证据；未本地重新验服务器权重或L坐标union。无SSH、Test6/held4/final或自动失败重试。[原状态归档](../history/20261014_before_phase24_execution/PROJECT_STATUS.md)。
+主线RGB–DSM互补与退化/缺失分割、恢复旁支；反复Val2/seed42为开发证据。无SSH、Test6/held4/final或自动配方重试。[修复前状态](../history/20261014_before_phase24_ipc_fix/PROJECT_STATUS.md)。

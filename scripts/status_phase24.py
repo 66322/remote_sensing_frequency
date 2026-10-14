@@ -3,7 +3,15 @@ import argparse
 from pathlib import Path
 from phase24_common import read,now,live
 def main(base):
- base=Path(base).resolve();state=read(base/'queue_status.json')
+ base=Path(base).resolve()
+ if not (base/'queue_status.json').exists():
+  launch=read(base/'launch.json') if (base/'launch.json').exists() else {}
+  state='REGISTRATION_FAILURE_HOLD' if (base/'registration_failure.json').exists() else 'PARTIAL_REGISTRATION'
+  print('QUERY_OBSERVED='+now(),'LAST_OBSERVED='+str(launch.get('observed_at','not_recorded')),'QUEUE='+state,
+   'CONTROLLER_LIVE='+str(live(launch.get('controller_pid',0),base)))
+  if (base/'registration_failure.json').exists():print('REGISTRATION_FAILURE',read(base/'registration_failure.json'))
+  print('Registration incomplete; inspect launch/failure records and preserve registration log.');return
+ state=read(base/'queue_status.json')
  launch=read(base/'launch.json') if (base/'launch.json').exists() else {}
  print('QUERY_OBSERVED='+now(),'LAST_OBSERVED='+str(state.get('observed_at')),
   'QUEUE='+str(state.get('status')),'CONTROLLER_LIVE='+str(live(launch.get('controller_pid',0),base)))
