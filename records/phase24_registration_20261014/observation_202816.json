@@ -1,0 +1,45 @@
+{
+  "evidence_type": "user_pasted_status_and_log_tail_not_server_raw_json_acceptance",
+  "query_observed": "2026-10-14T20:28:17.018087+08:00",
+  "last_observed": "2026-10-14T20:28:16.847139+08:00",
+  "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase24_protected_20261014T193915_2149100",
+  "execution_commit": "5a84f0eacabe5d6f1c7ed1638e6a9291c58e151f",
+  "queue": "D2",
+  "controller_live": true,
+  "counts": {
+    "SMOKE": 12,
+    "D1": 642,
+    "D2": 8
+  },
+  "cpu_pending": 1,
+  "selected_cpu_workers": 32,
+  "numerical_threads_per_worker": 1,
+  "gpu0": {
+    "pid": 2149964,
+    "status": "TRAIN:T0",
+    "live": true
+  },
+  "gpu1": {
+    "pid": 2149965,
+    "status": "INFER:3_11_P-U_rgb_pixel_5_25_zero",
+    "live": true
+  },
+  "T0": {
+    "step": 1140,
+    "target": 8000,
+    "optimizer_updates": 1140,
+    "loss": 0.13070827722549438,
+    "regularizer": 0,
+    "elapsed_seconds": 86.47404903173447,
+    "remaining_train_hours": 0.14454492917505854,
+    "observed_at": "2026-10-14T20:28:15.718518+08:00"
+  },
+  "stage_progress": {
+    "done": 8,
+    "total": 642,
+    "remaining_stage_hours": null
+  },
+  "raw_paste_path": "user_status_202817.txt",
+  "raw_paste_sha256": "c6bb55e0214c86deafcd45ad975956934d92491bdf161bf7f1565d44e978fd1f",
+  "boundary": "只确认运行进度；未接收服务器原JSON或完整日志，无新的科学门禁结论，不自动重跑/增加seed/访问test。"
+}

@@ -5,7 +5,12 @@
 ## 原队列与最后观测
 服务器目录 /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase24_protected_20261014T193915_2149100。
 执行代码5a84f0eacabe5d6f1c7ed1638e6a9291c58e151f，控制器2149894，两GPU进程2149964/2149965，日志nohup_20261014T193920570637.log。执行快照固定，不用后续文档提交替换运行代码。
-最后观测2026-10-14T20:19:30.960798+08:00：QUEUE=D1、控制器和两GPU存活，SMOKE12，D1累计534/642（复用10，新完成524/632），剩108，CPU_PENDING0。32CPU进程，每进程数值库1线程；原预测D1约20:27完，仅当时阶段估计，不能声称现在完成。[记录](../../records/phase24_registration_20261014/observation_201930.json)。
+最后观测：2026-10-14T20:28:16.847139+08:00；查询时间20:28:17.018087+08:00。用户回传status及60行日志尾部，QUEUE=D2、控制器和GPU0/1均LIVE=True；这是该时刻观测，不是实时状态。
+
+SMOKE=12；D1累计642/642完成（复用10个核心smoke，本阶段新完成632/632）。D2已完成8/642，CPU_PENDING=1。GPU0为TRAIN:T0，GPU1为INFER；T0在20:28:15.718518观测1140/8000更新，loss=0.1307082772，remaining_train_hours=0.1445449292（约8.7分钟），仅覆盖T0剩余训练，不含端点评价。D2阶段ETA=None，不估计整轮结束时间。
+
+T0是协议必做的clean训练分布控制，可与D2并行；本输出未给T1/T2/T3门禁结果或派发证据。GPU0旧progress/runtime停留在20:26的D1推理，不能用旧文件误判当前GPU0空闲或卡住；当前状态和T0更新时间表明正在训练。两卡峰值allocated约5.54GiB，CPU基准选择32进程、每进程数值库1线程；日志尾部只有配置预期的xFormers警告和D1进度，未见错误，但并非全日志验收。
+[记录](../../records/phase24_registration_20261014/observation_202816.json)。
 
 ## 第一动作
 请用户只读查询原目录status_phase24.py和新nohup日志。无SSH，不重复登记、不重新启动，不对完成阶段重复派发。若technical hold，接收错误原件并检查实际执行链，不自动重跑失败配方。当前无本轮新的科学结论，smoke原JSON尚待独立轻量原件验收；不得把控制台通过倒写为论文正式结果。
