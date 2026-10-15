@@ -9,3 +9,9 @@
 下一步运行原绑定的 `code/scripts/upload_phase3_m1.py --directory <上述run>`，在前台完成精简证据上传，取得github_upload_receipt.json且all_parts_readback=true。上传不重跑训练、推理或计数；上传回读成功后清理自己的临时归档和Git工作目录。服务器完整结果归档回执尚未收到，本次提交仅存放完成观察和自检JSON。
 
 随后以GitHub完整归档为准独立验收，并结合预设设计区分普通归一化、输入适配与统一幅度的作用。原控制器正常结束路径包含消费者退出后的缓存清理，但具体清理回执仍待归档审核；不额外删除输入、权重或研究证据。Test6、held4和独立最终数据仍密封，不自动启动后续实验。
+
+## 精简包已生成，旧Git下载过大，准备API替代入口
+
+用户已打包4168文件、56.27 MiB，Git Receiving在14%时已204.53 MiB。该流量是仓库对象下载，精确触发子步骤尚未定位。新入口 `scripts/upload_phase3_m1_api.py` 直接复用upload_tmp/core.jsonl.gz，经Git Data API提交本轮二进制分块和少量tree/commit元数据，不fetch/clone历史。API上传约75 MiB（含base64开销），公共原始文件回读约56 MiB。6项本地测试通过，目标机尚未执行。先Ctrl+C退出旧前台传输，再前台运行新入口；上传锁或旧stage进程存在时拒绝并发。若旧入口已成功则直接返回回执。令牌隐藏输入、不保存。全部回读通过且无存活stage进程后才清理本run上传临时目录。实验数据和接受门槛不变。
+
+[API上传协议](../protocols/PHASE3_M1_API_UPLOAD_20261015.md)。GPU2—7的占用归属仍待UUID/PID检查，不能根据代码数字编号直接断言已证明物理显卡归属。
