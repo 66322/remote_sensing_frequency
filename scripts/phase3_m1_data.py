@@ -66,6 +66,7 @@ def prepare(base):
             low.flags.writeable=False; fields['height_gsd10']=low
         audits[str(rawpath)]=dict(sha256=hsh,identity=before,units='Potsdam source heights; no nDSM conversion')
         write(base/'preparation_progress.json',dict(tile=tile,done=len(DATA),total=14,observed_at=now()))
+        print('M1_INPUT_VERIFIED',tile,len(DATA),'/14',flush=True)
     STATS['_S']=float(np.median([STATS[t]['span'] for t in FIT]))
     masks=read(old/'mask_manifest.json')
     for t in VAL:

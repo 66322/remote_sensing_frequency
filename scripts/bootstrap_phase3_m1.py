@@ -18,6 +18,7 @@ def download(commit,path):
 def main():
     p=argparse.ArgumentParser(); p.add_argument('--root',type=Path,required=True); p.add_argument('--commit',required=True)
     args=p.parse_args(); root=args.root.resolve(); root.relative_to(Path('/home/jovyan/zzx').resolve())
+    print('PHASE3_M1_REGISTRATION_BEGIN',root,args.commit,flush=True)
     if not re.fullmatch('[0-9a-f]{40}',args.commit): raise ValueError('immutable full SHA required')
     import fcntl
     records=root/'records'; records.mkdir(exist_ok=True)
@@ -38,16 +39,19 @@ def main():
         predecessor=records/'research_phase24_protected_20261014T193915_2149100'
         if read(predecessor/'github_upload_receipt.json')['all_parts_readback'] is not True: raise RuntimeError('Phase2.4 upload receipt missing')
         source_manifest=read(predecessor/'code_manifest.json')
+        print('DOWNLOADING_FIXED_EXECUTION_MANIFEST',flush=True)
         manifest=json.loads(download(args.commit,'configs/phase3_m1_execution_manifest.json'))
         stamp=datetime.now(timezone(timedelta(hours=8))).strftime('%Y%m%dT%H%M%S')
         base=records/f'research_phase3_m1_{stamp}_{os.getpid()}'; base.mkdir(); code=base/'code'
         try:
+            print('COPYING_VERIFIED_INHERITED_SOURCE',len(source_manifest['files']),flush=True)
             for name,h in source_manifest['files'].items():
                 source=(predecessor/'code'/name).resolve(); source.relative_to((predecessor/'code').resolve())
                 data=source.read_bytes()
                 if digest(data)!=h: raise RuntimeError('inherited immutable source changed: '+name)
                 target=code/name; target.parent.mkdir(parents=True,exist_ok=True); target.write_bytes(data)
             for name,h in manifest['files'].items():
+                print('FETCH_SOURCE',name,flush=True)
                 data=download(args.commit,name)
                 if digest(data)!=h: raise RuntimeError('downloaded source hash differs: '+name)
                 target=(code/name).resolve(); target.relative_to(code.resolve()); target.parent.mkdir(parents=True,exist_ok=True); target.write_bytes(data)
@@ -67,6 +71,7 @@ def main():
             c.write(base/'code_manifest.json',dict(commit=args.commit,inherited_phase24_commit=source_manifest['commit'],files=files))
             c.write(base/'registration.json',dict(binding=c.binding(base),download_manifest=manifest,observed_at=c.now()))
             from phase24_common import env
+            print('CHECKING_LINUX_RAM_TRANSPORT',flush=True)
             with (base/'cpu_checks.log').open('x') as log:
                 subprocess.run([sys.executable,'-B','-m','unittest','discover','-s',str(code/'tests'),'-p','test_phase3_m1.py','-k','memfd','-v'],
                      cwd=code,env=env(base),stdout=log,stderr=subprocess.STDOUT,check=True,timeout=300)
@@ -74,6 +79,7 @@ def main():
             c.write(base/'gpu_inventory.json',dict(gpus=gpu,apps=apps,observed_at=c.now()))
             c.write(base/'queue_status.json',dict(status='REGISTERED',observed_at=c.now()))
             logpath=base/'nohup.log'
+            print('STARTING_DETACHED_CONTROLLER',base,flush=True)
             with logpath.open('x') as log:
                 proc=subprocess.Popen([sys.executable,'-u','-B',str(code/'scripts/control_phase3_m1.py'),'--directory',str(base)],
                     cwd=code,env=env(base),stdin=subprocess.DEVNULL,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)

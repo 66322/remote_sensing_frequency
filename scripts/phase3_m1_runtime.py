@@ -132,6 +132,7 @@ def train(base,gpu,task,events,acks):
                 trajectory.write(json.dumps(row)+'\n'); trajectory.flush(); hashes.flush()
                 c.write(folder/'progress.json',dict(row,observed_at=c.now(),physical_gpu=gpu))
                 progress(base,gpu,phase='TRAIN',job=job,**row)
+                if step==1 or step%500==0: print('M1_TRAIN',gpu,job,step,row,flush=True)
             if step%1000==0 and step<16000:
                 f=folder/'last_resume.pth'; tmp=f.with_suffix('.tmp')
                 torch.save(dict(model=model.state_dict(),optimizer=opt.state_dict(),step=step,job=job,

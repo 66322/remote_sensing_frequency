@@ -200,6 +200,7 @@ class Controller:
                 elif self.rgb and len(self.ephemeral)<4: task=self.rgb.popleft()
                 if task:
                     self.ready.remove(gpu); self.running[gpu]=task; self.commands[gpu].put(task)
+                    print('M1_TASK_START',gpu,task,flush=True)
                     self.state['workers'][str(gpu)]['status']=task['kind']; self.report('RUNNING')
                 elif self.rgb_started and not self.rgb and not self.other and self.counter_decided:
                     # Remaining consumers are CPU-only; release this GPU/process immediately.
@@ -218,6 +219,7 @@ class Controller:
             elif kind=='FATAL': raise RuntimeError(event['error']+'\n'+event['traceback'])
             elif kind in ('DONE','FAILED'):
                 task=self.running.pop(gpu)
+                print('M1_TASK_'+kind,gpu,task,flush=True)
                 if kind=='FAILED':
                     self.failures.append(event)
                     if task['kind']=='TRAIN':
@@ -267,6 +269,7 @@ def main(base):
         try:
             from phase3_m1_data import prepare
             c.verify(base); c.write(base/'queue_status.json',dict(status='PREPARING_INPUTS',observed_at=c.now()))
+            print('PHASE3_M1_PREPARING_SHARED_INPUTS',base,flush=True)
             pf=prepare(base); controller=Controller(base,pf); success=controller.run()
             from phase3_m1_numeric import summary
             summary(base)

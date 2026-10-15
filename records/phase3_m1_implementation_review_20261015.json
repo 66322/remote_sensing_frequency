@@ -3,11 +3,11 @@
   "status": "LOCAL_IMPLEMENTATION_CHECKS_PASSED_SERVER_NOT_LAUNCHED",
   "source_files": {
     "scripts/phase3_m1_common.py": "be25a7c316a2f0b19922016b5e3676142af3d83130a316bc3265f042bb7c1071",
-    "scripts/phase3_m1_data.py": "4e67a2615115f1d768650e74d9330a6cb8bba42f3ce449df4463c4eca5aa6eb7",
+    "scripts/phase3_m1_data.py": "54938acae0941a272211c460cd8793806e015b0eca168a0a8bd30e49cf49b773",
     "scripts/phase3_m1_numeric.py": "73818f92523e7b0bafd5000c89e880595160ae1df72ee98551d794ae9815fa78",
-    "scripts/phase3_m1_runtime.py": "ec549a051f31c3e2c03e1e3e5c7131d3176b8f4ce7713a78d9b98839e02cb575",
-    "scripts/control_phase3_m1.py": "4117aa3fa99082ba87c1f6e390d19ace5d32ff3fb31625f7185a2f4ba6b2a176",
-    "scripts/bootstrap_phase3_m1.py": "1399ec8cf6bb0b6f6e857148369eaa256753164b8391c2dcc7b7d4da0f148d57",
+    "scripts/phase3_m1_runtime.py": "bc230ecaad397c1838c52403e93bfb3f09e51450a8cf3960d2b7b4039d0565c6",
+    "scripts/control_phase3_m1.py": "843bfb681e127961e74414821c0661f381e384238a94ddd0f1602f88c896c85f",
+    "scripts/bootstrap_phase3_m1.py": "d537caa7535568a34fdf9208c5b4e9d166d104139579cdce14f0e3d93737e335",
     "scripts/upload_phase3_m1.py": "621adba35a63fd6a215585120fe9ff1fb409a41a6dd67d63889bdec16b4d6fd6",
     "scripts/verify_phase3_m1.py": "baa2b436e0837bad9c9cfa46806b9887257bd7811381126b7bd4afcafb3904cf",
     "scripts/status_phase3_m1.py": "4b9020b4d3d5c116e3f6ec20f2642b303090c86c3764c2cb1264ef743761ffe9",
@@ -30,5 +30,6 @@
   "repeated_testing_scope": "initial suite plus targeted checks after relevant changes; Linux transport checked during registration only",
   "actual_server_gpu_training_started": false,
   "new_scientific_results": false,
-  "additional_storage_optimization": "Fit12 RGB is not read/copied into RAM: no consumer in DSM-only training"
+  "additional_storage_optimization": "Fit12 RGB is not read/copied into RAM: no consumer in DSM-only training",
+  "logging_note": "registration logs start immediately; each source/input/task and periodic training progress logged"
 }
