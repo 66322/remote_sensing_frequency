@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-15",
+  "source": "user-pasted status and handoff output",
+  "live_server_query": false,
+  "run": "research_phase3_m1_recovery_20261015T164357_19327",
+  "original_controller_pid": 19614,
+  "status_snapshot": {
+    "observed_at": "2026-10-15T19:14:05.375982+08:00",
+    "status": "RUNNING",
+    "counted_cases": 313,
+    "gpu_cases_done": 317,
+    "pending_rgb": 3,
+    "pending_cpu": 44,
+    "failed_tasks": 0,
+    "completed_main_jobs": 11,
+    "actual_new_updates": 176000
+  },
+  "handoff": {
+    "commit": "3a3a39041b4fe3cf2c71c8ec75ffa1dd1e409560",
+    "script_sha256_verified": true,
+    "launcher_pid": 103522,
+    "result": "NO_HANDOFF: finished or near completion; original executor left running RUNNING 318",
+    "counted_cases_at_guard": 318,
+    "total_cases": 320,
+    "observed_at": null,
+    "observed_time_note": "handoff output did not print a timestamp",
+    "original_controller_signalled": false,
+    "replacement_started": false,
+    "formal_count_algorithm_changed": false
+  },
+  "next_action": "let original controller finish last two cases and final verification; collect final status and verification before acceptance/archive",
+  "final_experiment_complete_observed": false,
+  "final_verification_observed": false,
+  "final_results_archived_to_github_observed": false
+}

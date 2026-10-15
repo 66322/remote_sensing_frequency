@@ -2168,7 +2168,7 @@
   ],
   "next_plan": {
     "id": "Phase3-M1",
-    "status": "TRAINING_COMPLETE_RGB_COUNTING_IN_PROGRESS",
+    "status": "RGB_COUNTING_318_OF_320_ORIGINAL_EXECUTOR_FINISHING",
     "source": "docs/protocols/PHASE3_M1_EXECUTION_20261015.md",
     "design": "docs/protocols/PHASE3_M1_DESIGN_20261015.md",
     "manifest": "configs/phase3_m1_execution_manifest.json",
@@ -2189,7 +2189,7 @@
     "wall_deadline_hours": null,
     "point_cloud_in_scope": false,
     "test6_held4_final": "sealed",
-    "next_action": "execute guarded count-only handoff to 32 processes with original numerical algorithm; no-op if original already >=280/320; no new training",
+    "next_action": "original controller continues final two cases and final verification; no executor switch",
     "server_training_started_verified": true,
     "last_failed_run": "research_phase3_m1_20261015T142532_2652995",
     "last_observed_at": null,
@@ -2203,19 +2203,23 @@
     "recovery_execution_commit": "09d67c7c30647031b888ef1315d721b867055cbd",
     "amplitude_gate_accepted": false,
     "conditional_C21_skipped": true,
-    "last_observed_counted_cases": 194,
+    "last_observed_counted_cases": 318,
     "counted_cases_total": 320,
     "final_verification_complete": false,
-    "latest_count_observation_record": "records/phase3_m1_cpu_process_benchmark_and_handoff_20261015.json",
-    "last_timed_observed_at_retained": "2026-10-15T16:26:47+08:00",
-    "last_observation_time_note": "latest pasted process benchmark printed no timestamp; 194/320 is not a live query",
+    "latest_count_observation_record": "records/phase3_m1_count_handoff_noop_20261015.json",
+    "last_timed_observed_at_retained": "2026-10-15T19:14:05.375982+08:00",
+    "last_observation_time_note": "313 cases at timed snapshot; later handoff guard saw 318 without timestamp",
     "count_executor_handoff": {
-      "status": "READY_NOT_SERVER_LAUNCHED",
+      "status": "EXECUTED_NOOP_NEAR_COMPLETION",
       "entry": "scripts/handoff_phase3_m1_counts.py",
       "protocol": "docs/protocols/PHASE3_M1_COUNT_HANDOFF_20261015.md",
       "processes": 32,
       "algorithm": "original_unmodified",
-      "near_completion_noop": 280
+      "near_completion_noop": 280,
+      "launcher_pid": 103522,
+      "observed_counted_cases": 318,
+      "original_controller_signalled": false,
+      "replacement_started": false
     }
   },
   "completed_post_d21_mixed_followup": {
@@ -2562,7 +2566,7 @@
     "current_dual_worker_authorization": "User repeatedly confirmed physical GPU0/1, two H10080GB, ample RAM/disk; D24 plan reuses this authorization, nohup and zzx record scope; do not reinterpret historical GPU0-only policy as current restriction."
   },
   "research_decision": {
-    "stage": "Phase3-M1 training complete user-reported; RGB fault counting still running at latest 194/320 observation",
+    "stage": "Phase3-M1 11 trainings complete; original executor 318/320 cases at user observation; handoff skipped; final acceptance pending",
     "recommendation": "Test relative height amplitude versus robust per-tile normalization and patch-embedding adaptation; check complementarity separately",
     "user_requested_new_experiment": true,
     "specific_mechanism_validated": false,
