@@ -9,6 +9,16 @@ import time
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 
+_FORK_ENV=None
+_FORK_FAST=False
+
+def process_invoke(pair):
+    """Linux fork inherits read-only arrays; task/result IPC contains only indices/digests."""
+    c,original,r,d,tile,masks,health=_FORK_ENV
+    i,j=pair
+    z=fast_analyze(c,r[i],d[j],tile,masks[i],healthy_override=health[i]) if _FORK_FAST else original.analyze(r[i],d[j],tile,masks[i],healthy_override=health[i])
+    return hashlib.sha256(json.dumps(z,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+
 def fast_analyze(c,r,d,tile,mask=None,border=0,availability='both',healthy_override=None):
     """Same FP64 predictions; categorize ROIs in one histogram instead of three."""
     import numpy as np
@@ -108,7 +118,11 @@ def memory_available():
     return available
 
 def main():
-    p=argparse.ArgumentParser(); p.add_argument('--directory',type=Path,required=True); args=p.parse_args()
+    global _FORK_ENV,_FORK_FAST
+    p=argparse.ArgumentParser(); p.add_argument('--directory',type=Path,required=True)
+    p.add_argument('--processes',action='store_true',help='Add read-only fork process pools instead of repeating thread scaling')
+    args=p.parse_args()
+    if args.processes and sys.platform!='linux': raise RuntimeError('read-only fork comparison requires Linux')
     base=args.directory.resolve()
     if base.name!='research_phase3_m1_recovery_20261015T164357_19327': raise RuntimeError('identified live run required')
     q=json.loads((base/'queue_status.json').read_text()); counts=q.get('rgb_cases_counted')
@@ -120,8 +134,9 @@ def main():
     current=json.loads((base/'resource_profile.json').read_text())['analysis_threads']
     if limits['effective_limit_cpus']<=current:
         print('NO_CONCURRENCY_EXPANSION: CPU quota does not exceed current thread count',flush=True); return
-    if memory_available()<12*1024**3:
-        print('NO_BENCHMARK: less than 12GiB spare host/container RAM',flush=True); return
+    required_gib=16 if args.processes else 12
+    if memory_available()<required_gib*1024**3:
+        print('NO_BENCHMARK: less than',required_gib,'GiB spare host/container RAM',flush=True); return
     pid=json.loads((base/'launch.json').read_text())['controller_pid']
     cmd=(Path('/proc')/str(pid)/'cmdline').read_bytes()
     if str(base).encode() not in cmd or b'control_phase3_m1.py' not in cmd: raise RuntimeError('controller PID no longer matches')
@@ -155,34 +170,54 @@ def main():
     if a!=z: raise RuntimeError('warmup evidence differs')
     c.DATA.pop(warm)
     jobs=[(i,j) for i in range(4) for j in range(12)]
+    for arr in [*r,*d,full,nb,*masks,*health]: arr.flags.writeable=False
+    _FORK_ENV=(c,original,r,d,tile,masks,health)
     def invoke(pair,fast):
         i,j=pair
         z=fast_analyze(c,r[i],d[j],tile,masks[i],healthy_override=health[i]) if fast else original.analyze(r[i],d[j],tile,masks[i],healthy_override=health[i])
         return hashlib.sha256(json.dumps(z,sort_keys=True,separators=(',',':')).encode()).hexdigest()
     baseline=None; rows=[]
-    configs=[(False,n) for n in candidates]+[(True,n) for n in candidates]
+    configs=[('threads',False,n) for n in candidates]+[('threads',True,n) for n in candidates]
+    if args.processes:
+        import multiprocessing as mp
+        import resource
+        configs=[('threads',False,16)]+[("processes",fast,n) for fast in (False,True) for n in candidates if n in (16,32)]
+        print('FORK_ARRAYS_READ_ONLY: only benchmark-owned children; no prediction-array IPC or live-run process access',flush=True)
     print('BENCH_BEGIN: synthetic 256x6000 strips, 4 cases x12 models; no model/data/GPU work',flush=True)
     try:
         for repeat in range(2):
             sequence=configs if repeat==0 else list(reversed(configs))
-            for fast,workers in sequence:
+            for execution,fast,workers in sequence:
                 gc.collect(); started=time.monotonic(); cpu_started=time.process_time()
-                with ThreadPoolExecutor(max_workers=workers) as pool: results=list(pool.map(lambda pair:invoke(pair,fast),jobs))
+                if execution=='threads':
+                    with ThreadPoolExecutor(max_workers=workers) as pool: results=list(pool.map(lambda pair:invoke(pair,fast),jobs))
+                    cpu_used=time.process_time()-cpu_started
+                else:
+                    _FORK_FAST=fast
+                    before=resource.getrusage(resource.RUSAGE_CHILDREN); pool=mp.get_context('fork').Pool(workers)
+                    try:
+                        results=pool.map(process_invoke,jobs,chunksize=1)
+                        pool.close(); pool.join()
+                    except BaseException:
+                        pool.terminate(); pool.join(); raise
+                    after=resource.getrusage(resource.RUSAGE_CHILDREN)
+                    cpu_used=(after.ru_utime+after.ru_stime)-(before.ru_utime+before.ru_stime)
                 seconds=time.monotonic()-started
                 if baseline is None: baseline=results
                 if results!=baseline: raise RuntimeError('A/B integer evidence differs; reject optimization')
-                row=dict(counter='grouped_roi' if fast else 'original',threads=workers,repeat=repeat,seconds=round(seconds,3),
-                         cpu_cores=round((time.process_time()-cpu_started)/seconds,2),integer_evidence_exact=True)
+                row=dict(execution=execution,counter='grouped_roi' if fast else 'original',workers=workers,repeat=repeat,seconds=round(seconds,3),
+                         cpu_cores=round(cpu_used/seconds,2),integer_evidence_exact=True)
                 rows.append(row); print('BENCH',json.dumps(row),flush=True)
         medians=[]
-        for fast,workers in configs:
-            values=[x['seconds'] for x in rows if x['counter']==('grouped_roi' if fast else 'original') and x['threads']==workers]
-            medians.append(dict(counter='grouped_roi' if fast else 'original',threads=workers,seconds=sum(values)/len(values)))
-        ref=next(x['seconds'] for x in medians if x['counter']=='original' and x['threads']==16)
+        for execution,fast,workers in configs:
+            values=[x['seconds'] for x in rows if x['execution']==execution and x['counter']==('grouped_roi' if fast else 'original') and x['workers']==workers]
+            medians.append(dict(execution=execution,counter='grouped_roi' if fast else 'original',workers=workers,seconds=sum(values)/len(values)))
+        ref=next(x['seconds'] for x in medians if x['execution']=='threads' and x['counter']=='original' and x['workers']==16)
         for row in medians: row['speedup_vs_original16']=round(ref/row['seconds'],3)
         print('BENCH_SUMMARY',json.dumps(medians),flush=True)
-        print('PROBE_ONLY: live run was not restarted, signalled, modified or cleaned; synthetic scaling is not a full-tile ETA',flush=True)
+        print('PROBE_ONLY: live run was not restarted, signalled, modified or cleaned; benchmark children joined; synthetic scaling is not a full-tile ETA',flush=True)
     finally:
         c.DATA.pop(tile,None)
+        _FORK_ENV=None
 
 if __name__=='__main__': main()

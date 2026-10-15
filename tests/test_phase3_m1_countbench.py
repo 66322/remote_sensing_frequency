@@ -34,4 +34,24 @@ class Equality(unittest.TestCase):
         c.DATA['t']=dict(full_gt=np.zeros((10,10),np.uint8),noboundary_gt=np.zeros((10,10),np.uint8))
         with self.assertRaises(RuntimeError): b.fast_analyze(c,r,d,'t')
 
+    def test_process_worker_uses_only_inherited_arrays_and_returns_same_small_digest(self):
+        import hashlib,json
+        r=np.arange(6*13*17,dtype=np.float32).reshape(6,13,17); d=-r
+        gt=(np.arange(13*17).reshape(13,17)%6).astype(np.uint8)
+        c.DATA['t']=dict(full_gt=gt,noboundary_gt=gt)
+        mask=gt%3==0; healthy=~mask
+        import phase3_m1_numeric as original
+        b._FORK_ENV=(c,original,[r],[d],'t',[mask],[healthy])
+        expected=hashlib.sha256(json.dumps(analyze(r,d,'t',mask,healthy_override=healthy),sort_keys=True,separators=(',',':')).encode()).hexdigest()
+        try:
+            for fast in (False,True):
+                b._FORK_FAST=fast; result=b.process_invoke((0,0))
+                self.assertEqual(result,expected); self.assertEqual(len(result),64)
+            if sys.platform=='linux':
+                import multiprocessing as mp
+                pool=mp.get_context('fork').Pool(2)
+                try: self.assertEqual(pool.map(b.process_invoke,[(0,0),(0,0)]),[expected,expected])
+                finally: pool.close(); pool.join()
+        finally: b._FORK_ENV=None
+
 if __name__=='__main__': unittest.main()
