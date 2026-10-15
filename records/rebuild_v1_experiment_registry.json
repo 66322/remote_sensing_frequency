@@ -2120,20 +2120,56 @@
       "new_contribution_established": false,
       "independent_training_rerun": false,
       "Test6_held4_final_opened": false
+    },
+    {
+      "id": "PHASE3_M1_DESIGN_20261015",
+      "status": "DESIGN_RECORDED_NOT_LAUNCHED",
+      "purpose": "Distinguish DSM relative-height amplitude from ordinary robust normalization and input adaptation; assess conditional complementarity",
+      "report": "docs/protocols/PHASE3_M1_DESIGN_20261015.md",
+      "plan": "records/phase3_m1_design_20261015/plan.json",
+      "source_commit": "60dd80a00c409a2a58f574fc464dde74b048bc82",
+      "started_at": null,
+      "completed_at": null,
+      "recorded_at": "2026-10-15",
+      "time_precision": "date",
+      "new_training_started": false,
+      "executed_optimizer_updates": 0,
+      "planned_new_main_trainings": 11,
+      "planned_max_new_trainings": 13,
+      "planned_max_new_updates": 208000,
+      "gpus": [
+        0,
+        1
+      ],
+      "seeds": [
+        42,
+        17
+      ],
+      "Test6_held4_final_opened": false,
+      "point_cloud_used": false
     }
   ],
   "next_plan": {
-    "status": "QUESTION_AND_DATA_FEASIBILITY_ONLY_NO_QUEUE",
-    "source": "docs/experiments/PHASE_24_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md",
-    "new_experiment_authorized": false,
-    "new_experts": 0,
-    "new_training_seeds": 0,
-    "A_B_selected": false,
-    "test6_held4_final": "sealed",
-    "candidate_roles": [
-      "real_geometry_quality_observability",
-      "physical_height_scale_representation"
-    ]
+    "id": "Phase3-M1",
+    "status": "DESIGN_RECORDED_NOT_LAUNCHED",
+    "source": "docs/protocols/PHASE3_M1_DESIGN_20261015.md",
+    "machine_plan": "records/phase3_m1_design_20261015/plan.json",
+    "user_requested_new_experiment_planning": true,
+    "implementation_ready": false,
+    "server_started": false,
+    "gpus": [
+      0,
+      1
+    ],
+    "seeds_proposed": [
+      42,
+      17
+    ],
+    "max_new_trainings": 13,
+    "max_new_updates": 208000,
+    "wall_deadline_hours": null,
+    "point_cloud_in_scope": false,
+    "test6_held4_final": "sealed"
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -2479,12 +2515,14 @@
     "current_dual_worker_authorization": "User repeatedly confirmed physical GPU0/1, two H10080GB, ample RAM/disk; D24 plan reuses this authorization, nohup and zzx record scope; do not reinterpret historical GPU0-only policy as current restriction."
   },
   "research_decision": {
-    "stage": "Phase2.4 accepted as archived diagnostic evidence; primary scientific gates failed",
-    "recommendation": "Close current candidate and prepare a question/data-feasibility brief before choosing A/B",
-    "route_chosen_by_user": false,
+    "stage": "Phase3-M1 design recorded after Phase2.4 closure",
+    "recommendation": "Test relative height amplitude versus robust per-tile normalization and patch-embedding adaptation; check complementarity separately",
+    "user_requested_new_experiment": true,
+    "specific_mechanism_validated": false,
     "mainline": "RGB-DSM conditional complementarity and degraded/missing segmentation",
     "restoration_role": "side branch",
-    "preference": "innovation and research question first; no fixed deadline"
+    "point_cloud_in_scope": false,
+    "preference": "innovation and research question first; GPUs0/1; one or two days or longer acceptable"
   },
   "proposed_d23": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
@@ -3152,16 +3190,15 @@
   },
   "recent_review": "docs/experiments/COMPLETED_EXPERIMENTS_HANDOFF_20261004.md",
   "current_execution_budget": {
-    "scope": "Phase2.4 closed; historical routing retained separately",
-    "registered_max_small_heads": 4,
-    "registered_max_updates": 32000,
-    "completed_heads": [
-      "T0"
-    ],
-    "completed_updates": 8000,
-    "new_expert_updates": 0,
-    "additional_seed_authorized": false,
-    "further_training_authorized": false
+    "scope": "Phase3-M1 proposed design, not an active run",
+    "planned_main_trainings": 11,
+    "planned_main_updates": 176000,
+    "conditional_trainings": 2,
+    "conditional_updates": 32000,
+    "completed_new_trainings": 0,
+    "completed_new_updates": 0,
+    "active_queue": false,
+    "configuration_frozen_for_execution": false
   },
   "completed_d26_plan": {
     "input_manifest_sha256": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295",
@@ -3339,7 +3376,7 @@
       "gradient_accumulation": false,
       "views_per_crop": 2,
       "head_lr": 0.0002,
-      "encoder_last4_lr": 2e-05,
+      "encoder_last4_lr": 0.00002,
       "weight_decay": 0.01,
       "betas": [
         0.9,
@@ -3632,5 +3669,40 @@
       "all_payloads_reaudited": false
     }
   },
-  "registry_coverage_note_20261015": "This update adds Phase2.4 acceptance only. Entries and routing last updated 2026-10-05 are historical; intervening experiments are indexed in docs/experiments and records. Missing registry entries do not mean experiments never ran. Current action follows docs/START_HERE.md and docs/current."
+  "registry_coverage_note_20261015": "This update adds Phase2.4 acceptance only. Entries and routing last updated 2026-10-05 are historical; intervening experiments are indexed in docs/experiments and records. Missing registry entries do not mean experiments never ran. Current action follows docs/START_HERE.md and docs/current.",
+  "historical_routing_before_phase3_m1_design_20261015": {
+    "next_plan": {
+      "status": "QUESTION_AND_DATA_FEASIBILITY_ONLY_NO_QUEUE",
+      "source": "docs/experiments/PHASE_24_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md",
+      "new_experiment_authorized": false,
+      "new_experts": 0,
+      "new_training_seeds": 0,
+      "A_B_selected": false,
+      "test6_held4_final": "sealed",
+      "candidate_roles": [
+        "real_geometry_quality_observability",
+        "physical_height_scale_representation"
+      ]
+    },
+    "current_execution_budget": {
+      "scope": "Phase2.4 closed; historical routing retained separately",
+      "registered_max_small_heads": 4,
+      "registered_max_updates": 32000,
+      "completed_heads": [
+        "T0"
+      ],
+      "completed_updates": 8000,
+      "new_expert_updates": 0,
+      "additional_seed_authorized": false,
+      "further_training_authorized": false
+    },
+    "research_decision": {
+      "stage": "Phase2.4 accepted as archived diagnostic evidence; primary scientific gates failed",
+      "recommendation": "Close current candidate and prepare a question/data-feasibility brief before choosing A/B",
+      "route_chosen_by_user": false,
+      "mainline": "RGB-DSM conditional complementarity and degraded/missing segmentation",
+      "restoration_role": "side branch",
+      "preference": "innovation and research question first; no fixed deadline"
+    }
+  }
 }

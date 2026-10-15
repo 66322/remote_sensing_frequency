@@ -1,0 +1,183 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "Phase3-M1",
+  "status": "design_recorded_not_launched",
+  "date": "2026-10-15",
+  "timezone": "Asia/Shanghai",
+  "authorization": {
+    "request": "安排有价值、有目的、基于Phase2.4问题的新实验；GPU0/1，时间一天两天或更久",
+    "scope": "experiment_design",
+    "server_started": false,
+    "point_cloud_excluded": true
+  },
+  "source_commit": "60dd80a00c409a2a58f574fc464dde74b048bc82",
+  "design_document": "docs/protocols/PHASE3_M1_DESIGN_20261015.md",
+  "hypotheses": [
+    "relative_height_amplitude_beyond_robust_normalization",
+    "patch_embedding_adaptation",
+    "conditional_complementarity_and_fixed_fusion_utilization"
+  ],
+  "fit12": [
+    "2_12",
+    "2_10",
+    "7_8",
+    "3_12",
+    "5_12",
+    "7_9",
+    "6_9",
+    "7_7",
+    "4_12",
+    "6_8",
+    "6_12",
+    "6_7"
+  ],
+  "val2": [
+    "3_11",
+    "5_10"
+  ],
+  "sealed_splits": [
+    "Test6",
+    "held4",
+    "final"
+  ],
+  "gpus": [
+    0,
+    1
+  ],
+  "seeds": [
+    42,
+    17
+  ],
+  "primary_endpoint": 16000,
+  "physical_train_batch": 16,
+  "train_crop": 512,
+  "infer_stride": 256,
+  "historical_reuse": {
+    "arm": "M00",
+    "seed": 42,
+    "run": "research_phase2_matched_20261013T151120_1310582",
+    "job": "A_DSM",
+    "step": 16000,
+    "condition": "input/code/stream/initialization/optimizer/precision/evaluation binding equivalent; otherwise historical anchor only",
+    "on_mismatch": "historical nonpaired reference only; no automatic rerun; R1/R2 eight endpoints remain primary"
+  },
+  "representations": {
+    "R0": "(h-min_tile)/(max_tile-min_tile)",
+    "R1": "0.5+(h-median_tile)/(q95_tile-q05_tile)",
+    "R2": "0.5+(h-median_tile)/median_Fit12(q95_tile-q05_tile)",
+    "common": {
+      "channels": 3,
+      "imagenet_normalization": true,
+      "clipping": false,
+      "units": "verify raw DSM unit before metric interpretation",
+      "scope": "relative tile-centered height; not nDSM or absolute elevation"
+    }
+  },
+  "adaptation": {
+    "A0": "last4+projection+decoder",
+    "A1": "A0+patch_embedding_projection_weight_bias; early8 weights frozen, gradient path retained"
+  },
+  "arms": [
+    {
+      "id": "M00",
+      "representation": "R0",
+      "adaptation": "A0"
+    },
+    {
+      "id": "M01",
+      "representation": "R0",
+      "adaptation": "A1"
+    },
+    {
+      "id": "M10",
+      "representation": "R1",
+      "adaptation": "A0"
+    },
+    {
+      "id": "M11",
+      "representation": "R1",
+      "adaptation": "A1"
+    },
+    {
+      "id": "M20",
+      "representation": "R2",
+      "adaptation": "A0"
+    },
+    {
+      "id": "M21",
+      "representation": "R2",
+      "adaptation": "A1"
+    }
+  ],
+  "new_main_trainings": 11,
+  "new_main_optimizer_updates": 176000,
+  "primary_contrast": "M21-M11, each seed and tile; seed-pooled first and individual tiles preserved",
+  "continue_amplitude_gate": {
+    "both_seed_pooled_positive": true,
+    "mean_seed_pooled_gain_pp": 0.5,
+    "min_seed_tile_gain_pp": -0.2
+  },
+  "conditional_counter": {
+    "id": "C21",
+    "seeds": [
+      42,
+      17
+    ],
+    "updates_each": 16000,
+    "trigger": "continue_amplitude_gate",
+    "change": "Fit tile robust span derangement: g_t=s_pi(t)/s_t, train only; normal R2 evaluation",
+    "max_new_trainings": 2,
+    "no_practical_disruption_description": "both seed pooled abs(C21-M21)<=0.2 pp; descriptive, not statistical equivalence"
+  },
+  "max_new_trainings": 13,
+  "max_new_optimizer_updates": 208000,
+  "downstream": {
+    "rgb_reference": "Phase2 A_RGB seed42 fixed16k",
+    "logit_mix": [
+      0.9,
+      0.1
+    ],
+    "probability_mix_sensitivity": [
+      0.9,
+      0.1
+    ],
+    "fit_new_gate": false,
+    "fit_new_alpha": false,
+    "rgb_faults": "old zero/down4 x 4 families x 20 masks x 2 tiles",
+    "dsm_faults": "new raw-height down4 and shift(+8,0) native pixels; normalize observed input",
+    "primary_benefit_comparison": "M21-M11 for each DSM seed on RGB-down4"
+  },
+  "timing": {
+    "planning_window": "one to two days or longer; throughput not yet measured",
+    "wall_deadline_hours": null,
+    "min_artificial_runtime_hours": 0,
+    "automatic_training_extension": false,
+    "automatic_failed_job_retry": false
+  },
+  "engineering_status": "not_implemented_or_tested",
+  "entry_command": null,
+  "reporting": {
+    "evidence_level": "reused development tiles, two DSM seeds, one fixed RGB seed",
+    "github_core_target_mib": 20,
+    "keep_negative_results": true,
+    "pixel_array_disk_cache": false
+  },
+  "spatial_scale_diagnostic": {
+    "fixed_R2_denominator": "original training Fit12 S at every sampling version",
+    "gsd_cm": [
+      5,
+      10
+    ],
+    "fov_m": [
+      25.6,
+      51.2
+    ],
+    "native_centers": [
+      1024,
+      2304,
+      3584,
+      4864
+    ],
+    "score_native_center_roi": 256
+  }
+}

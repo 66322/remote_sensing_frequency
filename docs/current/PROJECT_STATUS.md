@@ -1,19 +1,18 @@
-# 当前状态：Phase2.4原件验收完成，主门禁未通过（2026-10-15）
+# 项目状态：Phase2.4已验收；Phase3-M1处于设计阶段（2026-10-15）
 
-本轮Phase2.4已完成并完成GitHub原件/整数统计独立验收。原件提交76ae973b869eb3c377be4dae99fcb7224c9e2ac3；执行快照5a84f0eacabe5d6f1c7ed1638e6a9291c58e151f。
+Phase2.4原件76ae973b869eb3c377be4dae99fcb7224c9e2ac3已上传回读并完成整数统计验收；calibrated/probe原门禁均False，T0完成8k，T1/T2/T3未派发，原Phase2 L=False不改。旧实验、上传、tmux/Git排错已收尾，不重新启动旧队列。详见[正式验收](../experiments/PHASE_24_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md)。
 
-原科学门禁calibrated=False、probe=False；T0完成8000更新，T1/T2/T3未派发。原Phase2 L=False和B1/B3未派发不改。没有新专家、训练seed、Test6/held4/final访问或自动失败重跑。
+用户于2026-10-15明确要求基于当前结果安排有价值的新实验，物理GPU 0、1可用，一天两天或更久均可；点云属于另一篇论文，本轮排除。现形成[Phase3-M1设计](../protocols/PHASE3_M1_DESIGN_20261015.md)：DSM相对高度幅度与输入端适配诊断。状态为设计已记录、运行代码未实现/未测试、服务器未启动；不是新实验结果，也不把助手推荐写成用户已经确认具体科学机制。
 
-主要发现：T0对旧B0的clean/P-U为+2.6180/+2.4989pp，但DSM-fault在两tile对静态reference为-0.4215/-0.3907pp、最差family×damage -1.8433pp。probe的RGB-fault对reference +3.4802pp，但clean/healthy保护失败。预登记stump对照选中RGB零值比例，zero条件收益强、down4精确回退RGB；它也未通过完整保护。不能用池化均值宣布安全，也不能称所有统计信号没有价值。
+3种输入表示×2种stem训练范围×seed42/17，固定16k端点、batch16。M00/42在绑定一致时复用旧Phase2 A_DSM；11个新主训练176k更新，最多2个预登记条件反证32k，合计上限13个新训练208k。优先比较M21−M11，不按Val2选赢家后改预算。Fit12/重复开发Val2；Test6/held4/final保持封闭。固定RGB仅seed42，下游为双DSM seed对同一RGB参考。
 
-用户偏好继续为“暂不受期限限制，优先研究问题和创新性”。建议本轮候选收口，下一交付先做问题论证/数据可达性，停止默认同信息换融合头。真实几何质量观测A、物理高度/尺度表征B仍为建议，用户未选定、未授权新训练；原RGB–DSM条件互补/退化缺失分割主线、恢复旁支定位不自动改写。
+主要区分：普通稳健归一化、patch embedding适配、统一相对高度幅度的额外作用，以及补救信息能否由固定融合兑现。普通处理解释改善时按普通处理收口；没有稳定幅度增益则条件反证跳过，不自动转向更大骨干、全解冻或32k。
 
-独立核验3249分块、3014原文件、2972计数记录、242源码/配置；249248组整数CM、605088项联合边际、201696组correctness flow、2328来源锁、46560项跨阶段原系统CM对比通过；主摘要/主门禁/配对mask区间重建一致。T0有8000条基础流及401条轨迹。验证范围是归档和计数，不是GPU重新训练复现；服务器原数组/.pth未在本机重新hash，旧B0原batch流未再次逐行下载对比。
+## 执行状态
 
-Potsdam Fit12/两张重复开发Val2（3_11、5_10）、seed42、NoBoundary mIoU_fg5；mask bootstrap不提供独立场景保证。T0/stump附加门禁是验收诊断，不替换原calibrated/probe入场，不倒写派发。
-
-服务器完成状态最后观测：2026-10-15T00:13:16.405679+08:00，PHASE24_COMPLETE_AWAITING_REVIEW，SMOKE12/D1累计642/D2 642/D3 522/E1164，CPU_PENDING0，控制器与GPU worker均退出。该时刻运行事实不推断实时资源。
-
-用户已完成HTTPS交互认证，上传入口输出PHASE24_GITHUB_COMMIT 76ae973b869eb3c377be4dae99fcb7224c9e2ac3并回读完成。评审端逐字节/原计数验收已完成。研究阶段从运行/待上传切换为本轮收口；科学候选未通过，不启动补救训练。
-
-[完整报告](../experiments/PHASE_24_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md)；[验证](../../records/phase24_review_20261015/verification.json)。
+- Phase3-M1设计与机器可读计划：已记录。
+- 新执行代码/CPU及GPU检查：未完成，不冒充已验证。
+- 新训练与推理：未启动；本轮完成的新专家数和新更新数均为0。
+- 可用资源：GPU0/1，用户允许一天两天以上；无已测量新ETA。
+- 下一步：执行包实现、定向验证、冻结并提供后台启动入口。
+- 当前证据局限：重复开发Val2与已有单seed RGB参考；未建立独立地理泛化。

@@ -1,17 +1,11 @@
-# 新对话接续：Phase2.4已验收收口（2026-10-15）
+# 新对话接续：Phase3-M1设计已记录（2026-10-15）
 
-本轮Phase2.4已完成并完成GitHub原件/整数统计独立验收。原件提交76ae973b869eb3c377be4dae99fcb7224c9e2ac3；执行快照5a84f0eacabe5d6f1c7ed1638e6a9291c58e151f。
+用户于2026-10-15明确要求基于当前结果安排有价值的新实验，物理GPU 0、1可用，一天两天或更久均可；点云属于另一篇论文，本轮排除。现形成[Phase3-M1设计](../protocols/PHASE3_M1_DESIGN_20261015.md)：DSM相对高度幅度与输入端适配诊断。状态为设计已记录、运行代码未实现/未测试、服务器未启动；不是新实验结果，也不把助手推荐写成用户已经确认具体科学机制。
 
-原科学门禁calibrated=False、probe=False；T0完成8000更新，T1/T2/T3未派发。原Phase2 L=False和B1/B3未派发不改。没有新专家、训练seed、Test6/held4/final访问或自动失败重跑。
+3种输入表示×2种stem训练范围×seed42/17，固定16k端点、batch16。M00/42在绑定一致时复用旧Phase2 A_DSM；11个新主训练176k更新，最多2个预登记条件反证32k，合计上限13个新训练208k。优先比较M21−M11，不按Val2选赢家后改预算。Fit12/重复开发Val2；Test6/held4/final保持封闭。固定RGB仅seed42，下游为双DSM seed对同一RGB参考。
 
-主要发现：T0对旧B0的clean/P-U为+2.6180/+2.4989pp，但DSM-fault在两tile对静态reference为-0.4215/-0.3907pp、最差family×damage -1.8433pp。probe的RGB-fault对reference +3.4802pp，但clean/healthy保护失败。预登记stump对照选中RGB零值比例，zero条件收益强、down4精确回退RGB；它也未通过完整保护。不能用池化均值宣布安全，也不能称所有统计信号没有价值。
+主要区分：普通稳健归一化、patch embedding适配、统一相对高度幅度的额外作用，以及补救信息能否由固定融合兑现。普通处理解释改善时按普通处理收口；没有稳定幅度增益则条件反证跳过，不自动转向更大骨干、全解冻或32k。
 
-用户偏好继续为“暂不受期限限制，优先研究问题和创新性”。建议本轮候选收口，下一交付先做问题论证/数据可达性，停止默认同信息换融合头。真实几何质量观测A、物理高度/尺度表征B仍为建议，用户未选定、未授权新训练；原RGB–DSM条件互补/退化缺失分割主线、恢复旁支定位不自动改写。
+先读[完整设计](../protocols/PHASE3_M1_DESIGN_20261015.md)、[下一步](NEXT_EXPERIMENT.md)、[执行约定](../protocols/EXECUTION_CONTRACT.md)。当前唯一下一步是实现和定向验证执行包；没有新的服务器启动命令或运行回执。无需重做旧实验验收、旧上传或tmux排查。
 
-独立核验3249分块、3014原文件、2972计数记录、242源码/配置；249248组整数CM、605088项联合边际、201696组correctness flow、2328来源锁、46560项跨阶段原系统CM对比通过；主摘要/主门禁/配对mask区间重建一致。T0有8000条基础流及401条轨迹。验证范围是归档和计数，不是GPU重新训练复现；服务器原数组/.pth未在本机重新hash，旧B0原batch流未再次逐行下载对比。
-
-Potsdam Fit12/两张重复开发Val2（3_11、5_10）、seed42、NoBoundary mIoU_fg5；mask bootstrap不提供独立场景保证。T0/stump附加门禁是验收诊断，不替换原calibrated/probe入场，不倒写派发。
-
-必读docs/START_HERE.md、RESEARCH_DECISION.md、HANDOFF.md、PROJECT_STATUS.md、NEXT_EXPERIMENT.md，以及完整验收报告和records/phase24_review_20261015/verification.json。
-
-不要使用旧D2/T0进度、旧PID或认证排错命令。上传76ae973b已完成回读，评审已接收全部原件。服务器无SSH；未来终端工作仍由用户显式执行。当前没有待启动实验或待恢复上传。
+Phase2.4原件76ae973b869eb3c377be4dae99fcb7224c9e2ac3已上传回读并完成整数统计验收；calibrated/probe原门禁均False，T0完成8k，T1/T2/T3未派发，原Phase2 L=False不改。旧实验、上传、tmux/Git排错已收尾，不重新启动旧队列。详见[正式验收](../experiments/PHASE_24_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md)。
