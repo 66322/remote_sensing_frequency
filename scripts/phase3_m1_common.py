@@ -26,6 +26,24 @@ def sha(p):
     return h.hexdigest()
 def key(*x): return int.from_bytes(hashlib.sha256('|'.join(map(str,x)).encode()).digest()[:8],'big')
 def binding(base): return {n:sha(Path(base)/n) for n in ('plan.json','code_manifest.json')}
+
+def recovery(base):
+    base=Path(base)
+    if not (base/'plan.json').exists(): return None
+    p=read(base/'plan.json')
+    if 'recovery_manifest_sha256' not in p: return None
+    if sha(base/'recovery_manifest.json')!=p['recovery_manifest_sha256']:
+        raise RuntimeError('recovery manifest changed')
+    return read(base/'recovery_manifest.json')
+
+def job_binding_ok(base,job,done):
+    if done.get('binding')==binding(base): return True
+    r=recovery(base)
+    if not r or job not in r['completed']: return False
+    origin=r['completed'][job]
+    return (done.get('binding')==r['previous_binding'] and
+            sha(Path(base)/'jobs'/job/'complete.json')==origin['files']['complete.json'] and
+            done.get('checkpoint_sha256')==origin['files']['endpoint.pth'])
 def scoped(p,root):
     root=Path(root).resolve(); p=Path(p)
     for node in [p,*p.parents]:
@@ -78,6 +96,11 @@ def verify(base):
     if p['updates']!=16000 or p['batch']!=16 or p['automatic_retry']: raise RuntimeError('budget changed')
     for n,h in read(base/'code_manifest.json')['files'].items():
         if sha(scoped(base/'code'/n,base/'code'))!=h: raise RuntimeError('code changed: '+n)
+    r=recovery(base)
+    if r:
+        for job,origin in r['completed'].items():
+            for name,h in origin['files'].items():
+                if sha(scoped(base/'jobs'/job/name,base))!=h: raise RuntimeError('inherited completed evidence changed: '+job+'/'+name)
     return p
 def cm(gt,pred,support):
     use=support&(gt<6)

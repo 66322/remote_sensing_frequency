@@ -91,11 +91,14 @@ def prepare(base):
     return pf
 
 class Crops:
-    def __init__(self,arm,seed): self.arm=arm; self.seed=seed
-    def __len__(self): return 16000*16
+    def __init__(self,arm,seed,start_step=0):
+        if not 0<=start_step<16000: raise ValueError('invalid crop restart step')
+        self.arm=arm; self.seed=seed; self.start_step=start_step
+    def __len__(self): return (16000-self.start_step)*16
     def __getitem__(self,index):
         import torch
         from phase2_common import digest
+        index+=self.start_step*16
         step=index//16+1; i=index%16; rng=random.Random(key(self.seed,'phase21',step,i))
         tile=FIT[rng.randrange(len(FIT))]; item=DATA[tile]; h,w=item['height'].shape
         y=rng.randrange(h-511); x=rng.randrange(w-511); fh,fv=rng.random()<.5,rng.random()<.5

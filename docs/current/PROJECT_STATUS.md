@@ -1,25 +1,13 @@
-## 2026-10-15启动故障后更新
+# Phase3-M1：重启中断，恢复包待服务器启动（2026-10-15）
 
-用户回传首次run `research_phase3_m1_20261015T142532_2652995` 于14:26在RGB_CLEAN导入时报 `No module named 'model'`，状态FAILED_OR_INTERRUPTED_NO_RETRY，控制器已退出。14项输入已核对；未见TRAIN派发，新增训练更新未观测。原因是执行入口缺少代码根目录搜索路径，非科学门禁失败。
+用户16:26:47回传确认原run `research_phase3_m1_20261015T143433_2657574` 无本实验存活进程，GPU0/1空闲；旧状态文件16:03的RUNNING是残留。原7组完成标记和端点文件存在，共112000次更新。恢复注册会实际核验SHA，不将“文件存在”当作完整性已确认。
 
-已修复入口路径，增加输入准备前真实模型导入检查及无关工作目录/无PYTHONPATH的独立子进程回归。下一步用修复提交bootstrap，并显式指定 `--supersede-failed /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m1_20261015T142532_2652995`。仅此已识别的空训练失败run通过全部退出及状态检查后可被新run取代；旧目录完整保留，已有其他run则不重复开队列。恢复尚无服务器执行回执。
+已完成：M10/42、M10/17、M11/42、M11/17、M20/42、M21/42、M21/17。中断：M20/17最后12520步、M01/42最后2680步，有滚动checkpoint，预计12k/2k，实际以checkpoint内部step为准。未开始：M01/17、M00/17。
 
-## 修复前执行包登记（历史状态）
+下一步：用本恢复提交固定SHA执行 `scripts/recover_phase3_m1.py --directory /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m1_20261015T143433_2657574 --commit <恢复提交完整SHA>`，整段注册放入nohup。不是重新执行原bootstrap，不把原queue_status改回REGISTERED。
 
-# 项目状态：Phase3-M1执行包完成；尚无新服务器运行观测（2026-10-15）
+新run保持原目录不改写，7完成组保留原绑定并以逐文件SHA桥接；中断组恢复模型、AdamW、CPU/CUDA随机状态和原样本位置，并回滚日志到已提交step。主训练剩余预计50k有效更新；重建丢失的匿名RAM预测。已有门禁若落盘，重算须一致。科学方案、16k端点、batch16、GPU0/1及sealed splits不变。
 
-Phase3-M1已按用户要求落实执行包，尚未取得服务器启动回执。仅使用本篇遥感RGB/DSM/标签，GPU0/1，固定16k、batch16；11个新主训练，最多2个条件反证，总上限13个新训练208k更新。旧M00/42在绑定合格时复用，Test6/held4/final不读，点云论文不进入本轮。
+[恢复协议](../protocols/PHASE3_M1_REBOOT_RECOVERY_20261015.md)；[检查记录](../../records/phase3_m1_reboot_recovery_review_20261015.json)。实际H100恢复及后续结果尚无回执。
 
-双卡共享就绪队列，空闲卡可以领取另一seed任务。GPU到CPU交接只等内存接收，不等计数完成；RGB故障前向跨所有DSM对照共享。Fit训练RAM在全部训练消费者结束后分进程释放，条件预测匿名RAM在最后计数消费者结束后关闭，成功作业的滚动优化器在端点与主计数核验后退役。GPU无后续任务时先退出，CPU继续收尾；所有自有进程退出后清理runtime cache/temporary。负结果、失败恢复状态、必要16k权重和充分整数证据保留。
-
-[执行与清理协议](../protocols/PHASE3_M1_EXECUTION_20261015.md)；[科学设计](../protocols/PHASE3_M1_DESIGN_20261015.md)；[包清单](../../configs/phase3_m1_execution_manifest.json)；[本机检查记录](../../records/phase3_m1_implementation_review_20261015.json)。
-
-- 科学设计：已登记，用户已要求按其落实。
-- 新代码：双卡调度、输入/训练/推理/计数、验证、上传及生命周期已实现。
-- 本机检查：16项适用检查通过，1项Linux transport待目标平台。
-- 服务器任务：未取得启动回执；实际新增训练及更新仍记0。
-- 时间：无24/48h硬终止；实际ETA等待正式轨迹。
-- 唯一下一步：执行固定提交bootstrap，回传其注册/启动短输出。
-- 科学结论：仍只有重复开发Val2证据；新方法有效性与独立泛化均未建立。
-
-原Phase2.4验收及失败门禁保留，原必要专家/权重/数据不删。
+已实现注册锁、原控制器锁、无活跃本实验进程及GPU占用核对，重复命令只显示已有恢复目录。没有tmux操作或向其他任务发信号。缓存清理仅限新run自身的运行缓存、临时文件和成功后的滚动优化器；原中断记录暂作恢复来源保留。

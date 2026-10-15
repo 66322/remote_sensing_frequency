@@ -44,7 +44,7 @@ def load_job(base,job):
     import torch
     if job=='M00_42': return load_old(base,'A_DSM')
     f=Path(base)/'jobs'/job/'endpoint.pth'; done=c.read(f.parent/'complete.json')
-    if done['binding']!=c.binding(base) or c.sha(f)!=done['checkpoint_sha256']: raise RuntimeError('endpoint changed')
+    if not c.job_binding_ok(base,job,done) or c.sha(f)!=done['checkpoint_sha256']: raise RuntimeError('endpoint changed')
     arm,seed=job.split('_'); model=make_model(base,int(seed),c.ARMS[arm][1])
     model.load_state_dict(torch.load(f,map_location='cpu',weights_only=False)['model'],strict=True)
     return model.eval().requires_grad_(False)
@@ -92,6 +92,26 @@ def validation(base,gpu,model):
         score=infer(base,gpu,model,image); out[t]=primary(score,t); del score,image,height
     return out
 
+def restore_checkpoint(base,job,model,opt,initial):
+    import torch
+    r=c.recovery(base)
+    if not r or job not in r['resumed']: return 0,0.
+    row=r['resumed'][job]; f=Path(row['path'])
+    if c.sha(f)!=row['sha256']: raise RuntimeError('resume checkpoint changed')
+    if c.sha(Path(base)/'jobs'/job/'batch_hashes.jsonl')!=row['prefix_sha256']:
+        raise RuntimeError('resume stream prefix changed')
+    state=torch.load(f,map_location='cpu',weights_only=False)
+    if state['binding']!=r['previous_binding'] or state['job']!=job or state['step']!=row['step']:
+        raise RuntimeError('resume checkpoint identity differs')
+    if c.read(Path(base)/'jobs'/job/'parameters.json')['initial_state_sha256']!=initial:
+        raise RuntimeError('resume initialization differs')
+    model.load_state_dict(state['model'],strict=True); opt.load_state_dict(state['optimizer'])
+    torch.set_rng_state(state['rng']); torch.cuda.set_rng_state_all(state['cuda_rng'])
+    c.write(Path(base)/'jobs'/job/'resume_loaded.json',dict(source_sha256=row['sha256'],source_binding=r['previous_binding'],
+        step=row['step'],optimizer_restored=True,cpu_cuda_rng_restored=True,sample_stream_start=row['step']+1,
+        prefix_sha256=c.sha(Path(base)/'jobs'/job/'batch_hashes.jsonl'),observed_at=c.now()))
+    return row['step'],row['elapsed_seconds']
+
 def train(base,gpu,task,events,acks):
     import torch
     from phase2_train import segmentation_ce,model_digest,gradients
@@ -99,42 +119,46 @@ def train(base,gpu,task,events,acks):
     from d24_data import PrefetchedBatches
     from phase3_m1_data import Crops
     base=Path(base); arm=task['arm']; seed=task['seed']; job=task['job']; folder=base/'jobs'/job
-    folder.mkdir(parents=True,exist_ok=False)
+    r=c.recovery(base); resuming=bool(r and job in r['resumed'])
+    if resuming:
+        if (folder/'complete.json').exists(): raise RuntimeError('refuse retraining completed job')
+    else: folder.mkdir(parents=True,exist_ok=False)
     clear_models()
     model=make_model(base,seed,c.ARMS[arm][1]); model._m1_rep=c.ARMS[arm][0]
     initial=model_digest(model); opt=optimizer(model,16000)
     frozen={n:p.detach().clone() for n,p in model.named_parameters() if not p.requires_grad}
     names=[(n,list(p.shape),p.numel()) for n,p in model.named_parameters() if p.requires_grad]
+    start_step,elapsed_before=restore_checkpoint(base,job,model,opt,initial)
     c.write(folder/'parameters.json',dict(binding=c.binding(base),job=job,seed=seed,initial_state_sha256=initial,
        trainable=names,stem_trainable=c.ARMS[arm][1],input_representation=model._m1_rep,updates=16000,batch=16,physical_gpu=gpu))
     if seed==42:
         expected=c.read(Path(c.read(base/'plan.json')['previous'])/'jobs/A_DSM/parameters.json')['initial_state_sha256']
         c.write(folder/'legacy_initial_check.json',dict(exact=initial==expected,expected=expected,actual=initial))
     pf=c.read(base/'resource_profile.json'); started=time.monotonic(); seen=set()
-    stream=PrefetchedBatches(Crops(arm,seed),16,pf['crop_workers'],4,True)
-    with (folder/'batch_hashes.jsonl').open('x') as hashes,(folder/'trajectory.jsonl').open('x') as trajectory:
-        for step,batch in enumerate(stream,1):
+    stream=PrefetchedBatches(Crops(arm,seed,start_step),16,pf['crop_workers'],4,True)
+    with (folder/'batch_hashes.jsonl').open('a' if resuming else 'x') as hashes,(folder/'trajectory.jsonl').open('a' if resuming else 'x') as trajectory:
+        for step,batch in enumerate(stream,start_step+1):
             model.train(); opt.zero_grad(set_to_none=True)
             image=batch['dsm'][:,None].repeat(1,3,1,1).cuda(non_blocking=True); target=batch['gt'].cuda(non_blocking=True)
             for group in opt.param_groups: group['lr']=group['initial_lr']*factor(step,16000)
             with torch.autocast('cuda',dtype=torch.bfloat16): z=model(image)
             loss=segmentation_ce(z,target); loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(),float('inf'),error_if_nonfinite=True)
-            if step==1 or step%500==0: seen.update(gradients(model))
-            before=model.encoder.patch_embed.proj.weight.detach().clone() if step==1 and c.ARMS[arm][1] else None
+            if step==start_step+1 or step%500==0: seen.update(gradients(model))
+            before=model.encoder.patch_embed.proj.weight.detach().clone() if step==start_step+1 and c.ARMS[arm][1] else None
             opt.step()
             if before is not None:
                 if torch.equal(before,model.encoder.patch_embed.proj.weight): raise RuntimeError('stem did not update')
-                c.write(folder/'gradient_path.json',dict(stem_changed=True,early8_weights_frozen=True,step=1))
+                c.write(folder/('resume_gradient_path.json' if resuming else 'gradient_path.json'),dict(stem_changed=True,early8_weights_frozen=True,step=step))
             token=hashlib.sha256('|'.join(batch['token']).encode()).hexdigest()
             hashes.write(json.dumps(dict(step=step,batch_hash=token))+'\n')
-            if step==1 or step%20==0:
-                row=dict(step=step,loss=float(loss),elapsed_seconds=time.monotonic()-started,
-                         remaining_train_hours=(16000-step)*(time.monotonic()-started)/step/3600)
+            if step==start_step+1 or step%20==0:
+                row=dict(step=step,loss=float(loss),elapsed_seconds=elapsed_before+time.monotonic()-started,
+                         remaining_train_hours=(16000-step)*(time.monotonic()-started)/(step-start_step)/3600)
                 trajectory.write(json.dumps(row)+'\n'); trajectory.flush(); hashes.flush()
                 c.write(folder/'progress.json',dict(row,observed_at=c.now(),physical_gpu=gpu))
                 progress(base,gpu,phase='TRAIN',job=job,**row)
-                if step==1 or step%500==0: print('M1_TRAIN',gpu,job,step,row,flush=True)
+                if step==start_step+1 or step%500==0: print('M1_TRAIN',gpu,job,step,row,flush=True)
             if step%1000==0 and step<16000:
                 f=folder/'last_resume.pth'; tmp=f.with_suffix('.tmp')
                 torch.save(dict(model=model.state_dict(),optimizer=opt.state_dict(),step=step,job=job,
@@ -146,7 +170,8 @@ def train(base,gpu,task,events,acks):
     endpoint=folder/'endpoint.pth'; torch.save(dict(model=model.state_dict(),step=16000,job=job,seed=seed,binding=c.binding(base)),endpoint)
     c.write(folder/'complete.json',dict(binding=c.binding(base),job=job,optimizer_updates=16000,
         checkpoint_sha256=c.sha(endpoint),initial_state_sha256=initial,frozen_parameters_unchanged=True,
-        trainable_gradients_connected=True,physical_gpu=gpu,elapsed_train_seconds=time.monotonic()-started,completed_at=c.now()))
+        trainable_gradients_connected=True,physical_gpu=gpu,elapsed_train_seconds=elapsed_before+time.monotonic()-started,
+        resumed_from_step=start_step,completed_at=c.now()))
     # Each clean packet is handed to CPU immediately; GPU does not wait for counting.
     from phase3_m1_data import normalize
     for t in c.VAL:

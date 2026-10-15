@@ -26,6 +26,17 @@ class Controller:
         self.train=deque(c.job_list()); self.other=deque(dict(kind='INFER_CLEAN',job='M00_42',tile=t) for t in c.VAL)
         self.rgb=deque(); self.known_jobs=['M00_42']
         self.state=dict(status='INITIALIZING',workers={},automatic_retry=False,actual_new_updates=0)
+        recovery=c.recovery(self.base)
+        if recovery:
+            self.train_done=set(recovery['completed'])
+            self.train=deque(t for t in self.train if t['job'] not in self.train_done)
+            # Prior pixel arrays were anonymous RAM and did not survive reboot.
+            for job in sorted(self.train_done):
+                self.known_jobs.append(job)
+                self.other.extend(dict(kind='INFER_CLEAN',job=job,tile=t) for t in c.VAL)
+                self.append_diagnostics(job)
+            self.state['actual_new_updates']=16000*len(self.train_done)
+            self.state['inherited_completed_jobs']=sorted(self.train_done)
         # No CUDA exists in this parent. Fork every GPU before starting thread pools.
         from phase3_m1_runtime import worker
         self.workers={}
@@ -163,6 +174,10 @@ class Controller:
         if self.counter_decided: return
         gate=c.gate(self.rows)
         if gate is None: return
+        recovery=c.recovery(self.base)
+        if recovery and recovery.get('previous_gate') is not None:
+            expected={k:v for k,v in recovery['previous_gate'].items() if k!='binding'}
+            if gate!=expected: raise RuntimeError('recomputed pre-reboot amplitude gate differs; do not change dispatch')
         self.counter_decided=True; c.write(self.base/'analysis/amplitude_gate.json',dict(gate,binding=c.binding(self.base)))
         if gate['accepted']:
             for seed in (42,17): self.train.appendleft(dict(kind='TRAIN',job=f'C21_{seed}',arm='C21',seed=seed))

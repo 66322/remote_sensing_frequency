@@ -32,7 +32,7 @@ def verify_results(base):
     initial_checks=[]; stream_checks=[]
     for f in sorted((base/'jobs').glob('*/complete.json')):
         d=read(f); job=d['job']; folder=f.parent
-        if d['binding']!=binding(base) or sha(folder/'endpoint.pth')!=d['checkpoint_sha256']: raise RuntimeError('endpoint identity differs')
+        if not job_binding_ok(base,job,d) or sha(folder/'endpoint.pth')!=d['checkpoint_sha256']: raise RuntimeError('endpoint identity differs')
         if (folder/'failure.json').exists(): errors.append(job+': post-training task failed')
         stream=folder/'batch_hashes.jsonl'
         first=read(folder/'parameters.json')
@@ -75,6 +75,16 @@ def verify_results(base):
         batch_streams=stream_checks,old_initial_checks=initial_checks,legacy_CM_exact=legacy,
         M00_42_causal_reuse_qualified=reused_qualified,all_required_evidence_complete=not errors,missing_or_failed=errors,
         primary_inference='R1/R2 eight endpoints remain valid if legacy anchor unqualified',observed_at=now())
+    r=recovery(base)
+    if r:
+        for job,row in r['resumed'].items():
+            f=base/'jobs'/job/'resume_loaded.json'
+            if not f.exists(): errors.append(job+': resume restoration receipt absent'); continue
+            loaded=read(f)
+            if loaded['step']!=row['step'] or loaded['source_sha256']!=row['sha256'] or loaded['prefix_sha256']!=row['prefix_sha256']:
+                raise RuntimeError('resume lineage differs')
+        result.update(recovery_source=r['source_directory'],inherited_completed_jobs=sorted(r['completed']),
+                      resumed_jobs={j:x['step'] for j,x in r['resumed'].items()},all_required_evidence_complete=not errors)
     write(base/'result_verification.json',result)
     return result
 
