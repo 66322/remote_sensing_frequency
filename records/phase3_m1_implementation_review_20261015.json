@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-15",
+  "status": "LOCAL_IMPLEMENTATION_CHECKS_PASSED_SERVER_NOT_LAUNCHED",
+  "source_files": {
+    "scripts/phase3_m1_common.py": "be25a7c316a2f0b19922016b5e3676142af3d83130a316bc3265f042bb7c1071",
+    "scripts/phase3_m1_data.py": "4e67a2615115f1d768650e74d9330a6cb8bba42f3ce449df4463c4eca5aa6eb7",
+    "scripts/phase3_m1_numeric.py": "73818f92523e7b0bafd5000c89e880595160ae1df72ee98551d794ae9815fa78",
+    "scripts/phase3_m1_runtime.py": "ec549a051f31c3e2c03e1e3e5c7131d3176b8f4ce7713a78d9b98839e02cb575",
+    "scripts/control_phase3_m1.py": "4117aa3fa99082ba87c1f6e390d19ace5d32ff3fb31625f7185a2f4ba6b2a176",
+    "scripts/bootstrap_phase3_m1.py": "1399ec8cf6bb0b6f6e857148369eaa256753164b8391c2dcc7b7d4da0f148d57",
+    "scripts/upload_phase3_m1.py": "621adba35a63fd6a215585120fe9ff1fb409a41a6dd67d63889bdec16b4d6fd6",
+    "scripts/verify_phase3_m1.py": "baa2b436e0837bad9c9cfa46806b9887257bd7811381126b7bd4afcafb3904cf",
+    "scripts/status_phase3_m1.py": "4b9020b4d3d5c116e3f6ec20f2642b303090c86c3764c2cb1264ef743761ffe9",
+    "tests/test_phase3_m1.py": "3a64f5a085c3d9e8d485717cb2eeda8d5b98475857deff11a15c0928166af070",
+    "docs/protocols/PHASE3_M1_EXECUTION_20261015.md": "a083582d65fcf2887fba378be87ed3d1ecb20b7a96bc418686ae22926e53d49b"
+  },
+  "checks_discovered": 17,
+  "applicable_local_checks_passed": 16,
+  "linux_only_deferred": 1,
+  "local_runtime": "Python3.9.25 Torch2.8.0+cpu NumPy2.0.2; server execution runtime remains original Torch2.2.2+cu121",
+  "coverage": [
+    "true gradient through frozen encoder blocks",
+    "paired seed42 crop/GT/token equality",
+    "integer joints, fallback, rescue/harm",
+    "conditional jobs exactly once",
+    "dynamic two-lane full shared-evaluation simulation",
+    "RAM reference lifecycle and Fit RAM release",
+    "scope/final-checkpoint/file-race deletion guards"
+  ],
+  "repeated_testing_scope": "initial suite plus targeted checks after relevant changes; Linux transport checked during registration only",
+  "actual_server_gpu_training_started": false,
+  "new_scientific_results": false,
+  "additional_storage_optimization": "Fit12 RGB is not read/copied into RAM: no consumer in DSM-only training"
+}

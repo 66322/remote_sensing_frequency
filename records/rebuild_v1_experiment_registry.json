@@ -2123,7 +2123,7 @@
     },
     {
       "id": "PHASE3_M1_DESIGN_20261015",
-      "status": "DESIGN_RECORDED_NOT_LAUNCHED",
+      "status": "EXECUTION_PACKAGE_READY_NOT_LAUNCHED",
       "purpose": "Distinguish DSM relative-height amplitude from ordinary robust normalization and input adaptation; assess conditional complementarity",
       "report": "docs/protocols/PHASE3_M1_DESIGN_20261015.md",
       "plan": "records/phase3_m1_design_20261015/plan.json",
@@ -2146,30 +2146,40 @@
         17
       ],
       "Test6_held4_final_opened": false,
-      "point_cloud_used": false
+      "point_cloud_used": false,
+      "execution_protocol": "docs/protocols/PHASE3_M1_EXECUTION_20261015.md",
+      "implementation_manifest": "configs/phase3_m1_execution_manifest.json",
+      "implementation_review": "records/phase3_m1_implementation_review_20261015.json",
+      "local_applicable_checks_passed": 16,
+      "linux_checks_deferred": 1,
+      "implementation_ready": true,
+      "user_authorized_implementation": true
     }
   ],
   "next_plan": {
     "id": "Phase3-M1",
-    "status": "DESIGN_RECORDED_NOT_LAUNCHED",
-    "source": "docs/protocols/PHASE3_M1_DESIGN_20261015.md",
-    "machine_plan": "records/phase3_m1_design_20261015/plan.json",
-    "user_requested_new_experiment_planning": true,
-    "implementation_ready": false,
+    "status": "EXECUTION_PACKAGE_READY_NOT_LAUNCHED",
+    "source": "docs/protocols/PHASE3_M1_EXECUTION_20261015.md",
+    "design": "docs/protocols/PHASE3_M1_DESIGN_20261015.md",
+    "manifest": "configs/phase3_m1_execution_manifest.json",
+    "implementation_ready": true,
     "server_started": false,
+    "user_authorized_implementation": true,
     "gpus": [
       0,
       1
     ],
-    "seeds_proposed": [
+    "seeds": [
       42,
       17
     ],
     "max_new_trainings": 13,
     "max_new_updates": 208000,
+    "automatic_retry": false,
     "wall_deadline_hours": null,
     "point_cloud_in_scope": false,
-    "test6_held4_final": "sealed"
+    "test6_held4_final": "sealed",
+    "next_action": "user runs immutable bootstrap; wait for actual launch receipt"
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -2515,14 +2525,15 @@
     "current_dual_worker_authorization": "User repeatedly confirmed physical GPU0/1, two H10080GB, ample RAM/disk; D24 plan reuses this authorization, nohup and zzx record scope; do not reinterpret historical GPU0-only policy as current restriction."
   },
   "research_decision": {
-    "stage": "Phase3-M1 design recorded after Phase2.4 closure",
+    "stage": "Phase3-M1 execution package ready, server launch unobserved",
     "recommendation": "Test relative height amplitude versus robust per-tile normalization and patch-embedding adaptation; check complementarity separately",
     "user_requested_new_experiment": true,
     "specific_mechanism_validated": false,
     "mainline": "RGB-DSM conditional complementarity and degraded/missing segmentation",
     "restoration_role": "side branch",
     "point_cloud_in_scope": false,
-    "preference": "innovation and research question first; GPUs0/1; one or two days or longer acceptable"
+    "preference": "innovation and research question first; GPUs0/1; one or two days or longer acceptable",
+    "user_authorized_implementation": true
   },
   "proposed_d23": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
@@ -3190,15 +3201,16 @@
   },
   "recent_review": "docs/experiments/COMPLETED_EXPERIMENTS_HANDOFF_20261004.md",
   "current_execution_budget": {
-    "scope": "Phase3-M1 proposed design, not an active run",
-    "planned_main_trainings": 11,
-    "planned_main_updates": 176000,
+    "scope": "Phase3-M1 authorized execution package; not an observed running queue",
+    "main_new_trainings": 11,
+    "main_updates": 176000,
     "conditional_trainings": 2,
     "conditional_updates": 32000,
     "completed_new_trainings": 0,
     "completed_new_updates": 0,
-    "active_queue": false,
-    "configuration_frozen_for_execution": false
+    "active_queue_observed": false,
+    "run_config_frozen_on_registration": true,
+    "user_authorized_further_training_within_protocol": true
   },
   "completed_d26_plan": {
     "input_manifest_sha256": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295",

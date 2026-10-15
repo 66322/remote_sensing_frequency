@@ -1,11 +1,9 @@
-# 新对话接续：Phase3-M1设计已记录（2026-10-15）
+# 新对话直接接续：Phase3-M1执行包就绪（2026-10-15）
 
-用户于2026-10-15明确要求基于当前结果安排有价值的新实验，物理GPU 0、1可用，一天两天或更久均可；点云属于另一篇论文，本轮排除。现形成[Phase3-M1设计](../protocols/PHASE3_M1_DESIGN_20261015.md)：DSM相对高度幅度与输入端适配诊断。状态为设计已记录、运行代码未实现/未测试、服务器未启动；不是新实验结果，也不把助手推荐写成用户已经确认具体科学机制。
+Phase3-M1已按用户要求落实执行包，尚未取得服务器启动回执。仅使用本篇遥感RGB/DSM/标签，GPU0/1，固定16k、batch16；11个新主训练，最多2个条件反证，总上限13个新训练208k更新。旧M00/42在绑定合格时复用，Test6/held4/final不读，点云论文不进入本轮。
 
-3种输入表示×2种stem训练范围×seed42/17，固定16k端点、batch16。M00/42在绑定一致时复用旧Phase2 A_DSM；11个新主训练176k更新，最多2个预登记条件反证32k，合计上限13个新训练208k。优先比较M21−M11，不按Val2选赢家后改预算。Fit12/重复开发Val2；Test6/held4/final保持封闭。固定RGB仅seed42，下游为双DSM seed对同一RGB参考。
+双卡共享就绪队列，空闲卡可以领取另一seed任务。GPU到CPU交接只等内存接收，不等计数完成；RGB故障前向跨所有DSM对照共享。Fit训练RAM在全部训练消费者结束后分进程释放，条件预测匿名RAM在最后计数消费者结束后关闭，成功作业的滚动优化器在端点与主计数核验后退役。GPU无后续任务时先退出，CPU继续收尾；所有自有进程退出后清理runtime cache/temporary。负结果、失败恢复状态、必要16k权重和充分整数证据保留。
 
-主要区分：普通稳健归一化、patch embedding适配、统一相对高度幅度的额外作用，以及补救信息能否由固定融合兑现。普通处理解释改善时按普通处理收口；没有稳定幅度增益则条件反证跳过，不自动转向更大骨干、全解冻或32k。
+[执行与清理协议](../protocols/PHASE3_M1_EXECUTION_20261015.md)；[科学设计](../protocols/PHASE3_M1_DESIGN_20261015.md)；[包清单](../../configs/phase3_m1_execution_manifest.json)；[本机检查记录](../../records/phase3_m1_implementation_review_20261015.json)。
 
-先读[完整设计](../protocols/PHASE3_M1_DESIGN_20261015.md)、[下一步](NEXT_EXPERIMENT.md)、[执行约定](../protocols/EXECUTION_CONTRACT.md)。当前唯一下一步是实现和定向验证执行包；没有新的服务器启动命令或运行回执。无需重做旧实验验收、旧上传或tmux排查。
-
-Phase2.4原件76ae973b869eb3c377be4dae99fcb7224c9e2ac3已上传回读并完成整数统计验收；calibrated/probe原门禁均False，T0完成8k，T1/T2/T3未派发，原Phase2 L=False不改。旧实验、上传、tmux/Git排错已收尾，不重新启动旧队列。详见[正式验收](../experiments/PHASE_24_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md)。
+固定执行包已实现；不要重复从设计写代码或重做全部检查。唯一下一步是服务器执行不可变提交的bootstrap并读取真实launch/queue状态。暂无新run/PID/训练结果；不把代码就绪写成运行中。原GPU资源与清理授权持续有效，不再询问同一事项。旧实验、tmux/Git排错和上传已经收尾。
