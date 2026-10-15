@@ -2123,13 +2123,13 @@
     },
     {
       "id": "PHASE3_M1_DESIGN_20261015",
-      "status": "TRAINING_COMPLETE_RGB_COUNTING_IN_PROGRESS",
+      "status": "CLOSED_DIAGNOSTIC_EVIDENCE_ARCHIVE_AND_COUNTS_VERIFIED",
       "purpose": "Distinguish DSM relative-height amplitude from ordinary robust normalization and input adaptation; assess conditional complementarity",
       "report": "docs/protocols/PHASE3_M1_DESIGN_20261015.md",
       "plan": "records/phase3_m1_design_20261015/plan.json",
       "source_commit": "60dd80a00c409a2a58f574fc464dde74b048bc82",
       "started_at": null,
-      "completed_at": null,
+      "completed_at": "2026-10-15T19:16:19.431340+08:00",
       "recorded_at": "2026-10-15",
       "time_precision": "date",
       "new_training_started": false,
@@ -2163,12 +2163,33 @@
       "completed_optimizer_updates": 176000,
       "last_observation_record": "records/phase3_m1_cpu_counting_probe_review_20261015.json",
       "amplitude_gate_accepted": false,
-      "final_verification_complete": false
+      "final_verification_complete": false,
+      "time_source": "server final queue status retained in fixed archive",
+      "completed_main_jobs": 11,
+      "completed_new_updates": 176000,
+      "conditional_skipped_jobs": [
+        "C21_42",
+        "C21_17"
+      ],
+      "review": {
+        "archive_commit": "09fb57a6ec26f6367c9891f2aa924cc4bf7219cc",
+        "archive_sha256": "9ab95778e7f757fc8b62575b4b92a52c09bc35dd024eb5e6e944c4e650c9a838",
+        "report": "docs/experiments/PHASE3_M1_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md",
+        "verification": "records/phase3_m1_review_20261015/verification.json",
+        "joint_tables_recomputed": 71280,
+        "integer_matrices_recomputed": 142608,
+        "payload_files": 4168,
+        "gate_accepted": false,
+        "down4_complementarity_gate_accepted": false,
+        "scope": "independent archive and count arithmetic; no training/inference rerun",
+        "auxiliary_design_requirements_fully_delivered": false
+      },
+      "decision": "Close amplitude-mechanism recipe at failed prespecified primary and down4 complementarity gates; preserve conditional preprocessing/adaptation findings; no automatic followup."
     }
   ],
   "next_plan": {
     "id": "Phase3-M1",
-    "status": "COMPUTATION_COMPLETE_SERVER_SELF_CHECK_PASSED_ARCHIVE_PENDING",
+    "status": "CLOSED_DIAGNOSTIC_EVIDENCE_ARCHIVE_AND_COUNTS_VERIFIED",
     "source": "docs/protocols/PHASE3_M1_EXECUTION_20261015.md",
     "design": "docs/protocols/PHASE3_M1_DESIGN_20261015.md",
     "manifest": "configs/phase3_m1_execution_manifest.json",
@@ -2189,7 +2210,7 @@
     "wall_deadline_hours": null,
     "point_cloud_in_scope": false,
     "test6_held4_final": "sealed",
-    "next_action": "replace oversized Git history download with API uploader reusing prepared 56.27 MiB archive; target execution and full readback receipt pending",
+    "next_action": "close current amplitude/stem recipe per prespecified rules; retain findings, no automatic new experiment; question brief before any next queue",
     "server_training_started_verified": true,
     "last_failed_run": "research_phase3_m1_20261015T142532_2652995",
     "last_observed_at": "2026-10-15T19:16:19.431340+08:00",
@@ -2223,18 +2244,41 @@
     },
     "server_self_verification_complete": true,
     "verification_scope": "server self-check user-reported; independent GitHub archive re-audit pending",
-    "independent_acceptance_complete": false,
-    "final_archive_receipt_observed": false,
+    "independent_acceptance_complete": true,
+    "final_archive_receipt_observed": true,
     "archive_transport_alternative": {
       "entry": "scripts/upload_phase3_m1_api.py",
       "protocol": "docs/protocols/PHASE3_M1_API_UPLOAD_20261015.md",
-      "status": "READY_NOT_TARGET_EXECUTED",
+      "status": "TARGET_UPLOAD_AND_READBACK_SUCCEEDED",
       "archive_mib": 56.27,
       "payload_files": 4168,
       "git_fetch": false,
       "prepared_archive_reused": true,
       "local_tests_passed": 6,
-      "target_api_upload_verified": false
+      "target_api_upload_verified": true,
+      "archive_commit": "09fb57a6ec26f6367c9891f2aa924cc4bf7219cc",
+      "upload_tmp_retired_user_reported": true
+    },
+    "server_archive_commit": "09fb57a6ec26f6367c9891f2aa924cc4bf7219cc",
+    "archive_verified": true,
+    "independent_acceptance_scope": "independent archive and count arithmetic; no training/inference rerun",
+    "archive_observation_source": "user terminal final marker and independent 29-part readback",
+    "current_executable_trainings": 0,
+    "further_training_authorized_by_this_review": false,
+    "scientific_gate_accepted": false,
+    "down4_complementarity_gate_accepted": false,
+    "acceptance_record": {
+      "archive_commit": "09fb57a6ec26f6367c9891f2aa924cc4bf7219cc",
+      "archive_sha256": "9ab95778e7f757fc8b62575b4b92a52c09bc35dd024eb5e6e944c4e650c9a838",
+      "report": "docs/experiments/PHASE3_M1_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md",
+      "verification": "records/phase3_m1_review_20261015/verification.json",
+      "joint_tables_recomputed": 71280,
+      "integer_matrices_recomputed": 142608,
+      "payload_files": 4168,
+      "gate_accepted": false,
+      "down4_complementarity_gate_accepted": false,
+      "scope": "independent archive and count arithmetic; no training/inference rerun",
+      "auxiliary_design_requirements_fully_delivered": false
     }
   },
   "completed_post_d21_mixed_followup": {
@@ -2581,15 +2625,16 @@
     "current_dual_worker_authorization": "User repeatedly confirmed physical GPU0/1, two H10080GB, ample RAM/disk; D24 plan reuses this authorization, nohup and zzx record scope; do not reinterpret historical GPU0-only policy as current restriction."
   },
   "research_decision": {
-    "stage": "Phase3-M1 computation complete and server self-check passed; amplitude gate failed; full archive and independent scientific review pending",
-    "recommendation": "Test relative height amplitude versus robust per-tile normalization and patch-embedding adaptation; check complementarity separately",
+    "stage": "Phase3-M1 closed as verified diagnostic evidence; primary and down4 complementarity gates failed",
+    "recommendation": "close current amplitude recipe, retain representation-dependent adaptation baseline insight; require a fresh question before another queue",
     "user_requested_new_experiment": true,
     "specific_mechanism_validated": false,
     "mainline": "RGB-DSM conditional complementarity and degraded/missing segmentation",
     "restoration_role": "side branch",
     "point_cloud_in_scope": false,
     "preference": "innovation and research question first; GPUs0/1; one or two days or longer acceptable",
-    "user_authorized_implementation": true
+    "user_authorized_implementation": true,
+    "automatic_followup": false
   },
   "proposed_d23": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
@@ -3657,13 +3702,17 @@
   },
   "latest_record_review": {
     "date": "2026-10-15",
-    "report": "docs/experiments/PHASE_24_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md",
-    "verification": "records/phase24_review_20261015/verification.json",
-    "archive_commit": "76ae973b869eb3c377be4dae99fcb7224c9e2ac3",
-    "scope": "Phase2.4 only; other recent history remains in docs/experiments and records",
-    "archive_verified": true,
-    "integer_counts_recomputed": true,
-    "new_training_rerun": false
+    "archive_commit": "09fb57a6ec26f6367c9891f2aa924cc4bf7219cc",
+    "archive_sha256": "9ab95778e7f757fc8b62575b4b92a52c09bc35dd024eb5e6e944c4e650c9a838",
+    "report": "docs/experiments/PHASE3_M1_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md",
+    "verification": "records/phase3_m1_review_20261015/verification.json",
+    "joint_tables_recomputed": 71280,
+    "integer_matrices_recomputed": 142608,
+    "payload_files": 4168,
+    "gate_accepted": false,
+    "down4_complementarity_gate_accepted": false,
+    "scope": "independent archive and count arithmetic; no training/inference rerun",
+    "auxiliary_design_requirements_fully_delivered": false
   },
   "historical_routing_before_phase24_acceptance_20261015": {
     "next_plan": {
@@ -3772,5 +3821,15 @@
       "restoration_role": "side branch",
       "preference": "innovation and research question first; no fixed deadline"
     }
+  },
+  "historical_latest_record_review_before_phase3_m1": {
+    "date": "2026-10-15",
+    "report": "docs/experiments/PHASE_24_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md",
+    "verification": "records/phase24_review_20261015/verification.json",
+    "archive_commit": "76ae973b869eb3c377be4dae99fcb7224c9e2ac3",
+    "scope": "Phase2.4 only; other recent history remains in docs/experiments and records",
+    "archive_verified": true,
+    "integer_counts_recomputed": true,
+    "new_training_rerun": false
   }
 }

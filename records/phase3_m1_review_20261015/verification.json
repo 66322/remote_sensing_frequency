@@ -1,0 +1,34 @@
+{
+  "archive_commit": "09fb57a6ec26f6367c9891f2aa924cc4bf7219cc",
+  "verification_status": "VERIFIED_COUNT_ARITHMETIC_AND_ARCHIVE_ONLY",
+  "archive_files_verified": 4168,
+  "integer_matrices_recomputed": 142608,
+  "joint_tables_recomputed": 71280,
+  "additional_scale_matrices_checked": 1536,
+  "bound_source_files_locally_matched": 256,
+  "main_jobs": 11,
+  "new_optimizer_updates": 176000,
+  "within_seed_streams_exact": true,
+  "recovery_retained_file_hashes_checked": 57,
+  "scientific_gate_accepted": false,
+  "inference_rerun": false,
+  "server_checkpoint_hashes_independently_read": false,
+  "physical_gpu_UUID_attribution_independently_verified": false,
+  "limits": [
+    "No model/raw-data inference rerun; checkpoint tensors were intentionally excluded from archive.",
+    "Two reused development tiles; two DSM seeds share one fixed RGB seed42; masks/pixels are not independent scenes.",
+    "External historical seed42 stream/legacy CM checks rely on retained server receipts; archived new streams match within seed.",
+    "No new mechanism or cross-scene generalization claim; no p-values or seed confidence intervals inferred."
+  ],
+  "archive_sha256": "9ab95778e7f757fc8b62575b4b92a52c09bc35dd024eb5e6e944c4e650c9a838",
+  "archive_parts_verified": 29,
+  "archive_raw_bytes_verified": 124629596,
+  "direct_summaries_exact": true,
+  "source_script_sha256": {
+    "download_archive.py": "2d66a9d80f44b22ec590bdc5087675d575389ccfe4ca361cbd0fff22e84cfb85",
+    "audit_results.py": "daf0302b881fbf7f7bfd3d4215c9c47b255cc3206e5f58fafb9576299148d630"
+  },
+  "audit_result_sha256": "a2b4d5e8f11a00538999085139078a495685311d078cb23c8ded257d00cb1c0a",
+  "auxiliary_design_requirements_fully_delivered": false,
+  "trainable_scope_factor_exact": true
+}

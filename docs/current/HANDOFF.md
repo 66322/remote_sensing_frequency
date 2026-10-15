@@ -1,15 +1,15 @@
-# 当前交接：Phase3-M1执行包就绪，等待服务器启动回执（2026-10-15）
+# Phase3-M1已归档验收；幅度机制支线收口（2026-10-15）
 
-Phase3-M1已按用户要求落实执行包，尚未取得服务器启动回执。仅使用本篇遥感RGB/DSM/标签，GPU0/1，固定16k、batch16；11个新主训练，最多2个条件反证，总上限13个新训练208k更新。旧M00/42在绑定合格时复用，Test6/held4/final不读，点云论文不进入本轮。
+结果已写入GitHub提交09fb57a6ec26f6367c9891f2aa924cc4bf7219cc。29块、4168文件、归档和文件SHA全部独立回读通过；71280联合表、142608整数矩阵、额外1536尺度CM复算通过。11主训练176000更新完成；7个继承作业与2个断点恢复来源已按归档元数据核对。此处VERIFIED仅指归档与充分统计复算，没有重训/模型推理或独立重读服务器pth。
 
-双卡共享就绪队列，空闲卡可以领取另一seed任务。GPU到CPU交接只等内存接收，不等计数完成；RGB故障前向跨所有DSM对照共享。Fit训练RAM在全部训练消费者结束后分进程释放，条件预测匿名RAM在最后计数消费者结束后关闭，成功作业的滚动优化器在端点与主计数核验后退役。GPU无后续任务时先退出，CPU继续收尾；所有自有进程退出后清理runtime cache/temporary。负结果、失败恢复状态、必要16k权重和充分整数证据保留。
+[完整验收及路线收口](../experiments/PHASE3_M1_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md)；[机器验证记录](../../records/phase3_m1_review_20261015/verification.json)；[主表及面板](../../records/phase3_m1_review_20261015/analysis.json)。
 
-[执行与清理协议](../protocols/PHASE3_M1_EXECUTION_20261015.md)；[科学设计](../protocols/PHASE3_M1_DESIGN_20261015.md)；[包清单](../../configs/phase3_m1_execution_manifest.json)；[本机检查记录](../../records/phase3_m1_implementation_review_20261015.json)。
+M21相对旧M00的DSM-only pooled为+1.204061/+1.144328pp，保留为工程发现。相对强普通对照M11为+1.161193/+0.303392pp，但seed17/tile5_10为−0.786910pp，主推进门禁false。C21/42与C21/17正确跳过。
 
-## 直接接续
+RGB-down4条件补救率的M21−M11为+0.530185/−0.905549pp，两seed均提高的条件失败；固定logit融合增量为−0.006912/−0.009184pp。固定融合本身相对RGB仍约+0.60pp，不把微小负增量夸为显著伤害；结论是新增单专家分数没有稳定兑现。普通stem适配在R1/R2有益、R0有害，不能称普遍解冻收益或统一幅度机制已成立。
 
-固定执行包已经实现，不再从设计阶段重新讨论是否编写。服务器启动需由用户执行；收到启动日志前状态为EXECUTION_PACKAGE_READY_NOT_LAUNCHED。bootstrap继承已完成Phase2.4本地冻结code，下载并校验本包白名单，不完整克隆大归档仓库。实际新run在/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m1_<真实时间>_<PID>；不能编造目录、PID、GPU运行中或完成时刻。
+**当前动作：按原方案关闭本轮幅度机制配方，保留全部正负结果；不重启bootstrap、恢复或上传入口，不自动增加种子、延长训练、扩大骨干或继续门控。** 后续先形成新的问题论证，明确新观测/动作和可否定解释的证据；新训练队列尚未登记。
 
-启动后从launch.json、queue_status.json和progress_gpu*.json读取真实状态；旧PID和旧tmux/Git排错已收尾。失败不自动重跑；独立任务继续，失败/跳过和清理回执齐全归档。计算不等待Git认证，完成后独立前台上传紧凑原件。
+服务器cache/temporary退出回执已核对；用户终端确认上传临时包和旧Git副本已清理。必要权重/输入/证据保留。32进程接续在318/320时跳过，正式计数始终是原执行器。原Git大流量发生在commit子进程期间，具体内部原因未完全定位，API替代已成功。
 
-Phase2.4原件76ae973b已完整验收，calibrated/probe=False，T0完成8k、T1/T2/T3未派发。旧结果不改，新实验不视为旧门禁翻案。
+辅助校准表、激活量级、逐进程GPU UUID绑定未完整交付；不将技术验收写成全部设计要求完美复现。恢复前GPU2—7已有PID645—650占用，但归属及物理CUDA映射仍未独立查明，不处理这些进程。Test6/held4/final仍按代码/记录边界密封；两Val开发tile、两DSM seed及一个固定RGB seed不提供独立地理泛化。
