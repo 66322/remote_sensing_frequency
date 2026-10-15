@@ -2123,7 +2123,7 @@
     },
     {
       "id": "PHASE3_M1_DESIGN_20261015",
-      "status": "REBOOT_INTERRUPTED_RECOVERY_PACKAGE_READY_PENDING_SERVER_START",
+      "status": "TRAINING_COMPLETE_RGB_COUNTING_IN_PROGRESS",
       "purpose": "Distinguish DSM relative-height amplitude from ordinary robust normalization and input adaptation; assess conditional complementarity",
       "report": "docs/protocols/PHASE3_M1_DESIGN_20261015.md",
       "plan": "records/phase3_m1_design_20261015/plan.json",
@@ -2159,14 +2159,16 @@
       "failure": "No module named 'model'",
       "training_started_verified": false,
       "server_training_started_verified": true,
-      "completed_jobs": 7,
-      "completed_optimizer_updates": 112000,
-      "last_observation_record": "records/phase3_m1_reboot_recovery_review_20261015.json"
+      "completed_jobs": 11,
+      "completed_optimizer_updates": 176000,
+      "last_observation_record": "records/phase3_m1_cpu_counting_probe_review_20261015.json",
+      "amplitude_gate_accepted": false,
+      "final_verification_complete": false
     }
   ],
   "next_plan": {
     "id": "Phase3-M1",
-    "status": "REBOOT_INTERRUPTED_RECOVERY_PACKAGE_READY_PENDING_SERVER_START",
+    "status": "TRAINING_COMPLETE_RGB_COUNTING_IN_PROGRESS",
     "source": "docs/protocols/PHASE3_M1_EXECUTION_20261015.md",
     "design": "docs/protocols/PHASE3_M1_DESIGN_20261015.md",
     "manifest": "configs/phase3_m1_execution_manifest.json",
@@ -2187,22 +2189,23 @@
     "wall_deadline_hours": null,
     "point_cloud_in_scope": false,
     "test6_held4_final": "sealed",
-    "next_action": "run immutable recover_phase3_m1.py for identified source; wait for actual new recovery launch receipt",
+    "next_action": "independent CPU quota and counter throughput A/B probe; current executor continues",
     "server_training_started_verified": true,
     "last_failed_run": "research_phase3_m1_20261015T142532_2652995",
     "last_observed_at": "2026-10-15T16:26:47+08:00",
     "original_run": "research_phase3_m1_20261015T143433_2657574",
-    "completed_main_jobs": 7,
-    "completed_main_updates": 112000,
-    "interrupted_jobs": [
-      "M20_17",
-      "M01_42"
-    ],
-    "unstarted_main_jobs": [
-      "M01_17",
-      "M00_17"
-    ],
-    "recovery_protocol": "docs/protocols/PHASE3_M1_REBOOT_RECOVERY_20261015.md"
+    "completed_main_jobs": 11,
+    "completed_main_updates": 176000,
+    "interrupted_jobs": [],
+    "unstarted_main_jobs": [],
+    "recovery_protocol": "docs/protocols/PHASE3_M1_REBOOT_RECOVERY_20261015.md",
+    "recovery_run": "research_phase3_m1_recovery_20261015T164357_19327",
+    "recovery_execution_commit": "09d67c7c30647031b888ef1315d721b867055cbd",
+    "amplitude_gate_accepted": false,
+    "conditional_C21_skipped": true,
+    "last_observed_counted_cases": 127,
+    "counted_cases_total": 320,
+    "final_verification_complete": false
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",

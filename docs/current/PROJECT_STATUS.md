@@ -1,13 +1,11 @@
-# Phase3-M1：重启中断，恢复包待服务器启动（2026-10-15）
+# Phase3-M1：主训练完成，RGB故障统计进行中（2026-10-15）
 
-用户16:26:47回传确认原run `research_phase3_m1_20261015T143433_2657574` 无本实验存活进程，GPU0/1空闲；旧状态文件16:03的RUNNING是残留。原7组完成标记和端点文件存在，共112000次更新。恢复注册会实际核验SHA，不将“文件存在”当作完整性已确认。
+依据用户回传，恢复run为 `research_phase3_m1_recovery_20261015T164357_19327`，执行提交09d67c7c30647031b888ef1315d721b867055cbd。11个新主训练已完成176000次更新，训练/运行失败计数0。17:58:34案例计数91/320，18:03:12为104/320，最新CPU诊断快照127/320（该快照未打印时间）。当前为共享RGB故障前向与各DSM模型联合计数阶段，未完成最终核验或GitHub结果上传。
 
-已完成：M10/42、M10/17、M11/42、M11/17、M20/42、M21/42、M21/17。中断：M20/17最后12520步、M01/42最后2680步，有滚动checkpoint，预计12k/2k，实际以checkpoint内部step为准。未开始：M01/17、M00/17。
+首要M21-M11门禁false：seed42 pooled +1.161193pp，seed17 +0.303392pp，均值+0.732293pp；seed17/tile5_10为-0.786910pp，违反各seed/tile不低于-0.2pp下限。因此按预设跳过C21/42与C21/17。其他互补/融合收益仍待完整统计，不能把总体涨分写成稳定机制成立。
 
-下一步：用本恢复提交固定SHA执行 `scripts/recover_phase3_m1.py --directory /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m1_20261015T143433_2657574 --commit <恢复提交完整SHA>`，整段注册放入nohup。不是重新执行原bootstrap，不把原queue_status改回REGISTERED。
+CPU统计是控制器内16线程池；用户实测进程22个OS线程、约10.03核、RSS29142472KiB，affinity及旧profile均192。旧profile只读v2配额，192不代表已确认的容器CPU预算。正在进行的原run及代码绑定保持不变。
 
-新run保持原目录不改写，7完成组保留原绑定并以逐文件SHA桥接；中断组恢复模型、AdamW、CPU/CUDA随机状态和原样本位置，并回滚日志到已提交step。主训练剩余预计50k有效更新；重建丢失的匿名RAM预测。已有门禁若落盘，重算须一致。科学方案、16k端点、batch16、GPU0/1及sealed splits不变。
+下一步是独立性能对照 `scripts/benchmark_phase3_m1_counts.py --directory <上述恢复run>`，固定本工具提交SHA下载并核对哈希。它检查v1/v2配额和内存余量，比较原/减少重复ROI扫描的计数器在16/24/32线程下的吞吐及整数一致性；不读取模型/遥感数据、不用GPU、不向当前进程发信号，不修改/清理当前run。若任务已结束/接近完成或配额/内存无余量则退出。尚无目标机器BENCH_SUMMARY，工具未用于正式结果。
 
-[恢复协议](../protocols/PHASE3_M1_REBOOT_RECOVERY_20261015.md)；[检查记录](../../records/phase3_m1_reboot_recovery_review_20261015.json)。实际H100恢复及后续结果尚无回执。
-
-已实现注册锁、原控制器锁、无活跃本实验进程及GPU占用核对，重复命令只显示已有恢复目录。没有tmux操作或向其他任务发信号。缓存清理仅限新run自身的运行缓存、临时文件和成功后的滚动优化器；原中断记录暂作恢复来源保留。
+[CPU对照协议](../protocols/PHASE3_M1_CPU_COUNTING_PROBE_20261015.md)；[恢复协议](../protocols/PHASE3_M1_REBOOT_RECOVERY_20261015.md)。最终验收仍需结果完整性、联合边际、配对样本流、恢复来源和全部门禁复算；仅有用户日志不视为最终VERIFIED。
