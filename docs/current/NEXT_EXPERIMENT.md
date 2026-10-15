@@ -1,3 +1,11 @@
+## 2026-10-15启动故障后更新
+
+用户回传首次run `research_phase3_m1_20261015T142532_2652995` 于14:26在RGB_CLEAN导入时报 `No module named 'model'`，状态FAILED_OR_INTERRUPTED_NO_RETRY，控制器已退出。14项输入已核对；未见TRAIN派发，新增训练更新未观测。原因是执行入口缺少代码根目录搜索路径，非科学门禁失败。
+
+已修复入口路径，增加输入准备前真实模型导入检查及无关工作目录/无PYTHONPATH的独立子进程回归。下一步用修复提交bootstrap，并显式指定 `--supersede-failed /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m1_20261015T142532_2652995`。仅此已识别的空训练失败run通过全部退出及状态检查后可被新run取代；旧目录完整保留，已有其他run则不重复开队列。恢复尚无服务器执行回执。
+
+## 修复前执行包登记（历史状态）
+
 # 下一步：启动固定提交的Phase3-M1执行包（2026-10-15）
 
 Phase3-M1已按用户要求落实执行包，尚未取得服务器启动回执。仅使用本篇遥感RGB/DSM/标签，GPU0/1，固定16k、batch16；11个新主训练，最多2个条件反证，总上限13个新训练208k更新。旧M00/42在绑定合格时复用，Test6/held4/final不读，点云论文不进入本轮。

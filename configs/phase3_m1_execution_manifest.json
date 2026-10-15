@@ -6,14 +6,14 @@
     "scripts/phase3_m1_common.py": "be25a7c316a2f0b19922016b5e3676142af3d83130a316bc3265f042bb7c1071",
     "scripts/phase3_m1_data.py": "54938acae0941a272211c460cd8793806e015b0eca168a0a8bd30e49cf49b773",
     "scripts/phase3_m1_numeric.py": "73818f92523e7b0bafd5000c89e880595160ae1df72ee98551d794ae9815fa78",
-    "scripts/phase3_m1_runtime.py": "bc230ecaad397c1838c52403e93bfb3f09e51450a8cf3960d2b7b4039d0565c6",
-    "scripts/control_phase3_m1.py": "843bfb681e127961e74414821c0661f381e384238a94ddd0f1602f88c896c85f",
-    "scripts/bootstrap_phase3_m1.py": "d537caa7535568a34fdf9208c5b4e9d166d104139579cdce14f0e3d93737e335",
+    "scripts/phase3_m1_runtime.py": "abce3c39eb0cc5fd6501766fbe8a4d6de51515c180c88704896aca188336b7f2",
+    "scripts/control_phase3_m1.py": "04fa52a6b545d7378bf6d1e56310dbdbdc09a21fbe2c886ba661c9a6641f8903",
+    "scripts/bootstrap_phase3_m1.py": "853f8ec2b5b808323960885dcec24a560fe2828eddaed681ce0ecaea43650ddb",
     "scripts/upload_phase3_m1.py": "621adba35a63fd6a215585120fe9ff1fb409a41a6dd67d63889bdec16b4d6fd6",
     "scripts/verify_phase3_m1.py": "baa2b436e0837bad9c9cfa46806b9887257bd7811381126b7bd4afcafb3904cf",
     "scripts/status_phase3_m1.py": "4b9020b4d3d5c116e3f6ec20f2642b303090c86c3764c2cb1264ef743761ffe9",
-    "tests/test_phase3_m1.py": "3a64f5a085c3d9e8d485717cb2eeda8d5b98475857deff11a15c0928166af070",
-    "docs/protocols/PHASE3_M1_EXECUTION_20261015.md": "a083582d65fcf2887fba378be87ed3d1ecb20b7a96bc418686ae22926e53d49b"
+    "tests/test_phase3_m1.py": "8be36f88f9e981b655ec382293653f7cd914492cc207361ac31338c1be4694f9",
+    "docs/protocols/PHASE3_M1_EXECUTION_20261015.md": "dca8dc893b3b339a0959bee3f7ca8e565ae3bb195348b95e20d68939c8ad4235"
   },
   "inherited_snapshot": "research_phase24_protected_20261014T193915_2149100/code",
   "scientific_design": "docs/protocols/PHASE3_M1_DESIGN_20261015.md"

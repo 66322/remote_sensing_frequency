@@ -215,5 +215,37 @@ class QueueIntegration(unittest.TestCase):
                     self.assertEqual(len(list((base/'skipped').glob('C21_*.json'))),2)
                 finally: ctl.close(False)
 
+class StartupImports(unittest.TestCase):
+    def test_real_model_import_without_cwd_or_test_path(self):
+        import subprocess
+        scripts=Path(__file__).resolve().parents[1]/'scripts'
+        with tempfile.TemporaryDirectory() as other:
+            env=dict(os.environ); env.pop('PYTHONPATH',None)
+            for entry in ('runtime','controller'):
+                code='import sys, runpy; sys.path.insert(0, '+repr(str(scripts))+'); '
+                if entry=='runtime': code+='import phase3_m1_runtime; '
+                else: code+='runpy.run_path('+repr(str(scripts/'control_phase3_m1.py'))+', run_name="import_check"); '
+                code+='from model.phase2_matched import MatchedExpert, optimizer; from d24_data import PrefetchedBatches; from phase2_infer import coords; print("IMPORT_OK")'
+                result=subprocess.run([sys.executable,'-B','-c',code],cwd=other,env=env,capture_output=True,text=True,timeout=120)
+                self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+                self.assertIn('IMPORT_OK',result.stdout)
+
+    def test_only_known_empty_failed_launch_can_be_superseded(self):
+        from bootstrap_phase3_m1 import validate_superseded
+        with tempfile.TemporaryDirectory() as td:
+            records=Path(td); old=records/'research_phase3_m1_20261015T142532_2652995'
+            (old/'jobs').mkdir(parents=True); (old/'failures').mkdir()
+            c.write(old/'queue_status.json',dict(status='FAILED_OR_INTERRUPTED_NO_RETRY'))
+            c.write(old/'plan.json',dict(execution_commit='c46a9d8a129198d73e744b02ade62784283a50e1'))
+            c.write(old/'failures/one.json',dict(error="No module named 'model'",task=dict(kind='RGB_CLEAN')))
+            c.write(old/'ram_retirement.json',dict(all_owned_gpu_workers_exited=True,all_cpu_consumers_exited=True))
+            c.write(old/'launch.json',dict(controller_pid=2147483647))
+            before={str(p):p.read_bytes() for p in old.rglob('*') if p.is_file()}
+            self.assertEqual(validate_superseded(records,old),old.resolve())
+            self.assertEqual(before,{str(p):p.read_bytes() for p in old.rglob('*') if p.is_file()})
+            (old/'jobs/M21_42').mkdir()
+            with self.assertRaisesRegex(RuntimeError,'training artifacts'): validate_superseded(records,old)
+            with self.assertRaisesRegex(RuntimeError,'only the identified'): validate_superseded(records,records/'other')
+
 if __name__=='__main__': unittest.main()
 

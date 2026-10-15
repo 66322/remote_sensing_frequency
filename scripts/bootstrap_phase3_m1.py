@@ -15,8 +15,33 @@ def digest(data): return hashlib.sha256(data).hexdigest()
 def download(commit,path):
     with urllib.request.urlopen('https://raw.githubusercontent.com/66322/remote_sensing_frequency/'+commit+'/'+path,timeout=90) as r: return r.read()
 
+def validate_superseded(records, target):
+    """Allow this known pre-training import failure only; preserve its entire record."""
+    target=Path(target)
+    if target.is_symlink(): raise RuntimeError('refuse symlink predecessor')
+    target=target.resolve()
+    if target.parent!=Path(records).resolve() or target.name!='research_phase3_m1_20261015T142532_2652995':
+        raise RuntimeError('only the identified failed launch can be superseded')
+    if read(target/'queue_status.json')['status']!='FAILED_OR_INTERRUPTED_NO_RETRY':
+        raise RuntimeError('predecessor is not terminal failed')
+    if read(target/'plan.json')['execution_commit']!='c46a9d8a129198d73e744b02ade62784283a50e1':
+        raise RuntimeError('unexpected predecessor code')
+    failures=[read(f) for f in (target/'failures').glob('*.json')]
+    if not failures or any(f.get('error')!="No module named 'model'" or f.get('task',{}).get('kind')!='RGB_CLEAN' for f in failures):
+        raise RuntimeError('unexpected failure; no automatic recovery')
+    if any((target/'jobs').iterdir()): raise RuntimeError('training artifacts exist; preserve without replacement')
+    retired=read(target/'ram_retirement.json')
+    if not retired['all_owned_gpu_workers_exited'] or not retired['all_cpu_consumers_exited']:
+        raise RuntimeError('predecessor workers have not exited')
+    pid=int(read(target/'launch.json')['controller_pid'])
+    try:
+        if (Path('/proc')/str(pid)/'cmdline').read_bytes(): raise RuntimeError('predecessor PID is live; do not signal it')
+    except FileNotFoundError: pass
+    return target
+
 def main():
     p=argparse.ArgumentParser(); p.add_argument('--root',type=Path,required=True); p.add_argument('--commit',required=True)
+    p.add_argument('--supersede-failed',type=Path)
     args=p.parse_args(); root=args.root.resolve(); root.relative_to(Path('/home/jovyan/zzx').resolve())
     print('PHASE3_M1_REGISTRATION_BEGIN',root,args.commit,flush=True)
     if not re.fullmatch('[0-9a-f]{40}',args.commit): raise ValueError('immutable full SHA required')
@@ -24,7 +49,8 @@ def main():
     records=root/'records'; records.mkdir(exist_ok=True)
     with (records/'phase3_m1_registration.lock').open('a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-        previous=sorted(records.glob('research_phase3_m1_*'))
+        superseded=validate_superseded(records,args.supersede_failed) if args.supersede_failed else None
+        previous=[d for d in sorted(records.glob('research_phase3_m1_*')) if d.resolve()!=superseded]
         if previous:
             for d in previous:
                 print('EXISTING_PHASE3_M1_NO_DUPLICATE',d)
@@ -71,10 +97,19 @@ def main():
             c.write(base/'code_manifest.json',dict(commit=args.commit,inherited_phase24_commit=source_manifest['commit'],files=files))
             c.write(base/'registration.json',dict(binding=c.binding(base),download_manifest=manifest,observed_at=c.now()))
             from phase24_common import env
+            execution_env=env(base)
+            execution_env['PYTHONPATH']=os.pathsep.join((str(code),str(code/'scripts')))
+            print('CHECKING_REAL_MODEL_IMPORTS_BEFORE_INPUT_PREPARATION',flush=True)
+            with (base/'import_checks.log').open('x') as log:
+                subprocess.run([sys.executable,'-B','-c',
+                    'import phase3_m1_runtime; from model.phase2_matched import MatchedExpert, optimizer; from d24_data import PrefetchedBatches; from phase2_infer import coords; print("M1_REAL_MODEL_IMPORTS_OK")'],
+                    cwd=code,env=execution_env,stdout=log,stderr=subprocess.STDOUT,check=True,timeout=180)
+            if superseded:
+                c.write(base/'supersedes_failed_launch.json',dict(previous=str(superseded),reason="No module named 'model' before training",previous_binding=c.binding(superseded),previous_record_preserved=True,observed_at=c.now()))
             print('CHECKING_LINUX_RAM_TRANSPORT',flush=True)
             with (base/'cpu_checks.log').open('x') as log:
                 subprocess.run([sys.executable,'-B','-m','unittest','discover','-s',str(code/'tests'),'-p','test_phase3_m1.py','-k','memfd','-v'],
-                     cwd=code,env=env(base),stdout=log,stderr=subprocess.STDOUT,check=True,timeout=300)
+                     cwd=code,env=execution_env,stdout=log,stderr=subprocess.STDOUT,check=True,timeout=300)
             c.write(base/'registration_checks.json',dict(targeted_linux_memfd_passed=True,local_logic_checks='16 applicable checks passed; one Linux transport deferred; fixed-source review receipt in records/phase3_m1_implementation_review_20261015.json; unchanged logic not redundantly rerun',log_sha256=c.sha(base/'cpu_checks.log'),real_GPU_checks='first actual update verifies gradient and stem change; counts bridge checks legacy endpoint',observed_at=c.now()))
             c.write(base/'gpu_inventory.json',dict(gpus=gpu,apps=apps,observed_at=c.now()))
             c.write(base/'queue_status.json',dict(status='REGISTERED',observed_at=c.now()))
@@ -82,7 +117,7 @@ def main():
             print('STARTING_DETACHED_CONTROLLER',base,flush=True)
             with logpath.open('x') as log:
                 proc=subprocess.Popen([sys.executable,'-u','-B',str(code/'scripts/control_phase3_m1.py'),'--directory',str(base)],
-                    cwd=code,env=env(base),stdin=subprocess.DEVNULL,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
+                    cwd=code,env=execution_env,stdin=subprocess.DEVNULL,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
             c.write(base/'launch.json',dict(controller_pid=proc.pid,log=str(logpath),observed_at=c.now()))
             print('PHASE3_M1_LAUNCHED',base,'PID='+str(proc.pid),'GPU=0,1 NO24H_DEADLINE')
             print('STATUS:',sys.executable,'-B',code/'scripts/status_phase3_m1.py','--directory',base)

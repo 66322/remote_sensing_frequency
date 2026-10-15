@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-15",
+  "previous_execution_commit": "c46a9d8a129198d73e744b02ade62784283a50e1",
+  "provenance": "user pasted server launch, terminal status, full RGB_CLEAN failure traceback; no direct SSH",
+  "failed_run": "research_phase3_m1_20261015T142532_2652995",
+  "failure": "No module named 'model'",
+  "root_cause": "absolute script execution omitted code root; existing tests injected root and masked production import path",
+  "fix": [
+    "self-relative root in controller and runtime",
+    "explicit subprocess PYTHONPATH in bootstrap",
+    "real model imports before shared input preparation",
+    "explicit narrowly guarded supersede-failed parameter, preserve predecessor unchanged"
+  ],
+  "checks": {
+    "targeted_new_tests": 2,
+    "targeted_passed": 2,
+    "full_suite_total": 19,
+    "passed": 18,
+    "skipped": 1,
+    "skip_reason": "Linux memfd transport unavailable on Windows; checked on server bootstrap",
+    "elapsed_seconds": 102.984,
+    "local_torch": "2.8.0+cpu",
+    "gpu_training_executed": false
+  },
+  "scope": {
+    "scientific_design_changed": false,
+    "training_budget_changed": false,
+    "old_records_deleted": false,
+    "tmux_operations": false,
+    "process_signals": false
+  },
+  "server_recovery_status": "PENDING_USER_EXECUTION",
+  "modified_sha256": {
+    "scripts/phase3_m1_runtime.py": "abce3c39eb0cc5fd6501766fbe8a4d6de51515c180c88704896aca188336b7f2",
+    "scripts/control_phase3_m1.py": "04fa52a6b545d7378bf6d1e56310dbdbdc09a21fbe2c886ba661c9a6641f8903",
+    "scripts/bootstrap_phase3_m1.py": "853f8ec2b5b808323960885dcec24a560fe2828eddaed681ce0ecaea43650ddb",
+    "tests/test_phase3_m1.py": "8be36f88f9e981b655ec382293653f7cd914492cc207361ac31338c1be4694f9",
+    "docs/protocols/PHASE3_M1_EXECUTION_20261015.md": "dca8dc893b3b339a0959bee3f7ca8e565ae3bb195348b95e20d68939c8ad4235"
+  }
+}

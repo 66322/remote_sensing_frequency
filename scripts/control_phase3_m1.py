@@ -1,11 +1,13 @@
 """Work-conserving GPU queue, bounded asynchronous counts, explicit RAM leases."""
 import argparse
+import sys
 import os
 import signal
 import time
 import traceback
 import multiprocessing as mp
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from collections import deque
 from concurrent.futures import ThreadPoolExecutor
 import phase3_m1_common as c

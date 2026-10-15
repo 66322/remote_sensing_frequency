@@ -67,3 +67,13 @@ CPU处理采用固定FP64条带计算，保存充分整数联合计数。为明�
 
 完成状态区分COMPLETE_AWAITING_REVIEW、FINISHED_WITH_FAILURES、FAILED_OR_INTERRUPTED_NO_RETRY。结束后的轻量原件可以离线复算主表，验收不再默认下载几GB像素归档。
 
+## 2026-10-15首次启动故障与修复
+
+用户回传 research_phase3_m1_20261015T142532_2652995 的启动与失败记录：14个输入通过校验，首个RGB_CLEAN任务导入model.phase2_matched时报No module named 'model'，控制器随后退出。不是模型或科学门禁失败，未见TRAIN任务或优化器更新。原因是绝对路径启动scripts入口只自动加入scripts目录；原测试手工加入代码根目录，掩盖了正式入口缺失路径的问题。
+
+修复使controller/runtime从自身文件位置加入代码根目录；bootstrap为子进程明确设置根目录与scripts搜索路径，并在任何整幅输入准备前执行真实MatchedExpert、optimizer、PrefetchedBatches、coords导入检查。新增独立子进程回归检查从无关工作目录运行，移除PYTHONPATH，分别检查正式controller/runtime路径，避免测试路径掩盖缺陷。
+
+显式恢复参数 --supersede-failed <旧run> 仅允许此已识别的旧目录：失败状态、原执行提交、RGB_CLEAN导入错误、空jobs、全部自有消费者退出记录及控制器PID非运行均须匹配。新运行保留supersedes_failed_launch.json；不修改或删除旧记录，不重置旧门禁、不终止PID、不操作tmux。发现任何其他Phase3-M1运行即报告并退出，防止重复队列。该参数不代表通用失败自动重跑。
+
+新回归检查本机通过不等于目标Torch2.2.2/H100执行通过；服务器注册仍实际执行真实导入和Linux memfd检查。数据、科学方案、训练预算及GPU0/1范围不变。
+
