@@ -1,0 +1,1432 @@
+{
+  "schema_version": 1,
+  "kind": "research_plan_not_execution_manifest",
+  "status": "DESIGN_RECORDED_NOT_IMPLEMENTED_NOT_LAUNCHED",
+  "protocol": "docs/protocols/PHASE3_M2_ERROR_CORRESPONDENCE_20261015.md",
+  "source_commit": "5565f93b2e62be22291583cc876f86ecb56c52dc",
+  "server_run": null,
+  "execution_commit": null,
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "hard_walltime_hours": null,
+  "auto_retry": false,
+  "allow_old_finetuned_initialization": false,
+  "seeds": [
+    42,
+    17,
+    2026
+  ],
+  "fold_ids": [
+    "F0",
+    "F1",
+    "F2"
+  ],
+  "allowed_pool": [
+    "2_12",
+    "2_10",
+    "7_8",
+    "3_12",
+    "5_12",
+    "7_9",
+    "6_9",
+    "7_7",
+    "4_12",
+    "6_8",
+    "6_12",
+    "6_7"
+  ],
+  "excluded_legacy_val": [
+    "3_11",
+    "5_10"
+  ],
+  "forbidden_split_names": [
+    "Test6",
+    "held4",
+    "final"
+  ],
+  "fold_tile_map": null,
+  "fold_assignment_rule": "label-blind longest coordinate span, ascending centroid; ties X then tile ID; 3 groups of 4. Missing metadata: deterministic natural tile ID fallback explicitly labeled non-geographic. Overlap: stop freeze.",
+  "inner_rule": "outer train8 sorted by same rule, 4 pairs, teacher learns remaining6",
+  "metric": "Potsdam outer-development central-512-border-excluded NB fg5 mIoU, per-seed pooled outer CM; report all tiles and folds",
+  "checkpoint_selection": "fixed_32000_no_best_age_selection",
+  "trajectory_steps": [
+    8000,
+    16000,
+    24000,
+    32000
+  ],
+  "batch_size": 16,
+  "crop": 512,
+  "stride": 256,
+  "normalization": "R1 ordinary robust",
+  "adaptation": "DSM A1; RGB ordinary matched scope",
+  "lambda": 2,
+  "fusion_primary": {
+    "type": "probability",
+    "dsm_alpha": 0.1
+  },
+  "fusion_sensitivity_dsm_alphas": [
+    0,
+    0.05,
+    0.1,
+    0.2,
+    0.4,
+    0.6,
+    1
+  ],
+  "full_rgb_seed_cross_pairing": true,
+  "masks_per_family": 5,
+  "fault_families": 4,
+  "fault_area": 0.25,
+  "training_rgb_conditions": [
+    "clean",
+    "down2",
+    "down4"
+  ],
+  "unseen_rgb_conditions": [
+    "down8",
+    "gaussian_blur_sigma2",
+    "gaussian_noise_std0.05"
+  ],
+  "protection_dsm_conditions": [
+    "down4",
+    "shift_8_0"
+  ],
+  "stage_b": {
+    "status": "CONDITIONAL_DESIGN_NOT_ENQUEUED",
+    "condition": "all M2-A G0-G4 pass; reverse contract and data/implementation binding frozen",
+    "new_jobs": 90,
+    "updates_per_job": 32000,
+    "updates_total": 2880000,
+    "per_cell": "4 DSM OOF teachers + 6 RGB arms; reuse A RGB CE and D0 baselines"
+  },
+  "stage_c": {
+    "status": "BUDGET_RESERVATION_NOT_IMPLEMENTED_NOT_ENQUEUED",
+    "condition": "all M2-A G0-G4 pass; second-encoder exact source/init/optimizer frozen",
+    "new_jobs": 81,
+    "updates_per_job": 32000,
+    "updates_total": 2592000,
+    "per_cell": "RGB reference + 4 RGB OOF teachers + D0/DSelf/DShuffle/DF"
+  },
+  "budget": {
+    "core_jobs": 108,
+    "core_updates": 3456000,
+    "conditional_jobs": 171,
+    "conditional_updates": 5472000,
+    "max_jobs": 279,
+    "max_updates": 8928000,
+    "previous_m1_actual_updates": 176000,
+    "core_update_ratio": 19.636363636363637,
+    "max_update_ratio": 50.72727272727273
+  },
+  "missing_before_execution": [
+    "exact geospatial fold map and input hashes",
+    "new phase3_m2 executor and loss implementation",
+    "source/init/environment lock",
+    "new checks for folds, OOF gradient and matched controls",
+    "immutable execution commit and launch receipt"
+  ],
+  "core_jobs": [
+    {
+      "id": "F0_s42_R",
+      "fold": "F0",
+      "seed": 42,
+      "role": "rgb_reference",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s42_T0",
+      "fold": "F0",
+      "seed": 42,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 0,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s42_T1",
+      "fold": "F0",
+      "seed": 42,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 1,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s42_T2",
+      "fold": "F0",
+      "seed": 42,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 2,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s42_T3",
+      "fold": "F0",
+      "seed": 42,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 3,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s42_D0",
+      "fold": "F0",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "D0",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s42_DSelf",
+      "fold": "F0",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "DSelf",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s42_DClean",
+      "fold": "F0",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "DClean",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F0_s42_T0",
+        "F0_s42_T1",
+        "F0_s42_T2",
+        "F0_s42_T3"
+      ]
+    },
+    {
+      "id": "F0_s42_DF",
+      "fold": "F0",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "DF",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F0_s42_T0",
+        "F0_s42_T1",
+        "F0_s42_T2",
+        "F0_s42_T3"
+      ]
+    },
+    {
+      "id": "F0_s42_DShuffle",
+      "fold": "F0",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "DShuffle",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F0_s42_T0",
+        "F0_s42_T1",
+        "F0_s42_T2",
+        "F0_s42_T3"
+      ]
+    },
+    {
+      "id": "F0_s42_DEntropy",
+      "fold": "F0",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "DEntropy",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F0_s42_T0",
+        "F0_s42_T1",
+        "F0_s42_T2",
+        "F0_s42_T3"
+      ]
+    },
+    {
+      "id": "F0_s42_DMix",
+      "fold": "F0",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "DMix",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F0_s42_T0",
+        "F0_s42_T1",
+        "F0_s42_T2",
+        "F0_s42_T3"
+      ]
+    },
+    {
+      "id": "F0_s17_R",
+      "fold": "F0",
+      "seed": 17,
+      "role": "rgb_reference",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s17_T0",
+      "fold": "F0",
+      "seed": 17,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 0,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s17_T1",
+      "fold": "F0",
+      "seed": 17,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 1,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s17_T2",
+      "fold": "F0",
+      "seed": 17,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 2,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s17_T3",
+      "fold": "F0",
+      "seed": 17,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 3,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s17_D0",
+      "fold": "F0",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "D0",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s17_DSelf",
+      "fold": "F0",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "DSelf",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s17_DClean",
+      "fold": "F0",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "DClean",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F0_s17_T0",
+        "F0_s17_T1",
+        "F0_s17_T2",
+        "F0_s17_T3"
+      ]
+    },
+    {
+      "id": "F0_s17_DF",
+      "fold": "F0",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "DF",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F0_s17_T0",
+        "F0_s17_T1",
+        "F0_s17_T2",
+        "F0_s17_T3"
+      ]
+    },
+    {
+      "id": "F0_s17_DShuffle",
+      "fold": "F0",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "DShuffle",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F0_s17_T0",
+        "F0_s17_T1",
+        "F0_s17_T2",
+        "F0_s17_T3"
+      ]
+    },
+    {
+      "id": "F0_s17_DEntropy",
+      "fold": "F0",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "DEntropy",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F0_s17_T0",
+        "F0_s17_T1",
+        "F0_s17_T2",
+        "F0_s17_T3"
+      ]
+    },
+    {
+      "id": "F0_s17_DMix",
+      "fold": "F0",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "DMix",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F0_s17_T0",
+        "F0_s17_T1",
+        "F0_s17_T2",
+        "F0_s17_T3"
+      ]
+    },
+    {
+      "id": "F0_s2026_R",
+      "fold": "F0",
+      "seed": 2026,
+      "role": "rgb_reference",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s2026_T0",
+      "fold": "F0",
+      "seed": 2026,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 0,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s2026_T1",
+      "fold": "F0",
+      "seed": 2026,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 1,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s2026_T2",
+      "fold": "F0",
+      "seed": 2026,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 2,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s2026_T3",
+      "fold": "F0",
+      "seed": 2026,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 3,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s2026_D0",
+      "fold": "F0",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "D0",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s2026_DSelf",
+      "fold": "F0",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "DSelf",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F0_s2026_DClean",
+      "fold": "F0",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "DClean",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F0_s2026_T0",
+        "F0_s2026_T1",
+        "F0_s2026_T2",
+        "F0_s2026_T3"
+      ]
+    },
+    {
+      "id": "F0_s2026_DF",
+      "fold": "F0",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "DF",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F0_s2026_T0",
+        "F0_s2026_T1",
+        "F0_s2026_T2",
+        "F0_s2026_T3"
+      ]
+    },
+    {
+      "id": "F0_s2026_DShuffle",
+      "fold": "F0",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "DShuffle",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F0_s2026_T0",
+        "F0_s2026_T1",
+        "F0_s2026_T2",
+        "F0_s2026_T3"
+      ]
+    },
+    {
+      "id": "F0_s2026_DEntropy",
+      "fold": "F0",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "DEntropy",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F0_s2026_T0",
+        "F0_s2026_T1",
+        "F0_s2026_T2",
+        "F0_s2026_T3"
+      ]
+    },
+    {
+      "id": "F0_s2026_DMix",
+      "fold": "F0",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "DMix",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F0_s2026_T0",
+        "F0_s2026_T1",
+        "F0_s2026_T2",
+        "F0_s2026_T3"
+      ]
+    },
+    {
+      "id": "F1_s42_R",
+      "fold": "F1",
+      "seed": 42,
+      "role": "rgb_reference",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s42_T0",
+      "fold": "F1",
+      "seed": 42,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 0,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s42_T1",
+      "fold": "F1",
+      "seed": 42,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 1,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s42_T2",
+      "fold": "F1",
+      "seed": 42,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 2,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s42_T3",
+      "fold": "F1",
+      "seed": 42,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 3,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s42_D0",
+      "fold": "F1",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "D0",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s42_DSelf",
+      "fold": "F1",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "DSelf",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s42_DClean",
+      "fold": "F1",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "DClean",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F1_s42_T0",
+        "F1_s42_T1",
+        "F1_s42_T2",
+        "F1_s42_T3"
+      ]
+    },
+    {
+      "id": "F1_s42_DF",
+      "fold": "F1",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "DF",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F1_s42_T0",
+        "F1_s42_T1",
+        "F1_s42_T2",
+        "F1_s42_T3"
+      ]
+    },
+    {
+      "id": "F1_s42_DShuffle",
+      "fold": "F1",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "DShuffle",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F1_s42_T0",
+        "F1_s42_T1",
+        "F1_s42_T2",
+        "F1_s42_T3"
+      ]
+    },
+    {
+      "id": "F1_s42_DEntropy",
+      "fold": "F1",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "DEntropy",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F1_s42_T0",
+        "F1_s42_T1",
+        "F1_s42_T2",
+        "F1_s42_T3"
+      ]
+    },
+    {
+      "id": "F1_s42_DMix",
+      "fold": "F1",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "DMix",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F1_s42_T0",
+        "F1_s42_T1",
+        "F1_s42_T2",
+        "F1_s42_T3"
+      ]
+    },
+    {
+      "id": "F1_s17_R",
+      "fold": "F1",
+      "seed": 17,
+      "role": "rgb_reference",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s17_T0",
+      "fold": "F1",
+      "seed": 17,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 0,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s17_T1",
+      "fold": "F1",
+      "seed": 17,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 1,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s17_T2",
+      "fold": "F1",
+      "seed": 17,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 2,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s17_T3",
+      "fold": "F1",
+      "seed": 17,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 3,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s17_D0",
+      "fold": "F1",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "D0",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s17_DSelf",
+      "fold": "F1",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "DSelf",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s17_DClean",
+      "fold": "F1",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "DClean",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F1_s17_T0",
+        "F1_s17_T1",
+        "F1_s17_T2",
+        "F1_s17_T3"
+      ]
+    },
+    {
+      "id": "F1_s17_DF",
+      "fold": "F1",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "DF",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F1_s17_T0",
+        "F1_s17_T1",
+        "F1_s17_T2",
+        "F1_s17_T3"
+      ]
+    },
+    {
+      "id": "F1_s17_DShuffle",
+      "fold": "F1",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "DShuffle",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F1_s17_T0",
+        "F1_s17_T1",
+        "F1_s17_T2",
+        "F1_s17_T3"
+      ]
+    },
+    {
+      "id": "F1_s17_DEntropy",
+      "fold": "F1",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "DEntropy",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F1_s17_T0",
+        "F1_s17_T1",
+        "F1_s17_T2",
+        "F1_s17_T3"
+      ]
+    },
+    {
+      "id": "F1_s17_DMix",
+      "fold": "F1",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "DMix",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F1_s17_T0",
+        "F1_s17_T1",
+        "F1_s17_T2",
+        "F1_s17_T3"
+      ]
+    },
+    {
+      "id": "F1_s2026_R",
+      "fold": "F1",
+      "seed": 2026,
+      "role": "rgb_reference",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s2026_T0",
+      "fold": "F1",
+      "seed": 2026,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 0,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s2026_T1",
+      "fold": "F1",
+      "seed": 2026,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 1,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s2026_T2",
+      "fold": "F1",
+      "seed": 2026,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 2,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s2026_T3",
+      "fold": "F1",
+      "seed": 2026,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 3,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s2026_D0",
+      "fold": "F1",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "D0",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s2026_DSelf",
+      "fold": "F1",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "DSelf",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F1_s2026_DClean",
+      "fold": "F1",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "DClean",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F1_s2026_T0",
+        "F1_s2026_T1",
+        "F1_s2026_T2",
+        "F1_s2026_T3"
+      ]
+    },
+    {
+      "id": "F1_s2026_DF",
+      "fold": "F1",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "DF",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F1_s2026_T0",
+        "F1_s2026_T1",
+        "F1_s2026_T2",
+        "F1_s2026_T3"
+      ]
+    },
+    {
+      "id": "F1_s2026_DShuffle",
+      "fold": "F1",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "DShuffle",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F1_s2026_T0",
+        "F1_s2026_T1",
+        "F1_s2026_T2",
+        "F1_s2026_T3"
+      ]
+    },
+    {
+      "id": "F1_s2026_DEntropy",
+      "fold": "F1",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "DEntropy",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F1_s2026_T0",
+        "F1_s2026_T1",
+        "F1_s2026_T2",
+        "F1_s2026_T3"
+      ]
+    },
+    {
+      "id": "F1_s2026_DMix",
+      "fold": "F1",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "DMix",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F1_s2026_T0",
+        "F1_s2026_T1",
+        "F1_s2026_T2",
+        "F1_s2026_T3"
+      ]
+    },
+    {
+      "id": "F2_s42_R",
+      "fold": "F2",
+      "seed": 42,
+      "role": "rgb_reference",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s42_T0",
+      "fold": "F2",
+      "seed": 42,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 0,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s42_T1",
+      "fold": "F2",
+      "seed": 42,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 1,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s42_T2",
+      "fold": "F2",
+      "seed": 42,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 2,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s42_T3",
+      "fold": "F2",
+      "seed": 42,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 3,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s42_D0",
+      "fold": "F2",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "D0",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s42_DSelf",
+      "fold": "F2",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "DSelf",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s42_DClean",
+      "fold": "F2",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "DClean",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F2_s42_T0",
+        "F2_s42_T1",
+        "F2_s42_T2",
+        "F2_s42_T3"
+      ]
+    },
+    {
+      "id": "F2_s42_DF",
+      "fold": "F2",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "DF",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F2_s42_T0",
+        "F2_s42_T1",
+        "F2_s42_T2",
+        "F2_s42_T3"
+      ]
+    },
+    {
+      "id": "F2_s42_DShuffle",
+      "fold": "F2",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "DShuffle",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F2_s42_T0",
+        "F2_s42_T1",
+        "F2_s42_T2",
+        "F2_s42_T3"
+      ]
+    },
+    {
+      "id": "F2_s42_DEntropy",
+      "fold": "F2",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "DEntropy",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F2_s42_T0",
+        "F2_s42_T1",
+        "F2_s42_T2",
+        "F2_s42_T3"
+      ]
+    },
+    {
+      "id": "F2_s42_DMix",
+      "fold": "F2",
+      "seed": 42,
+      "role": "dsm_student",
+      "arm": "DMix",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F2_s42_T0",
+        "F2_s42_T1",
+        "F2_s42_T2",
+        "F2_s42_T3"
+      ]
+    },
+    {
+      "id": "F2_s17_R",
+      "fold": "F2",
+      "seed": 17,
+      "role": "rgb_reference",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s17_T0",
+      "fold": "F2",
+      "seed": 17,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 0,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s17_T1",
+      "fold": "F2",
+      "seed": 17,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 1,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s17_T2",
+      "fold": "F2",
+      "seed": 17,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 2,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s17_T3",
+      "fold": "F2",
+      "seed": 17,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 3,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s17_D0",
+      "fold": "F2",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "D0",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s17_DSelf",
+      "fold": "F2",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "DSelf",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s17_DClean",
+      "fold": "F2",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "DClean",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F2_s17_T0",
+        "F2_s17_T1",
+        "F2_s17_T2",
+        "F2_s17_T3"
+      ]
+    },
+    {
+      "id": "F2_s17_DF",
+      "fold": "F2",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "DF",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F2_s17_T0",
+        "F2_s17_T1",
+        "F2_s17_T2",
+        "F2_s17_T3"
+      ]
+    },
+    {
+      "id": "F2_s17_DShuffle",
+      "fold": "F2",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "DShuffle",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F2_s17_T0",
+        "F2_s17_T1",
+        "F2_s17_T2",
+        "F2_s17_T3"
+      ]
+    },
+    {
+      "id": "F2_s17_DEntropy",
+      "fold": "F2",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "DEntropy",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F2_s17_T0",
+        "F2_s17_T1",
+        "F2_s17_T2",
+        "F2_s17_T3"
+      ]
+    },
+    {
+      "id": "F2_s17_DMix",
+      "fold": "F2",
+      "seed": 17,
+      "role": "dsm_student",
+      "arm": "DMix",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F2_s17_T0",
+        "F2_s17_T1",
+        "F2_s17_T2",
+        "F2_s17_T3"
+      ]
+    },
+    {
+      "id": "F2_s2026_R",
+      "fold": "F2",
+      "seed": 2026,
+      "role": "rgb_reference",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s2026_T0",
+      "fold": "F2",
+      "seed": 2026,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 0,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s2026_T1",
+      "fold": "F2",
+      "seed": 2026,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 1,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s2026_T2",
+      "fold": "F2",
+      "seed": 2026,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 2,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s2026_T3",
+      "fold": "F2",
+      "seed": 2026,
+      "role": "rgb_oof_teacher",
+      "inner_pair": 3,
+      "train_tile_count": 6,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s2026_D0",
+      "fold": "F2",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "D0",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s2026_DSelf",
+      "fold": "F2",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "DSelf",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": []
+    },
+    {
+      "id": "F2_s2026_DClean",
+      "fold": "F2",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "DClean",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F2_s2026_T0",
+        "F2_s2026_T1",
+        "F2_s2026_T2",
+        "F2_s2026_T3"
+      ]
+    },
+    {
+      "id": "F2_s2026_DF",
+      "fold": "F2",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "DF",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F2_s2026_T0",
+        "F2_s2026_T1",
+        "F2_s2026_T2",
+        "F2_s2026_T3"
+      ]
+    },
+    {
+      "id": "F2_s2026_DShuffle",
+      "fold": "F2",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "DShuffle",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F2_s2026_T0",
+        "F2_s2026_T1",
+        "F2_s2026_T2",
+        "F2_s2026_T3"
+      ]
+    },
+    {
+      "id": "F2_s2026_DEntropy",
+      "fold": "F2",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "DEntropy",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F2_s2026_T0",
+        "F2_s2026_T1",
+        "F2_s2026_T2",
+        "F2_s2026_T3"
+      ]
+    },
+    {
+      "id": "F2_s2026_DMix",
+      "fold": "F2",
+      "seed": 2026,
+      "role": "dsm_student",
+      "arm": "DMix",
+      "train_tile_count": 8,
+      "updates": 32000,
+      "depends_on": [
+        "F2_s2026_T0",
+        "F2_s2026_T1",
+        "F2_s2026_T2",
+        "F2_s2026_T3"
+      ]
+    }
+  ],
+  "design_started": "2026-10-15",
+  "finalized": "2026-10-16",
+  "core_is_new_protocol_not_legacy_rerun": true
+}

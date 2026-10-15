@@ -1,9 +1,9 @@
-# 共享入口：Phase3-M1已归档验收，幅度机制支线收口（2026-10-15）
+# 共享入口：Phase3-M2长程设计已登记，尚未实现/启动（2026-10-16）
 
-先读[正式验收与路线收口](experiments/PHASE3_M1_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md)、[当前状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)。
+先读 [研究决定](current/RESEARCH_DECISION.md)、[当前交接](current/HANDOFF.md)、[状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)，再读 [M2完整计划](protocols/PHASE3_M2_ERROR_CORRESPONDENCE_20261015.md) 和 [计划清单](../configs/phase3_m2_plan_manifest.json)。
 
-固定结果提交09fb57a6ec26f6367c9891f2aa924cc4bf7219cc；29块4168文件、71280联合表和142608矩阵已独立回读/算术复算通过，11主训练176000更新完成。技术验收通过不代表科学门禁通过：幅度门禁false，down4补救条件失败，C21两项按预设跳过。M21独立分数相对旧基线约提高1.2/1.14pp，但没有稳定的新增固定融合收益。
+用户根据已完成结果要求安排GPU0/1长程实验，不限时间、优先研究问题与创新性。新问题是“错误位置对应性是否带来可迁移、可兑现的条件补救”。核心3个Fit12外层分组×3个整系统seed，108个32k训练、345.6万更新；条件反向与第二编码器储备合计上限279个、892.8万更新。后续阶段受科学门禁与实现冻结约束，不是全部自动启动。
 
-当前没有新可执行训练队列；不重新bootstrap、恢复、上传或自动扩展同类配方。保留本轮普通输入适配的条件性认识，下一步先做问题论证。另一篇点云论文不进入本篇遥感；Test6/held4/final保持代码/记录边界。校准、激活和GPU UUID绑定缺口详见报告。
+状态为DESIGN_RECORDED_NOT_IMPLEMENTED_NOT_LAUNCHED。新执行器、精确fold表和执行提交尚待落实；无新run/PID。不要运行旧M1 bootstrap或恢复旧队列。
 
-Phase2.4旧门禁失败与旧验收保持原结论：[Phase2.4验收](experiments/PHASE_24_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md)。
+[Phase3-M1验收](experiments/PHASE3_M1_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md)与[Phase2.4验收](experiments/PHASE_24_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md)保持原科学结论，旧幅度配方关闭。Test6/held4/final禁读；旧Val2本轮不进入队列；全Fit12微调模型不能泄漏进入新外层主比较。另一篇点云论文不进入本篇。
