@@ -1,0 +1,285 @@
+{
+  "review_date": "2026-10-15",
+  "status": "ARCHIVE_AND_INTEGER_COUNTS_ACCEPTED_PRIMARY_GATES_FAILED",
+  "material_passport_verification_status": "ANALYZED",
+  "archive_commit": "76ae973b869eb3c377be4dae99fcb7224c9e2ac3",
+  "execution_commit": "5a84f0eacabe5d6f1c7ed1638e6a9291c58e151f",
+  "transport": {
+    "commit": "76ae973b869eb3c377be4dae99fcb7224c9e2ac3",
+    "manifest_sha256": "9c91050676d37825e8efd654c6ee2d3c030a01b718b690d44fa549ca68c04b06",
+    "summary_sha256": "1f9b9e50161eabb0db0c9ce8561408eec35fc13ca686baadd575752849488b86",
+    "archive_sha256": "c2ed75c3f88601db3c8b8f644749eedf5762bdb3717f12ea09f77221b939a108",
+    "archive_parts": 3249,
+    "payload_count": 3014,
+    "original_bytes": 1883553558,
+    "all_part_sha256": true,
+    "all_payload_sha256": true
+  },
+  "source": {
+    "execution_commit": "5a84f0eacabe5d6f1c7ed1638e6a9291c58e151f",
+    "files_checked": 242,
+    "all_source_sha256": true,
+    "historical_inherited_sources": {
+      "scripts/upload_post_d30_records.py": "ca41326ef0858aae819daa6509069220acf51786",
+      "scripts/enqueue_post_ab_n2.py": "86b6a70e5c3482314986fb1259e2fccbd0a5a38b",
+      "scripts/status_post_ab.py": "99acf754aaf3f6b1d119f42a5dab7297a263e4b4",
+      "docs/protocols/POST_T_MECHANISM_GPU0_20261010.md": "cd958925cb5d4292dd15802830e97493c9c67033",
+      "scripts/upload_post_ab_n2_records.py": "86b6a70e5c3482314986fb1259e2fccbd0a5a38b",
+      "scripts/launch_post_d30.py": "ca41326ef0858aae819daa6509069220acf51786",
+      "scripts/status_post_d30.py": "ca41326ef0858aae819daa6509069220acf51786",
+      "scripts/post_ab_n2_common.py": "86b6a70e5c3482314986fb1259e2fccbd0a5a38b",
+      "scripts/control_post_ab_n2.py": "86b6a70e5c3482314986fb1259e2fccbd0a5a38b"
+    },
+    "code_manifest_sha256": "203a85b3f1056834b65e27c4773b954c9f55114881c29bb10aaaf17ba236b6b7"
+  },
+  "counts": {
+    "status": "COUNTS_AND_BINDINGS_VERIFIED_NOT_A_TRAINING_RERUN",
+    "binding": {
+      "plan.json": "26efca2ae3e80796728edefc92da825ee8f0116ae12f1326868b569337b52fb3",
+      "code_manifest.json": "203a85b3f1056834b65e27c4773b954c9f55114881c29bb10aaaf17ba236b6b7"
+    },
+    "stage_records": {
+      "SMOKE": 12,
+      "D1": 632,
+      "D2": 642,
+      "D3": 522,
+      "E": 1164
+    },
+    "validated_records": 2972,
+    "integer_matrices_checked": 249248,
+    "joint_marginals_checked": 605088,
+    "correctness_flows_checked": 201696,
+    "source_locks_checked": 2328,
+    "cross_stage_original_CM_fields": 46560,
+    "summary_rebuilt": true,
+    "deployment_gates_rebuilt": true,
+    "paired_mask_interval_rebuilt": true,
+    "T0_batch_rows": 8000,
+    "T0_trajectory_rows": 401,
+    "D0_empirical_decomposition_rebuilt": true,
+    "actual_server_pth_weights_rehashed_locally": false,
+    "training_rerun": false,
+    "old_B0_raw_batch_stream_independently_compared": false
+  },
+  "frozen_gate_status": {
+    "calibrated": {
+      "accepted": false,
+      "candidate": "calibrated",
+      "reference": "reference",
+      "checks": {
+        "P_U_gain": -0.020603995241629036,
+        "rgb_fault_gain": -0.0565775227718035,
+        "positive_RGB_fault_tiles": {
+          "3_11": -0.11415576294122332,
+          "5_10": -0.0033536971894534418
+        },
+        "protections": {
+          "clean/both/all/3_11/reference": -0.009145474488761351,
+          "clean/both/all/3_11/rgb": 0.14547328402161952,
+          "clean/both/all/5_10/reference": -0.0009366080784616315,
+          "clean/both/all/5_10/rgb": 0.3413883250062355,
+          "P-U/dsm/all/3_11/reference": 0.030063343232768602,
+          "P-U/dsm/all/3_11/rgb": -0.04316240001328708,
+          "P-U/dsm/all/5_10/reference": 0.0007029777095937106,
+          "P-U/dsm/all/5_10/rgb": -0.011666745423227098,
+          "P-U/both/healthy/3_11/reference": -0.014182972997474508,
+          "P-U/both/healthy/3_11/rgb": 0.15693979185806484,
+          "P-U/both/healthy/5_10/reference": -0.0007859821748326112,
+          "P-U/both/healthy/5_10/rgb": 0.2962998652697024
+        },
+        "worst_family_damage": -0.46789665691527205,
+        "fallback_exact": true
+      },
+      "interpretation": "development gate on two reused Val2 tiles, seed42; no independent test claim"
+    },
+    "probe": {
+      "accepted": false,
+      "candidate": "probe",
+      "reference": "reference",
+      "checks": {
+        "P_U_gain": 1.7444720147269805,
+        "rgb_fault_gain": 3.480201687989137,
+        "positive_RGB_fault_tiles": {
+          "3_11": 6.503460155793306,
+          "5_10": 0.7236194708069519
+        },
+        "protections": {
+          "clean/both/all/3_11/reference": -0.22389234941083203,
+          "clean/both/all/3_11/rgb": -0.06927359090045115,
+          "clean/both/all/5_10/reference": -0.34211065421897047,
+          "clean/both/all/5_10/rgb": 0.0002142788657266692,
+          "P-U/dsm/all/3_11/reference": 0.011391005315658731,
+          "P-U/dsm/all/3_11/rgb": -0.061834737930396955,
+          "P-U/dsm/all/5_10/reference": 0.012535364791204984,
+          "P-U/dsm/all/5_10/rgb": 0.00016564165838417466,
+          "P-U/both/healthy/3_11/reference": -0.19372694657798206,
+          "P-U/both/healthy/3_11/rgb": -0.022604181722442718,
+          "P-U/both/healthy/5_10/reference": -0.29691983174991776,
+          "P-U/both/healthy/5_10/rgb": 0.00016601569461727195
+        },
+        "worst_family_damage": -0.35838248614233237,
+        "fallback_exact": true
+      },
+      "interpretation": "development gate on two reused Val2 tiles, seed42; no independent test claim"
+    }
+  },
+  "posthoc_diagnostic_gates": {
+    "rgb": {
+      "accepted": false,
+      "candidate": "rgb",
+      "reference": "reference",
+      "checks": {
+        "P_U_gain": -0.4355862078363515,
+        "rgb_fault_gain": -0.9166664478917426,
+        "positive_RGB_fault_tiles": {
+          "3_11": -0.8783141669169652,
+          "5_10": -0.9597127967855386
+        },
+        "protections": {
+          "clean/both/all/3_11/reference": -0.15461875851038087,
+          "clean/both/all/3_11/rgb": 0.0,
+          "clean/both/all/5_10/reference": -0.34232493308469714,
+          "clean/both/all/5_10/rgb": 0.0,
+          "P-U/dsm/all/3_11/reference": 0.07322574324605569,
+          "P-U/dsm/all/3_11/rgb": 0.0,
+          "P-U/dsm/all/5_10/reference": 0.012369723132820809,
+          "P-U/dsm/all/5_10/rgb": 0.0,
+          "P-U/both/healthy/3_11/reference": -0.17112276485553934,
+          "P-U/both/healthy/3_11/rgb": 0.0,
+          "P-U/both/healthy/5_10/reference": -0.29708584744453503,
+          "P-U/both/healthy/5_10/rgb": 0.0
+        },
+        "worst_family_damage": -1.818751912685478,
+        "fallback_exact": true
+      },
+      "interpretation": "development gate on two reused Val2 tiles, seed42; no independent test claim"
+    },
+    "reference": {
+      "accepted": false,
+      "candidate": "reference",
+      "reference": "reference",
+      "checks": {
+        "P_U_gain": 0.0,
+        "rgb_fault_gain": 0.0,
+        "positive_RGB_fault_tiles": {
+          "3_11": 0.0,
+          "5_10": 0.0
+        },
+        "protections": {
+          "clean/both/all/3_11/reference": 0.0,
+          "clean/both/all/3_11/rgb": 0.15461875851038087,
+          "clean/both/all/5_10/reference": 0.0,
+          "clean/both/all/5_10/rgb": 0.34232493308469714,
+          "P-U/dsm/all/3_11/reference": 0.0,
+          "P-U/dsm/all/3_11/rgb": -0.07322574324605569,
+          "P-U/dsm/all/5_10/reference": 0.0,
+          "P-U/dsm/all/5_10/rgb": -0.012369723132820809,
+          "P-U/both/healthy/3_11/reference": 0.0,
+          "P-U/both/healthy/3_11/rgb": 0.17112276485553934,
+          "P-U/both/healthy/5_10/reference": 0.0,
+          "P-U/both/healthy/5_10/rgb": 0.29708584744453503
+        },
+        "worst_family_damage": -0.5283544437765073,
+        "fallback_exact": true
+      },
+      "interpretation": "development gate on two reused Val2 tiles, seed42; no independent test claim"
+    },
+    "T0": {
+      "accepted": false,
+      "candidate": "T0",
+      "reference": "reference",
+      "checks": {
+        "P_U_gain": 0.3162702556989814,
+        "rgb_fault_gain": 1.0427241104736424,
+        "positive_RGB_fault_tiles": {
+          "3_11": 1.0476150816042349,
+          "5_10": 1.0475821234618081
+        },
+        "protections": {
+          "clean/both/all/3_11/reference": 0.030978105831721336,
+          "clean/both/all/3_11/rgb": 0.1855968643421022,
+          "clean/both/all/5_10/reference": 0.19625736165542662,
+          "clean/both/all/5_10/rgb": 0.5385822947401238,
+          "P-U/dsm/all/3_11/reference": -0.42149440859924425,
+          "P-U/dsm/all/3_11/rgb": -0.49472015184529994,
+          "P-U/dsm/all/5_10/reference": -0.39073850843361413,
+          "P-U/dsm/all/5_10/rgb": -0.40310823156643494,
+          "P-U/both/healthy/3_11/reference": 0.08612752407802304,
+          "P-U/both/healthy/3_11/rgb": 0.2572502889335624,
+          "P-U/both/healthy/5_10/reference": 0.1717245651815631,
+          "P-U/both/healthy/5_10/rgb": 0.4688104126260981
+        },
+        "worst_family_damage": -1.843276582229393,
+        "fallback_exact": true
+      },
+      "interpretation": "development gate on two reused Val2 tiles, seed42; no independent test claim"
+    },
+    "T0_4000": {
+      "accepted": false,
+      "candidate": "T0_4000",
+      "reference": "reference",
+      "checks": {
+        "P_U_gain": 0.26033581098573677,
+        "rgb_fault_gain": 1.2639358131576586,
+        "positive_RGB_fault_tiles": {
+          "3_11": 1.2865521057545806,
+          "5_10": 1.2538202678935306
+        },
+        "protections": {
+          "clean/both/all/3_11/reference": -0.049255776096629234,
+          "clean/both/all/3_11/rgb": 0.10536298241375164,
+          "clean/both/all/5_10/reference": 0.15787707462787637,
+          "clean/both/all/5_10/rgb": 0.5002020077125735,
+          "P-U/dsm/all/3_11/reference": -0.7538265100142638,
+          "P-U/dsm/all/3_11/rgb": -0.8270522532603195,
+          "P-U/dsm/all/5_10/reference": -0.7231713261938069,
+          "P-U/dsm/all/5_10/rgb": -0.7355410493266277,
+          "P-U/both/healthy/3_11/reference": 0.02051060266201432,
+          "P-U/both/healthy/3_11/rgb": 0.19163336751755367,
+          "P-U/both/healthy/5_10/reference": 0.10583220362703116,
+          "P-U/both/healthy/5_10/rgb": 0.4029180510715662
+        },
+        "worst_family_damage": -2.6634446193621244,
+        "fallback_exact": true
+      },
+      "interpretation": "development gate on two reused Val2 tiles, seed42; no independent test claim"
+    },
+    "stump": {
+      "accepted": false,
+      "candidate": "stump",
+      "reference": "reference",
+      "checks": {
+        "P_U_gain": 3.8032625963156477,
+        "rgb_fault_gain": 7.56103116041227,
+        "positive_RGB_fault_tiles": {
+          "3_11": 7.477357032952526,
+          "5_10": 7.619683781392084
+        },
+        "protections": {
+          "clean/both/all/3_11/reference": -0.15461875851038087,
+          "clean/both/all/3_11/rgb": 0.0,
+          "clean/both/all/5_10/reference": -0.34232493308469714,
+          "clean/both/all/5_10/rgb": 0.0,
+          "P-U/dsm/all/3_11/reference": 0.07322574324605569,
+          "P-U/dsm/all/3_11/rgb": 0.0,
+          "P-U/dsm/all/5_10/reference": 0.012369723132820809,
+          "P-U/dsm/all/5_10/rgb": 0.0,
+          "P-U/both/healthy/3_11/reference": -0.17112276485553934,
+          "P-U/both/healthy/3_11/rgb": 0.0,
+          "P-U/both/healthy/5_10/reference": -0.29708584744453503,
+          "P-U/both/healthy/5_10/rgb": 0.0
+        },
+        "worst_family_damage": -0.8270543513050086,
+        "fallback_exact": true
+      },
+      "interpretation": "development gate on two reused Val2 tiles, seed42; no independent test claim"
+    }
+  },
+  "report_sha256": "1f183c58e2f40b304859705a5def4ad7728b6db6055a4966542fc3e353be62df",
+  "new_experiments_started": false,
+  "new_seeds": false,
+  "test6_access": false,
+  "held4_access": false,
+  "next_stage": "question_and_data_feasibility_only",
+  "A_B_route_chosen": false
+}

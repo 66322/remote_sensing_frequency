@@ -1,3 +1,15 @@
+# Phase2.4验收收口：新增禁止重复项（2026-10-15）
+
+- 原运行research_phase24_protected_20261014T193915_2149100及上传76ae973b已完成，不重复登记、训练、推理或上传。
+- calibrated/probe原门禁均False；T1/T2/T3未派发，不为凑齐四头补跑。T0 4k为轨迹、8k为主端点，不择优年龄或自动延长。
+- 不通过修改参考、去掉不利损坏、改保护线或将stump提升为事后主候选来倒写成功。T0也有DSM方向损伤。
+- 不根据旧Post-AB/Post-D30 registry运行提示恢复历史队列；当前动作由2026-10-15交接和下一步决定。
+- 不自动增加训练seed/新专家或访问Test6/held4/final。A/B问题尚未选定、无新GPU队列授权。
+
+[完整报告](../experiments/PHASE_24_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md)。以下历史条目保留供查重，不作为当前运行指令。
+
+---
+
 # D23新增禁止重复规则（2026-10-01）
 
 新对话先遵守[执行约定](../protocols/EXECUTION_CONTRACT.md)。D23-A、CPU检查、双卡工程smoke、双卡预算及相应原件校验已完成；工程证据d3829b6、预算证据54e19cd。不得因换对话/电脑重跑它们。保留历史失败日志不代表失败仍未修复（launcher cwd已在b02bb7b修复）。
@@ -219,3 +231,4 @@ A rerun requires at least one explicitly documented new variable:
 - a new corruption or diagnostic protocol.
 
 A new filename or experiment ID alone is not a valid reason.
+

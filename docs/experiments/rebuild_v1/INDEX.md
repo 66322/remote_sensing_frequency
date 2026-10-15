@@ -1,3 +1,13 @@
+# 2026-10-15：Phase2.4原件验收与路线收口
+
+[完整报告](../PHASE_24_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md)、[复算证据](../../../records/phase24_review_20261015/verification.json)、[新交接](../../current/NEW_CHAT_HANDOFF_20261015.md)。原件76ae973b；3014文件/2972计数记录及242源码来源核验通过。calibrated/probe门禁未过，T0完成8k，条件头未派；下一步仅问题论证与数据可达性，无新实验队列。
+
+T0对旧B0的总体改善伴随DSM-fault保护失败；stump零值规则收益集中在zero，不能称一般几何质量机制。原门禁、8k主端点及两重复Val2/单seed证据边界保留。
+
+以下为历史索引；其中“尚未启动/运行中”等必须按各自日期理解，当前状态以本节及docs/current为准。
+
+---
+
 # 2026-10-13：Phase2执行包就绪，服务器尚未启动
 
 [执行协议](../../protocols/PHASE_2_EXECUTION_20261013.md)、[科学设计](../../protocols/PHASE_2_MATCHED_COMPLEMENTARITY_20261013.md)、[技术验收](../../../records/phase2_implementation_20261013/verification.json)。用户授权具体实验，核心4训练48k、条件性最多6训练64k。GPU0/1、实际batch16真实smoke自动先行、resident/mmap/共享cache/CPU流水、无24h强停或失败重试。9CPU/13语法检查通过；160旧D、720身份、120dose原计数重用核验完成，无新GPU或训练结果。等用户bootstrap登记回报后查询原目录，不重复登记。
@@ -770,3 +780,4 @@ P7 RGB_U 83.575357%，对基线+2.562756、P6+1.759726、P8+1.952962、P9+2.2079
 ## 2026-10-13 Phase2首次smoke技术失败与修复
 
 原research_phase2_matched_20261013T145903_1304150于15:02:06查询TECHNICAL_FAILURE_HOLD、无活进程；两卡smoke均CUDA NLLLoss确定性归约不支持，prepare/legacy完成、无正式训练。保持原mean CE/ignore255改用log_softmax/where；12项CPU检查通过、真实GPU未验，新专项技术替换待用户执行。[原件](../../../records/phase2_ce_fix_20261013/server_smoke_failure.txt)、[技术验收](../../../records/phase2_ce_fix_20261013/verification.json)、[技术修复及零训练替换门禁](../../protocols/PHASE_2_CE_TECHNICAL_FIX_20261013.md)。不改变研究问题/预算/seed，不归类为方法失败或正式实验结果。
+

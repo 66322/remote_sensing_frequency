@@ -1,22 +1,21 @@
-# 下一步：原Phase2.4队列自动继续（2026-10-14）
+# 下一步：问题论证与数据可达性；无已授权新队列（2026-10-15）
 
-> 2026-10-15研究路线讨论：用户明确“暂时不受期限限制，优先研究问题和创新性”。已完成[路线复盘与相邻问题建议](../experiments/RESEARCH_ROUTE_REVIEW_20261015.md)，建议以Phase2.4收束当前统计信号/输出决策类，再考察真实几何质量的可观测性或高度表征的尺度机制。**这些是助手建议，用户尚未选择转向或授权新实验。** 原主线、恢复旁支角色、已冻结门禁和队列继续；本轮未新增服务器观测，不能由日期推断完成。
+本轮Phase2.4已完成并完成GitHub原件/整数统计独立验收。原件提交76ae973b869eb3c377be4dae99fcb7224c9e2ac3；执行快照5a84f0eacabe5d6f1c7ed1638e6a9291c58e151f。
 
-最后观测：2026-10-14T20:28:16.847139+08:00；查询时间20:28:17.018087+08:00。用户回传status及60行日志尾部，QUEUE=D2、控制器和GPU0/1均LIVE=True；这是该时刻观测，不是实时状态。
+原科学门禁calibrated=False、probe=False；T0完成8000更新，T1/T2/T3未派发。原Phase2 L=False和B1/B3未派发不改。没有新专家、训练seed、Test6/held4/final访问或自动失败重跑。
 
-SMOKE=12；D1累计642/642完成（复用10个核心smoke，本阶段新完成632/632）。D2已完成8/642，CPU_PENDING=1。GPU0为TRAIN:T0，GPU1为INFER；T0在20:28:15.718518观测1140/8000更新，loss=0.1307082772，remaining_train_hours=0.1445449292（约8.7分钟），仅覆盖T0剩余训练，不含端点评价。D2阶段ETA=None，不估计整轮结束时间。
+主要发现：T0对旧B0的clean/P-U为+2.6180/+2.4989pp，但DSM-fault在两tile对静态reference为-0.4215/-0.3907pp、最差family×damage -1.8433pp。probe的RGB-fault对reference +3.4802pp，但clean/healthy保护失败。预登记stump对照选中RGB零值比例，zero条件收益强、down4精确回退RGB；它也未通过完整保护。不能用池化均值宣布安全，也不能称所有统计信号没有价值。
 
-T0是协议必做的clean训练分布控制，可与D2并行；本输出未给T1/T2/T3门禁结果或派发证据。GPU0旧progress/runtime停留在20:26的D1推理，不能用旧文件误判当前GPU0空闲或卡住；当前状态和T0更新时间表明正在训练。两卡峰值allocated约5.54GiB，CPU基准选择32进程、每进程数值库1线程；日志尾部只有配置预期的xFormers警告和D1进度，未见错误，但并非全日志验收。
+用户偏好继续为“暂不受期限限制，优先研究问题和创新性”。建议本轮候选收口，下一交付先做问题论证/数据可达性，停止默认同信息换融合头。真实几何质量观测A、物理高度/尺度表征B仍为建议，用户未选定、未授权新训练；原RGB–DSM条件互补/退化缺失分割主线、恢复旁支定位不自动改写。
 
-保持原队列，不重复登记、技术替换或重启。下一次只读查询：
+## 立即可做的研究工作
 
-```bash
-D=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase24_protected_20261014T193915_2149100
-PY=/home/jovyan/miniconda3/envs/d18_dino/bin/python
-"$PY" -B "$D/code/scripts/status_phase24.py" --directory "$D"
-tail -n 60 "$D/nohup_20261014T193920570637.log"
-```
+- 整理真实几何质量观测A与物理尺度表征B的问题论证，列数据是否可取得、最近邻差异、最小可证伪检验和停止条件，再只选择一个。
+- 把T0训练分布效应、RGB零值规则、zero/down4差异和方向损伤写入诊断论证；目前没有新算法普适有效或场景泛化成立的证据。
+- 先保留当前原件/必要端点。禁止默认增加融合头、延长8k、换阈值重跑或追加训练seed。Test6/held4/final保持封闭。
 
-D1后由原控制器按协议继续源拟合、端点评价、T0及条件头；只用实际门禁判断派发。若technical hold，接收对应错误原件，不自动重跑。研究主线RGB–DSM条件互补与退化/缺失分割不变，恢复旁支。原C/L和B1/B3门禁不改；T0 clean8k必做，T1/T2/T3按门禁，最多4小头32k，0新专家/训练seed。GPU0/1≥24h可续，无硬截止，无SSH/Test6/held4/final或自动失败重试。
+## 不应执行的旧动作
 
-完整结束后用户显式upload_phase24.py，核验轻量原件/归档/绑定，分析结论后更新研究决定；当前不把进度当科学结论。[最新观测](../../records/phase24_registration_20261014/observation_202816.json)；[执行](../protocols/PHASE_24_EXECUTION_20261014.md)。
+原队列和轻量上传均已完成；D1/D2/T0旧状态与旧上传排错不再是下一步。T1/T2/T3未派发由门禁导致，不能补跑成“完整四头”；Phase2 B1/B3同样未开放。若未来选择新问题，应另行登记，不能复用本轮预算作为新授权。
+
+[完整验收报告](../experiments/PHASE_24_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md)；[当前研究决定](RESEARCH_DECISION.md)。
