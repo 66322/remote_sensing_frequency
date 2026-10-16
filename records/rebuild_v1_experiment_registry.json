@@ -2217,14 +2217,19 @@
       "reserved_C_jobs": 81,
       "user_authorized_implementation": true,
       "point_cloud_used": false,
-      "Test6_held4_final_opened": false
+      "Test6_held4_final_opened": false,
+      "resource_status": "WAITING_FOR_GPU0_1",
+      "resource_observation": "records/phase3_m2_resource_observation_20261016.json",
+      "execution_commit": "0a21f3d1eac54b9b37f19fb30e3f2072f69619bd"
     }
   ],
   "next_plan": {
     "status": "CORE_IMPLEMENTED_LOCAL_CHECKS_PASSED_NOT_SERVER_LAUNCHED",
     "manifest": "configs/phase3_m2_execution_manifest.json",
     "protocol": "docs/protocols/PHASE3_M2_EXECUTION_20261016.md",
-    "next": "target GPU/header/Linux checks then user-run fixed bootstrap"
+    "next": "Wait for authorized GPU0/1 availability, then recheck and user-run fixed execution commit; no launch now",
+    "resource_status": "WAITING_FOR_GPU0_1",
+    "resource_observation": "records/phase3_m2_resource_observation_20261016.json"
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -3249,7 +3254,9 @@
     "reserved_C": 81,
     "max_jobs": 279,
     "max_updates": 8928000,
-    "active_queue_observed": false
+    "active_queue_observed": false,
+    "resource_status": "USER_REPORTED_ALL_GPUS_BUSY",
+    "resource_observation": "records/phase3_m2_resource_observation_20261016.json"
   },
   "completed_d26_plan": {
     "input_manifest_sha256": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295",
@@ -3427,7 +3434,7 @@
       "gradient_accumulation": false,
       "views_per_crop": 2,
       "head_lr": 0.0002,
-      "encoder_last4_lr": 2e-05,
+      "encoder_last4_lr": 0.00002,
       "weight_decay": 0.01,
       "betas": [
         0.9,
