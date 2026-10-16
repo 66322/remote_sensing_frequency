@@ -1,0 +1,51 @@
+{
+  "version": "REBUILD_V1_R02_BUDGET_PILOT_16K_20260916",
+  "purpose": "Second complete-schedule convergence pilot for the clean dual-modal F0 baseline after the 12k pilot ended with its best VAL2 NB mIoU_fg5 at the final step. This is not yet a formal R01-R04 result.",
+  "model_id": "R02",
+  "model": "dual_f0_clean",
+  "seed": 42,
+  "split_file": "configs/rebuild_v1/potsdam_split_seed20260915.json",
+  "data_root": "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped",
+  "pretrain": "/home/jovyan/zzx/paper_rebuild/08_assets/pretrained/ftransunet/R50+ViT-B_16.npz",
+  "patch": 512,
+  "micro_batch": 4,
+  "accum_steps": 4,
+  "effective_batch": 16,
+  "optimizer": {
+    "name": "AdamW",
+    "backbone_lr": 0.00006,
+    "decoder_head_lr_mult": 10.0,
+    "betas": [0.9, 0.999],
+    "weight_decay": 0.01
+  },
+  "schedule": {
+    "scheduler_total_steps": 16000,
+    "stop_at_step": 16000,
+    "warmup_steps": 1200,
+    "warmup_ratio": 0.000001,
+    "poly_power": 1.0,
+    "note": "Fresh-from-initialization complete 16k schedule. Warmup remains 1200 so the intended experimental change versus the 12k pilot is the decay horizon, not the warmup duration."
+  },
+  "augmentation": {
+    "random_scale_min": 0.5,
+    "random_scale_max": 2.0,
+    "horizontal_flip_p": 0.5,
+    "vertical_flip_p": 0.5,
+    "rare_sampling": false,
+    "quality_corruption": false,
+    "modality_dropout": false
+  },
+  "validation": {
+    "eval_interval_steps": 1000,
+    "stride": 256,
+    "inference_batch": 8,
+    "selection_metric": "noboundary_mIoU_fg5",
+    "fullgt_also_reported": true,
+    "note": "Validation uses VAL2 only. Historical TEST6 is not touched during training."
+  },
+  "decision_rule": {
+    "primary": "Compare the VAL2 NB mIoU_fg5 trajectory of this fresh complete 16k schedule against the completed 12k pilot.",
+    "accept_16k": "Freeze 16k for formal R01-R04 if the late 13k-16k region is stable/plateaued and no sustained endpoint improvement remains.",
+    "reconsider": "If the best region still sits at the 16k endpoint with material late improvement, reassess the schedule once more rather than extending this run in-place."
+  }
+}

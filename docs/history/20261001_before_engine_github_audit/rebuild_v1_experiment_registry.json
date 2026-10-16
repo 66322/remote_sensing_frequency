@@ -1,0 +1,1861 @@
+{
+  "schema_version": "1.2",
+  "project": "REBUILD_V1",
+  "timezone": "UTC+08:00",
+  "last_updated": "2026-10-01",
+  "status_provenance_policy": "reported_complete and running_as_last_reported are user observations, not live server verification. expected_server_records are absent artifacts to collect, not archived evidence.",
+  "timing_policy": {
+    "started_at": "Actual launch time when directly evidenced; otherwise date/minute precision is stated explicitly.",
+    "completed_at": "Actual successful completion time when directly evidenced; otherwise null or a confirmed-complete-by time is used.",
+    "recorded_at": "Time/date when the experiment record was written to Git history.",
+    "time_source": "Direct source for the timing claim, such as process start display, queue log, experiment log, or retained artifact.",
+    "historical_rule": "Do not invent missing historical clock times."
+  },
+  "frozen_budget": {
+    "scheduler_total_steps": 16000,
+    "stop_at_step": 16000,
+    "warmup_steps": 1200,
+    "selection_metric": "val2_noboundary_mIoU_fg5",
+    "selection_split": "Val2",
+    "historical_test6_loaded_during_selection": false,
+    "decision_source": "R02_BUDGET_16K"
+  },
+  "experiments": [
+    {
+      "id": "E50",
+      "name": "historical_modality_quality_reliability_diagnostics",
+      "status": "closed",
+      "purpose": "Test whether the historical reliability gate behaves like a stable modality-quality estimator under Optical/DSM corruption.",
+      "started_at": null,
+      "completed_at": null,
+      "time_precision": "historical_date_only_or_unknown",
+      "time_source": "historical records",
+      "result_summary": "Historical gate response was not reliably aligned with modality degradation.",
+      "decision": "Use as motivation only; do not resume the legacy reliability-v2 route unless later gates justify it."
+    },
+    {
+      "id": "E51-B",
+      "name": "grid_gsd_same_step_pp4k_ph4k",
+      "status": "closed",
+      "purpose": "Compare PP4k and PH4k under jointly resampled raster grids while matching checkpoint step.",
+      "started_at": null,
+      "completed_at": "2026-09-15",
+      "time_precision": "date",
+      "time_source": "retained record date",
+      "records": [
+        "records/e51b_same_step_per_class_summary_20260915/"
+      ],
+      "decision": "Historical positive PH margin is not sufficient to claim a physical-GSD mechanism."
+    },
+    {
+      "id": "E51-C",
+      "name": "fixed_grid_information_degradation",
+      "status": "closed",
+      "purpose": "Separate generic information/detail loss from historical Grid-GSD changes while keeping labels and output coordinates on the native grid.",
+      "started_at": null,
+      "completed_at": "2026-09-15",
+      "time_precision": "date",
+      "time_source": "retained record date",
+      "records": [
+        "records/e51c_fixed_grid_information_degradation_20260915/"
+      ],
+      "result_summary": "Joint x2 and DSM-only x2 did not show a PH-specific robustness advantage.",
+      "decision": "Stop E51-C factor expansion; physical-frequency work is secondary unless PH-correct beats PH-shuffled under new training."
+    },
+    {
+      "id": "REBUILD_SPLIT_FREEZE",
+      "name": "potsdam_train16_val2_test6_separation",
+      "status": "complete",
+      "purpose": "Prevent the repeatedly exposed Potsdam TEST6 from influencing checkpoint or training-budget selection.",
+      "started_at": "2026-09-15",
+      "completed_at": "2026-09-15",
+      "time_precision": "date",
+      "time_source": "split/config commit date",
+      "records": [
+        "configs/rebuild_v1/potsdam_split_seed20260915.json"
+      ],
+      "decision": "Use Train16 for training and Val2 for development selection; do not load historical TEST6 during training."
+    },
+    {
+      "id": "R02_SMOKE",
+      "name": "r02_trainer_validation_checkpoint_smoke_gates",
+      "status": "complete",
+      "purpose": "Verify the unified trainer, split isolation, deterministic short-run behavior, Val2 evaluation, and checkpoint path before a real budget pilot.",
+      "started_at": "2026-09-15",
+      "completed_at": "2026-09-15",
+      "time_precision": "date",
+      "time_source": "retained smoke-gate record",
+      "records": [
+        "records/rebuild_v1_r02_smoke_gates_20260915/README.md"
+      ],
+      "result_summary": "PASS",
+      "decision": "Proceed to the first complete-schedule R02 budget pilot."
+    },
+    {
+      "id": "R02_BUDGET_12K",
+      "name": "r02_complete_schedule_budget_pilot_12k",
+      "status": "complete",
+      "purpose": "Determine whether a complete 12k LR schedule is sufficient before formal R01-R04 comparisons.",
+      "started_at": "2026-09-15T22:11+08:00",
+      "completed_at": null,
+      "confirmed_complete_by": "2026-09-16T11:02:18+08:00",
+      "time_precision": "started_at minute precision; exact completed_at not retained",
+      "time_source": "process start display and corrected diagnostics queue",
+      "records": [
+        "configs/rebuild_v1/r02_budget_pilot_12k.json",
+        "records/rebuild_v1_r02_diagnostics_20260916/README.md"
+      ],
+      "result_summary": {
+        "val2_full_mIoU_fg5_percent": 80.9842,
+        "val2_noboundary_mIoU_fg5_percent": 85.4135,
+        "best_step": 12000,
+        "test6_loaded": false
+      },
+      "decision": "Do not freeze 12k because the best validation score occurs at the schedule endpoint; run a fresh complete 16k pilot."
+    },
+    {
+      "id": "R02_CORRUPTION_SCREEN_12K",
+      "name": "r02_val2_corruption_screen_12k_best",
+      "status": "complete",
+      "purpose": "Measure absolute R02 sensitivity to mild modality degradation and artificial full-modality missing before a true Optical-only control exists.",
+      "started_at": "2026-09-16T11:02:18+08:00",
+      "completed_at": "2026-09-16T11:09:13+08:00",
+      "time_precision": "bounded by corrected diagnostics queue",
+      "time_source": "queue log",
+      "records": [
+        "records/rebuild_v1_r02_corruption_screen_20260915/",
+        "records/rebuild_v1_r02_diagnostics_20260916/README.md"
+      ],
+      "result_summary": {
+        "clean_nb_mIoU_fg5_percent": 85.4135,
+        "dsm_blur5_drop_pp": 0.3365,
+        "dsm_down2_drop_pp": 0.2567,
+        "optical_blur5_drop_pp": 1.1912,
+        "optical_down2_drop_pp": 0.5485,
+        "dsm_zero_drop_pp": 34.719
+      },
+      "decision": "Sensitivity evidence only; matched R01 was subsequently completed in the core matrix."
+    },
+    {
+      "id": "REBUILD_RESUME_EXACTNESS",
+      "name": "resume_exactness_40_vs_20_save_restore_20",
+      "status": "complete",
+      "purpose": "Verify exact deterministic equivalence of uninterrupted training and save/load plus RNG restoration.",
+      "started_at": "2026-09-16T11:02:18+08:00",
+      "completed_at": "2026-09-16T11:09:13+08:00",
+      "time_precision": "bounded by corrected diagnostics queue",
+      "time_source": "queue log",
+      "records": [
+        "records/rebuild_v1_resume_exactness_20260915/result.json"
+      ],
+      "result_summary": {
+        "loss_exact": true,
+        "max_abs_loss_diff": 0,
+        "model_state_exact": true,
+        "optimizer_state_exact": true,
+        "pass": true
+      },
+      "decision": "Accept the current deterministic resume path for REBUILD_V1 engineering use."
+    },
+    {
+      "id": "R02_BUDGET_16K",
+      "name": "r02_complete_schedule_budget_pilot_16k",
+      "status": "complete_canonical_clean_baseline",
+      "purpose": "Test whether extending the complete LR decay horizon from 12k to 16k removes the endpoint-improvement ambiguity and provide the canonical matched clean dual baseline.",
+      "started_at": "2026-09-16T11:19+08:00",
+      "completed_at": null,
+      "confirmed_complete_by": "2026-09-16T17:32+08:00",
+      "time_precision": "started_at minute precision; exact completed_at not retained",
+      "time_source": "process start display and post-run server inspection",
+      "records": [
+        "configs/rebuild_v1/r02_budget_pilot_16k.json",
+        "records/rebuild_v1_r02_budget_16k_20260916/README.md",
+        "records/rebuild_v1_core_matrix_20260917/README.md"
+      ],
+      "result_summary": {
+        "best_step": 13000,
+        "best_val2_noboundary_mIoU_fg5_percent": 86.2016,
+        "best_step_full_mIoU_fg5_percent": 81.8483,
+        "final_step": 16000,
+        "final_val2_noboundary_mIoU_fg5_percent": 86.0244,
+        "final_full_mIoU_fg5_percent": 81.6683,
+        "test6_loaded": false
+      },
+      "decision": "Freeze 16k and reuse this deterministic completed run as the canonical R02 clean baseline rather than duplicating an identical seed42 rerun."
+    },
+    {
+      "id": "R01",
+      "name": "true_optical_only_baseline",
+      "status": "complete",
+      "purpose": "Train a genuine Optical-only baseline and establish matched system-level Fusion Gain and compute reference.",
+      "started_at": "2026-09-16T18:39:18+08:00",
+      "completed_at": "2026-09-16T22:51:38+08:00",
+      "time_source": "trainer summary",
+      "records": [
+        "configs/rebuild_v1/r01_optical_only_16k.json",
+        "records/rebuild_v1_r01_formal_16k_20260916/README.md",
+        "records/rebuild_v1_core_matrix_20260917/README.md"
+      ],
+      "result_summary": {
+        "best_step": 10000,
+        "val2_full_mIoU_fg5_percent": 80.6883,
+        "val2_noboundary_mIoU_fg5_percent": 85.3713,
+        "dsm_loaded": false,
+        "test6_loaded": false
+      },
+      "decision": "Use as the matched true Optical-only comparator for clean and DSM-degradation Fusion Gain."
+    },
+    {
+      "id": "R02_FUSION_GAIN_SEVERITY",
+      "name": "matched_dsm_severity_fusion_gain",
+      "status": "complete",
+      "purpose": "Test whether positive clean dual-modal gain becomes negative as DSM information is progressively degraded while Optical remains unchanged.",
+      "started_at": "2026-09-16T22:52:04+08:00",
+      "completed_at": "2026-09-16T22:55:06+08:00",
+      "time_source": "queue log",
+      "records": [
+        "records/rebuild_v1_r01_r02_fusion_gain_severity_20260916/",
+        "records/rebuild_v1_core_matrix_20260917/README.md"
+      ],
+      "result_summary": {
+        "clean_nb_fusion_gain_pp": 0.8303,
+        "dsm_down2_nb_fusion_gain_pp": 0.6127,
+        "dsm_down4_nb_fusion_gain_pp": 0.3033,
+        "dsm_down8_nb_fusion_gain_pp": -0.4096,
+        "dsm_zero_nb_fusion_gain_pp": -36.6016
+      },
+      "decision": "G1 conditional/harmful fusion is supported on development Val2: clean gain is positive and down8 makes matched NB Fusion Gain negative."
+    },
+    {
+      "id": "R04",
+      "name": "dual_modality_dropout_training",
+      "status": "complete",
+      "purpose": "Test how much missing-modality robustness is solved by a simple modality-dropout baseline.",
+      "started_at": "2026-09-16T22:58:24+08:00",
+      "completed_at": "2026-09-17T04:54:42+08:00",
+      "time_precision": "queue-stage boundary",
+      "time_source": "queue log",
+      "records": [
+        "configs/rebuild_v1/r04_modality_dropout_16k.json",
+        "records/rebuild_v1_r04_robust_eval_20260916/",
+        "records/rebuild_v1_core_matrix_20260917/README.md"
+      ],
+      "result_summary": {
+        "clean_full_mIoU_fg5_percent": 81.6042,
+        "clean_nb_mIoU_fg5_percent": 85.9818,
+        "dsm_zero_nb_mIoU_fg5_percent": 83.1375,
+        "dsm_zero_gap_to_r01_nb_pp": -2.2338
+      },
+      "decision": "Strong simple missing-modality baseline: most catastrophic DSM-zero failure is repaired, but a residual fallback gap remains relative to true Optical-only."
+    },
+    {
+      "id": "R03",
+      "name": "dual_quality_corruption_training",
+      "status": "complete",
+      "purpose": "Test how much degraded-modality robustness is solved by ordinary quality-corruption training.",
+      "started_at": "2026-09-17T05:02:07+08:00",
+      "completed_at": "2026-09-17T11:00:37+08:00",
+      "time_source": "trainer summary",
+      "records": [
+        "configs/rebuild_v1/r03_quality_corruption_16k.json",
+        "records/rebuild_v1_r03_robust_eval_20260916/",
+        "records/rebuild_v1_core_matrix_20260917/README.md"
+      ],
+      "result_summary": {
+        "best_step": 14000,
+        "clean_full_mIoU_fg5_percent": 82.1069,
+        "clean_nb_mIoU_fg5_percent": 86.5251,
+        "dsm_down8_nb_mIoU_fg5_percent": 85.2979,
+        "dsm_zero_nb_mIoU_fg5_percent": 41.2815,
+        "realized_training_samples": 256000,
+        "test6_loaded": false
+      },
+      "decision": "Strong baseline for clean and mild/moderate degradation, but does not solve severe or missing DSM and performs very poorly under DSM zero."
+    },
+    {
+      "id": "CORE_MATRIX_20260917",
+      "name": "r01_r02_r03_r04_unified_core_matrix",
+      "status": "complete",
+      "purpose": "Unify clean, degraded-DSM, robustness and Fusion-Gain evidence before selecting the next method-development route.",
+      "started_at": "2026-09-16T18:38:44+08:00",
+      "completed_at": "2026-09-17T11:04:42+08:00",
+      "time_source": "extended queue log",
+      "records": [
+        "records/rebuild_v1_core_matrix_20260917/README.md"
+      ],
+      "decision": "Next priority is an Optical+Optical dual-stream capacity control, followed by selective/reliability-aware DSM or lightweight DSM only if the corresponding evidence remains after capacity and compute controls."
+    },
+    {
+      "id": "C-OO",
+      "name": "dual_optical_gray_capacity_control",
+      "status": "complete",
+      "fingerprint": "potsdam_train16_val2_seed42_sched16000_c_oo",
+      "purpose": "Separate dual-stream capacity effects from DSM-specific information.",
+      "started_at": "2026-09-17T20:29:11+08:00",
+      "completed_at": "2026-09-18T02:26:26+08:00",
+      "time_source": "overnight queue log",
+      "records": [
+        "configs/rebuild_v1/c_oo_optical_optical_capacity_16k.json",
+        "scripts/train_rebuild_v1_c_oo_capacity.py",
+        "records/rebuild_v1_c_oo_formal_16k_20260918/",
+        "docs/experiments/rebuild_v1/C-OO/EXPERIMENT_REPORT.md"
+      ],
+      "result_summary": {
+        "best_step": 13000,
+        "full_mIoU_fg5_percent": 81.8281,
+        "noboundary_mIoU_fg5_percent": 86.3548,
+        "test6_loaded": false
+      },
+      "decision": "C-OO exceeds R02 clean on Val2; do not attribute the full R02-R01 gain to DSM-specific information."
+    },
+    {
+      "id": "R05",
+      "name": "dual_dsm_quality_plus_dropout",
+      "status": "complete",
+      "fingerprint": "potsdam_train16_val2_seed42_sched16000_r05_q_plus_d",
+      "purpose": "Test the combined ordinary quality-corruption and modality-dropout baseline.",
+      "started_at": "2026-09-18T02:26:29+08:00",
+      "completed_at": "2026-09-18T08:24:30+08:00",
+      "time_source": "trainer summary and queue log",
+      "records": [
+        "configs/rebuild_v1/r05_quality_plus_dropout_16k.json",
+        "records/rebuild_v1_r05_robust_eval_20260918/",
+        "records/rebuild_v1_r05_formal_16k_20260918/",
+        "docs/experiments/rebuild_v1/R05/EXPERIMENT_REPORT.md"
+      ],
+      "result_summary": {
+        "best_step": 16000,
+        "full_mIoU_fg5_percent": 82.5147,
+        "noboundary_mIoU_fg5_percent": 87.0485,
+        "dsm_zero_noboundary_mIoU_fg5_percent": 83.1294,
+        "test6_loaded": false
+      },
+      "decision": "Strong current robustness baseline, but complete DSM absence remains below true Optical-only R01."
+    },
+    {
+      "id": "C-OO-QD",
+      "name": "dual_optical_gray_quality_plus_dropout_control",
+      "status": "complete",
+      "fingerprint": "potsdam_train16_val2_seed42_sched16000_c_oo_qd",
+      "purpose": "Provide a capacity and augmentation matched control for R05 without DSM values.",
+      "started_at": "2026-09-18T11:16:57+08:00",
+      "completed_at": "2026-09-18T17:16:05+08:00",
+      "time_source": "trainer summary",
+      "records": [
+        "configs/rebuild_v1/c_oo_qd_optical_gray_16k.json",
+        "records/rebuild_v1_c_oo_qd_formal_16k_20260918/",
+        "records/rebuild_v1_c_oo_qd_robust_eval_20260918/",
+        "docs/experiments/rebuild_v1/C-OO-QD/EXPERIMENT_REPORT.md"
+      ],
+      "result_summary": {
+        "best_step": 15000,
+        "full_mIoU_fg5_percent": 81.667,
+        "noboundary_mIoU_fg5_percent": 86.1969,
+        "test6_loaded": false
+      },
+      "decision": "Use as the matched second-stream capacity and Q+D control for R05."
+    },
+    {
+      "id": "D1-D3",
+      "name": "local_failure_diagnostics",
+      "status": "reported_complete",
+      "evidence_status": "original_server_artifacts_pending_archival",
+      "fingerprint": "potsdam_val2_r05_vs_c_oo_qd_local_zero_shift_local_down8_v1",
+      "purpose": "Measure local missing-input, spatial-misalignment and local-quality sensitivity.",
+      "records": [
+        "docs/current/PROJECT_STATUS.md",
+        "docs/current/EVIDENCE_AUDIT_20260920.md"
+      ],
+      "expected_server_records": [
+        "records/rebuild_v1_r05_local_failure_diagnostics_20260918/",
+        "records/rebuild_v1_c_oo_qd_local_failure_diagnostics_20260918/",
+        "records/rebuild_v1_local_failure_comparison_20260918/"
+      ],
+      "decision": "Local missing needs Optical fallback; local down8 retains DSM value at seed42; shifts are monotonic but modest."
+    },
+    {
+      "id": "D4-D6",
+      "name": "frozen_expert_routing_diagnostics",
+      "status": "reported_complete",
+      "evidence_status": "user_transcription_committed_original_artifacts_pending",
+      "fingerprint": "potsdam_val2_r01_r05_seed42_seed17_confidence_routing_masks_v1",
+      "purpose": "Test frozen-expert complementarity, nonlearned routing and variable-shape mask generalization.",
+      "records": [
+        "records/rebuild_v1_handoff_20260920/user_reported_snapshot.json",
+        "docs/current/EVIDENCE_AUDIT_20260920.md"
+      ],
+      "expected_server_records": [
+        "records/rebuild_v1_d4_expert_complementarity_seed42_20260920/",
+        "records/rebuild_v1_d4_expert_complementarity_seed17_20260920/",
+        "records/rebuild_v1_d4_expert_complementarity_summary_20260920/",
+        "records/rebuild_v1_d5_confidence_routing_seed42_20260920/",
+        "records/rebuild_v1_d5_confidence_routing_seed17_20260920/",
+        "records/rebuild_v1_d5_confidence_routing_summary_20260920/",
+        "records/rebuild_v1_d6_mask_generalization_seed42_20260920/",
+        "records/rebuild_v1_d6_mask_generalization_seed17_20260920/"
+      ],
+      "decision": "SafeMaxConfidence passed the tested candidates; same-fallback average/entropy controls remain missing. B1 is a running compression pilot, not a completed method."
+    },
+    {
+      "id": "A1-A2-SEED17",
+      "name": "dropout_ablations_and_seed17_replications",
+      "status": "reported_complete",
+      "evidence_status": "narrative_only_original_artifacts_pending",
+      "records": [
+        "docs/current/PROJECT_STATUS.md",
+        "scripts/archive_rebuild_v1_next_queue_20260920.py"
+      ],
+      "decision": "Archive existing A1/A2 and R01/R05/C-OO-QD seed17 outputs rather than rerunning."
+    },
+    {
+      "id": "B1",
+      "name": "single_student_safe_router_distillation_pilot",
+      "status": "reported_complete",
+      "launch_commit": "e2ad594049f36c118b31d659335715b089e1fe0b",
+      "final_conclusion": "At seed42, KD exceeded the matched CE continuation on clean, global DSM down8 and global DSM zero. SAFE did not consistently improve on KD.",
+      "evidence_status": "user_supplied_terminal_metrics_compact_transcription_committed_original_artifacts_on_server",
+      "fingerprint": "potsdam_train16_val2_seed42_r05init_4k_b1_distillation_v1",
+      "purpose": "Compare matched CE continuation, safe-teacher KD and KD with an explicit Optical fallback constraint.",
+      "records": [
+        "configs/rebuild_v1/b1_c_ce_control_4k.json",
+        "configs/rebuild_v1/b1_kd_safe_teacher_4k.json",
+        "configs/rebuild_v1/b1_safe_fallback_4k.json",
+        "records/rebuild_v1_b2_b3_compact_20260921/global_metrics.csv",
+        "docs/experiments/B2_B3_RESULTS_20260921.md"
+      ],
+      "expected_server_records": [
+        "records/rebuild_v1_b1_c_robust_eval_20260920/",
+        "records/rebuild_v1_b1_kd_robust_eval_20260920/",
+        "records/rebuild_v1_b1_safe_robust_eval_20260920/"
+      ],
+      "result_summary": {
+        "split": "Val2_noboundary",
+        "metric": "mIoU_fg5_percent",
+        "C_clean_down8_zero": [
+          86.9976,
+          85.69,
+          83.0949
+        ],
+        "KD_clean_down8_zero": [
+          87.2223,
+          86.2175,
+          83.7867
+        ],
+        "SAFE_clean_down8_zero": [
+          87.2998,
+          86.3802,
+          83.6187
+        ],
+        "test6_loaded": false
+      },
+      "decision": "Continue KD as the primary reliability-teacher arm. Do not continue SAFE without new evidence."
+    },
+    {
+      "id": "B2",
+      "name": "teacher_target_control_queue",
+      "status": "reported_complete",
+      "evidence_status": "user_supplied_terminal_metrics_compact_transcription_committed_original_artifacts_on_server",
+      "fingerprint": "potsdam_train16_val2_seed42_r05init_4k_r05_teacher_average_teacher_controls_v1",
+      "purpose": "Separate reliability-aware teacher-target selection from generic R05-teacher distillation and simple probability averaging.",
+      "started_at": "2026-09-20T23:34:59+08:00",
+      "completed_at": "2026-09-21T05:34:42+08:00",
+      "time_source": "user-supplied queue log",
+      "records": [
+        "records/rebuild_v1_b2_b3_compact_20260921/global_metrics.csv",
+        "records/rebuild_v1_b2_b3_compact_20260921/README.md",
+        "docs/experiments/B2_B3_RESULTS_20260921.md"
+      ],
+      "expected_server_records": [
+        "records/rebuild_v1_b2_night20260920_v1/"
+      ],
+      "result_summary": {
+        "split": "Val2_noboundary",
+        "metric": "mIoU_fg5_percent",
+        "R05_KD_clean_down8_zero": [
+          87.444,
+          85.9955,
+          83.6299
+        ],
+        "AVG_KD_clean_down8_zero": [
+          87.2595,
+          86.0029,
+          83.5725
+        ],
+        "test6_loaded": false
+      },
+      "decision": "KD is lower than R05_KD on clean but higher under down8 and zero. AVG_KD has no consistent advantage. Proceed to paired diagnostics and independent-seed replication."
+    },
+    {
+      "id": "B3",
+      "name": "paired_local_degradation_diagnostic",
+      "status": "reported_complete",
+      "evidence_status": "user_supplied_terminal_metrics_compact_transcription_committed_original_artifacts_on_server",
+      "fingerprint": "potsdam_val2_seed42_c_kd_safe_r05kd_avgkd_paired_regions_v1",
+      "purpose": "Compare corrupt-minus-clean performance on identical damaged and boundary pixels to distinguish damage sensitivity from intrinsic regional difficulty.",
+      "records": [
+        "records/rebuild_v1_b2_b3_compact_20260921/paired_family_metrics.csv",
+        "records/rebuild_v1_b2_b3_compact_20260921/paired_tile_metrics.csv",
+        "records/rebuild_v1_b2_b3_compact_20260921/README.md",
+        "docs/experiments/B2_B3_RESULTS_20260921.md"
+      ],
+      "expected_server_records": [
+        "records/rebuild_v1_b3_paired_20260921/"
+      ],
+      "result_summary": {
+        "split": "Val2_noboundary",
+        "metric": "paired_delta_mIoU_fg5_pp",
+        "kd_better_than_r05kd_comparisons": 8,
+        "total_tile_family_region_comparisons": 8,
+        "improvement_range_pp": [
+          0.0192,
+          3.2908
+        ],
+        "test6_loaded": false
+      },
+      "decision": "Reliability-aware KD consistently degrades less than ordinary R05-teacher KD within seed42, but absolute gains over CE are mixed for local missing boundaries. Boundary is secondary; replicate seed17."
+    },
+    {
+      "id": "B4",
+      "name": "seed17_reliability_teacher_replication",
+      "status": "complete",
+      "launch_commit": "bae3462403e309cd81185e70028e0825455f9df4",
+      "trainer_reported_git_commit": "abb3d97f3f5d8f4b145c54bfe87bed0a12c6e187",
+      "evidence_status": "validated_server_archiver_output_compact_transcription_committed_original_artifacts_on_server",
+      "fingerprint": "potsdam_train16_val2_seed17_r05init_4k_c_r05kd_kd_paired_v1",
+      "purpose": "Replicate the seed42 distinction among CE continuation, generic R05-teacher distillation and SafeMaxConfidence teacher-target selection.",
+      "started_at": "2026-09-21T17:22:07+08:00",
+      "completed_at": "2026-09-22T01:29:52+08:00",
+      "recorded_at": "2026-09-22",
+      "time_source": "validated queue status and per-run summaries supplied from the experiment server",
+      "records": [
+        "records/rebuild_v1_b4_seed17_compact_20260922/",
+        "docs/experiments/B4_SEED17_REPLICATION_20260921.md"
+      ],
+      "server_records": [
+        "records/rebuild_v1_b4_seed17_20260921/",
+        "records/rebuild_v1_b4_seed17_compact_20260922/",
+        "runs/rebuild_v1/B1_C_ce_control_seed17_sched4000_stop4000_seed17_20260921/",
+        "runs/rebuild_v1/B2_R05_teacher_seed17_sched4000_stop4000_seed17_20260921/",
+        "runs/rebuild_v1/B1_KD_safe_teacher_seed17_sched4000_stop4000_seed17_20260921/"
+      ],
+      "result_summary": {
+        "split": "Val2_noboundary",
+        "metric": "mIoU_fg5_percent",
+        "C17_clean_down8_zero": [
+          86.60273449756119,
+          84.9647477845305,
+          83.32852149386753
+        ],
+        "R05_KD17_clean_down8_zero": [
+          86.17555326807052,
+          84.99722021842243,
+          83.16455178727848
+        ],
+        "KD17_clean_down8_zero": [
+          86.62576090236198,
+          85.2065092677648,
+          83.20830219306372
+        ],
+        "KD17_minus_R05_KD17_pp": {
+          "clean": 0.45020763429145916,
+          "dsm_down8": 0.2092890493423738,
+          "dsm_zero": 0.04375040578523226,
+          "local_missing_damaged_drop_improvement": -0.28554068587224046,
+          "local_down8_damaged_drop_improvement": -0.03718994711655865
+        },
+        "KD17_minus_C17_pp": {
+          "clean": 0.023026404800788214,
+          "dsm_down8": 0.24176148323429913,
+          "dsm_zero": -0.12021930080381082,
+          "local_missing_damaged_drop_improvement": -0.2251511811156539,
+          "local_down8_damaged_drop_improvement": 0.16675781189257632
+        },
+        "all_12_stages_complete": true,
+        "all_formal_runs_step": 4000,
+        "test6_loaded": false,
+        "replication_gate_pass": false
+      },
+      "provenance_note": "The trainers reported Git HEAD abb3d97 while later B4 files were selectively installed. Server preflight source hashes are authoritative for executed source identity.",
+      "decision": "Global down8/zero ordering over R05_KD repeats, but both paired local damaged-region directions reverse. Close the current SafeMaxConfidence distillation route as the proposed main method; retain B1-B4 as mechanism, ablation and negative-result evidence.",
+      "gate_status": "failed"
+    },
+    {
+      "id": "D7",
+      "name": "data_sampling_scale_semantic_boundary_audit",
+      "status": "complete",
+      "evidence_status": "summary_committed_original_server_artifacts_pending_archival",
+      "fingerprint": "potsdam_train16_val2_r01_r05_seed42_seed17_class_crop_component_boundary_audit_v1",
+      "purpose": "Determine whether class imbalance, random-crop exposure, connected-object size, semantic boundaries, or class-specific DSM degradation justify a controlled training intervention.",
+      "protocol": "docs/protocols/D7_DATA_SCALE_BOUNDARY_AUDIT.md",
+      "queue": "scripts/run_rebuild_v1_d7_audit_queue_20260922.sh",
+      "expected_server_records": [
+        "records/rebuild_v1_d7_data_sampling_20260922/",
+        "records/rebuild_v1_d7_semantic_errors_seed42_20260922/",
+        "records/rebuild_v1_d7_semantic_errors_seed17_20260922/",
+        "records/rebuild_v1_d7_summary_20260922/"
+      ],
+      "test6_policy": "prohibited",
+      "training": false,
+      "decision": "The completed audit supports a matched small-Car sampling screen, not a generic long-tail or weighted-loss claim. See docs/experiments/D7_RESULTS_20260922.md."
+    },
+    {
+      "id": "D8",
+      "name": "small_car_sampling_screen",
+      "status": "complete",
+      "evidence_status": "user_supplied_final_server_transcript_compact_transcription_committed_original_artifacts_on_server",
+      "fingerprint": "potsdam_train16_val2_seed42_r01init_4k_random_anycar_smallcar_fix1",
+      "purpose": "Isolate the effect of any-Car and small-Car crop selection with the same R01 initialization, CE loss and 4000-step budget.",
+      "protocol": "docs/protocols/D8_SMALL_CAR_SAMPLING_SCREEN.md",
+      "launch_commit": "94a12135eea2e6dd0d89557ff628676af0746484",
+      "started_at": "2026-09-22T14:40:40+08:00",
+      "completed_at": "2026-09-22T17:59:55+08:00",
+      "time_source": "user-supplied final queue status.tsv",
+      "records": [
+        "docs/experiments/D8_RESULTS_20260922.md",
+        "records/rebuild_v1_d8_compact_20260923/decision_transcription.json"
+      ],
+      "server_records": [
+        "records/rebuild_v1_d8_queue_fix1_20260922/",
+        "records/rebuild_v1_d8_random_ce_eval_20260922_fix1/",
+        "records/rebuild_v1_d8_any_car_eval_20260922_fix1/",
+        "records/rebuild_v1_d8_small_car_eval_20260922_fix1/",
+        "records/rebuild_v1_d8_summary_20260922_fix1/"
+      ],
+      "result_summary": {
+        "split": "Val2",
+        "seed": 42,
+        "fixed_step": 4000,
+        "queue_failures": 0,
+        "S_minus_C_pp": {
+          "nb_mIoU_fg5": 0.07397050092003976,
+          "car_iou": 0.9158811150137169,
+          "car_precision": 0.10977575510464632,
+          "small_car_mean_correct": 1.857915086633355,
+          "small_car_recall50": 1.2987012987012991
+        },
+        "per_tile_small_car_mean_positive": true,
+        "test6_loaded": false
+      },
+      "gate_status": "failed",
+      "proceed_seed17": [],
+      "decision": "Neither A nor S passes the frozen conjunctive gate. Do not run D8 seed17 or relax the thresholds. Retain size-specific sampling as exploratory heterogeneity evidence."
+    },
+    {
+      "id": "D9",
+      "name": "frozen_expert_dsm_marginal_benefit_diagnostic",
+      "status": "partial_complete",
+      "evidence_status": "D9A_complete_full_D9_gate_unevaluated",
+      "fingerprint": "potsdam_val2_r01_r05_seed42_seed17_dsm_benefit_feature_audit_v1",
+      "purpose": "Test whether observable semantic, frequency and expert-disagreement features predict the label-defined marginal benefit and harm from DSM.",
+      "protocol": "docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md",
+      "queue": "scripts/run_rebuild_v1_d9a_queue_20260923.sh",
+      "expected_server_records": [
+        "records/rebuild_v1_d9a_queue_20260923/",
+        "records/rebuild_v1_d9a_seed42_*_20260923/",
+        "records/rebuild_v1_d9a_seed17_*_20260923/"
+      ],
+      "test6_policy": "prohibited",
+      "training": false,
+      "decision": "D9A is complete: entropy difference beats confidence on benefit ranking in all 16 comparisons, while tested disagreement interactions lose. Fitted semantic/frequency combinations and safety-gate training require a new frozen evaluation source."
+    },
+    {
+      "id": "D9A",
+      "name": "frozen_expert_direct_benefit_score_audit",
+      "status": "reported_complete",
+      "evidence_status": "user_supplied_server_summarizer_table_compact_transcription_committed_original_source_hashed_on_server",
+      "launch_commit": "ed92ae4f605c87d5c8ebd5c6c932c548d77b28c0",
+      "started_at": "2026-09-23T11:08:12+08:00",
+      "completed_at": "2026-09-23T11:33:06+08:00",
+      "time_source": "user-supplied queue status and successful server summarizer output",
+      "fingerprint": "potsdam_val2_r01_r05_seed42_seed17_8dsmconditions_direct_benefit_scores_v1",
+      "purpose": "Measure label-defined DSM benefit and compare unfitted confidence, entropy and expert-disagreement scores across two seeds and eight conditions.",
+      "records": [
+        "docs/experiments/D9A_RESULTS_20260923.md",
+        "records/rebuild_v1_d9a_compact_20260923/user_reported_summary_table.csv",
+        "records/rebuild_v1_d9a_compact_20260923/user_reported_strata_review.json",
+        "records/rebuild_v1_d9a_compact_20260923/user_reported_entropy_followup.json",
+        "records/rebuild_v1_d9a_compact_20260923/user_reported_local_down8_fix1.json"
+      ],
+      "server_records": [
+        "records/rebuild_v1_d9a_queue_20260923/",
+        "records/rebuild_v1_d9a_summary_20260923/",
+        "records/rebuild_v1_d9a_seed42_*_20260923/",
+        "records/rebuild_v1_d9a_seed17_*_20260923/"
+      ],
+      "result_summary": {
+        "completed_stages": 17,
+        "queue_failures": 0,
+        "seed_condition_comparisons": 16,
+        "confidence_beats_confidence_times_js_auroc": 16,
+        "confidence_beats_confidence_times_js_auprc": 16,
+        "entropy_beats_confidence_auroc": 16,
+        "entropy_beats_confidence_auprc": 16,
+        "mean_entropy_minus_confidence_auroc_from_rounded_review": 0.0219,
+        "mean_entropy_minus_confidence_auprc_from_rounded_review": 0.0258,
+        "entropy_car_auroc_auprc_wins": [
+          16,
+          16
+        ],
+        "entropy_small_car_auroc_auprc_wins": [
+          16,
+          15
+        ],
+        "entropy_local_damaged_auroc_auprc_wins": [
+          4,
+          4
+        ],
+        "expected_d5_entropy_routing_metric_paths_found": false,
+        "mean_auroc_advantage_from_rounded_table": 0.01414375,
+        "mean_auprc_advantage_from_rounded_table": 0.02105,
+        "dsm_zero_d5_exact_r01_fallback_both_seeds": true,
+        "dsm_noise_d5_minus_r01_nb_miou_pp_seed42_seed17": [
+          -0.1814,
+          -0.319
+        ],
+        "local_down8_d5_routing_valid": false,
+        "test6_loaded": false
+      },
+      "gate_status": "full_D9_not_evaluated",
+      "decision": "Close the tested disagreement interactions as improvements over confidence. Entropy ranks benefit better overall and in Car/damaged strata, but routing utility is unverified. The local-down8 D5 routing has been corrected in D9A_LOCAL_DOWN8_ROUTING_FIX1; the original two D5 values remain invalid. Locate original D5 metrics before any separate entropy-route evaluation; do not train a safety gate from D9A."
+    },
+    {
+      "id": "D9A_LOCAL_DOWN8_ROUTING_FIX1",
+      "name": "correct_local_down8_known_missing_fallback",
+      "status": "reported_complete",
+      "evidence_status": "user_supplied_server_summarizer_output_compact_transcription_committed_original_source_hashed_on_server",
+      "launch_commit": "20b20c2935259a15a2826da5890ee0f92934c38e",
+      "started_at": "2026-09-23T12:33:18+08:00",
+      "completed_at": "2026-09-23T12:36:28+08:00",
+      "time_source": "user-supplied queue status and successful server summarizer output",
+      "fingerprint": "potsdam_val2_seed42_seed17_d9a_local_down8_routing_implementation_fix1",
+      "purpose": "Correct only the D5 routing result and selected-dual harm when local DSM is downsampled but still available.",
+      "reason_for_rerun": "The original D9A route treated the damaged-region mask as a DSM-absence mask and forced RGB in local down8.",
+      "script": "scripts/run_rebuild_v1_d9a_local_down8_fix1_20260923.sh",
+      "summary_script": "scripts/summarize_rebuild_v1_d9a_local_down8_fix1.py",
+      "records": [
+        "records/rebuild_v1_d9a_compact_20260923/user_reported_local_down8_fix1.json",
+        "docs/experiments/D9A_RESULTS_20260923.md"
+      ],
+      "server_records": [
+        "records/rebuild_v1_d9a_local_down8_fix1_queue_20260923/",
+        "records/rebuild_v1_d9a_seed42_dsm_local_down8_q1_20260923_fix1/",
+        "records/rebuild_v1_d9a_seed17_dsm_local_down8_q1_20260923_fix1/",
+        "records/rebuild_v1_d9a_local_down8_fix1_summary_20260923/"
+      ],
+      "gpu": "physical_0_only",
+      "test6_policy": "prohibited",
+      "training": false,
+      "result_summary": {
+        "completed_stages": 2,
+        "queue_failures": 0,
+        "corrected_d5_nb_miou_percent_seed42_seed17": [
+          86.82853288587363,
+          86.2557280560538
+        ],
+        "corrected_d5_minus_rgb_pp_seed42_seed17": [
+          1.457277786581268,
+          0.4190637935654329
+        ],
+        "corrected_d5_minus_dual_pp_seed42_seed17": [
+          0.166691777767769,
+          0.7063230831676037
+        ],
+        "corrected_selected_harm_rate_seed42_seed17": [
+          0.06745495849167216,
+          0.08309669066681323
+        ],
+        "ranking_csv_byte_identical_both_seeds": true,
+        "test6_loaded": false
+      },
+      "decision": "Corrected local-down8 D5 mIoU exceeds both frozen experts at both seeds, while selected-dual harm remains nonzero. Original local-down8 D5 routing values are invalid; no D9 safety-gate claim follows."
+    },
+    {
+      "id": "D9B_SOURCE_AUDIT",
+      "name": "independent_scene_source_audit",
+      "status": "repository_audit_complete_server_inventory_pending",
+      "purpose": "Identify a spatially independent labelled optical+DSM source before fitting or evaluating D9 benefit predictors.",
+      "records": [
+        "docs/current/D9B_SOURCE_STATUS_20260923.md",
+        "configs/rebuild_v1/potsdam_split_seed20260915.json",
+        "records/DETPAIR_PREFUSION_FREQ_VAIHINGEN_FROZEN_20260831.md"
+      ],
+      "result_summary": "Known Potsdam Train16/Val2/Test6 scenes and historical Vaihingen train12/test4 scenes are exposed; no documented untouched scene source is presently available.",
+      "decision": "Do not fit or claim independent confirmation for D9B until additional labelled optical+DSM scenes and prior exposure are audited and partitions frozen."
+    },
+    {
+      "id": "D9A_ENTROPY_ROUTE",
+      "name": "matched_safe_entropy_vs_safe_confidence_decision_audit",
+      "status": "reported_complete",
+      "evidence_status": "user_supplied_server_summarizer_table_compact_transcription_committed_original_source_hashed_on_server",
+      "launch_commit": "3c0f4909a854cd2e87539cc79ef68d2b8da5fdc3",
+      "started_at": "2026-09-23T13:00:35+08:00",
+      "time_source": "user-supplied queue start and successful server summarizer output",
+      "fingerprint": "potsdam_val2_seed42_seed17_8dsmconditions_frozen_expert_safe_entropy_vs_safe_confidence_route_v1",
+      "purpose": "Test whether D9A entropy benefit-ranking gains improve actual routed mIoU and selected-dual CE harm without retraining either expert.",
+      "reason_for_new_evaluation": "Original D5 seed42/17 logs report completion, but their per-seed metric directories are absent from project records; D9A did not compute entropy-route mIoU.",
+      "protocol": "docs/protocols/D9A_ENTROPY_ROUTING_DECISION_AUDIT.md",
+      "script": "scripts/run_rebuild_v1_d9a_entropy_route_queue_20260923.sh",
+      "summary_script": "scripts/summarize_rebuild_v1_d9a_entropy_route.py",
+      "strata_review_script": "scripts/print_rebuild_v1_d9a_entropy_route_strata.py",
+      "records": [
+        "records/rebuild_v1_d9a_entropy_route_preflight_20260923/user_reported_d5_artifact_audit.json",
+        "records/rebuild_v1_d9a_entropy_route_compact_20260923/user_reported_route_comparison.csv",
+        "records/rebuild_v1_d9a_entropy_route_compact_20260923/user_reported_strata_review.json",
+        "docs/experiments/D9A_ENTROPY_ROUTE_RESULTS_20260923.md"
+      ],
+      "server_records": [
+        "records/rebuild_v1_d9a_entropy_route_queue_20260923/",
+        "records/rebuild_v1_d9a_entropy_route_seed42_*_20260923/",
+        "records/rebuild_v1_d9a_entropy_route_seed17_*_20260923/",
+        "records/rebuild_v1_d9a_entropy_route_summary_20260923/"
+      ],
+      "gpu": "physical_0_only",
+      "test6_policy": "prohibited",
+      "training": false,
+      "result_summary": {
+        "completed_stages": 17,
+        "queue_failures": 0,
+        "frozen_controls_match_D9A_within_1e-4": true,
+        "safe_entropy_miou_wins_losses_ties": [
+          4,
+          10,
+          2
+        ],
+        "mean_safe_entropy_minus_confidence_nb_miou_pp_from_rounded_table": -0.0089375,
+        "dsm_zero_exact_rgb_fallback_both_routes_both_seeds": true,
+        "safe_entropy_minus_rgb_under_dsm_noise_pp_seed42_seed17": [
+          -0.1471,
+          -0.4156
+        ],
+        "entropy_car_iou_wins_losses_ties": [
+          12,
+          2,
+          2
+        ],
+        "entropy_building_iou_wins_losses_ties": [
+          1,
+          13,
+          2
+        ],
+        "local_down8_damaged_region_entropy_minus_confidence_miou_pp_seed42_seed17_from_rounded_review": [
+          0.0083,
+          -0.0237
+        ],
+        "test6_loaded": false
+      },
+      "decision": "D9A evidence extraction is closed. Better CE-benefit ranking did not make safe-entropy routing outperform safe confidence; Car and Building IoU move in opposite directions, and local-down8 damage results reverse across seeds. Move to the D9B decision-relevant benefit screen; fitted combinations remain gated on an independent source."
+    },
+    {
+      "id": "D9B_DECISION_BENEFIT_SCREEN",
+      "name": "expert_disagreement_conditioned_dsm_benefit_screen",
+      "status": "reported_complete_gate_failed",
+      "evidence_status": "user_supplied_server_summarizer_table_transcribed_original_per_stratum_files_not_transferred",
+      "purpose": "Compare observable semantic, frequency and expert features on decisions where selecting R05 can change the predicted label.",
+      "protocol": "docs/protocols/D9B_DECISION_BENEFIT_SCREEN.md",
+      "prototype_builder": "scripts/build_rebuild_v1_d9b_train16_prototypes.py",
+      "feature_module": "scripts/d9b_observable_features.py",
+      "evaluation_script": "scripts/eval_rebuild_v1_d9b_decision_benefit.py",
+      "queue_script": "scripts/run_rebuild_v1_d9b_decision_screen_queue_20260923.sh",
+      "summary_script": "scripts/summarize_rebuild_v1_d9b_decision_screen.py",
+      "records": [
+        "records/rebuild_v1_d9b_compact_20260923/user_reported_primary_results.csv",
+        "docs/experiments/D9B_RESULTS_20260923.md"
+      ],
+      "server_records": [
+        "records/rebuild_v1_d9b_train16_prototypes_20260923/",
+        "records/rebuild_v1_d9b_seed42_*_20260923/",
+        "records/rebuild_v1_d9b_seed17_*_20260923/",
+        "records/rebuild_v1_d9b_decision_screen_summary_20260923/"
+      ],
+      "result_summary": {
+        "queue_failures": 0,
+        "seed_condition_rows": 16,
+        "score_rows": 96,
+        "semantic_prototype_wins_auroc_auprc": [
+          0,
+          0
+        ],
+        "frequency_alignment_wins_auroc_auprc": [
+          0,
+          0
+        ],
+        "semantic_plus_frequency_wins_auroc_auprc": [
+          0,
+          0
+        ],
+        "semantic_frequency_expert_wins_auroc_auprc": [
+          1,
+          0
+        ],
+        "semantic_frequency_expert_mean_delta_auroc_auprc": [
+          -0.0614,
+          -0.0505
+        ],
+        "fitted_gate": false,
+        "test6_loaded": false
+      },
+      "primary_target": "dual_only_correct versus rgb_only_correct on expert-disagreement pixels, with both-wrong and CE benefit reported separately",
+      "controls": [
+        "confidence_difference",
+        "entropy_difference",
+        "semantic_prototype_only",
+        "safe_confidence_route",
+        "safe_entropy_route"
+      ],
+      "conditions": [
+        "clean",
+        "dsm_zero",
+        "dsm_down8",
+        "dsm_blur5",
+        "dsm_noise_std010",
+        "dsm_shift_right_4px",
+        "dsm_local_zero_q1",
+        "dsm_local_down8_q1"
+      ],
+      "fitting_policy": "unfitted Val2 screen only until an independent spatially disjoint labelled source is frozen",
+      "test6_policy": "prohibited",
+      "gpu": "physical_0_only",
+      "decision": "The fixed input-space semantic/frequency/expert combination fails the cross-seed decision-benefit gate; close this exact Val2 screen. Do not train a safety residual gate or fit/calibrate a selector until an independent spatially disjoint labelled source is frozen."
+    },
+    {
+      "id": "D10M_SPATIAL_FREQUENCY_MECHANISM",
+      "name": "amplitude_preserving_shift_and_harm_rescue",
+      "status": "reported_complete_gate_failed",
+      "completed_at": "2026-09-23T17:50:39+08:00",
+      "evidence_status": "user_pasted_status_and_rounded_summary_original_artifacts_not_transferred",
+      "records": [
+        "docs/experiments/D10M_RESULTS_20260923.md",
+        "records/rebuild_v1_d10m_compact_20260923/"
+      ],
+      "result_summary": {
+        "completed_jobs": 20,
+        "queue_failures": 0,
+        "structure_wins_losses_ties": [
+          2,
+          34,
+          4
+        ],
+        "without_edge_duplicates_and_missing_wins_losses": [
+          1,
+          23
+        ],
+        "seed42_seed17_roll32_miou_delta_pp": [
+          -0.5531,
+          0.1744
+        ]
+      },
+      "purpose": "Run the previously proposed spatial-correspondence mechanism experiment using frozen R01/R05; no new data prerequisite.",
+      "protocol": "docs/protocols/D10M_SPATIAL_FREQUENCY_MECHANISM.md",
+      "queue_script": "scripts/run_rebuild_v1_d10m_mechanism_queue.sh",
+      "summary_script": "scripts/summarize_rebuild_v1_d10m_mechanism.py",
+      "seeds": [
+        42,
+        17
+      ],
+      "conditions": [
+        "clean",
+        "roll4",
+        "roll16",
+        "roll32",
+        "edge4",
+        "edge16",
+        "edge32",
+        "dsm_blur5",
+        "dsm_noise_std010",
+        "dsm_zero"
+      ],
+      "training": false,
+      "test6_policy": "prohibited",
+      "gpu": "physical_0_only",
+      "decision": "Close fixed structure scoring: primary harm-rescue comparison fails and shift mIoU direction reverses across seeds. No rerun, weight/radius search, or residual-gate training. Learned benefit prediction remains a separate untested hypothesis."
+    },
+    {
+      "id": "D11_SUPERVISED_BENEFIT_PROBE",
+      "name": "linear_decision_benefit_probe_with_off_val2_calibration",
+      "status": "reported_complete_gate_failed",
+      "purpose": "Establish supervised benefit predictability from frozen expert outputs and screen incremental frequency inputs; not residual-gate training.",
+      "protocol": "docs/protocols/D11_SUPERVISED_BENEFIT_PROBE.md",
+      "config": "configs/rebuild_v1/d11_supervised_benefit_probe.json",
+      "queue_script": "scripts/run_rebuild_v1_d11_probe_queue.sh",
+      "seeds": [
+        42,
+        17
+      ],
+      "head_fit": [
+        "6_7",
+        "6_8",
+        "6_9",
+        "7_7",
+        "7_8",
+        "7_9"
+      ],
+      "probability_calibration": [
+        "6_10",
+        "7_10"
+      ],
+      "threshold_calibration": [
+        "4_11",
+        "7_11"
+      ],
+      "evaluation": [
+        "3_11",
+        "5_10"
+      ],
+      "expert_training_exposure": "All head-development tiles were seen by the frozen experts; repeatedly used Val2 is exploratory evaluation only.",
+      "models": [
+        "confidence",
+        "entropy",
+        "disagreement",
+        "expert",
+        "frequency",
+        "expert_frequency"
+      ],
+      "backbone_or_residual_gate_training": false,
+      "deep_semantic_prototype_implemented": false,
+      "test6_policy": "prohibited",
+      "gpu": "physical_0_only",
+      "completed_at": "2026-09-23T18:51:37+08:00",
+      "evidence_status": "user_pasted_status_and_summary_original_artifacts_on_server",
+      "records": [
+        "docs/experiments/D11_RESULTS_20260923.md"
+      ],
+      "result_summary": {
+        "completed_models": 12,
+        "queue_failures": 0,
+        "full_resolution_candidates": [],
+        "seed42_expert_frequency_gain_pp": 0.1276,
+        "seed17_expert_frequency_gain_pp": 0.1133
+      },
+      "decision": "Close the frozen linear probe under the predeclared screen. No full-resolution candidate or residual gate. Deep decoder context remains untested."
+    },
+    {
+      "id": "D12_NIGHT_SEMANTIC_FREQUENCY",
+      "name": "frozen_decoder_context_frequency_capacity_screen",
+      "status": "reported_complete_gate_failed",
+      "purpose": "Compare deep decoder context, frequency, and capacity using matched frozen experts.",
+      "protocol": "docs/protocols/D12_NIGHT_SEMANTIC_FREQUENCY_20260923.md",
+      "config": "configs/rebuild_v1/d12_night_20260923.json",
+      "queue_script": "scripts/run_rebuild_v1_d12_night_queue.sh",
+      "seeds": [
+        42,
+        17
+      ],
+      "core_models": [
+        "E",
+        "Ecap",
+        "ES",
+        "EF",
+        "ESF"
+      ],
+      "mechanism_models": [
+        "ESF_shuffleS",
+        "ESF_shuffleF"
+      ],
+      "completed_at": "2026-09-24T00:44:35+08:00",
+      "evidence_status": "user_pasted_status_and_summary_original_artifacts_on_server_run_commit_not_shown",
+      "records": [
+        "docs/experiments/D12_RESULTS_20260924.md",
+        "records/rebuild_v1_d12_compact_20260924/"
+      ],
+      "result_summary": {
+        "completed_models": 14,
+        "queue_failures": 0,
+        "full_resolution_candidates": [],
+        "core_models_passing_two_seed_screen": 0,
+        "pooled_shuffled_controls_provisional": true
+      },
+      "test6_policy": "prohibited",
+      "gpu": "physical_0_only",
+      "decision": "Close the exact D12 frozen-expert screen. No two-seed candidate, full-image confirmation or residual gate. Do not use pooled shuffled-control attribution until the run revision is checked against the d28e4af correction."
+    },
+    {
+      "id": "D13_RGB_ANCHORED_DSM_RESIDUAL",
+      "name": "staged_rgb_anchored_dsm_residual_negative_transfer_pilot",
+      "status": "reported_stage1_complete_gate_failed_stage2_skipped",
+      "completed_at": "2026-09-25T02:07:03+08:00",
+      "executed_commit": "afea788fe15bf5b3656ad8e36f58da282eecd4b8",
+      "evidence_status": "user_pasted_queue_status_and_stage1_decision_eight_original_evaluation_summaries_transferred_in_8236a07",
+      "records": [
+        "docs/experiments/D13_RESULTS_20260925.md",
+        "records/rebuild_v1_d13_compact_20260925/user_reported_stage1_decision.json",
+        "records/rebuild_v1_d13_compact_20260925/server_*_summary.json"
+      ],
+      "result_summary": {
+        "stage1_completed_pairs": 8,
+        "queue_failures": 0,
+        "stage1_pass": false,
+        "stage2_status": "SKIPPED",
+        "seed42_family_gain_pp": -0.17567165402767593,
+        "seed17_family_gain_pp": -0.013790933849211484,
+        "seed42_rescue_retention_fraction": 0.183717,
+        "seed17_rescue_retention_fraction": 0.1551,
+        "test6_loaded": false
+      },
+      "purpose": "Test whether a trainable DSM residual and a harm-aware training surrogate reduce new errors while preserving correction gains relative to frozen R01.",
+      "protocol": "docs/protocols/D13_RGB_ANCHORED_DSM_RESIDUAL_PILOT_20260924.md",
+      "config": "configs/rebuild_v1/d13_residual_overnight_20260924.json",
+      "queue_script": "scripts/run_rebuild_v1_d13_residual_queue.sh",
+      "seeds": [
+        42,
+        17
+      ],
+      "stage1_arms": [
+        "rgb_ce",
+        "dsm_ce",
+        "rgb_risk",
+        "dsm_risk"
+      ],
+      "stage2_arms": [
+        "dsm_capacity",
+        "dsm_semantic",
+        "dsm_frequency",
+        "dsm_semantic_frequency"
+      ],
+      "stage2_policy": "Only if all Stage 1 pairs complete and DSM-risk passes all prespecified margins in both seeds",
+      "steps_per_arm": 4000,
+      "maximum_training_runs": 16,
+      "wall_seconds": 86400,
+      "evaluation": "Potsdam Val2 full images, exploratory because previously inspected",
+      "server_records": "records/rebuild_v1_d13_residual_20260924/ and records/rebuild_v1_d13_residual_queue_20260924/",
+      "test6_policy": "prohibited",
+      "gpu": "physical_0_only",
+      "decision": "Close this D13 Stage 1 design under its prespecified gate. Do not run Stage 2 or repeat the same Val2 screen. Paired source-file diagnosis found a small DSM increment reversing across seeds and suppression of both harm and rescue; any counterfactual DSM-use check needs a new inference-only protocol."
+    },
+    {
+      "id": "D14_D13_DSM_CONTENT_INTERVENTION",
+      "name": "frozen_d13_dsm_content_decision_sensitivity",
+      "status": "reported_complete_diagnostic_only",
+      "completed_at": "2026-09-26T00:26:16+08:00",
+      "executed_commit": "877e39c1322c9c93a0cf683a51cb87c3aff3eb75",
+      "evidence_status": "user_pasted_queue_status_and_summary_eight_original_evaluation_summaries_transferred_in_348dda6_and_audited",
+      "records": [
+        "docs/experiments/D14_RESULTS_20260926.md",
+        "records/rebuild_v1_d14_compact_20260926/user_reported_intervention_summary.csv",
+        "records/rebuild_v1_d14_compact_20260926/server_*_summary.json"
+      ],
+      "result_summary": {
+        "completed_evaluations": 8,
+        "queue_failures": 0,
+        "missing": [],
+        "rgb_control_flip_count": 0,
+        "dsm_ce_zero_present_flip_percent_seed42_seed17": [
+          0.3855134695815089,
+          0.22164213678303565
+        ],
+        "dsm_risk_zero_present_flip_percent_seed42_seed17": [
+          0.05364079845817905,
+          0.06238458456175863
+        ],
+        "dsm_ce_shift_half_flip_percent_seed42_seed17": [
+          0.5525651753992145,
+          0.25332940261127435
+        ],
+        "dsm_risk_shift_half_flip_percent_seed42_seed17": [
+          0.03580532629163907,
+          0.029062338237717388
+        ],
+        "test6_loaded": false
+      },
+      "purpose": "Test whether changing DSM content while keeping availability true changes predictions of frozen D13 Stage 1 heads.",
+      "protocol": "docs/protocols/D14_D13_DSM_CONTENT_INTERVENTION_20260926.md",
+      "config": "configs/rebuild_v1/d14_dsm_intervention_20260926.json",
+      "queue_script": "scripts/run_rebuild_v1_d14_intervention_queue.sh",
+      "seeds": [
+        42,
+        17
+      ],
+      "arms": [
+        "rgb_ce",
+        "dsm_ce",
+        "rgb_risk",
+        "dsm_risk"
+      ],
+      "conditions": [
+        "clean",
+        "zero_present",
+        "shift_half"
+      ],
+      "training": false,
+      "wall_seconds": 3600,
+      "evaluation": "Potsdam Val2 full images, diagnostic only",
+      "server_records": "records/rebuild_v1_d14_dsm_intervention_20260926/ and records/rebuild_v1_d14_intervention_queue_20260926/",
+      "test6_policy": "prohibited",
+      "gpu": "physical_0_only",
+      "decision": "Source-file audit completed without discrepancy. DSM heads have nonzero decision-level sensitivity to DSM content and RGB controls are invariant, but mIoU changes are mixed and D13's gain/rescue gate remains failed. Do not rerun this Val2 diagnostic or reopen D13 Stage 2."
+    },
+    {
+      "id": "D15_DSM_CAPABILITY_RGB_DEGRADATION",
+      "name": "DSM_only_baseline_and_paired_RGB_degradation",
+      "status": "complete_original_summaries_offline_audited",
+      "purpose": "Measure DSM-only capability under the matched R01 schedule and whether R05 gains over RGB and matched-capacity controls when RGB detail degrades.",
+      "protocol": "docs/protocols/D15_DSM_CAPABILITY_RGB_DEGRADATION_20260926.md",
+      "config": "configs/rebuild_v1/d15_capability_20260926.json",
+      "queue_script": "scripts/run_rebuild_v1_d15_capability_queue.sh",
+      "seeds": [
+        42,
+        17
+      ],
+      "training": "two DSM-only 16k jobs; existing experts inference-only",
+      "evaluation": "Potsdam Val2, exploratory only",
+      "server_records": "records/rebuild_v1_d15_capability_20260926/ and records/rebuild_v1_d15_capability_queue_20260926/",
+      "test6_policy": "prohibited",
+      "gpu": "physical_0_and_1_independent_workers_user_authorized_20260926",
+      "decision": "Final queue completed 2026-09-26 14:45:11 +08:00, 8/8 evaluations; originals archived in 3f95584 and offline audit passed. Down4 gains are positive on both tiles but mild conditions mixed. Keep reliable RGB-DSM segmentation as the topic; down4 is a stress condition, not an SR pivot. Proposed intervention-learning and geometry-supervision pilots are in docs/protocols/D16_D17_RESEARCH_PORTFOLIO_20260926.md; not implemented/running. Val2 exploratory, Test6 frozen."
+    },
+    {
+      "id": "D16_D17_PORTFOLIO_20260926",
+      "name": "paired_intervention_consistency_and_prefusion_geometry_supervision",
+      "status": "reported_complete",
+      "protocol": "docs/protocols/D16_D17_RESEARCH_PORTFOLIO_20260926.md",
+      "config": "configs/rebuild_v1/d16_d17_portfolio_20260926.json",
+      "queue": "scripts/run_rebuild_v1_d16_d17_queue.sh",
+      "seeds": [
+        42,
+        17
+      ],
+      "training": "8 configurations x 2 seeds; 4000-step full-network continuations from matched R05/C-OO-QD anchors; eight separate one-step smokes",
+      "evaluation": "Potsdam Val2 exploratory, fixed final checkpoint, clean plus four RGB quality/two auxiliary quality/two known absence conditions",
+      "server_records": "records/rebuild_v1_d16_d17_20260926/ and records/rebuild_v1_d16_d17_queue_20260926/",
+      "test6_policy": "prohibited",
+      "gpu": "user_authorized_physical_0_and_1_independent_shared_workers",
+      "decision": "16 tasks completed with zero failures; all decision fields independently recomputed from archived summaries. A2 and B1 both failed frozen two-seed gates; close tested variants. Prepare matched pretrained-adapter comparison; no new trial scheduled.",
+      "evidence_status": "archived_original_summaries_offline_audit_passed",
+      "completed_at": "2026-09-27T22:53:47+08:00",
+      "time_source": "records/rebuild_v1_d16_d17_compact_20260927/status.tsv",
+      "archive_commit": "e37d103",
+      "records": [
+        "records/rebuild_v1_d16_d17_compact_20260927/",
+        "docs/experiments/D16_D17_RESULTS_20260927.md"
+      ]
+    },
+    {
+      "id": "D10_SELECTIVE_DSM_BENEFIT",
+      "name": "risk_controlled_decision_benefit_selector",
+      "status": "design_frozen_source_pending_no_run",
+      "purpose": "Test a learned decision-relevant DSM benefit predictor and calibrated abstention after accepting a new independent image-height segmentation source.",
+      "protocol": "docs/protocols/D10_SELECTIVE_DSM_BENEFIT.md",
+      "source_decision": "docs/current/INDEPENDENT_SOURCE_DECISION_20260923.md",
+      "training": false,
+      "test6_policy": "prohibited",
+      "gpu": "physical_0_only",
+      "decision": "No D10 fitting or GPU queue until source access, prior exposure, scene-disjoint expert/head/calibration/evaluation partitions, class mapping, and dataset-specific thresholds are frozen."
+    },
+    {
+      "id": "D18_D19_NIGHT_SCREEN_20260927",
+      "name": "single_seed_pretrained_adapter_and_intervention_structure_screen",
+      "status": "complete_original_summaries_offline_audited",
+      "protocol": "docs/protocols/D18_D19_EXECUTION_20260927.md",
+      "config": "configs/rebuild_v1/d18_d19_night_20260927.json",
+      "queue": "scripts/run_rebuild_v1_d18_d19_queue.sh",
+      "seeds": [
+        42
+      ],
+      "training": "3 frozen DINOv2 adapter 8k runs + 5 R05 continuation 4k runs; 2 structure-gated conditional runs; no seed17 scheduled",
+      "evaluation": "automatic reload/clean probe + Val2 nine standard and two diagnostic conditions; four completed old checkpoints used for boundary inference only",
+      "test6_policy": "prohibited",
+      "server_records": "records/rebuild_v1_d18_d19_20260927/ and records/rebuild_v1_d18_d19_queue_20260927/",
+      "server_started_at": null,
+      "completed_at": "2026-09-28T12:13:32+08:00",
+      "time_source": "records/rebuild_v1_d18_d19_compact_20260928/status.tsv final run segment",
+      "source_commit": "5209403c9a25bd7a7a85369e931ee4b44358a0a9",
+      "decision": "Eight of eight formal seed42 training/evaluation pairs complete, zero failures; original summaries archived and independently recomputed offline. P2 passed the prespecified within-D18 single-seed screen by +1.0603 pp over the stronger P0/P1 control, but its raw aux_zero score is 0.4986 pp below P0. C2/C3 failed; C4/C5 were conditionally skipped. Matched P0/P1/P2 seed17 replication code and queue are now prepared for server execution. Val2 exploratory; Test6 frozen.",
+      "evidence_status": "archived_original_summaries_offline_audit_passed",
+      "records": [
+        "records/rebuild_v1_d18_d19_compact_20260928/",
+        "docs/experiments/D18_D19_RESULTS_20260928.md"
+      ]
+    },
+    {
+      "id": "D18_MATCHED_SEED17_REPLICATION_20260928",
+      "name": "frozen_dino_rgb_gray_dsm_matched_replication_and_paired_errors",
+      "status": "complete_original_summaries_offline_audited",
+      "protocol": "docs/protocols/D18_MATCHED_SEED17_REPLICATION_PLAN_20260928.md",
+      "execution": "docs/protocols/D18_SEED17_EXECUTION_20260928.md",
+      "config": "configs/rebuild_v1/d18_replication_seed17_20260928.json",
+      "queue": "scripts/run_rebuild_v1_d18_replication_queue.sh",
+      "seeds": [
+        42,
+        17
+      ],
+      "new_training_seed": 17,
+      "arms": [
+        "P0",
+        "P1",
+        "P2"
+      ],
+      "training": "three new matched frozen-DINO 8000-step runs; original seed42 runs reused",
+      "evaluation": "Val2 nine standard conditions plus two fixed diagnostics; same seed42 corruption keys; paired-pixel error and matched P0 absence fallback",
+      "test6_policy": "prohibited",
+      "gpu": "physical_0_and_1_independent_workers_user_authorized",
+      "server_records": "records/rebuild_v1_d18_replication_20260928/ and records/rebuild_v1_d18_replication_queue_20260928/",
+      "compact_archive": "records/rebuild_v1_d18_replication_compact_20260928/",
+      "source_commit": "b66a9017129b0d6adc45c71cc6e9ca042548fc0b",
+      "completed_at": "2026-09-28T14:52:05+08:00",
+      "archive_commit": "705d8d2",
+      "evidence_status": "six_original_summaries_archived_offline_audit_passed",
+      "records": [
+        "records/rebuild_v1_d18_replication_compact_20260928/",
+        "docs/experiments/D18_REPLICATION_RESULTS_20260928.md"
+      ],
+      "decision": "All three seed17 matched arms completed training/evaluation; paired analysis and compact archive completed. P2 passed the original five checks separately in seeds42/17 with macro gains +1.0603/+0.9229 pp over stronger P0/P1. Raw full DSM absence fell below same-seed P0 by 0.4986/0.4103 pp. Archived integer counts and both decisions independently recomputed offline. Keep P2 as a development baseline; resolve independent labelled scene access and protocol before another reliability-method GPU queue. Val2 exploratory; Test6 frozen."
+    }
+  ],
+  "next_plan": {
+    "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
+    "status": "B_core_server_CPU_passed_crop_GPU_probe_ready_not_started",
+    "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
+    "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
+    "stage_a": {
+      "new_inference": false,
+      "new_training": false,
+      "dataset": "potsdam",
+      "seeds": [
+        42
+      ],
+      "tiles": [
+        "3_11",
+        "5_10"
+      ],
+      "conditions": [
+        "clean",
+        "rgb_down4",
+        "aux_noise_std010",
+        "aux_zero",
+        "aux_local_zero_q1"
+      ],
+      "experts": [
+        "R0",
+        "M0"
+      ],
+      "prediction_file_count": 20,
+      "implementation": "scripts/audit_rebuild_v1_d23_complementarity.py",
+      "tests": "tests/test_d23_complementarity.py",
+      "local_synthetic_tests_passed": 7,
+      "server_profile_completed": true,
+      "real_counts_computed": true,
+      "result_source": "user_pasted_server_stdout",
+      "completed_at": "2026-10-01T12:44:35.075903+08:00",
+      "mean_available_gain_pp": 1.888456078355997,
+      "eligible_to_prepare_B": true,
+      "original_jsons_archived": false,
+      "archive_server_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_feasibility_20261001_20261001T124227_658274/light_evidence_20261001T130219_658274.tar.gz",
+      "archive_reported_sha256": "041bc0ad79c3c5f11fdbf4a29479b2c3cf68d60f898b5125d8cf2211e59084b1",
+      "original_jsons_received_locally": false
+    },
+    "stage_b": {
+      "conditional_on_stage_a": true,
+      "training_jobs": 8,
+      "steps_per_job": 4000,
+      "new_gate_updates": 32000,
+      "fixed_comparators": 6,
+      "experts_frozen": true,
+      "final_step_not_validation_selected": true,
+      "implemented": false,
+      "core_implemented": true,
+      "training_engine_implemented": false,
+      "local_CPU_tests_passed": 8,
+      "server_profile_completed": false,
+      "parameters_per_gate": 18145,
+      "formal_started": false,
+      "server_CPU_tests_completed": true,
+      "server_CPU_tests_elapsed_seconds": 1.732,
+      "crop_probe_implemented": true,
+      "crop_probe": "scripts/probe_rebuild_v1_d23_gate.py",
+      "crop_probe_started": false,
+      "user_authorized_physical_gpus": [
+        0,
+        1
+      ],
+      "crop_probe_per_gpu": true,
+      "record_scope_root": "/home/jovyan/zzx",
+      "crop_probe_output_pattern": "records/research_d23_b_crop_probe_<timestamp>_<pid>/{code,gpu0,gpu1}"
+    },
+    "server_started_at": null,
+    "new_long_training_authorized_by_document": false,
+    "test6_loaded": false,
+    "historical_test6_independent_final_eligible": false,
+    "execution_document": "docs/protocols/D23_A_CPU_EXECUTION_20261001.md",
+    "next_action": "user executes same bounded crop probe sequentially on GPU0/GPU1; all snapshots/results/logs under zzx project records",
+    "queue": null
+  },
+  "completed_post_d21_mixed_followup": {
+    "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
+    "status": "user_reported_complete_4_of_4_integer_audit_passed",
+    "started_at": "2026-10-01T01:20:04+08:00",
+    "completed_at": "2026-10-01T04:53:40+08:00",
+    "time_source": "user-pasted server launcher.log",
+    "protocol": "docs/protocols/POST_D21_MIXED_DEGRADATION_FOLLOWUP_20260930.md",
+    "result": "docs/experiments/POST_D21_FINAL_AND_MIXED_FOLLOWUP_RESULTS_20261001.md",
+    "user_pasted_analysis": "records/post_d21_mixed_followup_compact_20260930/user_pasted_analysis_20261001.json",
+    "tile_risk_diagnostics": "records/post_d21_mixed_followup_compact_20260930/tile_risk_diagnostics.json",
+    "tile_risk_result": "docs/experiments/POST_D21_MIXED_TILE_RISK_RESULTS_20261001.md",
+    "tile_risk_generated_at": "2026-10-01T10:15:16+08:00",
+    "tile_risk_archive_commit": "3e17b6a",
+    "tile_risk_integer_reaudit": "PASS",
+    "jobs": 4,
+    "seed": 42,
+    "physical_gpus": [
+      0,
+      1
+    ],
+    "pooled_conditions_positive": 8,
+    "pooled_conditions_total": 8,
+    "worst_observed_tile": "Vaihingen tile 33, scale2_unseen_blur, C1-C0 = -1.4211 pp",
+    "reported_integer_count_audit": "PASS",
+    "test6_loaded": false,
+    "decision": "Development candidate for task-driven learned restoration; tile-risk compact audit found Car false-positive growth on Vaihingen tile20 and Building/LowVegetation misses with Tree false-positive growth on tile33 under unseen blur. Require independent-source acceptance before external paired evaluation; do not claim stable cross-region benefit."
+  },
+  "completed_post_d21_throughput_probe": {
+    "id": "POST_D21_BOUNDED_THROUGHPUT_PROBE_20260929",
+    "status": "raw_json_and_gpu_telemetry_archived",
+    "protocol": "docs/protocols/POST_D21_THROUGHPUT_PROBE_20260929.md",
+    "result": "docs/experiments/POST_D21_THROUGHPUT_PROBE_RESULTS_20260929.md",
+    "user_pasted_json": "records/rebuild_v1_d21_throughput_probe_20260929/user_pasted_gpu0_F2_vaihingen_seed42.json",
+    "raw_json": "records/rebuild_v1_d21_throughput_probe_20260929/gpu0_F2_vaihingen_seed42.json",
+    "gpu_telemetry": "records/rebuild_v1_d21_throughput_probe_20260929/gpu0_telemetry.csv",
+    "archive_commit": "6e45fce",
+    "server_commit": "8f315d2",
+    "dataset": "vaihingen_train",
+    "arm": "F2",
+    "seed": 42,
+    "measured_steps_per_candidate": 6,
+    "best_observed_micro_batch": 16,
+    "best_observed_accum_steps": 1,
+    "best_observed_effective_samples_per_second": 103.59268509315719,
+    "formal_configuration_frozen": false
+  },
+  "completed_d21_plan": {
+    "id": "D21_DETAIL_FREQUENCY_DEVELOPMENT_20260928",
+    "status": "effective_32_of_32_complete_gates_failed",
+    "protocol": "docs/protocols/D21_DETAIL_FREQUENCY_DAY_QUEUE_20260928.md",
+    "config": "configs/rebuild_v1/d21_detail_frequency_20260928.json",
+    "queue": "scripts/run_rebuild_v1_d21_queue.sh",
+    "arms": [
+      "R0",
+      "R1",
+      "M0",
+      "M1",
+      "F0",
+      "F1",
+      "F2",
+      "F3"
+    ],
+    "datasets": [
+      "potsdam",
+      "vaihingen"
+    ],
+    "seeds": [
+      42,
+      17
+    ],
+    "steps_per_job": 16000,
+    "jobs": 32,
+    "physical_gpus": [
+      0,
+      1
+    ],
+    "estimated_wall_hours": [
+      20,
+      35
+    ],
+    "started_at": "2026-09-28T22:53:29+08:00",
+    "completed_at": "2026-09-29T18:23:44+08:00",
+    "original_queue": "32/48 INCOMPLETE after STOP; effective two-seed scope 32/32 COMPLETE",
+    "server_original_commit": "10f63ea",
+    "archive_commit": "81dcc9e",
+    "result": "docs/experiments/D21_DETAIL_FREQUENCY_RESULTS_20260929.md",
+    "accuracy_gate_passed": false,
+    "missing_aux_safety_gate_passed": false,
+    "authorization": "User explicitly requested at least one day of experiments and GPU0/GPU1 may run longer.",
+    "new_mechanism": "quarter-resolution auxiliary detail injection with matched raw/gray/low/high/alignment controls",
+    "budget_rationale": "matched new 16k development block; previous 8k baselines are not pooled as controls",
+    "gate": "fixed F2 candidate; paired accuracy/tile and separate aux_zero safety checks",
+    "gamus_is_prerequisite": false,
+    "test6_loaded": false,
+    "independent_final_loaded": false,
+    "evidence_level": "repeated_development_not_independent_confirmation",
+    "compact_archive": "records/rebuild_v1_d21_compact_20260928/"
+  },
+  "historical_external_source_plan_before_d21": {
+    "id": "D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928",
+    "status": "gamus_stage_a_sample_content_pass_source_acceptance_pending_us3d_transfer_terms_pending",
+    "protocol": "docs/protocols/D20_INDEPENDENT_SOURCE_AND_MATCHED_BASELINES_20260928.md",
+    "immediate_action": "Use the prepared unsent inquiry to obtain revised GAMUS per-city original imagery, height and label provenance, terms, and file-stem-to-geographic-bounds mapping; then audit spatial leakage and class coverage before freezing fit/dev/final. Preserve failed Vaihingen seed42 gate, Test6 isolation and no-seed17 stop. No new GPU training.",
+    "gamus_provenance_desk_audit": {
+      "status": "public_sources_inspected_author_mapping_and_underlying_rights_pending",
+      "evidence_and_unsent_inquiry": "docs/current/D20_GAMUS_PROVENANCE_DESK_AUDIT_20260928.md",
+      "external_message_sent": false,
+      "new_gpu_queue": false
+    },
+    "gamus_sample_metadata_audit": {
+      "status": "complete_archived_sha_bound_no_root_or_image_attributes",
+      "server_run_commit": "ed4186a4fa0d28d486b7ffa43741b47386c1a702",
+      "archive_commit": "4cdb91fc20f9adfcc51593f5dc61b0a033cf1389",
+      "server_last_observed_at": "2026-09-28T22:17:36+08:00",
+      "result": "docs/experiments/D20_GAMUS_SAMPLE_METADATA_RESULTS_20260928.md",
+      "files_checked": 9,
+      "root_and_image_attributes": "empty_for_all_nine_samples",
+      "protocol": "docs/protocols/D20_GAMUS_SAMPLE_METADATA_AUDIT_20260928.md",
+      "runner": "scripts/run_rebuild_v1_d20_gamus_sample_metadata.sh",
+      "scope": "nine_existing_hdf5_files_read_only_cpu_no_download_no_training",
+      "server_record": "records/rebuild_v1_d20_gamus_sample_metadata_20260928/",
+      "compact_archive": "records/rebuild_v1_d20_gamus_sample_metadata_compact_20260928/"
+    },
+    "gamus_revised_stage_a": {
+      "status": "sample_content_pass_source_acceptance_pending",
+      "server_run_commit": "83808a96f64e3bc5b8986dbfd1d11cfd6e803239",
+      "archive_commit": "70344a4f9f4a8118fd8b99fdcc49f33ee5ac366a",
+      "server_last_observed_at": "2026-09-28T18:33:49+08:00",
+      "result": "docs/experiments/D20_GAMUS_STAGE_A_SOURCE_AUDIT_RESULTS_20260928.md",
+      "author_repository": "https://github.com/EarthNets/RSI-MMSegmentation",
+      "dataset_repository": "https://huggingface.co/datasets/earthflow/GAMUS",
+      "pinned_dataset_revision": "a3c0e2511f06d909612406f436cf8abb4da805f5",
+      "author_update": "DFC2019_OMA_JAX_removed_for_label_quality",
+      "hub_license_tag": "cc-by-4.0_upstream_rights_unverified",
+      "metadata_cities": [
+        "DC",
+        "NYC",
+        "PHL"
+      ],
+      "metadata_triplet_counts_by_original_split": {
+        "train": 5004,
+        "val": 859,
+        "test": 2861
+      },
+      "original_splits_mix_cities": true,
+      "protocol": "docs/protocols/D20_GAMUS_SOURCE_ACCEPTANCE_20260928.md",
+      "runner": "scripts/run_rebuild_v1_d20_gamus_source_audit.sh",
+      "first_attempt_cause": "remote_sensing_missing_h5py_before_any_sample_download",
+      "second_attempt_cause": "Hub_tree_API_expand_true_limit_1000_HTTP_400_before_sample_download",
+      "second_attempt_dependency": "isolated_h5py_3.14.0_numpy_1.26.4_success",
+      "third_attempt": "audit_complete_0_three_city_sample_content_pass",
+      "dependency_retry_scope": "isolated_h5py_wheel_under_experiment_record_no_training_environment_change",
+      "server_data_directory": "/home/jovyan/zzx/datasets/rebuild_v1_d20_gamus/",
+      "compact_archive": "records/rebuild_v1_d20_gamus_source_acceptance_compact_20260928/",
+      "gpu_training_authorized": false
+    },
+    "us3d_access_and_use_inquiry": {
+      "status": "draft_prepared_not_sent",
+      "document": "docs/current/D20_US3D_ACCESS_AND_USE_INQUIRY_20260928.md",
+      "questions": [
+        "current_registration_and_direct_download",
+        "noncontest_research_use",
+        "private_third_party_relay_permission",
+        "publication_approval_procedure"
+      ],
+      "source_data_relay_authorized": false
+    },
+    "vaihingen_failure_input_audit": {
+      "status": "complete_server_archived_hash_bound_descriptive_only",
+      "script": "scripts/run_rebuild_v1_d20_vaihingen_failure_inputs_audit.sh",
+      "protocol": "docs/protocols/D20_VAIHINGEN_FAILURE_INPUT_AUDIT_20260928.md",
+      "result": "docs/experiments/D20_VAIHINGEN_FAILURE_INPUT_AUDIT_RESULTS_20260928.md",
+      "target_failure_ids": [
+        12,
+        14
+      ],
+      "comparison_population": "all_17_frozen_development_tiles",
+      "scope": "cpu_only_read_only_exploratory_diagnostic",
+      "gate_unchanged": true,
+      "seed17_auto_launch": false,
+      "run_commit": "43dbbe3",
+      "archive_commit": "21dbb2d",
+      "server_completed_at": "2026-09-28T18:04:42+08:00",
+      "input_and_clean_prediction_sha256_checks": "passed_all_17_tiles",
+      "clear_file_label_or_shape_anomaly": false,
+      "geographic_alignment_proven": false,
+      "compact_archive": "records/rebuild_v1_d20_vaihingen_failure_inputs_compact_20260928/"
+    },
+    "stage_a_probe": {
+      "source_commit": "6c7c0d14290197e6741c48342d5f4f82111473ab",
+      "status": "BLOCKED_DATA_TRANSFER_AND_TERMS_PENDING",
+      "local_triplets": 0,
+      "grss_and_dataport": "server_proxy_403",
+      "official_torrent_metadata": "reachable_http_200",
+      "evidence": "records/rebuild_v1_d20_source_acceptance_compact_20260928/user_reported_stage_a.json"
+    },
+    "vaihingen_development_audit": {
+      "status": "content_sample_checks_pass_development_only",
+      "script": "scripts/run_rebuild_v1_d20_vaihingen_content_audit.sh",
+      "instructions": "docs/current/D20_VAIHINGEN_CONTENT_AUDIT_20260928.md",
+      "failed_run_commit": "5299318",
+      "failed_run_cause": "First version selected nonexistent gts_complete directory; existing repository source specifies gts_complete_full. No label pixels read.",
+      "failed_run_evidence": "5299318:records/rebuild_v1_d20_vaihingen_content_compact_20260928/audit.json",
+      "corrected_run_commit": "5c6283b",
+      "archive_commit": "66ac041",
+      "ready_development_ids": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        20,
+        22,
+        24,
+        27,
+        29,
+        31,
+        33,
+        35,
+        38
+      ],
+      "geographic_alignment": "unknown_missing_readable_header_coordinates",
+      "palette_validation": "sample_only",
+      "archive": "records/rebuild_v1_d20_vaihingen_content_compact_20260928/",
+      "evidence_level": "same_mosaic_development_only"
+    },
+    "vaihingen_development_smoke": {
+      "status": "complete_server_reported_and_archived",
+      "config": "configs/rebuild_v1/d20_vaihingen_development_smoke_20260928.json",
+      "protocol": "docs/protocols/D20_VAIHINGEN_MATCHED_SMOKE_20260928.md",
+      "queue": "scripts/run_rebuild_v1_d20_vaihingen_smoke.sh",
+      "arms": [
+        "P0",
+        "P1",
+        "P2"
+      ],
+      "steps_per_arm": 1,
+      "training_seed": 42,
+      "evidence_level": "same_mosaic_infrastructure_only",
+      "formal_training_auto_launch": false,
+      "server_started_at": "2026-09-28T16:15:34+08:00",
+      "server_completed_at": "2026-09-28T16:15:54+08:00",
+      "archive_commit": "8401bcd",
+      "archive": "records/rebuild_v1_d20_vaihingen_smoke_compact_20260928/",
+      "result": "P0/P1/P2 each completed one train step, save/reload and 262144-pixel crop evaluation; infrastructure check only"
+    },
+    "vaihingen_fit_budget_probe": {
+      "status": "complete_server_reported_and_archived",
+      "config": "configs/rebuild_v1/d20_vaihingen_fit_budget_probe_20260928.json",
+      "protocol": "docs/protocols/D20_VAIHINGEN_FIT_BUDGET_PROBE_20260928.md",
+      "queue": "scripts/run_rebuild_v1_d20_vaihingen_fit_budget_probe.sh",
+      "arm": "P2",
+      "steps": 20,
+      "scope": "fit_only_no_development_labels_no_model_checkpoint",
+      "formal_training_auto_launch": false,
+      "server_started_at": "2026-09-28T16:22:47+08:00",
+      "server_completed_at": "2026-09-28T16:23:08+08:00",
+      "archive_commit": "abe10e4",
+      "archive": "records/rebuild_v1_d20_vaihingen_fit_budget_probe_compact_20260928/",
+      "steady_step_median_seconds": 0.222,
+      "gpu_peak_allocated_gib": 0.36,
+      "host_peak_rss_gib": 2.258
+    },
+    "vaihingen_seed42_formal_development": {
+      "status": "complete_development_gate_failed_offline_count_audit_passed",
+      "config": "configs/rebuild_v1/d20_vaihingen_formal_seed42_20260928.json",
+      "protocol": "docs/protocols/D20_VAIHINGEN_SEED42_FORMAL_20260928.md",
+      "queue": "scripts/run_rebuild_v1_d20_vaihingen_seed42_queue.sh",
+      "arms": [
+        "P0",
+        "P1",
+        "P2"
+      ],
+      "seeds": [
+        42
+      ],
+      "steps_per_arm": 8000,
+      "evidence_level": "same_mosaic_development_only",
+      "seed17_auto_launch": false,
+      "independent_final_loaded": false,
+      "server_queue_started_at": "2026-09-28T16:35:48+08:00",
+      "server_preflight": "87_input_hashes_passed",
+      "server_completed_at": "2026-09-28T17:42:26+08:00",
+      "archive_commit": "5538bf3",
+      "archive": "records/rebuild_v1_d20_vaihingen_seed42_compact_20260928/",
+      "offline_audit": "records/rebuild_v1_d20_vaihingen_seed42_compact_20260928/offline_audit.json",
+      "macro_gain_pp": 1.026148283788089,
+      "stronger_control": "P0",
+      "checks": {
+        "gain": true,
+        "clean": true,
+        "families": true,
+        "tile_clean": false,
+        "tile_families": false
+      },
+      "passed": false,
+      "failed_development_tiles": [
+        12,
+        14
+      ],
+      "next_seed17_auto_launch": false
+    },
+    "d20_throughput_optimization_after_seed42": {
+      "status": "deprioritized_after_vaihingen_seed42_gate_failure",
+      "protocol": "docs/protocols/D20_THROUGHPUT_OPTIMIZATION_AFTER_SEED42_20260928.md",
+      "current_queue_source_changes_allowed": false,
+      "benchmark_scope": "fit_only_then_evaluation_equivalence",
+      "new_microbatch_requires_full_matched_rerun": true
+    },
+    "conditional_training": "P0/P1/P2 seed42 on accepted source; all three seed17 only after frozen dev gate passes.",
+    "final_evaluation": "Reserve independent geography until all methods and controls are frozen; never select reliability interventions on final scores.",
+    "queue": null,
+    "started_at": null,
+    "gpu": "physical_0_and_1_independent_workers",
+    "server_scope": "/home/jovyan/zzx"
+  },
+  "handoff_entry": "docs/START_HERE.md",
+  "duplicate_policy": {
+    "rule": "Do not repeat a completed or closed fingerprint.",
+    "new_run_requires": [
+      "new seed",
+      "new dataset",
+      "new split",
+      "documented implementation correction",
+      "justified new budget",
+      "new model component",
+      "new diagnostic protocol"
+    ]
+  },
+  "execution_boundaries": {
+    "mandatory": true,
+    "documentation": "docs/protocols/EXECUTION_BOUNDARIES.md",
+    "machine_policy": "configs/execution_boundaries.json",
+    "preflight": "scripts/validate_execution_boundaries.py",
+    "physical_gpu": 0,
+    "cuda_visible_devices": "0",
+    "persistent_scope_root": "/home/jovyan/zzx",
+    "dual_worker_exception": "User authorized physical GPU0 and GPU1 for D15, D16/D17, D18/D19, D18 seed17 replication, and the current D20 work. Their queues apply explicit independent-worker device checks; the older GPU0-only machine policy and validator remain for historical queues. D21 explicitly authorized on physical GPU0/GPU1 for a queue longer than one day; UUID binding and idle checks apply."
+  },
+  "research_decision": {
+    "updated_at": "2026-10-01",
+    "source": "User clarification in conversation: evaluate feasibility; allow a new solution, cross-cutting question, or direction.",
+    "document": "docs/current/RESEARCH_DECISION.md",
+    "stage": "feasibility_exploration",
+    "priority_candidate": "frequency and semantic reliability for optical-DSM fusion with missing/degraded modality training and inference",
+    "c1_role": "side_branch_development_candidate_not_adopted_replacement",
+    "partial_unfreezing_role": "strong_baseline_strategy",
+    "final_method_and_chapters_frozen": false,
+    "next_action": "D23-A allocation passed; D23-B core tested locally, full implementation/resource preflight pending",
+    "next_action_document": "docs/current/NEXT_EXPERIMENT.md",
+    "external_source_gate": "required for corresponding external confirmation, not a universal prerequisite for development exploration",
+    "new_training_authorized_by_this_document": false
+  },
+  "proposed_d23": {
+    "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
+    "status": "B_core_server_CPU_passed_crop_GPU_probe_ready_not_started",
+    "evidence_report": "docs/experiments/D23_A_COMPLEMENTARITY_RESULTS_20261001.md",
+    "protocol": "docs/protocols/D23_DENSE_BENEFIT_FEASIBILITY_20261001.md",
+    "stage_a": {
+      "new_inference": false,
+      "new_training": false,
+      "dataset": "potsdam",
+      "seeds": [
+        42
+      ],
+      "tiles": [
+        "3_11",
+        "5_10"
+      ],
+      "conditions": [
+        "clean",
+        "rgb_down4",
+        "aux_noise_std010",
+        "aux_zero",
+        "aux_local_zero_q1"
+      ],
+      "experts": [
+        "R0",
+        "M0"
+      ],
+      "prediction_file_count": 20,
+      "implementation": "scripts/audit_rebuild_v1_d23_complementarity.py",
+      "tests": "tests/test_d23_complementarity.py",
+      "local_synthetic_tests_passed": 7,
+      "server_profile_completed": true,
+      "real_counts_computed": true,
+      "result_source": "user_pasted_server_stdout",
+      "completed_at": "2026-10-01T12:44:35.075903+08:00",
+      "mean_available_gain_pp": 1.888456078355997,
+      "eligible_to_prepare_B": true,
+      "original_jsons_archived": false,
+      "archive_server_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_feasibility_20261001_20261001T124227_658274/light_evidence_20261001T130219_658274.tar.gz",
+      "archive_reported_sha256": "041bc0ad79c3c5f11fdbf4a29479b2c3cf68d60f898b5125d8cf2211e59084b1",
+      "original_jsons_received_locally": false
+    },
+    "stage_b": {
+      "conditional_on_stage_a": true,
+      "training_jobs": 8,
+      "steps_per_job": 4000,
+      "new_gate_updates": 32000,
+      "fixed_comparators": 6,
+      "experts_frozen": true,
+      "final_step_not_validation_selected": true,
+      "implemented": false,
+      "core_implemented": true,
+      "training_engine_implemented": false,
+      "local_CPU_tests_passed": 8,
+      "server_profile_completed": false,
+      "parameters_per_gate": 18145,
+      "formal_started": false,
+      "server_CPU_tests_completed": true,
+      "server_CPU_tests_elapsed_seconds": 1.732,
+      "crop_probe_implemented": true,
+      "crop_probe": "scripts/probe_rebuild_v1_d23_gate.py",
+      "crop_probe_started": false,
+      "user_authorized_physical_gpus": [
+        0,
+        1
+      ],
+      "crop_probe_per_gpu": true,
+      "record_scope_root": "/home/jovyan/zzx",
+      "crop_probe_output_pattern": "records/research_d23_b_crop_probe_<timestamp>_<pid>/{code,gpu0,gpu1}"
+    },
+    "server_started_at": null,
+    "new_long_training_authorized_by_document": false,
+    "test6_loaded": false,
+    "historical_test6_independent_final_eligible": false,
+    "execution_document": "docs/protocols/D23_A_CPU_EXECUTION_20261001.md"
+  },
+  "completed_post_d21_plan": {
+    "id": "POST_D21_MULTIDIRECTION_DAY_PLAN_20260929",
+    "status": "user_reported_complete_42_of_42_integer_audit_passed",
+    "purpose": "At least one day of single-seed paired exploration across adaptation, DSM residuals, LR restoration and their interaction",
+    "draft_protocol": "docs/protocols/POST_D21_MULTIDIRECTION_DAY_PLAN_20260929.md",
+    "plan_manifest": "records/post_d21_day_plan_20260929/plan.json",
+    "planned_jobs_csv": "records/post_d21_day_plan_20260929/jobs.csv",
+    "execution_protocol": "docs/protocols/POST_D21_DAY_EXECUTION_20260929.md",
+    "configuration": "configs/rebuild_v1/post_d21_day_portfolio_20260929.json",
+    "queue": "scripts/run_rebuild_v1_day_queue.sh",
+    "model": "model/rebuild_v1_day_portfolio.py",
+    "local_cpu_checks": "tests/test_day_portfolio.py",
+    "main_jobs": 42,
+    "reserve_jobs": 8,
+    "main_optimizer_updates": 576000,
+    "seeds": [
+      42
+    ],
+    "physical_gpus": [
+      0,
+      1
+    ],
+    "target_wall_hours": [
+      24,
+      48
+    ],
+    "runtime_verified": true,
+    "server_preflight_complete": true,
+    "first_server_profile_started_at": "2026-09-29T19:47:48+08:00",
+    "first_server_profile_result": "failed_before_training_at_DINO_import_due_to_Python_3_9_PEP604_annotation; no scope or formal checkpoint",
+    "second_server_profile_started_at": "2026-09-30T00:18:15+08:00",
+    "second_server_profile_result": "DINO import passed; first D backward failed because CUDA replication padding has no strict deterministic backward; no scope or training checkpoint",
+    "deterministic_padding_fix": "C/D/E differentiable DINO input padding and highpass boundary use fixed zero extension; A/B D21 anchor padding unchanged",
+    "compatibility_fix": "scripts/day_dino_compat.py; original DINO source and weight remain unchanged; verified local mirror adds postponed annotations",
+    "server_training_started": true,
+    "completed_at": "2026-10-01T01:19:17+08:00",
+    "completion_time_source": "user-pasted server status.tsv",
+    "final_result": "docs/experiments/POST_D21_FINAL_AND_MIXED_FOLLOWUP_RESULTS_20261001.md",
+    "user_pasted_final_analysis": "records/post_d21_day_compact_20260929/user_pasted_analysis_20261001.json",
+    "reported_integer_count_audit": "PASS",
+    "test6_loaded": false,
+    "supersedes_unrun_draft": "docs/protocols/D22_STRUCTURE_ALIGNED_DSM_RELIABILITY_DRAFT_20260929.md",
+    "results_motivating_plan": "docs/experiments/POST_D21_THROUGHPUT_PROBE_RESULTS_20260929.md",
+    "preflight": "docs/templates/EXPERIMENT_PREFLIGHT_TEMPLATE.md",
+    "new_data_or_install": "none planned; disclose and prepare separately if needed",
+    "provisional_training_configuration": "effective batch 16; profile frozen, partial-unfreeze and joint restoration paths; do not extrapolate six-step frozen-F2 timing",
+    "follow_on": "Historical completed portfolio. Current follow-up is feasibility and mechanism evidence synthesis; C1 is a side-branch candidate, not an adopted new thesis direction. See docs/current/NEXT_EXPERIMENT.md."
+  }
+}

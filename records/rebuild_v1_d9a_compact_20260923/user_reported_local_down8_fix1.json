@@ -1,0 +1,37 @@
+{
+  "source": "User-pasted server status.tsv and scripts/summarize_rebuild_v1_d9a_local_down8_fix1.py output on 2026-09-23; original source-hashed server files take precedence",
+  "queue_commit": "20b20c2935259a15a2826da5890ee0f92934c38e",
+  "queue_started_at": "2026-09-23T12:33:18+08:00",
+  "queue_finished_at": "2026-09-23T12:36:28+08:00",
+  "queue_failures": 0,
+  "completed_stages": 2,
+  "test6_loaded": false,
+  "results": {
+    "42": {
+      "old_d5_nb_miou_percent_invalid": 86.43990121158083,
+      "corrected_d5_nb_miou_percent": 86.82853288587363,
+      "change_pp": 0.3886316742928053,
+      "corrected_d5_minus_rgb_pp": 1.457277786581268,
+      "corrected_d5_minus_dual_pp": 0.166691777767769,
+      "old_selected_dual": 144008,
+      "corrected_selected_dual": 191046,
+      "old_selected_harm_rate_invalid": 0.057378756735736905,
+      "corrected_selected_harm_rate": 0.06745495849167216,
+      "ranking_aggregate_unchanged_within_1e-4": true,
+      "ranking_csv_byte_identical": true
+    },
+    "17": {
+      "old_d5_nb_miou_percent_invalid": 86.30895507290755,
+      "corrected_d5_nb_miou_percent": 86.2557280560538,
+      "change_pp": -0.053227016853762965,
+      "corrected_d5_minus_rgb_pp": 0.4190637935654329,
+      "corrected_d5_minus_dual_pp": 0.7063230831676037,
+      "old_selected_dual": 121145,
+      "corrected_selected_dual": 163749,
+      "old_selected_harm_rate_invalid": 0.07587601634405051,
+      "corrected_selected_harm_rate": 0.08309669066681323,
+      "ranking_aggregate_unchanged_within_1e-4": true,
+      "ranking_csv_byte_identical": true
+    }
+  }
+}

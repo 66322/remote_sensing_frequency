@@ -1,0 +1,90 @@
+{
+  "step": 500,
+  "variant": "P",
+  "views": {
+    "clean": {
+      "raw": {
+        "ce": 0.1573924422264099,
+        "aux": 0.0526164285838604,
+        "protect": 0.007793313357979059,
+        "recover": 1.102055549621582
+      },
+      "weighted": {
+        "ce": 0.1573924422264099,
+        "aux": 0.00526164285838604,
+        "protect": 0.0007793313707225025,
+        "recover": 0.0
+      },
+      "weights": {
+        "protect": 0.1,
+        "recover": 0.0,
+        "aux": 0.1
+      },
+      "denominators": {
+        "fusion_pixels": 4194304,
+        "protect_pixels": 3930343,
+        "both_valid_pixels": 4194304,
+        "recover_pixels": 116505,
+        "recover_class_counts": [
+          48090,
+          19918,
+          17288,
+          21735,
+          6989,
+          2485
+        ],
+        "recover_fraction": 0.02777695655822754
+      }
+    },
+    "aug": {
+      "raw": {
+        "ce": 0.15955230593681335,
+        "aux": 0.12947611510753632,
+        "protect": 0.00969697441905737,
+        "recover": 1.1768356561660767
+      },
+      "weighted": {
+        "ce": 0.15955230593681335,
+        "aux": 0.012947611510753632,
+        "protect": 0.0009696974302642047,
+        "recover": 0.0
+      },
+      "weights": {
+        "protect": 0.1,
+        "recover": 0.0,
+        "aux": 0.1
+      },
+      "denominators": {
+        "fusion_pixels": 4194304,
+        "protect_pixels": 3299651,
+        "both_valid_pixels": 3506176,
+        "recover_pixels": 88004,
+        "recover_class_counts": [
+          23988,
+          13438,
+          14644,
+          29325,
+          5805,
+          804
+        ],
+        "recover_fraction": 0.0250997097692757
+      }
+    }
+  },
+  "weighted_gradient_norms": {
+    "ce": 0.04083167331907617,
+    "aux": 0.005153634521476352,
+    "protect": 0.003530329326345417,
+    "recover": 0.0
+  },
+  "cosines": {
+    "ce__aux": 0.47495053335676646,
+    "ce__protect": -0.003354011157013632,
+    "ce__recover": null,
+    "aux__protect": 0.024590444828885033,
+    "aux__recover": null,
+    "protect__recover": null
+  },
+  "diagnostic_only": true,
+  "optimizer_gradients_unchanged": true
+}

@@ -1,0 +1,52 @@
+{
+  "record_type": "user_reported_CPU_D_progress_and_source_based_interpretation",
+  "execution_commit": "45138f0f92c668bc86ce9532a4382b38d2b12b6d",
+  "observations": [
+    {
+      "completed_cases": 48,
+      "tile": "3_11",
+      "realization": 12,
+      "family": "matched",
+      "observed_at": "2026-10-13T10:17:47.026717+08:00"
+    },
+    {
+      "completed_cases": 54,
+      "tile": "3_11",
+      "realization": 14,
+      "family": "random",
+      "observed_at": "2026-10-13T10:35:41.565092+08:00"
+    },
+    {
+      "completed_cases": 57,
+      "tile": "3_11",
+      "realization": 15,
+      "family": "pixel",
+      "observed_at": "2026-10-13T10:44:37.604759+08:00"
+    }
+  ],
+  "new_queue_query_received": false,
+  "new_controller_live_check_received": false,
+  "last_queue_observed_at": "2026-10-13T10:17:18.524905+08:00",
+  "analysis_D_log_tail_output": "",
+  "completed_cases": 57,
+  "total_cases": 160,
+  "remaining_cases": 103,
+  "timing": {
+    "sample_cases": 9,
+    "sample_seconds": 1610.578,
+    "mean_seconds_per_case": 178.9531111111111,
+    "linear_remaining_seconds": 18432.170444444444,
+    "D_only_estimated_finish_utc": "2026-10-13T07:51:49.774Z",
+    "user_facing_estimate": "2026-10-13 around 16:00 Asia/Shanghai, conditional, D only; excludes final summary"
+  },
+  "source_findings": [
+    "single CPU analysis subprocess, numeric library threads fixed to 1",
+    "multiple whole-image expert/system/region scans",
+    "decompression and SHA validation plus distance/component/conditional statistics"
+  ],
+  "profiling_received": false,
+  "exact_bottleneck_identified": false,
+  "execution_changed": false,
+  "optimization_implemented": false,
+  "scientific_results_verified": false
+}

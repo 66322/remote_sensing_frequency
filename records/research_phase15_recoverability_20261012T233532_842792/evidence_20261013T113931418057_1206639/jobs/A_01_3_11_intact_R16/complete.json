@@ -1,0 +1,53 @@
+{
+  "binding": {
+    "plan.json": "46f171542c643589ec93429feea13d3bed3ba0897b4a9d6c72d8755f7a23baba",
+    "code_manifest.json": "7755b8e7c9e51cc62702e43be6c609a70a7d1e981458ae7d683648cb6d9164e8",
+    "preparation_complete.json": "3a635441c9a7c7aa180084b780121b9360c5a75c15d0696b540b3cbc0a6b9b02"
+  },
+  "cases": [
+    "R16_3_11_intact_01_pixel_25",
+    "R16_3_11_intact_01_random_25",
+    "R16_3_11_intact_01_gradient_25",
+    "R16_3_11_intact_01_matched_25",
+    "R16_3_11_intact_02_pixel_25",
+    "R16_3_11_intact_02_random_25",
+    "R16_3_11_intact_02_gradient_25",
+    "R16_3_11_intact_02_matched_25",
+    "R16_3_11_intact_03_pixel_25",
+    "R16_3_11_intact_03_random_25",
+    "R16_3_11_intact_03_gradient_25",
+    "R16_3_11_intact_03_matched_25",
+    "R16_3_11_intact_04_pixel_25",
+    "R16_3_11_intact_04_random_25",
+    "R16_3_11_intact_04_gradient_25",
+    "R16_3_11_intact_04_matched_25",
+    "R16_3_11_intact_05_pixel_25",
+    "R16_3_11_intact_05_random_25",
+    "R16_3_11_intact_05_gradient_25",
+    "R16_3_11_intact_05_matched_25"
+  ],
+  "records": {
+    "R16_3_11_intact_01_pixel_25": "1f7af97f4207956edab6985dcb134463417761b400dd813a1bc5215ab2c7d97a",
+    "R16_3_11_intact_01_random_25": "735851b9e1f632f8a8f2005edfb2119270cd887314b70bd43895687fc1e5d514",
+    "R16_3_11_intact_01_gradient_25": "07a563ba52ba2e59d22149168a2e7a08e04a10ca4efc72f85ce7c69ab98a377e",
+    "R16_3_11_intact_01_matched_25": "9c693c88a9aa1068dd8dda1aa4ffe4129a156a459fe14af862808f7d761d50d0",
+    "R16_3_11_intact_02_pixel_25": "35869c7f81924f89ed887b71ab3396c4810a3527bfe7f3d2d46418e2888bd628",
+    "R16_3_11_intact_02_random_25": "e8ae821fe03670b85541c924cea9eb2b44428e12758c1b994afab5f3a7ea21ee",
+    "R16_3_11_intact_02_gradient_25": "8a763a777b3643e06ca1d9a5c939a0fd48a78c2a0c42610a8b05f75c73203be6",
+    "R16_3_11_intact_02_matched_25": "d00d1144ed1ae18db50aca135ad8558a48da70bc556296fb4718741090deed28",
+    "R16_3_11_intact_03_pixel_25": "19430b6f1f22262e4bf8f4c34e467d7e9990051c47f34afb30b0489cacb09285",
+    "R16_3_11_intact_03_random_25": "53404c64528fdccd8b81713886eea7ca3ec53d9a484795702fcf8bc32cc713d8",
+    "R16_3_11_intact_03_gradient_25": "fd856e2da16b23239a9c3c861a595383994bd6f184fe012283f8bbdc143d355e",
+    "R16_3_11_intact_03_matched_25": "fc3d353a7ee76738b534428a1e1b7e58735b39ef92edeb1ddff25f17f374563c",
+    "R16_3_11_intact_04_pixel_25": "244c4cc1e324359135f7cf04a83062df86ae48ba4492fa6d194ff776a6eda7f9",
+    "R16_3_11_intact_04_random_25": "1533a73320df503ba237d319be52355b8279c50815ddd3601f155a6ce673db01",
+    "R16_3_11_intact_04_gradient_25": "872829f92a600263569d330efe56f201f10093d9a9351e8a4af3d625d404f652",
+    "R16_3_11_intact_04_matched_25": "b57def53b3ccdf19b2d7afe1bb83981d698c23a87bc06d01aace458a8a9a7fd9",
+    "R16_3_11_intact_05_pixel_25": "a9dad13e58fe5f9b3800611c0b77ee97b5aa67e542b39f48bc01b5a45e5f2505",
+    "R16_3_11_intact_05_random_25": "d49758d3951f875c5a887987307be87a9ffe89767a21f9f0e358bfec8c02b7b1",
+    "R16_3_11_intact_05_gradient_25": "6a52dbe02a58dc096bf13a5ad8d38b0fe4197a59379c29c1d691bd43fb089b85",
+    "R16_3_11_intact_05_matched_25": "d096655523291247d154c05831b5ffc4826e0744b983c3b0ee25bf1a5c92f560"
+  },
+  "optimizer_updates": 0,
+  "completed_at": "2026-10-13T00:16:07.072986+08:00"
+}

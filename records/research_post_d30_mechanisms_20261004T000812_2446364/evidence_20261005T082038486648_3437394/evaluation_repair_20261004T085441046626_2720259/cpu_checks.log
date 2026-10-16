@@ -1,0 +1,11 @@
+test_actual_summary_subprocess_imports_snapshot_model (test_post_d30_repair.RepairTests) ... ok
+test_all_effective_runtime_conditions (test_post_d30_repair.RepairTests) ... ok
+test_controller_repair_changes_only_diagnosed_retry_and_worker_dispatch (test_post_d30_repair.RepairTests) ... ok
+test_known_error_only_and_checkpoint_required (test_post_d30_repair.RepairTests) ... ok
+test_present_bad_dsm_matches_previous_protocol_without_missing_mask (test_post_d30_repair.RepairTests) ... ok
+test_reuse_requires_same_checkpoint_and_preserves_existing_rows (test_post_d30_repair.RepairTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.157s
+
+OK

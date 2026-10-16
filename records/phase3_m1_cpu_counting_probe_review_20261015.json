@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-15",
+  "kind": "independent_performance_probe_not_applied_to_live_experiment",
+  "observation_source": "user-pasted server diagnosis; no direct SSH",
+  "live_run": "research_phase3_m1_recovery_20261015T164357_19327",
+  "server": {
+    "configured_threads": 16,
+    "affinity_logical_cpus": 192,
+    "old_profile_effective_cores": 192,
+    "actual_cpu_cores_over_5s": 10.03,
+    "os_threads": 22,
+    "rss_KiB": 29142472,
+    "counted_cases": 127,
+    "total_cases": 320,
+    "cgroup_cpu_budget_not_yet_verified": true
+  },
+  "scientific_status": {
+    "completed_main_trainings": 11,
+    "completed_main_updates": 176000,
+    "amplitude_gate_accepted": false,
+    "conditional_C21_training_skipped": true,
+    "final_verification_pending": true
+  },
+  "local_checks": {
+    "test_functions_passed": 2,
+    "exact_comparison_configurations": 36,
+    "includes": [
+      "multiple stripes",
+      "ignored labels",
+      "ROI overlap",
+      "availability fallback",
+      "border cropping",
+      "tied predictions",
+      "nonfinite rejection"
+    ],
+    "actual_width_6000_evidence_equal": true,
+    "warmed_ABBA_single_thread_seconds": {
+      "original": [
+        2.504795,
+        3.1364958
+      ],
+      "grouped": [
+        2.0577544,
+        1.9290175
+      ]
+    },
+    "timings_are_not_target_machine_speedup": true,
+    "target_machine_benchmark_status": "PENDING_USER_EXECUTION"
+  },
+  "probe_boundary": {
+    "no_gpu": true,
+    "no_model_or_remote_sensing_pixels": true,
+    "no_live_run_writes": true,
+    "no_signals": true,
+    "no_cache_deletion": true,
+    "synthetic_arrays_in_separate_process_only": true,
+    "quota_and_memory_guards": true
+  },
+  "files_sha256": {
+    "scripts/benchmark_phase3_m1_counts.py": "fc9a696ab3564bb05ad6d8c8859b68c1bb37910fd96de3e836c9309fb1410216",
+    "tests/test_phase3_m1_countbench.py": "7dbb19c6179c0195cb95078324c519e8d0a199b1d663b224f0b03c8d7b4b0cec",
+    "docs/protocols/PHASE3_M1_CPU_COUNTING_PROBE_20261015.md": "d661489f42aa8c80ec5a40c43a8b2fb635e5f8f8361a22eb8dca99db5fb693f9"
+  }
+}

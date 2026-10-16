@@ -1,0 +1,31 @@
+test_actual_dataset_masks_and_supervision_matched (test_post_n5.N5Tests) ... ok
+test_actual_dispatch_all_four_then_exit (test_post_n5.N5Tests) ... N5_START 0 N5-0 55
+N5_JOB N5-0 COMPLETE
+N5_START 1 N5-1 55
+N5_JOB N5-1 COMPLETE
+N5_START 0 N5-2 55
+N5_JOB N5-2 COMPLETE
+N5_START 1 N5-3 55
+N5_JOB N5-3 COMPLETE
+ok
+test_actual_failure_stops_other_lane (test_post_n5.N5Tests) ... N5_START 0 N5-0 55
+N5_JOB N5-0 TECHNICAL_FAILURE
+ok
+test_actual_null_timeout_before_dispatch (test_post_n5.N5Tests) ... ok
+test_all_four_masks_geometry_area_T_maximum (test_post_n5.N5Tests) ... ok
+test_bound_initial_full_state_loads_before_fresh_optimizer (test_post_n5.N5Tests) ... ok
+test_contract_rejects_timeout_none_scope_seed_candidate (test_post_n5.N5Tests) ... ok
+test_crop_flip_whole_tile_masks_exact_quarter_and_clean_identical (test_post_n5.N5Tests) ... ok
+test_existing_partial_directory_never_retried (test_post_n5.N5Tests) ... ok
+test_fixed_gate_rejects_unsafe_and_fixed_reverse (test_post_n5.N5Tests) ... ok
+test_main_calls_summary_and_records_final_exit (test_post_n5.N5Tests) ... N5_COMPLETE_UPLOAD_AND_REVIEW /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_20261006T114819_71934/temporary/tmp8vb24rgv/n5 NO_AUTOMATIC_N3_R1_N4_R2
+ok
+test_main_predecessor_failure_never_prepares_or_dispatches (test_post_n5.N5Tests) ... ok
+test_objective_valid_supervision_and_gradients (test_post_n5.N5Tests) ... ok
+test_schedule_exact_rule_direction_counts (test_post_n5.N5Tests) ... ok
+test_upload_roundtrip_tamper (test_post_n5.N5Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 2.461s
+
+OK

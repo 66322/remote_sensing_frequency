@@ -1,0 +1,7 @@
+{
+  "job": "ref_R16_3_11_tile_shuffle_00_clean_25",
+  "observed_at": "2026-10-13T00:00:22.563592+08:00",
+  "optimizer_updates": 0,
+  "phase": "complete",
+  "physical_gpu": 0
+}

@@ -1,0 +1,53 @@
+{
+  "evidence_commit": "37adbaf5fb11a56b41052d3685565f418e9df8cb",
+  "scope": "D21 Potsdam seed42 R0/M0/F2 archived summaries only; not full artifact or pixel rerun",
+  "records": [
+    {
+      "path": "records/rebuild_v1_d21_compact_20260928/potsdam_R0_seed42_summary.json",
+      "conditions": 11,
+      "pooled_scope_records": 22,
+      "max_abs_error": 0,
+      "test6_loaded": false,
+      "checkpoint_sha256": "29aa15f4cd149012996ddeadd7a5b40f593f99854318acd1d0d0acb286ed5975"
+    },
+    {
+      "path": "records/rebuild_v1_d21_compact_20260928/potsdam_M0_seed42_summary.json",
+      "conditions": 11,
+      "pooled_scope_records": 22,
+      "max_abs_error": 0,
+      "test6_loaded": false,
+      "checkpoint_sha256": "23b2939ea50867c96c0a17626fd4a85a27100ebd8296b2fc96440ed8bc3d34de"
+    },
+    {
+      "path": "records/rebuild_v1_d21_compact_20260928/potsdam_F2_seed42_summary.json",
+      "conditions": 11,
+      "pooled_scope_records": 22,
+      "max_abs_error": 0,
+      "test6_loaded": false,
+      "checkpoint_sha256": "0589e83d7320b2ef827cd5e2bf07ccd6bc87282b9d47323a389c257e01b2189c"
+    }
+  ],
+  "result": "PASS",
+  "training_bindings": [
+    {
+      "path": "records/rebuild_v1_d21_compact_20260928/potsdam_R0_seed42_training.json",
+      "global_step": 16000,
+      "checkpoint_sha256": "29aa15f4cd149012996ddeadd7a5b40f593f99854318acd1d0d0acb286ed5975",
+      "eval_match": true,
+      "binary_rehashed": false,
+      "dino_commit": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+      "dino_sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9",
+      "torch_version": "2.2.2+cu121"
+    },
+    {
+      "path": "records/rebuild_v1_d21_compact_20260928/potsdam_M0_seed42_training.json",
+      "global_step": 16000,
+      "checkpoint_sha256": "23b2939ea50867c96c0a17626fd4a85a27100ebd8296b2fc96440ed8bc3d34de",
+      "eval_match": true,
+      "binary_rehashed": false,
+      "dino_commit": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+      "dino_sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9",
+      "torch_version": "2.2.2+cu121"
+    }
+  ]
+}

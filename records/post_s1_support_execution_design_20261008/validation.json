@@ -1,0 +1,52 @@
+{
+  "status": "CPU_PASS_READY_NOT_REGISTERED",
+  "date": "2026-10-08",
+  "tests": 22,
+  "test_seconds": 38.583,
+  "execution_python_files": 12,
+  "local_torch": "2.7.1+cpu",
+  "server_torch_required": "2.2.2+cu121",
+  "server_cpu_checks_before_registration": true,
+  "synthetic_only": true,
+  "real_gpu_run": false,
+  "real_server_backbone_weight_checks": false,
+  "physical_gpus": [
+    0
+  ],
+  "max_gpu_workers": 1,
+  "source_science_commit": "0e22438a7131a0a1f28098e675c3367d40236398",
+  "initial_checkpoint_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
+  "new_training_jobs": 10,
+  "total_steps": 80000,
+  "primary_checkpoint_step": 8000,
+  "D1_new_tile_units": 48,
+  "E_new_tile_units": 144,
+  "Q_reserved": 4,
+  "Q_automatic_training": false,
+  "automatic_retry": false,
+  "server_registration_report_received": false,
+  "coverage": [
+    "same full S1-0 initialization and zero residual across ten cells",
+    "frozen parameters/statistics and missing-outside native support",
+    "full-missing guards; cross-window stitch protection",
+    "exact inherited CE and both-view exposure; zero-exposure gradients",
+    "shuffle both availability strata; inactive calibration slots",
+    "single GPU0 FIFO all twelve tasks; failed/timeout/invalid completion stops",
+    "all entries import/help; complete summary main exit and numerical screens",
+    "integer matrices/joint pooling and artifact tampering"
+  ],
+  "source_files_sha256": {
+    "model/post_s1_support_model.py": "e641cbd71c6d05ebf558dd167434f3a96eec86cde8fdebe06e40b47e3f71bca9",
+    "tests/test_post_s1_support.py": "e6cd69e4a0022f62627bcb2aa63fcd2c70dc1084fa5c50827efb397dfeb521b4",
+    "scripts/control_post_s1_support.py": "9bf6f36db509b26013f251b677f8baf63bdb1366d40451e435be83b6d139ec5c",
+    "scripts/enqueue_post_s1_support.py": "20cb1ddad0dd7eccf735b4cf0cca95a80b0e1dab098834fcf0358bb57e10a7d2",
+    "scripts/post_s1_support_common.py": "7fc774ca5c86c3c1be098927d4d1e5e6d8c028967f1cab6cd2afcdd20245613f",
+    "scripts/post_s1_support_evaluation.py": "485799678bfb87629e311a862de1a04816c10c594286d38205fa10412559b8c1",
+    "scripts/prepare_post_s1_support.py": "30fe2f70533524e8231b4fe43abdc84780757f599b86bd76d1c5330d09db71c9",
+    "scripts/run_post_s1_support.py": "15edff674e7cf0871e4252246ea6efb53bc8f93632a2a77461e9c75b0a7ebe97",
+    "scripts/run_post_s1_support_diagnostics.py": "dc960abeff62b35a46cca7fe83140c452e70e79a7245117885065296be8384bd",
+    "scripts/status_post_s1_support.py": "a64c2681036fd557ef39f472fdb8850ac4be663dbab7bcabfb6a4bb903f9b278",
+    "scripts/summarize_post_s1_support.py": "48222e52c2d262c848fcfa4b63614ac8fb45e63120e570a9aadf97286ec89a81",
+    "scripts/upload_post_s1_support_records.py": "e798a5adbcb474ef7636bda794085c7bfde7b66d9f23c71ea2a57f2ba5859a9c"
+  }
+}

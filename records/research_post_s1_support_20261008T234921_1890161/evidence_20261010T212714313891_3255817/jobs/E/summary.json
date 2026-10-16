@@ -1,0 +1,59 @@
+{
+  "records": {
+    "S1-0": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/jobs/E/S1-0/evaluation/summary.json",
+      "sha256": "f6c678aaf54cc02303ce79f4aac929c5c5cdf69f108bf808c4d30f10de23be66"
+    },
+    "S1-3": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/jobs/E/S1-3/evaluation/summary.json",
+      "sha256": "c9109de0dfc3652794e73bb1966d0c86a5948a0e751745e78fa640672011dc8e"
+    },
+    "P0": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/jobs/E/P0/evaluation/summary.json",
+      "sha256": "8dbf528938e4d7488e7c689f931006f0058fc5209197cfa8bb192982464535d1"
+    },
+    "P1": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/jobs/E/P1/evaluation/summary.json",
+      "sha256": "c2ac0006f685b0c3bff8105b7f7b7e7199d7656bbcb24cecea925efe7b539fa9"
+    },
+    "P2": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/jobs/E/P2/evaluation/summary.json",
+      "sha256": "15d0cbb9e93aebebd348559037a76dcec9226ac3ca886ab0f20623937746fd14"
+    },
+    "P3": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/jobs/E/P3/evaluation/summary.json",
+      "sha256": "fcebd39c6c3662f21b296fa9f7e63726cd766a1859abe141e89f8a9df03c13e2"
+    },
+    "P4": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/jobs/E/P4/evaluation/summary.json",
+      "sha256": "2147817bf5d2cc88a85bd1e335de7eedc38fda695242542a44262c7e789be1fe"
+    },
+    "P5": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/jobs/E/P5/evaluation/summary.json",
+      "sha256": "7aab3ab6479fc8b85d588452d514fbbf57d6278f2a986c0ef25e105cfecda0f6"
+    },
+    "P6": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/jobs/E/P6/evaluation/summary.json",
+      "sha256": "f0b19cc1002adcec2c9472d72e539e282cc83f6d95011e26f4ad9158bb82e328"
+    },
+    "P7": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/jobs/E/P7/evaluation/summary.json",
+      "sha256": "4d4e2fd9e3da9ca4df285cd1cab3ff4ea79f6c4fa6a3a8a5d7ca07851d9c8df8"
+    },
+    "P8": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/jobs/E/P8/evaluation/summary.json",
+      "sha256": "936e88a492c84201b5e643d839993be67cb79b48a64824cc04bf53f64e9a4a86"
+    },
+    "P9": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/jobs/E/P9/evaluation/summary.json",
+      "sha256": "14993327b1b71f9ca8c02a22a16ff5d8d76a4544449d83ebe2a44eea11f58744"
+    },
+    "R0": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/jobs/E/R0/evaluation/summary.json",
+      "sha256": "0e93b62a00682e0d0fea1c27e6e84a85285b23b32333eecd43b0f064d15a012a"
+    }
+  },
+  "new_tile_units": 144,
+  "optimizer_updates": 0,
+  "mask_manifest_sha256": "d1caf6fa3ff950c1b3cffd9ef1797c87ae22db82a41cb1ecbbd7a649fe1a6835"
+}

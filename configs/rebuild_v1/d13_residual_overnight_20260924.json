@@ -1,0 +1,57 @@
+{
+  "experiment": "D13_RGB_ANCHORED_DSM_RESIDUAL_EXPLORATORY",
+  "seeds": [42, 17],
+  "stage1_arms": ["rgb_ce", "dsm_ce", "rgb_risk", "dsm_risk"],
+  "stage2_arms": ["dsm_capacity", "dsm_semantic", "dsm_frequency", "dsm_semantic_frequency"],
+  "training": {
+    "steps": 4000,
+    "patch": 512,
+    "micro_batch": 4,
+    "accum_steps": 4,
+    "effective_batch": 16,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.01,
+    "risk_lambda": 1.0,
+    "random_scale_min": 0.5,
+    "random_scale_max": 2.0,
+    "horizontal_flip_p": 0.5,
+    "vertical_flip_p": 0.5,
+    "condition_probabilities": {
+      "clean": 0.4,
+      "dsm_blur5": 0.1,
+      "dsm_down8": 0.1,
+      "dsm_noise_std010": 0.1,
+      "roll16": 0.1,
+      "dsm_zero": 0.1,
+      "dsm_local_zero_q1": 0.05,
+      "dsm_local_down8_q1": 0.05
+    }
+  },
+  "evaluation": {
+    "conditions": ["clean", "dsm_zero", "dsm_local_zero_q1", "dsm_blur5", "dsm_down8", "dsm_local_down8_q1", "dsm_noise_std010", "roll16"],
+    "families": {
+      "clean": ["clean"],
+      "blur": ["dsm_blur5"],
+      "downsampling": ["dsm_down8", "dsm_local_down8_q1"],
+      "noise": ["dsm_noise_std010"],
+      "shift": ["roll16"]
+    },
+    "stride": 256,
+    "inference_batch": 4,
+    "minimum_mean_gain_pp": 0.1,
+    "minimum_harm_reduction_fraction": 0.1,
+    "minimum_rescue_retention_fraction": 0.9,
+    "max_worst_tile_condition_harm_fraction": 0.005,
+    "max_noise_below_r01_pp": 0.3
+  },
+  "queue": {
+    "wall_seconds": 86400,
+    "reserve_final_seconds": 10800,
+    "smoke_seconds": 1800,
+    "train_seconds_per_arm": 5400,
+    "evaluation_seconds_per_arm": 3600
+  },
+  "split_file": "configs/rebuild_v1/potsdam_split_seed20260915.json",
+  "r01_config": "configs/rebuild_v1/r01_optical_only_16k.json",
+  "note": "Train16-exposed frozen R01; repeatedly inspected Val2; exploratory only; no Test6"
+}

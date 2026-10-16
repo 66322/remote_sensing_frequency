@@ -1,0 +1,8 @@
+{
+  "verdict": "READY",
+  "last_observed": "2026-10-11T08:45:44.211597+08:00",
+  "status": "TRANSFER_COMPLETE_AWAITING_REVIEW",
+  "controller_live": false,
+  "workers_live": false,
+  "checked_at": "2026-10-11T09:48:23.096550+08:00"
+}

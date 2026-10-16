@@ -1,0 +1,15 @@
+{
+  "job": "C0",
+  "step": 8000,
+  "target": 8000,
+  "physical_gpu": 0,
+  "phase": "complete",
+  "observed_at": "2026-10-03T16:31:24.350036+08:00",
+  "session_elapsed_seconds": 6330.60523211956,
+  "tiles_loaded": 12,
+  "tiles_total": 12,
+  "loss": 0.44466134905815125,
+  "seconds_per_train_step": 0.43708094279002396,
+  "remaining_train_hours": 0.0,
+  "gpu_peak_allocated_bytes": 13892278272
+}

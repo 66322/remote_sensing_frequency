@@ -1,0 +1,291 @@
+{
+  "status": "SAMPLE_CONTENT_PASS_SOURCE_ACCEPTANCE_PENDING",
+  "scope": "author_linked_revised_GAMUS_stage_a_three_city_metadata_and_one_triplet_per_city",
+  "repository": "earthflow/GAMUS",
+  "revision": "a3c0e2511f06d909612406f436cf8abb4da805f5",
+  "hub_license_tag": "cc-by-4.0",
+  "license_conclusion": "metadata_tag_only_underlying_source_rights_and_provenance_require_review",
+  "official_author_repo": "https://github.com/EarthNets/RSI-MMSegmentation",
+  "removed_DFC2019_JAX_OMA_per_author_repo": true,
+  "inventory": {
+    "images": {
+      "train": {
+        "files": 5004,
+        "cities": {
+          "DC": 1439,
+          "NYC": 1167,
+          "PHL": 2398
+        }
+      },
+      "val": {
+        "files": 859,
+        "cities": {
+          "DC": 359,
+          "PHL": 500
+        }
+      },
+      "test": {
+        "files": 2861,
+        "cities": {
+          "DC": 361,
+          "NYC": 1000,
+          "PHL": 1500
+        }
+      }
+    },
+    "heights": {
+      "train": {
+        "files": 5004,
+        "cities": {
+          "DC": 1439,
+          "NYC": 1167,
+          "PHL": 2398
+        }
+      },
+      "val": {
+        "files": 859,
+        "cities": {
+          "DC": 359,
+          "PHL": 500
+        }
+      },
+      "test": {
+        "files": 2861,
+        "cities": {
+          "DC": 361,
+          "NYC": 1000,
+          "PHL": 1500
+        }
+      }
+    },
+    "classes": {
+      "train": {
+        "files": 5004,
+        "cities": {
+          "DC": 1439,
+          "NYC": 1167,
+          "PHL": 2398
+        }
+      },
+      "val": {
+        "files": 859,
+        "cities": {
+          "DC": 359,
+          "PHL": 500
+        }
+      },
+      "test": {
+        "files": 2861,
+        "cities": {
+          "DC": 361,
+          "NYC": 1000,
+          "PHL": 1500
+        }
+      }
+    }
+  },
+  "metadata_pairing_all_splits": true,
+  "provided_splits_mix_cities": true,
+  "split_conclusion": "new_geographically_separated_fit_dev_final_split_required_before_training",
+  "samples": [
+    {
+      "city": "DC",
+      "split": "train",
+      "stem": "DC_01_25",
+      "content_pass": true,
+      "triplet": {
+        "images": {
+          "path": "/home/jovyan/zzx/datasets/rebuild_v1_d20_gamus/images/train/DC_01_25_RGB.h5",
+          "relative_path": "images/train/DC_01_25_RGB.h5",
+          "bytes": 3147776,
+          "sha256": "d68446fa7fb4c111d364b79169d6a3bdf26738993439a22459fb93d89d4f5926",
+          "content": {
+            "shape": [
+              1024,
+              1024,
+              3
+            ],
+            "dtype": "uint8",
+            "finite": true,
+            "min": 0.0,
+            "max": 255.0
+          }
+        },
+        "heights": {
+          "path": "/home/jovyan/zzx/datasets/rebuild_v1_d20_gamus/heights/train/DC_01_25_AGL.h5",
+          "relative_path": "heights/train/DC_01_25_AGL.h5",
+          "bytes": 4196352,
+          "sha256": "8350e1b74e5be0a7f614e150baec717d33cabd6a12e208e80c7e7504297a5c9a",
+          "content": {
+            "shape": [
+              1024,
+              1024
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "min": 0.0,
+            "max": 44.51300048828125
+          }
+        },
+        "classes": {
+          "path": "/home/jovyan/zzx/datasets/rebuild_v1_d20_gamus/classes/train/DC_01_25_CLS.h5",
+          "relative_path": "classes/train/DC_01_25_CLS.h5",
+          "bytes": 4196352,
+          "sha256": "9528e7ae804fca95e3c0e9f2efc7cd7ae90781a43003c0fbdca9f71193aa7acf",
+          "content": {
+            "shape": [
+              1024,
+              1024
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "min": 0.0,
+            "max": 6.0,
+            "class_counts": {
+              "0": 216,
+              "1": 115665,
+              "2": 88777,
+              "3": 206119,
+              "5": 166843,
+              "6": 470956
+            }
+          }
+        }
+      }
+    },
+    {
+      "city": "PHL",
+      "split": "train",
+      "stem": "PHL_6148",
+      "content_pass": true,
+      "triplet": {
+        "images": {
+          "path": "/home/jovyan/zzx/datasets/rebuild_v1_d20_gamus/images/train/PHL_6148_RGB.h5",
+          "relative_path": "images/train/PHL_6148_RGB.h5",
+          "bytes": 3147776,
+          "sha256": "a5c7e1f7110178081c8020066cd1159806dde281fa937167e398d370d4eada17",
+          "content": {
+            "shape": [
+              1024,
+              1024,
+              3
+            ],
+            "dtype": "uint8",
+            "finite": true,
+            "min": 1.0,
+            "max": 255.0
+          }
+        },
+        "heights": {
+          "path": "/home/jovyan/zzx/datasets/rebuild_v1_d20_gamus/heights/train/PHL_6148_AGL.h5",
+          "relative_path": "heights/train/PHL_6148_AGL.h5",
+          "bytes": 4196352,
+          "sha256": "09c5c1d089502757bb657b18b97800430cbc6c245a569aa055246587a4a65c0c",
+          "content": {
+            "shape": [
+              1024,
+              1024
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "min": 8.139038072840776e-06,
+            "max": 38.15943908691406
+          }
+        },
+        "classes": {
+          "path": "/home/jovyan/zzx/datasets/rebuild_v1_d20_gamus/classes/train/PHL_6148_CLS.h5",
+          "relative_path": "classes/train/PHL_6148_CLS.h5",
+          "bytes": 1050624,
+          "sha256": "0ed1e4e64882aa4451e289b04c97f586db2b98c12acc710cab51f42afca92940",
+          "content": {
+            "shape": [
+              1024,
+              1024
+            ],
+            "dtype": "uint8",
+            "finite": true,
+            "min": 1.0,
+            "max": 6.0,
+            "class_counts": {
+              "1": 58380,
+              "2": 209541,
+              "3": 67074,
+              "4": 1213,
+              "5": 30723,
+              "6": 681645
+            }
+          }
+        }
+      }
+    },
+    {
+      "city": "NYC",
+      "split": "test",
+      "stem": "NYC_17683",
+      "content_pass": true,
+      "triplet": {
+        "images": {
+          "path": "/home/jovyan/zzx/datasets/rebuild_v1_d20_gamus/images/test/NYC_17683_IMG.h5",
+          "relative_path": "images/test/NYC_17683_IMG.h5",
+          "bytes": 3147776,
+          "sha256": "f033b8b509b757441984af7ea9751b196772fde28142b3e71170e2ec2e027ebe",
+          "content": {
+            "shape": [
+              1024,
+              1024,
+              3
+            ],
+            "dtype": "uint8",
+            "finite": true,
+            "min": 0.0,
+            "max": 246.0
+          }
+        },
+        "heights": {
+          "path": "/home/jovyan/zzx/datasets/rebuild_v1_d20_gamus/heights/test/NYC_17683_AGL.h5",
+          "relative_path": "heights/test/NYC_17683_AGL.h5",
+          "bytes": 4196352,
+          "sha256": "eb359c62df03cbd5a491f1f0c338b2e7c6b4220771ba372b43590ce8e2f664ca",
+          "content": {
+            "shape": [
+              1024,
+              1024
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "min": -0.24993358552455902,
+            "max": 33.299400329589844
+          }
+        },
+        "classes": {
+          "path": "/home/jovyan/zzx/datasets/rebuild_v1_d20_gamus/classes/test/NYC_17683_CLS.h5",
+          "relative_path": "classes/test/NYC_17683_CLS.h5",
+          "bytes": 1050624,
+          "sha256": "8045394cdf46d31cb9141bbdd0da17f98fd1fe9f2e012751355af84a130b6adc",
+          "content": {
+            "shape": [
+              1024,
+              1024
+            ],
+            "dtype": "uint8",
+            "finite": true,
+            "min": 0.0,
+            "max": 6.0,
+            "class_counts": {
+              "0": 21380,
+              "1": 15579,
+              "2": 449246,
+              "5": 17527,
+              "6": 544844
+            }
+          }
+        }
+      }
+    }
+  ],
+  "sample_count": 3,
+  "gpu_used": false,
+  "training_started": false,
+  "potsdam_test6_loaded": false,
+  "elapsed_seconds": 84.35
+}

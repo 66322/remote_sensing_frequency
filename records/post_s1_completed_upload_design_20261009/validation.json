@@ -1,0 +1,16 @@
+{
+  "status": "SYNTHETIC_STDLIB_PASS_READY_FOR_SERVER_UPLOAD",
+  "tests": 6,
+  "test_seconds": 1.277,
+  "entry_help": true,
+  "science_files_mutated": false,
+  "real_server_upload": false,
+  "coverage": [
+    "RUNNING incomplete JSON excluded",
+    "completed membership frozen against queue race",
+    "bad completion binding rejected",
+    "CPU/D1 incomplete rejected",
+    "missing completed prediction indexed/rejected",
+    "science snapshot tamper rejected"
+  ]
+}

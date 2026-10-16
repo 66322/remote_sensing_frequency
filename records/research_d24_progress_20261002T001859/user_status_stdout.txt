@@ -1,0 +1,39 @@
+LAST_OBSERVED=2026-10-02T00:18:59.788679+08:00 QUEUE=RUNNING COMPLETE=0/15
+A0 GPU0 RUNNING training step=2360/4000 windows=-/- progress_at=2026-10-02T00:19:02.780409+08:00
+A2 GPU1 RUNNING training step=2140/4000 windows=-/- progress_at=2026-10-02T00:19:01.680178+08:00
+A3 GPU0 PENDING  step=0/4000 windows=-/- progress_at=-
+A1 GPU1 PENDING  step=0/4000 windows=-/- progress_at=-
+C0 GPU0 PENDING  step=0/4000 windows=-/- progress_at=-
+C2 GPU1 PENDING  step=0/4000 windows=-/- progress_at=-
+D2 GPU0 PENDING  step=0/4000 windows=-/- progress_at=-
+D0 GPU1 PENDING  step=0/4000 windows=-/- progress_at=-
+C3 GPU0 PENDING  step=0/4000 windows=-/- progress_at=-
+C1 GPU1 PENDING  step=0/4000 windows=-/- progress_at=-
+D1 GPU0 PENDING  step=0/4000 windows=-/- progress_at=-
+B0 GPU1 PENDING  step=0/4000 windows=-/- progress_at=-
+B1 GPU0 PENDING  step=0/4000 windows=-/- progress_at=-
+B2 GPU1 PENDING  step=0/4000 windows=-/- progress_at=-
+B3 GPU0 PENDING  step=0/4000 windows=-/- progress_at=-
+GPU0 ETA: 8 jobs have no completed matching update range; known work roughly 0.00h
+GPU1 ETA: 7 jobs have no completed matching update range; known work roughly 0.00h
+Persisted observations, not proof that a PID is live. ETA is approximate and includes train/eval only after a job completes.
+D24_PROGRESS 0 A0 loading_fit_tiles step=0 elapsed_minutes=1.0
+D24_PROGRESS 1 A2 loading_fit_tiles step=0 elapsed_minutes=1.0
+D24_PROGRESS 0 A0 training step=160 elapsed_minutes=2.0
+D24_PROGRESS 1 A2 training step=160 elapsed_minutes=2.0
+D24_PROGRESS 0 A0 training step=460 elapsed_minutes=3.0
+D24_PROGRESS 1 A2 training step=420 elapsed_minutes=3.0
+D24_PROGRESS 0 A0 training step=720 elapsed_minutes=4.0
+D24_PROGRESS 1 A2 training step=680 elapsed_minutes=4.0
+D24_PROGRESS 0 A0 training step=1020 elapsed_minutes=5.0
+D24_PROGRESS 1 A2 training step=940 elapsed_minutes=5.0
+D24_PROGRESS 0 A0 training step=1300 elapsed_minutes=6.0
+D24_PROGRESS 1 A2 training step=1200 elapsed_minutes=6.0
+D24_PROGRESS 0 A0 training step=1600 elapsed_minutes=7.0
+D24_PROGRESS 1 A2 training step=1460 elapsed_minutes=7.0
+D24_PROGRESS 0 A0 training step=1880 elapsed_minutes=8.0
+D24_PROGRESS 1 A2 training step=1720 elapsed_minutes=8.0
+D24_PROGRESS 0 A0 checkpoint_selection step=2000 elapsed_minutes=9.0
+D24_PROGRESS 1 A2 training step=1980 elapsed_minutes=9.0
+D24_PROGRESS 0 A0 training step=2260 elapsed_minutes=10.0
+D24_PROGRESS 1 A2 training step=2060 elapsed_minutes=10.0

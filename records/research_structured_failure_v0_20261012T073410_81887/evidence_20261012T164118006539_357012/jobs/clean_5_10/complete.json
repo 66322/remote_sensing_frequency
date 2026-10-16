@@ -1,0 +1,19 @@
+{
+  "job": "clean_5_10",
+  "plan_sha256": "3b9298a187a83a7fe9b49c4f3282f8d94418978c42a08cbc9c49364e8481cfe0",
+  "code_sha256": "9eda3cb812434f05c85b5764430e9fd7d73e0f762734888ce09f337e7f67213d",
+  "mask_manifest_sha256": "c631005f512f891f978385332f2092649a536ec0b7f1cee972914a1418afa275",
+  "source_plan_sha256": "c4d5248f3cd5cfe9b61a8544533bbc6cb4bbe65001605fd8a90c4fb9d06b08b9",
+  "records": {
+    "RGB.json": "b9efdb70732dc89a90a3405140a9b6db648fce93d9a65eb50a5910e68cf4b1c9",
+    "S1.json": "490f745dbcf3f1434d266d6c9d27f8503385537e002deb92dbd1c1348cf3aae4",
+    "MASKED.json": "bcdce256ba4c4e13964290212db013591be9d760bf7ecf93e701ad1758730979",
+    "CONTEXT.json": "9e867b0101aaed70aedc667a1d5187442c2c94678453e86651d3b062a4dd2f79"
+  },
+  "optimizer_updates": 0,
+  "endpoint_checks_sha256": "7e4e7a78e2c4f31204e1c9c3ca89408d184a4b9bc1ab51024e5960f112ac50dc",
+  "input_binding_sha256": "f427f544acf912a8b3017f32a3e7cc5e4cb051ec8a6d882a958ee4d28dd69de3",
+  "test6_loaded": false,
+  "independent_final_loaded": false,
+  "completed_at": "2026-10-12T11:15:53.577545+08:00"
+}

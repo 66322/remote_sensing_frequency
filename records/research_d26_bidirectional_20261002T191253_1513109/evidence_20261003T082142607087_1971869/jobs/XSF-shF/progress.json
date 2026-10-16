@@ -1,0 +1,15 @@
+{
+  "job": "XSF-shF",
+  "step": 8000,
+  "target": 8000,
+  "physical_gpu": 0,
+  "phase": "complete",
+  "observed_at": "2026-10-03T04:04:41.884655+08:00",
+  "session_elapsed_seconds": 6244.403419546783,
+  "tiles_loaded": 12,
+  "tiles_total": 12,
+  "loss": 0.4229320287704468,
+  "seconds_per_train_step": 0.5070496928719803,
+  "remaining_train_hours": 0.0,
+  "gpu_peak_allocated_bytes": 13978931200
+}

@@ -1,0 +1,7 @@
+D26_PID=1571946
+D26_DIRECTORY=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109
+D26_LOG=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109/nohup.log
+D26_STARTED 0 J0 pid=1571983
+D26_STARTED 1 B0 pid=1571989
+D26_PROGRESS 0 J0 initializing step=0 elapsed_minutes=0.0
+D26_PROGRESS 1 B0 initializing step=0 elapsed_minutes=0.0

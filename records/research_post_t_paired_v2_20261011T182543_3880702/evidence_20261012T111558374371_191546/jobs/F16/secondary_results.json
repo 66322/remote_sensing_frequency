@@ -1,0 +1,56 @@
+{
+  "selected": {
+    "step": 12000,
+    "score": 83.9432148411759,
+    "eligible": true,
+    "protection_checks": {
+      "clean": true,
+      "rgb_missing": true,
+      "dsm_missing": true,
+      "dsm_U": true,
+      "worst_protected_tile": true
+    },
+    "metric": "Val2 NoBoundary pooled rgb_U mIoU_fg5 percent",
+    "secondary_only": true,
+    "binding": {
+      "training": {
+        "execution_commit": "44e4df5afbaeb603e6441e7ef14ff09f228bc027",
+        "plan_sha256": "c4d5248f3cd5cfe9b61a8544533bbc6cb4bbe65001605fd8a90c4fb9d06b08b9",
+        "code_manifest_sha256": "30ae48f3b4d5e0322d5e2d5b310cc644a2e7fd0df2214e997994da17ee43c570",
+        "mask_manifest_sha256": "24b2935c4f295e5599b77319b94a9a192c601ac9a9edb6da9f6ab492216e8257",
+        "initial_checkpoint_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
+        "job": {
+          "id": "F16",
+          "kind": "train",
+          "mechanism": "F",
+          "gpu": "available_0_or_1",
+          "steps": 16000,
+          "seed": 42,
+          "donor": "S1-0",
+          "frozen_base": true,
+          "support_preserved": true,
+          "local_only": true,
+          "geometry_aug": false,
+          "control": "none",
+          "timeout_hours": 24.0
+        },
+        "allowed_physical_gpus": [
+          0,
+          1
+        ],
+        "primary_checkpoint_step": 16000,
+        "test6_loaded": false,
+        "independent_final_loaded": false
+      },
+      "step": 12000,
+      "checkpoint_sha256": "326d971cfdc0dae7c64ebd828580e82616f785cf6e6f6aaef5694ea4d2d59811"
+    },
+    "checkpoint_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_t_paired_v2_20261011T182543_3880702/jobs/F16/checkpoints/step_12000.pth"
+  },
+  "primary": false,
+  "tags": [
+    "secondary_ordinary",
+    "secondary_U",
+    "secondary_E"
+  ]
+}

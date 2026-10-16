@@ -1,0 +1,387 @@
+{
+  "data_root": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+  "development_ids": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    20,
+    22,
+    24,
+    27,
+    29,
+    31,
+    33,
+    35,
+    38
+  ],
+  "files": {
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area1.tif": {
+      "sha256": "30cefd7b4c756a8891b2c3b0fe38a7ef2b4d3e5a9da2493cf13130b125fa233e",
+      "size": 19737856
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area10.tif": {
+      "sha256": "cf5ea889f28b6dea10c37c1f6f73e9be2f42e53045875203114d71dd1cab4042",
+      "size": 19318788
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area11.tif": {
+      "sha256": "b68309b9fd69e24afe19b0e469184e2a263f3c1ef9c23ef4a926b858bb09aaec",
+      "size": 25167648
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area12.tif": {
+      "sha256": "bba0232cf8ad5251d05c75047ba51efdb7baf3bedc11861c24c34b7661ad0e4a",
+      "size": 19814824
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area13.tif": {
+      "sha256": "01f1dc400bbd588b56df6032f328b24a9bb36a42ee54b2c75a7c16fe223f3e50",
+      "size": 28852100
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area14.tif": {
+      "sha256": "fd54bd119a5f28c1b2145d913c05c29da69a1fe847b09b2dded19f14fcd000d1",
+      "size": 19707152
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area16.tif": {
+      "sha256": "d5ad914b0646bfc2c43327f7ed141fa38010426a6022655b9af9688f47c187fe",
+      "size": 19707148
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area17.tif": {
+      "sha256": "af5ebb550d593a624ea9889b0665842629ff7aa27af8c9a2ac0fd62fd08c4911",
+      "size": 11987796
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area2.tif": {
+      "sha256": "c7b2b8772c16b0f260f665586ea1042454f596d8f4f89a2c2bb5a6f8ab2ebf86",
+      "size": 26891340
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area20.tif": {
+      "sha256": "843827bb278a8d5ce1a3fd4991667a8610f3aa1e2345e740b5b57438a4589b0a",
+      "size": 17297404
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area22.tif": {
+      "sha256": "b871c0742311ab0d3e3f7b66bbe7acd36100cd88bcf0955ba172f094dbf090a5",
+      "size": 19398360
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area23.tif": {
+      "sha256": "da9818a3a959a5a8789363c83cd8e2fdc99a684c6495d792fd0e63121850c740",
+      "size": 19398364
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area24.tif": {
+      "sha256": "7f57a43a95631019ae728efd8f41f1aa76e4286c7aad09fda80bc9dc763c38dd",
+      "size": 19398364
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area26.tif": {
+      "sha256": "108042152648d4d6bf48c15515b322a7cc662a9f4d4f540174be8721716a5bb0",
+      "size": 21378444
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area27.tif": {
+      "sha256": "61eeef1c6070e126b60e06e23c574632f7834cdd3d28e43147aaf299c867d415",
+      "size": 25422200
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area28.tif": {
+      "sha256": "2dfd8582342c4035f6124b4b350fb1c6731d2b9db9162c2e9dedc943219854aa",
+      "size": 19701968
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area29.tif": {
+      "sha256": "a1be6e6e4003633d3685d7e013b8914212582e05470c0a7db37e12dacbfcabdf",
+      "size": 19671296
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area3.tif": {
+      "sha256": "5d27c33c57e0b3374ffdeb67bbd464ad83148a0a5b73999a207ef4cd1f394b3a",
+      "size": 24146316
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area31.tif": {
+      "sha256": "99ab5468998e8e1f1f20389e944f749517bc6487e1808054c4c6ffcdd24adf04",
+      "size": 20253812
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area32.tif": {
+      "sha256": "1897ef7c51c3f8c13159f0128ce3f195302bdc9757eca12bad4613fff9bf2e5f",
+      "size": 20253812
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area33.tif": {
+      "sha256": "1887bfe01535ff49468da0c0a011d425a194ec92ac8db913a3931fb7e10b82c8",
+      "size": 16175976
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area34.tif": {
+      "sha256": "88ab7fe0c76dac216dab5495def12c4e0c413ba8242312e2a42511d975ea6918",
+      "size": 14203476
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area35.tif": {
+      "sha256": "521508dbabdb3d399410b383664ac2e2e038177ee995ed1e471bd320014e1d71",
+      "size": 21156628
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area37.tif": {
+      "sha256": "f47e825a33e5f711208555a1ceabe70f5c61a524b35e11a429ef9703e3e84419",
+      "size": 15946368
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area38.tif": {
+      "sha256": "581ae6cedc15997898c0a77764568f89679aad9af7cdd401b350f1d656978932",
+      "size": 38941348
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area4.tif": {
+      "sha256": "5b6ab735e1916035c241e83ca647398a22d3dc9109a53a71681b9470c8b8c44c",
+      "size": 19318440
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area6.tif": {
+      "sha256": "7f1cb26fce4c8acd9a0fd156c58f97421b2df9b354ed45d4770bc9e95f084114",
+      "size": 19321604
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area7.tif": {
+      "sha256": "55a2c6a80ee137a447d0631128d3783e374cda4f4145c16dbfda092d004f62b8",
+      "size": 19318452
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area8.tif": {
+      "sha256": "9b5e575aaeb4a72387c6cdd54682a4db7d9a6618218558d5f2cef4587f5e96c3",
+      "size": 19318448
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area10.tif": {
+      "sha256": "345703b72f03b10c87b1f7437c712cffa2dc7002451625752846c3082b40168e",
+      "size": 15001428
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area12.tif": {
+      "sha256": "af485f772af121ca50eb955d9d4132a84742735373869595b96fbba35d2dfc25",
+      "size": 15368676
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area14.tif": {
+      "sha256": "aa138a4280062ab92baba733d0b058721d168c062f9333550c1dbe1f11546bd9",
+      "size": 15259952
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area16.tif": {
+      "sha256": "e9aaf5c13032ce4efc815de399bfdd59dd35ff4d5cb15c820859ab514a2f7d98",
+      "size": 15245504
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area2.tif": {
+      "sha256": "3f13e735bee58c61091b9046c58415a1a4e3941216599312132b5b09ec88f6d0",
+      "size": 20832368
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area20.tif": {
+      "sha256": "60a3bc41c027ddd977668025048eae7994b050c7fdc916b2295bd2a2356845c9",
+      "size": 13390436
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area22.tif": {
+      "sha256": "b12746505ef05e8b35a3bc06f9f748d6f11f9cf53afc64ca7d671e37531ccb04",
+      "size": 15070676
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area24.tif": {
+      "sha256": "d2eee9b934c5156336db90b5efa4d03ae1ad742fc3de5d2d76a2654f0c9ff765",
+      "size": 15000952
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area27.tif": {
+      "sha256": "c5a0a01c6a69981598a5049651f988f451f788fdd5876f84516121beb63e5a07",
+      "size": 19706336
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area29.tif": {
+      "sha256": "f54de1a6e68f565fd71585210294feb333a1fa2a2b09bdb39afa8824fc7c2939",
+      "size": 15240932
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area31.tif": {
+      "sha256": "09024a955924bcfe8043f3086d8ce51df315347f5cedcf6621ab71c4ea3c5a4e",
+      "size": 15717784
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area33.tif": {
+      "sha256": "fcfdc45ab2c58e99e1befe942ceea5af40bc8f44a41ff6f1bacc3420eda3b16f",
+      "size": 12550436
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area35.tif": {
+      "sha256": "e9c6622f925a78e72563f20b7070d14fb76b5dee27ab2f5e00997ba4e82a4474",
+      "size": 16443200
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area38.tif": {
+      "sha256": "ecb1e9e4da8722d6b540e0114cd03fdc8db665519d5b026051354683325ccdb4",
+      "size": 30169436
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area4.tif": {
+      "sha256": "6f42ed2b88a262b8af7f07c86bae3411cfed3ee6e3fbebaf474a557a085eb012",
+      "size": 15000012
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area6.tif": {
+      "sha256": "be532ab395cc8aaf71805acc99903f0ae484156d3caf77ff8c6eb8bc6539e2d5",
+      "size": 14999220
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area8.tif": {
+      "sha256": "9d9ccc81a88b629549ac977c07234a7bc4e4c7925764e8480647ded52d7f2128",
+      "size": 14991224
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_for_participants/top_mosaic_09cm_area1.tif": {
+      "sha256": "9e01a18b2fa8dbba17d30e36d50a264f97409356e5a259a48b9f3225143984d7",
+      "size": 15347536
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_for_participants/top_mosaic_09cm_area11.tif": {
+      "sha256": "5642c05a2b54e89ba3bb81547c3db06c6aebe4334dd4e71ab94df66c0bed0621",
+      "size": 15084176
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_for_participants/top_mosaic_09cm_area13.tif": {
+      "sha256": "dc547710470a41a0fcd59c28af21ac5e7efe354f68dcb2eb3998b9c69602056a",
+      "size": 22326104
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_for_participants/top_mosaic_09cm_area17.tif": {
+      "sha256": "1b28bc6ca9690856d4c389a438cb856f0f1f28732fbb5202049e840f1d956ffa",
+      "size": 9270036
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_for_participants/top_mosaic_09cm_area23.tif": {
+      "sha256": "88819b6e64b0fc126ddef749b0878ae3bfa14a4d32a6ad89ba3d4d4d3f0ffe9a",
+      "size": 15059188
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_for_participants/top_mosaic_09cm_area26.tif": {
+      "sha256": "3943d4959ae977468c068729ddcd03028ce78b141682252f252afe48b3f6eea6",
+      "size": 16580580
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_for_participants/top_mosaic_09cm_area28.tif": {
+      "sha256": "902fb10e96795a0f063b280e4a9117e5fa82fbbf42dc6a53fcdbd17736b1f9d4",
+      "size": 15292672
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_for_participants/top_mosaic_09cm_area3.tif": {
+      "sha256": "c3f2a1454419344efc3429d23b3f1c3dbf6acb0f0aeb8628c9a2c5c5224e0c6a",
+      "size": 18766764
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_for_participants/top_mosaic_09cm_area32.tif": {
+      "sha256": "5398aa097f43135b2b16ed62550c806e937603253789269a634013b649d04ac1",
+      "size": 15704744
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_for_participants/top_mosaic_09cm_area34.tif": {
+      "sha256": "4b1e4387047f1ed8e6a2d002e6ef4092a47c338de19a94bd894111fa609cd33d",
+      "size": 11022248
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_for_participants/top_mosaic_09cm_area37.tif": {
+      "sha256": "67abe58dc12d16107fa6483f0c82c4a11b52ac253d19a01a06f0cbcbf1fc0d3c",
+      "size": 12365224
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_for_participants/top_mosaic_09cm_area7.tif": {
+      "sha256": "7f6750ace6394b31bff5dcde14781606b5b92ff4eb06d8eeef5be5fc50ab1815",
+      "size": 14998908
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area1.tif": {
+      "sha256": "656e4f358d2298a84b97472168f4b5416fba4162ffc51f4b3fc11a1cdfef0e3d",
+      "size": 14896122
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area10.tif": {
+      "sha256": "41b20461290092962eb5fb843f66c06c2a701f81a3e9f9d9c734d293f330a800",
+      "size": 14582538
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area11.tif": {
+      "sha256": "665f0ac397665ca79da100fd4751685cc5162b3ff92c5a967344dc707d82112c",
+      "size": 14680374
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area12.tif": {
+      "sha256": "0f97934b4e6b7c201445145be29ddb586dd6a8e44d76fd38ce1076d80bc9e768",
+      "size": 14961834
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area13.tif": {
+      "sha256": "82279beb58038033f3815e5c2d5fc6696bc5a5692207821828f789a0b5a7b8fe",
+      "size": 21789756
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area14.tif": {
+      "sha256": "3a9da57d33d07dbdcc334f550d6b1e30cc55eec3b78d3f8c14087392acdd476d",
+      "size": 14870332
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area16.tif": {
+      "sha256": "eb44c19098dd40dac305620088bc7e3b63d6bc6b0f7e5bbd80b9b6aa257148ab",
+      "size": 14876494
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area17.tif": {
+      "sha256": "42eb3ad90338f00a4d255fd68bd112bcefd3a910891fadd78b83bcf511d089bb",
+      "size": 9047088
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area2.tif": {
+      "sha256": "5929a0e53d6c30bead13af190659489a0f0d438f76eda226a6846d7539a317f6",
+      "size": 20284360
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area20.tif": {
+      "sha256": "c08a6cdfe8a60dd69dffebf280f214f16542ce6c5fbad96b61c8b214ca926d36",
+      "size": 13056988
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area22.tif": {
+      "sha256": "5ef812df89279707a7e5fb6ac66a2ef1a701877cbf047c8bdc160f27b6886dad",
+      "size": 14627754
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area23.tif": {
+      "sha256": "05293bf0e3dd2fb3fe823d2a8053a4282a436b95f09eff06c7e3bc841e373359",
+      "size": 14640390
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area24.tif": {
+      "sha256": "86140960b8451d76abcc8d9b5dbc366098048aa638711b257ac1a4eef0d7237e",
+      "size": 14644892
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area26.tif": {
+      "sha256": "01bd84675f154a6d6b288313d5f792c4ecae91106ee0fb326ffa5736f62ed2f7",
+      "size": 16132926
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area27.tif": {
+      "sha256": "a976dcee88060fe6f0054e8ca3ddbbf68f75c476c75320b086a8381947de4663",
+      "size": 19189570
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area28.tif": {
+      "sha256": "ae380a7328d27e9f5ed29b7cbfb3bcdea1c3b3ab60ded8c2ef1280b0fa5b98cd",
+      "size": 14874412
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area29.tif": {
+      "sha256": "76ec58d3f43f331ea8eb1169e54d234c46d5bfed137f85d8b8b0aeb8fb13a211",
+      "size": 14841554
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area3.tif": {
+      "sha256": "d16872087590dc8ffd5b45c81537f9028a7081c47af50f067137c37b0fb7821e",
+      "size": 18230756
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area31.tif": {
+      "sha256": "87f46ae92b13efabeae2e037a8edb177ec7d7f23f319b54df05e1c7eac83a467",
+      "size": 15282494
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area32.tif": {
+      "sha256": "d52bd2589ed1cb68e6167809dfd10f8dbec883f5d94d773834251a1bf5362946",
+      "size": 15267134
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area33.tif": {
+      "sha256": "7c51c67b113d8969af1123ac547f39ba91a3b4a486c03d34e2e9f93de986b32c",
+      "size": 12201200
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area34.tif": {
+      "sha256": "ecc4d371c93ac279c0e5b98d91ecad13a46bd4d78cee492d1b94fb40d759d352",
+      "size": 10721306
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area35.tif": {
+      "sha256": "22dc9f561c28e7a6e2e51adf8225c2a2afae4ccbe07b557f2f88b4dc9a232ccf",
+      "size": 15882500
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area37.tif": {
+      "sha256": "681887e9d0442665a9e68ed834bdf5dca20e0ee4de8dd18dc242758216be9907",
+      "size": 12037552
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area38.tif": {
+      "sha256": "f52714e5d5991a194ecd784359ded79459c00a07e89b5f6ceb9975dd039dfeb0",
+      "size": 29404734
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area4.tif": {
+      "sha256": "a985feddd8ef2d22fe147a6e29835d5d9169d543683518adbfbcde8ecde0559b",
+      "size": 14575802
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area6.tif": {
+      "sha256": "b4afd0906c979c25a162e84247f93ffe7ce62900ce9f3ac9a1234c7d3993476c",
+      "size": 14573364
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area7.tif": {
+      "sha256": "e0e2eda818caf672558d9ebaa68b29ae98b99351f00058be6ed2c623709fe572",
+      "size": 14580052
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area8.tif": {
+      "sha256": "8ca3f6aa284ea032ca17a27e772d8a20cc1aee4a33559bc2cc05edc0c7ff8a4d",
+      "size": 14577072
+    }
+  },
+  "schema_version": "1.0",
+  "train_ids": [
+    1,
+    3,
+    7,
+    11,
+    13,
+    17,
+    23,
+    26,
+    28,
+    32,
+    34,
+    37
+  ]
+}

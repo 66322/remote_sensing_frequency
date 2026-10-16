@@ -1,0 +1,50 @@
+{
+  "git_commit": "b66a9017129b0d6adc45c71cc6e9ca042548fc0b",
+  "source_sha256": {
+    "scripts/d18_replication.py": "04c02a30c66e39c2c377a8043eb95fb77c12392055a1a920f5d68ff5ce7f8ab2",
+    "scripts/train_rebuild_v1_d18_replication.py": "5fbb537a0da29cda6fbecaea0004bf75c2f9d6244123b398bfed4582a8dddcfd",
+    "scripts/eval_rebuild_v1_d18_replication.py": "23cc891457afd78341936df4bdf3a79eb493968d3097fa28a1c7326ea4025aff",
+    "scripts/analyze_rebuild_v1_d18_replication.py": "6d76bfb0487d7895c8365102cfb5c6ca1d46192d07609bd75f51d8849d68dc1d",
+    "scripts/archive_rebuild_v1_d18_replication.py": "cc25c6e22bd22e5eb4ec97dc417065c94a90a4162136d26b2c5b2cb79c4412e5",
+    "scripts/run_rebuild_v1_d18_replication_queue.py": "18d957056f2e5fd4b4707082e08071a0694df1945f221228e7d3c25515aebc07",
+    "scripts/run_rebuild_v1_d18_replication_queue.sh": "c19c30ea68f237f0d125276740495f01abed3e8f3b4d7acc50fc7939e36593a8",
+    "configs/rebuild_v1/d18_replication_seed17_20260928.json": "700a2eb0861d383f0f7801ff1b5205508191c73bd31f459709a72bb44c2c416c",
+    "configs/rebuild_v1/d18_d19_night_20260927.json": "cb1c398acac6c9892aeee65bc5f331375a2395c0233654d7a3fc6ee58329ef0f",
+    "configs/rebuild_v1/potsdam_split_seed20260915.json": "d9fe260f6b1be3807811e454c1673d1e69db235c32d4dea207e8724975e210ab",
+    "configs/rebuild_v1/r05_quality_plus_dropout_16k.json": "07dd4b7f224d2e036024dfb2ab57bac9fe312335a5eebb8173778cd5c11de133",
+    "configs/rebuild_v1/r01_optical_only_16k.json": "a0c1da8bbe1bdc75ff90603f4873da861731fbba11899d4851e6e0e8e865448e",
+    "scripts/summarize_rebuild_v1_d18_d19.py": "118e6fe53161c0c9b95e3fd8ee17fbfc687944b591975c844cc49fa86ec7bef9",
+    "scripts/train_rebuild_v1_r01_optical_only.py": "428322de27deeb6b02fe90f01cb8238d2580a2c36b4a04845111c87fecc7210a",
+    "scripts/d15_capability.py": "32876110effb550694766815679ab3c283c7c9f1c1d37f4a6b31cf1ac0a9cf4e",
+    "model/rebuild_v1_optical_only.py": "fa4e0d323725223d2129bcd2f1becbd02e2ce01cba0ecc6512cddfeaee099ca0",
+    "scripts/d18_d19_night.py": "2dfb66d46109de597d34d95674edcabe66222f96c23c1794da76eb413e3bf2ca",
+    "model/rebuild_v1_night_screen.py": "95ba4785eaeb7e0c0009ade5328de6d11b4f137e9df34e95b2793efc0ce8a6d6",
+    "scripts/train_rebuild_v1_d18_d19.py": "34d99d6275725200921aae125a7af3fefc655b29cb5a06473e0b774461af73ce",
+    "scripts/eval_rebuild_v1_d18_d19.py": "e34452ab96f37681f92949d37af9cf6771cd19cc5550183593ad84c2541d0c2a",
+    "scripts/d16_d17_portfolio.py": "87d5a6d9dc383881bd36fbf08c4c27bad89cc6303cc13e0434be6b0147448aa7",
+    "scripts/train_rebuild_v1_d16_d17.py": "13c5a815c8e7831bf826d5f9188a8885b0caa35cf146b49981e60d96ea30da8c",
+    "scripts/train_rebuild_v1_r02_budget_pilot.py": "93293ed196887b165c6d4fb500c7cabe22ffee4cfabbebcfb2c89c4a3042a9f9",
+    "model/vitcross_seg_modeling_freq_ablation.py": "c5a01fa7ef3ed754c1d8715217d3c3a7123174ff9d3be658c969186fa74a8453",
+    "model/vitcross_seg_modeling_freqfusion.py": "727183367be96dc287fe6f96dae8c7fce54371aa09b5b881bb512e104202be36",
+    "model/vit_seg_modeling_resnet_skip.py": "c8e4b1be6144bda0ec9acaf9e5339420a35f33a1c2bc138db4f8f3d3781e1850",
+    "model/dynamic_conv.py": "d24b6003e6b8010503dd2bb0e3657881f2970f73b671f96d4ee18a9d361ae4c7",
+    "model/vit_seg_configs.py": "303cf79b93631b144d4f4d4258ab7e2b780ca52376da3d21dbf75cb03b44dbd4",
+    "scripts/night_boundary_metrics.py": "eb942fd36cafb19d6a32709d23a841e518d68099777d9b3913eeefe62e44c814",
+    "tests/test_d18_d19_night.py": "6d0316e5f0e208047a216b56471d0b361622bf187b1de5d9f028e420b4b29ca3",
+    "tests/test_d18_replication.py": "001ddc67971cd984573d28b01a273b3f7afb8659b3eb856577e281e328157f85"
+  },
+  "arms": [
+    "P0",
+    "P1",
+    "P2"
+  ],
+  "training_seed": 17,
+  "evaluation_corruption_seed": 42,
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "d18_python": "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+  "data_root": "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped",
+  "test6_loaded": false
+}

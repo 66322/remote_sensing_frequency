@@ -1,0 +1,676 @@
+{
+  "observed_at": "2026-10-02T15:14:54.746229+08:00",
+  "complete_jobs": 8,
+  "rows": [
+    {
+      "id": "P0",
+      "clean": 86.90812461698017,
+      "rgb_family": 85.10436605901077,
+      "aux_family": 86.88363482342186,
+      "composite": 86.29870849980426,
+      "aux_zero": 86.13774279072737,
+      "missing_macro": 86.585706092856,
+      "selected_step": 2000,
+      "pair_enabled_steps": 0
+    },
+    {
+      "id": "P1",
+      "clean": 86.84468980017185,
+      "rgb_family": 85.03877118345613,
+      "aux_family": 86.82142228337119,
+      "composite": 86.23496108899973,
+      "aux_zero": 86.06345872978997,
+      "missing_macro": 86.52104334469284,
+      "selected_step": 2000,
+      "pair_enabled_steps": 4000
+    },
+    {
+      "id": "P2",
+      "clean": 86.88714247924914,
+      "rgb_family": 85.30251226743738,
+      "aux_family": 86.85948763960775,
+      "composite": 86.34971412876477,
+      "aux_zero": 86.08879555011299,
+      "missing_macro": 86.55200422739746,
+      "selected_step": 4000,
+      "pair_enabled_steps": 0
+    },
+    {
+      "id": "P3",
+      "clean": 86.89339604876814,
+      "rgb_family": 85.31154559304636,
+      "aux_family": 86.86413187454815,
+      "composite": 86.35635783878756,
+      "aux_zero": 86.10186999085583,
+      "missing_macro": 86.56176206391206,
+      "selected_step": 4000,
+      "pair_enabled_steps": 0
+    },
+    {
+      "id": "P4",
+      "clean": 86.91249549867393,
+      "rgb_family": 85.109593215707,
+      "aux_family": 86.8899962144769,
+      "composite": 86.30402830961926,
+      "aux_zero": 86.18317441093252,
+      "missing_macro": 86.6092598553307,
+      "selected_step": 2000,
+      "pair_enabled_steps": 0
+    },
+    {
+      "id": "P5",
+      "clean": 86.908835063859,
+      "rgb_family": 85.1063920446729,
+      "aux_family": 86.88375656241712,
+      "composite": 86.2996612236497,
+      "aux_zero": 86.1500543430767,
+      "missing_macro": 86.59185805005238,
+      "selected_step": 2000,
+      "pair_enabled_steps": 0
+    },
+    {
+      "id": "P6",
+      "clean": 86.39793022992122,
+      "rgb_family": 84.77686914838263,
+      "aux_family": 86.39793022992122,
+      "composite": 85.85757653607503,
+      "aux_zero": 86.39793022992122,
+      "missing_macro": 86.39793022992122,
+      "selected_step": 2000,
+      "pair_enabled_steps": 0
+    },
+    {
+      "id": "P7",
+      "clean": 86.89146475424702,
+      "rgb_family": 85.30858665386592,
+      "aux_family": 86.86508883631893,
+      "composite": 86.35504674814395,
+      "aux_zero": 86.09232650163581,
+      "missing_macro": 86.55516279551125,
+      "selected_step": 4000,
+      "pair_enabled_steps": 0
+    }
+  ],
+  "matched_comparisons": {
+    "P1-P0": {
+      "delta_pp": {
+        "clean": -0.06343481680832497,
+        "rgb_family": -0.06559487555463761,
+        "aux_family": -0.06221254005066612,
+        "composite": -0.06374741080453816,
+        "aux_zero": -0.07428406093740136,
+        "missing_macro": -0.06466274816315831
+      },
+      "practical_gain": false,
+      "negative_transfer": {
+        "delta_pp": {
+          "clean": -0.06343481680832497,
+          "rgb_family": -0.06559487555463761,
+          "aux_family": -0.06221254005066612,
+          "composite": -0.06374741080453816
+        },
+        "tile_delta_pp": {
+          "3_11": {
+            "clean": -0.10135898184346104,
+            "rgb_family": -0.10927082968746049,
+            "aux_family": -0.1095552429889608
+          },
+          "5_10": {
+            "clean": -0.030525345537327553,
+            "rgb_family": -0.02673320129834167,
+            "aux_family": -0.019340593497332748
+          }
+        },
+        "precision_protection_pass": true,
+        "fusion_screen_pass": false,
+        "harm_reduction": -0.00258616662780331,
+        "rescue_retention": 0.9917341117385334,
+        "negative_transfer_screen_pass": false,
+        "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+      }
+    },
+    "P2-P0": {
+      "delta_pp": {
+        "clean": -0.020982137731039074,
+        "rgb_family": 0.19814620842660702,
+        "aux_family": -0.024147183814108075,
+        "composite": 0.05100562896051031,
+        "aux_zero": -0.048947240614381826,
+        "missing_macro": -0.03370186545853926
+      },
+      "practical_gain": false,
+      "negative_transfer": {
+        "delta_pp": {
+          "clean": -0.020982137731039074,
+          "rgb_family": 0.19814620842660702,
+          "aux_family": -0.024147183814108075,
+          "composite": 0.05100562896051031
+        },
+        "tile_delta_pp": {
+          "3_11": {
+            "clean": -0.05607524500939576,
+            "rgb_family": 0.08860430816284293,
+            "aux_family": -0.05918923304625423
+          },
+          "5_10": {
+            "clean": 0.028540956854257615,
+            "rgb_family": 0.30990872236928624,
+            "aux_family": 0.026039944266472048
+          }
+        },
+        "precision_protection_pass": true,
+        "fusion_screen_pass": false,
+        "harm_reduction": -0.03055997930310239,
+        "rescue_retention": 1.0360106130056501,
+        "negative_transfer_screen_pass": false,
+        "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+      }
+    },
+    "P2-P5": {
+      "delta_pp": {
+        "clean": -0.021692584609866117,
+        "rgb_family": 0.1961202227644776,
+        "aux_family": -0.024268922809369542,
+        "composite": 0.05005290511508065,
+        "aux_zero": -0.06125879296371295,
+        "missing_macro": -0.03985382265491921
+      },
+      "practical_gain": false,
+      "negative_transfer": {
+        "delta_pp": {
+          "clean": -0.021692584609866117,
+          "rgb_family": 0.1961202227644776,
+          "aux_family": -0.024268922809369542,
+          "composite": 0.05005290511508065
+        },
+        "tile_delta_pp": {
+          "3_11": {
+            "clean": -0.06448503811080286,
+            "rgb_family": 0.07678617668852894,
+            "aux_family": -0.06578915345349401
+          },
+          "5_10": {
+            "clean": 0.034628316126458,
+            "rgb_family": 0.3167934555352474,
+            "aux_family": 0.03135495126517185
+          }
+        },
+        "precision_protection_pass": true,
+        "fusion_screen_pass": false,
+        "harm_reduction": -0.02978001244955819,
+        "rescue_retention": 1.0349298605899893,
+        "negative_transfer_screen_pass": false,
+        "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+      }
+    },
+    "P3-P2": {
+      "delta_pp": {
+        "clean": 0.006253569519003577,
+        "rgb_family": 0.009033325608982068,
+        "aux_family": 0.004644234940400338,
+        "composite": 0.006643710022785854,
+        "aux_zero": 0.01307444074284092,
+        "missing_macro": 0.009757836514594942
+      },
+      "practical_gain": false,
+      "negative_transfer": {
+        "delta_pp": {
+          "clean": 0.006253569519003577,
+          "rgb_family": 0.009033325608982068,
+          "aux_family": 0.004644234940400338,
+          "composite": 0.006643710022785854
+        },
+        "tile_delta_pp": {
+          "3_11": {
+            "clean": 0.012649908353850492,
+            "rgb_family": 0.017741994038516395,
+            "aux_family": 0.011149463531182846
+          },
+          "5_10": {
+            "clean": 0.000165060125326022,
+            "rgb_family": 0.0006761240227177723,
+            "aux_family": -0.0014225545915707016
+          }
+        },
+        "precision_protection_pass": true,
+        "fusion_screen_pass": false,
+        "harm_reduction": 0.0018262753717537272,
+        "rescue_retention": 1.002350263464029,
+        "negative_transfer_screen_pass": false,
+        "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+      }
+    },
+    "P3-P7": {
+      "delta_pp": {
+        "clean": 0.0019312945211140686,
+        "rgb_family": 0.002958939180444986,
+        "aux_family": -0.0009569617707825273,
+        "composite": 0.0013110906436111236,
+        "aux_zero": 0.009543489220021684,
+        "missing_macro": 0.006599268400805158
+      },
+      "practical_gain": false,
+      "negative_transfer": {
+        "delta_pp": {
+          "clean": 0.0019312945211140686,
+          "rgb_family": 0.002958939180444986,
+          "aux_family": -0.0009569617707825273,
+          "composite": 0.0013110906436111236
+        },
+        "tile_delta_pp": {
+          "3_11": {
+            "clean": 0.010927324876419675,
+            "rgb_family": 0.013343111532421403,
+            "aux_family": 0.007524471398909327
+          },
+          "5_10": {
+            "clean": -0.00680368253736674,
+            "rgb_family": -0.00688506875637529,
+            "aux_family": -0.008977079852527936
+          }
+        },
+        "precision_protection_pass": true,
+        "fusion_screen_pass": false,
+        "harm_reduction": 0.0014231314859122213,
+        "rescue_retention": 1.0017035252308994,
+        "negative_transfer_screen_pass": false,
+        "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+      }
+    },
+    "P3-P0": {
+      "delta_pp": {
+        "clean": -0.014728568212035498,
+        "rgb_family": 0.20717953403558909,
+        "aux_family": -0.019502948873707737,
+        "composite": 0.05764933898329616,
+        "aux_zero": -0.035872799871540906,
+        "missing_macro": -0.023944028943944318
+      },
+      "practical_gain": false,
+      "negative_transfer": {
+        "delta_pp": {
+          "clean": -0.014728568212035498,
+          "rgb_family": 0.20717953403558909,
+          "aux_family": -0.019502948873707737,
+          "composite": 0.05764933898329616
+        },
+        "tile_delta_pp": {
+          "3_11": {
+            "clean": -0.043425336655545266,
+            "rgb_family": 0.10634630220135932,
+            "aux_family": -0.048039769515071384
+          },
+          "5_10": {
+            "clean": 0.028706016979583637,
+            "rgb_family": 0.310584846392004,
+            "aux_family": 0.024617389674901347
+          }
+        },
+        "precision_protection_pass": true,
+        "fusion_screen_pass": false,
+        "harm_reduction": -0.02867789299378609,
+        "rescue_retention": 1.0384455108977435,
+        "negative_transfer_screen_pass": false,
+        "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+      }
+    },
+    "P4-P0": {
+      "delta_pp": {
+        "clean": 0.004370881693759543,
+        "rgb_family": 0.0052271566962218685,
+        "aux_family": 0.006361391055037302,
+        "composite": 0.005319809814992027,
+        "aux_zero": 0.045431620205150125,
+        "missing_macro": 0.02355376247470531
+      },
+      "practical_gain": false,
+      "negative_transfer": {
+        "delta_pp": {
+          "clean": 0.004370881693759543,
+          "rgb_family": 0.0052271566962218685,
+          "aux_family": 0.006361391055037302,
+          "composite": 0.005319809814992027
+        },
+        "tile_delta_pp": {
+          "3_11": {
+            "clean": 0.04622720713454953,
+            "rgb_family": 0.05081630210003141,
+            "aux_family": 0.044269620676800514
+          },
+          "5_10": {
+            "clean": -0.03453629578604023,
+            "rgb_family": -0.036681507212549036,
+            "aux_family": -0.028282680940208138
+          }
+        },
+        "precision_protection_pass": true,
+        "fusion_screen_pass": false,
+        "harm_reduction": -0.003114746936740076,
+        "rescue_retention": 1.0035143015008,
+        "negative_transfer_screen_pass": false,
+        "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+      }
+    },
+    "P5-P0": {
+      "delta_pp": {
+        "clean": 0.0007104468788270424,
+        "rgb_family": 0.0020259856621294148,
+        "aux_family": 0.0001217389952614667,
+        "composite": 0.0009527238454296594,
+        "aux_zero": 0.012311552349331123,
+        "missing_macro": 0.0061519571963799535
+      },
+      "practical_gain": false,
+      "negative_transfer": {
+        "delta_pp": {
+          "clean": 0.0007104468788270424,
+          "rgb_family": 0.0020259856621294148,
+          "aux_family": 0.0001217389952614667,
+          "composite": 0.0009527238454296594
+        },
+        "tile_delta_pp": {
+          "3_11": {
+            "clean": 0.008409793101407104,
+            "rgb_family": 0.011818131474313986,
+            "aux_family": 0.006599920407239779
+          },
+          "5_10": {
+            "clean": -0.006087359272200388,
+            "rgb_family": -0.0068847331659611655,
+            "aux_family": -0.0053150069986998005
+          }
+        },
+        "precision_protection_pass": true,
+        "fusion_screen_pass": false,
+        "harm_reduction": -0.000757411140354991,
+        "rescue_retention": 1.0010442760005445,
+        "negative_transfer_screen_pass": false,
+        "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+      }
+    },
+    "P0-P6": {
+      "delta_pp": {
+        "clean": 0.5101943870589594,
+        "rgb_family": 0.3274969106281418,
+        "aux_family": 0.48570459350064255,
+        "composite": 0.4411319637292337,
+        "aux_zero": -0.26018743919384235,
+        "missing_macro": 0.1877758629347852
+      },
+      "practical_gain": true,
+      "negative_transfer": {
+        "delta_pp": {
+          "clean": 0.5101943870589594,
+          "rgb_family": 0.3274969106281418,
+          "aux_family": 0.48570459350064255,
+          "composite": 0.4411319637292337
+        },
+        "tile_delta_pp": {
+          "3_11": {
+            "clean": 0.3257286118094953,
+            "rgb_family": 0.08585013090737448,
+            "aux_family": 0.30169179526855316
+          },
+          "5_10": {
+            "clean": 0.6839016486588037,
+            "rgb_family": 0.5476797713773323,
+            "aux_family": 0.6582966747171497
+          }
+        },
+        "precision_protection_pass": true,
+        "fusion_screen_pass": true,
+        "harm_reduction": 0.012787049570879061,
+        "rescue_retention": 1.0857147457188734,
+        "negative_transfer_screen_pass": false,
+        "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+      }
+    },
+    "P2-P6": {
+      "delta_pp": {
+        "clean": 0.4892122493279203,
+        "rgb_family": 0.5256431190547488,
+        "aux_family": 0.46155740968653447,
+        "composite": 0.492137592689744,
+        "aux_zero": -0.3091346798082242,
+        "missing_macro": 0.15407399747624595
+      },
+      "practical_gain": true,
+      "negative_transfer": {
+        "delta_pp": {
+          "clean": 0.4892122493279203,
+          "rgb_family": 0.5256431190547488,
+          "aux_family": 0.46155740968653447,
+          "composite": 0.492137592689744
+        },
+        "tile_delta_pp": {
+          "3_11": {
+            "clean": 0.26965336680009955,
+            "rgb_family": 0.1744544390702174,
+            "aux_family": 0.24250256222229893
+          },
+          "5_10": {
+            "clean": 0.7124426055130613,
+            "rgb_family": 0.8575884937466185,
+            "aux_family": 0.6843366189836217
+          }
+        },
+        "precision_protection_pass": true,
+        "fusion_screen_pass": true,
+        "harm_reduction": -0.01738215776198948,
+        "rescue_retention": 1.1248119992614836,
+        "negative_transfer_screen_pass": false,
+        "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+      }
+    }
+  },
+  "ability_floors": {
+    "P2": {
+      "pass_floor": false,
+      "min_old_condition_tile_delta_pp": -0.23108030045089833,
+      "delta_vs_P0_pp": {
+        "clean": -0.020982137731039074,
+        "rgb_family": 0.19814620842660702,
+        "aux_family": -0.024147183814108075,
+        "composite": 0.05100562896051031,
+        "aux_zero": -0.048947240614381826,
+        "missing_macro": -0.03370186545853926
+      },
+      "clean_floor_pp": 86.97067
+    },
+    "P3": {
+      "pass_floor": false,
+      "min_old_condition_tile_delta_pp": -0.21243457500804652,
+      "delta_vs_P0_pp": {
+        "clean": -0.014728568212035498,
+        "rgb_family": 0.20717953403558909,
+        "aux_family": -0.019502948873707737,
+        "composite": 0.05764933898329616,
+        "aux_zero": -0.035872799871540906,
+        "missing_macro": -0.023944028943944318
+      },
+      "clean_floor_pp": 86.97067
+    },
+    "P4": {
+      "pass_floor": false,
+      "min_old_condition_tile_delta_pp": -0.04078543739228735,
+      "delta_vs_P0_pp": {
+        "clean": 0.004370881693759543,
+        "rgb_family": 0.0052271566962218685,
+        "aux_family": 0.006361391055037302,
+        "composite": 0.005319809814992027,
+        "aux_zero": 0.045431620205150125,
+        "missing_macro": 0.02355376247470531
+      },
+      "clean_floor_pp": 86.97067
+    },
+    "P5": {
+      "pass_floor": false,
+      "min_old_condition_tile_delta_pp": -0.01355996373210644,
+      "delta_vs_P0_pp": {
+        "clean": 0.0007104468788270424,
+        "rgb_family": 0.0020259856621294148,
+        "aux_family": 0.0001217389952614667,
+        "composite": 0.0009527238454296594,
+        "aux_zero": 0.012311552349331123,
+        "missing_macro": 0.0061519571963799535
+      },
+      "clean_floor_pp": 86.97067
+    },
+    "P7": {
+      "pass_floor": false,
+      "min_old_condition_tile_delta_pp": -0.22824315486165858,
+      "delta_vs_P0_pp": {
+        "clean": -0.016659862733149566,
+        "rgb_family": 0.2042205948551441,
+        "aux_family": -0.01854598710292521,
+        "composite": 0.05633824833968504,
+        "aux_zero": -0.04541628909156259,
+        "missing_macro": -0.030543297344749476
+      },
+      "clean_floor_pp": 86.97067
+    }
+  },
+  "mechanism_screen": {
+    "H1_separate_decoders": false,
+    "H2_projection_separate": false,
+    "projection_shared": false,
+    "Pair_corrected": false
+  },
+  "factorial_interaction_pp": {
+    "clean": 0.0018826878252440338,
+    "composite": 0.0013239002077938267,
+    "missing_macro": -0.013795925960110367
+  },
+  "pressure_diagnostic_only": {
+    "P0": {
+      "rgb_down4+aux_zero": 81.72305381053032,
+      "rgb_down4+aux_noise_std010": 82.60150099709145,
+      "aux_local_zero_center_quarter": 86.60995018605877,
+      "aux_shift24": 86.55856401735183
+    },
+    "P1": {
+      "rgb_down4+aux_zero": 81.63637390325266,
+      "rgb_down4+aux_noise_std010": 82.51469288956865,
+      "aux_local_zero_center_quarter": 86.53234919657486,
+      "aux_shift24": 86.4993245283042
+    },
+    "P2": {
+      "rgb_down4+aux_zero": 82.31248054269591,
+      "rgb_down4+aux_noise_std010": 83.05106883088786,
+      "aux_local_zero_center_quarter": 86.45895197207763,
+      "aux_shift24": 86.57403162413475
+    },
+    "P3": {
+      "rgb_down4+aux_zero": 82.33170529352421,
+      "rgb_down4+aux_noise_std010": 83.06900130937291,
+      "aux_local_zero_center_quarter": 86.46649683435082,
+      "aux_shift24": 86.57924238054471
+    },
+    "P4": {
+      "rgb_down4+aux_zero": 81.70981398207078,
+      "rgb_down4+aux_noise_std010": 82.60294663975402,
+      "aux_local_zero_center_quarter": 86.64285003955838,
+      "aux_shift24": 86.56152032289668
+    },
+    "P5": {
+      "rgb_down4+aux_zero": 81.72171413627653,
+      "rgb_down4+aux_noise_std010": 82.60749458454887,
+      "aux_local_zero_center_quarter": 86.61856392663123,
+      "aux_shift24": 86.56075458355494
+    },
+    "P6": {
+      "rgb_down4+aux_zero": 82.31834445148012,
+      "rgb_down4+aux_noise_std010": 82.31834445148012,
+      "aux_local_zero_center_quarter": 86.39793022992122,
+      "aux_shift24": 86.39793022992122
+    },
+    "P7": {
+      "rgb_down4+aux_zero": 82.31717775001057,
+      "rgb_down4+aux_noise_std010": 83.05656349496154,
+      "aux_local_zero_center_quarter": 86.46169654564811,
+      "aux_shift24": 86.5789830316168
+    }
+  },
+  "original_plan": "D25_MISSINGNESS_OPTIMIZATION_20261002",
+  "test6_loaded": false,
+  "independent_final_loaded": false,
+  "evidence_level": "single_seed_reused_Val2_development_only",
+  "interpretation": "Screen support is not independent confirmation or gradient-causality proof; inspect gradient logs and raw tile counts. No automatic follow-up training.",
+  "raw_tile_matrices_checked": {
+    "P0": 288,
+    "P1": 288,
+    "P2": 288,
+    "P3": 288,
+    "P4": 288,
+    "P5": 288,
+    "P6": 288,
+    "P7": 288
+  },
+  "gradient_diagnostics_summary": {
+    "P0": {
+      "sampled_steps": 41,
+      "sampled_conflict_fraction": 0.0,
+      "mean_cosine": 0.3509854869917035,
+      "mean_present_norm": 3.200839580559149,
+      "mean_missing_norm": 1.1898682971553105,
+      "scope": "first update and every100 updates; sampled diagnostics, not all4000 steps"
+    },
+    "P1": {
+      "sampled_steps": 41,
+      "sampled_conflict_fraction": 0.024390243902439025,
+      "mean_cosine": 0.35181093733848595,
+      "mean_present_norm": 3.297423249337731,
+      "mean_missing_norm": 1.1953885286319546,
+      "scope": "first update and every100 updates; sampled diagnostics, not all4000 steps"
+    },
+    "P2": {
+      "sampled_steps": 41,
+      "sampled_conflict_fraction": 0.024390243902439025,
+      "mean_cosine": 0.3489784315773627,
+      "mean_present_norm": 3.2180915198675017,
+      "mean_missing_norm": 1.2070651984796292,
+      "scope": "first update and every100 updates; sampled diagnostics, not all4000 steps"
+    },
+    "P3": {
+      "sampled_steps": 41,
+      "sampled_conflict_fraction": 0.024390243902439025,
+      "mean_cosine": 0.34991034940339444,
+      "mean_present_norm": 3.198863183579794,
+      "mean_missing_norm": 1.2101402289983703,
+      "scope": "first update and every100 updates; sampled diagnostics, not all4000 steps"
+    },
+    "P4": {
+      "sampled_steps": 41,
+      "sampled_conflict_fraction": 0.0,
+      "mean_cosine": 0.3514934712112313,
+      "mean_present_norm": 3.197572254553074,
+      "mean_missing_norm": 1.195852609305847,
+      "scope": "first update and every100 updates; sampled diagnostics, not all4000 steps"
+    },
+    "P5": {
+      "sampled_steps": 41,
+      "sampled_conflict_fraction": 0.0,
+      "mean_cosine": 0.3514072927305611,
+      "mean_present_norm": 3.194010853767395,
+      "mean_missing_norm": 1.1896212082810518,
+      "scope": "first update and every100 updates; sampled diagnostics, not all4000 steps"
+    },
+    "P6": {
+      "sampled_steps": 41,
+      "sampled_conflict_fraction": 0.0,
+      "mean_cosine": 0.0,
+      "mean_present_norm": 4.908836460695034,
+      "mean_missing_norm": 0.0,
+      "scope": "first update and every100 updates; sampled diagnostics, not all4000 steps"
+    },
+    "P7": {
+      "sampled_steps": 41,
+      "sampled_conflict_fraction": 0.024390243902439025,
+      "mean_cosine": 0.34853219181844375,
+      "mean_present_norm": 3.2166670008403497,
+      "mean_missing_norm": 1.2071553766727448,
+      "scope": "first update and every100 updates; sampled diagnostics, not all4000 steps"
+    }
+  },
+  "mechanism_attribution_requires_gradient_review": true
+}

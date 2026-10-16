@@ -1,0 +1,15 @@
+# D23已有工程记录补充与上传准备
+
+记录2026-10-01。来源：用户粘贴的compact_review_20261001T141936239377.json尾部；尚未取得GitHub上的服务器原文件。目录records/research_d23_b_engine_admission_20261001T140528_658274。工程执行入口40fca5adf4ded1277de264ffc361b67fbaaca0c8，非正式精度实验。
+
+本次片段完整提供GPU1 profile头部：最后观测2026-10-01T14:07:44.235024+08:00，ENGINE_ADMISSION_COMPLETE；H10080GB，UUID GPU-4b116760-e84c-2743-cee6-41cf76a01677，torch2.2.2+cu121，两项TF32为true。专家前向8、gate16、单次backward；TSF12步、checkpoint重载相等；服务器报告稳态步中位0.18741658秒。整图6000×6000 clean/aux_zero/stripe三条件，98.16204657秒，RSS10096214016、显存allocated2439812608/reserved3028287488字节。不能将此时间当作正式12tile缓存和评估预算。
+
+绑定SHA：
+- GPU1 summary：b33db53f7163648a3612072c3f5a7161b7ffbdcbb90460bff054a1db4cf4225a
+- GPU1 preflight：864cb1e5647483ee07a2b60aa1c0ac232b18150e1f8b2ca92bc4a1179d5d8d58
+- CPU日志：b48b881424a3de7e0d173e6ffca34b41b8457abebc89b2425e419e0b29388e56；片段报告22项PASS，仍待原日志回读
+- 服务器light_engine_evidence_20261001T141936239377.tar.gz：29924字节，e290548c50758e3d228f6e00e4e36bf4592efcf5daf2739994b6a28ee18278fa；未离开服务器
+
+GPU0片段只有条件尾部/资源数据，缺完整完成头部和身份；因此不能宣称双卡完整验收已完成。formal_training_started=false；正式runtime lock和8组队列尚未生成。
+
+用户要求长输出直接上GitHub。已实现[轻量上传工具](../../scripts/upload_rebuild_v1_d23_engine_records.py)，本地语法及模拟文件/Git检查通过：明确9文件、原字节保存、SHA漂移拒绝、目录边界拒绝、不上传归档、无真实push/GPU。真实服务器推送尚待用户执行；发布工具不代表服务器原件已上传。上传后从GitHub原件核验GPU0八组14条件和CPU日志，再测12tile/TCAP磁盘I/O与双卡并行预算。

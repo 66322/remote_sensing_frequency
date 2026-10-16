@@ -1,0 +1,18 @@
+test_actual_monitor_failure_stops_other_lane_dispatch (test_post_ab_n2_recovery.RecoveryTests) ... POST_AB_JOB N2-1 TECHNICAL_FAILURE
+ok
+test_actual_monitor_none_timeout_adopted_finishes (test_post_ab_n2_recovery.RecoveryTests) ... POST_AB_JOB N2-0 COMPLETE
+ok
+test_adopt_without_requeue (test_post_ab_n2_recovery.RecoveryTests) ... ok
+test_adopted_poll_and_pid_reuse (test_post_ab_n2_recovery.RecoveryTests) ... ok
+test_corrupt_completion_rejected (test_post_ab_n2_recovery.RecoveryTests) ... ok
+test_dead_completed_accepts (test_post_ab_n2_recovery.RecoveryTests) ... ok
+test_dead_incomplete_holds (test_post_ab_n2_recovery.RecoveryTests) ... ok
+test_failed_state_is_not_requeued (test_post_ab_n2_recovery.RecoveryTests) ... ok
+test_pending_artifacts_hold (test_post_ab_n2_recovery.RecoveryTests) ... ok
+test_timeout_invalid (test_post_ab_n2_recovery.RecoveryTests) ... ok
+test_timeout_none_and_valid (test_post_ab_n2_recovery.RecoveryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.152s
+
+OK

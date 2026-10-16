@@ -1,0 +1,68 @@
+{
+  "binding": {
+    "experts": {
+      "rgb": {
+        "path": "records/research_d25_missingness_20261002T130253_1358078/jobs/P6/selected.pth",
+        "sha256": "bef8dda6537b68fc51f300bc3789bbbef57682baedf92a3f7665217a4a2fde71",
+        "step": 2000,
+        "kind": "D25_P6_DINOv2_vits14_RGB_only",
+        "normalization": "native RGB ImageNet mean/std"
+      },
+      "dsm": {
+        "path": "runs/rebuild_v1/D15_dsm_only_seed42_sched16000_stop16000/best_model.pth",
+        "sha256": "d597f1adf3ca0291dcd7d063af941bebf3db1e61205cfdaf13271fbba9437e84",
+        "step": 15000,
+        "kind": "D15_seed42_R50_ViT_B16_DSM_only",
+        "normalization": "native per-tile minmax DSM repeated3; no ImageNet normalization"
+      },
+      "heterogeneous_architectures": true,
+      "historical_held4_exposure": true
+    },
+    "sources": {
+      "commit": "ba7088ec05be7b85dd45e5896a8407506bcca14d",
+      "inherited_commit": "52f94388b1a9c7557e9ef533075661139cd55eda",
+      "files": {
+        "model/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "model/rebuild_v1_night_screen.py": "95ba4785eaeb7e0c0009ade5328de6d11b4f137e9df34e95b2793efc0ce8a6d6",
+        "model/rebuild_v1_d21_detail.py": "6a3dad4e37d3f572f93f4d2b906287f4964fd6842f75b2691b6cdfe0967339ae",
+        "model/rebuild_v1_d24.py": "8e79e6c933a3298ec0305cf96d2be85dbc386de4d1a117af205f341f95557c1b",
+        "model/rebuild_v1_d25.py": "c2996abf61e988684904e0c76d79860cdbcdae55bbbcf297a38093836b4cc674",
+        "scripts/d23_engine.py": "a4e496ffa63130dd1e3c1a48e50ba66185e66d06aef43815c077e5b61eba385c",
+        "scripts/d24_common.py": "3381d3143332a5cdafa2cc1f119a4d8c630c92fc30d3d6940c0842ac567fc8eb",
+        "scripts/d24_data.py": "a92f254fb4f0f37b2d9b0b6e47771b3e4d9511b3faf9b4343ff0977bca204761",
+        "model/rebuild_v1_optical_only.py": "fa4e0d323725223d2129bcd2f1becbd02e2ce01cba0ecc6512cddfeaee099ca0",
+        "model/vit_seg_configs.py": "303cf79b93631b144d4f4d4258ab7e2b780ca52376da3d21dbf75cb03b44dbd4",
+        "model/vit_seg_modeling_resnet_skip.py": "c8e4b1be6144bda0ec9acaf9e5339420a35f33a1c2bc138db4f8f3d3781e1850",
+        "model/dynamic_conv.py": "d24b6003e6b8010503dd2bb0e3657881f2970f73b671f96d4ee18a9d361ae4c7",
+        "model/vitcross_seg_modeling_freqfusion.py": "727183367be96dc287fe6f96dae8c7fce54371aa09b5b881bb512e104202be36",
+        "model/vitcross_seg_modeling_freq_ablation.py": "c5a01fa7ef3ed754c1d8715217d3c3a7123174ff9d3be658c969186fa74a8453",
+        "model/FreqFusion_reference.py": "5852efce406681ce6f3f7763ff8e034cab44f93cb0fdda0114130bc4c8c97e42",
+        "model/rebuild_v1_d26.py": "79999b613bfad7fc6db37230b588a138540692763fcb16d3752b8b95aaeafcf9",
+        "scripts/d26_common.py": "f3cc94d44e8a68cb58baa1545edbb105532fda28f43327c08df00c61f67e9167",
+        "scripts/d26_data.py": "e7249e29cf4712ac3ca79bf05d7fd2065b74fa4574db2b5e65f3f02ba150f45a",
+        "scripts/d26_evaluation.py": "bd18bf3f57c894eb833e0501f27e2576e9ab8529e7b12a6a2e4a5a70d433899e",
+        "model/rebuild_v1_d27.py": "017aaa28b26095c029964e75924f8cae793bcd7c69bc942f08ed8df16d5d1691",
+        "scripts/d27_common.py": "e615da865dd36926f48849673a65d1b295bc5fd1c02deafe930317ace62b0fbf",
+        "scripts/d27_data.py": "e629743af48281589a838ca4c937b1cfc46732a68698525ca5d2347c8c235499",
+        "scripts/d27_evaluation.py": "9c0568259436f767eecfb1b04c5d21c2641dd3a957a5bbf045a9bf5a0744cb46",
+        "scripts/run_rebuild_v1_d27.py": "563f0dfbed91cf0e6588c5a57ab827737b21e78807d48c4faaaa912f47721264",
+        "scripts/launch_rebuild_v1_d27.py": "cc6959d8157f0525baa3a554f3eac24240ee8d0ec05c2f6a81077833588fed60",
+        "scripts/status_rebuild_v1_d27.py": "2f7cdab357d5bb40fa59e115403863794a0ce4e1abd286ab8e33cfa05e9b475d",
+        "scripts/summarize_rebuild_v1_d27.py": "be5dd0d12fda333361225fcd6acea72e7f237401ca6aef846953d3b3dfcc81dd",
+        "scripts/upload_rebuild_v1_d27_records.py": "273b613642a6743442f6ebe663bd21c8b935cf2ed8a5d715486059da0d9a0711",
+        "tests/test_d27.py": "58b2386f2fe7a52cbff3f529c28b7e15814dfaa8b5054d6daa706fb092a9c914",
+        "records/research_d27_plan_20261002/plan.json": "56c221db3c1eb357a0bce365688ec3eac49524a89840195024ee6a77c59884fe"
+      }
+    },
+    "input_manifest": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295"
+  },
+  "tile": "3_11",
+  "condition": "both_center_missing",
+  "predictions": {
+    "rgb": "b192676e7728c025c3c7cd5b5b129ac07d76f7a5dd919177affed8ee443a0d1e",
+    "dsm": "01db3e3c158d5bc3f95c4a5d5cbf8f791069358458c7adf2970a5738593ca18a",
+    "probability_average": "b7d0b413fa25377443754409acc10bd89c83dfae533b25b6cdf5fa50d1534422",
+    "availability_switch": "b192676e7728c025c3c7cd5b5b129ac07d76f7a5dd919177affed8ee443a0d1e"
+  },
+  "test6_loaded": false
+}

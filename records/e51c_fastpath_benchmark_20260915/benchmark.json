@@ -1,0 +1,68 @@
+{
+  "tile_id": "4_10",
+  "region": 2048,
+  "patch": 512,
+  "stride": 64,
+  "batch": 8,
+  "dtype": "float32",
+  "models": {
+    "PP4k": [
+      {
+        "path": "reference_cpu_input_cpu_score",
+        "seconds": 13.178153976798058,
+        "speedup_vs_reference": 1.0,
+        "peak_allocated_gib": 6.5923871994018555,
+        "prediction_equal_to_reference": true,
+        "different_pixels": 0
+      },
+      {
+        "path": "gpu_input_cpu_score",
+        "seconds": 11.863136634230614,
+        "speedup_vs_reference": 1.1108490429734252,
+        "peak_allocated_gib": 6.6541547775268555,
+        "prediction_equal_to_reference": true,
+        "different_pixels": 0
+      },
+      {
+        "path": "gpu_input_gpu_score",
+        "seconds": 10.560219950973988,
+        "speedup_vs_reference": 1.2479052555702321,
+        "peak_allocated_gib": 6.7955121994018555,
+        "prediction_equal_to_reference": true,
+        "different_pixels": 0
+      }
+    ],
+    "PH4k": [
+      {
+        "path": "reference_cpu_input_cpu_score",
+        "seconds": 12.929000280797482,
+        "speedup_vs_reference": 1.0,
+        "peak_allocated_gib": 6.595318794250488,
+        "prediction_equal_to_reference": true,
+        "different_pixels": 0
+      },
+      {
+        "path": "gpu_input_cpu_score",
+        "seconds": 11.910270676016808,
+        "speedup_vs_reference": 1.0855337072088584,
+        "peak_allocated_gib": 6.657086372375488,
+        "prediction_equal_to_reference": true,
+        "different_pixels": 0
+      },
+      {
+        "path": "gpu_input_gpu_score",
+        "seconds": 10.599292106926441,
+        "speedup_vs_reference": 1.2197984686494883,
+        "peak_allocated_gib": 6.798443794250488,
+        "prediction_equal_to_reference": true,
+        "different_pixels": 0
+      }
+    ]
+  },
+  "exact_prediction_safe_paths_on_benchmark": [
+    "gpu_input_cpu_score",
+    "gpu_input_gpu_score"
+  ],
+  "recommended_path": "gpu_input_gpu_score",
+  "warning": "Exact equality here is checked on one 2048x2048 region only. A candidate fast path may be used for diagnostic runs only after this gate passes. Historical batch-8 stride-64 results remain the frozen formal reference."
+}

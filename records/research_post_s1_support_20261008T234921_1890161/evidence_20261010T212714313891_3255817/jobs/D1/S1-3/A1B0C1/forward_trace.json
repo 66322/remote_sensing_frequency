@@ -1,0 +1,18 @@
+{
+  "path": "A1B0C1",
+  "trace_scope": "first padded native512 batch only; not whole-scene activation hash",
+  "received_rgb": "6a49882fd81bff38d70cbc4801ae3e9ffd6f31e3ee4efd37632d4332f09eb1b3",
+  "received_dsm": "4c2f05d5b04a87bbca726960fd0ac12fc5569a45f7c4426ab77272c6ac3b2296",
+  "expert_rgb": "6a49882fd81bff38d70cbc4801ae3e9ffd6f31e3ee4efd37632d4332f09eb1b3",
+  "expert_dsm": "4c2f05d5b04a87bbca726960fd0ac12fc5569a45f7c4426ab77272c6ac3b2296",
+  "reported_rgb": "cfaaa4544c299ac554e9035e333d83778896c1bc03a86269f3d463d8a6cf1469",
+  "reported_dsm": "c36168995621782769218a42c4853912c329db47263c9bad8c3b88cddd1f80a1",
+  "pyramid_rgb_support": "c36168995621782769218a42c4853912c329db47263c9bad8c3b88cddd1f80a1",
+  "pyramid_dsm_support": "c36168995621782769218a42c4853912c329db47263c9bad8c3b88cddd1f80a1",
+  "relation_support": null,
+  "rgb_feature": "61ddb7fa32b36b73cf57871b8f4e90f71ab9d08b9a0ed83deb0fc1cfa83e0709",
+  "dsm_feature": "6562c369fe89dfa03bb3afd0092d1fb590ba14281c215ba842764cbb2f613923",
+  "raw_logits": "44689b020c9809361b39c43e40f0fb7f54e759f42016bcf6168072b45ef4839b",
+  "output_logits": "ad099892090799fce140ab7235c19531bd5e567c08e78c0a9cfb68b31d2e8b82",
+  "full_missing_safe_guard": true
+}

@@ -1,0 +1,43 @@
+{
+  "evidence_kind": "user_pasted_server_stdout_partial_summary",
+  "received_on": "2026-10-01",
+  "execution_commit": "961c7197d07a636c0d7d46bba7937e15395cf4f8",
+  "script_sha256": "04435db2bf0c21351e5684daa1588481c0cfdcd97a5a952585c2c7c89957b74d",
+  "server_output": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_feasibility_20261001_20261001T124227_658274",
+  "profile": {
+    "status": "PROFILE_PASS",
+    "observed_at": "2026-10-01T12:42:40.802781+08:00",
+    "binding_seconds": 1.060422122478485,
+    "pairs_seconds": 11.447299726307392,
+    "elapsed_seconds": 12.513828732073307,
+    "peak_rss_bytes": 611663872,
+    "estimated_full_seconds": 115.5334193855524,
+    "eligible_resource_budget": true
+  },
+  "full": {
+    "status": "COMPLETE",
+    "observed_at": "2026-10-01T12:44:35.075903+08:00",
+    "binding_seconds": 0.5644832476973534,
+    "pairs_seconds": 113.59180422127247,
+    "elapsed_seconds": 114.15847486257553,
+    "peak_rss_bytes": 612552704,
+    "pair_completion_count": 10
+  },
+  "decision": {
+    "mean_available_gain_pp": 1.888456078355997,
+    "gains_pp": {
+      "clean": 1.59273714942888,
+      "rgb_down4": 2.4155417779414545,
+      "aux_noise_std010": 1.6570893076976567
+    },
+    "threshold_mean_pp": 0.5,
+    "rgb_down4_must_be_positive": true,
+    "eligible_to_prepare_B": true
+  },
+  "test6_loaded": false,
+  "independent_final_loaded": false,
+  "new_inference": false,
+  "new_training": false,
+  "original_jsons_archived_here": false,
+  "agent_connected_to_server": false
+}

@@ -1,0 +1,42 @@
+{
+  "status": "COMPLETE",
+  "stage1_pass": false,
+  "seed_decisions": [
+    {
+      "seed": 42,
+      "passed": false,
+      "checks": {"family_gain": false, "harm_reduction": true, "rescue_retention": false, "worst_harm": true, "clean_vs_R01": true, "noise_vs_R01": true, "missing_fallback": true},
+      "family_mIoU_percent": 85.46543965469968,
+      "best_control": "dsm_ce",
+      "family_gain_pp": -0.17567165402767593,
+      "family_H_percent": 0.03666850640545044,
+      "dsm_ce_H_percent": 0.26830836227870947,
+      "family_R_percent": 0.07650185724825526,
+      "dsm_ce_R_percent": 0.4165422638128079,
+      "worst_tile_condition_H_percent": 0.04047168693626641,
+      "clean_minus_R01_pp": 0.09426114100099525,
+      "noise_minus_R01_pp": 0.09482141355242613
+    },
+    {
+      "seed": 17,
+      "passed": false,
+      "checks": {"family_gain": false, "harm_reduction": true, "rescue_retention": false, "worst_harm": true, "clean_vs_R01": false, "noise_vs_R01": true, "missing_fallback": true},
+      "family_mIoU_percent": 85.78377448832907,
+      "best_control": "rgb_risk",
+      "family_gain_pp": -0.013790933849211484,
+      "family_H_percent": 0.047338284601756674,
+      "dsm_ce_H_percent": 0.28093787737066944,
+      "family_R_percent": 0.032438162350009576,
+      "dsm_ce_R_percent": 0.20908653176828323,
+      "worst_tile_condition_H_percent": 0.05018035113340738,
+      "clean_minus_R01_pp": -0.052921504107350525,
+      "noise_minus_R01_pp": -0.05308952409023293
+    }
+  ],
+  "missing": [],
+  "reason": "one or both seeds failed the prespecified Stage 1 gate",
+  "recorded_at": "2026-09-25T02:07:03+08:00",
+  "config_sha256": "4e0b0d3e8883902005e03223f94d19cc2a7e8615b07b7f33ff3cf87830a5e13e",
+  "val2_exploratory": true,
+  "test6_loaded": false
+}

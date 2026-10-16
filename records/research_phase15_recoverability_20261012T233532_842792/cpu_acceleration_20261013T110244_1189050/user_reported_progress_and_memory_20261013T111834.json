@@ -1,0 +1,47 @@
+{
+  "record_type": "user_reported_progress_and_memory_preference",
+  "query_observed_at": "2026-10-13T11:18:34.988820+08:00",
+  "queue_last_observed_at": "2026-10-13T11:18:34.620128+08:00",
+  "status": "CPU_ORACLE_AND_CONDITIONAL_COUNTS",
+  "controller_live": true,
+  "gpu_counts": {
+    "COMPLETE": 100
+  },
+  "progress": {
+    "completed_cases": 113,
+    "total_cases": 160,
+    "tile": "5_10",
+    "realization": 9,
+    "family": "random",
+    "observed_at": "2026-10-13T11:18:34.471223+08:00",
+    "parallel_workers": 2,
+    "preserved_completed_cases": 63,
+    "new_completed_cases": 50,
+    "elapsed_accelerated_seconds": 843.7028530612588
+  },
+  "real_equivalence_receipt_repeated": true,
+  "host_memory_report": {
+    "total": "1.9Ti",
+    "used": "11Gi",
+    "free": "1.8Ti",
+    "shared": "2.3Gi",
+    "buff_cache": "19Gi",
+    "available": "1.8Ti",
+    "swap_total": "0B"
+  },
+  "memory_report_exact_time_unavailable": true,
+  "cgroup_and_CPU_quota_report_not_received": true,
+  "user_preference": "parallel analysis and resident memory caching, also for training",
+  "engineering_component_tests": {
+    "passed": 2,
+    "seconds": 0.452,
+    "scope": "local synthetic cache tests; not integrated into current execution"
+  },
+  "current_execution_modified": false,
+  "new_memory_component_integrated": false,
+  "decision": "continue remaining47 with current2workers; use resource-aware 8CPU candidate and resident working set as default for future execution bundles",
+  "throughput_seconds_per_case": 16.874057061225177,
+  "remaining_D_cases": 47,
+  "linear_remaining_D_minutes": 13.218011364626388,
+  "scientific_results_verified": false
+}

@@ -1,0 +1,42 @@
+{
+  "models": {
+    "RGB_anchor": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/jobs/P6/selected.pth",
+      "sha256": "bef8dda6537b68fc51f300bc3789bbbef57682baedf92a3f7665217a4a2fde71",
+      "step": 2000
+    },
+    "DSM_anchor": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/D15_dsm_only_seed42_sched16000_stop16000/best_model.pth",
+      "sha256": "d597f1adf3ca0291dcd7d063af941bebf3db1e61205cfdaf13271fbba9437e84",
+      "step": 15000
+    },
+    "D26_B0": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109/jobs/B0/selected.pth",
+      "sha256": "8c1b517311afa4188a01750b2d2edfd0fb84446d8062a65133fcfa3f0783ceee",
+      "step": 4000
+    },
+    "D27_S1": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/selected.pth",
+      "sha256": "d8f2705c710ef2895195a30107115f7b7e4aa4fb1a9af1461f80df8d407e92c9",
+      "step": 4000
+    },
+    "D27_G0": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/G0/selected.pth",
+      "sha256": "f7bb8076eb13f92b733053ba149bb7eabb12bf75db40e9c7ba372fb63080a93e",
+      "step": 4000
+    },
+    "D27_G1": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/G1/selected.pth",
+      "sha256": "25f77adc4fb65529dca607318e54a73881008eecbda37af1ae944dc632ca6b8e",
+      "step": 4000
+    },
+    "D27_L1": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/L1/selected.pth",
+      "sha256": "865db6314d03a03cc8a1965ab601c57ac14929029531054c9e818d91b6d9c753",
+      "step": 4000
+    }
+  },
+  "missing": [],
+  "test6_loaded": false,
+  "observed_at": "2026-10-03T18:22:38.985682+08:00"
+}

@@ -1,0 +1,79 @@
+2026-09-28T13:11:15+08:00	QUEUE	START	b66a9017129b0d6adc45c71cc6e9ca042548fc0b
+2026-09-28T13:11:31+08:00	PREFLIGHT	COMPLETE	source/data/old predictions/GPU0+1/disk/CPU tests
+2026-09-28T13:11:31+08:00	SMOKE_P1_17	START	gpu=1
+2026-09-28T13:11:31+08:00	SMOKE_P0_17	START	gpu=0
+2026-09-28T13:11:45+08:00	SMOKE_P0_17	COMPLETE	train=0
+2026-09-28T13:11:45+08:00	EVAL_SMOKE_P0_17	START	gpu=0
+2026-09-28T13:11:45+08:00	SMOKE_P1_17	COMPLETE	train=0
+2026-09-28T13:11:45+08:00	EVAL_SMOKE_P1_17	START	gpu=1
+2026-09-28T13:12:27+08:00	EVAL_SMOKE_P0_17	COMPLETE	0
+2026-09-28T13:12:27+08:00	SMOKE_P2_17	START	gpu=0
+2026-09-28T13:12:27+08:00	EVAL_SMOKE_P1_17	COMPLETE	0
+2026-09-28T13:12:38+08:00	SMOKE_P2_17	COMPLETE	train=0
+2026-09-28T13:12:38+08:00	EVAL_SMOKE_P2_17	START	gpu=0
+2026-09-28T13:13:19+08:00	EVAL_SMOKE_P2_17	COMPLETE	0
+2026-09-28T13:13:19+08:00	SMOKE_GATE	COMPLETE	all 3 train/reload/eval branches
+2026-09-28T13:13:19+08:00	FORMAL_P0_17	START	gpu=0
+2026-09-28T13:13:19+08:00	FORMAL_P1_17	START	gpu=1
+2026-09-28T13:13:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'FORMAL_P0_17', 1: 'FORMAL_P1_17'} pending=1 approx_remaining=94min (seed42 pace)
+2026-09-28T13:15:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'FORMAL_P0_17', 1: 'FORMAL_P1_17'} pending=1 approx_remaining=96min (seed42 pace)
+2026-09-28T13:17:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'FORMAL_P0_17', 1: 'FORMAL_P1_17'} pending=1 approx_remaining=89min (seed42 pace)
+2026-09-28T13:19:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'FORMAL_P0_17', 1: 'FORMAL_P1_17'} pending=1 approx_remaining=87min (seed42 pace)
+2026-09-28T13:21:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'FORMAL_P0_17', 1: 'FORMAL_P1_17'} pending=1 approx_remaining=85min (seed42 pace)
+2026-09-28T13:23:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'FORMAL_P0_17', 1: 'FORMAL_P1_17'} pending=1 approx_remaining=83min (seed42 pace)
+2026-09-28T13:25:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'FORMAL_P0_17', 1: 'FORMAL_P1_17'} pending=1 approx_remaining=81min (seed42 pace)
+2026-09-28T13:27:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'FORMAL_P0_17', 1: 'FORMAL_P1_17'} pending=1 approx_remaining=79min (seed42 pace)
+2026-09-28T13:29:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'FORMAL_P0_17', 1: 'FORMAL_P1_17'} pending=1 approx_remaining=77min (seed42 pace)
+2026-09-28T13:31:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'FORMAL_P0_17', 1: 'FORMAL_P1_17'} pending=1 approx_remaining=75min (seed42 pace)
+2026-09-28T13:33:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'FORMAL_P0_17', 1: 'FORMAL_P1_17'} pending=1 approx_remaining=73min (seed42 pace)
+2026-09-28T13:35:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'FORMAL_P0_17', 1: 'FORMAL_P1_17'} pending=1 approx_remaining=71min (seed42 pace)
+2026-09-28T13:37:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'FORMAL_P0_17', 1: 'FORMAL_P1_17'} pending=1 approx_remaining=69min (seed42 pace)
+2026-09-28T13:39:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'FORMAL_P0_17', 1: 'FORMAL_P1_17'} pending=1 approx_remaining=67min (seed42 pace)
+2026-09-28T13:41:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'FORMAL_P0_17', 1: 'FORMAL_P1_17'} pending=1 approx_remaining=65min (seed42 pace)
+2026-09-28T13:43:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'FORMAL_P0_17', 1: 'FORMAL_P1_17'} pending=1 approx_remaining=63min (seed42 pace)
+2026-09-28T13:45:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'FORMAL_P0_17', 1: 'FORMAL_P1_17'} pending=1 approx_remaining=61min (seed42 pace)
+2026-09-28T13:45:56+08:00	FORMAL_P0_17	COMPLETE	train=0
+2026-09-28T13:45:56+08:00	EVAL_FORMAL_P0_17	START	gpu=0
+2026-09-28T13:47:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'EVAL_FORMAL_P0_17', 1: 'FORMAL_P1_17'} pending=1 approx_remaining=59min (seed42 pace)
+2026-09-28T13:49:20+08:00	FORMAL_P1_17	COMPLETE	train=0
+2026-09-28T13:49:20+08:00	EVAL_FORMAL_P1_17	START	gpu=1
+2026-09-28T13:49:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'EVAL_FORMAL_P0_17', 1: 'EVAL_FORMAL_P1_17'} pending=1 approx_remaining=57min (seed42 pace)
+2026-09-28T13:51:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'EVAL_FORMAL_P0_17', 1: 'EVAL_FORMAL_P1_17'} pending=1 approx_remaining=56min (seed42 pace)
+2026-09-28T13:53:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'EVAL_FORMAL_P0_17', 1: 'EVAL_FORMAL_P1_17'} pending=1 approx_remaining=54min (seed42 pace)
+2026-09-28T13:55:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'EVAL_FORMAL_P0_17', 1: 'EVAL_FORMAL_P1_17'} pending=1 approx_remaining=51min (seed42 pace)
+2026-09-28T13:57:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'EVAL_FORMAL_P0_17', 1: 'EVAL_FORMAL_P1_17'} pending=1 approx_remaining=49min (seed42 pace)
+2026-09-28T13:59:24+08:00	ETA	UPDATE	formal_complete=0/3 active={0: 'EVAL_FORMAL_P0_17', 1: 'EVAL_FORMAL_P1_17'} pending=1 approx_remaining=48min (seed42 pace)
+2026-09-28T13:59:34+08:00	EVAL_FORMAL_P0_17	COMPLETE	0
+2026-09-28T13:59:34+08:00	FORMAL_P2_17	START	gpu=0
+2026-09-28T14:01:29+08:00	ETA	UPDATE	formal_complete=1/3 active={1: 'EVAL_FORMAL_P1_17', 0: 'FORMAL_P2_17'} pending=0 approx_remaining=120min (seed42 pace)
+2026-09-28T14:02:51+08:00	EVAL_FORMAL_P1_17	COMPLETE	0
+2026-09-28T14:03:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'FORMAL_P2_17'} pending=0 approx_remaining=45min (seed42 pace)
+2026-09-28T14:05:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'FORMAL_P2_17'} pending=0 approx_remaining=42min (seed42 pace)
+2026-09-28T14:07:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'FORMAL_P2_17'} pending=0 approx_remaining=40min (seed42 pace)
+2026-09-28T14:09:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'FORMAL_P2_17'} pending=0 approx_remaining=38min (seed42 pace)
+2026-09-28T14:11:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'FORMAL_P2_17'} pending=0 approx_remaining=36min (seed42 pace)
+2026-09-28T14:13:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'FORMAL_P2_17'} pending=0 approx_remaining=34min (seed42 pace)
+2026-09-28T14:15:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'FORMAL_P2_17'} pending=0 approx_remaining=32min (seed42 pace)
+2026-09-28T14:17:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'FORMAL_P2_17'} pending=0 approx_remaining=30min (seed42 pace)
+2026-09-28T14:19:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'FORMAL_P2_17'} pending=0 approx_remaining=28min (seed42 pace)
+2026-09-28T14:21:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'FORMAL_P2_17'} pending=0 approx_remaining=26min (seed42 pace)
+2026-09-28T14:23:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'FORMAL_P2_17'} pending=0 approx_remaining=24min (seed42 pace)
+2026-09-28T14:25:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'FORMAL_P2_17'} pending=0 approx_remaining=22min (seed42 pace)
+2026-09-28T14:27:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'FORMAL_P2_17'} pending=0 approx_remaining=20min (seed42 pace)
+2026-09-28T14:29:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'FORMAL_P2_17'} pending=0 approx_remaining=18min (seed42 pace)
+2026-09-28T14:31:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'FORMAL_P2_17'} pending=0 approx_remaining=16min (seed42 pace)
+2026-09-28T14:33:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'FORMAL_P2_17'} pending=0 approx_remaining=14min (seed42 pace)
+2026-09-28T14:34:19+08:00	FORMAL_P2_17	COMPLETE	train=0
+2026-09-28T14:34:19+08:00	EVAL_FORMAL_P2_17	START	gpu=0
+2026-09-28T14:35:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'EVAL_FORMAL_P2_17'} pending=0 approx_remaining=13min (seed42 pace)
+2026-09-28T14:37:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'EVAL_FORMAL_P2_17'} pending=0 approx_remaining=10min (seed42 pace)
+2026-09-28T14:39:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'EVAL_FORMAL_P2_17'} pending=0 approx_remaining=9min (seed42 pace)
+2026-09-28T14:41:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'EVAL_FORMAL_P2_17'} pending=0 approx_remaining=7min (seed42 pace)
+2026-09-28T14:43:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'EVAL_FORMAL_P2_17'} pending=0 approx_remaining=4min (seed42 pace)
+2026-09-28T14:45:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'EVAL_FORMAL_P2_17'} pending=0 approx_remaining=2min (seed42 pace)
+2026-09-28T14:47:31+08:00	ETA	UPDATE	formal_complete=2/3 active={0: 'EVAL_FORMAL_P2_17'} pending=0 approx_remaining=1min (seed42 pace)
+2026-09-28T14:47:37+08:00	EVAL_FORMAL_P2_17	COMPLETE	0
+2026-09-28T14:47:37+08:00	ANALYSIS	START	paired pixels and both-seed decision
+2026-09-28T14:52:05+08:00	ANALYSIS	COMPLETE	0
+2026-09-28T14:52:05+08:00	QUEUE	FINISHED	smoke={'P0': True, 'P1': True, 'P2': True} formal={'P0': True, 'P1': True, 'P2': True} analysis_ok=True
+2026-09-28T14:52:05+08:00	ARCHIVE	START	compact GitHub evidence package

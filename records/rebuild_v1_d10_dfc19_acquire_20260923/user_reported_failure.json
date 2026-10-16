@@ -1,0 +1,11 @@
+{
+  "source": "User-pasted server status.tsv and acquire.log tail",
+  "run_commit": "a870106fb44ad6033405fe120188fe5dbd98d2ce",
+  "started_at": "2026-09-23T16:26:22+08:00",
+  "failed_at": "2026-09-23T16:26:25+08:00",
+  "exit_code": 1,
+  "failure": "requests.exceptions.ProxyError: HTTPSConnectionPool(host='drive.google.com', port=443): proxy tunnel returned 403 Forbidden",
+  "archive_inventory_created": false,
+  "interpretation": "Server network policy blocked the Google Drive host. No archive integrity or dataset-content conclusion follows. Do not retry the same Google Drive route unchanged.",
+  "test6_loaded": false
+}

@@ -1,0 +1,74 @@
+(remote_sensing) [root@h-aoji-aoji-h100-agent-2-w-0 08_thesis_full_repro]$ D=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase24_protected_20261014T193915_2149100
+PY=/home/jovyan/miniconda3/envs/d18_dino/bin/python
+"$PY" -B "$D/code/scripts/status_phase24.py" --directory "$D"
+tail -n 60 "$D/nohup_20261014T193920570637.log"
+QUERY_OBSERVED=2026-10-14T20:28:17.018087+08:00 LAST_OBSERVED=2026-10-14T20:28:16.847139+08:00 QUEUE=D2 CONTROLLER_LIVE=True
+CASE_COUNTS {'SMOKE': 12, 'D1': 642, 'D2': 8} CPU_PENDING 1
+GPU 0 {'pid': 2149964, 'gpu': 0, 'status': 'TRAIN:T0'} LIVE=True
+GPU 1 {'pid': 2149965, 'gpu': 1, 'status': 'INFER:3_11_P-U_rgb_pixel_5_25_zero'} LIVE=True
+T0 {'arm': 'T0', 'step': 1140, 'target': 8000, 'loss': 0.13070827722549438, 'regularizer': 0.0, 'data_wait_seconds': 0.00010120868682861328, 'elapsed_seconds': 86.47404903173447, 'physical_gpu': 0, 'optimizer_updates': 1140, 'observed_at': '2026-10-14T20:28:15.718518+08:00', 'remaining_train_hours': 0.14454492917505854, 'gpu_peak_allocated_bytes': 5950522880}
+STAGE_PROGRESS 8 / 642 REMAINING_STAGE_HOURS None
+progress_gpu0.json {'case': {'tile': '5_10', 'direction': 'dsm', 'family': 'matched', 'realization': 20, 'ratio': 25, 'panel': 'P-U', 'damage': 'down4'}, 'phase': 'shared_expert_forward', 'windows_done': 529, 'windows_total': 529, 'physical_gpu': 0, 'elapsed_seconds': 3.3049622178077698, 'observed_at': '2026-10-14T20:26:40.458347+08:00', 'gpu_peak_allocated_bytes': 5950522880}
+progress_gpu1.json {'case': {'tile': '3_11', 'direction': 'rgb', 'family': 'pixel', 'realization': 4, 'ratio': 25, 'panel': 'P-U', 'damage': 'down4'}, 'phase': 'shared_expert_forward', 'windows_done': 529, 'windows_total': 529, 'physical_gpu': 1, 'elapsed_seconds': 3.5783614590764046, 'observed_at': '2026-10-14T20:28:09.003569+08:00', 'gpu_peak_allocated_bytes': 5949474304}
+runtime_gpu0.json {'physical_gpu': 0, 'forward_seconds': 7.026194900274277, 'packet_bytes': 2304000000, 'stitch_reference': {}, 'observed_at': '2026-10-14T20:26:44.179556+08:00', 'gpu_peak_allocated_bytes': 5950522880}
+runtime_gpu1.json {'physical_gpu': 1, 'forward_seconds': 8.328947089612484, 'packet_bytes': 2304000000, 'stitch_reference': {}, 'observed_at': '2026-10-14T20:28:13.754159+08:00', 'gpu_peak_allocated_bytes': 5949474304}
+preparation_progress.json {'verified_arrays': 48, 'total_arrays': 48, 'tile': '5_10', 'name': 'dsm_down4', 'observed_at': '2026-10-14T19:39:24.398151+08:00'}
+cpu_benchmark.json {'binding': {'plan.json': '26efca2ae3e80796728edefc92da825ee8f0116ae12f1326868b569337b52fb3', 'code_manifest.json': '203a85b3f1056834b65e27c4773b954c9f55114881c29bb10aaaf17ba236b6b7'}, 'records': [{'workers': 16, 'statistics_seconds': 5.71723660081625, 'result_sha256': '6e528e3e97e207dec89963442324a45ea638250b89f26b2a14a6fbaba47b9c56'}, {'workers': 24, 'statistics_seconds': 4.9964746832847595, 'result_sha256': '6e528e3e97e207dec89963442324a45ea638250b89f26b2a14a6fbaba47b9c56'}, {'workers': 32, 'statistics_seconds': 4.957955874502659, 'result_sha256': '6e528e3e97e207dec89963442324a45ea638250b89f26b2a14a6fbaba47b9c56'}], 'selected_workers': 32, 'same_anonymous_RAM_case': True, 'additional_expert_forwards': 0, 'numerical_threads_per_worker': 1, 'observed_at': '2026-10-14T19:40:29.752910+08:00'}
+No automatic retry, extra seeds, new experts, test access or 24h deadline.
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/swiglu_ffn.py:45: UserWarning: xFormers is disabled (SwiGLU)
+  warnings.warn("xFormers is disabled (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/swiglu_ffn.py:51: UserWarning: xFormers is not available (SwiGLU)
+  warnings.warn("xFormers is not available (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py:29: UserWarning: xFormers is disabled (Attention)
+  warnings.warn("xFormers is disabled (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py:33: UserWarning: xFormers is not available (Attention)
+  warnings.warn("xFormers is not available (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/block.py:35: UserWarning: xFormers is disabled (Block)
+  warnings.warn("xFormers is disabled (Block)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/block.py:40: UserWarning: xFormers is not available (Block)
+  warnings.warn("xFormers is not available (Block)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/swiglu_ffn.py:45: UserWarning: xFormers is disabled (SwiGLU)
+  warnings.warn("xFormers is disabled (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/swiglu_ffn.py:51: UserWarning: xFormers is not available (SwiGLU)
+  warnings.warn("xFormers is not available (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py:29: UserWarning: xFormers is disabled (Attention)
+  warnings.warn("xFormers is disabled (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py:33: UserWarning: xFormers is not available (Attention)
+  warnings.warn("xFormers is not available (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/block.py:35: UserWarning: xFormers is disabled (Block)
+  warnings.warn("xFormers is disabled (Block)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/block.py:40: UserWarning: xFormers is not available (Block)
+  warnings.warn("xFormers is not available (Block)")
+PHASE24_CASES D1 20
+PHASE24_CASES D1 40
+PHASE24_CASES D1 60
+PHASE24_CASES D1 80
+PHASE24_CASES D1 100
+PHASE24_CASES D1 120
+PHASE24_CASES D1 140
+PHASE24_CASES D1 160
+PHASE24_CASES D1 180
+PHASE24_CASES D1 200
+PHASE24_CASES D1 220
+PHASE24_CASES D1 240
+PHASE24_CASES D1 260
+PHASE24_CASES D1 280
+PHASE24_CASES D1 300
+PHASE24_CASES D1 320
+PHASE24_CASES D1 340
+PHASE24_CASES D1 360
+PHASE24_CASES D1 380
+PHASE24_CASES D1 400
+PHASE24_CASES D1 420
+PHASE24_CASES D1 440
+PHASE24_CASES D1 460
+PHASE24_CASES D1 480
+PHASE24_CASES D1 500
+PHASE24_CASES D1 520
+PHASE24_CASES D1 540
+PHASE24_CASES D1 560
+PHASE24_CASES D1 580
+PHASE24_CASES D1 600
+PHASE24_CASES D1 620
+PHASE24_CASES D1 640
+(remote_sensing) [root@h-aoji-aoji-h100-agent-2-w-0 08_thesis_full_repro]$ 

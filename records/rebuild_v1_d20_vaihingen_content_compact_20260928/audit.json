@@ -1,0 +1,2302 @@
+{
+  "schema_version": "1.0",
+  "created_at": "2026-09-28T15:58:46+08:00",
+  "status": "CONTENT_SAMPLE_CHECKS_PASS_DEVELOPMENT_ONLY",
+  "scope": "Vaihingen same-mosaic development source",
+  "roots": [
+    "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+    "/home/jovyan/zzx/projects_zys/ISPRS_dataset/Vaihingen"
+  ],
+  "expected_ids": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    20,
+    22,
+    24,
+    27,
+    29,
+    31,
+    33,
+    35,
+    38
+  ],
+  "previously_used_train_ids": [
+    1,
+    3,
+    7,
+    11,
+    13,
+    17,
+    23,
+    26,
+    28,
+    32,
+    34,
+    37
+  ],
+  "previously_used_eval_ids": [
+    5,
+    15,
+    21,
+    30
+  ],
+  "label_choice": "Exact gts_complete_full/top_mosaic_09cm_area<ID>.tif; noBoundary excluded",
+  "optical_band_meaning": [
+    "near infrared",
+    "red",
+    "green"
+  ],
+  "sample_limit_per_tile": 100000,
+  "ready_development_ids": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    20,
+    22,
+    24,
+    27,
+    29,
+    31,
+    33,
+    35,
+    38
+  ],
+  "tiles": [
+    {
+      "id": 2,
+      "historical_status": "unused_id_same_mosaic_development_only",
+      "path_choices": [
+        {
+          "root": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+          "present": {
+            "optical": true,
+            "dsm": true,
+            "full_gt": true
+          }
+        }
+      ],
+      "paths": {
+        "optical": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area2.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area2.tif",
+        "full_gt": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area2.tif"
+      },
+      "checks": {
+        "same_pixel_shape": true,
+        "top_has_at_least_three_bands": true,
+        "dsm_one_band": true,
+        "full_gt_rgb_palette_sample_recognized": true,
+        "dsm_sample_finite": true,
+        "geographic_header_alignment": null
+      },
+      "errors": [],
+      "headers": {
+        "optical": {
+          "shape": [
+            2767,
+            2428
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "dsm": {
+          "shape": [
+            2767,
+            2428
+          ],
+          "bands": 1,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "full_gt": {
+          "shape": [
+            2767,
+            2428
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        }
+      },
+      "optical": {
+        "shape": [
+          2767,
+          2428,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_minmax_per_band": [
+          [
+            0.0,
+            255.0
+          ],
+          [
+            0.0,
+            255.0
+          ],
+          [
+            0.0,
+            255.0
+          ]
+        ]
+      },
+      "dsm": {
+        "shape": [
+          2767,
+          2428
+        ],
+        "dtype": "float32",
+        "sample_count": 83160,
+        "sample_nonfinite": 0,
+        "sample_minmax": [
+          242.4149169921875,
+          289.4072265625
+        ]
+      },
+      "full_gt": {
+        "shape": [
+          2767,
+          2428,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_colors": {
+          "0,0,255": {
+            "class": "Building",
+            "count": 18975
+          },
+          "0,255,0": {
+            "class": "Tree",
+            "count": 20432
+          },
+          "0,255,255": {
+            "class": "LowVegetation",
+            "count": 20255
+          },
+          "255,0,0": {
+            "class": "Clutter",
+            "count": 1580
+          },
+          "255,255,0": {
+            "class": "Car",
+            "count": 1272
+          },
+          "255,255,255": {
+            "class": "Impervious",
+            "count": 20646
+          }
+        },
+        "sample_unknown_count": 0
+      }
+    },
+    {
+      "id": 4,
+      "historical_status": "unused_id_same_mosaic_development_only",
+      "path_choices": [
+        {
+          "root": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+          "present": {
+            "optical": true,
+            "dsm": true,
+            "full_gt": true
+          }
+        }
+      ],
+      "paths": {
+        "optical": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area4.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area4.tif",
+        "full_gt": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area4.tif"
+      },
+      "checks": {
+        "same_pixel_shape": true,
+        "top_has_at_least_three_bands": true,
+        "dsm_one_band": true,
+        "full_gt_rgb_palette_sample_recognized": true,
+        "dsm_sample_finite": true,
+        "geographic_header_alignment": null
+      },
+      "errors": [],
+      "headers": {
+        "optical": {
+          "shape": [
+            2557,
+            1887
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "dsm": {
+          "shape": [
+            2557,
+            1887
+          ],
+          "bands": 1,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "full_gt": {
+          "shape": [
+            2557,
+            1887
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        }
+      },
+      "optical": {
+        "shape": [
+          2557,
+          1887,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_minmax_per_band": [
+          [
+            28.0,
+            255.0
+          ],
+          [
+            27.0,
+            254.0
+          ],
+          [
+            30.0,
+            255.0
+          ]
+        ]
+      },
+      "dsm": {
+        "shape": [
+          2557,
+          1887
+        ],
+        "dtype": "float32",
+        "sample_count": 98820,
+        "sample_nonfinite": 0,
+        "sample_minmax": [
+          249.0789031982422,
+          290.0745849609375
+        ]
+      },
+      "full_gt": {
+        "shape": [
+          2557,
+          1887,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_colors": {
+          "0,0,255": {
+            "class": "Building",
+            "count": 57788
+          },
+          "0,255,0": {
+            "class": "Tree",
+            "count": 4939
+          },
+          "0,255,255": {
+            "class": "LowVegetation",
+            "count": 4562
+          },
+          "255,255,0": {
+            "class": "Car",
+            "count": 1494
+          },
+          "255,255,255": {
+            "class": "Impervious",
+            "count": 30037
+          }
+        },
+        "sample_unknown_count": 0
+      }
+    },
+    {
+      "id": 6,
+      "historical_status": "unused_id_same_mosaic_development_only",
+      "path_choices": [
+        {
+          "root": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+          "present": {
+            "optical": true,
+            "dsm": true,
+            "full_gt": true
+          }
+        }
+      ],
+      "paths": {
+        "optical": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area6.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area6.tif",
+        "full_gt": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area6.tif"
+      },
+      "checks": {
+        "same_pixel_shape": true,
+        "top_has_at_least_three_bands": true,
+        "dsm_one_band": true,
+        "full_gt_rgb_palette_sample_recognized": true,
+        "dsm_sample_finite": true,
+        "geographic_header_alignment": null
+      },
+      "errors": [],
+      "headers": {
+        "optical": {
+          "shape": [
+            2557,
+            1887
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "dsm": {
+          "shape": [
+            2557,
+            1887
+          ],
+          "bands": 1,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "full_gt": {
+          "shape": [
+            2557,
+            1887
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        }
+      },
+      "optical": {
+        "shape": [
+          2557,
+          1887,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_minmax_per_band": [
+          [
+            0.0,
+            255.0
+          ],
+          [
+            0.0,
+            255.0
+          ],
+          [
+            0.0,
+            255.0
+          ]
+        ]
+      },
+      "dsm": {
+        "shape": [
+          2557,
+          1887
+        ],
+        "dtype": "float32",
+        "sample_count": 98820,
+        "sample_nonfinite": 0,
+        "sample_minmax": [
+          262.73126220703125,
+          327.8688049316406
+        ]
+      },
+      "full_gt": {
+        "shape": [
+          2557,
+          1887,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_colors": {
+          "0,0,255": {
+            "class": "Building",
+            "count": 32789
+          },
+          "0,255,0": {
+            "class": "Tree",
+            "count": 28590
+          },
+          "0,255,255": {
+            "class": "LowVegetation",
+            "count": 10551
+          },
+          "255,255,0": {
+            "class": "Car",
+            "count": 1606
+          },
+          "255,255,255": {
+            "class": "Impervious",
+            "count": 25284
+          }
+        },
+        "sample_unknown_count": 0
+      }
+    },
+    {
+      "id": 8,
+      "historical_status": "unused_id_same_mosaic_development_only",
+      "path_choices": [
+        {
+          "root": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+          "present": {
+            "optical": true,
+            "dsm": true,
+            "full_gt": true
+          }
+        }
+      ],
+      "paths": {
+        "optical": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area8.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area8.tif",
+        "full_gt": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area8.tif"
+      },
+      "checks": {
+        "same_pixel_shape": true,
+        "top_has_at_least_three_bands": true,
+        "dsm_one_band": true,
+        "full_gt_rgb_palette_sample_recognized": true,
+        "dsm_sample_finite": true,
+        "geographic_header_alignment": null
+      },
+      "errors": [],
+      "headers": {
+        "optical": {
+          "shape": [
+            2557,
+            1887
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "dsm": {
+          "shape": [
+            2557,
+            1887
+          ],
+          "bands": 1,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "full_gt": {
+          "shape": [
+            2557,
+            1887
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        }
+      },
+      "optical": {
+        "shape": [
+          2557,
+          1887,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_minmax_per_band": [
+          [
+            0.0,
+            255.0
+          ],
+          [
+            0.0,
+            255.0
+          ],
+          [
+            0.0,
+            255.0
+          ]
+        ]
+      },
+      "dsm": {
+        "shape": [
+          2557,
+          1887
+        ],
+        "dtype": "float32",
+        "sample_count": 98820,
+        "sample_nonfinite": 0,
+        "sample_minmax": [
+          268.0555114746094,
+          298.649658203125
+        ]
+      },
+      "full_gt": {
+        "shape": [
+          2557,
+          1887,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_colors": {
+          "0,0,255": {
+            "class": "Building",
+            "count": 22899
+          },
+          "0,255,0": {
+            "class": "Tree",
+            "count": 23771
+          },
+          "0,255,255": {
+            "class": "LowVegetation",
+            "count": 19403
+          },
+          "255,255,0": {
+            "class": "Car",
+            "count": 1664
+          },
+          "255,255,255": {
+            "class": "Impervious",
+            "count": 31083
+          }
+        },
+        "sample_unknown_count": 0
+      }
+    },
+    {
+      "id": 10,
+      "historical_status": "unused_id_same_mosaic_development_only",
+      "path_choices": [
+        {
+          "root": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+          "present": {
+            "optical": true,
+            "dsm": true,
+            "full_gt": true
+          }
+        }
+      ],
+      "paths": {
+        "optical": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area10.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area10.tif",
+        "full_gt": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area10.tif"
+      },
+      "checks": {
+        "same_pixel_shape": true,
+        "top_has_at_least_three_bands": true,
+        "dsm_one_band": true,
+        "full_gt_rgb_palette_sample_recognized": true,
+        "dsm_sample_finite": true,
+        "geographic_header_alignment": null
+      },
+      "errors": [],
+      "headers": {
+        "optical": {
+          "shape": [
+            2557,
+            1887
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "dsm": {
+          "shape": [
+            2557,
+            1887
+          ],
+          "bands": 1,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "full_gt": {
+          "shape": [
+            2557,
+            1887
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        }
+      },
+      "optical": {
+        "shape": [
+          2557,
+          1887,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_minmax_per_band": [
+          [
+            25.0,
+            255.0
+          ],
+          [
+            28.0,
+            255.0
+          ],
+          [
+            28.0,
+            255.0
+          ]
+        ]
+      },
+      "dsm": {
+        "shape": [
+          2557,
+          1887
+        ],
+        "dtype": "float32",
+        "sample_count": 98820,
+        "sample_nonfinite": 0,
+        "sample_minmax": [
+          271.6258544921875,
+          316.75323486328125
+        ]
+      },
+      "full_gt": {
+        "shape": [
+          2557,
+          1887,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_colors": {
+          "0,0,255": {
+            "class": "Building",
+            "count": 23362
+          },
+          "0,255,0": {
+            "class": "Tree",
+            "count": 20275
+          },
+          "0,255,255": {
+            "class": "LowVegetation",
+            "count": 17354
+          },
+          "255,255,0": {
+            "class": "Car",
+            "count": 704
+          },
+          "255,255,255": {
+            "class": "Impervious",
+            "count": 37125
+          }
+        },
+        "sample_unknown_count": 0
+      }
+    },
+    {
+      "id": 12,
+      "historical_status": "unused_id_same_mosaic_development_only",
+      "path_choices": [
+        {
+          "root": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+          "present": {
+            "optical": true,
+            "dsm": true,
+            "full_gt": true
+          }
+        }
+      ],
+      "paths": {
+        "optical": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area12.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area12.tif",
+        "full_gt": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area12.tif"
+      },
+      "checks": {
+        "same_pixel_shape": true,
+        "top_has_at_least_three_bands": true,
+        "dsm_one_band": true,
+        "full_gt_rgb_palette_sample_recognized": true,
+        "dsm_sample_finite": true,
+        "geographic_header_alignment": null
+      },
+      "errors": [],
+      "headers": {
+        "optical": {
+          "shape": [
+            2575,
+            1922
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "dsm": {
+          "shape": [
+            2575,
+            1922
+          ],
+          "bands": 1,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "full_gt": {
+          "shape": [
+            2575,
+            1922
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        }
+      },
+      "optical": {
+        "shape": [
+          2575,
+          1922,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_minmax_per_band": [
+          [
+            0.0,
+            255.0
+          ],
+          [
+            0.0,
+            252.0
+          ],
+          [
+            0.0,
+            253.0
+          ]
+        ]
+      },
+      "dsm": {
+        "shape": [
+          2575,
+          1922
+        ],
+        "dtype": "float32",
+        "sample_count": 77602,
+        "sample_nonfinite": 0,
+        "sample_minmax": [
+          274.6670227050781,
+          333.49078369140625
+        ]
+      },
+      "full_gt": {
+        "shape": [
+          2575,
+          1922,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_colors": {
+          "0,0,255": {
+            "class": "Building",
+            "count": 14863
+          },
+          "0,255,0": {
+            "class": "Tree",
+            "count": 28744
+          },
+          "0,255,255": {
+            "class": "LowVegetation",
+            "count": 22569
+          },
+          "255,255,0": {
+            "class": "Car",
+            "count": 384
+          },
+          "255,255,255": {
+            "class": "Impervious",
+            "count": 11042
+          }
+        },
+        "sample_unknown_count": 0
+      }
+    },
+    {
+      "id": 14,
+      "historical_status": "unused_id_same_mosaic_development_only",
+      "path_choices": [
+        {
+          "root": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+          "present": {
+            "optical": true,
+            "dsm": true,
+            "full_gt": true
+          }
+        }
+      ],
+      "paths": {
+        "optical": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area14.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area14.tif",
+        "full_gt": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area14.tif"
+      },
+      "checks": {
+        "same_pixel_shape": true,
+        "top_has_at_least_three_bands": true,
+        "dsm_one_band": true,
+        "full_gt_rgb_palette_sample_recognized": true,
+        "dsm_sample_finite": true,
+        "geographic_header_alignment": null
+      },
+      "errors": [],
+      "headers": {
+        "optical": {
+          "shape": [
+            2565,
+            1919
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "dsm": {
+          "shape": [
+            2565,
+            1919
+          ],
+          "bands": 1,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "full_gt": {
+          "shape": [
+            2565,
+            1919
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        }
+      },
+      "optical": {
+        "shape": [
+          2565,
+          1919,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_minmax_per_band": [
+          [
+            25.0,
+            255.0
+          ],
+          [
+            21.0,
+            255.0
+          ],
+          [
+            24.0,
+            255.0
+          ]
+        ]
+      },
+      "dsm": {
+        "shape": [
+          2565,
+          1919
+        ],
+        "dtype": "float32",
+        "sample_count": 77040,
+        "sample_nonfinite": 0,
+        "sample_minmax": [
+          279.9043273925781,
+          323.0335998535156
+        ]
+      },
+      "full_gt": {
+        "shape": [
+          2565,
+          1919,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_colors": {
+          "0,0,255": {
+            "class": "Building",
+            "count": 13568
+          },
+          "0,255,0": {
+            "class": "Tree",
+            "count": 25951
+          },
+          "0,255,255": {
+            "class": "LowVegetation",
+            "count": 19588
+          },
+          "255,255,0": {
+            "class": "Car",
+            "count": 209
+          },
+          "255,255,255": {
+            "class": "Impervious",
+            "count": 17724
+          }
+        },
+        "sample_unknown_count": 0
+      }
+    },
+    {
+      "id": 16,
+      "historical_status": "unused_id_same_mosaic_development_only",
+      "path_choices": [
+        {
+          "root": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+          "present": {
+            "optical": true,
+            "dsm": true,
+            "full_gt": true
+          }
+        }
+      ],
+      "paths": {
+        "optical": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area16.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area16.tif",
+        "full_gt": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area16.tif"
+      },
+      "checks": {
+        "same_pixel_shape": true,
+        "top_has_at_least_three_bands": true,
+        "dsm_one_band": true,
+        "full_gt_rgb_palette_sample_recognized": true,
+        "dsm_sample_finite": true,
+        "geographic_header_alignment": null
+      },
+      "errors": [],
+      "headers": {
+        "optical": {
+          "shape": [
+            2565,
+            1919
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "dsm": {
+          "shape": [
+            2565,
+            1919
+          ],
+          "bands": 1,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "full_gt": {
+          "shape": [
+            2565,
+            1919
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        }
+      },
+      "optical": {
+        "shape": [
+          2565,
+          1919,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_minmax_per_band": [
+          [
+            20.0,
+            250.0
+          ],
+          [
+            17.0,
+            252.0
+          ],
+          [
+            21.0,
+            254.0
+          ]
+        ]
+      },
+      "dsm": {
+        "shape": [
+          2565,
+          1919
+        ],
+        "dtype": "float32",
+        "sample_count": 77040,
+        "sample_nonfinite": 0,
+        "sample_minmax": [
+          311.37005615234375,
+          357.97119140625
+        ]
+      },
+      "full_gt": {
+        "shape": [
+          2565,
+          1919,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_colors": {
+          "0,0,255": {
+            "class": "Building",
+            "count": 13737
+          },
+          "0,255,0": {
+            "class": "Tree",
+            "count": 28278
+          },
+          "0,255,255": {
+            "class": "LowVegetation",
+            "count": 22913
+          },
+          "255,255,0": {
+            "class": "Car",
+            "count": 180
+          },
+          "255,255,255": {
+            "class": "Impervious",
+            "count": 11932
+          }
+        },
+        "sample_unknown_count": 0
+      }
+    },
+    {
+      "id": 20,
+      "historical_status": "unused_id_same_mosaic_development_only",
+      "path_choices": [
+        {
+          "root": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+          "present": {
+            "optical": true,
+            "dsm": true,
+            "full_gt": true
+          }
+        }
+      ],
+      "paths": {
+        "optical": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area20.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area20.tif",
+        "full_gt": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area20.tif"
+      },
+      "checks": {
+        "same_pixel_shape": true,
+        "top_has_at_least_three_bands": true,
+        "dsm_one_band": true,
+        "full_gt_rgb_palette_sample_recognized": true,
+        "dsm_sample_finite": true,
+        "geographic_header_alignment": null
+      },
+      "errors": [],
+      "headers": {
+        "optical": {
+          "shape": [
+            2315,
+            1866
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "dsm": {
+          "shape": [
+            2315,
+            1866
+          ],
+          "bands": 1,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "full_gt": {
+          "shape": [
+            2315,
+            1866
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        }
+      },
+      "optical": {
+        "shape": [
+          2315,
+          1866,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_minmax_per_band": [
+          [
+            0.0,
+            255.0
+          ],
+          [
+            0.0,
+            255.0
+          ],
+          [
+            0.0,
+            255.0
+          ]
+        ]
+      },
+      "dsm": {
+        "shape": [
+          2315,
+          1866
+        ],
+        "dtype": "float32",
+        "sample_count": 88377,
+        "sample_nonfinite": 0,
+        "sample_minmax": [
+          277.7373962402344,
+          325.8447265625
+        ]
+      },
+      "full_gt": {
+        "shape": [
+          2315,
+          1866,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_colors": {
+          "0,0,255": {
+            "class": "Building",
+            "count": 14409
+          },
+          "0,255,0": {
+            "class": "Tree",
+            "count": 36319
+          },
+          "0,255,255": {
+            "class": "LowVegetation",
+            "count": 17083
+          },
+          "255,0,0": {
+            "class": "Clutter",
+            "count": 2385
+          },
+          "255,255,0": {
+            "class": "Car",
+            "count": 357
+          },
+          "255,255,255": {
+            "class": "Impervious",
+            "count": 17824
+          }
+        },
+        "sample_unknown_count": 0
+      }
+    },
+    {
+      "id": 22,
+      "historical_status": "unused_id_same_mosaic_development_only",
+      "path_choices": [
+        {
+          "root": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+          "present": {
+            "optical": true,
+            "dsm": true,
+            "full_gt": true
+          }
+        }
+      ],
+      "paths": {
+        "optical": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area22.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area22.tif",
+        "full_gt": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area22.tif"
+      },
+      "checks": {
+        "same_pixel_shape": true,
+        "top_has_at_least_three_bands": true,
+        "dsm_one_band": true,
+        "full_gt_rgb_palette_sample_recognized": true,
+        "dsm_sample_finite": true,
+        "geographic_header_alignment": null
+      },
+      "errors": [],
+      "headers": {
+        "optical": {
+          "shape": [
+            2546,
+            1903
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "dsm": {
+          "shape": [
+            2546,
+            1903
+          ],
+          "bands": 1,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "full_gt": {
+          "shape": [
+            2546,
+            1903
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        }
+      },
+      "optical": {
+        "shape": [
+          2546,
+          1903,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_minmax_per_band": [
+          [
+            0.0,
+            255.0
+          ],
+          [
+            0.0,
+            255.0
+          ],
+          [
+            0.0,
+            255.0
+          ]
+        ]
+      },
+      "dsm": {
+        "shape": [
+          2546,
+          1903
+        ],
+        "dtype": "float32",
+        "sample_count": 99008,
+        "sample_nonfinite": 0,
+        "sample_minmax": [
+          269.4597473144531,
+          304.9860534667969
+        ]
+      },
+      "full_gt": {
+        "shape": [
+          2546,
+          1903,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_colors": {
+          "0,0,255": {
+            "class": "Building",
+            "count": 17665
+          },
+          "0,255,0": {
+            "class": "Tree",
+            "count": 28552
+          },
+          "0,255,255": {
+            "class": "LowVegetation",
+            "count": 20053
+          },
+          "255,255,0": {
+            "class": "Car",
+            "count": 1065
+          },
+          "255,255,255": {
+            "class": "Impervious",
+            "count": 31673
+          }
+        },
+        "sample_unknown_count": 0
+      }
+    },
+    {
+      "id": 24,
+      "historical_status": "unused_id_same_mosaic_development_only",
+      "path_choices": [
+        {
+          "root": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+          "present": {
+            "optical": true,
+            "dsm": true,
+            "full_gt": true
+          }
+        }
+      ],
+      "paths": {
+        "optical": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area24.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area24.tif",
+        "full_gt": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area24.tif"
+      },
+      "checks": {
+        "same_pixel_shape": true,
+        "top_has_at_least_three_bands": true,
+        "dsm_one_band": true,
+        "full_gt_rgb_palette_sample_recognized": true,
+        "dsm_sample_finite": true,
+        "geographic_header_alignment": null
+      },
+      "errors": [],
+      "headers": {
+        "optical": {
+          "shape": [
+            2546,
+            1903
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "dsm": {
+          "shape": [
+            2546,
+            1903
+          ],
+          "bands": 1,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "full_gt": {
+          "shape": [
+            2546,
+            1903
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        }
+      },
+      "optical": {
+        "shape": [
+          2546,
+          1903,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_minmax_per_band": [
+          [
+            0.0,
+            255.0
+          ],
+          [
+            0.0,
+            255.0
+          ],
+          [
+            0.0,
+            255.0
+          ]
+        ]
+      },
+      "dsm": {
+        "shape": [
+          2546,
+          1903
+        ],
+        "dtype": "float32",
+        "sample_count": 99008,
+        "sample_nonfinite": 0,
+        "sample_minmax": [
+          312.1882629394531,
+          350.5647888183594
+        ]
+      },
+      "full_gt": {
+        "shape": [
+          2546,
+          1903,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_colors": {
+          "0,0,255": {
+            "class": "Building",
+            "count": 18572
+          },
+          "0,255,0": {
+            "class": "Tree",
+            "count": 25086
+          },
+          "0,255,255": {
+            "class": "LowVegetation",
+            "count": 40555
+          },
+          "255,255,0": {
+            "class": "Car",
+            "count": 369
+          },
+          "255,255,255": {
+            "class": "Impervious",
+            "count": 14426
+          }
+        },
+        "sample_unknown_count": 0
+      }
+    },
+    {
+      "id": 27,
+      "historical_status": "unused_id_same_mosaic_development_only",
+      "path_choices": [
+        {
+          "root": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+          "present": {
+            "optical": true,
+            "dsm": true,
+            "full_gt": true
+          }
+        }
+      ],
+      "paths": {
+        "optical": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area27.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area27.tif",
+        "full_gt": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area27.tif"
+      },
+      "checks": {
+        "same_pixel_shape": true,
+        "top_has_at_least_three_bands": true,
+        "dsm_one_band": true,
+        "full_gt_rgb_palette_sample_recognized": true,
+        "dsm_sample_finite": true,
+        "geographic_header_alignment": null
+      },
+      "errors": [],
+      "headers": {
+        "optical": {
+          "shape": [
+            3313,
+            1917
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "dsm": {
+          "shape": [
+            3313,
+            1917
+          ],
+          "bands": 1,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "full_gt": {
+          "shape": [
+            3313,
+            1917
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        }
+      },
+      "optical": {
+        "shape": [
+          3313,
+          1917,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_minmax_per_band": [
+          [
+            27.0,
+            255.0
+          ],
+          [
+            29.0,
+            255.0
+          ],
+          [
+            28.0,
+            255.0
+          ]
+        ]
+      },
+      "dsm": {
+        "shape": [
+          3313,
+          1917
+        ],
+        "dtype": "float32",
+        "sample_count": 99600,
+        "sample_nonfinite": 0,
+        "sample_minmax": [
+          253.89236450195312,
+          289.1549072265625
+        ]
+      },
+      "full_gt": {
+        "shape": [
+          3313,
+          1917,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_colors": {
+          "0,0,255": {
+            "class": "Building",
+            "count": 34826
+          },
+          "0,255,0": {
+            "class": "Tree",
+            "count": 9946
+          },
+          "0,255,255": {
+            "class": "LowVegetation",
+            "count": 19500
+          },
+          "255,0,0": {
+            "class": "Clutter",
+            "count": 255
+          },
+          "255,255,0": {
+            "class": "Car",
+            "count": 3272
+          },
+          "255,255,255": {
+            "class": "Impervious",
+            "count": 31801
+          }
+        },
+        "sample_unknown_count": 0
+      }
+    },
+    {
+      "id": 29,
+      "historical_status": "unused_id_same_mosaic_development_only",
+      "path_choices": [
+        {
+          "root": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+          "present": {
+            "optical": true,
+            "dsm": true,
+            "full_gt": true
+          }
+        }
+      ],
+      "paths": {
+        "optical": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area29.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area29.tif",
+        "full_gt": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area29.tif"
+      },
+      "checks": {
+        "same_pixel_shape": true,
+        "top_has_at_least_three_bands": true,
+        "dsm_one_band": true,
+        "full_gt_rgb_palette_sample_recognized": true,
+        "dsm_sample_finite": true,
+        "geographic_header_alignment": null
+      },
+      "errors": [],
+      "headers": {
+        "optical": {
+          "shape": [
+            2563,
+            1917
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "dsm": {
+          "shape": [
+            2563,
+            1917
+          ],
+          "bands": 1,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "full_gt": {
+          "shape": [
+            2563,
+            1917
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        }
+      },
+      "optical": {
+        "shape": [
+          2563,
+          1917,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_minmax_per_band": [
+          [
+            15.0,
+            255.0
+          ],
+          [
+            19.0,
+            255.0
+          ],
+          [
+            19.0,
+            255.0
+          ]
+        ]
+      },
+      "dsm": {
+        "shape": [
+          2563,
+          1917
+        ],
+        "dtype": "float32",
+        "sample_count": 77040,
+        "sample_nonfinite": 0,
+        "sample_minmax": [
+          256.4342346191406,
+          291.5055236816406
+        ]
+      },
+      "full_gt": {
+        "shape": [
+          2563,
+          1917,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_colors": {
+          "0,0,255": {
+            "class": "Building",
+            "count": 21037
+          },
+          "0,255,0": {
+            "class": "Tree",
+            "count": 8449
+          },
+          "0,255,255": {
+            "class": "LowVegetation",
+            "count": 11517
+          },
+          "255,0,0": {
+            "class": "Clutter",
+            "count": 2272
+          },
+          "255,255,0": {
+            "class": "Car",
+            "count": 1023
+          },
+          "255,255,255": {
+            "class": "Impervious",
+            "count": 32742
+          }
+        },
+        "sample_unknown_count": 0
+      }
+    },
+    {
+      "id": 31,
+      "historical_status": "unused_id_same_mosaic_development_only",
+      "path_choices": [
+        {
+          "root": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+          "present": {
+            "optical": true,
+            "dsm": true,
+            "full_gt": true
+          }
+        }
+      ],
+      "paths": {
+        "optical": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area31.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area31.tif",
+        "full_gt": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area31.tif"
+      },
+      "checks": {
+        "same_pixel_shape": true,
+        "top_has_at_least_three_bands": true,
+        "dsm_one_band": true,
+        "full_gt_rgb_palette_sample_recognized": true,
+        "dsm_sample_finite": true,
+        "geographic_header_alignment": null
+      },
+      "errors": [],
+      "headers": {
+        "optical": {
+          "shape": [
+            2555,
+            1980
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "dsm": {
+          "shape": [
+            2555,
+            1980
+          ],
+          "bands": 1,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "full_gt": {
+          "shape": [
+            2555,
+            1980
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        }
+      },
+      "optical": {
+        "shape": [
+          2555,
+          1980,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_minmax_per_band": [
+          [
+            0.0,
+            252.0
+          ],
+          [
+            0.0,
+            254.0
+          ],
+          [
+            0.0,
+            255.0
+          ]
+        ]
+      },
+      "dsm": {
+        "shape": [
+          2555,
+          1980
+        ],
+        "dtype": "float32",
+        "sample_count": 79360,
+        "sample_nonfinite": 0,
+        "sample_minmax": [
+          242.65281677246094,
+          282.6750793457031
+        ]
+      },
+      "full_gt": {
+        "shape": [
+          2555,
+          1980,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_colors": {
+          "0,0,255": {
+            "class": "Building",
+            "count": 22008
+          },
+          "0,255,0": {
+            "class": "Tree",
+            "count": 9050
+          },
+          "0,255,255": {
+            "class": "LowVegetation",
+            "count": 11877
+          },
+          "255,0,0": {
+            "class": "Clutter",
+            "count": 2653
+          },
+          "255,255,0": {
+            "class": "Car",
+            "count": 2852
+          },
+          "255,255,255": {
+            "class": "Impervious",
+            "count": 30920
+          }
+        },
+        "sample_unknown_count": 0
+      }
+    },
+    {
+      "id": 33,
+      "historical_status": "unused_id_same_mosaic_development_only",
+      "path_choices": [
+        {
+          "root": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+          "present": {
+            "optical": true,
+            "dsm": true,
+            "full_gt": true
+          }
+        }
+      ],
+      "paths": {
+        "optical": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area33.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area33.tif",
+        "full_gt": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area33.tif"
+      },
+      "checks": {
+        "same_pixel_shape": true,
+        "top_has_at_least_three_bands": true,
+        "dsm_one_band": true,
+        "full_gt_rgb_palette_sample_recognized": true,
+        "dsm_sample_finite": true,
+        "geographic_header_alignment": null
+      },
+      "errors": [],
+      "headers": {
+        "optical": {
+          "shape": [
+            2555,
+            1581
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "dsm": {
+          "shape": [
+            2555,
+            1581
+          ],
+          "bands": 1,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "full_gt": {
+          "shape": [
+            2555,
+            1581
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        }
+      },
+      "optical": {
+        "shape": [
+          2555,
+          1581,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_minmax_per_band": [
+          [
+            29.0,
+            255.0
+          ],
+          [
+            22.0,
+            255.0
+          ],
+          [
+            24.0,
+            255.0
+          ]
+        ]
+      },
+      "dsm": {
+        "shape": [
+          2555,
+          1581
+        ],
+        "dtype": "float32",
+        "sample_count": 82490,
+        "sample_nonfinite": 0,
+        "sample_minmax": [
+          253.55075073242188,
+          278.97271728515625
+        ]
+      },
+      "full_gt": {
+        "shape": [
+          2555,
+          1581,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_colors": {
+          "0,0,255": {
+            "class": "Building",
+            "count": 23951
+          },
+          "0,255,0": {
+            "class": "Tree",
+            "count": 8664
+          },
+          "0,255,255": {
+            "class": "LowVegetation",
+            "count": 12674
+          },
+          "255,0,0": {
+            "class": "Clutter",
+            "count": 4447
+          },
+          "255,255,0": {
+            "class": "Car",
+            "count": 1057
+          },
+          "255,255,255": {
+            "class": "Impervious",
+            "count": 31697
+          }
+        },
+        "sample_unknown_count": 0
+      }
+    },
+    {
+      "id": 35,
+      "historical_status": "unused_id_same_mosaic_development_only",
+      "path_choices": [
+        {
+          "root": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+          "present": {
+            "optical": true,
+            "dsm": true,
+            "full_gt": true
+          }
+        }
+      ],
+      "paths": {
+        "optical": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area35.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area35.tif",
+        "full_gt": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area35.tif"
+      },
+      "checks": {
+        "same_pixel_shape": true,
+        "top_has_at_least_three_bands": true,
+        "dsm_one_band": true,
+        "full_gt_rgb_palette_sample_recognized": true,
+        "dsm_sample_finite": true,
+        "geographic_header_alignment": null
+      },
+      "errors": [],
+      "headers": {
+        "optical": {
+          "shape": [
+            1884,
+            2805
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "dsm": {
+          "shape": [
+            1884,
+            2805
+          ],
+          "bands": 1,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "full_gt": {
+          "shape": [
+            1884,
+            2805
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        }
+      },
+      "optical": {
+        "shape": [
+          1884,
+          2805,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_minmax_per_band": [
+          [
+            0.0,
+            255.0
+          ],
+          [
+            0.0,
+            255.0
+          ],
+          [
+            0.0,
+            255.0
+          ]
+        ]
+      },
+      "dsm": {
+        "shape": [
+          1884,
+          2805
+        ],
+        "dtype": "float32",
+        "sample_count": 82836,
+        "sample_nonfinite": 0,
+        "sample_minmax": [
+          262.6816711425781,
+          289.4306335449219
+        ]
+      },
+      "full_gt": {
+        "shape": [
+          1884,
+          2805,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_colors": {
+          "0,0,255": {
+            "class": "Building",
+            "count": 21911
+          },
+          "0,255,0": {
+            "class": "Tree",
+            "count": 19325
+          },
+          "0,255,255": {
+            "class": "LowVegetation",
+            "count": 20336
+          },
+          "255,255,0": {
+            "class": "Car",
+            "count": 618
+          },
+          "255,255,255": {
+            "class": "Impervious",
+            "count": 20646
+          }
+        },
+        "sample_unknown_count": 0
+      }
+    },
+    {
+      "id": 38,
+      "historical_status": "unused_id_same_mosaic_development_only",
+      "path_choices": [
+        {
+          "root": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+          "present": {
+            "optical": true,
+            "dsm": true,
+            "full_gt": true
+          }
+        }
+      ],
+      "paths": {
+        "optical": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area38.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area38.tif",
+        "full_gt": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area38.tif"
+      },
+      "checks": {
+        "same_pixel_shape": true,
+        "top_has_at_least_three_bands": true,
+        "dsm_one_band": true,
+        "full_gt_rgb_palette_sample_recognized": true,
+        "dsm_sample_finite": true,
+        "geographic_header_alignment": null
+      },
+      "errors": [],
+      "headers": {
+        "optical": {
+          "shape": [
+            2550,
+            3816
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "dsm": {
+          "shape": [
+            2550,
+            3816
+          ],
+          "bands": 1,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        },
+        "full_gt": {
+          "shape": [
+            2550,
+            3816
+          ],
+          "bands": 3,
+          "crs": null,
+          "bounds": null,
+          "pixel_size": null,
+          "georeferenced": false
+        }
+      },
+      "optical": {
+        "shape": [
+          2550,
+          3816,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_minmax_per_band": [
+          [
+            0.0,
+            255.0
+          ],
+          [
+            0.0,
+            255.0
+          ],
+          [
+            0.0,
+            255.0
+          ]
+        ]
+      },
+      "dsm": {
+        "shape": [
+          2550,
+          3816
+        ],
+        "dtype": "float32",
+        "sample_count": 97410,
+        "sample_nonfinite": 0,
+        "sample_minmax": [
+          250.88059997558594,
+          286.20513916015625
+        ]
+      },
+      "full_gt": {
+        "shape": [
+          2550,
+          3816,
+          3
+        ],
+        "dtype": "uint8",
+        "sample_colors": {
+          "0,0,255": {
+            "class": "Building",
+            "count": 24489
+          },
+          "0,255,0": {
+            "class": "Tree",
+            "count": 18937
+          },
+          "0,255,255": {
+            "class": "LowVegetation",
+            "count": 27157
+          },
+          "255,255,0": {
+            "class": "Car",
+            "count": 935
+          },
+          "255,255,255": {
+            "class": "Impervious",
+            "count": 25892
+          }
+        },
+        "sample_unknown_count": 0
+      }
+    }
+  ],
+  "limits": [
+    "Pixel sample does not prove every label pixel belongs to the palette",
+    "Matching dimensions without georeferencing do not prove geographic alignment",
+    "Same-mosaic scenes and past use preclude independent final confirmation",
+    "No fit/dev/final split or D20 GPU training is authorized by this audit"
+  ],
+  "gpu_used": false,
+  "potsdam_test6_loaded": false
+}

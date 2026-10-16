@@ -1,0 +1,134 @@
+{
+  "experiment": "D18_D19_NIGHT_SCREEN_20260927",
+  "split_file": "configs/rebuild_v1/potsdam_split_seed20260915.json",
+  "checkpoint_every": 100,
+  "micro_batch": 2,
+  "accum_steps": 8,
+  "effective_batch": 16,
+  "optimizer": {
+    "backbone_lr": 2e-05,
+    "decoder_head_lr_mult": 10.0,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "weight_decay": 0.01
+  },
+  "schedule": {
+    "warmup_steps": 100,
+    "warmup_ratio": 0.1,
+    "poly_power": 1.0
+  },
+  "consistency_weight": 0.2,
+  "treatment_probabilities": {
+    "clean": 0.2,
+    "rgb_down2": 0.1,
+    "rgb_down4": 0.1,
+    "rgb_blur5": 0.1,
+    "rgb_local_down4_q1": 0.1,
+    "aux_down4": 0.1,
+    "aux_noise_std010": 0.1,
+    "aux_zero": 0.1,
+    "aux_local_zero_q1": 0.1
+  },
+  "evaluation_conditions": [
+    "clean",
+    "rgb_down2",
+    "rgb_down4",
+    "rgb_blur5",
+    "rgb_local_down4_q1",
+    "aux_down4",
+    "aux_noise_std010",
+    "aux_zero",
+    "aux_local_zero_q1"
+  ],
+  "families": {
+    "clean": [
+      "clean"
+    ],
+    "rgb_quality": [
+      "rgb_down2",
+      "rgb_down4",
+      "rgb_blur5",
+      "rgb_local_down4_q1"
+    ],
+    "aux_quality": [
+      "aux_down4",
+      "aux_noise_std010"
+    ]
+  },
+  "screen": {
+    "gain_pp": 0.2,
+    "clean_loss_pp": 0.1,
+    "family_loss_pp": 0.3,
+    "tile_family_loss_pp": 0.3,
+    "tile_clean_loss_pp": 0.1,
+    "rescue_retention": 0.9
+  },
+  "test6_loaded": false,
+  "selection": "fixed_final_checkpoint; exploratory_Val2_only",
+  "auxiliary_semantics": "R05: DSM; A4/A5: grayscale derived from current RGB, then identical auxiliary treatment. Auxiliary damage for A4/A5 is grayscale damage, not DSM damage.",
+  "seeds": [
+    42
+  ],
+  "fusion_steps": 4000,
+  "pretrained_steps": 8000,
+  "arms": [
+    "P0",
+    "P1",
+    "P2",
+    "C0",
+    "C1",
+    "C2",
+    "C3",
+    "CP",
+    "C4",
+    "C5"
+  ],
+  "base_arms": [
+    "P0",
+    "P1",
+    "P2",
+    "C0",
+    "C1",
+    "C2",
+    "C3",
+    "CP"
+  ],
+  "conditional_arms": [
+    "C4",
+    "C5"
+  ],
+  "diagnostics": [
+    "rgb_contrast060",
+    "aux_shift8"
+  ],
+  "pretrained_optimizer": {
+    "backbone_lr": 0.0003,
+    "decoder_head_lr_mult": 1,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "weight_decay": 0.01
+  },
+  "dino": {
+    "model": "dinov2_vits14",
+    "repository_commit": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+    "repository_dir": "external/dinov2_7764ea0",
+    "weights_path": "pretrained_external/dinov2_vits14_pretrain.pth",
+    "weights_url": "https://dl.fbaipublicfiles.com/dinov2/dinov2_vits14/dinov2_vits14_pretrain.pth",
+    "python_environment": "d18_dino"
+  },
+  "structured_mask": {
+    "probability": 0.5,
+    "area_fraction": 0.25,
+    "modes": [
+      "rgb",
+      "aux",
+      "complementary"
+    ]
+  },
+  "boundary_tolerance_pixels": 3,
+  "seed17_policy": "not_scheduled; select candidate and controls after review"
+}

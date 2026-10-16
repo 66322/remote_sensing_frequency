@@ -1,0 +1,53 @@
+{
+  "binding": {
+    "plan.json": "46f171542c643589ec93429feea13d3bed3ba0897b4a9d6c72d8755f7a23baba",
+    "code_manifest.json": "7755b8e7c9e51cc62702e43be6c609a70a7d1e981458ae7d683648cb6d9164e8",
+    "preparation_complete.json": "3a635441c9a7c7aa180084b780121b9360c5a75c15d0696b540b3cbc0a6b9b02"
+  },
+  "cases": [
+    "R16_5_10_tile_shuffle_06_pixel_25",
+    "R16_5_10_tile_shuffle_06_random_25",
+    "R16_5_10_tile_shuffle_06_gradient_25",
+    "R16_5_10_tile_shuffle_06_matched_25",
+    "R16_5_10_tile_shuffle_07_pixel_25",
+    "R16_5_10_tile_shuffle_07_random_25",
+    "R16_5_10_tile_shuffle_07_gradient_25",
+    "R16_5_10_tile_shuffle_07_matched_25",
+    "R16_5_10_tile_shuffle_08_pixel_25",
+    "R16_5_10_tile_shuffle_08_random_25",
+    "R16_5_10_tile_shuffle_08_gradient_25",
+    "R16_5_10_tile_shuffle_08_matched_25",
+    "R16_5_10_tile_shuffle_09_pixel_25",
+    "R16_5_10_tile_shuffle_09_random_25",
+    "R16_5_10_tile_shuffle_09_gradient_25",
+    "R16_5_10_tile_shuffle_09_matched_25",
+    "R16_5_10_tile_shuffle_10_pixel_25",
+    "R16_5_10_tile_shuffle_10_random_25",
+    "R16_5_10_tile_shuffle_10_gradient_25",
+    "R16_5_10_tile_shuffle_10_matched_25"
+  ],
+  "records": {
+    "R16_5_10_tile_shuffle_06_pixel_25": "6a95a1f0c6e0988158297eecc28eeb996fdd262198d4dc079383c173327534f8",
+    "R16_5_10_tile_shuffle_06_random_25": "08746ea20ad55448627bfe4371d502ad93630585e25e6863ee23ca5ae945cb1a",
+    "R16_5_10_tile_shuffle_06_gradient_25": "3091a682554b9cd27720ecc51e90c6a1e8dbcdc5a1e623284c163c1b5b90156c",
+    "R16_5_10_tile_shuffle_06_matched_25": "27ac67ac9e5d2b7ade73b345bcb55bf3aababb193bc0e2d1d7a5be02c29b0244",
+    "R16_5_10_tile_shuffle_07_pixel_25": "49912cde14345159c254f7f74ee92c6543ecfbf95db215928a70d4c39b20c7a5",
+    "R16_5_10_tile_shuffle_07_random_25": "d4d4072c0538f5cbb2c84e64a96713107910a663ee185e123da37e82b3f36567",
+    "R16_5_10_tile_shuffle_07_gradient_25": "a7cf0c1833ac0cb03c39d677241139033dd6c4c11b981f5db241106fd0b44b08",
+    "R16_5_10_tile_shuffle_07_matched_25": "e8c32bab8105628821a839170555091d08cf0024474bc88b15cd6bb06e100bfd",
+    "R16_5_10_tile_shuffle_08_pixel_25": "1b373dac1845bed3e74c5469d0bbb00a5210a480e23bf9309ca41a514da8fd01",
+    "R16_5_10_tile_shuffle_08_random_25": "d9ba00b82c7073fbf987ea0c0b7e1ce5f6b0a43841846ecc9ef596df981bdf10",
+    "R16_5_10_tile_shuffle_08_gradient_25": "a0cd79cb7dc2dd9709db505121b1b320c26541f77631860264ea5f6f784c63fa",
+    "R16_5_10_tile_shuffle_08_matched_25": "de6f5b90b0b9c7ae75198609e8e7e274bd2b6ac76a9f0866293bc71a047e0155",
+    "R16_5_10_tile_shuffle_09_pixel_25": "842d0084d07fee568b1ee015e6134b65409e78c46d51ca6c024c8d2ec065d1cf",
+    "R16_5_10_tile_shuffle_09_random_25": "5b2e8bb9a561beacea3d9b4a4ed4a346dd80fa54eca333a186452bf2e8418842",
+    "R16_5_10_tile_shuffle_09_gradient_25": "e2c561fbec7560a8b0ae4b21fe973396b3f3be468687369cf9672dbe6d08dadf",
+    "R16_5_10_tile_shuffle_09_matched_25": "249deefce4ed0f14b5e8703c821e0f0bc721fe18645d20a23ae3b4691d6fbfd4",
+    "R16_5_10_tile_shuffle_10_pixel_25": "ceb04e96b872639816a4f09cf14774dd4578954a91964def9d41e79e5d00467f",
+    "R16_5_10_tile_shuffle_10_random_25": "8c213236624689cabb4420f6fe3893cf06874e419cfbf9629bb7ed746b0746d2",
+    "R16_5_10_tile_shuffle_10_gradient_25": "356ebcb6d7f4914aa5dde630a50d985063de4c19a6bf45ecd7196d18298c7dea",
+    "R16_5_10_tile_shuffle_10_matched_25": "2c2a2e94235a2a7d5f69dca2507d60e67da225d7ec86b36d059c6551029f6fab"
+  },
+  "optimizer_updates": 0,
+  "completed_at": "2026-10-13T03:37:32.363859+08:00"
+}

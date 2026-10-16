@@ -1,0 +1,26 @@
+{
+  "observed_at": "2026-10-13T20:46:59.695116+08:00",
+  "last_observed": "2026-10-13T20:46:59.387908+08:00",
+  "status": "EVALUATING_B0_16000",
+  "controller_live": true,
+  "evaluation_workers": {
+    "gpu0": 1441905,
+    "gpu1": 1441906
+  },
+  "core_trainings_complete": [
+    "A_RGB",
+    "A_DSM",
+    "B0",
+    "B2"
+  ],
+  "gate_C": true,
+  "gate_L": false,
+  "remaining_if_gate_unchanged": [
+    "finish B0 evaluation",
+    "B2 evaluation",
+    "static_gate",
+    "summary"
+  ],
+  "eta_available": false,
+  "source": "user terminal attachment c8e13833-4eca-4bf4-bba4-5f764af651ba"
+}

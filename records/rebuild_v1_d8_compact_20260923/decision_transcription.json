@@ -1,0 +1,33 @@
+{
+  "experiment_id": "D8_SMALL_CAR_SAMPLING_SCREEN",
+  "source": "user-pasted final server transcript on 2026-09-22; original server artifacts take precedence",
+  "launch_commit": "94a12135eea2e6dd0d89557ff628676af0746484",
+  "queue_started_at": "2026-09-22T14:40:40+08:00",
+  "queue_completed_at": "2026-09-22T17:59:55+08:00",
+  "queue_failures": 0,
+  "fixed_step": 4000,
+  "seed": 42,
+  "split": "Val2: 3_11, 5_10",
+  "test6_loaded": false,
+  "source_decision_path": "records/rebuild_v1_d8_summary_20260922_fix1/decision_evidence.json",
+  "server_records": [
+    "records/rebuild_v1_d8_queue_fix1_20260922/",
+    "records/rebuild_v1_d8_random_ce_eval_20260922_fix1/",
+    "records/rebuild_v1_d8_any_car_eval_20260922_fix1/",
+    "records/rebuild_v1_d8_small_car_eval_20260922_fix1/",
+    "records/rebuild_v1_d8_summary_20260922_fix1/"
+  ],
+  "metrics": {
+    "C": {"nb_mIoU_fg5": 0.8497962887759192, "full_mIoU_fg5": 0.8050848131915564, "car_iou": 0.8154652224224347, "car_precision": 0.8896294367571983, "small_car_mean_correct": 0.8102858561739744, "small_car_recall50": 0.9090909090909091},
+    "A": {"nb_mIoU_fg5": 0.8504650098569393, "full_mIoU_fg5": 0.8054854154565495, "car_iou": 0.8224647801416661, "car_precision": 0.8973633046946038, "small_car_mean_correct": 0.80018850112706, "small_car_recall50": 0.9090909090909091},
+    "S": {"nb_mIoU_fg5": 0.8505359937851196, "full_mIoU_fg5": 0.8062611799960397, "car_iou": 0.8246240335725719, "car_precision": 0.8907271943082448, "small_car_mean_correct": 0.828865007040308, "small_car_recall50": 0.922077922077922}
+  },
+  "gates": {
+    "A": {"pass": false, "small_car_mean_correct_delta_pp": -1.0097355046914447, "per_tile_same_positive_direction": false},
+    "S": {"pass": false, "nb_mIoU_fg5_delta_pp": 0.07397050092003976, "car_iou_delta_pp": 0.9158811150137169, "car_precision_delta_pp": 0.10977575510464632, "small_car_mean_correct_delta_pp": 1.857915086633355, "small_car_recall50_delta_pp": 1.2987012987012991, "per_tile_same_positive_direction": true}
+  },
+  "small_car_objects_per_tile": {"3_11": 36, "5_10": 41},
+  "proceed_seed17": [],
+  "gate_status": "failed",
+  "source_hash_status": "original-server-file hashes pending"
+}

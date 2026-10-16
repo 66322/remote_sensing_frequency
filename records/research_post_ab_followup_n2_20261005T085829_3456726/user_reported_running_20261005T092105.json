@@ -1,0 +1,97 @@
+{
+  "source": "user pasted server terminal",
+  "observed_at": "2026-10-05T09:21:05.606873+08:00",
+  "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_n2_20261005T085829_3456726",
+  "queue": "RUNNING_N2",
+  "controller": {
+    "pid": 3467202,
+    "live": true,
+    "repair_directory": "controller_repair_20261005T091755_3467074"
+  },
+  "science_execution_commit": "86b6a70e5c3482314986fb1259e2fccbd0a5a38b",
+  "fix_commit": "9b196a204e6a45cb54244b4deb5437ff44bd074e",
+  "jobs": {
+    "N2-0": {
+      "status": "RUNNING",
+      "pid": 3457210,
+      "live": true,
+      "adopted_original_worker": true,
+      "progress": {
+        "job": "N2-0",
+        "step": 940,
+        "target": 8000,
+        "physical_gpu": 0,
+        "phase": "training",
+        "observed_at": "2026-10-05T09:20:52.566194+08:00",
+        "session_elapsed_seconds": 1304.6267630010843,
+        "tiles_loaded": 12,
+        "tiles_total": 12,
+        "loss": 0.36781689524650574,
+        "seconds_per_train_step": 1.3094393119374488,
+        "remaining_train_hours": 2.567955983966219,
+        "gpu_peak_allocated_bytes": 36789330944
+      }
+    },
+    "N2-1": {
+      "status": "RUNNING",
+      "pid": 3467394,
+      "live": true,
+      "progress": {
+        "job": "N2-1",
+        "step": 60,
+        "target": 8000,
+        "physical_gpu": 1,
+        "phase": "training",
+        "observed_at": "2026-10-05T09:20:47.378619+08:00",
+        "session_elapsed_seconds": 150.7375324368477,
+        "tiles_loaded": 12,
+        "tiles_total": 12,
+        "loss": 0.359062135219574,
+        "seconds_per_train_step": 1.3473630877832572,
+        "remaining_train_hours": 2.9716841436108505,
+        "gpu_peak_allocated_bytes": 36789330944
+      }
+    },
+    "N2-2": {
+      "gpu": 0,
+      "status": "PENDING",
+      "pid": -1,
+      "live": false
+    },
+    "N2-3": {
+      "gpu": 1,
+      "status": "PENDING",
+      "pid": -1,
+      "live": false
+    },
+    "N2-4": {
+      "gpu": 0,
+      "status": "PENDING",
+      "pid": -1,
+      "live": false
+    },
+    "N2-5": {
+      "gpu": 1,
+      "status": "PENDING",
+      "pid": -1,
+      "live": false
+    }
+  },
+  "controller_log_lines": [
+    "POST_AB_ADOPT 0 N2-0 3457210",
+    "POST_AB_CONDITIONS_PASS 32",
+    "POST_AB_HANDOVER READY COMPLETE",
+    "POST_AB_START 1 N2-1 3467394"
+  ],
+  "server_cpu_test_log": {
+    "original_N2_tests": 8,
+    "passed": true,
+    "latest_duration_seconds": 0.597,
+    "previous_duration_seconds": 1.383
+  },
+  "N2_complete_count": 0,
+  "N2_accuracy_result_available": false,
+  "N2_0_restarted": false,
+  "next_action": "continue existing queue; read-only status when needed",
+  "timing_scope": "remaining_train_hours excludes intermediate validation and final evaluation"
+}

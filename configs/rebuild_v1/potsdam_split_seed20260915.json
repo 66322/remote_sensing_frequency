@@ -1,0 +1,23 @@
+{
+  "version": "REBUILD_V1_POTSDAM_SPLIT_20260915",
+  "selection_rule": "Start from the historical Potsdam Train18 list. Use Python random.Random(20260915).sample(TRAIN18, 2), then sort the selected IDs. No labels, validation metrics, TEST6 metrics, or model outputs were inspected when choosing the two validation tiles.",
+  "selection_seed": 20260915,
+  "historical_train18": [
+    "6_10", "7_10", "2_12", "3_11", "2_10", "7_8",
+    "5_10", "3_12", "5_12", "7_11", "7_9", "6_9",
+    "7_7", "4_12", "6_8", "6_12", "6_7", "4_11"
+  ],
+  "train16": [
+    "6_10", "7_10", "2_12", "2_10", "7_8",
+    "3_12", "5_12", "7_11", "7_9", "6_9",
+    "7_7", "4_12", "6_8", "6_12", "6_7", "4_11"
+  ],
+  "val2": ["3_11", "5_10"],
+  "historical_exposed_test6": ["4_10", "5_11", "2_11", "3_10", "6_11", "7_12"],
+  "policy": {
+    "checkpoint_selection": "val2 only",
+    "budget_selection": "val2 only",
+    "historical_test6_during_training": false,
+    "note": "TEST6 has already influenced prior model development and is development/historical evidence, not an honest sealed final test."
+  }
+}

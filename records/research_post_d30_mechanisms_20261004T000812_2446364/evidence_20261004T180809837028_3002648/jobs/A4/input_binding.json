@@ -1,0 +1,53 @@
+{
+  "files": {
+    "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped/2_Ortho_RGB/top_potsdam_3_11_RGB.tif": {
+      "size": 108921996,
+      "mtime_ns": 1442193724000000000,
+      "sha256": "88761e08e272daf9bf8d1bfc0c91a4aba5ec3605ef0d91f2e4fc12c40bcb37e7",
+      "sha_source": "existing D21 input manifest; current size/mtime checked"
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped/1_DSM/1_DSM/dsm_potsdam_03_11.tif": {
+      "size": 145197348,
+      "mtime_ns": 1437112687275774900,
+      "sha256": "b0b1bf37c7d61716ea4ec0d758e9db1026e44730d9095a0babc7c6c9d8d55823",
+      "sha_source": "existing D21 input manifest; current size/mtime checked"
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped/5_Labels_for_participants/top_potsdam_3_11_label.tif": {
+      "size": 108036444,
+      "mtime_ns": 1442487818000000000,
+      "sha256": "0409e5e48290ee6f7ac239c3b066c500385864fff9af31595e6e3a12e6348d43",
+      "sha_source": "existing D21 input manifest; current size/mtime checked"
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped/5_Labels_for_participants_no_Boundary/top_potsdam_3_11_label_noBoundary.tif": {
+      "size": 108048310,
+      "mtime_ns": 1444747163000000000,
+      "sha256": "4c3876b902d8b1c7240c57624f481a8fe667c025399b40b98e8f864ae54e27f6",
+      "sha_source": "existing D21 input manifest; current size/mtime checked"
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped/2_Ortho_RGB/top_potsdam_5_10_RGB.tif": {
+      "size": 108914130,
+      "mtime_ns": 1442193838000000000,
+      "sha256": "5779fdbed51f9f0189d13b58be9324de81ea78ed679812a5bb859a11dfa2b054",
+      "sha_source": "existing D21 input manifest; current size/mtime checked"
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped/1_DSM/1_DSM/dsm_potsdam_05_10.tif": {
+      "size": 145193930,
+      "mtime_ns": 1437113038260927300,
+      "sha256": "29302fcfe0bab8a5c61e1517193a1b1161ed6d2d6d1196961636c78fd0d50fcb",
+      "sha_source": "existing D21 input manifest; current size/mtime checked"
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped/5_Labels_for_participants/top_potsdam_5_10_label.tif": {
+      "size": 108036004,
+      "mtime_ns": 1442485189000000000,
+      "sha256": "34560c32e03be2603c6b41e03f32a9ba0c158cf5fc89db226eda1ca05e02b6a1",
+      "sha_source": "existing D21 input manifest; current size/mtime checked"
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped/5_Labels_for_participants_no_Boundary/top_potsdam_5_10_label_noBoundary.tif": {
+      "size": 108048310,
+      "mtime_ns": 1444747216000000000,
+      "sha256": "8658d05e7432eed819bbaa261d5c61e0e6904b95e6b11d53894b2368169bd2ef",
+      "sha_source": "existing D21 input manifest; current size/mtime checked"
+    }
+  },
+  "input_manifest_sha256": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295"
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "persistent_scope_root": "/home/jovyan/zzx",
+  "project_root": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+  "allowed_write_subdirectories": [
+    "configs",
+    "docs",
+    "model",
+    "records",
+    "runs",
+    "scripts",
+    "tests"
+  ],
+  "read_only_inputs": [
+    "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped",
+    "/home/jovyan/zzx/paper_rebuild/08_assets/pretrained"
+  ],
+  "gpu": {
+    "physical_index": 0,
+    "cuda_visible_devices": "0",
+    "logical_device": "cuda:0",
+    "multi_gpu_allowed": false,
+    "distributed_allowed": false,
+    "fallback_allowed": false
+  },
+  "github": {
+    "large_artifacts_allowed": false,
+    "checkpoint_policy": "server path, size and SHA256 only"
+  }
+}

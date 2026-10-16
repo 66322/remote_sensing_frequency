@@ -1,0 +1,29 @@
+{
+  "source": "user terminal plan summary and complete.json reread",
+  "receipt_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase2_matched_20261013T151120_1310582/artifact_cleanup_20261014T120418_1928998",
+  "execution_commit": "2889c69f3093a81539d455e98eaa9578915e5e3a",
+  "summary": {
+    "paths": 35910,
+    "unique_inodes": 35910,
+    "unique_allocated_bytes": 752849031168,
+    "estimated_fully_unlinked_bytes": 752849031168,
+    "external_link_inodes": 0,
+    "by_section": {
+      "evaluation": 26698,
+      "head_cache": 8000,
+      "val_cache": 1212
+    }
+  },
+  "complete": {
+    "deleted": 35910,
+    "total": 35910,
+    "disk_free_before": 4461560856576,
+    "disk_free_after": 4751404040192,
+    "observed_at": "2026-10-14T12:13:25.974504+08:00",
+    "note": "net volume change includes concurrent activity"
+  },
+  "net_free_increase_bytes": 289843183616,
+  "cumulative_deleted_paths": 111906,
+  "cumulative_estimated_fully_unlinked_bytes": 2866640062464,
+  "reclamation_gap_not_isolated": true
+}

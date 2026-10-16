@@ -1,0 +1,34 @@
+{
+  "record_type": "user_reported_status_completion_log_D_progress_and_equivalence",
+  "query_observed_at": "2026-10-13T11:35:58.181880+08:00",
+  "queue_last_observed_at": "2026-10-13T11:31:16.761032+08:00",
+  "status": "PHASE15_COMPLETE_AWAITING_REVIEW",
+  "controller_live": false,
+  "gpu_counts": {
+    "COMPLETE": 100
+  },
+  "controller_log_tail": "PHASE15_COMPLETE NO_AUTOMATIC_TRAINING",
+  "progress": {
+    "completed_cases": 160,
+    "total_cases": 160,
+    "tile": "5_10",
+    "realization": 20,
+    "family": "matched",
+    "observed_at": "2026-10-13T11:31:06.225282+08:00",
+    "parallel_workers": 2,
+    "preserved_completed_cases": 63,
+    "new_completed_cases": 97,
+    "elapsed_accelerated_seconds": 1595.4569146856666
+  },
+  "original_inference_commit": "45138f0f92c668bc86ce9532a4382b38d2b12b6d",
+  "acceleration_commit": "4842b5eb38c62b19db97094d88526260f5fe3359",
+  "real_equivalence_receipt_repeated": true,
+  "real_equivalence_scope": "two original real pixel/matched case result dictionaries exact",
+  "whole_queue_technical_completion_reported": true,
+  "summary_success": "inferred from completion control flow; original summary not independently received",
+  "scientific_results_verified": false,
+  "light_evidence_uploaded_and_received": false,
+  "aggregate_seconds_per_new_completed_D_case": 16.44800942974914,
+  "no_automatic_training": true,
+  "next_action": "Explicit original upload_phase15.py; independent full evidence readback and scientific review before new paired training."
+}

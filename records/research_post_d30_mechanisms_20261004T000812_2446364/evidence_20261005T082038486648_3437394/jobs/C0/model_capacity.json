@@ -1,0 +1,20 @@
+{
+  "total_parameters": 128835342,
+  "trainable_parameters": 20748,
+  "trainable_names": [
+    "single_rgb.0.weight",
+    "single_rgb.0.bias",
+    "single_rgb.1.weight",
+    "single_rgb.1.bias",
+    "single_rgb.3.weight",
+    "single_rgb.3.bias",
+    "single_dsm.0.weight",
+    "single_dsm.0.bias",
+    "single_dsm.1.weight",
+    "single_dsm.1.bias",
+    "single_dsm.3.weight",
+    "single_dsm.3.bias"
+  ],
+  "arm": "C0",
+  "initial_fusion_state_sha256": "37d5f45c35aa36a0ee0ea658c1c2765d79fd83cbc0040d605b21d169b51c9a60"
+}

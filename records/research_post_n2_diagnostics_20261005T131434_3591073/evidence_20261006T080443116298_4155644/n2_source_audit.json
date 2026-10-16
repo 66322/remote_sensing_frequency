@@ -1,0 +1,18 @@
+{
+  "science_commit": "86b6a70e5c3482314986fb1259e2fccbd0a5a38b",
+  "source_plan_sha256": "43a98f6e79733b8894211f76b531e688c356aa5830bc4568b3db1e17a63baac5",
+  "screen_sha256": "0bea0f57722d51cd4a1d1e6c2b89cf5358fa90ebede22e7ee81676a7b8ca1041",
+  "source_complete_sha256": {
+    "N2-0": "3020c80e260ea7edfc9cfe5c4a52bb167d426fea5e0024170bd146f69271f44b",
+    "N2-1": "688ff89429f127f788b4502edd8dadbbe0b0c423da0951f1244b66b349f5c79a",
+    "N2-2": "b777d40a99364f670cb09e3d2fa31fe21bdd934df52c14cda608806c243308ca",
+    "N2-3": "c1c32a3646c193ea7e6afc12d0b50525edfd22d31340eb9edf8b7ed6437283f1",
+    "N2-4": "ec3d592fcadd4a8ad334cafc5ecd20c7818e29f8238e9465df3d66e704c23863",
+    "N2-5": "cd0bea204abe4ef97997077d0c90f7b01afe1886fd98a78f8386c5bb4bd09a67"
+  },
+  "pooled_matrix_groups": 46656,
+  "tile_joint_groups": 9072,
+  "N2_gate": false,
+  "verification": "completion/selected/summary SHA, integer tile-to-pooled matrices and metrics, joint pooling/marginals, fixed screen",
+  "observed_at": "2026-10-05T22:12:23.578951+08:00"
+}

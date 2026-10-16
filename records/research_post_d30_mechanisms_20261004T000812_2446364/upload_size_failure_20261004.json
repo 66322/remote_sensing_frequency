@@ -1,0 +1,17 @@
+{
+  "source": "user_pasted_upload_stdout",
+  "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364",
+  "upload_script": "upload_stage_records_20261004T172727_2978808.py",
+  "script_stamp_not_failure_completion_time": true,
+  "source_bytes": 1899091199,
+  "upload_bytes": 761504860,
+  "files": 1751,
+  "limit_bytes": 536870912,
+  "error": "ValueError: unexpected oversized light bundle",
+  "failed_before_git_worktree_commit_push": true,
+  "new_training": false,
+  "new_inference": false,
+  "results_uploaded": false,
+  "source_head": "3dc57180253531e239ae123766c2103c8addd48b",
+  "exact_per_file_breakdown_received": false
+}

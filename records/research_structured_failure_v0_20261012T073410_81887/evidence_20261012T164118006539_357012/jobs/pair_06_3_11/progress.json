@@ -1,0 +1,8 @@
+{
+  "job": "pair_06_3_11",
+  "physical_gpu": 0,
+  "optimizer_updates": 0,
+  "observed_at": "2026-10-12T12:49:10.759949+08:00",
+  "elapsed_seconds": 907.5742783471942,
+  "phase": "complete"
+}

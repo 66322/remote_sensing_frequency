@@ -1,0 +1,6 @@
+{
+  "H_initial_matches": true,
+  "static_gate_matches": true,
+  "L_distinct_coordinates_independently_recomputed": false,
+  "limitation": "L coordinate union needs server tail_rgb/tail_dsm arrays; preserve them during cleanup"
+}

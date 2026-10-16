@@ -1,0 +1,9 @@
+{
+  "job": "A2",
+  "step": 8000,
+  "target": 8000,
+  "physical_gpu": 1,
+  "phase": "complete",
+  "observed_at": "2026-10-04T08:31:52.928465+08:00",
+  "session_elapsed_seconds": 542.6748874261975
+}

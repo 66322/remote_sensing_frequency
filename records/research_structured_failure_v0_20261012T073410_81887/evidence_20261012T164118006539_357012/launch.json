@@ -1,0 +1,12 @@
+{
+  "controller_pid": 82130,
+  "log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_structured_failure_v0_20261012T073410_81887/nohup_20261012T073413524451.log",
+  "command": [
+    "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+    "-u",
+    "-B",
+    "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_structured_failure_v0_20261012T073410_81887/code/scripts/control_structured_v0.py",
+    "--directory",
+    "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_structured_failure_v0_20261012T073410_81887"
+  ]
+}

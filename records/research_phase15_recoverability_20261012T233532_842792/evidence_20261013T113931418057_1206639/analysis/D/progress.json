@@ -1,0 +1,12 @@
+{
+  "completed_cases": 160,
+  "total_cases": 160,
+  "tile": "5_10",
+  "realization": 20,
+  "family": "matched",
+  "observed_at": "2026-10-13T11:31:06.225282+08:00",
+  "parallel_workers": 2,
+  "preserved_completed_cases": 63,
+  "new_completed_cases": 97,
+  "elapsed_accelerated_seconds": 1595.4569146856666
+}

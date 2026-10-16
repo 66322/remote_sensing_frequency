@@ -1,0 +1,23 @@
+{
+  "source": "user_pasted_terminal",
+  "received_date": "2026-10-06",
+  "execution_commit": "2e565cca04d84d8605a96105d12fb6c0871e464d",
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_20261006T114819_71934",
+  "directory_timestamp": "20261006T114819",
+  "timestamp_role": "directory name, not queue observed_at",
+  "controller_pid": 72265,
+  "training_jobs": 4,
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "total_new_steps": 32000,
+  "nohup_log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_20261006T114819_71934/nohup_20261006T114827023329.log",
+  "registration_confirmed": true,
+  "queue_observed_at": null,
+  "controller_live": null,
+  "worker_progress": null,
+  "completion_confirmed": false,
+  "cpu_checks": "registration entry reaches launch only after CPU checks pass; separate server CPU log not received",
+  "next_action": "read-only status and logs; do not enqueue again"
+}

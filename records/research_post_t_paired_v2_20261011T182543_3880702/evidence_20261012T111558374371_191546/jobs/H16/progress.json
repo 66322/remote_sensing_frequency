@@ -1,0 +1,15 @@
+{
+  "job": "H16",
+  "target": 16000,
+  "step": 16000,
+  "physical_gpu": 1,
+  "phase": "complete",
+  "observed_at": "2026-10-12T05:07:40.161959+08:00",
+  "elapsed_seconds": 16517.658397965133,
+  "tiles_loaded": 12,
+  "tiles_total": 12,
+  "loss": 0.19950956106185913,
+  "seconds_per_train_step": 0.6525942654083483,
+  "remaining_train_hours": 0.0,
+  "gpu_peak_allocated_bytes": 13738220032
+}

@@ -1,0 +1,331 @@
+{
+  "input_manifest_sha256": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295",
+  "expected_configs": {
+    "base_config_sha256": "07dd4b7f224d2e036024dfb2ab57bac9fe312335a5eebb8173778cd5c11de133",
+    "dino_config_sha256": "cb1c398acac6c9892aeee65bc5f331375a2395c0233654d7a3fc6ee58329ef0f",
+    "split_sha256": "d9fe260f6b1be3807811e454c1673d1e69db235c32d4dea207e8724975e210ab"
+  },
+  "schema_version": "1.0",
+  "id": "D26_BIDIRECTIONAL_FEATURE_20261002",
+  "status": "EXECUTION_CONFIGURED",
+  "execution_authorized": true,
+  "source_commit": "c5aca5bbe6b9677666fd732c0f965b25c0565f90",
+  "user_direction": "Both RGB and DSM information; reuse already completed unimodal experiments",
+  "superseded_suggestion": "Retraining fresh RGB-only and DSM-only anchors is withdrawn",
+  "protocol": "docs/protocols/D26_BIDIRECTIONAL_FEATURE_PLAN_20261002.md",
+  "evidence_review": "docs/experiments/RESEARCH_SYNTHESIS_D15_D25_20261002.md",
+  "literature": "docs/literature/D26_BIDIRECTIONAL_COMPLEMENTARITY_20261002.md",
+  "experts": {
+    "rgb": {
+      "path": "records/research_d25_missingness_20261002T130253_1358078/jobs/P6/selected.pth",
+      "sha256": "bef8dda6537b68fc51f300bc3789bbbef57682baedf92a3f7665217a4a2fde71",
+      "step": 2000,
+      "kind": "D25_P6_DINOv2_vits14_RGB_only",
+      "normalization": "native RGB ImageNet mean/std"
+    },
+    "dsm": {
+      "path": "runs/rebuild_v1/D15_dsm_only_seed42_sched16000_stop16000/best_model.pth",
+      "sha256": "d597f1adf3ca0291dcd7d063af941bebf3db1e61205cfdaf13271fbba9437e84",
+      "step": 15000,
+      "kind": "D15_seed42_R50_ViT_B16_DSM_only",
+      "normalization": "native per-tile minmax DSM repeated3; no ImageNet normalization"
+    },
+    "heterogeneous_architectures": true,
+    "historical_held4_exposure": true
+  },
+  "new_unimodal_training": 0,
+  "jobs": [
+    {
+      "id": "J0",
+      "name": "joint_adaptation_plain_concat",
+      "steps": 8000,
+      "seed": 42,
+      "status": "CONFIGURED",
+      "priority": 0,
+      "optimizer_steps": 8000
+    },
+    {
+      "id": "B0",
+      "name": "frozen_experts_plain_concat",
+      "steps": 8000,
+      "seed": 42,
+      "status": "CONFIGURED",
+      "priority": 1,
+      "optimizer_steps": 8000
+    },
+    {
+      "id": "CAP",
+      "name": "matched_self_processing",
+      "steps": 8000,
+      "seed": 42,
+      "status": "CONFIGURED",
+      "priority": 2,
+      "optimizer_steps": 8000
+    },
+    {
+      "id": "X",
+      "name": "bidirectional_spatial",
+      "steps": 8000,
+      "seed": 42,
+      "status": "CONFIGURED",
+      "priority": 3,
+      "optimizer_steps": 8000
+    },
+    {
+      "id": "XS",
+      "name": "bidirectional_spatial_semantic",
+      "steps": 8000,
+      "seed": 42,
+      "status": "CONFIGURED",
+      "priority": 4,
+      "optimizer_steps": 8000
+    },
+    {
+      "id": "XF",
+      "name": "bidirectional_frequency",
+      "steps": 8000,
+      "seed": 42,
+      "status": "CONFIGURED",
+      "priority": 5,
+      "optimizer_steps": 8000
+    },
+    {
+      "id": "XSF",
+      "name": "bidirectional_frequency_semantic",
+      "steps": 8000,
+      "seed": 42,
+      "status": "CONFIGURED",
+      "priority": 6,
+      "optimizer_steps": 8000
+    },
+    {
+      "id": "XSF-shS",
+      "name": "spatially_mismatched_semantic",
+      "steps": 8000,
+      "seed": 42,
+      "status": "CONFIGURED",
+      "priority": 7,
+      "optimizer_steps": 8000
+    },
+    {
+      "id": "XSF-shF",
+      "name": "spatially_mismatched_frequency",
+      "steps": 8000,
+      "seed": 42,
+      "status": "CONFIGURED",
+      "priority": 8,
+      "optimizer_steps": 8000
+    }
+  ],
+  "unique_training_jobs": 9,
+  "total_optimizer_steps": 72000,
+  "batch": 16,
+  "gradient_accumulation": false,
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "nohup": true,
+  "server_root": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+  "directory_pattern": "records/research_d26_bidirectional_<timestamp>_<pid>",
+  "repeat_resource_probe": false,
+  "test6_loaded": false,
+  "automatic_followup": false,
+  "selection": "mean complete clean, RGB-only clean, DSM-only clean on Val2 at4000/8000, earliest ties; fixed8000 diagnostic retained",
+  "primary_candidate": "XSF",
+  "new_contribution_established": false,
+  "decision_source": "2026-10-02 user: \u6309\u4e0a\u8ff0\u5b9e\u9a8c\u89c4\u5212\u8fdb\u884c\u5177\u4f53\u5b9e\u9a8c",
+  "data": {
+    "dataset": "Potsdam",
+    "input": "RGB plus existing per-tile normalized DSM",
+    "fit12": [
+      "2_12",
+      "2_10",
+      "7_8",
+      "3_12",
+      "5_12",
+      "7_9",
+      "6_9",
+      "7_7",
+      "4_12",
+      "6_8",
+      "6_12",
+      "6_7"
+    ],
+    "train_held4": [
+      "4_11",
+      "6_10",
+      "7_10",
+      "7_11"
+    ],
+    "validation": [
+      "3_11",
+      "5_10"
+    ],
+    "held4_policy": "not loaded this round; historical Train16 checkpoint exposure means not an independent holdout",
+    "test6_loaded": false,
+    "independent_final_loaded": false,
+    "patch": 512,
+    "sampling": "D23 aligned keyed fit crop stream; D26 independent keyed R-quality/D-quality/availability draws"
+  },
+  "training": {
+    "steps": 8000,
+    "physical_batch": 16,
+    "gradient_accumulation": false,
+    "views_per_crop": 2,
+    "head_lr": 0.0002,
+    "encoder_last4_lr": 2e-05,
+    "weight_decay": 0.01,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "warmup_steps": 100,
+    "checkpoint_every": 500,
+    "validation_steps": [
+      4000,
+      8000
+    ],
+    "selection_states": [
+      "clean",
+      "dsm_missing",
+      "rgb_missing"
+    ],
+    "selection": "mean pooled NoBoundary fg5 across three states; ties earlier",
+    "joint_single_ce_weight": 0.5,
+    "precision": "bf16",
+    "validation_batch": 8,
+    "seed": 42,
+    "gradient_diagnostic_every": 500
+  },
+  "runtime": {
+    "per_job_timeout_hours": 8,
+    "queue": "dynamic two physical GPUs; fixed jobs; job RNG independent of assignment",
+    "estimated_hours": [
+      8,
+      16
+    ],
+    "host_prefetch_workers": 8,
+    "host_prefetch_batches": 4,
+    "automatic_retries": false,
+    "automatic_new_jobs": false,
+    "automatic_batch_resize": false,
+    "determinism": "strict frozen arms; J0 warn_only for native DSM bilinear CUDA backward; no bitwise multiGPU promise"
+  },
+  "architecture": {
+    "feature": "original final classifier Conv2d input",
+    "channels": 128,
+    "stride4": "native RGB stride4 unchanged; DSM preclassifier stride1 reduced by fixed avgpool4 before128channel projection; nondivisible generic shapes nearest fallback; no adaptive/bilinear CUDA backward",
+    "stride8": "average pool stride4; derived scale",
+    "fusion_input_channels": 512,
+    "fusion_input": "private_r,private_d,private_r+cross_d_to_r,private_d+cross_r_to_d",
+    "interaction": "four direction/scale blocks; pack2x2 width512 each; interleaved recipient/donor1024 -> grouped4 Conv3x3 256 so every group sees both; condition18 -> Conv1x1 256; GELU; grouped4 projection512 x sigmoid(grouped4 gate512); inverse basis; scale mean",
+    "semantic": "detached both6class distributions and abs difference; noS first6 projected private channels and abs difference",
+    "capacity": "CAP same four blocks, self-only donor and condition channels0:18; all block parameters participate",
+    "shuffle": "fixed floor(height/2),floor(width/2) cyclic shift train/eval; semantic fields or donor high bands only",
+    "mask": "masked raw input; conservative cell and3x3 coefficient masks; shifted validity for shuffled fields; final pixel exact fallback",
+    "joint_trainable": "RGB last4 encoder blocks+rgb projection+decoder; DSM last4 transformer blocks+decoder+classification head; earlier layers and all BN statistics frozen; dropout evaluation",
+    "new_head_initialization": "seed42 after expert construction; projections and fusion built before interactions for common exact initialization",
+    "cross_input_group_layout": "interleaved recipient/donor coefficient channels, each grouped convolution sees both",
+    "dropout": "expert dropout eval throughout, early frozen and J0 last4 weights updated; all BN statistics frozen"
+  },
+  "augmentation": {
+    "rgb_probability": 0.5,
+    "rgb": [
+      "rgb_down2",
+      "rgb_down4",
+      "rgb_blur5",
+      "rgb_contrast060"
+    ],
+    "dsm_probability": 0.5,
+    "dsm": [
+      "aux_down4",
+      "aux_noise_std010",
+      "aux_shift8"
+    ],
+    "availability": {
+      "full": 0.5,
+      "rgb_missing": 0.1,
+      "dsm_missing": 0.1,
+      "rgb_local": 0.15,
+      "dsm_local": 0.15
+    },
+    "local_shapes": [
+      "q1",
+      "stripe_eighth"
+    ],
+    "both_missing_training": false
+  },
+  "evaluation": {
+    "primary": [
+      "clean",
+      "rgb_down2",
+      "rgb_down4",
+      "rgb_blur5",
+      "rgb_contrast060",
+      "aux_down4",
+      "aux_noise_std010",
+      "aux_shift8",
+      "rgb_down4+aux_noise_std010",
+      "rgb_blur5+aux_shift8"
+    ],
+    "families": {
+      "C": [
+        "clean"
+      ],
+      "QR": [
+        "rgb_down2",
+        "rgb_down4",
+        "rgb_blur5",
+        "rgb_contrast060"
+      ],
+      "QD": [
+        "aux_down4",
+        "aux_noise_std010",
+        "aux_shift8"
+      ],
+      "QJ": [
+        "rgb_down4+aux_noise_std010",
+        "rgb_blur5+aux_shift8"
+      ]
+    },
+    "missing": [
+      "rgb_missing",
+      "dsm_missing"
+    ],
+    "local": {
+      "LR": [
+        "rgb_local_q1",
+        "rgb_local_stripe_eighth",
+        "rgb_local_center_quarter"
+      ],
+      "LD": [
+        "dsm_local_q1",
+        "dsm_local_stripe_eighth",
+        "dsm_local_center_quarter"
+      ]
+    },
+    "diagnostic": [
+      "dsm_missing+rgb_down4",
+      "rgb_missing+aux_noise_std010",
+      "complementary_halves",
+      "both_center_missing"
+    ],
+    "fixed8000": "10 primary conditions; selected evaluates all22 conditions",
+    "window": 512,
+    "stride": 256,
+    "precision": "FP32 logits uniform stitch, TF32 enabled",
+    "metric": "NoBoundary mIoU_fg5 pooled; full and6class diagnostic",
+    "fixed_references": [
+      "rgb",
+      "dsm",
+      "probability_average",
+      "availability_switch"
+    ],
+    "joint_counts": "6^4 truth,rgb,dsm,candidate int64 per availability partition per scope/tile; references same masked input",
+    "joint_counts_encoding": "lossless sparse flat index/count int64 shape6^4, omitted bins exactly0; decode helper supplied; per condition/tile/scope/availability"
+  },
+  "verification_status": "LOCAL_SYNTHETIC_CPU_AND_NATIVE_DSM_INTERFACE_ONLY_SERVER_CHECKPOINT_CUDA_PENDING",
+  "execution_commit": "52f94388b1a9c7557e9ef533075661139cd55eda",
+  "created_at": "2026-10-02T19:12:53.396136+08:00"
+}

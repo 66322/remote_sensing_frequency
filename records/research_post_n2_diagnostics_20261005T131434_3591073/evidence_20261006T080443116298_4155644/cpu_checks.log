@@ -1,0 +1,28 @@
+test_actual_controller_wait_never_starts_cpu_or_gpu (test_post_n2_diagnostics.Contracts) ... DIAG_HANDOVER HOLD_N2_CONTROLLER_STOPPED RUNNING_N2
+ok
+test_actual_dispatch_and_completion_no_training (test_post_n2_diagnostics.Contracts) ... DIAG_START 0 E1_A0 55
+DIAG_JOB E1_A0 COMPLETE
+DIAG_START 1 E1_B1 55
+DIAG_JOB E1_B1 COMPLETE
+ok
+test_actual_failure_blocks_other_gpu_dispatch (test_post_n2_diagnostics.Contracts) ... DIAG_START 0 E1_A0 55
+DIAG_JOB E1_A0 TECHNICAL_FAILURE
+ok
+test_all_rules_exact_area_shape_separated_and_deterministic (test_post_n2_diagnostics.Contracts) ... ok
+test_boundary_ignores_unknown_label_edges (test_post_n2_diagnostics.Contracts) ... ok
+test_content_direction_selects_high_and_low (test_post_n2_diagnostics.Contracts) ... ok
+test_fit_object_cutoffs_and_ignore_background (test_post_n2_diagnostics.Contracts) ... ok
+test_gate_requires_both_models_and_both_tiles (test_post_n2_diagnostics.Contracts) ... ok
+test_partial_job_not_automatically_retried (test_post_n2_diagnostics.Contracts) ... ok
+test_physical_fault_independent_of_reported_mask (test_post_n2_diagnostics.Contracts) ... ok
+test_predecessor_hold_wait_complete_release (test_post_n2_diagnostics.Contracts) ... ok
+test_real_model_dispatch_checkpoint_binding_and_freeze (test_post_n2_diagnostics.Contracts) ... ok
+test_reserved_rule_and_odd_shapes_rejected (test_post_n2_diagnostics.Contracts) ... ok
+test_summary_rejects_metric_count_and_joint_corruption (test_post_n2_diagnostics.Contracts) ... ok
+test_timeout_null_nonfinite_and_scope_rejected (test_post_n2_diagnostics.Contracts) ... ok
+test_upload_lossless_and_tamper_rejected (test_post_n2_diagnostics.Contracts) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.073s
+
+OK

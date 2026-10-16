@@ -1,0 +1,12 @@
+{
+  "observed_at": "2026-10-01T12:15:14+08:00",
+  "scope": "local_synthetic_only",
+  "tests": 7,
+  "result": "PASS",
+  "script_sha256": "04435db2bf0c21351e5684daa1588481c0cfdcd97a5a952585c2c7c89957b74d",
+  "server_profile_completed": false,
+  "real_prediction_counts_computed": false,
+  "stage_b_implemented": false,
+  "new_training": false,
+  "test6_loaded": false
+}

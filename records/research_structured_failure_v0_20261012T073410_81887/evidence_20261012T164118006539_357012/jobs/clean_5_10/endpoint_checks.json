@@ -1,0 +1,25 @@
+{
+  "binding": {
+    "plan_sha256": "3b9298a187a83a7fe9b49c4f3282f8d94418978c42a08cbc9c49364e8481cfe0",
+    "code_sha256": "9eda3cb812434f05c85b5764430e9fd7d73e0f762734888ce09f337e7f67213d",
+    "mask_manifest_sha256": "c631005f512f891f978385332f2092649a536ec0b7f1cee972914a1418afa275",
+    "source_plan_sha256": "c4d5248f3cd5cfe9b61a8544533bbc6cb4bbe65001605fd8a90c4fb9d06b08b9"
+  },
+  "checks": [
+    {
+      "system": "S1",
+      "tile": "5_10",
+      "exact": true
+    },
+    {
+      "system": "MASKED",
+      "tile": "5_10",
+      "exact": true
+    },
+    {
+      "system": "CONTEXT",
+      "tile": "5_10",
+      "exact": true
+    }
+  ]
+}

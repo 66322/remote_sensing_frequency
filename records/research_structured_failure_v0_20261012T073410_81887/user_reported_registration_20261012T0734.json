@@ -1,0 +1,28 @@
+{
+  "status": "REGISTERED_PROGRESS_NOT_YET_QUERIED",
+  "source": "user pasted server registration output",
+  "execution_commit": "f2ad4a9f38b32058f3855c2d18aa6a9b81df6cdd",
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_structured_failure_v0_20261012T073410_81887",
+  "controller_pid_reported": 82130,
+  "log_filename": "nohup_20261012T073413524451.log",
+  "directory_timestamp": "20261012T073410",
+  "log_timestamp": "20261012T073413524451",
+  "timestamp_kind": "directory/log naming timestamps; no query_observed or queue observed_at supplied",
+  "wait_for_paired": true,
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "trainings": 0,
+  "missing_cases": 640,
+  "clean_cases": 8,
+  "endpoint_checks": 6,
+  "controller_live": null,
+  "queue_status_observed": null,
+  "predecessor_status_current": null,
+  "real_mask_feasibility_verified": false,
+  "gpu_runtime_verified": false,
+  "server_cpu_checks": "successful exit inferred from registration control flow; raw cpu_checks.log not yet received",
+  "previous_paired_query": "2026-10-11T23:34:24.796568+08:00",
+  "no_duplicate_launch": true
+}

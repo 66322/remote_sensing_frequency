@@ -1,0 +1,662 @@
+{
+  "status": "COMPLETE",
+  "completed_jobs": 10,
+  "records": {
+    "S0": {
+      "selected": {
+        "step": 4000,
+        "metric": 0.7980914609095958,
+        "state_metrics": {
+          "clean": 0.8714378448666569,
+          "dsm_missing": 0.8639793022992122,
+          "rgb_missing": 0.6588572355629186
+        },
+        "checkpoint_sha256": "94c9597dbcfb83124d712c445017ce1dc1e29b823e5e441dce22d067bc95e4f3"
+      },
+      "complete_sha256": "46c6c2a0502798d402c46e5ae13d66f61ffc495e4e0109065a6b92f53dab0668"
+    },
+    "S1": {
+      "selected": {
+        "step": 4000,
+        "metric": 0.791343079080152,
+        "state_metrics": {
+          "clean": 0.851192699378325,
+          "dsm_missing": 0.8639793022992122,
+          "rgb_missing": 0.6588572355629186
+        },
+        "checkpoint_sha256": "d8f2705c710ef2895195a30107115f7b7e4aa4fb1a9af1461f80df8d407e92c9"
+      },
+      "complete_sha256": "2a17aa6ac8724a07b7a681bfb31ba07f9b3849f2e8f87a9082dbddfd35d050ba"
+    },
+    "G0": {
+      "selected": {
+        "step": 4000,
+        "metric": 0.7980343165828795,
+        "state_metrics": {
+          "clean": 0.8712664118865077,
+          "dsm_missing": 0.8639793022992122,
+          "rgb_missing": 0.6588572355629186
+        },
+        "checkpoint_sha256": "f7bb8076eb13f92b733053ba149bb7eabb12bf75db40e9c7ba372fb63080a93e"
+      },
+      "complete_sha256": "9a2833245ace2b0a6e0e0e6693feb9058474141288581ad74c210f9eefcf01e5"
+    },
+    "G1": {
+      "selected": {
+        "step": 4000,
+        "metric": 0.7913490113535878,
+        "state_metrics": {
+          "clean": 0.8512104961986328,
+          "dsm_missing": 0.8639793022992122,
+          "rgb_missing": 0.6588572355629186
+        },
+        "checkpoint_sha256": "25f77adc4fb65529dca607318e54a73881008eecbda37af1ae944dc632ca6b8e"
+      },
+      "complete_sha256": "489df288085fdf3cc3c6e24e12fd44b87176b3043a5cdd5142d392852cbfe271"
+    },
+    "L0": {
+      "selected": {
+        "step": 4000,
+        "metric": 0.7980755658589517,
+        "state_metrics": {
+          "clean": 0.8713901597147242,
+          "dsm_missing": 0.8639793022992122,
+          "rgb_missing": 0.6588572355629186
+        },
+        "checkpoint_sha256": "e9fedae04f9a640e6a39b1b38e5cae5fe466d77eac3ba2bfb43a81b5d02c73c1"
+      },
+      "complete_sha256": "d46b4bdeb4162c85b65b5ab8082de7b68be92998b39375f2ef5057d8bbc3762b"
+    },
+    "L1": {
+      "selected": {
+        "step": 4000,
+        "metric": 0.7912974022941093,
+        "state_metrics": {
+          "clean": 0.8510556690201968,
+          "dsm_missing": 0.8639793022992122,
+          "rgb_missing": 0.6588572355629186
+        },
+        "checkpoint_sha256": "865db6314d03a03cc8a1965ab601c57ac14929029531054c9e818d91b6d9c753"
+      },
+      "complete_sha256": "cc36f7e6f90469bff14116b895522c5aa604989dc0226f93d59e08a213310494"
+    },
+    "C0": {
+      "selected": {
+        "step": 4000,
+        "metric": 0.7980389424461748,
+        "state_metrics": {
+          "clean": 0.8712802894763932,
+          "dsm_missing": 0.8639793022992122,
+          "rgb_missing": 0.6588572355629186
+        },
+        "checkpoint_sha256": "833da8d5e76b2d93d513fca512f559979c4f01cb3f1315df81b312aeab5ef084"
+      },
+      "complete_sha256": "c4a31f97b364a6f5791292c04426d0531314585d1b68b0bca45a44266ad463b2"
+    },
+    "C1": {
+      "selected": {
+        "step": 4000,
+        "metric": 0.7908550742674475,
+        "state_metrics": {
+          "clean": 0.8497286849402117,
+          "dsm_missing": 0.8639793022992122,
+          "rgb_missing": 0.6588572355629186
+        },
+        "checkpoint_sha256": "68663322b7e1b3666ca3ea3bf01e2eb52727bc6446d196ca1517a698cd195abb"
+      },
+      "complete_sha256": "cbfe6e77bb84fe8fa032c979c0def16e67d04a42562b52f0f54b1f4d28ffee57"
+    },
+    "L1-sh": {
+      "selected": {
+        "step": 4000,
+        "metric": 0.7913445780313478,
+        "state_metrics": {
+          "clean": 0.8511971962319128,
+          "dsm_missing": 0.8639793022992122,
+          "rgb_missing": 0.6588572355629186
+        },
+        "checkpoint_sha256": "849599340cc9fc48028608dfed773555f115237a804303d62d1aec2d931fe180"
+      },
+      "complete_sha256": "99ca0b88001ba748a0eeab3f3df6098f3595dbc65b501a1ef273965a0ce3181a"
+    },
+    "C1-sh": {
+      "selected": {
+        "step": 4000,
+        "metric": 0.7910412252096224,
+        "state_metrics": {
+          "clean": 0.8502871377667361,
+          "dsm_missing": 0.8639793022992122,
+          "rgb_missing": 0.6588572355629186
+        },
+        "checkpoint_sha256": "9cf53d084512525024953dc701ed1216ae31ae8dbcf3367bff41d6802b5fbe7b"
+      },
+      "complete_sha256": "6fd07b3f749a9e30c2e3794e477ec0cf97d1b2058fcf46f3d95eb94e46ef8118"
+    }
+  },
+  "capacity": {
+    "S0": {
+      "total_parameters": 129114336,
+      "trainable_parameters": 909412,
+      "trainable_names": [
+        "project_rgb.weight",
+        "project_rgb.bias",
+        "project_dsm.weight",
+        "project_dsm.bias",
+        "expert_pool.0.0.weight",
+        "expert_pool.0.0.bias",
+        "expert_pool.0.1.weight",
+        "expert_pool.0.1.bias",
+        "expert_pool.0.3.weight",
+        "expert_pool.0.3.bias",
+        "expert_pool.1.0.weight",
+        "expert_pool.1.0.bias",
+        "expert_pool.1.1.weight",
+        "expert_pool.1.1.bias",
+        "expert_pool.1.3.weight",
+        "expert_pool.1.3.bias",
+        "expert_pool.2.0.weight",
+        "expert_pool.2.0.bias",
+        "expert_pool.2.1.weight",
+        "expert_pool.2.1.bias",
+        "expert_pool.2.3.weight",
+        "expert_pool.2.3.bias",
+        "router.0.weight",
+        "router.0.bias",
+        "router.2.weight",
+        "router.2.bias"
+      ],
+      "arm": "S0",
+      "initial_fusion_state_sha256": "16abcd8338a0fae16584d6a70030cb1db5c8a3df741ba7076da77e12e9432281"
+    },
+    "S1": {
+      "total_parameters": 129114336,
+      "trainable_parameters": 909412,
+      "trainable_names": [
+        "project_rgb.weight",
+        "project_rgb.bias",
+        "project_dsm.weight",
+        "project_dsm.bias",
+        "expert_pool.0.0.weight",
+        "expert_pool.0.0.bias",
+        "expert_pool.0.1.weight",
+        "expert_pool.0.1.bias",
+        "expert_pool.0.3.weight",
+        "expert_pool.0.3.bias",
+        "expert_pool.1.0.weight",
+        "expert_pool.1.0.bias",
+        "expert_pool.1.1.weight",
+        "expert_pool.1.1.bias",
+        "expert_pool.1.3.weight",
+        "expert_pool.1.3.bias",
+        "expert_pool.2.0.weight",
+        "expert_pool.2.0.bias",
+        "expert_pool.2.1.weight",
+        "expert_pool.2.1.bias",
+        "expert_pool.2.3.weight",
+        "expert_pool.2.3.bias",
+        "router.0.weight",
+        "router.0.bias",
+        "router.2.weight",
+        "router.2.bias"
+      ],
+      "arm": "S1",
+      "initial_fusion_state_sha256": "16abcd8338a0fae16584d6a70030cb1db5c8a3df741ba7076da77e12e9432281"
+    },
+    "G0": {
+      "total_parameters": 129114336,
+      "trainable_parameters": 909412,
+      "trainable_names": [
+        "project_rgb.weight",
+        "project_rgb.bias",
+        "project_dsm.weight",
+        "project_dsm.bias",
+        "expert_pool.0.0.weight",
+        "expert_pool.0.0.bias",
+        "expert_pool.0.1.weight",
+        "expert_pool.0.1.bias",
+        "expert_pool.0.3.weight",
+        "expert_pool.0.3.bias",
+        "expert_pool.1.0.weight",
+        "expert_pool.1.0.bias",
+        "expert_pool.1.1.weight",
+        "expert_pool.1.1.bias",
+        "expert_pool.1.3.weight",
+        "expert_pool.1.3.bias",
+        "expert_pool.2.0.weight",
+        "expert_pool.2.0.bias",
+        "expert_pool.2.1.weight",
+        "expert_pool.2.1.bias",
+        "expert_pool.2.3.weight",
+        "expert_pool.2.3.bias",
+        "router.0.weight",
+        "router.0.bias",
+        "router.2.weight",
+        "router.2.bias"
+      ],
+      "arm": "G0",
+      "initial_fusion_state_sha256": "16abcd8338a0fae16584d6a70030cb1db5c8a3df741ba7076da77e12e9432281"
+    },
+    "G1": {
+      "total_parameters": 129114336,
+      "trainable_parameters": 909412,
+      "trainable_names": [
+        "project_rgb.weight",
+        "project_rgb.bias",
+        "project_dsm.weight",
+        "project_dsm.bias",
+        "expert_pool.0.0.weight",
+        "expert_pool.0.0.bias",
+        "expert_pool.0.1.weight",
+        "expert_pool.0.1.bias",
+        "expert_pool.0.3.weight",
+        "expert_pool.0.3.bias",
+        "expert_pool.1.0.weight",
+        "expert_pool.1.0.bias",
+        "expert_pool.1.1.weight",
+        "expert_pool.1.1.bias",
+        "expert_pool.1.3.weight",
+        "expert_pool.1.3.bias",
+        "expert_pool.2.0.weight",
+        "expert_pool.2.0.bias",
+        "expert_pool.2.1.weight",
+        "expert_pool.2.1.bias",
+        "expert_pool.2.3.weight",
+        "expert_pool.2.3.bias",
+        "router.0.weight",
+        "router.0.bias",
+        "router.2.weight",
+        "router.2.bias"
+      ],
+      "arm": "G1",
+      "initial_fusion_state_sha256": "16abcd8338a0fae16584d6a70030cb1db5c8a3df741ba7076da77e12e9432281"
+    },
+    "L0": {
+      "total_parameters": 129114336,
+      "trainable_parameters": 909412,
+      "trainable_names": [
+        "project_rgb.weight",
+        "project_rgb.bias",
+        "project_dsm.weight",
+        "project_dsm.bias",
+        "expert_pool.0.0.weight",
+        "expert_pool.0.0.bias",
+        "expert_pool.0.1.weight",
+        "expert_pool.0.1.bias",
+        "expert_pool.0.3.weight",
+        "expert_pool.0.3.bias",
+        "expert_pool.1.0.weight",
+        "expert_pool.1.0.bias",
+        "expert_pool.1.1.weight",
+        "expert_pool.1.1.bias",
+        "expert_pool.1.3.weight",
+        "expert_pool.1.3.bias",
+        "expert_pool.2.0.weight",
+        "expert_pool.2.0.bias",
+        "expert_pool.2.1.weight",
+        "expert_pool.2.1.bias",
+        "expert_pool.2.3.weight",
+        "expert_pool.2.3.bias",
+        "router.0.weight",
+        "router.0.bias",
+        "router.2.weight",
+        "router.2.bias"
+      ],
+      "arm": "L0",
+      "initial_fusion_state_sha256": "16abcd8338a0fae16584d6a70030cb1db5c8a3df741ba7076da77e12e9432281"
+    },
+    "L1": {
+      "total_parameters": 129114336,
+      "trainable_parameters": 909412,
+      "trainable_names": [
+        "project_rgb.weight",
+        "project_rgb.bias",
+        "project_dsm.weight",
+        "project_dsm.bias",
+        "expert_pool.0.0.weight",
+        "expert_pool.0.0.bias",
+        "expert_pool.0.1.weight",
+        "expert_pool.0.1.bias",
+        "expert_pool.0.3.weight",
+        "expert_pool.0.3.bias",
+        "expert_pool.1.0.weight",
+        "expert_pool.1.0.bias",
+        "expert_pool.1.1.weight",
+        "expert_pool.1.1.bias",
+        "expert_pool.1.3.weight",
+        "expert_pool.1.3.bias",
+        "expert_pool.2.0.weight",
+        "expert_pool.2.0.bias",
+        "expert_pool.2.1.weight",
+        "expert_pool.2.1.bias",
+        "expert_pool.2.3.weight",
+        "expert_pool.2.3.bias",
+        "router.0.weight",
+        "router.0.bias",
+        "router.2.weight",
+        "router.2.bias"
+      ],
+      "arm": "L1",
+      "initial_fusion_state_sha256": "16abcd8338a0fae16584d6a70030cb1db5c8a3df741ba7076da77e12e9432281"
+    },
+    "C0": {
+      "total_parameters": 129114336,
+      "trainable_parameters": 909412,
+      "trainable_names": [
+        "project_rgb.weight",
+        "project_rgb.bias",
+        "project_dsm.weight",
+        "project_dsm.bias",
+        "expert_pool.0.0.weight",
+        "expert_pool.0.0.bias",
+        "expert_pool.0.1.weight",
+        "expert_pool.0.1.bias",
+        "expert_pool.0.3.weight",
+        "expert_pool.0.3.bias",
+        "expert_pool.1.0.weight",
+        "expert_pool.1.0.bias",
+        "expert_pool.1.1.weight",
+        "expert_pool.1.1.bias",
+        "expert_pool.1.3.weight",
+        "expert_pool.1.3.bias",
+        "expert_pool.2.0.weight",
+        "expert_pool.2.0.bias",
+        "expert_pool.2.1.weight",
+        "expert_pool.2.1.bias",
+        "expert_pool.2.3.weight",
+        "expert_pool.2.3.bias",
+        "router.0.weight",
+        "router.0.bias",
+        "router.2.weight",
+        "router.2.bias"
+      ],
+      "arm": "C0",
+      "initial_fusion_state_sha256": "16abcd8338a0fae16584d6a70030cb1db5c8a3df741ba7076da77e12e9432281"
+    },
+    "C1": {
+      "total_parameters": 129114336,
+      "trainable_parameters": 909412,
+      "trainable_names": [
+        "project_rgb.weight",
+        "project_rgb.bias",
+        "project_dsm.weight",
+        "project_dsm.bias",
+        "expert_pool.0.0.weight",
+        "expert_pool.0.0.bias",
+        "expert_pool.0.1.weight",
+        "expert_pool.0.1.bias",
+        "expert_pool.0.3.weight",
+        "expert_pool.0.3.bias",
+        "expert_pool.1.0.weight",
+        "expert_pool.1.0.bias",
+        "expert_pool.1.1.weight",
+        "expert_pool.1.1.bias",
+        "expert_pool.1.3.weight",
+        "expert_pool.1.3.bias",
+        "expert_pool.2.0.weight",
+        "expert_pool.2.0.bias",
+        "expert_pool.2.1.weight",
+        "expert_pool.2.1.bias",
+        "expert_pool.2.3.weight",
+        "expert_pool.2.3.bias",
+        "router.0.weight",
+        "router.0.bias",
+        "router.2.weight",
+        "router.2.bias"
+      ],
+      "arm": "C1",
+      "initial_fusion_state_sha256": "16abcd8338a0fae16584d6a70030cb1db5c8a3df741ba7076da77e12e9432281"
+    },
+    "L1-sh": {
+      "total_parameters": 129114336,
+      "trainable_parameters": 909412,
+      "trainable_names": [
+        "project_rgb.weight",
+        "project_rgb.bias",
+        "project_dsm.weight",
+        "project_dsm.bias",
+        "expert_pool.0.0.weight",
+        "expert_pool.0.0.bias",
+        "expert_pool.0.1.weight",
+        "expert_pool.0.1.bias",
+        "expert_pool.0.3.weight",
+        "expert_pool.0.3.bias",
+        "expert_pool.1.0.weight",
+        "expert_pool.1.0.bias",
+        "expert_pool.1.1.weight",
+        "expert_pool.1.1.bias",
+        "expert_pool.1.3.weight",
+        "expert_pool.1.3.bias",
+        "expert_pool.2.0.weight",
+        "expert_pool.2.0.bias",
+        "expert_pool.2.1.weight",
+        "expert_pool.2.1.bias",
+        "expert_pool.2.3.weight",
+        "expert_pool.2.3.bias",
+        "router.0.weight",
+        "router.0.bias",
+        "router.2.weight",
+        "router.2.bias"
+      ],
+      "arm": "L1-sh",
+      "initial_fusion_state_sha256": "16abcd8338a0fae16584d6a70030cb1db5c8a3df741ba7076da77e12e9432281"
+    },
+    "C1-sh": {
+      "total_parameters": 129114336,
+      "trainable_parameters": 909412,
+      "trainable_names": [
+        "project_rgb.weight",
+        "project_rgb.bias",
+        "project_dsm.weight",
+        "project_dsm.bias",
+        "expert_pool.0.0.weight",
+        "expert_pool.0.0.bias",
+        "expert_pool.0.1.weight",
+        "expert_pool.0.1.bias",
+        "expert_pool.0.3.weight",
+        "expert_pool.0.3.bias",
+        "expert_pool.1.0.weight",
+        "expert_pool.1.0.bias",
+        "expert_pool.1.1.weight",
+        "expert_pool.1.1.bias",
+        "expert_pool.1.3.weight",
+        "expert_pool.1.3.bias",
+        "expert_pool.2.0.weight",
+        "expert_pool.2.0.bias",
+        "expert_pool.2.1.weight",
+        "expert_pool.2.1.bias",
+        "expert_pool.2.3.weight",
+        "expert_pool.2.3.bias",
+        "router.0.weight",
+        "router.0.bias",
+        "router.2.weight",
+        "router.2.bias"
+      ],
+      "arm": "C1-sh",
+      "initial_fusion_state_sha256": "16abcd8338a0fae16584d6a70030cb1db5c8a3df741ba7076da77e12e9432281"
+    }
+  },
+  "observed_at": "2026-10-03T18:22:19.589101+08:00",
+  "test6_loaded": false,
+  "screen": {
+    "scores_pp": {
+      "S0": {
+        "C": 87.14378448666568,
+        "QR": 86.2068025701019,
+        "QD": 86.69522882012534,
+        "QJ": 84.1590391764477,
+        "S_available": 86.05121376333516
+      },
+      "S1": {
+        "C": 85.1192699378325,
+        "QR": 84.42117665286207,
+        "QD": 84.8061520230742,
+        "QJ": 82.67562165950697,
+        "S_available": 84.25555506831894
+      },
+      "G0": {
+        "C": 87.12664118865077,
+        "QR": 86.2006616381255,
+        "QD": 86.65716799022805,
+        "QJ": 84.11614634252167,
+        "S_available": 86.0251542898815
+      },
+      "G1": {
+        "C": 85.12104961986327,
+        "QR": 84.42444373873141,
+        "QD": 84.80701545121036,
+        "QJ": 82.67370580872264,
+        "S_available": 84.25655365463192
+      },
+      "L0": {
+        "C": 87.13901597147242,
+        "QR": 86.20596641215032,
+        "QD": 86.68522885817572,
+        "QJ": 84.16179061334145,
+        "S_available": 86.04800046378497
+      },
+      "L1": {
+        "C": 85.10556690201967,
+        "QR": 84.45145712251552,
+        "QD": 84.8026389339985,
+        "QJ": 82.69166167012558,
+        "S_available": 84.26283115716483
+      },
+      "C0": {
+        "C": 87.12802894763932,
+        "QR": 86.2056477939151,
+        "QD": 86.69130143071403,
+        "QJ": 84.1893824616591,
+        "S_available": 86.05359015848188
+      },
+      "C1": {
+        "C": 84.97286849402117,
+        "QR": 84.26006340767789,
+        "QD": 84.75075818750275,
+        "QJ": 82.66173839257571,
+        "S_available": 84.16135712044438
+      },
+      "L1-sh": {
+        "C": 85.11971962319129,
+        "QR": 84.42233000998871,
+        "QD": 84.80600144031358,
+        "QJ": 82.67386857847217,
+        "S_available": 84.25547991299143
+      },
+      "C1-sh": {
+        "C": 85.02871377667361,
+        "QR": 84.31647236070123,
+        "QD": 84.7826686722978,
+        "QJ": 82.69469728622242,
+        "S_available": 84.20563802397376
+      }
+    },
+    "safety": {
+      "worst_improvement_pp": -3.7607506842206924,
+      "harm": {
+        "G0": {
+          "correct": 182604753,
+          "harm": 2473515,
+          "rate": 0.013545731747738241
+        },
+        "G1": {
+          "correct": 182604753,
+          "harm": 4787031,
+          "rate": 0.02621525957760804
+        }
+      },
+      "composite_delta_pp": -1.7686006352495838,
+      "clean_vs_rgb_pp": -1.276880610057944,
+      "worst_vs_rgb_pp": -4.486123616208603,
+      "passed": false
+    },
+    "dynamic_routing": {
+      "delta_pp": 0.0009985863129742256,
+      "clean_delta_pp": 0.0017796820307722783,
+      "routing_by_family": {
+        "C": {
+          "weights": [
+            0.0019191008837851904,
+            0.995001496663734,
+            0.0030794316666450964
+          ],
+          "entropy": 0.034474299108581755,
+          "disagreement": 0.04632243825428521
+        },
+        "QR": {
+          "weights": [
+            0.0019148983595173444,
+            0.9950116022086856,
+            0.0030735285078269193
+          ],
+          "entropy": 0.034419978906247595,
+          "disagreement": 0.048958934954742885
+        },
+        "QD": {
+          "weights": [
+            0.0020615174384400786,
+            0.9946456296526971,
+            0.003292880902259115
+          ],
+          "entropy": 0.03656217214924779,
+          "disagreement": 0.045051669599998054
+        },
+        "QJ": {
+          "weights": [
+            0.0021345571236017703,
+            0.9944620684011659,
+            0.0034034017598562278
+          ],
+          "entropy": 0.037658112408565494,
+          "disagreement": 0.053966436813126746
+        }
+      },
+      "max_family_weight_difference": 0.0005495338075196532,
+      "max_expert_disagreement": 0.053966436813126746,
+      "passed": false
+    },
+    "local": {
+      "delta_pp": 0.006277502532910262,
+      "vs_shuffled_pp": 0.007351244173392502,
+      "boundary_harm": {
+        "G1": {
+          "correct": 41073985,
+          "harm": 89842,
+          "rate": 0.0021873212448219963
+        },
+        "L1": {
+          "correct": 41073985,
+          "harm": 87820,
+          "rate": 0.0021380930046110695
+        }
+      },
+      "retention": {
+        "G1": 57.64961282863098,
+        "L1": 58.10954946611402
+      },
+      "worst_vs_rgb_pp": -4.420037403796229,
+      "passed": false
+    },
+    "classes": {
+      "delta_pp": -0.10147403672044675,
+      "vs_shuffled_pp": -0.04428090352938341,
+      "per_class_mean_delta_pp": [
+        -0.1870330436113976,
+        0.03614276046670417,
+        -0.018588115928457327,
+        -0.09752350303531276,
+        -0.2898791288595459
+      ],
+      "worst_vs_rgb_pp": -4.405072857967863,
+      "passed": false
+    },
+    "CE_vs_safe": {
+      "S1-S0": -1.7956586950162148,
+      "G1-G0": -1.7686006352495838,
+      "L1-L0": -1.7851693066201477,
+      "C1-C0": -1.892233038037503
+    },
+    "new_contribution_established": false,
+    "statistical_significance_test": false,
+    "test6_loaded": false
+  }
+}

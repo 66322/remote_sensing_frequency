@@ -1,0 +1,16 @@
+{
+  "job": "A3",
+  "step": 4000,
+  "target": 4000,
+  "phase": "complete",
+  "observed_at": "2026-10-02T01:07:45.862010+08:00",
+  "session_elapsed_seconds": 1801.5971888005733,
+  "loss": 0.18207518756389618,
+  "objective_counts": {
+    "Pair:penalty_sum": 0.0,
+    "Pair:steps": 1
+  },
+  "seconds_per_train_step": 0.2291712808255106,
+  "remaining_training_hours": 0.0,
+  "gpu_peak_allocated_bytes": 6630669312
+}

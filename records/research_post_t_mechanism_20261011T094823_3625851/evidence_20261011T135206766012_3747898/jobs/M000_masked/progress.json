@@ -1,0 +1,8 @@
+{
+  "job": "M000_masked",
+  "physical_gpu": 0,
+  "optimizer_updates": 0,
+  "elapsed_seconds": 729.7174998670816,
+  "observed_at": "2026-10-11T10:01:35.533305+08:00",
+  "phase": "complete"
+}

@@ -1,0 +1,24 @@
+{
+  "source": "user pasted server terminal registration output",
+  "received_date": "2026-10-07",
+  "scientific_execution_commit": "0e22438a7131a0a1f28098e675c3367d40236398",
+  "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293",
+  "controller_pid": 694658,
+  "training_jobs": 9,
+  "new_steps": 72000,
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "log": "nohup_20261007T083216182460.log",
+  "directory_time_label": "20261007T083203",
+  "log_time_label": "20261007T083216182460",
+  "queue_observed_at": null,
+  "query_observed_at": null,
+  "controller_live": null,
+  "worker_progress": null,
+  "server_cpu_checks": "success inferred from enqueue execution chain; separate log not received",
+  "status": "REGISTERED_PROGRESS_NOT_YET_QUERIED",
+  "next": "read-only status and logs; never re-enqueue",
+  "completed_jobs_not_reported": true
+}

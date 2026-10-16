@@ -1,0 +1,27 @@
+{
+  "status": "CPU_ACCELERATION_READY_NOT_APPLIED",
+  "local_tests_passed": 4,
+  "ast_files_passed": 4,
+  "tests_seconds": 4.614,
+  "full_result_exact_synthetic_cases": 12,
+  "benchmark": {
+    "shape": [
+      768,
+      768
+    ],
+    "old_seconds": 5.725464299990563,
+    "new_seconds": 1.2820790999976452,
+    "ratio": 4.46576525582632,
+    "all_fields_exact": true,
+    "scope": "one local CPU synthetic run; not full server ETA"
+  },
+  "server_applied": false,
+  "real_completed_case_equivalence_verified": false,
+  "gpu_results_repeated": false,
+  "scientific_cases_added": 0,
+  "trainings": 0,
+  "default_cpu_workers": 2,
+  "max_cpu_workers": 4,
+  "original_code_and_completed_records_preserved": true,
+  "remaining_inflight_case_may_repeat": true
+}

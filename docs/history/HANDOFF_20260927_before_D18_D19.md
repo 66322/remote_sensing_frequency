@@ -1,0 +1,266 @@
+# Current handoff — 2026-09-26 (after D14 audit)
+
+**最新用户安排，2026-09-27：** 今晚希望多方案初筛，只跑seed42，有信号后再安排多seed。
+已写 [D18/D19有限队列计划](../protocols/D18_D19_NIGHT_SCREEN_PLAN_20260927.md)，
+8项基础＋最多2项条件训练，自动训练→重载→全图评估→新扰动/边界诊断→汇总。
+预训练权重受阻不能阻塞独立融合分支。允许跨一天继续，短流程后估计总工时。
+目前只有规划，尚未实现新模型/执行脚本，不能提供或宣称已有可运行启动命令。
+
+**最新交接（2026-09-27）：** 最后观测服务器完成时间22:53:47 +08:00，D16/D17
+16项正式训练/评估完成，failures=0、summary_ok=True。原始16摘要与decision/status
+已上传 `e37d103`，离线矩阵/绑定/最终判断重算通过；A2和B1均未通过双seed门槛。
+见 [结果与审计](../experiments/D16_D17_RESULTS_20260927.md)。当前队列结束，不重启。
+下一步准备同一预训练表示下RGB/灰度辅助/DSM辅助的匹配适配器对照；代码尚未实现，
+未安排新服务器训练。点监督实例分割仅准备数据条件，ISFuse结构迁移仍待独立立项。
+以下旧运行态与启动记录均为历史。
+
+**最新交接（2026-09-26）：** 用户已观测15:37:38 +08:00 全部8项 smoke
+训练/评估通过，GPU0/1 分别启动 A0 seed42/17；随后日志显示两项均到20/4000步
+（未附新时间戳）。这是最后观测状态，不是实时监控。修复已通过服务器短流程。
+ISFuse 迁移仅归档为备选，用户要求明天结合本轮结果统一整理：
+[`2026-09-27复盘议程`](../protocols/POST_D16_D17_REVIEW_20260927.md)。
+全队列可能跨过明天，未完则继续，不改动当前16项任务，也不自动追加新任务。
+用户进一步要求查阅2025–2026分割交叉方向。已记录
+[`近期文献与七条条件化路线`](../protocols/SEGMENTATION_CROSSOVER_2025_2026_REVIEW_20260926.md)：
+优先干预互补和几何边界，点监督实例分割作为换问题备选；其余路线先检查数据条件。
+已区分官方论文信息、摘要级阅读、作者自报接收与本项目未验证建议。
+本次只更新文档，明天结合已有结果选主线，不启动新的训练或定时任务。
+以下修复与启动记录为历史，不应据此重复重启。
+
+**D16/D17 server smoke repair, 2026-09-26:** Last observed queue stopped
+15:29:20 +08:00, all eight smoke trainings failed before their first update;
+formal pilots did not start. User logs identify legacy CUDA NLL2d under strict
+deterministic algorithms in cross_entropy. Both supervised losses now use
+equivalent one-hot/log-softmax valid-pixel CE without NLL2d/gather backward.
+Strict deterministic mode remains enabled. A CPU loss/gradient equivalence test
+and a server-only strict CUDA forward/backward test are added. Pull and rerun
+the same D16/D17 queue; failed smoke directories contain no completed checkpoint
+and may be reused. No deletion or D15 retraining is needed.
+
+**Research direction correction, 2026-09-26:** User questioned the premature
+low-resolution pivot and requested more experiments and alternative directions.
+RGB-DSM complementary/reliable segmentation remains the topic. Down4 is one
+stress condition. New proposal: sixteen 4k continuation trainings, combining
+paired-intervention task consistency with proper controls and an independent
+geometry-supervision alternative; six pretrained-adapter runs reserved for a
+later representation check. Read `docs/protocols/D16_D17_RESEARCH_PORTFOLIO_20260926.md`.
+Executable config, method losses, training, resumable evaluation and shared
+GPU0/1 queue are now implemented. Ten local CPU tests passed, including exact
+next-step optimizer/RNG resume and actual pre-fusion independence. Server CUDA
+and data smoke not yet observed. Launch the commands in the protocol; eight
+smokes automatically gate sixteen4k pilots. Physical GPUs0/1 are authorized.
+
+**D15 closed, 2026-09-26:** Last observed server completion 14:45:11 +08:00,
+8/8 summaries, both workers0. Originals uploaded in `3f95584`; offline hash/
+CM/count/invariance/decision audit passed. See `docs/experiments/D15_RESULTS_20260926.md`.
+RGB down4 gains over the stronger RGB control are +2.9585/+1.9245 pp and
+positive on both tiles in both seeds; other degradations are mixed by tile.
+DSM-only is about65.8% overall but strong on Building. The next mechanism batch
+is defined in the corrected portfolio above. Method code/queue is ready for server smoke;
+no new server training is observed. Historical repair notes below are closed.
+
+**D15 evaluation repair, last observed 2026-09-26 05:49:46 +08:00:** Both
+16000-step DSM-only trainings completed successfully (seed42 05:43:05,
+seed17 05:43:56). Both evaluations failed their exact clean FullGT confusion
+matrix reproduction check after inference. The evaluator omitted the
+deterministic CUDA/cuDNN initialization used in training validation. It now
+calls the same `r02.set_seed` before model loading; the exact check is retained
+and moved immediately after clean, with expected/actual/difference matrices
+written to `records/rebuild_v1_d15_capability_20260926/diagnostics/`.
+This setting correction awaits server verification; if mismatch remains,
+inspect that diagnostic rather than relaxing the gate. Pull and relaunch the
+same queue; both completed trainings and smokes are reused.
+
+**2026-09-26 D15 server attempt:** User-reported `status.tsv` at 01:18:08
++08:00 has PREFLIGHT COMPLETE, SMOKE_EVAL COMPLETE 0, SMOKE_TRAIN COMPLETE 0,
+SUMMARY COMPLETE, and QUEUE FINISHED `worker0=1 worker1=1`. No formal D15
+training or evaluation stage started. The queue shell used `seed` in a combined
+`local` assignment under `set -u`, and an empty array expansion was also
+fragile. Both are fixed with a regression test; pull the repair and relaunch
+the same queue. The existing smoke outputs can be reused. No result claim is
+available yet.
+
+**2026-09-26 D15 implementation handoff:** The user authorized physical GPU0 and
+GPU1 and experiments longer than one day. The D15 capability protocol,
+two-worker queue, DSM-only trainer, paired evaluation and offline summary are
+prepared; server execution has not been observed. Pull this branch and use the
+launch command in `docs/protocols/D15_DSM_CAPABILITY_RGB_DEGRADATION_20260926.md`.
+The queue stops after D15, even when its exploratory gate passes. Retrieve
+`records/rebuild_v1_d15_capability_20260926/decision.json` and all eight
+evaluation summaries before deciding on the next method. The D13/D14 evidence
+and Test6 boundary remain as stated below.
+
+**Current handoff, 2026-09-26 after D14:** The user-reported D14 queue
+finished at 00:26:16 +08:00 with eight evaluations complete and zero
+failures. DSM heads show nonzero prediction sensitivity to content while
+the RGB negative controls remain invariant; mIoU changes are mixed.
+See `docs/experiments/D14_RESULTS_20260926.md` and the compact CSV.
+The eight original per-arm D14 summaries were transferred in commit
+`348dda6` and audited without discrepancy. D13 Stage 2 remains closed.
+Do not rerun D14 or use the repeatedly inspected Val2 as confirmatory
+evidence. Next: specify a new method target and independent evaluation
+source before further long training. Older actions below are historical.
+
+**Current handoff, 2026-09-25:** D13 queue started at commit `afea788`
+and finished at 02:07:03 +08:00 with zero queue failures. Stage 1 completed
+all eight matched arms and failed in both seeds; Stage 2 was skipped. Read
+`docs/experiments/D13_RESULTS_20260925.md`, the compact decision JSON, and
+the eight original evaluation summaries transferred in commit `8236a07`.
+Do not relaunch D13 or use its unrun Stage 2 as evidence. The immediate task
+is to decide whether a bounded inference-only DSM intervention is worth a
+new protocol; the read-only condition/class/tile analysis is complete in the
+result report. No training is queued. The D13 launch instructions and older
+pending actions below are superseded.
+
+**Latest planning update:** D13 is a staged, unimplemented RGB-anchored DSM
+residual queue: eight mandatory and up to eight conditional 4000-step
+runs, a 24-hour unattended cap, and automatic summaries. Code is implemented
+on this branch; the server has not run it yet. Launch instructions are at the
+top of `NEXT_EXPERIMENT.md`. See
+`docs/protocols/D13_RGB_ANCHORED_DSM_RESIDUAL_PILOT_20260924.md` and the top
+of `NEXT_EXPERIMENT.md`. The completed D12 result
+and its failed gate still stand. Older pending instructions below are history.
+
+**Latest:** D12 completed 14/14 with zero queue failures. No core head passed
+the prespecified two-seed screen, so no full-image candidate exists. Read
+`docs/experiments/D12_RESULTS_20260924.md` and its compact CSV. Do not rerun
+D12 or train a residual gate from these results. The run commit was absent
+from the pasted status tail; pooled shuffled-control attribution is
+provisional pending verification against later fix `d28e4af`. Older D11/D12
+pending instructions below are historical.
+
+**Current action:** D11 supervised decision-benefit probe is implemented and
+awaiting server execution. Its protocol fixes six head-fit tiles, two
+probability-calibration tiles, two threshold-calibration tiles and Val2
+evaluation using D10M caches. Run `scripts/run_rebuild_v1_d11_probe_queue.sh`.
+This supersedes the no-new-queue wording in the historical D10M closure below.
+It does not reopen residual-gate training or the failed fixed scores.
+
+Latest decision (2026-09-23 17:50:39+08:00 server completion): D10M
+reported 20/20, zero failures. Its fixed structure score fails the criterion;
+close the mechanism branch. Do not execute older run instructions below.
+See `docs/experiments/D10M_RESULTS_20260923.md` and `NEXT_EXPERIMENT.md`
+(in docs/current). No additional audit or residual-gate queue is requested.
+
+
+D9B completed its unfitted decision-benefit screen with zero user-reported
+queue failures. The fixed semantic+frequency+expert score beat the better
+confidence/entropy direct control in only 1/16 flip-benefit AUROC and 0/16
+AUPRC comparisons; the gate failed. Do not train the candidate safety gate
+from these features or repeat this Val2 screen. The original server per-stratum
+files remain under project `records/`; the compact pooled table and decision
+are in `docs/experiments/D9B_RESULTS_20260923.md`. Next: freeze an independent
+labelled RGB–DSM source before any fitted model. Test6 stays frozen.
+The direction check is in `docs/current/DIRECTION_CHECK_20260923.md`;
+the operative next action is `docs/current/NEXT_EXPERIMENT.md`.
+External source candidates and explicit acceptance criteria are in
+`docs/current/INDEPENDENT_SOURCE_DECISION_20260923.md`.
+The next method's source-independent target and control design are frozen in
+`docs/protocols/D10_SELECTIVE_DSM_BENEFIT.md`; no D10 run is queued.
+
+## Current decision
+
+D8 `fix1` completed and failed its sampling gate, so `proceed_seed17=[]`.
+D9A completed all 17 queue stages with zero failures. Its tested confidence×JS
+disagreement score is below direct confidence difference on benefit AUROC and
+AUPRC in all 16 seed-by-condition comparisons. Entropy difference is above
+confidence difference on both ranking metrics in all 16 comparisons. Car and
+damaged-region ranking advantages also repeat, with small-Car support limited.
+The original D9A local-down8 D5 route incorrectly masked degraded DSM as
+absent; its two-seed `fix1` correction completed with zero failures and left
+the ranking CSVs byte-identical. D5's older per-seed result directories are
+missing although its logs report completion, so a matched frozen-expert
+safe-entropy versus safe-confidence decision audit was run. Safe entropy won
+routed NB mIoU in only 4/16 rows, lost in 10 and tied under DSM zero twice
+(mean -0.0089 pp). Its better benefit ranking therefore did not translate
+into a safer or stronger simple router. The source-hash-checked class/region
+review is complete: entropy routing raises Car
+IoU in 12/16 rows but Building in only 1/16, and local-down8 damaged-region
+effects reverse across seeds. D9A is closed. The next substantive protocol is
+`docs/protocols/D9B_DECISION_BENEFIT_SCREEN.md`; see
+`docs/experiments/D9A_ENTROPY_ROUTE_RESULTS_20260923.md` for the final D9A result.
+
+No documented untouched scene source is currently available for fitted D9B:
+Potsdam Train16/Val2/Test6 are trained, inspected and historically exposed,
+while earlier Vaihingen work used train12/test4. See
+`docs/current/D9B_SOURCE_STATUS_20260923.md`. Historical TEST6 remains frozen.
+
+## Read this first on another computer
+
+- Branch: `rebuild-v1-protocol-20260915`
+- Repository: https://github.com/66322/remote_sensing_frequency/tree/rebuild-v1-protocol-20260915
+- B1–B3 evidence: `records/rebuild_v1_b2_b3_compact_20260921/`
+- B4 evidence: `records/rebuild_v1_b4_seed17_compact_20260922/`
+- B4 report: `docs/experiments/B4_SEED17_REPLICATION_20260921.md`
+- Current state: B4, D8 and D9B screens failed their gates; D9A and local-down8 fix1 complete, full D9 gate unevaluated.
+- The D9A entropy-route queue completed with zero failures. Its source-hashed
+  server summary, compact transcription and class/region review are archived.
+
+GitHub contains compact metrics, decisions, timestamps and checkpoint references.
+Large checkpoints, complete logs, full per-condition CSV files and confusion matrices
+remain under `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro` on the experiment
+server. Missing GitHub copies are not a reason to rerun completed work.
+
+## Completed B1–B3 state
+
+Seed42 KD minus C is +0.2247 pp clean, +0.5275 pp down8 and +0.6918 pp
+DSM-zero. Compared with R05_KD, KD is -0.2217 pp clean but +0.2220 pp down8
+and +0.1568 pp zero. Its paired local drops are smaller than R05_KD in all eight
+reported seed42 tile/family/region summaries. SAFE and AVG_KD do not provide a
+consistent additional benefit.
+
+These are stage results on the repeatedly used two-tile Val2 development split.
+
+## Completed B4 state
+
+B4 ran from 2026-09-21 17:22:07 to 2026-09-22 01:29:52 +08:00. All three
+smokes, 4000-step trainings, global robustness evaluations and paired local
+evaluations completed. TEST6 was not loaded.
+
+| Arm | clean | DSM down8 | DSM zero |
+|---|---:|---:|---:|
+| C17 | 86.6027 | 84.9647 | 83.3285 |
+| R05_KD17 | 86.1756 | 84.9972 | 83.1646 |
+| KD17 | 86.6258 | 85.2065 | 83.2083 |
+
+KD17 minus R05_KD17 is +0.4502 pp clean, +0.2093 pp down8 and +0.0438 pp
+zero. The global degradation ordering repeats, although the zero advantage is tiny.
+
+For paired local damaged regions, KD17 is 0.2855 pp worse than R05_KD17 under
+local missing and 0.0372 pp worse under local down8. Both local directions reverse
+seed42. KD17 is also 0.1202 pp below C17 on global DSM-zero.
+
+## Decision
+
+The frozen B4 gate fails. The defensible finding is a small global degradation
+trend that repeats across two seeds, combined with a local mechanism result that
+does not replicate. Do not present the current SafeMaxConfidence distillation as a
+validated local reliability method, automatic missing detector, Optical fallback or
+generally superior robust model.
+
+B1–B4 are closed as mechanism/ablation evidence for the current implementation.
+Any next main-method experiment must change the reliability design and use a new
+frozen evaluation source. Repeating the same models on Val2 or extending their
+training budget is not justified by B4.
+
+## Provenance caveat
+
+The B4 trainers reported Git HEAD `abb3d97`, while later B4 files had been installed
+selectively on the server. The preflight source hashes retained in the original
+server package are authoritative for executed code identity. The compact GitHub
+package was reconstructed from validated archiver output supplied by the user;
+checkpoint paths and SHA256 values are in `run_provenance.json`.
+
+## Reusable prompt
+
+“Read `docs/START_HERE.md`, `docs/current/HANDOFF.md`,
+`docs/experiments/D8_RESULTS_20260922.md`,
+`docs/experiments/D9A_RESULTS_20260923.md`,
+`docs/experiments/D9A_ENTROPY_ROUTE_RESULTS_20260923.md` and
+`docs/protocols/D9_DSM_BENEFIT_DIAGNOSTIC.md` on branch
+`rebuild-v1-protocol-20260915`. B1–B4 and D8 are closed; D9A and its
+local-down8 correction are complete. Audit the entropy-route class/region
+strata, then inventory new labelled scenes before fitting benefit predictors.
+The documented Potsdam and Vaihingen scenes are exposed. Keep TEST6 frozen,
+use physical GPU0 only, and store
+runtime artifacts under `/home/jovyan/zzx`.”

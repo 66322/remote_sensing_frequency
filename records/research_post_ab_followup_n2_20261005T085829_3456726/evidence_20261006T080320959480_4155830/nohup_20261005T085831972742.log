@@ -1,0 +1,9 @@
+POST_AB_CONDITIONS_PASS 32
+POST_AB_HANDOVER READY COMPLETE
+POST_AB_START 0 N2-0 3457210
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_n2_20261005T085829_3456726/code/scripts/control_post_ab_n2.py", line 119, in <module>
+    if __name__=='__main__':sys.exit(main())
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_n2_20261005T085829_3456726/code/scripts/control_post_ab_n2.py", line 90, in main
+    if proc.poll() is None and not state['jobs'][j].get('timed_out',False) and (datetime.now().astimezone()-datetime.fromisoformat(state['jobs'][j]['started_at'])).total_seconds()>3600*plan['runtime']['per_job_timeout_hours']:
+TypeError: unsupported operand type(s) for *: 'int' and 'NoneType'

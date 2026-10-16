@@ -1,0 +1,22 @@
+{
+  "job": "C0",
+  "step": 4000,
+  "target": 4000,
+  "phase": "complete",
+  "observed_at": "2026-10-02T01:40:03.873086+08:00",
+  "session_elapsed_seconds": 1927.1502245813608,
+  "loss": 0.1897801160812378,
+  "objective_counts": {
+    "KD:clean:selected_pixels": 86383,
+    "KD:clean:valid_pixels": 4194304,
+    "KD:clean:empty_views": 0,
+    "KD:clean:loss_sum": 0.8995258212089539,
+    "KD:aug:selected_pixels": 97026,
+    "KD:aug:valid_pixels": 4194304,
+    "KD:aug:empty_views": 0,
+    "KD:aug:loss_sum": 1.036717414855957
+  },
+  "seconds_per_train_step": 0.29684893471747636,
+  "remaining_training_hours": 0.0,
+  "gpu_peak_allocated_bytes": 5985647616
+}

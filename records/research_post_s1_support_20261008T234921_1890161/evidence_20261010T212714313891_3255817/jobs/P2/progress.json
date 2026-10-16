@@ -1,0 +1,15 @@
+{
+  "job": "P2",
+  "step": 8000,
+  "target": 8000,
+  "physical_gpu": 0,
+  "phase": "complete",
+  "observed_at": "2026-10-09T18:18:03.443304+08:00",
+  "session_elapsed_seconds": 14273.0009476915,
+  "tiles_loaded": 12,
+  "tiles_total": 12,
+  "loss": 0.27745985984802246,
+  "seconds_per_train_step": 1.31648084721528,
+  "remaining_train_hours": 0.0,
+  "gpu_peak_allocated_bytes": 36909157376
+}

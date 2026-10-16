@@ -1,0 +1,64 @@
+{
+  "source": "user terminal attachment de82e304-fdef-4bc2-94b7-12df6de0a059",
+  "checked_at": "2026-10-03T20:56:13.761513+08:00",
+  "queue_last_observed": "2026-10-03T20:56:08.886753+08:00",
+  "status": "RUNNING",
+  "phase": "replay",
+  "controller_pid": 2349619,
+  "controller_live_at_check": true,
+  "live_workers_at_check": [
+    "replay_G0",
+    "replay_G1"
+  ],
+  "verdict": "ACTIVE_RUNNING",
+  "predecessor": {
+    "status": "COMPLETE",
+    "last_observed_at": "2026-10-03T19:27:53.313658+08:00",
+    "controller_lock_free": true,
+    "scientific_results_read": false
+  },
+  "jobs": [
+    {
+      "id": "replay_G0",
+      "gpu": 0,
+      "status": "RUNNING",
+      "completed_tile_evaluations": 6,
+      "total": 24,
+      "progress_at": "2026-10-03T20:56:03.435876+08:00"
+    },
+    {
+      "id": "replay_G1",
+      "gpu": 1,
+      "status": "RUNNING",
+      "completed_tile_evaluations": 6,
+      "total": 24,
+      "mode": "expert0",
+      "progress_at": "2026-10-03T20:55:58.344719+08:00"
+    },
+    {
+      "id": "P",
+      "gpu": 0,
+      "status": "PENDING"
+    },
+    {
+      "id": "R",
+      "gpu": 1,
+      "status": "PENDING"
+    },
+    {
+      "id": "PR_area",
+      "gpu": 0,
+      "status": "PENDING"
+    },
+    {
+      "id": "PR_pixel",
+      "gpu": 1,
+      "status": "PENDING"
+    }
+  ],
+  "completed_replay_tiles": 12,
+  "total_replay_tiles": 48,
+  "training_started": false,
+  "error_in_latest_query": false,
+  "no_restart_needed": true
+}

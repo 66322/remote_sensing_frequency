@@ -1,0 +1,438 @@
+{
+  "status": "PASS",
+  "source_commit": "38d205591abe00179bebfb36a17595d4d7b75f47",
+  "manifest_payloads": 1508,
+  "git_blobs": 1509,
+  "counts": {
+    "read_payloads": 79,
+    "matrices": 227556,
+    "joints": 22140,
+    "embedded_case_bindings": 1044,
+    "prediction_bindings": 9396
+  },
+  "selected_steps": {
+    "N3-0": 8000,
+    "N3-1": 8000,
+    "N3-2": 8000,
+    "N3-3": 8000,
+    "N3-4": 8000,
+    "S1-0": 8000,
+    "S1-1": 8000,
+    "S1-2": 8000,
+    "S1-3": 8000
+  },
+  "N3": {
+    "candidate": "N3-4",
+    "passed": false,
+    "checks": {
+      "S_vs_N3-0": false,
+      "fixed_S_vs_N3-0": false,
+      "tiles_S_vs_N3-0": false,
+      "S_vs_N3-1": false,
+      "fixed_S_vs_N3-1": true,
+      "tiles_S_vs_N3-1": true,
+      "QR_vs_N3-2": false,
+      "fixed_QR_vs_N3-2": false,
+      "tiles_QR_vs_N3-2": false,
+      "QD_vs_N3-3": false,
+      "fixed_QD_vs_N3-3": false,
+      "tiles_QD_vs_N3-3": false,
+      "clean_floor_vs_N3-0": true,
+      "dsm_missing_floor_vs_N3-0": true,
+      "rgb_missing_floor_vs_N3-0": true,
+      "worst_vs_N3-0": true,
+      "clean_floor_vs_N3-1": true,
+      "dsm_missing_floor_vs_N3-1": true,
+      "rgb_missing_floor_vs_N3-1": true,
+      "worst_vs_N3-1": true
+    },
+    "deltas_pp": {
+      "S_vs_N3-0": -7.812559421438436e-05,
+      "S_vs_N3-1": 0.001937050273753016,
+      "QR_vs_N3-2": -0.0065046380062199205,
+      "QD_vs_N3-3": -0.0014226530615815136
+    }
+  },
+  "S1": {
+    "candidate": "S1-3",
+    "passed": false,
+    "bilateral_candidate": false,
+    "checks": {
+      "U_mean_vs_S1-0": true,
+      "fixed_U_vs_S1-0": true,
+      "tile_U_vs_S1-0": true,
+      "U_mean_vs_S1-1": true,
+      "fixed_U_vs_S1-1": true,
+      "tile_U_vs_S1-1": true,
+      "U_mean_vs_S1-2": true,
+      "fixed_U_vs_S1-2": true,
+      "tile_U_vs_S1-2": true,
+      "clean_floor": true,
+      "dsm_missing_floor": true,
+      "rgb_missing_floor": true,
+      "worst_primary_floor": false
+    },
+    "deltas_pp": {
+      "U_mean_vs_S1-0": 2.039422920745025,
+      "U_mean_vs_S1-1": 2.0295257491078473,
+      "U_mean_vs_S1-2": 1.4463708070875896
+    },
+    "directions": {
+      "rgb": {
+        "S1-0": {
+          "pooled_gain_pp": 4.10204724936726,
+          "tile_gains_pp": {
+            "3_11": 4.151008505459899,
+            "5_10": 4.077284543254663
+          }
+        },
+        "S1-1": {
+          "pooled_gain_pp": 4.098626746906874,
+          "tile_gains_pp": {
+            "3_11": 4.1626438315152114,
+            "5_10": 4.058365325425555
+          }
+        },
+        "S1-2": {
+          "pooled_gain_pp": 2.916979904978021,
+          "tile_gains_pp": {
+            "3_11": 3.168604722011821,
+            "5_10": 2.661456786097517
+          }
+        }
+      },
+      "dsm": {
+        "S1-0": {
+          "pooled_gain_pp": -0.02320140787719538,
+          "tile_gains_pp": {
+            "3_11": -0.08889791548909898,
+            "5_10": 0.04870975966130686
+          }
+        },
+        "S1-1": {
+          "pooled_gain_pp": -0.0395752486911789,
+          "tile_gains_pp": {
+            "3_11": -0.09242681051026125,
+            "5_10": 0.01911484791637008
+          }
+        },
+        "S1-2": {
+          "pooled_gain_pp": -0.02423829080284179,
+          "tile_gains_pp": {
+            "3_11": -0.10082849509848302,
+            "5_10": 0.057251825833205316
+          }
+        }
+      }
+    },
+    "interaction_U_pp": 1.4364736354504117,
+    "simple_policy_rule": "if a single-factor control matches the joint, close combination contribution; no budget/seed rescue"
+  },
+  "S1_worst_primary": [
+    {
+      "condition": "aux_shift8",
+      "tile": "3_11",
+      "gain_pp": -0.3915463506696426
+    },
+    {
+      "condition": "rgb_blur5+aux_shift8",
+      "tile": "3_11",
+      "gain_pp": -0.37509286079381354
+    },
+    {
+      "condition": "aux_down4",
+      "tile": "3_11",
+      "gain_pp": -0.3376993768984846
+    },
+    {
+      "condition": "rgb_contrast060",
+      "tile": "3_11",
+      "gain_pp": -0.27143016415071486
+    },
+    {
+      "condition": "clean",
+      "tile": "3_11",
+      "gain_pp": -0.25603047285983394
+    },
+    {
+      "condition": "rgb_down2",
+      "tile": "3_11",
+      "gain_pp": -0.23481446336948864
+    },
+    {
+      "condition": "rgb_down4",
+      "tile": "3_11",
+      "gain_pp": -0.23441926492928644
+    },
+    {
+      "condition": "rgb_blur5",
+      "tile": "3_11",
+      "gain_pp": -0.23019581579148962
+    },
+    {
+      "condition": "aux_noise_std010",
+      "tile": "3_11",
+      "gain_pp": -0.07613690511500693
+    },
+    {
+      "condition": "rgb_blur5+aux_shift8",
+      "tile": "5_10",
+      "gain_pp": -0.04436362146356032
+    },
+    {
+      "condition": "aux_shift8",
+      "tile": "5_10",
+      "gain_pp": -0.04286188327240836
+    },
+    {
+      "condition": "rgb_down4+aux_noise_std010",
+      "tile": "3_11",
+      "gain_pp": -0.020028316020599846
+    },
+    {
+      "condition": "rgb_down4+aux_noise_std010",
+      "tile": "5_10",
+      "gain_pp": -0.01608718430948386
+    },
+    {
+      "condition": "aux_noise_std010",
+      "tile": "5_10",
+      "gain_pp": -5.542470137243072e-05
+    },
+    {
+      "condition": "rgb_down2",
+      "tile": "5_10",
+      "gain_pp": 0.012786779220348876
+    },
+    {
+      "condition": "rgb_blur5",
+      "tile": "5_10",
+      "gain_pp": 0.012918077628512492
+    },
+    {
+      "condition": "aux_down4",
+      "tile": "5_10",
+      "gain_pp": 0.01568399618977878
+    },
+    {
+      "condition": "rgb_contrast060",
+      "tile": "5_10",
+      "gain_pp": 0.039519909313895596
+    },
+    {
+      "condition": "clean",
+      "tile": "5_10",
+      "gain_pp": 0.05826620356654644
+    },
+    {
+      "condition": "rgb_down4",
+      "tile": "5_10",
+      "gain_pp": 0.08174881746356277
+    }
+  ],
+  "S1_protection_pp": {
+    "clean": -0.09471961300521059,
+    "dsm_missing": 0.013154944412221425,
+    "rgb_missing": -0.013491854918157742
+  },
+  "jobs": {
+    "N3-0": {
+      "selected_step": 8000,
+      "S_available": 86.62942364130546,
+      "U_mean": 83.70518023584364,
+      "families": {
+        "C": 87.48885788599378,
+        "QR": 86.9873575624828,
+        "QD": 86.8624892909459,
+        "QJ": 85.17898982579936
+      },
+      "clean": 87.48885788599378,
+      "dsm_missing": 86.40237816087864,
+      "rgb_missing": 65.83069762054893,
+      "U_directions": {
+        "rgb_U": 81.00914781279923,
+        "dsm_U": 86.40121265888806
+      },
+      "fixed_S": 86.62942364130546,
+      "fixed_U": 83.70518023584364
+    },
+    "N3-1": {
+      "selected_step": 8000,
+      "S_available": 86.6274084654375,
+      "U_mean": 83.71543337064443,
+      "families": {
+        "C": 87.491121942194,
+        "QR": 86.98542771743136,
+        "QD": 86.8594767563092,
+        "QJ": 85.1736074458154
+      },
+      "clean": 87.491121942194,
+      "dsm_missing": 86.39876728063278,
+      "rgb_missing": 65.82929215931105,
+      "U_directions": {
+        "rgb_U": 81.01169868732855,
+        "dsm_U": 86.4191680539603
+      },
+      "fixed_S": 86.6274084654375,
+      "fixed_U": 83.71543337064443
+    },
+    "N3-2": {
+      "selected_step": 8000,
+      "S_available": 86.63705654937061,
+      "U_mean": 83.71183293257818,
+      "families": {
+        "C": 87.49849774769602,
+        "QR": 86.9933278696966,
+        "QD": 86.86878844445023,
+        "QJ": 85.18761213563963
+      },
+      "clean": 87.49849774769602,
+      "dsm_missing": 86.40282498392577,
+      "rgb_missing": 65.8306379048605,
+      "U_directions": {
+        "rgb_U": 81.0124955528044,
+        "dsm_U": 86.41117031235194
+      },
+      "fixed_S": 86.63705654937061,
+      "fixed_U": 83.71183293257818
+    },
+    "N3-3": {
+      "selected_step": 8000,
+      "S_available": 86.62878638683407,
+      "U_mean": 83.70688889336165,
+      "families": {
+        "C": 87.49404616420549,
+        "QR": 86.98709847520357,
+        "QD": 86.86020453737088,
+        "QJ": 85.17379637055629
+      },
+      "clean": 87.49404616420549,
+      "dsm_missing": 86.40258197062258,
+      "rgb_missing": 65.83226455336357,
+      "U_directions": {
+        "rgb_U": 81.00994021014542,
+        "dsm_U": 86.4038375765779
+      },
+      "fixed_S": 86.62878638683407,
+      "fixed_U": 83.70688889336165
+    },
+    "N3-4": {
+      "selected_step": 8000,
+      "S_available": 86.62934551571125,
+      "U_mean": 83.71057554246215,
+      "families": {
+        "C": 87.49226190822851,
+        "QR": 86.98682323169038,
+        "QD": 86.8587818843093,
+        "QJ": 85.17951503861684
+      },
+      "clean": 87.49226190822851,
+      "dsm_missing": 86.40220424593107,
+      "rgb_missing": 65.82946062262344,
+      "U_directions": {
+        "rgb_U": 81.00799282245956,
+        "dsm_U": 86.41315826246473
+      },
+      "fixed_S": 86.62934551571125,
+      "fixed_U": 83.71057554246215
+    },
+    "S1-0": {
+      "selected_step": 8000,
+      "S_available": 86.63237795342772,
+      "U_mean": 83.71062842650427,
+      "families": {
+        "C": 87.48699034237602,
+        "QR": 86.99083599279133,
+        "QD": 86.86574424043908,
+        "QJ": 85.1859412381044
+      },
+      "clean": 87.48699034237602,
+      "dsm_missing": 86.40666912001909,
+      "rgb_missing": 65.83180981712809,
+      "U_directions": {
+        "rgb_U": 81.0126010621446,
+        "dsm_U": 86.40865579086395
+      },
+      "fixed_S": 86.63237795342772,
+      "fixed_U": 83.71062842650427
+    },
+    "S1-1": {
+      "selected_step": 8000,
+      "S_available": 86.63189337427907,
+      "U_mean": 83.72052559814145,
+      "families": {
+        "C": 87.48854613054127,
+        "QR": 86.99124531278154,
+        "QD": 86.86424234138799,
+        "QJ": 85.1835397124055
+      },
+      "clean": 87.48854613054127,
+      "dsm_missing": 86.40794597596093,
+      "rgb_missing": 65.83200105830942,
+      "U_directions": {
+        "rgb_U": 81.01602156460498,
+        "dsm_U": 86.42502963167793
+      },
+      "fixed_S": 86.63189337427907,
+      "fixed_U": 83.72052559814145
+    },
+    "S1-2": {
+      "selected_step": 8000,
+      "S_available": 86.5610353622859,
+      "U_mean": 84.30368054016171,
+      "families": {
+        "C": 87.41241762030609,
+        "QR": 86.89481112095619,
+        "QD": 86.81501696567504,
+        "QJ": 85.1218957422063
+      },
+      "clean": 87.41241762030609,
+      "dsm_missing": 86.40872650952896,
+      "rgb_missing": 65.81663808112685,
+      "U_directions": {
+        "rgb_U": 82.19766840653384,
+        "dsm_U": 86.40969267378959
+      },
+      "fixed_S": 86.5610353622859,
+      "fixed_U": 84.30368054016171
+    },
+    "S1-3": {
+      "selected_step": 8000,
+      "S_available": 86.52318988663404,
+      "U_mean": 85.7500513472493,
+      "families": {
+        "C": 87.39227072937081,
+        "QR": 86.89571624934257,
+        "QD": 86.72962916567236,
+        "QJ": 85.07514340215046
+      },
+      "clean": 87.39227072937081,
+      "dsm_missing": 86.41982406443131,
+      "rgb_missing": 65.81831796220993,
+      "U_directions": {
+        "rgb_U": 85.11464831151186,
+        "dsm_U": 86.38545438298675
+      },
+      "fixed_S": 86.52318988663404,
+      "fixed_U": 85.7500513472493
+    }
+  },
+  "ordinary_selected_conditions": 32,
+  "fixed_conditions": 22,
+  "source_boundaries": "79 selected JSON payloads independently decoded/SHA checked plus manifest; 12 scientific execution sources SHA checked and exactly matched frozen commit; all 1508 payload paths/sizes checked; no server arrays/checkpoints/masks or GPU replay; raw joint marginals/pooling verified, derived joint_reports fields not exhaustively recomputed",
+  "science_source_exact_verified": 12,
+  "science_source_paths": [
+    "code/model/post_n3_s1_model.py",
+    "code/scripts/control_post_n3_s1.py",
+    "code/scripts/enqueue_post_n3_s1.py",
+    "code/scripts/post_n3_s1_common.py",
+    "code/scripts/post_n3_s1_evaluation.py",
+    "code/scripts/prepare_post_n3_s1.py",
+    "code/scripts/run_post_n3_s1.py",
+    "code/scripts/status_post_n3_s1.py",
+    "code/scripts/summarize_post_n3_s1.py",
+    "code/scripts/upload_post_n3_s1_records.py",
+    "code/tests/test_post_n3_s1.py",
+    "code/docs/protocols/POST_N3_S1_EXECUTION_20261007.md"
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "status": "DESIGN_ONLY",
+  "cases": [
+    {
+      "case_id": "P1_mild_R0D0",
+      "recipe": "P1",
+      "level": "mild",
+      "rgb_mask": 0,
+      "dsm_mask": 0
+    },
+    {
+      "case_id": "P1_mild_R0D1",
+      "recipe": "P1",
+      "level": "mild",
+      "rgb_mask": 0,
+      "dsm_mask": 1
+    },
+    {
+      "case_id": "P1_mild_R1D0",
+      "recipe": "P1",
+      "level": "mild",
+      "rgb_mask": 1,
+      "dsm_mask": 0
+    },
+    {
+      "case_id": "P1_mild_R1D1",
+      "recipe": "P1",
+      "level": "mild",
+      "rgb_mask": 1,
+      "dsm_mask": 1
+    },
+    {
+      "case_id": "P1_strong_R0D0",
+      "recipe": "P1",
+      "level": "strong",
+      "rgb_mask": 0,
+      "dsm_mask": 0
+    },
+    {
+      "case_id": "P1_strong_R0D1",
+      "recipe": "P1",
+      "level": "strong",
+      "rgb_mask": 0,
+      "dsm_mask": 1
+    },
+    {
+      "case_id": "P1_strong_R1D0",
+      "recipe": "P1",
+      "level": "strong",
+      "rgb_mask": 1,
+      "dsm_mask": 0
+    },
+    {
+      "case_id": "P1_strong_R1D1",
+      "recipe": "P1",
+      "level": "strong",
+      "rgb_mask": 1,
+      "dsm_mask": 1
+    },
+    {
+      "case_id": "P2_mild_R0D0",
+      "recipe": "P2",
+      "level": "mild",
+      "rgb_mask": 0,
+      "dsm_mask": 0
+    },
+    {
+      "case_id": "P2_mild_R0D1",
+      "recipe": "P2",
+      "level": "mild",
+      "rgb_mask": 0,
+      "dsm_mask": 1
+    },
+    {
+      "case_id": "P2_mild_R1D0",
+      "recipe": "P2",
+      "level": "mild",
+      "rgb_mask": 1,
+      "dsm_mask": 0
+    },
+    {
+      "case_id": "P2_mild_R1D1",
+      "recipe": "P2",
+      "level": "mild",
+      "rgb_mask": 1,
+      "dsm_mask": 1
+    },
+    {
+      "case_id": "P2_strong_R0D0",
+      "recipe": "P2",
+      "level": "strong",
+      "rgb_mask": 0,
+      "dsm_mask": 0
+    },
+    {
+      "case_id": "P2_strong_R0D1",
+      "recipe": "P2",
+      "level": "strong",
+      "rgb_mask": 0,
+      "dsm_mask": 1
+    },
+    {
+      "case_id": "P2_strong_R1D0",
+      "recipe": "P2",
+      "level": "strong",
+      "rgb_mask": 1,
+      "dsm_mask": 0
+    },
+    {
+      "case_id": "P2_strong_R1D1",
+      "recipe": "P2",
+      "level": "strong",
+      "rgb_mask": 1,
+      "dsm_mask": 1
+    }
+  ]
+}

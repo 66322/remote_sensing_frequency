@@ -1,0 +1,18 @@
+{
+  "total_parameters": 128814594,
+  "trainable_parameters": 609670,
+  "trainable_names": [
+    "project_rgb.weight",
+    "project_rgb.bias",
+    "project_dsm.weight",
+    "project_dsm.bias",
+    "fusion.0.weight",
+    "fusion.0.bias",
+    "fusion.1.weight",
+    "fusion.1.bias",
+    "fusion.3.weight",
+    "fusion.3.bias"
+  ],
+  "arm": "B0",
+  "initial_fusion_state_sha256": "167a73548056fa90f0d29263c20d26bdc99f1669e0b003936ea5089718d387e2"
+}

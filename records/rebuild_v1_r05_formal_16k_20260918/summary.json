@@ -1,0 +1,38 @@
+{
+  "experiment_id": "R05",
+  "started_at": "2026-09-18T02:26:29+08:00",
+  "completed_at": "2026-09-18T08:24:30+08:00",
+  "git_commit": "3715c6b945897ce45c035ef5ed7f1f117b3f2cbc",
+  "global_step": 16000,
+  "scheduler_total_steps": 16000,
+  "stop_at_step": 16000,
+  "best": {
+    "metric": "val2_noboundary_mIoU_fg5",
+    "value": 0.8704851901293498,
+    "step": 16000
+  },
+  "peak_allocated_gib": 22.70693349838257,
+  "run_dir": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/R05_dual_f0_quality_plus_dropout_seed42_sched16000_stop16000",
+  "test6_loaded": false,
+  "augmentation": {
+    "total_samples": 256000,
+    "counts": {
+      "clean": 143659,
+      "optical_blur5": 15306,
+      "optical_down2": 15294,
+      "dsm_blur5": 15511,
+      "dsm_down2": 15339,
+      "optical_zero": 25536,
+      "dsm_zero": 25355
+    },
+    "fractions": {
+      "clean": 0.56116796875,
+      "optical_blur5": 0.0597890625,
+      "optical_down2": 0.0597421875,
+      "dsm_blur5": 0.06058984375,
+      "dsm_down2": 0.05991796875,
+      "optical_zero": 0.09975,
+      "dsm_zero": 0.09904296875
+    }
+  }
+}

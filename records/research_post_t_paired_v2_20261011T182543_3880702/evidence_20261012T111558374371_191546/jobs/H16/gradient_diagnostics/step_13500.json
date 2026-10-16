@@ -1,0 +1,93 @@
+{
+  "step": 13500,
+  "signature": {
+    "execution_commit": "44e4df5afbaeb603e6441e7ef14ff09f228bc027",
+    "plan_sha256": "c4d5248f3cd5cfe9b61a8544533bbc6cb4bbe65001605fd8a90c4fb9d06b08b9",
+    "code_manifest_sha256": "30ae48f3b4d5e0322d5e2d5b310cc644a2e7fd0df2214e997994da17ee43c570",
+    "mask_manifest_sha256": "24b2935c4f295e5599b77319b94a9a192c601ac9a9edb6da9f6ab492216e8257",
+    "initial_checkpoint_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
+    "job": {
+      "id": "H16",
+      "kind": "train",
+      "mechanism": "H",
+      "gpu": "available_0_or_1",
+      "steps": 16000,
+      "seed": 42,
+      "donor": "S1-0",
+      "frozen_base": true,
+      "support_preserved": true,
+      "local_only": true,
+      "geometry_aug": false,
+      "control": "none",
+      "timeout_hours": 24.0
+    },
+    "allowed_physical_gpus": [
+      0,
+      1
+    ],
+    "primary_checkpoint_step": 16000,
+    "test6_loaded": false,
+    "independent_final_loaded": false
+  },
+  "denominators": {
+    "clean_fusion_pixels": 4194304,
+    "clean_rgb_pixels": 4194304,
+    "clean_dsm_pixels": 4194304,
+    "clean_residual_support_pixels": 0,
+    "aug_fusion_pixels": 4194304,
+    "aug_rgb_pixels": 3342336,
+    "aug_dsm_pixels": 4161536,
+    "aug_residual_support_pixels": 65536
+  },
+  "trainable_parameters": 819526,
+  "groups_nonzero": {
+    "branch.project_rgb.0.weight": true,
+    "branch.project_rgb.0.bias": true,
+    "branch.project_rgb.1.weight": true,
+    "branch.project_rgb.1.bias": true,
+    "branch.project_rgb.2.weight": true,
+    "branch.project_rgb.2.bias": true,
+    "branch.project_dsm.0.weight": true,
+    "branch.project_dsm.0.bias": true,
+    "branch.project_dsm.1.weight": true,
+    "branch.project_dsm.1.bias": true,
+    "branch.project_dsm.2.weight": true,
+    "branch.project_dsm.2.bias": true,
+    "branch.merge_rgb.weight": true,
+    "branch.merge_rgb.bias": true,
+    "branch.merge_dsm.weight": true,
+    "branch.merge_dsm.bias": true,
+    "branch.fusion.0.weight": true,
+    "branch.fusion.0.bias": true,
+    "branch.fusion.1.weight": true,
+    "branch.fusion.1.bias": true,
+    "branch.fusion.3.weight": true,
+    "branch.fusion.3.bias": true,
+    "private_rgb.net.rgb.0.weight": true,
+    "private_rgb.net.rgb.0.bias": true,
+    "private_rgb.net.rgb.1.weight": true,
+    "private_rgb.net.rgb.1.bias": true,
+    "private_rgb.net.decoder.0.weight": true,
+    "private_rgb.net.decoder.0.bias": true,
+    "private_rgb.net.decoder.1.weight": true,
+    "private_rgb.net.decoder.1.bias": true
+  },
+  "frozen_gradients_absent": true,
+  "exposure": {
+    "views": {
+      "clean": {
+        "residual_support_pixels": 0,
+        "moved_tokens": 0,
+        "total_tokens": 262144
+      },
+      "aug": {
+        "residual_support_pixels": 65536,
+        "moved_tokens": 0,
+        "total_tokens": 262144
+      }
+    },
+    "residual_support_pixels": 65536,
+    "moved_tokens": 0,
+    "total_tokens": 524288
+  }
+}

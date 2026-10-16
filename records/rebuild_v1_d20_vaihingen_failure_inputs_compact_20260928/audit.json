@@ -1,0 +1,1657 @@
+{
+  "status": "COMPLETE",
+  "scope": "exploratory_read_only_input_and_prediction_diagnostic",
+  "frozen_gate_passed": false,
+  "frozen_gate_unchanged": true,
+  "config_sha256": "9277f3e98f3f74755de98d459366277617440a30151d15813a709117ad8599a8",
+  "decision_sha256": "fbdefc332cd30172c9966714e24b2801e999b241ece302cd38acf321d44d5d36",
+  "manifest_sha256": "06bcd7c7dbcc3714410a973177cc6dd577993200844cb83ba8c76708b27ffeee",
+  "source_sha256": "a71f4753c6945eb1cc8c1979b984c33836d413c885449db12d8ed047b0cd9acf",
+  "development_ids": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    20,
+    22,
+    24,
+    27,
+    29,
+    31,
+    33,
+    35,
+    38
+  ],
+  "target_failure_ids": [
+    12,
+    14
+  ],
+  "comparison_population": "all_17_frozen_development_tiles",
+  "gpu_used": false,
+  "model_training_started": false,
+  "test6_loaded": false,
+  "geographic_alignment_status": "cannot_be_proven_from_equal_shape_or_edge_enrichment_alone",
+  "limitations": "Edge enrichment is descriptive; it cannot establish registration accuracy or the cause of a negative model delta",
+  "elapsed_seconds": 22.14,
+  "tiles": [
+    {
+      "tile": 2,
+      "failed_gate": false,
+      "pixels": 6718276,
+      "input_paths": {
+        "top": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area2.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area2.tif",
+        "label": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area2.tif"
+      },
+      "shape": [
+        2767,
+        2428
+      ],
+      "geotiff_spatial_tag_ids": {
+        "top": [],
+        "dsm": [],
+        "label": []
+      },
+      "optical_band_mean": [
+        111.83589450626917,
+        74.22680521014617,
+        75.95379573569171
+      ],
+      "optical_zero_fraction": [
+        6.698146965084495e-06,
+        6.698146965084495e-06,
+        6.698146965084495e-06
+      ],
+      "optical_255_fraction": [
+        0.002558840988372612,
+        0.0005034029563536835,
+        0.0002801313908508671
+      ],
+      "dsm_min": 242.3510284423828,
+      "dsm_max": 291.86907958984375,
+      "dsm_p01": 249.17074966430664,
+      "dsm_p50": 264.5638732910156,
+      "dsm_p99": 282.2482147216797,
+      "class_paired": {
+        "Impervious": {
+          "support": 1672969,
+          "p2_only_correct": 34034,
+          "p0_only_correct": 26727
+        },
+        "Building": {
+          "support": 1533055,
+          "p2_only_correct": 31872,
+          "p0_only_correct": 21665
+        },
+        "LowVegetation": {
+          "support": 1634290,
+          "p2_only_correct": 71626,
+          "p0_only_correct": 53344
+        },
+        "Tree": {
+          "support": 1649688,
+          "p2_only_correct": 31084,
+          "p0_only_correct": 30401
+        },
+        "Car": {
+          "support": 104044,
+          "p2_only_correct": 5818,
+          "p0_only_correct": 4470
+        },
+        "Clutter": {
+          "support": 124230,
+          "p2_only_correct": 1870,
+          "p0_only_correct": 2203
+        }
+      },
+      "paired_by_location": {
+        "within_4px_of_label_boundary": {
+          "pixels": 1055147,
+          "p2_only_correct": 58684,
+          "p0_only_correct": 50176
+        },
+        "interior": {
+          "pixels": 5663129,
+          "p2_only_correct": 117620,
+          "p0_only_correct": 88634
+        }
+      },
+      "dsm_building_edge": {
+        "building_boundary_pixel_pairs": 45468,
+        "gradient_mean_at_building_boundary": 0.4753809271381452,
+        "gradient_mean_global": 0.09190231835391516,
+        "boundary_enrichment_ratio": 5.172676115823942
+      },
+      "optical_building_edge": {
+        "building_boundary_pixel_pairs": 45468,
+        "gradient_mean_at_building_boundary": 0.05361889254521692,
+        "gradient_mean_global": 0.018066547502881388,
+        "boundary_enrichment_ratio": 2.9678549560542975
+      }
+    },
+    {
+      "tile": 4,
+      "failed_gate": false,
+      "pixels": 4825059,
+      "input_paths": {
+        "top": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area4.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area4.tif",
+        "label": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area4.tif"
+      },
+      "shape": [
+        2557,
+        1887
+      ],
+      "geotiff_spatial_tag_ids": {
+        "top": [],
+        "dsm": [],
+        "label": []
+      },
+      "optical_band_mean": [
+        100.2425665675798,
+        88.22747701116194,
+        80.26833599340443
+      ],
+      "optical_zero_fraction": [
+        6.217540552353868e-07,
+        6.217540552353868e-07,
+        6.217540552353868e-07
+      ],
+      "optical_255_fraction": [
+        0.000244349343707507,
+        6.217540552353868e-07,
+        8.642381367771876e-05
+      ],
+      "dsm_min": 248.70993041992188,
+      "dsm_max": 290.16204833984375,
+      "dsm_p01": 256.4307556152344,
+      "dsm_p50": 269.2895812988281,
+      "dsm_p99": 283.652568359375,
+      "class_paired": {
+        "Impervious": {
+          "support": 1466118,
+          "p2_only_correct": 52243,
+          "p0_only_correct": 25567
+        },
+        "Building": {
+          "support": 2821435,
+          "p2_only_correct": 76345,
+          "p0_only_correct": 57532
+        },
+        "LowVegetation": {
+          "support": 223805,
+          "p2_only_correct": 12291,
+          "p0_only_correct": 8423
+        },
+        "Tree": {
+          "support": 240863,
+          "p2_only_correct": 8451,
+          "p0_only_correct": 2869
+        },
+        "Car": {
+          "support": 72838,
+          "p2_only_correct": 3713,
+          "p0_only_correct": 3762
+        },
+        "Clutter": {
+          "support": 0,
+          "p2_only_correct": 0,
+          "p0_only_correct": 0
+        }
+      },
+      "paired_by_location": {
+        "within_4px_of_label_boundary": {
+          "pixels": 596897,
+          "p2_only_correct": 39411,
+          "p0_only_correct": 34489
+        },
+        "interior": {
+          "pixels": 4228162,
+          "p2_only_correct": 113632,
+          "p0_only_correct": 63664
+        }
+      },
+      "dsm_building_edge": {
+        "building_boundary_pixel_pairs": 67972,
+        "gradient_mean_at_building_boundary": 0.3382083253260534,
+        "gradient_mean_global": 0.1074809240326032,
+        "boundary_enrichment_ratio": 3.1466823380068956
+      },
+      "optical_building_edge": {
+        "building_boundary_pixel_pairs": 67972,
+        "gradient_mean_at_building_boundary": 0.03761089266022617,
+        "gradient_mean_global": 0.018290857819241137,
+        "boundary_enrichment_ratio": 2.056267291119679
+      }
+    },
+    {
+      "tile": 6,
+      "failed_gate": false,
+      "pixels": 4825059,
+      "input_paths": {
+        "top": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area6.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area6.tif",
+        "label": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area6.tif"
+      },
+      "shape": [
+        2557,
+        1887
+      ],
+      "geotiff_spatial_tag_ids": {
+        "top": [],
+        "dsm": [],
+        "label": []
+      },
+      "optical_band_mean": [
+        126.70482143327159,
+        81.57440561866704,
+        81.94948662803915
+      ],
+      "optical_zero_fraction": [
+        1.6580108139610313e-06,
+        1.6580108139610313e-06,
+        1.6580108139610313e-06
+      ],
+      "optical_255_fraction": [
+        0.0015052665677248714,
+        0.00041926948458039583,
+        2.466291085767034e-05
+      ],
+      "dsm_min": 261.3075866699219,
+      "dsm_max": 328.4719543457031,
+      "dsm_p01": 264.5439758300781,
+      "dsm_p50": 280.0412902832031,
+      "dsm_p99": 318.91389221191406,
+      "class_paired": {
+        "Impervious": {
+          "support": 1233825,
+          "p2_only_correct": 42249,
+          "p0_only_correct": 38896
+        },
+        "Building": {
+          "support": 1601632,
+          "p2_only_correct": 37333,
+          "p0_only_correct": 39951
+        },
+        "LowVegetation": {
+          "support": 516263,
+          "p2_only_correct": 39677,
+          "p0_only_correct": 22028
+        },
+        "Tree": {
+          "support": 1394104,
+          "p2_only_correct": 24727,
+          "p0_only_correct": 33701
+        },
+        "Car": {
+          "support": 79235,
+          "p2_only_correct": 4937,
+          "p0_only_correct": 1659
+        },
+        "Clutter": {
+          "support": 0,
+          "p2_only_correct": 0,
+          "p0_only_correct": 0
+        }
+      },
+      "paired_by_location": {
+        "within_4px_of_label_boundary": {
+          "pixels": 699801,
+          "p2_only_correct": 50526,
+          "p0_only_correct": 49408
+        },
+        "interior": {
+          "pixels": 4125258,
+          "p2_only_correct": 98397,
+          "p0_only_correct": 86827
+        }
+      },
+      "dsm_building_edge": {
+        "building_boundary_pixel_pairs": 46123,
+        "gradient_mean_at_building_boundary": 0.32740571862109874,
+        "gradient_mean_global": 0.10322799285378537,
+        "boundary_enrichment_ratio": 3.1716757206046244
+      },
+      "optical_building_edge": {
+        "building_boundary_pixel_pairs": 46123,
+        "gradient_mean_at_building_boundary": 0.04689730623159038,
+        "gradient_mean_global": 0.021922852110482945,
+        "boundary_enrichment_ratio": 2.1391973086004303
+      }
+    },
+    {
+      "tile": 8,
+      "failed_gate": false,
+      "pixels": 4825059,
+      "input_paths": {
+        "top": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area8.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area8.tif",
+        "label": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area8.tif"
+      },
+      "shape": [
+        2557,
+        1887
+      ],
+      "geotiff_spatial_tag_ids": {
+        "top": [],
+        "dsm": [],
+        "label": []
+      },
+      "optical_band_mean": [
+        121.00338690159022,
+        81.00508781343399,
+        81.25375067952537
+      ],
+      "optical_zero_fraction": [
+        2.0725135174512893e-06,
+        2.0725135174512893e-06,
+        2.0725135174512893e-06
+      ],
+      "optical_255_fraction": [
+        0.0014683758271142385,
+        0.0007788505798581944,
+        0.00016186330571294567
+      ],
+      "dsm_min": 268.0486145019531,
+      "dsm_max": 298.731689453125,
+      "dsm_p01": 275.91133361816406,
+      "dsm_p50": 281.8624572753906,
+      "dsm_p99": 293.99455017089844,
+      "class_paired": {
+        "Impervious": {
+          "support": 1517913,
+          "p2_only_correct": 35121,
+          "p0_only_correct": 31646
+        },
+        "Building": {
+          "support": 1116831,
+          "p2_only_correct": 20767,
+          "p0_only_correct": 12091
+        },
+        "LowVegetation": {
+          "support": 951333,
+          "p2_only_correct": 31222,
+          "p0_only_correct": 17032
+        },
+        "Tree": {
+          "support": 1156977,
+          "p2_only_correct": 24514,
+          "p0_only_correct": 25574
+        },
+        "Car": {
+          "support": 82005,
+          "p2_only_correct": 4110,
+          "p0_only_correct": 3280
+        },
+        "Clutter": {
+          "support": 0,
+          "p2_only_correct": 0,
+          "p0_only_correct": 0
+        }
+      },
+      "paired_by_location": {
+        "within_4px_of_label_boundary": {
+          "pixels": 725498,
+          "p2_only_correct": 42691,
+          "p0_only_correct": 36315
+        },
+        "interior": {
+          "pixels": 4099561,
+          "p2_only_correct": 73043,
+          "p0_only_correct": 53308
+        }
+      },
+      "dsm_building_edge": {
+        "building_boundary_pixel_pairs": 31468,
+        "gradient_mean_at_building_boundary": 0.360807877294866,
+        "gradient_mean_global": 0.07815452791903481,
+        "boundary_enrichment_ratio": 4.616595952938896
+      },
+      "optical_building_edge": {
+        "building_boundary_pixel_pairs": 31468,
+        "gradient_mean_at_building_boundary": 0.045839284172226456,
+        "gradient_mean_global": 0.01827277997261706,
+        "boundary_enrichment_ratio": 2.5086103067469527
+      }
+    },
+    {
+      "tile": 10,
+      "failed_gate": false,
+      "pixels": 4825059,
+      "input_paths": {
+        "top": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area10.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area10.tif",
+        "label": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area10.tif"
+      },
+      "shape": [
+        2557,
+        1887
+      ],
+      "geotiff_spatial_tag_ids": {
+        "top": [],
+        "dsm": [],
+        "label": []
+      },
+      "optical_band_mean": [
+        120.72995169592745,
+        84.71826437769984,
+        83.45588478814456
+      ],
+      "optical_zero_fraction": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "optical_255_fraction": [
+        0.0013104502970844503,
+        0.000689732498607789,
+        8.186428393932592e-05
+      ],
+      "dsm_min": 271.3700866699219,
+      "dsm_max": 316.9556579589844,
+      "dsm_p01": 276.271484375,
+      "dsm_p50": 283.8702697753906,
+      "dsm_p99": 298.2789611816406,
+      "class_paired": {
+        "Impervious": {
+          "support": 1809867,
+          "p2_only_correct": 49344,
+          "p0_only_correct": 46171
+        },
+        "Building": {
+          "support": 1139974,
+          "p2_only_correct": 32504,
+          "p0_only_correct": 9876
+        },
+        "LowVegetation": {
+          "support": 848788,
+          "p2_only_correct": 48606,
+          "p0_only_correct": 29768
+        },
+        "Tree": {
+          "support": 992410,
+          "p2_only_correct": 15072,
+          "p0_only_correct": 42391
+        },
+        "Car": {
+          "support": 34020,
+          "p2_only_correct": 1553,
+          "p0_only_correct": 1627
+        },
+        "Clutter": {
+          "support": 0,
+          "p2_only_correct": 0,
+          "p0_only_correct": 0
+        }
+      },
+      "paired_by_location": {
+        "within_4px_of_label_boundary": {
+          "pixels": 803691,
+          "p2_only_correct": 45568,
+          "p0_only_correct": 44233
+        },
+        "interior": {
+          "pixels": 4021368,
+          "p2_only_correct": 101511,
+          "p0_only_correct": 85600
+        }
+      },
+      "dsm_building_edge": {
+        "building_boundary_pixel_pairs": 41890,
+        "gradient_mean_at_building_boundary": 0.21561198212930258,
+        "gradient_mean_global": 0.07564575808709342,
+        "boundary_enrichment_ratio": 2.8502851657730957
+      },
+      "optical_building_edge": {
+        "building_boundary_pixel_pairs": 41890,
+        "gradient_mean_at_building_boundary": 0.06297274077776709,
+        "gradient_mean_global": 0.020728993560008676,
+        "boundary_enrichment_ratio": 3.0379063313163925
+      }
+    },
+    {
+      "tile": 12,
+      "failed_gate": true,
+      "pixels": 4949150,
+      "input_paths": {
+        "top": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area12.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area12.tif",
+        "label": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area12.tif"
+      },
+      "shape": [
+        2575,
+        1922
+      ],
+      "geotiff_spatial_tag_ids": {
+        "top": [],
+        "dsm": [],
+        "label": []
+      },
+      "optical_band_mean": [
+        122.35602254932665,
+        69.52986310780639,
+        69.6573249952012
+      ],
+      "optical_zero_fraction": [
+        1.2325348797268218e-05,
+        1.2325348797268218e-05,
+        1.2325348797268218e-05
+      ],
+      "optical_255_fraction": [
+        0.0001252740369558409,
+        1.6164391865269794e-06,
+        2.020548983158724e-06
+      ],
+      "dsm_min": 274.66571044921875,
+      "dsm_max": 333.68011474609375,
+      "dsm_p01": 277.9852294921875,
+      "dsm_p50": 292.5227966308594,
+      "dsm_p99": 323.95903045654296,
+      "class_paired": {
+        "Impervious": {
+          "support": 704438,
+          "p2_only_correct": 12939,
+          "p0_only_correct": 17688
+        },
+        "Building": {
+          "support": 947146,
+          "p2_only_correct": 10148,
+          "p0_only_correct": 21754
+        },
+        "LowVegetation": {
+          "support": 1437900,
+          "p2_only_correct": 68764,
+          "p0_only_correct": 46844
+        },
+        "Tree": {
+          "support": 1834729,
+          "p2_only_correct": 29836,
+          "p0_only_correct": 67251
+        },
+        "Car": {
+          "support": 24937,
+          "p2_only_correct": 1234,
+          "p0_only_correct": 1474
+        },
+        "Clutter": {
+          "support": 0,
+          "p2_only_correct": 0,
+          "p0_only_correct": 0
+        }
+      },
+      "paired_by_location": {
+        "within_4px_of_label_boundary": {
+          "pixels": 775010,
+          "p2_only_correct": 40269,
+          "p0_only_correct": 41326
+        },
+        "interior": {
+          "pixels": 4174140,
+          "p2_only_correct": 82652,
+          "p0_only_correct": 113685
+        }
+      },
+      "dsm_building_edge": {
+        "building_boundary_pixel_pairs": 32976,
+        "gradient_mean_at_building_boundary": 0.20934051335985832,
+        "gradient_mean_global": 0.08146353013451442,
+        "boundary_enrichment_ratio": 2.5697451732596233
+      },
+      "optical_building_edge": {
+        "building_boundary_pixel_pairs": 32976,
+        "gradient_mean_at_building_boundary": 0.057840877972644464,
+        "gradient_mean_global": 0.022807214232713872,
+        "boundary_enrichment_ratio": 2.536078162920903
+      }
+    },
+    {
+      "tile": 14,
+      "failed_gate": true,
+      "pixels": 4922235,
+      "input_paths": {
+        "top": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area14.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area14.tif",
+        "label": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area14.tif"
+      },
+      "shape": [
+        2565,
+        1919
+      ],
+      "geotiff_spatial_tag_ids": {
+        "top": [],
+        "dsm": [],
+        "label": []
+      },
+      "optical_band_mean": [
+        120.25011402340603,
+        72.50582712934266,
+        74.04380225649527
+      ],
+      "optical_zero_fraction": [
+        6.094792304715236e-07,
+        6.094792304715236e-07,
+        6.094792304715236e-07
+      ],
+      "optical_255_fraction": [
+        0.001415617092641859,
+        0.0006285762463596313,
+        0.0001320538332688301
+      ],
+      "dsm_min": 277.7332763671875,
+      "dsm_max": 323.0915832519531,
+      "dsm_p01": 282.4740295410156,
+      "dsm_p50": 293.227294921875,
+      "dsm_p99": 312.9303283691406,
+      "class_paired": {
+        "Impervious": {
+          "support": 1132698,
+          "p2_only_correct": 25873,
+          "p0_only_correct": 22917
+        },
+        "Building": {
+          "support": 867583,
+          "p2_only_correct": 14764,
+          "p0_only_correct": 9078
+        },
+        "LowVegetation": {
+          "support": 1255273,
+          "p2_only_correct": 46281,
+          "p0_only_correct": 39892
+        },
+        "Tree": {
+          "support": 1653521,
+          "p2_only_correct": 37226,
+          "p0_only_correct": 40229
+        },
+        "Car": {
+          "support": 13160,
+          "p2_only_correct": 501,
+          "p0_only_correct": 441
+        },
+        "Clutter": {
+          "support": 0,
+          "p2_only_correct": 0,
+          "p0_only_correct": 0
+        }
+      },
+      "paired_by_location": {
+        "within_4px_of_label_boundary": {
+          "pixels": 652843,
+          "p2_only_correct": 29078,
+          "p0_only_correct": 27622
+        },
+        "interior": {
+          "pixels": 4269392,
+          "p2_only_correct": 95567,
+          "p0_only_correct": 84935
+        }
+      },
+      "dsm_building_edge": {
+        "building_boundary_pixel_pairs": 37193,
+        "gradient_mean_at_building_boundary": 0.20346861711524178,
+        "gradient_mean_global": 0.07822880570519013,
+        "boundary_enrichment_ratio": 2.6009423930364637
+      },
+      "optical_building_edge": {
+        "building_boundary_pixel_pairs": 37193,
+        "gradient_mean_at_building_boundary": 0.05443666150777257,
+        "gradient_mean_global": 0.020458869649902216,
+        "boundary_enrichment_ratio": 2.6607853923167624
+      }
+    },
+    {
+      "tile": 16,
+      "failed_gate": false,
+      "pixels": 4922235,
+      "input_paths": {
+        "top": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area16.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area16.tif",
+        "label": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area16.tif"
+      },
+      "shape": [
+        2565,
+        1919
+      ],
+      "geotiff_spatial_tag_ids": {
+        "top": [],
+        "dsm": [],
+        "label": []
+      },
+      "optical_band_mean": [
+        127.18968740826068,
+        69.28386048207776,
+        70.44185090715905
+      ],
+      "optical_zero_fraction": [
+        5.688472817734221e-06,
+        5.688472817734221e-06,
+        5.688472817734221e-06
+      ],
+      "optical_255_fraction": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dsm_min": 311.32537841796875,
+      "dsm_max": 359.0404357910156,
+      "dsm_p01": 317.71673583984375,
+      "dsm_p50": 338.21038818359375,
+      "dsm_p99": 352.33424865722657,
+      "class_paired": {
+        "Impervious": {
+          "support": 762536,
+          "p2_only_correct": 14837,
+          "p0_only_correct": 24613
+        },
+        "Building": {
+          "support": 876923,
+          "p2_only_correct": 22899,
+          "p0_only_correct": 10431
+        },
+        "LowVegetation": {
+          "support": 1462710,
+          "p2_only_correct": 43166,
+          "p0_only_correct": 38019
+        },
+        "Tree": {
+          "support": 1809027,
+          "p2_only_correct": 34487,
+          "p0_only_correct": 35653
+        },
+        "Car": {
+          "support": 11039,
+          "p2_only_correct": 295,
+          "p0_only_correct": 614
+        },
+        "Clutter": {
+          "support": 0,
+          "p2_only_correct": 0,
+          "p0_only_correct": 0
+        }
+      },
+      "paired_by_location": {
+        "within_4px_of_label_boundary": {
+          "pixels": 603898,
+          "p2_only_correct": 27963,
+          "p0_only_correct": 28303
+        },
+        "interior": {
+          "pixels": 4318337,
+          "p2_only_correct": 87721,
+          "p0_only_correct": 81027
+        }
+      },
+      "dsm_building_edge": {
+        "building_boundary_pixel_pairs": 27599,
+        "gradient_mean_at_building_boundary": 0.18087874817206354,
+        "gradient_mean_global": 0.07580092553495761,
+        "boundary_enrichment_ratio": 2.3862340320455124
+      },
+      "optical_building_edge": {
+        "building_boundary_pixel_pairs": 27599,
+        "gradient_mean_at_building_boundary": 0.0480059546734778,
+        "gradient_mean_global": 0.024183456898448065,
+        "boundary_enrichment_ratio": 1.9850741304299844
+      }
+    },
+    {
+      "tile": 20,
+      "failed_gate": false,
+      "pixels": 4319790,
+      "input_paths": {
+        "top": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area20.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area20.tif",
+        "label": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area20.tif"
+      },
+      "shape": [
+        2315,
+        1866
+      ],
+      "geotiff_spatial_tag_ids": {
+        "top": [],
+        "dsm": [],
+        "label": []
+      },
+      "optical_band_mean": [
+        136.91074728169656,
+        75.52810344947324,
+        77.47685605087284
+      ],
+      "optical_zero_fraction": [
+        3.935376488208918e-05,
+        3.935376488208918e-05,
+        3.935376488208918e-05
+      ],
+      "optical_255_fraction": [
+        0.00223297891795666,
+        0.0007410082434562791,
+        8.981918102500353e-05
+      ],
+      "dsm_min": 277.71624755859375,
+      "dsm_max": 325.93450927734375,
+      "dsm_p01": 280.758056640625,
+      "dsm_p50": 297.0826416015625,
+      "dsm_p99": 316.9456787109375,
+      "class_paired": {
+        "Impervious": {
+          "support": 869283,
+          "p2_only_correct": 32698,
+          "p0_only_correct": 28490
+        },
+        "Building": {
+          "support": 706010,
+          "p2_only_correct": 13069,
+          "p0_only_correct": 9350
+        },
+        "LowVegetation": {
+          "support": 836022,
+          "p2_only_correct": 48688,
+          "p0_only_correct": 23045
+        },
+        "Tree": {
+          "support": 1773847,
+          "p2_only_correct": 20394,
+          "p0_only_correct": 33633
+        },
+        "Car": {
+          "support": 17858,
+          "p2_only_correct": 903,
+          "p0_only_correct": 722
+        },
+        "Clutter": {
+          "support": 116770,
+          "p2_only_correct": 0,
+          "p0_only_correct": 0
+        }
+      },
+      "paired_by_location": {
+        "within_4px_of_label_boundary": {
+          "pixels": 562452,
+          "p2_only_correct": 31522,
+          "p0_only_correct": 32150
+        },
+        "interior": {
+          "pixels": 3757338,
+          "p2_only_correct": 84230,
+          "p0_only_correct": 63090
+        }
+      },
+      "dsm_building_edge": {
+        "building_boundary_pixel_pairs": 20160,
+        "gradient_mean_at_building_boundary": 0.24679651260375976,
+        "gradient_mean_global": 0.09555530999355526,
+        "boundary_enrichment_ratio": 2.5827608389361614
+      },
+      "optical_building_edge": {
+        "building_boundary_pixel_pairs": 20160,
+        "gradient_mean_at_building_boundary": 0.055383208807232596,
+        "gradient_mean_global": 0.02166275793730956,
+        "boundary_enrichment_ratio": 2.556609318513716
+      }
+    },
+    {
+      "tile": 22,
+      "failed_gate": false,
+      "pixels": 4845038,
+      "input_paths": {
+        "top": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area22.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area22.tif",
+        "label": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area22.tif"
+      },
+      "shape": [
+        2546,
+        1903
+      ],
+      "geotiff_spatial_tag_ids": {
+        "top": [],
+        "dsm": [],
+        "label": []
+      },
+      "optical_band_mean": [
+        123.1759967620481,
+        78.99669682673283,
+        80.30197513414755
+      ],
+      "optical_zero_fraction": [
+        9.907043040735698e-06,
+        9.907043040735698e-06,
+        9.907043040735698e-06
+      ],
+      "optical_255_fraction": [
+        0.001562010452755995,
+        0.0005975185333943718,
+        0.00022744919647689038
+      ],
+      "dsm_min": 268.0295104980469,
+      "dsm_max": 305.2915344238281,
+      "dsm_p01": 277.58613189697263,
+      "dsm_p50": 289.05735778808594,
+      "dsm_p99": 300.802978515625,
+      "class_paired": {
+        "Impervious": {
+          "support": 1548870,
+          "p2_only_correct": 30457,
+          "p0_only_correct": 29440
+        },
+        "Building": {
+          "support": 864570,
+          "p2_only_correct": 21602,
+          "p0_only_correct": 12714
+        },
+        "LowVegetation": {
+          "support": 979331,
+          "p2_only_correct": 39398,
+          "p0_only_correct": 36027
+        },
+        "Tree": {
+          "support": 1399079,
+          "p2_only_correct": 23550,
+          "p0_only_correct": 19125
+        },
+        "Car": {
+          "support": 53188,
+          "p2_only_correct": 2108,
+          "p0_only_correct": 2219
+        },
+        "Clutter": {
+          "support": 0,
+          "p2_only_correct": 0,
+          "p0_only_correct": 0
+        }
+      },
+      "paired_by_location": {
+        "within_4px_of_label_boundary": {
+          "pixels": 833502,
+          "p2_only_correct": 42670,
+          "p0_only_correct": 41274
+        },
+        "interior": {
+          "pixels": 4011536,
+          "p2_only_correct": 74445,
+          "p0_only_correct": 58251
+        }
+      },
+      "dsm_building_edge": {
+        "building_boundary_pixel_pairs": 33924,
+        "gradient_mean_at_building_boundary": 0.2035359078006859,
+        "gradient_mean_global": 0.08118507076676888,
+        "boundary_enrichment_ratio": 2.5070607918223105
+      },
+      "optical_building_edge": {
+        "building_boundary_pixel_pairs": 33924,
+        "gradient_mean_at_building_boundary": 0.05844170727866211,
+        "gradient_mean_global": 0.021586079128293786,
+        "boundary_enrichment_ratio": 2.707379461148185
+      }
+    },
+    {
+      "tile": 24,
+      "failed_gate": false,
+      "pixels": 4845038,
+      "input_paths": {
+        "top": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area24.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area24.tif",
+        "label": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area24.tif"
+      },
+      "shape": [
+        2546,
+        1903
+      ],
+      "geotiff_spatial_tag_ids": {
+        "top": [],
+        "dsm": [],
+        "label": []
+      },
+      "optical_band_mean": [
+        123.6866709817343,
+        74.63154860704911,
+        75.82110852381344
+      ],
+      "optical_zero_fraction": [
+        1.0113439770751024e-05,
+        1.0113439770751024e-05,
+        1.0113439770751024e-05
+      ],
+      "optical_255_fraction": [
+        0.0005168174119583789,
+        8.359067565620745e-05,
+        0.00011599496226861379
+      ],
+      "dsm_min": 312.1376037597656,
+      "dsm_max": 350.6440124511719,
+      "dsm_p01": 316.65513092041016,
+      "dsm_p50": 334.13323974609375,
+      "dsm_p99": 344.5606622314453,
+      "class_paired": {
+        "Impervious": {
+          "support": 703600,
+          "p2_only_correct": 17770,
+          "p0_only_correct": 18511
+        },
+        "Building": {
+          "support": 909445,
+          "p2_only_correct": 39240,
+          "p0_only_correct": 11281
+        },
+        "LowVegetation": {
+          "support": 1986889,
+          "p2_only_correct": 36350,
+          "p0_only_correct": 54056
+        },
+        "Tree": {
+          "support": 1226795,
+          "p2_only_correct": 31444,
+          "p0_only_correct": 25780
+        },
+        "Car": {
+          "support": 18309,
+          "p2_only_correct": 1120,
+          "p0_only_correct": 307
+        },
+        "Clutter": {
+          "support": 0,
+          "p2_only_correct": 0,
+          "p0_only_correct": 0
+        }
+      },
+      "paired_by_location": {
+        "within_4px_of_label_boundary": {
+          "pixels": 589491,
+          "p2_only_correct": 31899,
+          "p0_only_correct": 29262
+        },
+        "interior": {
+          "pixels": 4255547,
+          "p2_only_correct": 94025,
+          "p0_only_correct": 80673
+        }
+      },
+      "dsm_building_edge": {
+        "building_boundary_pixel_pairs": 24180,
+        "gradient_mean_at_building_boundary": 0.1771460470825902,
+        "gradient_mean_global": 0.06481459637447032,
+        "boundary_enrichment_ratio": 2.7331196519240515
+      },
+      "optical_building_edge": {
+        "building_boundary_pixel_pairs": 24180,
+        "gradient_mean_at_building_boundary": 0.056105624210178805,
+        "gradient_mean_global": 0.022342532902797925,
+        "boundary_enrichment_ratio": 2.511157730158373
+      }
+    },
+    {
+      "tile": 27,
+      "failed_gate": false,
+      "pixels": 6351021,
+      "input_paths": {
+        "top": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area27.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area27.tif",
+        "label": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area27.tif"
+      },
+      "shape": [
+        3313,
+        1917
+      ],
+      "geotiff_spatial_tag_ids": {
+        "top": [],
+        "dsm": [],
+        "label": []
+      },
+      "optical_band_mean": [
+        108.4009171123824,
+        84.49859605250872,
+        82.91638320830619
+      ],
+      "optical_zero_fraction": [
+        4.723649945418225e-07,
+        4.723649945418225e-07,
+        4.723649945418225e-07
+      ],
+      "optical_255_fraction": [
+        0.002565414285356638,
+        0.0006381651076260022,
+        0.00031002889141761616
+      ],
+      "dsm_min": 253.29832458496094,
+      "dsm_max": 289.35955810546875,
+      "dsm_p01": 257.38787841796875,
+      "dsm_p50": 269.73065185546875,
+      "dsm_p99": 284.31427001953125,
+      "class_paired": {
+        "Impervious": {
+          "support": 2029522,
+          "p2_only_correct": 61926,
+          "p0_only_correct": 27837
+        },
+        "Building": {
+          "support": 2219920,
+          "p2_only_correct": 62034,
+          "p0_only_correct": 31476
+        },
+        "LowVegetation": {
+          "support": 1242503,
+          "p2_only_correct": 76629,
+          "p0_only_correct": 36943
+        },
+        "Tree": {
+          "support": 636396,
+          "p2_only_correct": 9585,
+          "p0_only_correct": 15341
+        },
+        "Car": {
+          "support": 206789,
+          "p2_only_correct": 9674,
+          "p0_only_correct": 10038
+        },
+        "Clutter": {
+          "support": 15891,
+          "p2_only_correct": 0,
+          "p0_only_correct": 0
+        }
+      },
+      "paired_by_location": {
+        "within_4px_of_label_boundary": {
+          "pixels": 1082563,
+          "p2_only_correct": 67481,
+          "p0_only_correct": 57756
+        },
+        "interior": {
+          "pixels": 5268458,
+          "p2_only_correct": 152367,
+          "p0_only_correct": 63879
+        }
+      },
+      "dsm_building_edge": {
+        "building_boundary_pixel_pairs": 59555,
+        "gradient_mean_at_building_boundary": 0.3109522999108623,
+        "gradient_mean_global": 0.0771269368616517,
+        "boundary_enrichment_ratio": 4.031695184117586
+      },
+      "optical_building_edge": {
+        "building_boundary_pixel_pairs": 59555,
+        "gradient_mean_at_building_boundary": 0.04340472903605243,
+        "gradient_mean_global": 0.018866934901939553,
+        "boundary_enrichment_ratio": 2.300571304329372
+      }
+    },
+    {
+      "tile": 29,
+      "failed_gate": false,
+      "pixels": 4913271,
+      "input_paths": {
+        "top": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area29.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area29.tif",
+        "label": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area29.tif"
+      },
+      "shape": [
+        2563,
+        1917
+      ],
+      "geotiff_spatial_tag_ids": {
+        "top": [],
+        "dsm": [],
+        "label": []
+      },
+      "optical_band_mean": [
+        112.4395230794312,
+        89.80208439550759,
+        87.69455460527213
+      ],
+      "optical_zero_fraction": [
+        1.0176519878508635e-06,
+        1.0176519878508635e-06,
+        1.0176519878508635e-06
+      ],
+      "optical_255_fraction": [
+        0.0018380830204562297,
+        0.00022205166374905842,
+        3.5007228382069704e-05
+      ],
+      "dsm_min": 256.4315185546875,
+      "dsm_max": 291.7833557128906,
+      "dsm_p01": 262.57177734375,
+      "dsm_p50": 270.18853759765625,
+      "dsm_p99": 282.43430480957034,
+      "class_paired": {
+        "Impervious": {
+          "support": 2090518,
+          "p2_only_correct": 29164,
+          "p0_only_correct": 23813
+        },
+        "Building": {
+          "support": 1339557,
+          "p2_only_correct": 40881,
+          "p0_only_correct": 11663
+        },
+        "LowVegetation": {
+          "support": 730577,
+          "p2_only_correct": 46328,
+          "p0_only_correct": 30520
+        },
+        "Tree": {
+          "support": 540415,
+          "p2_only_correct": 9863,
+          "p0_only_correct": 5051
+        },
+        "Car": {
+          "support": 66069,
+          "p2_only_correct": 1915,
+          "p0_only_correct": 2607
+        },
+        "Clutter": {
+          "support": 146135,
+          "p2_only_correct": 6669,
+          "p0_only_correct": 3190
+        }
+      },
+      "paired_by_location": {
+        "within_4px_of_label_boundary": {
+          "pixels": 691471,
+          "p2_only_correct": 40265,
+          "p0_only_correct": 32357
+        },
+        "interior": {
+          "pixels": 4221800,
+          "p2_only_correct": 94555,
+          "p0_only_correct": 44487
+        }
+      },
+      "dsm_building_edge": {
+        "building_boundary_pixel_pairs": 30293,
+        "gradient_mean_at_building_boundary": 0.30441709005973944,
+        "gradient_mean_global": 0.060979337559518114,
+        "boundary_enrichment_ratio": 4.992135077928929
+      },
+      "optical_building_edge": {
+        "building_boundary_pixel_pairs": 30293,
+        "gradient_mean_at_building_boundary": 0.061261073699802014,
+        "gradient_mean_global": 0.018819302664112882,
+        "boundary_enrichment_ratio": 3.2552254880635227
+      }
+    },
+    {
+      "tile": 31,
+      "failed_gate": false,
+      "pixels": 5058900,
+      "input_paths": {
+        "top": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area31.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area31.tif",
+        "label": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area31.tif"
+      },
+      "shape": [
+        2555,
+        1980
+      ],
+      "geotiff_spatial_tag_ids": {
+        "top": [],
+        "dsm": [],
+        "label": []
+      },
+      "optical_band_mean": [
+        126.13092371859496,
+        103.51056711933424,
+        102.49797426317974
+      ],
+      "optical_zero_fraction": [
+        2.5894957401806715e-05,
+        2.5894957401806715e-05,
+        2.5894957401806715e-05
+      ],
+      "optical_255_fraction": [
+        0.0,
+        0.0,
+        0.0006625946351973749
+      ],
+      "dsm_min": 242.54383850097656,
+      "dsm_max": 289.8768310546875,
+      "dsm_p01": 263.3713073730469,
+      "dsm_p50": 267.46632385253906,
+      "dsm_p99": 276.5301208496094,
+      "class_paired": {
+        "Impervious": {
+          "support": 1970871,
+          "p2_only_correct": 27364,
+          "p0_only_correct": 30113
+        },
+        "Building": {
+          "support": 1402606,
+          "p2_only_correct": 32937,
+          "p0_only_correct": 10798
+        },
+        "LowVegetation": {
+          "support": 756008,
+          "p2_only_correct": 17950,
+          "p0_only_correct": 24106
+        },
+        "Tree": {
+          "support": 576482,
+          "p2_only_correct": 17026,
+          "p0_only_correct": 7154
+        },
+        "Car": {
+          "support": 182493,
+          "p2_only_correct": 9916,
+          "p0_only_correct": 7866
+        },
+        "Clutter": {
+          "support": 170440,
+          "p2_only_correct": 8660,
+          "p0_only_correct": 18072
+        }
+      },
+      "paired_by_location": {
+        "within_4px_of_label_boundary": {
+          "pixels": 644130,
+          "p2_only_correct": 39308,
+          "p0_only_correct": 35957
+        },
+        "interior": {
+          "pixels": 4414770,
+          "p2_only_correct": 74545,
+          "p0_only_correct": 62152
+        }
+      },
+      "dsm_building_edge": {
+        "building_boundary_pixel_pairs": 26726,
+        "gradient_mean_at_building_boundary": 0.2241835722280621,
+        "gradient_mean_global": 0.04533143253633521,
+        "boundary_enrichment_ratio": 4.945433216750182
+      },
+      "optical_building_edge": {
+        "building_boundary_pixel_pairs": 26726,
+        "gradient_mean_at_building_boundary": 0.03286564864693828,
+        "gradient_mean_global": 0.017546360409524252,
+        "boundary_enrichment_ratio": 1.8730749785065763
+      }
+    },
+    {
+      "tile": 33,
+      "failed_gate": false,
+      "pixels": 4039455,
+      "input_paths": {
+        "top": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area33.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area33.tif",
+        "label": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area33.tif"
+      },
+      "shape": [
+        2555,
+        1581
+      ],
+      "geotiff_spatial_tag_ids": {
+        "top": [],
+        "dsm": [],
+        "label": []
+      },
+      "optical_band_mean": [
+        130.3465066450796,
+        103.3378985531464,
+        103.86207669103877
+      ],
+      "optical_zero_fraction": [
+        2.970697779774747e-06,
+        2.970697779774747e-06,
+        2.970697779774747e-06
+      ],
+      "optical_255_fraction": [
+        0.004578587953077829,
+        0.00023419000830557588,
+        0.0004032722236044219
+      ],
+      "dsm_min": 252.8351593017578,
+      "dsm_max": 279.02667236328125,
+      "dsm_p01": 261.0948486328125,
+      "dsm_p50": 263.0777282714844,
+      "dsm_p99": 274.788818359375,
+      "class_paired": {
+        "Impervious": {
+          "support": 1554472,
+          "p2_only_correct": 42233,
+          "p0_only_correct": 18313
+        },
+        "Building": {
+          "support": 1170059,
+          "p2_only_correct": 61508,
+          "p0_only_correct": 20454
+        },
+        "LowVegetation": {
+          "support": 621791,
+          "p2_only_correct": 16911,
+          "p0_only_correct": 15859
+        },
+        "Tree": {
+          "support": 423228,
+          "p2_only_correct": 8759,
+          "p0_only_correct": 7996
+        },
+        "Car": {
+          "support": 51784,
+          "p2_only_correct": 3876,
+          "p0_only_correct": 2039
+        },
+        "Clutter": {
+          "support": 218121,
+          "p2_only_correct": 14558,
+          "p0_only_correct": 6046
+        }
+      },
+      "paired_by_location": {
+        "within_4px_of_label_boundary": {
+          "pixels": 491688,
+          "p2_only_correct": 34264,
+          "p0_only_correct": 28322
+        },
+        "interior": {
+          "pixels": 3547767,
+          "p2_only_correct": 113581,
+          "p0_only_correct": 42385
+        }
+      },
+      "dsm_building_edge": {
+        "building_boundary_pixel_pairs": 22183,
+        "gradient_mean_at_building_boundary": 0.2770576416863068,
+        "gradient_mean_global": 0.05029273805899739,
+        "boundary_enrichment_ratio": 5.50889954254024
+      },
+      "optical_building_edge": {
+        "building_boundary_pixel_pairs": 22183,
+        "gradient_mean_at_building_boundary": 0.05070573145581857,
+        "gradient_mean_global": 0.021963129820077074,
+        "boundary_enrichment_ratio": 2.30867512377344
+      }
+    },
+    {
+      "tile": 35,
+      "failed_gate": false,
+      "pixels": 5284620,
+      "input_paths": {
+        "top": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area35.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area35.tif",
+        "label": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area35.tif"
+      },
+      "shape": [
+        1884,
+        2805
+      ],
+      "geotiff_spatial_tag_ids": {
+        "top": [],
+        "dsm": [],
+        "label": []
+      },
+      "optical_band_mean": [
+        119.91778197864747,
+        77.11431058429935,
+        80.2668748178677
+      ],
+      "optical_zero_fraction": [
+        4.730709114373408e-05,
+        4.730709114373408e-05,
+        4.730709114373408e-05
+      ],
+      "optical_255_fraction": [
+        0.001902312749071835,
+        0.000514133466550102,
+        0.00027721955410228173
+      ],
+      "dsm_min": 262.3869934082031,
+      "dsm_max": 289.4912109375,
+      "dsm_p01": 267.61798095703125,
+      "dsm_p50": 273.42230224609375,
+      "dsm_p99": 283.06902496337887,
+      "class_paired": {
+        "Impervious": {
+          "support": 1316392,
+          "p2_only_correct": 55102,
+          "p0_only_correct": 23652
+        },
+        "Building": {
+          "support": 1397267,
+          "p2_only_correct": 26980,
+          "p0_only_correct": 19602
+        },
+        "LowVegetation": {
+          "support": 1302150,
+          "p2_only_correct": 53185,
+          "p0_only_correct": 57299
+        },
+        "Tree": {
+          "support": 1229296,
+          "p2_only_correct": 34255,
+          "p0_only_correct": 25259
+        },
+        "Car": {
+          "support": 39515,
+          "p2_only_correct": 1124,
+          "p0_only_correct": 2011
+        },
+        "Clutter": {
+          "support": 0,
+          "p2_only_correct": 0,
+          "p0_only_correct": 0
+        }
+      },
+      "paired_by_location": {
+        "within_4px_of_label_boundary": {
+          "pixels": 1141070,
+          "p2_only_correct": 69507,
+          "p0_only_correct": 59946
+        },
+        "interior": {
+          "pixels": 4143550,
+          "p2_only_correct": 101139,
+          "p0_only_correct": 67877
+        }
+      },
+      "dsm_building_edge": {
+        "building_boundary_pixel_pairs": 43901,
+        "gradient_mean_at_building_boundary": 0.24708827714252488,
+        "gradient_mean_global": 0.06828311469766708,
+        "boundary_enrichment_ratio": 3.6185853301587416
+      },
+      "optical_building_edge": {
+        "building_boundary_pixel_pairs": 43901,
+        "gradient_mean_at_building_boundary": 0.0567515177202033,
+        "gradient_mean_global": 0.018802929312927263,
+        "boundary_enrichment_ratio": 3.0182274674183813
+      }
+    },
+    {
+      "tile": 38,
+      "failed_gate": false,
+      "pixels": 9730800,
+      "input_paths": {
+        "top": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area38.tif",
+        "dsm": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area38.tif",
+        "label": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area38.tif"
+      },
+      "shape": [
+        2550,
+        3816
+      ],
+      "geotiff_spatial_tag_ids": {
+        "top": [],
+        "dsm": [],
+        "label": []
+      },
+      "optical_band_mean": [
+        129.57592736465656,
+        87.57613998849016,
+        86.0225821104123
+      ],
+      "optical_zero_fraction": [
+        6.988120195667365e-06,
+        6.988120195667365e-06,
+        6.988120195667365e-06
+      ],
+      "optical_255_fraction": [
+        0.0006442430221564517,
+        6.977843548320796e-05,
+        5.035557199819131e-05
+      ],
+      "dsm_min": 250.88059997558594,
+      "dsm_max": 287.3577575683594,
+      "dsm_p01": 262.70147705078125,
+      "dsm_p50": 268.5769348144531,
+      "dsm_p99": 280.2310794067383,
+      "class_paired": {
+        "Impervious": {
+          "support": 2593516,
+          "p2_only_correct": 50232,
+          "p0_only_correct": 73036
+        },
+        "Building": {
+          "support": 2448506,
+          "p2_only_correct": 98737,
+          "p0_only_correct": 21858
+        },
+        "LowVegetation": {
+          "support": 2708217,
+          "p2_only_correct": 86378,
+          "p0_only_correct": 105374
+        },
+        "Tree": {
+          "support": 1887453,
+          "p2_only_correct": 84384,
+          "p0_only_correct": 21906
+        },
+        "Car": {
+          "support": 93108,
+          "p2_only_correct": 4170,
+          "p0_only_correct": 3891
+        },
+        "Clutter": {
+          "support": 0,
+          "p2_only_correct": 0,
+          "p0_only_correct": 0
+        }
+      },
+      "paired_by_location": {
+        "within_4px_of_label_boundary": {
+          "pixels": 1665328,
+          "p2_only_correct": 103769,
+          "p0_only_correct": 95077
+        },
+        "interior": {
+          "pixels": 8065472,
+          "p2_only_correct": 220132,
+          "p0_only_correct": 130988
+        }
+      },
+      "dsm_building_edge": {
+        "building_boundary_pixel_pairs": 70274,
+        "gradient_mean_at_building_boundary": 0.2803338429711847,
+        "gradient_mean_global": 0.06139764255679077,
+        "boundary_enrichment_ratio": 4.5658730742289535
+      },
+      "optical_building_edge": {
+        "building_boundary_pixel_pairs": 70274,
+        "gradient_mean_at_building_boundary": 0.058248264969687005,
+        "gradient_mean_global": 0.01959171469356971,
+        "boundary_enrichment_ratio": 2.973107044520455
+      }
+    }
+  ]
+}

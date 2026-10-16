@@ -1,0 +1,70 @@
+{
+  "evidence_kind": "user_pasted_read_only_status_and_controller_log",
+  "query_observed": "2026-10-11T18:35:43.956508+08:00",
+  "queue_last_observed": "2026-10-11T18:35:35.350928+08:00",
+  "queue": "RUNNING",
+  "controller_live": true,
+  "controller_pid_from_registration": 3881013,
+  "execution_commit": "44e4df5afbaeb603e6441e7ef14ff09f228bc027",
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_t_paired_v2_20261011T182543_3880702",
+  "jobs": {
+    "CONTENT_PRE": {
+      "status": "RUNNING",
+      "physical_gpu": 0,
+      "live": true,
+      "optimizer_updates": 0,
+      "elapsed_seconds": 566.0334413349628,
+      "progress_observed": "2026-10-11T18:35:21.772826+08:00",
+      "phase": "M000_context/S",
+      "tile": "5_10",
+      "condition": "rgb_lines64w8__clean",
+      "windows_done": 529,
+      "windows_total": 529
+    },
+    "H8": {
+      "status": "PENDING",
+      "gpu": null,
+      "live": false
+    },
+    "F8": {
+      "status": "PENDING",
+      "gpu": null,
+      "live": false
+    },
+    "R8": {
+      "status": "PENDING",
+      "gpu": null,
+      "live": false
+    },
+    "R16": {
+      "status": "PENDING",
+      "gpu": null,
+      "live": false
+    },
+    "H16": {
+      "status": "PENDING",
+      "gpu": null,
+      "live": false
+    },
+    "F16": {
+      "status": "PENDING",
+      "gpu": null,
+      "live": false
+    },
+    "CONTENT_POST": {
+      "status": "PENDING",
+      "gpu": null,
+      "live": false
+    }
+  },
+  "controller_log": [
+    "PAIRED_START CONTENT_PRE GPU 0 RESUME False"
+  ],
+  "interpretation": "single-card CONTENT_PRE is the planned stage barrier; no training worker dispatched yet; window completion is not whole-case or whole-job completion",
+  "gpu1_health_verified": false,
+  "release_or_rejoin_requested": false,
+  "completed_queue_jobs": 0,
+  "new_training_updates_at_observation": 0,
+  "last_observation_not_real_time": true,
+  "next_action": "continue existing queue; query later to verify CONTENT_PRE complete and training on both available GPUs"
+}

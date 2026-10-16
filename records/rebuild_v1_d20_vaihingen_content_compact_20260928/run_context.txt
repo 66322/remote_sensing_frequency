@@ -1,0 +1,5 @@
+2026-09-28T15:58:37+08:00
+HEAD=5c6283bf003c41a878004273587fffd55ec7e4c7
+BRANCH=rebuild-v1-protocol-20260915
+PYTHON=/home/jovyan/miniconda3/envs/remote_sensing/bin/python
+CUDA_VISIBLE_DEVICES=UNSET

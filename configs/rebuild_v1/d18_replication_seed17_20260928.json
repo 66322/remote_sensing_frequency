@@ -1,0 +1,12 @@
+{
+  "experiment": "D18_MATCHED_SEED17_REPLICATION_20260928",
+  "original_config": "configs/rebuild_v1/d18_d19_night_20260927.json",
+  "arms": ["P0", "P1", "P2"],
+  "training_seed": 17,
+  "evaluation_corruption_seed": 42,
+  "historical_r01_reference_seed": 42,
+  "steps": 8000,
+  "test6_loaded": false,
+  "selection": "fixed_final_checkpoint; exploratory_Val2_only",
+  "paired_reference": "same-training-seed P0; historical R01 reported separately"
+}

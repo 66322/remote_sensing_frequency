@@ -1,0 +1,676 @@
+{
+  "jobs": {
+    "A0": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/jobs/A0",
+      "pid": 1003559,
+      "started_at": "2026-10-02T00:08:43.785784+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/logs/A0_20261002T000843784744.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/code/scripts/run_rebuild_v1_d24.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
+        "--job",
+        "A0"
+      ],
+      "elapsed_seconds": 1731.550120100379,
+      "progress": {
+        "job": "A0",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T00:37:32.286066+08:00",
+        "session_elapsed_seconds": 1721.3729678466916,
+        "loss": 0.2602699398994446,
+        "objective_counts": {
+          "Pair:penalty_sum": 0.0030772965401411057,
+          "Pair:steps": 1
+        },
+        "seconds_per_train_step": 0.2059785058852285,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 3752794112
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T00:37:35.336388+08:00",
+      "selected": {
+        "step": 4000,
+        "metric": 0.8398130710046032,
+        "checkpoint_sha256": "51df97faffd5e73b3e2d31055066e268f03df2a5b1d8725793a82fe724af9376"
+      }
+    },
+    "A2": {
+      "status": "COMPLETE",
+      "gpu": 1,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/jobs/A2",
+      "pid": 1003563,
+      "started_at": "2026-10-02T00:08:43.989251+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/logs/A2_20261002T000843988183.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/code/scripts/run_rebuild_v1_d24.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
+        "--job",
+        "A2"
+      ],
+      "elapsed_seconds": 1801.7341231256723,
+      "progress": {
+        "job": "A2",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T00:38:41.349130+08:00",
+        "session_elapsed_seconds": 1790.4384502545,
+        "loss": 0.18190932273864746,
+        "objective_counts": {
+          "Pair:penalty_sum": 0.0,
+          "Pair:steps": 1
+        },
+        "seconds_per_train_step": 0.22518391365744173,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 6630669312
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T00:38:45.723604+08:00",
+      "selected": {
+        "step": 2000,
+        "metric": 0.8690346593233903,
+        "checkpoint_sha256": "60889ee1ae7c521b8e2b90f317a449cb58ca4d73dbd2b8bb3b41e2b0d74e26cf"
+      }
+    },
+    "A3": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/jobs/A3",
+      "pid": 1020985,
+      "started_at": "2026-10-02T00:37:40.620548+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/logs/A3_20261002T003740619286.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/code/scripts/run_rebuild_v1_d24.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
+        "--job",
+        "A3"
+      ],
+      "elapsed_seconds": 1807.0830530375242,
+      "progress": {
+        "job": "A3",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T01:07:45.862010+08:00",
+        "session_elapsed_seconds": 1801.5971888005733,
+        "loss": 0.18207518756389618,
+        "objective_counts": {
+          "Pair:penalty_sum": 0.0,
+          "Pair:steps": 1
+        },
+        "seconds_per_train_step": 0.2291712808255106,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 6630669312
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T01:07:47.704052+08:00",
+      "selected": {
+        "step": 2000,
+        "metric": 0.869022064517857,
+        "checkpoint_sha256": "f1459c136e88464e80b8448e2d53641ecd7ced92460ead04febf2b74f7ce031b"
+      }
+    },
+    "A1": {
+      "status": "COMPLETE",
+      "gpu": 1,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/jobs/A1",
+      "pid": 1021771,
+      "started_at": "2026-10-02T00:38:50.960827+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/logs/A1_20261002T003850959738.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/code/scripts/run_rebuild_v1_d24.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
+        "--job",
+        "A1"
+      ],
+      "elapsed_seconds": 1721.52684404701,
+      "progress": {
+        "job": "A1",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T01:07:28.841977+08:00",
+        "session_elapsed_seconds": 1714.2663133069873,
+        "loss": 0.2602699398994446,
+        "objective_counts": {
+          "Pair:penalty_sum": 0.0030772965401411057,
+          "Pair:steps": 1
+        },
+        "seconds_per_train_step": 0.20714445799589157,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 3752794112
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T01:07:32.487878+08:00",
+      "selected": {
+        "step": 4000,
+        "metric": 0.8398130710046032,
+        "checkpoint_sha256": "b048c80beac3e205e434e9c0a50c46e96c664ac0ef6130717f57370387569c92"
+      }
+    },
+    "C0": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/jobs/C0",
+      "pid": 1037766,
+      "started_at": "2026-10-02T01:07:52.933839+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/logs/C0_20261002T010752932740.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/code/scripts/run_rebuild_v1_d24.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
+        "--job",
+        "C0"
+      ],
+      "elapsed_seconds": 1932.388299331069,
+      "progress": {
+        "job": "C0",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T01:40:03.873086+08:00",
+        "session_elapsed_seconds": 1927.1502245813608,
+        "loss": 0.1897801160812378,
+        "objective_counts": {
+          "KD:clean:selected_pixels": 86383,
+          "KD:clean:valid_pixels": 4194304,
+          "KD:clean:empty_views": 0,
+          "KD:clean:loss_sum": 0.8995258212089539,
+          "KD:aug:selected_pixels": 97026,
+          "KD:aug:valid_pixels": 4194304,
+          "KD:aug:empty_views": 0,
+          "KD:aug:loss_sum": 1.036717414855957
+        },
+        "seconds_per_train_step": 0.29684893471747636,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 5985647616
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T01:40:05.322699+08:00",
+      "selected": {
+        "step": 4000,
+        "metric": 0.8602172523443945,
+        "checkpoint_sha256": "c43e55efac6b26c07d22f2092c03755032323f32e2953bb54c8be6b416d73277"
+      }
+    },
+    "C2": {
+      "status": "COMPLETE",
+      "gpu": 1,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/jobs/C2",
+      "pid": 1037576,
+      "started_at": "2026-10-02T01:07:37.689862+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/logs/C2_20261002T010737688821.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/code/scripts/run_rebuild_v1_d24.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
+        "--job",
+        "C2"
+      ],
+      "elapsed_seconds": 1947.63312343508,
+      "progress": {
+        "job": "C2",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T01:40:00.318731+08:00",
+        "session_elapsed_seconds": 1938.8810863420367,
+        "loss": 0.23312698304653168,
+        "objective_counts": {
+          "KD:clean:selected_pixels": 86383,
+          "KD:clean:valid_pixels": 4194304,
+          "KD:clean:empty_views": 0,
+          "KD:clean:loss_sum": 0.3299713134765625,
+          "KD:aug:selected_pixels": 97026,
+          "KD:aug:valid_pixels": 4194304,
+          "KD:aug:empty_views": 0,
+          "KD:aug:loss_sum": 0.37075018882751465
+        },
+        "seconds_per_train_step": 0.301405461570248,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 6186974208
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T01:40:05.323250+08:00",
+      "selected": {
+        "step": 4000,
+        "metric": 0.8579290250295031,
+        "checkpoint_sha256": "3338ec8924430015b2f7d45848905f3a9f5844008b680b597d59862023034948"
+      }
+    },
+    "D2": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/jobs/D2",
+      "pid": 1054196,
+      "started_at": "2026-10-02T01:40:10.569246+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/logs/D2_20261002T014010567790.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/code/scripts/run_rebuild_v1_d24.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
+        "--job",
+        "D2"
+      ],
+      "elapsed_seconds": 1670.5904358178377,
+      "progress": {
+        "job": "D2",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T02:07:56.538063+08:00",
+        "session_elapsed_seconds": 1662.1317537873983,
+        "loss": 0.17285020649433136,
+        "objective_counts": {},
+        "seconds_per_train_step": 0.19440439599007367,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 6052923904
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T02:08:01.160085+08:00",
+      "selected": {
+        "step": 2000,
+        "metric": 0.8691343314712368,
+        "checkpoint_sha256": "9632f28f9848c8494a8e77c650ae85ddec7679e1e39fe2e9fa99d5ac17485df0"
+      }
+    },
+    "D0": {
+      "status": "COMPLETE",
+      "gpu": 1,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/jobs/D0",
+      "pid": 1054202,
+      "started_at": "2026-10-02T01:40:10.758543+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/logs/D0_20261002T014010757230.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/code/scripts/run_rebuild_v1_d24.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
+        "--job",
+        "D0"
+      ],
+      "elapsed_seconds": 1680.6178000494838,
+      "progress": {
+        "job": "D0",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T02:08:07.884216+08:00",
+        "session_elapsed_seconds": 1673.3068890795112,
+        "loss": 0.17220674455165863,
+        "objective_counts": {},
+        "seconds_per_train_step": 0.19638246993906797,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 6052923904
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T02:08:11.376573+08:00",
+      "selected": {
+        "step": 2000,
+        "metric": 0.8683456666337965,
+        "checkpoint_sha256": "2200fc1ed75e6583d02adf28dc44dc373b255febd7f915b2d3b2ca6b86863543"
+      }
+    },
+    "C3": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/jobs/C3",
+      "pid": 1068287,
+      "started_at": "2026-10-02T02:08:06.369671+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/logs/C3_20261002T020806368520.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/code/scripts/run_rebuild_v1_d24.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
+        "--job",
+        "C3"
+      ],
+      "elapsed_seconds": 1947.9831025227904,
+      "progress": {
+        "job": "C3",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T02:40:31.444158+08:00",
+        "session_elapsed_seconds": 1941.2394949942827,
+        "loss": 0.2143924981355667,
+        "objective_counts": {
+          "KD:clean:selected_pixels": 86383,
+          "KD:clean:valid_pixels": 4194304,
+          "KD:clean:empty_views": 0,
+          "KD:clean:loss_sum": 0.18133318424224854,
+          "KD:aug:selected_pixels": 97026,
+          "KD:aug:valid_pixels": 4194304,
+          "KD:aug:empty_views": 0,
+          "KD:aug:loss_sum": 0.2553568482398987
+        },
+        "seconds_per_train_step": 0.30430257109738884,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 6186974208
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T02:40:34.353186+08:00",
+      "selected": {
+        "step": 4000,
+        "metric": 0.8585544014390513,
+        "checkpoint_sha256": "9c3d9fdea7fa23d8d00b8e71e3c1904bf990f75e067388bad2d59ba583ef678e"
+      }
+    },
+    "C1": {
+      "status": "COMPLETE",
+      "gpu": 1,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/jobs/C1",
+      "pid": 1068438,
+      "started_at": "2026-10-02T02:08:16.556561+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/logs/C1_20261002T020816555433.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/code/scripts/run_rebuild_v1_d24.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
+        "--job",
+        "C1"
+      ],
+      "elapsed_seconds": 1953.055500805378,
+      "progress": {
+        "job": "C1",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T02:40:48.607204+08:00",
+        "session_elapsed_seconds": 1948.1284289881587,
+        "loss": 0.21137532591819763,
+        "objective_counts": {
+          "KD:clean:selected_pixels": 4194304,
+          "KD:clean:valid_pixels": 4194304,
+          "KD:clean:empty_views": 0,
+          "KD:clean:loss_sum": 0.18937689065933228,
+          "KD:aug:selected_pixels": 4194304,
+          "KD:aug:valid_pixels": 4194304,
+          "KD:aug:empty_views": 0,
+          "KD:aug:loss_sum": 0.2136302888393402
+        },
+        "seconds_per_train_step": 0.30419757421314714,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 6182779904
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T02:40:49.612294+08:00",
+      "selected": {
+        "step": 4000,
+        "metric": 0.8591988097953172,
+        "checkpoint_sha256": "2741009450e7022edc724a1e9a331e12039eec3bc6dc7d7c71e05ea0ea727f4b"
+      }
+    },
+    "D1": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/jobs/D1",
+      "pid": 1084932,
+      "started_at": "2026-10-02T02:40:39.598753+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/logs/D1_20261002T024039597706.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/code/scripts/run_rebuild_v1_d24.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
+        "--job",
+        "D1"
+      ],
+      "elapsed_seconds": 1667.463883139193,
+      "progress": {
+        "job": "D1",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T03:08:23.033985+08:00",
+        "session_elapsed_seconds": 1660.306637056172,
+        "loss": 0.1794019490480423,
+        "objective_counts": {},
+        "seconds_per_train_step": 0.1943156357742846,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 6052923904
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T03:08:27.063035+08:00",
+      "selected": {
+        "step": 2000,
+        "metric": 0.8707067017399497,
+        "checkpoint_sha256": "c04e3b4491558047f3b791a6c4077a5a36689d0385e126547c8fa8b32c54f013"
+      }
+    },
+    "B0": {
+      "status": "COMPLETE",
+      "gpu": 1,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/jobs/B0",
+      "pid": 1085124,
+      "started_at": "2026-10-02T02:40:54.772229+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/logs/B0_20261002T024054771223.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/code/scripts/run_rebuild_v1_d24.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
+        "--job",
+        "B0"
+      ],
+      "elapsed_seconds": 1727.5941547080874,
+      "progress": {
+        "job": "B0",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T03:09:39.152509+08:00",
+        "session_elapsed_seconds": 1721.1196386888623,
+        "loss": 0.18187493085861206,
+        "objective_counts": {},
+        "seconds_per_train_step": 0.20744469378888608,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 6509809152
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T03:09:42.366611+08:00",
+      "selected": {
+        "step": 2000,
+        "metric": 0.8685349956177438,
+        "checkpoint_sha256": "2b24f5ac81054fdfb3fd3168005cd4147670f18a33b66c167215662c0352adde"
+      }
+    },
+    "B1": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/jobs/B1",
+      "pid": 1099020,
+      "started_at": "2026-10-02T03:08:32.271207+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/logs/B1_20261002T030832270063.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/code/scripts/run_rebuild_v1_d24.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
+        "--job",
+        "B1"
+      ],
+      "elapsed_seconds": 1772.7679611444473,
+      "progress": {
+        "job": "B1",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T03:37:59.876976+08:00",
+        "session_elapsed_seconds": 1764.3708196356893,
+        "loss": 0.18166916072368622,
+        "objective_counts": {},
+        "seconds_per_train_step": 0.21911042047478257,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 6509809152
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T03:38:05.039636+08:00",
+      "selected": {
+        "step": 2000,
+        "metric": 0.8685189348762172,
+        "checkpoint_sha256": "1998acc8ee994242029729511e43893eb387f57e8eed9a50bacd7ebb2d2f5674"
+      }
+    },
+    "B2": {
+      "status": "COMPLETE",
+      "gpu": 1,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/jobs/B2",
+      "pid": 1099710,
+      "started_at": "2026-10-02T03:09:47.513266+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/logs/B2_20261002T030947512038.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/code/scripts/run_rebuild_v1_d24.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
+        "--job",
+        "B2"
+      ],
+      "elapsed_seconds": 1737.7724622115493,
+      "progress": {
+        "job": "B2",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T03:38:44.644918+08:00",
+        "session_elapsed_seconds": 1734.0060993880033,
+        "loss": 0.23022839426994324,
+        "objective_counts": {},
+        "seconds_per_train_step": 0.21128580362536012,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 6497213952
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T03:38:45.285946+08:00",
+      "selected": {
+        "step": 4000,
+        "metric": 0.833711199171567,
+        "checkpoint_sha256": "9c3cd17cb834e3d775b223e6cabc7e492dbe1fa232aa4e4d4efc6c442eef03fd"
+      }
+    },
+    "B3": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/jobs/B3",
+      "pid": 1114066,
+      "started_at": "2026-10-02T03:38:10.241092+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/logs/B3_20261002T033810239572.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409/code/scripts/run_rebuild_v1_d24.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
+        "--job",
+        "B3"
+      ],
+      "elapsed_seconds": 1729.0893940627575,
+      "progress": {
+        "job": "B3",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T04:06:53.704712+08:00",
+        "session_elapsed_seconds": 1720.2664380818605,
+        "loss": 0.2301851063966751,
+        "objective_counts": {},
+        "seconds_per_train_step": 0.20975943577475845,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 6497213952
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T04:06:59.330906+08:00",
+      "selected": {
+        "step": 4000,
+        "metric": 0.8336905429151088,
+        "checkpoint_sha256": "b968702210d6ba02b2e531e8072ea15637c1d52154061b141f770c484109c083"
+      }
+    }
+  },
+  "status": "COMPLETE",
+  "controller_pid": 1003530,
+  "execution_commit": "cf1955d966163978b5c8af433f3845b5ca05da9e",
+  "observed_at": "2026-10-02T04:06:59.332637+08:00",
+  "gpu_uuids": {
+    "0": "GPU-97a250ea-42ff-eb14-4ed5-8c50231e0baa",
+    "1": "GPU-4b116760-e84c-2743-cee6-41cf76a01677"
+  },
+  "completed_at": "2026-10-02T04:06:59.332624+08:00"
+}

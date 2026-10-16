@@ -1,0 +1,12 @@
+{
+  "rgb": {
+    "oracle_minus_best_fixed": 18.44409038863114,
+    "oracle_minus_B2": 14.19594716131165,
+    "B2_minus_best_fixed": 4.248143227319488
+  },
+  "dsm": {
+    "oracle_minus_best_fixed": 3.66526346771235,
+    "oracle_minus_B2": 11.274466268202545,
+    "B2_minus_best_fixed": -7.609202800490195
+  }
+}

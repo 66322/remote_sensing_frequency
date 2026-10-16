@@ -1,0 +1,13 @@
+{
+  "status": "CPU_PASS_SERVER_REPLACEMENT_NOT_REGISTERED",
+  "cpu_tests": 12,
+  "cpu_tests_passed": 12,
+  "changed_python_syntax_checked": 4,
+  "strict_determinism_retained": true,
+  "loss_objective": "unweighted mean valid-pixel CE, ignore255",
+  "cpu_reference": "loss and gradient tolerance, FP32/BF16 inputs; unequal ignored-pixel support",
+  "gpu_verified": false,
+  "new_training_started": false,
+  "technical_replacement_executed": false,
+  "no_extra_seed": true
+}

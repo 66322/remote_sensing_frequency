@@ -1,0 +1,10 @@
+{
+  "source": "user attachment: 下一阶段实验执行规划",
+  "source_bytes": 23764,
+  "source_sha256": "b0ecbeb430991e419059b314f59d80b5b1d83f8c96a093c1567643ac7986b57d",
+  "copied_exact_bytes": true,
+  "review_date": "2026-10-11",
+  "source_head": "699f8f9832f0ac52f9fdfd5a670c659c4f0557b6",
+  "last_server_query": "2026-10-11T18:54:08.952037+08:00",
+  "scope": "design analysis only; no active queue changes, no mask generation, no inference or training launched"
+}

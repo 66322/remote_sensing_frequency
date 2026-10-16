@@ -1,0 +1,27 @@
+{
+  "source": "user terminal registration report",
+  "reported_date": "2026-10-11",
+  "status": "REGISTERED_PROGRESS_NOT_YET_QUERIED",
+  "execution_commit": "cd958925cb5d4292dd15802830e97493c9c67033",
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_t_mechanism_20261011T094823_3625851",
+  "controller_pid": 3626108,
+  "physical_gpus": [
+    0
+  ],
+  "diagnostic_jobs": 26,
+  "new_optimizer_steps": 0,
+  "tile_units": 296,
+  "log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_t_mechanism_20261011T094823_3625851/nohup_20261011T094831668881.log",
+  "directory_naming_timestamp": "2026-10-11T09:48:23+08:00",
+  "log_naming_timestamp": "2026-10-11T09:48:31.668881+08:00",
+  "queue_observed_at": null,
+  "controller_live": null,
+  "worker_progress": null,
+  "predecessor": {
+    "last_observed": "2026-10-11T08:45:44.211597+08:00",
+    "status": "TRANSFER_COMPLETE_AWAITING_REVIEW",
+    "verdict": "READY"
+  },
+  "server_cpu_checks": "successful return inferred from registration entry flow; log not separately received",
+  "no_new_scientific_results": true
+}

@@ -1,0 +1,15 @@
+{
+  "original_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792",
+  "original_plan_sha256": "46f171542c643589ec93429feea13d3bed3ba0897b4a9d6c72d8755f7a23baba",
+  "original_code_sha256": "7755b8e7c9e51cc62702e43be6c609a70a7d1e981458ae7d683648cb6d9164e8",
+  "workers": 2,
+  "available_memory_bytes": 2016182353920,
+  "memory_policy": "12GiB per worker + 8GiB reserve; max4; CPU affinity bounded",
+  "optimizer_updates": 0,
+  "new_cases_added": 0,
+  "gpu_jobs_repeated": 0,
+  "automatic_retry": false,
+  "interrupted_inflight_case_may_be_reprocessed": true,
+  "registered_at": "2026-10-13T11:02:49.531481+08:00",
+  "execution_commit": "4842b5eb38c62b19db97094d88526260f5fe3359"
+}

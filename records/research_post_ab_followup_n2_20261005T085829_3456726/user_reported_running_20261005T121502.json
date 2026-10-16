@@ -1,0 +1,101 @@
+{
+  "source": "user pasted server terminal",
+  "observed_at": "2026-10-05T12:15:02.465274+08:00",
+  "queue": "RUNNING_N2",
+  "controller_pid": 3467202,
+  "controller_live": true,
+  "jobs": {
+    "N2-0": {
+      "pid": 3457210,
+      "status": "RUNNING",
+      "live": true,
+      "progress": {
+        "job": "N2-0",
+        "step": 8000,
+        "target": 8000,
+        "physical_gpu": 0,
+        "phase": "fixed8000",
+        "observed_at": "2026-10-05T12:14:49.587910+08:00",
+        "session_elapsed_seconds": 11741.64847715199,
+        "tiles_loaded": 12,
+        "tiles_total": 12,
+        "loss": 0.313231885433197,
+        "seconds_per_train_step": 1.3086705712582916,
+        "remaining_train_hours": 0,
+        "gpu_peak_allocated_bytes": 36789330944,
+        "tile": "3_11",
+        "condition": "geom_warp8+rgb_down4",
+        "windows_done": 529,
+        "windows_total": 529
+      },
+      "original_worker_adopted": true
+    },
+    "N2-1": {
+      "pid": 3467394,
+      "status": "RUNNING",
+      "live": true,
+      "progress": {
+        "job": "N2-1",
+        "step": 7800,
+        "target": 8000,
+        "physical_gpu": 1,
+        "phase": "training",
+        "observed_at": "2026-10-05T12:14:52.484868+08:00",
+        "session_elapsed_seconds": 10595.843780182302,
+        "tiles_loaded": 12,
+        "tiles_total": 12,
+        "loss": 0.3367834985256195,
+        "seconds_per_train_step": 1.3156685092338385,
+        "remaining_train_hours": 0.07309269495743546,
+        "gpu_peak_allocated_bytes": 36789330944
+      }
+    },
+    "N2-2": {
+      "gpu": 0,
+      "status": "PENDING",
+      "pid": -1,
+      "live": false
+    },
+    "N2-3": {
+      "gpu": 1,
+      "status": "PENDING",
+      "pid": -1,
+      "live": false
+    },
+    "N2-4": {
+      "gpu": 0,
+      "status": "PENDING",
+      "pid": -1,
+      "live": false
+    },
+    "N2-5": {
+      "gpu": 1,
+      "status": "PENDING",
+      "pid": -1,
+      "live": false
+    }
+  },
+  "complete_count": 0,
+  "controller_log_lines": [
+    "POST_AB_ADOPT 0 N2-0 3457210",
+    "POST_AB_CONDITIONS_PASS 32",
+    "POST_AB_HANDOVER READY COMPLETE",
+    "POST_AB_START 1 N2-1 3467394"
+  ],
+  "scientific_execution_commit": "86b6a70e5c3482314986fb1259e2fccbd0a5a38b",
+  "controller_fix_commit": "9b196a204e6a45cb54244b4deb5437ff44bd074e",
+  "eta": {
+    "scope": "existing N2 six cells only",
+    "training_only_critical_lane_remaining_hours": 5.920508291552273,
+    "training_only_lower_bound_local": "2026-10-05T18:10+08:00",
+    "provisional_total_end_range_local": [
+      "2026-10-05T20:00+08:00",
+      "2026-10-05T22:00+08:00"
+    ],
+    "basis": "observed 1.309/1.316 sec/train step; two pending waves; nontraining allowance for current evaluation, later checkpoint selection and full evaluation; allowance not yet measured from first completed N2 job",
+    "uncertainty": "unknown selected checkpoint age, evaluation/cache/reference wait and later mode throughput; no runtime promise",
+    "recalibrate_at": "first-wave COMPLETE and evaluation durations"
+  },
+  "window_progress_scope": "529/529 is single condition tile inference, not stage completion",
+  "next_action": "continue existing queue; read-only status around first-wave completion; no restart"
+}

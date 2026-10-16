@@ -1,0 +1,31 @@
+{
+  "source": "user pasted server terminal bootstrap output",
+  "evidence_boundary": "registration acknowledgment only; diagnostic controller live/status and worker progress not yet observed; original cpu_checks/nohup files not received",
+  "execution_commit": "883fccc0b97714cfe0a87b54bfeb2a2fc09820d7",
+  "predecessor": {
+    "last_observed_at": "2026-10-05T13:14:31.018288+08:00",
+    "status": "RUNNING_N2",
+    "controller_pid": 3467202,
+    "controller_live": true,
+    "job_steps": null,
+    "complete_jobs": null
+  },
+  "diagnostics": {
+    "registration": "POST_N2_DIAGNOSTICS_REGISTERED",
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n2_diagnostics_20261005T131434_3591073",
+    "returned_controller_pid": 3591245,
+    "controller_live": null,
+    "queue_status": null,
+    "log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n2_diagnostics_20261005T131434_3591073/nohup_20261005T131435243732.log",
+    "E1_models": 2,
+    "E2_models": 3,
+    "new_training": 0
+  },
+  "next": "read-only diagnostic status plus nohup tail; no duplicate registration",
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "automatic_training": false,
+  "test6_access": false
+}

@@ -1,0 +1,55 @@
+{
+  "source": "user pasted status and controller log tails; no direct server connection",
+  "execution_commit": "ba7088ec05be7b85dd45e5896a8407506bcca14d",
+  "D27": {
+    "observed_at": "2026-10-03T18:02:39.464182+08:00",
+    "status": "RUNNING",
+    "complete": 8,
+    "total": 10,
+    "completed_progress_at": {
+      "S0": "2026-10-03T12:57:40.325304+08:00",
+      "S1": "2026-10-03T12:58:20.259950+08:00",
+      "G0": "2026-10-03T11:10:00.449344+08:00",
+      "G1": "2026-10-03T11:10:44.117153+08:00",
+      "L0": "2026-10-03T14:45:38.004041+08:00",
+      "L1": "2026-10-03T14:46:04.206332+08:00",
+      "C0": "2026-10-03T16:31:24.350036+08:00",
+      "C1": "2026-10-03T16:34:23.905817+08:00"
+    },
+    "running": {
+      "L1-sh": {
+        "gpu": 0,
+        "phase": "evaluation",
+        "step": 8000,
+        "windows_done": 529,
+        "windows_total": 529,
+        "progress_at": "2026-10-03T18:02:28.187008+08:00"
+      },
+      "C1-sh": {
+        "gpu": 1,
+        "phase": "evaluation",
+        "step": 8000,
+        "windows_done": 529,
+        "windows_total": 529,
+        "progress_at": "2026-10-03T18:02:25.653423+08:00"
+      }
+    },
+    "rough_remaining_hours": 0.32,
+    "rough_queue_end": "2026-10-03T18:22:00.024002+08:00"
+  },
+  "D28": {
+    "observed_at": "2026-10-03T18:02:34.445684+08:00",
+    "status": "WAITING_D27",
+    "complete": 0,
+    "total": 7,
+    "predecessor_status": "RUNNING",
+    "predecessor_observed_at": "2026-10-03T18:02:29.444103+08:00"
+  },
+  "limits": {
+    "windows_fraction_is_one_tile_condition_not_whole_job": true,
+    "ETA_excludes_D28": true,
+    "scientific_metrics_received": false,
+    "handover_observed": false,
+    "D29_queued": false
+  }
+}

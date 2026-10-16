@@ -1,0 +1,13 @@
+{
+  "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d30_loss_decomposition_20261003T205144_2349167",
+  "queue_sha256": "579daa74ff65e429672eb918340c65ac521770796f59ee4e4672792283ecd471",
+  "summary_sha256": "1bb4065be0ab6fa02553c2d5ff70c0b9f8e0bc8eca7a6ba7e56abee24a4ea7ac",
+  "completion": {
+    "replay_G0": "bb8f94c9716b5a6a09ef52c6a8ebedd035311b1d6d41ab76232fc5e18fd035cd",
+    "replay_G1": "4254601695ad10476f55d6741f9b5ff31840a1532c904f7245cb3bfb6fe78276",
+    "P": "8d7eb94756afb69ed443afcaeb3e7b76165aea64e90250765509ca3881f686e8",
+    "R": "d92e638ae998c4f14bdd856e6579529a94cbb8b5595d57c6606d037aa377ee85",
+    "PR_area": "7b1d109cce4431c970c594170848f8ef50a430b37c10c151bc42cd4e62cc3fb2",
+    "PR_pixel": "76b5eec1ef8b8cb67644fa8a93bc3b726c8283d722bd6d75a166dda5d3523ffc"
+  }
+}

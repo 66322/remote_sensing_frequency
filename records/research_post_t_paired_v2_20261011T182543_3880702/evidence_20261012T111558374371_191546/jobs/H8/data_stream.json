@@ -1,0 +1,9 @@
+{
+  "steps": 8000,
+  "prefixes": {
+    "4000": "9ad0e6b8126303c6a4072a4861aff75015d0a793d7cf565df5fce7765da8be15",
+    "8000": "150bf8a947dce5ddb9a39cf8cedbaffb997a4dfa95ba6327f129678bfe2f5447"
+  },
+  "actual_cpu_tensors_hashed": true,
+  "rng": "inherited keyed sample/augmentation RNG, independent of model RNG"
+}

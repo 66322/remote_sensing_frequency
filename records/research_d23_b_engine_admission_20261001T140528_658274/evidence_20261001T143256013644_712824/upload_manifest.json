@@ -1,0 +1,70 @@
+{
+  "kind": "EXISTING_LIGHT_EVIDENCE_UPLOAD",
+  "created_at": "2026-10-01T14:33:02.775004+08:00",
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_engine_admission_20261001T140528_658274",
+  "upload_worktree": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_engine_admission_20261001T140528_658274/github_upload_20261001T143256013644_712824",
+  "branch": "rebuild-v1-protocol-20260915",
+  "base_commit": "99f526843573a4baf44c91838421db46653d0329",
+  "repository_directory": "records/research_d23_b_engine_admission_20261001T140528_658274/evidence_20261001T143256013644_712824",
+  "files": [
+    {
+      "path": "cpu_checks.log",
+      "bytes": 2040,
+      "sha256": "b48b881424a3de7e0d173e6ffca34b41b8457abebc89b2425e419e0b29388e56"
+    },
+    {
+      "path": "gpu0/summary.json",
+      "bytes": 309986,
+      "sha256": "610f787f41475a8694f8699ebcda9da36285e9553cf04e80ea526bf9bf89179c"
+    },
+    {
+      "path": "gpu0/preflight.json",
+      "bytes": 1597,
+      "sha256": "3d63c35aafa8df5b27ee20c93d75e979e93a7beb4f1aafb639bf426450db6e8d"
+    },
+    {
+      "path": "gpu0.log",
+      "bytes": 2201,
+      "sha256": "f571ffef8350e80b9a2379f09a89b493b64eda374b151111fdad020b2727ccfe"
+    },
+    {
+      "path": "gpu1/summary.json",
+      "bytes": 32435,
+      "sha256": "b33db53f7163648a3612072c3f5a7161b7ffbdcbb90460bff054a1db4cf4225a"
+    },
+    {
+      "path": "gpu1/preflight.json",
+      "bytes": 1597,
+      "sha256": "864cb1e5647483ee07a2b60aa1c0ac232b18150e1f8b2ca92bc4a1179d5d8d58"
+    },
+    {
+      "path": "gpu1.log",
+      "bytes": 1529,
+      "sha256": "324ad77fb99672b86f7313d0a6fb7aaa74dff237706af51e672e9e36a496026b"
+    },
+    {
+      "path": "compact_review_20261001T141936239377.json",
+      "bytes": 50905,
+      "sha256": "dbd0d8ecb09eb40078e151257a50d546298c3343307b74b50e5bef930bdc8217"
+    }
+  ],
+  "archive": {
+    "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_engine_admission_20261001T140528_658274/light_engine_evidence_20261001T141936239377.tar.gz",
+    "bytes": 29924,
+    "sha256": "e290548c50758e3d228f6e00e4e36bf4592efcf5daf2739994b6a28ee18278fa",
+    "members": [
+      "cpu_checks.log",
+      "gpu0/summary.json",
+      "gpu0/preflight.json",
+      "gpu0.log",
+      "gpu1/summary.json",
+      "gpu1/preflight.json",
+      "gpu1.log"
+    ],
+    "received_off_server": false,
+    "uploaded": false
+  },
+  "new_training": false,
+  "new_inference": false,
+  "formal_runtime_admitted": false
+}

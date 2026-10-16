@@ -1,0 +1,18 @@
+{
+  "binding": {
+    "plan.json": "46f171542c643589ec93429feea13d3bed3ba0897b4a9d6c72d8755f7a23baba",
+    "code_manifest.json": "7755b8e7c9e51cc62702e43be6c609a70a7d1e981458ae7d683648cb6d9164e8",
+    "preparation_complete.json": "3a635441c9a7c7aa180084b780121b9360c5a75c15d0696b540b3cbc0a6b9b02"
+  },
+  "passed": true,
+  "realization": 1,
+  "tile": "3_11",
+  "cpu_checks_sha256": "359156721474487d94140a9f917331de980a626df4f4e33a401df4076f8961cb",
+  "gpu_smoke_sha256": {
+    "0": "a936288d060318c88272b2f46dfb96fc2c32238cb4769d7e4daa2dea2f688db4",
+    "1": "c96c9dee774bde0c17d8716d809647ef502734699893da42b895db0822357304"
+  },
+  "optimizer_updates": 0,
+  "no_scientific_selection": true,
+  "observed_at": "2026-10-13T00:00:06.294495+08:00"
+}
