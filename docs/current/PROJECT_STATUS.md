@@ -1,11 +1,11 @@
-# 当前状态：M2设计完成，执行包待实现（2026-10-16）
+# 当前状态：M2-A核心实现完成，等待服务器检查与启动（2026-10-16）
 
-- GitHub结果基准：5565f93b2e62be22291583cc876f86ecb56c52dc；M1归档提交09fb57a6ec26f6367c9891f2aa924cc4bf7219cc，验收完成。旧M1/Phase2.4队列均不重复启动。
-- 新阶段：Phase3-M2错误对应性与可迁移补救；[完整计划](../protocols/PHASE3_M2_ERROR_CORRESPONDENCE_20261015.md)、[计划清单](../../configs/phase3_m2_plan_manifest.json)。
-- 状态：DESIGN_RECORDED_NOT_IMPLEMENTED_NOT_LAUNCHED。无新服务器run、PID、执行提交或实时GPU观测。
-- 核心：108训练/3.456M更新；条件反向90/2.88M；第二编码器预算81/2.592M，总上限279/8.928M。
-- 资源：仅GPU0/1，时间无硬截止；按正式作业实测吞吐估ETA。额外teacher前向、推理、计数另计，不承诺一天或一周。
-- 未完成：地理元数据fold冻结、七臂loss、108作业DAG、OOF来源与泄漏检查、换配/权重曲线、GPU UUID与产物生命周期、不可变执行提交。
-- 禁区：Test6/held4/final与另一篇点云；旧Val2不进入本轮。全Fit12微调权重不能用于新外层主模型/教师。
+- 状态：CORE_IMPLEMENTED_LOCAL_CHECKS_PASSED_NOT_SERVER_LAUNCHED。
+- 用户本轮授权具体实现、必要修订、并行统计和简化交付。核心108训练/3,456,000更新；没有现场M2 run/PID或GPU空闲回执。
+- 代码：[执行清单](../../configs/phase3_m2_execution_manifest.json)、[具体合同](../protocols/PHASE3_M2_EXECUTION_20261016.md)。四项科学修订、裁剪掩码和保护范围已明确；计数最多32进程，与GPU任务并行。
+- 本地15项检查：14通过，1项Linux memfd/FD真实进程传递待服务器。目标Torch2.2.2+cu121、真实数据、元数据分组及吞吐尚未验证。
+- 启动前按Fit12无标签元数据冻结三外层/四内层表，再做GPU0/1现场检查。已知占用不能视为空闲；不触碰GPU2–7、共享tmux或未知进程。
+- 结果交付改为服务器检查并上传报告/CSV/门禁/三个fold池化计数；逐mask原件与模型留服务器，不默认本地下载完整归档。
+- B90受A全部门禁及反向执行合同冻结约束，当前不可自动派发；C81保留预算，非就绪作业。最大279/8.928M。
 
-M1的幅度/补救门禁仍false，固定融合对RGB约+0.60pp但新幅度相对普通适配无稳定增量。[原验收](../experiments/PHASE3_M1_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md)保持。两seed/两旧Val tile及整数原件验收不能替代独立地理泛化。
+M1归档09fb57a6ec26f6367c9891f2aa924cc4bf7219cc、验收5565f93b2e62be22291583cc876f86ecb56c52dc不变：幅度与down4补救门禁失败，C21正确跳过；旧M1/Phase2.4不恢复。只用本篇RGB/DSM/标签；Val2/Test6/held4/final及点云禁入。

@@ -3,8 +3,9 @@
 ## Material Passport
 
 - Origin Skill: academic-research-suite / experiment-agent (plan)；experimental-design。
-- Version: phase3_m2_plan_v1；2026-10-15起草，2026-10-16定稿。
-- 状态：DESIGN_RECORDED_NOT_IMPLEMENTED_NOT_LAUNCHED。本文与计划清单不是执行包、启动回执或科学结果。
+- Version: phase3_m2_plan_v2；2026-10-16授权实现与执行修订。
+- 状态：CORE_IMPLEMENTED_LOCAL_CHECKS_PASSED_NOT_SERVER_LAUNCHED。A核心执行包已实现；真实fold/GPU/CUDA运行待服务器回执。B/C仍受条件与独立执行冻结约束。
+- 执行修订优先：[具体执行、修订及精简交付](PHASE3_M2_EXECUTION_20261016.md)。用户本轮授权实现、必要更改、并行加速和简化交付；四项科学修订及裁剪掩码细节见该合同。
 - 事实基准：GitHub 分支 rebuild-v1-protocol-20260915，提交 5565f93b2e62be22291583cc876f86ecb56c52dc。
 - 决定来源：用户要求根据已完成结果安排下一阶段，GPU 0/1，时间不限，规划尽量长；优先研究问题与创新性。以下具体设计由助手据此提出并登记，属于“重写版建议”，不表示用户已逐条确认方法细节。
 - 本轮交付：科学问题、主矩阵、条件扩展、计算预算、去留规则、执行包实现合同。未启动服务器任务；服务器终端仍由用户执行。
@@ -71,7 +72,7 @@ DSM架构及表示固定为DINOv2-vits14、R1+A1：逐tile稳健归一化，stem
 | DF | 使用clean/down2/down4教师的q | 唯一首要候选：退化条件困难对应性 |
 | DShuffle | 将DF的q在每crop的“GT类别×固定边界距离bin”内确定性置换 | 保留类别/边界难度分布，破坏像素对应 |
 | DEntropy | 在同一分层内按教师预测熵排序，再赋予排序后的DF q集合 | 普通无标签置信度排序是否已足够 |
-| DMix | 0.5 CE(p_D,y)+0.5 CE(0.9p_T+0.1p_D,y)，教师输入与DF同分布且停止梯度 | 直接训练固定融合是否更简单有效 |
+| DMix | 原0.5 CE(p_D,y)+0.5 CE(0.9p_T+0.1p_D,y)除以stop-gradient平均梯度系数，教师输入与DF同分布且停止梯度 | 直接训练固定融合是否更简单有效 |
 
 边界距离在训练GT上按全tile定义，bin=[0,4]、(4,16]、>16像素；ignore不参与。DShuffle键由seed、fold、tile、crop位置、flip组成，不包含step；相同crop重复出现时使用同一置换，避免额外时间噪声正则化。熵并列按原像素索引排序。小分层不足2像素保持原值并计数。即使分层置换仍会破坏空间团簇，报告该剩余混杂，不称完美因果隔离。
 
@@ -119,8 +120,8 @@ DShuffle/DEntropy与DF的每类、每边界bin权重集合应精确相同。DEnt
 下面是新问题的实用推进规则，不是统计显著性标准，也不修改Phase2.4/M1原门禁。所有数值均为百分点；“相当”只表示没有达到预设实用增量，不宣称统计等效。
 
 - G0工程：108作业端点、数据/teacher绑定、配对样本流、主CM与联合边际可核验。缺失时结果标不完整，不静默删除失败臂计算赢家。
-- G1对应性：RGB-down4上，DF相对D0、DSelf、DShuffle、DEntropy的DSM补救率，三seed平均增量分别至少+0.5；每个seed池化增量都>0。DF−DClean至少+0.3且三seed都>0，才支持退化条件特异性。未达到后者时仍可讨论一般困难对应性，但不扩展“退化特异”路线。
-- G2兑现：主α=.1下DF相对D0的融合mIoU三seed平均≥+0.3、每seed>0；相对DSelf/DShuffle/DEntropy/DMix各自平均≥+0.2、每seed>0。9个fold×seed的DF−D0至少7个为正。若DMix同样解释收益，保留简单融合目标，关闭专门重加权新方法主张。
+- G1对应性：RGB-down4上，DF相对D0、DSelf、DShuffle、DEntropy的DSM补救率，三seed平均增量分别至少+0.5；每个seed池化增量都>0。DF−DClean在all与damaged分别至少+0.3且三seed都>0，才支持退化条件特异性；H1/G1与H2分开登记。未达到后者时仍可讨论一般困难对应性，但不扩展“退化特异”路线。
+- G2兑现：主α=.1下DF相对D0的融合mIoU三seed平均≥+0.3、每seed>0；相对DSelf/DShuffle/DEntropy/DMix/DClean各自平均≥+0.2、每seed>0。9个fold×seed的DF−D0至少7个为正。若DMix同样解释收益，保留简单融合目标，关闭专门重加权新方法主张。
 - G3保护：DF相对D0，clean和RGB-down4 healthy区域的每seed池化差均≥−0.2；每个外层tile的三seed均值≥−0.5；DSM-down4及平移面板每seed池化≥−0.2。不能拿平均收益掩盖某个tile的明显损伤；完整列出比原门禁更严格/更宽松的具体项，不冒称通过旧联合保护门禁。
 - G4迁移：不同RGB seed的6种换配中至少5种，其12tile池化DF−D0主融合增量>0；三个未见RGB退化面板各自三seed平均>0，且各seed不低于−0.2。仅已见退化有效则关闭未知退化推广主张。
 
@@ -176,11 +177,11 @@ GPU空闲时优先领取已完成模型的待评价任务。CPU计数与下一�
 
 新run根：/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_<真实启动时间>_<PID>。正式目录尚未创建。快照、日志、PID、恢复文件、权重、输入索引、缓存和上传临时文件全部在此；不写/tmp，不复用旧run输出。
 
-训练及评价以有界RAM/memfd处理。teacher在线前向或有限批次RAM复用，不恢复整轮logit磁盘缓存。每份输入/条件数组有消费者计数，最后消费者结束立即释放；RGB/DSM/fold切换时及时回收。CPU初始并行上限32，依据实测峰值内存限制队列；这不是默认允许无限进程堆积。
+训练及评价以有界RAM/memfd处理。teacher在线前向或有限批次RAM复用，不恢复整轮logit磁盘缓存。每份输入/条件数组有消费者计数，最后消费者结束立即释放；RGB/DSM/fold切换时及时回收。CPU采用fork计数进程池、上限32、每进程数值线程1；依据有效CPU配额和实测峰值内存限制队列；这不是默认允许无限进程堆积。
 
 保留32k必要模型、全部训练轨迹、配置/源代码/数据/权重SHA、每作业GPU UUID、实际样本流摘要、int64 CM及联合计数、错误及跳过回执。中间权重生成轨迹计数后按预登记依赖回收；失败恢复状态仍保留，不把退出等同可删除。清理只作用新run白名单，避免触及旧实验。
 
-主证据去重：预测联合表不因alpha重复保存；融合CM单独按alpha保存；teacher来源与输入manifest集中索引。GitHub先发布可读summary、每臂状态、门禁、训练轨迹摘要和核心计数，目标核心包≤50MiB；必要额外统计按阶段独立索引/压缩，不用数千小分块或数GB普通Git内容。目标超出时如实登记，不能删负结果达标。全部大模型和原始像素留服务器并有路径/大小/SHA索引。
+主证据去重：预测联合表不因alpha重复保存；融合CM单独按alpha保存；teacher来源与输入manifest集中索引。GitHub发布可读报告、summary、门禁、汇总CSV和三个fold的池化充分计数，目标核心包≤50MiB。逐mask原件、完整辅助统计和模型留服务器，不例行下载完整归档；只回读三个小JSON，其余以Git对象ID确认上传。目标超出时如实登记，不能删负结果达标。全部大模型和原始像素留服务器并有路径/大小/SHA索引。
 
 完成顺序：轻量原件绑定→整数边际与指标独立复算→训练轨迹/学习率/teacher来源核对→按G0–G4判断→派发合法条件阶段或停止→GitHub共享入口更新并回读。主科学负结果不触发从头重跑，上传失败不触发重新训练或重新推理。
 

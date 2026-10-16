@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "status": "LOCAL_LOGIC_CHECKED_TARGET_EXECUTION_PENDING",
+  "source_parent": "83e3206329372e778c5987d9abd785d9efcca5fe",
+  "tests_run": 15,
+  "passed": 14,
+  "skipped": 1,
+  "skip": "Linux FD transport runs at target registration",
+  "verified": [
+    "108-job OOF DAG and exclusion",
+    "paired crop/teacher view",
+    "DMix analytic gradient scale",
+    "shuffle/entropy stratum multisets",
+    "mask area and class quotas",
+    "count marginals and fallback",
+    "full evaluation state machine 25956 unique cases per fold",
+    "DClean and per-tile protection gates",
+    "real model import path"
+  ],
+  "not_verified": [
+    "target CUDA",
+    "actual input bytes and geospatial folds",
+    "live GPU availability",
+    "end-to-end throughput"
+  ],
+  "server_started": false
+}

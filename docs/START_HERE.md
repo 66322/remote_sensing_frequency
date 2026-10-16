@@ -1,9 +1,9 @@
-# 共享入口：Phase3-M2长程设计已登记，尚未实现/启动（2026-10-16）
+# 共享入口：M2-A核心执行包已实现，尚未在服务器启动（2026-10-16）
 
-先读 [研究决定](current/RESEARCH_DECISION.md)、[当前交接](current/HANDOFF.md)、[状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)，再读 [M2完整计划](protocols/PHASE3_M2_ERROR_CORRESPONDENCE_20261015.md) 和 [计划清单](../configs/phase3_m2_plan_manifest.json)。
+先读[当前状态](current/PROJECT_STATUS.md)、[交接](current/HANDOFF.md)、[下一步](current/NEXT_EXPERIMENT.md)、[研究决定](current/RESEARCH_DECISION.md)，再读[M2完整协议](protocols/PHASE3_M2_ERROR_CORRESPONDENCE_20261015.md)及[本轮具体执行修订](protocols/PHASE3_M2_EXECUTION_20261016.md)。
 
-用户根据已完成结果要求安排GPU0/1长程实验，不限时间、优先研究问题与创新性。新问题是“错误位置对应性是否带来可迁移、可兑现的条件补救”。核心3个Fit12外层分组×3个整系统seed，108个32k训练、345.6万更新；条件反向与第二编码器储备合计上限279个、892.8万更新。后续阶段受科学门禁与实现冻结约束，不是全部自动启动。
+用户授权按M2实现具体实验、修正问题、加速统计并精简结果交付。核心108×32k=345.6万更新不变。DMix尺度匹配、DF对DClean的融合比较、damaged证据和明确保护范围已落实。CPU最多32个fork进程，与双卡训练/推理流水并行；每次只保留一个tile的有限预测，不缓存整轮磁盘logits。
 
-状态为DESIGN_RECORDED_NOT_IMPLEMENTED_NOT_LAUNCHED。新执行器、精确fold表和执行提交尚待落实；无新run/PID。不要运行旧M1 bootstrap或恢复旧队列。
+本地15项检查14通过，Linux真实跨进程FD检查待服务器。无M2 run/PID、现场GPU或真实fold回执，不能声称已启动。服务器由用户执行；仅GPU0/1，旧快照有vLLM占用，必须重新确认，绝不清理外来进程。
 
-[Phase3-M1验收](experiments/PHASE3_M1_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md)与[Phase2.4验收](experiments/PHASE_24_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md)保持原科学结论，旧幅度配方关闭。Test6/held4/final禁读；旧Val2本轮不进入队列；全Fit12微调模型不能泄漏进入新外层主比较。另一篇点云论文不进入本篇。
+结果在服务器自检后上传报告、汇总表和三个fold充分计数，不例行下载重验整包。B90仍待A门禁与反向执行冻结；C81为预算储备，总279上限不变。M1幅度配方关闭，Val2/Test6/held4/final与另一篇点云均不进入本轮。

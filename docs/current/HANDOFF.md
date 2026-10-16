@@ -1,13 +1,13 @@
-# 当前交接：M2长程设计已登记，尚未实现/启动（2026-10-16）
+# 当前交接：M2-A执行实现已发布，未启动（2026-10-16）
 
-先读[研究决定](RESEARCH_DECISION.md)、[M2完整计划](../protocols/PHASE3_M2_ERROR_CORRESPONDENCE_20261015.md)及[下一步](NEXT_EXPERIMENT.md)。用户要求根据完成结果安排GPU0/1长期实验，时间不限；优先研究问题与创新性。
+科学问题仍是错误位置对应性能否提供跨tile、RGB实例、退化的可兑现补救。先读[完整协议](../protocols/PHASE3_M2_ERROR_CORRESPONDENCE_20261015.md)和[执行补充](../protocols/PHASE3_M2_EXECUTION_20261016.md)。M1与Phase2.4结论保持，旧幅度路线关闭。
 
-M1与Phase2.4均已结束并验收。M1结果归档09fb57a6ec26f6367c9891f2aa924cc4bf7219cc；11主训练176k，幅度门禁false，down4补救条件失败。关闭旧幅度配方，不重新bootstrap、恢复或上传。原科学结论与辅助证据缺口见[验收](../experiments/PHASE3_M1_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md)。
+用户本轮明确要求安排具体实验、允许修订问题、充分并行统计并简化交付。新实现包含108作业DAG、交叉拟合、七loss、三RGBseed完整换配、固定alpha/联合整数计数、预登记门禁、独立GPU worker与最多32个CPU计数进程。
 
-本次新问题：错误位置对应性是否提供跨tile、跨RGB实例、跨退化的新增可兑现补救。核心3fold×3整系统seed×(1RGB参考+4交叉拟合RGB教师+7DSM臂)=108个32k训练，3.456M更新。普通CE、自身难例、clean教师、故障教师、分层打乱、熵排序、直接融合目标全比较。固定概率融合及α曲线/margin诊断并报，避免把动作限制误判为无信息。
+修订：DMix平均梯度系数归一化；G2增加DF−DClean≥0.2pp且每seed>0；H2在damaged与all分别≥0.3pp且每seed>0；G3四个保护项目的seed/tile作用域明确。裁剪训练掩码为明确的512版本，不冒充旧6000几何。详见执行合同。
 
-后续反向最多90训练，第二编码器预留81，总cap279/8.928M；受G0–G4和实现冻结约束。此处是设计，无新执行入口、run/PID或服务器状态。下一任务是落实M2执行包和仅Fit12元数据fold锁，不重复研究旧M1输入配方。
+当前只有本地检查：15项中14通过、Linux FD传递1项待目标机。尚无M2服务器run/PID、地理fold或GPU可用回执。助手无SSH。用户执行固定commit bootstrap；GPU忙则不注册新run。仅物理0/1，UUID绑定，不触碰2–7或任何外来进程。
 
-最重要边界：旧全Fit12微调权重不得泄漏进新外层模型或teacher；Val2不进新队列；Test6/held4/final禁读；三fold仍是同城开发CV。RGB–DSM主线与恢复旁支角色不变，创新性未由计划数量确立。另一篇点云不混入。服务器由用户执行，GPU仅物理0/1；RAM用后回收，无整轮磁盘logit缓存。
+结果服务器自检后上传小报告、汇总CSV、门禁与三个fold的池化充分计数。原始逐mask计数/完整辅助统计/端点/轨迹留服务器。不再默认下载全部归档逐文件网络验收；网络失败仅续传，不重训。
 
-本次也修正旧NEW_CHAT_HANDOFF_20261015仍写“M1待启动”的过期入口；旧文本保存于docs/history/20261015_before_phase3_m2_plan/。原GPU2–7进程归属仍不明，不操作。
+B90等待A全部门禁及反向合同冻结，C81仍预算储备，均不能为填满GPU时间而绕过条件。只读Fit12白名单；全Fit12旧微调权重禁止初始化或生成教师；Val2/Test6/held4/final和另一篇点云禁入。本地曾被审批阻止的M1验收副本继续保留，不重试删除。

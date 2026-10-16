@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "kind": "research_plan_not_execution_manifest",
-  "status": "DESIGN_RECORDED_NOT_IMPLEMENTED_NOT_LAUNCHED",
+  "status": "CORE_IMPLEMENTED_LOCAL_CHECKS_PASSED_NOT_SERVER_LAUNCHED",
   "protocol": "docs/protocols/PHASE3_M2_ERROR_CORRESPONDENCE_20261015.md",
   "source_commit": "5565f93b2e62be22291583cc876f86ecb56c52dc",
   "server_run": null,
@@ -95,7 +95,7 @@
     "shift_8_0"
   ],
   "stage_b": {
-    "status": "CONDITIONAL_DESIGN_NOT_ENQUEUED",
+    "status": "CONDITIONAL_PENDING_REVERSE_EXECUTION_CONTRACT",
     "condition": "all M2-A G0-G4 pass; reverse contract and data/implementation binding frozen",
     "new_jobs": 90,
     "updates_per_job": 32000,
@@ -122,11 +122,10 @@
     "max_update_ratio": 50.72727272727273
   },
   "missing_before_execution": [
-    "exact geospatial fold map and input hashes",
-    "new phase3_m2 executor and loss implementation",
-    "source/init/environment lock",
-    "new checks for folds, OOF gradient and matched controls",
-    "immutable execution commit and launch receipt"
+    "target exact fold/input metadata binding",
+    "target Linux FD and CUDA checks",
+    "current GPU 0/1 availability",
+    "server launch receipt"
   ],
   "core_jobs": [
     {
@@ -1428,5 +1427,19 @@
   ],
   "design_started": "2026-10-15",
   "finalized": "2026-10-16",
-  "core_is_new_protocol_not_legacy_rerun": true
+  "core_is_new_protocol_not_legacy_rerun": true,
+  "execution_protocol": "docs/protocols/PHASE3_M2_EXECUTION_20261016.md",
+  "implementation_manifest": "configs/phase3_m2_execution_manifest.json",
+  "user_authorized_implementation": true,
+  "exact_fold_source": "bootstrap label-blind Fit12 headers; binding in server folds.json",
+  "dmix_normalizer": "stop_gradient(mean_valid(.5+.5*.1*p_D_y/(.9*p_T_y+.1*p_D_y)))",
+  "count_execution": {
+    "backend": "Linux fork processes",
+    "max_workers": 32,
+    "threads_per_worker": 1,
+    "max_live_rgb_variants": 2,
+    "benchmark_source": "user-pasted 2026-10-15 original-counter synthetic 32 processes / 16 threads = 3.622x; not full-tile ETA"
+  },
+  "result_delivery": "server self-check; report/summary/gates/CSV + 3 pooled fold count files; per-mask originals retained on server",
+  "training_mask_contract": "512 crop pixel + 32px random/gradient blocks + exact per-class quota matched block-priority mask; distinct from legacy 6000 tile geometry"
 }

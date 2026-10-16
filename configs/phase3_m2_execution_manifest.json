@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "status": "CORE_IMPLEMENTED_LOCAL_CHECKS_PASSED_NOT_SERVER_LAUNCHED",
+  "source_commit": "83e3206329372e778c5987d9abd785d9efcca5fe",
+  "result_baseline_commit": "5565f93b2e62be22291583cc876f86ecb56c52dc",
+  "core_jobs": 108,
+  "updates": 32000,
+  "total_updates": 3456000,
+  "inherited_source_run": "research_phase3_m1_recovery_20261015T164357_19327",
+  "files": {
+    "configs/phase3_m2_gate_contract.json": "13bf9cba44db446c07cfc2d75f28a73371de85c5c42977f60cb76db2c8ad8730",
+    "configs/phase3_m2_plan_manifest.json": "78912f2e8e75ce83d820f20ef2ba6e58edb0c900c118b15c8c12638d8121c87d",
+    "docs/protocols/PHASE3_M2_EXECUTION_20261016.md": "958402b5ccd8580a6cd1bbf3c9d69456d54cdaf94713259ea02b640d0f01bde5",
+    "scripts/bootstrap_phase3_m2.py": "038921a732423e77de0d56f6b77ab26912cfc575bafd871f36d43b2b36c48145",
+    "scripts/control_phase3_m2.py": "34fdde8da80b110ac7e4ad60eb70aa31bd2043b34bd7864915ea19118b39967f",
+    "scripts/phase3_m2_analysis.py": "ff4925553249c743180825ab26310e23832c622a0e5a8bdc3cdda6dad8939401",
+    "scripts/phase3_m2_common.py": "98d1761e78f52c46f457b1e7a965b3e3798e9ad35c03aef2a3be65efc222e1bd",
+    "scripts/phase3_m2_counts.py": "851641a74c4af3e64b0807daf00de2f7f3af1e73fa20406bb6ba2d75f670ae10",
+    "scripts/phase3_m2_data.py": "d7e9de961c91d4a5eee47ff50db7240e4caa8a7a050e7b3c0c995fa142c07f07",
+    "scripts/phase3_m2_loss.py": "44de86fdace82692a446ffa14d32090d875ed4b35b597e279d288284f13afc9b",
+    "scripts/phase3_m2_runtime.py": "d4ada75f5a34c9d9c7663c7a9fe0f347576084e95055248f4e24b361f3339c23",
+    "scripts/status_phase3_m2.py": "337284468a763fc902f0595c2c378f8daf21a6a90a455e5ebbae104daafdae21",
+    "scripts/upload_phase3_m2.py": "cfd5f65850efe2ddd2618d315f0f935fef638cbe02cabffc1932db93815f27f2",
+    "tests/test_phase3_m2.py": "84dc4d759b336aca95eb51c1a1d0849ab2eeee050898d3978d27a7ab8fbf4058"
+  }
+}
