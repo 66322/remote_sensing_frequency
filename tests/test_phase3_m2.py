@@ -121,6 +121,14 @@ class ContractTests(unittest.TestCase):
         meta['random']['canonical_sha256']='changed'
         with self.assertRaisesRegex(RuntimeError,'reconstruction'):reconstruct_masks(tile,realization,dict(full=np.zeros(shape,np.uint8)),meta)
 
+    def test_publication_cannot_replace_another_run_handoff(self):
+        from upload_phase3_m2 import may_refresh_shared,READY_STATUS_BLOB
+        run='research_phase3_m2_example'
+        self.assertTrue(may_refresh_shared(READY_STATUS_BLOB,'ready',run))
+        self.assertTrue(may_refresh_shared('other','# M2\n\n运行：`'+run+'`；状态：RUNNING',run))
+        self.assertFalse(may_refresh_shared('other','# Next experiment\nPrevious run: '+run,run))
+        self.assertFalse(may_refresh_shared('other','# M2\n运行：`research_phase3_m2_other`；状态：RUNNING\nPrevious '+run,run))
+
     def test_counter_marginals_and_fallbacks(self):
         r,d,item,mask,healthy=toy();z=analyze_arrays(r,d,item,mask,healthy);self.assertTrue(validate_counts(z))
         bad=copy.deepcopy(z);bad['nb']['all']['cms'][2,0,0]+=1

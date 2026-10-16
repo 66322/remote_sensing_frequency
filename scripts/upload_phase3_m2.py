@@ -13,6 +13,32 @@ import phase3_m2_common as c
 
 REPO='66322/remote_sensing_frequency'
 BRANCH='rebuild-v1-protocol-20260915'
+READY_STATUS_BLOB='17ccc8ae45eeb4e82bf404532ccefc89ae97b324'
+
+def may_refresh_shared(blob,text,run_name):
+    if blob==READY_STATUS_BLOB:return True
+    # A historical mention of this run in a later experiment is insufficient.
+    return any(line.startswith('运行：`'+run_name+'`；状态：') for line in text.splitlines()[:6])
+
+def shared_documents(base,summary,prefix):
+    """Result pointers, not a claim of new-method success or live GPU state."""
+    gate_text='；'.join(k+'='+str(v) for k,v in summary['gates'].items())
+    next_action=('A已满足本轮推进规则；先冻结B反向执行合同，尚未自动启动B/C。' if summary['advance_reverse'] else
+        '按各假设和失败门禁收束本轮；不自动调参、延长训练或扩骨干。' if summary['status']=='COMPLETE_SERVER_CHECKED' else
+        '记录不完整；先核对具体失败回执，不自动重训或覆盖旧run。')
+    documents={}
+    for path,title in [('docs/START_HERE.md','共享入口'),('docs/current/PROJECT_STATUS.md','当前状态'),
+            ('docs/current/HANDOFF.md','当前交接'),('docs/current/NEXT_EXPERIMENT.md','下一步'),('docs/current/RESEARCH_DECISION.md','当前研究决定')]:
+        relative='../' if path=='docs/START_HERE.md' else '../../'
+        target=relative+prefix
+        documents[path]=(f'# {title}：M2-A服务器结果已归档\n\n'
+            f'运行：`{base.name}`；状态：`{summary["status"]}`。\n\n'
+            f'先读[结果报告]({target}/REPORT.md)、[汇总表]({target}/metrics.csv)、[完整门禁]({target}/gates.json)和[原件索引]({target}/server_evidence_index.json)。\n\n'
+            f'完成训练{summary["jobs_complete"]}/108，更新{summary["optimizer_updates"]}；评价{summary["evaluated_cases"]}/{summary["expected_cases"]}。\n\n'
+            f'门禁：{gate_text}。\n\n{next_action}\n\n'
+            '结果是Fit12同城开发CV，不构成独立城市泛化、统计显著性或新颖性的证明。M1幅度路线关闭；Val2/Test6/held4/final与另一篇点云不进入本轮。\n\n'
+            f'服务器目录：`{base}`。逐mask原件、完整辅助统计、端点和轨迹留服务器；通常只读上述小结果，不重复下载整包。GPU当前是否空闲仍需现场检查。\n')
+    return documents
 
 def existing_credential():
     for name in ['GH_TOKEN','GITHUB_TOKEN']:
@@ -79,7 +105,19 @@ def main(base):
         if state['commit'] is None:
             for attempt in range(4):
                 head=api.head();parent=api.call('GET','/repos/'+REPO+'/git/commits/'+head)
-                tree=api.call('POST','/repos/'+REPO+'/git/trees',dict(base_tree=parent['tree']['sha'],tree=entries))['sha']
+                current=api.call('GET','/repos/'+REPO+'/contents/docs/current/PROJECT_STATUS.md?ref='+head)
+                current_text=base64.b64decode(current['content']).decode('utf-8')
+                update_shared=may_refresh_shared(current['sha'],current_text,base.name)
+                attempt_entries=list(entries)
+                if update_shared:
+                    for path,content in shared_documents(base,summary,prefix).items():
+                        data=content.encode('utf-8');oid=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+                        if state['files'].get('shared:'+path)!=oid:
+                            result=api.call('POST','/repos/'+REPO+'/git/blobs',dict(encoding='base64',content=base64.b64encode(data).decode('ascii')))
+                            if result['sha']!=oid:raise RuntimeError('shared entry acknowledgment differs')
+                            state['files']['shared:'+path]=oid;c.write(checkpoint,state)
+                        attempt_entries.append(dict(path=path,mode='100644',type='blob',sha=oid))
+                tree=api.call('POST','/repos/'+REPO+'/git/trees',dict(base_tree=parent['tree']['sha'],tree=attempt_entries))['sha']
                 commit=api.call('POST','/repos/'+REPO+'/git/commits',dict(message='Publish Phase3-M2 server-checked compact results',tree=tree,parents=[head]))['sha']
                 if api.head()!=head:continue
                 try:api.call('PATCH','/repos/'+REPO+'/git/refs/heads/'+BRANCH,dict(sha=commit,force=False))
@@ -88,7 +126,7 @@ def main(base):
                     if observed!=commit:
                         if observed!=head:continue
                         raise
-                state['commit']=commit;c.write(checkpoint,state);break
+                state['commit']=commit;state['shared_entries_updated']=update_shared;c.write(checkpoint,state);break
             if state['commit'] is None:raise RuntimeError('branch advanced repeatedly; uploaded objects retained, no force push')
         # Only the small, user-readable results are downloaded once. The three
         # sufficient-count files are acknowledged by their Git object IDs.
@@ -98,7 +136,7 @@ def main(base):
             if base64.b64decode(row['content'])!=(publication/name).read_bytes():raise RuntimeError('small result readback differs')
         c.write(base/'github_upload_receipt.json',dict(commit=state['commit'],prefix=prefix,
             small_results_readback=True,count_objects_acknowledged=True,full_archive_downloaded=False,
-            files=state['files'],observed_at=c.now()))
+            shared_entries_updated=state.get('shared_entries_updated',False),files=state['files'],observed_at=c.now()))
         print('M2_GITHUB_RESULTS',state['commit'],'https://github.com/'+REPO+'/tree/'+state['commit']+'/'+prefix,flush=True)
 
 if __name__=='__main__':

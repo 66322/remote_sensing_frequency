@@ -6,7 +6,7 @@
 
 修订：DMix平均梯度系数归一化；G2增加DF−DClean≥0.2pp且每seed>0；H2在damaged与all分别≥0.3pp且每seed>0；G3四个保护项目的seed/tile作用域明确。裁剪训练掩码为明确的512版本，不冒充旧6000几何。详见执行合同。
 
-当前只有本地检查：15项中14通过、Linux FD传递1项待目标机。尚无M2服务器run/PID、地理fold或GPU可用回执。助手无SSH。用户执行固定commit bootstrap；GPU忙则不注册新run。仅物理0/1，UUID绑定，不触碰2–7或任何外来进程。
+当前只有本地检查：16项中15通过、Linux FD传递1项待目标机。尚无M2服务器run/PID、地理fold或GPU可用回执。助手无SSH。用户执行固定commit bootstrap；GPU忙则不注册新run。仅物理0/1，UUID绑定，不触碰2–7或任何外来进程。
 
 结果服务器自检后上传小报告、汇总CSV、门禁与三个fold的池化充分计数。原始逐mask计数/完整辅助统计/端点/轨迹留服务器。不再默认下载全部归档逐文件网络验收；网络失败仅续传，不重训。
 

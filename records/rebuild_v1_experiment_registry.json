@@ -2206,8 +2206,8 @@
       "server_run": null,
       "server_started": false,
       "local_tests": {
-        "run": 15,
-        "passed": 14,
+        "run": 16,
+        "passed": 15,
         "skipped": 1,
         "skip": "real Linux memfd process transfer deferred to target"
       },
