@@ -1,9 +1,9 @@
-# 共享入口：M2-A核心执行包已实现，尚未在服务器启动（2026-10-16）
+# 共享入口：后续研究问题与方法规划，M2-A尚未启动（2026-10-22）
 
-先读[当前状态](current/PROJECT_STATUS.md)、[交接](current/HANDOFF.md)、[下一步](current/NEXT_EXPERIMENT.md)、[研究决定](current/RESEARCH_DECISION.md)，再读[M2完整协议](protocols/PHASE3_M2_ERROR_CORRESPONDENCE_20261015.md)及[本轮具体执行修订](protocols/PHASE3_M2_EXECUTION_20261016.md)。
+先读[研究决定](current/RESEARCH_DECISION.md)、[交接](current/HANDOFF.md)、[当前状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)。本轮新增[研究选择与跨领域方法草案](experiments/POST_M2_RESEARCH_OPTIONS_20261022.md)，包括已有问题的新解法、最小对照、公开数据和去留条件；全部是建议，未成为新执行队列。
 
-用户授权按M2实现具体实验、修正问题、加速统计并精简结果交付。核心108×32k=345.6万更新不变。DMix尺度匹配、DF对DClean的融合比较、damaged证据和明确保护范围已落实。CPU最多32个fork进程，与双卡训练/推理流水并行；每次只保留一个tile的有限预测，不缓存整轮磁盘logits。
+用户明确：M2尚未运行；时间不限、研究问题和创新性优先，公开数据可更换。已有研究不自动否决选题，应考虑更好的建模和方法迁移。当前主线角色仍为RGB–DSM条件互补与退化/缺失分割，恢复为旁支；候选换题未自动取代主线。
 
-本地16项检查15通过，Linux真实跨进程FD检查待服务器。无M2 run/PID、现场GPU或真实fold回执，不能声称已启动。服务器由用户执行；仅GPU0/1，旧快照有vLLM占用，必须重新确认，绝不清理外来进程。
+M2-A代码已实现，核心108×32k=345.6万更新。设计与科学门禁以[M2完整协议](protocols/PHASE3_M2_ERROR_CORRESPONDENCE_20261015.md)及[执行修订](protocols/PHASE3_M2_EXECUTION_20261016.md)为准。本地16项检查15通过、1项Linux FD待服务器，无M2 run/PID、实际fold或现场CUDA回执。
 
-结果在服务器自检后上传报告、汇总表和三个fold充分计数，不例行下载重验整包。B90仍待A门禁与反向执行冻结；C81为预算储备，总279上限不变。M1幅度配方关闭，Val2/Test6/held4/final与另一篇点云均不进入本轮。
+服务器由用户执行，只用GPU0/1；2026-10-16忙碌是历史报告，当前空闲未知。本轮未启动、重跑或修改M2队列；B90仍条件扩展，C81预算储备。M1幅度配方关闭。Val2/Test6/held4/final不进入M2，另一篇点云研究独立。RAM有界处理，结果交付按服务器自检＋报告/CSV/充分计数，不恢复整轮磁盘缓存或例行全包下载。

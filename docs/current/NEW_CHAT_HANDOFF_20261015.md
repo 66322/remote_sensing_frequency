@@ -1,9 +1,9 @@
-# 新对话接续：M2长程设计完成，执行包待实现（2026-10-16）
+# 新对话接续入口：M2已实现未运行，后续方法规划已记录（更新2026-10-22）
 
-旧M1已完成并验收，本文早先的“M1执行包就绪/待启动”已过期，完整旧文已归档。不要再次运行M1 bootstrap/recovery。
+先读[研究决定](RESEARCH_DECISION.md)、[当前交接](HANDOFF.md)、[状态](PROJECT_STATUS.md)、[下一步](NEXT_EXPERIMENT.md)。本文件保留旧文件名作为跳转入口，原“M2执行包待实现”描述已经过期。
 
-请读[当前交接](HANDOFF.md)、[研究决定](RESEARCH_DECISION.md)、[下一步](NEXT_EXPERIMENT.md)及[M2完整设计](../protocols/PHASE3_M2_ERROR_CORRESPONDENCE_20261015.md)。
+M2-A已实现，核心108×32k；本地检查15通过、Linux FD检查1项待服务器。用户本轮明确尚未运行，无M2 run/PID或现场GPU回执。[设计](../protocols/PHASE3_M2_ERROR_CORRESPONDENCE_20261015.md)与[执行修订](../protocols/PHASE3_M2_EXECUTION_20261016.md)均需读，B/C不是自动就绪队列。
 
-M2是用户根据完成结果要求的新长程规划：GPU0/1、无时间硬截止；核心108×32k，研究错误对应性与可迁移补救，条件扩展总上限279×32k。当前DESIGN_RECORDED_NOT_IMPLEMENTED_NOT_LAUNCHED，无新执行提交或run；接下来实现新执行器和Fit12内部无标签分组锁。不要把计划清单当启动清单。
+用户最新讨论不受期限与现有公开数据限制，优先研究问题及创新性，并允许对已有问题采用更好或跨领域方法。[候选草案](../experiments/POST_M2_RESEARCH_OPTIONS_20261022.md)区分已验证事实、助手建议与尚未采纳的换题；未启动或改写M2实验。
 
-Test6/held4/final禁读，旧Val2不进入本轮，旧全Fit12微调权重不能泄漏进新外层模型/教师。所有服务器文件限zzx新run，RAM按消费者回收，原Phase2.4/M1负门禁保持。
+M1及Phase2.4既有结论保持，不恢复旧队列。主线仍为RGB–DSM条件互补与退化/缺失分割，恢复为旁支。Test6/held4/final封存，M2不读旧Val2，旧全Fit12微调模型不得进入新外层；服务器用户操作、仅GPU0/1、RAM有界处理、原件留zzx对应run。2026-10-16 GPU忙碌仅历史观测，当前资源未知。
