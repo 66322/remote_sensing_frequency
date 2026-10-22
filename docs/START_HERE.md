@@ -1,5 +1,7 @@
 # 共享入口：M2＋后续机制与新数据队列已写代码，尚未启动（2026-10-22）
 
+最新研究讨论：[跳出RGB–DSM的期刊线索与候选实验](experiments/REMOTE_SENSING_JOURNAL_OPTIONS_20261022.md)。新增建议涉及旧地图更新、地理标注选择和异步事件水域制图，尚未选为新主线或追加队列；本轮没有新运行结果。
+
 先读[研究决定](current/RESEARCH_DECISION.md)、[交接](current/HANDOFF.md)、[当前状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)，再读[合并队列执行合同](protocols/PHASE3_COMBINED_QUEUE_EXECUTION_20261022.md)、[M2完整协议](protocols/PHASE3_M2_ERROR_CORRESPONDENCE_20261015.md)和[M2执行修订](protocols/PHASE3_M2_EXECUTION_20261016.md)。[研究选择与跨领域方法草案](experiments/POST_M2_RESEARCH_OPTIONS_20261022.md)是候选来源，不等于各臂已得到正结果。
 
 用户确认 M2 尚未运行，要求将原 M2 与条件几何、表征对照以及新公开数据方向写成可一起启动的依赖队列。当前实现为 M2→J→R→T（3DCD）→V（P³），最多 228 作业/5,088,000 更新；由用户以后在服务器终端启动。未查询到实时 GPU 状态，未登记服务器运行或下载新数据。M2 原核心 108×32k 与科学门禁不变；B90/C81 仍独立条件扩展，不自动插入新队列。

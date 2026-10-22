@@ -7,3 +7,5 @@
 - 保护范围：旧 Val2、Test6、held4、final 和新数据公开 test 均封存；失败无自动重试或加种子。运行原件保留服务器，轻量报告/充分计数用于 GitHub 同步，结论需核验后再写。
 
 历史 M1 归档与验收不变；下游不使用旧全 Fit12 微调权重生成 outer-held4 模型。更早状态见 Git 历史及[研究草案](../experiments/POST_M2_RESEARCH_OPTIONS_20261022.md)。
+
+- 新研究讨论：2026-10-22补充：用户要求参考近期遥感期刊，拓宽RGB–DSM之外的研究。已形成[期刊线索与候选实验](../experiments/REMOTE_SENSING_JOURNAL_OPTIONS_20261022.md)，助手优先建议旧地图更新、地理标注选择、异步事件水域制图；均未选为新主线、未实现或入队。既定队列与门禁不变。

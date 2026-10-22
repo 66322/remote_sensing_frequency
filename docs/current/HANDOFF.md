@@ -1,11 +1,13 @@
-# 当前交接：M2＋后续机制和新数据队列代码就绪，尚未运行（2026-10-22）
+# 当前交接：合并队列待启动，新增期刊方向建议待选择（2026-10-22）
 
-事实来源是 GitHub `66322/remote_sensing_frequency` 的 `rebuild-v1-protocol-20260915` 分支。用户确认上一实验 M2 尚未跑，并要求把既定 M2、同数据的条件几何/表征对照及新公开数据方向写成一起启动的队列；服务器终端由用户操作，无 SSH。本次仅写代码、合同和轻量测试，未查询服务器实时状态、未下载新数据、未登记或启动训练。
+共享事实来源为 GitHub 66322/remote_sensing_frequency 的 rebuild-v1-protocol-20260915 分支。研究仍处可行性/机制筛选；RGB–DSM 条件互补及退化/缺失分割为当前主线，恢复旁支。M1幅度机制已按门禁关闭，M2没有运行结果。
 
-研究阶段仍为可行性/机制筛选。主线 RGB–DSM 条件互补与退化/缺失分割，恢复旁支。J/R 为主线的有限机制诊断；3DCD 高度变化 T 与 P³ 建筑对象 V 为独立探索，不自动改变论文方向，也不能从未经强基线对照的小网络结果声称创新。[研究决定](RESEARCH_DECISION.md)和[执行合同](../protocols/PHASE3_COMBINED_QUEUE_EXECUTION_20261022.md)给出角色、去留与证据边界。[原研究草案](../experiments/POST_M2_RESEARCH_OPTIONS_20261022.md)是候选来源。
+用户最新要求参考近期遥感期刊，主动探索RGB–DSM之外的方向。本轮完成[代表性文献扫描和候选实验](../experiments/REMOTE_SENSING_JOURNAL_OPTIONS_20261022.md)，助手建议优先考虑旧地图更新、地理标注选择、异步SAR–光学事件水域制图。它们改变任务/监督/部署条件，尚未成为用户选择的新主线或新增训练合同。此建议较此前几何路线优先更开放，来源是用户最新选题诉求，不是未运行M2的负结果。已排T/V不可重复算新增。
 
-执行链为原 M2（108×32k，原提交及门禁不改）→J（42×8k，冻结专家）→R（18×32k，公开初始化联合表征）→T（3DCD，30×12k）→V（P³，30×12k）。总计最多228作业/5,088,000更新，GPU0/1双通道串行阶段。仅 M2 G0 完整通过才能开始 J；J完整通过即可开始 R，不根据 J6 正负挑选。T/V 需要公开开发数据 catalog、三独立地理组、明确标签单位；catalog未就绪时状态 `WAIT_PUBLIC_DATA`。任一训练失败停止、不重试。原 B/C 仍未开放。
+当前执行状态不变：M2→J→R→T→V代码已实现，最多228作业/5,088,000更新，尚未登记或启动；未查询到服务器当前GPU状态，未下载新数据。执行代码提交仍是[90b9bbe](https://github.com/66322/remote_sensing_frequency/commit/90b9bbe8f4fe4777aa10b11aea48ddd572785a39)，本次仅文档更新。M2冻结提交ac325cdbb403ebb95b5eb0acbf17fffa5441dcfd，原108×32k及科学门禁不变；B90/C81仍未开放。
 
-代码入口 `scripts/bootstrap_phase3_combined.py`（固定完整提交下载并核对 SHA）、`scripts/control_phase3_combined.py`（单队列控制器），`scripts/phase3_j_runtime.py`、`scripts/phase3_r_runtime.py`、`scripts/phase3_public_runtime.py`，配置 `configs/phase3_combined_plan.json`。运行目录全部位于 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records`。启动命令、状态文件和停止条件见执行合同。实际执行提交 SHA 以本次 GitHub 提交链接为准，不能将本交接里的 M2 冻结提交误作新队列提交。
+[合并队列执行合同](../protocols/PHASE3_COMBINED_QUEUE_EXECUTION_20261022.md)保留原启动/inspect流程。服务器由用户终端执行，无SSH；只用物理GPU0/1。M2 G0完整通过才开始J，后段依赖完整性而非挑选正结果。T/V需要独立公开开发数据和有效catalog，缺数据为WAIT_PUBLIC_DATA；失败停止，无自动重试或加种子。CPU单元测试只证明接口/小样本数据流，未完成真实数据和Linux CUDA运行验证。
 
-证据边界：本地 CPU 单元测试与静态检查可证明接口及小样本数据流；尚无 Linux 双 GPU、真实 3DCD/P³ 样本、运行时/显存或科学结果验证。旧 Val2/Test6/held4/final 和公开 test 均封存；公开数据输入位置与标签值不能由模板猜测。后续先由用户做现场 inspect 与数据预检，再启动一次，完成后核验所有端点/指标/轨迹，重要结论写回 GitHub 并回读。
+新建议的下一不确定性：旧图是否提供可用增量且不会抹掉真实变化；地理覆盖是否已解释低标注收益；异步数据是否有可靠时间真值和足够事件差异。候选先核验数据与强基线，后选一条进入长程研究，不自动把A/B/C全加入现有队列。DynamicEarthNet补全产品不能直接证明真实在线性，EVLab标签仅新增开发地，水域标签不能自动等同洪水新增淹没；详见候选报告。
+
+旧Val2/Test6/held4/final及新数据公开test继续封存。未来运行原件与执行快照全部保存于/home/jovyan/zzx独立目录，中间数据有界内存处理。结束后先核验轻量原件、统计与轨迹，再形成结论并同步GitHub回读。[上一交接已归档](../history/HANDOFF_20261022_BEFORE_JOURNAL_OPTIONS.md)。
