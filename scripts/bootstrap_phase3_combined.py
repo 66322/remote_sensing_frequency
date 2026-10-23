@@ -21,6 +21,46 @@ def download(commit,path):
         return response.read()
 
 
+def require_target_runtime(torch_module=None):
+    if torch_module is None:
+        import torch as torch_module
+    if torch_module.__version__ != "2.2.2+cu121":
+        raise RuntimeError("frozen Torch2.2.2+cu121 required before registration; observed "
+                           + str(torch_module.__version__))
+    if not torch_module.cuda.is_available():
+        raise RuntimeError("CUDA unavailable; no combined run registered")
+    return {"torch":str(torch_module.__version__),"cuda_available":True,
+            "python":sys.executable}
+
+
+def prepare_package(package, commit):
+    """Materialize exactly the downloaded payload, including its non-self-hashed manifest."""
+    package = Path(package)
+    manifest_data = download(commit,"configs/phase3_combined_execution_manifest.json")
+    manifest = json.loads(manifest_data)
+    if manifest["schema_version"] != 1:
+        raise RuntimeError("combined manifest schema mismatch")
+    package.mkdir(parents=True,exist_ok=True)
+    manifest_path = package/"configs/phase3_combined_execution_manifest.json"
+    manifest_path.parent.mkdir(parents=True,exist_ok=True)
+    if manifest_path.exists():
+        if manifest_path.read_bytes() != manifest_data:
+            raise RuntimeError("existing package manifest changed; preserve for inspection")
+    else:
+        manifest_path.write_bytes(manifest_data)
+    for name,expected in manifest["files"].items():
+        target=(package/name).resolve();target.relative_to(package.resolve())
+        if target.exists():
+            if sha(target.read_bytes())!=expected:
+                raise RuntimeError("existing package source changed: "+name)
+            continue
+        data=download(commit,name)
+        if sha(data)!=expected:raise RuntimeError("downloaded source mismatch: "+name)
+        target.parent.mkdir(parents=True,exist_ok=True)
+        target.write_bytes(data)
+    return manifest,sha(manifest_data)
+
+
 def main():
     import fcntl
     p=argparse.ArgumentParser()
@@ -41,23 +81,11 @@ def main():
             "combined_runs":[str(v) for v in sorted(records.glob("research_phase3_combined_*"))],
             "catalog_path":str(catalog),"catalog_present":catalog.is_file()},ensure_ascii=False))
         return
-    manifest=json.loads(download(args.commit,"configs/phase3_combined_execution_manifest.json"))
-    if manifest["schema_version"]!=1:
-        raise RuntimeError("combined manifest schema mismatch")
+    print("COMBINED_RUNTIME_CHECK",json.dumps(require_target_runtime()),flush=True)
     package=records/("phase3_combined_package_"+args.commit)
-    package.mkdir(exist_ok=True)
     with (records/"phase3_combined_registration.lock").open("a") as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-        for name,expected in manifest["files"].items():
-            target=(package/name).resolve();target.relative_to(package.resolve())
-            if target.exists():
-                if sha(target.read_bytes())!=expected:
-                    raise RuntimeError("existing package source changed: "+name)
-                continue
-            data=download(args.commit,name)
-            if sha(data)!=expected:raise RuntimeError("downloaded source mismatch: "+name)
-            target.parent.mkdir(parents=True,exist_ok=True)
-            target.write_bytes(data)
+        manifest,manifest_digest=prepare_package(package,args.commit)
         sys.path[:0]=[str(package),str(package/"scripts")]
         from phase3_combined_plan import validate_plan, admissible_path, public_catalog_status
         plan=read(package/"configs/phase3_combined_plan.json")
@@ -92,7 +120,7 @@ def main():
         (queue/"plan.json").write_text(json.dumps(plan,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
         (queue/"registration.json").write_text(json.dumps({
             "execution_commit":args.commit,"catalog_source":str(catalog),
-            "manifest_sha256":sha(download(args.commit,"configs/phase3_combined_execution_manifest.json")),
+            "manifest_sha256":manifest_digest,
             "package_files":manifest["files"],"registered_at":stamp,
             "auto_retry":False,"test_release":False},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
         with (queue/"nohup.log").open("x",encoding="utf-8") as output:

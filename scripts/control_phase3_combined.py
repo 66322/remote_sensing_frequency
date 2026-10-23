@@ -20,7 +20,13 @@ def now():
 
 
 def _verify_package(queue):
-    files=read(queue/"registration.json")["package_files"]
+    registration=read(queue/"registration.json")
+    manifest_path=queue/"code/configs/phase3_combined_execution_manifest.json"
+    if digest(manifest_path)!=registration["manifest_sha256"]:
+        raise RuntimeError("combined execution manifest changed")
+    files=registration["package_files"]
+    if read(manifest_path)["files"]!=files:
+        raise RuntimeError("combined execution manifest payload differs from registration")
     for name,expected in files.items():
         path=(queue/"code"/name).resolve()
         path.relative_to((queue/"code").resolve())
