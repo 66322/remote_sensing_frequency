@@ -1,5 +1,7 @@
 # Phase3 M2＋后续机制与新数据合并队列（代码就绪，尚未启动）
 
+2026-10-23启动前修复：执行代码改用 `e65c6cb0830985461b3cd30e2f43158dd3d858cb`。90b9bbe的下载包遗漏执行清单，用户目标检查在队列登记前失败；新入口保存并绑定清单，提前检查冻结Torch版本。见[故障及证据](../experiments/PHASE3_COMBINED_BOOTSTRAP_FIX_20261023.md)。M2冻结提交、作业数、模型及科学门禁均不变。
+
 ## 目的与边界
 
 这是一条供用户以后在服务器终端启动的队列，不代表任何实验已运行。主线仍是 RGB–DSM 双向条件互补与退化/缺失分割；恢复只作为历史旁支。执行顺序是 M2→J→R→T→V，总计最多 228 个训练作业、5,088,000 次优化器更新。M2 原 108×32k 作业及其科学门禁不改；M2-B/C 仍为独立未开放合同。GPU 仅使用物理 0/1，无 24 小时截止。任何阶段失败即停止，不自动重跑失败配方、不补种子。
@@ -30,10 +32,22 @@ T/V 是**探索性方法迁移**，共同采用小型编码解码器与匹配预
 
 ## 登记与观察
 
+必须使用Torch `2.2.2+cu121`，不能只以CUDA可用为准。用户2026-10-23预检环境为 `2.1.2+cu121`，应准备独立环境，避免改动其他实验环境。以下新建命令只执行一次，全部成功后再登记：
+
+```bash
+conda create -y -n remote_sensing_phase3 python=3.9 pip &&
+conda activate remote_sensing_phase3 &&
+python -m pip install torch==2.2.2 torchvision==0.17.2 torchaudio==2.2.2 --index-url https://download.pytorch.org/whl/cu121 &&
+python -m pip install 'numpy<2' scipy Pillow tifffile PyYAML rasterio 'laspy[lazrs]' pyproj &&
+python -c 'import sys,torch; print(sys.executable,torch.__version__,torch.cuda.is_available()); assert torch.__version__=="2.2.2+cu121" and torch.cuda.is_available()'
+```
+
+PyTorch组合依据[官方历史版本说明](https://pytorch.org/get-started/previous-versions/#v222)。其他依赖实际安装版本应随服务器环境记录保留；本地CPU检查不替代目标Linux/CUDA验收。
+
 在服务器终端、数据准备后或准备中，使用最终提交的完整 40 位 SHA（见本次交接中的提交链接）：
 
 ```bash
-COMMIT='<本次合并队列提交的完整40位SHA>'
+COMMIT='e65c6cb0830985461b3cd30e2f43158dd3d858cb'
 CATALOG='/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/phase3_combined_public_catalog.json'
 curl -fsSL "https://raw.githubusercontent.com/66322/remote_sensing_frequency/${COMMIT}/scripts/bootstrap_phase3_combined.py" | python - --root /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro --commit "$COMMIT" --catalog "$CATALOG" --inspect
 ```

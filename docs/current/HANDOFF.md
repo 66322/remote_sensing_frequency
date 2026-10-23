@@ -1,17 +1,13 @@
-# 当前交接：保留原队列，独立论证连续地图维护（2026-10-23）
+# 当前交接：合并队列启动前失败已修复，待正确环境登记（2026-10-23）
 
-共享事实来源为 GitHub 66322/remote_sensing_frequency 的 rebuild-v1-protocol-20260915 分支。研究仍处可行性/机制筛选；RGB–DSM 条件互补及退化/缺失分割为当前主线，恢复旁支。M1幅度机制已按门禁关闭，尚无M2运行结果回执。
+共享来源为GitHub rebuild-v1-protocol-20260915。当前主线RGB–DSM条件互补/退化缺失分割，恢复旁支；独立[连续地图维护选题](../experiments/INDEPENDENT_RESEARCH_ROUTE_20261023.md)仍为助手建议，未实现或训练。
 
-用户最新要求“之前的可以继续研究，现在是寻找一条新的可行研究路线”。本轮在[上一轮期刊候选](../experiments/REMOTE_SENSING_JOURNAL_OPTIONS_20261022.md)基础上，完成[连续地图维护研究方案](../experiments/INDEPENDENT_RESEARCH_ROUTE_20261023.md)。助手优先建议研究月度建筑地图连续更新时的错误恢复与真实变化发现；不是用户已认定的新主线，也不是已验证创新。理由是公开多期标签可直接检验错误持续与发现延迟，最近邻与简单对照明确；不是因为未运行M2得到负结果。
+用户已尝试按90b9bbe启动合并队列。终端证据显示：最后GPU观测2026-10-23 21:52:05+08:00，物理0/1为H10080GB且ready=true；M2影像头预检及地理分折通过、未读标签；此前inspect无M2/合并目录，公开catalog不存在。随后启动前目标检查因缺执行清单失败，尚无正式队列/训练注册成功回执。不能把旧资源观测写成实时状态。
 
-本轮仅文献、公开目录/源码核查与研究设计，无新路线代码、数据验包或训练。SpaceNet7候选仅是月度产品前缀的回顾模拟，不称真实在线。MapFormer须适配为当前地图输出，不能误用物理变化标签纠正错误先验；ContUrbanCD及滤波是强近邻。首轮建议B1独立重建/B3递归更新与B2后处理，随后按结果扩展暴露训练及证据—状态维护；详细对照、预算和停止条件在方案中。
+[故障与修复记录](../experiments/PHASE3_COMBINED_BOOTSTRAP_FIX_20261023.md)保存用户粘贴终端副本及CPU验证回执。根因是下载包遗漏其清单；已修复落盘、绑定和篡改检查，独立无.git下载包11项CPU检查通过。助手此前检查遗漏准确Torch版本：服务器2.1.2+cu121不符合冻结2.2.2+cu121；修复版在登记前拒绝错误环境。尚未完成目标Linux/CUDA验证。
 
-尚未采纳：普通融合、四种编辑操作、scheduled sampling或HMM直接改名为原创；无需验证即把新方向追加队列；宣称完整监督结果证明少标签能力。少量核验纠正非随机漏标保留备选。C2S-MS目录和README审计发现时差与事件身份绑定，SAR标签参考光学，故异步时间错配机制暂缓为优先候选；不是封禁普通跨事件水域预测。
+当前合并执行代码固定[e65c6cb](https://github.com/66322/remote_sensing_frequency/commit/e65c6cb0830985461b3cd30e2f43158dd3d858cb)；替代90b9bbe的打包/前置检查。M2仍固定ac325cdbb403ebb95b5eb0acbf17fffa5441dcfd，108×32k不变；J42/R18/T30/V30、总228作业/5,088,000更新及科学门禁不变。T/V数据/catalog尚未准备，B90/C81未开放。
 
-执行记录不变：M2→J→R→T→V代码已实现，最多228作业/5,088,000更新；最后用户确认尚未跑，本轮未收到启动回执、未查询实时GPU。执行代码仍是[90b9bbe](https://github.com/66322/remote_sensing_frequency/commit/90b9bbe8f4fe4777aa10b11aea48ddd572785a39)。M2冻结ac325cdbb403ebb95b5eb0acbf17fffa5441dcfd，108×32k及科学门禁不变，B90/C81未开放。T/V真实公开数据和catalog仍待准备，没有Linux CUDA验证回执。
+立即下一步：用户在服务器新建独立remote_sensing_phase3环境，安装Torch2.2.2+cu121对应依赖；新提交bootstrap先inspect无重复队列后后台登记一次。保留旧包和失败日志，不修改旧冻结包，不单独再启动M2；不是重跑失败科学作业。失败不自动重试；缺公开数据在后段WAIT_PUBLIC_DATA。详见[执行协议](../protocols/PHASE3_COMBINED_QUEUE_EXECUTION_20261022.md)。
 
-[合并队列执行合同](../protocols/PHASE3_COMBINED_QUEUE_EXECUTION_20261022.md)保留inspect及用户现场启动流程。无SSH；只用物理GPU0/1。M2 G0通过后开始J，后段按完整性而非挑正结果运行；失败停止，无自动重试/加种子，缺新数据为WAIT_PUBLIC_DATA。独立新路线不作为原队列的新前置。
-
-下一不确定性：自然错误是否真的存在长期保留；简单迟滞/强证据重置是否已解决；拟议机制是否优于同样rollout训练。若无可改善残差则关闭该机制，不扩张长队列。新路线数据与执行合同尚未实现；先完成数据清单、地理划分及首轮基线，不把计划写成运行。
-
-旧Val2/Test6/held4/final及新数据公开test继续封存。未来原件与快照保存在/home/jovyan/zzx独立目录，中间数据有界内存处理。重要结论同步GitHub并回读。[上一交接归档](../history/HANDOFF_20261023_BEFORE_NEW_ROUTE.md)。
+服务器由用户操作，无SSH，只用物理GPU0/1；现场再次检查外来占用。旧Val2/Test6/held4/final与新数据公开test封存。未来原件放/home/jovyan/zzx独立目录，中间数据有界内存回收。新选题不作为原队列前置。重要记录同步GitHub并回读；[修复前交接](../history/HANDOFF_20261023_BEFORE_BOOTSTRAP_FIX.md)已归档。

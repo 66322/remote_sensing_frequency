@@ -1,11 +1,10 @@
-# 下一步：现场核验并由用户启动一次性合并队列（2026-10-23）
+# 下一步：准备冻结环境，用修复入口登记合并队列（2026-10-23）
 
-1. 先读[合并队列执行合同](../protocols/PHASE3_COMBINED_QUEUE_EXECUTION_20261022.md)与[M2执行修订](../protocols/PHASE3_M2_EXECUTION_20261016.md)，核对服务器现有 M2/合并运行目录及物理 GPU0/1 当前状态。历史资源输出不是实时状态。使用最终提交的 `bootstrap_phase3_combined.py --inspect` 只读核验；若已有队列，不重复登记。
-2. 用户在服务器终端准备目标 PyTorch/CUDA 环境后，按执行合同登记单一队列。M2 原108×32k先行，G0失败或作业失败即停止；J42和R18只在前段完整性通过后运行。M2-B/C不自动排入。
-3. 3DCD/P³ 官方数据下载与 catalog 可并行准备。先核对2D/3D标签编码、DSM单位、三个不重叠地理开发组、P³ RGB/点云/COCO image_id 绑定；只把开发源路径列入 catalog。队列在 `WAIT_PUBLIC_DATA` 等候，不冒充已完成或自动跳过新数据方向。
-4. 每段完成先核验作业数、端点与指标 SHA、逐 tile 原始计数、样本流及训练轨迹，再依据预登记判据分析正负结果。T/V 是探索，论文主张前必须补成熟基线和独立确认。重要结论及下一步同步 GitHub 同分支并回读。
-
-不访问旧 Val2/Test6/held4/final 或新数据公开 test，不自动加 seed/重跑，不恢复整轮磁盘 logits 缓存。服务器运行由用户执行；本轮尚未启动。
+1. 不重复M1审计或改动旧包。已有用户回执证明M2影像头预检通过；90b9bbe合并调用因漏存执行清单在登记前停止。先保留失败日志与旧包，详见[修复记录](../experiments/PHASE3_COMBINED_BOOTSTRAP_FIX_20261023.md)。
+2. 在服务器新建独立remote_sensing_phase3（Python3.9）环境，安装冻结Torch2.2.2+cu121及对应torchvision0.17.2/torchaudio2.2.2、numpy<2与所需依赖。原remote_sensing为2.1.2，不能直接登记。用户GPU0/1授权持续有效，现场再次检查占用。
+3. 使用完整执行提交e65c6cb0830985461b3cd30e2f43158dd3d858cb下载bootstrap_phase3_combined.py；先--inspect核对没有已有合并队列，再用nohup后台登记一次。不要单独启动M2；新bootstrap在登记前检查准确Torch版本和CUDA，M2仍从ac325cdbb403ebb95b5eb0acbf17fffa5441dcfd启动，原门禁不改。
+4. 查看启动日志中的COMBINED_REGISTERED及实际目录queue_status.json/m2_bootstrap.log；没有这些回执不称已训练。首次真实目标检查失败则保留现场，不自动重试。M2 G0通过后J/R按完整性运行。
+5. 3DCD/P³数据和catalog可并行准备，缺数据在后段WAIT_PUBLIC_DATA。公开test及旧Val2/Test6/held4/final封存，失败无自动重跑/加种子，全部原件在/home/jovyan/zzx；阶段完成核验原件与轨迹再分析并同步GitHub。
 
 ## 独立新路线的下一步
 
