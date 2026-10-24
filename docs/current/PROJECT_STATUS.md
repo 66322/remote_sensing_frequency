@@ -8,3 +8,5 @@
 - 当前继续已有队列，按[只读查看指南](../protocols/PHASE3_PROGRESS_AND_RESULTS.md)观察后续轨迹/首折完整评价，不再次启动、修复或删除回执，不自动重跑/补seed。GPU0/1、有界内存、test封存及用户执行无SSH保持。
 - [长期启动规则](../protocols/STARTUP_DELIVERY_AND_FAILURE_CONTROL.md)继续生效；本轮无新训练或环境/运行代码修改。结束验收全部端点、原始整数计数、轨迹及额外修订材料，再整理轻量同步。
 - 最新指标读取2026-10-24 23:39:19+08:00：[F0 seed42首张32k clean表](../experiments/PHASE3_M2_INTERIM_F0_S42_20261024T233919.md)。七个DSM臂四tile齐全，D0 nb fg5=62.9713%，DF=62.3730%（-0.5983pp），六个改动臂均未超过D0；暂未显示clean单模态增益。不是完整条件补救/融合面板或G1–G4判定；23:39没有刷新进程/GPU和全队列状态。汇总器目标读取成功，仅汇总已有计数，未重训或重新推理。
+
+- 2026-10-25[种子/吞吐规范落实复盘](../experiments/PHASE3_PLANNING_POLICY_AUDIT_20261025.md)：旧规则已存在但未完整落实，已补根/稳定入口和准备表。不是新实验结果或运行采样；当前108/三seed未缩减，GPU候选瓶颈仅代码定位、未目标profiling或优化。

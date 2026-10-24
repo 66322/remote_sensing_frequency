@@ -2,6 +2,8 @@
 
 长期必读：[仓库AGENTS](../AGENTS.md)、[稳定新对话入口](current/NEW_CHAT_HANDOFF.md)、[跨对话执行约定](protocols/EXECUTION_CONTRACT.md)。2026-10-24用户已将[启动交付与故障控制](protocols/STARTUP_DELIVERY_AND_FAILURE_CONTROL.md)确立为长期要求：真实包/分包布局验证、目标兼容路径、首败停止、未变检查复用。换对话不重新启动或补跑审计；日期入口只跳转当前文件。
 
+规划长期必读：[实验规划规范](protocols/EXPERIMENT_PLANNING_RULES.md)。探索默认单种子，必要重复通常先两个，三及以上说明两个不足的具体问题和额外成本；真实训练/评价吞吐须有证据。用户2026-10-25再次指出旧要求未落实，[本次复盘](experiments/PHASE3_PLANNING_POLICY_AUDIT_20261025.md)确认规则已存在但入口/计划落实遗漏。已补入口与准备表；尚未缩减服务器三种子队列或完成GPU profiling/提速，没有新增运行观测。
+
 最新运行记录：[M2 17/108进度与解释](experiments/PHASE3_M2_PROGRESS_20261024T224933.md)。最后服务器观测2026-10-24 22:49:33+08:00：M2 RUNNING，控制器报告完成17/108训练作业、失败/阻断0，19个作业有progress；GPU0 F0_s17_DShuffle为16600/32000，GPU1 F0_s17_DEntropy为11420/32000。两控制器及两GPU worker存活，合并WAIT_M2。当前完整故障面板counted_cases=0、evaluation=null，尚无M2阶段summary。这是最后观测，不是实时状态或完整科学验收。 当前继续既定队列，仅只读查询，不重启或修复。
 
 最新研究方案：[连续建筑地图维护中的错误恢复与变化发现](experiments/INDEPENDENT_RESEARCH_ROUTE_20261023.md)。用户要求保留既有研究并寻找独立新路线；助手将旧地图候选细化为优先验证方向，尚未实现、运行或确认为新主线。少量核验纠正漏标保留备选，异步水域时间错配候选依据元数据审计降级。[前一轮期刊扫描](experiments/REMOTE_SENSING_JOURNAL_OPTIONS_20261022.md)保留为来源。

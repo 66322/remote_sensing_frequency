@@ -10,6 +10,12 @@
 - 助手没有服务器直连；用户执行服务器命令。短输出给必要状态，长输出通过已有轻量上传入口写回GitHub；后台计算不依赖交互式Git认证，完成后需要时前台上传。
 - GitHub分支 rebuild-v1-protocol-20260915 为跨电脑记录权威；本地缓存不能覆盖新记录。
 
+## 新计划的种子与吞吐前置
+
+立项/排队前必读[实验规划规范](EXPERIMENT_PLANNING_RULES.md)，按[准备表](../templates/EXPERIMENT_PREFLIGHT_TEMPLATE.md)记录：探索默认单种子，必要重复通常先两个，三及以上说明两个不能回答的问题与额外成本；真实训练/评价吞吐证据及待测项。资源充足、时间不限或保持卡忙不是扩种子理由。整体秒/步、CPU进程数或显存余量不等于完成GPU优化。
+
+要求用于新计划及实质改动；已有运行仅读接续不因此新增检查或重启。用户提出预算修订时同步依赖和判定，不热改或删证据。
+
 ## 新对话直接接续
 
 先读远端 START_HERE、current/RESEARCH_DECISION、current/HANDOFF、current/PROJECT_STATUS、current/NEXT_EXPERIMENT 及本约定；稳定跳转为[current/NEW_CHAT_HANDOFF.md](../current/NEW_CHAT_HANDOFF.md)，再按当前任务进入对应协议/原证据。先说明当前实验回答什么、已做到哪里、唯一下一步是什么。读取文件不是重新执行实验。

@@ -6,6 +6,7 @@
 
 - 权威共享分支为 GitHub `66322/remote_sensing_frequency` 的 `rebuild-v1-protocol-20260915`；本地仅工作副本，不以main或旧提交代替最新共享记录。
 - 开始任务先读远端 `docs/START_HERE.md`、`docs/current/RESEARCH_DECISION.md`、`docs/current/HANDOFF.md`、`docs/current/PROJECT_STATUS.md`、`docs/current/NEXT_EXPERIMENT.md`；稳定新对话入口为 `docs/current/NEW_CHAT_HANDOFF.md`，日期命名入口仅跳转。
+- 新实验立项、排队及计算配置改动前，必读 `docs/protocols/EXPERIMENT_PLANNING_RULES.md`；使用 `docs/templates/EXPERIMENT_PREFLIGHT_TEMPLATE.md` 记录种子必要性/成本和真实吞吐证据，不只检查能否启动。
 - 必读长期执行约定 `docs/protocols/EXECUTION_CONTRACT.md`。开发、打包、修复或交付实验启动链时，再按 `docs/protocols/STARTUP_DELIVERY_AND_FAILURE_CONTROL.md` 执行；接续当前运行时先复用其中对应的已验证绑定。
 - 原始运行证据优先于摘要；状态始终注明最后观测时间。代码实现、本地检查、目标检查、真实优化更新、完整阶段验收、GitHub同步分别报告，不以测试项数或启动器Done替代训练成功。
 
@@ -17,6 +18,12 @@
 - 共性导入/依赖/模型构造/IPC等工程失败必须停止后续派发并保留首个原栈；不只禁止同一ID重试却继续整批失败。失败不自动重跑、加种子或改配方；已有明确授权按原范围接续，不反复询问。
 - 先明确已有run、控制器归属和启动回执；不删锁/单次回执绕过重复保护，不因终端断线或旧PID文件重启。修复不得热改正在执行的冻结源码，不覆盖旧失败证据。
 - 发布前说明每阶段数据是否具备、输出路径、保留/回收内容、上传覆盖与停止条件；候选方案不等于已入队，代码已实现不等于真实数据已验收。
+
+## 种子预算与实际吞吐
+
+- 探索默认单seed42；需要随机重复通常先42/17两个。三及以上事前说明两个不足的具体原因、额外作业/更新/耗时及决定来源；资源充足、时间不限或笼统更稳健不是单独理由，不自动扩种子。
+- 新入口/模型复用或补齐真实训练与评价吞吐证据，区分数据等待、搬运、教师/学生计算、同步和评价。低GPU利用率要定位追踪，不凭瞬时数值归因；CPU并行或RAM预取不等于训练已优化。
+- 现有运行不热改，不因补规范重启或新增探针。用户决定缩减预算/改执行版本时，明确修订依赖和判定、保留全部旧结果与证据，不按成绩挑种子。
 
 ## 研究、资源与记录边界
 
