@@ -1,10 +1,10 @@
-# 下一步：M2原始失败取证，不重启（2026-10-24）
+# 下一步：原环境运行CPU DINO兼容预检，不重试训练（2026-10-24）
 
-1. 最后观测08:38:13：M2 INCOMPLETE_NO_RETRY、合并STOPPED_NO_AUTOMATIC_RETRY，两PID均defunct，GPU0/1空闲；12/12输入准备及memfd/原16项检查通过。
-2. 只读publication/summary.json的jobs_complete/expected、完整端点optimizer_updates、errors/failures，按不同error取最早failure完整traceback；结合jobs/*/progress.json与trajectory.jsonl确认真实更新情况。
-3. 当前nohup尾部不含原始作业错误，不能据此归咎xFormers。G0关闭时性能门禁不能当作科学阴性；合并错误是下游停止，认证不可用为上传问题。
-4. 不运行bootstrap或repair --apply、不改包或重跑失败配方，保留旧目录、源码和失败。若需新尝试，先明确新执行合同与失败保留。
-5. 该轮publication未自动上传，后续取回轻量原件与轨迹再验收，不索取token。test封存、GPU0/1及有界内存不变。
+1. 根因已由用户原始栈定位：Python3.9对DINO attention.py的float | None注解求值失败；0/108完整端点、63同类错误、无progress，尚待预检核验全部失败都在模型导入前。
+2. 依[诊断协议](../experiments/PHASE3_M2_PY39_IMPORT_FAILURE_20261024.md)下载固定提交86806140400620cc64af4728bc8c2af7cdcb69db中的preflight_phase3_dino_py39.py，在原M2目录执行。生成带哈希的延迟注解副本，CPU严格加载公共权重及MatchedExpert。预计1–2GiB主存、单数值线程、模型子进程最长180秒；不读数据集、不使用GPU、不做前向/反传/更新。
+3. 读取CPU_PREFLIGHT_PASSED_NO_TRAINING_OR_RETRY和新repairs/dino_py39_preflight_*中的CPU回执；失败读该目录cpu_model.log/preflight_failure.json，不自动重试。服务器预检尚未通过，不承诺CUDA训练链可运行。
+4. 原M2和合并仍停止，原失败/源码/绑定保留；不执行旧bootstrap或memfd --apply。用户禁止自动重跑失败配方，不能以CPU通过隐含重启63个失败作业。后续若明确允许工程修订后尝试，再准备新的执行合同及实际M2/J/R适配和门禁，不覆盖旧失败。
+5. 不将G0关闭后的性能False当作研究阴性；原件/轨迹验收和上传仍待完成。test、GPU0/1、有界内存规则不变。
 
 ## 独立新路线的下一步
 

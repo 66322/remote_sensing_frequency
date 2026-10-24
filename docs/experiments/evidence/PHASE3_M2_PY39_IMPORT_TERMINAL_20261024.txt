@@ -1,0 +1,60 @@
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ M2=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330
+
+python - "$M2" <<'PY'
+import sys, json
+from pathlib import Path
+from collections import Counter
+
+base = Path(sys.argv[1])
+summary = base / "publication/summary.json"
+if summary.exists():
+    s = json.loads(summary.read_text())
+    print("\n=== 完整性汇总 ===")
+    for key in ("status", "jobs_complete", "jobs_expected",
+                "optimizer_updates", "evaluated_cases", "expected_cases"):
+        print(key, ":", s.get(key))
+    print("errors前12条:", s.get("errors", [])[:12])
+    print("失败类别:", dict(Counter(
+        str(x.get("error")) for x in s.get("failures", []))))
+
+files = sorted((base / "failures").glob("*.json"),
+               key=lambda p: p.stat().st_mtime)
+print("\n=== 失败文件数量 ===", len(files))
+seen = set()
+for p in files:
+    row = json.loads(p.read_text())
+    error = str(row.get("error"))
+    if error in seen:
+        continue
+    seen.add(error)
+    print("\n=== 原始失败:", p.name, "===")
+    print(json.dumps(row, ensure_ascii=False, indent=2))
+    if len(seen) >= 4:
+        break
+
+progress = sorted((base / "jobs").glob("*/progress.json"),
+PY  print(p.parent.name, p.read_text()) len(progress))
+
+=== 完整性汇总 ===
+status : INCOMPLETE_NO_RETRY
+jobs_complete : 0
+jobs_expected : 108
+optimizer_updates : 0
+evaluated_cases : 0
+expected_cases : 77868
+errors前12条: ['missing endpoint: F0_s42_R', 'missing endpoint: F0_s42_T0', 'missing endpoint: F0_s42_T1', 'missing endpoint: F0_s42_T2', 'missing endpoint: F0_s42_T3', 'missing endpoint: F0_s42_D0', 'missing endpoint: F0_s42_DSelf', 'missing endpoint: F0_s42_DClean', 'missing endpoint: F0_s42_DF', 'missing endpoint: F0_s42_DShuffle', 'missing endpoint: F0_s42_DEntropy', 'missing endpoint: F0_s42_DMix']
+失败类别: {"unsupported operand type(s) for |: 'type' and 'NoneType'": 63}
+
+=== 失败文件数量 === 63
+
+=== 原始失败: T_F0_s42_T1.json ===
+{
+  "task_id": "T_F0_s42_T1",
+  "error": "unsupported operand type(s) for |: 'type' and 'NoneType'",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330/code/scripts/phase3_m2_runtime.py\", line 213, in worker\n    cache.clear();gc.collect();torch.cuda.empty_cache();train(base,gpu,task['job'],events,acks,uuid)\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330/code/scripts/phase3_m2_runtime.py\", line 84, in train\n    model=make_model(base,job); initial=model_digest(model); opt=optimizer(model,32000)\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330/code/scripts/phase3_m2_runtime.py\", line 20, in make_model\n    encoder=torch.hub.load(source['repository'],'dinov2_vits14',source='local',pretrained=False)\n  File \"/home/jovyan/miniconda3/envs/remote_sensing/lib/python3.9/site-packages/torch/hub.py\", line 566, in load\n    model = _load_local(repo_or_dir, model, *args, **kwargs)\n  File \"/home/jovyan/miniconda3/envs/remote_sensing/lib/python3.9/site-packages/torch/hub.py\", line 595, in _load_local\n    model = entry(*args, **kwargs)\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/hub/backbones.py\", line 84, in dinov2_vits14\n    return _make_dinov2_model(arch_name=\"vit_small\", pretrained=pretrained, weights=weights, **kwargs)\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/hub/backbones.py\", line 47, in _make_dinov2_model\n    from ..models import vision_transformer as vits\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/models/__init__.py\", line 8, in <module>\n    from . import vision_transformer as vits\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/models/vision_transformer.py\", line 21, in <module>\n    from dinov2.layers import Mlp, PatchEmbed, SwiGLUFFNFused, MemEffAttention, NestedTensorBlock as Block\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/__init__.py\", line 11, in <module>\n    from .block import NestedTensorBlock, CausalAttentionBlock\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/block.py\", line 18, in <module>\n    from .attention import Attention, MemEffAttention\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py\", line 36, in <module>\n    class Attention(nn.Module):\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py\", line 58, in Attention\n    self, init_attn_std: float | None = None, init_proj_std: float | None = None, factor: float = 1.0\nTypeError: unsupported operand type(s) for |: 'type' and 'NoneType'\n",
+  "automatic_retry": false,
+  "observed_at": "2026-10-24T08:35:42.732426+08:00"
+}
+
+=== 已有更新进度的作业数 === 0
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ 

@@ -1,6 +1,6 @@
 # M2执行不完整：停止并取证（2026-10-24）
 
-状态：INCOMPLETE_NO_RETRY_ROOT_CAUSE_UNCONFIRMED。
+状态：INCOMPLETE_NO_RETRY_ROOT_CAUSE_PY39_IMPORT_IDENTIFIED。
 
 最后服务器观测2026-10-24 08:38:13+08:00：M2 PID2690788和合并PID2690789均Zs/defunct，GPU0/1均0MiB且无计算进程。M2于08:36:44.670358报告INCOMPLETE_NO_RETRY；合并于08:37:36.280856报告STOPPED_NO_AUTOMATIC_RETRY，原因M2 did not finish as server-checked。12/12输入准备于08:35:40.299463完成。此为最后观测，不是实时状态。
 
@@ -23,3 +23,9 @@ M2_RESULTS_READY_UPLOAD_PENDING_EXISTING_AUTH_UNAVAILABLE仅表明publication未
 只读取证，不重新bootstrap、执行修复--apply或重跑失败配方。原目录已有作业/失败/publication，先前登记期无作业修复的接纳条件不再成立。若需修订代码后试跑，先明确新执行合同与旧失败保留，不能将清理目录当作新作业。J/R/T/V未通过M2完整性放行。
 
 [此前memfd检查记录](PHASE3_M2_MEMFD_REPAIR_20261024.md)仍保留，目标检查成功不保证训练执行链完整。研究角色、test封存、仅GPU0/1、有界内存及用户执行无SSH约束不变。本轮无新启动、改包或重试。
+
+## 后续根因已定位
+
+用户2026-10-24回传summary/失败节选（此次查询未带时间）：M2 INCOMPLETE_NO_RETRY，0/108完整端点、0评价案例、0个progress.json；63个failure均报unsupported operand type(s) for |: type and NoneType。展示的完整堆栈位于Python3.9加载DINOv2 attention.py的float | None注解，在make_model导入阶段，尚未进入该作业优化器构造或训练循环。全部63个原始堆栈及无更新产物仍由预检逐项核验。
+
+上文根因待取证为08:38:13时的证据边界，已由[Python3.9导入故障记录](PHASE3_M2_PY39_IMPORT_FAILURE_20261024.md)更新。CPU兼容副本预检已实现、本地7项通过，服务器未执行；旧失败仍保留，不自动重跑。
