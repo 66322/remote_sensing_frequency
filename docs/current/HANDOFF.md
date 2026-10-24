@@ -1,15 +1,15 @@
-# 当前交接：M2登记期memfd检查失败，原目录兼容接续待执行（2026-10-24）
+# 当前交接：memfd目标检查通过，原目录控制器已派发，待核验训练（2026-10-24）
 
-共享入口仍为GitHub rebuild-v1-protocol-20260915。RGB–DSM条件互补/退化缺失分割主线、恢复旁支；连续地图维护仍为独立候选，未实现/训练。此轮只修工程兼容，不改变研究决定。
+共享事实以本分支为准。RGB–DSM条件互补/退化缺失分割仍为主线、恢复旁支；连续地图维护仍是未实现的独立研究候选。此轮为工程接续，不改变科学门禁。
 
-最后服务器观测2026-10-23 22:31:10+08:00：物理GPU0/1无计算进程；合并控制器2166328为defunct，合并状态STOPPED_NO_AUTOMATIC_RETRY。M2目标16项15通过，仅os.memfd_create缺失导致Linux FD检查失败，发生在启动训练之前；无正式训练回执。此时间不是实时状态。
+用户2026-10-24回传的修复日志（文件名时间08:32:16，未提供完成时刻）证明：原16项目标检查通过，登记期training_jobs=0；修复启动器已完成，首次M2控制器PID2690788、合并监督器PID2690789已派发。尚无控制器存活、准备进度、GPU训练或首个更新回执，不能称训练已运行。
 
-原合并目录 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225`；原M2目录 `/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330`。Torch2.2.2+cu121已在原remote_sensing可用；原M2环境函数已设置XFORMERS_DISABLED=1，本次不再改装环境或xformers。
+原合并目录 /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225；原M2目录 /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330。修复日志为records/phase3_memfd_repair_20261024T083216.log；新检查与监督器日志在合并目录repairs/memfd_b0200004f30a8d55eef2049ecdfb30ef97f3d034/。原remote_sensing、Torch2.2.2+cu121不变。
 
-[修复协议及原始片段](../experiments/PHASE3_M2_MEMFD_REPAIR_20261024.md)，修复提交[b020000](https://github.com/66322/remote_sensing_frequency/commit/b0200004f30a8d55eef2049ecdfb30ef97f3d034)。只为缺失Python OS接口绑定同一Linux匿名memfd，libc缺符号时仅允许核验过的x86_64 syscall319；没有磁盘回退。9项本地兼容/接纳检查通过；目标服务器真实内核及原16项尚待执行，不宣称已经修复成功运行。
+立即下一步：用户只读查询两个PID的状态、原M2 queue_status.json、preparation_progress.json、gpu0/1.json、nohup.log和新combined_nohup.log，再看GPU0/1。首次准备先核对输入哈希并加载12个Fit12 tile，GPU暂时空闲可能仍在准备，须以进度时间/进程/异常共同判断。合并WAIT_M2为等待原M2完成，最长约300秒刷新；以M2本身状态判断当前训练。
 
-立即下一步：用户执行修复协议的repair_phase3_m2_memfd.py --apply一次。它现场核对原jobs为空、无训练启动痕迹、原失败匹配、源码/绑定完整及控制器锁可用，再运行真实memfd探针和原16项。全部通过才在上述原目录启动首次M2控制器并接回原监督器。发现其他失败或已有训练即拒绝，不自动重试，不重建队列。
+修复启动器Done仅表示派发父进程退出，不等于子控制器或训练结束。不要重复bootstrap、修复--apply或删除记录。若FAILED_NO_RETRY/STOPPED等状态，读取对应新错误，失败不重跑。
 
-原源码、计划、代码清单/fold绑定不改：M2固定ac325cd、合并固定e65c6cb，108×32k及总228作业/5,088,000更新不变，B/C未开放。新包装入口和SHA另记runtime_repair.json；旧失败日志保留，新检查/监督器日志在合并repairs/memfd_<修复SHA>。新M2 nohup.log是首次控制器输出。下一回执应包含修复标志、原16项结果、新PID及M2状态，不能只看旧BOOT_LOG。
+[修复记录和用户片段](../experiments/PHASE3_M2_MEMFD_REPAIR_20261024.md)。原冻结M2 ac325cd、合并e65c6cb及修复b020000分别绑定；旧失败日志保留。原始服务器target_checks.log和runtime_repair/launch原件尚未同步，不把终端片段当作已验收全量原件。
 
-缺公开catalog仍在后段WAIT_PUBLIC_DATA。用户服务器操作、无SSH，仅GPU0/1；旧Val2/Test6/held4/final及公开test封存，原件在/home/jovyan/zzx，内存中间量及时释放。结束后核验原件/轨迹，并额外上传修复轻量证据。已归档[修复前交接](../history/HANDOFF_20261024_BEFORE_MEMFD_REPAIR.md)。
+M2 108×32k，总队列最多228作业/5,088,000更新，B/C条件未开放。后段缺公开catalog时WAIT_PUBLIC_DATA。服务器用户执行、无SSH，仅GPU0/1；封存Val2/Test6/held4/final及公开test，中间量有界内存。实验完成后核验轻量原件与轨迹，再决定下一步，并额外同步修复证据。前一交接见[归档](../history/HANDOFF_20261024_BEFORE_MEMFD_SERVER_RECEIPT.md)。

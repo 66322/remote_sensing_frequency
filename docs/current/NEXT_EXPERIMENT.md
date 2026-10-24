@@ -1,10 +1,10 @@
-# 下一步：应用原目录memfd兼容修复，再核验首次训练状态（2026-10-24）
+# 下一步：只读核验已派发控制器及首次训练状态（2026-10-24）
 
-1. 已有用户回执定位为M2登记期唯一memfd测试失败；不重复登记combined/M2，不安装新环境或重装xformers。最后观测22:31:10（2026-10-23），原控制器停止、GPU0/1空闲；实际资源仍由执行时检查。
-2. 按[修复协议](../experiments/PHASE3_M2_MEMFD_REPAIR_20261024.md)使用完整提交b0200004f30a8d55eef2049ecdfb30ef97f3d034，对原合并目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225及M2目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330执行repair_phase3_m2_memfd.py --apply一次。
-3. 脚本必须确认无launch/训练作业痕迹、原绑定/代码完整、原失败匹配、两控制器锁可获取及GPU0/1可用；真实内核匿名memfd探针和原16项全部通过才接回控制器。发现已有训练/其他失败则停止，不自动重试或另选目录。
-4. 查看新修复日志的ORIGINAL_M2_TARGET_CHECKS_PASSED与EXISTING_M2_MEMFD_REPAIR_LAUNCHED、新PID及原M2 queue_status.json/nohup.log。旧target_checks.log和合并旧nohup.log保留失败记录，新检查/监督器日志在repairs/memfd_<修复SHA>。
-5. 完成后核验原件、计数和轨迹，另上传runtime_repair.json及repair清单/接纳/检查/launch证据；原上传器不保证自动包含这些文件。科学门禁、test保护、失败不重跑、缺公开数据后段WAIT_PUBLIC_DATA均不变。
+1. 用户修复日志phase3_memfd_repair_20261024T083216.log已出现ORIGINAL_M2_TARGET_CHECKS_PASSED和EXISTING_M2_MEMFD_REPAIR_LAUNCHED；M2 PID2690788、合并PID2690789已派发。启动器Done为父进程退出，不等于训练结束。
+2. 原目录只读查询：date、两个PID的ps、M2 queue_status.json/preparation_progress.json/gpu0.json/gpu1.json/controller_failure.json/memfd_wrapper_failure.json、M2 nohup.log及新repair/combined_nohup.log；GPU0/1状态共同核对。不要再次登记、运行修复--apply或清理日志。
+3. 准备阶段先哈希输入并载入12个Fit12 tile，随后启动GPU worker；暂时GPU空闲需结合准备进度、进程和异常判断。合并WAIT_M2为正常等待M2完成，约300秒刷新，不代表M2未启动。
+4. 服务器原始target_checks.log与runtime_repair/launch回执尚待取回；终端通过标志不能替代全部原件核验。失败停止，不自动重试；只读新错误再决定工程修复。
+5. 科学门禁、test封存、仅GPU0/1、有界内存、无新增seed/失败配方重跑不变。完成后核验端点与训练轨迹，额外同步修复包轻量证据。
 
 ## 独立新路线的下一步
 

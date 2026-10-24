@@ -1,6 +1,6 @@
 # M2登记期memfd兼容修复与原目录接续（2026-10-24）
 
-状态：REPAIR_IMPLEMENTED_LOCAL_CHECKS_PASSED_NOT_SERVER_APPLIED。修复执行提交：[b0200004f30a8d55eef2049ecdfb30ef97f3d034](https://github.com/66322/remote_sensing_frequency/commit/b0200004f30a8d55eef2049ecdfb30ef97f3d034)。不是科学配方失败或训练重跑。
+状态：SERVER_ORIGINAL_16_CHECKS_PASSED_CONTROLLERS_DISPATCHED_TRAINING_UNCONFIRMED。修复执行提交：[b0200004f30a8d55eef2049ecdfb30ef97f3d034](https://github.com/66322/remote_sensing_frequency/commit/b0200004f30a8d55eef2049ecdfb30ef97f3d034)。不是科学配方失败或训练重跑。
 
 ## 最后服务器证据
 
@@ -70,3 +70,11 @@ curl -fL --retry 2 "https://raw.githubusercontent.com/66322/remote_sensing_frequ
 失败时只读新repair日志与checks_failed.json，不再次登记或重跑。结束验收时须额外同步runtime_repair.json及repair目录的execution_manifest、admission、target_checks_passed、launch等轻量证据；原M2上传器不自动保证包含独立修复包，不能声称这些服务器证据已上传。
 
 服务器由用户执行，无SSH，仅物理GPU0/1；所有修复快照/日志在/home/jovyan/zzx原实验目录。无test访问，无额外seed/模型/训练，无全轮磁盘缓存。研究角色保持原决定。
+
+## 2026-10-24服务器接续回执
+
+用户2026-10-24回传的修复日志（文件名时间08:32:16，未提供完成时刻）证明：原16项目标检查通过，登记期training_jobs=0；修复启动器已完成，首次M2控制器PID2690788、合并监督器PID2690789已派发。尚无控制器存活、准备进度、GPU训练或首个更新回执，不能称训练已运行。
+
+[用户终端输出节选](evidence/PHASE3_M2_MEMFD_SERVER_RECEIPT_20261024.txt)，保留启动器Done与新日志的派发标志；不是服务器原日志文件完整归档。原16项通过及training_jobs=0为修复脚本回执，尚未回传逐项完整日志、runtime_repair.json和launch.json原件。GPU watch没有粘贴屏幕内容，不能推断GPU是否在训练。
+
+用户已执行上方一次性命令，不再执行本页历史启动块。接下来只读检查原M2状态/准备进度/GPU进度/失败回执及新日志。代码先执行prepare再创建GPU worker，prepare包含输入SHA及12个Fit12 tile的内存加载和边界统计，preparation_progress.json每完成一个tile更新，M2_INPUT打印进度。训练调度后M2状态约15秒刷新，合并WAIT_M2最长约300秒刷新；监督器等待是正常依赖行为。没有新增配方或改变门禁。
