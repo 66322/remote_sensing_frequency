@@ -6,6 +6,8 @@
 4. 发现FAILED/STOPPED、进度时间长期不推进或新异常栈，先保留并读取新证据，不自动重跑。现有两revision目录、旧失败、单次回执与环境保持，不重复bootstrap、repair --apply、重启控制器、追加seed/配方或开放test/B/C。
 5. [当前证据](../experiments/PHASE3_REVISION_TRAINING_STARTED_20261024.md)只证明训练执行，尚非性能或机制结果。结束验收完整修订/路径补丁/CPU/target/launch原件、全部端点、原始整数计数和训练轨迹；不按瞬时GPU利用率修改科学预算。
 
+6. 耗时按正式作业类型及完整评价轨迹更新，不以当前教师步速承诺全队列完工日；数据阶段先备齐3DCD/P³两catalog。旧失败遗留如需量化，由用户只读补旧ram_retirement、目录大小与进程树，不删除或停机。详见[范围/ETA/遗留说明](../experiments/PHASE3_QUEUE_SCOPE_ETA_AND_REMAINS_20261024.md)。
+
 ## 独立新路线的下一步
 
 用户已授权继续探索，助手优先推荐[连续建筑地图维护](../experiments/INDEPENDENT_RESEARCH_ROUTE_20261023.md)。先在SpaceNet7公开训练源中冻结有效月份、真实事件数、AOI隔离、当期地图监督和前缀评价合同；随后实施B1独立重建/B3递归模型及B2简单滤波/迟滞重置，量化自然错误持续、变化发现延迟和GT旧图诊断差距。拟议首阶段为三个地理开发划分、seed42、六个训练作业，具体清单与预算尚待数据验包后登记，不表示已入队。

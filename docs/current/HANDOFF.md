@@ -13,3 +13,4 @@ M2目录：/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_
 xFormers处于禁用回退分支，警告未阻断本次实际更新，不据此安装依赖或改环境。GPU31%仅为瞬时采样，不据此改预算或并行策略；count_workers=32为配置，当前cpu_tasks=0。ps ELAPSED异常，不用于估算时长。现有loss不是分割性能结论，尚无完成端点或科学门禁通过结论。
 
 研究阶段、主线与独立候选角色保持；M2→J→R→T→V原预算/种子/科学门禁不变，B/C不开放，后段缺数据WAIT_PUBLIC_DATA。test封存、GPU0/1、有界内存、用户执行服务器命令无SSH保持。原始材料尚未全量取回；结束额外验收路径补丁和752d runtime材料。前一交接见[归档](../history/HANDOFF_20261024_BEFORE_FIRST_TRAINING_UPDATES.md)。
+范围补充：[队列范围/耗时/遗留核对](../experiments/PHASE3_QUEUE_SCOPE_ETA_AND_REMAINS_20261024.md)。228=原M2 108+后续120，B/C和独立新路线不在内。同速纯优化72–75小时仅为情景，真实ETA待加权DSM及评估实测；3DCD/P³两catalog均就绪后才进入T/V。旧失败文件有意保留，最新GPU仅见当前worker；旧CPU/磁盘遗留未现场全审计，本轮无服务器操作或清理。

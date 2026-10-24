@@ -1,10 +1,10 @@
-> 当前入口已更新（2026-10-24）：752d队列已登记但未放行，改用[同目录model包路径接续](PHASE3_MODEL_NAMESPACE_CONTINUATION_20261024.md)。下方原bootstrap命令仅为历史，不再次登记或删除回执。
+> 当前运行已接续（2026-10-24）：752d基线与[25b124包路径补丁](PHASE3_MODEL_NAMESPACE_CONTINUATION_20261024.md)已放行；最后观测09:54:39双GPU真实更新2600/2620，见[训练证据](../experiments/PHASE3_REVISION_TRAINING_STARTED_20261024.md)。下方启动步骤为历史，不再次登记、执行修复或删除单次回执。
 
 # Phase3零训练更新工程失败的一次性修订执行（2026-10-24）
 
-状态：AUTHORIZED_IMPLEMENTED_LOCAL_CHECKED_NOT_SERVER_LAUNCHED。用户在CPU兼容预检通过后明确回复“继续，把实验启动”，授权本次工程修复后的一次正式重新尝试；不是开放自动重跑失败配方。服务器由用户执行，无SSH。
+状态：FORMAL_CUDA_UPDATES_OBSERVED；历史实施与目标准入过程保留在下文。用户在CPU兼容预检通过后明确回复“继续，把实验启动”，授权本次工程修复后的一次正式重新尝试；不是开放自动重跑失败配方。服务器由用户执行，无SSH。
 
-执行代码：752d3835a18a15a04d83b1dcc1841bff98bf0b07。科学来源M2 ac325cdbb403ebb95b5eb0acbf17fffa5441dcfd、合并e65c6cb0830985461b3cd30e2f43158dd3d858cb；运行期修订、科学源和上游DINO 7764ea0分别记录，不能把包装修改冒充冻结源字节。此版本未在目标CUDA完成首次训练，目标检查通过才派发，首个正式更新执行CUDA准入，无额外训练probe。
+执行代码：752d3835a18a15a04d83b1dcc1841bff98bf0b07。科学来源M2 ac325cdbb403ebb95b5eb0acbf17fffa5441dcfd、合并e65c6cb0830985461b3cd30e2f43158dd3d858cb；运行期修订、科学源和上游DINO 7764ea0分别记录，不能把包装修改冒充冻结源字节。发布时目标CUDA首更待核验；后续目标检查及正式更新已由顶部运行记录确认，无额外训练probe。
 
 ## 原件与已知事实
 
