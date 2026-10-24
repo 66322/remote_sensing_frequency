@@ -1,10 +1,10 @@
-# 下一步：只读核验12/12准备及首个训练更新（2026-10-24）
+# 下一步：继续现有M2，核验轨迹与首个完整端点（2026-10-24）
 
-1. 最后观测09:48:32，修订两控制器2754693/2754694存活，M2输入7/12、无作业失败，合并WAIT_M2，GPU0/1空闲。目标检查及09:46:44放行已成功，不再修复或启动。
-2. 用户仅运行records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/scripts/status_phase3_engineering_restart.py --tail 40。观察12/12、RUNNING、最新progress step≥1或M2_TRAIN ...1，确认首个CUDA更新。
-3. 准备先读取/哈希/加载12个Fit12 tile并与旧索引比对，再创建GPU worker；GPU暂空闲不单独判失败，WAIT_M2为依赖等待。进度时间停止推进或出现FAILED/STOPPED时再读新栈，不自动重跑。
-4. 现有两09:28revision目录、原失败和全局单次回执保留。不重复bootstrap、repair --apply或重启控制器，不开test或B/C，不追加seed/配方。
-5. 结束后验收完整修订/路径补丁/CPU/target/launch原件、端点、原始整数计数和训练轨迹；当前只是用户准备回执，不作论文结果。
+1. 最后服务器观测2026-10-24 09:54:39+08:00：M2为RUNNING，输入12/12已于09:49:45完成；GPU0的F0_s42_T3推进到2600/32000，GPU1的F0_s42_T1推进到2620/32000。两个控制器2754693/2754694存活，作业失败0、完成端点0；合并WAIT_M2为正常依赖等待。此为最后观测，不是实时状态。
+2. 用户按需只读运行records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/scripts/status_phase3_engineering_restart.py --tail 40，关注progress更新时间、失败记录及控制器状态，无需再次启动。
+3. 下一关键节点为8k/16k/24k/32k训练轨迹及首个32k端点；先确认绑定配置、checkpoint、原始整数计数与轨迹完整性，再解释性能。两条T1/T3为M2内层教师；合并WAIT_M2须等M2完整性门禁，不直接跳段。
+4. 发现FAILED/STOPPED、进度时间长期不推进或新异常栈，先保留并读取新证据，不自动重跑。现有两revision目录、旧失败、单次回执与环境保持，不重复bootstrap、repair --apply、重启控制器、追加seed/配方或开放test/B/C。
+5. [当前证据](../experiments/PHASE3_REVISION_TRAINING_STARTED_20261024.md)只证明训练执行，尚非性能或机制结果。结束验收完整修订/路径补丁/CPU/target/launch原件、全部端点、原始整数计数和训练轨迹；不按瞬时GPU利用率修改科学预算。
 
 ## 独立新路线的下一步
 
