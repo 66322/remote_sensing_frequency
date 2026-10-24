@@ -7,3 +7,4 @@
 - 现有M2/combined revision目录及752d/25b124绑定不变，控制器2754693/2754694、GPU worker2757402/2757403在22:49观测存活。合并WAIT_M2正常；J/R/T/V未获得放行或实际运行新证据，B/C不开放。
 - 当前继续已有队列，按[只读查看指南](../protocols/PHASE3_PROGRESS_AND_RESULTS.md)观察后续轨迹/首折完整评价，不再次启动、修复或删除回执，不自动重跑/补seed。GPU0/1、有界内存、test封存及用户执行无SSH保持。
 - [长期启动规则](../protocols/STARTUP_DELIVERY_AND_FAILURE_CONTROL.md)继续生效；本轮无新训练或环境/运行代码修改。结束验收全部端点、原始整数计数、轨迹及额外修订材料，再整理轻量同步。
+- 已有定量评价的读取能力：新增独立只读中间汇总器，本地8项针对检查与Python3.9语法通过；[规则及指标口径](../protocols/PHASE3_M2_INTERIM_RESULTS.md)。仅处理原有小JSON，不修改训练或重新推理。实际mIoU尚待服务器表格回传；不能将无阶段summary误读成无年龄评价，也不能凭训练loss宣布方法有效。

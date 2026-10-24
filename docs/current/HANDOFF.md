@@ -11,7 +11,7 @@
 
 科学来源M2 ac325cdbb403ebb95b5eb0acbf17fffa5441dcfd、合并e65c6cb0830985461b3cd30e2f43158dd3d858cb；运行修订752d3835a18a15a04d83b1dcc1841bff98bf0b07、包路径25b124a0cf69ececb6841b55ed90b19fae5b9a08分别绑定。全局records/phase3_engineering_restart_20261024_once.json为CONTROLLERS_LAUNCHED。原两失败目录及修复前史保留，不删回执/锁或重建目录绕过重复保护。
 
-唯一当前动作：继续已有队列，由用户按需只读运行records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/scripts/status_phase3_engineering_restart.py --tail 40；按[只读进度与结果指南](../protocols/PHASE3_PROGRESS_AND_RESULTS.md)查看已有文件，继续后续轨迹与首折36作业齐全后的完整面板评价；最终阶段汇总须等108及计数完整。出现新错误读取首个原栈并停止后续派发，不自动重跑；不再bootstrap、repair --apply、改环境或重启。T1/T3是M2内层教师。xFormers禁用警告未阻断实际更新，瞬时GPU利用率不用于改预算；count_workers32为配置、22:49采样cpu_tasks0，ps异常ELAPSED不用作时长。
+当前接续动作：继续已有队列，由用户按需只读运行records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/scripts/status_phase3_engineering_restart.py --tail 40；按[只读进度与结果指南](../protocols/PHASE3_PROGRESS_AND_RESULTS.md)查看已有文件，继续后续轨迹与首折36作业齐全后的完整面板评价；最终阶段汇总须等108及计数完整。出现新错误读取首个原栈并停止后续派发，不自动重跑；不再bootstrap、repair --apply、改环境或重启。T1/T3是M2内层教师。xFormers禁用警告未阻断实际更新，瞬时GPU利用率不用于改预算；count_workers32为配置、22:49采样cpu_tasks0，ps异常ELAPSED不用作时长。
 
 工程已有目标检查与首更证据：CPU真实模型/权重、memfd传递及路径补丁8项、原M2 16项、合并11项；没有因此验收后续真实训练、完整评估或全部轻量原件。结束须额外核验752d runtime和25b124补丁材料、全部端点/原始整数计数/轨迹及轻量上传。旧失败CPU/磁盘残留未现场全审计。
 
@@ -20,3 +20,5 @@
 [范围/耗时/遗留](../experiments/PHASE3_QUEUE_SCOPE_ETA_AND_REMAINS_20261024.md)；[数据与保存规则](../experiments/PHASE3_DATA_AND_ARTIFACT_STORAGE_20261024.md)。同速72–75小时仅为纯训练情景；后段publication不等于已自动上传GitHub。原始资料大部分仍在服务器。前一交接见[归档](../history/HANDOFF_20261024_BEFORE_M2_17_COMPLETED.md)。
 
 本次0.348–0.350秒/步是加权对照实测速率，剩余1.5/2.0小时只指两在途作业纯优化；不沿用RGB教师同速情景承诺整队列完工。counted_cases不含年龄轨迹计数，17完成尚不足任一外折36作业，当前无阶段汇总符合流程。
+
+用户要求查看已有实验结果：[中间评价读取](../protocols/PHASE3_M2_INTERIM_RESULTS.md)可汇总trajectory_counts四tile矩阵，在阶段summary前报告固定年龄clean单模态指标及同fold/seed/年龄DSM相对D0差值。工具本地8项及Py3.9语法通过；服务器未执行、无真实分数回执。先读已有计数即可，不必等108或新增训练/推理；完整融合补救/保护等仍待原面板，不改门禁或队列。

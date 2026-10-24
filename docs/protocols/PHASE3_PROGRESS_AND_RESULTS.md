@@ -87,6 +87,10 @@ RESULT_SUMMARY_NOT_YET_PRESENT表示尚无该段汇总，不单独等于失败�
 
 M2逐作业progress位于M2/jobs/<ID>/progress.json；其阶段报告在M2/publication/REPORT.md、summary.json、gates.json和metrics.csv。J/R/T/V逐作业位于合并目录jobs/<阶段>_<...>/，阶段状态为j_status.json等，结果在合并目录publication/<阶段>/summary.json与metrics文件。J另有REPORT.md/gates.json，R/T/V不保证有同名报告或门禁文件。具体保留内容见[数据与产物索引](../experiments/PHASE3_DATA_AND_ARTIFACT_STORAGE_20261024.md)。
 
+## 还没有阶段汇总，也可读已有定量评价
+
+已有trajectory_counts保存单模态clean开发评价，不必等108作业结束；参见[中间评价只读汇总](PHASE3_M2_INTERIM_RESULTS.md)。原阶段查看脚本主要展示进度/summary，不展示这些计数。counted_cases=0不包含年龄轨迹，不能写成“没有任何实验结果”。仅当实际读到齐全同绑定的四tile计数后报告指标，不能先凭完成数填分数；完整融合/退化/补救门禁继续等原面板。
+
 ## 需要诊断或分析时
 
 先保留查询时间、COMBINED/M2状态、活跃或最近作业的step与更新时间、失败原栈及已有summary/gates；不要先重新启动。用户可回传状态摘要；报告/指标较长时按[轻量上传](LIGHT_RECORD_UPLOAD_20261001.md)写回GitHub并告知提交，不粘整份大日志，不为上传失败重算。

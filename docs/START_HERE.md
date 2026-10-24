@@ -19,3 +19,5 @@
 启动复盘：[四类阻断、63条共性失败的调度放大及验证改进](experiments/PHASE3_STARTUP_POSTMORTEM_20261024.md)。主要问题是助手工程交付与真实执行链检查不足；本轮未操作服务器，不改变当前运行与研究决定。
 
 只读查看：[当前队列进度、失败与各段结果](protocols/PHASE3_PROGRESS_AND_RESULTS.md)，复用服务器已有状态助手；按登记回执选择当前目录，不看旧失败目录，也不因查看重新启动。
+
+中间定量评价：[读取已有四tile轨迹计数](protocols/PHASE3_M2_INTERIM_RESULTS.md)。尚无阶段summary不等于没有单模态clean评价；只读工具已实现并本地8项检查通过，真实指标待用户运行读取，不重训、不推理、不提前判科学门禁。
