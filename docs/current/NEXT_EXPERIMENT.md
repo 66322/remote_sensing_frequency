@@ -1,14 +1,13 @@
-# 下一步：继续现有M2，核验轨迹与首个完整端点（2026-10-24）
+# 下一步：继续M2，等首折36作业后的完整面板评价（2026-10-24）
 
-已采纳长期规则：[启动交付与故障控制](../protocols/STARTUP_DELIVERY_AND_FAILURE_CONTROL.md)和[稳定新对话入口](NEW_CHAT_HANDOFF.md)。当前只读接续；新增规则不触发预检重跑、热改快照或重新启动。
+已采纳[长期启动规则](../protocols/STARTUP_DELIVERY_AND_FAILURE_CONTROL.md)及[稳定新对话入口](NEW_CHAT_HANDOFF.md)；不因本次记录更新重新预检或启动。
 
-1. 最后服务器观测2026-10-24 09:54:39+08:00：M2为RUNNING，输入12/12已于09:49:45完成；GPU0的F0_s42_T3推进到2600/32000，GPU1的F0_s42_T1推进到2620/32000。两个控制器2754693/2754694存活，作业失败0、完成端点0；合并WAIT_M2为正常依赖等待。此为最后观测，不是实时状态。
-2. 用户按需只读运行records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/scripts/status_phase3_engineering_restart.py --tail 40，关注progress更新时间、失败记录及控制器状态，无需再次启动。五段状态/近期进度/已生成结果的只读查看见[进度与结果指南](../protocols/PHASE3_PROGRESS_AND_RESULTS.md)。
-3. 下一关键节点为8k/16k/24k/32k训练轨迹及首个32k端点；先确认绑定配置、checkpoint、原始整数计数与轨迹完整性，再解释性能。两条T1/T3为M2内层教师；合并WAIT_M2须等M2完整性门禁，不直接跳段。
-4. 发现FAILED/STOPPED、进度时间长期不推进或新异常栈，先保留并读取新证据，不自动重跑。现有两revision目录、旧失败、单次回执与环境保持，不重复bootstrap、repair --apply、重启控制器、追加seed/配方或开放test/B/C。
-5. [当前证据](../experiments/PHASE3_REVISION_TRAINING_STARTED_20261024.md)只证明训练执行，尚非性能或机制结果。结束验收完整修订/路径补丁/CPU/target/launch原件、全部端点、原始整数计数和训练轨迹；不按瞬时GPU利用率修改科学预算。
-
-6. 耗时按正式作业类型及完整评价轨迹更新，不以当前教师步速承诺全队列完工日；数据阶段先备齐3DCD/P³两catalog。旧失败遗留如需量化，由用户只读补旧ram_retirement、目录大小与进程树，不删除或停机。详见[范围/ETA/遗留说明](../experiments/PHASE3_QUEUE_SCOPE_ETA_AND_REMAINS_20261024.md)。
+1. 最后服务器观测2026-10-24 22:49:33+08:00：M2 RUNNING，控制器报告完成17/108训练作业、失败/阻断0，19个作业有progress；GPU0 F0_s17_DShuffle为16600/32000，GPU1 F0_s17_DEntropy为11420/32000。两控制器及两GPU worker存活，合并WAIT_M2。当前完整故障面板counted_cases=0、evaluation=null，尚无M2阶段summary。这是最后观测，不是实时状态或完整科学验收。
+2. 当前只读运行records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/scripts/status_phase3_engineering_restart.py --tail 20，结合progress更新时间、失败记录和控制器状态；跨阶段结果见[查看指南](../protocols/PHASE3_PROGRESS_AND_RESULTS.md)。
+3. 下一里程碑是首折全部36作业完成且mask就绪后出现完整Evaluation和案例计数；年龄轨迹另存，不进counted_cases。最终M2汇总仍等108作业和全部计数finalize，不能把缺summary或当前CPU无在途任务判为失败。
+4. 发现新FAILED/STOPPED或进度异常先保存首栈并诊断，不自动重跑。既有目录、失败前史和单次回执保留，不bootstrap、repair --apply、改环境、重启或扩seed/配方。本轮仅只读接续。
+5. 本次两加权臂实测约0.35秒/步，不继续按首批教师0.1秒/步估整队列；剩余1.5/2小时仅两在途作业纯优化。后续按正式作业类型与完整评估自然日志更新ETA，不另起探针或改预算。
+6. 阶段完成后核对配置/checkpoint/SHA、原始整数计数、配对样本流、训练轨迹、752d/25b124修订材料和轻量上传；再解释科学gates。J/R/T/V仍按原依赖合同，B/C和test封存，公开数据就绪等待不自动跳过。详见[最新回执](../experiments/PHASE3_M2_PROGRESS_20261024T224933.md)。
 
 ## 独立新路线的下一步
 

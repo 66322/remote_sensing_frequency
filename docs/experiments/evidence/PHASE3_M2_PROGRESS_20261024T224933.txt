@@ -1,0 +1,187 @@
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ conda activate remote_sensing
+ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+
+python -B "$ROOT/records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/scripts/status_phase3_engineering_restart.py" --tail 20
+{
+  "bootstrap_receipt": {
+    "status": "CONTROLLERS_LAUNCHED",
+    "revision_commit": "752d3835a18a15a04d83b1dcc1841bff98bf0b07",
+    "old_m2": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330",
+    "old_combined": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225",
+    "m2_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345",
+    "combined_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345",
+    "automatic_retry": false,
+    "authorization": "user: 继续，把实验启动; 2026-10-24",
+    "observed_at": "2026-10-24T09:46:44.633221+08:00",
+    "namespace_patch_commit": "25b124a0cf69ececb6841b55ed90b19fae5b9a08",
+    "previous_failure_receipt": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/model_namespace_25b124a0cf69ececb6841b55ed90b19fae5b9a08/previous_bootstrap_failure.json",
+    "m2_controller_pid": 2754693,
+    "combined_controller_pid": 2754694
+  },
+  "observed_at": "2026-10-24T22:49:33.329406+08:00",
+  "m2_directory": {
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345",
+    "queue_status.json": {
+      "status": "RUNNING",
+      "completed_trainings": 17,
+      "failed_or_blocked": 0,
+      "active": {
+        "0": "T_F0_s17_DShuffle",
+        "1": "T_F0_s17_DEntropy"
+      },
+      "cpu_tasks": 0,
+      "counted_cases": 0,
+      "evaluation": null,
+      "count_workers": 32,
+      "observed_at": "2026-10-24T22:49:22.290644+08:00"
+    },
+    "preparation_progress.json": {
+      "tile": "6_7",
+      "done": 12,
+      "total": 12,
+      "observed_at": "2026-10-24T09:49:45.925189+08:00"
+    },
+    "jobs_with_progress": 19,
+    "latest_training_progress": [
+      {
+        "job": "F0_s17_DShuffle",
+        "step": 16600,
+        "loss": 0.20708908140659332,
+        "gradient_norm": 5.87864351272583,
+        "activation_abs_mean": 4.7667436599731445,
+        "elapsed_seconds": 5814.07239215821,
+        "stable_sec_per_update": 0.3499398147687316,
+        "remaining_training_hours": 1.4969647631773517,
+        "lr": [
+          9.685534591194969e-06,
+          9.685534591194969e-05
+        ],
+        "weight_mean": 0.9999999403953552,
+        "weight_min": 0.7888367176055908,
+        "weight_max": 2.3665101528167725,
+        "effective_fraction": 0.8220818638801575,
+        "small_stratum_pixels": 0,
+        "physical_gpu": 0,
+        "gpu_uuid": "GPU-97a250ea-42ff-eb14-4ed5-8c50231e0baa",
+        "observed_at": "2026-10-24T22:49:28.409773+08:00"
+      },
+      {
+        "job": "F0_s17_DEntropy",
+        "step": 11420,
+        "loss": 0.28633520007133484,
+        "gradient_norm": 14.576532363891602,
+        "activation_abs_mean": 4.040557384490967,
+        "elapsed_seconds": 4002.8275514543056,
+        "stable_sec_per_update": 0.347538766078651,
+        "remaining_training_hours": 1.9867632794162882,
+        "lr": [
+          1.2943396226415095e-05,
+          0.00012943396226415094
+        ],
+        "weight_mean": 0.9999998807907104,
+        "weight_min": 0.7999954223632812,
+        "weight_max": 2.3999862670898438,
+        "effective_fraction": 0.8205393552780151,
+        "small_stratum_pixels": 1,
+        "physical_gpu": 1,
+        "gpu_uuid": "GPU-4b116760-e84c-2743-cee6-41cf76a01677",
+        "observed_at": "2026-10-24T22:49:31.688668+08:00"
+      }
+    ],
+    "job_failure_count": 0,
+    "first_job_failures": []
+  },
+  "combined_directory": {
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345",
+    "queue_status.json": {
+      "status": "WAIT_M2",
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345",
+      "last_source_status": {
+        "status": "RUNNING",
+        "completed_trainings": 17,
+        "failed_or_blocked": 0,
+        "active": {
+          "0": "T_F0_s17_DShuffle",
+          "1": "T_F0_s17_DEntropy"
+        },
+        "cpu_tasks": 0,
+        "counted_cases": 0,
+        "evaluation": null,
+        "count_workers": 32,
+        "observed_at": "2026-10-24T22:46:50.879906+08:00"
+      },
+      "observed_at": "2026-10-24T22:47:03.579275+08:00"
+    }
+  }
+}
+    PID    PPID STAT     ELAPSED %CPU %MEM COMMAND
+2754693       1 Ssl  441076632-11:58:24 0.0  0.5 /home/jovyan/miniconda3/envs/remote_sensing/bin/python -u -B /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261
+2754694       1 Ss   441076632-11:58:24 0.0  0.0 /home/jovyan/miniconda3/envs/remote_sensing/bin/python -u -B /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261
+
+LOG /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/nohup.log
+M2_TRAIN F0_s17_DEntropy 6500 {'step': 6500, 'loss': 0.37908151745796204, 'gradient_norm': 12.395105361938477, 'activation_abs_mean': 3.2349648475646973, 'elapsed_seconds': 2261.976628907025, 'stable_sec_per_update': 0.35011493153870105, 'remaining_training_hours': 2.479980765065799, 'lr': [1.6037735849056607e-05, 0.00016037735849056605], 'weight_mean': 1.0, 'weight_min': 0.7393268942832947, 'weight_max': 2.2179808616638184, 'effective_fraction': 0.7922093868255615, 'small_stratum_pixels': 0}
+M2_TRAIN F0_s17_DShuffle 12000 {'step': 12000, 'loss': 0.24215395748615265, 'gradient_norm': 12.519523620605469, 'activation_abs_mean': 4.141356468200684, 'elapsed_seconds': 4186.565255962312, 'stable_sec_per_update': 0.3460266344249249, 'remaining_training_hours': 1.9223701912495825, 'lr': [1.2578616352201259e-05, 0.00012578616352201257], 'weight_mean': 1.0000001192092896, 'weight_min': 0.772212028503418, 'weight_max': 2.316636085510254, 'effective_fraction': 0.8057923913002014, 'small_stratum_pixels': 0}
+M2_TRAIN F0_s17_DEntropy 7000 {'step': 7000, 'loss': 0.34841251373291016, 'gradient_norm': 11.496991157531738, 'activation_abs_mean': 3.3139779567718506, 'elapsed_seconds': 2438.0529953613877, 'stable_sec_per_update': 0.3487384166568518, 'remaining_training_hours': 2.4217945601170263, 'lr': [1.5723270440251575e-05, 0.00015723270440251574], 'weight_mean': 1.0, 'weight_min': 0.7201103568077087, 'weight_max': 2.1603310108184814, 'effective_fraction': 0.7900984287261963, 'small_stratum_pixels': 0}
+M2_TRAIN F0_s17_DShuffle 12500 {'step': 12500, 'loss': 0.26634496450424194, 'gradient_norm': 11.911639213562012, 'activation_abs_mean': 4.335460186004639, 'elapsed_seconds': 4362.730126388371, 'stable_sec_per_update': 0.3477297572419047, 'remaining_training_hours': 1.8835361850603172, 'lr': [1.2264150943396227e-05, 0.00012264150943396227], 'weight_mean': 1.0, 'weight_min': 0.8060257434844971, 'weight_max': 2.418077230453491, 'effective_fraction': 0.8283570408821106, 'small_stratum_pixels': 0}
+M2_TRAIN F0_s17_DEntropy 7500 {'step': 7500, 'loss': 0.33457788825035095, 'gradient_norm': 11.43975830078125, 'activation_abs_mean': 3.468682050704956, 'elapsed_seconds': 2620.8394721224904, 'stable_sec_per_update': 0.3499524164944887, 'remaining_training_hours': 2.381620612254159, 'lr': [1.5408805031446543e-05, 0.00015408805031446544], 'weight_mean': 1.0000001192092896, 'weight_min': 0.7744725346565247, 'weight_max': 2.3234176635742188, 'effective_fraction': 0.8110072612762451, 'small_stratum_pixels': 0}
+M2_TRAIN F0_s17_DShuffle 13000 {'step': 13000, 'loss': 0.25870341062545776, 'gradient_norm': 8.324002265930176, 'activation_abs_mean': 4.228517532348633, 'elapsed_seconds': 4542.7655736655, 'stable_sec_per_update': 0.3511378299444914, 'remaining_training_hours': 1.853227435818149, 'lr': [1.1949685534591196e-05, 0.00011949685534591195], 'weight_mean': 0.9999999403953552, 'weight_min': 0.6983930468559265, 'weight_max': 2.095179319381714, 'effective_fraction': 0.7868137359619141, 'small_stratum_pixels': 2}
+M2_TRAIN F0_s17_DEntropy 8000 {'step': 8000, 'loss': 0.3544068932533264, 'gradient_norm': 13.38363265991211, 'activation_abs_mean': 3.5840718746185303, 'elapsed_seconds': 2800.692302122712, 'stable_sec_per_update': 0.3524244826287031, 'remaining_training_hours': 2.3494965508580203, 'lr': [1.5094339622641511e-05, 0.0001509433962264151], 'weight_mean': 1.0, 'weight_min': 0.8226490020751953, 'weight_max': 2.467947006225586, 'effective_fraction': 0.8398815989494324, 'small_stratum_pixels': 1}
+M2_TRAIN F0_s17_DShuffle 13500 {'step': 13500, 'loss': 0.23177754878997803, 'gradient_norm': 13.59045124053955, 'activation_abs_mean': 4.305102825164795, 'elapsed_seconds': 4724.87645329535, 'stable_sec_per_update': 0.35107826646417384, 'remaining_training_hours': 1.8041522026631156, 'lr': [1.1635220125786164e-05, 0.00011635220125786164], 'weight_mean': 0.9999999403953552, 'weight_min': 0.75004643201828, 'weight_max': 2.2501392364501953, 'effective_fraction': 0.8003737926483154, 'small_stratum_pixels': 0}
+M2_TRAIN F0_s17_DEntropy 8500 {'step': 8500, 'loss': 0.37795764207839966, 'gradient_norm': 9.932496070861816, 'activation_abs_mean': 3.6184966564178467, 'elapsed_seconds': 2988.2525725141168, 'stable_sec_per_update': 0.3523621974512935, 'remaining_training_hours': 2.300142122251499, 'lr': [1.4779874213836477e-05, 0.00014779874213836477], 'weight_mean': 1.0, 'weight_min': 0.7879520058631897, 'weight_max': 2.363856077194214, 'effective_fraction': 0.8196414113044739, 'small_stratum_pixels': 0}
+M2_TRAIN F0_s17_DShuffle 14000 {'step': 14000, 'loss': 0.2597193121910095, 'gradient_norm': 10.569622993469238, 'activation_abs_mean': 4.5030131340026855, 'elapsed_seconds': 4899.910583168268, 'stable_sec_per_update': 0.3489012200385332, 'remaining_training_hours': 1.744506100192666, 'lr': [1.1320754716981132e-05, 0.00011320754716981132], 'weight_mean': 1.0000001192092896, 'weight_min': 0.7625957131385803, 'weight_max': 2.2877871990203857, 'effective_fraction': 0.8066225051879883, 'small_stratum_pixels': 0}
+M2_TRAIN F0_s17_DEntropy 9000 {'step': 9000, 'loss': 0.3211856484413147, 'gradient_norm': 17.28414535522461, 'activation_abs_mean': 3.645944595336914, 'elapsed_seconds': 3161.9308214113116, 'stable_sec_per_update': 0.34782857429236175, 'remaining_training_hours': 2.2222381135345333, 'lr': [1.4465408805031447e-05, 0.00014465408805031446], 'weight_mean': 1.0, 'weight_min': 0.8012450933456421, 'weight_max': 2.4037351608276367, 'effective_fraction': 0.824463427066803, 'small_stratum_pixels': 1}
+M2_TRAIN F0_s17_DShuffle 14500 {'step': 14500, 'loss': 0.25318360328674316, 'gradient_norm': 8.462965965270996, 'activation_abs_mean': 4.616274833679199, 'elapsed_seconds': 5072.735973037779, 'stable_sec_per_update': 0.3463190590962768, 'remaining_training_hours': 1.6834954261624566, 'lr': [1.1006289308176102e-05, 0.00011006289308176101], 'weight_mean': 1.0, 'weight_min': 0.81711745262146, 'weight_max': 2.45135235786438, 'effective_fraction': 0.8370140194892883, 'small_stratum_pixels': 0}
+M2_TRAIN F0_s17_DEntropy 9500 {'step': 9500, 'loss': 0.3153127133846283, 'gradient_norm': 7.034763813018799, 'activation_abs_mean': 3.765165328979492, 'elapsed_seconds': 3334.734430745244, 'stable_sec_per_update': 0.3453684844076633, 'remaining_training_hours': 2.1585530275478955, 'lr': [1.4150943396226415e-05, 0.00014150943396226416], 'weight_mean': 1.0, 'weight_min': 0.7101173400878906, 'weight_max': 2.130352020263672, 'effective_fraction': 0.7913575172424316, 'small_stratum_pixels': 0}
+M2_TRAIN F0_s17_DShuffle 15000 {'step': 15000, 'loss': 0.24174943566322327, 'gradient_norm': 8.31987190246582, 'activation_abs_mean': 4.664950847625732, 'elapsed_seconds': 5245.61101205647, 'stable_sec_per_update': 0.34579717218875883, 'remaining_training_hours': 1.6329310908913612, 'lr': [1.069182389937107e-05, 0.0001069182389937107], 'weight_mean': 1.0, 'weight_min': 0.7797499895095825, 'weight_max': 2.339249849319458, 'effective_fraction': 0.8196377754211426, 'small_stratum_pixels': 0}
+M2_TRAIN F0_s17_DEntropy 10000 {'step': 10000, 'loss': 0.3589470088481903, 'gradient_norm': 13.471531867980957, 'activation_abs_mean': 3.9699959754943848, 'elapsed_seconds': 3508.3527819141746, 'stable_sec_per_update': 0.34617791417986155, 'remaining_training_hours': 2.1155316977658205, 'lr': [1.3836477987421383e-05, 0.00013836477987421382], 'weight_mean': 1.0, 'weight_min': 0.7874128222465515, 'weight_max': 2.3622384071350098, 'effective_fraction': 0.8175340890884399, 'small_stratum_pixels': 0}
+M2_TRAIN F0_s17_DShuffle 15500 {'step': 15500, 'loss': 0.24646198749542236, 'gradient_norm': 10.24203872680664, 'activation_abs_mean': 4.70222282409668, 'elapsed_seconds': 5419.468727402389, 'stable_sec_per_update': 0.3468797400593757, 'remaining_training_hours': 1.5898654752721386, 'lr': [1.0377358490566038e-05, 0.00010377358490566037], 'weight_mean': 0.9999999403953552, 'weight_min': 0.8272720575332642, 'weight_max': 2.481816053390503, 'effective_fraction': 0.833636462688446, 'small_stratum_pixels': 0}
+M2_TRAIN F0_s17_DEntropy 10500 {'step': 10500, 'loss': 0.2793630361557007, 'gradient_norm': 14.44469928741455, 'activation_abs_mean': 3.844505786895752, 'elapsed_seconds': 3682.9880797713995, 'stable_sec_per_update': 0.34751072730869054, 'remaining_training_hours': 2.0754112880935685, 'lr': [1.3522012578616353e-05, 0.00013522012578616352], 'weight_mean': 1.0000001192092896, 'weight_min': 0.677608072757721, 'weight_max': 2.0328242778778076, 'effective_fraction': 0.7834624648094177, 'small_stratum_pixels': 0}
+M2_TRAIN F0_s17_DShuffle 16000 {'step': 16000, 'loss': 0.24504822492599487, 'gradient_norm': 10.02598762512207, 'activation_abs_mean': 4.605032920837402, 'elapsed_seconds': 5594.011351600289, 'stable_sec_per_update': 0.34733173679560425, 'remaining_training_hours': 1.5436966079804633, 'lr': [1.0062893081761008e-05, 0.00010062893081761007], 'weight_mean': 1.0, 'weight_min': 0.7756782174110413, 'weight_max': 2.3270347118377686, 'effective_fraction': 0.816588282585144, 'small_stratum_pixels': 0}
+M2_TRAIN F0_s17_DEntropy 11000 {'step': 11000, 'loss': 0.3074483573436737, 'gradient_norm': 10.226433753967285, 'activation_abs_mean': 3.8297488689422607, 'elapsed_seconds': 3857.02556322515, 'stable_sec_per_update': 0.3484150256961584, 'remaining_training_hours': 2.0324209832275906, 'lr': [1.320754716981132e-05, 0.0001320754716981132], 'weight_mean': 1.0, 'weight_min': 0.7716837525367737, 'weight_max': 2.3150510787963867, 'effective_fraction': 0.8119226694107056, 'small_stratum_pixels': 0}
+M2_TRAIN F0_s17_DShuffle 16500 {'step': 16500, 'loss': 0.22173123061656952, 'gradient_norm': 6.331803321838379, 'activation_abs_mean': 4.770209312438965, 'elapsed_seconds': 5779.1266677975655, 'stable_sec_per_update': 0.34977253060787916, 'remaining_training_hours': 1.5059650623394798, 'lr': [9.748427672955976e-06, 9.748427672955975e-05], 'weight_mean': 1.0, 'weight_min': 0.7619900107383728, 'weight_max': 2.2859699726104736, 'effective_fraction': 0.8062173128128052, 'small_stratum_pixels': 0}
+
+
+LOG /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/nohup.log
+VERIFIED_MODEL_PACKAGE_PATHS ["/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/code/model", "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/model"]
+ENGINEERING_RUNTIME_MEMFD {"backend": "libc.memfd_create", "anonymous": true, "cloexec": true, "mapping_roundtrip": true, "disk_fallback": false}
+RUNTIME_READY_WAITING_FOR_PAIRED_LAUNCH /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345
+
+Sat Oct 24 22:49:33 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.48.01              Driver Version: 590.48.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:0F:00.0 Off |                    0 |
+| N/A   40C    P0            201W /  700W |    8297MiB /  81559MiB |     40%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA H100 80GB HBM3          On  |   00000000:34:00.0 Off |                    0 |
+| N/A   34C    P0            217W /  700W |    8297MiB /  81559MiB |     71%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         2757402      C   ...nvs/remote_sensing/bin/python       8288MiB |
+|    1   N/A  N/A         2757403      C   ...nvs/remote_sensing/bin/python       8288MiB |
++-----------------------------------------------------------------------------------------+
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+M2="$ROOT/records/research_phase3_m2_revision_20261024T092814_2738345"
+
+if [ -f "$M2/publication/summary.json" ]; then
+  python -B -m json.tool "$M2/publication/summary.json"
+  python -B -m json.tool "$M2/publication/gates.json"
+  if [ -f "$M2/publication/REPORT.md" ]; then
+    sed -n '1,100p' "$M2/publication/REPORT.md"
+  fi
+else
+  echo "尚未生成M2阶段汇总，请结合上面的队列状态判断。"
+fi
+尚未生成M2阶段汇总，请结合上面的队列状态判断。
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ 
