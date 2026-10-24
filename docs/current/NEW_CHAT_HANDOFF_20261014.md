@@ -1,5 +1,7 @@
-# 历史接续入口已更新（2026-10-15）
+# 历史新对话链接：请使用稳定入口
 
-Phase2.4已完成并完成原件/整数计数验收，上传成功。旧D2/T0状态和只读进度/上传步骤不再适用。
+本文件保留原文件名供旧消息和两台电脑跳转；原运行说明已归档，不提供启动动作。
 
-请转读[2026-10-15新接续](NEW_CHAT_HANDOFF_20261015.md)、[当前交接](HANDOFF.md)和[完整验收报告](../experiments/PHASE_24_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md)。原文件已完整保留在docs/history/20261015_before_phase24_acceptance/NEW_CHAT_HANDOFF_20261014.md。
+请直接读取[稳定新对话入口](NEW_CHAT_HANDOFF.md)、[共享入口](../START_HERE.md)、[当前交接](HANDOFF.md)和[下一步](NEXT_EXPERIMENT.md)。执行[长期约定](../protocols/EXECUTION_CONTRACT.md)与[启动交付/故障控制](../protocols/STARTUP_DELIVERY_AND_FAILURE_CONTROL.md)，复用未变检查，不因换对话重启实验。
+
+本页改写前原文见[归档](../history/NEW_CHAT_HANDOFF_20261014_BEFORE_STABLE_ENTRY.md)。

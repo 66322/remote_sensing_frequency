@@ -1,5 +1,7 @@
 # 下一步：继续现有M2，核验轨迹与首个完整端点（2026-10-24）
 
+已采纳长期规则：[启动交付与故障控制](../protocols/STARTUP_DELIVERY_AND_FAILURE_CONTROL.md)和[稳定新对话入口](NEW_CHAT_HANDOFF.md)。当前只读接续；新增规则不触发预检重跑、热改快照或重新启动。
+
 1. 最后服务器观测2026-10-24 09:54:39+08:00：M2为RUNNING，输入12/12已于09:49:45完成；GPU0的F0_s42_T3推进到2600/32000，GPU1的F0_s42_T1推进到2620/32000。两个控制器2754693/2754694存活，作业失败0、完成端点0；合并WAIT_M2为正常依赖等待。此为最后观测，不是实时状态。
 2. 用户按需只读运行records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/scripts/status_phase3_engineering_restart.py --tail 40，关注progress更新时间、失败记录及控制器状态，无需再次启动。
 3. 下一关键节点为8k/16k/24k/32k训练轨迹及首个32k端点；先确认绑定配置、checkpoint、原始整数计数与轨迹完整性，再解释性能。两条T1/T3为M2内层教师；合并WAIT_M2须等M2完整性门禁，不直接跳段。

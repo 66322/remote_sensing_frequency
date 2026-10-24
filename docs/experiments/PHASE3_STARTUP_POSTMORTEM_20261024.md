@@ -67,3 +67,7 @@
 - [model路径根因与真实分包检查](../protocols/PHASE3_MODEL_NAMESPACE_CONTINUATION_20261024.md)
 - [原DAG](../../scripts/phase3_m2_common.py)、[原失败派发](../../scripts/control_phase3_m2.py)、[首败适配](../../scripts/phase3_engineering_runtime.py)
 - [最后已收到的真实训练更新](PHASE3_REVISION_TRAINING_STARTED_20261024.md)
+
+## 后续采纳：已固化为长期执行规则
+
+用户随后明确要求写入相关文件并跨新对话生效。上方“对后续交付的改进建议”现已采纳为[启动交付与故障控制](../protocols/STARTUP_DELIVERY_AND_FAILURE_CONTROL.md)，根AGENTS、稳定新对话入口、执行约定与当前交接均链接该规则。这里保留复盘形成时的建议原文；本次只固化规则，不更改服务器运行快照、不重新预检或训练。
