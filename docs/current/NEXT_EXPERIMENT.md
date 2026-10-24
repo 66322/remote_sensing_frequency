@@ -1,10 +1,10 @@
-# 下一步：只读核验已派发控制器及首次训练状态（2026-10-24）
+# 下一步：M2原始失败取证，不重启（2026-10-24）
 
-1. 用户修复日志phase3_memfd_repair_20261024T083216.log已出现ORIGINAL_M2_TARGET_CHECKS_PASSED和EXISTING_M2_MEMFD_REPAIR_LAUNCHED；M2 PID2690788、合并PID2690789已派发。启动器Done为父进程退出，不等于训练结束。
-2. 原目录只读查询：date、两个PID的ps、M2 queue_status.json/preparation_progress.json/gpu0.json/gpu1.json/controller_failure.json/memfd_wrapper_failure.json、M2 nohup.log及新repair/combined_nohup.log；GPU0/1状态共同核对。不要再次登记、运行修复--apply或清理日志。
-3. 准备阶段先哈希输入并载入12个Fit12 tile，随后启动GPU worker；暂时GPU空闲需结合准备进度、进程和异常判断。合并WAIT_M2为正常等待M2完成，约300秒刷新，不代表M2未启动。
-4. 服务器原始target_checks.log与runtime_repair/launch回执尚待取回；终端通过标志不能替代全部原件核验。失败停止，不自动重试；只读新错误再决定工程修复。
-5. 科学门禁、test封存、仅GPU0/1、有界内存、无新增seed/失败配方重跑不变。完成后核验端点与训练轨迹，额外同步修复包轻量证据。
+1. 最后观测08:38:13：M2 INCOMPLETE_NO_RETRY、合并STOPPED_NO_AUTOMATIC_RETRY，两PID均defunct，GPU0/1空闲；12/12输入准备及memfd/原16项检查通过。
+2. 只读publication/summary.json的jobs_complete/expected、完整端点optimizer_updates、errors/failures，按不同error取最早failure完整traceback；结合jobs/*/progress.json与trajectory.jsonl确认真实更新情况。
+3. 当前nohup尾部不含原始作业错误，不能据此归咎xFormers。G0关闭时性能门禁不能当作科学阴性；合并错误是下游停止，认证不可用为上传问题。
+4. 不运行bootstrap或repair --apply、不改包或重跑失败配方，保留旧目录、源码和失败。若需新尝试，先明确新执行合同与失败保留。
+5. 该轮publication未自动上传，后续取回轻量原件与轨迹再验收，不索取token。test封存、GPU0/1及有界内存不变。
 
 ## 独立新路线的下一步
 

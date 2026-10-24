@@ -1,6 +1,6 @@
-# Phase3 M2＋后续机制与新数据合并队列（已登记并派发控制器，训练状态待核验）
+# Phase3 M2＋后续机制与新数据合并队列（M2执行不完整，已停止）
 
-2026-10-24当前接续：用户修复日志phase3_memfd_repair_20261024T083216.log显示原16项目标检查通过，M2 PID2690788、合并PID2690789已派发；进程存活和首次训练状态尚待只读查询。见[原目录memfd修复及接续回执](../experiments/PHASE3_M2_MEMFD_REPAIR_20261024.md)，修复提交b0200004f30a8d55eef2049ecdfb30ef97f3d034；原源码、计划及科学门禁不变。不要重复执行下方历史登记命令或修复启动器，无需再换环境或改装xformers。
+2026-10-24 08:38:13回执：memfd及原16项检查通过、12/12输入准备完成后，M2 INCOMPLETE_NO_RETRY、合并STOPPED_NO_AUTOMATIC_RETRY，两控制器defunct。见[停止取证记录](../experiments/PHASE3_M2_INCOMPLETE_20261024.md)。只读summary及failures原始堆栈，不再次登记或执行修复--apply，不重跑配方。下方为原合同和历史启动方法。
 
 2026-10-23启动前修复：执行代码改用 `e65c6cb0830985461b3cd30e2f43158dd3d858cb`。90b9bbe的下载包遗漏执行清单，用户目标检查在队列登记前失败；新入口保存并绑定清单，提前检查冻结Torch版本。见[故障及证据](../experiments/PHASE3_COMBINED_BOOTSTRAP_FIX_20261023.md)。M2冻结提交、作业数、模型及科学门禁均不变。
 

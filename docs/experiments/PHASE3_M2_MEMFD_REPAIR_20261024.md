@@ -1,6 +1,6 @@
 # M2登记期memfd兼容修复与原目录接续（2026-10-24）
 
-状态：SERVER_ORIGINAL_16_CHECKS_PASSED_CONTROLLERS_DISPATCHED_TRAINING_UNCONFIRMED。修复执行提交：[b0200004f30a8d55eef2049ecdfb30ef97f3d034](https://github.com/66322/remote_sensing_frequency/commit/b0200004f30a8d55eef2049ecdfb30ef97f3d034)。不是科学配方失败或训练重跑。
+状态：MEMFD_CHECKS_PASSED_SUBSEQUENT_M2_INCOMPLETE_STOPPED。修复执行提交：[b0200004f30a8d55eef2049ecdfb30ef97f3d034](https://github.com/66322/remote_sensing_frequency/commit/b0200004f30a8d55eef2049ecdfb30ef97f3d034)。不是科学配方失败或训练重跑。
 
 ## 最后服务器证据
 
@@ -78,3 +78,8 @@ curl -fL --retry 2 "https://raw.githubusercontent.com/66322/remote_sensing_frequ
 [用户终端输出节选](evidence/PHASE3_M2_MEMFD_SERVER_RECEIPT_20261024.txt)，保留启动器Done与新日志的派发标志；不是服务器原日志文件完整归档。原16项通过及training_jobs=0为修复脚本回执，尚未回传逐项完整日志、runtime_repair.json和launch.json原件。GPU watch没有粘贴屏幕内容，不能推断GPU是否在训练。
 
 用户已执行上方一次性命令，不再执行本页历史启动块。接下来只读检查原M2状态/准备进度/GPU进度/失败回执及新日志。代码先执行prepare再创建GPU worker，prepare包含输入SHA及12个Fit12 tile的内存加载和边界统计，preparation_progress.json每完成一个tile更新，M2_INPUT打印进度。训练调度后M2状态约15秒刷新，合并WAIT_M2最长约300秒刷新；监督器等待是正常依赖行为。没有新增配方或改变门禁。
+## 后续状态：M2执行不完整停止
+
+最后服务器观测2026-10-24 08:38:13+08:00：M2 PID2690788和合并PID2690789均Zs/defunct，GPU0/1均0MiB且无计算进程。M2于08:36:44.670358报告INCOMPLETE_NO_RETRY；合并于08:37:36.280856报告STOPPED_NO_AUTOMATIC_RETRY，原因M2 did not finish as server-checked。12/12输入准备于08:35:40.299463完成。此为最后观测，不是实时状态。
+
+最新[停止取证记录](PHASE3_M2_INCOMPLETE_20261024.md)覆盖上方派发后待核验状态。memfd与16项检查通过不等于训练链验收；先取真实作业堆栈，根因未知。已有失败作业/publication不符合登记期接纳条件，不再次执行历史修复命令。
