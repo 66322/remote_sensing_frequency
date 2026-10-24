@@ -1,6 +1,6 @@
 # M2 Python3.9导入故障与CPU兼容预检（2026-10-24）
 
-状态：ROOT_CAUSE_IDENTIFIED_CPU_PREFLIGHT_READY_NOT_SERVER_RUN；旧M2仍INCOMPLETE_NO_RETRY。
+状态：SERVER_CPU_PREFLIGHT_PASSED_TRAINING_NOT_RESTARTED；旧M2仍INCOMPLETE_NO_RETRY。
 
 ## 原始回执与结论边界
 
@@ -24,7 +24,7 @@
 
 本地7项检查涵盖注解求值、docstring/future插入与幂等、Git原字节/脏文件拒绝、63条导入失败绑定、训练痕迹拒绝和路径/回执保护，全部通过；两文件Python3.9 AST解析通过。[本地回执](evidence/PHASE3_DINO_PY39_PREFLIGHT_LOCAL_20261024.json)。本地WindowsPython3.13，不代替服务器Python3.9真实模型导入；目标尚待用户运行。
 
-## 用户执行：只做CPU预检
+## 历史执行命令：CPU预检已完成，不需重复
 
 ```bash
 conda activate remote_sensing
@@ -43,3 +43,16 @@ python -u -B "$SCRIPT" --directory "$M2"
 这条命令不修订冻结M2运行的pretrained.json、绑定或失败状态，CPU通过不会接回旧队列。用户此前明确“不自动增加种子或重跑失败配方”；当前63个作业已标失败，不能用登记期memfd修复重启或删除失败伪装新作业。若用户后续明确允许纯工程修复后的重新尝试，再制定可核验的执行修订：保留本次旧失败、明确新执行来源/绑定和同一科学预算、将CPU门禁接入实际M2/J/R路径，再启动；目前未实现或派发这一正式重试，不暗示已修复全部CUDA训练链。
 
 原主线、门禁、test封存、GPU0/1、有界内存和无SSH规则不变。原publication仍未自动上传，当前只是用户节选，原件/训练轨迹尚未全量验收。
+## 服务器CPU预检成功回执
+
+用户已回传CPU_PREFLIGHT_PASSED_NO_TRAINING_OR_RETRY / CPU_MODEL_IMPORT_AND_PUBLIC_WEIGHTS_PASSED。预检目录为原M2 repairs/dino_py39_preflight_20261024T090448_2718326（目录时间09:04:48，完成时刻未提供）。固定8680614脚本成功标志表明全部63条原始失败的导入前栈和无更新产物审计、DINO源Git对象/兼容副本核对、CPU构造模型与公共权重严格加载均通过，且原M2绑定/失败证据保持不变。尚未启动训练，也未验证CUDA前反传。
+
+[用户成功标志原样节选](evidence/PHASE3_DINO_PY39_CPU_PASS_20261024.txt)。回执来源是用户终端成功标志；admission.json、cpu_model_passed.json、完整cpu_model.log原件尚未取回，不能称全量轻量原件已验收。进程/GPU最后带时间观测仍为2026-10-24 08:38:13，不是实时状态。CPU通过只验证修复方案可用于模型加载，不会修改旧M2实际启动路径或恢复控制器。
+
+上文“服务器待执行”为预检发布时状态，现由本回执更新。脚本8680614的成功出口在CPU子进程返回0后还核对原M2 binding、summary SHA、原63条failure和DINO原始源码不变；据此本次零训练更新的工程失败已具有审计回执。不声称完成了GPU前反传或全部轻量原件验收。
+
+## 拟议正式工程重启范围：待用户明确
+
+保留旧M2/合并及全部63条失败、skipped、publication和日志；不修改旧run状态，不再套用登记期memfd无作业修复。若用户明确允许，可准备一次独立修订执行，以旧run为工程失败来源，仍跑原M2→J→R→T→V合同，不增种子、臂、更新或开放test。CPU预检及memfd需接入真正的M2/J/R模型路径，批量派发前须通过目标模型加载；共性工程故障应立即止队。
+
+当前只提交这一可审阅处理方案，不是研究方向决定；正式重试代码、执行绑定和启动命令均未准备或派发。用户原“不自动增加种子或重跑失败配方”约束仍有效，收到CPU成功回执不视为重试授权。下一步先明确这一次零更新工程失败是否允许修订后尝试，再实施相应执行修订。

@@ -1,10 +1,10 @@
-# 下一步：原环境运行CPU DINO兼容预检，不重试训练（2026-10-24）
+# 下一步：明确是否允许一次工程修订后的正式重试（2026-10-24）
 
-1. 根因已由用户原始栈定位：Python3.9对DINO attention.py的float | None注解求值失败；0/108完整端点、63同类错误、无progress，尚待预检核验全部失败都在模型导入前。
-2. 依[诊断协议](../experiments/PHASE3_M2_PY39_IMPORT_FAILURE_20261024.md)下载固定提交86806140400620cc64af4728bc8c2af7cdcb69db中的preflight_phase3_dino_py39.py，在原M2目录执行。生成带哈希的延迟注解副本，CPU严格加载公共权重及MatchedExpert。预计1–2GiB主存、单数值线程、模型子进程最长180秒；不读数据集、不使用GPU、不做前向/反传/更新。
-3. 读取CPU_PREFLIGHT_PASSED_NO_TRAINING_OR_RETRY和新repairs/dino_py39_preflight_*中的CPU回执；失败读该目录cpu_model.log/preflight_failure.json，不自动重试。服务器预检尚未通过，不承诺CUDA训练链可运行。
-4. 原M2和合并仍停止，原失败/源码/绑定保留；不执行旧bootstrap或memfd --apply。用户禁止自动重跑失败配方，不能以CPU通过隐含重启63个失败作业。后续若明确允许工程修订后尝试，再准备新的执行合同及实际M2/J/R适配和门禁，不覆盖旧失败。
-5. 不将G0关闭后的性能False当作研究阴性；原件/轨迹验收和上传仍待完成。test、GPU0/1、有界内存规则不变。
+1. CPU预检已通过，目录为原M2 repairs/dino_py39_preflight_20261024T090448_2718326。成功标志确认63条导入前失败/无更新产物审计、固定DINO源和兼容副本核验、CPU模型构造及公共权重加载完成。无需再重复预检或改环境。
+2. 当前未授权自动重试63个失败作业，也未重启训练。先明确是否允许一次纯工程修订后的重新尝试；不要执行旧bootstrap或memfd --apply，不删除旧失败。
+3. 拟议处理（尚未决定/实现）：旧M2/合并全部保留；独立修订执行目录关联旧失败，任务/种子/科学预算/门禁保持；将Python3.9副本及memfd接入实际M2/J/R，CPU模型加载门禁前置，工程共性故障立即止队。正式代码和绑定验证、同步回读后，由用户在GPU0/1执行。
+4. CPU成功不代表CUDA前反传已验证，不把当前不完整计数作科学阴性。进程/GPU最后实测08:38:13，后续执行需现场准入。
+5. 后续取回CPU admission/cpu_model_passed/cpu_model.log及旧publication轻量原件；当前只是用户成功标志回执。test封存及有界内存不变。
 
 ## 独立新路线的下一步
 

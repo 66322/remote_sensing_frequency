@@ -1,6 +1,6 @@
 # Phase3 M2＋后续机制与新数据合并队列（M2执行不完整，已停止）
 
-2026-10-24最新诊断：Python3.9导入DINO的float | None注解失败，63条同类错误、0/108完整端点、无进度。见[CPU兼容预检](../experiments/PHASE3_M2_PY39_IMPORT_FAILURE_20261024.md)。原队列已停止，仅CPU验证，不再次登记、memfd --apply或重跑失败作业。当前实际M2/J/R正式重试尚未准备或派发，下方为原合同和历史启动方法。
+2026-10-24最新回执：Python3.9兼容CPU模型加载及63条导入前失败/无更新产物审计已通过，见[CPU检查记录](../experiments/PHASE3_M2_PY39_IMPORT_FAILURE_20261024.md)。旧M2/合并仍停止，尚无工程修订后正式重试授权；不重复旧bootstrap、memfd --apply或清除失败。拟议新执行须明确决定并接入真实M2/J/R兼容路径，下方原合同与历史命令不构成重试指令。
 
 2026-10-23启动前修复：执行代码改用 `e65c6cb0830985461b3cd30e2f43158dd3d858cb`。90b9bbe的下载包遗漏执行清单，用户目标检查在队列登记前失败；新入口保存并绑定清单，提前检查冻结Torch版本。见[故障及证据](../experiments/PHASE3_COMBINED_BOOTSTRAP_FIX_20261023.md)。M2冻结提交、作业数、模型及科学门禁均不变。
 

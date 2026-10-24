@@ -1,6 +1,6 @@
-# 共享入口：M2 Python3.9导入故障已定位，待CPU兼容预检（2026-10-24）
+# 共享入口：Python3.9 CPU模型预检已通过，正式工程重启未授权（2026-10-24）
 
-最新执行记录：[Python3.9导入故障和CPU预检](experiments/PHASE3_M2_PY39_IMPORT_FAILURE_20261024.md)。用户2026-10-24回传summary/失败节选（此次查询未带时间）：M2 INCOMPLETE_NO_RETRY，0/108完整端点、0评价案例、0个progress.json；63个failure均报unsupported operand type(s) for |: type and NoneType。展示的完整堆栈位于Python3.9加载DINOv2 attention.py的float | None注解，在make_model导入阶段，尚未进入该作业优化器构造或训练循环。全部63个原始堆栈及无更新产物仍由预检逐项核验。 下一步仅执行CPU模型导入/公共权重预检：原目录repairs下生成带逐文件Git blob/原始SHA/副本SHA的Python3.9兼容副本，仅添加延迟注解声明且可执行AST一致。原DINO仓库、M2源码/配置/失败状态和权重不改。不读数据集、不做前向/反传、无GPU、无训练/重试控制器。真实目标模型构造/权重加载尚未验证；7项本地检查及Python3.9语法解析通过。 两控制器停止/GPU空闲最后观测08:38:13，不能视为实时状态。
+最新执行记录：[Python3.9兼容预检通过](experiments/PHASE3_M2_PY39_IMPORT_FAILURE_20261024.md)。用户已回传CPU_PREFLIGHT_PASSED_NO_TRAINING_OR_RETRY / CPU_MODEL_IMPORT_AND_PUBLIC_WEIGHTS_PASSED。预检目录为原M2 repairs/dino_py39_preflight_20261024T090448_2718326（目录时间09:04:48，完成时刻未提供）。固定8680614脚本成功标志表明全部63条原始失败的导入前栈和无更新产物审计、DINO源Git对象/兼容副本核对、CPU构造模型与公共权重严格加载均通过，且原M2绑定/失败证据保持不变。尚未启动训练，也未验证CUDA前反传。 回执来源是用户终端成功标志；admission.json、cpu_model_passed.json、完整cpu_model.log原件尚未取回，不能称全量轻量原件已验收。进程/GPU最后带时间观测仍为2026-10-24 08:38:13，不是实时状态。CPU通过只验证修复方案可用于模型加载，不会修改旧M2实际启动路径或恢复控制器。 用户禁止自动重跑失败配方，下一步先明确是否允许一次纯工程修订后的正式重试，不自动启动。
 
 最新研究方案：[连续建筑地图维护中的错误恢复与变化发现](experiments/INDEPENDENT_RESEARCH_ROUTE_20261023.md)。用户要求保留既有研究并寻找独立新路线；助手将旧地图候选细化为优先验证方向，尚未实现、运行或确认为新主线。少量核验纠正漏标保留备选，异步水域时间错配候选依据元数据审计降级。[前一轮期刊扫描](experiments/REMOTE_SENSING_JOURNAL_OPTIONS_20261022.md)保留为来源。
 
