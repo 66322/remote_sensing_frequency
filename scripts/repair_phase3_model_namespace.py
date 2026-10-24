@@ -160,6 +160,9 @@ def main():
             if not fresh['ready'] or any(fresh['selected'][g][1] != inventory['selected'][g][1] for g in (0, 1)):
                 raise RuntimeError('GPU occupied or changed before namespace launch')
             intent = dict(previous, status='LAUNCHING_NAMESPACE_FIX', namespace_patch_commit=args.commit, observed_at=now())
+            for historical_key in ('error', 'traceback'):
+                intent.pop(historical_key, None)
+            intent['previous_failure_receipt'] = str(packet / 'previous_bootstrap_failure.json')
             write(packet / 'launch_intent.json', intent)
             write(records / LATCH, intent)
             c.write(m2 / 'queue_status.json', dict(status='LAUNCHED_PREPARING', observed_at=now()))
