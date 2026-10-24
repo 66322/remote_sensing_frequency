@@ -17,3 +17,5 @@
 数据与保存位置：[新数据用途、两处服务器产物目录及保留/回收规则](experiments/PHASE3_DATA_AND_ARTIFACT_STORAGE_20261024.md)。M2/J/R沿用现有Potsdam，只有T/V需要额外公开数据；后段服务器publication不等于已自动上传GitHub。
 
 启动复盘：[四类阻断、63条共性失败的调度放大及验证改进](experiments/PHASE3_STARTUP_POSTMORTEM_20261024.md)。主要问题是助手工程交付与真实执行链检查不足；本轮未操作服务器，不改变当前运行与研究决定。
+
+只读查看：[当前队列进度、失败与各段结果](protocols/PHASE3_PROGRESS_AND_RESULTS.md)，复用服务器已有状态助手；按登记回执选择当前目录，不看旧失败目录，也不因查看重新启动。
