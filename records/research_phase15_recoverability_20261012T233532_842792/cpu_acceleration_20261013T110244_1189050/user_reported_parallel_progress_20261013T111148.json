@@ -1,0 +1,38 @@
+{
+  "record_type": "user_reported_status_parallel_progress_and_equivalence",
+  "acceleration_commit": "4842b5eb38c62b19db97094d88526260f5fe3359",
+  "query_observed_at": "2026-10-13T11:11:48.801887+08:00",
+  "queue_last_observed_at": "2026-10-13T11:11:45.903760+08:00",
+  "status": "CPU_ORACLE_AND_CONDITIONAL_COUNTS",
+  "controller_live": true,
+  "gpu_counts": {
+    "COMPLETE": 100
+  },
+  "controller_log_tail_output": "",
+  "progress": {
+    "completed_cases": 87,
+    "total_cases": 160,
+    "tile": "5_10",
+    "realization": 2,
+    "family": "gradient",
+    "observed_at": "2026-10-13T11:11:25.691283+08:00",
+    "parallel_workers": 2,
+    "preserved_completed_cases": 63,
+    "new_completed_cases": 24,
+    "elapsed_accelerated_seconds": 414.9229078218341
+  },
+  "real_equivalence_passed": true,
+  "real_equivalence_scope": "same pixel/matched two completed cases; user reprinted receipt observed 11:04:30.765609",
+  "derived_timing": {
+    "aggregate_wall_seconds_per_completed_case": 17.28845449257642,
+    "pre_takeover_seconds_per_case": 178.9531111111111,
+    "aggregate_throughput_speedup": 10.351018431864613,
+    "not_same_case_paired_benchmark": true,
+    "remaining_D_cases": 73,
+    "linear_remaining_D_seconds": 1262.0571779580787,
+    "D_estimated_finish_UTC": "2026-10-13T03:32:27.748Z",
+    "user_facing_D_range": "2026-10-13 11:30–11:45 Asia/Shanghai conditional; excludes final five-diagnostic summary"
+  },
+  "whole_queue_complete": false,
+  "scientific_results_verified": false
+}

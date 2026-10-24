@@ -1,0 +1,61 @@
+{
+  "experiment": "REBUILD_V1_R01_COMPUTE_PROFILE",
+  "recorded_at": "2026-09-16T22:52:03+08:00",
+  "model": "R01",
+  "checkpoint_step": 10000,
+  "config": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/configs/rebuild_v1/r01_optical_only_16k.json",
+  "run_dir": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/R01_optical_only_seed42_sched16000_stop16000",
+  "device": "NVIDIA H100 80GB HBM3",
+  "precision": "FP32",
+  "patch": 512,
+  "stride": 256,
+  "inference_batch": 8,
+  "profile_tile": "3_11",
+  "params": {
+    "total": 105950198,
+    "transformer": 98562128,
+    "decoder": 7387200,
+    "segmentation_head": 870
+  },
+  "crop_batch1_latency": {
+    "transformer": {
+      "median_ms": 15.23543894290924,
+      "mean_ms": 15.412185713648796,
+      "min_ms": 15.201546251773834,
+      "max_ms": 18.372386693954468,
+      "std_ms": 0.6816090386046041,
+      "n": 20
+    },
+    "decoder": {
+      "median_ms": 1.7036646604537964,
+      "mean_ms": 1.7063964158296585,
+      "min_ms": 1.6934648156166077,
+      "max_ms": 1.7323866486549377,
+      "std_ms": 0.008680969821687397,
+      "n": 20
+    },
+    "head": {
+      "median_ms": 0.09013712406158447,
+      "mean_ms": 0.0899340957403183,
+      "min_ms": 0.08651614189147949,
+      "max_ms": 0.09316205978393555,
+      "std_ms": 0.0014507906199330489,
+      "n": 20
+    },
+    "full_forward": {
+      "median_ms": 17.01584830880165,
+      "mean_ms": 17.166083678603172,
+      "min_ms": 16.960956156253815,
+      "max_ms": 19.7150856256485,
+      "std_ms": 0.5872369709705254,
+      "n": 20
+    }
+  },
+  "crop_batch1_peak_allocated_gib": 0.7023725509643555,
+  "end_to_end_tile_seconds": 7.337198540568352,
+  "notes": [
+    "CUDA synchronization used around timed sections.",
+    "Tile timing includes sliding-window extraction, host/device movement, score accumulation, and model inference.",
+    "Compare R01 and R02 only when patch/stride/inference_batch/precision/profile tile match exactly."
+  ]
+}

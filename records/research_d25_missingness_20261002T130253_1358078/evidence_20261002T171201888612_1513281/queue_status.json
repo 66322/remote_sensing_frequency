@@ -1,0 +1,382 @@
+{
+  "jobs": {
+    "P0": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/jobs/P0",
+      "pid": 1389179,
+      "started_at": "2026-10-02T13:02:53.816405+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/logs/P0_20261002T130253815535.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/code/scripts/run_rebuild_v1_d25.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078",
+        "--job",
+        "P0"
+      ],
+      "elapsed_seconds": 2067.7933129817247,
+      "progress": {
+        "job": "P0",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T13:37:16.834130+08:00",
+        "session_elapsed_seconds": 2056.098024636507,
+        "loss": 0.18204578757286072,
+        "objective_counts": {
+          "present_pixels": 7077888,
+          "missing_pixels": 1310720,
+          "Pair:enabled_steps": 0,
+          "Pair:weighted_loss_sum": 0.0
+        },
+        "seconds_per_train_step": 0.19395087281242013,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 6038839296
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T13:37:21.610161+08:00",
+      "selected": {
+        "step": 2000,
+        "metric": 0.8690812461698018,
+        "checkpoint_sha256": "c3782aa2081d5207bde5456a8e7b4a82086472c570248d95f607a8f95daa17a8"
+      }
+    },
+    "P1": {
+      "status": "COMPLETE",
+      "gpu": 1,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/jobs/P1",
+      "pid": 1389183,
+      "started_at": "2026-10-02T13:02:54.013942+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/logs/P1_20261002T130254013069.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/code/scripts/run_rebuild_v1_d25.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078",
+        "--job",
+        "P1"
+      ],
+      "elapsed_seconds": 2067.5963983610272,
+      "progress": {
+        "job": "P1",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T13:37:16.538836+08:00",
+        "session_elapsed_seconds": 2055.802835084498,
+        "loss": 0.1829487532377243,
+        "objective_counts": {
+          "present_pixels": 7077888,
+          "missing_pixels": 1310720,
+          "Pair:enabled_steps": 1,
+          "Pair:penalty_sum": 0.0,
+          "Pair:weighted_loss_sum": 0.0
+        },
+        "seconds_per_train_step": 0.22458873944357038,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 6636446208
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T13:37:21.610519+08:00",
+      "selected": {
+        "step": 2000,
+        "metric": 0.8684468980017185,
+        "checkpoint_sha256": "2941b369a2cfc1c4a8d0c48c9bc1418aa61b323c1f2bd57f90291d66abfc1e19"
+      }
+    },
+    "P2": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/jobs/P2",
+      "pid": 1407455,
+      "started_at": "2026-10-02T13:37:26.860135+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/logs/P2_20261002T133726859014.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/code/scripts/run_rebuild_v1_d25.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078",
+        "--job",
+        "P2"
+      ],
+      "elapsed_seconds": 1877.6890661790967,
+      "progress": {
+        "job": "P2",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T14:08:39.455172+08:00",
+        "session_elapsed_seconds": 1868.812763236463,
+        "loss": 0.18320176005363464,
+        "objective_counts": {
+          "present_pixels": 7077888,
+          "missing_pixels": 1310720,
+          "Pair:enabled_steps": 0,
+          "Pair:weighted_loss_sum": 0.0
+        },
+        "seconds_per_train_step": 0.19394380525685848,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 6040920576
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T14:08:44.549761+08:00",
+      "selected": {
+        "step": 4000,
+        "metric": 0.8688714247924914,
+        "checkpoint_sha256": "22854cdd5db826f31fd38e8ee6a309811bbeb3465264ca14790d22e2d446ffdf"
+      }
+    },
+    "P3": {
+      "status": "COMPLETE",
+      "gpu": 1,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/jobs/P3",
+      "pid": 1407461,
+      "started_at": "2026-10-02T13:37:27.049974+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/logs/P3_20261002T133727048987.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/code/scripts/run_rebuild_v1_d25.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078",
+        "--job",
+        "P3"
+      ],
+      "elapsed_seconds": 1947.8204891234636,
+      "progress": {
+        "job": "P3",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T14:09:51.902875+08:00",
+        "session_elapsed_seconds": 1941.0467539802194,
+        "loss": 0.18339276313781738,
+        "objective_counts": {
+          "present_pixels": 7077888,
+          "missing_pixels": 1310720,
+          "Pair:enabled_steps": 0,
+          "Pair:weighted_loss_sum": 0.0
+        },
+        "seconds_per_train_step": 0.21375924431160093,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 6039904768
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T14:09:54.870703+08:00",
+      "selected": {
+        "step": 4000,
+        "metric": 0.8689339604876813,
+        "checkpoint_sha256": "a673195ae129e7ed9a297493778f2f29f6dfc795338c0f96a0ab452da06a2423"
+      }
+    },
+    "P4": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/jobs/P4",
+      "pid": 1423264,
+      "started_at": "2026-10-02T14:08:49.797321+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/logs/P4_20261002T140849796176.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/code/scripts/run_rebuild_v1_d25.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078",
+        "--job",
+        "P4"
+      ],
+      "elapsed_seconds": 1947.7530452907085,
+      "progress": {
+        "job": "P4",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T14:41:16.218242+08:00",
+        "session_elapsed_seconds": 1943.2830690145493,
+        "loss": 0.1821024864912033,
+        "objective_counts": {
+          "present_pixels": 7077888,
+          "missing_pixels": 1310720,
+          "Pair:enabled_steps": 0,
+          "Pair:weighted_loss_sum": 0.0
+        },
+        "seconds_per_train_step": 0.2139192010127008,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 6037823488
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T14:41:17.550803+08:00",
+      "selected": {
+        "step": 2000,
+        "metric": 0.8691249549867394,
+        "checkpoint_sha256": "f5b11d60cbb919148f0cbf8956926e4b41057cb532aa3e7d48e8bb2e7efc8867"
+      }
+    },
+    "P5": {
+      "status": "COMPLETE",
+      "gpu": 1,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/jobs/P5",
+      "pid": 1423916,
+      "started_at": "2026-10-02T14:10:00.043467+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/logs/P5_20261002T141000042492.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/code/scripts/run_rebuild_v1_d25.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078",
+        "--job",
+        "P5"
+      ],
+      "elapsed_seconds": 1907.7212326601148,
+      "progress": {
+        "job": "P5",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T14:41:43.659217+08:00",
+        "session_elapsed_seconds": 1900.4568765088916,
+        "loss": 0.18193984031677246,
+        "objective_counts": {
+          "present_pixels": 7077888,
+          "missing_pixels": 1310720,
+          "Pair:enabled_steps": 0,
+          "Pair:weighted_loss_sum": 0.0
+        },
+        "seconds_per_train_step": 0.20224066436104476,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 7651766784
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T14:41:47.764947+08:00",
+      "selected": {
+        "step": 2000,
+        "metric": 0.86908835063859,
+        "checkpoint_sha256": "c1887da00b462f56383139c5b73ffada083b4cd432dcf1a6e184ffc4d9263bec"
+      }
+    },
+    "P6": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/jobs/P6",
+      "pid": 1439649,
+      "started_at": "2026-10-02T14:41:22.734817+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/logs/P6_20261002T144122733670.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/code/scripts/run_rebuild_v1_d25.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078",
+        "--job",
+        "P6"
+      ],
+      "elapsed_seconds": 1655.6074774861336,
+      "progress": {
+        "job": "P6",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T15:08:57.499496+08:00",
+        "session_elapsed_seconds": 1651.6998150646687,
+        "loss": 0.18448090553283691,
+        "objective_counts": {
+          "present_pixels": 8388608,
+          "missing_pixels": 0,
+          "Pair:enabled_steps": 0,
+          "Pair:weighted_loss_sum": 0.0
+        },
+        "seconds_per_train_step": 0.18050835174880922,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 5094986752
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T15:08:58.342700+08:00",
+      "selected": {
+        "step": 2000,
+        "metric": 0.8639793022992122,
+        "checkpoint_sha256": "bef8dda6537b68fc51f300bc3789bbbef57682baedf92a3f7665217a4a2fde71"
+      }
+    },
+    "P7": {
+      "status": "COMPLETE",
+      "gpu": 1,
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/jobs/P7",
+      "pid": 1439961,
+      "started_at": "2026-10-02T14:41:52.902651+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/logs/P7_20261002T144152901587.log",
+      "command": [
+        "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+        "-u",
+        "-B",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/code/scripts/run_rebuild_v1_d25.py",
+        "--root",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+        "--directory",
+        "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078",
+        "--job",
+        "P7"
+      ],
+      "elapsed_seconds": 1981.4435182958841,
+      "progress": {
+        "job": "P7",
+        "step": 4000,
+        "target": 4000,
+        "phase": "complete",
+        "observed_at": "2026-10-02T15:14:52.009825+08:00",
+        "session_elapsed_seconds": 1975.8646199926734,
+        "loss": 0.18330061435699463,
+        "objective_counts": {
+          "present_pixels": 7077888,
+          "missing_pixels": 1310720,
+          "Pair:enabled_steps": 0,
+          "Pair:weighted_loss_sum": 0.0
+        },
+        "seconds_per_train_step": 0.21510812890529632,
+        "remaining_training_hours": 0.0,
+        "gpu_peak_allocated_bytes": 6041387520
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-02T15:14:54.346549+08:00",
+      "selected": {
+        "step": 4000,
+        "metric": 0.8689146475424703,
+        "checkpoint_sha256": "722f129d55ca2131a9ecadf38e45274871e5998dfbb75b1aca68c39521574ed1"
+      }
+    }
+  },
+  "status": "COMPLETE",
+  "controller_pid": 1389145,
+  "execution_commit": "0c31167d0fdb57f03459ea18981c1ee02bcee9f2",
+  "observed_at": "2026-10-02T15:14:54.351476+08:00",
+  "gpu_uuids": {
+    "0": "GPU-97a250ea-42ff-eb14-4ed5-8c50231e0baa",
+    "1": "GPU-4b116760-e84c-2743-cee6-41cf76a01677"
+  },
+  "completed_at": "2026-10-02T15:14:54.351450+08:00"
+}

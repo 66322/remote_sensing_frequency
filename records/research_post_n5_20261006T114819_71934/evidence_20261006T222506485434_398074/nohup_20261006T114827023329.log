@@ -1,0 +1,10 @@
+N5_START 0 N5-0 73794
+N5_START 1 N5-1 73797
+N5_JOB N5-1 COMPLETE
+N5_JOB N5-0 COMPLETE
+N5_START 1 N5-3 224068
+N5_START 0 N5-2 224177
+N5_JOB N5-2 COMPLETE
+N5_JOB N5-3 COMPLETE
+N5_SCREEN False {'T_mean_vs_random': 0.04187829141423549, 'T_tile_mean': {'3_11': 0.06122208942946905, '5_10': 0.025336663714664587}, 'fixed_T_mean_vs_random': 0.04187829141423549, 'clean_vs_original': -0.19107105261394963, 'dsm_missing_vs_original': -0.1522713533637159, 'rgb_missing_vs_original': 0.005382090960807773, 'old_random_vs_random': 0.011079086005267413, 'worst_primary_vs_random': -0.00695274112675337}
+N5_COMPLETE_UPLOAD_AND_REVIEW /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_20261006T114819_71934 NO_AUTOMATIC_N3_R1_N4_R2

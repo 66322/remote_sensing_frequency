@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "executed_git_commit": "b66a9017129b0d6adc45c71cc6e9ca042548fc0b",
+  "summaries": 6,
+  "both_seeds_pass": true,
+  "checks": [
+    "six original evaluation summaries and all condition integer CMs",
+    "matched model and evaluation provenance",
+    "both prespecified seed decisions",
+    "paired error totals, class totals, pooled CMs and full-absence P0 fallback"
+  ],
+  "limitation": "Prediction arrays, dataset and checkpoints remain on the server; this offline audit verifies archived counts and decisions, not independent re-inference. Val2 is exploratory."
+}

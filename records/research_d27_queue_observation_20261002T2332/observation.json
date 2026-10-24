@@ -1,0 +1,38 @@
+{
+  "status": "ACTIVE_QUEUED_WAITING_PREDECESSOR",
+  "source": "user pasted output of check_rebuild_v1_d27_handover.py",
+  "query_time_exact_provided": false,
+  "d27": {
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_after_d26_20261002T191253_1513109",
+    "last_observed": "2026-10-02T23:32:23.937672+08:00",
+    "queue_status": "WAITING_D26",
+    "controller_pid": 1703686,
+    "controller_live": true,
+    "heartbeat_age_seconds_at_query": 24.6,
+    "execution_commit": "9e316adc2fa6fd1f2ee0a554d86c9b3f27d1f64c",
+    "live_workers": [],
+    "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_after_d26_20261002T191253_1513109/nohup_20261002T232423_1703136.log"
+  },
+  "d26": {
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109",
+    "last_observed": "2026-10-02T23:32:46.158787+08:00",
+    "status": "RUNNING",
+    "complete_jobs": 3,
+    "total_jobs": 9,
+    "terminal_9_jobs": false,
+    "controller_lock_free": false,
+    "per_job_identities_not_provided": true
+  },
+  "handover": {
+    "configured_and_waiter_live": true,
+    "actual_handover_started": false,
+    "poll_seconds": 60,
+    "conditions": [
+      "nine predecessor jobs terminal",
+      "predecessor controller releases lock",
+      "authorized GPU has no competing live process"
+    ]
+  },
+  "new_metrics_received": false,
+  "test6_loaded": false
+}

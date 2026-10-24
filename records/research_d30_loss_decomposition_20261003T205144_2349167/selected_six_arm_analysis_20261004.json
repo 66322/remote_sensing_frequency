@@ -1,0 +1,230 @@
+{
+  "scope": "six selected result summaries, four arms have fixed8000 and retention; raw matrix review and replay pending",
+  "provenance": {
+    "run_id": "research_d30_loss_decomposition_20261003T205144_2349167",
+    "execution_commit": "9db12dfb7ee85dff91dd6c246c7f161b60aca603",
+    "dataset": "Potsdam",
+    "split": "development Val2 3_11/5_10",
+    "metric": "NoBoundary mIoU_fg5; C/QR/QD/QJ family means; S_available equal-family mean",
+    "selection": "mean clean/RGB-only clean/DSM-only clean at4000/8000",
+    "full_summary_uploaded": false,
+    "raw_matrices_independently_recomputed": false
+  },
+  "rows": [
+    {
+      "age": "selected",
+      "job": "S0",
+      "scores_pp": {
+        "C": 87.14378448666568,
+        "QR": 86.2068025701019,
+        "QD": 86.69522882012534,
+        "QJ": 84.1590391764477,
+        "S_available": 86.05121376333516
+      },
+      "QD_harm": {
+        "correct": 182604753,
+        "harm": 2447606,
+        "rate": 0.013403846065277392
+      },
+      "only_rgb_correct": 0.9588092321610735,
+      "only_dsm_correct": 0.38031591302821155
+    },
+    {
+      "age": "selected",
+      "job": "S1",
+      "scores_pp": {
+        "C": 85.1192699378325,
+        "QR": 84.42117665286207,
+        "QD": 84.8061520230742,
+        "QJ": 82.67562165950697,
+        "S_available": 84.25555506831894
+      },
+      "QD_harm": {
+        "correct": 182604753,
+        "harm": 4785825,
+        "rate": 0.026208655149299428
+      },
+      "only_rgb_correct": 0.9162889770308675,
+      "only_dsm_correct": 0.5765441301930971
+    },
+    {
+      "age": "selected",
+      "job": "P",
+      "scores_pp": {
+        "C": 87.18602851589715,
+        "QR": 86.2210447103013,
+        "QD": 86.75413948971413,
+        "QJ": 84.20837070447921,
+        "S_available": 86.09239585509795
+      },
+      "QD_harm": {
+        "correct": 182604753,
+        "harm": 2203896,
+        "rate": 0.012069214868684168
+      },
+      "only_rgb_correct": 0.9628275867598126,
+      "only_dsm_correct": 0.35658090808703924
+    },
+    {
+      "age": "selected",
+      "job": "R",
+      "scores_pp": {
+        "C": 84.87674107442773,
+        "QR": 84.18498482614892,
+        "QD": 84.59381290632969,
+        "QJ": 82.4956814829537,
+        "S_available": 84.037805072465
+      },
+      "QD_harm": {
+        "correct": 182604753,
+        "harm": 5165482,
+        "rate": 0.028287774086581414
+      },
+      "only_rgb_correct": 0.9097470356752311,
+      "only_dsm_correct": 0.5993420118395617
+    },
+    {
+      "age": "selected",
+      "job": "PR_area",
+      "scores_pp": {
+        "C": 87.10882143879431,
+        "QR": 86.16010220681197,
+        "QD": 86.61912571896016,
+        "QJ": 84.05793505036169,
+        "S_available": 85.98649610373204
+      },
+      "source": "user terminal D30_RESULT, completion 2026-10-04T00:47:08.030508+08:00"
+    },
+    {
+      "age": "selected",
+      "job": "PR_pixel",
+      "scores_pp": {
+        "C": 85.8811817655703,
+        "QR": 85.10920198709492,
+        "QD": 85.2529665826724,
+        "QJ": 82.79480860862543,
+        "S_available": 84.75953973599076
+      },
+      "source": "user terminal D30_RESULT, completion 2026-10-04T00:47:08.030508+08:00"
+    }
+  ],
+  "paired_effects": {
+    "S0": {
+      "versus_S0": {
+        "C": 0,
+        "QR": 0,
+        "QD": 0,
+        "QJ": 0,
+        "S_available": 0
+      },
+      "versus_S1_S_pp": 1.7956586950162148,
+      "versus_P_S_pp": -0.041182091762792084
+    },
+    "S1": {
+      "versus_S0": {
+        "C": -2.0245145488331815,
+        "QR": -1.7856259172398268,
+        "QD": -1.889076797051132,
+        "QJ": -1.483417516940733,
+        "S_available": -1.7956586950162148
+      },
+      "versus_S1_S_pp": 0,
+      "versus_P_S_pp": -1.8368407867790069
+    },
+    "P": {
+      "versus_S0": {
+        "C": 0.04224402923146897,
+        "QR": 0.014242140199399955,
+        "QD": 0.05891066958879776,
+        "QJ": 0.04933152803150165,
+        "S_available": 0.041182091762792084
+      },
+      "versus_S1_S_pp": 1.8368407867790069,
+      "versus_P_S_pp": 0
+    },
+    "R": {
+      "versus_S0": {
+        "C": -2.2670434122379532,
+        "QR": -2.0218177439529796,
+        "QD": -2.1014159137956483,
+        "QJ": -1.6633576934940066,
+        "S_available": -2.0134086908701505
+      },
+      "versus_S1_S_pp": -0.21774999585393573,
+      "versus_P_S_pp": -2.0545907826329426
+    },
+    "PR_area": {
+      "versus_S0": {
+        "C": -0.034963047871372055,
+        "QR": -0.046700363289929214,
+        "QD": -0.07610310116517383,
+        "QJ": -0.10110412608601393,
+        "S_available": -0.0647176596031187
+      },
+      "versus_S1_S_pp": 1.730941035413096,
+      "versus_P_S_pp": -0.10589975136591079
+    },
+    "PR_pixel": {
+      "versus_S0": {
+        "C": -1.2626027210953765,
+        "QR": -1.0976005830069795,
+        "QD": -1.4422622374529368,
+        "QJ": -1.3642305678222755,
+        "S_available": -1.2916740273443992
+      },
+      "versus_S1_S_pp": 0.5039846676718156,
+      "versus_P_S_pp": -1.3328561191071913
+    }
+  },
+  "four_arm_fixed_and_retention": {
+    "selected": {
+      "P_minus_S0": {
+        "S_pp": 0.041182091762792084,
+        "only_rgb_pp": 0.40183545987391156,
+        "only_dsm_pp": -2.373500494117231
+      },
+      "R_minus_S0": {
+        "S_pp": -2.0134086908701505,
+        "only_rgb_pp": -4.906219648584242,
+        "only_dsm_pp": 21.902609881135014
+      },
+      "S1_minus_S0": {
+        "S_pp": -1.7956586950162148,
+        "only_rgb_pp": -4.252025513020596,
+        "only_dsm_pp": 19.62282171648856
+      },
+      "protection_with_recovery_pp": 0.21774999585393573,
+      "factorial_interaction_S_pp": 0.17656790409114365
+    },
+    "fixed8000": {
+      "P_minus_S0": {
+        "S_pp": 0.0664321020372114,
+        "only_rgb_pp": 0.36021138418217413,
+        "only_dsm_pp": -1.9626731720963353
+      },
+      "R_minus_S0": {
+        "S_pp": -2.053584817763351,
+        "only_rgb_pp": -5.164275454505574,
+        "only_dsm_pp": 23.917987187622376
+      },
+      "S1_minus_S0": {
+        "S_pp": -1.8250268777689342,
+        "only_rgb_pp": -4.477948917311425,
+        "only_dsm_pp": 21.613350476019615
+      },
+      "protection_with_recovery_pp": 0.22855793999441687,
+      "factorial_interaction_S_pp": 0.16212583795720548
+    }
+  },
+  "completion": {
+    "observed_at": "2026-10-04T00:47:08.030508+08:00",
+    "status": "COMPLETE",
+    "jobs": 6,
+    "continue_flags": {
+      "P": false,
+      "R": false,
+      "PR_area": false,
+      "PR_pixel": false
+    }
+  }
+}

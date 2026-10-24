@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-15",
+  "source": "user-pasted target-machine benchmark output; not a live server query",
+  "run": "research_phase3_m1_recovery_20261015T164357_19327",
+  "probe_commit": "4bb62d31c9bd45729855155e7889ff59567c8bf0",
+  "counted_cases_at_probe_start": 194,
+  "total_cases": 320,
+  "pending_cpu_at_probe_start": 35,
+  "effective_cpu_quota": 176,
+  "cumulative_throttled_periods": 60,
+  "cumulative_throttled_nanoseconds": 33988233557,
+  "benchmark": [
+    {"execution":"threads","counter":"original","workers":16,"mean_seconds":9.384,"relative_throughput":1},
+    {"execution":"processes","counter":"original","workers":16,"mean_seconds":3.417,"relative_throughput":2.746},
+    {"execution":"processes","counter":"original","workers":32,"mean_seconds":2.5905,"relative_throughput":3.622},
+    {"execution":"processes","counter":"grouped_roi","workers":16,"mean_seconds":3.306,"relative_throughput":2.838},
+    {"execution":"processes","counter":"grouped_roi","workers":32,"mean_seconds":2.422,"relative_throughput":3.874}
+  ],
+  "all_benchmark_integer_evidence_exact": true,
+  "synthetic_benchmark_is_full_tile_eta": false,
+  "selected_executor": {"processes":32,"counter":"original_unmodified","max_live_cases":8},
+  "handoff_status": "READY_NOT_SERVER_LAUNCHED",
+  "handoff_protocol": "docs/protocols/PHASE3_M1_COUNT_HANDOFF_20261015.md",
+  "handoff_entry": "scripts/handoff_phase3_m1_counts.py",
+  "near_completion_noop_threshold": 280,
+  "local_validation": {"tests_run":6,"passed":5,"skipped":1,"skipped_reason":"actual Linux memfd smoke runs on target before signalling original controller","real_gpu_handoff_tested":false},
+  "original_runtime_code_binding_changed": false,
+  "explicit_runtime_amendment_required": true,
+  "new_training": false,
+  "formal_experiment_final_verification_complete": false,
+  "scientific_gate_changed": false
+}

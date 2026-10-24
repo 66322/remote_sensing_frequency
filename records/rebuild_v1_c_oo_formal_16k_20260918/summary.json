@@ -1,0 +1,13 @@
+{
+  "global_step": 16000,
+  "scheduler_total_steps": 16000,
+  "stop_at_step": 16000,
+  "best": {
+    "metric": "val2_noboundary_mIoU_fg5",
+    "value": 0.8635477619507895,
+    "step": 13000
+  },
+  "peak_allocated_gib": 22.70693349838257,
+  "run_dir": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/C_OO_dual_optical_gray_seed42_sched16000_stop16000",
+  "test6_loaded": false
+}

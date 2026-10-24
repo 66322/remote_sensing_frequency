@@ -1,0 +1,19 @@
+{
+  "job": "CAP",
+  "step": 8000,
+  "target": 8000,
+  "physical_gpu": 1,
+  "phase": "evaluation",
+  "observed_at": "2026-10-02T22:22:15.131069+08:00",
+  "session_elapsed_seconds": 5252.463185817003,
+  "tiles_loaded": 12,
+  "tiles_total": 12,
+  "loss": 0.4211440682411194,
+  "seconds_per_train_step": 0.4801970763718709,
+  "remaining_train_hours": 0.0,
+  "gpu_peak_allocated_bytes": 14006145024,
+  "tile": "3_11",
+  "condition": "dsm_local_q1",
+  "windows_done": 529,
+  "windows_total": 529
+}

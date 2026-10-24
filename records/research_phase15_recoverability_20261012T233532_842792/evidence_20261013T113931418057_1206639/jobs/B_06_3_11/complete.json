@@ -1,0 +1,33 @@
+{
+  "binding": {
+    "plan.json": "46f171542c643589ec93429feea13d3bed3ba0897b4a9d6c72d8755f7a23baba",
+    "code_manifest.json": "7755b8e7c9e51cc62702e43be6c609a70a7d1e981458ae7d683648cb6d9164e8",
+    "preparation_complete.json": "3a635441c9a7c7aa180084b780121b9360c5a75c15d0696b540b3cbc0a6b9b02"
+  },
+  "cases": [
+    "S1_3_11_intact_06_pixel_5",
+    "S1_3_11_intact_06_pixel_10",
+    "S1_3_11_intact_07_pixel_5",
+    "S1_3_11_intact_07_pixel_10",
+    "S1_3_11_intact_08_pixel_5",
+    "S1_3_11_intact_08_pixel_10",
+    "S1_3_11_intact_09_pixel_5",
+    "S1_3_11_intact_09_pixel_10",
+    "S1_3_11_intact_10_pixel_5",
+    "S1_3_11_intact_10_pixel_10"
+  ],
+  "records": {
+    "S1_3_11_intact_06_pixel_5": "f936e5c20da46afdf02e6f51eabeae04b34ce10b95e58252e8ac9ab872d48512",
+    "S1_3_11_intact_06_pixel_10": "4675fbff0a0515a8f5efb19774f3cc3487de5aeb4c8c783ff1575f706fc9cc76",
+    "S1_3_11_intact_07_pixel_5": "d1c1cc78f6f8a176881097b5fb531cf346a79b7998ee471d9023ba5a1f4e0dd9",
+    "S1_3_11_intact_07_pixel_10": "21672ab437e84cef72affc95a004b16aa9b2d8979ec510372cd4b4dafb1ecd1a",
+    "S1_3_11_intact_08_pixel_5": "cb83f518f8d7dc3f1df53d241f456e36579439e5e0732ca571f11f32c87c0c9f",
+    "S1_3_11_intact_08_pixel_10": "9b03fc7cbcf50d0b10a5072b098e63933d349e1f74fb8831d6d2449b278e39d4",
+    "S1_3_11_intact_09_pixel_5": "9cdb57eff2c19c3c28180b3bb1e163d1c9828029a807a3f66d52d60debc20049",
+    "S1_3_11_intact_09_pixel_10": "3704a76c7a8c414afd969aac7def01c0ed566eedadb97ccdfe4c2f28ea741249",
+    "S1_3_11_intact_10_pixel_5": "793325938a5940c42e150c694a89e9260e25c537add653ed240f614115fc97b4",
+    "S1_3_11_intact_10_pixel_10": "cf28fbad358a708266a237fb9c1b96f00bdde7ebc53bcb0cf43e5f97ed2bc47b"
+  },
+  "optimizer_updates": 0,
+  "completed_at": "2026-10-13T02:58:46.994256+08:00"
+}

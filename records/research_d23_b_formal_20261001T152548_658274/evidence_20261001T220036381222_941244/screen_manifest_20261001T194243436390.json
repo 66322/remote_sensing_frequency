@@ -1,0 +1,10 @@
+{
+  "TSF": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/jobs/TSF_resume_20261001T153823537963/evaluation/summary.json",
+  "TS": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/jobs/TS_resume_gpu0repair_20261001T183700466561/evaluation/summary.json",
+  "TCAP": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/jobs/TCAP/evaluation/summary.json",
+  "TSF_shuffleS": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/jobs/TSF_shuffleS/evaluation/summary.json",
+  "T0": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/jobs/T0_resume_20261001T153823537963/evaluation/summary.json",
+  "TF": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/jobs/TF/evaluation/summary.json",
+  "TSF_CE": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/jobs/TSF_CE/evaluation/summary.json",
+  "TSF_shuffleF": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/jobs/TSF_shuffleF/evaluation/summary.json"
+}

@@ -1,0 +1,12 @@
+{
+  "status": "PASS_COMPAT_AND_REGISTRATION_ADMISSION",
+  "tests": 9,
+  "isolated_package": "G:\\postgraduate\\\u5c0f\u8bba\u6587\\\u6bd5\u4e1a\u5185\u5bb9_\u90d1\u5b87\u68ee_2026\\codex-setup\\memfd_repair_check_20261024T081703\\package",
+  "payload_files": 5,
+  "python": "3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]",
+  "target_python39_syntax": "PASS",
+  "target_server_16_checks": "NOT_YET_RUN",
+  "frozen_sources_modified": false,
+  "training_started": false,
+  "linux_local_probe": "Old local WSL1 x86_64/Python3.5 lacks kernel memfd (ENOSYS); correctly refused without file fallback; target server capability remains to be checked"
+}

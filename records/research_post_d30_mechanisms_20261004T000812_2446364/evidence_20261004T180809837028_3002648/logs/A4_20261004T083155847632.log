@@ -1,0 +1,26 @@
+PORTFOLIO_REPAIR_EVAL_ONLY A4 optimizer_updates=0 reused_rows=20
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/swiglu_ffn.py:45: UserWarning: xFormers is disabled (SwiGLU)
+  warnings.warn("xFormers is disabled (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/swiglu_ffn.py:51: UserWarning: xFormers is not available (SwiGLU)
+  warnings.warn("xFormers is not available (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py:29: UserWarning: xFormers is disabled (Attention)
+  warnings.warn("xFormers is disabled (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py:33: UserWarning: xFormers is not available (Attention)
+  warnings.warn("xFormers is not available (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/block.py:35: UserWarning: xFormers is disabled (Block)
+  warnings.warn("xFormers is disabled (Block)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/block.py:40: UserWarning: xFormers is not available (Block)
+  warnings.warn("xFormers is not available (Block)")
+D26_EVAL evaluation 3_11 dsm_present_zero
+D26_EVAL evaluation 3_11 dsm_present_shift_half
+D26_EVAL evaluation 5_10 rgb_local_q1
+D26_EVAL evaluation 5_10 rgb_local_stripe_eighth
+D26_EVAL evaluation 5_10 rgb_local_center_quarter
+D26_EVAL evaluation 5_10 dsm_local_q1
+D26_EVAL evaluation 5_10 dsm_local_stripe_eighth
+D26_EVAL evaluation 5_10 dsm_local_center_quarter
+D26_EVAL evaluation 5_10 complementary_halves
+D26_EVAL evaluation 5_10 both_center_missing
+D26_EVAL evaluation 5_10 dsm_present_zero
+D26_EVAL evaluation 5_10 dsm_present_shift_half
+PORTFOLIO_JOB_COMPLETE A4

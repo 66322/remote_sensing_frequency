@@ -1,0 +1,61 @@
+{
+  "recorded_at": "2026-09-22T12:14:02+08:00",
+  "experiment_id": "B4_SEED17_REPLICATION",
+  "dataset_split": "Potsdam Train16 -> Val2",
+  "seed": 17,
+  "metric_units": "percentage points",
+  "test6_loaded": false,
+  "global_metrics": {
+    "C17": {
+      "clean": 86.60273449756119,
+      "dsm_down8": 84.9647477845305,
+      "dsm_zero": 83.32852149386753
+    },
+    "R05_KD17": {
+      "clean": 86.17555326807052,
+      "dsm_down8": 84.99722021842243,
+      "dsm_zero": 83.16455178727848
+    },
+    "KD17": {
+      "clean": 86.62576090236198,
+      "dsm_down8": 85.2065092677648,
+      "dsm_zero": 83.20830219306372
+    }
+  },
+  "local_damaged_corrupt_minus_clean_pp": {
+    "C17": {
+      "D1_local_missing": -3.086856223094653,
+      "D3_local_down8": -1.3498908409293104
+    },
+    "R05_KD17": {
+      "D1_local_missing": -3.0264667183380665,
+      "D3_local_down8": -1.1459430819201755
+    },
+    "KD17": {
+      "D1_local_missing": -3.312007404210307,
+      "D3_local_down8": -1.1831330290367341
+    }
+  },
+  "kd17_minus_r05_kd17": {
+    "clean_pp": 0.45020763429145916,
+    "dsm_down8_pp": 0.2092890493423738,
+    "dsm_zero_pp": 0.04375040578523226,
+    "local_missing_damaged_drop_improvement_pp": -0.28554068587224046,
+    "local_down8_damaged_drop_improvement_pp": -0.03718994711655865
+  },
+  "kd17_minus_c17": {
+    "clean_pp": 0.023026404800788214,
+    "dsm_down8_pp": 0.24176148323429913,
+    "dsm_zero_pp": -0.12021930080381082,
+    "local_missing_damaged_drop_improvement_pp": -0.2251511811156539,
+    "local_down8_damaged_drop_improvement_pp": 0.16675781189257632
+  },
+  "gate": {
+    "global_down8_better_than_r05_kd": true,
+    "global_zero_better_than_r05_kd": true,
+    "local_missing_damaged_drop_better_than_r05_kd": false,
+    "local_down8_damaged_drop_better_than_r05_kd": false,
+    "replication_pass": false
+  },
+  "claim_boundary": "Seed17 replication on the same two-tile Val2 development split; not an independent-dataset or held-out-test conclusion."
+}

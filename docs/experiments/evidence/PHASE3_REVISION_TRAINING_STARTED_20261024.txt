@@ -1,0 +1,191 @@
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+
+python -B "$ROOT/records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/scripts/status_phase3_engineering_restart.py" --tail 40
+{
+  "bootstrap_receipt": {
+    "status": "CONTROLLERS_LAUNCHED",
+    "revision_commit": "752d3835a18a15a04d83b1dcc1841bff98bf0b07",
+    "old_m2": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330",
+    "old_combined": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225",
+    "m2_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345",
+    "combined_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345",
+    "automatic_retry": false,
+    "authorization": "user: 继续，把实验启动; 2026-10-24",
+    "observed_at": "2026-10-24T09:46:44.633221+08:00",
+    "namespace_patch_commit": "25b124a0cf69ececb6841b55ed90b19fae5b9a08",
+    "previous_failure_receipt": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/model_namespace_25b124a0cf69ececb6841b55ed90b19fae5b9a08/previous_bootstrap_failure.json",
+    "m2_controller_pid": 2754693,
+    "combined_controller_pid": 2754694
+  },
+  "observed_at": "2026-10-24T09:54:39.817071+08:00",
+  "m2_directory": {
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345",
+    "queue_status.json": {
+      "status": "RUNNING",
+      "completed_trainings": 0,
+      "failed_or_blocked": 0,
+      "active": {
+        "1": "T_F0_s42_T1",
+        "0": "T_F0_s42_T3"
+      },
+      "cpu_tasks": 0,
+      "counted_cases": 0,
+      "evaluation": null,
+      "count_workers": 32,
+      "observed_at": "2026-10-24T09:54:33.714745+08:00"
+    },
+    "preparation_progress.json": {
+      "tile": "6_7",
+      "done": 12,
+      "total": 12,
+      "observed_at": "2026-10-24T09:49:45.925189+08:00"
+    },
+    "jobs_with_progress": 2,
+    "latest_training_progress": [
+      {
+        "job": "F0_s42_T3",
+        "step": 2600,
+        "loss": 0.10852424800395966,
+        "gradient_norm": 1.7228487730026245,
+        "activation_abs_mean": 3.00445556640625,
+        "elapsed_seconds": 282.2965423166752,
+        "stable_sec_per_update": 0.1059799201786518,
+        "remaining_training_hours": 0.8655026814589898,
+        "lr": [
+          1.8490566037735852e-05,
+          0.0001849056603773585
+        ],
+        "weight_mean": 1.0,
+        "weight_min": 1.0,
+        "weight_max": 1.0,
+        "effective_fraction": 1.0,
+        "physical_gpu": 0,
+        "gpu_uuid": "GPU-97a250ea-42ff-eb14-4ed5-8c50231e0baa",
+        "observed_at": "2026-10-24T09:54:38.458141+08:00"
+      },
+      {
+        "job": "F0_s42_T1",
+        "step": 2620,
+        "loss": 0.14754533767700195,
+        "gradient_norm": 2.045238733291626,
+        "activation_abs_mean": 3.097928524017334,
+        "elapsed_seconds": 283.3210169300437,
+        "stable_sec_per_update": 0.10177868716418742,
+        "remaining_training_hours": 0.8306271746899517,
+        "lr": [
+          1.847798742138365e-05,
+          0.00018477987421383648
+        ],
+        "weight_mean": 1.0,
+        "weight_min": 1.0,
+        "weight_max": 1.0,
+        "effective_fraction": 1.0,
+        "physical_gpu": 1,
+        "gpu_uuid": "GPU-4b116760-e84c-2743-cee6-41cf76a01677",
+        "observed_at": "2026-10-24T09:54:39.431504+08:00"
+      }
+    ],
+    "job_failure_count": 0,
+    "first_job_failures": []
+  },
+  "combined_directory": {
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345",
+    "queue_status.json": {
+      "status": "WAIT_M2",
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345",
+      "last_source_status": {
+        "status": "RUNNING",
+        "completed_trainings": 0,
+        "failed_or_blocked": 0,
+        "active": {
+          "1": "T_F0_s42_T1",
+          "0": "T_F0_s42_T3"
+        },
+        "cpu_tasks": 0,
+        "counted_cases": 0,
+        "evaluation": null,
+        "count_workers": 32,
+        "observed_at": "2026-10-24T09:51:32.554308+08:00"
+      },
+      "observed_at": "2026-10-24T09:51:44.841983+08:00"
+    }
+  }
+}
+    PID    PPID STAT     ELAPSED %CPU %MEM COMMAND
+2754693       1 Ssl  441076631-23:03:28 0.0  0.5 /home/jovyan/miniconda3/envs/remote_sensing/bin/python -u -B /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261
+2754694       1 Ss   441076631-23:03:28 0.0  0.0 /home/jovyan/miniconda3/envs/remote_sensing/bin/python -u -B /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261
+
+LOG /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/nohup.log
+M2_INPUT 4_12 9 /12
+M2_INPUT 6_8 10 /12
+M2_INPUT 6_12 11 /12
+M2_INPUT 6_7 12 /12
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/engineering_runtime/dinov2_py39/dinov2/layers/swiglu_ffn.py:46: UserWarning: xFormers is disabled (SwiGLU)
+  warnings.warn("xFormers is disabled (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/engineering_runtime/dinov2_py39/dinov2/layers/swiglu_ffn.py:52: UserWarning: xFormers is not available (SwiGLU)
+  warnings.warn("xFormers is not available (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/engineering_runtime/dinov2_py39/dinov2/layers/attention.py:30: UserWarning: xFormers is disabled (Attention)
+  warnings.warn("xFormers is disabled (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/engineering_runtime/dinov2_py39/dinov2/layers/attention.py:34: UserWarning: xFormers is not available (Attention)
+  warnings.warn("xFormers is not available (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/engineering_runtime/dinov2_py39/dinov2/layers/block.py:36: UserWarning: xFormers is disabled (Block)
+  warnings.warn("xFormers is disabled (Block)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/engineering_runtime/dinov2_py39/dinov2/layers/block.py:41: UserWarning: xFormers is not available (Block)
+  warnings.warn("xFormers is not available (Block)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/engineering_runtime/dinov2_py39/dinov2/layers/swiglu_ffn.py:46: UserWarning: xFormers is disabled (SwiGLU)
+  warnings.warn("xFormers is disabled (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/engineering_runtime/dinov2_py39/dinov2/layers/swiglu_ffn.py:52: UserWarning: xFormers is not available (SwiGLU)
+  warnings.warn("xFormers is not available (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/engineering_runtime/dinov2_py39/dinov2/layers/attention.py:30: UserWarning: xFormers is disabled (Attention)
+  warnings.warn("xFormers is disabled (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/engineering_runtime/dinov2_py39/dinov2/layers/attention.py:34: UserWarning: xFormers is not available (Attention)
+  warnings.warn("xFormers is not available (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/engineering_runtime/dinov2_py39/dinov2/layers/block.py:36: UserWarning: xFormers is disabled (Block)
+  warnings.warn("xFormers is disabled (Block)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/engineering_runtime/dinov2_py39/dinov2/layers/block.py:41: UserWarning: xFormers is not available (Block)
+  warnings.warn("xFormers is not available (Block)")
+M2_TRAIN F0_s42_T3 1 {'step': 1, 'loss': 1.8843235969543457, 'gradient_norm': 13.637346267700195, 'activation_abs_mean': 0.26722535490989685, 'elapsed_seconds': 4.575661137700081, 'stable_sec_per_update': None, 'remaining_training_hours': None, 'lr': [2.0900000000000003e-06, 2.0900000000000003e-05], 'weight_mean': 1.0, 'weight_min': 1.0, 'weight_max': 1.0, 'effective_fraction': 1.0}
+M2_TRAIN F0_s42_T1 1 {'step': 1, 'loss': 1.8887994289398193, 'gradient_norm': 14.637847900390625, 'activation_abs_mean': 0.27496734261512756, 'elapsed_seconds': 4.629422202706337, 'stable_sec_per_update': None, 'remaining_training_hours': None, 'lr': [2.0900000000000003e-06, 2.0900000000000003e-05], 'weight_mean': 1.0, 'weight_min': 1.0, 'weight_max': 1.0, 'effective_fraction': 1.0}
+M2_TRAIN F0_s42_T3 500 {'step': 500, 'loss': 0.25621336698532104, 'gradient_norm': 3.2096240520477295, 'activation_abs_mean': 1.9458688497543335, 'elapsed_seconds': 58.752084493637085, 'stable_sec_per_update': None, 'remaining_training_hours': None, 'lr': [1.9811320754716984e-05, 0.00019811320754716983], 'weight_mean': 1.0, 'weight_min': 1.0, 'weight_max': 1.0, 'effective_fraction': 1.0}
+M2_TRAIN F0_s42_T1 500 {'step': 500, 'loss': 0.20055347681045532, 'gradient_norm': 2.11755108833313, 'activation_abs_mean': 2.055922746658325, 'elapsed_seconds': 61.735007010400295, 'stable_sec_per_update': None, 'remaining_training_hours': None, 'lr': [1.9811320754716984e-05, 0.00019811320754716983], 'weight_mean': 1.0, 'weight_min': 1.0, 'weight_max': 1.0, 'effective_fraction': 1.0}
+M2_TRAIN F0_s42_T3 1000 {'step': 1000, 'loss': 0.15750014781951904, 'gradient_norm': 2.0441462993621826, 'activation_abs_mean': 2.3376975059509277, 'elapsed_seconds': 112.03633957356215, 'stable_sec_per_update': 0.10955939441919327, 'remaining_training_hours': 0.9434281186097198, 'lr': [1.9496855345911952e-05, 0.0001949685534591195], 'weight_mean': 1.0, 'weight_min': 1.0, 'weight_max': 1.0, 'effective_fraction': 1.0}
+M2_TRAIN F0_s42_T1 1000 {'step': 1000, 'loss': 0.20155078172683716, 'gradient_norm': 3.1642613410949707, 'activation_abs_mean': 2.478549003601074, 'elapsed_seconds': 115.84521446377039, 'stable_sec_per_update': 0.10426768288016319, 'remaining_training_hours': 0.8978606025791831, 'lr': [1.9496855345911952e-05, 0.0001949685534591195], 'weight_mean': 1.0, 'weight_min': 1.0, 'weight_max': 1.0, 'effective_fraction': 1.0}
+M2_TRAIN F0_s42_T3 1500 {'step': 1500, 'loss': 0.1797860562801361, 'gradient_norm': 2.2992641925811768, 'activation_abs_mean': 2.5578677654266357, 'elapsed_seconds': 165.25720355659723, 'stable_sec_per_update': 0.10517654065042734, 'remaining_training_hours': 0.8910790249550095, 'lr': [1.918238993710692e-05, 0.0001918238993710692], 'weight_mean': 1.0, 'weight_min': 1.0, 'weight_max': 1.0, 'effective_fraction': 1.0}
+M2_TRAIN F0_s42_T1 1500 {'step': 1500, 'loss': 0.1838243454694748, 'gradient_norm': 2.894408941268921, 'activation_abs_mean': 2.5961365699768066, 'elapsed_seconds': 167.50093073397875, 'stable_sec_per_update': 0.10293752215802669, 'remaining_training_hours': 0.8721095627277262, 'lr': [1.918238993710692e-05, 0.0001918238993710692], 'weight_mean': 1.0, 'weight_min': 1.0, 'weight_max': 1.0, 'effective_fraction': 1.0}
+M2_TRAIN F0_s42_T3 2000 {'step': 2000, 'loss': 0.18460887670516968, 'gradient_norm': 1.830344557762146, 'activation_abs_mean': 2.8026607036590576, 'elapsed_seconds': 218.67598599940538, 'stable_sec_per_update': 0.10650709085166454, 'remaining_training_hours': 0.8875590904305378, 'lr': [1.8867924528301888e-05, 0.00018867924528301889], 'weight_mean': 1.0, 'weight_min': 1.0, 'weight_max': 1.0, 'effective_fraction': 1.0}
+M2_TRAIN F0_s42_T1 2000 {'step': 2000, 'loss': 0.1614912748336792, 'gradient_norm': 2.1194820404052734, 'activation_abs_mean': 2.824105739593506, 'elapsed_seconds': 220.0951908826828, 'stable_sec_per_update': 0.10259695015847684, 'remaining_training_hours': 0.8549745846539736, 'lr': [1.8867924528301888e-05, 0.00018867924528301889], 'weight_mean': 1.0, 'weight_min': 1.0, 'weight_max': 1.0, 'effective_fraction': 1.0}
+M2_TRAIN F0_s42_T1 2500 {'step': 2500, 'loss': 0.23249584436416626, 'gradient_norm': 4.604380130767822, 'activation_abs_mean': 3.0572288036346436, 'elapsed_seconds': 271.02366265654564, 'stable_sec_per_update': 0.1015600634738803, 'remaining_training_hours': 0.8322282979109636, 'lr': [1.8553459119496856e-05, 0.00018553459119496855], 'weight_mean': 1.0, 'weight_min': 1.0, 'weight_max': 1.0, 'effective_fraction': 1.0}
+M2_TRAIN F0_s42_T3 2500 {'step': 2500, 'loss': 0.17350152134895325, 'gradient_norm': 2.2010300159454346, 'activation_abs_mean': 2.928940773010254, 'elapsed_seconds': 271.73614835739136, 'stable_sec_per_update': 0.10628522783517838, 'remaining_training_hours': 0.8709483947604895, 'lr': [1.8553459119496856e-05, 0.00018553459119496855], 'weight_mean': 1.0, 'weight_min': 1.0, 'weight_max': 1.0, 'effective_fraction': 1.0}
+
+
+LOG /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/nohup.log
+VERIFIED_MODEL_PACKAGE_PATHS ["/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/code/model", "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/model"]
+ENGINEERING_RUNTIME_MEMFD {"backend": "libc.memfd_create", "anonymous": true, "cloexec": true, "mapping_roundtrip": true, "disk_fallback": false}
+RUNTIME_READY_WAITING_FOR_PAIRED_LAUNCH /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345
+
+Sat Oct 24 09:54:39 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.48.01              Driver Version: 590.48.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:0F:00.0 Off |                    0 |
+| N/A   37C    P0            221W /  700W |    3737MiB /  81559MiB |     31%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA H100 80GB HBM3          On  |   00000000:34:00.0 Off |                    0 |
+| N/A   34C    P0            228W /  700W |    3737MiB /  81559MiB |     31%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         2757402      C   ...nvs/remote_sensing/bin/python       3728MiB |
+|    1   N/A  N/A         2757403      C   ...nvs/remote_sensing/bin/python       3728MiB |
++-----------------------------------------------------------------------------------------+
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ 

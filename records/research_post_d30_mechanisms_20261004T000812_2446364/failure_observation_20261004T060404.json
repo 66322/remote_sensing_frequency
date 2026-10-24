@@ -1,0 +1,55 @@
+{
+  "source": "user_pasted_server_terminal",
+  "raw_evidence": "failure_terminal_20261004.txt",
+  "post_d30": {
+    "observed_at": "2026-10-04T06:04:04.397991+08:00",
+    "status": "COMPLETE_WITH_TECHNICAL_FAILURES",
+    "controller_pid": 2450552,
+    "controller_live": false,
+    "completed_main": 0,
+    "trained_A_at_step8000": [
+      "A0",
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5"
+    ],
+    "failed_stage": "selected_evaluation",
+    "error": "ValueError: dsm_present_zero",
+    "B_C_started": false,
+    "original_execution_commit": "01ec8dee82f7e272f6a650aaf9f3e619a0e7c516",
+    "server_repair_started": false
+  },
+  "D30": {
+    "observed_at": "2026-10-04T00:47:08.030508+08:00",
+    "status": "COMPLETE",
+    "jobs_completed": 6,
+    "selected_S_available": {
+      "P": 86.09239585509795,
+      "R": 84.037805072465,
+      "PR_area": 85.98649610373204,
+      "PR_pixel": 84.75953973599076
+    },
+    "continue_all": false,
+    "raw_matrices_independently_recomputed": false
+  },
+  "local_verification": {
+    "repair_tests": 5,
+    "original_tests": 10,
+    "passed": true,
+    "python310_syntax_files": 8,
+    "server_cuda_repair_verified": false
+  },
+  "recovery_contract": {
+    "same_directory": true,
+    "new_A_optimizer_updates": 0,
+    "original_plan_and_code_immutable": true,
+    "explicit_evaluation_overlay": true,
+    "GPUs": [
+      0,
+      1
+    ],
+    "no_resource_probe": true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "source": "User-pasted server stdout from scripts/inspect_rebuild_v1_vaihingen_d10_metadata.py at commit f09808b",
+  "candidate_ids": [2, 4, 6, 8, 10, 12, 14, 16, 20, 22, 24, 27, 29, 31, 33, 35, 38],
+  "candidate_count": 17,
+  "all_have_extracted_optical_dsm_complete_label_paths": true,
+  "all_three_shapes_match_within_each_candidate": true,
+  "rasterio_available": false,
+  "tifffile_available": true,
+  "georeference_in_tiff_headers": false,
+  "headers_aligned_field": "null for all 17 because no readable CRS/bounds; this is unknown, not a failed alignment check",
+  "selected_label_path_caution": "The script alphabetically selected gts_complete_eroded/*_noBoundary.tif among two on-disk complete-label files per ID; full-reference GT must be explicitly selected for any future evaluation.",
+  "spatial_source": "Official ISPRS Vaihingen patch overview image and dataset description: https://www.isprs.org/resources/datasets/benchmarks/UrbanSemLab/2d-sem-label-vaihingen.aspx",
+  "spatial_conclusion": "All 33 benchmark patches are cut from one TOP mosaic, and the official overview shows the candidate patches interleaved with or adjacent to previously used patches. Candidate IDs are not a geographically independent final confirmation set.",
+  "test6_loaded": false
+}

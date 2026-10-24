@@ -1,0 +1,11 @@
+{
+  "job": "E1_A0",
+  "model": "A0",
+  "physical_gpu": 0,
+  "optimizer_updates": 0,
+  "phase": "complete",
+  "observed_at": "2026-10-05T23:12:32.881203+08:00",
+  "elapsed_seconds": 436.28446066379547,
+  "tile": "5_10",
+  "condition": "dsm_L"
+}

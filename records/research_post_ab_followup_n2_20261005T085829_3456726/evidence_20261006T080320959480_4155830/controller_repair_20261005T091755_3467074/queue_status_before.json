@@ -1,0 +1,54 @@
+{
+  "status": "CONTROLLER_INTERRUPTED",
+  "observed_at": "2026-10-05T08:58:59.848681+08:00",
+  "jobs": {
+    "N2-0": {
+      "status": "RUNNING",
+      "gpu": 0,
+      "phase": "N2",
+      "pid": 3457210,
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_n2_20261005T085829_3456726/logs/N2-0_20261005T085859847573.log",
+      "started_at": "2026-10-05T08:58:59.848567+08:00"
+    },
+    "N2-1": {
+      "status": "PENDING",
+      "gpu": 1,
+      "phase": "N2"
+    },
+    "N2-2": {
+      "status": "PENDING",
+      "gpu": 0,
+      "phase": "N2"
+    },
+    "N2-3": {
+      "status": "PENDING",
+      "gpu": 1,
+      "phase": "N2"
+    },
+    "N2-4": {
+      "status": "PENDING",
+      "gpu": 0,
+      "phase": "N2"
+    },
+    "N2-5": {
+      "status": "PENDING",
+      "gpu": 1,
+      "phase": "N2"
+    }
+  },
+  "evaluations": {
+    "E0": "COMPLETE_DERIVED_REPORT_ONLY"
+  },
+  "controller_pid": 3456909,
+  "predecessor_status": "COMPLETE",
+  "predecessor_observed_at": "2026-10-05T00:26:01.590322+08:00",
+  "predecessor_live_workers": [],
+  "original_C2_gate": false,
+  "source_N1_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_20261004T185950_3029215",
+  "gpu_uuids": {
+    "0": "GPU-97a250ea-42ff-eb14-4ed5-8c50231e0baa",
+    "1": "GPU-4b116760-e84c-2743-cee6-41cf76a01677"
+  },
+  "phase": "N2",
+  "error": "diagnose before resume; detached workers may still be alive"
+}

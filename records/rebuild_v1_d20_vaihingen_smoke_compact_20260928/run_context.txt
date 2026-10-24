@@ -1,0 +1,7 @@
+2026-09-28T16:15:34+08:00
+HEAD=ba0abb4364f0ce9f0b666a0122dfa7c1b3f7b6bc
+BRANCH=rebuild-v1-protocol-20260915
+61140238426d8086932da5d60f92e3bca598c82e2a51d5f841063ba50868a423  configs/rebuild_v1/d20_vaihingen_development_smoke_20260928.json
+67241da6b5786a3d15bc624eddebcafc407e34b2cf803a6c8c50ab5248d4bec7  scripts/d20_vaihingen_smoke_arm.py
+6304f1860dfbc36db65fbb7a9c36e8e62e891e83d39acd294f3d1cf9ffe76725  scripts/run_rebuild_v1_d20_vaihingen_smoke.sh
+D18_PYTHON=/home/jovyan/miniconda3/envs/d18_dino/bin/python

@@ -40,6 +40,8 @@ datasets/
 dataset/
 data/
 08_assets/pretrained/
+external/dinov2_*/
+pretrained_external/
 
 # ============================================================
 # System / editor
@@ -83,6 +85,7 @@ runs/**/last_train_state.pth
 # Runtime process/status artifacts
 *.pid
 *_status.tsv
+records/**/progress.json
 
 # ============================================================
 # Runtime experiment directories

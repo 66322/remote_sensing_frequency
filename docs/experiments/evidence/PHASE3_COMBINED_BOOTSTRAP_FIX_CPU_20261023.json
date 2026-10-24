@@ -1,0 +1,23 @@
+{
+  "status": "PASS_ISOLATED_PACKAGE_CPU_ONLY",
+  "package": "G:\\postgraduate\\\u5c0f\u8bba\u6587\\\u6bd5\u4e1a\u5185\u5bb9_\u90d1\u5b87\u68ee_2026\\codex-setup\\combined_bootstrap_check_20261023T215946\\package",
+  "payload_files": 18,
+  "manifest_sha256": "f55c6d40a181806c7c6008fbec7bd7fb715345530437fcc85cbe7f721553fd78",
+  "checks": [
+    {
+      "suite": "test_phase3_combined_plan.py",
+      "exit_code": 0
+    },
+    {
+      "suite": "test_phase3_j_heads.py",
+      "exit_code": 0
+    },
+    {
+      "suite": "test_phase3_public_queue.py",
+      "exit_code": 0
+    }
+  ],
+  "python": "3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]",
+  "training_started": false,
+  "cuda_environment_verified": false
+}

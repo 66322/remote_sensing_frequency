@@ -1,0 +1,26 @@
+{
+  "source": "records/e51b_gsd_same_step_pp4k_ph4k_20260914/summary.json",
+  "interpretation": "strict same-step PP4k vs PH4k",
+  "note": "Historical summary.json contains a stale PP10k comparison_note; checkpoint_step and result keys are validated as PP4k/PH4k here.",
+  "target_gsds_m": [
+    0.05,
+    0.06,
+    0.07,
+    0.08,
+    0.09,
+    0.1,
+    0.12
+  ],
+  "splits": [
+    "full",
+    "noboundary"
+  ],
+  "classes": [
+    "Impervious",
+    "Building",
+    "LowVegetation",
+    "Tree",
+    "Car",
+    "Clutter"
+  ]
+}

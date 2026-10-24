@@ -1,0 +1,52 @@
+{
+  "experts": {
+    "S1": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293/jobs/S1-0/selected.pth",
+      "sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f"
+    },
+    "S13": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293/jobs/S1-3/selected.pth",
+      "sha256": "c8b4d801da2a7a3937589aa3777885de810387a463009d4a8c6e23dc00d8d562"
+    },
+    "R16": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_t_paired_v2_20261011T182543_3880702/jobs/R16/endpoint.pth",
+      "sha256": "4bcd0fc364d55ef928e8eabf7020aa34706550742ccec1c80faed618f6e56e8a"
+    },
+    "DSM": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/D15_dsm_only_seed42_sched16000_stop16000/best_model.pth",
+      "sha256": "d597f1adf3ca0291dcd7d063af941bebf3db1e61205cfdaf13271fbba9437e84",
+      "step": 15000,
+      "kind": "D15_seed42_R50_ViT_B16_DSM_only",
+      "normalization": "native per-tile minmax DSM repeated3; no ImageNet normalization",
+      "compatibility": "LEGACY_TRAIN16_R50_VIT_B16_SEED42"
+    },
+    "RGB": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/jobs/P6/selected.pth",
+      "sha256": "bef8dda6537b68fc51f300bc3789bbbef57682baedf92a3f7665217a4a2fde71",
+      "step": 2000,
+      "kind": "D25_P6_DINOv2_vits14_RGB_only",
+      "normalization": "native RGB ImageNet mean/std"
+    }
+  },
+  "preprocessing": {
+    "3_11": {
+      "shape": [
+        6000,
+        6000
+      ],
+      "zero_definition": "post_d30_data.dsm_present_zero; normalized DSM=0, dm=True",
+      "optical_preprocessing": "uint8/255 before model ImageNet normalization",
+      "dsm_preprocessing": "original per-tile minmax before permutations"
+    },
+    "5_10": {
+      "shape": [
+        6000,
+        6000
+      ],
+      "zero_definition": "post_d30_data.dsm_present_zero; normalized DSM=0, dm=True",
+      "optical_preprocessing": "uint8/255 before model ImageNet normalization",
+      "dsm_preprocessing": "original per-tile minmax before permutations"
+    }
+  },
+  "source_plan_sha256": "c4d5248f3cd5cfe9b61a8544533bbc6cb4bbe65001605fd8a90c4fb9d06b08b9"
+}

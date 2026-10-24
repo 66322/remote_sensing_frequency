@@ -1,0 +1,503 @@
+{
+  "observed_at": "2026-10-02T04:07:00.042027+08:00",
+  "evidence_level": "single_seed_reused_Val2_development_only",
+  "complete_jobs": 15,
+  "rows": [
+    {
+      "id": "A0",
+      "route": "A",
+      "clean": 83.98130710046033,
+      "rgb_family": 81.9865713245618,
+      "aux_family": 83.9535676118065,
+      "composite": 83.30714867894288,
+      "aux_zero": 82.88180082492852,
+      "selected_step": 4000,
+      "delta_vs_fixed_M0_pp": -0.0706626027116215
+    },
+    {
+      "id": "A2",
+      "route": "A",
+      "clean": 86.90346593233903,
+      "rgb_family": 85.09973970808215,
+      "aux_family": 86.8785165257272,
+      "composite": 86.29390738871614,
+      "aux_zero": 86.14307253564112,
+      "selected_step": 2000,
+      "delta_vs_fixed_M0_pp": 2.916096107061634
+    },
+    {
+      "id": "A3",
+      "route": "A",
+      "clean": 86.9022064517857,
+      "rgb_family": 85.09878623000556,
+      "aux_family": 86.8764515536004,
+      "composite": 86.29248141179723,
+      "aux_zero": 86.14661402699963,
+      "selected_step": 2000,
+      "delta_vs_fixed_M0_pp": 2.9146701301427242
+    },
+    {
+      "id": "A1",
+      "route": "A",
+      "clean": 83.98130710046033,
+      "rgb_family": 81.9865713245618,
+      "aux_family": 83.9535676118065,
+      "composite": 83.30714867894288,
+      "aux_zero": 82.88180082492852,
+      "selected_step": 4000,
+      "delta_vs_fixed_M0_pp": -0.0706626027116215
+    },
+    {
+      "id": "C0",
+      "route": "C",
+      "clean": 86.02172523443944,
+      "rgb_family": 84.602696112933,
+      "aux_family": 86.02172523443944,
+      "composite": 85.54871552727063,
+      "aux_zero": 86.02172523443944,
+      "selected_step": 4000,
+      "delta_vs_fixed_M0_pp": 2.1709042456161285
+    },
+    {
+      "id": "C2",
+      "route": "C",
+      "clean": 85.79290250295031,
+      "rgb_family": 84.23206038955462,
+      "aux_family": 85.79290250295031,
+      "composite": 85.27262179848508,
+      "aux_zero": 85.79290250295031,
+      "selected_step": 4000,
+      "delta_vs_fixed_M0_pp": 1.8948105168305744
+    },
+    {
+      "id": "D2",
+      "route": "D",
+      "clean": 86.91343314712367,
+      "rgb_family": 84.03418670974816,
+      "aux_family": 86.906352246588,
+      "composite": 85.9513240344866,
+      "aux_zero": 86.23660282422662,
+      "selected_step": 2000,
+      "delta_vs_fixed_M0_pp": 2.5735127528321016
+    },
+    {
+      "id": "D0",
+      "route": "D",
+      "clean": 86.83456666337965,
+      "rgb_family": 83.95665823959024,
+      "aux_family": 86.80599566344108,
+      "composite": 85.86574018880366,
+      "aux_zero": 82.40298940295989,
+      "selected_step": 2000,
+      "delta_vs_fixed_M0_pp": 2.487928907149154
+    },
+    {
+      "id": "C3",
+      "route": "C",
+      "clean": 85.85544014390513,
+      "rgb_family": 84.46589662516398,
+      "aux_family": 85.85544014390513,
+      "composite": 85.3922589709914,
+      "aux_zero": 85.85544014390513,
+      "selected_step": 4000,
+      "delta_vs_fixed_M0_pp": 2.0144476893369045
+    },
+    {
+      "id": "C1",
+      "route": "C",
+      "clean": 85.91988097953171,
+      "rgb_family": 84.49423632994689,
+      "aux_family": 85.91988097953171,
+      "composite": 85.44466609633677,
+      "aux_zero": 85.91988097953171,
+      "selected_step": 4000,
+      "delta_vs_fixed_M0_pp": 2.066854814682273
+    },
+    {
+      "id": "D1",
+      "route": "D",
+      "clean": 87.07067017399497,
+      "rgb_family": 85.22235432329377,
+      "aux_family": 87.04131558599332,
+      "composite": 86.4447800277607,
+      "aux_zero": 82.47415937359935,
+      "selected_step": 2000,
+      "delta_vs_fixed_M0_pp": 3.0669687461061983
+    },
+    {
+      "id": "B0",
+      "route": "B",
+      "clean": 86.85349956177438,
+      "rgb_family": 85.05752941888844,
+      "aux_family": 86.83361939866924,
+      "composite": 86.248216126444,
+      "aux_zero": 86.13367650629866,
+      "selected_step": 2000,
+      "delta_vs_fixed_M0_pp": 2.8704048447895048
+    },
+    {
+      "id": "B1",
+      "route": "B",
+      "clean": 86.85189348762172,
+      "rgb_family": 85.05886646740115,
+      "aux_family": 86.82912137505872,
+      "composite": 86.24662711002719,
+      "aux_zero": 86.14190280379785,
+      "selected_step": 2000,
+      "delta_vs_fixed_M0_pp": 2.8688158283726892
+    },
+    {
+      "id": "B2",
+      "route": "B",
+      "clean": 83.3711199171567,
+      "rgb_family": 81.67407750801448,
+      "aux_family": 83.35002757123866,
+      "composite": 82.79840833213662,
+      "aux_zero": 82.7062562051558,
+      "selected_step": 4000,
+      "delta_vs_fixed_M0_pp": -0.5794029495178847
+    },
+    {
+      "id": "B3",
+      "route": "B",
+      "clean": 83.36905429151088,
+      "rgb_family": 81.6737933136441,
+      "aux_family": 83.34900373198272,
+      "composite": 82.7972837790459,
+      "aux_zero": 82.71333895665782,
+      "selected_step": 4000,
+      "delta_vs_fixed_M0_pp": -0.5805275026086036
+    }
+  ],
+  "matched_comparisons": {
+    "A1-A0": {
+      "delta_pp": {
+        "clean": 0.0,
+        "rgb_family": 0.0,
+        "aux_family": 0.0,
+        "composite": 0.0
+      },
+      "tile_delta_pp": {
+        "3_11": {
+          "clean": 0.0,
+          "rgb_family": 0.0,
+          "aux_family": 0.0
+        },
+        "5_10": {
+          "clean": 0.0,
+          "rgb_family": 0.0,
+          "aux_family": 0.0
+        }
+      },
+      "precision_protection_pass": true,
+      "fusion_screen_pass": false,
+      "harm_reduction": 0.0,
+      "rescue_retention": 1.0,
+      "negative_transfer_screen_pass": false,
+      "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+    },
+    "A2-A0": {
+      "delta_pp": {
+        "clean": 2.922158831878704,
+        "rgb_family": 3.1131683835203603,
+        "aux_family": 2.9249489139207014,
+        "composite": 2.9867587097732553
+      },
+      "tile_delta_pp": {
+        "3_11": {
+          "clean": 3.3831954758005764,
+          "rgb_family": 3.4931432533818167,
+          "aux_family": 3.376948391391835
+        },
+        "5_10": {
+          "clean": 2.4524623731597615,
+          "rgb_family": 2.7357012622258736,
+          "aux_family": 2.463904147978681
+        }
+      },
+      "precision_protection_pass": true,
+      "fusion_screen_pass": true,
+      "harm_reduction": -0.12128083798828881,
+      "rescue_retention": 1.9914484775603427,
+      "negative_transfer_screen_pass": false,
+      "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+    },
+    "A3-A2": {
+      "delta_pp": {
+        "clean": -0.0012594805533296949,
+        "rgb_family": -0.0009534780765960704,
+        "aux_family": -0.0020649721268028998,
+        "composite": -0.001425976918909555
+      },
+      "tile_delta_pp": {
+        "3_11": {
+          "clean": 0.00186910692164588,
+          "rgb_family": 0.0038077072013749103,
+          "aux_family": -0.0004914904155413069
+        },
+        "5_10": {
+          "clean": -0.004360090943578143,
+          "rgb_family": -0.005501586707026718,
+          "aux_family": -0.0035953095213585584
+        }
+      },
+      "precision_protection_pass": true,
+      "fusion_screen_pass": false,
+      "harm_reduction": -0.0005937065781271844,
+      "rescue_retention": 1.0006328066105115,
+      "negative_transfer_screen_pass": false,
+      "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+    },
+    "B1-B0": {
+      "delta_pp": {
+        "clean": -0.001606074152661563,
+        "rgb_family": 0.0013370485127097709,
+        "aux_family": -0.004498023610523205,
+        "composite": -0.0015890164168155252
+      },
+      "tile_delta_pp": {
+        "3_11": {
+          "clean": 0.00972087700971258,
+          "rgb_family": 0.010376844699777621,
+          "aux_family": 0.005581945273547717
+        },
+        "5_10": {
+          "clean": -0.012151490298649037,
+          "rgb_family": -0.0064092981011327765,
+          "aux_family": -0.013527130362547268
+        }
+      },
+      "precision_protection_pass": true,
+      "fusion_screen_pass": false,
+      "harm_reduction": -0.00036262637949913135,
+      "rescue_retention": 1.0010293203129161,
+      "negative_transfer_screen_pass": false,
+      "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+    },
+    "B2-B0": {
+      "delta_pp": {
+        "clean": -3.48237964461768,
+        "rgb_family": -3.3834519108739585,
+        "aux_family": -3.483591827430587,
+        "composite": -3.4498077943073895
+      },
+      "tile_delta_pp": {
+        "3_11": {
+          "clean": -3.734419974066853,
+          "rgb_family": -3.7842545703320525,
+          "aux_family": -3.7454695657887953
+        },
+        "5_10": {
+          "clean": -3.2461751017597464,
+          "rgb_family": -3.015488894654254,
+          "aux_family": -3.237067146354363
+        }
+      },
+      "precision_protection_pass": false,
+      "fusion_screen_pass": false,
+      "harm_reduction": -0.5527364366051519,
+      "rescue_retention": 1.1413012235766615,
+      "negative_transfer_screen_pass": false,
+      "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+    },
+    "B3-B2": {
+      "delta_pp": {
+        "clean": -0.0020656256458266853,
+        "rgb_family": -0.0002841943703799643,
+        "aux_family": -0.0010238392559358545,
+        "composite": -0.001124553090718905
+      },
+      "tile_delta_pp": {
+        "3_11": {
+          "clean": -0.0014620707072197092,
+          "rgb_family": 0.001499645769115432,
+          "aux_family": 0.0009805301058065652
+        },
+        "5_10": {
+          "clean": -0.0018532045548909082,
+          "rgb_family": -0.0007990482933450949,
+          "aux_family": -0.0022719551603387345
+        }
+      },
+      "precision_protection_pass": true,
+      "fusion_screen_pass": false,
+      "harm_reduction": 0.00023155390547247023,
+      "rescue_retention": 0.9995716842070811,
+      "negative_transfer_screen_pass": false,
+      "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+    },
+    "B3-B1": {
+      "delta_pp": {
+        "clean": -3.482839196110845,
+        "rgb_family": -3.385073153757048,
+        "aux_family": -3.4801176430759995,
+        "composite": -3.449343330981293
+      },
+      "tile_delta_pp": {
+        "3_11": {
+          "clean": -3.745602921783785,
+          "rgb_family": -3.7931317692627147,
+          "aux_family": -3.7500709809565365
+        },
+        "5_10": {
+          "clean": -3.2358768160159883,
+          "rgb_family": -3.0098786448464665,
+          "aux_family": -3.2258119711521545
+        }
+      },
+      "precision_protection_pass": false,
+      "fusion_screen_pass": false,
+      "harm_reduction": -0.5518141656665358,
+      "rescue_retention": 1.1396393323239669,
+      "negative_transfer_screen_pass": false,
+      "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+    },
+    "D1-D0": {
+      "delta_pp": {
+        "clean": 0.23610351061532242,
+        "rgb_family": 1.2656960837035314,
+        "aux_family": 0.235319922552236,
+        "composite": 0.5790398389570441
+      },
+      "tile_delta_pp": {
+        "3_11": {
+          "clean": 0.40525969888807367,
+          "rgb_family": 1.0208278970781919,
+          "aux_family": 0.3976086447170246
+        },
+        "5_10": {
+          "clean": 0.10101021292287271,
+          "rgb_family": 1.5035744101429174,
+          "aux_family": 0.10748584204512213
+        }
+      },
+      "precision_protection_pass": true,
+      "fusion_screen_pass": true,
+      "harm_reduction": 0.07563163133264506,
+      "rescue_retention": 1.085772589556229,
+      "negative_transfer_screen_pass": false,
+      "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+    },
+    "D2-D0": {
+      "delta_pp": {
+        "clean": 0.07886648374402228,
+        "rgb_family": 0.07752847015791531,
+        "aux_family": 0.10035658314691887,
+        "composite": 0.08558384568294741
+      },
+      "tile_delta_pp": {
+        "3_11": {
+          "clean": 0.03599798557773681,
+          "rgb_family": 0.07348830847018917,
+          "aux_family": 0.0654248130242081
+        },
+        "5_10": {
+          "clean": 0.0971583450310618,
+          "rgb_family": 0.06770626156095716,
+          "aux_family": 0.11139649247783723
+        }
+      },
+      "precision_protection_pass": true,
+      "fusion_screen_pass": false,
+      "harm_reduction": 0.06484117361573183,
+      "rescue_retention": 1.0037668072635102,
+      "negative_transfer_screen_pass": false,
+      "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+    },
+    "A2-D1": {
+      "delta_pp": {
+        "clean": -0.16720424165593784,
+        "rgb_family": -0.1226146152116172,
+        "aux_family": -0.16279906026611002,
+        "composite": -0.1508726390445645
+      },
+      "tile_delta_pp": {
+        "3_11": {
+          "clean": -0.44197568165897394,
+          "rgb_family": -0.38883808842520295,
+          "aux_family": -0.43204075504482375
+        },
+        "5_10": {
+          "clean": 0.04914672069361359,
+          "rgb_family": 0.10433038824518803,
+          "aux_family": 0.04842002079408303
+        }
+      },
+      "precision_protection_pass": false,
+      "fusion_screen_pass": false,
+      "harm_reduction": 0.048013053714933585,
+      "rescue_retention": 0.9474001936515908,
+      "negative_transfer_screen_pass": false,
+      "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+    },
+    "A2-D2": {
+      "delta_pp": {
+        "clean": -0.00996721478463769,
+        "rgb_family": 1.0655529983339989,
+        "aux_family": -0.02783572086079289,
+        "composite": 0.34258335422953223
+      },
+      "tile_delta_pp": {
+        "3_11": {
+          "clean": -0.07271396834863708,
+          "rgb_family": 0.5585015001827998,
+          "aux_family": -0.09985692335200724
+        },
+        "5_10": {
+          "clean": 0.0529985885854245,
+          "rgb_family": 1.5401985368271482,
+          "aux_family": 0.04450937036136793
+        }
+      },
+      "precision_protection_pass": true,
+      "fusion_screen_pass": true,
+      "harm_reduction": 0.05899768498945179,
+      "rescue_retention": 1.0248009340052973,
+      "negative_transfer_screen_pass": false,
+      "harm_reference": "fixed R0; own optical modality effects separately retained in raw summary"
+    }
+  },
+  "C_region_screen": {
+    "clean_gain_pp": {
+      "C0": -0.22882273148913157,
+      "C1": -0.1269784765813995,
+      "C3": -0.06253764095481529
+    },
+    "rgb_family_delta_vs_C0_pp": -0.3706357233783848,
+    "min_tile_clean_or_RGB_delta_vs_C0_pp": -0.5068698709112311,
+    "regional_KD_screen_pass": false,
+    "primary": "optical-only clean fg5; no full-fusion contribution claim"
+  },
+  "factorial_interaction_composite_pp": {
+    "Pair_x_last4": -0.001425976918909555,
+    "Q_x_D": -0.2364564847275119
+  },
+  "mechanism_screen": {
+    "Pair_frozen": false,
+    "Pair_last4": false,
+    "class_prototype_pixel_CE": false,
+    "class_prototype_balanced_CE": false,
+    "prototype_plus_balance_extra_effect": false
+  },
+  "raw_tile_matrices_checked": {
+    "A0": 224,
+    "A2": 224,
+    "A3": 224,
+    "A1": 224,
+    "C0": 224,
+    "C2": 224,
+    "D2": 224,
+    "D0": 224,
+    "C3": 224,
+    "C1": 224,
+    "D1": 224,
+    "B0": 224,
+    "B1": 224,
+    "B2": 224,
+    "B3": 224
+  },
+  "original_plan": "D24_OVERNIGHT_MULTIPERSPECTIVE_20261001",
+  "test6_loaded": false,
+  "independent_final_loaded": false,
+  "multiple_comparison_warning": "screening signals only; no independent replication or p values"
+}

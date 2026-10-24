@@ -1,0 +1,32 @@
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/swiglu_ffn.py:45: UserWarning: xFormers is disabled (SwiGLU)
+  warnings.warn("xFormers is disabled (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/swiglu_ffn.py:51: UserWarning: xFormers is not available (SwiGLU)
+  warnings.warn("xFormers is not available (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py:29: UserWarning: xFormers is disabled (Attention)
+  warnings.warn("xFormers is disabled (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py:33: UserWarning: xFormers is not available (Attention)
+  warnings.warn("xFormers is not available (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/block.py:35: UserWarning: xFormers is disabled (Block)
+  warnings.warn("xFormers is disabled (Block)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/block.py:40: UserWarning: xFormers is not available (Block)
+  warnings.warn("xFormers is not available (Block)")
+D27_CACHE C1 2_12 1
+D27_CACHE C1 2_10 2
+D27_CACHE C1 7_8 3
+D27_CACHE C1 3_12 4
+D27_CACHE C1 5_12 5
+D27_CACHE C1 7_9 6
+D27_CACHE C1 6_9 7
+D27_CACHE C1 7_7 8
+D27_CACHE C1 4_12 9
+D27_CACHE C1 6_8 10
+D27_CACHE C1 6_12 11
+D27_CACHE C1 6_7 12
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_after_d26_20261002T191253_1513109/code/scripts/run_rebuild_v1_d27.py", line 192, in <module>
+    try:sys.exit(main())
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_after_d26_20261002T191253_1513109/code/scripts/run_rebuild_v1_d27.py", line 141, in main
+    loss,denominators=objective(model,tensors)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_after_d26_20261002T191253_1513109/code/scripts/d27_data.py", line 53, in objective
+    chosen=strata(batch['treatment'],tag,target.device)
+KeyError: 'treatment'

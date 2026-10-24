@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "date_local": "2026-10-22",
+  "timezone": "Asia/Shanghai",
+  "base_commit": "ad155841aa475bce64144dce965314c590c21002",
+  "status": "RESEARCH_OPTIONS_DRAFT_NOT_IMPLEMENTED_NOT_LAUNCHED",
+  "user_constraints": {
+    "public_data_available_in_principle": true,
+    "novelty_not_require_untouched_question": true,
+    "server_user_operated": true,
+    "gpus": [
+      0,
+      1
+    ],
+    "no_test_release": true,
+    "no_auto_retry_or_seed_addition": true
+  },
+  "review": {
+    "reviewer": "roads_decision",
+    "scope": "planning consistency and evidence boundaries",
+    "required_findings_resolved": [
+      "Unify earlier and latest candidate priorities",
+      "Separate frozen representation diagnostics from training with/without independent DSM CE"
+    ],
+    "followup": "J now seven heads/42 proposed jobs; later trainable-representation contrast separately proposed, neither registered"
+  },
+  "changes": {
+    "m2_code_changed": false,
+    "m2_gates_changed": false,
+    "m2_launched": false,
+    "new_data_downloaded": false,
+    "new_candidates_implemented": false,
+    "stale_new_chat_status_corrected": true
+  },
+  "evidence_limits": [
+    "No M2 outcome exists",
+    "No live server resource observation",
+    "No new public dataset downloaded or validated",
+    "No candidate effectiveness or novelty proven",
+    "Existing methods are reusable baselines, not automatic rejection"
+  ],
+  "proposal_only": {
+    "J_heads": 7,
+    "J_spatial_folds": 3,
+    "J_fixed_seed_count": 2,
+    "J_updates_per_job": 8000,
+    "J_jobs": 42,
+    "J_total_head_updates": 336000,
+    "trainable_representation_followup_jobs": 18,
+    "followup_steps": "to be frozen; not dispatched"
+  }
+}

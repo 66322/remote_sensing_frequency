@@ -1,0 +1,467 @@
+(base) [root@h-aoji-aoji-h100-agent-2-w-0 jovyan]$ conda activate remote_sensing
+(remote_sensing) [root@h-aoji-aoji-h100-agent-2-w-0 jovyan]$ (
+set -e
+ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+D30_DIR="$ROOT/records/research_d30_loss_decomposition_20261003T205144_2349167"
+POST_DIR="$ROOT/records/research_post_d30_mechanisms_20261004T000812_2446364"
+EXP_PY=$(python -c 'import json; print(json.load(open("/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/rebuild_v1_d21_queue_20260928/plan.json"))["python"])')
+
+"$EXP_PY" -B "$D30_DIR/code/scripts/status_rebuild_v1_d30.py" --directory "$D30_DIR"
+tail -n 30 "$D30_DIR/nohup.log"
+
+"$EXP_PY" -B "$POST_DIR/code/scripts/status_post_d30.py" --directory "$POST_DIR"
+ps -p 2450552 -o pid,stat,args
+tail -n 50 "$POST_DIR/nohup.log"
+
+"$EXP_PY" -B - "$POST_DIR" <<'PY'
+import json, sys
+from pathlib import Path
+
+base = Path(sys.argv[1]).resolve()
+state = json.loads((base / "queue_status.json").read_text())
+for job, row in state["jobs"].items():
+    if row.get("status") not in ("TECHNICAL_FAILURE", "TIMEOUT"):
+        continue
+    print("\nFAILED_JOB =", job)
+    path = Path(row["log_path"]).resolve()
+    path.relative_to(base)
+    print("LOG =", path)
+    print("\n".join(path.read_text(errors="replace").splitlines()[-50:]))
+PY
+)
+LAST_OBSERVED=2026-10-04T00:47:08.030508+08:00 QUEUE=COMPLETE PHASE=training
+PREDECESSOR=COMPLETE OBSERVED=2026-10-03T19:27:53.313658+08:00
+replay_G0 GPU0 COMPLETE complete 24/24 at=2026-10-03T21:06:36.061480+08:00
+replay_G1 GPU1 COMPLETE complete 24/24 at=2026-10-03T21:06:28.300828+08:00
+P GPU0 COMPLETE complete step=8000/8000 at=2026-10-03T22:54:00.075186+08:00
+R GPU1 COMPLETE complete step=8000/8000 at=2026-10-03T22:57:05.536079+08:00
+PR_area GPU0 COMPLETE complete step=8000/8000 at=2026-10-04T00:43:12.448585+08:00
+PR_pixel GPU1 COMPLETE complete step=8000/8000 at=2026-10-04T00:47:01.789360+08:00
+ROUGH_TRAIN_REMAINING_HOURS=0.00
+Persisted observations; use handover checker and logs to verify liveness. ETA excludes predecessor waiting.
+D30_PROGRESS 1 PR_pixel {'job': 'PR_pixel', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:34:55.209779+08:00', 'session_elapsed_seconds': 5856.278738409281, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.5299996137619019, 'seconds_per_train_step': 0.46358007769379767, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14244608000, 'tile': '5_10', 'condition': 'rgb_down4', 'windows_done': 529, 'windows_total': 529}
+D30_PROGRESS 0 PR_area {'job': 'PR_area', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:35:42.147867+08:00', 'session_elapsed_seconds': 6089.3821176588535, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4511489272117615, 'seconds_per_train_step': 0.45998815026134254, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14265579008, 'tile': '5_10', 'condition': 'rgb_local_q1', 'windows_done': 529, 'windows_total': 529}
+D30_PROGRESS 1 PR_pixel {'job': 'PR_pixel', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:35:52.297642+08:00', 'session_elapsed_seconds': 5913.366609677672, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.5299996137619019, 'seconds_per_train_step': 0.46358007769379767, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14244608000, 'tile': '5_10', 'condition': 'rgb_contrast060', 'windows_done': 529, 'windows_total': 529}
+D30_PROGRESS 0 PR_area {'job': 'PR_area', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:36:53.706704+08:00', 'session_elapsed_seconds': 6160.940970897675, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4511489272117615, 'seconds_per_train_step': 0.45998815026134254, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14265579008, 'tile': '5_10', 'condition': 'rgb_local_center_quarter', 'windows_done': 529, 'windows_total': 529}
+D30_PROGRESS 1 PR_pixel {'job': 'PR_pixel', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:36:47.284950+08:00', 'session_elapsed_seconds': 5968.35390021652, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.5299996137619019, 'seconds_per_train_step': 0.46358007769379767, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14244608000, 'tile': '5_10', 'condition': 'aux_noise_std010', 'windows_done': 529, 'windows_total': 529}
+D30_PROGRESS 0 PR_area {'job': 'PR_area', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:37:54.823660+08:00', 'session_elapsed_seconds': 6222.057923026383, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4511489272117615, 'seconds_per_train_step': 0.45998815026134254, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14265579008, 'tile': '5_10', 'condition': 'dsm_local_stripe_eighth', 'windows_done': 529, 'windows_total': 529}
+D30_PROGRESS 1 PR_pixel {'job': 'PR_pixel', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:37:58.698466+08:00', 'session_elapsed_seconds': 6039.767428666353, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.5299996137619019, 'seconds_per_train_step': 0.46358007769379767, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14244608000, 'tile': '5_10', 'condition': 'rgb_blur5+aux_shift8', 'windows_done': 529, 'windows_total': 529}
+D30_PROGRESS 0 PR_area {'job': 'PR_area', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:38:51.970876+08:00', 'session_elapsed_seconds': 6279.205147951841, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4511489272117615, 'seconds_per_train_step': 0.45998815026134254, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14265579008, 'tile': '5_10', 'condition': 'dsm_local_center_quarter', 'windows_done': 529, 'windows_total': 529}
+D30_PROGRESS 1 PR_pixel {'job': 'PR_pixel', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:38:40.364074+08:00', 'session_elapsed_seconds': 6081.433049038053, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.5299996137619019, 'seconds_per_train_step': 0.46358007769379767, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14244608000, 'tile': '5_10', 'condition': 'rgb_missing', 'windows_done': 529, 'windows_total': 529}
+D30_PROGRESS 0 PR_area {'job': 'PR_area', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:39:33.595283+08:00', 'session_elapsed_seconds': 6320.8295556381345, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4511489272117615, 'seconds_per_train_step': 0.45998815026134254, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14265579008, 'tile': '5_10', 'condition': 'dsm_missing+rgb_down4', 'windows_done': 529, 'windows_total': 529}
+D30_PROGRESS 1 PR_pixel {'job': 'PR_pixel', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:39:52.512630+08:00', 'session_elapsed_seconds': 6153.5816066637635, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.5299996137619019, 'seconds_per_train_step': 0.46358007769379767, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14244608000, 'tile': '5_10', 'condition': 'rgb_local_q1', 'windows_done': 529, 'windows_total': 529}
+D30_PROGRESS 0 PR_area {'job': 'PR_area', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:40:49.010437+08:00', 'session_elapsed_seconds': 6396.24471616745, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4511489272117615, 'seconds_per_train_step': 0.45998815026134254, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14265579008, 'tile': '5_10', 'condition': 'complementary_halves', 'windows_done': 529, 'windows_total': 529}
+D30_PROGRESS 1 PR_pixel {'job': 'PR_pixel', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:40:44.229560+08:00', 'session_elapsed_seconds': 6205.298554338515, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.5299996137619019, 'seconds_per_train_step': 0.46358007769379767, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14244608000, 'tile': '5_10', 'condition': 'rgb_local_stripe_eighth', 'windows_done': 529, 'windows_total': 529}
+D30_PROGRESS 0 PR_area {'job': 'PR_area', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:41:55.444612+08:00', 'session_elapsed_seconds': 6462.678881600499, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4511489272117615, 'seconds_per_train_step': 0.45998815026134254, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14265579008, 'tile': '5_10', 'condition': 'both_center_missing', 'windows_done': 529, 'windows_total': 529}
+D30_PROGRESS 1 PR_pixel {'job': 'PR_pixel', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:41:54.009396+08:00', 'session_elapsed_seconds': 6275.078361034393, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.5299996137619019, 'seconds_per_train_step': 0.46358007769379767, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14244608000, 'tile': '5_10', 'condition': 'dsm_local_q1', 'windows_done': 529, 'windows_total': 529}
+D30_PROGRESS 0 PR_area {'job': 'PR_area', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:42:58.902032+08:00', 'session_elapsed_seconds': 6526.136300593615, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4511489272117615, 'seconds_per_train_step': 0.45998815026134254, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14265579008, 'tile': '5_10', 'condition': 'dsm_present_shift_half', 'windows_done': 529, 'windows_total': 529}
+D30_PROGRESS 1 PR_pixel {'job': 'PR_pixel', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:42:49.030301+08:00', 'session_elapsed_seconds': 6330.099272221327, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.5299996137619019, 'seconds_per_train_step': 0.46358007769379767, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14244608000, 'tile': '5_10', 'condition': 'dsm_local_center_quarter', 'windows_done': 529, 'windows_total': 529}
+D30_JOB_STATUS PR_area COMPLETE
+D30_PROGRESS 1 PR_pixel {'job': 'PR_pixel', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:43:40.810180+08:00', 'session_elapsed_seconds': 6381.879152908921, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.5299996137619019, 'seconds_per_train_step': 0.46358007769379767, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14244608000, 'tile': '5_10', 'condition': 'dsm_missing+rgb_down4', 'windows_done': 529, 'windows_total': 529}
+D30_PROGRESS 1 PR_pixel {'job': 'PR_pixel', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:44:53.135040+08:00', 'session_elapsed_seconds': 6454.204022355378, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.5299996137619019, 'seconds_per_train_step': 0.46358007769379767, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14244608000, 'tile': '5_10', 'condition': 'complementary_halves', 'windows_done': 529, 'windows_total': 529}
+D30_PROGRESS 1 PR_pixel {'job': 'PR_pixel', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:45:51.043588+08:00', 'session_elapsed_seconds': 6512.112558156252, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.5299996137619019, 'seconds_per_train_step': 0.46358007769379767, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14244608000, 'tile': '5_10', 'condition': 'both_center_missing', 'windows_done': 529, 'windows_total': 529}
+D30_PROGRESS 1 PR_pixel {'job': 'PR_pixel', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T00:46:48.547046+08:00', 'session_elapsed_seconds': 6569.615999124944, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.5299996137619019, 'seconds_per_train_step': 0.46358007769379767, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14244608000, 'tile': '5_10', 'condition': 'dsm_present_shift_half', 'windows_done': 529, 'windows_total': 529}
+D30_JOB_STATUS PR_pixel COMPLETE
+D30_RESULT P {'C': 87.18602851589715, 'QR': 86.2210447103013, 'QD': 86.75413948971413, 'QJ': 84.20837070447921, 'S_available': 86.09239585509795} continue=False
+D30_RESULT R {'C': 84.87674107442773, 'QR': 84.18498482614892, 'QD': 84.59381290632969, 'QJ': 82.4956814829537, 'S_available': 84.037805072465} continue=False
+D30_RESULT PR_area {'C': 87.10882143879431, 'QR': 86.16010220681197, 'QD': 86.61912571896016, 'QJ': 84.05793505036169, 'S_available': 85.98649610373204} continue=False
+D30_RESULT PR_pixel {'C': 85.8811817655703, 'QR': 85.10920198709492, 'QD': 85.2529665826724, 'QJ': 82.79480860862543, 'S_available': 84.75953973599076} continue=False
+D30_SCREEN_COMPLETE original_D27_gates_unchanged
+D30_QUEUE_FINISHED COMPLETE
+D30_UPLOAD_READY /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d30_loss_decomposition_20261003T205144_2349167/code/scripts/upload_rebuild_v1_d30_records.py
+LAST_OBSERVED=2026-10-04T06:04:04.397991+08:00 QUEUE=COMPLETE_WITH_TECHNICAL_FAILURES PID=2450552 LIVE=False
+COMPLETE=0/18 main; F conditional
+A0 GPU0 TECHNICAL_FAILURE evaluation step=8000/8000 windows=529/529 progress_at=2026-10-04T02:31:20.992520+08:00 PID_LIVE=False
+A1 GPU1 TECHNICAL_FAILURE evaluation step=8000/8000 windows=529/529 progress_at=2026-10-04T02:32:41.929883+08:00 PID_LIVE=False
+A2 GPU1 TECHNICAL_FAILURE evaluation step=8000/8000 windows=529/529 progress_at=2026-10-04T04:17:58.948300+08:00 PID_LIVE=False
+A3 GPU0 TECHNICAL_FAILURE evaluation step=8000/8000 windows=529/529 progress_at=2026-10-04T04:16:45.638846+08:00 PID_LIVE=False
+A4 GPU0 TECHNICAL_FAILURE evaluation step=8000/8000 windows=529/529 progress_at=2026-10-04T06:00:57.197209+08:00 PID_LIVE=False
+A5 GPU1 TECHNICAL_FAILURE evaluation step=8000/8000 windows=529/529 progress_at=2026-10-04T06:03:47.829788+08:00 PID_LIVE=False
+B1 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+B2 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+B3 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+B4 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+B5 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+B6 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+C0 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+C1 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+C2 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+C3 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+C4 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+C5 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+F0 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+F1 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+F2 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+F3 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+ETA_PENDING_FIRST_NORMAL_COMPLETED_JOB; no extra probe
+    PID STAT COMMAND
+2450552 Z    [python] <defunct>
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:38:11.039826+08:00', 'session_elapsed_seconds': 4780.7928744331, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'dsm_missing+rgb_blur5', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:38:56.033226+08:00', 'session_elapsed_seconds': 4901.308623798192, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'rgb_missing+aux_noise_std010', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:39:13.904217+08:00', 'session_elapsed_seconds': 4843.657250657678, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'dsm_missing+rgb_contrast060', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:40:21.295037+08:00', 'session_elapsed_seconds': 4986.5704436302185, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'rgb_down2', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:39:59.960385+08:00', 'session_elapsed_seconds': 4889.713419914246, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'rgb_missing', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:41:21.163668+08:00', 'session_elapsed_seconds': 5046.439065612853, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'rgb_blur5', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:41:16.435052+08:00', 'session_elapsed_seconds': 4966.1880815550685, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'rgb_missing+aux_noise_std010', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:42:17.148164+08:00', 'session_elapsed_seconds': 5102.423561565578, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'aux_down4', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:42:14.510706+08:00', 'session_elapsed_seconds': 5024.263766080141, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'clean', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:43:12.327826+08:00', 'session_elapsed_seconds': 5157.603216998279, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'aux_shift8', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:43:14.094026+08:00', 'session_elapsed_seconds': 5083.847081199288, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'rgb_down4', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:44:12.053148+08:00', 'session_elapsed_seconds': 5217.328555300832, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'rgb_blur5+aux_shift8', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:44:11.626076+08:00', 'session_elapsed_seconds': 5141.379103638232, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'rgb_contrast060', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:45:14.484239+08:00', 'session_elapsed_seconds': 5279.75963062793, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'geom_dy8', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:45:21.861205+08:00', 'session_elapsed_seconds': 5211.61424779892, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'aux_noise_std010', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:46:23.161751+08:00', 'session_elapsed_seconds': 5348.437161654234, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'geom_warp8+rgb_down4', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:46:19.141809+08:00', 'session_elapsed_seconds': 5268.894849427044, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'rgb_down4+aux_noise_std010', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:46:55.872080+08:00', 'session_elapsed_seconds': 5381.147479198873, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'dsm_missing', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:47:18.549576+08:00', 'session_elapsed_seconds': 5328.3026259839535, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'geom_dx8', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:48:12.833530+08:00', 'session_elapsed_seconds': 5458.108947336674, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'dsm_missing+rgb_down4', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:48:11.828530+08:00', 'session_elapsed_seconds': 5381.581580191851, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'geom_warp8', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:49:13.850417+08:00', 'session_elapsed_seconds': 5519.125822409987, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'dsm_missing+rgb_blur5', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:49:20.683155+08:00', 'session_elapsed_seconds': 5450.43619723618, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'dsm_missing', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:49:59.062945+08:00', 'session_elapsed_seconds': 5564.338340505958, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'dsm_missing+rgb_contrast060', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:50:21.001583+08:00', 'session_elapsed_seconds': 5510.754642739892, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'dsm_missing+rgb_down2', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:51:13.103145+08:00', 'session_elapsed_seconds': 5638.378553919494, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'rgb_missing+aux_down4', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:51:06.907639+08:00', 'session_elapsed_seconds': 5556.660669498146, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'dsm_missing+rgb_down4', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:52:12.336186+08:00', 'session_elapsed_seconds': 5697.611592665315, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'rgb_missing+aux_noise_std010', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:52:24.463474+08:00', 'session_elapsed_seconds': 5634.21654137224, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'dsm_missing+rgb_contrast060', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'evaluation', 'observed_at': '2026-10-04T05:53:20.356218+08:00', 'session_elapsed_seconds': 5765.631625980139, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'rgb_missing', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:53:25.230782+08:00', 'session_elapsed_seconds': 5694.983821496367, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'rgb_missing', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'evaluation', 'observed_at': '2026-10-04T05:54:05.902162+08:00', 'session_elapsed_seconds': 5811.177551314235, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'dsm_missing', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:54:09.871413+08:00', 'session_elapsed_seconds': 5739.624446310103, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'rgb_missing+aux_down4', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'evaluation', 'observed_at': '2026-10-04T05:55:13.727140+08:00', 'session_elapsed_seconds': 5879.0025504902005, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'rgb_local_stripe_eighth', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'fixed8000', 'observed_at': '2026-10-04T05:54:54.986239+08:00', 'session_elapsed_seconds': 5784.739279009402, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '5_10', 'condition': 'rgb_missing+aux_noise_std010', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'evaluation', 'observed_at': '2026-10-04T05:56:27.841695+08:00', 'session_elapsed_seconds': 5953.11710472405, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'dsm_local_q1', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T05:56:04.912619+08:00', 'session_elapsed_seconds': 5854.665662124753, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'rgb_missing', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'evaluation', 'observed_at': '2026-10-04T05:57:21.851458+08:00', 'session_elapsed_seconds': 6007.126844100654, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'dsm_local_stripe_eighth', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T05:57:20.926982+08:00', 'session_elapsed_seconds': 5930.680033251643, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'rgb_local_q1', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'evaluation', 'observed_at': '2026-10-04T05:58:21.556640+08:00', 'session_elapsed_seconds': 6066.832058764994, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'dsm_missing+rgb_down4', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T05:58:17.151113+08:00', 'session_elapsed_seconds': 5986.904158100486, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'rgb_local_stripe_eighth', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'evaluation', 'observed_at': '2026-10-04T05:59:24.698086+08:00', 'session_elapsed_seconds': 6129.973477445543, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'rgb_missing+aux_noise_std010', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T05:59:32.984239+08:00', 'session_elapsed_seconds': 6062.73728813231, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'dsm_local_q1', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'evaluation', 'observed_at': '2026-10-04T06:00:11.139779+08:00', 'session_elapsed_seconds': 6176.415175378323, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4963235557079315, 'seconds_per_train_step': 0.4439870390677825, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'complementary_halves', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T06:00:31.586860+08:00', 'session_elapsed_seconds': 6121.339912377298, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'dsm_local_center_quarter', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_JOB_STATUS A4 TECHNICAL_FAILURE
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T06:01:28.746544+08:00', 'session_elapsed_seconds': 6178.499588094652, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'dsm_missing+rgb_down4', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T06:02:15.986677+08:00', 'session_elapsed_seconds': 6225.739714629948, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'rgb_missing+aux_noise_std010', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'observed_at': '2026-10-04T06:03:31.519747+08:00', 'session_elapsed_seconds': 6301.272795364261, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.561948835849762, 'seconds_per_train_step': 0.4514917151061818, 'remaining_train_hours': 0.0, 'gpu_peak_allocated_bytes': 14219501568, 'tile': '3_11', 'condition': 'both_center_missing', 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_JOB_STATUS A5 TECHNICAL_FAILURE
+
+FAILED_JOB = A0
+LOG = /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/logs/A0_20261004T004718652502.log
+D26_EVAL fixed8000 3_11 rgb_missing+aux_down4
+D26_EVAL fixed8000 3_11 rgb_missing+aux_noise_std010
+D26_EVAL fixed8000 5_10 clean
+D26_EVAL fixed8000 5_10 rgb_down2
+D26_EVAL fixed8000 5_10 rgb_down4
+D26_EVAL fixed8000 5_10 rgb_blur5
+D26_EVAL fixed8000 5_10 rgb_contrast060
+D26_EVAL fixed8000 5_10 aux_down4
+D26_EVAL fixed8000 5_10 aux_noise_std010
+D26_EVAL fixed8000 5_10 aux_shift8
+D26_EVAL fixed8000 5_10 rgb_down4+aux_noise_std010
+D26_EVAL fixed8000 5_10 rgb_blur5+aux_shift8
+D26_EVAL fixed8000 5_10 geom_dx8
+D26_EVAL fixed8000 5_10 geom_dy8
+D26_EVAL fixed8000 5_10 geom_warp8
+D26_EVAL fixed8000 5_10 geom_warp8+rgb_down4
+D26_EVAL fixed8000 5_10 dsm_missing
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_down2
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_down4
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_blur5
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_contrast060
+D26_EVAL fixed8000 5_10 rgb_missing
+D26_EVAL fixed8000 5_10 rgb_missing+aux_down4
+D26_EVAL fixed8000 5_10 rgb_missing+aux_noise_std010
+D26_EVAL evaluation 3_11 rgb_missing
+D26_EVAL evaluation 3_11 dsm_missing
+D26_EVAL evaluation 3_11 rgb_local_q1
+D26_EVAL evaluation 3_11 rgb_local_stripe_eighth
+D26_EVAL evaluation 3_11 rgb_local_center_quarter
+D26_EVAL evaluation 3_11 dsm_local_q1
+D26_EVAL evaluation 3_11 dsm_local_stripe_eighth
+D26_EVAL evaluation 3_11 dsm_local_center_quarter
+D26_EVAL evaluation 3_11 dsm_missing+rgb_down4
+D26_EVAL evaluation 3_11 rgb_missing+aux_noise_std010
+D26_EVAL evaluation 3_11 complementary_halves
+D26_EVAL evaluation 3_11 both_center_missing
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/run_post_d30.py", line 197, in <module>
+    try:sys.exit(main())
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/run_post_d30.py", line 191, in main
+    evaluate(model,loader,refs,plan,out,selected_binding,progress)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/post_d30_evaluation.py", line 168, in evaluate
+    op2,ds2,rm,dm=treatment(op,ds,condition,e.key(42,'D26_eval',tile))
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/post_d30_data.py", line 92, in treatment
+    return original(op,ds,'+'.join(result) or 'clean',seed)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/d26_data.py", line 26, in treatment
+    else:op,ds,_=e.treatment(op,ds,part,seed)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/d23_engine.py", line 48, in treatment
+    if kind not in CONDITIONS:raise ValueError(kind)
+ValueError: dsm_present_zero
+
+FAILED_JOB = A1
+LOG = /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/logs/A1_20261004T004718832681.log
+D26_EVAL fixed8000 3_11 rgb_missing+aux_down4
+D26_EVAL fixed8000 3_11 rgb_missing+aux_noise_std010
+D26_EVAL fixed8000 5_10 clean
+D26_EVAL fixed8000 5_10 rgb_down2
+D26_EVAL fixed8000 5_10 rgb_down4
+D26_EVAL fixed8000 5_10 rgb_blur5
+D26_EVAL fixed8000 5_10 rgb_contrast060
+D26_EVAL fixed8000 5_10 aux_down4
+D26_EVAL fixed8000 5_10 aux_noise_std010
+D26_EVAL fixed8000 5_10 aux_shift8
+D26_EVAL fixed8000 5_10 rgb_down4+aux_noise_std010
+D26_EVAL fixed8000 5_10 rgb_blur5+aux_shift8
+D26_EVAL fixed8000 5_10 geom_dx8
+D26_EVAL fixed8000 5_10 geom_dy8
+D26_EVAL fixed8000 5_10 geom_warp8
+D26_EVAL fixed8000 5_10 geom_warp8+rgb_down4
+D26_EVAL fixed8000 5_10 dsm_missing
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_down2
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_down4
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_blur5
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_contrast060
+D26_EVAL fixed8000 5_10 rgb_missing
+D26_EVAL fixed8000 5_10 rgb_missing+aux_down4
+D26_EVAL fixed8000 5_10 rgb_missing+aux_noise_std010
+D26_EVAL evaluation 3_11 rgb_missing
+D26_EVAL evaluation 3_11 dsm_missing
+D26_EVAL evaluation 3_11 rgb_local_q1
+D26_EVAL evaluation 3_11 rgb_local_stripe_eighth
+D26_EVAL evaluation 3_11 rgb_local_center_quarter
+D26_EVAL evaluation 3_11 dsm_local_q1
+D26_EVAL evaluation 3_11 dsm_local_stripe_eighth
+D26_EVAL evaluation 3_11 dsm_local_center_quarter
+D26_EVAL evaluation 3_11 dsm_missing+rgb_down4
+D26_EVAL evaluation 3_11 rgb_missing+aux_noise_std010
+D26_EVAL evaluation 3_11 complementary_halves
+D26_EVAL evaluation 3_11 both_center_missing
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/run_post_d30.py", line 197, in <module>
+    try:sys.exit(main())
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/run_post_d30.py", line 191, in main
+    evaluate(model,loader,refs,plan,out,selected_binding,progress)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/post_d30_evaluation.py", line 168, in evaluate
+    op2,ds2,rm,dm=treatment(op,ds,condition,e.key(42,'D26_eval',tile))
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/post_d30_data.py", line 92, in treatment
+    return original(op,ds,'+'.join(result) or 'clean',seed)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/d26_data.py", line 26, in treatment
+    else:op,ds,_=e.treatment(op,ds,part,seed)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/d23_engine.py", line 48, in treatment
+    if kind not in CONDITIONS:raise ValueError(kind)
+ValueError: dsm_present_zero
+
+FAILED_JOB = A2
+LOG = /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/logs/A2_20261004T023307967096.log
+D26_EVAL fixed8000 3_11 rgb_missing+aux_down4
+D26_EVAL fixed8000 3_11 rgb_missing+aux_noise_std010
+D26_EVAL fixed8000 5_10 clean
+D26_EVAL fixed8000 5_10 rgb_down2
+D26_EVAL fixed8000 5_10 rgb_down4
+D26_EVAL fixed8000 5_10 rgb_blur5
+D26_EVAL fixed8000 5_10 rgb_contrast060
+D26_EVAL fixed8000 5_10 aux_down4
+D26_EVAL fixed8000 5_10 aux_noise_std010
+D26_EVAL fixed8000 5_10 aux_shift8
+D26_EVAL fixed8000 5_10 rgb_down4+aux_noise_std010
+D26_EVAL fixed8000 5_10 rgb_blur5+aux_shift8
+D26_EVAL fixed8000 5_10 geom_dx8
+D26_EVAL fixed8000 5_10 geom_dy8
+D26_EVAL fixed8000 5_10 geom_warp8
+D26_EVAL fixed8000 5_10 geom_warp8+rgb_down4
+D26_EVAL fixed8000 5_10 dsm_missing
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_down2
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_down4
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_blur5
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_contrast060
+D26_EVAL fixed8000 5_10 rgb_missing
+D26_EVAL fixed8000 5_10 rgb_missing+aux_down4
+D26_EVAL fixed8000 5_10 rgb_missing+aux_noise_std010
+D26_EVAL evaluation 3_11 rgb_missing
+D26_EVAL evaluation 3_11 dsm_missing
+D26_EVAL evaluation 3_11 rgb_local_q1
+D26_EVAL evaluation 3_11 rgb_local_stripe_eighth
+D26_EVAL evaluation 3_11 rgb_local_center_quarter
+D26_EVAL evaluation 3_11 dsm_local_q1
+D26_EVAL evaluation 3_11 dsm_local_stripe_eighth
+D26_EVAL evaluation 3_11 dsm_local_center_quarter
+D26_EVAL evaluation 3_11 dsm_missing+rgb_down4
+D26_EVAL evaluation 3_11 rgb_missing+aux_noise_std010
+D26_EVAL evaluation 3_11 complementary_halves
+D26_EVAL evaluation 3_11 both_center_missing
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/run_post_d30.py", line 197, in <module>
+    try:sys.exit(main())
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/run_post_d30.py", line 191, in main
+    evaluate(model,loader,refs,plan,out,selected_binding,progress)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/post_d30_evaluation.py", line 168, in evaluate
+    op2,ds2,rm,dm=treatment(op,ds,condition,e.key(42,'D26_eval',tile))
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/post_d30_data.py", line 92, in treatment
+    return original(op,ds,'+'.join(result) or 'clean',seed)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/d26_data.py", line 26, in treatment
+    else:op,ds,_=e.treatment(op,ds,part,seed)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/d23_engine.py", line 48, in treatment
+    if kind not in CONDITIONS:raise ValueError(kind)
+ValueError: dsm_present_zero
+
+FAILED_JOB = A3
+LOG = /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/logs/A3_20261004T023147643343.log
+D26_EVAL fixed8000 3_11 rgb_missing+aux_down4
+D26_EVAL fixed8000 3_11 rgb_missing+aux_noise_std010
+D26_EVAL fixed8000 5_10 clean
+D26_EVAL fixed8000 5_10 rgb_down2
+D26_EVAL fixed8000 5_10 rgb_down4
+D26_EVAL fixed8000 5_10 rgb_blur5
+D26_EVAL fixed8000 5_10 rgb_contrast060
+D26_EVAL fixed8000 5_10 aux_down4
+D26_EVAL fixed8000 5_10 aux_noise_std010
+D26_EVAL fixed8000 5_10 aux_shift8
+D26_EVAL fixed8000 5_10 rgb_down4+aux_noise_std010
+D26_EVAL fixed8000 5_10 rgb_blur5+aux_shift8
+D26_EVAL fixed8000 5_10 geom_dx8
+D26_EVAL fixed8000 5_10 geom_dy8
+D26_EVAL fixed8000 5_10 geom_warp8
+D26_EVAL fixed8000 5_10 geom_warp8+rgb_down4
+D26_EVAL fixed8000 5_10 dsm_missing
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_down2
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_down4
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_blur5
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_contrast060
+D26_EVAL fixed8000 5_10 rgb_missing
+D26_EVAL fixed8000 5_10 rgb_missing+aux_down4
+D26_EVAL fixed8000 5_10 rgb_missing+aux_noise_std010
+D26_EVAL evaluation 3_11 rgb_missing
+D26_EVAL evaluation 3_11 dsm_missing
+D26_EVAL evaluation 3_11 rgb_local_q1
+D26_EVAL evaluation 3_11 rgb_local_stripe_eighth
+D26_EVAL evaluation 3_11 rgb_local_center_quarter
+D26_EVAL evaluation 3_11 dsm_local_q1
+D26_EVAL evaluation 3_11 dsm_local_stripe_eighth
+D26_EVAL evaluation 3_11 dsm_local_center_quarter
+D26_EVAL evaluation 3_11 dsm_missing+rgb_down4
+D26_EVAL evaluation 3_11 rgb_missing+aux_noise_std010
+D26_EVAL evaluation 3_11 complementary_halves
+D26_EVAL evaluation 3_11 both_center_missing
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/run_post_d30.py", line 197, in <module>
+    try:sys.exit(main())
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/run_post_d30.py", line 191, in main
+    evaluate(model,loader,refs,plan,out,selected_binding,progress)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/post_d30_evaluation.py", line 168, in evaluate
+    op2,ds2,rm,dm=treatment(op,ds,condition,e.key(42,'D26_eval',tile))
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/post_d30_data.py", line 92, in treatment
+    return original(op,ds,'+'.join(result) or 'clean',seed)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/d26_data.py", line 26, in treatment
+    else:op,ds,_=e.treatment(op,ds,part,seed)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/d23_engine.py", line 48, in treatment
+    if kind not in CONDITIONS:raise ValueError(kind)
+ValueError: dsm_present_zero
+
+FAILED_JOB = A4
+LOG = /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/logs/A4_20261004T041709581922.log
+D26_EVAL fixed8000 3_11 rgb_missing+aux_down4
+D26_EVAL fixed8000 3_11 rgb_missing+aux_noise_std010
+D26_EVAL fixed8000 5_10 clean
+D26_EVAL fixed8000 5_10 rgb_down2
+D26_EVAL fixed8000 5_10 rgb_down4
+D26_EVAL fixed8000 5_10 rgb_blur5
+D26_EVAL fixed8000 5_10 rgb_contrast060
+D26_EVAL fixed8000 5_10 aux_down4
+D26_EVAL fixed8000 5_10 aux_noise_std010
+D26_EVAL fixed8000 5_10 aux_shift8
+D26_EVAL fixed8000 5_10 rgb_down4+aux_noise_std010
+D26_EVAL fixed8000 5_10 rgb_blur5+aux_shift8
+D26_EVAL fixed8000 5_10 geom_dx8
+D26_EVAL fixed8000 5_10 geom_dy8
+D26_EVAL fixed8000 5_10 geom_warp8
+D26_EVAL fixed8000 5_10 geom_warp8+rgb_down4
+D26_EVAL fixed8000 5_10 dsm_missing
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_down2
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_down4
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_blur5
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_contrast060
+D26_EVAL fixed8000 5_10 rgb_missing
+D26_EVAL fixed8000 5_10 rgb_missing+aux_down4
+D26_EVAL fixed8000 5_10 rgb_missing+aux_noise_std010
+D26_EVAL evaluation 3_11 rgb_missing
+D26_EVAL evaluation 3_11 dsm_missing
+D26_EVAL evaluation 3_11 rgb_local_q1
+D26_EVAL evaluation 3_11 rgb_local_stripe_eighth
+D26_EVAL evaluation 3_11 rgb_local_center_quarter
+D26_EVAL evaluation 3_11 dsm_local_q1
+D26_EVAL evaluation 3_11 dsm_local_stripe_eighth
+D26_EVAL evaluation 3_11 dsm_local_center_quarter
+D26_EVAL evaluation 3_11 dsm_missing+rgb_down4
+D26_EVAL evaluation 3_11 rgb_missing+aux_noise_std010
+D26_EVAL evaluation 3_11 complementary_halves
+D26_EVAL evaluation 3_11 both_center_missing
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/run_post_d30.py", line 197, in <module>
+    try:sys.exit(main())
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/run_post_d30.py", line 191, in main
+    evaluate(model,loader,refs,plan,out,selected_binding,progress)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/post_d30_evaluation.py", line 168, in evaluate
+    op2,ds2,rm,dm=treatment(op,ds,condition,e.key(42,'D26_eval',tile))
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/post_d30_data.py", line 92, in treatment
+    return original(op,ds,'+'.join(result) or 'clean',seed)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/d26_data.py", line 26, in treatment
+    else:op,ds,_=e.treatment(op,ds,part,seed)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/d23_engine.py", line 48, in treatment
+    if kind not in CONDITIONS:raise ValueError(kind)
+ValueError: dsm_present_zero
+
+FAILED_JOB = A5
+LOG = /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/logs/A5_20261004T041825156540.log
+D26_EVAL fixed8000 3_11 rgb_missing+aux_down4
+D26_EVAL fixed8000 3_11 rgb_missing+aux_noise_std010
+D26_EVAL fixed8000 5_10 clean
+D26_EVAL fixed8000 5_10 rgb_down2
+D26_EVAL fixed8000 5_10 rgb_down4
+D26_EVAL fixed8000 5_10 rgb_blur5
+D26_EVAL fixed8000 5_10 rgb_contrast060
+D26_EVAL fixed8000 5_10 aux_down4
+D26_EVAL fixed8000 5_10 aux_noise_std010
+D26_EVAL fixed8000 5_10 aux_shift8
+D26_EVAL fixed8000 5_10 rgb_down4+aux_noise_std010
+D26_EVAL fixed8000 5_10 rgb_blur5+aux_shift8
+D26_EVAL fixed8000 5_10 geom_dx8
+D26_EVAL fixed8000 5_10 geom_dy8
+D26_EVAL fixed8000 5_10 geom_warp8
+D26_EVAL fixed8000 5_10 geom_warp8+rgb_down4
+D26_EVAL fixed8000 5_10 dsm_missing
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_down2
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_down4
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_blur5
+D26_EVAL fixed8000 5_10 dsm_missing+rgb_contrast060
+D26_EVAL fixed8000 5_10 rgb_missing
+D26_EVAL fixed8000 5_10 rgb_missing+aux_down4
+D26_EVAL fixed8000 5_10 rgb_missing+aux_noise_std010
+D26_EVAL evaluation 3_11 rgb_missing
+D26_EVAL evaluation 3_11 dsm_missing
+D26_EVAL evaluation 3_11 rgb_local_q1
+D26_EVAL evaluation 3_11 rgb_local_stripe_eighth
+D26_EVAL evaluation 3_11 rgb_local_center_quarter
+D26_EVAL evaluation 3_11 dsm_local_q1
+D26_EVAL evaluation 3_11 dsm_local_stripe_eighth
+D26_EVAL evaluation 3_11 dsm_local_center_quarter
+D26_EVAL evaluation 3_11 dsm_missing+rgb_down4
+D26_EVAL evaluation 3_11 rgb_missing+aux_noise_std010
+D26_EVAL evaluation 3_11 complementary_halves
+D26_EVAL evaluation 3_11 both_center_missing
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/run_post_d30.py", line 197, in <module>
+    try:sys.exit(main())
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/run_post_d30.py", line 191, in main
+    evaluate(model,loader,refs,plan,out,selected_binding,progress)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/post_d30_evaluation.py", line 168, in evaluate
+    op2,ds2,rm,dm=treatment(op,ds,condition,e.key(42,'D26_eval',tile))
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/post_d30_data.py", line 92, in treatment
+    return original(op,ds,'+'.join(result) or 'clean',seed)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/d26_data.py", line 26, in treatment
+    else:op,ds,_=e.treatment(op,ds,part,seed)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/d23_engine.py", line 48, in treatment
+    if kind not in CONDITIONS:raise ValueError(kind)
+ValueError: dsm_present_zero
+(remote_sensing) [root@h-aoji-aoji-h100-agent-2-w-0 jovyan]$ 

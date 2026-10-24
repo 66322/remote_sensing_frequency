@@ -1,0 +1,70 @@
+{
+  "source": "user pasted read-only server status and nohup tail",
+  "query_observed_at": "2026-10-07T08:41:47.885238+08:00",
+  "queue_observed_at": "2026-10-07T08:41:46.005396+08:00",
+  "queue_status": "RUNNING_N3_S1",
+  "controller_pid": 694658,
+  "controller_live": true,
+  "scientific_execution_commit": "0e22438a7131a0a1f28098e675c3367d40236398",
+  "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293",
+  "workers": [
+    {
+      "job": "N3-0",
+      "gpu": 0,
+      "pid": 694733,
+      "live": true,
+      "step": 360,
+      "target": 8000,
+      "phase": "training",
+      "progress_observed_at": "2026-10-07T08:41:42.634794+08:00",
+      "session_elapsed_seconds": 550.1344600245357,
+      "tiles_loaded": 12,
+      "tiles_total": 12,
+      "loss": 0.36776623129844666,
+      "seconds_per_train_step": 1.3249855232528513,
+      "remaining_train_hours": 2.8119137215699403,
+      "gpu_peak_allocated_bytes": 36790995456
+    },
+    {
+      "job": "N3-1",
+      "gpu": 1,
+      "pid": 694739,
+      "live": true,
+      "step": 360,
+      "target": 8000,
+      "phase": "training",
+      "progress_observed_at": "2026-10-07T08:41:43.547025+08:00",
+      "session_elapsed_seconds": 551.1161601915956,
+      "tiles_loaded": 12,
+      "tiles_total": 12,
+      "loss": 0.36778590083122253,
+      "seconds_per_train_step": 1.3281004793735014,
+      "remaining_train_hours": 2.818524350670431,
+      "gpu_peak_allocated_bytes": 36796787200
+    }
+  ],
+  "pending": [
+    "N3-2",
+    "N3-3",
+    "N3-4",
+    "S1-0",
+    "S1-1",
+    "S1-2",
+    "S1-3"
+  ],
+  "completed_jobs": 0,
+  "no_precision_or_gate_results": true,
+  "no_error_in_received_tail": true,
+  "eta": {
+    "scope": "training lower-bound projection assumes all future cells share current step speed; validation/evaluation/new-operator time omitted",
+    "gpu0_train_remaining_hours": 14.589562817150842,
+    "gpu1_train_remaining_hours": 11.672527546493775,
+    "whole_queue_planning_hours": [
+      23,
+      34
+    ],
+    "calibrate_after": "first complete job"
+  },
+  "next": "continue existing queue, read-only observation; no re-enqueue",
+  "cpu_checks_and_preparation": "execution-chain success inference, standalone logs not received"
+}

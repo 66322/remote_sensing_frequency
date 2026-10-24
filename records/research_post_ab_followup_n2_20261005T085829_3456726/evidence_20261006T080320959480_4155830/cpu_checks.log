@@ -1,0 +1,26 @@
+test_capacity_and_gradients_all_six (test_post_ab_n2.RelationTests) ... ok
+test_constant_relations_reduce_to_distance (test_post_ab_n2.RelationTests) ... ok
+test_contract_rejects_changed_base_mode_seed (test_post_ab_n2.RelationTests) ... ok
+test_gate_rejects_unmatched_and_shuffled_advantage (test_post_ab_n2.RelationTests) ... ok
+test_height_changes_only_rgb_relation (test_post_ab_n2.RelationTests) ... ok
+test_masked_donors_and_empty_rows (test_post_ab_n2.RelationTests) ... ok
+test_missing_all_blocks_propagation (test_post_ab_n2.RelationTests) ... ok
+test_model_base_load_and_exact_missing_fallback (test_post_ab_n2.RelationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 1.383s
+
+OK
+test_capacity_and_gradients_all_six (test_post_ab_n2.RelationTests) ... ok
+test_constant_relations_reduce_to_distance (test_post_ab_n2.RelationTests) ... ok
+test_contract_rejects_changed_base_mode_seed (test_post_ab_n2.RelationTests) ... ok
+test_gate_rejects_unmatched_and_shuffled_advantage (test_post_ab_n2.RelationTests) ... ok
+test_height_changes_only_rgb_relation (test_post_ab_n2.RelationTests) ... ok
+test_masked_donors_and_empty_rows (test_post_ab_n2.RelationTests) ... ok
+test_missing_all_blocks_propagation (test_post_ab_n2.RelationTests) ... ok
+test_model_base_load_and_exact_missing_fallback (test_post_ab_n2.RelationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.597s
+
+OK

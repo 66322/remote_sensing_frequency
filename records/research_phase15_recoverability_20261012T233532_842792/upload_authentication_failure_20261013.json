@@ -1,0 +1,16 @@
+{
+  "record_type": "user_reported_upload_push_failure",
+  "reported_on": "2026-10-13",
+  "exact_observed_at": null,
+  "local_archive_and_commit_created": "inferred from create mode output and push-stage failure",
+  "worktree": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792/github_upload_20261013T113931418057_1206639",
+  "evidence_path": "records/research_phase15_recoverability_20261012T233532_842792/evidence_20261013T113931418057_1206639",
+  "error": "Invalid username or token. Password authentication is not supported for Git operations.",
+  "exit_code": 128,
+  "failing_operation": "git push origin HEAD:refs/heads/rebuild-v1-protocol-20260915",
+  "upload_commit_sha_not_received": true,
+  "experiment_status_unchanged": "PHASE15_COMPLETE_AWAITING_REVIEW",
+  "authentication_cause_not_determined": true,
+  "credentials_recorded": false,
+  "next_action": "Reuse existing worktree; fetch branch, rebase local unpushed evidence commit onto FETCH_HEAD, normal push; do not regenerate archive."
+}

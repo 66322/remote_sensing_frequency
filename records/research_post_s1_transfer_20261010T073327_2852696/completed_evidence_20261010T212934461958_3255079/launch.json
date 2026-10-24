@@ -1,0 +1,17 @@
+{
+  "controller_pid": 2852987,
+  "command": [
+    "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+    "-u",
+    "-B",
+    "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696/code/scripts/control_post_s1_transfer.py",
+    "--root",
+    "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+    "--directory",
+    "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696"
+  ],
+  "log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696/nohup_20261010T073335566918.log",
+  "physical_gpus": [
+    0
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "job": "E2_N2-3",
+  "model": "N2-3",
+  "physical_gpu": 0,
+  "optimizer_updates": 0,
+  "phase": "complete",
+  "observed_at": "2026-10-05T23:27:12.609814+08:00",
+  "elapsed_seconds": 427.26898591965437,
+  "tile": "5_10",
+  "condition": "dsm_false_negative"
+}

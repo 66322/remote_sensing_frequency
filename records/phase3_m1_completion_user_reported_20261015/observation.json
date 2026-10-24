@@ -1,0 +1,27 @@
+{
+  "source": "user-pasted terminal output; server self-verification, not independent archive re-audit",
+  "recorded_date": "2026-10-15",
+  "run": "research_phase3_m1_recovery_20261015T164357_19327",
+  "execution_commit": "09d67c7c30647031b888ef1315d721b867055cbd",
+  "controller_pid": 19614,
+  "queue_status": {
+    "status": "COMPLETE_AWAITING_REVIEW",
+    "observed_at": "2026-10-15T19:16:19.431340+08:00",
+    "new_updates": 176000
+  },
+  "log_finished": true,
+  "integer_matrices_verified": 142608,
+  "joint_tables_verified": 71280,
+  "batch_stream_records": 11,
+  "all_batch_streams_exact": true,
+  "old_initial_checks_exact": true,
+  "legacy_CM_exact": true,
+  "M00_42_causal_reuse_qualified": true,
+  "all_required_evidence_complete": true,
+  "missing_or_failed": [],
+  "count_handoff_applied": false,
+  "final_archive_receipt_observed": false,
+  "independent_scientific_acceptance_complete": false,
+  "cache_retirement_receipts_independently_reviewed": false,
+  "next_action": "foreground compact upload using bound original upload_phase3_m1.py; then independent GitHub archive/scientific review"
+}

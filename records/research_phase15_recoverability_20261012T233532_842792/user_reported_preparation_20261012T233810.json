@@ -1,0 +1,21 @@
+{
+  "record_type": "user_reported_read_only_status",
+  "execution_commit": "45138f0f92c668bc86ce9532a4382b38d2b12b6d",
+  "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792",
+  "query_observed_at": "2026-10-12T23:38:10.393107+08:00",
+  "queue_last_observed_at": "2026-10-12T23:38:08.675078+08:00",
+  "status": "PREPARING_FIXED_CACHE_AND_MAPS",
+  "controller_live": true,
+  "counts": {
+    "PENDING": 100
+  },
+  "nohup_tail_output": "",
+  "preparation_complete_verified": false,
+  "real_smoke_verified": false,
+  "full_gpu_batches_started": 0,
+  "optimizer_updates": 0,
+  "new_scientific_results_received": false,
+  "automatic_retry": false,
+  "next_action": "Continue existing controller; later read-only status and logs. No repeated registration.",
+  "raw_status": "QUERY_OBSERVED=2026-10-12T23:38:10.393107+08:00 LAST_OBSERVED=2026-10-12T23:38:08.675078+08:00 QUEUE=PREPARING_FIXED_CACHE_AND_MAPS CONTROLLER_LIVE=True\nCOUNTS {'PENDING': 100}\nZero training; no failed-recipe retry, extra seed, new method dispatch, or 24h deadline."
+}

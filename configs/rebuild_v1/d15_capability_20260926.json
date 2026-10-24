@@ -1,0 +1,12 @@
+{
+  "version": "D15_CAPABILITY_20260926",
+  "base_config": "configs/rebuild_v1/r01_optical_only_16k.json",
+  "split_file": "configs/rebuild_v1/potsdam_split_seed20260915.json",
+  "seeds": [42, 17],
+  "dsm_representation": "R02 per-tile minmax DSM repeated to three channels",
+  "training_steps": 16000,
+  "rgb_conditions": ["clean", "rgb_down2", "rgb_down4", "rgb_blur5", "rgb_local_down4_q1", "rgb_down4_dsm_zero"],
+  "models": ["R01", "R05", "C-OO-QD", "D15_DSM_ONLY"],
+  "development_split": "Val2; NoBoundary mIoU_fg5 primary; FullGT diagnostic",
+  "test6_loaded": false
+}

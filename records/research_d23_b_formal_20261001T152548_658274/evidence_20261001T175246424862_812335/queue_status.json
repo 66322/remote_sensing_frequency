@@ -1,0 +1,49 @@
+{
+  "status": "TECHNICAL_FAILURE",
+  "observed_at": "2026-10-01T16:35:53.227191+08:00",
+  "jobs": {
+    "TSF": {
+      "gpu": 0,
+      "pid": 746207,
+      "status": "COMPLETE",
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/jobs/TSF_resume_20261001T153823537963",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/logs_resume_20261001T153823537963/TSF.log",
+      "observed_at": "2026-10-01T16:34:33.135407+08:00",
+      "returncode": 0
+    },
+    "T0": {
+      "gpu": 1,
+      "pid": 746208,
+      "status": "COMPLETE",
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/jobs/T0_resume_20261001T153823537963",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/logs_resume_20261001T153823537963/T0.log",
+      "observed_at": "2026-10-01T16:35:51.224112+08:00",
+      "returncode": 0
+    },
+    "TS": {
+      "gpu": 0,
+      "pid": 774565,
+      "status": "TECHNICAL_FAILURE",
+      "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/jobs/TS",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/logs_resume_20261001T153823537963/TS.log",
+      "observed_at": "2026-10-01T16:34:35.141672+08:00",
+      "returncode": 2
+    }
+  },
+  "pending": {
+    "0": [
+      "TCAP",
+      "TSF_shuffleS"
+    ],
+    "1": [
+      "TF",
+      "TSF_CE",
+      "TSF_shuffleF"
+    ]
+  },
+  "formal_training_requested": true,
+  "test6_loaded": false,
+  "screen_manifest": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/screen_manifest_20261001T153823537963.json",
+  "screen_result": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/screen_result_20261001T153823537963.json",
+  "screen_log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/logs_resume_20261001T153823537963/screen.log"
+}

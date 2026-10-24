@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "H_NB": 12.07802867565868,
+  "H_vs_R16": 10.110277721697774,
+  "conditional_aggregation_exact": true,
+  "common_M5_all_40_groups_exact": true,
+  "ECI_counts_and_5000_CI_exact": true,
+  "inference": "S1 common support invariance is consistent with frozen own-DSM fallback; legacy DSM-only is distinct",
+  "observable_review": "R16 wins entropy/disagreement bins across both tiles; S13 preference in low DSM variance/gradient reverses by tile; simple routing learnability gate not established"
+}

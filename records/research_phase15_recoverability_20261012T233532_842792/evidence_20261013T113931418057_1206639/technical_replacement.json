@@ -1,0 +1,16 @@
+{
+  "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T232212_836118",
+  "status": "SMOKE_FAILED_HOLD",
+  "execution_commit": "7b12fec6d7fb451e09316ba59f7d62ca8e0c316b",
+  "reason": "explicit replacement of known input-binding PosixPath+str bug; no scientific retry",
+  "automatic_retry": false,
+  "original_preserved": true,
+  "old_case_cache_reused": false,
+  "receipts": {
+    "plan.json": "560be9c14ccfb765ccd24321931e00c833da4ff8b9899052374e3f044471d2d3",
+    "code_manifest.json": "1d36d6b4e305300cade0797ed6e5bfe484a93513eea6b9a11550a80736b1a4b1",
+    "queue_status.json": "016bd33f03e313388f865257214cbba9e03b5e033745ac30106cbf73692d4ba2",
+    "technical_failure.json": "f8ef93b8667c635244db590f049af4bafd90c704a9b2f01ce271ed0e0e8bc983",
+    "logs/smoke_gpu0.log": "681f29d3d26c0fff9b7dc21abe0571e9fa32c5dd97ea76cc1902271761a779b9"
+  }
+}

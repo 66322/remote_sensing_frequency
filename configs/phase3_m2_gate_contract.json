@@ -1,0 +1,77 @@
+{
+  "version": 2,
+  "unit": "percentage_points",
+  "metric": "fg5 NoBoundary mIoU from pooled int64 6x6 matrices",
+  "primary": {
+    "condition": "RGB down4",
+    "region": "all central-512",
+    "fusion": "0.9 RGB + 0.1 DSM probabilities"
+  },
+  "G1": {
+    "measure": "DSM rescue percent on RGB errors",
+    "controls": [
+      "D0",
+      "DSelf",
+      "DShuffle",
+      "DEntropy"
+    ],
+    "mean_min": 0.5,
+    "every_seed_strictly_positive": true
+  },
+  "H2": {
+    "control": "DClean",
+    "regions": [
+      "all",
+      "damaged"
+    ],
+    "mean_min": 0.3,
+    "every_seed_strictly_positive": true
+  },
+  "G2": {
+    "D0_mean_min": 0.3,
+    "other_controls": [
+      "DSelf",
+      "DShuffle",
+      "DEntropy",
+      "DMix",
+      "DClean"
+    ],
+    "other_mean_min": 0.2,
+    "every_seed_strictly_positive": true,
+    "positive_fold_seed_cells_min": 7
+  },
+  "G3": {
+    "control": "D0",
+    "panels": [
+      [
+        "clean",
+        "all"
+      ],
+      [
+        "down4",
+        "healthy"
+      ],
+      [
+        "dsm_down4",
+        "all"
+      ],
+      [
+        "dsm_shift8",
+        "all"
+      ]
+    ],
+    "seed_pooled_floor": -0.2,
+    "every_tile_seed_mean_floor": -0.5
+  },
+  "G4": {
+    "cross_seed_pairs_positive_min": 5,
+    "unseen": [
+      "down8",
+      "blur2",
+      "noise005"
+    ],
+    "every_condition_mean_strictly_positive": true,
+    "every_seed_floor": -0.2
+  },
+  "next_stage": "all G0/G1/H2/G2/G3/G4 and separately frozen reverse contract required; no automatic second encoder"
+}

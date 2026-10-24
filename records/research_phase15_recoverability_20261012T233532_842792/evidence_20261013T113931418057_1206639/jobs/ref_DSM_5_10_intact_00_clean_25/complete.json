@@ -1,0 +1,15 @@
+{
+  "binding": {
+    "plan.json": "46f171542c643589ec93429feea13d3bed3ba0897b4a9d6c72d8755f7a23baba",
+    "code_manifest.json": "7755b8e7c9e51cc62702e43be6c609a70a7d1e981458ae7d683648cb6d9164e8",
+    "preparation_complete.json": "3a635441c9a7c7aa180084b780121b9360c5a75c15d0696b540b3cbc0a6b9b02"
+  },
+  "cases": [
+    "DSM_5_10_intact_00_clean_25"
+  ],
+  "records": {
+    "DSM_5_10_intact_00_clean_25": "ac215f99a831025409e91f69981cc37aa720bb1c884f5e91e05e2134053f0617"
+  },
+  "optimizer_updates": 0,
+  "completed_at": "2026-10-13T00:04:54.738904+08:00"
+}

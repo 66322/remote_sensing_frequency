@@ -1,0 +1,19 @@
+{
+  "evidence_type": "user_terminal_return",
+  "source_execution_commit": "4bf69489f789e998b7bf3181d3b3057c6ff7c04e",
+  "registered_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696",
+  "registered_controller_pid": 2852987,
+  "controller_liveness_requeried": false,
+  "physical_gpus": [
+    0
+  ],
+  "training_jobs": 10,
+  "new_optimizer_steps": 80000,
+  "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696/nohup_20261010T073335566918.log",
+  "predecessor_last_observed": "2026-10-10T07:33:24.785318+08:00",
+  "predecessor_status": "RUNNING_E",
+  "registration_verdict": "WAITING_PREDECESSOR",
+  "new_training_confirmed": false,
+  "server_full_stage_results_received": false,
+  "no_ssh": true
+}

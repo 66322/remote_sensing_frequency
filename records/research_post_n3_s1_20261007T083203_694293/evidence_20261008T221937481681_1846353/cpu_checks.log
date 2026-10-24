@@ -1,0 +1,46 @@
+test_S1_four_forward_paths_equal_bound_diagnostic_graph (test_post_n3_s1.NSTests) ... ok
+test_S1_full_missing_other_side_partial_and_neither (test_post_n3_s1.NSTests) ... ok
+test_S1_objective_loss_denominators_and_gradients (test_post_n3_s1.NSTests) ... ok
+test_actual_optimizer_encoder_lr_preserved (test_post_n3_s1.NSTests) ... ok
+test_all_nine_full_base_binding_and_exact_shared_state (test_post_n3_s1.NSTests) ... ok
+test_contract_invalid_timeout_scope_budget (test_post_n3_s1.NSTests) ... ok
+test_entry_import_help (test_post_n3_s1.NSTests) ... ok
+test_existing_artifact_requires_explicit_recovery (test_post_n3_s1.NSTests) ... ok
+test_failure_stops_dispatch_no_retry (test_post_n3_s1.NSTests) ... N3_S1_START 0 N3-0 101
+N3_S1_JOB N3-0 TECHNICAL_FAILURE
+ok
+test_fixed_gate_uniform_no_gain_rejects (test_post_n3_s1.NSTests) ... ok
+test_real_dispatch_all_nine_and_final_exit (test_post_n3_s1.NSTests) ... N3_S1_START 0 N3-0 101
+N3_S1_JOB N3-0 COMPLETE
+N3_S1_START 1 N3-1 102
+N3_S1_JOB N3-1 COMPLETE
+N3_S1_START 0 N3-2 103
+N3_S1_JOB N3-2 COMPLETE
+N3_S1_START 1 N3-3 104
+N3_S1_JOB N3-3 COMPLETE
+N3_S1_START 0 N3-4 105
+N3_S1_JOB N3-4 COMPLETE
+N3_S1_START 1 S1-0 106
+N3_S1_JOB S1-0 COMPLETE
+N3_S1_START 0 S1-1 107
+N3_S1_JOB S1-1 COMPLETE
+N3_S1_START 1 S1-2 108
+N3_S1_JOB S1-2 COMPLETE
+N3_S1_START 0 S1-3 109
+N3_S1_JOB S1-3 COMPLETE
+ok
+test_region_capacity_all_modes_and_gradient (test_post_n3_s1.NSTests) ... ok
+test_region_condition_direction_and_graph_detach (test_post_n3_s1.NSTests) ... ok
+test_region_donors_invalid_and_empty_rows (test_post_n3_s1.NSTests) ... ok
+test_regions_constant_descriptors_equal_grid_no_label_oracle (test_post_n3_s1.NSTests) ... ok
+test_standalone_completed_nine_summary_exit (test_post_n3_s1.NSTests) ... ok
+test_timeout_rc_zero_not_complete (test_post_n3_s1.NSTests) ... N3_S1_START 0 N3-0 101
+N3_S1_START 1 N3-1 102
+N3_S1_JOB N3-0 TIMEOUT
+N3_S1_JOB N3-1 TIMEOUT
+ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 8.696s
+
+OK

@@ -1,0 +1,116 @@
+{
+  "status": "IMPLEMENTED_CPU_CHECKED_AWAITING_SERVER_SMOKE",
+  "observed_at": "2026-10-14T18:41:03.145201+08:00",
+  "basis_head": "9ba9ca07f40e50d36fdafa0000e2ce133c8c428f",
+  "user_authorization": "按照上述规划安排具体实验吧",
+  "new_server_run": null,
+  "server_queried": false,
+  "server_started": false,
+  "implementation_files": {
+    "scripts/control_phase24.py": "f203751034367937f7fdc9285b255086f8527036c69d8f2e67cad70eaa6918df",
+    "scripts/enqueue_phase24.py": "b620aebbc86b029ba3fcf006d05a7b9b4fd4311ada9a12ca95566bd5581b95b4",
+    "scripts/phase24_analysis.py": "8d8d7ddf355a2b354818ad9a2d917469d3e8d1eb806167b9378bfcdf2ee3c1c5",
+    "scripts/phase24_common.py": "602b3119f3986326876b9e8dc6812b867cdace521d346bc6bb00b99d1c4be319",
+    "scripts/phase24_fit.py": "208ed77ba2fa8ed9bfbf06c7ede89c4545ec154f9ad592a576c6e013ea6794ee",
+    "scripts/phase24_ipc.py": "e8ee54877afd1b601b0516ea9bb96b522f19cc1632a4f380a2513a5392383cda",
+    "scripts/phase24_model.py": "56c942270fda78a40bc6420e00f031f4e89955b4c0c980e86ae1e9d71d49f25c",
+    "scripts/phase24_numeric.py": "d0274c0692fb03f9e2089f39202904054aebb77bcc58d72646193c50e461f947",
+    "scripts/phase24_runtime.py": "2a56aeaadc9cee2f91097a460ce5401b5c158650a2910aae693f77d6c8715d39",
+    "scripts/prepare_phase24.py": "90645c40ac82da104ebc2f37fc93529003c8f86a139d9b83db4e914a9a3e633a",
+    "scripts/status_phase24.py": "2268e32bb70c560d0662bf2a6b440fbf90691c4ea3abdd6716a5a42f992d3c0c",
+    "scripts/upload_phase24.py": "3f7964aea37c0a1d07f99a0ade4578357abc98305cacd608a541ce27f29f1cad",
+    "scripts/verify_phase24_results.py": "153dd804db037072141c4c9a7d73059a313352221d536e5d04fe4df36f25ff0d",
+    "tests/test_phase24.py": "a7b571d8799c648802f0ed0f940eea0780d112a28feb0a13097feeb18feb0142"
+  },
+  "compile_pass_count": 14,
+  "local_checks": {
+    "platform": "Windows",
+    "python": "3.13.3",
+    "torch": "2.7.1+cpu",
+    "total": 20,
+    "passed": 18,
+    "skipped": 2,
+    "skipped_reason": "Linux anonymous memfd and cross-process transport; mandatory on server",
+    "log_sha256": "a810247dc74d9d079de129d35796d52e3c74de5a8b8f3cf88bab0a9411b29578"
+  },
+  "original_count_recompute": {
+    "source_run": "research_phase2_matched_20261013T151120_1310582",
+    "average_cases": 1164,
+    "P_U_cases": 640,
+    "panel_exact": true,
+    "fixed_conditions": [
+      "clean",
+      "aux_down4",
+      "aux_noise_std010",
+      "aux_shift8",
+      "dsm_missing",
+      "dsm_missing+rgb_blur5",
+      "dsm_missing+rgb_contrast060",
+      "dsm_missing+rgb_down2",
+      "dsm_missing+rgb_down4",
+      "geom_dx8",
+      "geom_dy8",
+      "geom_warp8",
+      "geom_warp8+rgb_down4",
+      "rgb_blur5",
+      "rgb_blur5+aux_shift8",
+      "rgb_contrast060",
+      "rgb_down2",
+      "rgb_down4",
+      "rgb_down4+aux_noise_std010",
+      "rgb_missing",
+      "rgb_missing+aux_down4",
+      "rgb_missing+aux_noise_std010"
+    ],
+    "gap_decomposition": {
+      "rgb": {
+        "oracle_minus_best_fixed": 18.444090388631125,
+        "oracle_minus_B2": 14.195947161311665,
+        "B2_minus_best_fixed": 4.24814322731946
+      },
+      "dsm": {
+        "oracle_minus_best_fixed": 3.66526346771235,
+        "oracle_minus_B2": 11.274466268202545,
+        "B2_minus_best_fixed": -7.609202800490195
+      }
+    },
+    "gap_tolerance": 1e-10,
+    "old_results_changed": false,
+    "new_expert_forwards": 0
+  },
+  "scientific_budget": {
+    "gpus": [
+      0,
+      1
+    ],
+    "mandatory_heads": [
+      "T0"
+    ],
+    "conditional_heads": [
+      "T1",
+      "T2",
+      "T3"
+    ],
+    "max_head_updates": 32000,
+    "new_expert_trainings": 0,
+    "new_training_seeds": 0,
+    "test_access": false,
+    "wall_deadline_hours": null
+  },
+  "waiting_for_server": [
+    "Linux registration tests",
+    "Torch2.2.2+cu121 real gradients on GPU0/1",
+    "12 exact original-CM bridges",
+    "GPU/CPU exact sequential stitch",
+    "16/24/32 CPU throughput selection under effective quota",
+    "actual peaks and stage ETA"
+  ],
+  "artifact_policy": {
+    "full_disk_array_cache": false,
+    "anonymous_packet_slots_per_gpu": 2,
+    "shared_input_bytes": 9792000000,
+    "sample_cap_bytes": 1073741824,
+    "delete_new_rolling_and_4k_pth_only_after_summary_verification": true,
+    "old_directory_deleted": false
+  }
+}

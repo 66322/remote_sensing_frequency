@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "summaries": 8,
+  "means_pp": {
+    "42": 2.0718780475758116,
+    "17": 0.989864218297118
+  },
+  "gate": true,
+  "checks": "Git-blob config/evaluator hashes, per-tile CM sums, offline mIoU, checkpoint clean CMs, paired pixel counts, reference hashes, input invariance, decision recomputation",
+  "limitation": "Server checkpoint bytes and raw data were not available for independent rehash/reinference; Val2 is exploratory."
+}

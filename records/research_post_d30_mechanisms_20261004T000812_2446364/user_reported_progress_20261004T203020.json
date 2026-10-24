@@ -1,0 +1,152 @@
+{
+  "source": "user-pasted status_post_d30.py output",
+  "last_observed": "2026-10-04T20:30:20.922212+08:00",
+  "queue": "RUNNING",
+  "pid": 2720259,
+  "live": true,
+  "complete_main": 14,
+  "target_main": 18,
+  "jobs": {
+    "A0": {
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "worker_live": false
+    },
+    "A1": {
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "worker_live": false
+    },
+    "A2": {
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "worker_live": false
+    },
+    "A3": {
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "worker_live": false
+    },
+    "A4": {
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "worker_live": false
+    },
+    "A5": {
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "worker_live": false
+    },
+    "B1": {
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "worker_live": false
+    },
+    "B2": {
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "worker_live": false
+    },
+    "B3": {
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "worker_live": false
+    },
+    "B4": {
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "worker_live": false
+    },
+    "B5": {
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "worker_live": false
+    },
+    "B6": {
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "worker_live": false
+    },
+    "C0": {
+      "gpu": 0,
+      "status": "COMPLETE",
+      "step": 8000,
+      "progress_at": "2026-10-04T19:16:14.563488+08:00",
+      "worker_live": false
+    },
+    "C1": {
+      "gpu": 1,
+      "status": "COMPLETE",
+      "step": 8000,
+      "progress_at": "2026-10-04T19:16:05.568602+08:00",
+      "worker_live": false
+    },
+    "C2": {
+      "gpu": 1,
+      "status": "RUNNING",
+      "phase": "training",
+      "step": 7300,
+      "target": 8000,
+      "progress_at": "2026-10-04T20:30:20.041557+08:00",
+      "worker_live": true
+    },
+    "C3": {
+      "gpu": 0,
+      "status": "RUNNING",
+      "phase": "training",
+      "step": 7360,
+      "target": 8000,
+      "progress_at": "2026-10-04T20:30:21.290629+08:00",
+      "worker_live": true
+    },
+    "C4": {
+      "gpu": 0,
+      "status": "PENDING",
+      "step": 0
+    },
+    "C5": {
+      "gpu": 1,
+      "status": "PENDING",
+      "step": 0
+    },
+    "F0": {
+      "gpu": 0,
+      "status": "PENDING",
+      "step": 0
+    },
+    "F1": {
+      "gpu": 1,
+      "status": "PENDING",
+      "step": 0
+    },
+    "F2": {
+      "gpu": 0,
+      "status": "PENDING",
+      "step": 0
+    },
+    "F3": {
+      "gpu": 1,
+      "status": "PENDING",
+      "step": 0
+    }
+  },
+  "rough_main_remaining_hours": 3.68,
+  "rough_main_end": "2026-10-05T00:11:12.725922+08:00",
+  "estimate_is_promise": false,
+  "new_C_raw_records_received": false,
+  "scientific_C_gate_known": false,
+  "actual_F_skip_observed": false,
+  "successor_new_observation_received": false
+}

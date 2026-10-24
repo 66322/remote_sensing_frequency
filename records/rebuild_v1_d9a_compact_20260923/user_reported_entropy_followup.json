@@ -1,0 +1,28 @@
+{
+  "source": "User-pasted output of scripts/print_rebuild_v1_d9a_entropy_followup.py on 2026-09-23; original server CSVs take precedence",
+  "entropy_minus_confidence_by_seed_condition": [
+    {"seed": 42, "condition": "clean", "auroc": 0.0229, "auprc": 0.0270, "support": 158276},
+    {"seed": 42, "condition": "dsm_zero", "auroc": 0.0285, "auprc": 0.0336, "support": 185988},
+    {"seed": 42, "condition": "dsm_down8", "auroc": 0.0223, "auprc": 0.0299, "support": 160978},
+    {"seed": 42, "condition": "dsm_blur5", "auroc": 0.0226, "auprc": 0.0271, "support": 158210},
+    {"seed": 42, "condition": "dsm_noise_std010", "auroc": 0.0166, "auprc": 0.0185, "support": 236367},
+    {"seed": 42, "condition": "dsm_shift_right_4px", "auroc": 0.0220, "auprc": 0.0271, "support": 158517},
+    {"seed": 42, "condition": "dsm_local_zero_q1", "auroc": 0.0243, "auprc": 0.0390, "support": 168969},
+    {"seed": 42, "condition": "dsm_local_down8_q1", "auroc": 0.0231, "auprc": 0.0282, "support": 158771},
+    {"seed": 17, "condition": "clean", "auroc": 0.0206, "auprc": 0.0212, "support": 155455},
+    {"seed": 17, "condition": "dsm_zero", "auroc": 0.0235, "auprc": 0.0239, "support": 179481},
+    {"seed": 17, "condition": "dsm_down8", "auroc": 0.0207, "auprc": 0.0242, "support": 157073},
+    {"seed": 17, "condition": "dsm_blur5", "auroc": 0.0213, "auprc": 0.0215, "support": 154827},
+    {"seed": 17, "condition": "dsm_noise_std010", "auroc": 0.0148, "auprc": 0.0137, "support": 249634},
+    {"seed": 17, "condition": "dsm_shift_right_4px", "auroc": 0.0219, "auprc": 0.0230, "support": 155854},
+    {"seed": 17, "condition": "dsm_local_zero_q1", "auroc": 0.0238, "auprc": 0.0326, "support": 168170},
+    {"seed": 17, "condition": "dsm_local_down8_q1", "auroc": 0.0207, "auprc": 0.0223, "support": 155910}
+  ],
+  "entropy_minus_confidence_strata": {
+    "Building": {"comparisons": 16, "auroc_wins": 15, "mean_auroc_delta": 0.0136, "auprc_wins": 14, "mean_auprc_delta": 0.0128, "minimum_support": 8951},
+    "Car": {"comparisons": 16, "auroc_wins": 16, "mean_auroc_delta": 0.0160, "auprc_wins": 16, "mean_auprc_delta": 0.0380, "minimum_support": 973},
+    "small_Car": {"comparisons": 16, "auroc_wins": 16, "mean_auroc_delta": 0.0291, "auprc_wins": 15, "mean_auprc_delta": 0.0335, "minimum_support": 158},
+    "local_damaged": {"comparisons": 4, "auroc_wins": 4, "mean_auroc_delta": 0.0273, "auprc_wins": 4, "mean_auprc_delta": 0.0237, "minimum_support": 40553}
+  },
+  "d5_routed_miou_status": "Original method_metrics.csv files absent from expected per-seed paths; other locations not yet searched. No routing conclusion from entropy ranking."
+}

@@ -1,0 +1,18 @@
+{
+  "job": "P6",
+  "step": 4000,
+  "target": 4000,
+  "phase": "complete",
+  "observed_at": "2026-10-02T15:08:57.499496+08:00",
+  "session_elapsed_seconds": 1651.6998150646687,
+  "loss": 0.18448090553283691,
+  "objective_counts": {
+    "present_pixels": 8388608,
+    "missing_pixels": 0,
+    "Pair:enabled_steps": 0,
+    "Pair:weighted_loss_sum": 0.0
+  },
+  "seconds_per_train_step": 0.18050835174880922,
+  "remaining_training_hours": 0.0,
+  "gpu_peak_allocated_bytes": 5094986752
+}

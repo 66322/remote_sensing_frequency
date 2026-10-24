@@ -1,0 +1,11 @@
+{
+  "job": "C0",
+  "step": 0,
+  "target": 8000,
+  "physical_gpu": 0,
+  "phase": "loading_fit_tiles",
+  "observed_at": "2026-10-03T04:11:15.033839+08:00",
+  "session_elapsed_seconds": 70.12503338605165,
+  "tiles_loaded": 12,
+  "tiles_total": 12
+}

@@ -1,0 +1,15 @@
+{
+  "scope": "local_CPU_synthetic_only",
+  "torch_version": "2.7.1+cpu",
+  "tests": 8,
+  "result": "PASS",
+  "parameters_per_gate": 18145,
+  "model_sha256": "545596287f3e2619e906b5b01f71c25f1e2e6ef688e8c44222b4d9c71e3c7027",
+  "tests_sha256": "d29e1b0bb7257c8c8e58ba950262e62433e3464635a743a6fc9c15968fdd79d7",
+  "real_DINO_pair_checked": false,
+  "server_CPU_tests_completed": false,
+  "training_engine_implemented": false,
+  "evaluation_engine_implemented": false,
+  "GPU_profile_completed": false,
+  "formal_training_started": false
+}

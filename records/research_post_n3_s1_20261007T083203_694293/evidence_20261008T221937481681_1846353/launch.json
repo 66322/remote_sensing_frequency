@@ -1,0 +1,14 @@
+{
+  "controller_pid": 694658,
+  "command": [
+    "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+    "-u",
+    "-B",
+    "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293/code/scripts/control_post_n3_s1.py",
+    "--root",
+    "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+    "--directory",
+    "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293"
+  ],
+  "log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n3_s1_20261007T083203_694293/nohup_20261007T083216182460.log"
+}

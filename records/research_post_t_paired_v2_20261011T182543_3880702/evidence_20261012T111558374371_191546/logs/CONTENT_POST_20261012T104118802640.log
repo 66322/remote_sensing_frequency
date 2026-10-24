@@ -1,0 +1,37 @@
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/swiglu_ffn.py:45: UserWarning: xFormers is disabled (SwiGLU)
+  warnings.warn("xFormers is disabled (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/swiglu_ffn.py:51: UserWarning: xFormers is not available (SwiGLU)
+  warnings.warn("xFormers is not available (SwiGLU)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py:29: UserWarning: xFormers is disabled (Attention)
+  warnings.warn("xFormers is disabled (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/attention.py:33: UserWarning: xFormers is not available (Attention)
+  warnings.warn("xFormers is not available (Attention)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/block.py:35: UserWarning: xFormers is disabled (Block)
+  warnings.warn("xFormers is disabled (Block)")
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0/dinov2/layers/block.py:40: UserWarning: xFormers is not available (Block)
+  warnings.warn("xFormers is not available (Block)")
+PAIRED_EVAL F16/C 3_11 rgb_lines64w8__clean
+PAIRED_EVAL F16/C 3_11 rgb_blocks64q25__clean
+PAIRED_EVAL F16/C 5_10 rgb_lines64w8__clean
+PAIRED_EVAL F16/C 5_10 rgb_blocks64q25__clean
+PAIRED_EVAL F16/Z 3_11 rgb_lines64w8__clean
+PAIRED_EVAL F16/Z 3_11 rgb_blocks64q25__clean
+PAIRED_EVAL F16/Z 5_10 rgb_lines64w8__clean
+PAIRED_EVAL F16/Z 5_10 rgb_blocks64q25__clean
+PAIRED_EVAL F16/S 3_11 rgb_lines64w8__clean
+PAIRED_EVAL F16/S 3_11 rgb_blocks64q25__clean
+PAIRED_EVAL F16/S 5_10 rgb_lines64w8__clean
+PAIRED_EVAL F16/S 5_10 rgb_blocks64q25__clean
+PAIRED_EVAL R16/C 3_11 rgb_lines64w8__clean
+PAIRED_EVAL R16/C 3_11 rgb_blocks64q25__clean
+PAIRED_EVAL R16/C 5_10 rgb_lines64w8__clean
+PAIRED_EVAL R16/C 5_10 rgb_blocks64q25__clean
+PAIRED_EVAL R16/Z 3_11 rgb_lines64w8__clean
+PAIRED_EVAL R16/Z 3_11 rgb_blocks64q25__clean
+PAIRED_EVAL R16/Z 5_10 rgb_lines64w8__clean
+PAIRED_EVAL R16/Z 5_10 rgb_blocks64q25__clean
+PAIRED_EVAL R16/S 3_11 rgb_lines64w8__clean
+PAIRED_EVAL R16/S 3_11 rgb_blocks64q25__clean
+PAIRED_EVAL R16/S 5_10 rgb_lines64w8__clean
+PAIRED_EVAL R16/S 5_10 rgb_blocks64q25__clean
+CONTENT_COMPLETE CONTENT_POST CASES=24 NEW_UPDATES=0

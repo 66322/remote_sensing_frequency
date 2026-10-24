@@ -1,0 +1,43 @@
+{
+  "protocol": "E51-C fixed-grid information degradation",
+  "warning": "information_loss_factor is a downsample-restore factor on the native grid; it must not be reported as a new GSD",
+  "native_grid_gsd_m": 0.05,
+  "labels_resampled": false,
+  "output_grid_changed": false,
+  "sliding_window_grid_changed": false,
+  "ph_inference_scale_rule": "always 1.0 on native Potsdam grid",
+  "degradation_order": "raw DSM -> tile min-max normalization -> fixed-grid degradation -> network",
+  "modality": "dsm",
+  "requested_factors": [
+    2.0
+  ],
+  "pp_checkpoint": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/potsdam_r4_repro4k_modality_static_seed42/last_train_state.pth",
+  "ph_checkpoint": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/potsdam_physical_dsm_modality_static_seed42/checkpoints/model_iter_004000.pth",
+  "pp_checkpoint_step": 4000,
+  "ph_checkpoint_step": 4000,
+  "test_ids": [
+    "4_10",
+    "5_11",
+    "2_11",
+    "3_10",
+    "6_11",
+    "7_12"
+  ],
+  "patch": 512,
+  "stride": 64,
+  "infer_batch": 8,
+  "inference_implementation": "gpu_input_gpu_score",
+  "fastpath_benchmark_json": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/e51c_fastpath_benchmark_20260915/benchmark.json",
+  "fastpath_gate": {
+    "patch": 512,
+    "stride": 64,
+    "batch": 8,
+    "dtype": "float32",
+    "benchmark_region": 2048,
+    "benchmark_tile": "4_10",
+    "exact_prediction_safe_on_benchmark": true,
+    "different_pixels_PP4k": 0,
+    "different_pixels_PH4k": 0
+  },
+  "fastpath_scope_warning": "Exact equality was established on the recorded 2048x2048 benchmark region. Historical batch-8/stride-64 outputs remain the frozen formal reference; this fast path is used for additional diagnostic conditions."
+}

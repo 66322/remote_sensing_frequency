@@ -1,0 +1,89 @@
+{
+  "source_commit": "54e19cd16416b866bed7b152ba9a3a3f76ac4837",
+  "source_directory": "records/research_d23_b_budget_20261001T145926_658274/evidence_20261001T151324658552_733424",
+  "file_checks": [
+    {
+      "path": "execution_commit.txt",
+      "bytes": 41,
+      "sha256": "a1b9ba7623ce8064eebaee1aaa8c49b9ac753e139c3a5fd7d6150703c8f57cc7",
+      "match": true
+    },
+    {
+      "path": "gpu0/cache_measurement.json",
+      "bytes": 1802,
+      "sha256": "0e70fef90351d72cbd7c8d096e7ed98a30e3ce73e0e6ffd9127b4d6e7ccbc278",
+      "match": true
+    },
+    {
+      "path": "gpu0/budget_fit_statistics.json",
+      "bytes": 1091,
+      "sha256": "c013ffca952ebf18fba773355376240626ec340a33f663c6aba94824580c0487",
+      "match": true
+    },
+    {
+      "path": "gpu1/cache_measurement.json",
+      "bytes": 1801,
+      "sha256": "28843f7f24f3dddccb8c03abeaf1527d47fe46835e89e43a91832f3f5ef46ba9",
+      "match": true
+    },
+    {
+      "path": "gpu1/budget_fit_statistics.json",
+      "bytes": 1091,
+      "sha256": "c013ffca952ebf18fba773355376240626ec340a33f663c6aba94824580c0487",
+      "match": true
+    },
+    {
+      "path": "cpu_checks.log",
+      "bytes": 2468,
+      "sha256": "57554cc9bcb961fc3baab59b007af0282860324118ae3fa4d541ed228d4b2302",
+      "match": true
+    },
+    {
+      "path": "gpu0/summary.json",
+      "bytes": 330847,
+      "sha256": "553b03dcf1632c542e1cdbb63cc0d96c5001e15ed1017cecd5e3469cc0e036c7",
+      "match": true
+    },
+    {
+      "path": "gpu0/preflight.json",
+      "bytes": 1597,
+      "sha256": "e17b2ba34938ec647551f7874d24eee0d01779d57e7839c5cb7da3dd88ed8faa",
+      "match": true
+    },
+    {
+      "path": "gpu0.log",
+      "bytes": 2819,
+      "sha256": "45f3e1c49eb38ce985fa800671d7c468121655cdf6c0b8e1d30f83172fa2e945",
+      "match": true
+    },
+    {
+      "path": "gpu1/summary.json",
+      "bytes": 330851,
+      "sha256": "cc2bae32d3954eea1ffccb51ce94b7efb25644c4a799029abc04779246387799",
+      "match": true
+    },
+    {
+      "path": "gpu1/preflight.json",
+      "bytes": 1597,
+      "sha256": "55e612c13c660d50dec58548747847edd0c718c19db105c86a97e44f7954f248",
+      "match": true
+    },
+    {
+      "path": "gpu1.log",
+      "bytes": 2819,
+      "sha256": "ee7f723c9c81d2a2913e472006577d182c3d919dee1eba0906441c50fd4c86b3",
+      "match": true
+    },
+    {
+      "path": "compact_review_20261001T151301232628.json",
+      "bytes": 5783,
+      "sha256": "708088b63b930fba32e9f8af25b85b07136d92945aa325e678c1848fd9a16e97",
+      "match": true
+    }
+  ],
+  "matrix_records_checked": 196,
+  "errors": [],
+  "pass": true,
+  "statistics_identical": true,
+  "formal_training_started": false
+}

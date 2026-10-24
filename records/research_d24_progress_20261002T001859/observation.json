@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "recorded_at": "2026-10-02T00:19:37+08:00",
+  "source": "user_pasted_server_status_stdout_and_nohup_tail",
+  "queue_observed_at": "2026-10-02T00:18:59.788679+08:00",
+  "latest_job_progress_at": "2026-10-02T00:19:02.780409+08:00",
+  "status": "running_as_last_reported_training",
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
+  "execution_commit": "cf1955d966163978b5c8af433f3845b5ca05da9e",
+  "completed_jobs": 0,
+  "total_jobs": 15,
+  "jobs_last_reported": [
+    {
+      "id": "A0",
+      "gpu": 0,
+      "status": "RUNNING",
+      "phase": "training",
+      "step": 2360,
+      "total_steps": 4000,
+      "progress_at": "2026-10-02T00:19:02.780409+08:00",
+      "training_fraction": 0.59,
+      "checkpoint_selection_step2000_observed": true
+    },
+    {
+      "id": "A2",
+      "gpu": 1,
+      "status": "RUNNING",
+      "phase": "training",
+      "step": 2140,
+      "total_steps": 4000,
+      "progress_at": "2026-10-02T00:19:01.680178+08:00",
+      "training_fraction": 0.535
+    }
+  ],
+  "pending_jobs": [
+    "A3",
+    "A1",
+    "C0",
+    "C2",
+    "D2",
+    "D0",
+    "C3",
+    "C1",
+    "D1",
+    "B0",
+    "B1",
+    "B2",
+    "B3"
+  ],
+  "training_progress_observed": true,
+  "gradient_check_artifact_received": false,
+  "traceback_in_excerpt": false,
+  "hardware_metrics_received": false,
+  "scientific_results_received": false,
+  "eta": {
+    "training_remaining_minutes_estimate": [
+      6,
+      8
+    ],
+    "scope": "A0/A2 remaining training only at pasted query time; excludes final checkpoint selection, 14-condition evaluation and queued jobs",
+    "method": "extrapolate observed minute-to-minute step growth; ordinary training speed roughly 260-300 steps/min A0 and 240-280 steps/min A2",
+    "queue_end_estimate": null,
+    "completed_matching_job_unavailable": true,
+    "zero_known_work_hours_means_unknown_not_zero_remaining": true
+  },
+  "next_action": "Continue existing nohup queue; check progress after first jobs finish and upload light records at completion. No restart or resource audit."
+}

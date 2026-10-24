@@ -1,0 +1,26 @@
+LAST_OBSERVED=2026-10-02T19:18:19.427139+08:00 QUEUE=RUNNING COMPLETE=0/9
+J0 GPU0 RUNNING training step=180/8000 windows=-/- progress_at=2026-10-02T19:18:12.689409+08:00
+B0 GPU1 RUNNING training step=580/8000 windows=-/- progress_at=2026-10-02T19:18:23.902610+08:00
+CAP GPU- PENDING step=0/8000 windows=-/- progress_at=-
+X GPU- PENDING step=0/8000 windows=-/- progress_at=-
+XS GPU- PENDING step=0/8000 windows=-/- progress_at=-
+XF GPU- PENDING step=0/8000 windows=-/- progress_at=-
+XSF GPU- PENDING step=0/8000 windows=-/- progress_at=-
+XSF-shS GPU- PENDING step=0/8000 windows=-/- progress_at=-
+XSF-shF GPU- PENDING step=0/8000 windows=-/- progress_at=-
+ETA_PENDING_FIRST_NORMAL_COMPLETED_JOB; no extra probe
+Persisted observations, not proof that a PID is live. Worker/controller logs remain authoritative for errors.
+D26_STARTED 0 J0 pid=1571983
+D26_STARTED 1 B0 pid=1571989
+D26_PROGRESS 0 J0 initializing step=0 elapsed_minutes=0.0
+D26_PROGRESS 1 B0 initializing step=0 elapsed_minutes=0.0
+D26_PROGRESS 0 J0 loading_fit_tiles step=0 elapsed_minutes=1.0
+D26_PROGRESS 1 B0 loading_fit_tiles step=0 elapsed_minutes=1.0
+D26_PROGRESS 0 J0 training step=20 elapsed_minutes=2.0
+D26_PROGRESS 1 B0 training step=80 elapsed_minutes=2.0
+D26_PROGRESS 0 J0 training step=60 elapsed_minutes=3.0
+D26_PROGRESS 1 B0 training step=220 elapsed_minutes=3.0
+D26_PROGRESS 0 J0 training step=100 elapsed_minutes=4.0
+D26_PROGRESS 1 B0 training step=360 elapsed_minutes=4.0
+D26_PROGRESS 0 J0 training step=160 elapsed_minutes=5.0
+D26_PROGRESS 1 B0 training step=500 elapsed_minutes=5.0

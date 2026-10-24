@@ -1,0 +1,36 @@
+{
+  "source": "user supplied server stdout",
+  "reported_on": "2026-10-03",
+  "d26": {
+    "last_observed": "2026-10-03T04:04:45.239849+08:00",
+    "queue": "COMPLETE",
+    "complete": 9,
+    "total": 9,
+    "completed_at": "2026-10-03T04:04:45.239824+08:00",
+    "jobs": [
+      "J0",
+      "B0",
+      "CAP",
+      "X",
+      "XS",
+      "XF",
+      "XSF",
+      "XSF-shS",
+      "XSF-shF"
+    ],
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109"
+  },
+  "upload": {
+    "script": "upload_results_20261003T081449_1955790.py",
+    "exception": "ValueError: unexpected oversized light bundle",
+    "limit_bytes": 536870912,
+    "stage": "before worktree/commit/push",
+    "metrics_received": false
+  },
+  "d27": {
+    "query_executed": false,
+    "upload_executed": false,
+    "reason": "shell set -e stopped on D26 error"
+  },
+  "new_training": false
+}

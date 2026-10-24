@@ -1,0 +1,22 @@
+{
+  "source": "user terminal case-progress query",
+  "latest_forward_observed_at": "2026-10-13T20:51:02.197701+08:00",
+  "B0": {
+    "complete": 590,
+    "total": 1164,
+    "created": 598
+  },
+  "B2": {
+    "complete": 0,
+    "total": 1164,
+    "created": 0
+  },
+  "estimate": {
+    "start_anchor": "B0 training completed 19:35:49, evaluation started shortly after",
+    "B0_remaining_minutes": 73,
+    "B2_minutes": 148,
+    "completion_window": "2026-10-14 00:40–01:30 +08:00",
+    "assumptions": "linear extrapolation of B0 completion throughput, similar B2 speed, no technical hold, L=False blocks B1/B3; allowance for summary",
+    "not_guaranteed": true
+  }
+}

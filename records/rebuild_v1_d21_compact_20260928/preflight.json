@@ -1,0 +1,51 @@
+{
+  "observed_at": "2026-09-28T22:53:24.409558+08:00",
+  "git_commit": "10f63eaa21fe6ef109e1bdb72369496c0a88c719",
+  "files": 143,
+  "jobs": 48,
+  "available_ram_gib": 1900.1699028015137,
+  "disk_free_gib": 5766.62109375,
+  "gpu": {
+    "0": {
+      "uuid": "GPU-97a250ea-42ff-eb14-4ed5-8c50231e0baa",
+      "memory": 0,
+      "utilization": 0
+    },
+    "1": {
+      "uuid": "GPU-4b116760-e84c-2743-cee6-41cf76a01677",
+      "memory": 0,
+      "utilization": 0
+    },
+    "2": {
+      "uuid": "GPU-e1a1a2c7-ef25-1bd3-9b06-abc05a6fd165",
+      "memory": 647,
+      "utilization": 100
+    },
+    "3": {
+      "uuid": "GPU-c711616f-6f02-0d2a-e0fb-686602a0a157",
+      "memory": 647,
+      "utilization": 100
+    },
+    "4": {
+      "uuid": "GPU-9c9e83d0-bc0c-f6ce-e493-8cff9d29933f",
+      "memory": 647,
+      "utilization": 100
+    },
+    "5": {
+      "uuid": "GPU-e41f22dd-28af-29c2-ba44-5a10eb09d3a3",
+      "memory": 647,
+      "utilization": 100
+    },
+    "6": {
+      "uuid": "GPU-2c16ce01-e889-23da-385d-a864043eed00",
+      "memory": 647,
+      "utilization": 100
+    },
+    "7": {
+      "uuid": "GPU-27ddd129-ada7-af86-de6c-bdde3339413a",
+      "memory": 647,
+      "utilization": 100
+    }
+  },
+  "training_started": false
+}

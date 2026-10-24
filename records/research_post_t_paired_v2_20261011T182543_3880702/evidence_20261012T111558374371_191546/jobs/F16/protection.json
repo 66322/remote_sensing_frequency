@@ -1,0 +1,7 @@
+{
+  "frozen_state_equal": true,
+  "initial_digest": "36f66ea0c8bbd1ee9efdddbdbd8061a78795655e5dd96aba311a8bdc3b8c284e",
+  "final_digest": "36f66ea0c8bbd1ee9efdddbdbd8061a78795655e5dd96aba311a8bdc3b8c284e",
+  "native_outside_support_equal": true,
+  "scope": "all evaluated checkpoint/endpoint/secondary cases"
+}

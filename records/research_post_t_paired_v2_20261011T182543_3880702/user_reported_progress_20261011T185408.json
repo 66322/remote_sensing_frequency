@@ -1,0 +1,117 @@
+{
+  "evidence_kind": "user_pasted_read_only_status_and_controller_log",
+  "query_observed": "2026-10-11T18:54:08.952037+08:00",
+  "queue_last_observed": "2026-10-11T18:54:02.365173+08:00",
+  "queue": "RUNNING",
+  "controller_live": true,
+  "controller_pid_from_registration": 3881013,
+  "execution_commit": "44e4df5afbaeb603e6441e7ef14ff09f228bc027",
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_t_paired_v2_20261011T182543_3880702",
+  "jobs": {
+    "CONTENT_PRE": {
+      "status": "COMPLETE",
+      "physical_gpu": 0,
+      "live": false,
+      "progress": {
+        "job": "CONTENT_PRE",
+        "physical_gpu": 0,
+        "optimizer_updates": 0,
+        "elapsed_seconds": 1252.244643367827,
+        "observed_at": "2026-10-11T18:46:47.983999+08:00",
+        "phase": "complete"
+      }
+    },
+    "H8": {
+      "status": "RUNNING",
+      "physical_gpu": 0,
+      "live": true,
+      "progress": {
+        "job": "H8",
+        "target": 8000,
+        "step": 180,
+        "physical_gpu": 0,
+        "phase": "training",
+        "observed_at": "2026-10-11T18:53:55.848942+08:00",
+        "elapsed_seconds": 417.1531667113304,
+        "tiles_loaded": 12,
+        "tiles_total": 12,
+        "loss": 0.3198899030685425,
+        "seconds_per_train_step": 0.6634634753482209,
+        "remaining_train_hours": 1.441190104784191,
+        "gpu_peak_allocated_bytes": 13738220032
+      }
+    },
+    "F8": {
+      "status": "RUNNING",
+      "physical_gpu": 1,
+      "live": true,
+      "progress": {
+        "job": "F8",
+        "target": 8000,
+        "step": 180,
+        "physical_gpu": 1,
+        "phase": "training",
+        "observed_at": "2026-10-11T18:53:54.098099+08:00",
+        "elapsed_seconds": 415.26481641083956,
+        "tiles_loaded": 12,
+        "tiles_total": 12,
+        "loss": 0.32097041606903076,
+        "seconds_per_train_step": 0.653091508232885,
+        "remaining_train_hours": 1.4186598873281002,
+        "gpu_peak_allocated_bytes": 13294365184
+      }
+    },
+    "R8": {
+      "status": "PENDING",
+      "gpu": null,
+      "live": false
+    },
+    "R16": {
+      "status": "PENDING",
+      "gpu": null,
+      "live": false
+    },
+    "H16": {
+      "status": "PENDING",
+      "gpu": null,
+      "live": false
+    },
+    "F16": {
+      "status": "PENDING",
+      "gpu": null,
+      "live": false
+    },
+    "CONTENT_POST": {
+      "status": "PENDING",
+      "gpu": null,
+      "live": false
+    }
+  },
+  "controller_log": [
+    "PAIRED_START CONTENT_PRE GPU 0 RESUME False",
+    "PAIRED_JOB CONTENT_PRE COMPLETE GPU 0",
+    "PAIRED_START H8 GPU 0 RESUME False",
+    "PAIRED_START F8 GPU 1 RESUME False"
+  ],
+  "summary": {
+    "completed_queue_jobs": 1,
+    "running_queue_jobs": 2,
+    "pending_queue_jobs": 5,
+    "train_step_reported_per_worker": 180,
+    "dual_gpu_training_verified": true,
+    "content_pre_worker_seconds": 1252.244643367827,
+    "gpu_peak_allocated_GiB": {
+      "H8": 12.794714450836182,
+      "F8": 12.38134241104126
+    }
+  },
+  "boundaries": [
+    "step/loss/speed are worker progress, not checkpoint raw artifacts or final metric evidence",
+    "1.44h/1.42h is remaining training compute only; excludes future validation/evaluation and queue waiting",
+    "R training speed and whole-queue wall time are not yet calibrated",
+    "controller accepted CONTENT_PRE completion; its C endpoint checks and diagnostic contrasts have not been independently received"
+  ],
+  "release_or_rejoin_requested": false,
+  "last_observation_not_real_time": true,
+  "next_action": "continue existing dual-GPU queue; release a GPU only when user needs it; upload light originals after complete"
+}

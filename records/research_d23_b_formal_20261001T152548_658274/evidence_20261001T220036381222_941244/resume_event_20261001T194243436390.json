@@ -1,0 +1,62 @@
+{
+  "controller_commit": "48ab1e4a88eb175da965162859ae757cbe62d91c",
+  "previous": {
+    "status": "PARTIAL_RECOVERED",
+    "observed_at": "2026-10-01T19:42:43.401130+08:00",
+    "jobs": {
+      "TSF": {
+        "gpu": 0,
+        "pid": 746207,
+        "status": "COMPLETE",
+        "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/jobs/TSF_resume_20261001T153823537963",
+        "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/logs_resume_20261001T153823537963/TSF.log",
+        "observed_at": "2026-10-01T16:34:33.135407+08:00",
+        "returncode": 0
+      },
+      "T0": {
+        "gpu": 1,
+        "pid": 746208,
+        "status": "COMPLETE",
+        "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/jobs/T0_resume_20261001T153823537963",
+        "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/logs_resume_20261001T153823537963/T0.log",
+        "observed_at": "2026-10-01T16:35:51.224112+08:00",
+        "returncode": 0
+      },
+      "TS": {
+        "gpu": 0,
+        "pid": 834884,
+        "status": "COMPLETE",
+        "returncode": 0,
+        "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/jobs/TS_resume_gpu0repair_20261001T183700466561",
+        "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/TS_gpu0repair_20261001T183700466561.log",
+        "observed_at": "2026-10-01T19:42:43.401089+08:00"
+      },
+      "TF": {
+        "gpu": 1,
+        "pid": 815379,
+        "status": "COMPLETE",
+        "job_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/jobs/TF",
+        "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/logs_resume_20261001T175826664330/TF.log",
+        "observed_at": "2026-10-01T19:05:44.280414+08:00",
+        "returncode": 0
+      }
+    },
+    "pending": {
+      "0": [
+        "TCAP",
+        "TSF_shuffleS"
+      ],
+      "1": [
+        "TSF_CE",
+        "TSF_shuffleF"
+      ]
+    },
+    "formal_training_requested": true,
+    "test6_loaded": false,
+    "screen_manifest": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/screen_manifest_20261001T175826664330.json",
+    "screen_result": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/screen_result_20261001T175826664330.json",
+    "screen_log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274/logs_resume_20261001T175826664330/screen.log"
+  },
+  "observed_at": "2026-10-01T19:42:43.459085+08:00",
+  "strategy": "copy matching checkpoint, retain old evaluation, skip complete jobs"
+}

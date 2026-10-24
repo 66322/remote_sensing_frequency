@@ -1,0 +1,76 @@
+{
+  "tile_id": "4_10",
+  "region": 2048,
+  "patch": 512,
+  "stride": 64,
+  "batches": [
+    8,
+    16,
+    32
+  ],
+  "models": {
+    "PP4k": [
+      {
+        "batch": 8,
+        "seconds": 13.261654496192932,
+        "speedup_vs_batch8": 1.0,
+        "peak_allocated_gib": 6.5923871994018555,
+        "prediction_equal_to_batch8": true,
+        "different_pixels": 0,
+        "error": null
+      },
+      {
+        "batch": 16,
+        "seconds": 12.325413584709167,
+        "speedup_vs_batch8": 1.0759602024750925,
+        "peak_allocated_gib": 11.630717277526855,
+        "prediction_equal_to_batch8": false,
+        "different_pixels": 22,
+        "error": null
+      },
+      {
+        "batch": 32,
+        "seconds": 11.958212196826935,
+        "speedup_vs_batch8": 1.1089997633351798,
+        "peak_allocated_gib": 21.708842754364014,
+        "prediction_equal_to_batch8": false,
+        "different_pixels": 27,
+        "error": null
+      }
+    ],
+    "PH4k": [
+      {
+        "batch": 8,
+        "seconds": 12.897256784141064,
+        "speedup_vs_batch8": 1.0,
+        "peak_allocated_gib": 6.6424384117126465,
+        "prediction_equal_to_batch8": true,
+        "different_pixels": 0,
+        "error": null
+      },
+      {
+        "batch": 16,
+        "seconds": 12.281800523400307,
+        "speedup_vs_batch8": 1.050111240576505,
+        "peak_allocated_gib": 11.680524349212646,
+        "prediction_equal_to_batch8": false,
+        "different_pixels": 20,
+        "error": null
+      },
+      {
+        "batch": 32,
+        "seconds": 11.993878148496151,
+        "speedup_vs_batch8": 1.0753199777803464,
+        "peak_allocated_gib": 21.758649826049805,
+        "prediction_equal_to_batch8": false,
+        "different_pixels": 19,
+        "error": null
+      }
+    ]
+  },
+  "safe_batches_exact_prediction_on_benchmark": [
+    8
+  ],
+  "recommended_batch": 8,
+  "warning": "This benchmark establishes exact final-label equality only on one 2048x2048 region. Keep patch=512 and stride=64 for formal E51-C. Before publication, retain the historical batch-8 results already produced as the reference and record the benchmark evidence when using a larger batch for additional diagnostic conditions."
+}

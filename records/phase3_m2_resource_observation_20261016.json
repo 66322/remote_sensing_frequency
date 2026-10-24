@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-16",
+  "timezone": "Asia/Shanghai",
+  "source": "direct_user_report_in_chat",
+  "user_report": "GPU目前都在跑其他实验，忙碌",
+  "status": "WAITING_FOR_GPU0_1",
+  "live_query_performed_by_assistant": false,
+  "per_gpu_uuid_pid_memory_details": null,
+  "authorized_physical_gpus": [
+    0,
+    1
+  ],
+  "execution_commit": "0a21f3d1eac54b9b37f19fb30e3f2072f69619bd",
+  "new_m2_launch_receipt_observed": false,
+  "action": "Do not launch M2 while occupied. Recheck GPU0/1 before user-run fixed bootstrap; no other GPU or process takeover.",
+  "automatic_monitor_created": false
+}

@@ -1,0 +1,19 @@
+{
+  "fix_commit": "9b196a204e6a45cb54244b4deb5437ff44bd074e",
+  "science_execution_commit": "86b6a70e5c3482314986fb1259e2fccbd0a5a38b",
+  "plan_sha256": "43a98f6e79733b8894211f76b531e688c356aa5830bc4568b3db1e17a63baac5",
+  "original_code_manifest_sha256": "ddaaa970709476216ec3ffbad5f4a86e31b369e9185c0622f5a9a27916f0c9d4",
+  "files": {
+    "scripts/control_post_ab_n2.py": "6507f8c74fa0ecd014c0b48c4aa945f2acfd7b999112e61dc8ee9b77ae380ac9",
+    "scripts/post_ab_n2_recovery.py": "9402f8b05d959928ca90ee972a59061d50cacdf85b99eaef9e5a18a3336e4f67",
+    "scripts/status_post_ab.py": "fdaefdd07157ffe4a53b326a6cea611572b0a7fb980eb6516d55c03247a6dca0",
+    "tests/test_post_ab_n2_recovery.py": "9e34fe849c310c5a59f69b73a05b12a23ea22dd2e7f389451d5824f23a242bc0"
+  },
+  "adopted_workers": {
+    "N2-0": 3457210
+  },
+  "accepted_complete": [],
+  "effective_per_job_timeout_hours": 8.0,
+  "workers_restarted": 0,
+  "observed_at": "2026-10-05T09:17:55.715540+08:00"
+}

@@ -1,0 +1,23 @@
+{
+  "status": "PASS_RECEIPT_AUDIT",
+  "source_commit": "9d7c27e88c510f2931ac125b7b6b3b0c60850dce",
+  "cases": 720,
+  "by_dsm": {
+    "crop_shuffle": 160,
+    "intact": 240,
+    "tile_shuffle": 160,
+    "zero": 160
+  },
+  "by_ratio": {
+    "25": 640,
+    "10": 40,
+    "5": 40
+  },
+  "tiles": [
+    "3_11",
+    "5_10"
+  ],
+  "claim": "All uploaded S1 non-clean receipts record exact own DSM logit identity on dsm_mask AND NOT rgb_mask at each inference window. Region nonempty for these mask cases. RGB-only flag can be vacuous and is not claimed. No server GPU rerun or logits downloaded.",
+  "receipt_list_sha256": "3954099f18445edb694cdd72047ab7ff406897f79c5734de1406b26e8caffde8",
+  "source_manifest": "records/research_phase15_recoverability_20261012T233532_842792/evidence_20261013T113931418057_1206639/upload_manifest.json"
+}

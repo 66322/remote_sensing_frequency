@@ -1,0 +1,8 @@
+{
+  "job": "M300_context",
+  "physical_gpu": 0,
+  "optimizer_updates": 0,
+  "elapsed_seconds": 721.7661507129669,
+  "observed_at": "2026-10-11T11:51:40.053093+08:00",
+  "phase": "complete"
+}

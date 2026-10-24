@@ -1,0 +1,117 @@
+{
+  "binding": {
+    "plan.json": "3bf0d81cadcaeb75e0b14c9c24cdeecabe87bad6e190513d1d3799c4876fc5b0",
+    "code_manifest.json": "c2c4dab784d1a14719910fcc162672a557c6a77bbb0c2fa9b98d4865f136a02a"
+  },
+  "integer_matrices_verified": 142608,
+  "joint_tables_verified": 71280,
+  "batch_streams": [
+    {
+      "job": "M00_17",
+      "reference": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m1_recovery_20261015T164357_19327/jobs/M11_17/batch_hashes.jsonl",
+      "exact": true
+    },
+    {
+      "job": "M01_17",
+      "reference": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m1_recovery_20261015T164357_19327/jobs/M11_17/batch_hashes.jsonl",
+      "exact": true
+    },
+    {
+      "job": "M01_42",
+      "reference": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase2_matched_20261013T151120_1310582/jobs/A_DSM/batch_hashes.jsonl",
+      "exact": true
+    },
+    {
+      "job": "M10_17",
+      "reference": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m1_recovery_20261015T164357_19327/jobs/M11_17/batch_hashes.jsonl",
+      "exact": true
+    },
+    {
+      "job": "M10_42",
+      "reference": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase2_matched_20261013T151120_1310582/jobs/A_DSM/batch_hashes.jsonl",
+      "exact": true
+    },
+    {
+      "job": "M11_17",
+      "reference": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m1_recovery_20261015T164357_19327/jobs/M11_17/batch_hashes.jsonl",
+      "exact": true
+    },
+    {
+      "job": "M11_42",
+      "reference": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase2_matched_20261013T151120_1310582/jobs/A_DSM/batch_hashes.jsonl",
+      "exact": true
+    },
+    {
+      "job": "M20_17",
+      "reference": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m1_recovery_20261015T164357_19327/jobs/M11_17/batch_hashes.jsonl",
+      "exact": true
+    },
+    {
+      "job": "M20_42",
+      "reference": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase2_matched_20261013T151120_1310582/jobs/A_DSM/batch_hashes.jsonl",
+      "exact": true
+    },
+    {
+      "job": "M21_17",
+      "reference": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m1_recovery_20261015T164357_19327/jobs/M11_17/batch_hashes.jsonl",
+      "exact": true
+    },
+    {
+      "job": "M21_42",
+      "reference": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase2_matched_20261013T151120_1310582/jobs/A_DSM/batch_hashes.jsonl",
+      "exact": true
+    }
+  ],
+  "old_initial_checks": [
+    {
+      "job": "M01_42",
+      "exact": true,
+      "expected": "99b0a6d86a04959a7d47f7e419605ac11835a740b19d7f44578d2796a528327d",
+      "actual": "99b0a6d86a04959a7d47f7e419605ac11835a740b19d7f44578d2796a528327d"
+    },
+    {
+      "job": "M10_42",
+      "exact": true,
+      "expected": "99b0a6d86a04959a7d47f7e419605ac11835a740b19d7f44578d2796a528327d",
+      "actual": "99b0a6d86a04959a7d47f7e419605ac11835a740b19d7f44578d2796a528327d"
+    },
+    {
+      "job": "M11_42",
+      "exact": true,
+      "expected": "99b0a6d86a04959a7d47f7e419605ac11835a740b19d7f44578d2796a528327d",
+      "actual": "99b0a6d86a04959a7d47f7e419605ac11835a740b19d7f44578d2796a528327d"
+    },
+    {
+      "job": "M20_42",
+      "exact": true,
+      "expected": "99b0a6d86a04959a7d47f7e419605ac11835a740b19d7f44578d2796a528327d",
+      "actual": "99b0a6d86a04959a7d47f7e419605ac11835a740b19d7f44578d2796a528327d"
+    },
+    {
+      "job": "M21_42",
+      "exact": true,
+      "expected": "99b0a6d86a04959a7d47f7e419605ac11835a740b19d7f44578d2796a528327d",
+      "actual": "99b0a6d86a04959a7d47f7e419605ac11835a740b19d7f44578d2796a528327d"
+    }
+  ],
+  "legacy_CM_exact": true,
+  "M00_42_causal_reuse_qualified": true,
+  "all_required_evidence_complete": true,
+  "missing_or_failed": [],
+  "primary_inference": "R1/R2 eight endpoints remain valid if legacy anchor unqualified",
+  "observed_at": "2026-10-15T19:16:19.408748+08:00",
+  "recovery_source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m1_20261015T143433_2657574",
+  "inherited_completed_jobs": [
+    "M10_17",
+    "M10_42",
+    "M11_17",
+    "M11_42",
+    "M20_42",
+    "M21_17",
+    "M21_42"
+  ],
+  "resumed_jobs": {
+    "M01_42": 2000,
+    "M20_17": 12000
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "type": "post_N2_schedule_readiness_review",
+  "date": "2026-10-05",
+  "source_head": "25c153b6b37c3752bff7ed8e57440ec89a509bd2",
+  "user_request": "这个规划现在可以安排不，有冲突不",
+  "assessment": "compatible with conditional scheduling; preparation can start now; GPU dispatch after N2 complete audited and released",
+  "last_server_observation": "2026-10-05T12:15:02.465274+08:00",
+  "server_schedule_registered": false,
+  "execution_package_implemented": false,
+  "status": "PREPARATION_PENDING",
+  "current_N2_changed": false,
+  "old_reservations_restarted": false,
+  "new_training_configurations_added": 0,
+  "potential_existing_training_configs": 13,
+  "primary_sequence": [
+    "N2 complete and source records audit",
+    "E0/E1 U H L",
+    "N5 only on E1 trigger",
+    "N3 only on independent regional evidence",
+    "N4 only on exposure evidence"
+  ],
+  "new_diagnostic": "E2 only inference",
+  "ordering_issue_fixed": "T omitted from first E1 run; T baselines after N5 full protocol frozen",
+  "E1_initial_evaluation_units": 24,
+  "T_later_baseline_units": 8,
+  "required_predecessor_status": "N2_COMPLETE_AWAITING_STAGE_PROTOCOL",
+  "predecessor_release_checks": [
+    "all six complete signatures and summaries",
+    "n2_screen source audit",
+    "controller and workers exited",
+    "controller.lock and post_ab_successor.lock released"
+  ],
+  "initial_training_checkpoint_rule": "fixed N1-2 selected for every arm; no hindsight best N2 base",
+  "training_settings": {
+    "seed": 42,
+    "steps": 8000,
+    "batch": 16,
+    "gradient_accumulation": false,
+    "physical_gpus": [
+      0,
+      1
+    ]
+  },
+  "required_preparation": [
+    "bound model and predictions/input paths",
+    "frozen content-mask generation and area matching",
+    "physical-versus-reported mask separation",
+    "CPU and controller dispatch/reconciliation regression checks"
+  ],
+  "interpretation": "queue plan registration in GitHub only; not a claim of server execution or a mainline change"
+}

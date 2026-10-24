@@ -1,0 +1,5 @@
+# Phase2设计与内部身份补充审计
+
+设计基于b3546315a6a8e4555383a2a66cb0e0bbed6016b0，原件上传9d7c27e88c510f2931ac125b7b6b3b0c60850dce。运行audit_internal_dsm_identity.py --decoded <已按原manifest校验并解码的目录>，无需GPU。720个预期case集合完整、dsm_only True且非复用预测；源回执列表规范化SHA见JSON。原件全部载荷校验另见records/phase15_offline_audit_20261013。此审计不重新读取服务器大数组，不新增KL测量，不把空支持rgb_only=True当证据。
+
+源码定位：scripts/phase15_inference.py infer_one及make_model、model/rebuild_v1_post_ab_n1.py N1Segmenter.forward。源运行固定45138f0f，当前b3546315源文本亦核对。完整[下一阶段设计](../../docs/protocols/PHASE_2_MATCHED_COMPLEMENTARITY_20261013.md)。新专家/头执行包尚未实现或登记。

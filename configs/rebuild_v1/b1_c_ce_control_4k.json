@@ -1,0 +1,58 @@
+{
+  "version": "REBUILD_V1_B1_C_CE_CONTROL_4K_20260920",
+  "purpose": "Matched 4k continuation control from the R05 seed42 checkpoint using the B1 corruption mixture and segmentation CE only.",
+  "model_id": "B1-C",
+  "model": "dual_f0_quality_plus_modality_dropout",
+  "seed": 42,
+  "split_file": "configs/rebuild_v1/potsdam_split_seed20260915.json",
+  "data_root": "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped",
+  "pretrain": "/home/jovyan/zzx/paper_rebuild/08_assets/pretrained/ftransunet/R50+ViT-B_16.npz",
+  "student_init": "runs/rebuild_v1/R05_dual_f0_quality_plus_dropout_seed42_sched16000_stop16000/best_model.pth",
+  "r01_teacher": "runs/rebuild_v1/R01_optical_only_seed42_sched16000_stop16000/best_model.pth",
+  "r05_teacher": "runs/rebuild_v1/R05_dual_f0_quality_plus_dropout_seed42_sched16000_stop16000/best_model.pth",
+  "patch": 512,
+  "micro_batch": 2,
+  "accum_steps": 8,
+  "effective_batch": 16,
+  "optimizer": {
+    "name": "AdamW",
+    "backbone_lr": 0.00001,
+    "decoder_head_lr_mult": 10.0,
+    "betas": [0.9, 0.999],
+    "weight_decay": 0.01
+  },
+  "schedule": {
+    "scheduler_total_steps": 4000,
+    "stop_at_step": 4000,
+    "warmup_steps": 200,
+    "warmup_ratio": 0.000001,
+    "poly_power": 1.0
+  },
+  "augmentation": {
+    "random_scale_min": 0.5,
+    "random_scale_max": 2.0,
+    "horizontal_flip_p": 0.5,
+    "vertical_flip_p": 0.5,
+    "clean_p": 0.4,
+    "global_degraded_p": 0.15,
+    "global_missing_p": 0.1,
+    "local_missing_p": 0.2,
+    "local_degraded_p": 0.15,
+    "degraded_types": ["blur5", "down2", "down4", "down8"],
+    "local_area_fractions": [0.1, 0.25, 0.5],
+    "corruption_order": "tilewise_minmax -> crop/resize -> B1 DSM treatment -> network"
+  },
+  "distillation": {
+    "mode": "ce_control",
+    "temperature": 2.0,
+    "teacher_kl_weight": 0.0,
+    "missing_fallback_kl_weight": 0.0
+  },
+  "validation": {
+    "eval_interval_steps": 500,
+    "stride": 256,
+    "inference_batch": 8,
+    "selection_metric": "noboundary_mIoU_fg5",
+    "fullgt_also_reported": true
+  }
+}

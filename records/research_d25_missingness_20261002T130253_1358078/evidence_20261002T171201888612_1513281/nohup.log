@@ -1,0 +1,285 @@
+D25_STARTED 0 P0 pid=1389179
+D25_STARTED 1 P1 pid=1389183
+D25_PROGRESS 0 P0 initializing step=0 elapsed_minutes=0.0
+D25_PROGRESS 1 P1 initializing step=0 elapsed_minutes=0.0
+D25_PROGRESS 0 P0 loading_fit_tiles step=0 elapsed_minutes=1.0
+D25_PROGRESS 1 P1 loading_fit_tiles step=0 elapsed_minutes=1.0
+D25_PROGRESS 0 P0 training step=180 elapsed_minutes=2.0
+D25_PROGRESS 1 P1 training step=160 elapsed_minutes=2.0
+D25_PROGRESS 0 P0 training step=480 elapsed_minutes=3.0
+D25_PROGRESS 1 P1 training step=420 elapsed_minutes=3.0
+D25_PROGRESS 0 P0 training step=780 elapsed_minutes=4.0
+D25_PROGRESS 1 P1 training step=680 elapsed_minutes=4.0
+D25_PROGRESS 0 P0 training step=1080 elapsed_minutes=5.0
+D25_PROGRESS 1 P1 training step=940 elapsed_minutes=5.0
+D25_PROGRESS 0 P0 training step=1380 elapsed_minutes=6.0
+D25_PROGRESS 1 P1 training step=1200 elapsed_minutes=6.0
+D25_PROGRESS 0 P0 training step=1680 elapsed_minutes=7.0
+D25_PROGRESS 1 P1 training step=1460 elapsed_minutes=7.0
+D25_PROGRESS 0 P0 training step=2000 elapsed_minutes=8.0
+D25_PROGRESS 1 P1 training step=1720 elapsed_minutes=8.0
+D25_PROGRESS 0 P0 training step=2060 elapsed_minutes=9.0
+D25_PROGRESS 1 P1 training step=1980 elapsed_minutes=9.0
+D25_PROGRESS 0 P0 training step=2380 elapsed_minutes=10.0
+D25_PROGRESS 1 P1 training step=2060 elapsed_minutes=10.0
+D25_PROGRESS 0 P0 training step=2700 elapsed_minutes=11.0
+D25_PROGRESS 1 P1 training step=2340 elapsed_minutes=11.0
+D25_PROGRESS 0 P0 training step=3020 elapsed_minutes=12.0
+D25_PROGRESS 1 P1 training step=2600 elapsed_minutes=12.0
+D25_PROGRESS 0 P0 training step=3340 elapsed_minutes=13.0
+D25_PROGRESS 1 P1 training step=2880 elapsed_minutes=13.0
+D25_PROGRESS 0 P0 training step=3660 elapsed_minutes=14.0
+D25_PROGRESS 1 P1 training step=3160 elapsed_minutes=14.0
+D25_PROGRESS 0 P0 training step=3980 elapsed_minutes=15.0
+D25_PROGRESS 1 P1 training step=3420 elapsed_minutes=15.0
+D25_PROGRESS 0 P0 full_evaluation step=4000 elapsed_minutes=16.0
+D25_PROGRESS 1 P1 training step=3700 elapsed_minutes=16.0
+D25_PROGRESS 0 P0 full_evaluation step=4000 elapsed_minutes=17.0
+D25_PROGRESS 1 P1 training step=3980 elapsed_minutes=17.0
+D25_PROGRESS 0 P0 full_evaluation step=4000 elapsed_minutes=18.0
+D25_PROGRESS 1 P1 full_evaluation step=4000 elapsed_minutes=18.0
+D25_PROGRESS 0 P0 full_evaluation step=4000 elapsed_minutes=19.0
+D25_PROGRESS 1 P1 full_evaluation step=4000 elapsed_minutes=19.0
+D25_PROGRESS 0 P0 full_evaluation step=4000 elapsed_minutes=20.0
+D25_PROGRESS 1 P1 full_evaluation step=4000 elapsed_minutes=20.0
+D25_PROGRESS 0 P0 full_evaluation step=4000 elapsed_minutes=21.0
+D25_PROGRESS 1 P1 full_evaluation step=4000 elapsed_minutes=21.0
+D25_PROGRESS 0 P0 full_evaluation step=4000 elapsed_minutes=22.0
+D25_PROGRESS 1 P1 full_evaluation step=4000 elapsed_minutes=22.0
+D25_PROGRESS 0 P0 full_evaluation step=4000 elapsed_minutes=23.0
+D25_PROGRESS 1 P1 full_evaluation step=4000 elapsed_minutes=23.0
+D25_PROGRESS 0 P0 full_evaluation step=4000 elapsed_minutes=24.0
+D25_PROGRESS 1 P1 full_evaluation step=4000 elapsed_minutes=24.0
+D25_PROGRESS 0 P0 full_evaluation step=4000 elapsed_minutes=25.0
+D25_PROGRESS 1 P1 full_evaluation step=4000 elapsed_minutes=25.0
+D25_PROGRESS 0 P0 full_evaluation step=4000 elapsed_minutes=26.0
+D25_PROGRESS 1 P1 full_evaluation step=4000 elapsed_minutes=26.0
+D25_PROGRESS 0 P0 full_evaluation step=4000 elapsed_minutes=27.0
+D25_PROGRESS 1 P1 full_evaluation step=4000 elapsed_minutes=27.0
+D25_PROGRESS 0 P0 full_evaluation step=4000 elapsed_minutes=28.0
+D25_PROGRESS 1 P1 full_evaluation step=4000 elapsed_minutes=28.0
+D25_PROGRESS 0 P0 full_evaluation step=4000 elapsed_minutes=29.0
+D25_PROGRESS 1 P1 full_evaluation step=4000 elapsed_minutes=29.0
+D25_PROGRESS 0 P0 full_evaluation step=4000 elapsed_minutes=30.0
+D25_PROGRESS 1 P1 full_evaluation step=4000 elapsed_minutes=30.0
+D25_PROGRESS 0 P0 full_evaluation step=4000 elapsed_minutes=31.0
+D25_PROGRESS 1 P1 full_evaluation step=4000 elapsed_minutes=31.0
+D25_PROGRESS 0 P0 full_evaluation step=4000 elapsed_minutes=32.0
+D25_PROGRESS 1 P1 full_evaluation step=4000 elapsed_minutes=32.0
+D25_PROGRESS 0 P0 full_evaluation step=4000 elapsed_minutes=33.0
+D25_PROGRESS 1 P1 full_evaluation step=4000 elapsed_minutes=33.0
+D25_PROGRESS 0 P0 full_evaluation step=4000 elapsed_minutes=34.0
+D25_PROGRESS 1 P1 full_evaluation step=4000 elapsed_minutes=34.0
+D25_JOB_STATUS P0 COMPLETE
+D25_JOB_STATUS P1 COMPLETE
+D25_STARTED 0 P2 pid=1407455
+D25_STARTED 1 P3 pid=1407461
+D25_PROGRESS 0 P2 loading_fit_tiles step=0 elapsed_minutes=0.5
+D25_PROGRESS 1 P3 loading_fit_tiles step=0 elapsed_minutes=0.5
+D25_PROGRESS 0 P2 training step=60 elapsed_minutes=1.5
+D25_PROGRESS 1 P3 training step=60 elapsed_minutes=1.5
+D25_PROGRESS 0 P2 training step=360 elapsed_minutes=2.5
+D25_PROGRESS 1 P3 training step=320 elapsed_minutes=2.5
+D25_PROGRESS 0 P2 training step=660 elapsed_minutes=3.5
+D25_PROGRESS 1 P3 training step=600 elapsed_minutes=3.5
+D25_PROGRESS 0 P2 training step=960 elapsed_minutes=4.5
+D25_PROGRESS 1 P3 training step=860 elapsed_minutes=4.5
+D25_PROGRESS 0 P2 training step=1260 elapsed_minutes=5.5
+D25_PROGRESS 1 P3 training step=1140 elapsed_minutes=5.5
+D25_PROGRESS 0 P2 training step=1560 elapsed_minutes=6.5
+D25_PROGRESS 1 P3 training step=1420 elapsed_minutes=6.5
+D25_PROGRESS 0 P2 training step=1860 elapsed_minutes=7.5
+D25_PROGRESS 1 P3 training step=1680 elapsed_minutes=7.5
+D25_PROGRESS 0 P2 checkpoint_selection step=2000 elapsed_minutes=8.5
+D25_PROGRESS 1 P3 training step=1960 elapsed_minutes=8.5
+D25_PROGRESS 0 P2 training step=2260 elapsed_minutes=9.5
+D25_PROGRESS 1 P3 training step=2040 elapsed_minutes=9.5
+D25_PROGRESS 0 P2 training step=2580 elapsed_minutes=10.5
+D25_PROGRESS 1 P3 training step=2320 elapsed_minutes=10.5
+D25_PROGRESS 0 P2 training step=2900 elapsed_minutes=11.5
+D25_PROGRESS 1 P3 training step=2620 elapsed_minutes=11.5
+D25_PROGRESS 0 P2 training step=3220 elapsed_minutes=12.5
+D25_PROGRESS 1 P3 training step=2900 elapsed_minutes=12.5
+D25_PROGRESS 0 P2 training step=3540 elapsed_minutes=13.5
+D25_PROGRESS 1 P3 training step=3200 elapsed_minutes=13.5
+D25_PROGRESS 0 P2 training step=3860 elapsed_minutes=14.5
+D25_PROGRESS 1 P3 training step=3500 elapsed_minutes=14.5
+D25_PROGRESS 0 P2 checkpoint_selection step=4000 elapsed_minutes=15.5
+D25_PROGRESS 1 P3 training step=3780 elapsed_minutes=15.5
+D25_PROGRESS 0 P2 full_evaluation step=4000 elapsed_minutes=16.5
+D25_PROGRESS 1 P3 checkpoint_selection step=4000 elapsed_minutes=16.5
+D25_PROGRESS 0 P2 full_evaluation step=4000 elapsed_minutes=17.5
+D25_PROGRESS 1 P3 full_evaluation step=4000 elapsed_minutes=17.5
+D25_PROGRESS 0 P2 full_evaluation step=4000 elapsed_minutes=18.5
+D25_PROGRESS 1 P3 full_evaluation step=4000 elapsed_minutes=18.5
+D25_PROGRESS 0 P2 full_evaluation step=4000 elapsed_minutes=19.5
+D25_PROGRESS 1 P3 full_evaluation step=4000 elapsed_minutes=19.5
+D25_PROGRESS 0 P2 full_evaluation step=4000 elapsed_minutes=20.5
+D25_PROGRESS 1 P3 full_evaluation step=4000 elapsed_minutes=20.5
+D25_PROGRESS 0 P2 full_evaluation step=4000 elapsed_minutes=21.5
+D25_PROGRESS 1 P3 full_evaluation step=4000 elapsed_minutes=21.5
+D25_PROGRESS 0 P2 full_evaluation step=4000 elapsed_minutes=22.5
+D25_PROGRESS 1 P3 full_evaluation step=4000 elapsed_minutes=22.5
+D25_PROGRESS 0 P2 full_evaluation step=4000 elapsed_minutes=23.5
+D25_PROGRESS 1 P3 full_evaluation step=4000 elapsed_minutes=23.5
+D25_PROGRESS 0 P2 full_evaluation step=4000 elapsed_minutes=24.5
+D25_PROGRESS 1 P3 full_evaluation step=4000 elapsed_minutes=24.5
+D25_PROGRESS 0 P2 full_evaluation step=4000 elapsed_minutes=25.5
+D25_PROGRESS 1 P3 full_evaluation step=4000 elapsed_minutes=25.5
+D25_PROGRESS 0 P2 full_evaluation step=4000 elapsed_minutes=26.5
+D25_PROGRESS 1 P3 full_evaluation step=4000 elapsed_minutes=26.5
+D25_PROGRESS 0 P2 full_evaluation step=4000 elapsed_minutes=27.5
+D25_PROGRESS 1 P3 full_evaluation step=4000 elapsed_minutes=27.5
+D25_PROGRESS 0 P2 full_evaluation step=4000 elapsed_minutes=28.5
+D25_PROGRESS 1 P3 full_evaluation step=4000 elapsed_minutes=28.5
+D25_PROGRESS 0 P2 full_evaluation step=4000 elapsed_minutes=29.5
+D25_PROGRESS 1 P3 full_evaluation step=4000 elapsed_minutes=29.5
+D25_PROGRESS 0 P2 full_evaluation step=4000 elapsed_minutes=30.5
+D25_PROGRESS 1 P3 full_evaluation step=4000 elapsed_minutes=30.5
+D25_JOB_STATUS P2 COMPLETE
+D25_STARTED 0 P4 pid=1423264
+D25_PROGRESS 1 P3 full_evaluation step=4000 elapsed_minutes=31.5
+D25_PROGRESS 0 P4 loading_fit_tiles step=0 elapsed_minutes=0.2
+D25_JOB_STATUS P3 COMPLETE
+D25_STARTED 1 P5 pid=1423916
+D25_PROGRESS 0 P4 loading_fit_tiles step=0 elapsed_minutes=1.2
+D25_PROGRESS 1 P5 initializing step=0 elapsed_minutes=0.0
+D25_PROGRESS 0 P4 training step=240 elapsed_minutes=2.2
+D25_PROGRESS 1 P5 loading_fit_tiles step=0 elapsed_minutes=1.0
+D25_PROGRESS 0 P4 training step=500 elapsed_minutes=3.2
+D25_PROGRESS 1 P5 training step=200 elapsed_minutes=2.0
+D25_PROGRESS 0 P4 training step=780 elapsed_minutes=4.2
+D25_PROGRESS 1 P5 training step=500 elapsed_minutes=3.0
+D25_PROGRESS 0 P4 training step=1060 elapsed_minutes=5.2
+D25_PROGRESS 1 P5 training step=780 elapsed_minutes=4.0
+D25_PROGRESS 0 P4 training step=1320 elapsed_minutes=6.2
+D25_PROGRESS 1 P5 training step=1080 elapsed_minutes=5.0
+D25_PROGRESS 0 P4 training step=1600 elapsed_minutes=7.2
+D25_PROGRESS 1 P5 training step=1360 elapsed_minutes=6.0
+D25_PROGRESS 0 P4 training step=1880 elapsed_minutes=8.2
+D25_PROGRESS 1 P5 training step=1660 elapsed_minutes=7.0
+D25_PROGRESS 0 P4 checkpoint_selection step=2000 elapsed_minutes=9.2
+D25_PROGRESS 1 P5 training step=1960 elapsed_minutes=8.0
+D25_PROGRESS 0 P4 training step=2240 elapsed_minutes=10.2
+D25_PROGRESS 1 P5 training step=2040 elapsed_minutes=9.0
+D25_PROGRESS 0 P4 training step=2520 elapsed_minutes=11.2
+D25_PROGRESS 1 P5 training step=2340 elapsed_minutes=10.0
+D25_PROGRESS 0 P4 training step=2820 elapsed_minutes=12.2
+D25_PROGRESS 1 P5 training step=2640 elapsed_minutes=11.0
+D25_PROGRESS 0 P4 training step=3100 elapsed_minutes=13.2
+D25_PROGRESS 1 P5 training step=2940 elapsed_minutes=12.0
+D25_PROGRESS 0 P4 training step=3400 elapsed_minutes=14.2
+D25_PROGRESS 1 P5 training step=3240 elapsed_minutes=13.0
+D25_PROGRESS 0 P4 training step=3680 elapsed_minutes=15.2
+D25_PROGRESS 1 P5 training step=3560 elapsed_minutes=14.0
+D25_PROGRESS 0 P4 training step=3980 elapsed_minutes=16.2
+D25_PROGRESS 1 P5 training step=3860 elapsed_minutes=15.0
+D25_PROGRESS 0 P4 full_evaluation step=4000 elapsed_minutes=17.2
+D25_PROGRESS 1 P5 checkpoint_selection step=4000 elapsed_minutes=16.0
+D25_PROGRESS 0 P4 full_evaluation step=4000 elapsed_minutes=18.2
+D25_PROGRESS 1 P5 full_evaluation step=4000 elapsed_minutes=17.0
+D25_PROGRESS 0 P4 full_evaluation step=4000 elapsed_minutes=19.2
+D25_PROGRESS 1 P5 full_evaluation step=4000 elapsed_minutes=18.0
+D25_PROGRESS 0 P4 full_evaluation step=4000 elapsed_minutes=20.2
+D25_PROGRESS 1 P5 full_evaluation step=4000 elapsed_minutes=19.0
+D25_PROGRESS 0 P4 full_evaluation step=4000 elapsed_minutes=21.2
+D25_PROGRESS 1 P5 full_evaluation step=4000 elapsed_minutes=20.0
+D25_PROGRESS 0 P4 full_evaluation step=4000 elapsed_minutes=22.2
+D25_PROGRESS 1 P5 full_evaluation step=4000 elapsed_minutes=21.0
+D25_PROGRESS 0 P4 full_evaluation step=4000 elapsed_minutes=23.2
+D25_PROGRESS 1 P5 full_evaluation step=4000 elapsed_minutes=22.0
+D25_PROGRESS 0 P4 full_evaluation step=4000 elapsed_minutes=24.2
+D25_PROGRESS 1 P5 full_evaluation step=4000 elapsed_minutes=23.0
+D25_PROGRESS 0 P4 full_evaluation step=4000 elapsed_minutes=25.2
+D25_PROGRESS 1 P5 full_evaluation step=4000 elapsed_minutes=24.0
+D25_PROGRESS 0 P4 full_evaluation step=4000 elapsed_minutes=26.2
+D25_PROGRESS 1 P5 full_evaluation step=4000 elapsed_minutes=25.0
+D25_PROGRESS 0 P4 full_evaluation step=4000 elapsed_minutes=27.2
+D25_PROGRESS 1 P5 full_evaluation step=4000 elapsed_minutes=26.0
+D25_PROGRESS 0 P4 full_evaluation step=4000 elapsed_minutes=28.2
+D25_PROGRESS 1 P5 full_evaluation step=4000 elapsed_minutes=27.0
+D25_PROGRESS 0 P4 full_evaluation step=4000 elapsed_minutes=29.2
+D25_PROGRESS 1 P5 full_evaluation step=4000 elapsed_minutes=28.0
+D25_PROGRESS 0 P4 full_evaluation step=4000 elapsed_minutes=30.2
+D25_PROGRESS 1 P5 full_evaluation step=4000 elapsed_minutes=29.0
+D25_PROGRESS 0 P4 full_evaluation step=4000 elapsed_minutes=31.2
+D25_PROGRESS 1 P5 full_evaluation step=4000 elapsed_minutes=30.0
+D25_PROGRESS 0 P4 full_evaluation step=4000 elapsed_minutes=32.2
+D25_PROGRESS 1 P5 full_evaluation step=4000 elapsed_minutes=31.0
+D25_JOB_STATUS P4 COMPLETE
+D25_STARTED 0 P6 pid=1439649
+D25_JOB_STATUS P5 COMPLETE
+D25_STARTED 1 P7 pid=1439961
+D25_PROGRESS 0 P6 loading_fit_tiles step=0 elapsed_minutes=0.7
+D25_PROGRESS 1 P7 loading_fit_tiles step=0 elapsed_minutes=0.2
+D25_PROGRESS 0 P6 training step=140 elapsed_minutes=1.7
+D25_PROGRESS 1 P7 loading_fit_tiles step=0 elapsed_minutes=1.2
+D25_PROGRESS 0 P6 training step=440 elapsed_minutes=2.7
+D25_PROGRESS 1 P7 training step=240 elapsed_minutes=2.2
+D25_PROGRESS 0 P6 training step=740 elapsed_minutes=3.7
+D25_PROGRESS 1 P7 training step=500 elapsed_minutes=3.2
+D25_PROGRESS 0 P6 training step=1060 elapsed_minutes=4.7
+D25_PROGRESS 1 P7 training step=780 elapsed_minutes=4.2
+D25_PROGRESS 0 P6 training step=1380 elapsed_minutes=5.8
+D25_PROGRESS 1 P7 training step=1060 elapsed_minutes=5.3
+D25_PROGRESS 0 P6 training step=1700 elapsed_minutes=6.8
+D25_PROGRESS 1 P7 training step=1320 elapsed_minutes=6.3
+D25_PROGRESS 0 P6 checkpoint_selection step=2000 elapsed_minutes=7.8
+D25_PROGRESS 1 P7 training step=1600 elapsed_minutes=7.3
+D25_PROGRESS 0 P6 training step=2120 elapsed_minutes=8.8
+D25_PROGRESS 1 P7 training step=1880 elapsed_minutes=8.3
+D25_PROGRESS 0 P6 training step=2480 elapsed_minutes=9.8
+D25_PROGRESS 1 P7 checkpoint_selection step=2000 elapsed_minutes=9.3
+D25_PROGRESS 0 P6 training step=2820 elapsed_minutes=10.8
+D25_PROGRESS 1 P7 training step=2220 elapsed_minutes=10.3
+D25_PROGRESS 0 P6 training step=3180 elapsed_minutes=11.8
+D25_PROGRESS 1 P7 training step=2520 elapsed_minutes=11.3
+D25_PROGRESS 0 P6 training step=3520 elapsed_minutes=12.9
+D25_PROGRESS 1 P7 training step=2800 elapsed_minutes=12.4
+D25_PROGRESS 0 P6 training step=3860 elapsed_minutes=13.9
+D25_PROGRESS 1 P7 training step=3100 elapsed_minutes=13.4
+D25_PROGRESS 0 P6 checkpoint_selection step=4000 elapsed_minutes=14.9
+D25_PROGRESS 1 P7 training step=3380 elapsed_minutes=14.4
+D25_PROGRESS 0 P6 full_evaluation step=4000 elapsed_minutes=15.9
+D25_PROGRESS 1 P7 training step=3660 elapsed_minutes=15.4
+D25_PROGRESS 0 P6 full_evaluation step=4000 elapsed_minutes=16.9
+D25_PROGRESS 1 P7 training step=3960 elapsed_minutes=16.4
+D25_PROGRESS 0 P6 full_evaluation_reused_optical step=4000 elapsed_minutes=17.9
+D25_PROGRESS 1 P7 checkpoint_selection step=4000 elapsed_minutes=17.4
+D25_PROGRESS 0 P6 full_evaluation_reused_optical step=4000 elapsed_minutes=18.9
+D25_PROGRESS 1 P7 full_evaluation step=4000 elapsed_minutes=18.4
+D25_PROGRESS 0 P6 full_evaluation step=4000 elapsed_minutes=19.9
+D25_PROGRESS 1 P7 full_evaluation step=4000 elapsed_minutes=19.4
+D25_PROGRESS 0 P6 full_evaluation_reused_optical step=4000 elapsed_minutes=20.9
+D25_PROGRESS 1 P7 full_evaluation step=4000 elapsed_minutes=20.4
+D25_PROGRESS 0 P6 full_evaluation step=4000 elapsed_minutes=21.9
+D25_PROGRESS 1 P7 full_evaluation step=4000 elapsed_minutes=21.4
+D25_PROGRESS 0 P6 full_evaluation step=4000 elapsed_minutes=22.9
+D25_PROGRESS 1 P7 full_evaluation step=4000 elapsed_minutes=22.4
+D25_PROGRESS 0 P6 full_evaluation_reused_optical step=4000 elapsed_minutes=23.9
+D25_PROGRESS 1 P7 full_evaluation step=4000 elapsed_minutes=23.4
+D25_PROGRESS 0 P6 full_evaluation step=4000 elapsed_minutes=24.9
+D25_PROGRESS 1 P7 full_evaluation step=4000 elapsed_minutes=24.4
+D25_PROGRESS 0 P6 full_evaluation_reused_optical step=4000 elapsed_minutes=25.9
+D25_PROGRESS 1 P7 full_evaluation step=4000 elapsed_minutes=25.4
+D25_PROGRESS 0 P6 full_evaluation step=4000 elapsed_minutes=26.9
+D25_PROGRESS 1 P7 full_evaluation step=4000 elapsed_minutes=26.4
+D25_JOB_STATUS P6 COMPLETE
+D25_PROGRESS 1 P7 full_evaluation step=4000 elapsed_minutes=27.4
+D25_PROGRESS 1 P7 full_evaluation step=4000 elapsed_minutes=28.4
+D25_PROGRESS 1 P7 full_evaluation step=4000 elapsed_minutes=29.4
+D25_PROGRESS 1 P7 full_evaluation step=4000 elapsed_minutes=30.4
+D25_PROGRESS 1 P7 full_evaluation step=4000 elapsed_minutes=31.4
+D25_PROGRESS 1 P7 full_evaluation step=4000 elapsed_minutes=32.4
+D25_JOB_STATUS P7 COMPLETE
+D25_RESULT P0 clean=86.9081 composite=86.2987 missing=86.5857
+D25_RESULT P1 clean=86.8447 composite=86.2350 missing=86.5210
+D25_RESULT P2 clean=86.8871 composite=86.3497 missing=86.5520
+D25_RESULT P3 clean=86.8934 composite=86.3564 missing=86.5618
+D25_RESULT P4 clean=86.9125 composite=86.3040 missing=86.6093
+D25_RESULT P5 clean=86.9088 composite=86.2997 missing=86.5919
+D25_RESULT P6 clean=86.3979 composite=85.8576 missing=86.3979
+D25_RESULT P7 clean=86.8915 composite=86.3550 missing=86.5552
+D25_SCREEN_COMPLETE 8 /8 test6_loaded=False
+D25_QUEUE_FINISHED COMPLETE summary_exit=0
+D25_UPLOAD_READY /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/code/scripts/upload_rebuild_v1_d25_records.py

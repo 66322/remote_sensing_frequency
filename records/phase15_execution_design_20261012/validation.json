@@ -1,0 +1,48 @@
+{
+  "status": "READY_NOT_REGISTERED",
+  "design_head": "6f5b15d8b9ee3449604a73c14fd9331ab7065a0b",
+  "protocol": "PHASE15_V1_2_EXECUTION",
+  "cpu_tests": {
+    "passed": 20,
+    "method": "unittest discover test_phase15.py",
+    "synthetic_only": true
+  },
+  "python_syntax_files": 13,
+  "local_environment": {
+    "python": "3.13",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "torch": "2.7.1+cpu"
+  },
+  "server_required_torch": "2.2.2+cu121",
+  "registered_gpu_jobs": 100,
+  "logical_cases": 1540,
+  "new_tile_inference_upper_count": 1538,
+  "optimizer_updates": 0,
+  "allowed_physical_gpus": [
+    0,
+    1
+  ],
+  "wall_deadline_hours": null,
+  "automatic_retry": false,
+  "real_server_smoke_verified": false,
+  "server_registration_observed": false,
+  "test6_loaded": false,
+  "held4_loaded": false,
+  "scientific_results": false,
+  "checks": [
+    "original S13 graph equivalence",
+    "native FP32 stitch and entropy",
+    "nested and exact old M25",
+    "DSM permutations edge bijection",
+    "EDT rectangle/ring",
+    "oracle raw/patch/tie and joint counts",
+    "seam containment/fullmask no seam",
+    "integer confusion conservation",
+    "paired bootstrap/signflip",
+    "plan tamper rejection",
+    "two-lane controller smoke-before-full and fail-stop",
+    "full fixed 1540-case synthetic summary"
+  ],
+  "next": "User terminal bootstrap; controller accepts real smoke before full diagnostics; explicit light upload then scientific review."
+}

@@ -1,0 +1,7 @@
+{
+  "job": "B_16_5_10",
+  "observed_at": "2026-10-13T07:54:26.774630+08:00",
+  "optimizer_updates": 0,
+  "phase": "complete",
+  "physical_gpu": 1
+}

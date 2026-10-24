@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "status": "READY_NOT_LAUNCHED",
+  "m2_execution_commit": "ac325cdbb403ebb95b5eb0acbf17fffa5441dcfd",
+  "root": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+  "physical_gpus": [0, 1],
+  "seeds": [42, 17],
+  "folds": ["F0", "F1", "F2"],
+  "stages": [
+    {"id": "M2", "jobs": 108, "updates_per_job": 32000, "source": "phase3_m2_execution_v1", "condition": "GPU_and_original_checks"},
+    {"id": "J", "jobs": 42, "updates_per_job": 8000, "arms": ["J1", "J2", "J3", "J4", "J5", "J6", "J7"], "condition": "M2_G0_complete"},
+    {"id": "R", "jobs": 18, "updates_per_job": 32000, "arms": ["concat_joint", "conditional_joint", "conditional_joint_aux"], "condition": "J_integrity_complete"},
+    {"id": "T", "jobs": 30, "updates_per_job": 12000, "arms": ["plain", "nuisance_aug", "robust_preprocess", "hard_correspondence", "soft_no_match"], "dataset": "3DCD", "condition": "3DCD_catalog_ready"},
+    {"id": "V", "jobs": 30, "updates_per_job": 12000, "arms": ["rgb_only", "ordinary_fusion", "rgb_relation", "rgb_geometry_relation", "shuffled_geometry"], "dataset": "P3", "condition": "P3_catalog_ready"}
+  ],
+  "total_registered_training_jobs_when_all_inputs_ready": 228,
+  "total_optimizer_updates_when_all_inputs_ready": 5088000,
+  "forbidden_legacy_splits": ["Val2", "Test6", "held4", "final"],
+  "no_automatic_retry": true,
+  "no_automatic_seed_addition": true,
+  "no_automatic_B_or_C": true,
+  "release_test_enabled": false,
+  "new_data_test_split_enabled": false,
+  "max_cpu_count_workers": 32,
+  "intermediate_prediction_policy": "one_tile_or_one_batch_in_ram_then_release",
+  "scientific_scope": "Fit12 same-city development CV plus separately indexed public-data development folds; no independent-city claim from Fit12"
+}

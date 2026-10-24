@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "source": "user_pasted_server_registration_output",
+  "report_received_date": "2026-10-05",
+  "directory_timestamp_label": "20261005T085829",
+  "timestamp_scope": "directory/log naming timestamps, not a received queue observed_at or exact training start",
+  "queue_observed_at_received": null,
+  "status": "REGISTERED_USER_REPORTED_START_PENDING",
+  "execution_commit": "86b6a70e5c3482314986fb1259e2fccbd0a5a38b",
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_n2_20261005T085829_3456726",
+  "controller_pid": 3456909,
+  "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_n2_20261005T085829_3456726/nohup_20261005T085831972742.log",
+  "executable_jobs": 6,
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "steps_per_job": 8000,
+  "physical_batch": 16,
+  "gradient_accumulation": false,
+  "seed": 42,
+  "controller_live_verified": false,
+  "training_started_verified": false,
+  "server_CPU_checks_received": false,
+  "server_GPU_gradient_received": false,
+  "new_registration_required": false,
+  "original_queues_restarted": false,
+  "reported_lines": [
+    "POST_AB_N2_QUEUE_REGISTERED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_n2_20261005T085829_3456726 PID=3456909 EXECUTABLE=6",
+    "POST_AB_N2_LOG /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_n2_20261005T085829_3456726/nohup_20261005T085831972742.log"
+  ]
+}

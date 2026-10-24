@@ -1,0 +1,46 @@
+{
+  "source": "assistant preliminary extrapolation; not measured full-job ETA",
+  "as_of_queue_observation": "2026-10-02T19:18:19.427139+08:00",
+  "as_of_latest_worker": "2026-10-02T19:18:23.902610+08:00",
+  "speed_window": "controller elapsed_minutes3..5",
+  "steps_at_minute3": {
+    "J0": 60,
+    "B0": 220
+  },
+  "steps_at_minute5": {
+    "J0": 160,
+    "B0": 500
+  },
+  "recent_steps_per_minute": {
+    "J0": 50,
+    "B0": 140
+  },
+  "remaining_training_minutes_from_reported_steps": {
+    "J0": 156.4,
+    "B0": 53
+  },
+  "rounded_remaining_train_hours": {
+    "J0": [
+      2.5,
+      3
+    ],
+    "B0": [
+      0.8333333333333334,
+      1
+    ]
+  },
+  "queue_remaining_hours_rough": [
+    8,
+    12
+  ],
+  "rough_completion_window": "2026-10-03约03:00至07:00 +08:00",
+  "confidence": "low; only early training measured",
+  "uncertainties": [
+    "remaining interaction arms can be slower than B0",
+    "checkpoint selection and22-condition/fixed8000 evaluation not yet timed",
+    "first complete normal job has not finished"
+  ],
+  "next_eta_update": "after first normal job completes training and evaluation; no separate probe",
+  "not_a_resource_admission_gate": true,
+  "not_a_budget_change": true
+}

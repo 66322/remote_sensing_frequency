@@ -1,0 +1,22 @@
+{
+  "source": "user pasted plan.summary and complete.json",
+  "summary": {
+    "paths": 31956,
+    "unique_inodes": 31956,
+    "unique_allocated_bytes": 1150424180736,
+    "estimated_fully_unlinked_bytes": 678676826112,
+    "external_link_inodes": 13104,
+    "skipped_path_count": 21876
+  },
+  "complete": {
+    "deleted": 31956,
+    "total": 31956,
+    "disk_free_before": 2623956582400,
+    "disk_free_after": 2851560488960,
+    "observed_at": "2026-10-13T19:25:44.245968+08:00",
+    "note": "free-space change also includes concurrent Phase2 writes; externally linked bytes stay allocated"
+  },
+  "net_free_increase_bytes": 227603906560,
+  "estimated_independent_allocated_GiB": 632.0670490264893,
+  "actual_reclaimed_bytes_not_isolated_from_other_writes": true
+}

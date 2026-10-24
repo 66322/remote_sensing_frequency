@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-03",
+  "scope": "design matrix only, not inference or GPU validation",
+  "checks": {
+    "unique_input_cases": 16,
+    "physical_tile_evaluations": 224,
+    "shared_and_independent_each_modality_marginals": [
+      0.5,
+      0.5
+    ],
+    "independent_joint_is_product": true,
+    "shared_predictions_reused": true,
+    "D27_jobs": 10,
+    "D27_steps_per_job": 8000,
+    "gpus": [
+      0,
+      1
+    ]
+  },
+  "generator_implemented": false,
+  "evaluator_implemented": false,
+  "controller_implemented": false,
+  "server_run_observed": false
+}

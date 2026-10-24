@@ -1,0 +1,1077 @@
+{
+  "status": "COMPLETE",
+  "completed_jobs": 9,
+  "records": {
+    "J0": {
+      "selected": {
+        "step": 8000,
+        "metric": 0.7970514072219389,
+        "state_metrics": {
+          "clean": 0.8710100257460474,
+          "dsm_missing": 0.8619087925410849,
+          "rgb_missing": 0.6582354033786842
+        },
+        "checkpoint_sha256": "1d497533926f889a17c24c61d4b467914616be7149958f6e233bec8c8461d15c"
+      },
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109/jobs/J0/complete.json",
+      "sha256": "e8ab3e83b4a01fde4fa3d5c49997645ff564a3d31403e6f1fd6f2b746fd7a949"
+    },
+    "B0": {
+      "selected": {
+        "step": 4000,
+        "metric": 0.7980278863257837,
+        "state_metrics": {
+          "clean": 0.8712471211152204,
+          "dsm_missing": 0.8639793022992122,
+          "rgb_missing": 0.6588572355629186
+        },
+        "checkpoint_sha256": "8c1b517311afa4188a01750b2d2edfd0fb84446d8062a65133fcfa3f0783ceee"
+      },
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109/jobs/B0/complete.json",
+      "sha256": "f291a931720e49e71187d6753236ef0455044fe8d41f5743a2e25d0cface7165"
+    },
+    "CAP": {
+      "selected": {
+        "step": 8000,
+        "metric": 0.7979872410429051,
+        "state_metrics": {
+          "clean": 0.8711251852665844,
+          "dsm_missing": 0.8639793022992122,
+          "rgb_missing": 0.6588572355629186
+        },
+        "checkpoint_sha256": "1587c35c09d7cd7a24be7150d9df7ce4de07a361aa1fa0ad7801a53d6211eabc"
+      },
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109/jobs/CAP/complete.json",
+      "sha256": "8f7785cea90b800fbb8240b7432035393b72fc5e9c007c5a81d38b49a81da2e9"
+    },
+    "X": {
+      "selected": {
+        "step": 8000,
+        "metric": 0.798169028252794,
+        "state_metrics": {
+          "clean": 0.8716705468962512,
+          "dsm_missing": 0.8639793022992122,
+          "rgb_missing": 0.6588572355629186
+        },
+        "checkpoint_sha256": "4a9fe524000c27b7d4a3d271f9a64f00252cf103078cff94544769acba7e5b65"
+      },
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109/jobs/X/complete.json",
+      "sha256": "c0a1bb7a1348269748dcb6a97bd2d3d294d6b0ed979a8f0a3d231588ec48498e"
+    },
+    "XS": {
+      "selected": {
+        "step": 8000,
+        "metric": 0.7982227932418863,
+        "state_metrics": {
+          "clean": 0.8718318418635279,
+          "dsm_missing": 0.8639793022992122,
+          "rgb_missing": 0.6588572355629186
+        },
+        "checkpoint_sha256": "4850eb17012b3e4f0b15adf28f1a888fce52c3cdd4085862d18275bdab96b2df"
+      },
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109/jobs/XS/complete.json",
+      "sha256": "fdfab4e4cc0dcab0973dac3f72d6ee85c2fc7d77f83d6ddb39c542af6a99c7dd"
+    },
+    "XF": {
+      "selected": {
+        "step": 8000,
+        "metric": 0.7985531960748954,
+        "state_metrics": {
+          "clean": 0.872823050362555,
+          "dsm_missing": 0.8639793022992122,
+          "rgb_missing": 0.6588572355629186
+        },
+        "checkpoint_sha256": "28ce53a9315f3a5d31bedccfae61a6d251db1767a12e486be9126416461cbb66"
+      },
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109/jobs/XF/complete.json",
+      "sha256": "a86a08cebe8e110cdde59a79912177b8338537f406cbe3a3f9b9ba16551141f3"
+    },
+    "XSF": {
+      "selected": {
+        "step": 4000,
+        "metric": 0.7986020924559295,
+        "state_metrics": {
+          "clean": 0.8729697395056576,
+          "dsm_missing": 0.8639793022992122,
+          "rgb_missing": 0.6588572355629186
+        },
+        "checkpoint_sha256": "068770c787bf50f995c98903305d607c37c5ebb0175b349d541592aded968529"
+      },
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109/jobs/XSF/complete.json",
+      "sha256": "056a9ffde7eeaf931c816630252cc758d34ed884596b523f43d558502f61e8d5"
+    },
+    "XSF-shS": {
+      "selected": {
+        "step": 8000,
+        "metric": 0.7985161552599033,
+        "state_metrics": {
+          "clean": 0.8727119279175787,
+          "dsm_missing": 0.8639793022992122,
+          "rgb_missing": 0.6588572355629186
+        },
+        "checkpoint_sha256": "3dabbce7b16ed0acec954ba4713baacdfdb91ad18c43326c47d700874fb37795"
+      },
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109/jobs/XSF-shS/complete.json",
+      "sha256": "01d6670e6f63dd92da2e09924629553dce187bdf332d3972e2bd639891378f21"
+    },
+    "XSF-shF": {
+      "selected": {
+        "step": 8000,
+        "metric": 0.7983328281952377,
+        "state_metrics": {
+          "clean": 0.8721619467235822,
+          "dsm_missing": 0.8639793022992122,
+          "rgb_missing": 0.6588572355629186
+        },
+        "checkpoint_sha256": "bc319e06779ec0754df023372a561a1b48d0b4627762a855ecc26a74fa3414a6"
+      },
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109/jobs/XSF-shF/complete.json",
+      "sha256": "967bf9364fd470ada8ebb2058890024d5e2626b5a305180919785724ff138c36"
+    }
+  },
+  "capacity": {
+    "J0": {
+      "total_parameters": 128814594,
+      "trainable_parameters": 43648306,
+      "trainable_names": [
+        "rgb_expert.net.encoder.blocks.8.norm1.weight",
+        "rgb_expert.net.encoder.blocks.8.norm1.bias",
+        "rgb_expert.net.encoder.blocks.8.attn.qkv.weight",
+        "rgb_expert.net.encoder.blocks.8.attn.qkv.bias",
+        "rgb_expert.net.encoder.blocks.8.attn.proj.weight",
+        "rgb_expert.net.encoder.blocks.8.attn.proj.bias",
+        "rgb_expert.net.encoder.blocks.8.ls1.gamma",
+        "rgb_expert.net.encoder.blocks.8.norm2.weight",
+        "rgb_expert.net.encoder.blocks.8.norm2.bias",
+        "rgb_expert.net.encoder.blocks.8.mlp.fc1.weight",
+        "rgb_expert.net.encoder.blocks.8.mlp.fc1.bias",
+        "rgb_expert.net.encoder.blocks.8.mlp.fc2.weight",
+        "rgb_expert.net.encoder.blocks.8.mlp.fc2.bias",
+        "rgb_expert.net.encoder.blocks.8.ls2.gamma",
+        "rgb_expert.net.encoder.blocks.9.norm1.weight",
+        "rgb_expert.net.encoder.blocks.9.norm1.bias",
+        "rgb_expert.net.encoder.blocks.9.attn.qkv.weight",
+        "rgb_expert.net.encoder.blocks.9.attn.qkv.bias",
+        "rgb_expert.net.encoder.blocks.9.attn.proj.weight",
+        "rgb_expert.net.encoder.blocks.9.attn.proj.bias",
+        "rgb_expert.net.encoder.blocks.9.ls1.gamma",
+        "rgb_expert.net.encoder.blocks.9.norm2.weight",
+        "rgb_expert.net.encoder.blocks.9.norm2.bias",
+        "rgb_expert.net.encoder.blocks.9.mlp.fc1.weight",
+        "rgb_expert.net.encoder.blocks.9.mlp.fc1.bias",
+        "rgb_expert.net.encoder.blocks.9.mlp.fc2.weight",
+        "rgb_expert.net.encoder.blocks.9.mlp.fc2.bias",
+        "rgb_expert.net.encoder.blocks.9.ls2.gamma",
+        "rgb_expert.net.encoder.blocks.10.norm1.weight",
+        "rgb_expert.net.encoder.blocks.10.norm1.bias",
+        "rgb_expert.net.encoder.blocks.10.attn.qkv.weight",
+        "rgb_expert.net.encoder.blocks.10.attn.qkv.bias",
+        "rgb_expert.net.encoder.blocks.10.attn.proj.weight",
+        "rgb_expert.net.encoder.blocks.10.attn.proj.bias",
+        "rgb_expert.net.encoder.blocks.10.ls1.gamma",
+        "rgb_expert.net.encoder.blocks.10.norm2.weight",
+        "rgb_expert.net.encoder.blocks.10.norm2.bias",
+        "rgb_expert.net.encoder.blocks.10.mlp.fc1.weight",
+        "rgb_expert.net.encoder.blocks.10.mlp.fc1.bias",
+        "rgb_expert.net.encoder.blocks.10.mlp.fc2.weight",
+        "rgb_expert.net.encoder.blocks.10.mlp.fc2.bias",
+        "rgb_expert.net.encoder.blocks.10.ls2.gamma",
+        "rgb_expert.net.encoder.blocks.11.norm1.weight",
+        "rgb_expert.net.encoder.blocks.11.norm1.bias",
+        "rgb_expert.net.encoder.blocks.11.attn.qkv.weight",
+        "rgb_expert.net.encoder.blocks.11.attn.qkv.bias",
+        "rgb_expert.net.encoder.blocks.11.attn.proj.weight",
+        "rgb_expert.net.encoder.blocks.11.attn.proj.bias",
+        "rgb_expert.net.encoder.blocks.11.ls1.gamma",
+        "rgb_expert.net.encoder.blocks.11.norm2.weight",
+        "rgb_expert.net.encoder.blocks.11.norm2.bias",
+        "rgb_expert.net.encoder.blocks.11.mlp.fc1.weight",
+        "rgb_expert.net.encoder.blocks.11.mlp.fc1.bias",
+        "rgb_expert.net.encoder.blocks.11.mlp.fc2.weight",
+        "rgb_expert.net.encoder.blocks.11.mlp.fc2.bias",
+        "rgb_expert.net.encoder.blocks.11.ls2.gamma",
+        "rgb_expert.net.rgb.0.weight",
+        "rgb_expert.net.rgb.0.bias",
+        "rgb_expert.net.rgb.1.weight",
+        "rgb_expert.net.rgb.1.bias",
+        "rgb_expert.net.decoder.0.weight",
+        "rgb_expert.net.decoder.0.bias",
+        "rgb_expert.net.decoder.1.weight",
+        "rgb_expert.net.decoder.1.bias",
+        "rgb_expert.net.decoder.3.weight",
+        "rgb_expert.net.decoder.3.bias",
+        "dsm_expert.net.transformer.encoder.layer.8.attention_norm.weight",
+        "dsm_expert.net.transformer.encoder.layer.8.attention_norm.bias",
+        "dsm_expert.net.transformer.encoder.layer.8.ffn_norm.weight",
+        "dsm_expert.net.transformer.encoder.layer.8.ffn_norm.bias",
+        "dsm_expert.net.transformer.encoder.layer.8.ffn.fc1.weight",
+        "dsm_expert.net.transformer.encoder.layer.8.ffn.fc1.bias",
+        "dsm_expert.net.transformer.encoder.layer.8.ffn.fc2.weight",
+        "dsm_expert.net.transformer.encoder.layer.8.ffn.fc2.bias",
+        "dsm_expert.net.transformer.encoder.layer.8.attn.query.weight",
+        "dsm_expert.net.transformer.encoder.layer.8.attn.query.bias",
+        "dsm_expert.net.transformer.encoder.layer.8.attn.key.weight",
+        "dsm_expert.net.transformer.encoder.layer.8.attn.key.bias",
+        "dsm_expert.net.transformer.encoder.layer.8.attn.value.weight",
+        "dsm_expert.net.transformer.encoder.layer.8.attn.value.bias",
+        "dsm_expert.net.transformer.encoder.layer.8.attn.out.weight",
+        "dsm_expert.net.transformer.encoder.layer.8.attn.out.bias",
+        "dsm_expert.net.transformer.encoder.layer.9.attention_norm.weight",
+        "dsm_expert.net.transformer.encoder.layer.9.attention_norm.bias",
+        "dsm_expert.net.transformer.encoder.layer.9.ffn_norm.weight",
+        "dsm_expert.net.transformer.encoder.layer.9.ffn_norm.bias",
+        "dsm_expert.net.transformer.encoder.layer.9.ffn.fc1.weight",
+        "dsm_expert.net.transformer.encoder.layer.9.ffn.fc1.bias",
+        "dsm_expert.net.transformer.encoder.layer.9.ffn.fc2.weight",
+        "dsm_expert.net.transformer.encoder.layer.9.ffn.fc2.bias",
+        "dsm_expert.net.transformer.encoder.layer.9.attn.query.weight",
+        "dsm_expert.net.transformer.encoder.layer.9.attn.query.bias",
+        "dsm_expert.net.transformer.encoder.layer.9.attn.key.weight",
+        "dsm_expert.net.transformer.encoder.layer.9.attn.key.bias",
+        "dsm_expert.net.transformer.encoder.layer.9.attn.value.weight",
+        "dsm_expert.net.transformer.encoder.layer.9.attn.value.bias",
+        "dsm_expert.net.transformer.encoder.layer.9.attn.out.weight",
+        "dsm_expert.net.transformer.encoder.layer.9.attn.out.bias",
+        "dsm_expert.net.transformer.encoder.layer.10.attention_norm.weight",
+        "dsm_expert.net.transformer.encoder.layer.10.attention_norm.bias",
+        "dsm_expert.net.transformer.encoder.layer.10.ffn_norm.weight",
+        "dsm_expert.net.transformer.encoder.layer.10.ffn_norm.bias",
+        "dsm_expert.net.transformer.encoder.layer.10.ffn.fc1.weight",
+        "dsm_expert.net.transformer.encoder.layer.10.ffn.fc1.bias",
+        "dsm_expert.net.transformer.encoder.layer.10.ffn.fc2.weight",
+        "dsm_expert.net.transformer.encoder.layer.10.ffn.fc2.bias",
+        "dsm_expert.net.transformer.encoder.layer.10.attn.query.weight",
+        "dsm_expert.net.transformer.encoder.layer.10.attn.query.bias",
+        "dsm_expert.net.transformer.encoder.layer.10.attn.key.weight",
+        "dsm_expert.net.transformer.encoder.layer.10.attn.key.bias",
+        "dsm_expert.net.transformer.encoder.layer.10.attn.value.weight",
+        "dsm_expert.net.transformer.encoder.layer.10.attn.value.bias",
+        "dsm_expert.net.transformer.encoder.layer.10.attn.out.weight",
+        "dsm_expert.net.transformer.encoder.layer.10.attn.out.bias",
+        "dsm_expert.net.transformer.encoder.layer.11.attention_norm.weight",
+        "dsm_expert.net.transformer.encoder.layer.11.attention_norm.bias",
+        "dsm_expert.net.transformer.encoder.layer.11.ffn_norm.weight",
+        "dsm_expert.net.transformer.encoder.layer.11.ffn_norm.bias",
+        "dsm_expert.net.transformer.encoder.layer.11.ffn.fc1.weight",
+        "dsm_expert.net.transformer.encoder.layer.11.ffn.fc1.bias",
+        "dsm_expert.net.transformer.encoder.layer.11.ffn.fc2.weight",
+        "dsm_expert.net.transformer.encoder.layer.11.ffn.fc2.bias",
+        "dsm_expert.net.transformer.encoder.layer.11.attn.query.weight",
+        "dsm_expert.net.transformer.encoder.layer.11.attn.query.bias",
+        "dsm_expert.net.transformer.encoder.layer.11.attn.key.weight",
+        "dsm_expert.net.transformer.encoder.layer.11.attn.key.bias",
+        "dsm_expert.net.transformer.encoder.layer.11.attn.value.weight",
+        "dsm_expert.net.transformer.encoder.layer.11.attn.value.bias",
+        "dsm_expert.net.transformer.encoder.layer.11.attn.out.weight",
+        "dsm_expert.net.transformer.encoder.layer.11.attn.out.bias",
+        "dsm_expert.net.decoder.conv_more.0.weight",
+        "dsm_expert.net.decoder.conv_more.1.weight",
+        "dsm_expert.net.decoder.conv_more.1.bias",
+        "dsm_expert.net.decoder.blocks.0.conv1.0.weight",
+        "dsm_expert.net.decoder.blocks.0.conv1.1.weight",
+        "dsm_expert.net.decoder.blocks.0.conv1.1.bias",
+        "dsm_expert.net.decoder.blocks.0.conv2.0.weight",
+        "dsm_expert.net.decoder.blocks.0.conv2.1.weight",
+        "dsm_expert.net.decoder.blocks.0.conv2.1.bias",
+        "dsm_expert.net.decoder.blocks.1.conv1.0.weight",
+        "dsm_expert.net.decoder.blocks.1.conv1.1.weight",
+        "dsm_expert.net.decoder.blocks.1.conv1.1.bias",
+        "dsm_expert.net.decoder.blocks.1.conv2.0.weight",
+        "dsm_expert.net.decoder.blocks.1.conv2.1.weight",
+        "dsm_expert.net.decoder.blocks.1.conv2.1.bias",
+        "dsm_expert.net.decoder.blocks.2.conv1.0.weight",
+        "dsm_expert.net.decoder.blocks.2.conv1.1.weight",
+        "dsm_expert.net.decoder.blocks.2.conv1.1.bias",
+        "dsm_expert.net.decoder.blocks.2.conv2.0.weight",
+        "dsm_expert.net.decoder.blocks.2.conv2.1.weight",
+        "dsm_expert.net.decoder.blocks.2.conv2.1.bias",
+        "dsm_expert.net.decoder.blocks.3.conv1.0.weight",
+        "dsm_expert.net.decoder.blocks.3.conv1.1.weight",
+        "dsm_expert.net.decoder.blocks.3.conv1.1.bias",
+        "dsm_expert.net.decoder.blocks.3.conv2.0.weight",
+        "dsm_expert.net.decoder.blocks.3.conv2.1.weight",
+        "dsm_expert.net.decoder.blocks.3.conv2.1.bias",
+        "dsm_expert.net.segmentation_head.0.weight",
+        "dsm_expert.net.segmentation_head.0.bias",
+        "project_rgb.weight",
+        "project_rgb.bias",
+        "project_dsm.weight",
+        "project_dsm.bias",
+        "fusion.0.weight",
+        "fusion.0.bias",
+        "fusion.1.weight",
+        "fusion.1.bias",
+        "fusion.3.weight",
+        "fusion.3.bias"
+      ],
+      "arm": "J0",
+      "initial_fusion_state_sha256": "167a73548056fa90f0d29263c20d26bdc99f1669e0b003936ea5089718d387e2"
+    },
+    "B0": {
+      "total_parameters": 128814594,
+      "trainable_parameters": 609670,
+      "trainable_names": [
+        "project_rgb.weight",
+        "project_rgb.bias",
+        "project_dsm.weight",
+        "project_dsm.bias",
+        "fusion.0.weight",
+        "fusion.0.bias",
+        "fusion.1.weight",
+        "fusion.1.bias",
+        "fusion.3.weight",
+        "fusion.3.bias"
+      ],
+      "arm": "B0",
+      "initial_fusion_state_sha256": "167a73548056fa90f0d29263c20d26bdc99f1669e0b003936ea5089718d387e2"
+    },
+    "CAP": {
+      "total_parameters": 131460610,
+      "trainable_parameters": 3255686,
+      "trainable_names": [
+        "project_rgb.weight",
+        "project_rgb.bias",
+        "project_dsm.weight",
+        "project_dsm.bias",
+        "fusion.0.weight",
+        "fusion.0.bias",
+        "fusion.1.weight",
+        "fusion.1.bias",
+        "fusion.3.weight",
+        "fusion.3.bias",
+        "interactions.0.mix.weight",
+        "interactions.0.mix.bias",
+        "interactions.0.condition.weight",
+        "interactions.0.condition.bias",
+        "interactions.0.out.weight",
+        "interactions.0.out.bias",
+        "interactions.0.gate.weight",
+        "interactions.0.gate.bias",
+        "interactions.1.mix.weight",
+        "interactions.1.mix.bias",
+        "interactions.1.condition.weight",
+        "interactions.1.condition.bias",
+        "interactions.1.out.weight",
+        "interactions.1.out.bias",
+        "interactions.1.gate.weight",
+        "interactions.1.gate.bias",
+        "interactions.2.mix.weight",
+        "interactions.2.mix.bias",
+        "interactions.2.condition.weight",
+        "interactions.2.condition.bias",
+        "interactions.2.out.weight",
+        "interactions.2.out.bias",
+        "interactions.2.gate.weight",
+        "interactions.2.gate.bias",
+        "interactions.3.mix.weight",
+        "interactions.3.mix.bias",
+        "interactions.3.condition.weight",
+        "interactions.3.condition.bias",
+        "interactions.3.out.weight",
+        "interactions.3.out.bias",
+        "interactions.3.gate.weight",
+        "interactions.3.gate.bias"
+      ],
+      "arm": "CAP",
+      "initial_fusion_state_sha256": "167a73548056fa90f0d29263c20d26bdc99f1669e0b003936ea5089718d387e2"
+    },
+    "X": {
+      "total_parameters": 131460610,
+      "trainable_parameters": 3255686,
+      "trainable_names": [
+        "project_rgb.weight",
+        "project_rgb.bias",
+        "project_dsm.weight",
+        "project_dsm.bias",
+        "fusion.0.weight",
+        "fusion.0.bias",
+        "fusion.1.weight",
+        "fusion.1.bias",
+        "fusion.3.weight",
+        "fusion.3.bias",
+        "interactions.0.mix.weight",
+        "interactions.0.mix.bias",
+        "interactions.0.condition.weight",
+        "interactions.0.condition.bias",
+        "interactions.0.out.weight",
+        "interactions.0.out.bias",
+        "interactions.0.gate.weight",
+        "interactions.0.gate.bias",
+        "interactions.1.mix.weight",
+        "interactions.1.mix.bias",
+        "interactions.1.condition.weight",
+        "interactions.1.condition.bias",
+        "interactions.1.out.weight",
+        "interactions.1.out.bias",
+        "interactions.1.gate.weight",
+        "interactions.1.gate.bias",
+        "interactions.2.mix.weight",
+        "interactions.2.mix.bias",
+        "interactions.2.condition.weight",
+        "interactions.2.condition.bias",
+        "interactions.2.out.weight",
+        "interactions.2.out.bias",
+        "interactions.2.gate.weight",
+        "interactions.2.gate.bias",
+        "interactions.3.mix.weight",
+        "interactions.3.mix.bias",
+        "interactions.3.condition.weight",
+        "interactions.3.condition.bias",
+        "interactions.3.out.weight",
+        "interactions.3.out.bias",
+        "interactions.3.gate.weight",
+        "interactions.3.gate.bias"
+      ],
+      "arm": "X",
+      "initial_fusion_state_sha256": "167a73548056fa90f0d29263c20d26bdc99f1669e0b003936ea5089718d387e2"
+    },
+    "XS": {
+      "total_parameters": 131460610,
+      "trainable_parameters": 3255686,
+      "trainable_names": [
+        "project_rgb.weight",
+        "project_rgb.bias",
+        "project_dsm.weight",
+        "project_dsm.bias",
+        "fusion.0.weight",
+        "fusion.0.bias",
+        "fusion.1.weight",
+        "fusion.1.bias",
+        "fusion.3.weight",
+        "fusion.3.bias",
+        "interactions.0.mix.weight",
+        "interactions.0.mix.bias",
+        "interactions.0.condition.weight",
+        "interactions.0.condition.bias",
+        "interactions.0.out.weight",
+        "interactions.0.out.bias",
+        "interactions.0.gate.weight",
+        "interactions.0.gate.bias",
+        "interactions.1.mix.weight",
+        "interactions.1.mix.bias",
+        "interactions.1.condition.weight",
+        "interactions.1.condition.bias",
+        "interactions.1.out.weight",
+        "interactions.1.out.bias",
+        "interactions.1.gate.weight",
+        "interactions.1.gate.bias",
+        "interactions.2.mix.weight",
+        "interactions.2.mix.bias",
+        "interactions.2.condition.weight",
+        "interactions.2.condition.bias",
+        "interactions.2.out.weight",
+        "interactions.2.out.bias",
+        "interactions.2.gate.weight",
+        "interactions.2.gate.bias",
+        "interactions.3.mix.weight",
+        "interactions.3.mix.bias",
+        "interactions.3.condition.weight",
+        "interactions.3.condition.bias",
+        "interactions.3.out.weight",
+        "interactions.3.out.bias",
+        "interactions.3.gate.weight",
+        "interactions.3.gate.bias"
+      ],
+      "arm": "XS",
+      "initial_fusion_state_sha256": "167a73548056fa90f0d29263c20d26bdc99f1669e0b003936ea5089718d387e2"
+    },
+    "XF": {
+      "total_parameters": 131460610,
+      "trainable_parameters": 3255686,
+      "trainable_names": [
+        "project_rgb.weight",
+        "project_rgb.bias",
+        "project_dsm.weight",
+        "project_dsm.bias",
+        "fusion.0.weight",
+        "fusion.0.bias",
+        "fusion.1.weight",
+        "fusion.1.bias",
+        "fusion.3.weight",
+        "fusion.3.bias",
+        "interactions.0.mix.weight",
+        "interactions.0.mix.bias",
+        "interactions.0.condition.weight",
+        "interactions.0.condition.bias",
+        "interactions.0.out.weight",
+        "interactions.0.out.bias",
+        "interactions.0.gate.weight",
+        "interactions.0.gate.bias",
+        "interactions.1.mix.weight",
+        "interactions.1.mix.bias",
+        "interactions.1.condition.weight",
+        "interactions.1.condition.bias",
+        "interactions.1.out.weight",
+        "interactions.1.out.bias",
+        "interactions.1.gate.weight",
+        "interactions.1.gate.bias",
+        "interactions.2.mix.weight",
+        "interactions.2.mix.bias",
+        "interactions.2.condition.weight",
+        "interactions.2.condition.bias",
+        "interactions.2.out.weight",
+        "interactions.2.out.bias",
+        "interactions.2.gate.weight",
+        "interactions.2.gate.bias",
+        "interactions.3.mix.weight",
+        "interactions.3.mix.bias",
+        "interactions.3.condition.weight",
+        "interactions.3.condition.bias",
+        "interactions.3.out.weight",
+        "interactions.3.out.bias",
+        "interactions.3.gate.weight",
+        "interactions.3.gate.bias"
+      ],
+      "arm": "XF",
+      "initial_fusion_state_sha256": "167a73548056fa90f0d29263c20d26bdc99f1669e0b003936ea5089718d387e2"
+    },
+    "XSF": {
+      "total_parameters": 131460610,
+      "trainable_parameters": 3255686,
+      "trainable_names": [
+        "project_rgb.weight",
+        "project_rgb.bias",
+        "project_dsm.weight",
+        "project_dsm.bias",
+        "fusion.0.weight",
+        "fusion.0.bias",
+        "fusion.1.weight",
+        "fusion.1.bias",
+        "fusion.3.weight",
+        "fusion.3.bias",
+        "interactions.0.mix.weight",
+        "interactions.0.mix.bias",
+        "interactions.0.condition.weight",
+        "interactions.0.condition.bias",
+        "interactions.0.out.weight",
+        "interactions.0.out.bias",
+        "interactions.0.gate.weight",
+        "interactions.0.gate.bias",
+        "interactions.1.mix.weight",
+        "interactions.1.mix.bias",
+        "interactions.1.condition.weight",
+        "interactions.1.condition.bias",
+        "interactions.1.out.weight",
+        "interactions.1.out.bias",
+        "interactions.1.gate.weight",
+        "interactions.1.gate.bias",
+        "interactions.2.mix.weight",
+        "interactions.2.mix.bias",
+        "interactions.2.condition.weight",
+        "interactions.2.condition.bias",
+        "interactions.2.out.weight",
+        "interactions.2.out.bias",
+        "interactions.2.gate.weight",
+        "interactions.2.gate.bias",
+        "interactions.3.mix.weight",
+        "interactions.3.mix.bias",
+        "interactions.3.condition.weight",
+        "interactions.3.condition.bias",
+        "interactions.3.out.weight",
+        "interactions.3.out.bias",
+        "interactions.3.gate.weight",
+        "interactions.3.gate.bias"
+      ],
+      "arm": "XSF",
+      "initial_fusion_state_sha256": "167a73548056fa90f0d29263c20d26bdc99f1669e0b003936ea5089718d387e2"
+    },
+    "XSF-shS": {
+      "total_parameters": 131460610,
+      "trainable_parameters": 3255686,
+      "trainable_names": [
+        "project_rgb.weight",
+        "project_rgb.bias",
+        "project_dsm.weight",
+        "project_dsm.bias",
+        "fusion.0.weight",
+        "fusion.0.bias",
+        "fusion.1.weight",
+        "fusion.1.bias",
+        "fusion.3.weight",
+        "fusion.3.bias",
+        "interactions.0.mix.weight",
+        "interactions.0.mix.bias",
+        "interactions.0.condition.weight",
+        "interactions.0.condition.bias",
+        "interactions.0.out.weight",
+        "interactions.0.out.bias",
+        "interactions.0.gate.weight",
+        "interactions.0.gate.bias",
+        "interactions.1.mix.weight",
+        "interactions.1.mix.bias",
+        "interactions.1.condition.weight",
+        "interactions.1.condition.bias",
+        "interactions.1.out.weight",
+        "interactions.1.out.bias",
+        "interactions.1.gate.weight",
+        "interactions.1.gate.bias",
+        "interactions.2.mix.weight",
+        "interactions.2.mix.bias",
+        "interactions.2.condition.weight",
+        "interactions.2.condition.bias",
+        "interactions.2.out.weight",
+        "interactions.2.out.bias",
+        "interactions.2.gate.weight",
+        "interactions.2.gate.bias",
+        "interactions.3.mix.weight",
+        "interactions.3.mix.bias",
+        "interactions.3.condition.weight",
+        "interactions.3.condition.bias",
+        "interactions.3.out.weight",
+        "interactions.3.out.bias",
+        "interactions.3.gate.weight",
+        "interactions.3.gate.bias"
+      ],
+      "arm": "XSF-shS",
+      "initial_fusion_state_sha256": "167a73548056fa90f0d29263c20d26bdc99f1669e0b003936ea5089718d387e2"
+    },
+    "XSF-shF": {
+      "total_parameters": 131460610,
+      "trainable_parameters": 3255686,
+      "trainable_names": [
+        "project_rgb.weight",
+        "project_rgb.bias",
+        "project_dsm.weight",
+        "project_dsm.bias",
+        "fusion.0.weight",
+        "fusion.0.bias",
+        "fusion.1.weight",
+        "fusion.1.bias",
+        "fusion.3.weight",
+        "fusion.3.bias",
+        "interactions.0.mix.weight",
+        "interactions.0.mix.bias",
+        "interactions.0.condition.weight",
+        "interactions.0.condition.bias",
+        "interactions.0.out.weight",
+        "interactions.0.out.bias",
+        "interactions.0.gate.weight",
+        "interactions.0.gate.bias",
+        "interactions.1.mix.weight",
+        "interactions.1.mix.bias",
+        "interactions.1.condition.weight",
+        "interactions.1.condition.bias",
+        "interactions.1.out.weight",
+        "interactions.1.out.bias",
+        "interactions.1.gate.weight",
+        "interactions.1.gate.bias",
+        "interactions.2.mix.weight",
+        "interactions.2.mix.bias",
+        "interactions.2.condition.weight",
+        "interactions.2.condition.bias",
+        "interactions.2.out.weight",
+        "interactions.2.out.bias",
+        "interactions.2.gate.weight",
+        "interactions.2.gate.bias",
+        "interactions.3.mix.weight",
+        "interactions.3.mix.bias",
+        "interactions.3.condition.weight",
+        "interactions.3.condition.bias",
+        "interactions.3.out.weight",
+        "interactions.3.out.bias",
+        "interactions.3.gate.weight",
+        "interactions.3.gate.bias"
+      ],
+      "arm": "XSF-shF",
+      "initial_fusion_state_sha256": "167a73548056fa90f0d29263c20d26bdc99f1669e0b003936ea5089718d387e2"
+    }
+  },
+  "observed_at": "2026-10-03T04:04:54.297809+08:00",
+  "test6_loaded": false,
+  "screen": {
+    "scores_pp": {
+      "J0": {
+        "C": 87.10100257460473,
+        "QR": 86.455685303644,
+        "QD": 86.60572728710724,
+        "QJ": 84.81669345446872,
+        "S_available": 86.24477715495618,
+        "LR": 81.42371884565738,
+        "LD": 87.05730160770521
+      },
+      "B0": {
+        "C": 87.12471211152204,
+        "QR": 86.13208579429043,
+        "QD": 86.8103682662988,
+        "QJ": 84.27526175360968,
+        "S_available": 86.08560698143025,
+        "LR": 81.41105000517638,
+        "LD": 87.03078800736164
+      },
+      "CAP": {
+        "C": 87.11251852665845,
+        "QR": 86.20220718447015,
+        "QD": 86.61963248937953,
+        "QJ": 84.16964466127956,
+        "S_available": 86.02600071544693,
+        "LR": 81.42243297142967,
+        "LD": 87.04972553860296
+      },
+      "X": {
+        "C": 87.16705468962512,
+        "QR": 86.21641323548499,
+        "QD": 86.6245878359523,
+        "QJ": 84.14300409313876,
+        "S_available": 86.03776496355029,
+        "LR": 81.43766947514764,
+        "LD": 87.06457251404531
+      },
+      "XS": {
+        "C": 87.18318418635279,
+        "QR": 86.23841364249395,
+        "QD": 86.64371603712215,
+        "QJ": 84.13706123066356,
+        "S_available": 86.05059377415812,
+        "LR": 81.44641660132713,
+        "LD": 87.07536484517935
+      },
+      "XF": {
+        "C": 87.28230503625551,
+        "QR": 86.30859325355473,
+        "QD": 86.80679467093051,
+        "QJ": 84.32740326125753,
+        "S_available": 86.18127405549957,
+        "LR": 81.52822981500725,
+        "LD": 87.16708376919043
+      },
+      "XSF": {
+        "C": 87.29697395056576,
+        "QR": 86.28785258595073,
+        "QD": 86.93127758357086,
+        "QJ": 84.4536395060137,
+        "S_available": 86.24243590652526,
+        "LR": 81.53453548471323,
+        "LD": 87.16600698763625
+      },
+      "XSF-shS": {
+        "C": 87.27119279175787,
+        "QR": 86.2781970363383,
+        "QD": 86.7647641278137,
+        "QJ": 84.29695656909533,
+        "S_available": 86.1527776312513,
+        "LR": 81.53828139185678,
+        "LD": 87.19786433388997
+      },
+      "XSF-shF": {
+        "C": 87.21619467235821,
+        "QR": 86.23515958713526,
+        "QD": 86.72309524780405,
+        "QJ": 84.26728652855033,
+        "S_available": 86.11043400896196,
+        "LR": 81.49649348690046,
+        "LD": 87.15385273577597
+      }
+    },
+    "candidates": {
+      "XSF": {
+        "comparisons": {
+          "B0": {
+            "passed": false,
+            "deltas_pp": {
+              "S_available": 0.156828925095013,
+              "C": 0.1722618390437134,
+              "QR": 0.15576679166029805,
+              "QD": 0.12090931727206566,
+              "QJ": 0.17837775240401754
+            },
+            "worst_tile_condition_delta_pp": -0.026397621741869326
+          },
+          "CAP": {
+            "passed": true,
+            "deltas_pp": {
+              "S_available": 0.21643519107833242,
+              "C": 0.18445542390730907,
+              "QR": 0.08564540148057631,
+              "QD": 0.31164509419133424,
+              "QJ": 0.2839948447341385
+            },
+            "worst_tile_condition_delta_pp": -0.2616431959317378
+          },
+          "X": {
+            "passed": true,
+            "deltas_pp": {
+              "S_available": 0.20467094297497113,
+              "C": 0.129919260940639,
+              "QR": 0.07143935046573802,
+              "QD": 0.30668974761856305,
+              "QJ": 0.31063541287494445
+            },
+            "worst_tile_condition_delta_pp": -0.2182071440920863
+          }
+        },
+        "protections": {
+          "passed": true,
+          "missing_vs_fixed_expert_pp": {
+            "rgb_missing": 0.0,
+            "dsm_missing": 0.0
+          },
+          "local_vs_B0_pp": {
+            "LR": 0.12348547953684867,
+            "LD": 0.13521898027462007
+          },
+          "worst_local_tile_delta_pp": -0.022836298049644377,
+          "logit_identity_own": true
+        },
+        "vs_J0_pp": -0.002341248430923315,
+        "main_gate": false,
+        "overall_leading_gate": false
+      },
+      "XS": {
+        "comparisons": {
+          "B0": {
+            "passed": false,
+            "deltas_pp": {
+              "S_available": -0.03501320727212942,
+              "C": 0.058472074830746124,
+              "QR": 0.10632784820352015,
+              "QD": -0.16665222917664835,
+              "QJ": -0.1382005229461214
+            },
+            "worst_tile_condition_delta_pp": -0.43056452941477863
+          },
+          "CAP": {
+            "passed": false,
+            "deltas_pp": {
+              "S_available": 0.024593058711189997,
+              "C": 0.0706656596943418,
+              "QR": 0.036206458023798405,
+              "QD": 0.024083547742620226,
+              "QJ": -0.03258343061600044
+            },
+            "worst_tile_condition_delta_pp": -0.16403955647514845
+          },
+          "X": {
+            "passed": false,
+            "deltas_pp": {
+              "S_available": 0.0128288106078287,
+              "C": 0.01612949672767172,
+              "QR": 0.02200040700896011,
+              "QD": 0.019128201169849035,
+              "QJ": -0.005942862475194488
+            },
+            "worst_tile_condition_delta_pp": -0.022010384851911535
+          }
+        },
+        "protections": {
+          "passed": true,
+          "missing_vs_fixed_expert_pp": {
+            "rgb_missing": 0.0,
+            "dsm_missing": 0.0
+          },
+          "local_vs_B0_pp": {
+            "LR": 0.03536659615074692,
+            "LD": 0.04457683781771493
+          },
+          "worst_local_tile_delta_pp": -0.038537908453106784,
+          "logit_identity_own": true
+        },
+        "vs_J0_pp": -0.19418338079806574,
+        "main_gate": false,
+        "overall_leading_gate": false
+      },
+      "XF": {
+        "comparisons": {
+          "B0": {
+            "passed": false,
+            "deltas_pp": {
+              "S_available": 0.09566707406932551,
+              "C": 0.1575929247334642,
+              "QR": 0.17650745926430034,
+              "QD": -0.00357359536828028,
+              "QJ": 0.0521415076478462
+            },
+            "worst_tile_condition_delta_pp": -0.30360633494846967
+          },
+          "CAP": {
+            "passed": false,
+            "deltas_pp": {
+              "S_available": 0.15527334005264493,
+              "C": 0.16978650959705988,
+              "QR": 0.1063860690845786,
+              "QD": 0.1871621815509883,
+              "QJ": 0.15775859997796715
+            },
+            "worst_tile_condition_delta_pp": -0.1414391160260875
+          },
+          "X": {
+            "passed": false,
+            "deltas_pp": {
+              "S_available": 0.14350909194928363,
+              "C": 0.1152503466303898,
+              "QR": 0.0921800180697403,
+              "QD": 0.1822068349782171,
+              "QJ": 0.1843991681187731
+            },
+            "worst_tile_condition_delta_pp": -0.06043967162568942
+          }
+        },
+        "protections": {
+          "passed": true,
+          "missing_vs_fixed_expert_pp": {
+            "rgb_missing": 0.0,
+            "dsm_missing": 0.0
+          },
+          "local_vs_B0_pp": {
+            "LR": 0.11717980983087273,
+            "LD": 0.13629576182879552
+          },
+          "worst_local_tile_delta_pp": -0.022881650642636586,
+          "logit_identity_own": true
+        },
+        "vs_J0_pp": -0.06350309945661081,
+        "main_gate": false,
+        "overall_leading_gate": false
+      }
+    },
+    "frequency": {
+      "deltas_pp": [
+        0.19184213236714243,
+        0.14350909194928363,
+        0.13200189756329905
+      ],
+      "passed": true
+    },
+    "semantic": {
+      "deltas_pp": [
+        0.0611618510256875,
+        0.0128288106078287,
+        0.08965827527396186
+      ],
+      "passed": false
+    },
+    "factor_interaction_pp": 0.0483330404178588,
+    "unique_information_retention": {
+      "delta_vs_X_pp": {
+        "only_rgb_correct": 0.11898023231455568,
+        "only_dsm_correct": -0.9193067928362879
+      },
+      "claim_gate": false,
+      "aggregation": "sum counts over10 primary stress conditions, descriptive repeated pixels"
+    },
+    "primary_XSF_eligible": false,
+    "primary_full_mechanism_eligible": false,
+    "new_contribution_established": false,
+    "statistical_significance_test": false,
+    "test6_loaded": false,
+    "automatic_followup": false
+  },
+  "fixed_reference_scores_pp": {
+    "fixed_rgb": {
+      "C": 86.39793022992122,
+      "QR": 84.99988257940812,
+      "QD": 86.39793022992122,
+      "QJ": 83.78279384218284,
+      "S_available": 85.39463422035836,
+      "missing": {
+        "rgb_missing": 0.0,
+        "dsm_missing": 86.39793022992122
+      }
+    },
+    "fixed_dsm": {
+      "C": 65.88572355629186,
+      "QR": 65.88572355629186,
+      "QD": 43.94013757201824,
+      "QJ": 33.63648905481237,
+      "S_available": 52.33701843485359,
+      "missing": {
+        "rgb_missing": 65.88572355629186,
+        "dsm_missing": 4.194740128726572
+      }
+    },
+    "fixed_probability_average": {
+      "C": 84.91156506912228,
+      "QR": 84.07945619696521,
+      "QD": 80.21988903855136,
+      "QJ": 74.53818355923431,
+      "S_available": 80.93727346596829,
+      "missing": {
+        "rgb_missing": 65.88572355629186,
+        "dsm_missing": 86.39793022992122
+      }
+    },
+    "fixed_availability_switch": {
+      "C": 86.39793022992122,
+      "QR": 84.99988257940812,
+      "QD": 86.39793022992122,
+      "QJ": 83.78279384218284,
+      "S_available": 85.39463422035836,
+      "missing": {
+        "rgb_missing": 65.88572355629186,
+        "dsm_missing": 86.39793022992122
+      }
+    }
+  },
+  "fixed8000_scores_pp": {
+    "J0": {
+      "C": 87.10100257460473,
+      "QR": 86.455685303644,
+      "QD": 86.60572728710724,
+      "QJ": 84.81669345446872,
+      "S_available": 86.24477715495618
+    },
+    "B0": {
+      "C": 87.1077378230152,
+      "QR": 86.10128498996211,
+      "QD": 86.67501200349534,
+      "QJ": 84.13421090758166,
+      "S_available": 86.00456143101357
+    },
+    "CAP": {
+      "C": 87.11251852665845,
+      "QR": 86.20220718447015,
+      "QD": 86.61963248937953,
+      "QJ": 84.16964466127956,
+      "S_available": 86.02600071544693
+    },
+    "X": {
+      "C": 87.16705468962512,
+      "QR": 86.21641323548499,
+      "QD": 86.6245878359523,
+      "QJ": 84.14300409313876,
+      "S_available": 86.03776496355029
+    },
+    "XS": {
+      "C": 87.18318418635279,
+      "QR": 86.23841364249395,
+      "QD": 86.64371603712215,
+      "QJ": 84.13706123066356,
+      "S_available": 86.05059377415812
+    },
+    "XF": {
+      "C": 87.28230503625551,
+      "QR": 86.30859325355473,
+      "QD": 86.80679467093051,
+      "QJ": 84.32740326125753,
+      "S_available": 86.18127405549957
+    },
+    "XSF": {
+      "C": 87.2813259206042,
+      "QR": 86.3045086897584,
+      "QD": 86.80177185301153,
+      "QJ": 84.34821567598989,
+      "S_available": 86.183955534841
+    },
+    "XSF-shS": {
+      "C": 87.27119279175787,
+      "QR": 86.2781970363383,
+      "QD": 86.7647641278137,
+      "QJ": 84.29695656909533,
+      "S_available": 86.1527776312513
+    },
+    "XSF-shF": {
+      "C": 87.21619467235821,
+      "QR": 86.23515958713526,
+      "QD": 86.72309524780405,
+      "QJ": 84.26728652855033,
+      "S_available": 86.11043400896196
+    }
+  },
+  "fixed8000_factor_deltas_pp": {
+    "XSF-XS": 0.13336176068288808,
+    "XF-X": 0.14350909194928363,
+    "XSF-XF": 0.002681479341433146,
+    "XS-X": 0.0128288106078287,
+    "XSF-shS": 0.031177903589707512,
+    "XSF-shF": 0.0735215258790447
+  }
+}

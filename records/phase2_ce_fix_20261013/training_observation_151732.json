@@ -1,0 +1,41 @@
+{
+  "source": "user terminal status and controller log paste",
+  "query_observed": "2026-10-13T15:17:32.976199+08:00",
+  "last_observed": "2026-10-13T15:17:31.773714+08:00",
+  "queue": "TRAINING_MATCHED_EXPERTS",
+  "controller_live": true,
+  "execution_commit": "e5641e073bf4421e346f589199c291a6e94db8b2",
+  "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase2_matched_20261013T151120_1310582",
+  "completed_workers": [
+    "prepare",
+    "smoke0",
+    "smoke1",
+    "legacy_counts"
+  ],
+  "A_RGB": {
+    "pid": 1312176,
+    "gpu": 0,
+    "live": true,
+    "step": 2180,
+    "loss": 0.20669753849506378,
+    "elapsed_seconds": 223.91111761331558,
+    "remaining_train_hours": 0.39429811995616987,
+    "data_wait_seconds": 0.0650470182299614,
+    "observed_at": "2026-10-13T15:17:32.630547+08:00"
+  },
+  "A_DSM": {
+    "pid": 1312177,
+    "gpu": 1,
+    "live": true,
+    "step": 1740,
+    "loss": 0.4762486219406128,
+    "elapsed_seconds": 222.29047931730747,
+    "remaining_train_hours": 0.5060444181137939,
+    "data_wait_seconds": 0.06094323843717575,
+    "observed_at": "2026-10-13T15:17:31.040357+08:00"
+  },
+  "gpu_peak_allocated_bytes_each": 2612352000,
+  "gpu_reserved_bytes_each": 3107979264,
+  "validation_results_received": false,
+  "smoke_original_numeric_receipts_received": false
+}

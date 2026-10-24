@@ -1,0 +1,269 @@
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ conda activate remote_sensing
+
+ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+FIX=752d3835a18a15a04d83b1dcc1841bff98bf0b07
+SCRIPT="$ROOT/records/bootstrap_phase3_engineering_restart_${FIX}.py"
+
+curl -fL --retry 2 \
+  "https://raw.githubusercontent.com/66322/remote_sensing_frequency/$FIX/scripts/bootstrap_phase3_engineering_restart.py" \
+  -o "$SCRIPT" &&
+{
+  RESTART_LOG="$ROOT/records/phase3_engineering_restart_$(date +%Y%m%dT%H%M%S).log"
+  nohup python -u -B "$SCRIPT" --commit "$FIX" --apply \
+    </dev/null >"$RESTART_LOG" 2>&1 &
+  echo "$!" > "${RESTART_LOG%.log}.pid"
+  echo "$RESTART_LOG"
+  sleep 10
+  tail -n 100 "$RESTART_LOG"
+}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 20679  100 20679    0     0  19095      0  0:00:01  0:00:01 --:--:-- 19129
+[1] 2738345
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/phase3_engineering_restart_20261024T092804.log
+CHECK_START /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/admission_checks_2738345.log
+CHECK_PASSED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/admission_checks_2738345.log
+ZERO_UPDATE_FAILURE_AND_CPU_RECEIPT_VERIFIED
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ watch -n 1 nvidia-smi
+[1]+  Exit 1                  nohup python -u -B "$SCRIPT" --commit "$FIX" --apply < /dev/null > "$RESTART_LOG" 2>&1
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ tail -n 100 "$RESTART_LOG"
+
+python -B "$ROOT/records/phase3_engineering_restart_package_${FIX}/scripts/status_phase3_engineering_restart.py" --tail 40
+CHECK_START /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/admission_checks_2738345.log
+CHECK_PASSED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/admission_checks_2738345.log
+ZERO_UPDATE_FAILURE_AND_CPU_RECEIPT_VERIFIED
+CHECK_START /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/engineering_runtime/cpu_model.log
+CHECK_PASSED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/engineering_runtime/cpu_model.log
+CHECK_START /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/target_checks.log
+CHECK_PASSED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/target_checks.log
+CHECK_START /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/test_phase3_combined_plan.py.log
+CHECK_PASSED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/test_phase3_combined_plan.py.log
+CHECK_START /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/test_phase3_j_heads.py.log
+test_phase3_j_heads (unittest.loader._FailedTest) ... ERROR
+
+======================================================================
+ERROR: test_phase3_j_heads (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_phase3_j_heads
+Traceback (most recent call last):
+  File "/home/jovyan/miniconda3/envs/remote_sensing/lib/python3.9/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/home/jovyan/miniconda3/envs/remote_sensing/lib/python3.9/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/tests/test_phase3_j_heads.py", line 7, in <module>
+    from model.phase3_j_heads import FrozenExpertHead
+ModuleNotFoundError: No module named 'model.phase3_j_heads'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)
+
+ENGINEERING_RESTART_STOPPED_NO_RETRY /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/phase3_engineering_restart_20261024_once.json
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/bootstrap_phase3_engineering_restart_752d3835a18a15a04d83b1dcc1841bff98bf0b07.py", line 333, in <module>
+    main()
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/bootstrap_phase3_engineering_restart_752d3835a18a15a04d83b1dcc1841bff98bf0b07.py", line 270, in main
+    checked_run([sys.executable, '-B', '-m', 'unittest', 'discover', '-s', str(queue / 'code/tests'),
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/bootstrap_phase3_engineering_restart_752d3835a18a15a04d83b1dcc1841bff98bf0b07.py", line 99, in checked_run
+    raise RuntimeError('target check failed; see ' + str(log))
+RuntimeError: target check failed; see /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/test_phase3_j_heads.py.log
+{
+  "bootstrap_receipt": {
+    "status": "FAILED_NO_AUTOMATIC_RETRY",
+    "revision_commit": "752d3835a18a15a04d83b1dcc1841bff98bf0b07",
+    "old_m2": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330",
+    "old_combined": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225",
+    "m2_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345",
+    "combined_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345",
+    "automatic_retry": false,
+    "authorization": "user: 继续，把实验启动; 2026-10-24",
+    "observed_at": "2026-10-24T09:28:23.086250+08:00",
+    "error": "target check failed; see /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/test_phase3_j_heads.py.log",
+    "traceback": "Traceback (most recent call last):\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/bootstrap_phase3_engineering_restart_752d3835a18a15a04d83b1dcc1841bff98bf0b07.py\", line 270, in main\n    checked_run([sys.executable, '-B', '-m', 'unittest', 'discover', '-s', str(queue / 'code/tests'),\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/bootstrap_phase3_engineering_restart_752d3835a18a15a04d83b1dcc1841bff98bf0b07.py\", line 99, in checked_run\n    raise RuntimeError('target check failed; see ' + str(log))\nRuntimeError: target check failed; see /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/test_phase3_j_heads.py.log\n"
+  },
+  "observed_at": "2026-10-24T09:30:32.199413+08:00",
+  "m2_directory": {
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345",
+    "queue_status.json": {
+      "status": "FAILED_NO_RETRY",
+      "error": "target check failed; see /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/test_phase3_j_heads.py.log",
+      "no_launch_release": true,
+      "observed_at": "2026-10-24T09:28:23.084649+08:00"
+    },
+    "jobs_with_progress": 0,
+    "latest_training_progress": [],
+    "job_failure_count": 0,
+    "first_job_failures": []
+  },
+  "combined_directory": {
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345",
+    "queue_status.json": {
+      "status": "STOPPED_NO_AUTOMATIC_RETRY",
+      "error": "target check failed; see /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/test_phase3_j_heads.py.log",
+      "no_launch_release": true,
+      "observed_at": "2026-10-24T09:28:23.085409+08:00"
+    }
+  }
+}
+Sat Oct 24 09:30:32 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.48.01              Driver Version: 590.48.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:0F:00.0 Off |                    0 |
+| N/A   29C    P0             70W /  700W |       0MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA H100 80GB HBM3          On  |   00000000:34:00.0 Off |                    0 |
+| N/A   27C    P0             72W /  700W |       0MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ conda activate remote_sensing
+
+ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+FIX=25b124a0cf69ececb6841b55ed90b19fae5b9a08
+SCRIPT="$ROOT/records/repair_phase3_model_namespace_${FIX}.py"
+
+curl -fL --retry 2 \
+  "https://raw.githubusercontent.com/66322/remote_sensing_frequency/$FIX/scripts/repair_phase3_model_namespace.py" \
+  -o "$SCRIPT" &&
+{
+  NAMESPACE_LOG="$ROOT/records/phase3_model_namespace_$(date +%Y%m%dT%H%M%S).log"
+  nohup python -u -B "$SCRIPT" --commit "$FIX" --apply \
+    </dev/null >"$NAMESPACE_LOG" 2>&1 &
+  echo "$!" > "${NAMESPACE_LOG%.log}.pid"
+  echo "$NAMESPACE_LOG"
+  sleep 10
+  tail -n 100 "$NAMESPACE_LOG"
+}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 13158  100 13158    0     0  14531      0 --:--:-- --:--:-- --:--:-- 14571
+[1] 2754290
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/phase3_model_namespace_20261024T094625.log
+CHECK_START /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/phase3_model_namespace_package_25b124a0cf69ececb6841b55ed90b19fae5b9a08/checks_2754290.log
+CHECK_PASSED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/phase3_model_namespace_package_25b124a0cf69ececb6841b55ed90b19fae5b9a08/checks_2754290.log
+CHECK_START /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/model_namespace_25b124a0cf69ececb6841b55ed90b19fae5b9a08/m2_target_checks.log
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ watch -n 1 nvidia-smi
+[1]+  Done                    nohup python -u -B "$SCRIPT" --commit "$FIX" --apply < /dev/null > "$NAMESPACE_LOG" 2>&1
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ tail -n 100 "$NAMESPACE_LOG"
+
+python -B "$ROOT/records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/scripts/status_phase3_engineering_restart.py" --tail 40
+CHECK_START /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/phase3_model_namespace_package_25b124a0cf69ececb6841b55ed90b19fae5b9a08/checks_2754290.log
+CHECK_PASSED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/phase3_model_namespace_package_25b124a0cf69ececb6841b55ed90b19fae5b9a08/checks_2754290.log
+CHECK_START /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/model_namespace_25b124a0cf69ececb6841b55ed90b19fae5b9a08/m2_target_checks.log
+CHECK_PASSED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/model_namespace_25b124a0cf69ececb6841b55ed90b19fae5b9a08/m2_target_checks.log
+CHECK_START /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/model_namespace_25b124a0cf69ececb6841b55ed90b19fae5b9a08/test_phase3_combined_plan.py.log
+CHECK_PASSED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/model_namespace_25b124a0cf69ececb6841b55ed90b19fae5b9a08/test_phase3_combined_plan.py.log
+CHECK_START /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/model_namespace_25b124a0cf69ececb6841b55ed90b19fae5b9a08/test_phase3_j_heads.py.log
+CHECK_PASSED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/model_namespace_25b124a0cf69ececb6841b55ed90b19fae5b9a08/test_phase3_j_heads.py.log
+CHECK_START /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/model_namespace_25b124a0cf69ececb6841b55ed90b19fae5b9a08/test_phase3_public_queue.py.log
+CHECK_PASSED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/model_namespace_25b124a0cf69ececb6841b55ed90b19fae5b9a08/test_phase3_public_queue.py.log
+REGISTERED_REVISION_NAMESPACE_FIXED_LAUNCHED {"status": "CONTROLLERS_LAUNCHED", "revision_commit": "752d3835a18a15a04d83b1dcc1841bff98bf0b07", "old_m2": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330", "old_combined": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225", "m2_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345", "combined_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345", "automatic_retry": false, "authorization": "user: 继续，把实验启动; 2026-10-24", "observed_at": "2026-10-24T09:46:44.633221+08:00", "namespace_patch_commit": "25b124a0cf69ececb6841b55ed90b19fae5b9a08", "previous_failure_receipt": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/model_namespace_25b124a0cf69ececb6841b55ed90b19fae5b9a08/previous_bootstrap_failure.json", "m2_controller_pid": 2754693, "combined_controller_pid": 2754694}
+{
+  "bootstrap_receipt": {
+    "status": "CONTROLLERS_LAUNCHED",
+    "revision_commit": "752d3835a18a15a04d83b1dcc1841bff98bf0b07",
+    "old_m2": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330",
+    "old_combined": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225",
+    "m2_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345",
+    "combined_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345",
+    "automatic_retry": false,
+    "authorization": "user: 继续，把实验启动; 2026-10-24",
+    "observed_at": "2026-10-24T09:46:44.633221+08:00",
+    "namespace_patch_commit": "25b124a0cf69ececb6841b55ed90b19fae5b9a08",
+    "previous_failure_receipt": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/model_namespace_25b124a0cf69ececb6841b55ed90b19fae5b9a08/previous_bootstrap_failure.json",
+    "m2_controller_pid": 2754693,
+    "combined_controller_pid": 2754694
+  },
+  "observed_at": "2026-10-24T09:48:32.339114+08:00",
+  "m2_directory": {
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345",
+    "queue_status.json": {
+      "status": "LAUNCHED_PREPARING",
+      "observed_at": "2026-10-24T09:46:43.548213+08:00"
+    },
+    "preparation_progress.json": {
+      "tile": "6_9",
+      "done": 7,
+      "total": 12,
+      "observed_at": "2026-10-24T09:48:31.376705+08:00"
+    },
+    "jobs_with_progress": 0,
+    "latest_training_progress": [],
+    "job_failure_count": 0,
+    "first_job_failures": []
+  },
+  "combined_directory": {
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345",
+    "queue_status.json": {
+      "status": "WAIT_M2",
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345",
+      "last_source_status": {
+        "status": "LAUNCHED_PREPARING",
+        "observed_at": "2026-10-24T09:46:43.548213+08:00"
+      },
+      "observed_at": "2026-10-24T09:46:44.785252+08:00"
+    }
+  }
+}
+    PID    PPID STAT     ELAPSED %CPU %MEM COMMAND
+2754693       1 Rs   441076631-22:57:36 0.0  0.3 /home/jovyan/miniconda3/envs/remote_sensing/bin/python -u -B /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261
+2754694       1 Ss   441076631-22:57:36 0.0  0.0 /home/jovyan/miniconda3/envs/remote_sensing/bin/python -u -B /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261
+
+LOG /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/nohup.log
+VERIFIED_MODEL_PACKAGE_PATHS ["/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/code/model", "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/model"]
+ENGINEERING_RUNTIME_MEMFD {"backend": "libc.memfd_create", "anonymous": true, "cloexec": true, "mapping_roundtrip": true, "disk_fallback": false}
+RUNTIME_READY_WAITING_FOR_PAIRED_LAUNCH /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345
+M2_INPUT 2_12 1 /12
+M2_INPUT 2_10 2 /12
+M2_INPUT 7_8 3 /12
+M2_INPUT 3_12 4 /12
+M2_INPUT 5_12 5 /12
+M2_INPUT 7_9 6 /12
+M2_INPUT 6_9 7 /12
+
+
+LOG /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/nohup.log
+VERIFIED_MODEL_PACKAGE_PATHS ["/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/code/model", "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/model"]
+ENGINEERING_RUNTIME_MEMFD {"backend": "libc.memfd_create", "anonymous": true, "cloexec": true, "mapping_roundtrip": true, "disk_fallback": false}
+RUNTIME_READY_WAITING_FOR_PAIRED_LAUNCH /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345
+
+Sat Oct 24 09:48:32 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.48.01              Driver Version: 590.48.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:0F:00.0 Off |                    0 |
+| N/A   29C    P0             70W /  700W |       0MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA H100 80GB HBM3          On  |   00000000:34:00.0 Off |                    0 |
+| N/A   27C    P0             72W /  700W |       0MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ 

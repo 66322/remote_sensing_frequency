@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-15",
+  "kind": "user_reported_target_benchmark_not_applied",
+  "benchmark_commit": "ff3659bac97a3bff8132872e6b5bea1877fa6bd2",
+  "live_run": "research_phase3_m1_recovery_20261015T164357_19327",
+  "counted_cases_at_start": 166,
+  "cpu_limits": {
+    "affinity": 192,
+    "quota_us": 17600000,
+    "period_us": 100000,
+    "effective_cpus": 176,
+    "nr_throttled": 0,
+    "throttled_time": 0
+  },
+  "averages": [
+    {
+      "counter": "original",
+      "threads": 16,
+      "seconds": 3.9855,
+      "speedup": 1
+    },
+    {
+      "counter": "original",
+      "threads": 24,
+      "seconds": 3.866,
+      "speedup": 1.031
+    },
+    {
+      "counter": "original",
+      "threads": 32,
+      "seconds": 3.9535,
+      "speedup": 1.008
+    },
+    {
+      "counter": "grouped_roi",
+      "threads": 16,
+      "seconds": 3.575,
+      "speedup": 1.115
+    },
+    {
+      "counter": "grouped_roi",
+      "threads": 24,
+      "seconds": 3.4435,
+      "speedup": 1.157
+    },
+    {
+      "counter": "grouped_roi",
+      "threads": 32,
+      "seconds": 3.475,
+      "speedup": 1.147
+    }
+  ],
+  "all_integer_evidence_exact": true,
+  "interpretation": "Thread scaling gives little benefit. Grouped ROI modestly improves synthetic throughput. Process scaling and actual full-tile benefit not yet measured.",
+  "process_probe": {
+    "mode": "--processes",
+    "workers": [
+      16,
+      32
+    ],
+    "read_only_fork_inheritance": true,
+    "array_IPC": false,
+    "model_or_remote_sensing_inputs": false,
+    "local_test_functions_passed": 3,
+    "linux_fork_branch_local_status": "not exercised on Windows; target benchmark pending",
+    "live_run_writes": false,
+    "live_run_signals": false,
+    "own_benchmark_children_joined": true,
+    "status": "READY_PENDING_USER_EXECUTION"
+  },
+  "files_sha256": {
+    "scripts/benchmark_phase3_m1_counts.py": "762b2769c2d0d6c6fcf9d44e0cae848ac8fb5eedca89b07ff5e90510c677f751",
+    "tests/test_phase3_m1_countbench.py": "277ac6ccdcae76b43f4240e8409901dedf1432559160a33775679152f181eddb",
+    "docs/protocols/PHASE3_M1_CPU_COUNTING_PROBE_20261015.md": "f9dfa4009e388f939d9b69d1d55af5c5cc6b6b6cdbb5a72a33065e4585aa71f6"
+  }
+}

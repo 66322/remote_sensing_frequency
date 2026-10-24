@@ -1,0 +1,33 @@
+{
+  "source": "user pasted manage_structured_v0 status",
+  "query_observed": "2026-10-12T07:36:16.999949+08:00",
+  "last_observed": "2026-10-12T07:36:13.698186+08:00",
+  "queue": "WAITING_PREDECESSOR",
+  "controller_live": true,
+  "registered_controller_pid": 82130,
+  "execution_commit": "f2ad4a9f38b32058f3855c2d18aa6a9b81df6cdd",
+  "gpu_blocked": {
+    "0": false,
+    "1": false
+  },
+  "predecessor": {
+    "verdict": "WAITING_PREDECESSOR",
+    "predecessor_status": "RUNNING",
+    "predecessor_observed": "2026-10-12T07:36:11.273122+08:00",
+    "controller_live": true,
+    "workers_live": true,
+    "lock_free": false,
+    "checked_at": "2026-10-12T07:36:13.698135+08:00"
+  },
+  "counts": {
+    "COMPLETE": 0,
+    "RUNNING": 0,
+    "PENDING": 42,
+    "PAUSED_USER": 0,
+    "TECHNICAL_FAILURE": 0
+  },
+  "new_trainings": 0,
+  "gpu_worker_started": false,
+  "real_mask_feasibility_verified": false,
+  "new_scientific_result": false
+}

@@ -1,0 +1,72 @@
+{
+  "source": "user pasted read-only status/nohup tail on 2026-10-06 Asia/Shanghai",
+  "last_observed_at": "2026-10-05T23:27:15.831648+08:00",
+  "queue": "DIAGNOSTICS_COMPLETE_AWAITING_REVIEW",
+  "controller_pid": 3591245,
+  "controller_live": false,
+  "E0": "COMPLETE",
+  "masks": "COMPLETE",
+  "new_optimizer_updates": 0,
+  "cpu_progress": {
+    "phase": "E0",
+    "model": "N2-5",
+    "tile": "5_10",
+    "condition": "rgb_blur5+aux_shift8",
+    "observed_at": "2026-10-05T23:05:12.250016+08:00"
+  },
+  "jobs": {
+    "E1_A0": {
+      "gpu": 0,
+      "pid": 3895144,
+      "status": "COMPLETE",
+      "live": false,
+      "elapsed_seconds": 436.28446066379547,
+      "observed_at": "2026-10-05T23:12:32.881203+08:00"
+    },
+    "E1_B1": {
+      "gpu": 1,
+      "pid": 3895147,
+      "status": "COMPLETE",
+      "live": false,
+      "elapsed_seconds": 441.1937670856714,
+      "observed_at": "2026-10-05T23:12:37.985816+08:00"
+    },
+    "E2_N1-2": {
+      "gpu": 0,
+      "pid": 3898992,
+      "status": "COMPLETE",
+      "live": false,
+      "elapsed_seconds": 430.0338803231716,
+      "observed_at": "2026-10-05T23:19:54.156157+08:00"
+    },
+    "E2_N2-0": {
+      "gpu": 1,
+      "pid": 3898998,
+      "status": "COMPLETE",
+      "live": false,
+      "elapsed_seconds": 431.004993095994,
+      "observed_at": "2026-10-05T23:19:55.232931+08:00"
+    },
+    "E2_N2-3": {
+      "gpu": 0,
+      "pid": 3902786,
+      "status": "COMPLETE",
+      "live": false,
+      "elapsed_seconds": 427.26898591965437,
+      "observed_at": "2026-10-05T23:27:12.609814+08:00"
+    }
+  },
+  "log_handover": "DIAG_HANDOVER READY N2_COMPLETE_AWAITING_STAGE_PROTOCOL",
+  "diagnostic_problem_triggers_reported": {
+    "N5": true,
+    "N3": true,
+    "source_line": "POST_N2_DIAGNOSTICS_SCREEN True True"
+  },
+  "scientific_N2_gate": null,
+  "E2_costs": null,
+  "evidence_boundary": "compact completion/status received; original matrices, signatures, screen values and nohup files not yet received on GitHub; not independent full evidence audit",
+  "execution_commit": "883fccc0b97714cfe0a87b54bfeb2a2fc09820d7",
+  "next_action": "upload N2 and diagnostics light records, independently audit and analyze before training a conditional family",
+  "test6_access": false,
+  "automatic_training": false
+}

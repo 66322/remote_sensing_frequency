@@ -1,0 +1,37 @@
+{
+  "source": "user_pasted_server_terminal",
+  "observed_at": "2026-10-04T08:14:26.221138+08:00",
+  "queue": "RUNNING",
+  "controller": {
+    "pid": 2698383,
+    "live": true
+  },
+  "jobs": {
+    "A0": {
+      "gpu": 0,
+      "pid": 2698740,
+      "pid_live": true,
+      "status": "RUNNING",
+      "stored_step": 8000,
+      "stored_phase": "evaluation",
+      "progress_observed_at": "2026-10-04T02:31:20.992520+08:00",
+      "fresh_evaluation_progress_verified": false
+    },
+    "A1": {
+      "gpu": 1,
+      "pid": 2698743,
+      "pid_live": true,
+      "status": "RUNNING",
+      "stored_step": 8000,
+      "stored_phase": "evaluation",
+      "progress_observed_at": "2026-10-04T02:32:41.929883+08:00",
+      "fresh_evaluation_progress_verified": false
+    }
+  },
+  "completed_main": 0,
+  "checks_pass": true,
+  "worker_logs_not_provided": true,
+  "new_error_in_controller_excerpt": false,
+  "requires_read_only_worker_log_check": true,
+  "restart_authorized_or_needed": false
+}

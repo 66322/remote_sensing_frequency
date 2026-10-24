@@ -1,0 +1,14 @@
+{
+  "observation": {
+    "verdict": "READY",
+    "predecessor_status": "PAIRED_COMPLETE_AWAITING_REVIEW",
+    "predecessor_observed": "2026-10-12T11:03:22.917566+08:00",
+    "controller_live": false,
+    "workers_live": false,
+    "lock_free": true,
+    "checked_at": "2026-10-12T11:03:50.229357+08:00"
+  },
+  "technical_acceptance": true,
+  "independent_scientific_review": false,
+  "screen_sha256": "f1bda55267a40f5ac813d6f34a96947ad2fb0173bb0e191c6e8a48f2eb28dad8"
+}

@@ -1,0 +1,51 @@
+{
+  "source": "user pasted read-only status and nohup tail",
+  "last_observed_at": "2026-10-05T13:20:35.646566+08:00",
+  "queue": "WAITING_N2",
+  "controller_pid": 3591245,
+  "controller_live": true,
+  "E0": "PENDING",
+  "masks": "PENDING",
+  "optimizer_updates": 0,
+  "jobs": {
+    "E1_A0": {
+      "gpu": 0,
+      "status": "PENDING",
+      "pid": -1,
+      "live": false
+    },
+    "E1_B1": {
+      "gpu": 1,
+      "status": "PENDING",
+      "pid": -1,
+      "live": false
+    },
+    "E2_N1-2": {
+      "gpu": 0,
+      "status": "PENDING",
+      "pid": -1,
+      "live": false
+    },
+    "E2_N2-0": {
+      "gpu": 1,
+      "status": "PENDING",
+      "pid": -1,
+      "live": false
+    },
+    "E2_N2-3": {
+      "gpu": 0,
+      "status": "PENDING",
+      "pid": -1,
+      "live": false
+    }
+  },
+  "nohup_repeated_message": "DIAG_HANDOVER WAITING_N2 RUNNING_N2",
+  "predecessor_status_read": "RUNNING_N2",
+  "predecessor_independent_controller_live_last_observed_at": "2026-10-05T13:14:31.018288+08:00",
+  "predecessor_job_progress_not_provided": true,
+  "execution_commit": "883fccc0b97714cfe0a87b54bfeb2a2fc09820d7",
+  "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n2_diagnostics_20261005T131434_3591073",
+  "next_action": "wait; optional read-only status, no restart",
+  "test6_loaded": false,
+  "automatic_training": false
+}

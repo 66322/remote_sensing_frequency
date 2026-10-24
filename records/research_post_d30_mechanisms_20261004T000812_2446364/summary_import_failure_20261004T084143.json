@@ -1,0 +1,30 @@
+{
+  "source": "user_server_query_saved_with_tee",
+  "observed_at": "2026-10-04T08:41:43.586227+08:00",
+  "status": "CONTROLLER_INTERRUPTED",
+  "controller_pid": 2698383,
+  "controller_live": false,
+  "completed_main": 6,
+  "completed_jobs": [
+    "A0",
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5"
+  ],
+  "pending_main": 12,
+  "error": "ModuleNotFoundError: No module named 'model'",
+  "stage": "A_phase_summarize_subprocess",
+  "A_retraining_required": false,
+  "A_completion_records_preserved": true,
+  "second_server_recovery_observed": false,
+  "local_repair_tests_passed": 6,
+  "repair": "explicit immutable code and scripts roots in child PYTHONPATH; future summary direct entry also inserts snapshot root",
+  "scientific_protocol_changed": false,
+  "GPUs": [
+    0,
+    1
+  ],
+  "D30_upload_commit": "214eb158a59cf8248910ba5e46492189d3a6f953"
+}

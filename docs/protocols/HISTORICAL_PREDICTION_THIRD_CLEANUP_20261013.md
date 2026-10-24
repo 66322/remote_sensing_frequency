@@ -1,0 +1,4 @@
+# 第三批历史预测清理
+源盘点records/storage_old_experiments_audit_20261013T200442_1456518，六实验errors=0。用户已授权精简旧产物；服务器尚未执行本批。候选evaluation/fixed8000/content_evaluation/content_fixed8000及modes/<mode>/evaluation中3_11.npy/5_10.npy，范围锁定盘点脚本的六个完整运行ID；按输出路径数合计24392（以脚本实际SUMMARY为准，不将分组占用相加当回收量）。
+执行前核对每个源manifest文件身份dev/inode/size/mtime和NPY6000×6000uint8头；对应tile指标JSON必须包含整数非负6×6混淆矩阵，否则跳过。对保留指标保存SHA并在删除前回读。统一inode计数、外部硬链接不记入完整回收预计值。两次进程审计、互斥锁和逐文件身份复核；每200项进度、完整manifest/删除回执、异常停止不重试。
+保留全部pth/JSON/JSONL/log/代码、shared_reference、masks和当前Phase2。D23 normalized_fit_cache 68.4GiB只识别尚未删除；中间权重后续需绑定审计，本批不删。第二批遗留660嵌套support预测本批不含。删除使旧原预测路径不可读取，保留原manifest并追加retirement说明。15项本地测试通过；真实Linux进程及服务器删除待用户执行。

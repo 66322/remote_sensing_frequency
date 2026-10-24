@@ -1,0 +1,7 @@
+{
+  "job": "ref_R16_5_10_crop_shuffle_00_clean_25",
+  "observed_at": "2026-10-13T00:03:08.856794+08:00",
+  "optimizer_updates": 0,
+  "phase": "complete",
+  "physical_gpu": 1
+}

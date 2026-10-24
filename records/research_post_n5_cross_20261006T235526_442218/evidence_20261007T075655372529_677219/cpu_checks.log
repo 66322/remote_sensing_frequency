@@ -1,0 +1,34 @@
+test_A_false_positive_changes_actual_expert_input (test_post_n5_cross.CrossTests) ... ok
+test_A_zero_input_negative_control_all_B_C_N1_N2 (test_post_n5_cross.CrossTests) ... ok
+test_B_covers_pyramid_and_relation_masks (test_post_n5_cross.CrossTests) ... ok
+test_baseline_exact_N1_N2_same_capacity (test_post_n5_cross.CrossTests) ... ok
+test_class_boundary_counts_exclude_invalid_and_clutter (test_post_n5_cross.CrossTests) ... ok
+test_contract_timeout_scope_and_new_training_rejected (test_post_n5_cross.CrossTests) ... ok
+test_dispatch_two_lanes_and_final_exit (test_post_n5_cross.CrossTests) ... CROSS_START 0 E4_N1-2 101
+CROSS_JOB E4_N1-2 COMPLETE
+CROSS_START 1 E4_N2-0 102
+CROSS_JOB E4_N2-0 COMPLETE
+CROSS_START 0 E4_N2-3 103
+CROSS_JOB E4_N2-3 COMPLETE
+ok
+test_failure_stops_new_dispatch_and_no_retry (test_post_n5_cross.CrossTests) ... CROSS_START 0 E4_N1-2 101
+CROSS_JOB E4_N1-2 TECHNICAL_FAILURE
+ok
+test_fixed_gate_rejects_one_negative_tile_or_side_model_rescue (test_post_n5_cross.CrossTests) ... ok
+test_full_missing_and_neither_safe_in_all_paths (test_post_n5_cross.CrossTests) ... ok
+test_gate_positive_pool_does_not_override_negative_tile (test_post_n5_cross.CrossTests) ... ok
+test_partial_artifacts_prevent_dispatch (test_post_n5_cross.CrossTests) ... ok
+test_source_completion_changed_summary_rejected (test_post_n5_cross.CrossTests) ... ok
+test_standalone_complete_summary_counts_binding_and_exit (test_post_n5_cross.CrossTests) ... ok
+test_standalone_entry_imports_and_help (test_post_n5_cross.CrossTests) ... ok
+test_standardization_shared_support_and_uncovered_mass (test_post_n5_cross.CrossTests) ... ok
+test_timeout_terminate_kill_not_accept_rc_zero (test_post_n5_cross.CrossTests) ... CROSS_START 0 E4_N1-2 101
+CROSS_START 1 E4_N2-0 102
+CROSS_JOB E4_N1-2 TIMEOUT
+CROSS_JOB E4_N2-0 TIMEOUT
+ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 8.216s
+
+OK

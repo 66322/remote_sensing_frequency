@@ -1,0 +1,26 @@
+{
+  "source": "user terminal launch output; no direct /proc or queue_status.json observation provided",
+  "directory_timestamp_local": "2026-10-04T00:08:12+08:00",
+  "timestamp_scope": "from directory name, log lines have no individual timestamps",
+  "execution_commit": "01ec8dee82f7e272f6a650aaf9f3e619a0e7c516",
+  "controller_pid": 2450552,
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364",
+  "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/nohup.log",
+  "observed_lines": [
+    "PORTFOLIO_CPU_CHECKS_PASS",
+    "PORTFOLIO_WAITING_D30 RUNNING"
+  ],
+  "observed_stage": "WAITING_D30",
+  "predecessor_status_indirect": "RUNNING",
+  "gpu_workers_started_in_provided_output": false,
+  "physical_gpus_authorized": [
+    0,
+    1
+  ],
+  "nohup": true,
+  "new_resource_probe": false,
+  "full_queue_status_received": false,
+  "pid_live_check_received": false,
+  "test6_loaded": false,
+  "scientific_result_received": false
+}

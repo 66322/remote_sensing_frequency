@@ -1,0 +1,224 @@
+{
+  "schema_version": 2,
+  "state": "READY_NOT_REGISTERED_GPU_RUNTIME_UNVERIFIED",
+  "artifact_kind": "research_design_not_execution_config",
+  "repository": "66322/remote_sensing_frequency",
+  "branch": "rebuild-v1-protocol-20260915",
+  "source_head": "9ac456d8bd7e40faf4914c12804e5a8aab478de1",
+  "evidence_commits": [
+    "379f301f255b9d2348cf11cad79e1374fedd1e7b",
+    "57ef5ad9e5238f69f94c5d8ede00023a20499144"
+  ],
+  "authoritative_protocol": "docs/protocols/POST_T_RESEARCH_SEQUENCE_20261011.md",
+  "last_server_query": "2026-10-11T13:48:26.474610+08:00",
+  "new_queue_registered": false,
+  "new_training_started": false,
+  "automatic_dispatch_allowed": true,
+  "gpu": [
+    0,
+    1
+  ],
+  "model_seed": 42,
+  "schedule_seed": 42,
+  "schedule_generator": "Python random.Random(42); shuffle(['F8','H8','R8']); shuffle(['F16','H16','R16']); concatenate",
+  "dataset": "Potsdam",
+  "train_split": "fit12",
+  "validation_tiles": [
+    "3_11",
+    "5_10"
+  ],
+  "forbidden_splits": [
+    "Test6",
+    "held4",
+    "final"
+  ],
+  "primary_candidate": "R16",
+  "primary_endpoint": "fixed_budget",
+  "metric": "NoBoundary pooled mIoU_fg5",
+  "core_runs": [
+    {
+      "order": 1,
+      "id": "H8",
+      "mechanism": "H",
+      "optimizer_calls": 8000,
+      "fresh_optimizer": true,
+      "initial_state": "S1-0 step8000",
+      "initial_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
+      "hardware": "one of physical GPU0/GPU1; checkpoint migration allowed",
+      "state": "IMPLEMENTED_NOT_REGISTERED",
+      "selected_by_8k_result": false
+    },
+    {
+      "order": 2,
+      "id": "F8",
+      "mechanism": "F",
+      "optimizer_calls": 8000,
+      "fresh_optimizer": true,
+      "initial_state": "S1-0 step8000",
+      "initial_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
+      "hardware": "one of physical GPU0/GPU1; checkpoint migration allowed",
+      "state": "IMPLEMENTED_NOT_REGISTERED",
+      "selected_by_8k_result": false
+    },
+    {
+      "order": 3,
+      "id": "R8",
+      "mechanism": "R",
+      "optimizer_calls": 8000,
+      "fresh_optimizer": true,
+      "initial_state": "S1-0 step8000",
+      "initial_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
+      "hardware": "one of physical GPU0/GPU1; checkpoint migration allowed",
+      "state": "IMPLEMENTED_NOT_REGISTERED",
+      "selected_by_8k_result": false
+    },
+    {
+      "order": 4,
+      "id": "R16",
+      "mechanism": "R",
+      "optimizer_calls": 16000,
+      "fresh_optimizer": true,
+      "initial_state": "S1-0 step8000",
+      "initial_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
+      "hardware": "one of physical GPU0/GPU1; checkpoint migration allowed",
+      "state": "IMPLEMENTED_NOT_REGISTERED",
+      "selected_by_8k_result": false
+    },
+    {
+      "order": 5,
+      "id": "H16",
+      "mechanism": "H",
+      "optimizer_calls": 16000,
+      "fresh_optimizer": true,
+      "initial_state": "S1-0 step8000",
+      "initial_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
+      "hardware": "one of physical GPU0/GPU1; checkpoint migration allowed",
+      "state": "IMPLEMENTED_NOT_REGISTERED",
+      "selected_by_8k_result": false
+    },
+    {
+      "order": 6,
+      "id": "F16",
+      "mechanism": "F",
+      "optimizer_calls": 16000,
+      "fresh_optimizer": true,
+      "initial_state": "S1-0 step8000",
+      "initial_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
+      "hardware": "one of physical GPU0/GPU1; checkpoint migration allowed",
+      "state": "IMPLEMENTED_NOT_REGISTERED",
+      "selected_by_8k_result": false
+    }
+  ],
+  "mechanisms": {
+    "F": [
+      "private fusion decoder"
+    ],
+    "H": [
+      "private fusion decoder",
+      "private_rgb.net.rgb",
+      "private_rgb.net.decoder[:-1]"
+    ],
+    "R": [
+      "private fusion decoder",
+      "private_rgb.net.rgb",
+      "private_rgb.net.decoder[:-1]",
+      "private_rgb.net.encoder.blocks[-4:]"
+    ]
+  },
+  "always_frozen": [
+    "original S1-0 base",
+    "DSM expert",
+    "private_rgb.net.decoder[-1]",
+    "private RGB embedding and early eight encoder blocks",
+    "private RGB other encoder parameters outside last4"
+  ],
+  "diagnostic_batches": [
+    {
+      "id": "CONTENT_PRE",
+      "models": [
+        "M000_context",
+        "M300_context"
+      ],
+      "cases": 24,
+      "optimizer_calls": 0,
+      "state": "PLANNED"
+    },
+    {
+      "id": "CONTENT_POST",
+      "models": [
+        "F16",
+        "R16"
+      ],
+      "cases": 24,
+      "optimizer_calls": 0,
+      "state": "PLANNED"
+    }
+  ],
+  "diagnostic_interventions": [
+    "original df",
+    "zero df into candidate fusion only",
+    "roll df by floor(H/2),floor(W/2) into candidate fusion only"
+  ],
+  "diagnostic_conditions": [
+    "rgb_lines64w8__clean",
+    "rgb_blocks64q25__clean"
+  ],
+  "reserved": [
+    {
+      "id": "X8",
+      "state": "RESERVED_NOT_AUTOMATIC",
+      "optimizer_calls_if_separately_adopted": 8000
+    },
+    {
+      "id": "X16",
+      "state": "RESERVED_NOT_AUTOMATIC",
+      "optimizer_calls_if_separately_adopted": 16000
+    }
+  ],
+  "totals": {
+    "core_optimizer_calls": 72000,
+    "extra_diagnostic_cases": 48,
+    "diagnostic_optimizer_calls": 0,
+    "reserved_excluded_optimizer_calls": 24000
+  },
+  "estimate": {
+    "measured": false,
+    "reserve": "one day or more; no 24h cutoff",
+    "calibration": "first formal worker per mechanism; no additional probes",
+    "previous_single_gpu_unmeasured_hours": [
+      30,
+      60
+    ]
+  },
+  "stop": {
+    "technical_failure": "HOLD_NO_AUTOMATIC_RETRY",
+    "scientific_gate_failure": "record result; complete frozen comparisons if technically valid",
+    "core_complete": "stop after diagnostics and upload lightweight evidence"
+  },
+  "server_root_template": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_t_paired_v2_<registration_time>_<pid>",
+  "implementation_required": [
+    "fully resolved configs and source/data/checkpoint SHA",
+    "trainable and actual-gradient lists",
+    "paired data RNG hashes",
+    "CPU contracts",
+    "dual-GPU shared queue, cooperative release and cross-device continuation with duplicate-registration guard and HOLD",
+    "diagnostic C endpoint exact check",
+    "evidence uploader and independent audit"
+  ],
+  "exclusions": [
+    "no server action by assistant; user executes terminal",
+    "no automatic seed addition",
+    "no failed recipe retry",
+    "no DSM mirror training",
+    "no recovery/frequency branch expansion"
+  ],
+  "max_gpu_workers": 2,
+  "dispatch_prerequisite": "user runs registration; source completion/release/binding and CPU checks pass",
+  "runtime": {
+    "wall_deadline_hours": null,
+    "release": "save and exit then queue continuation on the other enabled GPU",
+    "rejoin": "explicit only",
+    "automatic_failed_retry": false
+  },
+  "execution_protocol": "docs/protocols/POST_T_PAIRED_V2_EXECUTION_20261011.md"
+}

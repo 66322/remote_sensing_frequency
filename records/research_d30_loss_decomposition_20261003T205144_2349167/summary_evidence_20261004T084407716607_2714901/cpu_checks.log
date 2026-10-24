@@ -1,0 +1,23 @@
+test_component_gradients_do_not_change_optimizer_or_rng (test_d30.Checks) ... ok
+test_empty_recovery_has_finite_zero_gradient (test_d30.Checks) ... ok
+test_failure_or_dead_controller_holds_no_retry (test_d30.Checks) ... ok
+test_forced_mix_exact_residual_combination_and_fallback (test_d30.Checks) ... ok
+test_forced_model_same_state_and_strict_reload (test_d30.Checks) ... ok
+test_four_variants_are_only_weight_or_normalization_changes (test_d30.Checks) ... ok
+test_legacy_loss_and_gradient_exact_at_00_and_11 (test_d30.Checks) ... ok
+test_lossless_upload_round_trip (test_d30.Checks) ... ok
+test_missing_pixels_excluded_from_protect_recover (test_d30.Checks) ... ok
+test_native_controller_lock_released_only_after_close (test_d30.Checks) ... ok
+test_original_mode_unchanged_logits (test_d30.Checks) ... ok
+test_predecessor_requires_complete_all_jobs_released_and_no_workers (test_d30.Checks) ... ok
+test_raw_paired_summary_checks_reference_identity (test_d30.Checks) ... ok
+test_recovery_area_scaling_and_class_pixel_difference (test_d30.Checks) ... ok
+test_runtime_plan_reuses_scientific_contract (test_d30.Checks) ... ok
+test_sources_parse_as_python310_and_no_training_before_release (test_d30.Checks) ... ok
+test_training_metadata_survives_and_frozen_anchors_stay_frozen (test_d30.Checks) ... ok
+test_two_gpu_lanes_and_phase_barrier (test_d30.Checks) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 1.206s
+
+OK

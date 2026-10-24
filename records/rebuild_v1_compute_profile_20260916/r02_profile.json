@@ -1,0 +1,61 @@
+{
+  "experiment": "REBUILD_V1_R02_COMPUTE_PROFILE",
+  "recorded_at": "2026-09-16T18:39:16+08:00",
+  "model": "R02",
+  "checkpoint_step": 13000,
+  "config": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/configs/rebuild_v1/r02_budget_pilot_16k.json",
+  "run_dir": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/R02_dual_f0_seed42_sched16000_stop16000",
+  "device": "NVIDIA H100 80GB HBM3",
+  "precision": "FP32",
+  "patch": 512,
+  "stride": 256,
+  "inference_batch": 8,
+  "profile_tile": "3_11",
+  "params": {
+    "total": 204043582,
+    "transformer": 196655512,
+    "decoder": 7387200,
+    "segmentation_head": 870
+  },
+  "crop_batch1_latency": {
+    "transformer": {
+      "median_ms": 34.39028933644295,
+      "mean_ms": 34.51162651181221,
+      "min_ms": 34.33547914028168,
+      "max_ms": 35.80954670906067,
+      "std_ms": 0.3594111656099485,
+      "n": 20
+    },
+    "decoder": {
+      "median_ms": 1.6889236867427826,
+      "mean_ms": 1.6883473843336105,
+      "min_ms": 1.6768276691436768,
+      "max_ms": 1.7058253288269043,
+      "std_ms": 0.005980020566203427,
+      "n": 20
+    },
+    "head": {
+      "median_ms": 0.0893808901309967,
+      "mean_ms": 0.08963122963905334,
+      "min_ms": 0.08744001388549805,
+      "max_ms": 0.09275972843170166,
+      "std_ms": 0.0012396227992366427,
+      "n": 20
+    },
+    "full_forward": {
+      "median_ms": 36.16274893283844,
+      "mean_ms": 36.267027631402016,
+      "min_ms": 36.06870770454407,
+      "max_ms": 37.85549849271774,
+      "std_ms": 0.3836656284682153,
+      "n": 20
+    }
+  },
+  "crop_batch1_peak_allocated_gib": 1.0912227630615234,
+  "end_to_end_tile_seconds": 10.653805524110794,
+  "notes": [
+    "CUDA synchronization used around timed sections.",
+    "Tile timing includes sliding-window extraction, host/device movement, score accumulation, and model inference.",
+    "Compare R01 and R02 only when patch/stride/inference_batch/precision/profile tile match exactly."
+  ]
+}

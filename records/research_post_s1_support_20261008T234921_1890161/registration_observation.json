@@ -1,0 +1,33 @@
+{
+  "source": "user_terminal_transcript",
+  "report_date": "2026-10-08",
+  "status": "REGISTERED_PROGRESS_NOT_YET_QUERIED",
+  "execution_commit": "2c5e7d6f383cfe454415d4e106179930264f1141",
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161",
+  "controller_pid": 1890742,
+  "physical_gpus": [
+    0
+  ],
+  "training_jobs": 10,
+  "total_optimizer_steps": 80000,
+  "Q_reserved_not_runnable": 4,
+  "nohup_log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/nohup_20261008T234938791083.log",
+  "directory_time_label": "2026-10-08T23:49:21",
+  "nohup_time_label": "2026-10-08T23:49:38.791083",
+  "labels_are_queue_observed_at": false,
+  "predecessor_last_observed": "2026-10-08T06:37:48.607436+08:00",
+  "predecessor_status": "COMPLETE RELEASED",
+  "server_cpu_checks": {
+    "success_inferred_from_registration_execution_chain": true,
+    "separate_log_received": false
+  },
+  "queue_observed_at": null,
+  "controller_live": null,
+  "worker_progress_received": false,
+  "gpu_first_step_received": false,
+  "raw_registration_lines": [
+    "SUPPORT_PREDECESSOR_LAST_OBSERVED 2026-10-08T06:37:48.607436+08:00 COMPLETE RELEASED",
+    "SUPPORT_QUEUE_REGISTERED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161 PID=1890742 GPU=0 ONLY TRAINING_JOBS=10 NEW_STEPS=80000 Q_RESERVED_NOT_RUNNABLE=4",
+    "SUPPORT_LOG /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161/nohup_20261008T234938791083.log"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "execution_commit": "cd958925cb5d4292dd15802830e97493c9c67033",
+  "plan_sha256": "0b22ceb9836e14a13c1407bbe280b4a2a3745ec13e5a79c1273f5875e5d73d1c",
+  "code_manifest_sha256": "e5e0a5c66d0604b5d6dceb9bb974ba2e3daa00b2e1fd5d016178e08a8419087b",
+  "job": {
+    "id": "L_T8",
+    "gpu": 0,
+    "kind": "trajectory",
+    "source_job": "T8",
+    "step": 4000,
+    "keys": [
+      "rgb_U",
+      "dsm_U"
+    ],
+    "optimizer_updates": 0
+  },
+  "artifacts": {
+    "summary.json": "19ed258f4efe19d732c4f481cc2efa85df7c4a7568fbeedb386510da2473e16c",
+    "checkpoint_binding.json": "e30b9f0538e707fbcbe4f7e00c763d5d939091312fa3ce60eb4cbde84d2b6296",
+    "endpoint_checks.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "rgb_U/3_11.json": "5b4a6abd3aa891920f032a2698dd45ef2706000a443b1b547b6cfe8ad1581362",
+    "dsm_U/3_11.json": "1d648c9dae5e18fa8da3e1013f6684a9bf61b88e4aab248ea57a27fbc188e6ee",
+    "rgb_U/5_10.json": "d033de41d1c045dbed683003a54f4095ca0d52bb90f67dc42d116bdc19c2e777",
+    "dsm_U/5_10.json": "e33c6b3b4609fb032e2ce865344c06669a1c1bedfb51a153bcb810b496b2aaf1"
+  },
+  "optimizer_updates": 0,
+  "test6_loaded": false,
+  "independent_final_loaded": false,
+  "completed_at": "2026-10-11T13:38:25.117576+08:00"
+}

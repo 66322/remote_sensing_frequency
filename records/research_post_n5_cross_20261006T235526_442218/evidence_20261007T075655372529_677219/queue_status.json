@@ -1,0 +1,81 @@
+{
+  "status": "CROSS_DIAGNOSTICS_COMPLETE_AWAITING_REVIEW",
+  "observed_at": "2026-10-07T01:08:32.994625+08:00",
+  "optimizer_updates": 0,
+  "CPU": "COMPLETE",
+  "jobs": {
+    "E4_N1-2": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "model": "N1-2",
+      "pid": 443709,
+      "started_at": "2026-10-06T23:57:41.301957+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_cross_20261006T235526_442218/logs/E4_N1-2_20261006T235741301017.log",
+      "progress": {
+        "job": "E4_N1-2",
+        "model": "N1-2",
+        "physical_gpu": 0,
+        "optimizer_updates": 0,
+        "phase": "complete",
+        "observed_at": "2026-10-07T00:32:38.403260+08:00",
+        "elapsed_seconds": 2095.9149092137814,
+        "tile": "5_10",
+        "condition": "dsm_false_positive_A1B1C1"
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-07T00:32:41.925788+08:00"
+    },
+    "E4_N2-0": {
+      "status": "COMPLETE",
+      "gpu": 1,
+      "model": "N2-0",
+      "pid": 443712,
+      "started_at": "2026-10-06T23:57:41.516624+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_cross_20261006T235526_442218/logs/E4_N2-0_20261006T235741515722.log",
+      "progress": {
+        "job": "E4_N2-0",
+        "model": "N2-0",
+        "physical_gpu": 1,
+        "optimizer_updates": 0,
+        "phase": "complete",
+        "observed_at": "2026-10-07T00:32:43.223196+08:00",
+        "elapsed_seconds": 2100.568833298981,
+        "tile": "5_10",
+        "condition": "dsm_false_positive_A1B1C1"
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-07T00:32:46.932972+08:00"
+    },
+    "E4_N2-3": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "model": "N2-3",
+      "pid": 461835,
+      "started_at": "2026-10-07T00:32:47.115247+08:00",
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_cross_20261006T235526_442218/logs/E4_N2-3_20261007T003247114112.log",
+      "progress": {
+        "job": "E4_N2-3",
+        "model": "N2-3",
+        "physical_gpu": 0,
+        "optimizer_updates": 0,
+        "phase": "complete",
+        "observed_at": "2026-10-07T01:08:04.568018+08:00",
+        "elapsed_seconds": 2116.3425827994943,
+        "tile": "5_10",
+        "condition": "dsm_false_positive_A1B1C1"
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-07T01:08:05.778956+08:00"
+    }
+  },
+  "controller_pid": 442590,
+  "gpu_uuids": {
+    "0": "GPU-97a250ea-42ff-eb14-4ed5-8c50231e0baa",
+    "1": "GPU-4b116760-e84c-2743-cee6-41cf76a01677"
+  },
+  "screen_sha256": "86b03ec95487e542b96d576c37157b8cc296b967b217e087505505643bdb94dc",
+  "recommended_next_families": [
+    "N3",
+    "S1"
+  ]
+}
