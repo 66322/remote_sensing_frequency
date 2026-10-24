@@ -1,6 +1,6 @@
 # 已登记但未放行队列的model包路径修复与接续（2026-10-24）
 
-状态：IMPLEMENTED_SEPARATED_SOURCE_CHECKS_PASSED_NOT_SERVER_APPLIED。补丁提交25b124a0cf69ececb6841b55ed90b19fae5b9a08；沿用用户“继续，把实验启动”的授权。此次发生在控制器启动前，没有作业/失败配方/优化更新，允许修复启动工程继续既有尝试，不再次请求训练重试授权。
+状态：SERVER_CHECKS_PASSED_CONTROLLERS_RELEASED_INPUT_PREPARING。补丁提交25b124a0cf69ececb6841b55ed90b19fae5b9a08；沿用用户“继续，把实验启动”的授权。此次发生在控制器启动前，没有作业/失败配方/优化更新，允许修复启动工程继续既有尝试，不再次请求训练重试授权。
 
 ## 最后证据与根因
 
@@ -28,7 +28,7 @@ repair_phase3_model_namespace.py只接纳上述精确两目录和752d全局失�
 
 重复补丁命令发现model_namespace_repair.json即只显示EXISTING_NAMESPACE_REPAIR_NO_DUPLICATE；检查/部分启动失败保留材料，不自动重试。放行前故障只清理本修复器创建、尚在等待的入口；不按名称/PID搜索其他任务。旧63条失败及原两个旧run不触碰。
 
-## 用户执行一次
+## 历史执行命令：已于09:46完成，不再执行
 
 ```bash
 conda activate remote_sensing
@@ -62,3 +62,8 @@ python -B "$ROOT/records/phase3_engineering_restart_package_752d3835a18a15a04d83
 [本地回执](../experiments/evidence/PHASE3_MODEL_NAMESPACE_LOCAL_20261024.json)：8项路径/接纳/重复保护检查通过；在分开的M2常规model包与原18文件合并快照中，补丁前真实复现同一错误，补丁后三套原检查6+2+3=11项通过。独立无.git补丁包8项通过，七文件Python3.9语法解析通过，Git原件SHA核验通过。不是只在单仓库环境宣称通过。
 
 目标服务器补丁尚未执行，原16项/合并11项和首次CUDA更新仍待实际回执。原M2上传器不保证包含额外补丁，结束需另验收model_namespace_repair、补丁manifest/checks/repair_receipt/launch以及752d runtime材料和训练轨迹。GPU0/1、test封存、有界内存、原228作业/5,088,000更新及研究角色保持，不新增seed/配方或开放B/C。
+## 最新服务器回执：已放行并准备输入
+
+最后服务器观测2026-10-24 09:48:32+08:00：路径补丁已完成全部目标检查并于09:46:44放行两个控制器；M2 PID2754693为Rs、合并PID2754694为Ss，均存活。M2 LAUNCHED_PREPARING，输入准备7/12（tile6_9，09:48:31），无progress、无作业失败；合并WAIT_M2。GPU0/1均0MiB/无计算进程，符合尚在CPU准备的阶段。不是当前实时状态，尚无首个优化更新或CUDA训练成功证据。
+
+[完整运行说明及用户副本](../experiments/PHASE3_REVISION_PREPARING_20261024.md)。上方待目标执行描述为补丁发布时状态，现由本段更新：8项、原16项和合并11项全部通过，原两目录接续成功。当前只读查询，禁止重跑本页历史启动块。尚无首个训练更新或正式结果。

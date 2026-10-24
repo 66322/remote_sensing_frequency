@@ -1,10 +1,10 @@
-# 下一步：在已登记09:28两目录修复model包路径后放行（2026-10-24）
+# 下一步：只读核验12/12准备及首个训练更新（2026-10-24）
 
-1. 用户启动752d后已登记两revision_20261024T092814_2738345目录，但J头导入检查失败，尚无launch/release/jobs。新CPU模型、原16项和计划6项已通过。最后GPU/状态观测09:30:32，不是实时状态。
-2. 依[新接续协议](../protocols/PHASE3_MODEL_NAMESPACE_CONTINUATION_20261024.md)执行repair_phase3_model_namespace.py --apply，固定补丁25b124a0cf69ececb6841b55ed90b19fae5b9a08。保留单次回执和旧错误，同目录接续，不重新bootstrap或memfd --apply。
-3. 现场无启动/作业及原752d完整绑定必须通过；补丁8项、带明确model.__path__的原16项/合并11项全部通过，双方入口ready和GPU0/1复核后才放行。已有用户启动授权，不再重复确认。
-4. 读取REGISTERED_REVISION_NAMESPACE_FIXED_LAUNCHED、新PID及原状态助手输出。首次M2_TRAIN ...1或progress step≥1确认训练更新；失败日志保留，不自动重试。
-5. 修订源码/模型数学/种子/预算/科学门禁不改。额外验收两model_namespace_repair回执、补丁manifest/目标检查/launch及原752d runtime材料和训练轨迹；test封存、GPU0/1及有界内存保持。
+1. 最后观测09:48:32，修订两控制器2754693/2754694存活，M2输入7/12、无作业失败，合并WAIT_M2，GPU0/1空闲。目标检查及09:46:44放行已成功，不再修复或启动。
+2. 用户仅运行records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/scripts/status_phase3_engineering_restart.py --tail 40。观察12/12、RUNNING、最新progress step≥1或M2_TRAIN ...1，确认首个CUDA更新。
+3. 准备先读取/哈希/加载12个Fit12 tile并与旧索引比对，再创建GPU worker；GPU暂空闲不单独判失败，WAIT_M2为依赖等待。进度时间停止推进或出现FAILED/STOPPED时再读新栈，不自动重跑。
+4. 现有两09:28revision目录、原失败和全局单次回执保留。不重复bootstrap、repair --apply或重启控制器，不开test或B/C，不追加seed/配方。
+5. 结束后验收完整修订/路径补丁/CPU/target/launch原件、端点、原始整数计数和训练轨迹；当前只是用户准备回执，不作论文结果。
 
 ## 独立新路线的下一步
 
