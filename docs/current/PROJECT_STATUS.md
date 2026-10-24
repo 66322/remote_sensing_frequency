@@ -1,8 +1,9 @@
-# 当前状态：合并队列已登记，M2实际运行阶段待查（2026-10-23）
+# 当前状态：原M2登记期memfd检查失败，兼容修复待应用（2026-10-24）
 
-- 最新登记证据：2026-10-23 22:21:12+08:00，目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225，控制器返回PID2166328。入口Done为正常退出；尚无控制器当前存活、M2目录或正式训练步数回执。
-- 用户沿用remote_sensing，Torch已2.2.2+cu121、CUDA可用，三组combined目标检查通过。新建环境不是强制条件；旧xformers0.0.23.post1依赖冲突待实际日志确认，不能直接认定训练失败。
-- 最后GPU0/1空闲观测21:52:05，H10080GB、ready=true；不能当实时状态。M2此前影像头预检和标签盲地理分折通过。
-- 合并代码e65c6cb，M2固定ac325cd；M2 108×32k、J42/R18/T30/V30，总228作业/5,088,000更新和门禁不变。B90/C81未开放，公开catalog缺失，T/V尚无真实数据验收。
-- 下一步只读查询现有队列状态、M2来源及日志，不再登记/单独开M2；失败无自动重试。详情及原始片段见[登记记录](../experiments/PHASE3_COMBINED_REGISTRATION_20261023.md)。
-- 研究角色与保护范围不变：RGB–DSM主线、恢复旁支、连续地图维护为候选；旧Val2/Test6/held4/final和公开test封存。服务器用户执行、无SSH，原件均在/home/jovyan/zzx。
+- 最后服务器观测2026-10-23 22:31:10+08:00：GPU0/1 H10080GB空闲；合并控制器2166328为defunct，STOPPED_NO_AUTOMATIC_RETRY。不是当前实时状态。
+- 原合并目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225；原M2目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330。M2目标16项15通过，唯一失败为os.memfd_create缺失；发生于训练控制器启动前，无正式训练回执。
+- 当前remote_sensing已Torch2.2.2+cu121；原M2环境函数已禁用xformers，本次不改装环境。
+- 兼容修复代码[b020000](https://github.com/66322/remote_sensing_frequency/commit/b0200004f30a8d55eef2049ecdfb30ef97f3d034)及[执行说明](../experiments/PHASE3_M2_MEMFD_REPAIR_20261024.md)已准备。9项本地兼容/接纳检查通过；实际服务器memfd与原16项待用户执行。失败不放宽门禁、不落盘回退。
+- 只允许在原目录确认无训练后显式接续；原M2 ac325cd、合并e65c6cb源码和绑定保持不变，修复SHA另记runtime_repair.json；旧失败证据保留。
+- M2 108×32k、J42/R18/T30/V30，总228作业/5,088,000更新，门禁及B/C未开放不变。公开catalog缺失，T/V真实数据尚未验收。
+- 研究角色不变；旧Val2/Test6/held4/final及新数据公开test封存。服务器用户执行、无SSH，仅GPU0/1，原件与修复都在/home/jovyan/zzx。

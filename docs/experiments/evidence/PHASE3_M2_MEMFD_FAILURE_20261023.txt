@@ -1,0 +1,122 @@
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ tail -n 80 "$BOOT_LOG"
+COMBINED_RUNTIME_CHECK {"torch": "2.2.2+cu121", "cuda_available": true, "python": "/home/jovyan/miniconda3/envs/remote_sensing/bin/python"}
+COMBINED_TARGET_CHECKS_PASSED 3
+PUBLIC_CATALOG_STATUS {"ready": false, "reason": "catalog absent"}
+COMBINED_REGISTERED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225 controller_pid 2166328
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ python - <<'PY'
+from pathlib import Path
+from collections import deque
+from datetime import datetime, timezone, timedelta
+import subprocess
+
+records = Path("/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records")
+q = records / "research_phase3_combined_20261023T222112_2164225"
+
+print("查询时间：", datetime.now(timezone(timedelta(hours=8))).isoformat())
+subprocess.run(["ps", "-p", "2166328", "-o", "pid,etime,stat,args"])
+
+for folder in [q] + sorted(records.glob("research_phase3_m2_*")):
+    print("\n目录：", folder)
+    names = (
+        "queue_status.json", "m2_source.json", "registration_failure.json",
+        "m2_bootstrap.log", "target_checks.log", "nohup.log"
+    )
+    for name in names:
+        path = folder / name
+        if path.is_file():
+            print("\n---", name, "---")
+            with path.open(errors="replace") as stream:
+                print("".join(deque(stream, maxlen=25)))
+PY
+
+nvidia-smi -i 0,1
+查询时间： 2026-10-23T22:31:10.009246+08:00
+    PID     ELAPSED STAT COMMAND
+2166328 441076631-23:05:36 Zs [python] <defunct>
+
+目录： /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225
+
+--- queue_status.json ---
+{"status": "STOPPED_NO_AUTOMATIC_RETRY", "error": "M2 bootstrap failed; see m2_bootstrap.log", "observed_at": "2026-10-23T22:21:18.961108+08:00"}
+
+
+--- m2_bootstrap.log ---
+M2_GPU_SNAPSHOT {"gpus": "0, GPU-97a250ea-42ff-eb14-4ed5-8c50231e0baa, NVIDIA H100 80GB HBM3, 81559, 81081, 0\n1, GPU-4b116760-e84c-2743-cee6-41cf76a01677, NVIDIA H100 80GB HBM3, 81559, 81081, 0\n2, GPU-e1a1a2c7-ef25-1bd3-9b06-abc05a6fd165, NVIDIA H100 80GB HBM3, 81559, 80434, 100\n3, GPU-c711616f-6f02-0d2a-e0fb-686602a0a157, NVIDIA H100 80GB HBM3, 81559, 80434, 100\n4, GPU-9c9e83d0-bc0c-f6ce-e493-8cff9d29933f, NVIDIA H100 80GB HBM3, 81559, 80434, 100\n5, GPU-e41f22dd-28af-29c2-ba44-5a10eb09d3a3, NVIDIA H100 80GB HBM3, 81559, 80434, 100\n6, GPU-2c16ce01-e889-23da-385d-a864043eed00, NVIDIA H100 80GB HBM3, 81559, 80434, 100\n7, GPU-27ddd129-ada7-af86-de6c-bdde3339413a, NVIDIA H100 80GB HBM3, 81559, 80434, 100\n", "compute_apps": "1738428, GPU-e1a1a2c7-ef25-1bd3-9b06-abc05a6fd165, python, 638\n1738429, GPU-c711616f-6f02-0d2a-e0fb-686602a0a157, python, 638\n1738430, GPU-9c9e83d0-bc0c-f6ce-e493-8cff9d29933f, python, 638\n1738431, GPU-e41f22dd-28af-29c2-ba44-5a10eb09d3a3, python, 638\n1738432, GPU-2c16ce01-e889-23da-385d-a864043eed00, python, 638\n1738433, GPU-27ddd129-ada7-af86-de6c-bdde3339413a, python, 638\n", "selected": {"0": ["0", "GPU-97a250ea-42ff-eb14-4ed5-8c50231e0baa", "NVIDIA H100 80GB HBM3", "81559", "81081", "0"], "1": ["1", "GPU-4b116760-e84c-2743-cee6-41cf76a01677", "NVIDIA H100 80GB HBM3", "81559", "81081", "0"]}, "ready": true, "observed_at": "2026-10-23T22:21:14.680891+08:00"}
+M2_LABEL_BLIND_FOLDS {"method": "geospatial_centroid_axis_0", "order": ["6_7", "7_7", "6_8", "7_8", "6_9", "7_9", "2_10", "2_12", "3_12", "4_12", "5_12", "6_12"], "headers": {"2_12": {"shape": [6000, 6000], "bounds": [367576.5, 5808262.6, 367876.5, 5808562.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "2_10": {"shape": [6000, 6000], "bounds": [366976.5, 5808262.6, 367276.5, 5808562.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "7_8": {"shape": [6000, 6000], "bounds": [366376.5, 5806762.6, 366676.5, 5807062.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "3_12": {"shape": [6000, 6000], "bounds": [367576.5, 5807962.6, 367876.5, 5808262.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "5_12": {"shape": [6000, 6000], "bounds": [367576.5, 5807362.6, 367876.5, 5807662.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "7_9": {"shape": [6000, 6000], "bounds": [366676.5, 5806762.6, 366976.5, 5807062.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "6_9": {"shape": [6000, 6000], "bounds": [366676.5, 5807062.6, 366976.5, 5807362.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "7_7": {"shape": [6000, 6000], "bounds": [366076.5, 5806762.6, 366376.5, 5807062.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "4_12": {"shape": [6000, 6000], "bounds": [367576.5, 5807662.6, 367876.5, 5807962.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "6_8": {"shape": [6000, 6000], "bounds": [366376.5, 5807062.6, 366676.5, 5807362.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "6_12": {"shape": [6000, 6000], "bounds": [367576.5, 5807062.6, 367876.5, 5807362.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "6_7": {"shape": [6000, 6000], "bounds": [366076.5, 5807062.6, 366376.5, 5807362.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}}, "folds": {"F0": {"evaluation": ["6_7", "7_7", "6_8", "7_8"], "train": ["6_9", "7_9", "2_10", "2_12", "3_12", "4_12", "5_12", "6_12"], "inner_pairs": [["6_9", "7_9"], ["2_10", "2_12"], ["3_12", "4_12"], ["5_12", "6_12"]]}, "F1": {"evaluation": ["6_9", "7_9", "2_10", "2_12"], "train": ["6_7", "7_7", "6_8", "7_8", "3_12", "4_12", "5_12", "6_12"], "inner_pairs": [["6_7", "7_7"], ["6_8", "7_8"], ["3_12", "4_12"], ["5_12", "6_12"]]}, "F2": {"evaluation": ["3_12", "4_12", "5_12", "6_12"], "train": ["6_7", "7_7", "6_8", "7_8", "6_9", "7_9", "2_10", "2_12"], "inner_pairs": [["6_7", "7_7"], ["6_8", "7_8"], ["6_9", "7_9"], ["2_10", "2_12"]]}}, "labels_used": false, "metadata_scope": "Fit12 RGB headers only"}
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225/code/scripts/bootstrap_phase3_m2.py", line 103, in <module>
+    if __name__=='__main__':main()
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225/code/scripts/bootstrap_phase3_m2.py", line 90, in main
+    subprocess.run([sys.executable,'-B','-m','unittest','discover','-s',str(code/'tests'),'-p','test_phase3_m2.py','-v'],
+  File "/home/jovyan/miniconda3/envs/remote_sensing/lib/python3.9/subprocess.py", line 528, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/jovyan/miniconda3/envs/remote_sensing/bin/python', '-B', '-m', 'unittest', 'discover', '-s', '/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330/code/tests', '-p', 'test_phase3_m2.py', '-v']' returned non-zero exit status 1.
+
+
+--- nohup.log ---
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225/code/scripts/control_phase3_combined.py", line 150, in <module>
+    run(args.directory)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225/code/scripts/control_phase3_combined.py", line 90, in run
+    raise RuntimeError("M2 bootstrap failed; see m2_bootstrap.log")
+RuntimeError: M2 bootstrap failed; see m2_bootstrap.log
+
+
+目录： /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330
+
+--- registration_failure.json ---
+{"error":"Command '['/home/jovyan/miniconda3/envs/remote_sensing/bin/python', '-B', '-m', 'unittest', 'discover', '-s', '/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330/code/tests', '-p', 'test_phase3_m2.py', '-v']' returned non-zero exit status 1.","automatic_retry":false,"observed_at":"2026-10-23T22:21:18.850724+08:00"}
+
+
+--- target_checks.log ---
+test_fold_geo_and_overlap (test_phase3_m2.ContractTests) ... ok
+test_frozen_mask_design_reconstruction (test_phase3_m2.ContractTests) ... ok
+test_gate_dc_clean_and_tile_protection (test_phase3_m2.ContractTests) ... ok
+test_linux_process_memfd (test_phase3_m2.ContractTests) ... ERROR
+test_missing_data_cannot_pass_gates (test_phase3_m2.ContractTests) ... ok
+test_model_import_path (test_phase3_m2.ContractTests) ... ok
+test_paired_crop_and_teacher_exclusion (test_phase3_m2.ContractTests) ... ok
+test_publication_cannot_replace_another_run_handoff (test_phase3_m2.ContractTests) ... ok
+test_server_publication_preserves_incomplete_state (test_phase3_m2.ContractTests) ... ok
+test_shuffle_entropy_multisets (test_phase3_m2.ContractTests) ... ok
+
+======================================================================
+ERROR: test_linux_process_memfd (test_phase3_m2.ContractTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330/code/tests/test_phase3_m2.py", line 204, in test_linux_process_memfd
+    packets=[Packet.create(dict(score=r)),Packet.create(dict(score=d)),Packet.create(dict(mask=mask,healthy=healthy))]
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330/code/scripts/phase24_ipc.py", line 51, in create
+    if not hasattr(os,'memfd_create'):raise RuntimeError('Linux anonymous memfd required; no disk-array fallback')
+RuntimeError: Linux anonymous memfd required; no disk-array fallback
+
+----------------------------------------------------------------------
+Ran 16 tests in 2.252s
+
+FAILED (errors=1)
+
+Fri Oct 23 22:31:10 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.48.01              Driver Version: 590.48.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:0F:00.0 Off |                    0 |
+| N/A   29C    P0             70W /  700W |       0MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA H100 80GB HBM3          On  |   00000000:34:00.0 Off |                    0 |
+| N/A   28C    P0             72W /  700W |       0MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ 

@@ -1,10 +1,10 @@
-# 下一步：只读查询已登记合并队列与M2状态（2026-10-23）
+# 下一步：应用原目录memfd兼容修复，再核验首次训练状态（2026-10-24）
 
-1. 用户已在原remote_sensing升级Torch2.2.2+cu121并完成合并登记，不再新建环境或执行新的bootstrap。当前目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225，控制器登记PID2166328。入口Done不表示控制器退出；尚无当前存活证据。
-2. 先查询queue_status.json、m2_source.json、m2_bootstrap.log、nohup.log及PID2166328；查询records下唯一M2目录的queue_status.json、registration_failure.json、target_checks.log与nohup.log。只读、不重复登记、不单独另开M2。
-3. 安装日志有xformers0.0.23.post1与Torch2.2.2的依赖冲突；先从M2实际错误判断是否触发，不在队列运行中盲目改装。任何修复先定位失败阶段与是否已有正式更新，不自动重试科学配方。
-4. M2完成并G0通过后按原合同推进J/R。3DCD/P³数据catalog可另行准备，缺失时后段WAIT_PUBLIC_DATA。旧Val2/Test6/held4/final及新数据公开test封存；阶段完成后核验原件/统计/轨迹并同步GitHub。
-5. 最后GPU空闲观测21:52:05，不把22:21:12登记时钟当实时资源证据。详见[登记回执](../experiments/PHASE3_COMBINED_REGISTRATION_20261023.md)。
+1. 已有用户回执定位为M2登记期唯一memfd测试失败；不重复登记combined/M2，不安装新环境或重装xformers。最后观测22:31:10（2026-10-23），原控制器停止、GPU0/1空闲；实际资源仍由执行时检查。
+2. 按[修复协议](../experiments/PHASE3_M2_MEMFD_REPAIR_20261024.md)使用完整提交b0200004f30a8d55eef2049ecdfb30ef97f3d034，对原合并目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225及M2目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330执行repair_phase3_m2_memfd.py --apply一次。
+3. 脚本必须确认无launch/训练作业痕迹、原绑定/代码完整、原失败匹配、两控制器锁可获取及GPU0/1可用；真实内核匿名memfd探针和原16项全部通过才接回控制器。发现已有训练/其他失败则停止，不自动重试或另选目录。
+4. 查看新修复日志的ORIGINAL_M2_TARGET_CHECKS_PASSED与EXISTING_M2_MEMFD_REPAIR_LAUNCHED、新PID及原M2 queue_status.json/nohup.log。旧target_checks.log和合并旧nohup.log保留失败记录，新检查/监督器日志在repairs/memfd_<修复SHA>。
+5. 完成后核验原件、计数和轨迹，另上传runtime_repair.json及repair清单/接纳/检查/launch证据；原上传器不保证自动包含这些文件。科学门禁、test保护、失败不重跑、缺公开数据后段WAIT_PUBLIC_DATA均不变。
 
 ## 独立新路线的下一步
 
