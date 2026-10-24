@@ -1,4 +1,4 @@
-# 共享入口：M2完成17/108，双GPU加权对照运行（2026-10-24）
+# 共享入口：已收到M2首张clean指标，完整条件面板待完成（2026-10-24）
 
 长期必读：[仓库AGENTS](../AGENTS.md)、[稳定新对话入口](current/NEW_CHAT_HANDOFF.md)、[跨对话执行约定](protocols/EXECUTION_CONTRACT.md)。2026-10-24用户已将[启动交付与故障控制](protocols/STARTUP_DELIVERY_AND_FAILURE_CONTROL.md)确立为长期要求：真实包/分包布局验证、目标兼容路径、首败停止、未变检查复用。换对话不重新启动或补跑审计；日期入口只跳转当前文件。
 
@@ -20,4 +20,4 @@
 
 只读查看：[当前队列进度、失败与各段结果](protocols/PHASE3_PROGRESS_AND_RESULTS.md)，复用服务器已有状态助手；按登记回执选择当前目录，不看旧失败目录，也不因查看重新启动。
 
-中间定量评价：[读取已有四tile轨迹计数](protocols/PHASE3_M2_INTERIM_RESULTS.md)。尚无阶段summary不等于没有单模态clean评价；只读工具已实现并本地8项检查通过，真实指标待用户运行读取，不重训、不推理、不提前判科学门禁。
+最新指标记录：[23:39首张真实clean评价](experiments/PHASE3_M2_INTERIM_F0_S42_20261024T233919.md)。F0 seed42七个DSM臂32k四tile齐全：D0 62.9713%，DF 62.3730%（-0.5983pp），六个改动臂均未超过D0。这是局部单模态负向信号，不代替条件补救/融合门禁；当前路线与队列不变。[只读口径](protocols/PHASE3_M2_INTERIM_RESULTS.md)。23:39是指标读取时刻，完整运行/GPU观测仍为22:49:33。
