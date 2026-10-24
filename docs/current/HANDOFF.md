@@ -14,3 +14,5 @@ xFormers处于禁用回退分支，警告未阻断本次实际更新，不据此
 
 研究阶段、主线与独立候选角色保持；M2→J→R→T→V原预算/种子/科学门禁不变，B/C不开放，后段缺数据WAIT_PUBLIC_DATA。test封存、GPU0/1、有界内存、用户执行服务器命令无SSH保持。原始材料尚未全量取回；结束额外验收路径补丁和752d runtime材料。前一交接见[归档](../history/HANDOFF_20261024_BEFORE_FIRST_TRAINING_UPDATES.md)。
 范围补充：[队列范围/耗时/遗留核对](../experiments/PHASE3_QUEUE_SCOPE_ETA_AND_REMAINS_20261024.md)。228=原M2 108+后续120，B/C和独立新路线不在内。同速纯优化72–75小时仅为情景，真实ETA待加权DSM及评估实测；3DCD/P³两catalog均就绪后才进入T/V。旧失败文件有意保留，最新GPU仅见当前worker；旧CPU/磁盘遗留未现场全审计，本轮无服务器操作或清理。
+
+保存规则已按实际执行链核对：[数据及产物索引](../experiments/PHASE3_DATA_AND_ARTIFACT_STORAGE_20261024.md)。原始输入、最终模型、原始计数和日志/绑定保留；完整概率/特征临时在RAM。M2保留四年龄评价计数，J/R/T/V年龄回执不能当作中间性能/权重。后段缺统一自动上传，结束另整理轻量同步；本轮没有改服务器或保存策略。

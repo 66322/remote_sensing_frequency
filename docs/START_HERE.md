@@ -11,3 +11,5 @@
 主线仍为 RGB–DSM 双向条件互补与退化/缺失分割，恢复旁支。T/V 是可能形成新问题的探索性方向，不因排入队列而视为取代主线，也不能把小网络开发结果视为超越现有方法。旧 Val2、Test6、held4、final 和新数据公开 test 均封存。只用物理 GPU0/1，中间数据有界内存处理；失败停止，不自动重跑或加种子。原始端点、轨迹和轻量证据在 `/home/jovyan/zzx` 的独立实验目录，重要结论同步本 GitHub 分支并回读。
 
 范围与耗时：[228作业覆盖范围、同速情景及旧失败遗留](experiments/PHASE3_QUEUE_SCOPE_ETA_AND_REMAINS_20261024.md)。同速纯训练约72–75小时不等于完工ETA；新数据未就绪可无限等待。B/C及独立地图维护等候选未入队。
+
+数据与保存位置：[新数据用途、两处服务器产物目录及保留/回收规则](experiments/PHASE3_DATA_AND_ARTIFACT_STORAGE_20261024.md)。M2/J/R沿用现有Potsdam，只有T/V需要额外公开数据；后段服务器publication不等于已自动上传GitHub。
