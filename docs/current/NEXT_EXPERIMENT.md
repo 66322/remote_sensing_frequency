@@ -1,10 +1,10 @@
-# 下一步：明确是否允许一次工程修订后的正式重试（2026-10-24）
+# 下一步：用户执行一次已授权的工程修订启动（2026-10-24）
 
-1. CPU预检已通过，目录为原M2 repairs/dino_py39_preflight_20261024T090448_2718326。成功标志确认63条导入前失败/无更新产物审计、固定DINO源和兼容副本核验、CPU模型构造及公共权重加载完成。无需再重复预检或改环境。
-2. 当前未授权自动重试63个失败作业，也未重启训练。先明确是否允许一次纯工程修订后的重新尝试；不要执行旧bootstrap或memfd --apply，不删除旧失败。
-3. 拟议处理（尚未决定/实现）：旧M2/合并全部保留；独立修订执行目录关联旧失败，任务/种子/科学预算/门禁保持；将Python3.9副本及memfd接入实际M2/J/R，CPU模型加载门禁前置，工程共性故障立即止队。正式代码和绑定验证、同步回读后，由用户在GPU0/1执行。
-4. CPU成功不代表CUDA前反传已验证，不把当前不完整计数作科学阴性。进程/GPU最后实测08:38:13，后续执行需现场准入。
-5. 后续取回CPU admission/cpu_model_passed/cpu_model.log及旧publication轻量原件；当前只是用户成功标志回执。test封存及有界内存不变。
+1. 用户明确“继续，把实验启动”，一次工程重试已授权，不再重复询问。使用[新执行协议](../protocols/PHASE3_ENGINEERING_RESTART_EXECUTION_20261024.md)的bootstrap_phase3_engineering_restart.py --apply，固定提交752d3835a18a15a04d83b1dcc1841bff98bf0b07。旧两失败目录保留，不用旧bootstrap/memfd --apply。
+2. 启动器先核对旧63条零更新导入失败、CPU回执、原绑定/源码/权重、Torch2.2.2+cu121和GPU0/1；在新目录执行真实模型CPU加载、原16项和合并3套11项。所有检查通过且两个入口ready后才放行。
+3. 查看新RESTART_LOG的ENGINEERING_RESTART_LAUNCHED和全局单次回执；用修订包status_phase3_engineering_restart.py查新run准备/进度/原始错误/PID/GPU。首次M2_TRAIN ... 1或progress step≥1才证明开始更新，启动器Done不等于训练结束。
+4. 全局回执phase3_engineering_restart_20261024_once.json防止重复登记/派发。首个失败即停队，保留新旧错误，不删回执绕过，不自动重复失败作业。后段缺公开数据保持WAIT_PUBLIC_DATA。
+5. 原228作业/5,088,000更新、种子、门禁和B/C封存不变。结束额外取回runtime_revision、CPU/launch/目标检查和原始训练轨迹再验收；test封存、GPU0/1及有界内存保持。
 
 ## 独立新路线的下一步
 

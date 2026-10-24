@@ -1,13 +1,13 @@
-# 当前交接：CPU兼容模型加载已通过，等待明确工程重启范围（2026-10-24）
+# 当前交接：一次工程修订已授权，启动包就绪待用户执行（2026-10-24）
 
-用户已回传CPU_PREFLIGHT_PASSED_NO_TRAINING_OR_RETRY / CPU_MODEL_IMPORT_AND_PUBLIC_WEIGHTS_PASSED。预检目录为原M2 repairs/dino_py39_preflight_20261024T090448_2718326（目录时间09:04:48，完成时刻未提供）。固定8680614脚本成功标志表明全部63条原始失败的导入前栈和无更新产物审计、DINO源Git对象/兼容副本核对、CPU构造模型与公共权重严格加载均通过，且原M2绑定/失败证据保持不变。尚未启动训练，也未验证CUDA前反传。
+用户已明确“继续，把实验启动”，允许本次零训练更新工程失败的一次修订重试。实际M2/J/R兼容路径、memfd、明确源选择、首败止队和重复启动拦截已实现；本地41项及七文件Python3.9语法检查通过。当前只完成代码/协议，服务器尚未执行新启动命令，没有新PID或新run回执。
 
-回执来源是用户终端成功标志；admission.json、cpu_model_passed.json、完整cpu_model.log原件尚未取回，不能称全量轻量原件已验收。进程/GPU最后带时间观测仍为2026-10-24 08:38:13，不是实时状态。CPU通过只验证修复方案可用于模型加载，不会修改旧M2实际启动路径或恢复控制器。
+唯一新启动入口：[执行协议](../protocols/PHASE3_ENGINEERING_RESTART_EXECUTION_20261024.md)，修订代码[752d3835a18a15a04d83b1dcc1841bff98bf0b07](https://github.com/66322/remote_sensing_frequency/commit/752d3835a18a15a04d83b1dcc1841bff98bf0b07)。沿用remote_sensing/Torch2.2.2+cu121，不改包。用户在服务器执行bootstrap_phase3_engineering_restart.py --commit <修订SHA> --apply一次，先现场准入/源码/新CPU模型/原16项/合并11项，双方入口就绪后才放行训练。无SSH，当前无新服务器启动回执。
 
-[诊断/CPU回执/拟议处理](../experiments/PHASE3_M2_PY39_IMPORT_FAILURE_20261024.md)。既有remote_sensing/Torch2.2.2+cu121保留。原M2目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330；原合并目录/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225。原M2 ac325cd、合并e65c6cb和memfd b020000绑定与旧失败保留。
+旧M2 /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330与旧合并research_phase3_combined_20261023T222112_2164225保留。旧63条失败/0更新已由CPU预检审计；09:04:48目录CPU模型构造/公共权重通过。原进程/GPU最后带时间查询08:38:13，不是实时状态。
 
-立即下一步：明确用户是否允许这次零训练更新的工程修订后重新尝试。用户此前明确“不自动增加种子或重跑失败配方”；本轮只收到CPU回执，没有新的训练重试授权。不能重用旧bootstrap或登记期memfd --apply，不删除63条失败或将旧M2标成成功。
+新目录在启动时生成research_phase3_m2_revision_<时间>_<PID>及research_phase3_combined_revision_<时间>_<PID>；全局回执records/phase3_engineering_restart_20261024_once.json保护任何登记/部分启动不重复派发。失败后不删除回执绕过。新状态助手status_phase3_engineering_restart.py按回执明确查新目录/进度/PID/日志/GPU，不再拿旧失败日志判断新状态。
 
-若明确允许，拟议在独立修订执行目录保留与旧失败的关联，科学任务/种子/预算/门禁不变；将当前Python3.9兼容副本及memfd实际接入M2/J/R，真实模型CPU门禁在批量派发前执行，工程共性错误立即止队。新执行与绑定先测试、同步并回读，再由用户在GPU0/1执行。本方案未获决定，也尚无正式重试代码/可运行命令。
+科学源M2 ac325cd/合并e65c6cb按原字节复制，运行期修订SHA及兼容副本另绑runtime_revision/registration；新pretrained指向独立拥有的延迟注解副本，M2/J/R实际加载已接入。准备输入索引必须与旧准备一致；首个作业失败走原owned-worker清理立即止队；缺catalog保持WAIT_PUBLIC_DATA。原16项不是CUDA训练，首个M2_TRAIN step1/progress才证明实际更新。
 
-原研究角色不变；本次是模型导入兼容问题，不作科学阴性。J/R/T/V未放行，test封存、有界内存、服务器用户执行无SSH不变。前一交接见[归档](../history/HANDOFF_20261024_BEFORE_CPU_PREFLIGHT_PASS.md)。
+M2→J→R→T→V最多228作业/5,088,000更新，原种子/预算/门禁不变，B/C不开放；主线/独立候选角色不变。test封存、GPU0/1、有界内存和用户服务器执行约束保持。结束时额外验收修订/CPU/launch原件与训练轨迹；原上传器不保证包含修订材料。前一交接见[归档](../history/HANDOFF_20261024_BEFORE_AUTHORIZED_RESTART.md)。
