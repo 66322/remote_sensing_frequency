@@ -7,3 +7,8 @@
 本地41项通过，独立无.git包的14项重验通过，七文件Python3.9语法解析通过，[本地回执](evidence/PHASE3_ENGINEERING_RESTART_LOCAL_20261024.json)。提交中逐文件SHA已对Git原件核验。服务器真实新目录CPU检查、原16项和合并11项/首次CUDA更新仍待用户执行；当前没有新PID或新run目录回执，不宣称实验已启动。
 
 新run在执行时生成records/research_phase3_m2_revision_<时间>_<PID>和research_phase3_combined_revision_<时间>_<PID>，全局单次回执records/phase3_engineering_restart_20261024_once.json；旧两run完整保留。所有修订快照、CPU检查和训练记录在/home/jovyan/zzx。用户操作、无SSH，只GPU0/1；test封存、无新增seed/预算/失败自动重试。
+## 目标服务器登记后停止：已准备同目录接续
+
+2026-10-24 09:30:32用户回执确认752d修订已经在09:28:14登记M2/合并两目录，新CPU模型、原M2全16项、combined_plan6项通过，但J头因model常规包遮蔽合并命名空间目录而导入失败。无launch/release/jobs，GPU0/1空闲；尚无训练更新。
+
+之前41项为单仓库检查，没有覆盖这个分包布局，属助手打包/测试覆盖遗漏。现已在真实分包布局复现并修复，8项路径/接纳检查及原三套11项通过，详见[同目录接续协议](../protocols/PHASE3_MODEL_NAMESPACE_CONTINUATION_20261024.md)。不重新登记、不删除全局回执，不修改752d冻结代码；附加补丁独立绑定。当前服务器补丁尚未执行，旧启动命令不再使用。

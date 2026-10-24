@@ -1,3 +1,5 @@
+> 当前入口已更新（2026-10-24）：752d队列已登记但未放行，改用[同目录model包路径接续](PHASE3_MODEL_NAMESPACE_CONTINUATION_20261024.md)。下方原bootstrap命令仅为历史，不再次登记或删除回执。
+
 # Phase3零训练更新工程失败的一次性修订执行（2026-10-24）
 
 状态：AUTHORIZED_IMPLEMENTED_LOCAL_CHECKED_NOT_SERVER_LAUNCHED。用户在CPU兼容预检通过后明确回复“继续，把实验启动”，授权本次工程修复后的一次正式重新尝试；不是开放自动重跑失败配方。服务器由用户执行，无SSH。

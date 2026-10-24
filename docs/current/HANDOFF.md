@@ -1,13 +1,15 @@
-# 当前交接：一次工程修订已授权，启动包就绪待用户执行（2026-10-24）
+# 当前交接：09:28修订已登记未放行，model包路径接续待执行（2026-10-24）
 
-用户已明确“继续，把实验启动”，允许本次零训练更新工程失败的一次修订重试。实际M2/J/R兼容路径、memfd、明确源选择、首败止队和重复启动拦截已实现；本地41项及七文件Python3.9语法检查通过。当前只完成代码/协议，服务器尚未执行新启动命令，没有新PID或新run回执。
+最后服务器观测2026-10-24 09:30:32+08:00：752d修订已在09:28:14登记M2/合并两目录，但J头测试model.phase3_j_heads导入失败，于09:28:23停止，no_launch_release=true，无训练作业/失败/PID，GPU0/1空闲。新CPU模型、原M2全16项和合并计划6项已通过；不是训练/科学阴性。
 
-唯一新启动入口：[执行协议](../protocols/PHASE3_ENGINEERING_RESTART_EXECUTION_20261024.md)，修订代码[752d3835a18a15a04d83b1dcc1841bff98bf0b07](https://github.com/66322/remote_sensing_frequency/commit/752d3835a18a15a04d83b1dcc1841bff98bf0b07)。沿用remote_sensing/Torch2.2.2+cu121，不改包。用户在服务器执行bootstrap_phase3_engineering_restart.py --commit <修订SHA> --apply一次，先现场准入/源码/新CPU模型/原16项/合并11项，双方入口就绪后才放行训练。无SSH，当前无新服务器启动回执。
+仅用模型包路径接续补丁修复已登记两目录，不新建队列、不删除单次回执、不改冻结源码/权重或科学合同；8项保护和真实分包布局11项原检查本地通过。目标服务器补丁尚未应用。此前“继续，把实验启动”的授权继续有效，无需再次确认。
 
-旧M2 /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330与旧合并research_phase3_combined_20261023T222112_2164225保留。旧63条失败/0更新已由CPU预检审计；09:04:48目录CPU模型构造/公共权重通过。原进程/GPU最后带时间查询08:38:13，不是实时状态。
+唯一入口：[model包路径接续协议](../protocols/PHASE3_MODEL_NAMESPACE_CONTINUATION_20261024.md)，补丁[25b124a0cf69ececb6841b55ed90b19fae5b9a08](https://github.com/66322/remote_sensing_frequency/commit/25b124a0cf69ececb6841b55ed90b19fae5b9a08)。用户执行repair_phase3_model_namespace.py --apply一次。旧bootstrap/memfd --apply不再运行，不删除全局回执。
 
-新目录在启动时生成research_phase3_m2_revision_<时间>_<PID>及research_phase3_combined_revision_<时间>_<PID>；全局回执records/phase3_engineering_restart_20261024_once.json保护任何登记/部分启动不重复派发。失败后不删除回执绕过。新状态助手status_phase3_engineering_restart.py按回执明确查新目录/进度/PID/日志/GPU，不再拿旧失败日志判断新状态。
+已登记M2 /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345；已登记合并/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345。全局phase3_engineering_restart_20261024_once.json保留失败快照，额外补丁放现有M2 repairs/model_namespace_<SHA>，两处model_namespace_repair.json另绑补丁与原752d SHA，原冻结文件不改。
 
-科学源M2 ac325cd/合并e65c6cb按原字节复制，运行期修订SHA及兼容副本另绑runtime_revision/registration；新pretrained指向独立拥有的延迟注解副本，M2/J/R实际加载已接入。准备输入索引必须与旧准备一致；首个作业失败走原owned-worker清理立即止队；缺catalog保持WAIT_PUBLIC_DATA。原16项不是CUDA训练，首个M2_TRAIN step1/progress才证明实际更新。
+根因是常规M2 model包遮蔽合并命名空间目录，先前单仓库41项没有覆盖该布局，属助手打包/测试覆盖遗漏。补丁在同一真实测试/运行包装中明确model.__path__至两校验目录，拒绝冲突/外部模块；M2/J/R/fork继承。先现场确认无jobs/launch/release，再跑8项+原16项+合并11项，双方ready和GPU0/1核验后才放行。
 
-M2→J→R→T→V最多228作业/5,088,000更新，原种子/预算/门禁不变，B/C不开放；主线/独立候选角色不变。test封存、GPU0/1、有界内存和用户服务器执行约束保持。结束时额外验收修订/CPU/launch原件与训练轨迹；原上传器不保证包含修订材料。前一交接见[归档](../history/HANDOFF_20261024_BEFORE_AUTHORIZED_RESTART.md)。
+下一回执应含REGISTERED_REVISION_NAMESPACE_FIXED_LAUNCHED/new PID，同两09:28目录；然后状态助手查准备、M2_TRAIN step1/progress及GPU。当前无新训练回执；观察时间不能倒写实时。失败保留日志不自动重试。
+
+原旧M263条导入前失败目录、旧合并、09:04 CPU检查与原科学源ac325cd/e65c6cb均保留；一次修订752d不再重新登记。M2→J→R→T→V预算/种子/门禁不变，后段缺数据保持WAIT_PUBLIC_DATA。test封存、GPU0/1、有界内存与用户服务器操作无SSH保持。结束额外验收路径补丁及752d runtime材料/训练轨迹。前一交接见[归档](../history/HANDOFF_20261024_BEFORE_MODEL_NAMESPACE_FIX.md)。

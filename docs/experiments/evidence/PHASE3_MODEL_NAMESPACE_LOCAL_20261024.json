@@ -1,0 +1,21 @@
+{
+  "status": "LOCAL_SEPARATED_SNAPSHOT_IMPORT_CHECKS_PASSED_NOT_SERVER_APPLIED",
+  "namespace_unit_checks": 8,
+  "actual_fragmented_combined_checks": 11,
+  "before_patch_failure_reproduced": true,
+  "all_separated_target_suites_passed": true,
+  "python39_ast_files": 7,
+  "files": {
+    "scripts/repair_phase3_model_namespace.py": "12e534b48aa66c4e89bf245403058c78612945956d1f0e68be1a359445d53456",
+    "scripts/phase3_model_namespace.py": "a2124bbd43de2a470e29f85788cc8ce6ce574cccad4dad612c76c02c9ee15015",
+    "tests/test_phase3_model_namespace.py": "7067d85a6d2dfa1c57d65238e325c5071add84820fb3dc4c15e5391b11820edc",
+    "scripts/bootstrap_phase3_engineering_restart.py": "a17c12aff1b901381bfb853bfe53822a2d42d7beb1f90b6e3a6ed016ea21b951",
+    "scripts/phase3_engineering_runtime.py": "5de76e03223454cd3ba57c31e62c5d20f3d9ec42ed2b0b5bcca87c3d73770be7",
+    "scripts/phase3_memfd_compat.py": "84e2a14e15e1d312effb40bf853c73d082d0bce9ca390ee448515bd1de5108ba",
+    "scripts/phase3_memfd_repair_common.py": "0922d3f2c0bec72335acb5e8e78671ab81cdf9d0f0617aa57246cbb8d88d1a33"
+  },
+  "server_launched": false,
+  "python": "3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]",
+  "standalone_returncode": 0,
+  "standalone_checks": 8
+}

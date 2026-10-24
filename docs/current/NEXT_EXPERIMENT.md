@@ -1,10 +1,10 @@
-# 下一步：用户执行一次已授权的工程修订启动（2026-10-24）
+# 下一步：在已登记09:28两目录修复model包路径后放行（2026-10-24）
 
-1. 用户明确“继续，把实验启动”，一次工程重试已授权，不再重复询问。使用[新执行协议](../protocols/PHASE3_ENGINEERING_RESTART_EXECUTION_20261024.md)的bootstrap_phase3_engineering_restart.py --apply，固定提交752d3835a18a15a04d83b1dcc1841bff98bf0b07。旧两失败目录保留，不用旧bootstrap/memfd --apply。
-2. 启动器先核对旧63条零更新导入失败、CPU回执、原绑定/源码/权重、Torch2.2.2+cu121和GPU0/1；在新目录执行真实模型CPU加载、原16项和合并3套11项。所有检查通过且两个入口ready后才放行。
-3. 查看新RESTART_LOG的ENGINEERING_RESTART_LAUNCHED和全局单次回执；用修订包status_phase3_engineering_restart.py查新run准备/进度/原始错误/PID/GPU。首次M2_TRAIN ... 1或progress step≥1才证明开始更新，启动器Done不等于训练结束。
-4. 全局回执phase3_engineering_restart_20261024_once.json防止重复登记/派发。首个失败即停队，保留新旧错误，不删回执绕过，不自动重复失败作业。后段缺公开数据保持WAIT_PUBLIC_DATA。
-5. 原228作业/5,088,000更新、种子、门禁和B/C封存不变。结束额外取回runtime_revision、CPU/launch/目标检查和原始训练轨迹再验收；test封存、GPU0/1及有界内存保持。
+1. 用户启动752d后已登记两revision_20261024T092814_2738345目录，但J头导入检查失败，尚无launch/release/jobs。新CPU模型、原16项和计划6项已通过。最后GPU/状态观测09:30:32，不是实时状态。
+2. 依[新接续协议](../protocols/PHASE3_MODEL_NAMESPACE_CONTINUATION_20261024.md)执行repair_phase3_model_namespace.py --apply，固定补丁25b124a0cf69ececb6841b55ed90b19fae5b9a08。保留单次回执和旧错误，同目录接续，不重新bootstrap或memfd --apply。
+3. 现场无启动/作业及原752d完整绑定必须通过；补丁8项、带明确model.__path__的原16项/合并11项全部通过，双方入口ready和GPU0/1复核后才放行。已有用户启动授权，不再重复确认。
+4. 读取REGISTERED_REVISION_NAMESPACE_FIXED_LAUNCHED、新PID及原状态助手输出。首次M2_TRAIN ...1或progress step≥1确认训练更新；失败日志保留，不自动重试。
+5. 修订源码/模型数学/种子/预算/科学门禁不改。额外验收两model_namespace_repair回执、补丁manifest/目标检查/launch及原752d runtime材料和训练轨迹；test封存、GPU0/1及有界内存保持。
 
 ## 独立新路线的下一步
 
