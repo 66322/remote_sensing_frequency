@@ -235,6 +235,7 @@ def main():
             write(runtime / 'admission.json', dict(original_binding=original_binding, dino_files=dino_files,
                   original_failed_directory=str(old), successful_cpu_record=str(cpu), successful_cpu_receipt_sha256=sha(cpu / 'cpu_model_passed.json'),
                   source_commit=args.commit, explicit_one_time_restart=True, automatic_retry=False, observed_at=now()))
+            shutil.copyfile(old / 'input_index.json', runtime / 'previous_input_index.json')
             new_env = c.environment(m2)
             checked_run([sys.executable, '-u', '-B', str(runtime / 'scripts/preflight_phase3_dino_py39.py'),
                          '--directory', str(m2), '--cpu-worker', str(runtime)], m2 / 'code', new_env,
@@ -243,7 +244,7 @@ def main():
             if new_passed['initial_state_sha256'] != passed['initial_state_sha256']:
                 raise RuntimeError('revised actual model initialization differs from successful CPU check')
             runtime_files = dict(manifest['files'])
-            for name in ('execution_manifest.json', 'admission.json', 'cpu_model_passed.json'):
+            for name in ('execution_manifest.json', 'admission.json', 'cpu_model_passed.json', 'previous_input_index.json'):
                 runtime_files[name] = sha(runtime / name)
             revision = dict(revision_commit=args.commit, m2_directory=str(m2), combined_directory=str(queue),
                   runtime_directory=str(runtime), m2_binding=binding, pretrained_sha256=sha(m2 / 'pretrained.json'),
@@ -271,6 +272,8 @@ def main():
             write(queue / 'target_checks.json', dict(passed=True, suites=3, observed_at=now()))
             if verify_sources(old, old_queue) != original_binding or preflight.audit_failure(old) != admission['audit']:
                 raise RuntimeError('old failed evidence changed during preparation')
+            if sha(old / 'input_index.json') != sha(runtime / 'previous_input_index.json'):
+                raise RuntimeError('original input index changed during preparation')
             fresh = c.gpu_inventory()
             if not fresh['ready'] or any(fresh['selected'][g][1] != inventory['selected'][g][1] for g in (0, 1)):
                 raise RuntimeError('GPU0/1 became busy or UUID changed; no controllers launched')

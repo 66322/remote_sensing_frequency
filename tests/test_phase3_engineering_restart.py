@@ -164,6 +164,17 @@ class RevisionTests(unittest.TestCase):
             self.assertEqual(status.snapshot(records)['status'], 'NOT_REGISTERED_OR_BOOTSTRAP_STILL_CHECKING')
             self.assertEqual(list(records.iterdir()), [])
 
+    def test_preparation_requires_original_input_identity_before_workers(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); base = root / 'new'; base.mkdir(); rt = root / 'runtime'; rt.mkdir()
+            put(base / 'input_index.json', {'files': ['original'], 'normalization': 1})
+            put(rt / 'previous_input_index.json', {'files': ['original'], 'normalization': 1})
+            with patch.object(runtime, '_runtime', rt), patch.object(runtime, '_original_prepare', return_value={'prepared': True}):
+                self.assertEqual(runtime.guarded_prepare(base), {'prepared': True})
+                put(base / 'input_index.json', {'files': ['different'], 'normalization': 1})
+                with self.assertRaisesRegex(RuntimeError, 'Fit12 input'):
+                    runtime.guarded_prepare(base)
+
 
 if __name__ == '__main__':
     unittest.main()

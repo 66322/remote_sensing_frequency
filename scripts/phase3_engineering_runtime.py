@@ -15,6 +15,7 @@ from phase3_memfd_compat import probe
 ROOT = Path('/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro')
 _original_worker = None
 _original_make_model = None
+_original_prepare = None
 _runtime = None
 
 
@@ -102,6 +103,13 @@ def guarded_make_model(base, job, load=False):
     return _original_make_model(base, job, load)
 
 
+def guarded_prepare(base):
+    profile = _original_prepare(base)
+    if read(Path(base) / 'input_index.json') != read(_runtime / 'previous_input_index.json'):
+        raise RuntimeError('Fit12 input bytes/metadata/normalization differ from original prepared attempt')
+    return profile
+
+
 def explicit_source(records, revision):
     source = Path(revision['m2_directory'])
     if source.parent != Path(records) or not (source / 'registration.json').is_file():
@@ -136,7 +144,7 @@ def wait_for_release(base, revision):
 
 
 def main():
-    global _original_worker, _original_make_model, _runtime
+    global _original_worker, _original_make_model, _original_prepare, _runtime
     parser = argparse.ArgumentParser()
     parser.add_argument('--directory', type=Path, required=True)
     parser.add_argument('--mode', choices=('checks', 'm2', 'combined'), required=True)
@@ -156,8 +164,11 @@ def main():
     try:
         wait_for_release(base, revision)
         runtime = importlib.import_module('phase3_m2_runtime')
+        data = importlib.import_module('phase3_m2_data')
         _original_worker, _original_make_model = runtime.worker, runtime.make_model
+        _original_prepare = data.prepare
         runtime.worker, runtime.make_model = failfast_worker, guarded_make_model
+        data.prepare = guarded_prepare
         if args.mode == 'm2':
             if base != m2:
                 raise RuntimeError('M2 entry directory differs')
