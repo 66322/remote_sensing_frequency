@@ -13,3 +13,5 @@
 范围与耗时：[228作业覆盖范围、同速情景及旧失败遗留](experiments/PHASE3_QUEUE_SCOPE_ETA_AND_REMAINS_20261024.md)。同速纯训练约72–75小时不等于完工ETA；新数据未就绪可无限等待。B/C及独立地图维护等候选未入队。
 
 数据与保存位置：[新数据用途、两处服务器产物目录及保留/回收规则](experiments/PHASE3_DATA_AND_ARTIFACT_STORAGE_20261024.md)。M2/J/R沿用现有Potsdam，只有T/V需要额外公开数据；后段服务器publication不等于已自动上传GitHub。
+
+启动复盘：[四类阻断、63条共性失败的调度放大及验证改进](experiments/PHASE3_STARTUP_POSTMORTEM_20261024.md)。主要问题是助手工程交付与真实执行链检查不足；本轮未操作服务器，不改变当前运行与研究决定。
