@@ -46,3 +46,7 @@ python -B "$SCRIPT" --directory "$M2" --step 32000
 ## 后续目标回执：2026-10-24 23:39:19
 
 用户已使用624194105b3b018bb1e1e66d80cada2a405e7758版本成功读取当前修订M2目录。输出19行、17行eligible；F0 seed42七DSM臂32k四tile齐全，D0=62.9713%，DF=62.3730%（-0.5983pp），全部改动臂未超过D0。见[真实表格、原始输出转录与分析](../experiments/PHASE3_M2_INTERIM_F0_S42_20261024T233919.md)。先前未运行/无分数的表述仅描述工具交付当时；本次目标回执更新了该边界。未回传完整JSON/矩阵/权重字节，未刷新进程/GPU状态，不据此判完整科学门禁或修改队列。
+
+## 第二次目标回执：2026-10-25 12:08:24
+
+同一只读汇总器输出34行，其中32行eligible。F0 seed17/42各七个DSM臂32k四tile齐全；DF相对同seed D0分别-0.6126/-0.5983pp，DSelf/DMix跨种子变号。seed2026 D0尚无合格行，三个已合格DSM臂的相对差值保持NA。同期状态助手报M2 32/108、失败0，combined WAIT_M2，完整面板`counted_cases=0`、`evaluation=null`。见[原终端回执、指标表和证据边界](../experiments/PHASE3_M2_PROGRESS_AND_INTERIM_20261025T120824.md)。该回执更新了运行/GPU最后观测时刻，不改变科学门禁或队列。未拿到原始矩阵和模型字节独立复算。

@@ -1,14 +1,14 @@
-# 下一步：继续M2，等首折36作业后的完整面板评价（2026-10-24）
+# 下一步：继续M2，等首折36作业后的完整面板评价（2026-10-25）
 
 已采纳[长期启动规则](../protocols/STARTUP_DELIVERY_AND_FAILURE_CONTROL.md)及[稳定新对话入口](NEW_CHAT_HANDOFF.md)；不因本次记录更新重新预检或启动。
 
-1. 最后服务器观测2026-10-24 22:49:33+08:00：M2 RUNNING，控制器报告完成17/108训练作业、失败/阻断0，19个作业有progress；GPU0 F0_s17_DShuffle为16600/32000，GPU1 F0_s17_DEntropy为11420/32000。两控制器及两GPU worker存活，合并WAIT_M2。当前完整故障面板counted_cases=0、evaluation=null，尚无M2阶段summary。这是最后观测，不是实时状态或完整科学验收。
+1. 最后服务器观测2026-10-25 12:08:24+08:00：M2 RUNNING，控制器报告完成32/108训练作业、失败/阻断0，34项有progress；GPU0 F0_s2026_DEntropy为18160/32000，GPU1 F0_s2026_DMix为29580/32000。两控制器及两GPU worker当时存活，合并WAIT_M2。完整故障面板`counted_cases=0`、`evaluation=null`，尚无M2阶段summary/gates。这是最后观测，不是实时状态或完整科学验收。
 2. 当前只读运行records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/scripts/status_phase3_engineering_restart.py --tail 20，结合progress更新时间、失败记录和控制器状态；跨阶段结果见[查看指南](../protocols/PHASE3_PROGRESS_AND_RESULTS.md)。
-3. 23:39:19已读到[首张F0 seed42 clean指标](../experiments/PHASE3_M2_INTERIM_F0_S42_20261024T233919.md)：D0 62.9713%，DF 62.3730%（-0.5983pp），六个改动臂均低于D0。已有表不必重复索取；等待其余登记块和原条件面板，报告负向及正向结果，不以此提前裁臂、改配方或把DSM单模态差值当融合G3失败。进程/GPU状态仍以22:49为最后观测。
+3. 12:08:24已读到[F0 seed17/42配对的clean指标](../experiments/PHASE3_M2_PROGRESS_AND_INTERIM_20261025T120824.md)：DF比同seed D0分别低0.6126/0.5983个百分点，DSelf与DMix跨seed变号；seed2026尚缺可配对D0。已有表不必重复索取；等待其余登记块和原条件面板，报告负向及正向结果，不以此提前裁臂、改配方或把DSM单模态差值当融合G3失败。
 4. 下一里程碑是首折全部36作业完成且mask就绪后出现完整Evaluation和案例计数；年龄轨迹另存，不进counted_cases。最终M2汇总仍等108作业和全部计数finalize，不能把缺summary或当前CPU无在途任务判为失败。
 5. 发现新FAILED/STOPPED或进度异常先保存首栈并诊断，不自动重跑。既有目录、失败前史和单次回执保留，不bootstrap、repair --apply、改环境、重启或扩seed/配方。本轮仅只读接续。
-6. 本次两加权臂实测约0.35秒/步，不继续按首批教师0.1秒/步估整队列；剩余1.5/2小时仅两在途作业纯优化。后续按正式作业类型与完整评估自然日志更新ETA，不另起探针或改预算。
-7. 阶段完成后核对配置/checkpoint/SHA、原始整数计数、配对样本流、训练轨迹、752d/25b124修订材料和轻量上传；再解释科学gates。J/R/T/V仍按原依赖合同，B/C和test封存，公开数据就绪等待不自动跳过。详见[最新回执](../experiments/PHASE3_M2_PROGRESS_20261024T224933.md)。
+6. 本次两在途臂分别约0.338/0.243秒/步；剩余约1.30/0.16小时仅对应其纯优化，不据此估整队列。后续按正式作业类型与完整评估自然日志更新ETA，不另起探针或改预算。
+7. 阶段完成后核对配置/checkpoint/SHA、原始整数计数、配对样本流、训练轨迹、752d/25b124修订材料和轻量上传；再解释科学gates。J/R/T/V仍按原依赖合同，B/C和test封存，公开数据就绪等待不自动跳过。详见[最新回执](../experiments/PHASE3_M2_PROGRESS_AND_INTERIM_20261025T120824.md)。
 
 ## 新结果到来时先做研究复盘（2026-10-25用户决定）
 
