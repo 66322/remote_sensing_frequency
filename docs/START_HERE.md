@@ -2,6 +2,8 @@
 
 长期必读：[仓库AGENTS](../AGENTS.md)、[稳定新对话入口](current/NEW_CHAT_HANDOFF.md)、[跨对话执行约定](protocols/EXECUTION_CONTRACT.md)。2026-10-24用户已将[启动交付与故障控制](protocols/STARTUP_DELIVERY_AND_FAILURE_CONTROL.md)确立为长期要求：真实包/分包布局验证、目标兼容路径、首败停止、未变检查复用。换对话不重新启动或补跑审计；日期入口只跳转当前文件。
 
+机器重启或需用GPU0/1时先读[当前M2中断与释放协议](protocols/PHASE3_M2_INTERRUPTION_AND_GPU_RELEASE_20261025.md)：这版没有可恢复暂停/自动续跑，`last_resume.pth`不是已接入的恢复入口。终端断线不等于机器重启；确需立即释放两卡只能显式中止当前运行，先核验进程归属，再让原控制器清理自身子进程。此协议及工具发布未在服务器执行任何停止动作，不改变下方最后观测。
+
 规划长期必读：[实验规划规范](protocols/EXPERIMENT_PLANNING_RULES.md)。探索默认单种子，必要重复通常先两个，三及以上说明两个不足的具体问题和额外成本；真实训练/评价吞吐须有证据。用户2026-10-25再次指出旧要求未落实，[本次复盘](experiments/PHASE3_PLANNING_POLICY_AUDIT_20261025.md)确认规则已存在但入口/计划落实遗漏。已补入口与准备表；尚未缩减服务器三种子队列或完成GPU profiling/提速，没有新增运行观测。
 
 最新研究决定（2026-10-25）：采纳用户提出的[按阶段证据调整路线](protocols/ITERATIVE_RESEARCH_REVIEW_20261025.md)。每次新增完整配对结果先回答实验目的，再安排最小后续验证；原RGB–DSM线与地图线准备可并行。当前自动队列没有新增人工暂停点，未缩减、改排或启动新路线。

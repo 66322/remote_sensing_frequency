@@ -2,6 +2,8 @@
 
 已采纳[长期启动规则](../protocols/STARTUP_DELIVERY_AND_FAILURE_CONTROL.md)及[稳定新对话入口](NEW_CHAT_HANDOFF.md)；不因本次记录更新重新预检或启动。
 
+若用户需占用GPU0/1或发生机器重启，按[本次专用中断与释放协议](../protocols/PHASE3_M2_INTERRUPTION_AND_GPU_RELEASE_20261025.md)先分辨终端断线、真实重启和主动中止。当前程序没有安全暂停/自动续跑；不要把旧队列的release/rejoin、当前`last_resume.pth`或重复bootstrap当现成恢复命令。协议发布并未中止正在运行的实验。
+
 1. 最后服务器观测2026-10-25 22:12:38+08:00：M2 RUNNING，完成45/108训练作业、失败/阻断0，47项有progress；GPU0 F1_s42_DClean为24520/32000，GPU1 F1_s42_DShuffle为8360/32000。两控制器及两GPU worker当时存活，合并WAIT_M2。F0条件评价已计399例、仍处于`rgb_fault`，M2阶段summary/gates尚未生成。这不是实时状态或完整科学验收。
 2. 当前只读运行records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/scripts/status_phase3_engineering_restart.py --tail 20，结合progress更新时间、失败记录和控制器状态；跨阶段结果见[查看指南](../protocols/PHASE3_PROGRESS_AND_RESULTS.md)。
 3. 22:12:39只读表中[F0 seed17/42/2026配对的clean指标](../experiments/PHASE3_M2_PROGRESS_20261025T221238.md)与20:35相同：DF比同seed D0分别低0.6126/0.5983/0.9301个百分点，均低于DShuffle；F1还缺D0配对。已有表不必重复索取；等待原条件面板，报告负向及正向结果，不以此提前裁臂、改配方或把DSM单模态差值当融合G3失败。

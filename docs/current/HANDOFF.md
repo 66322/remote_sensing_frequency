@@ -2,6 +2,8 @@
 
 用户最新决定是边运行边检验实验目的，按结果调整后续研究；见[阶段复盘流程](../protocols/ITERATIVE_RESEARCH_REVIEW_20261025.md)。主线仍是RGB–DSM条件互补与退化/缺失分割、恢复旁支；连续建筑地图维护为独立优先候选，尚未验包/实现/训练，未取代主线。新路线先数据与现象、两基线×三地理划分×seed42六作业；简单重置已足够则不扩复杂机制。研究准备可并行，服务器资源仍按现有任务安排。
 
+用户询问机器重启或主动释放GPU0/1。已核对冻结源码并交付[中断与释放协议](../protocols/PHASE3_M2_INTERRUPTION_AND_GPU_RELEASE_20261025.md)：当前M2没有可恢复暂停；机器重启后必须从持久原件人工审计，旧RUNNING JSON不表示进程仍在；主动释放只能在明确接受本次运行中止后使用已核验归属的辅助脚本，原控制器清理自身子进程，随后不自动重跑。脚本本地测试与Python3.9语法通过，服务器目标`--inspect`/终止均未执行。本次没有改变运行状态、预算或科学决定。
+
 ## 最近证据分别计时
 
 - 进程/GPU：最后完整观测2026-10-25 22:12:38+08:00，M2 RUNNING 45/108，失败/阻断0，两控制器与两worker当时存活，combined WAIT_M2。两在途F1_s42_DClean/DShuffle为24520/8360步，约0.225/0.363秒/步；F0评价已计399例、仍处于`rgb_fault`，summary/gates未生成。[原回执及分析](../experiments/PHASE3_M2_PROGRESS_20261025T221238.md)。不是实时状态。
@@ -23,4 +25,4 @@ F0外折36项训练已齐、故障评价在途；下一关键证据是完整补�
 
 [种子/吞吐复盘](../experiments/PHASE3_PLANNING_POLICY_AUDIT_20261025.md)：旧规则已存在但未完整落实。新计划必读[规划规范](../protocols/EXPERIMENT_PLANNING_RULES.md)，探索默认单seed、必要重复通常先42/17，第三须理由与成本。GPU小批教师、分层循环与每步同步仅候选瓶颈，未目标profiling；新增/改动按受影响范围验证，复用未变证据，不因换对话/补规则重跑全面审计。
 
-结束核验原端点/整数计数/样本流/训练轨迹及752d/25b修订材料；[数据保存规则](../experiments/PHASE3_DATA_AND_ARTIFACT_STORAGE_20261024.md)。服务器publication不等于全部已上传GitHub，重要结论须同步并回读。[启动约定](../protocols/STARTUP_DELIVERY_AND_FAILURE_CONTROL.md)、[稳定新对话入口](NEW_CHAT_HANDOFF.md)。[本次更新前交接归档](../history/HANDOFF_20261025_BEFORE_M2_45_PROGRESS.md)。
+结束核验原端点/整数计数/样本流/训练轨迹及752d/25b修订材料；[数据保存规则](../experiments/PHASE3_DATA_AND_ARTIFACT_STORAGE_20261024.md)。服务器publication不等于全部已上传GitHub，重要结论须同步并回读。[启动约定](../protocols/STARTUP_DELIVERY_AND_FAILURE_CONTROL.md)、[稳定新对话入口](NEW_CHAT_HANDOFF.md)。[本次更新前交接归档](../history/HANDOFF_20261025_BEFORE_INTERRUPTION_GUIDE.md)。
