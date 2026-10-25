@@ -50,3 +50,7 @@ python -B "$SCRIPT" --directory "$M2" --step 32000
 ## 第二次目标回执：2026-10-25 12:08:24
 
 同一只读汇总器输出34行，其中32行eligible。F0 seed17/42各七个DSM臂32k四tile齐全；DF相对同seed D0分别-0.6126/-0.5983pp，DSelf/DMix跨种子变号。seed2026 D0尚无合格行，三个已合格DSM臂的相对差值保持NA。同期状态助手报M2 32/108、失败0，combined WAIT_M2，完整面板`counted_cases=0`、`evaluation=null`。见[原终端回执、指标表和证据边界](../experiments/PHASE3_M2_PROGRESS_AND_INTERIM_20261025T120824.md)。该回执更新了运行/GPU最后观测时刻，不改变科学门禁或队列。未拿到原始矩阵和模型字节独立复算。
+
+## 第三次目标回执：2026-10-25 20:35:08
+
+同一只读汇总器输出45行、43行eligible；F0三个种子的七个DSM臂均32k四tile齐全。DF相对同seed D0为-0.6126/-0.5983/-0.9301pp，三者均低于DShuffle；F1缺D0不能配对。M2 43/108、失败0，F0条件评价已计315例、处于`rgb_fault`，尚无summary/gates；combined WAIT_M2。见[原终端和完整判读](../experiments/PHASE3_M2_PROGRESS_AND_INTERIM_20261025T203508.md)。`eligible`只检验单行读取合同，315例不表示面板完成。本次仍未拿到原始矩阵或重新校验端点字节。

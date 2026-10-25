@@ -1,0 +1,294 @@
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+M2="$ROOT/records/research_phase3_m2_revision_20261024T092814_2738345"
+Q="$ROOT/records/research_phase3_combined_revision_20261024T092814_2738345"
+READER="$ROOT/records/report_phase3_m2_interim_624194105b3b018bb1e1e66d80cada2a405e7758.py"
+
+date -Is
+
+python -B "$ROOT/records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/scripts/status_phase3_engineering_restart.py" --tail 0
+
+if [ -f "$READER" ]; then
+  python -B "$READER" --directory "$M2" --step 32000
+else
+  echo "INTERIM_READER_NOT_FOUND: $READER"
+fi
+
+python -B - "$M2" "$Q" <<'PY'
+import json
+import sys
+from pathlib import Path
+
+m2, queue = map(Path, sys.argv[1:])
+
+def show_json(label, path):
+    if path.is_file():
+        print(f"\n{label}: {path}")
+        print(json.dumps(json.loads(path.read_text(encoding="utf-8")),
+                         ensure_ascii=False, indent=2))
+    else:
+        print(f"\n{label}: 尚未生成")
+
+for stage, base in [("M2", m2), ("J", queue), ("R", queue),
+                    ("T", queue), ("V", queue)]:
+    pub = base / "publication" if stage == "M2" else base / "publication" / stage
+    print(f"\n========== {stage} ==========")
+    show_json("阶段状态", base / ("queue_status.json" if stage == "M2"
+PY          print(f"详细指标文件: {path}")son"):g="utf-8").splitlines()[:80]))
+2026-10-25T20:35:08+08:00
+{
+  "bootstrap_receipt": {
+    "status": "CONTROLLERS_LAUNCHED",
+    "revision_commit": "752d3835a18a15a04d83b1dcc1841bff98bf0b07",
+    "old_m2": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330",
+    "old_combined": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225",
+    "m2_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345",
+    "combined_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345",
+    "automatic_retry": false,
+    "authorization": "user: 继续，把实验启动; 2026-10-24",
+    "observed_at": "2026-10-24T09:46:44.633221+08:00",
+    "namespace_patch_commit": "25b124a0cf69ececb6841b55ed90b19fae5b9a08",
+    "previous_failure_receipt": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/model_namespace_25b124a0cf69ececb6841b55ed90b19fae5b9a08/previous_bootstrap_failure.json",
+    "m2_controller_pid": 2754693,
+    "combined_controller_pid": 2754694
+  },
+  "observed_at": "2026-10-25T20:35:08.268501+08:00",
+  "m2_directory": {
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345",
+    "queue_status.json": {
+      "status": "RUNNING",
+      "completed_trainings": 43,
+      "failed_or_blocked": 0,
+      "active": {
+        "0": "T_F1_s42_DEntropy",
+        "1": "T_F1_s42_DMix"
+      },
+      "cpu_tasks": 0,
+      "counted_cases": 315,
+      "evaluation": {
+        "fold": "F0",
+        "tile": "6_7",
+        "stage": "rgb_fault",
+        "live_variants": 0
+      },
+      "count_workers": 32,
+      "observed_at": "2026-10-25T20:34:56.006304+08:00"
+    },
+    "preparation_progress.json": {
+      "tile": "6_7",
+      "done": 12,
+      "total": 12,
+      "observed_at": "2026-10-24T09:49:45.925189+08:00"
+    },
+    "jobs_with_progress": 45,
+    "latest_training_progress": [
+      {
+        "job": "F1_s42_DEntropy",
+        "step": 31360,
+        "loss": 0.1835959553718567,
+        "gradient_norm": 4.457760810852051,
+        "activation_abs_mean": 5.355380058288574,
+        "elapsed_seconds": 10834.16009530425,
+        "stable_sec_per_update": 0.3501986430957913,
+        "remaining_training_hours": 0.062257536550362896,
+        "lr": [
+          4.025157232704403e-07,
+          4.025157232704403e-06
+        ],
+        "weight_mean": 1.0,
+        "weight_min": 0.794808566570282,
+        "weight_max": 2.384425640106201,
+        "effective_fraction": 0.8223025798797607,
+        "small_stratum_pixels": 1,
+        "physical_gpu": 0,
+        "gpu_uuid": "GPU-97a250ea-42ff-eb14-4ed5-8c50231e0baa",
+        "observed_at": "2026-10-25T20:35:06.307670+08:00"
+      },
+      {
+        "job": "F1_s42_DMix",
+        "step": 20520,
+        "loss": 0.3666869103908539,
+        "gradient_norm": 4.983560085296631,
+        "activation_abs_mean": 4.937702178955078,
+        "elapsed_seconds": 4985.551769569516,
+        "stable_sec_per_update": 0.24133881516754627,
+        "remaining_training_hours": 0.7696026661453975,
+        "lr": [
+          7.220125786163522e-06,
+          7.220125786163522e-05
+        ],
+        "weight_mean": 0.9999999403953552,
+        "weight_min": 0.8645078539848328,
+        "weight_max": 1.728914737701416,
+        "effective_fraction": 0.969717264175415,
+        "small_stratum_pixels": 0,
+        "raw_gradient_coefficient_mean": 0.5783975124359131,
+        "normalizer_stopped": true,
+        "physical_gpu": 1,
+        "gpu_uuid": "GPU-4b116760-e84c-2743-cee6-41cf76a01677",
+        "observed_at": "2026-10-25T20:35:07.990034+08:00"
+      }
+    ],
+    "job_failure_count": 0,
+    "first_job_failures": []
+  },
+  "combined_directory": {
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345",
+    "queue_status.json": {
+      "status": "WAIT_M2",
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345",
+      "last_source_status": {
+        "status": "RUNNING",
+        "completed_trainings": 43,
+        "failed_or_blocked": 0,
+        "active": {
+          "0": "T_F1_s42_DEntropy",
+          "1": "T_F1_s42_DMix"
+        },
+        "cpu_tasks": 0,
+        "counted_cases": 315,
+        "evaluation": {
+          "fold": "F0",
+          "tile": "6_7",
+          "stage": "rgb_fault",
+          "live_variants": 0
+        },
+        "count_workers": 32,
+        "observed_at": "2026-10-25T20:32:25.616801+08:00"
+      },
+      "observed_at": "2026-10-25T20:32:34.903832+08:00"
+    }
+  }
+}
+    PID    PPID STAT     ELAPSED %CPU %MEM COMMAND
+2754693       1 Ssl  441076633-09:44:00 0.0  0.5 /home/jovyan/miniconda3/envs/remote_sensing/bin/python -u -B /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261
+2754694       1 Ss   441076633-09:44:00 0.0  0.0 /home/jovyan/miniconda3/envs/remote_sensing/bin/python -u -B /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261
+Sun Oct 25 20:35:08 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.48.01              Driver Version: 590.48.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:0F:00.0 Off |                    0 |
+| N/A   41C    P0            210W /  700W |    8263MiB /  81559MiB |     18%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA H100 80GB HBM3          On  |   00000000:34:00.0 Off |                    0 |
+| N/A   34C    P0            251W /  700W |    8353MiB /  81559MiB |     20%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         2757402      C   ...nvs/remote_sensing/bin/python       8254MiB |
+|    1   N/A  N/A         2757403      C   ...nvs/remote_sensing/bin/python       8344MiB |
++-----------------------------------------------------------------------------------------+
+INTERIM_CLEAN_SINGLE_MODAL_ONLY 2026-10-25T20:35:08.778075+08:00
+SCOPE: Outer development tiles; 512-pixel inset; nb fg5 primary, full-GT fg5 diagnostic
+job     role    age     tiles   eligible        nb_fg5_%        full_GT_fg5_%   delta_D0_nb_pp
+F0_s17_D0       dsm_student     32000   4/4     True    62.3228 58.7732 0.0000
+F0_s17_DClean   dsm_student     32000   4/4     True    61.8758 58.4082 -0.4470
+F0_s17_DEntropy dsm_student     32000   4/4     True    62.2985 58.6690 -0.0243
+F0_s17_DF       dsm_student     32000   4/4     True    61.7102 58.2842 -0.6126
+F0_s17_DMix     dsm_student     32000   4/4     True    62.4117 58.9472 0.0889
+F0_s17_DSelf    dsm_student     32000   4/4     True    63.2706 59.5835 0.9478
+F0_s17_DShuffle dsm_student     32000   4/4     True    62.2072 58.7726 -0.1156
+F0_s17_R        rgb_reference   32000   4/4     True    82.5823 77.4407 NA
+F0_s17_T0       rgb_oof_teacher 32000   4/4     True    81.2600 76.2054 NA
+F0_s17_T1       rgb_oof_teacher 32000   4/4     True    82.6219 77.5318 NA
+F0_s17_T2       rgb_oof_teacher 32000   4/4     True    82.2876 77.1950 NA
+F0_s17_T3       rgb_oof_teacher 32000   4/4     True    82.6289 77.5333 NA
+F0_s2026_D0     dsm_student     32000   4/4     True    63.5011 59.7645 0.0000
+F0_s2026_DClean dsm_student     32000   4/4     True    62.5972 58.9319 -0.9038
+F0_s2026_DEntropy       dsm_student     32000   4/4     True    63.1306 59.4403 -0.3705
+F0_s2026_DF     dsm_student     32000   4/4     True    62.5710 58.9404 -0.9301
+F0_s2026_DMix   dsm_student     32000   4/4     True    63.0864 59.4251 -0.4147
+F0_s2026_DSelf  dsm_student     32000   4/4     True    64.0557 60.1147 0.5547
+F0_s2026_DShuffle       dsm_student     32000   4/4     True    63.2107 59.4931 -0.2904
+F0_s2026_R      rgb_reference   32000   4/4     True    82.5762 77.4731 NA
+F0_s2026_T0     rgb_oof_teacher 32000   4/4     True    81.1914 76.1579 NA
+F0_s2026_T1     rgb_oof_teacher 32000   4/4     True    82.6518 77.5647 NA
+F0_s2026_T2     rgb_oof_teacher 32000   4/4     True    82.2908 77.1477 NA
+F0_s2026_T3     rgb_oof_teacher 32000   4/4     True    82.7250 77.6045 NA
+F0_s42_D0       dsm_student     32000   4/4     True    62.9713 59.2897 0.0000
+F0_s42_DClean   dsm_student     32000   4/4     True    62.6029 58.9530 -0.3684
+F0_s42_DEntropy dsm_student     32000   4/4     True    62.5377 58.8711 -0.4336
+F0_s42_DF       dsm_student     32000   4/4     True    62.3730 58.7239 -0.5983
+F0_s42_DMix     dsm_student     32000   4/4     True    62.9414 59.2498 -0.0298
+F0_s42_DSelf    dsm_student     32000   4/4     True    62.5382 58.9263 -0.4331
+F0_s42_DShuffle dsm_student     32000   4/4     True    62.8842 59.1769 -0.0871
+F0_s42_R        rgb_reference   32000   4/4     True    82.5712 77.3974 NA
+F0_s42_T0       rgb_oof_teacher 32000   4/4     True    81.2963 76.2865 NA
+F0_s42_T1       rgb_oof_teacher 32000   4/4     True    82.4645 77.4058 NA
+F0_s42_T2       rgb_oof_teacher 32000   4/4     True    82.4055 77.2814 NA
+F0_s42_T3       rgb_oof_teacher 32000   4/4     True    82.5016 77.4366 NA
+F1_s42_DEntropy dsm_student     32000   0/4     False   NA      NA      NA
+F1_s42_DF       dsm_student     32000   4/4     True    58.4772 55.4706 NA
+F1_s42_DMix     dsm_student     32000   0/4     False   NA      NA      NA
+F1_s42_DSelf    dsm_student     32000   4/4     True    60.2106 57.1145 NA
+F1_s42_R        rgb_reference   32000   4/4     True    82.9173 78.1972 NA
+F1_s42_T0       rgb_oof_teacher 32000   4/4     True    82.3485 77.7146 NA
+F1_s42_T1       rgb_oof_teacher 32000   4/4     True    83.2233 78.4067 NA
+F1_s42_T2       rgb_oof_teacher 32000   4/4     True    80.2683 75.6187 NA
+F1_s42_T3       rgb_oof_teacher 32000   4/4     True    82.9669 78.2900 NA
+ELIGIBLE_ROWS 43
+NA: incomplete age/endpoint, absent class, no verified 32k D0 pairing, or non-DSM role.
+No fusion/rescue/harm gates; no checkpoint selection or queue mutation; endpoint SHA is referenced from receipt, not freshly rehashed
+
+========== M2 ==========
+
+阶段状态: /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/queue_status.json
+{
+  "status": "RUNNING",
+  "completed_trainings": 43,
+  "failed_or_blocked": 0,
+  "active": {
+    "0": "T_F1_s42_DEntropy",
+    "1": "T_F1_s42_DMix"
+  },
+  "cpu_tasks": 0,
+  "counted_cases": 315,
+  "evaluation": {
+    "fold": "F0",
+    "tile": "6_7",
+    "stage": "rgb_fault",
+    "live_variants": 0
+  },
+  "count_workers": 32,
+  "observed_at": "2026-10-25T20:34:56.006304+08:00"
+}
+
+结果汇总: 尚未生成
+
+科学门禁: 尚未生成
+
+========== J ==========
+
+阶段状态: 尚未生成
+
+结果汇总: 尚未生成
+
+科学门禁: 尚未生成
+
+========== R ==========
+
+阶段状态: 尚未生成
+
+结果汇总: 尚未生成
+
+========== T ==========
+
+阶段状态: 尚未生成
+
+结果汇总: 尚未生成
+
+========== V ==========
+
+阶段状态: 尚未生成
+
+结果汇总: 尚未生成
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ 
