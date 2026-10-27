@@ -1,6 +1,6 @@
 # 下一步：读M2完整条件面板并复盘机制（2026-10-27）
 
-1. 最后服务器观测 **2026-10-27 20:00:23+08:00**：M2 `RUNNING`，101/108项训练完成、失败0，两张GPU各有一项训练；完整条件评价计2667例但未见终结分母，summary/gates未生成。合并`WAIT_M2`，J/R/T/V未开始。[本次中期证据](../experiments/PHASE3_M2_PROGRESS_20261027T200023.md)。这是最后观测，不是实时状态；此前45/108和51小时外推已过期。
+1. 最后服务器观测 **2026-10-27 20:00:23+08:00**：M2 `RUNNING`，101/108项训练完成、失败0，两张GPU各有一项训练；完整条件评价计2667/77868例，计数覆盖约3.4%（不是耗时完成率），summary/gates未生成。合并`WAIT_M2`，J/R/T/V未开始。[本次中期证据](../experiments/PHASE3_M2_PROGRESS_20261027T200023.md)。这是最后观测，不是实时状态；此前45/108和51小时外推已过期。
 2. 只读复用服务器已有`records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/scripts/status_phase3_engineering_restart.py --tail 20`，按[查看指南](../protocols/PHASE3_PROGRESS_AND_RESULTS.md)核对进度、失败、首折条件面板与最终结果。不再启动、重复修复或下载启动包。
 3. 当前clean DSM-only的八组配对中DF均低于D0且低于DSelf，属于精度保护风险预警；不能用它判RGB-down4补救、融合或G1–G4。优先取得完整联合整数计数与固定融合结果，依预定H1/H2、G0–G4区分对应性、普通自身难例、分层打乱/熵、DMix等简单解释。F2 seed2026仍缺D0配对，不把NA当零或负结果。
 4. M2阶段完成后先验108端点及SHA、数据/teacher与配对样本流、int64矩阵、逐tile结果、训练轨迹和工程修订，再解释门禁并同步轻量记录。若实际失败先保留首栈，不自动重跑或加种子。G0完整性通过才可进入J/R；T/V另需公开数据catalog，缺失时等待。B/C与Test6/held4/final均不开放。
