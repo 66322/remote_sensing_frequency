@@ -1,4 +1,4 @@
-# 共享入口：M2 101/108，完整条件评价仍在途（2026-10-27）
+# 共享入口：M2条件评价在途，下一阶段分批方案已形成（2026-10-27）
 
 长期必读：[仓库AGENTS](../AGENTS.md)、[稳定新对话入口](current/NEW_CHAT_HANDOFF.md)、[跨对话执行约定](protocols/EXECUTION_CONTRACT.md)。2026-10-24用户已将[启动交付与故障控制](protocols/STARTUP_DELIVERY_AND_FAILURE_CONTROL.md)确立为长期要求：真实包/分包布局验证、目标兼容路径、首败停止、未变检查复用。换对话不重新启动或补跑审计；日期入口只跳转当前文件。
 
@@ -10,7 +10,9 @@
 
 最新运行：[M2 101/108及跨外折clean中期结果](experiments/PHASE3_M2_PROGRESS_20261027T200023.md)。最后服务器观测2026-10-27 20:00:23+08:00：M2 RUNNING，完成101/108、失败/阻断0；GPU0/1各有一项F2训练，条件评价已计2667例，仍报F0/tile 6_7/`rgb_fault`，M2无summary/gates。合并WAIT_M2；J/R/T/V无阶段结果。这不是实时状态，本次只读查询也没有关闭实验。
 
-最新研究方案：[连续建筑地图维护中的错误恢复与变化发现](experiments/INDEPENDENT_RESEARCH_ROUTE_20261023.md)。用户要求保留既有研究并寻找独立新路线；助手将旧地图候选细化为优先验证方向，尚未实现、运行或确认为新主线。少量核验纠正漏标保留备选，异步水域时间错配候选依据元数据审计降级。[前一轮期刊扫描](experiments/REMOTE_SENSING_JOURNAL_OPTIONS_20261022.md)保留为来源。
+最新规划：[下一阶段分批实验及停止条件](experiments/NEXT_STAGE_DECISION_EXPERIMENTS_20261027.md)、[准备表](protocols/NEXT_STAGE_PREFLIGHT_20261027.md)。助手建议优先准备地图维护首轮6个seed42作业；原线先复盘M2，仅在证据支持时做J首批12项，再按需追加9项。地图后续成熟对照与机制四格分别有门槛，未一次排队。用户本轮要求规划，尚未改主线、实现新代码、改变或停止原队列；当前原控制器仍在M2 G0后自动J/R。没有新服务器观测。
+
+前期选题来源：[连续建筑地图维护中的错误恢复与变化发现](experiments/INDEPENDENT_RESEARCH_ROUTE_20261023.md)。用户要求保留既有研究并寻找独立新路线；助手将旧地图候选细化为优先验证方向，尚未实现、运行或确认为新主线。少量核验纠正漏标保留备选，异步水域时间错配候选依据元数据审计降级。[前一轮期刊扫描](experiments/REMOTE_SENSING_JOURNAL_OPTIONS_20261022.md)保留为来源。
 
 先读[研究决定](current/RESEARCH_DECISION.md)、[交接](current/HANDOFF.md)、[当前状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)，再读[合并队列执行合同](protocols/PHASE3_COMBINED_QUEUE_EXECUTION_20261022.md)、[M2完整协议](protocols/PHASE3_M2_ERROR_CORRESPONDENCE_20261015.md)和[M2执行修订](protocols/PHASE3_M2_EXECUTION_20261016.md)。[研究选择与跨领域方法草案](experiments/POST_M2_RESEARCH_OPTIONS_20261022.md)是候选来源，不等于各臂已得到正结果。
 

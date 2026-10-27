@@ -5,3 +5,5 @@
 - clean单模态只读表101行eligible：F0/F1各36项、F2为29项。八组已合格fold×seed配对中，DF−D0和DF−DSelf的nb fg5差均为负；DSelf−D0为6正2负。这是Potsdam外层开发tile中央512内缩区、32k四tile池化的局部性能信号。eligible不等于G0；读取器未重新哈希端点，也未独立重算整数矩阵。没有条件补救/损伤/融合结论，不判G1–G4。
 - 科学源和执行修订、M2/combined目录见[交接](HANDOFF.md)。主线与独立地图候选角色未变；当前108项三种子冻结队列未缩减或提速，未加种子或重跑失败配方。test、held4、final封存。
 - 下一步只读观察完整条件面板和最终门禁。阶段完成后核验端点/SHA、int64计数、样本流、训练轨迹及轻量上传；条件数据T/V未就绪时按原合同等待。用户如需释放两卡，按[中断协议](../protocols/PHASE3_M2_INTERRUPTION_AND_GPU_RELEASE_20261025.md)执行，不能把停止当作断点暂停。
+
+- **规划进度（非运行更新）**：[下一阶段方案](../experiments/NEXT_STAGE_DECISION_EXPERIMENTS_20261027.md)与[准备表](../protocols/NEXT_STAGE_PREFLIGHT_20261027.md)已完成。优先准备地图维护6个单seed作业；原线J12+9为条件建议；复杂新路线按证据分批。数据/实现/吞吐尚未验收，未进入队列。现有自动M2→J/R行为未改，研究角色与最后服务器观测不变。
