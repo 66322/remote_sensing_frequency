@@ -1,6 +1,6 @@
 # M2后A0首批实验：冻结教师能力探针与双H100资源合同（2026-10-29）
 
-**状态：CODE_PREPARED_LOCAL_CHECKED；SERVER_NOT_PREFLIGHTED；NO_NEW_SCIENTIFIC_RESULT。** 本文件给出已写好的首批执行入口和预先冻结的判断规则。旧M2最终清理于19:15启动后在预删除离线统计阶段停止，用户要求暂缓清理、优先启动A0；A0不引用旧M2的训练端点、推理缓存或大权重。
+**状态：CODE_PREPARED_LOCAL_CHECKED；SERVER_ENVIRONMENT_INSTALL_VERIFIED；SERVER_NOT_PREFLIGHTED；NO_NEW_SCIENTIFIC_RESULT。** 本文件给出已写好的首批执行入口和预先冻结的判断规则。旧M2最终清理于19:15启动后在预删除离线统计阶段停止，用户要求暂缓清理、优先启动A0；A0不引用旧M2的训练端点、推理缓存或大权重。
 
 ## 要回答的问题与对照
 
@@ -14,7 +14,7 @@ F0由旧M2 `folds.json`固定：8个原训练tile中用`inner_pairs[0]`的2个�
 
 1. 服务器ROOT为`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro`，旧M2运行目录中的小型`plan.json`、`folds.json`、`pretrained.json`仍在；共享RGB和NoBoundary原始数据、公开DINOv2原始权重/源码仍在。A0只盘点文件名和大小，不对数据与模型例行重新哈希。
 2. DINOv3源码固定在[官方仓库](https://github.com/facebookresearch/dinov3)的`6876159a11b4df116f30f667f8c9888617df0751`；ViT-S/16 LVD权重由用户按[官方模型页](https://huggingface.co/facebook/dinov3-vits16-pretrain-lvd1689m)条款取得，并自行放在服务器。脚本不自动绕过授权或下载模型。这里用Web/LVD权重，不称卫星预训练。
-3. **沿用并就地升级现有`remote_sensing`环境，不新建环境。** 固定的DINOv3源码包要求Python≥3.11，其训练/评价说明要求PyTorch≥2.7.1；A0还需CUDA、NumPy和Pillow。2026-10-29服务器实测为Python3.9.21、Torch2.2.2+cu121，故须升级。M2最终清理暂缓，不作为A0环境升级或启动门槛；失败回执保留，后续另行修复。升级前只保存小型包清单，升级后以两模型真实权重加载和512前向smoke决定是否可跑。
+3. **沿用并就地升级现有`remote_sensing`环境，不新建环境。** 固定的DINOv3源码包要求Python≥3.11，其训练/评价说明要求PyTorch≥2.7.1；A0还需CUDA、NumPy和Pillow。2026-10-29服务器原环境实测为Python3.9.21、Torch2.2.2+cu121；随后已在同一环境完成Python3.11.13及Torch2.7.1+cu126升级，`pip check`通过，CUDA12.6可用。M2最终清理暂缓，不作为A0环境升级或启动门槛；失败回执保留，后续另行修复。升级前只保存小型包清单，升级后以两模型真实权重加载和512前向smoke决定是否可跑。
 4. GitHub分支`rebuild-v1-protocol-20260915`为两台电脑的代码/配置/结果/结论共同权威。执行时用当时分支HEAD固定下载脚本并写入`POST_M2_CODE_COMMIT`；若分支后续变化，已经启动的本轮不随之切换代码。
 
 ## 服务器执行顺序
@@ -32,17 +32,17 @@ python -c 'import torch, numpy, PIL; print("torch",torch.__version__,"torch_cuda
 nvidia-smi --query-gpu=index,name,driver_version,memory.free --format=csv,noheader
 ```
 
-服务器实测驱动590.48.01、共8张H100，其中GPU0/1各空闲81081 MiB；A0仍只用0/1，CPU核数与cgroup内存待inventory实测。此驱动满足CUDA12.6最低驱动要求，故选择PyTorch官方2.7.1 **cu126** wheel。**只升级当前环境**；M2最终清理已按用户指示暂缓。若conda/pip混装造成依赖冲突，停止并根据包清单修复。
+服务器实测驱动590.48.01、共8张H100，其中GPU0/1各空闲81081 MiB；A0仍只用0/1，CPU核数与cgroup内存待inventory实测。此驱动满足CUDA12.6最低驱动要求，故选择PyTorch 2.7.1 **cu126** wheel；服务器实际通过中科大PyPI镜像完成安装，未新建环境。**只升级当前环境**；M2最终清理已按用户指示暂缓。若conda/pip混装造成依赖冲突，停止并根据包清单修复。
 
 ```bash
 conda activate remote_sensing
 conda install -n remote_sensing python=3.11 -y
-python -m pip install --upgrade torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu126
+python -m pip install --upgrade torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 -i https://mirrors.ustc.edu.cn/pypi/simple
 python -m pip check
 python -c 'import sys, torch, numpy, PIL; print(sys.version, torch.__version__, torch.version.cuda, torch.cuda.is_available(), numpy.__version__, PIL.__version__); print(torch.cuda.get_device_name(0))'
 ```
 
-PyTorch wheel来源与CUDA版本见[官方安装表](https://pytorch.org/get-started/previous-versions/)，CUDA12.6最低驱动要求见[NVIDIA说明](https://docs.nvidia.com/cuda/archive/12.6.3/cuda-toolkit-release-notes/index.html)。驱动版本只证明基础兼容，真正能否运行以服务器smoke为准。若`conda install`与原有包求解冲突、`pip check`报Torch相关冲突或CUDA不可用，保留输出分析后再修，**不自动新建环境或继续训练**。升级前的完整包清单留服务器本地；GitHub只记录必要的Python/Torch/CUDA/驱动版本，避免把私有软件源地址同步上去。
+PyTorch wheel来源与CUDA版本见[官方安装表](https://pytorch.org/get-started/previous-versions/)，CUDA12.6最低驱动要求见[NVIDIA说明](https://docs.nvidia.com/cuda/archive/12.6.3/cuda-toolkit-release-notes/index.html)。驱动版本只证明基础兼容，真正能否运行以服务器smoke为准。若`conda install`与原有包求解冲突、`pip check`报Torch相关冲突或CUDA不可用，保留输出分析后再修，**不自动新建环境或继续训练**。上述安装和基础检查在服务器已完成；不重复执行安装。升级前的完整包清单留服务器本地；GitHub只记录必要的Python/Torch/CUDA/驱动版本，避免把私有软件源地址同步上去。
 
 源码只准备一次：在原ROOT的`external`下克隆[官方仓库](https://github.com/facebookresearch/dinov3)，检出冻结commit。权重仍须按官方条款取得，将对应的**PyTorch .pth**文件放到服务器公共预训练目录；不要把Hugging Face `.safetensors`文件直接作为`torch.hub.load(...,weights=...)`的参数。已有同一源码/权重时只核对路径，不重复下载。
 
