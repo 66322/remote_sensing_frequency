@@ -1,0 +1,15 @@
+{
+  "source": "user-pasted server cleanup stdout, 2026-10-29 11:05:39+08:00",
+  "script_commit": "6374e41bc9b47fdccf9062d8b7e750afa359ef9d",
+  "execution": "user ran authorized --apply; COMPLETE; no assistant server connection",
+  "received": "stdout summary only; values transcribed without repeated hashing",
+  "not_yet_received": [
+    "M2_light_evidence.tar.gz",
+    "inventory_before.json",
+    "inventory_after.json",
+    "cleanup_plan.json",
+    "deletions.jsonl"
+  ],
+  "disk_free_delta_bytes": 0,
+  "interpretation": "run directory allocated bytes declined; global filesystem free-byte increase is not confirmed"
+}

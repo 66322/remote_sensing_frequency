@@ -1,0 +1,32 @@
+{
+  "status": "COMPLETE",
+  "observed_at": "2026-10-29T11:05:39.164577+08:00",
+  "m2_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345",
+  "binding": {
+    "plan.json": "c9a2eb3c5db8abcc762d696b6b14892ca3c87548cf39316fd09e9f75165a9a7b",
+    "code_manifest.json": "045a6db7fdcfb4d5198b8c638b856ff62ed0a4cbb6dadd8d075ca20b3d254933",
+    "folds.json": "62215bb2b106993f518ad451db2ab6c618834080003e847eafa3a7e423590b0a"
+  },
+  "output": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/m2_closeout_storage_20261029T110535_882105",
+  "archive": {
+    "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/m2_closeout_storage_20261029T110535_882105/M2_light_evidence.tar.gz",
+    "bytes": 29861760,
+    "listed_members": 422,
+    "status": "LOCAL_EXPORT_LISTED_NOT_YET_UPLOADED",
+    "check_policy": "names and sizes; no repeated hashing"
+  },
+  "cleanup_plan": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/m2_closeout_storage_20261029T110535_882105/cleanup_plan.json",
+  "deleted_files": 90,
+  "deleted_logical_bytes": 8017988670,
+  "deleted_allocated_bytes": 8018012160,
+  "remaining_retained_endpoints": 18,
+  "run_allocated_bytes_before": 10972373504,
+  "run_allocated_bytes_after": 2954361344,
+  "run_allocated_reduction_bytes": 8018012160,
+  "export_storage_bytes": 33209919,
+  "disk_free_bytes_before": 5138282446848,
+  "disk_free_bytes_after": 5138282446848,
+  "archive_bytes": 29861760,
+  "export_allocated_bytes": 33211904,
+  "estimated_net_reclaimed_bytes": 7984800256
+}
