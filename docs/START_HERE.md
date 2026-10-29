@@ -1,16 +1,11 @@
-# 共享入口：M2及清理完成，GitHub跨电脑归档就绪（2026-10-29）
+# 共享入口：M2补充分析与最终清理待服务器执行（2026-10-29）
 
-先读[研究决定](current/RESEARCH_DECISION.md)、[当前交接](current/HANDOFF.md)、[状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)；长期规则为[AGENTS](../AGENTS.md)和[执行约定](protocols/EXECUTION_CONTRACT.md)。
+先读[交接](current/HANDOFF.md)、[状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)、[研究决定](current/RESEARCH_DECISION.md)；长期规则见[AGENTS](../AGENTS.md)和[执行约定](protocols/EXECUTION_CONTRACT.md)。
 
-M2于08:43完整完成108训练/77,868评价，当前DF配方G1/G2/G4未获支持，不扩展B/C，不否定所有RGB–DSM问题。[科学结论与证据](experiments/PHASE3_M2_ACCEPTANCE_AND_CLOSEOUT_20261029.md)。
+用户要求删除剩余权重/推理等大文件，只留代码与小结果。已实现[零训练/零推理的补充分析和最终清理工具](experiments/PHASE3_M2_FINAL_COMPACTION_20261029.md)，12项本地检查通过，**服务器尚未执行**。先提取现成alpha/流量/逐类/边界/校准/掩码/训练轨迹结果，核对主结果后再删。不要重复第一次清理命令。
 
-11:05:39用户回传清理COMPLETE：删除90端点、保留18个R/D0。目录分配量10.972GB降至2.954GB，减少8.018GB；扣除导出后估计净减7.985GB。全盘free字段没有变化，物理空闲增量未确认。[实际大小、清理与接收状态](experiments/PHASE3_M2_STORAGE_CLEANUP_RESULT_20261029.md)。
+最近实际仍保留18个R/D0及原始统计，目标0权重待新回执确认。新策略会退役大统计/29.86MB重复包/完整batch逐步列表，保留小型矩阵、数值证据、配置、回执和必要压缩日志；共享数据与公共预训练不动。
 
-用户再次明确结果、代码、结论和交接全部以本GitHub分支为准，两台电脑直接从远端接续，GitHub上有即可。当前代码、主结果表、summary/gates、科学结论、终端证据、清理回执和交接均已同步；本轮任务已收尾，不要求下载到某台电脑或转交本地压缩包作为前置。
+GitHub分支rebuild-v1-protocol-20260915供两台电脑接续；主结论与代码在远端，新结果待服务器粘贴小摘要后同步。不把发布工具写成完成清理，不重复哈希，不要求固定电脑下载归档。J仍为工程停止，最终清理后不假定旧专家仍在，封存split不开放。
 
-服务器现成M2_light_evidence.tar.gz约29.86MB、422成员，按位置/大小索引保留；完整压缩计数尚未接收，不虚报全量原件已上传。后续分析需要时再按需同步现成轻量原件或索引，不重做计算/打包/清理。上传后查看关键内容即可，不反复哈希。
-
-J在M2完成后因CUDA确定性兼容错误停止，未修复/重启，R/T/V未顺序派发。GPU最后观测10:29空闲。旧bootstrap/清理命令不再运行，原验收时108模型和清理后18模型状态分开记载。主线角色、未实施地图候选及封存split不变。
-
-
-完整实验记录入口：[M2主报告与耗时/产物复盘](experiments/PHASE3_M2_ACCEPTANCE_AND_CLOSEOUT_20261029.md)、[中央实验索引](experiments/rebuild_v1/INDEX.md)、[机器注册表](../records/rebuild_v1_experiment_registry.json)、[可读CSV结果与证据清单](../records/phase3_m2_closeout_terminal_20261029/README.md)。本轮已纠正中央登记仍为未启动及主报告清理待执行的旧状态；未回传原件/未完成二次分析如实标记。
+[M2科学报告](experiments/PHASE3_M2_ACCEPTANCE_AND_CLOSEOUT_20261029.md)、[中央索引](experiments/rebuild_v1/INDEX.md)、[注册表](../records/rebuild_v1_experiment_registry.json)已分别登记实际历史与新待执行事件。

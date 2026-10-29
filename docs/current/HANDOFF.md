@@ -1,35 +1,27 @@
-# 当前交接：M2与清理完成，GitHub跨电脑归档就绪（2026-10-29）
+# 当前交接：M2离线补充分析和最终清理待执行（2026-10-29）
 
-## 已完成
+用户进一步要求删除无用权重、推理及其他大文件，只留代码等小文件。已实现[离线补充分析与最终清理](../experiments/PHASE3_M2_FINAL_COMPACTION_20261029.md)，12项本地受影响范围检查通过；**服务器尚未执行**。不得提前将保留权重写成0或宣称新分析完成。
 
-M2于08:43完整完成108训练、77,868评价；G0/H2/G3通过，G1/G2/G4未过，当前DF配方不扩展，不否定全部RGB–DSM问题。[科学结论](../experiments/PHASE3_M2_ACCEPTANCE_AND_CLOSEOUT_20261029.md)、[终端证据](../../records/phase3_m2_closeout_terminal_20261029/)已在GitHub。
+唯一下一步：用户在既有remote_sensing环境执行scripts/compact_phase3_m2.py --apply，沿用第一次成功的文件删除helper。不训练、不推理、不用GPU、不修J、不重新哈希。先从现成统计提取全部alpha/实际融合流量/逐类ROI/边界/校准/margin/掩码差异/训练年龄及轨迹摘要，核对原主结果，保存小证据后删除大文件。范围和停止条件见上述报告。
 
-本轮用户授权的存储清理于11:05:39完成，脚本6374e41bc9b47fdccf9062d8b7e750afa359ef9d。删除90端点（54个闭合DSM方案、36个OOF教师），保留18个R/D0端点及全部充分计数/配置/轨迹/失败材料、输入和预训练。四个登记目录分配量10.972GB降至2.954GB，减少8.018GB；扣除导出额外占用估计净减7.985GB。全盘free前后字段相同，不宣称物理空闲已增加相同数值。[实际清理结果](../experiments/PHASE3_M2_STORAGE_CLEANUP_RESULT_20261029.md)、[回执摘要](../../records/phase3_m2_cleanup_20261029/)。
+## 最近实际状态
 
-旧J在08:47:55因J2 CUDA交叉熵与严格确定性不兼容而停止，不是科学阴性；未修复/重启，R/T/V未顺序派发。GPU空闲的最后实际观测仍为10:29，11:05清理回执不是新GPU观测。
+M2于08:43完成108训练、77,868评价；G0/H2/G3通过，G1/G2/G4未过，当前DF配方关闭扩展。[科学结论](../experiments/PHASE3_M2_ACCEPTANCE_AND_CLOSEOUT_20261029.md)、[原终端证据](../../records/phase3_m2_closeout_terminal_20261029/)在GitHub。
 
-## GitHub权威记录与原件边界
+第一次清理11:05:39完成，删除90端点、保留18 R/D0；四目录分配量10.972GB→2.954GB，减少8.018GB；扣除导出估计净减7.985GB。全盘free未变，物理空闲增长未确认。[实际回执](../experiments/PHASE3_M2_STORAGE_CLEANUP_RESULT_20261029.md)。
 
-现成M2_light_evidence.tar.gz已生成，29,861,760字节/422成员，仍在服务器；原始publication压缩计数、完整库存与删除明细尚未直接接收。当前GitHub有终端原文、提取的summary/gates/report与清理摘要，不能称全量服务器原件已上传。
+J在08:47:55因严格确定性下CUDA交叉熵不兼容停止，无科学结论，未修复/重启。GPU最后实际观测仍为10:29空闲，没有新观测。
 
-用户本轮再次明确：实验结果、代码、结论和交接全部以本GitHub分支为准，两台电脑直接从远端接续，GitHub上有即可。当前代码、结果主表、summary/gates、科学结论、终端证据、清理回执和交接已同步，满足跨电脑接续；不要求下载到某台电脑或转交本地压缩包作为收尾前置。
+## 本轮保留策略（待执行）
 
-完整原件继续在服务器保留并登记位置/大小；压缩包尚未上传的事实保留，不能称全量原件已接收。后续若确需原始矩阵/细粒度离线复算，再按需同步服务器现成轻量文件或索引，不重训、重打包、重复清理或全量哈希。本轮M2结果整理与清理任务已收尾，当前没有新的服务器执行动作。
+用户新授权替代第一次“保留18”的选择。目标是退役四登记目录剩余运行权重；小证据生成后淘汰原始全joint/逐掩码大统计及三个fold重复原件，删除第一次29.86MB重复包；108份batch逐步列表替换为覆盖回执，较大的其他文本日志无损压缩。保留代码/配置/结果/必要矩阵计数/失败栈/训练轨迹与回执。共享数据与公共预训练不动，未知大文件列清单，不按大小盲删。
 
-导出目录：
-/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/m2_closeout_storage_20261029T110535_882105
+执行成功后不能假定可加载R/D0继续J或补预测/模型可视化，需要恢复权重或重训。原108端点验收与后续删除分开，第一次清理回执不改写。
 
-包名M2_light_evidence.tar.gz；同目录cleanup_result.json、inventory_before/after.json、cleanup_plan.json及deletions.jsonl保留原件。顶层records/phase3_m2_storage_cleanup_20261029.json记录COMPLETE，再次运行会ALREADY_CLEANED，但不需要再次执行。
+## GitHub与回传
 
-## 接续约束
+权威分支rebuild-v1-protocol-20260915供两台电脑接续。主结论/结果表/代码/第一次回执已同步；工具发布不等于服务器新结果已上传。结束粘贴GITHUB_RELAY_SUMMARY或analysis_summary.json与cleanup_result.json两份小JSON，通过已连接GitHub写入端更新中央记录；不要求固定电脑下载归档或token。
 
-ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro；M2目录research_phase3_m2_revision_20261024T092814_2738345；combined目录research_phase3_combined_revision_20261024T092814_2738345。服务器由用户执行，无SSH。
+ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro。M2目录research_phase3_m2_revision_20261024T092814_2738345；combined目录research_phase3_combined_revision_20261024T092814_2738345。新输出records/m2_final_compaction_<时间>_<PID>/；单次回执records/phase3_m2_final_compaction_20261029.json。失败保留错误/journal，不自动重试；成功再次执行只报告ALREADY_COMPACTED。
 
-原始验收时108端点齐全；清理后仅18个R/D0专家，已删除的教师和其他DSM端点不可假定仍可加载，不改写原验收或承诺恢复。若以后研究J，先立新的最小诊断/兼容修订决定，不重启原228队列。独立地图维护仍未实施、不自动换主线；封存split不开放。旧交接[存档](../history/HANDOFF_20261029_BEFORE_CLEANUP_RECEIPT.md)。
-
-
-## 实验记录已补齐（2026-10-29）
-
-中央[实验索引](../experiments/rebuild_v1/INDEX.md)和[注册表](../../records/rebuild_v1_experiment_registry.json)已补录M2真实完成状态、J工程停止与清理事件；旧“尚未启动”移入历史。M2主报告已按目的/对照/数据/全部已判定结论/耗时与产物/未回答问题更新，清理待执行旧状态已纠正。
-
-新增21行主表、63行clean表和120项gate差值CSV及机器可读结论，均来自已回传终端，明确区别于服务器完整metrics原件。全alpha/margin/校准/逐类二次分析尚未完成；原始统计服务器保留。后续若复盘动作限制可按需读取现成统计，不把“当前结论整理完成”写成“所有原始证据和所有潜在分析已完成”。
+新执行前原始压缩统计与旧包仍为服务器保留、未完整接收；新执行后按真实retention更新，不再引用旧“全部原件保留”。主科学结论不因描述性补充分析自动翻转；不扩B/C、不重启228队列、不开放封存split。

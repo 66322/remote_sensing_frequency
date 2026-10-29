@@ -32,5 +32,13 @@
     "cleanup_completed_at": "2026-10-29T11:05:39.164577+08:00"
   },
   "raw_count_independent_recomputation": false,
-  "checkpoint_arbitrary_visualization_for_deleted_arms_available": false
+  "checkpoint_arbitrary_visualization_for_deleted_arms_available": false,
+  "retention_revision_pending": {
+    "status": "WAITING_SERVER_EXECUTION",
+    "report": "docs/experiments/PHASE3_M2_FINAL_COMPACTION_20261029.md",
+    "planned_remaining_run_weights": 0,
+    "actual_last_known_remaining_run_weights": 18,
+    "original_dense_joint_counts_planned_retirement": true,
+    "new_compact_statistics_not_yet_received": true
+  }
 }

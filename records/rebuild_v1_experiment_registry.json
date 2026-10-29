@@ -2300,7 +2300,15 @@
         "cleanup_record": "records/phase3_m2_cleanup_20261029/cleanup_result_from_terminal.json"
       },
       "no_automatic_retry": true,
-      "live_query": false
+      "live_query": false,
+      "storage_followup": {
+        "event": "PHASE3_M2_FINAL_COMPACTION_20261029",
+        "status": "WAITING_SERVER_EXECUTION",
+        "planned_remaining_weights": 0,
+        "actual_last_known_remaining_weights": 18,
+        "secondary_analysis_planned": true,
+        "secondary_analysis_complete": false
+      }
     },
     {
       "id": "PHASE3_J_ENGINEERING_FAILURE_20261029",
@@ -2341,16 +2349,38 @@
       "report": "docs/experiments/PHASE3_M2_STORAGE_CLEANUP_RESULT_20261029.md",
       "evidence": "records/phase3_m2_cleanup_20261029/cleanup_result_from_terminal.json",
       "decision": "Cleanup complete; retain statistics and metadata; do not repeat cleanup/hash"
+    },
+    {
+      "id": "PHASE3_M2_FINAL_COMPACTION_20261029",
+      "type": "authorized_offline_analysis_and_storage_compaction",
+      "status": "IMPLEMENTED_LOCAL_CHECKED_WAITING_SERVER_EXECUTION",
+      "recorded_at": "2026-10-29",
+      "user_authorization": "Remove unneeded weights/predictions/large experiment artifacts; keep code and small evidence",
+      "script": "scripts/compact_phase3_m2.py",
+      "report": "docs/experiments/PHASE3_M2_FINAL_COMPACTION_20261029.md",
+      "new_training": 0,
+      "new_inference": 0,
+      "GPU_used": false,
+      "remaining_weights_target": 0,
+      "actual_remaining_weights_last_observed": 18,
+      "server_executed": false,
+      "primary_scientific_decision_changed": false,
+      "raw_full_joint_retention_planned": false,
+      "original_first_cleanup_receipt_preserved": true,
+      "automatic_retry": false,
+      "upload_policy": "GitHub authority; paste small server result then connected writer publishes; no repeated hashing",
+      "local_validation": "12 affected-scope synthetic checks; Linux unlink unchanged from accepted first cleanup"
     }
   ],
   "next_plan": {
-    "status": "NO_ACTIVE_EXECUTION_M2_CLOSED_J_ENGINEERING_STOP",
+    "status": "M2_OFFLINE_ANALYSIS_AND_FINAL_COMPACTION_WAITING_SERVER",
     "document": "docs/current/NEXT_EXPERIMENT.md",
     "new_training_authorized_by_this_record": false,
     "automatic_retry": false,
     "local_archive_transfer_required": false,
     "github_cross_computer_handoff_ready": true,
-    "raw_server_artifacts_on_demand": true
+    "raw_server_artifacts_on_demand": false,
+    "raw_retention_revision": "Analyze existing counts then retain compact statistics; discard full joint/mask cubes and run checkpoints after checks"
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",

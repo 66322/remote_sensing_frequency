@@ -123,3 +123,7 @@ GitHub代码/主结果/判定/结论/清理摘要/中央索引与注册表已同
 
 现成导出：
 /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/m2_closeout_storage_20261029T110535_882105/M2_light_evidence.tar.gz
+
+## 追加授权：离线补充分析与最终清理（待服务器执行）
+
+用户进一步要求删剩余权重/推理等大文件，只留代码等小文件。已实现[补充分析与最终清理](./PHASE3_M2_FINAL_COMPACTION_20261029.md)，12项本地检查通过，服务器尚未执行。计划提取alpha/实际融合流量/逐类ROI/边界/校准margin/掩码/训练轨迹小结果，再退役剩余权重、原始大统计和重复包。文中“保留18及全部原件”是第一次实际回执状态，后续以新retention修订；原主科学结论与验收不改写，不更换预登记主设定。
