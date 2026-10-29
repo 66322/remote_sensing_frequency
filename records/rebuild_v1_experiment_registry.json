@@ -4167,7 +4167,7 @@
   },
   "latest_implementation": {
     "date": "2026-10-29",
-    "status": "A0_DINO2_INVENTORY_SMOKE_PASSED_PROFILE_ENGINEERING_FAILURE_REPAIRED_SERVER_RERUN_PENDING",
+    "status": "A0_DINO2_INVENTORY_SMOKE_PROFILE_PASSED_DINO3_NOT_CONFIGURED_TRAIN_NOT_STARTED",
     "document": "docs/experiments/POST_M2_A0_EXECUTION_20261029.md",
     "script": "scripts/post_m2_a0.py",
     "tests": "tests/test_post_m2_a0_contract.py",
@@ -4201,7 +4201,7 @@
       "new_conda_environment": false,
       "execution_status": "PYTHON_3_11_13_TORCH_2_7_1_CU126_INSTALLED_PIP_CHECK_PASSED_CUDA_AVAILABLE"
     },
-    "next_action": "Download repaired A0 script, rerun DINOv2 profile only, then prepare official DINOv3 source/weight and its smoke/profile before paired training",
+    "next_action": "Prepare official DINOv3 source and ViT-S/16 LVD .pth in existing remote_sensing environment, run DINOv3 smoke/profile, then paired train after both gates",
     "environment_change_complete": true,
     "server_environment_upgrade_last_reported": {
       "date": "2026-10-29",
@@ -4213,15 +4213,17 @@
       "torch_cuda_import": "2.7.1+cu126_CUDA_12.6_AVAILABLE_TRUE",
       "a0_inventory": "DATA_PRESENT_2026-10-29T20:07:39+08:00",
       "a0_smoke": "DINO2_PASSED_2026-10-29T20:07:43+08:00_DINO3_NOT_STARTED",
-      "a0_profile": "DINO2_FAILED_FIRST_UPDATE_INFERENCE_TENSOR_BACKWARD_NO_RESULT_DINO3_NOT_STARTED",
+      "a0_profile": "DINO2_COMPLETED_2026-10-29T20:18:55+08:00_DINO3_NOT_STARTED",
       "a0_train": "NOT_STARTED",
       "install_success_not_claimed": false
     },
     "environment_progress_record": "records/post_m2_a0_environment_progress_20261029.json",
     "a0_preflight_failure_record": "records/post_m2_a0_preflight_20261029.json",
+    "a0_dino2_profile_record": "records/post_m2_a0_capability_20261029/profile_dino2.json",
+    "a0_execution_code_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
     "dino2_smoke_passed": true,
     "dino3_smoke_passed": false,
-    "dino2_profile_complete": false,
-    "profile_repair": "Frozen teacher feature extraction uses torch.no_grad instead of torch.inference_mode so the trainable head can backpropagate; local regression test passed; server rerun pending"
+    "dino2_profile_complete": true,
+    "profile_repair": "Frozen teacher feature extraction uses torch.no_grad instead of torch.inference_mode; local regression test passed; DINOv2 server profile completed"
   }
 }

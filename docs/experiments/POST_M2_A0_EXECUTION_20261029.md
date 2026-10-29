@@ -1,6 +1,6 @@
 # M2后A0首批实验：冻结教师能力探针与双H100资源合同（2026-10-29）
 
-**状态：DINO2_INVENTORY_AND_SMOKE_PASSED；PROFILE_CODE_FIXED_SERVER_RERUN_PENDING；DINO3_NOT_PREPARED；NO_NEW_SCIENTIFIC_RESULT。** 本文件给出已写好的首批执行入口和预先冻结的判断规则。旧M2最终清理于19:15启动后在预删除离线统计阶段停止，用户要求暂缓清理、优先启动A0；A0不引用旧M2的训练端点、推理缓存或大权重。
+**状态：DINO2_INVENTORY_SMOKE_PROFILE_PASSED；DINO3_NOT_CONFIGURED；NO_NEW_SCIENTIFIC_RESULT。** 本文件给出已写好的首批执行入口和预先冻结的判断规则。旧M2最终清理于19:15启动后在预删除离线统计阶段停止，用户要求暂缓清理、优先启动A0；A0不引用旧M2的训练端点、推理缓存或大权重。
 
 ## 要回答的问题与对照
 
@@ -56,7 +56,7 @@ python -m pip install -r "$D3_REPO/requirements.txt"
 python -m pip check
 ```
 
-随后把`POST_M2_DINO3_REPO`指向上述目录、`POST_M2_DINO3_WEIGHTS`指向已取得的`.pth`实际文件。若权重尚未到位，可以不设置这两个变量先做`inventory`、单独运行DINOv2的`smoke --kind dino2`和`profile --kind dino2`；2026-10-29已完成前两关。首次profile因冻结特征使用`inference_mode`而无法训练读出头，修复为`no_grad`并通过本地反传回归测试；新脚本下载后只需重跑profile，已有smoke.json不可重复写。DINOv3权重到位后用物理GPU1单独补它的smoke/profile，然后直接进入双模型`pair --phase train`。已经完成单模型smoke/profile时，双模型对应阶段会拒绝重复运行。**正式训练仍须等待两教师权重与环境检查通过**。
+随后把`POST_M2_DINO3_REPO`指向上述目录、`POST_M2_DINO3_WEIGHTS`指向已取得的`.pth`实际文件。若权重尚未到位，可以不设置这两个变量先做`inventory`、单独运行DINOv2的`smoke --kind dino2`和`profile --kind dino2`；2026-10-29已完成前两关。首次profile因冻结特征使用`inference_mode`而无法训练读出头，修复为`no_grad`并通过本地反传回归测试；服务器20:18:55重跑完成，已有smoke/profile.json不可重复写。[DINOv2完整profile](../../records/post_m2_a0_capability_20261029/profile_dino2.json)选4 worker/micro16及评价batch16，整tile 529窗口0.4066秒。后续服务器执行继续固定代码commit `c22a046407daf42064cbb161429f2648c9b86d66`，不能把本次记录提交的GitHub HEAD当作训练代码commit。DINOv3权重到位后用物理GPU1单独补它的smoke/profile，然后直接进入双模型`pair --phase train`。已经完成单模型smoke/profile时，双模型对应阶段会拒绝重复运行。**正式训练仍须等待两教师权重与环境检查通过**。
 
 ```bash
 ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro

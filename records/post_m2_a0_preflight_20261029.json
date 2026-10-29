@@ -51,16 +51,26 @@
     "patch": 14
   },
   "dino2_profile": {
-    "status": "FAILED_FIRST_OPTIMIZATION_UPDATE",
-    "failure": "RuntimeError: Inference tensors cannot be saved for backward. To work around you can make a clone to get a normal tensor and use it in autograd.",
-    "root_cause": "extract() used torch.inference_mode() for frozen teacher; output was passed to trainable Conv2d readout.",
-    "profile_result_written": false,
-    "optimizer_updates_completed": 0
+    "status": "PROFILE_COMPLETED_NO_SCIENTIFIC_RESULT",
+    "observed_at": "2026-10-29T20:18:55.808104+08:00",
+    "code_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+    "full_record": "records/post_m2_a0_capability_20261029/profile_dino2.json",
+    "disposable_profile_optimizer_updates": 160,
+    "selected_train": {
+      "workers": 4,
+      "micro": 16
+    },
+    "selected_eval_batch": 16,
+    "full_tile_windows": 529,
+    "full_tile_seconds": 0.4066161811351776,
+    "total_profile_wall_seconds": 39.9963079020381,
+    "data_load_seconds": 34.088712848722935,
+    "scientific_result": false
   },
   "repair": {
     "change": "Use torch.no_grad() for frozen teacher feature extraction; keep no gradient graph through teacher while returning a normal tensor for readout backpropagation.",
     "local_regression_tests_passed": 4,
-    "server_rerun_pending": true,
+    "server_rerun_pending": false,
     "smoke_rerun_needed": false
   },
   "dino3": {
