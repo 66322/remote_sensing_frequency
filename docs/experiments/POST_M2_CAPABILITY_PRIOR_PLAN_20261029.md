@@ -1,6 +1,6 @@
 # M2之后的能力先验与实验路线规划（2026-10-29）
 
-**状态：PROPOSED_NOT_IMPLEMENTED_NOT_LAUNCHED。** 本轮交付为证据综合、候选路线、分批实验设计与共享记录；没有新训练、下载模型、修复J或修改服务器队列。研究问题仍为RGB–DSM条件互补；本文件不宣布新主线或论文创新已经成立。
+**原规划状态：PROPOSED_NOT_IMPLEMENTED_NOT_LAUNCHED。** 更新：首批A0脚本及[具体执行合同](POST_M2_A0_EXECUTION_20261029.md)现已本地准备，服务器尚未预检/启动；本文件其余路线仍为条件规划。 本轮交付为证据综合、候选路线、分批实验设计与共享记录；没有新训练、下载模型、修复J或修改服务器队列。研究问题仍为RGB–DSM条件互补；本文件不宣布新主线或论文创新已经成立。
 
 - Material Passport：academic-research-suite / experiment-agent / plan；2026-10-29；v1.0；UNVERIFIED（候选机制尚未实验验证）。
 - 证据基准：GitHub rebuild-v1-protocol-20260915 @ 68c97c979d4a638271ef50b4f5be8645dcafd35d。

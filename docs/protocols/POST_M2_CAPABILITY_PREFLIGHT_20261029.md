@@ -1,6 +1,6 @@
 # M2之后能力先验实验准备表（2026-10-29）
 
-状态：PLANNED_NOT_PREPARED_NOT_LAUNCHED。遵守[实验规划规则](EXPERIMENT_PLANNING_RULES.md)及[执行约定](EXECUTION_CONTRACT.md)。这是[研究计划](../experiments/POST_M2_CAPABILITY_PRIOR_PLAN_20261029.md)的执行前缺项表，不是启动脚本；未知项明确列出，不假装已测完。
+状态补充：A0代码与执行合同已准备，本地3项纯合同测试通过；服务器权重/环境/吞吐尚未预检，未启动。原表其余未测项仍有效。见[A0执行合同](../experiments/POST_M2_A0_EXECUTION_20261029.md)。遵守[实验规划规则](EXPERIMENT_PLANNING_RULES.md)及[执行约定](EXECUTION_CONTRACT.md)。这是[研究计划](../experiments/POST_M2_CAPABILITY_PRIOR_PLAN_20261029.md)的执行前缺项表，不是启动脚本；未知项明确列出，不假装已测完。
 
 ## 研究决策
 

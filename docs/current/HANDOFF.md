@@ -1,14 +1,14 @@
-# 当前交接：下一阶段规划已形成，M2最终清理仍待回执（2026-10-29）
+# 当前交接：A0首批代码与资源合同已准备，M2最终清理仍待回执（2026-10-29）
 
-先读[研究决定](RESEARCH_DECISION.md)、[新计划](../experiments/POST_M2_CAPABILITY_PRIOR_PLAN_20261029.md)、[证据与文献核对](../experiments/POST_M2_EVIDENCE_AND_LITERATURE_AUDIT_20261029.md)、[准备表](../protocols/POST_M2_CAPABILITY_PREFLIGHT_20261029.md)。GitHub权威分支rebuild-v1-protocol-20260915供两台电脑接续，不以本机缓存替代最新远端。
+先读[研究决定](RESEARCH_DECISION.md)、[A0执行合同](../experiments/POST_M2_A0_EXECUTION_20261029.md)、[新计划](../experiments/POST_M2_CAPABILITY_PRIOR_PLAN_20261029.md)、[证据与文献核对](../experiments/POST_M2_EVIDENCE_AND_LITERATURE_AUDIT_20261029.md)、[准备表](../protocols/POST_M2_CAPABILITY_PREFLIGHT_20261029.md)。GitHub权威分支rebuild-v1-protocol-20260915供两台电脑接续，不以本机缓存替代最新远端。
 
 ## 本轮交付与下一项工作
 
-完成历史实验/原稿相关段落/用户材料及近邻文献综合，形成A能力先验、B几何关系、C蒸馏、D频率、E优化不确定性、F独立地图维护六类候选。新计划状态PROPOSED_NOT_IMPLEMENTED_NOT_LAUNCHED；没有下载/训练/修复J/修改服务器队列。
+A0首批的[scripts/post_m2_a0.py](../../scripts/post_m2_a0.py)、[本地合同测试](../../tests/test_post_m2_a0_contract.py)和[双H100执行合同](../experiments/POST_M2_A0_EXECUTION_20261029.md)已准备。本地3项纯合同测试通过；尚未在服务器验证DINOv3许可权重、新环境、真实模型加载或吞吐，也没有新训练/评价结果。旧M2环境Python3.9/Torch2.2.2不能直接视为A0可用。
 
-首选先证明外部模型有什么新增能力。A0两浅层探针4k → A1四臂32k → 阳性再A2两控制16k，全部先F0/seed42，额外参考训练另计。F0是已使用开发折，训练内校准完全排除梯度；普通上下文/教师和空间对应控制不可省。8k不预设充分，INVALID_BUDGET与科学阴性分开。后续先另一个地理开发折，有必要再给候选和强控制配对seed17，第三seed不计划。
+服务器依次执行：inventory、双模型smoke、profile、各2000步训练、2块训练内校准、screen；只有通过才评价F0外层4块开发tile。两个H100物理卡各≥40GiB空闲且无计算进程；cgroup有效CPU≥12核和可用内存≥12GiB才并行，否则顺序。profile独立计入最多320额外丢弃优化更新，并测完整tile评价分段耗时；正式单seed42共4000优化更新、最多12次正式全tile评价。训练或评价超过预检2.5倍停队。子任务首败终止对方，不自动重试。
 
-立即可推进工程范围是A0数据/教师合同与A1统一接口，按[启动交付规则](../protocols/STARTUP_DELIVERY_AND_FAILURE_CONTROL.md)实现真实分批停止和首败停队。当前无新可运行启动器；不能直接复用旧合并队列自动执行这些候选。
+A0只是同视野浅层读出，尚未完成上下文/关系探针。A1四臂和阳性后的A2两控制沿[总体研究计划](../experiments/POST_M2_CAPABILITY_PRIOR_PLAN_20261029.md)条件推进，未实现、未排队。F0为开发折，不是独立最终验证。新A0不依赖旧M2训练端点，也不撤销最终大件清理授权。服务器结果上传GitHub后回读关键记录并更新本交接、状态与注册表。
 
 ## 服务器最后实际状态
 
