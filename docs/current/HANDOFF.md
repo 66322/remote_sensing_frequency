@@ -1,28 +1,33 @@
-# 当前交接：优先准备并启动A0，M2最终清理暂停（2026-10-29）
+# 当前交接：多路线规划v2，保留A0既有执行证据（2026-10-30）
 
-先读[研究决定](RESEARCH_DECISION.md)、[A0执行合同](../experiments/POST_M2_A0_EXECUTION_20261029.md)、[新计划](../experiments/POST_M2_CAPABILITY_PRIOR_PLAN_20261029.md)、[证据与文献核对](../experiments/POST_M2_EVIDENCE_AND_LITERATURE_AUDIT_20261029.md)、[准备表](../protocols/POST_M2_CAPABILITY_PREFLIGHT_20261029.md)。GitHub权威分支rebuild-v1-protocol-20260915供两台电脑接续，不以本机缓存替代最新远端。
+先读[研究决定](RESEARCH_DECISION.md)、[多路线计划](../experiments/POST_M2_MULTIROUTE_PLAN_20261030.md)、[文献矩阵](../experiments/POST_M2_MULTIROUTE_LITERATURE_20261030.md)、[准备表](../protocols/POST_M2_MULTIROUTE_PREFLIGHT_20261030.md)、[状态](PROJECT_STATUS.md)、[下一步](NEXT_EXPERIMENT.md)。权威分支rebuild-v1-protocol-20260915；前版完整运行细节见[归档](../history/HANDOFF_BEFORE_MULTIROUTE_20261030.md)。
 
-## 本轮交付与下一项工作
+## 阶段、决定与角色
 
-A0首批的[scripts/post_m2_a0.py](../../scripts/post_m2_a0.py)、[本地合同测试](../../tests/test_post_m2_a0_contract.py)和[双H100执行合同](../experiments/POST_M2_A0_EXECUTION_20261029.md)已准备。本地4项检查通过；服务器已验证数据与DINOv2真实模型加载，DINOv3许可权重/加载和DINOv3吞吐仍未知，没有新训练/评价结果。服务器2026-10-29先实测Python3.9.21/Torch2.2.2+cu121、驱动590.48.01，GPU0/1各空闲81081 MiB；用户选择就地升级原remote_sensing环境、不新建环境，M2最终清理暂停。随后conda Python3.11.13事务成功，使用中科大镜像安装Torch2.7.1+cu126、Torchvision0.22.1、Torchaudio2.7.1；pip check为No broken requirements found，Torch实测CUDA12.6可用。A0 inventory于20:07:39通过，F0的12块数据齐全，192有效CPU核、约2.04TB可用内存，GPU0/1各81081MiB空闲；DINOv2 smoke于20:07:43通过，512输入输出384×37×37特征。DINOv2首次profile在第一步因冻结特征是推理张量而失败；将特征抽取改为no_grad后，20:18:55成功完成profile并写出[完整轻量记录](../../records/post_m2_a0_capability_20261029/profile_dino2.json)。160额外丢弃更新；选4 worker/micro16，中位0.01093秒/步；评价batch16，整tile 529窗口0.4066秒；总40.0秒，数据加载34.1秒。已有smoke/profile不可重复写；执行脚本及POST_M2_CODE_COMMIT继续固定c22a046407daf42064cbb161429f2648c9b86d66。DINOv3源码/权重尚未配置，下一步取得官方ViT-S/16 LVD `.pth`并在原环境完成DINOv3 smoke/profile；两模型均合格后再按配对合同启动训练。
+用户2026-10-30要求A0/A1/A2之外多视角规划，结合2025/2026研究并利用两张H100；本次已完成规划、来源核对和成本表。没有更换主线决定。S结构读出、G几何、Q质量训练成为独立首轮候选，基于现有DINOv2即可准备，不受A0科学阳性约束；A扩展为骨干×读出诊断，C/P有各自条件，E/F分别保留。
 
-服务器依次执行：inventory、双模型smoke、profile、各2000步训练、2块训练内校准、screen；只有通过才评价F0外层4块开发tile。两个H100物理卡各≥40GiB空闲且无计算进程；cgroup有效CPU≥12核和可用内存≥12GiB才并行，否则顺序。profile独立计入最多320额外丢弃优化更新，并测完整tile评价分段耗时；正式单seed42共4000优化更新、最多12次正式全tile评价。训练或评价超过预检2.5倍停队。子任务首败终止对方，不自动重试。
+具体路线与预算为助手建议，不是已验证贡献。建议首轮15作业/96k（含原A0 4k）；新底座Full监督与A0 NB/128监督区分。新G/Q/S/C/P代码、包、真实吞吐、控制器和训练未完成。未采纳：静态融合信息论上限、PCGrad零误伤、EDL自动可靠、LoRA无遗忘、所有模块直接叠加、资源富余就三seed。
 
-A0只是同视野浅层读出，尚未完成上下文/关系探针。A1四臂和阳性后的A2两控制沿[总体研究计划](../experiments/POST_M2_CAPABILITY_PRIOR_PLAN_20261029.md)条件推进，未实现、未排队。F0为开发折，不是独立最终验证。新A0不依赖旧M2训练端点，也不撤销最终大件清理授权。服务器结果上传GitHub后回读关键记录并更新本交接、状态与注册表。
+## 已核对的边界
 
-## 服务器最后实际状态
+A0真实512编码，DINOv2补至518；冻结bfloat16骨干、384→6浅头，训练128标签。新结构/联合训练不能沿用其速度估时。近期MM-DINO已直接做DINOv3遥感多模态，LiDeRe/AnyUp强读出、GKD分阶段蒸馏必须纳入对照视野。原D26/N2/C/M2的具体失败不扩张成整个问题失败；Full边界与NoBoundary不混比。
 
-- M2于2026-10-29 08:43完成108训练、77,868评价；G0/H2/G3通过，G1/G2/G4未过，DF配方关闭。[科学报告](../experiments/PHASE3_M2_ACCEPTANCE_AND_CLOSEOUT_20261029.md)。
-- J于08:47:55因严格确定性下CUDA交叉熵不兼容停止，无科学结果，未重启。
-- 第一次清理于11:05:39完成，删除90端点、保留18 R/D0；四目录分配量10.972GB→2.954GB，减少8.018GB，扣导出估计净减7.985GB；全盘free增量未确认。[回执](../experiments/PHASE3_M2_STORAGE_CLEANUP_RESULT_20261029.md)。
-- 用户随后实测8张H100；A0 inventory确认GPU0/1各81081 MiB空闲、有效CPU 192核、可用内存约2.04TB，GPU2–7有既有计算进程，A0继续只用0/1。DINOv2 smoke通过，修复后的profile已完成；无正式训练或科学结果。2026-10-29 19:15启动M2最终清理，但在完成75,000/77,868 case读取后，mask-family指标空值相减触发TypeError；脚本在删除阶段前停止，尚无新的清理结果。用户要求暂停M2清理，先准备环境并启动A0。
+## 最后服务器回执与既有执行
 
-## 未完成的收尾与retention
+最后观测2026-10-29 20:18:55：DINOv2修复no_grad后profile完成；160额外丢弃更新，4 worker/micro16约0.01093秒/步，整tile529窗口0.4066秒，总40秒含加载34.1秒。完整记录见[profile](../../records/post_m2_a0_capability_20261029/profile_dino2.json)。先前20:07:39 inventory确认F0 12tile、GPU0/1各81081MiB空闲、CPU192、可用RAM约2.04TB；不是实时状态。DINOv2 smoke真实前向通过。
 
-用户随后授权只留代码/配置/小结果等，退役剩余权重/推理/大统计；新策略替代“永久保留18”。[离线补充分析和最终清理工具](../experiments/PHASE3_M2_FINAL_COMPACTION_20261029.md)原版已实现/本地12项检查通过；服务器首轮在预删除统计阶段失败，失败日志见用户2026-10-29粘贴输出，尚无成功回执。按用户新顺序暂缓，不作为A0门槛。
+原环境remote_sensing已升级Python3.11.13/Torch2.7.1+cu126/torchvision0.22.1/torchaudio2.7.1，pip check通过。A0执行绑定c22a046407daf42064cbb161429f2648c9b86d66；不因文档更新重做已通过检查或改快照。
 
-后续恢复M2清理时，须先针对已保存的失败回执验证并修复；不得直接重复执行原版--apply。成功后回传GITHUB_RELAY_SUMMARY或analysis_summary.json/cleanup_result.json，再更新GitHub；不要求固定电脑下载大包。不训练、不推理、不用GPU、不修J、不重新哈希。先保存alpha/实际融合流量/逐类ROI/边界/校准/margin/掩码/轨迹摘要，再删大件。未知大文件核用途；共享数据/公共预训练不动。
+DINOv3：本会话提供固定ModelScope ciqiangxu/DINOv3原生vits16 .pth下载方式；尚未收到DOWNLOAD_READY、真实加载或profile回执，不写已完成。只影响A分支。原A0授权保留，两模型合格后按既定配对合同接续；已收到正式训练回执数仍0。
 
-ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro；M2目录research_phase3_m2_revision_20261024T092814_2738345；combined目录research_phase3_combined_revision_20261024T092814_2738345。清理输出records/m2_final_compaction_<时间>_<PID>/，单次回执records/phase3_m2_final_compaction_20261029.json；成功再次执行只报告ALREADY_COMPACTED，失败不自动重试。
+本次没有连接服务器、下载权重、训练、评价、清理或修改队列。更新GitHub文档不等于部署新控制器。
 
-没有回执不写剩余0/新分析完成/新增释放量。新计划不撤销清理，也不默认旧18专家可用；需要新基线时只重建最少匹配模型，成本明确。原108端点验收与事后删除分开。科学补充不翻转原alpha=.1/32k主门槛，不扩B/C，不开放封存split。
+## 历史与清理
+
+M2于2026-10-29 08:43完成108训练/3,456,000更新/77,868评价，DF配方关闭；J 08:47:55因确定性CUDA CE失败停止，无科学结果。首清理11:05:39删除90保留18，目录分配减少8.018GB，未确认全盘free增量。
+
+M2最终清理19:15在75,000/77,868读取后mask-family空值相减报错，未进删除；用户要求暂缓。最终退役授权不撤回，不为新计划强留18专家，也不假设其免费可用。恢复时先修首败，禁止直接重跑原--apply。新基线成本独立登记。
+
+ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro。M2目录research_phase3_m2_revision_20261024T092814_2738345，combined目录research_phase3_combined_revision_20261024T092814_2738345。完整清理约定与失败边界见前版归档及[工具说明](../experiments/PHASE3_M2_FINAL_COMPACTION_20261029.md)。
+
+下一步先具体化共同底座与S/G/Q最小对照、真实预算和执行载荷；A补缺失准备可并行。所有新结果保存逐tile int64 6×6矩阵、逐类/ROI/边界原始计数和配置/端点绑定，小记录同步GitHub回读。默认seed42，条件补配对17；不打开Val2/Test6/held4/final。

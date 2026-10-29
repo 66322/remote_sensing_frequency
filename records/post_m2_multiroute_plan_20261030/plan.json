@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-30",
+  "status": "PLANNED_NOT_IMPLEMENTED_NOT_QUEUED",
+  "repository": "66322/remote_sensing_frequency",
+  "branch": "rebuild-v1-protocol-20260915",
+  "source_head": "44aff02f4996b211d7999497af03c3f710b80936",
+  "decision_source": "User requested broader 2025-2026 literature-informed multi-route planning on two GPUs; mechanisms and budgets are assistant proposals.",
+  "last_server_observation": "2026-10-29 20:18:55 Asia/Shanghai",
+  "server_actions_this_planning": 0,
+  "scientific_results_new": 0,
+  "a0_execution_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+  "routes": {
+    "A": "representation_readout",
+    "G": "geometry_registration",
+    "Q": "local_quality_training",
+    "S": "spatial_readout_structure",
+    "C": "privileged_distillation",
+    "P": "adaptation_geography",
+    "E": "optimization_reliability_diagnostics",
+    "F": "temporal_map_independent_candidate"
+  },
+  "gate_scope": "A0 positivity applies only to its A1/A2 branch. G/Q/S independent using DINOv2; C own teacher advantage; P own legal development-domain contract.",
+  "dataset": {
+    "name": "Potsdam Fit12/F0 development",
+    "fit_tiles": 6,
+    "calibration_tiles": 2,
+    "outer_development_tiles": 4,
+    "tile_ids_source": "reuse frozen folds.json; never reconstruct from counts",
+    "v2_supervision": "Full; implementation contract pending",
+    "primary_segmentation_metric": "mIoU_fg5(full)",
+    "diagnostic": "mIoU_6(full), NoBoundary",
+    "a0_unchanged": "NoBoundary, 128 label supervision, 512 input",
+    "sealed_splits_opened": false
+  },
+  "first_wave_jobs": [
+    {
+      "id": "B0",
+      "route": "baseline",
+      "updates": 8000,
+      "seed": 42,
+      "status": "PROPOSED_NOT_IMPLEMENTED",
+      "dependencies": [
+        "new_v2_data_code_profile_contract"
+      ]
+    },
+    {
+      "id": "B1",
+      "route": "baseline",
+      "updates": 8000,
+      "seed": 42,
+      "status": "PROPOSED_NOT_IMPLEMENTED",
+      "dependencies": [
+        "new_v2_data_code_profile_contract"
+      ]
+    },
+    {
+      "id": "G1",
+      "route": "G",
+      "updates": 8000,
+      "seed": 42,
+      "status": "PROPOSED_NOT_IMPLEMENTED",
+      "dependencies": [
+        "B1_matched_contract"
+      ]
+    },
+    {
+      "id": "G2",
+      "route": "G",
+      "updates": 8000,
+      "seed": 42,
+      "status": "PROPOSED_NOT_IMPLEMENTED",
+      "dependencies": [
+        "B1_matched_contract"
+      ]
+    },
+    {
+      "id": "G3",
+      "route": "G",
+      "updates": 8000,
+      "seed": 42,
+      "status": "PROPOSED_NOT_IMPLEMENTED",
+      "dependencies": [
+        "B1_matched_contract"
+      ]
+    },
+    {
+      "id": "Q1",
+      "route": "Q",
+      "updates": 8000,
+      "seed": 42,
+      "status": "PROPOSED_NOT_IMPLEMENTED",
+      "dependencies": [
+        "B1_matched_contract"
+      ]
+    },
+    {
+      "id": "Q2",
+      "route": "Q",
+      "updates": 8000,
+      "seed": 42,
+      "status": "PROPOSED_NOT_IMPLEMENTED",
+      "dependencies": [
+        "B1_matched_contract"
+      ]
+    },
+    {
+      "id": "Q3",
+      "route": "Q",
+      "updates": 8000,
+      "seed": 42,
+      "status": "PROPOSED_NOT_IMPLEMENTED",
+      "dependencies": [
+        "Q2_frozen_exposure_multiset"
+      ]
+    },
+    {
+      "id": "S1",
+      "route": "S",
+      "updates": 8000,
+      "seed": 42,
+      "status": "PROPOSED_NOT_IMPLEMENTED",
+      "dependencies": [
+        "B1_matched_contract"
+      ]
+    },
+    {
+      "id": "S2",
+      "route": "S",
+      "updates": 8000,
+      "seed": 42,
+      "status": "PROPOSED_NOT_IMPLEMENTED",
+      "dependencies": [
+        "B1_matched_contract"
+      ]
+    },
+    {
+      "id": "S3",
+      "route": "S",
+      "updates": 8000,
+      "seed": 42,
+      "status": "PROPOSED_NOT_IMPLEMENTED",
+      "dependencies": [
+        "B1_matched_contract"
+      ]
+    },
+    {
+      "id": "A0_DINO2_LINEAR",
+      "route": "A",
+      "updates": 2000,
+      "seed": 42,
+      "status": "EXISTING_IMPLEMENTATION_NO_FORMAL_TRAINING_RECEIPT",
+      "dependencies": [
+        "DINO2_existing_checks",
+        "own_contract"
+      ]
+    },
+    {
+      "id": "A0_DINO3_LINEAR",
+      "route": "A",
+      "updates": 2000,
+      "seed": 42,
+      "status": "EXISTING_IMPLEMENTATION_NO_FORMAL_TRAINING_RECEIPT",
+      "dependencies": [
+        "DINO3_source_load_profile",
+        "own_contract"
+      ]
+    },
+    {
+      "id": "A_DINO2_SPATIAL",
+      "route": "A",
+      "updates": 2000,
+      "seed": 42,
+      "status": "PROPOSED_NOT_IMPLEMENTED",
+      "dependencies": [
+        "DINO2_existing_checks",
+        "own_contract"
+      ]
+    },
+    {
+      "id": "A_DINO3_SPATIAL",
+      "route": "A",
+      "updates": 2000,
+      "seed": 42,
+      "status": "PROPOSED_NOT_IMPLEMENTED",
+      "dependencies": [
+        "DINO3_source_load_profile",
+        "own_contract"
+      ]
+    }
+  ],
+  "budget": {
+    "job_count": 15,
+    "task_updates": 96000,
+    "includes_existing_a0_updates": 4000,
+    "newly_proposed_updates": 92000,
+    "effective_batch": 16,
+    "effective_sample_presentations": 1536000,
+    "selected_seeds": [
+      42
+    ],
+    "two_seed_counterfactual": {
+      "jobs": 30,
+      "updates": 192000
+    },
+    "three_seed_counterfactual": {
+      "jobs": 45,
+      "updates": 288000
+    },
+    "paired_seed17_conditional": {
+      "minimum_jobs": 2,
+      "minimum_updates": 16000
+    },
+    "second_geography_conditional": {
+      "minimum_jobs": 2,
+      "minimum_updates": 16000
+    },
+    "excludes": [
+      "new path profile disposable updates",
+      "teacher preparation",
+      "GKD representation pre-stage",
+      "A-context",
+      "S-frequency",
+      "C/P/E",
+      "extra mechanism evaluations",
+      "budget extension if undertrained"
+    ],
+    "wall_time": "PENDING_REAL_PATH_PROFILE",
+    "gpus": [
+      0,
+      1
+    ],
+    "processes_per_gpu": 1
+  },
+  "evaluation": {
+    "shared_conditions": [
+      "clean",
+      "local_RGB_down4",
+      "RGB_blur_unseen_in_augmentation",
+      "local_DSM_down4",
+      "DSM_shift_unseen_in_augmentation"
+    ],
+    "severity_and_mask_config": "TO_FREEZE_BEFORE_NEW_OUTER_RESULTS",
+    "calibration_checkpoints": [
+      4000,
+      8000
+    ],
+    "calibration_tile_cases": 220,
+    "selected_endpoint_development_tile_cases": 220,
+    "additional_final_endpoint_development_tile_cases": [
+      0,
+      220
+    ],
+    "a_four_probe_max_formal_tile_cases": 24,
+    "extra_mechanism_cases": "NOT_INCLUDED_TO_REGISTER",
+    "selection_by_route": {
+      "G": [
+        "clean",
+        "DSM_shift"
+      ],
+      "Q": [
+        "clean",
+        "RGB_blur",
+        "DSM_shift"
+      ],
+      "S": [
+        "clean"
+      ]
+    },
+    "validation_only": true,
+    "test_access": false
+  },
+  "threshold_proposals": {
+    "G": {
+      "comparison": "G2 vs G1",
+      "primary": "DSM-shift fg5(full)",
+      "gain_pp": 0.5
+    },
+    "Q": {
+      "comparison": "Q2 vs Q1 plus Q3 exposure-time control",
+      "primary": "mean unseen-in-augmentation RGB blur and DSM shift fg5(full)",
+      "gain_pp": 0.5
+    },
+    "S": {
+      "comparison": "S2 vs S1 plus S3 correspondence control",
+      "primary": "Full boundary F1 at fixed physical tolerance",
+      "gain_pp": 0.5
+    },
+    "guardrails": {
+      "clean_min_delta_pp": -0.2,
+      "worst_tile_min_delta_pp": -0.5
+    },
+    "meaning": "screening utility thresholds, not statistical significance; freeze implementation before new outer outcomes"
+  },
+  "remaining_execution_fields": [
+    "exact decoder and usable parameter match",
+    "Full labels mapping/ignore validation",
+    "loss and optimizer",
+    "severity and physical boundary tolerance",
+    "source/weights/dependencies pins per new path",
+    "real throughput and disk/RAM/VRAM",
+    "payload manifest and controller",
+    "training commands"
+  ],
+  "retention": "small counts/config/logs plus minimal dependency endpoints; no ordinary Git weights/data",
+  "stopping": "Common engineering first failure stops affected dispatch; scientific negative only closes corresponding implementation; no automatic retries.",
+  "references": {
+    "plan": "docs/experiments/POST_M2_MULTIROUTE_PLAN_20261030.md",
+    "literature": "docs/experiments/POST_M2_MULTIROUTE_LITERATURE_20261030.md",
+    "preflight": "docs/protocols/POST_M2_MULTIROUTE_PREFLIGHT_20261030.md"
+  }
+}
