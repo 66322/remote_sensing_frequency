@@ -4,7 +4,7 @@
 
 ## 本轮交付与下一项工作
 
-A0首批的[scripts/post_m2_a0.py](../../scripts/post_m2_a0.py)、[本地合同测试](../../tests/test_post_m2_a0_contract.py)和[双H100执行合同](../experiments/POST_M2_A0_EXECUTION_20261029.md)已准备。本地3项纯合同测试通过；尚未在服务器验证DINOv3许可权重、新环境、真实模型加载或吞吐，也没有新训练/评价结果。旧M2环境Python3.9/Torch2.2.2不能直接视为A0可用。
+A0首批的[scripts/post_m2_a0.py](../../scripts/post_m2_a0.py)、[本地合同测试](../../tests/test_post_m2_a0_contract.py)和[双H100执行合同](../experiments/POST_M2_A0_EXECUTION_20261029.md)已准备。本地3项纯合同测试通过；尚未在服务器验证DINOv3许可权重、原remote_sensing环境的就地升级、真实模型加载或吞吐，也没有新训练/评价结果。旧M2环境Python3.9/Torch2.2.2不能直接视为A0可用；用户明确要求不新建环境，先查当前版本，必要时完成M2最终清理并留包清单后在原环境就地升级。
 
 服务器依次执行：inventory、双模型smoke、profile、各2000步训练、2块训练内校准、screen；只有通过才评价F0外层4块开发tile。两个H100物理卡各≥40GiB空闲且无计算进程；cgroup有效CPU≥12核和可用内存≥12GiB才并行，否则顺序。profile独立计入最多320额外丢弃优化更新，并测完整tile评价分段耗时；正式单seed42共4000优化更新、最多12次正式全tile评价。训练或评价超过预检2.5倍停队。子任务首败终止对方，不自动重试。
 

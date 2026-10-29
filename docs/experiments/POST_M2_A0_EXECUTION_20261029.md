@@ -14,15 +14,51 @@ F0由旧M2 `folds.json`固定：8个原训练tile中用`inner_pairs[0]`的2个�
 
 1. 服务器ROOT为`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro`，旧M2运行目录中的小型`plan.json`、`folds.json`、`pretrained.json`仍在；共享RGB和NoBoundary原始数据、公开DINOv2原始权重/源码仍在。A0只盘点文件名和大小，不对数据与模型例行重新哈希。
 2. DINOv3源码固定在[官方仓库](https://github.com/facebookresearch/dinov3)的`6876159a11b4df116f30f667f8c9888617df0751`；ViT-S/16 LVD权重由用户按[官方模型页](https://huggingface.co/facebook/dinov3-vits16-pretrain-lvd1689m)条款取得，并自行放在服务器。脚本不自动绕过授权或下载模型。这里用Web/LVD权重，不称卫星预训练。
-3. 新A0独立Python环境：Python≥3.10、PyTorch≥2.7.1、CUDA可用，实际需有NumPy和Pillow。旧`remote_sensing`环境是Python3.9/Torch2.2.2，不能直接承诺兼容。先记录GPU驱动/CUDA，再按PyTorch官方对应安装方案建环境；不要在M2原环境中盲升。正式运行前两教师都必须通过实际权重加载与512前向smoke。
+3. **沿用并就地升级现有`remote_sensing`环境，不新建环境。** A0按官方DINOv3训练/评价版本要求使用Python≥3.10、PyTorch≥2.7.1、CUDA可用，并检查NumPy和Pillow。旧M2曾为Python3.9/Torch2.2.2；先读服务器当前版本，已满足就不安装。若M2最后的离线清理尚未执行，先用原环境完成并取回执，再升级环境。升级前只保存小型包清单，升级后以两模型真实权重加载和512前向smoke决定是否可跑。
 4. GitHub分支`rebuild-v1-protocol-20260915`为两台电脑的代码/配置/结果/结论共同权威。执行时用当时分支HEAD固定下载脚本并写入`POST_M2_CODE_COMMIT`；若分支后续变化，已经启动的本轮不随之切换代码。
 
 ## 服务器执行顺序
 
-在服务器新环境内运行以下准备命令。先把`POST_M2_DINO3_REPO`指向已检出上述官方commit的本地源码目录、`POST_M2_DINO3_WEIGHTS`指向按条款取得的权重实际文件。**没有权重或新环境时止于inventory，不启动耗时任务。**
+先在服务器保留现有环境的小型清单并读当前版本（不复制整个环境）：
+
+```bash
+conda activate remote_sensing
+ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+mkdir -p "$ROOT/records/post_m2_a0_capability_20261029"
+conda list --explicit > "$ROOT/records/post_m2_a0_capability_20261029/conda_before.txt"
+python -m pip freeze > "$ROOT/records/post_m2_a0_capability_20261029/pip_before.txt"
+python -V
+python -c 'import torch, numpy, PIL; print("torch",torch.__version__,"torch_cuda",torch.version.cuda,"cuda_available",torch.cuda.is_available()); print("numpy",numpy.__version__,"pillow",PIL.__version__)'
+nvidia-smi --query-gpu=index,name,driver_version,memory.free --format=csv,noheader
+```
+
+若当前Python/Torch已达标，直接进入下一段。若仍是Python3.9/Torch2.2.2，且M2最终清理已拿到回执，**只升级当前环境**。PyTorch官方提供2.7.1的CUDA 11.8 wheel；H100旧CUDA12.1环境通常可用，但必须先核对服务器驱动至少达到CUDA11.8的Linux最低520.61.05，再安装、真实smoke。若驱动更低或当前包由conda和pip混装引起冲突，停止并根据上面清单修复，不能盲目覆盖。
+
+```bash
+conda activate remote_sensing
+conda install -n remote_sensing python=3.11 -y
+python -m pip install --upgrade torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu118
+python -m pip check
+python -c 'import sys, torch, numpy, PIL; print(sys.version, torch.__version__, torch.version.cuda, torch.cuda.is_available(), numpy.__version__, PIL.__version__); print(torch.cuda.get_device_name(0))'
+```
+
+PyTorch wheel来源与CUDA版本见[官方安装表](https://pytorch.org/get-started/previous-versions/)，驱动最低版本见[NVIDIA CUDA 11.8说明](https://docs.nvidia.com/cuda/archive/11.8.0/cuda-toolkit-release-notes/index.html)。这里选择cu118是为了避免为A0升级驱动；真正能否运行以服务器smoke为准。若`conda install`与原有包求解冲突、`pip check`报Torch相关冲突或CUDA不可用，保留输出分析后再修，**不自动新建环境或继续训练**。
+
+源码只准备一次：在原ROOT的`external`下克隆[官方仓库](https://github.com/facebookresearch/dinov3)，检出冻结commit。权重仍须按官方条款取得，将对应的**PyTorch .pth**文件放到服务器公共预训练目录；不要把Hugging Face `.safetensors`文件直接作为`torch.hub.load(...,weights=...)`的参数。已有同一源码/权重时只核对路径，不重复下载。
 
 ```bash
 ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+D3_REPO="$ROOT/external/dinov3_6876159"
+test -d "$D3_REPO/.git" || git clone https://github.com/facebookresearch/dinov3.git "$D3_REPO"
+git -C "$D3_REPO" checkout 6876159a11b4df116f30f667f8c9888617df0751
+git -C "$D3_REPO" rev-parse HEAD
+```
+
+随后把`POST_M2_DINO3_REPO`指向上述目录、`POST_M2_DINO3_WEIGHTS`指向已取得的`.pth`实际文件。若权重尚未到位，可以不设置这两个变量先做`inventory`、单独运行DINOv2的`smoke --kind dino2`和`profile --kind dino2`；DINOv3权重到位后用物理GPU1单独补它的smoke/profile，然后直接进入双模型`pair --phase train`。已经完成单模型smoke/profile时，双模型对应阶段会拒绝重复运行。**正式训练仍须等待两教师权重与环境检查通过**。
+
+```bash
+ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+D3_REPO="$ROOT/external/dinov3_6876159"
 BRANCH=rebuild-v1-protocol-20260915
 COMMIT=$(git ls-remote https://github.com/66322/remote_sensing_frequency.git "refs/heads/$BRANCH" | cut -f1)
 test ${#COMMIT} -eq 40 || exit 1
@@ -31,9 +67,24 @@ mkdir -p "$(dirname "$SCRIPT")"
 curl -fL "https://raw.githubusercontent.com/66322/remote_sensing_frequency/$COMMIT/scripts/post_m2_a0.py" -o "$SCRIPT.download" || exit 1
 mv "$SCRIPT.download" "$SCRIPT"
 export POST_M2_CODE_COMMIT="$COMMIT"
-export POST_M2_DINO3_REPO="/你的服务器上的官方dinov3源码目录"
-export POST_M2_DINO3_WEIGHTS="/你的服务器上的官方vits16权重文件"
+# 权重已按官方条款取得时取消下面两行注释并填写实际路径：
+# export POST_M2_DINO3_REPO="$D3_REPO"
+# export POST_M2_DINO3_WEIGHTS="/你的服务器上的官方vits16权重.pth"
 python -u -B "$SCRIPT" inventory
+```
+
+如暂缺DINOv3权重但原环境已升级，可以先完成DINOv2的最小测速：
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python -u -B "$SCRIPT" smoke --kind dino2
+CUDA_VISIBLE_DEVICES=0 python -u -B "$SCRIPT" profile --kind dino2
+```
+
+权重到位并正确设置两个环境变量后，补另一个模型：
+
+```bash
+CUDA_VISIBLE_DEVICES=1 python -u -B "$SCRIPT" smoke --kind dino3
+CUDA_VISIBLE_DEVICES=1 python -u -B "$SCRIPT" profile --kind dino3
 ```
 
 `inventory`打印数据、模型文件、物理GPU、运行中程序、cgroup可用CPU/内存；缺文件立即停。随后每一行是**独立关卡**，上一关的`PAIR_PHASE_COMPLETE`与两个子日志正常结束后才运行下一行。长任务可将单行套在`nohup ... > 独立日志 2>&1 < /dev/null &`中，保留PID和日志；不要把所有行交给旧M2控制器或一个无条件串行shell。

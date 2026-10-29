@@ -3,7 +3,7 @@
 先读[研究决定](current/RESEARCH_DECISION.md)、[交接](current/HANDOFF.md)、[状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)。长期规则见[AGENTS](../AGENTS.md)、[执行约定](protocols/EXECUTION_CONTRACT.md)和[实验规划规则](protocols/EXPERIMENT_PLANNING_RULES.md)。
 
 本轮新增：
-- [A0双H100执行合同](experiments/POST_M2_A0_EXECUTION_20261029.md)与[首批脚本](../scripts/post_m2_a0.py)：本地代码及3项纯合同测试已完成；服务器环境/权重/吞吐待实测，尚未有新科学结果。
+- [A0双H100执行合同](experiments/POST_M2_A0_EXECUTION_20261029.md)与[首批脚本](../scripts/post_m2_a0.py)：本地代码及3项纯合同测试已完成；沿用原remote_sensing环境，必要时就地升级；服务器权重/吞吐待实测，尚未有新科学结果。
 - [下一阶段能力先验与多路线计划](experiments/POST_M2_CAPABILITY_PRIOR_PLAN_20261029.md)：先单seed能力探针与四臂控制，有正向证据才扩大。
 - [历史结论、原稿与近期文献核对](experiments/POST_M2_EVIDENCE_AND_LITERATURE_AUDIT_20261029.md)：区分具体失败与整个问题；纠正“信息上限/保证零伤害”等过度推断。
 - [实验准备表](protocols/POST_M2_CAPABILITY_PREFLIGHT_20261029.md)和[机器计划](../records/post_m2_capability_plan_20261029/plan.json)：明确未测项、额外参考训练成本、停止点与小证据保留。

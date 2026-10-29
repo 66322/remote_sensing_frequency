@@ -4165,6 +4165,8 @@
     "server_scientific_result": false,
     "a1_implementation_status": "CONDITIONAL_NOT_IMPLEMENTED",
     "a2_implementation_status": "CONDITIONAL_NOT_IMPLEMENTED",
-    "m2_final_compaction_receipt_received": false
+    "m2_final_compaction_receipt_received": false,
+    "environment_policy": "USER_SELECTED_IN_PLACE_REMOTE_SENSING_UPGRADE_AFTER_M2_FINAL_COMPACTION",
+    "environment_change_executed": false
   }
 }

@@ -144,9 +144,9 @@ def inventory(args):
 
 def ensure_gpu(kind):
     import torch
-    if sys.version_info < (3,10): raise RuntimeError("DINOv3 source needs Python >=3.10")
+    if sys.version_info < (3,10): raise RuntimeError("Upgrade the active remote_sensing environment in place to Python >=3.10")
     ver=tuple(int(x) for x in torch.__version__.split("+")[0].split(".")[:3])
-    if ver < (2,7,1): raise RuntimeError("Use a separate validated A0 environment with Torch >=2.7.1 for official DINOv3 source")
+    if ver < (2,7,1): raise RuntimeError("Upgrade the active remote_sensing environment in place to Torch >=2.7.1")
     if not torch.cuda.is_available(): raise RuntimeError("CUDA unavailable")
     if torch.cuda.device_count()!=1: raise RuntimeError("Set CUDA_VISIBLE_DEVICES to exactly one physical GPU, 0 or 1")
     device_name=torch.cuda.get_device_name(0)
