@@ -318,7 +318,7 @@ def predict_tile(encoder,patch,head,rgb,batch_size,limit=None):
     if limit is None:
         area=coverage[512:h-512,512:w-512]
         if bool((area==0).any()):raise RuntimeError("central evaluation region uncovered")
-    pred=score.argmax(0).to(torch.uint8).cpu().numpy()
+    pred=score.argmax(0).to(torch.uint8).cpu().numpy() if limit is None else None
     torch.cuda.synchronize()
     seconds=time.perf_counter()-started
     timings={"cpu_stack_seconds":cpu_stack_seconds,

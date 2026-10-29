@@ -28,7 +28,8 @@ COMMIT=$(git ls-remote https://github.com/66322/remote_sensing_frequency.git "re
 test ${#COMMIT} -eq 40 || exit 1
 SCRIPT="$ROOT/records/post_m2_a0_capability_20261029/post_m2_a0.py"
 mkdir -p "$(dirname "$SCRIPT")"
-curl -fL "https://raw.githubusercontent.com/66322/remote_sensing_frequency/$COMMIT/scripts/post_m2_a0.py" -o "$SCRIPT"
+curl -fL "https://raw.githubusercontent.com/66322/remote_sensing_frequency/$COMMIT/scripts/post_m2_a0.py" -o "$SCRIPT.download" || exit 1
+mv "$SCRIPT.download" "$SCRIPT"
 export POST_M2_CODE_COMMIT="$COMMIT"
 export POST_M2_DINO3_REPO="/你的服务器上的官方dinov3源码目录"
 export POST_M2_DINO3_WEIGHTS="/你的服务器上的官方vits16权重文件"
