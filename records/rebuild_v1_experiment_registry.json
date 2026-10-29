@@ -2370,17 +2370,43 @@
       "automatic_retry": false,
       "upload_policy": "GitHub authority; paste small server result then connected writer publishes; no repeated hashing",
       "local_validation": "12 affected-scope synthetic checks; Linux unlink unchanged from accepted first cleanup"
+    },
+    {
+      "id": "POST_M2_CAPABILITY_PRIOR_PLAN_20261029",
+      "type": "research_plan_not_experiment_result",
+      "status": "PROPOSED_NOT_IMPLEMENTED_NOT_LAUNCHED",
+      "recorded_at": "2026-10-29",
+      "time_precision": "date",
+      "source_commit": "68c97c979d4a638271ef50b4f5be8645dcafd35d",
+      "report": "docs/experiments/POST_M2_CAPABILITY_PRIOR_PLAN_20261029.md",
+      "evidence_review": "docs/experiments/POST_M2_EVIDENCE_AND_LITERATURE_AUDIT_20261029.md",
+      "preflight": "docs/protocols/POST_M2_CAPABILITY_PREFLIGHT_20261029.md",
+      "plan": "records/post_m2_capability_plan_20261029/plan.json",
+      "new_training_started": false,
+      "new_training_jobs_executed": 0,
+      "new_optimizer_updates": 0,
+      "nominal_conditional_first_route_jobs": 8,
+      "nominal_conditional_first_route_updates": 52000,
+      "extra_reference_training_included": false,
+      "seeds_proposed": [
+        42
+      ],
+      "third_seed_planned": false,
+      "mainline_changed": false,
+      "server_cleanup_state_changed": false
     }
   ],
   "next_plan": {
-    "status": "M2_OFFLINE_ANALYSIS_AND_FINAL_COMPACTION_WAITING_SERVER",
-    "document": "docs/current/NEXT_EXPERIMENT.md",
+    "status": "PROPOSED_NOT_IMPLEMENTED_NOT_LAUNCHED",
+    "document": "docs/experiments/POST_M2_CAPABILITY_PRIOR_PLAN_20261029.md",
+    "preflight": "docs/protocols/POST_M2_CAPABILITY_PREFLIGHT_20261029.md",
+    "machine_plan": "records/post_m2_capability_plan_20261029/plan.json",
     "new_training_authorized_by_this_record": false,
     "automatic_retry": false,
+    "new_training_started": false,
+    "pending_operational_closeout": "PHASE3_M2_FINAL_COMPACTION_20261029; server receipt absent",
     "local_archive_transfer_required": false,
-    "github_cross_computer_handoff_ready": true,
-    "raw_server_artifacts_on_demand": false,
-    "raw_retention_revision": "Analyze existing counts then retain compact statistics; discard full joint/mask cubes and run checkpoints after checks"
+    "github_cross_computer_handoff_ready": true
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -2733,7 +2759,10 @@
     "specific_DF_mechanism_supported": false,
     "J_scientific_conclusion_available": false,
     "report": "docs/experiments/PHASE3_M2_ACCEPTANCE_AND_CLOSEOUT_20261029.md",
-    "further_training_authorized_by_this_record": false
+    "further_training_authorized_by_this_record": false,
+    "next_plan": "docs/experiments/POST_M2_CAPABILITY_PRIOR_PLAN_20261029.md",
+    "latest_planning_recommendation": "Capability priors and conditional geometry, with strong context/teacher controls; no new mainline adopted",
+    "planning_status": "PROPOSED_NOT_IMPLEMENTED_NOT_LAUNCHED"
   },
   "proposed_d23": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
@@ -4100,5 +4129,27 @@
     "recent_review": "docs/experiments/COMPLETED_EXPERIMENTS_HANDOFF_20261004.md"
   },
   "latest_observed_at": "2026-10-29T11:05:39.164577+08:00",
-  "registry_coverage_note_20261029": "Backfilled the actual M2 completed state, J engineering stop and authorized cleanup. Previous M2 not-launched routing is preserved under historical_routing_before_phase3_m2_closeout_20261029. This does not claim every intervening historical result was independently re-audited."
+  "registry_coverage_note_20261029": "Backfilled the actual M2 completed state, J engineering stop and authorized cleanup. Previous M2 not-launched routing is preserved under historical_routing_before_phase3_m2_closeout_20261029. This does not claim every intervening historical result was independently re-audited.",
+  "historical_next_plan_before_capability_plan_20261029": {
+    "status": "M2_OFFLINE_ANALYSIS_AND_FINAL_COMPACTION_WAITING_SERVER",
+    "document": "docs/current/NEXT_EXPERIMENT.md",
+    "new_training_authorized_by_this_record": false,
+    "automatic_retry": false,
+    "local_archive_transfer_required": false,
+    "github_cross_computer_handoff_ready": true,
+    "raw_server_artifacts_on_demand": false,
+    "raw_retention_revision": "Analyze existing counts then retain compact statistics; discard full joint/mask cubes and run checkpoints after checks"
+  },
+  "latest_research_plan": {
+    "date": "2026-10-29",
+    "source_commit": "68c97c979d4a638271ef50b4f5be8645dcafd35d",
+    "status": "PROPOSED_NOT_IMPLEMENTED_NOT_LAUNCHED",
+    "document": "docs/experiments/POST_M2_CAPABILITY_PRIOR_PLAN_20261029.md",
+    "audit": "docs/experiments/POST_M2_EVIDENCE_AND_LITERATURE_AUDIT_20261029.md",
+    "preflight": "docs/protocols/POST_M2_CAPABILITY_PREFLIGHT_20261029.md",
+    "recommended_first_seed": 42,
+    "third_seed_planned": false,
+    "automatic_queue_changed": false,
+    "primary_recommendation": "Probe external capability, then matched 2x2; geometry/distillation only after evidence; independent temporal route retained"
+  }
 }

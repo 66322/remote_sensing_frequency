@@ -1,0 +1,222 @@
+{
+  "schema_version": "1.0",
+  "id": "POST_M2_CAPABILITY_PRIOR_PLAN_20261029",
+  "date": "2026-10-29",
+  "timezone": "Asia/Shanghai",
+  "status": "PROPOSED_NOT_IMPLEMENTED_NOT_LAUNCHED",
+  "source_commit": "68c97c979d4a638271ef50b4f5be8645dcafd35d",
+  "user_request": "Synthesize GitHub history, complete M2, pasted claims, foundation capability priors and recent literature; plan multiple routes; avoid nonessential multi-seed; no overall experiment time limit.",
+  "documents": {
+    "plan": "docs/experiments/POST_M2_CAPABILITY_PRIOR_PLAN_20261029.md",
+    "evidence_audit": "docs/experiments/POST_M2_EVIDENCE_AND_LITERATURE_AUDIT_20261029.md",
+    "preflight": "docs/protocols/POST_M2_CAPABILITY_PREFLIGHT_20261029.md"
+  },
+  "execution": {
+    "implemented": false,
+    "launched": false,
+    "new_training_jobs_executed": 0,
+    "new_optimizer_updates": 0,
+    "new_models_downloaded": 0,
+    "server_queue_modified": false,
+    "automatic_continuation": false,
+    "server_direct_access": false
+  },
+  "research_role": {
+    "mainline": "RGB-DSM conditional complementarity",
+    "mainline_changed": false,
+    "method_novelty_established": false,
+    "map_maintenance": "independent candidate",
+    "priority_recommendation": [
+      "A capability probe",
+      "B conditional geometry"
+    ],
+    "conditional": [
+      "C privileged capability distillation",
+      "D frequency relation diagnostic",
+      "E optimization or uncertainty"
+    ],
+    "independent": [
+      "F temporal map maintenance"
+    ]
+  },
+  "seed_policy": {
+    "exploration": [
+      42
+    ],
+    "optional_paired_replication": [
+      17
+    ],
+    "third_seed_planned": false,
+    "replicate_only_candidate_and_necessary_controls": true,
+    "unlimited_time_is_not_seed_justification": true
+  },
+  "data": {
+    "development": "M2 Fit12 F0; four outer development tiles and eight training tiles",
+    "all_folds_previously_used": true,
+    "inner_calibration_excluded_from_gradients": true,
+    "buffer_covers_teacher_fov_and_augmentation": true,
+    "exact_inner_split_frozen": false,
+    "heldout_split_opened": false,
+    "pretraining_exposure_audited": false,
+    "geographic_second_fold_is_not_independent_confirmation": true
+  },
+  "stages": [
+    {
+      "id": "A0",
+      "role": "frozen teacher capability probes",
+      "jobs": 2,
+      "updates_each": 2000,
+      "total_updates": 4000,
+      "seed": 42,
+      "status": "PROPOSED",
+      "backbone_training": false,
+      "requires": [
+        "checkpoint source and input contract",
+        "inner geographic split"
+      ],
+      "failure": "INVALID_PROBE if insufficiently trained; no universal impossibility claim"
+    },
+    {
+      "id": "A1",
+      "role": "DSM availability by external prior 2x2",
+      "arms": [
+        "S0 strong RGB with ordinary context",
+        "S1 ordinary RGB-DSM",
+        "S2 RGB plus external context",
+        "S3 RGB-DSM plus external context"
+      ],
+      "jobs": 4,
+      "updates_each": 8000,
+      "total_updates": 32000,
+      "seed": 42,
+      "status": "CONDITIONAL_PROPOSED",
+      "requires": [
+        "A0 incremental capability",
+        "matched effective capacity/FOV/augmentation",
+        "adequate baseline learning"
+      ],
+      "primary_candidate": "S3",
+      "extra_reference_rebuild_included": false
+    },
+    {
+      "id": "A2",
+      "role": "ordinary teacher and spatial correspondence controls",
+      "arms": [
+        "S4 ordinary or EMA teacher; select one before execution",
+        "S5 preregistered spatial mismatch"
+      ],
+      "jobs": 2,
+      "updates_each": 8000,
+      "total_updates": 16000,
+      "seed": 42,
+      "status": "CONDITIONAL_PROPOSED",
+      "requires": [
+        "A1 useful gain and no-harm screen"
+      ],
+      "same_student_initial_state_as_S3": true,
+      "continue_from_trained_S3": false,
+      "extra_teacher_training_included": false
+    },
+    {
+      "id": "B",
+      "role": "conditional aerial DSM geometry",
+      "suggested_jobs": 4,
+      "suggested_total_updates": 32000,
+      "status": "SEPARATE_CONDITIONAL_CANDIDATE",
+      "automatic": false
+    },
+    {
+      "id": "C",
+      "role": "privileged capability distillation",
+      "suggested_jobs": 4,
+      "suggested_total_updates": 32000,
+      "status": "SEPARATE_CONDITIONAL_CANDIDATE",
+      "automatic": false
+    },
+    {
+      "id": "D",
+      "role": "frequency beyond spatial/context controls",
+      "status": "CONDITIONAL_DIAGNOSTIC_ONLY",
+      "automatic": false
+    },
+    {
+      "id": "E",
+      "role": "imbalance/gradient/uncertainty diagnostics",
+      "status": "DIAGNOSE_BEFORE_METHOD_TRIAL",
+      "automatic": false
+    },
+    {
+      "id": "F",
+      "role": "independent temporal map maintenance",
+      "reference": "docs/experiments/NEXT_STAGE_DECISION_EXPERIMENTS_20261027.md",
+      "status": "INDEPENDENT_CANDIDATE_NOT_AUTOMATIC",
+      "automatic": false
+    }
+  ],
+  "nominal_cost": {
+    "A0_A1_A2_jobs": 8,
+    "A0_A1_A2_updates": 52000,
+    "two_seed_full_copy": {
+      "jobs": 16,
+      "updates": 104000,
+      "planned": false
+    },
+    "three_seed_full_copy": {
+      "jobs": 24,
+      "updates": 156000,
+      "planned": false
+    },
+    "extra_reference_or_teacher_training": "additional and mandatory to disclose if required; e.g. 2x32k experts adds 2 jobs/64k",
+    "wall_clock_measured": false,
+    "unlimited_total_time": true
+  },
+  "screen": {
+    "status": "PROPOSED_TO_FREEZE_BEFORE_NEW_OUTER_RESULTS",
+    "primary": "S3-S1 local RGB-down4 ROI NoBoundary fg5 pooled mIoU",
+    "minimum_gain_pp": 0.5,
+    "clean_and_healthy_mean_floor_pp": -0.2,
+    "worst_primary_tile_floor_pp": -0.5,
+    "minimum_nonnegative_tiles": 3,
+    "total_outer_tiles": 4,
+    "mechanism_control_margin_suggested_pp": 0.2,
+    "per_class_guard_not_yet_frozen": true,
+    "conditions": [
+      "clean",
+      "local RGB-down4",
+      "unseen RGB blur",
+      "DSM-down4",
+      "DSM shift"
+    ],
+    "mask_and_severity_not_yet_frozen": true,
+    "boundary_route_requires_separate_primary_contract": true
+  },
+  "storage": {
+    "reuse_code_data_small_records": true,
+    "old_weights_assumed_available": false,
+    "shared_data_and_public_pretraining_excluded_from_m2_cleanup": true,
+    "retain_full_logits": false,
+    "repeat_full_hashing": false,
+    "active_comparison_endpoints_temporary": true
+  },
+  "m2_last_actual": {
+    "primary_recipe_closed": true,
+    "completed_jobs": 108,
+    "completed_updates": 3456000,
+    "completed_cases": 77868,
+    "first_cleanup_deleted_weights": 90,
+    "first_cleanup_remaining_weights": 18,
+    "final_compaction_receipt_received": false,
+    "final_compaction_target_remaining_weights": 0,
+    "J_scientific_result": false
+  },
+  "implementation_missing": [
+    "exact checkpoint and input versions",
+    "inner split/calibration/buffer",
+    "mask severity and class guards",
+    "model interfaces and fair baselines",
+    "target environment and throughput",
+    "actual stage stop controller",
+    "artifact retention and compact export"
+  ],
+  "source_scope": "repository records plus focused primary literature and selected manuscript paragraphs; not exhaustive review or experimental replication"
+}
