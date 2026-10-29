@@ -48,6 +48,10 @@ def metric(cm):
     return (None if any(x is None for x in iou) else float(np.mean(iou))), iou
 
 
+def optional_delta(a, b):
+    return None if a is None or b is None else a - b
+
+
 def flow(joint):
     j = np.asarray(joint, dtype=np.int64)
     right = sum(int(j[g, g, :].sum()) for g in range(5))
@@ -204,9 +208,16 @@ def analyze_cases(m2, output):
     family_deltas = []
     for fam in sorted({k[3] for k in family if k[2] == 'down4'}):
         for region in REGIONS:
-            values = [metric(family[(s,'DF','down4',fam,region)]['cms'][1])[0] -
-                      metric(family[(s,'D0','down4',fam,region)]['cms'][1])[0] for s in SEEDS]
-            family_deltas.append(dict(family=fam, region=region, DF_minus_D0_miou_pp=values))
+            values = []
+            for s in SEEDS:
+                df = metric(family[(s,'DF','down4',fam,region)]['cms'][1])[0]
+                d0 = metric(family[(s,'D0','down4',fam,region)]['cms'][1])[0]
+                # Some mask-family/ROI subsets lack one of the five foreground
+                # classes. Keep their delta undefined, as for other ROI tables.
+                values.append(optional_delta(df, d0))
+            family_deltas.append(dict(family=fam, region=region,
+                                      DF_minus_D0_miou_pp=values,
+                                      valid_seed_count=sum(v is not None for v in values)))
     return dict(cases=n, metric_rows=table.rows, mask_family_rows=t.rows, down4_family_deltas=family_deltas)
 
 
@@ -455,11 +466,43 @@ def load_helper(path):
     return helper
 
 
+def recover_predelete_failure(h, records, previous, runs):
+    """Permit one explicit retry only for the observed pre-deletion None-metric bug."""
+    old = h.read(previous)
+    expected_error = repr(TypeError("unsupported operand type(s) for -: 'NoneType' and 'NoneType'"))
+    if (old.get('status') != 'STOPPED_NO_AUTOMATIC_RETRY' or
+            old.get('error') != expected_error or
+            old.get('m2_directory') != str(runs['m2_directory'])):
+        raise RuntimeError('Recovery refused: failure identity does not match the known pre-deletion bug')
+    output = h.safe(Path(old['output']), records)
+    if output.parent != records.resolve() or not output.name.startswith('m2_final_compaction_'):
+        raise RuntimeError('Recovery refused: prior output is outside the expected directory')
+    if (h.read(output/'cleanup_result.json') != old or
+            not (output/'inventory_before.json').is_file() or
+            any((output/name).exists() for name in ('cleanup_plan.json', 'deletions.jsonl', 'inventory_after.json')) or
+            (records/'phase3_m2_final_compaction_20261029.lock').exists()):
+        raise RuntimeError('Recovery refused: prior attempt may have reached deletion or is still active')
+    before = h.read(output/'inventory_before.json')
+    current = h.inventory(runs)
+    identity = lambda x: {(r['path'], r['dev'], r['ino'], r['bytes'], r['mtime_ns'], r['links'])
+                          for r in x['files']}
+    if (identity(before) != identity(current) or
+            before['excluded_symlinks_or_special'] != current['excluded_symlinks_or_special']):
+        raise RuntimeError('Recovery refused: bound run files changed since the failed attempt')
+    previous.unlink()
+    emit('PREDELETE_RECOVERY_VERIFIED', prior_output=str(output),
+         files_unchanged=len(current['files']), previous_failure=old['error'])
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--apply', action='store_true')
+    p.add_argument('--recover-predelete', action='store_true',
+                   help='Explicitly retry only the verified 2026-10-29 None-metric pre-deletion failure')
     p.add_argument('--helper', type=Path, default=ROOT/'records'/('closeout_phase3_m2_storage_'+FIRST+'.py'))
     args = p.parse_args()
+    if args.recover_predelete and not args.apply:
+        raise RuntimeError('--recover-predelete requires --apply')
     if sys.platform != 'linux':
         raise RuntimeError('Bound Linux server entry point only')
     h = load_helper(args.helper)
@@ -472,7 +515,12 @@ def main():
         if old.get('status') == 'COMPLETE' and old.get('m2_directory') == str(runs['m2_directory']):
             emit('ALREADY_COMPACTED', **old)
             return
-        raise RuntimeError('Existing incomplete receipt: inspect saved journal; no blind rerun')
+        if args.recover_predelete:
+            recover_predelete_failure(h, records, previous, runs)
+        else:
+            raise RuntimeError('Existing incomplete receipt: inspect saved journal; no blind rerun')
+    elif args.recover_predelete:
+        raise RuntimeError('Recovery refused: no previous failed receipt')
     first = h.read(records/h.RECEIPT)
     if first.get('status') != 'COMPLETE' or first['m2_directory'] != str(runs['m2_directory']):
         raise RuntimeError('Accepted first-cleanup receipt missing')

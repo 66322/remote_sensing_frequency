@@ -52,6 +52,15 @@ class NumericChecks(unittest.TestCase):
         cm[4] = 0
         self.assertIsNone(m.metric(cm)[0])
 
+    def test_mask_family_delta_is_undefined_when_a_class_is_absent(self):
+        cm = np.eye(6, dtype=np.int64) * 10
+        valid = m.metric(cm)[0]
+        cm[4] = 0
+        missing = m.metric(cm)[0]
+        self.assertIsNone(m.optional_delta(missing, missing))
+        self.assertIsNone(m.optional_delta(valid, missing))
+        self.assertEqual(m.optional_delta(valid, valid), 0.)
+
     def test_pool_preserves_integer_counts_and_float_calibration(self):
         z = m.capsule(counts())
         g = {}
@@ -150,6 +159,37 @@ class RetentionChecks(unittest.TestCase):
         self.assertEqual(self.reason('jobs/F0_s42_R/batch_hashes.jsonl'), 'batch_trace_replaced_by_108_checked_receipts')
         self.assertIsNone(self.reason('jobs/F0_s42_R/complete.json'))
         self.assertIsNone(self.reason('jobs/F0_s42_R/batch_hashes.jsonl','old_m2'))
+
+
+class RecoveryChecks(unittest.TestCase):
+    def test_predelete_recovery_requires_unchanged_inventory_and_no_journal(self):
+        with tempfile.TemporaryDirectory(prefix='m2_predelete_') as tmp:
+            records = Path(tmp)
+            output = records/'m2_final_compaction_20261029T191532_1299837'
+            output.mkdir()
+            prior = records/m.RECEIPT
+            run = records/'research_phase3_m2_revision_test'
+            run.mkdir()
+            row = dict(path=str(run/'endpoint.pth'), dev=1, ino=2, bytes=4, mtime_ns=3, links=1)
+            inventory = dict(files=[row], excluded_symlinks_or_special=[])
+            error = repr(TypeError("unsupported operand type(s) for -: 'NoneType' and 'NoneType'"))
+            failed = dict(status='STOPPED_NO_AUTOMATIC_RETRY', error=error,
+                          output=str(output), m2_directory=str(run))
+            prior.write_text(json.dumps(failed), encoding='utf-8')
+            (output/'cleanup_result.json').write_text(json.dumps(failed), encoding='utf-8')
+            (output/'inventory_before.json').write_text(json.dumps(inventory), encoding='utf-8')
+            class Helper:
+                read = staticmethod(lambda p: json.loads(p.read_text(encoding='utf-8')))
+                safe = staticmethod(lambda p, root: p.resolve())
+                inventory = staticmethod(lambda runs: inventory)
+            runs = {'m2_directory':run}
+            (output/'deletions.jsonl').touch()
+            with self.assertRaisesRegex(RuntimeError, 'may have reached deletion'):
+                m.recover_predelete_failure(Helper, records, prior, runs)
+            self.assertTrue(prior.exists())
+            (output/'deletions.jsonl').unlink()
+            m.recover_predelete_failure(Helper, records, prior, runs)
+            self.assertFalse(prior.exists())
 
 
 if __name__ == '__main__':

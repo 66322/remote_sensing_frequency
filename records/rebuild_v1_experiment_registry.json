@@ -2303,11 +2303,12 @@
       "live_query": false,
       "storage_followup": {
         "event": "PHASE3_M2_FINAL_COMPACTION_20261029",
-        "status": "WAITING_SERVER_EXECUTION",
+        "status": "PREDELETE_STATISTICS_FAILED_DEFERRED_BY_USER",
         "planned_remaining_weights": 0,
         "actual_last_known_remaining_weights": 18,
         "secondary_analysis_planned": true,
-        "secondary_analysis_complete": false
+        "secondary_analysis_complete": false,
+        "last_attempt_log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/m2_final_compaction_20261029T191530.log"
       }
     },
     {
@@ -2353,7 +2354,7 @@
     {
       "id": "PHASE3_M2_FINAL_COMPACTION_20261029",
       "type": "authorized_offline_analysis_and_storage_compaction",
-      "status": "IMPLEMENTED_LOCAL_CHECKED_WAITING_SERVER_EXECUTION",
+      "status": "PREDELETE_STATISTICS_FAILED_DEFERRED_BY_USER",
       "recorded_at": "2026-10-29",
       "user_authorization": "Remove unneeded weights/predictions/large experiment artifacts; keep code and small evidence",
       "script": "scripts/compact_phase3_m2.py",
@@ -2363,13 +2364,25 @@
       "GPU_used": false,
       "remaining_weights_target": 0,
       "actual_remaining_weights_last_observed": 18,
-      "server_executed": false,
+      "server_executed": true,
       "primary_scientific_decision_changed": false,
       "raw_full_joint_retention_planned": false,
       "original_first_cleanup_receipt_preserved": true,
       "automatic_retry": false,
       "upload_policy": "GitHub authority; paste small server result then connected writer publishes; no repeated hashing",
-      "local_validation": "12 affected-scope synthetic checks; Linux unlink unchanged from accepted first cleanup"
+      "local_validation": "12 affected-scope synthetic checks; Linux unlink unchanged from accepted first cleanup",
+      "server_attempt_started_at_local": "2026-10-29T19:15:30+08:00",
+      "server_attempt_log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/m2_final_compaction_20261029T191530.log",
+      "server_attempt_output": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/m2_final_compaction_20261029T191532_1299837",
+      "last_progress_cases": 75000,
+      "expected_cases": 77868,
+      "failure": "analyze_cases mask-family DF-D0 subtraction with both five-class mIoU values None",
+      "deletion_stage_reached": false,
+      "cleanup_applied": false,
+      "success_receipt_received": false,
+      "user_priority": "Defer final M2 cleanup until after A0 environment preparation and experiment launch",
+      "repair": "optional delta records null for absent-class support; explicit --recover-predelete guard added; local synthetic tests 13 passed; server rerun not started",
+      "failure_record": "records/phase3_m2_final_compaction_failure_20261029.json"
     },
     {
       "id": "POST_M2_CAPABILITY_PRIOR_PLAN_20261029",
@@ -4166,7 +4179,7 @@
     "a1_implementation_status": "CONDITIONAL_NOT_IMPLEMENTED",
     "a2_implementation_status": "CONDITIONAL_NOT_IMPLEMENTED",
     "m2_final_compaction_receipt_received": false,
-    "environment_policy": "USER_SELECTED_IN_PLACE_REMOTE_SENSING_UPGRADE_AFTER_M2_FINAL_COMPACTION",
+    "environment_policy": "USER_SELECTED_IN_PLACE_REMOTE_SENSING_UPGRADE_NOW_M2_FINAL_COMPACTION_DEFERRED",
     "environment_change_executed": false,
     "server_environment_observation": {
       "observed_date": "2026-10-29",
@@ -4187,6 +4200,7 @@
       "torch": "2.7.1+cu126",
       "new_conda_environment": false,
       "execution_status": "NOT_EXECUTED"
-    }
+    },
+    "next_action": "Prepare existing remote_sensing environment, run A0 inventory and real-model smoke/profile, then launch only after gates pass"
   }
 }

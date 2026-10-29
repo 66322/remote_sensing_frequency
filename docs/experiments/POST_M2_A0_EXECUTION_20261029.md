@@ -1,6 +1,6 @@
 # M2后A0首批实验：冻结教师能力探针与双H100资源合同（2026-10-29）
 
-**状态：CODE_PREPARED_LOCAL_CHECKED；SERVER_NOT_PREFLIGHTED；NO_NEW_SCIENTIFIC_RESULT。** 本文件给出已写好的首批执行入口和预先冻结的判断规则。旧M2的存储清理仍按原授权继续；A0不引用旧M2的训练端点、推理缓存或大权重。
+**状态：CODE_PREPARED_LOCAL_CHECKED；SERVER_NOT_PREFLIGHTED；NO_NEW_SCIENTIFIC_RESULT。** 本文件给出已写好的首批执行入口和预先冻结的判断规则。旧M2最终清理于19:15启动后在预删除离线统计阶段停止，用户要求暂缓清理、优先启动A0；A0不引用旧M2的训练端点、推理缓存或大权重。
 
 ## 要回答的问题与对照
 
@@ -14,7 +14,7 @@ F0由旧M2 `folds.json`固定：8个原训练tile中用`inner_pairs[0]`的2个�
 
 1. 服务器ROOT为`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro`，旧M2运行目录中的小型`plan.json`、`folds.json`、`pretrained.json`仍在；共享RGB和NoBoundary原始数据、公开DINOv2原始权重/源码仍在。A0只盘点文件名和大小，不对数据与模型例行重新哈希。
 2. DINOv3源码固定在[官方仓库](https://github.com/facebookresearch/dinov3)的`6876159a11b4df116f30f667f8c9888617df0751`；ViT-S/16 LVD权重由用户按[官方模型页](https://huggingface.co/facebook/dinov3-vits16-pretrain-lvd1689m)条款取得，并自行放在服务器。脚本不自动绕过授权或下载模型。这里用Web/LVD权重，不称卫星预训练。
-3. **沿用并就地升级现有`remote_sensing`环境，不新建环境。** 固定的DINOv3源码包要求Python≥3.11，其训练/评价说明要求PyTorch≥2.7.1；A0还需CUDA、NumPy和Pillow。2026-10-29服务器实测为Python3.9.21、Torch2.2.2+cu121，故须升级。若M2最后的离线清理尚未执行，先用原环境完成并取回执，再升级环境。升级前只保存小型包清单，升级后以两模型真实权重加载和512前向smoke决定是否可跑。
+3. **沿用并就地升级现有`remote_sensing`环境，不新建环境。** 固定的DINOv3源码包要求Python≥3.11，其训练/评价说明要求PyTorch≥2.7.1；A0还需CUDA、NumPy和Pillow。2026-10-29服务器实测为Python3.9.21、Torch2.2.2+cu121，故须升级。M2最终清理暂缓，不作为A0环境升级或启动门槛；失败回执保留，后续另行修复。升级前只保存小型包清单，升级后以两模型真实权重加载和512前向smoke决定是否可跑。
 4. GitHub分支`rebuild-v1-protocol-20260915`为两台电脑的代码/配置/结果/结论共同权威。执行时用当时分支HEAD固定下载脚本并写入`POST_M2_CODE_COMMIT`；若分支后续变化，已经启动的本轮不随之切换代码。
 
 ## 服务器执行顺序
@@ -32,7 +32,7 @@ python -c 'import torch, numpy, PIL; print("torch",torch.__version__,"torch_cuda
 nvidia-smi --query-gpu=index,name,driver_version,memory.free --format=csv,noheader
 ```
 
-服务器实测驱动590.48.01、共8张H100，其中GPU0/1各空闲81081 MiB；A0仍只用0/1，CPU核数与cgroup内存待inventory实测。此驱动满足CUDA12.6最低驱动要求，故选择PyTorch官方2.7.1 **cu126** wheel。若M2最终清理已拿到回执，**只升级当前环境**；若conda/pip混装造成依赖冲突，停止并根据包清单修复。
+服务器实测驱动590.48.01、共8张H100，其中GPU0/1各空闲81081 MiB；A0仍只用0/1，CPU核数与cgroup内存待inventory实测。此驱动满足CUDA12.6最低驱动要求，故选择PyTorch官方2.7.1 **cu126** wheel。**只升级当前环境**；M2最终清理已按用户指示暂缓。若conda/pip混装造成依赖冲突，停止并根据包清单修复。
 
 ```bash
 conda activate remote_sensing
