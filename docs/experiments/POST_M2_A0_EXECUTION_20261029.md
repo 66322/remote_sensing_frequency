@@ -14,7 +14,7 @@ F0由旧M2 `folds.json`固定：8个原训练tile中用`inner_pairs[0]`的2个�
 
 1. 服务器ROOT为`/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro`，旧M2运行目录中的小型`plan.json`、`folds.json`、`pretrained.json`仍在；共享RGB和NoBoundary原始数据、公开DINOv2原始权重/源码仍在。A0只盘点文件名和大小，不对数据与模型例行重新哈希。
 2. DINOv3源码固定在[官方仓库](https://github.com/facebookresearch/dinov3)的`6876159a11b4df116f30f667f8c9888617df0751`；ViT-S/16 LVD权重由用户按[官方模型页](https://huggingface.co/facebook/dinov3-vits16-pretrain-lvd1689m)条款取得，并自行放在服务器。脚本不自动绕过授权或下载模型。这里用Web/LVD权重，不称卫星预训练。
-3. **沿用并就地升级现有`remote_sensing`环境，不新建环境。** A0按官方DINOv3训练/评价版本要求使用Python≥3.10、PyTorch≥2.7.1、CUDA可用，并检查NumPy和Pillow。旧M2曾为Python3.9/Torch2.2.2；先读服务器当前版本，已满足就不安装。若M2最后的离线清理尚未执行，先用原环境完成并取回执，再升级环境。升级前只保存小型包清单，升级后以两模型真实权重加载和512前向smoke决定是否可跑。
+3. **沿用并就地升级现有`remote_sensing`环境，不新建环境。** 固定的DINOv3源码包要求Python≥3.11，其训练/评价说明要求PyTorch≥2.7.1；A0还需CUDA、NumPy和Pillow。2026-10-29服务器实测为Python3.9.21、Torch2.2.2+cu121，故须升级。若M2最后的离线清理尚未执行，先用原环境完成并取回执，再升级环境。升级前只保存小型包清单，升级后以两模型真实权重加载和512前向smoke决定是否可跑。
 4. GitHub分支`rebuild-v1-protocol-20260915`为两台电脑的代码/配置/结果/结论共同权威。执行时用当时分支HEAD固定下载脚本并写入`POST_M2_CODE_COMMIT`；若分支后续变化，已经启动的本轮不随之切换代码。
 
 ## 服务器执行顺序
@@ -32,17 +32,17 @@ python -c 'import torch, numpy, PIL; print("torch",torch.__version__,"torch_cuda
 nvidia-smi --query-gpu=index,name,driver_version,memory.free --format=csv,noheader
 ```
 
-若当前Python/Torch已达标，直接进入下一段。若仍是Python3.9/Torch2.2.2，且M2最终清理已拿到回执，**只升级当前环境**。PyTorch官方提供2.7.1的CUDA 11.8 wheel；H100旧CUDA12.1环境通常可用，但必须先核对服务器驱动至少达到CUDA11.8的Linux最低520.61.05，再安装、真实smoke。若驱动更低或当前包由conda和pip混装引起冲突，停止并根据上面清单修复，不能盲目覆盖。
+服务器实测驱动590.48.01、共8张H100，其中GPU0/1各空闲81081 MiB；A0仍只用0/1，CPU核数与cgroup内存待inventory实测。此驱动满足CUDA12.6最低驱动要求，故选择PyTorch官方2.7.1 **cu126** wheel。若M2最终清理已拿到回执，**只升级当前环境**；若conda/pip混装造成依赖冲突，停止并根据包清单修复。
 
 ```bash
 conda activate remote_sensing
 conda install -n remote_sensing python=3.11 -y
-python -m pip install --upgrade torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu118
+python -m pip install --upgrade torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu126
 python -m pip check
 python -c 'import sys, torch, numpy, PIL; print(sys.version, torch.__version__, torch.version.cuda, torch.cuda.is_available(), numpy.__version__, PIL.__version__); print(torch.cuda.get_device_name(0))'
 ```
 
-PyTorch wheel来源与CUDA版本见[官方安装表](https://pytorch.org/get-started/previous-versions/)，驱动最低版本见[NVIDIA CUDA 11.8说明](https://docs.nvidia.com/cuda/archive/11.8.0/cuda-toolkit-release-notes/index.html)。这里选择cu118是为了避免为A0升级驱动；真正能否运行以服务器smoke为准。若`conda install`与原有包求解冲突、`pip check`报Torch相关冲突或CUDA不可用，保留输出分析后再修，**不自动新建环境或继续训练**。
+PyTorch wheel来源与CUDA版本见[官方安装表](https://pytorch.org/get-started/previous-versions/)，CUDA12.6最低驱动要求见[NVIDIA说明](https://docs.nvidia.com/cuda/archive/12.6.3/cuda-toolkit-release-notes/index.html)。驱动版本只证明基础兼容，真正能否运行以服务器smoke为准。若`conda install`与原有包求解冲突、`pip check`报Torch相关冲突或CUDA不可用，保留输出分析后再修，**不自动新建环境或继续训练**。升级前的完整包清单留服务器本地；GitHub只记录必要的Python/Torch/CUDA/驱动版本，避免把私有软件源地址同步上去。
 
 源码只准备一次：在原ROOT的`external`下克隆[官方仓库](https://github.com/facebookresearch/dinov3)，检出冻结commit。权重仍须按官方条款取得，将对应的**PyTorch .pth**文件放到服务器公共预训练目录；不要把Hugging Face `.safetensors`文件直接作为`torch.hub.load(...,weights=...)`的参数。已有同一源码/权重时只核对路径，不重复下载。
 
@@ -52,6 +52,8 @@ D3_REPO="$ROOT/external/dinov3_6876159"
 test -d "$D3_REPO/.git" || git clone https://github.com/facebookresearch/dinov3.git "$D3_REPO"
 git -C "$D3_REPO" checkout 6876159a11b4df116f30f667f8c9888617df0751
 git -C "$D3_REPO" rev-parse HEAD
+python -m pip install -r "$D3_REPO/requirements.txt"
+python -m pip check
 ```
 
 随后把`POST_M2_DINO3_REPO`指向上述目录、`POST_M2_DINO3_WEIGHTS`指向已取得的`.pth`实际文件。若权重尚未到位，可以不设置这两个变量先做`inventory`、单独运行DINOv2的`smoke --kind dino2`和`profile --kind dino2`；DINOv3权重到位后用物理GPU1单独补它的smoke/profile，然后直接进入双模型`pair --phase train`。已经完成单模型smoke/profile时，双模型对应阶段会拒绝重复运行。**正式训练仍须等待两教师权重与环境检查通过**。

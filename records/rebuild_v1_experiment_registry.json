@@ -4167,6 +4167,26 @@
     "a2_implementation_status": "CONDITIONAL_NOT_IMPLEMENTED",
     "m2_final_compaction_receipt_received": false,
     "environment_policy": "USER_SELECTED_IN_PLACE_REMOTE_SENSING_UPGRADE_AFTER_M2_FINAL_COMPACTION",
-    "environment_change_executed": false
+    "environment_change_executed": false,
+    "server_environment_observation": {
+      "observed_date": "2026-10-29",
+      "source": "user_pasted_shell_output",
+      "conda_environment": "remote_sensing",
+      "python": "3.9.21",
+      "torch": "2.2.2+cu121",
+      "torch_cuda": "12.1",
+      "cuda_available": true,
+      "nvidia_driver": "590.48.01",
+      "physical_gpus_reported": 8,
+      "planned_gpu_0_1_each_free_mib": 81081,
+      "cpu_quota_unknown": true,
+      "cgroup_memory_unknown": true
+    },
+    "target_in_place_environment": {
+      "python": "3.11",
+      "torch": "2.7.1+cu126",
+      "new_conda_environment": false,
+      "execution_status": "NOT_EXECUTED"
+    }
   }
 }

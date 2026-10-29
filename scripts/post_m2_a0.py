@@ -144,7 +144,7 @@ def inventory(args):
 
 def ensure_gpu(kind):
     import torch
-    if sys.version_info < (3,10): raise RuntimeError("Upgrade the active remote_sensing environment in place to Python >=3.10")
+    if sys.version_info < (3,11): raise RuntimeError("Upgrade the active remote_sensing environment in place to Python >=3.11")
     ver=tuple(int(x) for x in torch.__version__.split("+")[0].split(".")[:3])
     if ver < (2,7,1): raise RuntimeError("Upgrade the active remote_sensing environment in place to Torch >=2.7.1")
     if not torch.cuda.is_available(): raise RuntimeError("CUDA unavailable")
