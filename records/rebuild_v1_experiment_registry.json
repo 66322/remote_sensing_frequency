@@ -4167,7 +4167,7 @@
   },
   "latest_implementation": {
     "date": "2026-10-29",
-    "status": "A0_CODE_PREPARED_LOCAL_CHECKED_SERVER_NOT_PREFLIGHTED",
+    "status": "A0_ENVIRONMENT_UPGRADE_IN_PROGRESS_LAST_REPORTED_NOT_LAUNCHED",
     "document": "docs/experiments/POST_M2_A0_EXECUTION_20261029.md",
     "script": "scripts/post_m2_a0.py",
     "tests": "tests/test_post_m2_a0_contract.py",
@@ -4180,7 +4180,7 @@
     "a2_implementation_status": "CONDITIONAL_NOT_IMPLEMENTED",
     "m2_final_compaction_receipt_received": false,
     "environment_policy": "USER_SELECTED_IN_PLACE_REMOTE_SENSING_UPGRADE_NOW_M2_FINAL_COMPACTION_DEFERRED",
-    "environment_change_executed": false,
+    "environment_change_executed": true,
     "server_environment_observation": {
       "observed_date": "2026-10-29",
       "source": "user_pasted_shell_output",
@@ -4199,8 +4199,26 @@
       "python": "3.11",
       "torch": "2.7.1+cu126",
       "new_conda_environment": false,
-      "execution_status": "NOT_EXECUTED"
+      "execution_status": "PYTHON_3_11_13_CONDA_TRANSACTION_COMPLETE_TORCH_2_7_1_CU126_WHEEL_DOWNLOAD_IN_PROGRESS_LAST_REPORTED"
     },
-    "next_action": "Prepare existing remote_sensing environment, run A0 inventory and real-model smoke/profile, then launch only after gates pass"
+    "next_action": "Prepare existing remote_sensing environment, run A0 inventory and real-model smoke/profile, then launch only after gates pass",
+    "environment_change_complete": false,
+    "server_environment_upgrade_last_reported": {
+      "date": "2026-10-29",
+      "source": "user_pasted_server_terminal_output",
+      "conda_environment": "remote_sensing",
+      "conda_python_transaction": "DONE_3.11.13",
+      "torch_install": "PIP_DOWNLOADING_MAIN_WHEEL",
+      "torch_wheel_bytes_total": 822100000,
+      "torch_wheel_progress_text": "108.5/822.1 MB",
+      "pip_check": "NOT_REACHED",
+      "torch_cuda_import": "NOT_YET_VERIFIED",
+      "a0_inventory": "NOT_STARTED",
+      "a0_smoke": "NOT_STARTED",
+      "a0_profile": "NOT_STARTED",
+      "a0_train": "NOT_STARTED",
+      "install_success_not_claimed": true
+    },
+    "environment_progress_record": "records/post_m2_a0_environment_progress_20261029.json"
   }
 }
