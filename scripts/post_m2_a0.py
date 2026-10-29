@@ -356,8 +356,12 @@ def run_profile(args):
     resources=resource_snapshot()
     if resources["cgroup_aware_memory_available_bytes"] < 6*1024**3:
         raise RuntimeError("Less than 6 GiB CPU memory headroom for dual-GPU profile")
+    profile_started=time.perf_counter()
     data=arrays(c,c["folds"]["train"],True)
+    data_load_seconds=time.perf_counter()-profile_started
+    model_started=time.perf_counter()
     encoder,patch=load_encoder(c,args.kind)
+    model_load_seconds=time.perf_counter()-model_started
     with torch.inference_mode():
         test=torch.zeros((1,3,512,512),device="cuda")
         channels=extract(encoder,test,patch).shape[1]
@@ -405,6 +409,8 @@ def run_profile(args):
          full_tile={"tile":first_tile,"windows":nfull,"seconds":full_seconds,"windows_per_second":nfull/full_seconds,
                     "phase_seconds":full_timings},
          disposable_profile_optimizer_updates=32*len(candidates),resources=resources,
+         data_load_seconds=data_load_seconds,model_load_seconds=model_load_seconds,
+         total_profile_wall_seconds=time.perf_counter()-profile_started,
          peak_allocated_bytes=torch.cuda.max_memory_allocated(),peak_reserved_bytes=torch.cuda.max_memory_reserved(),
          cpu_resident_input_bytes=sum(v.nbytes for row in data.values() for v in row.values()),
          note="Profiling synchronizes each timed step; formal run samples aggregate wall time without per-step synchronization. Both model paths must be measured separately.")
@@ -432,8 +438,12 @@ def run_train(args):
            environment={"python":sys.version,"torch":torch.__version__}))
     try:
         torch.manual_seed(42);torch.cuda.manual_seed_all(42)
+        wall_started=time.perf_counter()
         data=arrays(c,c["folds"]["train"],True)
+        data_load_seconds=time.perf_counter()-wall_started
+        model_started=time.perf_counter()
         encoder,patch=load_encoder(c,args.kind)
+        model_load_seconds=time.perf_counter()-model_started
         with torch.inference_mode(): channels=extract(encoder,torch.zeros((1,3,512,512),device="cuda"),patch).shape[1]
         if channels!=384:raise RuntimeError("unexpected teacher feature channels")
         torch.manual_seed(42)
@@ -464,6 +474,8 @@ def run_train(args):
         write_once(folder/"trajectory.json",trajectory)
         write_once(receipt,dict(status="TRAINED_HEAD_ONLY",kind=args.kind,optimizer_updates=2000,
                    endpoint_bytes=endpoint.stat().st_size,elapsed_seconds=time.perf_counter()-start,
+                   total_wall_seconds=time.perf_counter()-wall_started,
+                   data_load_seconds=data_load_seconds,model_load_seconds=model_load_seconds,
                    observed_at=now(),code_commit=commit,gpu=device_name,peak_allocated_bytes=torch.cuda.max_memory_allocated(),
                    peak_reserved_bytes=torch.cuda.max_memory_reserved()))
     except Exception:
@@ -489,18 +501,26 @@ def run_evaluate(args):
     if result_path.exists():raise RuntimeError("evaluation already complete; do not repeat")
     write_once(folder/(args.split+"_started.json"),dict(observed_at=now(),tiles=tiles))
     try:
+        wall_started=time.perf_counter()
         encoder,patch=load_encoder(c,args.kind)
+        model_load_seconds=time.perf_counter()-wall_started
         head=torch.nn.Conv2d(384,6,1).cuda()
         ckpt=torch.load(folder/"head_2000.pth",map_location="cpu",weights_only=False)
         if ckpt["kind"]!=args.kind or ckpt["step"]!=2000:raise RuntimeError("head endpoint identity mismatch")
         head.load_state_dict(ckpt["head"],strict=True)
+        data_started=time.perf_counter()
         data=arrays(c,tiles,True)
+        data_load_seconds=time.perf_counter()-data_started
         rows=[];pooled=np.zeros((6,6),np.int64)
         for tile in tiles:
+            tile_started=time.perf_counter()
             pred,seconds,nwindows,timings=predict_tile(encoder,patch,head,data[tile]["rgb"],profile["selected_eval_batch"])
+            metric_started=time.perf_counter()
             cm=cm_tile(pred,data[tile]["nb"])
             pooled+=cm
-            rows.append(dict(tile=tile,seconds=seconds,windows=nwindows,phase_seconds=timings,**metrics(cm)))
+            rows.append(dict(tile=tile,seconds=seconds,windows=nwindows,phase_seconds=timings,
+                             metric_seconds=time.perf_counter()-metric_started,
+                             tile_total_seconds=time.perf_counter()-tile_started,**metrics(cm)))
             print("A0_EVAL",args.kind,args.split,tile,rows[-1]["nb_fg5_miou"],flush=True)
             baseline=profile["full_tile"]
             if nwindows==baseline["windows"] and seconds>2.5*baseline["seconds"]:
@@ -508,6 +528,8 @@ def run_evaluate(args):
             del pred
         result=dict(status="EVALUATION_COMPLETE",kind=args.kind,split=args.split,tiles=rows,
             pooled=metrics(pooled),observed_at=now(),code_commit=commit,gpu=device_name,
+            model_load_seconds=model_load_seconds,data_load_seconds=data_load_seconds,
+            total_wall_seconds=time.perf_counter()-wall_started,
             peak_allocated_bytes=torch.cuda.max_memory_allocated(),peak_reserved_bytes=torch.cuda.max_memory_reserved(),
             evidence_scope="F0 development. Neither inner calibration nor F0 outer is independent final test.")
         write_once(result_path,result)
