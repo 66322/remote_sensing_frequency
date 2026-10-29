@@ -1,3 +1,27 @@
+# 2026-10-29：M2完整结果、J工程停止与清理结案
+
+本轮主记录为[完整M2实验报告](../PHASE3_M2_ACCEPTANCE_AND_CLOSEOUT_20261029.md)，中央[机器注册表](../../../records/rebuild_v1_experiment_registry.json)已将原“未启动”状态更新为实际完成，保留旧状态历史。当前状态仍以[交接](../../current/HANDOFF.md)为准。
+
+| 实验/事件 | 实际状态 | 关键产出和结论 |
+|---|---|---|
+| M2错误对应性训练 | 108训练/77,868评价完成；G0通过，G1/G2/G4未过 | DF没有超过强简单控制的稳定新增价值；主融合差平均-0.001261pp；H2局部通过不等于主方法成功 |
+| J冻结头诊断 | CUDA确定性交叉熵工程停止 | 无科学结论，不能写作算法失败或自动重跑 |
+| 授权存储清理 | 11:05:39完成 | 删除90端点、保留18 R/D0；统计/配置/日志保留，目录分配减少约8.02GB，全盘free增量未确认 |
+
+结果直接读取：
+- [21行主结果CSV](../../../records/phase3_m2_closeout_terminal_20261029/down4_main_results_from_terminal.csv)
+- [63行clean DSM CSV](../../../records/phase3_m2_closeout_terminal_20261029/clean_dsm_results_from_terminal.csv)
+- [120项判定差值CSV](../../../records/phase3_m2_closeout_terminal_20261029/gate_checks_from_terminal.csv)
+- [机器可读结论](../../../records/phase3_m2_closeout_terminal_20261029/experiment_conclusions.json)
+- [原始终端与结果文件索引](../../../records/phase3_m2_closeout_terminal_20261029/README.md)
+- [实际大小/清理记录](../PHASE3_M2_STORAGE_CLEANUP_RESULT_20261029.md)
+
+本次长实验的有效产出是完整对照和有边界的阴性结论；90个权重在比较阶段发挥作用，完成判断后才淘汰。完整原始充分统计、alpha/margin/校准仍服务器保留，尚未直接接收和逐项二次分析，不虚报所有原件或所有潜在分析已完成。GitHub现有代码、结果表、结论、清理摘要和交接满足两台电脑接续；不要求本地搬运作为收尾前置。
+
+以下为按各自日期理解的历史索引，其中旧“未启动/运行中”状态不能覆盖上面的实际结案状态。
+
+---
+
 # 2026-10-15：Phase2.4原件验收与路线收口
 
 [完整报告](../PHASE_24_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md)、[复算证据](../../../records/phase24_review_20261015/verification.json)、[新交接](../../current/NEW_CHAT_HANDOFF_20261015.md)。原件76ae973b；3014文件/2972计数记录及242源码来源核验通过。calibrated/probe门禁未过，T0完成8k，条件头未派；下一步仅问题论证与数据可达性，无新实验队列。

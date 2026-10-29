@@ -1,0 +1,36 @@
+{
+  "recorded_at": "2026-10-29",
+  "github_available": [
+    "source/execution scripts",
+    "raw terminal",
+    "summary/gates extracted from terminal",
+    "21-row down4 main table",
+    "63-row clean DSM table",
+    "120 gate difference items",
+    "scientific conclusions",
+    "J error stack",
+    "cleanup result and inventory snapshot",
+    "central index/registry/current handoff"
+  ],
+  "server_retained_not_directly_received": [
+    "publication/metrics.csv",
+    "publication/F0_counts.jsonl.gz",
+    "publication/F1_counts.jsonl.gz",
+    "publication/F2_counts.jsonl.gz",
+    "publication/manifest.json",
+    "publication/server_evidence_index.json",
+    "case_counts.jsonl.gz",
+    "all_aggregates.jsonl.gz",
+    "trajectory_counts",
+    "training streams/logs/configs",
+    "18 R/D0 endpoints",
+    "29,861,760-byte evidence archive"
+  ],
+  "deleted_after_user_authorized_cleanup": {
+    "teacher_endpoints": 36,
+    "closed_dsm_variant_endpoints": 54,
+    "cleanup_completed_at": "2026-10-29T11:05:39.164577+08:00"
+  },
+  "raw_count_independent_recomputation": false,
+  "checkpoint_arbitrary_visualization_for_deleted_arms_available": false
+}

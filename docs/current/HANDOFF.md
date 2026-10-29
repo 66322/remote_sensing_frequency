@@ -26,3 +26,10 @@ M2于08:43完整完成108训练、77,868评价；G0/H2/G3通过，G1/G2/G4未过
 ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro；M2目录research_phase3_m2_revision_20261024T092814_2738345；combined目录research_phase3_combined_revision_20261024T092814_2738345。服务器由用户执行，无SSH。
 
 原始验收时108端点齐全；清理后仅18个R/D0专家，已删除的教师和其他DSM端点不可假定仍可加载，不改写原验收或承诺恢复。若以后研究J，先立新的最小诊断/兼容修订决定，不重启原228队列。独立地图维护仍未实施、不自动换主线；封存split不开放。旧交接[存档](../history/HANDOFF_20261029_BEFORE_CLEANUP_RECEIPT.md)。
+
+
+## 实验记录已补齐（2026-10-29）
+
+中央[实验索引](../experiments/rebuild_v1/INDEX.md)和[注册表](../../records/rebuild_v1_experiment_registry.json)已补录M2真实完成状态、J工程停止与清理事件；旧“尚未启动”移入历史。M2主报告已按目的/对照/数据/全部已判定结论/耗时与产物/未回答问题更新，清理待执行旧状态已纠正。
+
+新增21行主表、63行clean表和120项gate差值CSV及机器可读结论，均来自已回传终端，明确区别于服务器完整metrics原件。全alpha/margin/校准/逐类二次分析尚未完成；原始统计服务器保留。后续若复盘动作限制可按需读取现成统计，不把“当前结论整理完成”写成“所有原始证据和所有潜在分析已完成”。

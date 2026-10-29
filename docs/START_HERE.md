@@ -11,3 +11,6 @@ M2于08:43完整完成108训练/77,868评价，当前DF配方G1/G2/G4未获支�
 服务器现成M2_light_evidence.tar.gz约29.86MB、422成员，按位置/大小索引保留；完整压缩计数尚未接收，不虚报全量原件已上传。后续分析需要时再按需同步现成轻量原件或索引，不重做计算/打包/清理。上传后查看关键内容即可，不反复哈希。
 
 J在M2完成后因CUDA确定性兼容错误停止，未修复/重启，R/T/V未顺序派发。GPU最后观测10:29空闲。旧bootstrap/清理命令不再运行，原验收时108模型和清理后18模型状态分开记载。主线角色、未实施地图候选及封存split不变。
+
+
+完整实验记录入口：[M2主报告与耗时/产物复盘](experiments/PHASE3_M2_ACCEPTANCE_AND_CLOSEOUT_20261029.md)、[中央实验索引](experiments/rebuild_v1/INDEX.md)、[机器注册表](../records/rebuild_v1_experiment_registry.json)、[可读CSV结果与证据清单](../records/phase3_m2_closeout_terminal_20261029/README.md)。本轮已纠正中央登记仍为未启动及主报告清理待执行的旧状态；未回传原件/未完成二次分析如实标记。

@@ -2,7 +2,7 @@
   "schema_version": "1.2",
   "project": "REBUILD_V1",
   "timezone": "UTC+08:00",
-  "last_updated": "2026-10-16",
+  "last_updated": "2026-10-29",
   "status_provenance_policy": "reported_complete and running_as_last_reported are user observations, not live server verification. expected_server_records are absent artifacts to collect, not archived evidence.",
   "timing_policy": {
     "started_at": "Actual launch time when directly evidenced; otherwise date/minute precision is stated explicitly.",
@@ -2188,8 +2188,8 @@
     },
     {
       "id": "PHASE3_M2_EXECUTION_20261016",
-      "status": "CORE_IMPLEMENTED_LOCAL_CHECKS_PASSED_NOT_SERVER_LAUNCHED",
-      "recorded_at": "2026-10-16",
+      "status": "COMPLETE_SERVER_CHECKED_PRIMARY_GATES_FAILED",
+      "recorded_at": "2026-10-29",
       "protocol": "docs/protocols/PHASE3_M2_EXECUTION_20261016.md",
       "manifest": "configs/phase3_m2_execution_manifest.json",
       "core_jobs": 108,
@@ -2203,8 +2203,8 @@
         0,
         1
       ],
-      "server_run": null,
-      "server_started": false,
+      "server_run": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345",
+      "server_started": true,
       "local_tests": {
         "run": 16,
         "passed": 15,
@@ -2218,18 +2218,139 @@
       "user_authorized_implementation": true,
       "point_cloud_used": false,
       "Test6_held4_final_opened": false,
-      "resource_status": "WAITING_FOR_GPU0_1",
+      "resource_status": "COMPLETED_LAST_OBSERVED_NOT_LIVE_QUERY",
       "resource_observation": "records/phase3_m2_resource_observation_20261016.json",
-      "execution_commit": "0a21f3d1eac54b9b37f19fb30e3f2072f69619bd"
+      "execution_commit": "ac325cdbb403ebb95b5eb0acbf17fffa5441dcfd",
+      "previous_implementation_state_20261016": {
+        "status": "CORE_IMPLEMENTED_LOCAL_CHECKS_PASSED_NOT_SERVER_LAUNCHED",
+        "server_run": null,
+        "server_started": false,
+        "resource_status": "WAITING_FOR_GPU0_1",
+        "execution_commit": "0a21f3d1eac54b9b37f19fb30e3f2072f69619bd"
+      },
+      "purpose": "Test whether RGB difficult-location correspondence creates DSM rescue beyond simple hard-example/shuffle/entropy controls and delivers useful fixed fusion and transfer",
+      "started_at": "2026-10-24T09:46:44.633221+08:00",
+      "started_at_meaning": "controller paired-launch receipt, not exact first optimizer update",
+      "completed_at": "2026-10-29T08:43:22.555134+08:00",
+      "timezone": "Asia/Shanghai",
+      "time_source": "user terminal server receipts and final summary",
+      "implementation_commit": "0a21f3d1eac54b9b37f19fb30e3f2072f69619bd",
+      "combined_source_commit": "e65c6cb0830985461b3cd30e2f43158dd3d858cb",
+      "engineering_revision_commits": [
+        "752d3835a18a15a04d83b1dcc1841bff98bf0b07",
+        "25b124a0cf69ececb6841b55ed90b19fae5b9a08"
+      ],
+      "server_training_started_verified": true,
+      "last_observed_at": "2026-10-29T10:29:51.035001+08:00",
+      "completed_jobs": 108,
+      "completed_optimizer_updates": 3456000,
+      "evaluated_cases": 77868,
+      "expected_cases": 77868,
+      "job_roles": {
+        "rgb_references": 9,
+        "rgb_oof_teachers": 36,
+        "dsm_students": 63
+      },
+      "dataset_split": "Potsdam Fit12 same-city outer CV, 3fold train8/eval4; no Val2/Test6/held4/final",
+      "checkpoint_selection_rule": "fixed 32000 optimizer updates; no best-age selection",
+      "metric_scope": "central 512 inset; NoBoundary foreground5 mIoU; each seed pools 12 outer tiles before metric",
+      "gates": {
+        "G0": true,
+        "G1": false,
+        "H2_degradation_specificity": true,
+        "G2": false,
+        "G3": true,
+        "G4": false
+      },
+      "primary_gate_accepted": false,
+      "advance_reverse": false,
+      "conditional_extensions_started": false,
+      "errors": [],
+      "failures": [],
+      "report": "docs/experiments/PHASE3_M2_ACCEPTANCE_AND_CLOSEOUT_20261029.md",
+      "result_artifacts": [
+        "records/phase3_m2_closeout_terminal_20261029/summary_from_terminal.json",
+        "records/phase3_m2_closeout_terminal_20261029/gates_from_terminal.json",
+        "records/phase3_m2_closeout_terminal_20261029/REPORT_from_terminal.md",
+        "records/phase3_m2_closeout_terminal_20261029/down4_main_results_from_terminal.csv",
+        "records/phase3_m2_closeout_terminal_20261029/clean_dsm_results_from_terminal.csv",
+        "records/phase3_m2_closeout_terminal_20261029/gate_checks_from_terminal.csv",
+        "records/phase3_m2_closeout_terminal_20261029/experiment_conclusions.json",
+        "records/phase3_m2_closeout_terminal_20261029/artifact_availability.json"
+      ],
+      "result_rows_in_github": {
+        "main_down4": 21,
+        "clean_dsm": 63,
+        "gate_difference_items": 120
+      },
+      "mean_primary_fusion_DF_D0_pp": -0.0012610056934221348,
+      "mean_rescue_DF_D0_pp": 0.2760442977444531,
+      "scientific_decision": "Close current DF correspondence-weighting recipe; no practical primary fusion or required transfer benefit. Does not refute all RGB-DSM complementarity.",
+      "all_received_primary_conclusions_documented": true,
+      "all_potential_secondary_analyses_completed": false,
+      "server_full_integer_counts_independently_recomputed": false,
+      "evidence_received_scope": "original terminal, extracted summary/gates/report, tidy tables and arithmetic; full raw publication archive not directly received",
+      "evidence_commit": "6374e41bc9b47fdccf9062d8b7e750afa359ef9d",
+      "current_retention": {
+        "deleted_oof_teacher_endpoints": 36,
+        "deleted_closed_dsm_variant_endpoints": 54,
+        "retained_rgb_R": 9,
+        "retained_dsm_D0": 9,
+        "counts_configs_logs_retained": true,
+        "cleanup_record": "records/phase3_m2_cleanup_20261029/cleanup_result_from_terminal.json"
+      },
+      "no_automatic_retry": true,
+      "live_query": false
+    },
+    {
+      "id": "PHASE3_J_ENGINEERING_FAILURE_20261029",
+      "type": "engineering_stage_failure",
+      "status": "FAILED_ENGINEERING_NO_AUTOMATIC_RETRY",
+      "recorded_at": "2026-10-29",
+      "last_observed_at": "2026-10-29T08:47:55.579782+08:00",
+      "failed_job": "J_F0_s42_J2",
+      "error": "CUDA nll_loss2d cross entropy lacks deterministic implementation under strict deterministic algorithms",
+      "completed_jobs": null,
+      "optimizer_updates": null,
+      "scientific_conclusion_available": false,
+      "automatic_retry": false,
+      "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345",
+      "report": "docs/experiments/PHASE3_M2_ACCEPTANCE_AND_CLOSEOUT_20261029.md",
+      "evidence": "records/phase3_m2_closeout_terminal_20261029/server_terminal_20261029T102937.txt",
+      "decision": "Preserve failure separately from completed M2; do not automatically restart J or R/T/V"
+    },
+    {
+      "id": "PHASE3_M2_STORAGE_CLEANUP_20261029",
+      "type": "authorized_storage_cleanup",
+      "status": "COMPLETE",
+      "recorded_at": "2026-10-29",
+      "completed_at": "2026-10-29T11:05:39.164577+08:00",
+      "started_at": null,
+      "directory_timestamp_label": "20261029T110535",
+      "time_source": "cleanup_result observed_at; directory name is not inferred start time",
+      "execution_commit": "6374e41bc9b47fdccf9062d8b7e750afa359ef9d",
+      "deleted_endpoints": 90,
+      "retained_R_D0_endpoints": 18,
+      "run_allocated_bytes_before": 10972373504,
+      "run_allocated_bytes_after": 2954361344,
+      "run_allocated_reduction_bytes": 8018012160,
+      "estimated_net_reclaimed_bytes": 7984800256,
+      "disk_free_delta_bytes_observed": 0,
+      "archive_bytes": 29861760,
+      "archive_members": 422,
+      "report": "docs/experiments/PHASE3_M2_STORAGE_CLEANUP_RESULT_20261029.md",
+      "evidence": "records/phase3_m2_cleanup_20261029/cleanup_result_from_terminal.json",
+      "decision": "Cleanup complete; retain statistics and metadata; do not repeat cleanup/hash"
     }
   ],
   "next_plan": {
-    "status": "CORE_IMPLEMENTED_LOCAL_CHECKS_PASSED_NOT_SERVER_LAUNCHED",
-    "manifest": "configs/phase3_m2_execution_manifest.json",
-    "protocol": "docs/protocols/PHASE3_M2_EXECUTION_20261016.md",
-    "next": "Wait for authorized GPU0/1 availability, then recheck and user-run fixed execution commit; no launch now",
-    "resource_status": "WAITING_FOR_GPU0_1",
-    "resource_observation": "records/phase3_m2_resource_observation_20261016.json"
+    "status": "NO_ACTIVE_EXECUTION_M2_CLOSED_J_ENGINEERING_STOP",
+    "document": "docs/current/NEXT_EXPERIMENT.md",
+    "new_training_authorized_by_this_record": false,
+    "automatic_retry": false,
+    "local_archive_transfer_required": false,
+    "github_cross_computer_handoff_ready": true,
+    "raw_server_artifacts_on_demand": true
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -2575,11 +2696,14 @@
     "current_dual_worker_authorization": "User repeatedly confirmed physical GPU0/1, two H10080GB, ample RAM/disk; D24 plan reuses this authorization, nohup and zzx record scope; do not reinterpret historical GPU0-only policy as current restriction."
   },
   "research_decision": {
-    "stage": "M2-A implementation awaiting target checks",
+    "stage": "current DF recipe closed as development negative evidence",
     "mainline": "RGB-DSM conditional complementarity",
     "restoration_role": "side branch",
-    "new_run_observed": false,
-    "report": "docs/protocols/PHASE3_M2_EXECUTION_20261016.md"
+    "map_maintenance_role": "independent candidate not implemented or adopted as mainline",
+    "specific_DF_mechanism_supported": false,
+    "J_scientific_conclusion_available": false,
+    "report": "docs/experiments/PHASE3_M2_ACCEPTANCE_AND_CLOSEOUT_20261029.md",
+    "further_training_authorized_by_this_record": false
   },
   "proposed_d23": {
     "id": "D23_DENSE_BENEFIT_FEASIBILITY_20261001",
@@ -3245,18 +3369,25 @@
     "review": "docs/experiments/D26_COMPLETE_D27_FAILURE_REVIEW_20261003.md",
     "live_query": false
   },
-  "recent_review": "docs/experiments/COMPLETED_EXPERIMENTS_HANDOFF_20261004.md",
+  "recent_review": {
+    "date": "2026-10-29",
+    "report": "docs/experiments/PHASE3_M2_ACCEPTANCE_AND_CLOSEOUT_20261029.md",
+    "conclusions": "records/phase3_m2_closeout_terminal_20261029/experiment_conclusions.json",
+    "evidence": "records/phase3_m2_closeout_terminal_20261029/README.md",
+    "scope": "user terminal summary/gates/report arithmetic; no training/inference rerun or full raw-count re-audit",
+    "primary_gate_accepted": false,
+    "raw_archive_directly_received": false,
+    "all_received_primary_conclusions_documented": true,
+    "all_potential_secondary_analyses_completed": false
+  },
   "current_execution_budget": {
-    "scope": "M2-A implemented, not observed running",
-    "core_jobs": 108,
-    "core_updates": 3456000,
-    "conditional_B": 90,
-    "reserved_C": 81,
-    "max_jobs": 279,
-    "max_updates": 8928000,
+    "scope": "M2 completed; J engineering stopped; no new execution",
+    "completed_m2_jobs": 108,
+    "completed_m2_updates": 3456000,
+    "completed_m2_evaluations": 77868,
     "active_queue_observed": false,
-    "resource_status": "USER_REPORTED_ALL_GPUS_BUSY",
-    "resource_observation": "records/phase3_m2_resource_observation_20261016.json"
+    "new_jobs_to_dispatch": 0,
+    "automatic_B_C": false
   },
   "completed_d26_plan": {
     "input_manifest_sha256": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295",
@@ -3646,18 +3777,15 @@
     "next_stage_implementation_status": "PROTOCOL_AND_IMPLEMENTATION_PENDING_AFTER_RESULT_REVIEW"
   },
   "latest_record_review": {
-    "date": "2026-10-15",
-    "archive_commit": "09fb57a6ec26f6367c9891f2aa924cc4bf7219cc",
-    "archive_sha256": "9ab95778e7f757fc8b62575b4b92a52c09bc35dd024eb5e6e944c4e650c9a838",
-    "report": "docs/experiments/PHASE3_M1_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md",
-    "verification": "records/phase3_m1_review_20261015/verification.json",
-    "joint_tables_recomputed": 71280,
-    "integer_matrices_recomputed": 142608,
-    "payload_files": 4168,
-    "gate_accepted": false,
-    "down4_complementarity_gate_accepted": false,
-    "scope": "independent archive and count arithmetic; no training/inference rerun",
-    "auxiliary_design_requirements_fully_delivered": false
+    "date": "2026-10-29",
+    "report": "docs/experiments/PHASE3_M2_ACCEPTANCE_AND_CLOSEOUT_20261029.md",
+    "conclusions": "records/phase3_m2_closeout_terminal_20261029/experiment_conclusions.json",
+    "evidence": "records/phase3_m2_closeout_terminal_20261029/README.md",
+    "scope": "user terminal summary/gates/report arithmetic; no training/inference rerun or full raw-count re-audit",
+    "primary_gate_accepted": false,
+    "raw_archive_directly_received": false,
+    "all_received_primary_conclusions_documented": true,
+    "all_potential_secondary_analyses_completed": false
   },
   "historical_routing_before_phase24_acceptance_20261015": {
     "next_plan": {
@@ -3896,5 +4024,51 @@
       "user_authorized_implementation": true,
       "automatic_followup": false
     }
-  }
+  },
+  "historical_routing_before_phase3_m2_closeout_20261029": {
+    "next_plan": {
+      "status": "CORE_IMPLEMENTED_LOCAL_CHECKS_PASSED_NOT_SERVER_LAUNCHED",
+      "manifest": "configs/phase3_m2_execution_manifest.json",
+      "protocol": "docs/protocols/PHASE3_M2_EXECUTION_20261016.md",
+      "next": "Wait for authorized GPU0/1 availability, then recheck and user-run fixed execution commit; no launch now",
+      "resource_status": "WAITING_FOR_GPU0_1",
+      "resource_observation": "records/phase3_m2_resource_observation_20261016.json"
+    },
+    "current_execution_budget": {
+      "scope": "M2-A implemented, not observed running",
+      "core_jobs": 108,
+      "core_updates": 3456000,
+      "conditional_B": 90,
+      "reserved_C": 81,
+      "max_jobs": 279,
+      "max_updates": 8928000,
+      "active_queue_observed": false,
+      "resource_status": "USER_REPORTED_ALL_GPUS_BUSY",
+      "resource_observation": "records/phase3_m2_resource_observation_20261016.json"
+    },
+    "research_decision": {
+      "stage": "M2-A implementation awaiting target checks",
+      "mainline": "RGB-DSM conditional complementarity",
+      "restoration_role": "side branch",
+      "new_run_observed": false,
+      "report": "docs/protocols/PHASE3_M2_EXECUTION_20261016.md"
+    },
+    "latest_record_review": {
+      "date": "2026-10-15",
+      "archive_commit": "09fb57a6ec26f6367c9891f2aa924cc4bf7219cc",
+      "archive_sha256": "9ab95778e7f757fc8b62575b4b92a52c09bc35dd024eb5e6e944c4e650c9a838",
+      "report": "docs/experiments/PHASE3_M1_ACCEPTANCE_AND_ROUTE_REVIEW_20261015.md",
+      "verification": "records/phase3_m1_review_20261015/verification.json",
+      "joint_tables_recomputed": 71280,
+      "integer_matrices_recomputed": 142608,
+      "payload_files": 4168,
+      "gate_accepted": false,
+      "down4_complementarity_gate_accepted": false,
+      "scope": "independent archive and count arithmetic; no training/inference rerun",
+      "auxiliary_design_requirements_fully_delivered": false
+    },
+    "recent_review": "docs/experiments/COMPLETED_EXPERIMENTS_HANDOFF_20261004.md"
+  },
+  "latest_observed_at": "2026-10-29T11:05:39.164577+08:00",
+  "registry_coverage_note_20261029": "Backfilled the actual M2 completed state, J engineering stop and authorized cleanup. Previous M2 not-launched routing is preserved under historical_routing_before_phase3_m2_closeout_20261029. This does not claim every intervening historical result was independently re-audited."
 }
