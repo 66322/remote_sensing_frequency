@@ -1,0 +1,9 @@
+{
+  "status": "LOCAL_CHECKS_PASSED_SERVER_NOT_EXECUTED",
+  "python39_ast": "passed",
+  "unit_checks_passed": 12,
+  "linux_dir_fd_test_skipped_locally": 1,
+  "linux_delete_check": "owned sentinel check in actual helper before real deletions",
+  "scope": "candidate roles, retained dependencies, archive contents, path/process/status/size/receipt refusal",
+  "no_repeated_artifact_hashing": true
+}

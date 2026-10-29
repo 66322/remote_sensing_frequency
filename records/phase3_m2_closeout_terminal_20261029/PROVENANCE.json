@@ -1,0 +1,20 @@
+{
+  "source": "user-provided server terminal; no direct server filesystem access",
+  "source_sha256_reused_from_prior_receipt": "4d053022fa2fa16e92673a3d091607d4da5615f07254fe6e0e591ef5e6334c48",
+  "files_received": [
+    "raw terminal",
+    "summary_from_terminal.json",
+    "gates_from_terminal.json",
+    "REPORT_from_terminal.md"
+  ],
+  "server_publication_not_received": [
+    "metrics.csv",
+    "F0_counts.jsonl.gz",
+    "F1_counts.jsonl.gz",
+    "F2_counts.jsonl.gz",
+    "manifest.json",
+    "server_evidence_index.json"
+  ],
+  "cleanup_execution": "not yet executed; no actual bytes reclaimed reported",
+  "user_authorization": "2026-10-29: organize/upload evidence and conclusion/handoff; inventory and clean useless weights/intermediate/large files; do not repeatedly hash"
+}
