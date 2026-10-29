@@ -1,6 +1,6 @@
 # M2后A0首批实验：冻结教师能力探针与双H100资源合同（2026-10-29）
 
-**状态：CODE_PREPARED_LOCAL_CHECKED；SERVER_ENVIRONMENT_INSTALL_VERIFIED；SERVER_NOT_PREFLIGHTED；NO_NEW_SCIENTIFIC_RESULT。** 本文件给出已写好的首批执行入口和预先冻结的判断规则。旧M2最终清理于19:15启动后在预删除离线统计阶段停止，用户要求暂缓清理、优先启动A0；A0不引用旧M2的训练端点、推理缓存或大权重。
+**状态：DINO2_INVENTORY_AND_SMOKE_PASSED；PROFILE_CODE_FIXED_SERVER_RERUN_PENDING；DINO3_NOT_PREPARED；NO_NEW_SCIENTIFIC_RESULT。** 本文件给出已写好的首批执行入口和预先冻结的判断规则。旧M2最终清理于19:15启动后在预删除离线统计阶段停止，用户要求暂缓清理、优先启动A0；A0不引用旧M2的训练端点、推理缓存或大权重。
 
 ## 要回答的问题与对照
 
@@ -32,7 +32,7 @@ python -c 'import torch, numpy, PIL; print("torch",torch.__version__,"torch_cuda
 nvidia-smi --query-gpu=index,name,driver_version,memory.free --format=csv,noheader
 ```
 
-服务器实测驱动590.48.01、共8张H100，其中GPU0/1各空闲81081 MiB；A0仍只用0/1，CPU核数与cgroup内存待inventory实测。此驱动满足CUDA12.6最低驱动要求，故选择PyTorch 2.7.1 **cu126** wheel；服务器实际通过中科大PyPI镜像完成安装，未新建环境。**只升级当前环境**；M2最终清理已按用户指示暂缓。若conda/pip混装造成依赖冲突，停止并根据包清单修复。
+服务器实测驱动590.48.01、共8张H100，其中GPU0/1各空闲81081 MiB；A0仍只用0/1；inventory实测有效CPU 192核、可用内存约2.04TB，GPU2–7有既有计算进程。此驱动满足CUDA12.6最低驱动要求，故选择PyTorch 2.7.1 **cu126** wheel；服务器实际通过中科大PyPI镜像完成安装，未新建环境。**只升级当前环境**；M2最终清理已按用户指示暂缓。若conda/pip混装造成依赖冲突，停止并根据包清单修复。
 
 ```bash
 conda activate remote_sensing
@@ -56,7 +56,7 @@ python -m pip install -r "$D3_REPO/requirements.txt"
 python -m pip check
 ```
 
-随后把`POST_M2_DINO3_REPO`指向上述目录、`POST_M2_DINO3_WEIGHTS`指向已取得的`.pth`实际文件。若权重尚未到位，可以不设置这两个变量先做`inventory`、单独运行DINOv2的`smoke --kind dino2`和`profile --kind dino2`；DINOv3权重到位后用物理GPU1单独补它的smoke/profile，然后直接进入双模型`pair --phase train`。已经完成单模型smoke/profile时，双模型对应阶段会拒绝重复运行。**正式训练仍须等待两教师权重与环境检查通过**。
+随后把`POST_M2_DINO3_REPO`指向上述目录、`POST_M2_DINO3_WEIGHTS`指向已取得的`.pth`实际文件。若权重尚未到位，可以不设置这两个变量先做`inventory`、单独运行DINOv2的`smoke --kind dino2`和`profile --kind dino2`；2026-10-29已完成前两关。首次profile因冻结特征使用`inference_mode`而无法训练读出头，修复为`no_grad`并通过本地反传回归测试；新脚本下载后只需重跑profile，已有smoke.json不可重复写。DINOv3权重到位后用物理GPU1单独补它的smoke/profile，然后直接进入双模型`pair --phase train`。已经完成单模型smoke/profile时，双模型对应阶段会拒绝重复运行。**正式训练仍须等待两教师权重与环境检查通过**。
 
 ```bash
 ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro

@@ -1,5 +1,6 @@
 import importlib.util
 import unittest
+import warnings
 from pathlib import Path
 
 import numpy as np
@@ -11,6 +12,23 @@ spec.loader.exec_module(a0)
 
 
 class ContractTests(unittest.TestCase):
+    def test_frozen_features_can_train_readout(self):
+        import torch
+
+        class TinyEncoder:
+            def forward_features(self, images):
+                patches=torch.nn.functional.avg_pool2d(images,14,14)
+                return {"x_norm_patchtokens":patches.flatten(2).transpose(1,2)}
+
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore", message="User provided device_type of 'cuda'")
+            features=a0.extract(TinyEncoder(),torch.rand(1,3,28,28),14)
+        self.assertFalse(features.is_inference())
+        head=torch.nn.Conv2d(3,6,1)
+        head(features).square().mean().backward()
+        self.assertIsNotNone(head.weight.grad)
+        self.assertTrue(bool(torch.isfinite(head.weight.grad).all()))
+
     def test_fg5_is_first_five_classes_not_clutter(self):
         cm=np.diag([10,20,30,40,50,0])
         observed=a0.metrics(cm)

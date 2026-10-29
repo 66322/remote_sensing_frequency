@@ -247,7 +247,9 @@ def extract(encoder,images,patch):
     mean=images.new_tensor((.485,.456,.406))[None,:,None,None]
     std=images.new_tensor((.229,.224,.225))[None,:,None,None]
     normalized=F.pad((images-mean)/std,pad,mode="replicate")
-    with torch.inference_mode(),torch.autocast("cuda",dtype=torch.bfloat16):
+    # The encoder is frozen, but its output must remain a normal tensor so the
+    # trainable readout can save it for backward during profile and training.
+    with torch.no_grad(),torch.autocast("cuda",dtype=torch.bfloat16):
         features=encoder.forward_features(normalized)["x_norm_patchtokens"]
     gh,gw=normalized.shape[-2]//patch,normalized.shape[-1]//patch
     if features.shape[1]!=gh*gw: raise RuntimeError("DINO patch grid changed")
