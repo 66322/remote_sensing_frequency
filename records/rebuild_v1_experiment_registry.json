@@ -3460,8 +3460,8 @@
     "new_a_spatial_updates": 4000,
     "total_first_wave_jobs": 15,
     "total_first_wave_updates": 96000,
-    "max_new_full_profile_disposable_updates": 840,
-    "max_new_a_spatial_profile_disposable_updates": 240,
+    "max_new_full_profile_disposable_updates": 28,
+    "max_new_a_spatial_profile_disposable_updates": 8,
     "seeds": [
       42
     ],
@@ -3474,7 +3474,8 @@
     "latest_server_observation": "2026-10-30T16:30:50.996411+08:00",
     "training_started_in_this_session": false,
     "a0_existing_profile_disposable_updates_per_model": 160,
-    "a0_formal_updates_received": 0
+    "a0_formal_updates_received": 0,
+    "profile_policy": "one inherited configuration; 1 warmup + 3 timed updates per new path; existing A0 readiness reused"
   },
   "completed_d26_plan": {
     "input_manifest_sha256": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295",
@@ -4195,7 +4196,6 @@
     "a0_dino3_readiness_receipt_received": true,
     "first_common_failure_stops_dispatch": true,
     "automatic_retry": false,
-    "code_commit": "4fbabd6b135a41c1ba0891120dcac6546880bf47",
     "publication_receipt": "records/post_m2_multiroute_v2_20261030_release/publication_receipt.json",
     "a0_dino3_weight_download_received": true,
     "a0_dino3_weight_sha256_verified_on_server": true,
@@ -4206,7 +4206,12 @@
     "a0_dino3_readiness_record": "records/post_m2_a0_capability_20261029/dino3_readiness_server_receipt_20261030.json",
     "a0_formal_updates_received": 0,
     "a0_continuation_script": "scripts/continue_post_m2_a0_20261030.sh",
-    "a0_continuation_target_execution_received": false
+    "a0_continuation_target_execution_received": false,
+    "previous_execution_code_commit": "4fbabd6b135a41c1ba0891120dcac6546880bf47",
+    "code_commit_source": "records/post_m2_multiroute_v2_20261030_release/publication_receipt.json:code_commit",
+    "config_version": 2,
+    "profile_policy_revision": "USER_REQUESTED_MINIMAL_LOADING_AND_TIMING_20261030",
+    "hot_patch_running_source": false
   },
   "historical_routing_before_multiroute_execution_20261030": {
     "next_plan": {

@@ -28,7 +28,8 @@ def execute(base,kind,phase):
         arrays=a0.arrays(legacy,legacy['folds']['train']);history=[]
         if phase=='profile':
             start=time.perf_counter();candidates=[];resources=a0.resource_snapshot()
-            for workers,micro in c.CONFIG['profile_candidates']:
+            # Reuse each encoder's accepted A0 tuning; no repeat configuration sweep.
+            for workers,micro in [(old['selected_train']['workers'],old['selected_train']['micro'])]:
                 if workers>resources['max_loader_workers_per_gpu']:continue
                 c.seed_all();head=SpatialProbe().cuda();opt=torch.optim.AdamW(head.parameters(),lr=1e-4,weight_decay=.01)
                 nsteps=c.CONFIG['profile_warmup']+c.CONFIG['profile_measured']
@@ -36,7 +37,7 @@ def execute(base,kind,phase):
                 torch.cuda.reset_peak_memory_stats()
                 try:
                     for step in range(nsteps):
-                        if time.perf_counter()-start>600:raise RuntimeError('spatial profile timeout')
+                        if time.perf_counter()-start>c.CONFIG['profile_timeout_seconds']:raise RuntimeError('spatial profile timeout')
                         t=time.perf_counter();batch=next(stream);a0.one_update(encoder,patch,head,opt,batch,micro);torch.cuda.synchronize()
                         if step>=c.CONFIG['profile_warmup']:rows.append(time.perf_counter()-t)
                     candidates.append(dict(workers=workers,micro=micro,median_seconds=statistics.median(rows),updates=nsteps,
@@ -46,7 +47,7 @@ def execute(base,kind,phase):
             head=SpatialProbe().cuda();tile=arrays[legacy['folds']['train'][0]]
             pred,secs,n,timing=a0.predict_tile(encoder,patch,head,tile['rgb'],16)
             t=time.perf_counter();a0.cm_tile(pred,tile['nb']);timing['counts_seconds']=time.perf_counter()-t
-            result=dict(status='REAL_SPATIAL_PROFILE_PASSED',kind=kind,source=source,candidates=candidates,
+            result=dict(status='REAL_SPATIAL_PROFILE_PASSED',profile_mode='minimal_sanity_timing',timing_scope='indicative short check; reuse original encoder tuning',kind=kind,source=source,candidates=candidates,
                 selected=min(candidates,key=lambda x:x['median_seconds']),evaluation=dict(seconds=secs,windows=n,timing=timing),
                 disposable_updates=sum(x['updates'] for x in candidates),observed_at=c.now())
         else:

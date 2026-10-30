@@ -86,7 +86,7 @@ def run_profile(contract,encoder,patch,arrays,arm,base,heartbeat):
     pred,timing=ev.predict(encoder,patch,model,item['rgb'],item['dsm'],item['height_valid'],16,a0.extract)
     t=time.perf_counter();ev.counts(pred,item['full'],item['nb'],None);timing['counts_seconds']=time.perf_counter()-t
     import resource
-    result=dict(status='REAL_PATH_PROFILE_PASSED',arm=arm,observed_at=c.now(),source=contract['source'],
+    result=dict(status='REAL_PATH_PROFILE_PASSED',profile_mode='minimal_sanity_timing',timing_scope='indicative short check; not a configuration search or precise benchmark',arm=arm,observed_at=c.now(),source=contract['source'],
         candidates=candidates,selected=selected,evaluation=timing,wall_seconds=time.perf_counter()-start,
         disposable_updates=sum(x['steps'] for x in candidates),resources=resources,
         parameter_count=sum(p.numel() for p in model.parameters()),

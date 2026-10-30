@@ -2,7 +2,7 @@
 
 用户已要求按[最新主计划](../experiments/POST_M2_MULTIROUTE_PLAN_20261030.md)安排实验；[首批执行r1](../experiments/POST_M2_MULTIROUTE_EXECUTION_20261030.md)和[机器清单](../../records/post_m2_multiroute_v2_20261030_release/execution_plan.json)已完成实现及本地检查，无目标训练回执。
 
-固定代码提交`4fbabd6b135a41c1ba0891120dcac6546880bf47`；见[完整启动命令与发布回执](../../records/post_m2_multiroute_v2_20261030_release/publication_receipt.json)。
+尚未部署的新任务使用轻量测速修订，精确代码提交见[当前发布回执](../../records/post_m2_multiroute_v2_20261030_release/publication_receipt.json)。若已安装/启动历史4fbabd6版本则读其既有状态，不热改或重启。
 
 当前A0接续：双骨干真实加载/profile已齐备，在GPU0/1空闲且没有既有Full控制器时，按[薄层接续入口](../experiments/POST_M2_A0_CONTINUATION_20261030.md)串接原pair训练、校准、screen和条件外层评价；各2k/seed42，不新增探针或人工阶段等待。
 
@@ -10,7 +10,7 @@ Full独立入口：服务器沿既有remote_sensing，按本次固定发布commi
 
 排程：B0/B1合格后按就绪任务填满两卡，优先Q1→Q2→Q3真实数据依赖并穿插S/G；G2/G3可在G1合格后并行，S2/S3可在S1合格后并行。固定每卡一个常驻进程，复用编码器与训练图块；新头、优化器、样本流独立绑定。源/包/数据/环境不变的既有检查复用。
 
-每真实路径最多120丢弃更新、共七路径最多840；0/4/8worker及micro16/8比较保持有效batch16。最快配置仍由数据等待主导则停，正式训练/评价超过自己profile2.5倍亦停诊断。profile后写measured_budget.json，不引用A0速度外推。原始错误栈保存、共性首败停派发，无自动重试或热改。
+按用户要求，每真实新路径仅一个配置，预热1步、计时3步，共4个丢弃更新；七路径最多28，两个新空间头合计最多8。Full复用已有DINOv2的4worker/micro16；空间头复用各自原骨干配置；不再扫worker/microbatch。有效batch16不变，短计时仅作粗估，正式训练中原有日志继续记录真实耗时。单配置仍由数据等待主导则停，正式训练/评价超过自己profile2.5倍亦停诊断。profile后写measured_budget.json，不引用A0速度外推。原始错误栈保存、共性首败停派发，无自动重试或热改。
 
 A分支独立：原A0代码c22a046不变；2026-10-30 16:30:50已收到[DINOv3源码/真实加载/profile通过回执](../../records/post_m2_a0_capability_20261029/dino3_readiness_server_receipt_20261030.json)，DINOv2检查复用，不重复下载/哈希/测速。下一步直接按原pair合同正式训练，薄层入口仅串接已授权阶段；新增两空间头共4k在原A0完成且两卡空闲时独立运行。整个A0/A空间4探针共8k，与Full队列合计96k。DINOv3未就绪不阻塞G/Q/S，Full/NB128结果分开解释。
 

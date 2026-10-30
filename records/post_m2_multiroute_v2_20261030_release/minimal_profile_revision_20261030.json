@@ -1,0 +1,31 @@
+{
+  "status": "IMPLEMENTED_LOCAL_CHECKED_TARGET_PENDING",
+  "source": "user_instruction_20261030",
+  "user_quote": "这个加载与测速就简单测测就行，没必要训练那么多",
+  "scope": "Reduce checks for unstarted/uninstalled payloads. Existing A0 smoke/profile accepted; no reruns. Do not hot-patch or restart installed/running snapshots.",
+  "changes": {
+    "previous_max_full_profile_updates": 840,
+    "new_max_full_profile_updates": 28,
+    "previous_max_spatial_profile_updates": 240,
+    "new_max_spatial_profile_updates": 8,
+    "configurations_per_new_path": 1,
+    "warmup": 1,
+    "timed_updates": 3,
+    "full_configuration": {
+      "workers": 4,
+      "micro": 16
+    },
+    "spatial_configuration": "Reuse each original encoder profile's selected workers/micro",
+    "evaluation": "One clean training-tile prediction/count check per new path; no evaluation batch sweep"
+  },
+  "formal_scientific_budget_changed": false,
+  "formal_a0_updates_per_kind": 2000,
+  "formal_full_updates_per_job": 8000,
+  "seed": 42,
+  "interpretation": "A0 2000-step runs are the actual paired scientific probes, not loading or speed tests. Short checks support functional readiness and rough timing only.",
+  "target_actions_performed": 0,
+  "additional_target_probes_performed": 0,
+  "original_a0_c22_script_unchanged": true,
+  "local_validation": "14 existing CPU unit checks passed; isolated downloaded payload imports and manifest checks passed",
+  "target_light_profile_received": false
+}

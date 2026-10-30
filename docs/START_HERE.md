@@ -1,5 +1,7 @@
 # 共享入口：多路线 v2 首批执行交付（2026-10-30）
 
+2026-10-30用户进一步修订：加载/测速仅做轻量验证，已有通过项直接复用；新路径只保留一个已有依据的配置，1步预热+3步计时，计时仅作粗估，不跑多组扫参或额外百步训练。七条Full路径最多28个丢弃更新，两个空间头合计最多8；正式科学实验训练预算与测速分开，不能把各2k正式A0误当测速。仅适用于尚未部署的新快照，已安装/运行不热改、不重启，原A0 c22及已测回执不变。
+
 先读[研究决定](current/RESEARCH_DECISION.md)、[交接](current/HANDOFF.md)、[状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)。长期规则见[AGENTS](../AGENTS.md)、[执行约定](protocols/EXECUTION_CONTRACT.md)和[实验规划规则](protocols/EXPERIMENT_PLANNING_RULES.md)。
 
 本轮用户要求按最新规划安排实验，避免M2式代码与资源等待。已实现[执行交付 r1](experiments/POST_M2_MULTIROUTE_EXECUTION_20261030.md)、[机器执行清单](../records/post_m2_multiroute_v2_20261030_release/execution_plan.json)、[小型固定载荷](../records/post_m2_multiroute_v2_20261030_release/payload_manifest.json)。本地14项检查及独立包核验见[本地验收](../records/post_m2_multiroute_v2_20261030_release/local_checks.json)。目标Linux/CUDA、真实新路径吞吐、正式训练均待服务器回执，不写已排队。

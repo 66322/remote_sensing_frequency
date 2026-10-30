@@ -66,7 +66,7 @@ def prepare(base):
     estimate=sum(2*n*4 for n in params.values())
     c.write(base/'budget.json',dict(new_full_jobs=11,new_full_updates=88000,original_a0_updates=4000,
         new_a_spatial_updates=4000,first_wave_total_updates=96000,
-        maximum_profile_disposable_updates=7*120,full_endpoint_bytes_estimate=estimate,
+        maximum_profile_disposable_updates=len(c.PROFILES)*len(c.CONFIG['profile_candidates'])*(c.CONFIG['profile_warmup']+c.CONFIG['profile_measured']),full_endpoint_bytes_estimate=estimate,
         cpu_preparation_updates=0,new_target_optimization_updates=0,wall_time='PROFILE_PENDING'),once=True)
     print('CPU_PREPARED_GPU_PROFILE_PENDING',base,flush=True)
 

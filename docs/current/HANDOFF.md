@@ -1,8 +1,10 @@
 # 当前交接：多路线 v2 首批执行版本 r1（2026-10-30）
 
+2026-10-30用户进一步修订：加载/测速仅做轻量验证，已有通过项直接复用；新路径只保留一个已有依据的配置，1步预热+3步计时，计时仅作粗估，不跑多组扫参或额外百步训练。七条Full路径最多28个丢弃更新，两个空间头合计最多8；正式科学实验训练预算与测速分开，不能把各2k正式A0误当测速。仅适用于尚未部署的新快照，已安装/运行不热改、不重启，原A0 c22及已测回执不变。
+
 权威分支rebuild-v1-protocol-20260915。[研究主计划](../experiments/POST_M2_MULTIROUTE_PLAN_20261030.md)、[执行合同](../experiments/POST_M2_MULTIROUTE_EXECUTION_20261030.md)、[机器清单](../../records/post_m2_multiroute_v2_20261030_release/execution_plan.json)。本轮用户明确要求按最新规划安排并优化资源；已完成实现、本地14项检查和独立载荷核验；尚无目标Linux/真实新路径profile/正式更新回执。
 
-固定代码提交为`4fbabd6b135a41c1ba0891120dcac6546880bf47`；完整可复制命令见[发布回执](../../records/post_m2_multiroute_v2_20261030_release/publication_receipt.json)。文档后续提交不切换此执行快照。
+未部署新任务采用本次轻量测速修订，精确代码提交和命令见[当前发布回执](../../records/post_m2_multiroute_v2_20261030_release/publication_receipt.json)；历史4fbabd6b135a41c1ba0891120dcac6546880bf47快照保留。已有安装/启动回执时先读状态，不为缩短准备检查替换或重启已有执行。
 
 ## 当前接续
 

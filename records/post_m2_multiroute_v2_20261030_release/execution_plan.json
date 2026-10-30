@@ -2,7 +2,7 @@
   "date": "2026-10-30",
   "release": "post_m2_multiroute_v2_20261030_r1",
   "status": "IMPLEMENTED_LOCAL_CHECKED_TARGET_PENDING",
-  "user_instruction": "按照最新实验规划安排实验吧，注意之前说的资源优化，不要发生M2这样的代码与资源等待",
+  "user_instruction": "加载与测速简单验证，不训练很多；此前已授权按最新规划安排正式实验并优化资源",
   "scientific_plan": "docs/experiments/POST_M2_MULTIROUTE_PLAN_20261030.md",
   "execution_document": "docs/experiments/POST_M2_MULTIROUTE_EXECUTION_20261030.md",
   "jobs": [
@@ -178,7 +178,7 @@
     }
   ],
   "config": {
-    "version": 1,
+    "version": 2,
     "seed": 42,
     "updates": 8000,
     "batch": 16,
@@ -218,25 +218,13 @@
     "eval_batch": 16,
     "profile_candidates": [
       [
-        0,
-        16
-      ],
-      [
         4,
         16
-      ],
-      [
-        8,
-        16
-      ],
-      [
-        4,
-        8
       ]
     ],
-    "profile_warmup": 6,
-    "profile_measured": 24,
-    "profile_timeout_seconds": 600,
+    "profile_warmup": 1,
+    "profile_measured": 3,
+    "profile_timeout_seconds": 120,
     "slowdown_factor": 2.5,
     "baseline_min_clean_fg5": 50.0,
     "threads": 1,
@@ -276,8 +264,9 @@
   "main_pipeline_updates": 88000,
   "original_a0_updates": 4000,
   "new_a_spatial_updates": 4000,
-  "maximum_new_main_profile_disposable_updates": 840,
-  "maximum_new_spatial_profile_disposable_updates": 240,
+  "maximum_new_main_profile_disposable_updates": 28,
+  "maximum_new_spatial_profile_disposable_updates": 8,
+  "profile_policy": "one inherited configuration; 1 warmup + 3 timed updates; indicative timing only; no repeated sweep",
   "evaluation": {
     "full_calibration_cases": 220,
     "full_selected_outer_cases": 220,
@@ -287,11 +276,11 @@
     ],
     "a_all_probe_max_cases": 24
   },
-  "source_parent": "d28a82f8fd13ded126a3502e5e977c4815fc57d3",
+  "source_parent": "2fc2d7ef4e3fd908793b10198dfd8087d257907d",
   "a0_source_unchanged": "c22a046407daf42064cbb161429f2648c9b86d66",
   "server_actions_this_session": 0,
   "server_new_updates_received": 0,
-  "last_server_receipt": "2026-10-29 20:18:55 Asia/Shanghai",
+  "last_server_receipt": "2026-10-30T16:30:50.996411+08:00",
   "target_environment": {
     "conda": "remote_sensing",
     "python": "3.11.13",
@@ -304,7 +293,7 @@
     "small_frozen_source_payload_only"
   ],
   "public_dino2_inputs": "reuse_server_existing_binding",
-  "dino3_state": "READINESS_RECEIPTS_ABSENT_ONLY_A_BRANCH_AFFECTED",
+  "dino3_state": "A0_SMOKE_PROFILE_PASSED_REUSE_NO_RETEST",
   "resources": {
     "physical_gpus": [
       0,
@@ -314,14 +303,12 @@
     "persistent_encoder_and_fit_tiles": true,
     "count_prediction_inflight_cap": 2,
     "worker_candidates": [
-      0,
-      4,
-      8
+      4
     ],
     "micro_candidates": [
-      16,
-      8
+      16
     ],
+    "spatial_tuning": "reuse original encoder selection",
     "effective_batch": 16
   },
   "stopping": {

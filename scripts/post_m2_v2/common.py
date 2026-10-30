@@ -14,7 +14,7 @@ JOBS = ('B0','B1','G1','G2','G3','Q1','Q2','Q3','S1','S2','S3')
 # Independent computational paths. G3/S3 add only a fixed roll to G2/S2.
 PROFILES = ('B0','B1','G1','G2','Q2','S1','S2')
 PROFILE_FOR = dict(B0='B0',B1='B1',G1='G1',G2='G2',G3='G2',Q1='Q2',Q2='Q2',Q3='Q2',S1='S1',S2='S2',S3='S2')
-CONFIG = dict(version=1,seed=42,updates=8000,batch=16,crop=512,stride=256,border=512,
+CONFIG = dict(version=2,seed=42,updates=8000,batch=16,crop=512,stride=256,border=512,
     lr=0.0003,weight_decay=0.01,adam_betas=[0.9,0.999],clip_norm=5.0,
     precision='bfloat16_autocast_float32_parameters',supervision='Full_512',
     loss='six_class_unweighted_CE_global_valid_pixel_mean',gsd_m=0.05,
@@ -22,8 +22,8 @@ CONFIG = dict(version=1,seed=42,updates=8000,batch=16,crop=512,stride=256,border
     blur_sigma_px=2.0,dsm_shift_px=[16,0],evaluation_damage_side=0.5,
     geometry_grid=64,geometry_kernel=5,geometry_temperature=0.10,
     mismatch_roll_grid_px=[17,23],eval_batch=16,
-    profile_candidates=[[0,16],[4,16],[8,16],[4,8]],profile_warmup=6,profile_measured=24,
-    profile_timeout_seconds=600,slowdown_factor=2.5,baseline_min_clean_fg5=50.0,
+    profile_candidates=[[4,16]],profile_warmup=1,profile_measured=3,
+    profile_timeout_seconds=120,slowdown_factor=2.5,baseline_min_clean_fg5=50.0,
     threads=1,counter_threads=6,worker_prefetch=2,max_resident_tile_bytes=12*1024**3,
     gpu_min_free_mib=40000,task_timeout_hours=24,heartbeat_timeout_seconds=1200)
 
