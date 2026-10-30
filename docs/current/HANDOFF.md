@@ -4,21 +4,21 @@
 
 固定代码提交为`4fbabd6b135a41c1ba0891120dcac6546880bf47`；完整可复制命令见[发布回执](../../records/post_m2_multiroute_v2_20261030_release/publication_receipt.json)。文档后续提交不切换此执行快照。
 
-## 唯一下一步
+## 当前接续
 
-在既有remote_sensing环境按固定发布commit执行bootstrap --start。服务器由用户操作，无SSH。小载荷保存于ROOT/execution/post_m2_multiroute_v2_20261030_r1；运行目录ROOT/records/post_m2_multiroute_v2_20261030_r1；ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro。后台pipeline依次CPU数据/真实公共权重严格加载→七条真实路径profile→全部合格后11作业/88k，阶段间自动接续，无隐藏下载/安装或人工确认等待。
+A0双模型的真实检查现已齐备；当前先在空闲GPU0/1窗口按[接续说明](../experiments/POST_M2_A0_CONTINUATION_20261030.md)连续完成原A0各2k训练、配对校准、screen与条件外层评价，不重做检查。既有Full队列若已运行（包括CPU准备）则不派发第二控制器。Full独立入口继续是在既有remote_sensing环境按固定发布commit执行bootstrap --start；缺少启动回执时不能重复启动。服务器由用户操作，无SSH。小载荷保存于ROOT/execution/post_m2_multiroute_v2_20261030_r1；运行目录ROOT/records/post_m2_multiroute_v2_20261030_r1；ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro。后台pipeline依次CPU数据/真实公共权重严格加载→七条真实路径profile→全部合格后11作业/88k，阶段间自动接续，无隐藏下载/安装或人工确认等待。
 
 每卡常驻一个进程，跨作业复用DINOv2与六拟合tile；头/优化器独立初始化。G/S候选及错配控制在各自主控制合格后可并行；Q3必须读取Q2实际暴露记录。默认42，有效batch16，Full512监督。G/Q/S不等DINOv3。真实耗时由measured_budget.json给出，A0速度不外推。共性首败停止整队、保留原栈，仅终止自身进程组，不自动重试/改配方/删锁。
 
 ## A分支与证据边界
 
-原A0脚本逐字节保持c22a046407daf42064cbb161429f2648c9b86d66，DINOv2检查复用；DINOv3原生pth已在服务器由固定魔搭版本直下并通过首次SHA256，见[下载回执](../../records/post_m2_a0_capability_20261029/dino3_download_server_receipt_20261030.json)；源码HEAD/真实加载/profile仍缺回执，原双模型线性头正式训练回执0。原环境最后已确认Python3.11.13/Torch2.7.1+cu126、torchvision0.22.1/torchaudio2.7.1、pip check通过，不重建。
+原A0脚本逐字节保持c22a046407daf42064cbb161429f2648c9b86d66，DINOv2检查复用；DINOv3下载/首次SHA256后，源码HEAD、真实加载和profile也通过，见[最新回执](../../records/post_m2_a0_capability_20261029/dino3_readiness_server_receipt_20261030.json)及[原profile字段](../../records/post_m2_a0_capability_20261029/profile_dino3.json)。原双模型线性头正式训练回执仍0。新增薄层入口只串接原阶段，不修改原科学合同或阈值；首败停止、无自动重试。原环境最后已确认Python3.11.13/Torch2.7.1+cu126、torchvision0.22.1/torchaudio2.7.1、pip check通过，不重建。
 
 新A空间头代码已交付，两骨干同19,254参数、同原A0样本流/NB128监督，各2k；依原A0双模型真实检查和正式训练完成，在双卡空闲窗口独立分阶段运行，不混入Full队列。原A0各2k+空间各2k合计8k；与11×8k共96k。旧线性头2,310参数，不能宣称线性/空间同容量，也不能绕过旧外层screen。
 
 ## 最后实际服务器状态
 
-最新准备回执为2026-10-30用户粘贴的DINOv3下载与首次SHA256通过，未提供下载完成时刻；本次记录不证明源码或CUDA模型已就绪。最后GPU计算观测仍为2026-10-29 20:18:55 DINOv2 profile。此前inventory确认F0 12tile、CPU192、约2.04TB RAM、GPU0/1各81081MiB空闲，是历史观测。新启动由目标检查确认实际空闲，不动2–7卡。
+最后GPU计算观测为2026-10-30 16:30:50.996411+08:00 DINOv3 profile完成：8worker/micro16，中位14.36ms/步，取数等待0.109ms；评价batch16，529窗口预测/拼接0.6641秒（不含数据加载/完整指标统计）。首次数据加载35.19秒、总profile43.74秒、160丢弃更新；不算正式训练。GPU1在该检查前通过占用保护，GPU0当前状态未知，不宣称两卡现在空闲。此前inventory确认F0 12tile、CPU192、约2.04TB RAM、GPU0/1各81081MiB空闲，是历史观测。新启动由目标检查确认实际空闲，不动2–7卡。
 
 M2已完成108训练/3,456,000更新/77,868评价，DF配方关闭；J工程停止，无科学结果。首清理删除90保留18；最终清理19:15在预删除统计空值相减失败，未删除，仍按用户要求暂缓。授权不撤回，本轮不恢复清理、不为新研究强留旧专家。
 
@@ -26,4 +26,4 @@ M2已完成108训练/3,456,000更新/77,868评价，DF配方关闭；J工程停�
 
 小证据自动导出压缩evidence.jsonl.gz，含逐tile整数矩阵、边界/ROI计数、训练轨迹、真实暴露/重放、来源、成本和原始错误日志。先释放GPU再沿已有认证上传records/运行名；认证不可用保留UPLOAD_PENDING，后续仅publish不重算。原始数据/公共权重不进普通Git，最少端点保留服务器。
 
-本地Windows/Python3.9.25/Torch2.8.0+cpu检查不能替代目标Linux/fork/CUDA/真实权重与吞吐验收。不存在新科学结果；文档同步不等于控制器部署。科学主线未更换，封存集未打开，C/P/E/F仍按自身条件准备。
+Full流水线的本地Windows/Python3.9.25/Torch2.8.0+cpu检查不能替代其目标Linux/fork/CUDA/真实权重与吞吐验收。A0两骨干目标加载/测速已通过，与Full验收分开。不存在新科学结果；文档同步不等于控制器部署。科学主线未更换，封存集未打开，C/P/E/F仍按自身条件准备。

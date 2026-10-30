@@ -2416,7 +2416,8 @@
     "machine_plan": "records/post_m2_multiroute_v2_20261030_release/execution_plan.json",
     "user_authorized_arrangement": true,
     "server_training_started": false,
-    "automatic_retry": false
+    "automatic_retry": false,
+    "a0_next_action": "Reuse completed DINO2/DINO3 target checks; idle-GPU0/1 window: unchanged pair train -> calibration -> screen -> conditional outer, through thin continuation runner. No competing Full controller."
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -3470,8 +3471,10 @@
     ],
     "processes_per_gpu": 1,
     "real_wall_time": "PENDING_NEW_PATH_PROFILE",
-    "latest_server_observation": "2026-10-29 20:18:55 Asia/Shanghai",
-    "training_started_in_this_session": false
+    "latest_server_observation": "2026-10-30T16:30:50.996411+08:00",
+    "training_started_in_this_session": false,
+    "a0_existing_profile_disposable_updates_per_model": 160,
+    "a0_formal_updates_received": 0
   },
   "completed_d26_plan": {
     "input_manifest_sha256": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295",
@@ -4153,7 +4156,7 @@
     },
     "recent_review": "docs/experiments/COMPLETED_EXPERIMENTS_HANDOFF_20261004.md"
   },
-  "latest_observed_at": "2026-10-29T11:05:39.164577+08:00",
+  "latest_observed_at": "2026-10-30T16:30:50.996411+08:00",
   "registry_coverage_note_20261029": "Backfilled the actual M2 completed state, J engineering stop and authorized cleanup. Previous M2 not-launched routing is preserved under historical_routing_before_phase3_m2_closeout_20261029. This does not claim every intervening historical result was independently re-audited.",
   "historical_next_plan_before_capability_plan_20261029": {
     "status": "M2_OFFLINE_ANALYSIS_AND_FINAL_COMPACTION_WAITING_SERVER",
@@ -4189,7 +4192,7 @@
     "a0_script_unchanged": true,
     "a0_execution_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
     "a0_dino2_checks_reused": true,
-    "a0_dino3_readiness_receipt_received": false,
+    "a0_dino3_readiness_receipt_received": true,
     "first_common_failure_stops_dispatch": true,
     "automatic_retry": false,
     "code_commit": "4fbabd6b135a41c1ba0891120dcac6546880bf47",
@@ -4197,7 +4200,13 @@
     "a0_dino3_weight_download_received": true,
     "a0_dino3_weight_sha256_verified_on_server": true,
     "a0_dino3_download_record": "records/post_m2_a0_capability_20261029/dino3_download_server_receipt_20261030.json",
-    "a0_dino3_source_load_profile_pending": true
+    "a0_dino3_source_load_profile_pending": false,
+    "a0_dino3_smoke_passed": true,
+    "a0_dino3_profile_complete": true,
+    "a0_dino3_readiness_record": "records/post_m2_a0_capability_20261029/dino3_readiness_server_receipt_20261030.json",
+    "a0_formal_updates_received": 0,
+    "a0_continuation_script": "scripts/continue_post_m2_a0_20261030.sh",
+    "a0_continuation_target_execution_received": false
   },
   "historical_routing_before_multiroute_execution_20261030": {
     "next_plan": {
@@ -4297,9 +4306,12 @@
   },
   "latest_preparation_observation": {
     "date": "2026-10-30",
-    "record": "records/post_m2_a0_capability_20261029/dino3_download_server_receipt_20261030.json",
-    "status": "SERVER_DOWNLOAD_AND_INITIAL_SHA256_VERIFIED_LOAD_PROFILE_PENDING",
-    "source": "user_pasted_server_terminal",
-    "model_download_only": true
+    "observed_at": "2026-10-30T16:30:50.996411+08:00",
+    "record": "records/post_m2_a0_capability_20261029/dino3_readiness_server_receipt_20261030.json",
+    "status": "DINO3_SOURCE_SMOKE_PROFILE_PASSED_FORMAL_A0_PENDING",
+    "source": "user_pasted_complete_server_terminal_json",
+    "model_download_only": false,
+    "formal_updates_received": 0,
+    "full_pipeline_target_profile_received": false
   }
 }

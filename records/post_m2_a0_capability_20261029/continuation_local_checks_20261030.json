@@ -1,0 +1,25 @@
+{
+  "status": "LOCAL_THIN_ORCHESTRATION_CHECKS_PASSED_TARGET_EXECUTION_PENDING",
+  "entry": "scripts/continue_post_m2_a0_20261030.sh",
+  "original_a0_script_changed": false,
+  "original_a0_code_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+  "original_full_code_commit": "4fbabd6b135a41c1ba0891120dcac6546880bf47",
+  "syntax": "bash --noprofile --norc -n scripts/continue_post_m2_a0_20261030.sh",
+  "syntax_passed": true,
+  "control_flow_tests": "tests/test_a0_continuation.py",
+  "tests_passed": 6,
+  "test_seconds": 57.415,
+  "tests_scope": "Local Windows Git Bash + Python. ROOT redirected to isolated temporary directories. Real model phase entry replaced by a tiny recorder, nvidia-smi subprocess boundary mocked. Delivered preflight and phase chaining logic exercised; no Torch/CUDA/model probes.",
+  "cases": [
+    "positive -> outer",
+    "negative or INVALID -> no outer",
+    "train or calibration failure -> no later phases",
+    "GPU busy -> no registration",
+    "existing continuation -> no dispatch",
+    "profile commit mismatch -> no dispatch"
+  ],
+  "target_controller_execution_received": false,
+  "formal_optimizer_updates_received": 0,
+  "full_pipeline_active_process_guard_target_status": "Code present; target Linux /proc read remains unobserved.",
+  "payload_shape": "Single standalone Bash file calling the unchanged existing A0 script. No new Python modules needed by server runner."
+}

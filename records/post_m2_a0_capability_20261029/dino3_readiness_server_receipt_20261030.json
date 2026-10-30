@@ -1,0 +1,45 @@
+{
+  "status": "DINO3_SOURCE_SMOKE_PROFILE_PASSED_FORMAL_A0_PENDING",
+  "source": "user_pasted_complete_server_terminal_json",
+  "evidence_scope": "Smoke/profile JSON parsed from the user-provided terminal transcript, preserving all field values. Original server files were not fetched independently.",
+  "observed_at": "2026-10-30T16:30:50.996411+08:00",
+  "smoke_observed_at": "2026-10-30T16:30:04.011817+08:00",
+  "code_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+  "source_repo_commit": "6876159a11b4df116f30f667f8c9888617df0751",
+  "source_head_check": "Transcript's set -e precondition passed before smoke/profile; no source clone or check repeated for this record.",
+  "raw_smoke": "records/post_m2_a0_capability_20261029/smoke_dino3.json",
+  "raw_profile": "records/post_m2_a0_capability_20261029/profile_dino3.json",
+  "existing_dino2_profile_reused": "records/post_m2_a0_capability_20261029/profile_dino2.json",
+  "weight_download_receipt": "records/post_m2_a0_capability_20261029/dino3_download_server_receipt_20261030.json",
+  "new_weight_downloads": 0,
+  "new_weight_hashes": 0,
+  "selected_train": {
+    "workers": 8,
+    "micro": 16
+  },
+  "selected_eval_batch": 16,
+  "selected_median_step_seconds": 0.014356091618537903,
+  "selected_median_wait_seconds": 0.00010937824845314026,
+  "wait_fraction_of_median_step": 0.007618943327994719,
+  "first_data_load_seconds": 35.191403426229954,
+  "total_profile_wall_seconds": 43.73759860545397,
+  "disposable_profile_optimizer_updates": 160,
+  "formal_optimizer_updates_received": 0,
+  "timing_limits": [
+    "Profile full_tile.seconds covers prediction/stitch; excludes complete dataset loading and metric computation.",
+    "Profile memory fields are cumulative high-water marks across candidates; not reset per candidate.",
+    "This A0 throughput does not establish Full/G/Q/S or spatial-readout throughput."
+  ],
+  "cache_observation": {
+    "source_scheme": "file://",
+    "meaning": "Local weight copied by torch.hub into /root/.cache/torch/hub/checkpoints, not a repeated network download.",
+    "next_launch_torch_home": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/cache/torch",
+    "next_launch_method": "Symlink original verified weight into the ROOT-local hub checkpoints directory; existing /root cache is not deleted."
+  },
+  "next_action": "If GPU0/1 and the Full pipeline are unoccupied, invoke the unchanged c22 A0 pair train, then calibration, screen and conditional outer through the thin continuation runner.",
+  "continuation_script": "scripts/continue_post_m2_a0_20261030.sh",
+  "target_continuation_execution_received": false,
+  "server_access": "User-operated only; no SSH",
+  "full_pipeline_target_profile_received": false,
+  "additional_gpu_probes_run_by_assistant_for_this_record": 0
+}

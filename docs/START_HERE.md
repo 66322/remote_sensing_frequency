@@ -8,6 +8,6 @@
 
 服务器用户执行，无SSH；物理GPU0/1，各一卡一常驻进程。载荷下载后后台依次CPU真实权重/数据检查→每真实路径测速→全部合格后正式队列；不在训练中下载/安装，首败停派发、不自动重试。GPU先释放再上传压缩小证据。
 
-A0继续固定c22a046407daf42064cbb161429f2648c9b86d66；已通过的DINOv2检查不重复。DINOv3已收到[服务器直下魔搭与首次SHA256通过回执](../records/post_m2_a0_capability_20261029/dino3_download_server_receipt_20261030.json)；不需要Hugging Face中转，源码HEAD/真实加载/profile仍待回执。最后计算资源观测仍为2026-10-29 20:18:55；本次下载不代表新启动、测速或正式优化。
+A0继续固定c22a046407daf42064cbb161429f2648c9b86d66；DINOv2既有检查复用。2026-10-30 16:30:50已收到[DINOv3源码HEAD、真实加载与profile通过回执](../records/post_m2_a0_capability_20261029/dino3_readiness_server_receipt_20261030.json)；正式训练回执仍0。[小型接续入口](experiments/POST_M2_A0_CONTINUATION_20261030.md)在空闲窗口自动串接原pair训练→校准→screen→有条件的外层开发评价，不重复下载/哈希/测速。GPU0/1若正被占用或Full控制器正准备/运行，则不派发竞争队列。该A0回执不替代Full新路径验收。
 
 M2验收与配方关闭、J工程停止保持；M2最终清理因预删除空值统计首败仍暂缓，最后确认18端点，不写0，不自动恢复。GitHub分支rebuild-v1-protocol-20260915为跨电脑权威。

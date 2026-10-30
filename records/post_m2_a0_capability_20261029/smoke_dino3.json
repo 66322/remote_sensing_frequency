@@ -1,0 +1,21 @@
+{
+  "status": "SMOKE_PASSED",
+  "kind": "dino3",
+  "observed_at": "2026-10-30T16:30:04.011817+08:00",
+  "code_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "python": "3.11.13 (main, Jun  5 2025, 13:12:00) [GCC 11.2.0]",
+  "torch": "2.7.1+cu126",
+  "feature_shape": [
+    1,
+    384,
+    32,
+    32
+  ],
+  "patch": 16,
+  "resources": {
+    "effective_cpu_cores": 192,
+    "cgroup_aware_memory_available_bytes": 2039122378752,
+    "max_loader_workers_per_gpu": 8
+  }
+}
