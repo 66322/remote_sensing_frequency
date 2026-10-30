@@ -1,0 +1,354 @@
+{
+  "date": "2026-10-30",
+  "release": "post_m2_multiroute_v2_20261030_r1",
+  "status": "IMPLEMENTED_LOCAL_CHECKED_TARGET_PENDING",
+  "user_instruction": "按照最新实验规划安排实验吧，注意之前说的资源优化，不要发生M2这样的代码与资源等待",
+  "scientific_plan": "docs/experiments/POST_M2_MULTIROUTE_PLAN_20261030.md",
+  "execution_document": "docs/experiments/POST_M2_MULTIROUTE_EXECUTION_20261030.md",
+  "jobs": [
+    {
+      "id": "B0",
+      "updates": 8000,
+      "seed": 42,
+      "supervision": "Full_512",
+      "dependencies": [],
+      "implementation": "scripts/post_m2_v2/model.py:Readout",
+      "state": "IMPLEMENTED_TARGET_PENDING"
+    },
+    {
+      "id": "B1",
+      "updates": 8000,
+      "seed": 42,
+      "supervision": "Full_512",
+      "dependencies": [],
+      "implementation": "scripts/post_m2_v2/model.py:Readout",
+      "state": "IMPLEMENTED_TARGET_PENDING"
+    },
+    {
+      "id": "G1",
+      "updates": 8000,
+      "seed": 42,
+      "supervision": "Full_512",
+      "dependencies": [
+        "B0",
+        "B1"
+      ],
+      "implementation": "scripts/post_m2_v2/model.py:Readout",
+      "state": "IMPLEMENTED_TARGET_PENDING"
+    },
+    {
+      "id": "G2",
+      "updates": 8000,
+      "seed": 42,
+      "supervision": "Full_512",
+      "dependencies": [
+        "G1"
+      ],
+      "implementation": "scripts/post_m2_v2/model.py:Readout",
+      "state": "IMPLEMENTED_TARGET_PENDING"
+    },
+    {
+      "id": "G3",
+      "updates": 8000,
+      "seed": 42,
+      "supervision": "Full_512",
+      "dependencies": [
+        "G1"
+      ],
+      "implementation": "scripts/post_m2_v2/model.py:Readout",
+      "state": "IMPLEMENTED_TARGET_PENDING"
+    },
+    {
+      "id": "Q1",
+      "updates": 8000,
+      "seed": 42,
+      "supervision": "Full_512",
+      "dependencies": [
+        "B0",
+        "B1"
+      ],
+      "implementation": "scripts/post_m2_v2/model.py:Readout",
+      "state": "IMPLEMENTED_TARGET_PENDING"
+    },
+    {
+      "id": "Q2",
+      "updates": 8000,
+      "seed": 42,
+      "supervision": "Full_512",
+      "dependencies": [
+        "Q1"
+      ],
+      "implementation": "scripts/post_m2_v2/model.py:Readout",
+      "state": "IMPLEMENTED_TARGET_PENDING"
+    },
+    {
+      "id": "Q3",
+      "updates": 8000,
+      "seed": 42,
+      "supervision": "Full_512",
+      "dependencies": [
+        "Q2"
+      ],
+      "implementation": "scripts/post_m2_v2/model.py:Readout",
+      "state": "IMPLEMENTED_TARGET_PENDING"
+    },
+    {
+      "id": "S1",
+      "updates": 8000,
+      "seed": 42,
+      "supervision": "Full_512",
+      "dependencies": [
+        "B0",
+        "B1"
+      ],
+      "implementation": "scripts/post_m2_v2/model.py:Readout",
+      "state": "IMPLEMENTED_TARGET_PENDING"
+    },
+    {
+      "id": "S2",
+      "updates": 8000,
+      "seed": 42,
+      "supervision": "Full_512",
+      "dependencies": [
+        "S1"
+      ],
+      "implementation": "scripts/post_m2_v2/model.py:Readout",
+      "state": "IMPLEMENTED_TARGET_PENDING"
+    },
+    {
+      "id": "S3",
+      "updates": 8000,
+      "seed": 42,
+      "supervision": "Full_512",
+      "dependencies": [
+        "S1"
+      ],
+      "implementation": "scripts/post_m2_v2/model.py:Readout",
+      "state": "IMPLEMENTED_TARGET_PENDING"
+    },
+    {
+      "id": "A0_DINO2_LINEAR",
+      "updates": 2000,
+      "seed": 42,
+      "supervision": "NoBoundary_128",
+      "implementation_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+      "state": "EXISTING_CODE_NO_FORMAL_TRAINING_RECEIPT",
+      "dependencies": [
+        "original_two_model_readiness_and_pair_contract"
+      ]
+    },
+    {
+      "id": "A0_DINO3_LINEAR",
+      "updates": 2000,
+      "seed": 42,
+      "supervision": "NoBoundary_128",
+      "implementation_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+      "state": "EXISTING_CODE_NO_FORMAL_TRAINING_RECEIPT",
+      "dependencies": [
+        "original_two_model_readiness_and_pair_contract"
+      ]
+    },
+    {
+      "id": "A_DINO2_SPATIAL",
+      "updates": 2000,
+      "seed": 42,
+      "supervision": "NoBoundary_128",
+      "implementation": "scripts/post_m2_v2/spatial.py",
+      "state": "IMPLEMENTED_TARGET_PENDING",
+      "dependencies": [
+        "original_A0_pair_training_complete",
+        "both_original_model_profiles",
+        "own_spatial_profile",
+        "two_GPUs_free"
+      ]
+    },
+    {
+      "id": "A_DINO3_SPATIAL",
+      "updates": 2000,
+      "seed": 42,
+      "supervision": "NoBoundary_128",
+      "implementation": "scripts/post_m2_v2/spatial.py",
+      "state": "IMPLEMENTED_TARGET_PENDING",
+      "dependencies": [
+        "original_A0_pair_training_complete",
+        "both_original_model_profiles",
+        "own_spatial_profile",
+        "two_GPUs_free"
+      ]
+    }
+  ],
+  "config": {
+    "version": 1,
+    "seed": 42,
+    "updates": 8000,
+    "batch": 16,
+    "crop": 512,
+    "stride": 256,
+    "border": 512,
+    "lr": 0.0003,
+    "weight_decay": 0.01,
+    "adam_betas": [
+      0.9,
+      0.999
+    ],
+    "clip_norm": 5.0,
+    "precision": "bfloat16_autocast_float32_parameters",
+    "supervision": "Full_512",
+    "loss": "six_class_unweighted_CE_global_valid_pixel_mean",
+    "gsd_m": 0.05,
+    "boundary_tolerance_px": 4,
+    "boundary_tolerance_m": 0.2,
+    "calibration_steps": [
+      4000,
+      8000
+    ],
+    "blur_sigma_px": 2.0,
+    "dsm_shift_px": [
+      16,
+      0
+    ],
+    "evaluation_damage_side": 0.5,
+    "geometry_grid": 64,
+    "geometry_kernel": 5,
+    "geometry_temperature": 0.1,
+    "mismatch_roll_grid_px": [
+      17,
+      23
+    ],
+    "eval_batch": 16,
+    "profile_candidates": [
+      [
+        0,
+        16
+      ],
+      [
+        4,
+        16
+      ],
+      [
+        8,
+        16
+      ],
+      [
+        4,
+        8
+      ]
+    ],
+    "profile_warmup": 6,
+    "profile_measured": 24,
+    "profile_timeout_seconds": 600,
+    "slowdown_factor": 2.5,
+    "baseline_min_clean_fg5": 50.0,
+    "threads": 1,
+    "counter_threads": 6,
+    "worker_prefetch": 2,
+    "max_resident_tile_bytes": 12884901888,
+    "gpu_min_free_mib": 40000,
+    "task_timeout_hours": 24,
+    "heartbeat_timeout_seconds": 1200
+  },
+  "main_queue_ready_order": [
+    "B0",
+    "B1",
+    "Q1",
+    "S1",
+    "Q2",
+    "G1",
+    "Q3",
+    "S2",
+    "S3",
+    "G2",
+    "G3"
+  ],
+  "profiles": [
+    "B0",
+    "B1",
+    "G1",
+    "G2",
+    "Q2",
+    "S1",
+    "S2"
+  ],
+  "seed_count": 1,
+  "total_jobs": 15,
+  "total_updates": 96000,
+  "main_pipeline_jobs": 11,
+  "main_pipeline_updates": 88000,
+  "original_a0_updates": 4000,
+  "new_a_spatial_updates": 4000,
+  "maximum_new_main_profile_disposable_updates": 840,
+  "maximum_new_spatial_profile_disposable_updates": 240,
+  "evaluation": {
+    "full_calibration_cases": 220,
+    "full_selected_outer_cases": 220,
+    "full_final_extra_cases": [
+      0,
+      220
+    ],
+    "a_all_probe_max_cases": 24
+  },
+  "source_parent": "d28a82f8fd13ded126a3502e5e977c4815fc57d3",
+  "a0_source_unchanged": "c22a046407daf42064cbb161429f2648c9b86d66",
+  "server_actions_this_session": 0,
+  "server_new_updates_received": 0,
+  "last_server_receipt": "2026-10-29 20:18:55 Asia/Shanghai",
+  "target_environment": {
+    "conda": "remote_sensing",
+    "python": "3.11.13",
+    "torch": "2.7.1+cu126",
+    "new_environment": false,
+    "new_installs": false
+  },
+  "wall_time": "PENDING_REAL_PROFILE",
+  "new_external_downloads": [
+    "small_frozen_source_payload_only"
+  ],
+  "public_dino2_inputs": "reuse_server_existing_binding",
+  "dino3_state": "READINESS_RECEIPTS_ABSENT_ONLY_A_BRANCH_AFFECTED",
+  "resources": {
+    "physical_gpus": [
+      0,
+      1
+    ],
+    "processes_per_gpu": 1,
+    "persistent_encoder_and_fit_tiles": true,
+    "count_prediction_inflight_cap": 2,
+    "worker_candidates": [
+      0,
+      4,
+      8
+    ],
+    "micro_candidates": [
+      16,
+      8
+    ],
+    "effective_batch": 16
+  },
+  "stopping": {
+    "common_first_failure": "stop_dispatch_and_owned_workers_keep_original_stack",
+    "automatic_retry": false,
+    "source_hot_patch": false,
+    "resource_slowdown_factor": 2.5,
+    "data_wait_gate": ">50ms and >half fastest measured step",
+    "invalid_baseline": "blocks_all_descendants",
+    "invalid_route_control": "blocks_own_descendants"
+  },
+  "deferred_routes": [
+    "C",
+    "P",
+    "E",
+    "F",
+    "S-frequency",
+    "A1",
+    "A2"
+  ],
+  "sealed_splits_opened": false,
+  "evidence_levels": {
+    "local": "CPU_model_contract_checks",
+    "target_linux": "PENDING",
+    "target_weights": "PENDING",
+    "target_cuda": "PENDING",
+    "target_throughput": "PENDING",
+    "formal_training": "NOT_OBSERVED"
+  }
+}
