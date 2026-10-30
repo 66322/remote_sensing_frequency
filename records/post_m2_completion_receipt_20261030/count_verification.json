@@ -1,0 +1,37 @@
+{
+  "spatial_counts": {
+    "calibration": {
+      "dino2": {
+        "nb_fg5_miou": 75.27881927684344,
+        "max_iou_error": 0,
+        "support_match": true,
+        "valid_pixels_match": true
+      },
+      "dino3": {
+        "nb_fg5_miou": 73.95890805883192,
+        "max_iou_error": 0,
+        "support_match": true,
+        "valid_pixels_match": true
+      }
+    },
+    "outer": {
+      "dino2": {
+        "nb_fg5_miou": 73.70430587950725,
+        "max_iou_error": 0,
+        "support_match": true,
+        "valid_pixels_match": true
+      },
+      "dino3": {
+        "nb_fg5_miou": 70.40686458587221,
+        "max_iou_error": 0,
+        "support_match": true,
+        "valid_pixels_match": true
+      }
+    }
+  },
+  "full_job_count": 11,
+  "full_updates": 88000,
+  "complete": true,
+  "blocked": [],
+  "evidence_scope": "user pasted server JSON excerpts; no independent server download of Full per-tile matrices"
+}

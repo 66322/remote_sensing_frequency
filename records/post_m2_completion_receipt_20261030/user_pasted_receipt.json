@@ -1,0 +1,573 @@
+{
+  "post_m2_multiroute_v2_20261030_r1": {
+    "publication/summary.json": {
+      "observed_at": "2026-10-30T20:06:07.867370+08:00",
+      "jobs_complete": 11,
+      "expected_jobs": 11,
+      "completed_receipt_updates": 88000,
+      "observed_updates_lower_bound": 88000,
+      "partial_jobs": {},
+      "exact_total_updates_known": true,
+      "gates": {
+        "G": {
+          "status": "SPECIFIC_IMPLEMENTATION_NOT_PASSED",
+          "candidate": "G2",
+          "control": "G1",
+          "primary_gain_pp": 0.3440087800120608,
+          "correspondence_or_time_control_gain_pp": -0.1985364338369635,
+          "clean_delta_pp": 0.3084202471296038,
+          "worst_tile_delta_pp": -1.220792847779947,
+          "healthy_delta_pp": 0.21133152733219163,
+          "protection_passed": false,
+          "thresholds": {
+            "primary_gain_pp": 0.5,
+            "clean_floor_pp": -0.2,
+            "worst_tile_floor_pp": -0.5,
+            "mechanism_gap": "strictly_positive"
+          },
+          "caveat": "development utility screening; no significance or general impossibility claim"
+        },
+        "Q": {
+          "status": "SPECIFIC_IMPLEMENTATION_NOT_PASSED",
+          "candidate": "Q2",
+          "control": "Q1",
+          "primary_gain_pp": -0.0832398303464501,
+          "correspondence_or_time_control_gain_pp": -0.3269696259399666,
+          "clean_delta_pp": -0.08467659891012147,
+          "worst_tile_delta_pp": -0.28068732912364425,
+          "healthy_delta_pp": -0.08870892779057726,
+          "protection_passed": true,
+          "thresholds": {
+            "primary_gain_pp": 0.5,
+            "clean_floor_pp": -0.2,
+            "worst_tile_floor_pp": -0.5,
+            "mechanism_gap": "strictly_positive"
+          },
+          "caveat": "development utility screening; no significance or general impossibility claim"
+        },
+        "S": {
+          "status": "SPECIFIC_IMPLEMENTATION_NOT_PASSED",
+          "candidate": "S2",
+          "control": "S1",
+          "primary_gain_pp": 0.37783108918611674,
+          "correspondence_or_time_control_gain_pp": 2.099150036135427,
+          "clean_delta_pp": 0.19648611981313024,
+          "worst_tile_delta_pp": 0.06741111413069234,
+          "healthy_delta_pp": 0.19648611981313024,
+          "protection_passed": true,
+          "thresholds": {
+            "primary_gain_pp": 0.5,
+            "clean_floor_pp": -0.2,
+            "worst_tile_floor_pp": -0.5,
+            "mechanism_gap": "strictly_positive"
+          },
+          "caveat": "development utility screening; no significance or general impossibility claim"
+        }
+      },
+      "evidence_scope": "Potsdam F0 reused development; sealed datasets closed",
+      "status": "FULL_GROUPS_AVAILABLE"
+    },
+    "publication/gates.json": {
+      "G": {
+        "status": "SPECIFIC_IMPLEMENTATION_NOT_PASSED",
+        "candidate": "G2",
+        "control": "G1",
+        "primary_gain_pp": 0.3440087800120608,
+        "correspondence_or_time_control_gain_pp": -0.1985364338369635,
+        "clean_delta_pp": 0.3084202471296038,
+        "worst_tile_delta_pp": -1.220792847779947,
+        "healthy_delta_pp": 0.21133152733219163,
+        "protection_passed": false,
+        "thresholds": {
+          "primary_gain_pp": 0.5,
+          "clean_floor_pp": -0.2,
+          "worst_tile_floor_pp": -0.5,
+          "mechanism_gap": "strictly_positive"
+        },
+        "caveat": "development utility screening; no significance or general impossibility claim"
+      },
+      "Q": {
+        "status": "SPECIFIC_IMPLEMENTATION_NOT_PASSED",
+        "candidate": "Q2",
+        "control": "Q1",
+        "primary_gain_pp": -0.0832398303464501,
+        "correspondence_or_time_control_gain_pp": -0.3269696259399666,
+        "clean_delta_pp": -0.08467659891012147,
+        "worst_tile_delta_pp": -0.28068732912364425,
+        "healthy_delta_pp": -0.08870892779057726,
+        "protection_passed": true,
+        "thresholds": {
+          "primary_gain_pp": 0.5,
+          "clean_floor_pp": -0.2,
+          "worst_tile_floor_pp": -0.5,
+          "mechanism_gap": "strictly_positive"
+        },
+        "caveat": "development utility screening; no significance or general impossibility claim"
+      },
+      "S": {
+        "status": "SPECIFIC_IMPLEMENTATION_NOT_PASSED",
+        "candidate": "S2",
+        "control": "S1",
+        "primary_gain_pp": 0.37783108918611674,
+        "correspondence_or_time_control_gain_pp": 2.099150036135427,
+        "clean_delta_pp": 0.19648611981313024,
+        "worst_tile_delta_pp": 0.06741111413069234,
+        "healthy_delta_pp": 0.19648611981313024,
+        "protection_passed": true,
+        "thresholds": {
+          "primary_gain_pp": 0.5,
+          "clean_floor_pp": -0.2,
+          "worst_tile_floor_pp": -0.5,
+          "mechanism_gap": "strictly_positive"
+        },
+        "caveat": "development utility screening; no significance or general impossibility claim"
+      }
+    },
+    "train_complete": {
+      "status": "COMPLETE",
+      "blocked": [],
+      "observed_at": "2026-10-30T20:06:07.366023+08:00",
+      "jobs": {
+        "B0": {
+          "status": "COMPLETE",
+          "updates": 8000
+        },
+        "B1": {
+          "status": "COMPLETE",
+          "updates": 8000
+        },
+        "Q1": {
+          "status": "COMPLETE",
+          "updates": 8000
+        },
+        "S1": {
+          "status": "COMPLETE",
+          "updates": 8000
+        },
+        "Q2": {
+          "status": "COMPLETE",
+          "updates": 8000
+        },
+        "G1": {
+          "status": "COMPLETE",
+          "updates": 8000
+        },
+        "Q3": {
+          "status": "COMPLETE",
+          "updates": 8000
+        },
+        "S2": {
+          "status": "COMPLETE",
+          "updates": 8000
+        },
+        "S3": {
+          "status": "COMPLETE",
+          "updates": 8000
+        },
+        "G2": {
+          "status": "COMPLETE",
+          "updates": 8000
+        },
+        "G3": {
+          "status": "COMPLETE",
+          "updates": 8000
+        }
+      }
+    }
+  },
+  "post_m2_a_spatial_followup_20261030_r1": {
+    "publication/summary.json": {
+      "observed_at": "2026-10-30T20:39:39.419080+08:00",
+      "scope": "A spatial readout, original F0 NB128; not Full512",
+      "status": "SPATIAL_PAIR_ALL_PHASES_COMPLETE",
+      "seed": 42,
+      "original_a0_run": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030",
+      "matched_spatial_parameters_each": 19254,
+      "completed_receipt_updates": 4000,
+      "partial_jobs": {},
+      "exact_total_updates_known": true,
+      "panels": {
+        "calibration": {
+          "dino2": {
+            "cm": [
+              [
+                12601037,
+                317473,
+                650621,
+                156979,
+                78327,
+                336559
+              ],
+              [
+                301056,
+                11235107,
+                128429,
+                32847,
+                1244,
+                70690
+              ],
+              [
+                566147,
+                179257,
+                7314757,
+                233015,
+                3182,
+                30807
+              ],
+              [
+                323129,
+                41828,
+                991853,
+                5078121,
+                85880,
+                11915
+              ],
+              [
+                48454,
+                7396,
+                440,
+                2685,
+                737842,
+                1109
+              ],
+              [
+                1075313,
+                169100,
+                1280086,
+                104637,
+                35414,
+                1723328
+              ]
+            ],
+            "iou": [
+              0.7657833029830579,
+              0.8999297284528958,
+              0.6428524473234567,
+              0.7189863807855398,
+              0.7363891042972216,
+              0.3561361764247592
+            ],
+            "nb_fg5_miou": 75.27881927684344,
+            "support": [
+              14140996,
+              11769373,
+              8327165,
+              6532726,
+              797926,
+              4387878
+            ],
+            "valid_pixels": 45956064
+          },
+          "dino3": {
+            "cm": [
+              [
+                12658464,
+                285758,
+                610838,
+                133260,
+                106813,
+                345863
+              ],
+              [
+                293760,
+                11305203,
+                101951,
+                17259,
+                1638,
+                49562
+              ],
+              [
+                834840,
+                147879,
+                7016625,
+                303864,
+                4141,
+                19816
+              ],
+              [
+                375333,
+                46844,
+                879159,
+                5160458,
+                51304,
+                19628
+              ],
+              [
+                118109,
+                3463,
+                1273,
+                4079,
+                669182,
+                1820
+              ],
+              [
+                1223445,
+                49217,
+                1177432,
+                69763,
+                35904,
+                1832117
+              ]
+            ],
+            "iou": [
+              0.7452080574890046,
+              0.9189328800066718,
+              0.6322526644426859,
+              0.7308446128573899,
+              0.6707071881458436,
+              0.379747446765689
+            ],
+            "nb_fg5_miou": 73.95890805883192,
+            "support": [
+              14140996,
+              11769373,
+              8327165,
+              6532726,
+              797926,
+              4387878
+            ],
+            "valid_pixels": 45956064
+          }
+        },
+        "outer": {
+          "dino2": {
+            "cm": [
+              [
+                14107787,
+                655371,
+                1487959,
+                239358,
+                53483,
+                132135
+              ],
+              [
+                546012,
+                25541946,
+                336147,
+                132598,
+                3602,
+                74973
+              ],
+              [
+                1898154,
+                986784,
+                24506433,
+                1674851,
+                6607,
+                164235
+              ],
+              [
+                427301,
+                89037,
+                3511136,
+                11047158,
+                59319,
+                31505
+              ],
+              [
+                95679,
+                25441,
+                4564,
+                9402,
+                945521,
+                11876
+              ],
+              [
+                442344,
+                503039,
+                699781,
+                112178,
+                17479,
+                966048
+              ]
+            ],
+            "iou": [
+              0.7023837445992979,
+              0.8839588232545825,
+              0.6946927303274906,
+              0.6373172988817309,
+              0.7668626969122601,
+              0.30613833913308847
+            ],
+            "nb_fg5_miou": 73.70430587950725,
+            "support": [
+              16676093,
+              26635278,
+              29237064,
+              15165456,
+              1092483,
+              2740869
+            ],
+            "valid_pixels": 91547243
+          },
+          "dino3": {
+            "cm": [
+              [
+                14709047,
+                429737,
+                1193941,
+                183506,
+                55190,
+                104672
+              ],
+              [
+                805686,
+                25275739,
+                381457,
+                115879,
+                5053,
+                51464
+              ],
+              [
+                3182934,
+                704212,
+                23176850,
+                2029716,
+                7427,
+                135925
+              ],
+              [
+                638949,
+                73384,
+                2871940,
+                11527387,
+                40145,
+                13651
+              ],
+              [
+                269357,
+                10358,
+                11506,
+                13295,
+                777818,
+                10149
+              ],
+              [
+                812403,
+                329693,
+                605870,
+                133900,
+                20158,
+                838845
+              ]
+            ],
+            "iou": [
+              0.6570815149252045,
+              0.896854207739496,
+              0.6756748877565472,
+              0.6534150916530286,
+              0.6373175272193344,
+              0.2744256116830731
+            ],
+            "nb_fg5_miou": 70.40686458587221,
+            "support": [
+              16676093,
+              26635278,
+              29237064,
+              15165456,
+              1092483,
+              2740869
+            ],
+            "valid_pixels": 91547243
+          }
+        }
+      },
+      "endpoints": [
+        {
+          "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a_spatial_followup_20261030_r1/a_spatial/dino2/head_2000.pt",
+          "bytes": 80429,
+          "uploaded": false
+        },
+        {
+          "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a_spatial_followup_20261030_r1/a_spatial/dino3/head_2000.pt",
+          "bytes": 80429,
+          "uploaded": false
+        }
+      ],
+      "registration": {
+        "status": "REGISTERED_NOT_TRAINING_PROOF",
+        "observed_at": "2026-10-30T20:37:48.762292+08:00",
+        "followup_commit": "5f2958ae8b7d3ac79901eb0261239d89e82b461e",
+        "payload_commit": "d15f34e8d53f935aa17542123c2227fab14cb810",
+        "original_a0_source": "c22a046407daf42064cbb161429f2648c9b86d66",
+        "original_a0_run": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030",
+        "predecessor": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_multiroute_v2_20261030_r1",
+        "predecessor_identity": null,
+        "dino3": {
+          "repo": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov3_6876159",
+          "weight": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/pretrained/dinov3/dinov3_vits16_pretrain_lvd1689m-08c60483.pth",
+          "repo_commit": "6876159a11b4df116f30f667f8c9888617df0751",
+          "weight_bytes": 86531063
+        },
+        "seed": 42,
+        "formal_jobs": 2,
+        "formal_updates_per_model": 2000,
+        "maximum_disposable_profile_updates": 8,
+        "loader_timeout_seconds": 30,
+        "existing_checks_reused": true,
+        "automatic_retry": false
+      }
+    },
+    "publication/gates.json": {
+      "status": "READY_SPATIAL_OUTER",
+      "dino3_minus_dino2_pp": -1.3199112180115122,
+      "rule": "both spatial heads learned and both inner fg5 >=50; independent of A0 linear positivity",
+      "observed_at": "2026-10-30T20:39:13.070347+08:00"
+    },
+    "handoff.json": {
+      "observed_at": "2026-10-30T20:37:49.255811+08:00",
+      "full_status": "COMPLETE",
+      "blocked_full_routes": [],
+      "gpu": {
+        "gpus": {
+          "0": [
+            "0",
+            "GPU-97a250ea-42ff-eb14-4ed5-8c50231e0baa",
+            "NVIDIA H100 80GB HBM3",
+            "81081",
+            "0"
+          ],
+          "1": [
+            "1",
+            "GPU-4b116760-e84c-2743-cee6-41cf76a01677",
+            "NVIDIA H100 80GB HBM3",
+            "81081",
+            "0"
+          ]
+        },
+        "compute_apps": "2470202, GPU-e1a1a2c7-ef25-1bd3-9b06-abc05a6fd165, 638\n2470203, GPU-c711616f-6f02-0d2a-e0fb-686602a0a157, 638\n2470204, GPU-9c9e83d0-bc0c-f6ce-e493-8cff9d29933f, 638\n2470205, GPU-e41f22dd-28af-29c2-ba44-5a10eb09d3a3, 638\n2470206, GPU-2c16ce01-e889-23da-385d-a864043eed00, 638\n2470207, GPU-27ddd129-ada7-af86-de6c-bdde3339413a, 638\n",
+        "observed_at": "2026-10-30T20:37:49.255768+08:00"
+      },
+      "full_upload_not_a_dependency": true
+    },
+    "resident_dino2.json": {
+      "observed_at": "2026-10-30T20:39:38.428527+08:00",
+      "phase": "outer",
+      "fit_cache_retained": false,
+      "model_loads": 1,
+      "fit_loads": 1,
+      "fit_cache_peak_bytes": 864000000
+    },
+    "resident_dino3.json": {
+      "observed_at": "2026-10-30T20:39:38.446874+08:00",
+      "phase": "outer",
+      "fit_cache_retained": false,
+      "model_loads": 1,
+      "fit_loads": 1,
+      "fit_cache_peak_bytes": 864000000
+    },
+    "workers_released.json": {
+      "observed_at": "2026-10-30T20:39:39.410023+08:00",
+      "workers": {
+        "0": {
+          "pid": 2561246,
+          "returncode": -15
+        },
+        "1": {
+          "pid": 2561247,
+          "returncode": -15
+        }
+      }
+    }
+  }
+}

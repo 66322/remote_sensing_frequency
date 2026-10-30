@@ -1,24 +1,27 @@
-# 当前交接：Full原队列保持，空间读出改为自动接续（2026-10-30）
+# 当前交接：首批全部完成，按新回执复盘（2026-10-30）
 
-2026-10-30 20:41:08用户回执确认：两空间头已于20:39:39完成全部阶段，各2000步且learned=true；DINOv2/DINOv3训练循环约22.78/28.50秒。接续进程已退出，自动上传因EXISTING_AUTH_UNAVAILABLE待补传，no_recompute=true。当前只读汇总现成Full和空间结果，不再执行任何start/bootstrap/repair。Full正常收尾及释放GPU可由接续成功推断，但11项是否全合格仍待其完成摘要；空间校准/outer分数尚未收到。按[NEXT](NEXT_EXPERIMENT.md)只读汇总现成结果；Full本身继续只读跟进，不再运行旧bootstrap、A0 continuation或repair。助手无SSH，发布代码不是服务器已执行。
+先读[研究决定](RESEARCH_DECISION.md)、[状态](PROJECT_STATUS.md)、[下一步](NEXT_EXPERIMENT.md)、[阶段复盘](../experiments/POST_M2_FIRST_WAVE_COMPLETION_REVIEW_20261030.md)。前版进度归档见[历史](../history/HANDOFF_BEFORE_COMPLETION_RECEIPT_20261030.md)。
 
-## 最后真实进度及绑定
+## 决定、角色与下一不确定性
 
-- ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro。物理GPU0/1两张H100；不触碰GPU2–7或未知进程。
-- 原A0 run：records/post_m2_a0_ipcfix_20261030；科学c22a046407daf42064cbb161429f2648c9b86d66、IPC执行修复d15f34e8d53f935aa17542123c2227fab14cb810。19:01两边各2k及全部评价完成。内校准+1.6257pp、outer开发−0.6527pp，[完整结果](../experiments/POST_M2_A0_RESULTS_AND_REVIEW_20261030.md)。原校准READY保留，A1/A2仍未入队，空间2×2保留。
-- 旧A0 records/post_m2_a0_capability_20261029的长AF_UNIX目录故障已处理：确认归属16个进程全部停止，SIGKILL列表空、剩余列表空；失败原件未改。未观察到成功旧更新不等于精确零更新。不再启动旧入口。
-- Full code：execution/post_m2_multiroute_v2_20261030_r1，冻结d15；run：records/post_m2_multiroute_v2_20261030_r1，入口最后PID2517098。禁止热改/重启，不能因终端在pointcept环境就换包或改当前进程。
-- 最后实际回执2026-10-30 19:38:20+08：GPU0/PID2518876 Q2/3000；GPU1/PID2518877 G1/1100。两100步窗口约2.238/2.954秒，数据等待0.149/0.159ms、占步时<1%，只代表这两窗口。[原始观察](../../records/post_m2_multiroute_v2_20261030_r1/progress_observations/20261030T193820/observation.json)。
-- B0/B1/Q1/S1已返回8k训练循环；至少36,100次Full优化为源码/调度下界，S1资格及完整外层分数尚未收到。余Q3/G2/G3/S2/S3由现有控制器按真实前置合格派发或阻断，不能保证全都执行。
+用户指出已具体安排且两卡停止，要求按GitHub核对。本轮读取最新头870ecff并结合完整粘贴回执，修正过期的“尚未实施/分数待收”判断。主线未切换，当前为第一轮完成后的诊断阶段。G/Q具体实现收缩；S正确对应有弱正线索但未过门槛，不能写成已成立贡献。A未验证整体DINOv3稳定优势。未采纳自动重跑、扩seed、直接组合或倒改门槛。
 
-## 新接续入口
+下一步只读接收Full逐tile/边界计数、端点/学习轨迹及空间逐tile，解释S/G/Q机制和类别差异；不再启动任何首批入口，不因上传缺认证重算。
 
-代码固定提交5f2958ae8b7d3ac79901eb0261239d89e82b461e；[发布回执](../../records/post_m2_a_spatial_followup_20261030_release/publication_receipt.json)，[执行说明](../experiments/POST_M2_A_SPATIAL_FOLLOWUP_20261030.md)。新run为records/post_m2_a_spatial_followup_20261030_r1，与Full独立，原DINOv3路径从修复A0的train_started来源读取，不靠当前shell变量。
+## 最后完成回执
 
-一次start后台注册。等待Full正常train_complete、原controller锁释放及GPU0/1空闲，不等GitHub上传。等待只用CPU/小回执，不占GPU。使用已有remote_sensing绝对Python。新常驻双进程复用骨干和拟合数组，训练结束释放拟合数组，再校准→原screen→条件outer。各2k/seed42，只有新空间头各4步粗测；不重复原A0、原骨干profile、模型下载或权重哈希。
+ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro。
+- Full run records/post_m2_multiroute_v2_20261030_r1，冻结d15f34e8d53f935aa17542123c2227fab14cb810；20:06:07+08，11×8k完成，blocked/partial空，共88k。
+- 空间run records/post_m2_a_spatial_followup_20261030_r1，执行5f2958ae8b7d3ac79901eb0261239d89e82b461e；20:39:39+08两头各2k及全部阶段完成；resident两模型各加载一次、训练缓存已释放，worker release返回−15与完成后回收一致。
+- 原A0 run records/post_m2_a0_ipcfix_20261030，科学c22、IPC执行d15，两线性头各2k及完整评价已验。
+- 合计15项/96k正式更新；profile另计。最后GPU空闲快照20:37:49，后有空间工作和20:39:39释放；不能写为实时资源盘点。
 
-Full工程失败/无正常回执退出、已有旧空间尝试或未知进程占GPU时不派发；本入口失败不自动重试，只停止自身拥有的进程组。科学资格INVALID保存，不能说一般机制无效。新程序已有目标两空间头各2000步及全部阶段完成回执；原始计数和缓存复用回执待接收。
+## 已收科学结果与验收边界
 
-GPU先释放，再导出压缩小证据与summary/gates并沿已有认证上传；失败只续传，不重算。两空间端点只列路径/大小并保留服务器。C/P/E/F、A1/A2、频率仍未排队，seed预算96k不扩。Val2/Test6/held4/final封存。
+Full G主差+0.3440pp、最差tile−1.2208pp且不胜错配；Q主差−0.0832pp且不胜时序控制；S边界F1+0.3778pp、对应差+2.0992pp、clean mIoU+0.1965pp。三组SPECIFIC_IMPLEMENTATION_NOT_PASSED，不扩大为问题不成立。
 
-M2清理仍暂缓，最后确认18端点、无最终成功删除回执；J工程停止，均不重启。跨电脑以本分支为准，不因换电脑重验已通过绑定。当前文档更正前版本存[历史目录](../history/20261030_before_a_spatial_followup/)。
+空间NB128内D2/D3=75.2788/73.9589，外=73.7043/70.4069；四pooled 6×6矩阵、support和总像素重算相符。原线性内READY、空间READY_SPATIAL_OUTER资格均保留。Full512分数与A组NB128不混比。
+
+来源为[用户粘贴转录](../../records/post_m2_completion_receipt_20261030/user_pasted_receipt.json)；助手没有SSH。Full逐tile/边界原件和空间逐tile尚未接收，不能称全部原始科学计数独立验收。小转录同步GitHub不代表服务器全量归档已上传。两空间端点head_2000.pt各80429 bytes仍在服务器，未上传；本次不删除。
+
+A1/A2、C/P/E/F、频率仍未入队，默认42未扩种子。Val2/Test6/held4/final关闭。M2最终清理仍暂缓、最后18端点，J工程停止；本次均不重启或恢复。GitHub为两电脑权威，后续按新current接续。
