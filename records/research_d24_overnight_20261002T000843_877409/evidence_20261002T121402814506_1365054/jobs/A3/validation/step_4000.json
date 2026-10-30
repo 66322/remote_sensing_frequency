@@ -1,0 +1,474 @@
+{
+  "signature": {
+    "training": {
+      "job": {
+        "id": "A3",
+        "route": "A",
+        "name": "last4_Pair",
+        "last4": true,
+        "objective": "CE+clean_R0_anchored_pair",
+        "augmentation": "QD",
+        "control": "A2",
+        "gpu": 0,
+        "priority": 3,
+        "seed": 42,
+        "optimizer_steps": 4000,
+        "entrypoint": "scripts/run_rebuild_v1_d24.py",
+        "status": "code_ready_not_launched"
+      },
+      "plan_sha256": "30815aaf0bf536a8cc19a298d2f3705c54f6494efb4c58a4f29b1b90a7e78936",
+      "sources": {
+        "model/rebuild_v1_night_screen.py": "95ba4785eaeb7e0c0009ade5328de6d11b4f137e9df34e95b2793efc0ce8a6d6",
+        "model/rebuild_v1_d21_detail.py": "6a3dad4e37d3f572f93f4d2b906287f4964fd6842f75b2691b6cdfe0967339ae",
+        "model/rebuild_v1_d24.py": "8e79e6c933a3298ec0305cf96d2be85dbc386de4d1a117af205f341f95557c1b",
+        "scripts/d23_engine.py": "a4e496ffa63130dd1e3c1a48e50ba66185e66d06aef43815c077e5b61eba385c",
+        "scripts/d23_lifecycle.py": "8747c16efb2eed2d6acb6f30bfc5ae09a6ac0f9034686692094189bd56a30090",
+        "scripts/d24_common.py": "3381d3143332a5cdafa2cc1f119a4d8c630c92fc30d3d6940c0842ac567fc8eb",
+        "scripts/d24_data.py": "a92f254fb4f0f37b2d9b0b6e47771b3e4d9511b3faf9b4343ff0977bca204761",
+        "scripts/d24_objectives.py": "b541b3094ae9cd4170178d8fcc21c4e13be7124a58ca3b530f1a9316a4081473",
+        "scripts/d24_evaluation.py": "f06de9d3ab80146953b0ca5c480088c9980ae87f9b968ea87ef13056f8e3d824",
+        "scripts/run_rebuild_v1_d24.py": "469f7c1cef545c76f10eb71b7bd33ef981dd575dfac710d518dfbbd790979be7",
+        "scripts/launch_rebuild_v1_d24.py": "68733afee1fb0101fa948db10a3009453aeae1d43b555b730108073e115d2528",
+        "scripts/status_rebuild_v1_d24.py": "85eb9b275cb9e3bcdfac2d0c748dd1c8b6162cccbde58b23403850ca66bcdb47",
+        "scripts/summarize_rebuild_v1_d24.py": "7cb4933d600caeab96dd240469cf75428551eb448be1c0061d91db9c503e8e2c",
+        "scripts/upload_rebuild_v1_d24_records.py": "22815591637bb90f72e9ba0b443abf850bdb3fd95621fbd580d4f9dd32acb881",
+        "tests/test_d24.py": "ef97e55a6c1a3dda86174adc0e3d928e2f8ef19fc4fbc405be225a098aa8f0c8",
+        "records/research_d24_overnight_plan_20261001/plan.json": "0743db0279cf5e46d7d74246833390a05829d7e530f5ab95bca735e15660c970",
+        "records/research_d24_overnight_plan_20261001/jobs.csv": "1bd12f6380964e66603b54a923b7de0cccb2eab956198d95f66389ea60e02015"
+      },
+      "execution_commit": "cf1955d966163978b5c8af433f3845b5ca05da9e",
+      "anchors": {
+        "R0": {
+          "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/D21_potsdam_R0_seed42_16000_20260928/last_train_state.pth",
+          "sha256": "29aa15f4cd149012996ddeadd7a5b40f593f99854318acd1d0d0acb286ed5975",
+          "step": 16000
+        },
+        "M0": {
+          "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/D21_potsdam_M0_seed42_16000_20260928/last_train_state.pth",
+          "sha256": "23b2939ea50867c96c0a17626fd4a85a27100ebd8296b2fc96440ed8bc3d34de",
+          "step": 16000
+        }
+      },
+      "torch_version": "2.2.2+cu121",
+      "base_config_sha256": "07dd4b7f224d2e036024dfb2ab57bac9fe312335a5eebb8173778cd5c11de133",
+      "dino_config_sha256": "cb1c398acac6c9892aeee65bc5f331375a2395c0233654d7a3fc6ee58329ef0f",
+      "dino_commit": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+      "split_sha256": "d9fe260f6b1be3807811e454c1673d1e69db235c32d4dea207e8724975e210ab",
+      "input_manifest_sha256": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295",
+      "physical_batch": 16,
+      "gradient_accumulation": false,
+      "train_precision": "bf16",
+      "eval_precision": "fp32_tf32",
+      "validation_batch": 8,
+      "checkpoint_selection": "best_clean_Val2_NoBoundary_fg5",
+      "test6_loaded": false,
+      "independent_final_loaded": false
+    },
+    "checkpoint_sha256": "9f517c392bd5f816d0c80d1d954777ec031a9176e42f8079d69fa9feaf76dfaa",
+    "step": 4000
+  },
+  "step": 4000,
+  "tiles": {
+    "3_11": {
+      "cm": [
+        [
+          8497853,
+          104832,
+          171677,
+          57094,
+          5198,
+          25832
+        ],
+        [
+          32524,
+          6114825,
+          6077,
+          9162,
+          1725,
+          6209
+        ],
+        [
+          364716,
+          36619,
+          10197247,
+          359430,
+          873,
+          16080
+        ],
+        [
+          124729,
+          15897,
+          633317,
+          5139075,
+          7391,
+          7835
+        ],
+        [
+          6386,
+          0,
+          170,
+          3396,
+          300589,
+          0
+        ],
+        [
+          223063,
+          622090,
+          72742,
+          5971,
+          3536,
+          323862
+        ]
+      ],
+      "support": [
+        8862486,
+        6170522,
+        10974965,
+        5928244,
+        310541,
+        1251264
+      ],
+      "TP": [
+        8497853,
+        6114825,
+        10197247,
+        5139075,
+        300589,
+        323862
+      ],
+      "FP": [
+        751418,
+        779438,
+        883983,
+        435053,
+        18723,
+        55956
+      ],
+      "FN": [
+        364633,
+        55697,
+        777718,
+        789169,
+        9952,
+        927402
+      ],
+      "mIoU_fg5": 0.8688301037881441,
+      "mIoU_6": 0.7653165293995002,
+      "all": {
+        "valid": 33498022,
+        "harm": 150649,
+        "rescue": 423135
+      },
+      "available": {
+        "valid": 33498022,
+        "harm": 150649,
+        "rescue": 423135
+      },
+      "missing": {
+        "valid": 0,
+        "harm": 0,
+        "rescue": 0
+      },
+      "by_class": {
+        "0": {
+          "valid": 8862486,
+          "harm": 31280,
+          "rescue": 58309
+        },
+        "1": {
+          "valid": 6170522,
+          "harm": 9191,
+          "rescue": 24877
+        },
+        "2": {
+          "valid": 10974965,
+          "harm": 53145,
+          "rescue": 91533
+        },
+        "3": {
+          "valid": 5928244,
+          "harm": 54144,
+          "rescue": 32686
+        },
+        "4": {
+          "valid": 310541,
+          "harm": 250,
+          "rescue": 3763
+        },
+        "5": {
+          "valid": 1251264,
+          "harm": 2639,
+          "rescue": 211967
+        }
+      }
+    },
+    "5_10": {
+      "cm": [
+        [
+          8637195,
+          73736,
+          224073,
+          33140,
+          3173,
+          103748
+        ],
+        [
+          86882,
+          7648461,
+          95860,
+          28303,
+          570,
+          16178
+        ],
+        [
+          163307,
+          88686,
+          7201007,
+          299753,
+          265,
+          130150
+        ],
+        [
+          235751,
+          37425,
+          924716,
+          6045761,
+          13704,
+          38293
+        ],
+        [
+          3339,
+          0,
+          0,
+          902,
+          280765,
+          0
+        ],
+        [
+          91911,
+          61851,
+          142120,
+          16908,
+          1587,
+          745734
+        ]
+      ],
+      "support": [
+        9075065,
+        7876254,
+        7883168,
+        7295650,
+        285006,
+        1060111
+      ],
+      "TP": [
+        8637195,
+        7648461,
+        7201007,
+        6045761,
+        280765,
+        745734
+      ],
+      "FP": [
+        581190,
+        261698,
+        1386769,
+        379006,
+        19299,
+        288369
+      ],
+      "FN": [
+        437870,
+        227793,
+        682161,
+        1249889,
+        4241,
+        314377
+      ],
+      "mIoU_fg5": 0.8643060239877431,
+      "mIoU_6": 0.8124247221729849,
+      "all": {
+        "valid": 33475254,
+        "harm": 198949,
+        "rescue": 374083
+      },
+      "available": {
+        "valid": 33475254,
+        "harm": 198949,
+        "rescue": 374083
+      },
+      "missing": {
+        "valid": 0,
+        "harm": 0,
+        "rescue": 0
+      },
+      "by_class": {
+        "0": {
+          "valid": 9075065,
+          "harm": 30195,
+          "rescue": 83537
+        },
+        "1": {
+          "valid": 7876254,
+          "harm": 15247,
+          "rescue": 34773
+        },
+        "2": {
+          "valid": 7883168,
+          "harm": 55201,
+          "rescue": 109041
+        },
+        "3": {
+          "valid": 7295650,
+          "harm": 95105,
+          "rescue": 103354
+        },
+        "4": {
+          "valid": 285006,
+          "harm": 103,
+          "rescue": 1744
+        },
+        "5": {
+          "valid": 1060111,
+          "harm": 3098,
+          "rescue": 41634
+        }
+      }
+    }
+  },
+  "pooled": {
+    "cm": [
+      [
+        17135048,
+        178568,
+        395750,
+        90234,
+        8371,
+        129580
+      ],
+      [
+        119406,
+        13763286,
+        101937,
+        37465,
+        2295,
+        22387
+      ],
+      [
+        528023,
+        125305,
+        17398254,
+        659183,
+        1138,
+        146230
+      ],
+      [
+        360480,
+        53322,
+        1558033,
+        11184836,
+        21095,
+        46128
+      ],
+      [
+        9725,
+        0,
+        170,
+        4298,
+        581354,
+        0
+      ],
+      [
+        314974,
+        683941,
+        214862,
+        22879,
+        5123,
+        1069596
+      ]
+    ],
+    "support": [
+      17937551,
+      14046776,
+      18858133,
+      13223894,
+      595547,
+      2311375
+    ],
+    "TP": [
+      17135048,
+      13763286,
+      17398254,
+      11184836,
+      581354,
+      1069596
+    ],
+    "FP": [
+      1332608,
+      1041136,
+      2270752,
+      814059,
+      38022,
+      344325
+    ],
+    "FN": [
+      802503,
+      283490,
+      1459879,
+      2039058,
+      14193,
+      1241779
+    ],
+    "mIoU_fg5": 0.8678369412093521,
+    "mIoU_6": 0.7903232558803316,
+    "all": {
+      "valid": 66973276,
+      "harm": 349598,
+      "rescue": 797218
+    },
+    "available": {
+      "valid": 66973276,
+      "harm": 349598,
+      "rescue": 797218
+    },
+    "missing": {
+      "valid": 0,
+      "harm": 0,
+      "rescue": 0
+    },
+    "by_class": {
+      "0": {
+        "valid": 17937551,
+        "harm": 61475,
+        "rescue": 141846
+      },
+      "1": {
+        "valid": 14046776,
+        "harm": 24438,
+        "rescue": 59650
+      },
+      "2": {
+        "valid": 18858133,
+        "harm": 108346,
+        "rescue": 200574
+      },
+      "3": {
+        "valid": 13223894,
+        "harm": 149249,
+        "rescue": 136040
+      },
+      "4": {
+        "valid": 595547,
+        "harm": 353,
+        "rescue": 5507
+      },
+      "5": {
+        "valid": 2311375,
+        "harm": 5737,
+        "rescue": 253601
+      }
+    }
+  },
+  "observed_at": "2026-10-02T00:55:44.155818+08:00",
+  "test6_loaded": false
+}

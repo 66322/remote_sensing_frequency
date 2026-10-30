@@ -1,0 +1,25 @@
+{
+  "status": "CPU_PASS_READY_NOT_REGISTERED",
+  "date": "2026-10-07",
+  "tests": 17,
+  "test_seconds": 50.436,
+  "execution_python_files": 11,
+  "local_torch": "2.7.1+cpu",
+  "server_torch_required": "2.2.2+cu121",
+  "server_cpu_checks_before_registration": true,
+  "coverage": [
+    "matched nine full-base bindings/capacity/gradients",
+    "S1 four graphs equal diagnostic paths; full-missing/neither",
+    "region empty/masked donors; detached content; controls",
+    "original encoder optimizer LR prefixes",
+    "actual two-lane nine dispatch/failure/timeout/no retry",
+    "standalone completed-nine summary exit"
+  ],
+  "synthetic_only": true,
+  "real_gpu_run": false,
+  "source_cross_commit": "f60491fc1091eb7d272e081e821d9e6397aa9c82",
+  "initial_checkpoint_sha256": "28bc6f8ca5e1221392598b0a6f2d160e8c633a6a9cf63827067df3e7b81a144b",
+  "new_training_jobs": 9,
+  "total_steps": 72000,
+  "automatic_followup": false
+}

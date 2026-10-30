@@ -1,0 +1,158 @@
+{
+  "id": "POST_N5_CROSS_DIAGNOSTICS",
+  "created_at": "2026-10-06T23:55:26.456315+08:00",
+  "execution_commit": "d1ed1a42093c40c979509eac54ba730d89692c1b",
+  "data": {
+    "dataset": "Potsdam",
+    "input": "RGB plus existing per-tile normalized DSM",
+    "fit12": [
+      "2_12",
+      "2_10",
+      "7_8",
+      "3_12",
+      "5_12",
+      "7_9",
+      "6_9",
+      "7_7",
+      "4_12",
+      "6_8",
+      "6_12",
+      "6_7"
+    ],
+    "train_held4": [
+      "4_11",
+      "6_10",
+      "7_10",
+      "7_11"
+    ],
+    "validation": [
+      "3_11",
+      "5_10"
+    ],
+    "held4_policy": "not loaded this round; historical Train16 checkpoint exposure means not an independent holdout",
+    "test6_loaded": false,
+    "independent_final_loaded": false,
+    "patch": 512,
+    "sampling": "D23 aligned keyed fit crop stream; D26 independent keyed R-quality/D-quality/availability draws"
+  },
+  "experts": {
+    "rgb": {
+      "path": "records/research_d25_missingness_20261002T130253_1358078/jobs/P6/selected.pth",
+      "sha256": "bef8dda6537b68fc51f300bc3789bbbef57682baedf92a3f7665217a4a2fde71",
+      "step": 2000,
+      "kind": "D25_P6_DINOv2_vits14_RGB_only",
+      "normalization": "native RGB ImageNet mean/std"
+    },
+    "dsm": {
+      "path": "runs/rebuild_v1/D15_dsm_only_seed42_sched16000_stop16000/best_model.pth",
+      "sha256": "d597f1adf3ca0291dcd7d063af941bebf3db1e61205cfdaf13271fbba9437e84",
+      "step": 15000,
+      "kind": "D15_seed42_R50_ViT_B16_DSM_only",
+      "normalization": "native per-tile minmax DSM repeated3; no ImageNet normalization"
+    },
+    "heterogeneous_architectures": true,
+    "historical_held4_exposure": true
+  },
+  "input_manifest_sha256": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295",
+  "expected_configs": {
+    "base_config_sha256": "07dd4b7f224d2e036024dfb2ab57bac9fe312335a5eebb8173778cd5c11de133",
+    "dino_config_sha256": "cb1c398acac6c9892aeee65bc5f331375a2395c0233654d7a3fc6ee58329ef0f",
+    "split_sha256": "d9fe260f6b1be3807811e454c1673d1e69db235c32d4dea207e8724975e210ab"
+  },
+  "source_N5_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_20261006T114819_71934",
+  "source_diag_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n2_diagnostics_20261005T131434_3591073",
+  "jobs": [
+    {
+      "id": "E4_N1-2",
+      "gpu": 0,
+      "model": "N1-2"
+    },
+    {
+      "id": "E4_N2-0",
+      "gpu": 1,
+      "model": "N2-0"
+    },
+    {
+      "id": "E4_N2-3",
+      "gpu": 0,
+      "model": "N2-3"
+    }
+  ],
+  "paths": [
+    "A0B0C0",
+    "A0B0C1",
+    "A0B1C0",
+    "A0B1C1",
+    "A1B0C0",
+    "A1B0C1",
+    "A1B1C0",
+    "A1B1C1"
+  ],
+  "E4": {
+    "cases": [
+      "known_missing",
+      "false_positive"
+    ],
+    "directions": [
+      "rgb",
+      "dsm"
+    ],
+    "rule": "U",
+    "gap_pp": 0.5,
+    "gate_models": [
+      "N1-2",
+      "N2-0"
+    ],
+    "gate_direction": "rgb",
+    "max_tile_units": 192
+  },
+  "E3": {
+    "models": [
+      "A0",
+      "B1",
+      "N5-0",
+      "N5-3"
+    ],
+    "rules": [
+      "U",
+      "H",
+      "L"
+    ],
+    "directions": [
+      "rgb",
+      "dsm"
+    ],
+    "class_ids": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "boundary_radius": 4,
+    "min_stratum_pixels": 100,
+    "weight_source": "whole valid fg5 tile; Full boundary partition",
+    "standardization_scope": "noboundary",
+    "labels_forward": false
+  },
+  "E0": {
+    "boundary_radius": 4,
+    "min_anchor_pixels": 100,
+    "min_single_correct_pixels": 100,
+    "boundary_harm_gap_pp": 1.0,
+    "diagnostic_gate_scope": "full"
+  },
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "seed": 42,
+  "new_optimizer_updates": 0,
+  "automatic_training": false,
+  "selection": "read-only selected checkpoints; no new selection",
+  "runtime": {
+    "per_job_timeout_hours": 8.0,
+    "cpu_stage_timeout_hours": 6.0,
+    "wait_poll_seconds": 5
+  }
+}

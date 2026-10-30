@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "experiment": "D26_BIDIRECTIONAL_FEATURE_20261002",
+  "source": "user_pasted_server_terminal_stdout",
+  "recorded_date": "2026-10-02",
+  "directory_creation_at": "2026-10-02T19:12:53+08:00",
+  "directory_creation_time_source": "directory name; not precise worker start or observation timestamp",
+  "last_observed_at": null,
+  "observation_time_precision": "console lines have no timestamps; observed after directory creation; no invented exact timestamp",
+  "execution_commit": "52f94388b1a9c7557e9ef533075661139cd55eda",
+  "fetched_branch_head": "90f37124eaebda283028df9fb101c55fd273babe",
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109",
+  "controller_pid": 1571946,
+  "controller_log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109/nohup.log",
+  "status": "LAUNCHED_INITIALIZING_USER_REPORTED",
+  "jobs": [
+    {
+      "id": "J0",
+      "physical_gpu": 0,
+      "pid": 1571983,
+      "phase": "initializing",
+      "step": 0
+    },
+    {
+      "id": "B0",
+      "physical_gpu": 1,
+      "pid": 1571989,
+      "phase": "initializing",
+      "step": 0
+    }
+  ],
+  "completed_jobs": 0,
+  "total_jobs": 9,
+  "first_training_step_observed": false,
+  "real_checkpoint_load_verified": false,
+  "server_gpu_forward_verified": false,
+  "gradient_check_received": false,
+  "precision_result_received": false,
+  "pid_live_query_performed": false,
+  "nohup_used": true,
+  "physical_batch": 16,
+  "gradient_accumulation": false,
+  "test6_loaded": false,
+  "test6_claim_source": "fixed execution protocol; no completed server artifact received",
+  "next_action": "Query this existing queue only; do not relaunch or probe resources"
+}

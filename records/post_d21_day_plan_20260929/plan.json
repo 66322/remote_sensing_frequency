@@ -1,0 +1,30 @@
+{
+  "status": "planned_only_not_implemented_not_launched",
+  "protocol": "docs/protocols/POST_D21_MULTIDIRECTION_DAY_PLAN_20260929.md",
+  "physical_gpus": [0, 1],
+  "datasets": ["potsdam", "vaihingen"],
+  "seeds": [42],
+  "effective_batch": 16,
+  "target_wall_hours": {"minimum_planned": 24, "planning_window_upper": 48, "longer_allowed": true, "eta_measured": false},
+  "main_training_jobs": 42,
+  "main_optimizer_updates": 576000,
+  "reserve_training_jobs": 8,
+  "reserve_optimizer_updates": 128000,
+  "new_downloads_planned": false,
+  "test6_allowed": false,
+  "groups": [
+    {"id": "A", "question": "adaptation_by_modality_interaction", "status": "main", "arms": ["R0_frozen", "R0_last4", "M1_frozen", "M1_last4", "M0_frozen", "M0_last4"], "steps": 8000, "origin": "corresponding_D21_seed42_final16k_anchor", "new_training_jobs": 12},
+    {"id": "B", "question": "rgb_conditioned_auxiliary_residual_and_alignment", "status": "main", "arms": ["gray", "raw_dsm", "low_high_dsm", "low_rolled_high_dsm"], "steps": 16000, "origin": "frozen_D21_R0_seed42_final16k_anchor", "new_training_jobs": 8},
+    {"id": "C", "question": "joint_restoration_objective_by_resolution", "status": "main", "arms": ["bicubic_ce", "learned_ce", "learned_pixel_ce", "learned_pixel_high_ce"], "scales": [2, 4], "steps": 16000, "origin": "generic_DINO_pretrain_and_common_new_head", "new_training_jobs": 16},
+    {"id": "D", "question": "restoration_by_DSM_interaction_and_gray_capacity", "status": "main", "arms": ["learned_ce_dsm", "learned_pixel_high_ce_dsm", "learned_pixel_high_ce_gray"], "scales": [4], "steps": 16000, "origin": "same_as_C_at_scale4_no_B_checkpoint_transfer", "reused_C_cells": ["learned_ce_scale4", "learned_pixel_high_ce_scale4"], "new_training_jobs": 6},
+    {"id": "E", "question": "training_degradation_distribution_dependence", "status": "reserve", "arms": ["bicubic_ce", "learned_ce", "learned_pixel_ce", "learned_pixel_high_ce"], "steps": 16000, "origin": "same_as_C_with_prefrozen_mixed_degradation", "new_training_jobs": 8}
+  ],
+  "execution_rules": [
+    "Calibrate new model runtime before freezing the at-least-24-hour queue scope.",
+    "Select reserve E by measured runtime before viewing new accuracy outcomes; include complete matched block.",
+    "No seed replication or unchanged task duplication to fill time.",
+    "Freeze implementation, numerical checks, loss weights, primary contrasts and resource limits before launch.",
+    "A/B independent; D reuses specified C no-DSM cells and waits for required code and comparisons.",
+    "All comparisons remain exploratory; do not treat pixels or repeated development tiles as independent replicates."
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "searched_at": "2026-10-02",
+  "scope": "targeted primary-source search, not systematic review",
+  "sources": [
+    {
+      "id": "KTB",
+      "title": "Keep the Balance: A Parameter-Efficient Symmetrical Framework for RGB+X Semantic Segmentation",
+      "authors": "Jiaxin Cai et al.",
+      "year": 2025,
+      "status": "CVPR 2025 main conference",
+      "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Cai_Keep_the_Balance_A_Parameter-Efficient_Symmetrical_Framework_for_RGBX_Semantic_CVPR_2025_paper.html",
+      "code": "https://github.com/imcjx/KTB",
+      "read": "official abstract, paper introduction excerpt, author repository README; not reproduced",
+      "idea": "Both modalities receive representation capacity; symmetric adaptation and sparse cross-modal fusion are prior art.",
+      "use": "Two independently supervised modal encoders; plain symmetric fusion as mandatory control, not claimed novelty."
+    },
+    {
+      "id": "DGL",
+      "title": "Boosting Multimodal Learning via Disentangled Gradient Learning",
+      "authors": "Shicai Wei, Chunbo Luo, Yang Luo",
+      "year": 2025,
+      "status": "ICCV 2025 main conference",
+      "url": "https://openaccess.thecvf.com/content/ICCV2025/html/Wei_Boosting_Multimodal_Learning_via_Disentangled_Gradient_Learning_ICCV_2025_paper.html",
+      "fulltext": "https://arxiv.org/html/2507.10213v1",
+      "read": "method equations 9–15 and algorithm, RGB-D experiment section; not reproduced",
+      "idea": "Separate encoder and fusion optimization; gradient suppression differs from negative cosine conflict.",
+      "use": "Joint versus detached fusion gradients as existing-method-inspired control; private heads here differ from original shared classifier modality dropout."
+    },
+    {
+      "id": "MFFNet",
+      "title": "MFFNet: a wavelet transform-based multimodal frequency fusion network for remote sensing semantic segmentation",
+      "authors": "Chao Li, Haitao Lyu, Weipeng Jing, Ye Yuan, Guangliang Cheng",
+      "year": 2025,
+      "status": "GIScience & Remote Sensing 62(1),2534740",
+      "url": "https://doi.org/10.1080/15481603.2025.2534740",
+      "read": "publisher abstract and method sections 3.1–3.2 excerpts; not reproduced",
+      "idea": "Spatial/frequency feature fusion and multiscale high-frequency fusion already exist.",
+      "use": "Frequency basis needs spatial matched control and bidirectional ablation; no novelty claim for adding Haar."
+    },
+    {
+      "id": "DIS2",
+      "title": "DIS2: Disentanglement Meets Distillation with Classwise Attention for Robust Remote Sensing Segmentation under Missing Modalities",
+      "authors": "Nhi Kieu, Kien Nguyen, Arnold Wiliem, Clinton Fookes, Sridha Sridharan",
+      "year": 2026,
+      "status": "arXiv metadata states accepted WACV 2026 Computer Vision for Earth Observation Workshop; not main conference",
+      "url": "https://arxiv.org/abs/2601.13502",
+      "fulltext": "https://arxiv.org/html/2601.13502v1",
+      "read": "methods 3.1–3.3, experimental setting and three modality states; not reproduced",
+      "idea": "Private and compensation representations; evaluates full, optical missing and height missing.",
+      "use": "Bidirectional missingness and classwise contributions necessary; current plan omits compensation distillation to isolate interaction."
+    },
+    {
+      "id": "CBC-SLP",
+      "title": "Robust Multispectral Semantic Segmentation under Missing or Full Modalities via Structured Latent Projection",
+      "authors": "Irem Ulku, Erdem Akagündüz, Ömer Özgür Tanrıöver",
+      "year": 2026,
+      "status": "arXiv preprint 2604.15856; no confirmed venue in this review",
+      "url": "https://arxiv.org/abs/2604.15856",
+      "fulltext": "https://arxiv.org/html/2604.15856v1",
+      "read": "abstract and structured latent projection equations 22–27; not reproduced",
+      "idea": "Shared and modality-specific representation preservation; availability routing.",
+      "use": "Keep independently predictive private streams; shared/private decomposition itself not new."
+    },
+    {
+      "id": "SGMA",
+      "title": "SGMA: Semantic-Guided Modality-Aware Segmentation for Remote Sensing with Incomplete Multimodal Data",
+      "authors": "Lekang Wen, Liang Liao, Jing Xiao, Mi Wang",
+      "year": 2026,
+      "status": "TGRS 2026 publisher metadata; arXiv2603.02505",
+      "url": "https://ieeexplore.ieee.org/document/11517493",
+      "fulltext": "https://arxiv.org/html/2603.02505v1",
+      "read": "abstract, SGF/MAS descriptions and experimental discussion; not reproduced",
+      "idea": "Multiscale class prototypes and modality-aware training sampling.",
+      "use": "D24 simplified bank is not full SGMA; do not equate its negative result with failure of semantic modeling."
+    },
+    {
+      "id": "RGSNet",
+      "title": "Reliability-guided SAR-Optical segmentation under heterogeneous degradation",
+      "authors": "Mengru Hou, Guowei Su, Tian Qiu, Wenhao Zang, Luobing Dong",
+      "year": 2026,
+      "status": "SSRN preprint posted 2026-07-11",
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7097142",
+      "read": "author preprint metadata and abstract only",
+      "idea": "Frequency evidence for spatial reliability under heterogeneous sensor degradation.",
+      "use": "Close novelty neighbor; change SAR to DSM or add semantic gate insufficient novelty."
+    },
+    {
+      "id": "MMSS_FAILURE",
+      "title": "Benchmarking Multi-modal Semantic Segmentation under Sensor Failures: Missing and Noisy Modality Robustness",
+      "authors": "Chenfei Liao et al.",
+      "year": 2025,
+      "status": "CVPR Workshops 2025",
+      "url": "https://openaccess.thecvf.com/content/CVPR2025W/TMM-OpenWorld/html/Liao_Benchmarking_Multi-modal_Semantic_Segmentation_under_Sensor_Failures_Missing_and_Noisy_CVPRW_2025_paper.html",
+      "read": "official abstract and metric definitions in abstract",
+      "idea": "Separate entire missing, random missing and noisy states.",
+      "use": "Balanced state report is a declared development score, not deployment expectation."
+    },
+    {
+      "id": "Zipper",
+      "title": "Zipper: A Multi-Tower Decoder Architecture for Fusing Modalities",
+      "authors": "Vicky Zayats, Peter Chen, Melissa Ferrari, Dirk Padfield",
+      "year": 2024,
+      "status": "NeurIPS Efficient Natural Language and Speech Processing Workshop; PMLR262",
+      "url": "https://proceedings.mlr.press/v262/zayats24a.html",
+      "read": "primary proceedings abstract; speech/text results not transferred to imagery",
+      "idea": "Preserve unimodal towers while learning cross-modal connections.",
+      "use": "Cross-field architectural motivation for private streams and interaction-only residuals."
+    },
+    {
+      "id": "SynIB",
+      "title": "SynIB: Informational Bottleneck for Maximizing Synergy in Multimodal Learning",
+      "authors": "Konstantinos Kontras et al.",
+      "year": 2026,
+      "status": "arXiv preprint2606.09853",
+      "url": "https://arxiv.org/abs/2606.09853",
+      "read": "abstract only",
+      "idea": "Joint-only task information and withheld-modality confidence objective.",
+      "use": "Use unique/redundant/joint-correction diagnostic lens only; do not copy confidence penalty that conflicts with strong unimodal fallback."
+    }
+  ]
+}

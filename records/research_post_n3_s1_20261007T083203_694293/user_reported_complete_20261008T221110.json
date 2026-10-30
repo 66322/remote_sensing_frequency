@@ -1,0 +1,129 @@
+{
+  "source": "user pasted read-only status and nohup tail",
+  "query_observed_at": "2026-10-08T22:11:10.555448+08:00",
+  "queue_observed_at": "2026-10-08T06:37:48.607436+08:00",
+  "queue_status": "N3_S1_COMPLETE_AWAITING_REVIEW",
+  "controller_pid": 694658,
+  "controller_live_at_query": false,
+  "scientific_execution_commit": "0e22438a7131a0a1f28098e675c3367d40236398",
+  "jobs": [
+    {
+      "job": "N3-0",
+      "gpu": 0,
+      "pid": 694733,
+      "progress_observed_at": "2026-10-07T13:11:05.866050+08:00",
+      "session_elapsed_seconds": 16713.36570145935,
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "phase": "complete",
+      "live_at_query": false
+    },
+    {
+      "job": "N3-1",
+      "gpu": 1,
+      "pid": 694739,
+      "progress_observed_at": "2026-10-07T13:11:06.191952+08:00",
+      "session_elapsed_seconds": 16713.761052958667,
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "phase": "complete",
+      "live_at_query": false
+    },
+    {
+      "job": "N3-2",
+      "gpu": 0,
+      "pid": 850723,
+      "progress_observed_at": "2026-10-07T17:33:17.642774+08:00",
+      "session_elapsed_seconds": 15715.305176146328,
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "phase": "complete",
+      "live_at_query": false
+    },
+    {
+      "job": "N3-3",
+      "gpu": 1,
+      "pid": 850728,
+      "progress_observed_at": "2026-10-07T17:33:07.921507+08:00",
+      "session_elapsed_seconds": 15705.75987586379,
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "phase": "complete",
+      "live_at_query": false
+    },
+    {
+      "job": "N3-4",
+      "gpu": 0,
+      "pid": 986209,
+      "progress_observed_at": "2026-10-07T21:57:00.441388+08:00",
+      "session_elapsed_seconds": 15807.257406048477,
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "phase": "complete",
+      "live_at_query": false
+    },
+    {
+      "job": "S1-0",
+      "gpu": 1,
+      "pid": 986054,
+      "progress_observed_at": "2026-10-07T21:54:55.640858+08:00",
+      "session_elapsed_seconds": 15693.749718025327,
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "phase": "complete",
+      "live_at_query": false
+    },
+    {
+      "job": "S1-1",
+      "gpu": 0,
+      "pid": 1122486,
+      "progress_observed_at": "2026-10-08T02:16:56.344882+08:00",
+      "session_elapsed_seconds": 15582.096056677401,
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "phase": "complete",
+      "live_at_query": false
+    },
+    {
+      "job": "S1-2",
+      "gpu": 1,
+      "pid": 1121357,
+      "progress_observed_at": "2026-10-08T02:14:42.127509+08:00",
+      "session_elapsed_seconds": 15571.429628148675,
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "phase": "complete",
+      "live_at_query": false
+    },
+    {
+      "job": "S1-3",
+      "gpu": 0,
+      "pid": 1257273,
+      "progress_observed_at": "2026-10-08T06:37:15.823728+08:00",
+      "session_elapsed_seconds": 15603.776998274028,
+      "status": "COMPLETE",
+      "step": 8000,
+      "target": 8000,
+      "phase": "complete",
+      "live_at_query": false
+    }
+  ],
+  "completed_jobs": 9,
+  "reported_screen": {
+    "N3": false,
+    "S1": false,
+    "bilateral_candidate": false
+  },
+  "independent_counts_audit": false,
+  "no_error_in_received_tail": true,
+  "automatic_followup": false,
+  "next": "upload light evidence, independently recompute; no retraining or new seed"
+}

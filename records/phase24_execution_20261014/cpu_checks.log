@@ -1,0 +1,25 @@
+test_T0_trajectory_is_counted (test_phase24.Contracts.test_T0_trajectory_is_counted) ... ok
+test_constant_features_keep_constant_stump (test_phase24.Contracts.test_constant_features_keep_constant_stump) ... ok
+test_fixed_margins (test_phase24.Contracts.test_fixed_margins) ... ok
+test_gate_requires_both_tile_protection (test_phase24.Contracts.test_gate_requires_both_tile_protection) ... ok
+test_native_feature_halos (test_phase24.Contracts.test_native_feature_halos) ... ok
+test_null_conserves_groundtruth (test_phase24.Contracts.test_null_conserves_groundtruth) ... ok
+test_panel_and_smoke_counts (test_phase24.Contracts.test_panel_and_smoke_counts) ... ok
+test_rebuild_rejects_consistent_hash_but_wrong_summary (test_phase24.Contracts.test_rebuild_rejects_consistent_hash_but_wrong_summary) ... ok
+test_source_fit_rejects_target_and_handles_no_preference (test_phase24.Contracts.test_source_fit_rejects_target_and_handles_no_preference) ... ok
+test_stripe_integer_partition (test_phase24.Contracts.test_stripe_integer_partition) ... ok
+test_temperature_does_not_change_expert_argmax (test_phase24.Contracts.test_temperature_does_not_change_expert_argmax) ... ok
+test_validate_rejects_noninteger_and_partition_change (test_phase24.Contracts.test_validate_rejects_noninteger_and_partition_change) ... ok
+test_capacity_control_removes_only_signal_features (test_phase24.Differentiable.test_capacity_control_removes_only_signal_features) ... ok
+test_exact_initialization_and_live_gradient (test_phase24.Differentiable.test_exact_initialization_and_live_gradient) ... ok
+test_export_matches_nonzero_torch_gate (test_phase24.Differentiable.test_export_matches_nonzero_torch_gate) ... ok
+test_features_torch_numpy_agree (test_phase24.Differentiable.test_features_torch_numpy_agree) ... ok
+test_matched_static_initial_state_and_pairing (test_phase24.Differentiable.test_matched_static_initial_state_and_pairing) ... ok
+test_statistics_control_only_rolls_three_slots (test_phase24.Differentiable.test_statistics_control_only_rolls_three_slots) ... ok
+test_cross_process_readonly (test_phase24.Transport.test_cross_process_readonly) ... skipped 'Linux memfd server transport required'
+test_roundtrip_and_last_close (test_phase24.Transport.test_roundtrip_and_last_close) ... skipped 'Linux memfd server transport required'
+
+----------------------------------------------------------------------
+Ran 20 tests in 14.236s
+
+OK (skipped=2)

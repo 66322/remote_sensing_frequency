@@ -1,0 +1,9 @@
+{
+  "experiment_id": "R05",
+  "server_only": true,
+  "uploaded_to_git": false,
+  "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/R05_dual_f0_quality_plus_dropout_seed42_sched16000_stop16000/best_model.pth",
+  "size_bytes": 816521909,
+  "sha256": "3eafbe39423c6f3269b5b3ba2229ee2cf0e23a7856e91e9e197eb2f5203849d4",
+  "reason_not_uploaded": "Large binary checkpoint; retained on the experiment server."
+}

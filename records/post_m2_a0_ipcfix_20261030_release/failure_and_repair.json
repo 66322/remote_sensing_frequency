@@ -1,0 +1,76 @@
+{
+  "status": "A0_AF_UNIX_ENGINEERING_BLOCK_CONFIRMED_OWNED_PROCESSES_LIVE_REPAIR_TARGET_PENDING",
+  "source": "user_pasted_parent_and_two_child_logs_then_corrected_multiline_process_and_artifact_commands",
+  "error": "OSError: AF_UNIX path too long",
+  "failure_component": "multiprocessing.resource_sharer / multiprocessing.connection.SocketListener.bind",
+  "original_wrapper_release_commit": "2285fa669d71d9a3898a97f92e5f462f5aa179b4",
+  "scientific_source_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+  "original_a0_git_blob": "f480fc67915764f0e706eb20af851adf076e6c40",
+  "original_run": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_capability_20261029",
+  "latest_user_report": {
+    "observation_timestamp": "not provided",
+    "wrapper_pid": 2426676,
+    "pair_parent_pid": 2426713,
+    "dino2_pid": 2426731,
+    "dino3_pid": 2426732,
+    "process_states": {
+      "wrapper": "S",
+      "dino2": "Sl",
+      "dino3": "Sl"
+    },
+    "artifacts_found_by_user_command": [],
+    "reported_ps_elapsed": "441076631-23:13:04",
+    "elapsed_interpretation": "Not used as a credible wall-clock duration; identity/liveness only"
+  },
+  "exact_old_optimized_updates": "UNKNOWN; no progress, completion or head_2000 file was listed. Do not claim exact zero.",
+  "cause": {
+    "introduced_by": "Thin continuation wrapper TMPDIR=$A0/temporary",
+    "old_tmpdir_bytes": 100,
+    "example_generated_socket_bytes": 132,
+    "linux_sun_path_bytes": 108,
+    "new_tmpdir": "/home/jovyan/zzx/tmp/a0_ipc",
+    "new_example_socket_bytes": 59,
+    "why_profile_previously_passed": "Old profile did not use the newly introduced deep wrapper TMPDIR"
+  },
+  "repair": {
+    "separate_run": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030",
+    "entry": "scripts/repair_post_m2_a0_ipc_20261030.py",
+    "repaired_scientific_script": "scripts/post_m2_a0_ipcfix_20261030.py",
+    "old_source_and_records_unchanged": true,
+    "changes": [
+      "Short TMPDIR/TEMP/TMP set before child imports; reset tempfile cache",
+      "DataLoader timeout=30s with workers",
+      "Repaired pair children start in owned sessions; first failure stops their groups; phase timeout600s",
+      "New output directory; old receipts, guards and logs never removed or overwritten",
+      "Formal dict receipts record both original scientific commit and separate execution patch commit",
+      "Existing profiles copied byte-for-byte, no re-profile or model smoke",
+      "prepare verifies old PID/script/kind/stdout identities and start ticks before stopping only owned processes and descendants",
+      "prepare stops and blocks if any original successful update or endpoint is observed",
+      "One AF_UNIX Listener and one CPU tensor batch verify affected IPC path; zero optimizer or GPU probe updates",
+      "prepare and explicit start are separate actions; no automatic retry loops"
+    ],
+    "formal_budget_per_model": 2000,
+    "seed": 42,
+    "new_cpu_probe_optimizer_updates": 0,
+    "future_full_payload": "Same short IPC path rule and loader timeout corrected only for not-yet-installed snapshots; no hot-patching existing Full runs",
+    "future_spatial_binding": "POST_M2_A0_RECORDS points explicitly to the repaired run; readiness provenance validated; original-completion prerequisites remain"
+  },
+  "local_checks": {
+    "new_ipc_repair_unit_tests_passed": 9,
+    "existing_main_unit_tests_passed": 14,
+    "scientific_function_AST_identity_passed": true,
+    "isolated_actual_payload_import_and_manifest_check_passed": true,
+    "original_c22_bytes_unchanged": true
+  },
+  "target_checks": {
+    "old_process_stop_received": false,
+    "cpu_tensor_ipc_received": false,
+    "repaired_entry_dispatch_received": false,
+    "successful_formal_update_received": false
+  },
+  "primary_sources": [
+    "https://man7.org/linux/man-pages/man7/unix.7.html",
+    "https://docs.python.org/3.11/library/tempfile.html",
+    "https://github.com/python/cpython/blob/3.11/Lib/multiprocessing/connection.py"
+  ]
+}

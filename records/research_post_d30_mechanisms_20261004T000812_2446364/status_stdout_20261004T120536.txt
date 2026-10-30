@@ -1,0 +1,89 @@
+(remote_sensing) [root@h-aoji-aoji-h100-agent-2-w-0 zzx]$ (
+set -e
+ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+POST_DIR="$ROOT/records/research_post_d30_mechanisms_20261004T000812_2446364"
+EXP_PY=$(python -c 'import json; print(json.load(open("/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/rebuild_v1_d21_queue_20260928/plan.json"))["python"])')
+REPAIR_DIR=$(python -c 'from pathlib import Path; p=Path("/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364"); a=sorted(x.parent for x in p.glob("evaluation_repair_*/repair_manifest.json")); print(a[-1])')
+"$EXP_PY" -B "$REPAIR_DIR/status_post_d30.py" --directory "$POST_DIR"
+python - "$POST_DIR" <<'PY'
+from pathlib import Path
+import sys
+p = Path(sys.argv[1])
+logs = sorted(
+    (x for x in p.glob('nohup*.log') if x.is_file()),
+    key=lambda x: x.stat().st_mtime
+)
+for f in logs[-2:]:
+    print(f)
+    print('\n'.join(f.read_text(errors='replace').splitlines()[-20:]))
+PY
+)
+LAST_OBSERVED=2026-10-04T12:05:36.507045+08:00 QUEUE=RUNNING PID=2720259 LIVE=True
+COMPLETE=8/18 main; F conditional
+A0 GPU0 COMPLETE complete step=8000/8000 windows=-/- progress_at=2026-10-04T08:22:10.543377+08:00 PID_LIVE=False
+A1 GPU1 COMPLETE complete step=8000/8000 windows=-/- progress_at=2026-10-04T08:22:08.129111+08:00 PID_LIVE=False
+A2 GPU1 COMPLETE complete step=8000/8000 windows=-/- progress_at=2026-10-04T08:31:52.928465+08:00 PID_LIVE=False
+A3 GPU0 COMPLETE complete step=8000/8000 windows=-/- progress_at=2026-10-04T08:31:47.462097+08:00 PID_LIVE=False
+A4 GPU0 COMPLETE complete step=8000/8000 windows=-/- progress_at=2026-10-04T08:41:11.097734+08:00 PID_LIVE=False
+A5 GPU1 COMPLETE complete step=8000/8000 windows=-/- progress_at=2026-10-04T08:41:39.479134+08:00 PID_LIVE=False
+B1 GPU0 COMPLETE complete step=8000/8000 windows=-/- progress_at=2026-10-04T10:59:57.280801+08:00 PID_LIVE=False
+B2 GPU1 COMPLETE complete step=8000/8000 windows=-/- progress_at=2026-10-04T11:22:24.757842+08:00 PID_LIVE=False
+B3 GPU1 RUNNING training step=4000/8000 windows=-/- progress_at=2026-10-04T12:05:31.258590+08:00 PID_LIVE=True
+B4 GPU0 RUNNING training step=5940/8000 windows=-/- progress_at=2026-10-04T12:05:34.634712+08:00 PID_LIVE=True
+B5 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+B6 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+C0 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+C1 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+C2 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+C3 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+C4 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+C5 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+F0 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+F1 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+F2 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+F3 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+ROUGH_MAIN_REMAINING_HOURS=10.63 ROUGH_MAIN_END=2026-10-04T22:43:36.277332+08:00
+New correspondence/KD workloads may differ. F adds conditional work; no wall-clock promise.
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/nohup_repair_20261004T081218_2687798.log
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/summarize_post_d30.py", line 6, in <module>
+    from post_d30_evaluation import metric,decode_joint,joint_report
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/post_d30_evaluation.py", line 7, in <module>
+    from post_d30_data import treatment
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/post_d30_data.py", line 9, in <module>
+    from model.rebuild_v1_post_d30 import alignment,distillation
+ModuleNotFoundError: No module named 'model'
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/recover_evaluation_20261004T081218_2687798.py", line 43, in <module>
+    if __name__=='__main__':main()
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/recover_evaluation_20261004T081218_2687798.py", line 42, in main
+    exec(compile(controller,str(repair/'controller_transformed.py'),'exec'),namespace)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/evaluation_repair_20261004T081218353451_2698383/controller_transformed.py", line 149, in <module>
+    if __name__=='__main__':sys.exit(main())
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/evaluation_repair_20261004T081218353451_2698383/controller_transformed.py", line 142, in main
+    subprocess.run([sys.executable,'-B',str(code/'scripts/summarize_post_d30.py'),'--directory',str(base)],cwd=code,env=env,check=True)
+  File "/home/jovyan/miniconda3/envs/d18_dino/lib/python3.10/subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/jovyan/miniconda3/envs/d18_dino/bin/python', '-B', '/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/summarize_post_d30.py', '--directory', '/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364']' returned non-zero exit status 1.
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/nohup_summary_repair_20261004T085441_2687798.log
+PORTFOLIO_PROGRESS 0 B4 {'job': 'B4', 'step': 5040, 'target': 8000, 'physical_gpu': 0, 'phase': 'training', 'observed_at': '2026-10-04T11:56:31.392603+08:00', 'session_elapsed_seconds': 3382.7246910333633, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.3297402858734131, 'seconds_per_train_step': 0.6103642250795568, 'remaining_train_hours': 0.5018550295098578, 'gpu_peak_allocated_bytes': 27265176576}
+PORTFOLIO_PROGRESS 1 B3 {'job': 'B3', 'step': 3140, 'target': 8000, 'physical_gpu': 1, 'phase': 'training', 'observed_at': '2026-10-04T11:56:32.636261+08:00', 'session_elapsed_seconds': 2035.2070108130574, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.24455174803733826, 'seconds_per_train_step': 0.6245101240291527, 'remaining_train_hours': 0.8430886674393562, 'gpu_peak_allocated_bytes': 27180241920}
+PORTFOLIO_PROGRESS 0 B4 {'job': 'B4', 'step': 5140, 'target': 8000, 'physical_gpu': 0, 'phase': 'training', 'observed_at': '2026-10-04T11:57:31.420610+08:00', 'session_elapsed_seconds': 3442.7526959478855, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.29023557901382446, 'seconds_per_train_step': 0.6101630282961557, 'remaining_train_hours': 0.48474062803527923, 'gpu_peak_allocated_bytes': 27265176576}
+PORTFOLIO_PROGRESS 1 B3 {'job': 'B3', 'step': 3220, 'target': 8000, 'physical_gpu': 1, 'phase': 'training', 'observed_at': '2026-10-04T11:57:22.664926+08:00', 'session_elapsed_seconds': 2085.2356565222144, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.31882140040397644, 'seconds_per_train_step': 0.6245212505345944, 'remaining_train_hours': 0.8292254382098225, 'gpu_peak_allocated_bytes': 27180241920}
+PORTFOLIO_PROGRESS 0 B4 {'job': 'B4', 'step': 5240, 'target': 8000, 'physical_gpu': 0, 'phase': 'training', 'observed_at': '2026-10-04T11:58:31.649396+08:00', 'session_elapsed_seconds': 3502.9814976751804, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.21947136521339417, 'seconds_per_train_step': 0.6100078427495847, 'remaining_train_hours': 0.46767267944134827, 'gpu_peak_allocated_bytes': 27265176576}
+PORTFOLIO_PROGRESS 1 B3 {'job': 'B3', 'step': 3320, 'target': 8000, 'physical_gpu': 1, 'phase': 'training', 'observed_at': '2026-10-04T11:58:26.021227+08:00', 'session_elapsed_seconds': 2148.5919674411416, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.3545617461204529, 'seconds_per_train_step': 0.6247800277007451, 'remaining_train_hours': 0.8122140360109689, 'gpu_peak_allocated_bytes': 27180241920}
+PORTFOLIO_PROGRESS 0 B4 {'job': 'B4', 'step': 5340, 'target': 8000, 'physical_gpu': 0, 'phase': 'training', 'observed_at': '2026-10-04T11:59:31.819386+08:00', 'session_elapsed_seconds': 3563.151478163898, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.3623197376728058, 'seconds_per_train_step': 0.6098474983614259, 'remaining_train_hours': 0.4506095404559424, 'gpu_peak_allocated_bytes': 27265176576}
+PORTFOLIO_PROGRESS 1 B3 {'job': 'B3', 'step': 3420, 'target': 8000, 'physical_gpu': 1, 'phase': 'training', 'observed_at': '2026-10-04T11:59:27.746315+08:00', 'session_elapsed_seconds': 2210.3170530572534, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.2856225371360779, 'seconds_per_train_step': 0.6245515992004446, 'remaining_train_hours': 0.7945684234272323, 'gpu_peak_allocated_bytes': 27180241920}
+PORTFOLIO_PROGRESS 0 B4 {'job': 'B4', 'step': 5440, 'target': 8000, 'physical_gpu': 0, 'phase': 'training', 'observed_at': '2026-10-04T12:00:31.978604+08:00', 'session_elapsed_seconds': 3623.310691408813, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.24551129341125488, 'seconds_per_train_step': 0.609681582157774, 'remaining_train_hours': 0.43355134731219486, 'gpu_peak_allocated_bytes': 27265176576}
+PORTFOLIO_PROGRESS 1 B3 {'job': 'B3', 'step': 3520, 'target': 8000, 'physical_gpu': 1, 'phase': 'training', 'observed_at': '2026-10-04T12:00:30.476677+08:00', 'session_elapsed_seconds': 2273.0474223122, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4696879982948303, 'seconds_per_train_step': 0.6244932743466713, 'remaining_train_hours': 0.7771471858536355, 'gpu_peak_allocated_bytes': 27180241920}
+PORTFOLIO_PROGRESS 0 B4 {'job': 'B4', 'step': 5540, 'target': 8000, 'physical_gpu': 0, 'phase': 'training', 'observed_at': '2026-10-04T12:01:32.516042+08:00', 'session_elapsed_seconds': 3683.8481312170625, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.3552789092063904, 'seconds_per_train_step': 0.6095254952565428, 'remaining_train_hours': 0.4165090884253042, 'gpu_peak_allocated_bytes': 27265176576}
+PORTFOLIO_PROGRESS 1 B3 {'job': 'B3', 'step': 3620, 'target': 8000, 'physical_gpu': 1, 'phase': 'training', 'observed_at': '2026-10-04T12:01:33.506020+08:00', 'session_elapsed_seconds': 2336.0767990648746, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.449626624584198, 'seconds_per_train_step': 0.6246406708509553, 'remaining_train_hours': 0.7599794828686622, 'gpu_peak_allocated_bytes': 27180241920}
+PORTFOLIO_PROGRESS 0 B4 {'job': 'B4', 'step': 5640, 'target': 8000, 'physical_gpu': 0, 'phase': 'training', 'observed_at': '2026-10-04T12:02:33.023141+08:00', 'session_elapsed_seconds': 3744.355227008462, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.45778554677963257, 'seconds_per_train_step': 0.6094420083554078, 'remaining_train_hours': 0.3995230943663229, 'gpu_peak_allocated_bytes': 27265176576}
+PORTFOLIO_PROGRESS 1 B3 {'job': 'B3', 'step': 3700, 'target': 8000, 'physical_gpu': 1, 'phase': 'training', 'observed_at': '2026-10-04T12:02:23.871140+08:00', 'session_elapsed_seconds': 2386.4418689087033, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.29278457164764404, 'seconds_per_train_step': 0.6247367266565561, 'remaining_train_hours': 0.746213312395331, 'gpu_peak_allocated_bytes': 27180241920}
+PORTFOLIO_PROGRESS 0 B4 {'job': 'B4', 'step': 5740, 'target': 8000, 'physical_gpu': 0, 'phase': 'training', 'observed_at': '2026-10-04T12:03:33.543409+08:00', 'session_elapsed_seconds': 3804.8754950985312, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4123682975769043, 'seconds_per_train_step': 0.609363738233256, 'remaining_train_hours': 0.38254501344643294, 'gpu_peak_allocated_bytes': 27265176576}
+PORTFOLIO_PROGRESS 1 B3 {'job': 'B3', 'step': 3800, 'target': 8000, 'physical_gpu': 1, 'phase': 'training', 'observed_at': '2026-10-04T12:03:26.266013+08:00', 'session_elapsed_seconds': 2448.8367417156696, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.25840508937835693, 'seconds_per_train_step': 0.6247047343752102, 'remaining_train_hours': 0.7288221901044118, 'gpu_peak_allocated_bytes': 27180241920}
+PORTFOLIO_PROGRESS 0 B4 {'job': 'B4', 'step': 5840, 'target': 8000, 'physical_gpu': 0, 'phase': 'training', 'observed_at': '2026-10-04T12:04:34.094620+08:00', 'session_elapsed_seconds': 3865.426702968776, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.4238874912261963, 'seconds_per_train_step': 0.6092841467973202, 'remaining_train_hours': 0.3655704880783921, 'gpu_peak_allocated_bytes': 27265176576}
+PORTFOLIO_PROGRESS 1 B3 {'job': 'B3', 'step': 3900, 'target': 8000, 'physical_gpu': 1, 'phase': 'training', 'observed_at': '2026-10-04T12:04:28.491354+08:00', 'session_elapsed_seconds': 2511.0620955228806, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.6263623833656311, 'seconds_per_train_step': 0.6246101832962954, 'remaining_train_hours': 0.711361597643003, 'gpu_peak_allocated_bytes': 27180241920}
+PORTFOLIO_PROGRESS 0 B4 {'job': 'B4', 'step': 5940, 'target': 8000, 'physical_gpu': 0, 'phase': 'training', 'observed_at': '2026-10-04T12:05:34.634712+08:00', 'session_elapsed_seconds': 3925.966812737286, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.38437843322753906, 'seconds_per_train_step': 0.6091976477893113, 'remaining_train_hours': 0.3485964317905504, 'gpu_peak_allocated_bytes': 27265176576}
+PORTFOLIO_PROGRESS 1 B3 {'job': 'B3', 'step': 4000, 'target': 8000, 'physical_gpu': 1, 'phase': 'training', 'observed_at': '2026-10-04T12:05:31.258590+08:00', 'session_elapsed_seconds': 2573.829325556755, 'tiles_loaded': 12, 'tiles_total': 12, 'loss': 0.2381790578365326, 'seconds_per_train_step': 0.624676105581224, 'remaining_train_hours': 0.6940845617569155, 'gpu_peak_allocated_bytes': 27180241920}
+(remote_sensing) [root@h-aoji-aoji-h100-agent-2-w-0 zzx]$ 

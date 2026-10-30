@@ -1,0 +1,272 @@
+{
+  "status": "A0_COMPLETE_CALIBRATION_SCREEN_PASSED_OUTER_ADVANTAGE_NOT_REPLICATED",
+  "date": "2026-10-30",
+  "last_scientific_observed_at_utc": "2026-10-30T11:01:21.045316+00:00",
+  "evidence_source": "Complete 14 small server JSONs parsed from user-pasted bundle; missing=[]; raw server files not fetched independently",
+  "scientific_source_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+  "execution_patch_commit": "d15f34e8d53f935aa17542123c2227fab14cb810",
+  "seed": 42,
+  "train_tiles": [
+    "2_10",
+    "2_12",
+    "3_12",
+    "4_12",
+    "5_12",
+    "6_12"
+  ],
+  "calibration_tiles": [
+    "6_9",
+    "7_9"
+  ],
+  "outer_tiles": [
+    "6_7",
+    "7_7",
+    "6_8",
+    "7_8"
+  ],
+  "completed_jobs": 2,
+  "completed_optimizer_updates": 4000,
+  "supervision": "NoBoundary at128; input512; frozen384-channel encoders with1x1 six-class heads",
+  "question": "Does the DINO3-S/16 representation package offer consistently more usable information than DINO2-S/14 under this matched shallow same-view probe?",
+  "comparisons": {
+    "calibration": {
+      "dino2": 71.83675103208176,
+      "dino3": 73.46244357679022,
+      "delta_pp": 1.625692544708457,
+      "tiles": [
+        {
+          "tile": "6_9",
+          "dino2": 72.21285606738121,
+          "dino3": 72.58157393371538,
+          "delta_pp": 0.3687178663341655
+        },
+        {
+          "tile": "7_9",
+          "dino2": 71.3629270638965,
+          "dino3": 74.29663082109032,
+          "delta_pp": 2.933703757193811
+        }
+      ],
+      "classes": [
+        {
+          "class_index": 0,
+          "dino2_iou_percent": 74.18687800852264,
+          "dino3_iou_percent": 77.02582051965435,
+          "delta_pp": 2.8389425111317035
+        },
+        {
+          "class_index": 1,
+          "dino2_iou_percent": 87.53180532457468,
+          "dino3_iou_percent": 87.1411833648965,
+          "delta_pp": -0.39062195967817237
+        },
+        {
+          "class_index": 2,
+          "dino2_iou_percent": 59.20425021518865,
+          "dino3_iou_percent": 60.1154885408289,
+          "delta_pp": 0.9112383256402512
+        },
+        {
+          "class_index": 3,
+          "dino2_iou_percent": 65.30713441423444,
+          "dino3_iou_percent": 70.31199210646011,
+          "delta_pp": 5.004857692225661
+        },
+        {
+          "class_index": 4,
+          "dino2_iou_percent": 72.95368719788843,
+          "dino3_iou_percent": 72.71773335211125,
+          "delta_pp": -0.23595384577718148
+        },
+        {
+          "class_index": 5,
+          "dino2_iou_percent": 32.09242302451039,
+          "dino3_iou_percent": 29.779357832854352,
+          "delta_pp": -2.3130651916560385
+        }
+      ]
+    },
+    "outer": {
+      "dino2": 71.03935469280408,
+      "dino3": 70.38669702323286,
+      "delta_pp": -0.6526576695712265,
+      "tiles": [
+        {
+          "tile": "6_7",
+          "dino2": 69.40412748757372,
+          "dino3": 67.31926807544555,
+          "delta_pp": -2.084859412128168
+        },
+        {
+          "tile": "7_7",
+          "dino2": 69.60604229973883,
+          "dino3": 71.10784272456384,
+          "delta_pp": 1.5018004248250065
+        },
+        {
+          "tile": "6_8",
+          "dino2": 72.98601543391163,
+          "dino3": 73.90579962475677,
+          "delta_pp": 0.9197841908451352
+        },
+        {
+          "tile": "7_8",
+          "dino2": 68.05156692499118,
+          "dino3": 67.00238302745105,
+          "delta_pp": -1.0491838975401322
+        }
+      ],
+      "classes": [
+        {
+          "class_index": 0,
+          "dino2_iou_percent": 66.68773018223406,
+          "dino3_iou_percent": 67.90558310650641,
+          "delta_pp": 1.2178529242723446
+        },
+        {
+          "class_index": 1,
+          "dino2_iou_percent": 87.10404559994821,
+          "dino3_iou_percent": 87.22688966822587,
+          "delta_pp": 0.12284406827766103
+        },
+        {
+          "class_index": 2,
+          "dino2_iou_percent": 68.46438516830166,
+          "dino3_iou_percent": 68.78155524682968,
+          "delta_pp": 0.3171700785280285
+        },
+        {
+          "class_index": 3,
+          "dino2_iou_percent": 59.96458276580573,
+          "dino3_iou_percent": 63.12547014942342,
+          "delta_pp": 3.1608873836176943
+        },
+        {
+          "class_index": 4,
+          "dino2_iou_percent": 72.97602974773073,
+          "dino3_iou_percent": 64.89398694517892,
+          "delta_pp": -8.082042802551815
+        },
+        {
+          "class_index": 5,
+          "dino2_iou_percent": 23.532461370742254,
+          "dino3_iou_percent": 6.2832537243630835,
+          "delta_pp": -17.24920764637917
+        }
+      ]
+    }
+  },
+  "outer_classes": [
+    {
+      "class_index": 0,
+      "dino2_iou_percent": 66.68773018223406,
+      "dino3_iou_percent": 67.90558310650641,
+      "delta_pp": 1.2178529242723446,
+      "label": "Impervious surface"
+    },
+    {
+      "class_index": 1,
+      "dino2_iou_percent": 87.10404559994821,
+      "dino3_iou_percent": 87.22688966822587,
+      "delta_pp": 0.12284406827766103,
+      "label": "Building"
+    },
+    {
+      "class_index": 2,
+      "dino2_iou_percent": 68.46438516830166,
+      "dino3_iou_percent": 68.78155524682968,
+      "delta_pp": 0.3171700785280285,
+      "label": "Low vegetation"
+    },
+    {
+      "class_index": 3,
+      "dino2_iou_percent": 59.96458276580573,
+      "dino3_iou_percent": 63.12547014942342,
+      "delta_pp": 3.1608873836176943,
+      "label": "Tree"
+    },
+    {
+      "class_index": 4,
+      "dino2_iou_percent": 72.97602974773073,
+      "dino3_iou_percent": 64.89398694517892,
+      "delta_pp": -8.082042802551815,
+      "label": "Car"
+    },
+    {
+      "class_index": 5,
+      "dino2_iou_percent": 23.532461370742254,
+      "dino3_iou_percent": 6.2832537243630835,
+      "delta_pp": -17.24920764637917,
+      "label": "Clutter"
+    }
+  ],
+  "outer_car_precision_recall": {
+    "dino2": {
+      "true_positives": 905904,
+      "ground_truth_support": 1092483,
+      "predicted_pixels": 1054793,
+      "precision_percent": 85.88452900237297,
+      "recall_percent": 82.92156491222289
+    },
+    "dino3": {
+      "true_positives": 735293,
+      "ground_truth_support": 1092483,
+      "predicted_pixels": 775878,
+      "precision_percent": 94.7691518511931,
+      "recall_percent": 67.30475439892429
+    }
+  },
+  "verification": {
+    "matrix_count": 16,
+    "all_6x6_nonnegative_integer": true,
+    "tile_sums_equal_pooled": true,
+    "stored_metrics_recomputed_match": true,
+    "matched_gt_supports_and_tile_lists": true,
+    "trajectory_decreased_both": true,
+    "completed_updates_2000_each": true,
+    "scientific_and_patch_bindings_match": true,
+    "calibration_screen_arithmetic_matches": true,
+    "retraining_or_inference": false,
+    "new_model_hashes": false
+  },
+  "interpretation": {
+    "supported": [
+      "Both readouts learned under their predeclared competence check.",
+      "Inner calibration comparison is positive and its screen remains READY_FOR_OUTER_DEVELOPMENT_EVALUATION.",
+      "Pooled Tree IoU is higher for DINO3 on inner and outer; this is descriptive and not uniformly positive across every outer tile."
+    ],
+    "not_supported": [
+      "Stable pooled foreground-five advantage for DINO3 across this development split; outer delta is negative and2 of4 outer tiles decline.",
+      "A blanket claim that the new DINO3 package is a stronger downstream teacher in this shallow configuration."
+    ],
+    "unanswered": [
+      "Whether a matched spatial readout changes the representation ranking.",
+      "Downstream ROI-specific teacher benefit or distillation.",
+      "Independent-region/seed robustness or general/world-knowledge claims."
+    ],
+    "class_pattern": "All first four outer pooled class IoUs increase; the Car drop dominates the negative fg5 delta. Car precision rises but recall falls; no causal attribution to patch size or pretraining is established.",
+    "sixth_class": "Clutter is excluded from the frozen fg5 metric; its large decline is retained in the full class table rather than hidden.",
+    "scope": "One seed, repeatedly used F0 development. Neither calibration nor outer is an independent sealed test."
+  },
+  "gates_and_execution": {
+    "original_calibration_screen": "PASSED; preserved exactly, not rewritten after viewing outer",
+    "prespecified_outer_numerical_gate_added": false,
+    "research_review_recommendation": "Keep A1/A2 unqueued as conditional expansions; do not start them merely on this inner-screen pass because aggregate teacher superiority did not carry over to outer. Preserve independent matched spatial-readout test.",
+    "recommendation_authority": "Assistant stage review under the user's2026-10-25 iterative-research instruction; no active registered jobs stopped or modified.",
+    "gqs_full_queue": "Independent, already installed and background entry dispatched PID2517098; no target profile/formal updates received yet. Continue its original own gates without restart or recipe changes.",
+    "new_seed_or_training_budget": false,
+    "new_queue_code_changed": false,
+    "planned_remaining_space_readout": "2 jobs x2000 updates, seed42,4,000 within existing first-wave budget, on a later free GPU0/1 window; no concurrent competing launch.",
+    "seed_cost_note": "Complete A readout2x2 is4 heads/8k for seed42. A later complete paired17 repeat would add4 heads/8k (16k total for two seeds); this is a cost counterfactual only, not requested or queued. No third seed."
+  },
+  "ipc_acceptance": {
+    "stopped_original_owned_pids": 16,
+    "remaining_owned_pids": [],
+    "sigkill_pids": [],
+    "socket_address_bytes": 59,
+    "cpu_optimizer_updates": 0,
+    "original_files_preserved": true,
+    "old_failed_attempt_exact_updates": "UNKNOWN; original records retained"
+  },
+  "next_action": "Read existing Full pipeline log and heartbeat_gpu0/1 JSONs; no new launch, smoke, throughput sweep or recomputation."
+}

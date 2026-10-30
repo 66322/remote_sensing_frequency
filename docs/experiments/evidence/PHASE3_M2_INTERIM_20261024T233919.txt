@@ -1,0 +1,31 @@
+Source: user-pasted server terminal, received in conversation; not a server filesystem export.
+Run directory: /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345
+Reader commit: 624194105b3b018bb1e1e66d80cada2a405e7758
+Command: python -B "$SCRIPT" --directory "$M2" --step 32000
+Below is the printed report transcribed from the supplied terminal output.
+
+INTERIM_CLEAN_SINGLE_MODAL_ONLY 2026-10-24T23:39:19.072535+08:00
+SCOPE: Outer development tiles; 512-pixel inset; nb fg5 primary, full-GT fg5 diagnostic
+job role age tiles eligible nb_fg5_% full_GT_fg5_% delta_D0_nb_pp
+F0_s17_DEntropy dsm_student 32000 0/4 False NA NA NA
+F0_s17_DShuffle dsm_student 32000 0/4 False NA NA NA
+F0_s17_R rgb_reference 32000 4/4 True 82.5823 77.4407 NA
+F0_s17_T0 rgb_oof_teacher 32000 4/4 True 81.2600 76.2054 NA
+F0_s17_T1 rgb_oof_teacher 32000 4/4 True 82.6219 77.5318 NA
+F0_s17_T2 rgb_oof_teacher 32000 4/4 True 82.2876 77.1950 NA
+F0_s17_T3 rgb_oof_teacher 32000 4/4 True 82.6289 77.5333 NA
+F0_s42_D0 dsm_student 32000 4/4 True 62.9713 59.2897 0.0000
+F0_s42_DClean dsm_student 32000 4/4 True 62.6029 58.9530 -0.3684
+F0_s42_DEntropy dsm_student 32000 4/4 True 62.5377 58.8711 -0.4336
+F0_s42_DF dsm_student 32000 4/4 True 62.3730 58.7239 -0.5983
+F0_s42_DMix dsm_student 32000 4/4 True 62.9414 59.2498 -0.0298
+F0_s42_DSelf dsm_student 32000 4/4 True 62.5382 58.9263 -0.4331
+F0_s42_DShuffle dsm_student 32000 4/4 True 62.8842 59.1769 -0.0871
+F0_s42_R rgb_reference 32000 4/4 True 82.5712 77.3974 NA
+F0_s42_T0 rgb_oof_teacher 32000 4/4 True 81.2963 76.2865 NA
+F0_s42_T1 rgb_oof_teacher 32000 4/4 True 82.4645 77.4058 NA
+F0_s42_T2 rgb_oof_teacher 32000 4/4 True 82.4055 77.2814 NA
+F0_s42_T3 rgb_oof_teacher 32000 4/4 True 82.5016 77.4366 NA
+ELIGIBLE_ROWS 17
+NA: incomplete age/endpoint, absent class, no verified 32k D0 pairing, or non-DSM role.
+No fusion/rescue/harm gates; no checkpoint selection or queue mutation; endpoint SHA is referenced from receipt, not freshly rehashed

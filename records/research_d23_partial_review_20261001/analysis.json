@@ -1,0 +1,94 @@
+{
+  "source_commit": "9a70648affe105367e1b6e42ac4919f66140d7aa",
+  "run_id": "research_d23_b_formal_20261001T152548_658274",
+  "dataset": "potsdam",
+  "split": "Val2_3_11_5_10",
+  "scope": "noboundary",
+  "metric": "mIoU_fg5",
+  "seed": 42,
+  "checkpoint_selection": "fixed_final_4000",
+  "complete_arms": [
+    "TSF",
+    "T0"
+  ],
+  "incomplete_eight_arm_screen": true,
+  "family": {
+    "R0": {
+      "clean": 82.83025461299187,
+      "rgb_quality": 80.69056335068409,
+      "aux_quality": 82.83025461299187
+    },
+    "M0_safe": {
+      "clean": 84.05899598207067,
+      "rgb_quality": 82.042847393825,
+      "aux_quality": 84.03159046906782
+    },
+    "confidence": {
+      "clean": 83.731745221448,
+      "rgb_quality": 81.70740303098177,
+      "aux_quality": 83.72089837332751
+    },
+    "entropy": {
+      "clean": 83.68479665002768,
+      "rgb_quality": 81.674288965761,
+      "aux_quality": 83.67692202476971
+    },
+    "logit_average": {
+      "clean": 83.7703279204938,
+      "rgb_quality": 81.78110299893851,
+      "aux_quality": 83.76227550290332
+    },
+    "probability_average": {
+      "clean": 83.73171683802461,
+      "rgb_quality": 81.74289684761351,
+      "aux_quality": 83.72224146586137
+    },
+    "TSF": {
+      "clean": 83.88025700111893,
+      "rgb_quality": 81.93726752956796,
+      "aux_quality": 83.8689162662451
+    },
+    "T0": {
+      "clean": 83.8802619929964,
+      "rgb_quality": 81.93064338260916,
+      "aux_quality": 83.87080265964106
+    }
+  },
+  "composites": {
+    "R0": 82.1170241922226,
+    "M0_safe": 83.3778112816545,
+    "confidence": 83.05334887525242,
+    "entropy": 83.0120025468528,
+    "logit_average": 83.1045688074452,
+    "probability_average": 83.06561838383317,
+    "TSF": 83.22881359897734,
+    "T0": 83.22723601174887
+  },
+  "TSF_minus_M0": -0.1489976826771624,
+  "TSF_minus_T0": 0.0015775872284677916,
+  "TSF_minus_R0": 1.1117894067547383,
+  "audit": {
+    "raw_cm_count": 784,
+    "pooled_cm_count": 392,
+    "max_metric_delta": 0
+  },
+  "risks": {
+    "TSF": {
+      "harm": 0.005485212738685004,
+      "rescue": 0.01244865522514118
+    },
+    "M0_safe": {
+      "harm": 0.01257969256606504,
+      "rescue": 0.01989969684160125
+    }
+  },
+  "harm_reduction": 0.5639628941742261,
+  "rescue_retention": 0.6255700940688043,
+  "decision": {
+    "TSF_primary_gain_pass": false,
+    "TSF_rescue_retention_pass": false,
+    "eligible_to_plan_confirmation": false,
+    "all_mechanisms_evaluated": false,
+    "route_changed": false
+  }
+}

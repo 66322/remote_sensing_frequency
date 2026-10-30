@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "observed_date": "2026-10-29",
+  "source": "user_pasted_server_terminal_output",
+  "code_commit_attempted": "69e7936ae7cd61648b8806c6d393b0cfb584c54f",
+  "environment": {
+    "name": "remote_sensing",
+    "python": "3.11.13",
+    "torch": "2.7.1+cu126"
+  },
+  "inventory": {
+    "status": "DATA_PRESENT",
+    "observed_at": "2026-10-29T20:07:39.513782+08:00",
+    "train_tiles": [
+      "2_10",
+      "2_12",
+      "3_12",
+      "4_12",
+      "5_12",
+      "6_12"
+    ],
+    "calibration_tiles": [
+      "6_9",
+      "7_9"
+    ],
+    "outer_tiles": [
+      "6_7",
+      "7_7",
+      "6_8",
+      "7_8"
+    ],
+    "missing": [],
+    "data_bytes": 3899952232,
+    "dino2_weight_bytes": 88283115,
+    "dino3_configured": false,
+    "effective_cpu_cores": 192,
+    "cgroup_aware_memory_available_bytes": 2040002977792,
+    "gpu0_free_mib": 81081,
+    "gpu1_free_mib": 81081,
+    "gpu2_to_7_compute_apps_present": true
+  },
+  "dino2_smoke": {
+    "status": "SMOKE_PASSED",
+    "observed_at": "2026-10-29T20:07:43.547681+08:00",
+    "feature_shape": [
+      1,
+      384,
+      37,
+      37
+    ],
+    "patch": 14
+  },
+  "dino2_profile": {
+    "status": "PROFILE_COMPLETED_NO_SCIENTIFIC_RESULT",
+    "observed_at": "2026-10-29T20:18:55.808104+08:00",
+    "code_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+    "full_record": "records/post_m2_a0_capability_20261029/profile_dino2.json",
+    "disposable_profile_optimizer_updates": 160,
+    "selected_train": {
+      "workers": 4,
+      "micro": 16
+    },
+    "selected_eval_batch": 16,
+    "full_tile_windows": 529,
+    "full_tile_seconds": 0.4066161811351776,
+    "total_profile_wall_seconds": 39.9963079020381,
+    "data_load_seconds": 34.088712848722935,
+    "scientific_result": false
+  },
+  "repair": {
+    "change": "Use torch.no_grad() for frozen teacher feature extraction; keep no gradient graph through teacher while returning a normal tensor for readout backpropagation.",
+    "local_regression_tests_passed": 4,
+    "server_rerun_pending": false,
+    "smoke_rerun_needed": false
+  },
+  "dino3": {
+    "status": "NOT_CONFIGURED_IN_INVENTORY",
+    "official_weight_obtained": null
+  },
+  "formal_train_started": false,
+  "scientific_result": false,
+  "m2_final_cleanup": "DEFERRED_BY_USER"
+}

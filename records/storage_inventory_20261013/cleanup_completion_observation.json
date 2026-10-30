@@ -1,0 +1,18 @@
+{
+  "source": "user final terminal paste",
+  "receipt_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/storage_prediction_cleanup_20261013T192501_1424574",
+  "process_pid": 1424574,
+  "output": "CLEANUP_COMPLETE 31956",
+  "deleted_paths": 31956,
+  "df_after": {
+    "size": "10T",
+    "used": "7.5T",
+    "available": "2.6T",
+    "use_percent": "75%"
+  },
+  "completion_exact_time_unavailable": true,
+  "skipped_example": "research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/aux_down4/fixed_dsm/3_11.npy",
+  "actual_reclaimed_bytes_unverified": true,
+  "complete_json_original_pending": true,
+  "whole_five_jobs_cleanup": false
+}

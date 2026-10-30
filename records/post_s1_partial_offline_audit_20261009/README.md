@@ -1,0 +1,11 @@
+# Post-S1完成作业快照独立审计
+
+原件commit77d3970fdfcf3d72524f8c31ff412110196161a6，目录records/research_post_s1_support_20261008T234921_1890161/completed_evidence_20261009T214326804508_2545009。科学执行2c5e7d6，固定8000/Val2/seed42/GPU0，仅完整D1和七P。
+
+结果见audit.json；独立脚本scripts/audit_post_s1_partial_received_records.py，仅stdlib+NumPy，未导入训练/模型/服务器汇总代码。把同一快照Git子树响应保存到received/git_tree.json，按原相对路径保存审计所读JSON和12个新科学源，再将原执行提交相同12源保存到received上级execution_source目录，运行：
+
+`python scripts/audit_post_s1_partial_received_records.py --received RECEIVED --output AUDIT_JSON`
+
+下载保存务必保留UTF-8原字节、换行；gzip-base64-exact-v1由脚本解码核验原SHA。审计读取清单及原件SHA在audit.json.decoded_original_sha256，12源码路径以code_manifest内post_s1_support命名过滤（model1/scripts10/tests1）。145次JSON读取含3次重读，203292矩阵检查及22176joint检查包含验证/两个scope/多reference/availability；不是203292个独立实验。1032嵌入case重建SHA、8328预测索引绑定。1474载荷路径/大小核Git子树，未回读所有载荷内容；12源逐字核执行提交。
+
+范围不含GPU复跑/训练、完整dataset重验、服务器预测/权重/mask数组本体独立重hash或全joint_reports派生文本。D0原转移计数通过分母/类别/CM净差与互斥池化一致性核验，不是重新从像素数组计算。D1原native512小crop一致性属于工程契约回报。实际输入和权重本体验证留在服务器执行绑定日志，轻量离线核索引与原摘要。P3/P0/P1/E未齐，不能宣布全因素或压力门槛完成；P7相对R0必要门槛已失败，Q固定DSM信号失败，任何后续E结果不能推翻这两个必要条件。

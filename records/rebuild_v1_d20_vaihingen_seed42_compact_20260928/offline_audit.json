@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "archive_commit": "5538bf3",
+  "run_commit": "86d7195",
+  "arms": [
+    "P0",
+    "P1",
+    "P2"
+  ],
+  "conditions": 11,
+  "development_tiles": 17,
+  "cm_rows_checked": 561,
+  "stronger_control": "P0",
+  "macro_gain_pp": 1.026148283788089,
+  "checks": {
+    "gain": true,
+    "clean": true,
+    "families": true,
+    "tile_clean": false,
+    "tile_families": false
+  },
+  "passed": false,
+  "failed_tiles": {
+    "12": {
+      "clean": -0.7654668535289066,
+      "optical_quality": -0.9746557256217397,
+      "auxiliary_quality": -0.7604115438151704
+    },
+    "14": {
+      "clean": -0.3742569828995346,
+      "optical_quality": 0.18954365988305133,
+      "auxiliary_quality": -0.4059601323293749
+    }
+  },
+  "scope_limit": "Archived counts and hashes only; raw rasters, checkpoints and predictions remain on server and were not independently reopened"
+}

@@ -1,0 +1,146 @@
+{
+  "status": "PROFILE_COMPLETED_NO_SCIENTIFIC_RESULT",
+  "kind": "dino2",
+  "observed_at": "2026-10-29T20:18:55.808104+08:00",
+  "code_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+  "python": "3.11.13 (main, Jun  5 2025, 13:12:00) [GCC 11.2.0]",
+  "torch": "2.7.1+cu126",
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "seed": 42,
+  "crop": 512,
+  "effective_batch": 16,
+  "candidates": [
+    {
+      "workers": 0,
+      "micro": 16,
+      "median_data_wait_seconds": 0.009957965463399887,
+      "median_compute_seconds": 0.010703951120376587,
+      "median_total_seconds": 0.020661916583776474,
+      "peak_allocated_bytes": 496955392,
+      "peak_reserved_bytes": 635437056
+    },
+    {
+      "workers": 4,
+      "micro": 16,
+      "median_data_wait_seconds": 0.00012614578008651733,
+      "median_compute_seconds": 0.010802671313285828,
+      "median_total_seconds": 0.010928817093372345,
+      "peak_allocated_bytes": 496955392,
+      "peak_reserved_bytes": 635437056
+    },
+    {
+      "workers": 8,
+      "micro": 16,
+      "median_data_wait_seconds": 0.00012694299221038818,
+      "median_compute_seconds": 0.010857056826353073,
+      "median_total_seconds": 0.010983999818563461,
+      "peak_allocated_bytes": 496955392,
+      "peak_reserved_bytes": 635437056
+    },
+    {
+      "workers": 4,
+      "micro": 8,
+      "median_data_wait_seconds": 0.00010116398334503174,
+      "median_compute_seconds": 0.011572606861591339,
+      "median_total_seconds": 0.01167377084493637,
+      "peak_allocated_bytes": 496955392,
+      "peak_reserved_bytes": 635437056
+    },
+    {
+      "workers": 4,
+      "micro": 4,
+      "median_data_wait_seconds": 0.00011431798338890076,
+      "median_compute_seconds": 0.01850440353155136,
+      "median_total_seconds": 0.018618721514940262,
+      "peak_allocated_bytes": 496955392,
+      "peak_reserved_bytes": 635437056
+    }
+  ],
+  "selected_train": {
+    "workers": 4,
+    "micro": 16
+  },
+  "eval_candidates": [
+    {
+      "batch": 8,
+      "sample_windows": 64,
+      "sample_seconds": 0.06870852410793304,
+      "sample_windows_per_second": 931.4710340665082,
+      "phase_seconds": {
+        "cpu_stack_seconds": 0.027790233492851257,
+        "forward_wall_seconds": 0.06869369000196457,
+        "finalize_wall_seconds": 0.000014834105968475342,
+        "total_wall_seconds": 0.06870852410793304,
+        "h2d": 0.0025061120092868803,
+        "encoder": 0.03987036895751953,
+        "head_resize": 0.001102848008275032,
+        "stitch": 0.0010853760093450546
+      },
+      "peak_allocated_bytes": 1369873408
+    },
+    {
+      "batch": 16,
+      "sample_windows": 64,
+      "sample_seconds": 0.04568953067064285,
+      "sample_windows_per_second": 1400.758533970284,
+      "phase_seconds": {
+        "cpu_stack_seconds": 0.010687112808227539,
+        "forward_wall_seconds": 0.04567461460828781,
+        "finalize_wall_seconds": 0.000014916062355041504,
+        "total_wall_seconds": 0.04568953067064285,
+        "h2d": 0.00222953599691391,
+        "encoder": 0.03747971248626709,
+        "head_resize": 0.0010365439653396607,
+        "stitch": 0.0010467199683189391
+      },
+      "peak_allocated_bytes": 1606069248
+    },
+    {
+      "batch": 32,
+      "sample_windows": 64,
+      "sample_seconds": 0.1027197614312172,
+      "sample_windows_per_second": 623.0544065550174,
+      "phase_seconds": {
+        "cpu_stack_seconds": 0.050955913960933685,
+        "forward_wall_seconds": 0.10267391800880432,
+        "finalize_wall_seconds": 0.000045843422412872314,
+        "total_wall_seconds": 0.1027197614312172,
+        "h2d": 0.0023118079900741576,
+        "encoder": 0.05555033493041992,
+        "head_resize": 0.0010355200171470642,
+        "stitch": 0.0010285120010375976
+      },
+      "peak_allocated_bytes": 2078916608
+    }
+  ],
+  "selected_eval_batch": 16,
+  "full_tile": {
+    "tile": "2_10",
+    "windows": 529,
+    "seconds": 0.4066161811351776,
+    "windows_per_second": 1300.9811821141875,
+    "phase_seconds": {
+      "cpu_stack_seconds": 0.08334090560674667,
+      "forward_wall_seconds": 0.3542463108897209,
+      "finalize_wall_seconds": 0.052369870245456696,
+      "total_wall_seconds": 0.4066161811351776,
+      "h2d": 0.01801408005133271,
+      "encoder": 0.3125071380138397,
+      "head_resize": 0.01244643196463585,
+      "stitch": 0.008716959994286299
+    }
+  },
+  "disposable_profile_optimizer_updates": 160,
+  "resources": {
+    "effective_cpu_cores": 192,
+    "cgroup_aware_memory_available_bytes": 2039718301696,
+    "max_loader_workers_per_gpu": 8
+  },
+  "data_load_seconds": 34.088712848722935,
+  "model_load_seconds": 0.7119507119059563,
+  "total_profile_wall_seconds": 39.9963079020381,
+  "peak_allocated_bytes": 2078916608,
+  "peak_reserved_bytes": 3122659328,
+  "cpu_resident_input_bytes": 864000000,
+  "note": "Profiling synchronizes each timed step; formal run samples aggregate wall time without per-step synchronization. Both model paths must be measured separately."
+}

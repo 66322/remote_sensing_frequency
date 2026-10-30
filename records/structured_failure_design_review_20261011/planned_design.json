@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "status": "DESIGN_REVIEW_DRAFT_NOT_REGISTERED",
+  "date": "2026-10-11",
+  "classification": "重写版建议",
+  "source_head": "699f8f9832f0ac52f9fdfd5a670c659c4f0557b6",
+  "source_proposal_sha256": "b0ecbeb430991e419059b314f59d80b5b1d83f8c96a093c1567643ac7986b57d",
+  "protocol": "docs/protocols/STRUCTURED_FAILURE_EVAL_V0_20261011.md",
+  "registered": false,
+  "gpu_jobs_dispatched": 0,
+  "new_optimizer_updates": 0,
+  "implementation_complete": false,
+  "mask_generator_validated": false,
+  "real_masks_generated": false,
+  "known_answer_tests_run": false,
+  "active_queue_modified": false,
+  "last_server_query": "2026-10-11T18:54:08.952037+08:00",
+  "active_queue": "research_post_t_paired_v2_20261011T182543_3880702",
+  "active_execution": "44e4df5afbaeb603e6441e7ef14ff09f228bc027",
+  "phase1a": {
+    "models": [
+      "D25_P6_RGB_only",
+      "S1-0_base",
+      "M000_masked_A1B1C0",
+      "M000_context_A1B0C0"
+    ],
+    "mask_families": [
+      "U-pixel",
+      "U-block-random",
+      "S-grad",
+      "U-block-matched_label_assisted"
+    ],
+    "mask_realizations": 20,
+    "tiles": [
+      "3_11",
+      "5_10"
+    ],
+    "missing_output_cases": 640,
+    "logical_clean_baselines": 8,
+    "trainings": 0,
+    "primary_model": "S1-0_base",
+    "primary_endpoint": "mean across 20 mask pairs of NB same-support damage(S-grad)-damage(U-block-matched), with two tiles pooled within each pair",
+    "provisional_signal_gate": {
+      "mean_pe_pp_min": 0.3,
+      "each_tile_mean_positive": true,
+      "class_support": "no-Car mean PE >= 0.15pp OR at least 4/5 class mean damage differences > 0"
+    },
+    "automatic_expansion_to_40": false,
+    "parameters_not_frozen": [
+      "placement_sampler",
+      "matching_algorithm_and_attempt_limit",
+      "input_domain_feasibility",
+      "provisional_matching_tolerances",
+      "DSM_gradient_sampling_strength"
+    ]
+  },
+  "phase1b": {
+    "models": [
+      "M333_masked",
+      "M333_context"
+    ],
+    "missing_output_cases": 320,
+    "logical_clean_baselines": 4,
+    "registered": false
+  },
+  "phase1c": {
+    "optional": true,
+    "includes": [
+      "GT_boundary_separate_full_metric",
+      "additional_block_sizes"
+    ],
+    "registered": false
+  },
+  "phase2": {
+    "conditional_on_originals_and_diagnostics": true,
+    "concrete_training_matrix_frozen": false,
+    "registered": false
+  },
+  "constraints": {
+    "server_operated_by_user": true,
+    "ssh": false,
+    "allowed_test_access": false,
+    "held4_access": false,
+    "automatic_failed_recipe_retry": false,
+    "new_training_seeds": false,
+    "mainline": "RGB–DSM双向条件互补与退化/缺失分割",
+    "recovery_role": "旁支",
+    "released_gpu_reserved_for_user": true
+  }
+}

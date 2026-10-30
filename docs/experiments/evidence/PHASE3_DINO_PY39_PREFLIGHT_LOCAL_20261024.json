@@ -1,0 +1,12 @@
+{
+  "status": "LOCAL_UNIT_TESTS_PASSED_TARGET_MODEL_NOT_RUN",
+  "code_commit": "86806140400620cc64af4728bc8c2af7cdcb69db",
+  "python": "3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]",
+  "test_command": "python -B -m unittest discover -s tests -p test_phase3_dino_py39_preflight.py -v",
+  "tests_run": 7,
+  "failures": 0,
+  "python39_ast_files": 2,
+  "server_model_import_verified": false,
+  "training_started": false,
+  "script_sha256": "d0ff64a9b9069d7890eca58e3f72be2e074dea24903e619bdbfa93cc55ef5619"
+}

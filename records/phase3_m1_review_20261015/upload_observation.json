@@ -1,0 +1,36 @@
+{
+  "source": "user-pasted upload terminal output plus independent fixed-commit archive readback",
+  "date": "2026-10-15",
+  "timestamp_not_printed": true,
+  "run": "research_phase3_m1_recovery_20261015T164357_19327",
+  "uploader_commit": "51a8051a3a5f5f638e8875b18a41c728b0bf4ebc",
+  "uploader_script_sha256": "1ecaad8df8e763759273202d48719801fcc9b5afa397914e7ed1cda959e03fa7",
+  "archive_commit": "09fb57a6ec26f6367c9891f2aa924cc4bf7219cc",
+  "archive_sha256": "9ab95778e7f757fc8b62575b4b92a52c09bc35dd024eb5e6e944c4e650c9a838",
+  "payload_files": 4168,
+  "archive_mib_user_reported": 56.27,
+  "parts_uploaded": 29,
+  "parts_readback": 29,
+  "upload_tmp_retired_user_reported": true,
+  "server_post_upload_retirement_receipt_in_archive": false,
+  "previous_git_upload_interrupted": true,
+  "previous_git_received_mib_at_interruption": 498.43,
+  "interrupted_python_callsite": "upload_phase3_m1.py line73 git commit",
+  "old_git_internal_large_download_trigger_confirmed": false,
+  "new_archive_only_transport": "Git Data API; no Git fetch/clone",
+  "experiment_retrained": false,
+  "complete_archive_independently_verified": true,
+  "gpu2_to_7_prior_observation": {
+    "observed_at": "2026-10-15T16:44:22.177968+08:00",
+    "pids": [
+      645,
+      646,
+      647,
+      648,
+      649,
+      650
+    ],
+    "before_recovery_workers_started": true,
+    "process_ownership_not_verified": true
+  }
+}

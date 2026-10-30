@@ -1,0 +1,11 @@
+# N5独立离线审计（2026-10-06）
+
+状态ANALYZED_OFFLINE_PASS，无模型/数据集导入、无训练或GPU推理。依据原件提交1bd58b6a64e07e8b4ee8d5e87e91f76b8df93898，目录records/research_post_n5_20261006T114819_71934/evidence_20261006T222506485434_398074。科学执行2e565cca04d84d8605a96105d12fb6c0871e464d未修改。
+
+独立审计PASS：871载荷清单路径/大小匹配（连manifest872文件）；50载荷及manifest独立回读，124464次矩阵/原始指标与12304次joint校验，560个嵌入case重建匹配原源SHA，5040个预测索引绑定，固定gate/选模/监督与规则配额复算一致。未读取全部871载荷或服务器权重/影像/预测/mask本体；12项固定发布源码SHA匹配，44 mask元数据绑定匹配。
+
+audit_result.json为普通可读JSON，含四组selected/fixed/规则分数、所有固定门槛、retention、计数、暴露和证据边界。git_tree.json为不截断的原件目录树。published_execution_validation.json来自固定执行提交的设计就绪记录，12个新文件hash与实际code_manifest一致。
+
+复算：将原件的manifest、plan/code/mask/preparation/queue/screen/artifact索引、cpu_checks.log、四组complete/init/capacity/input/两checkpoint validation和16个summary的原始Git字节放INPUT/N5对应相对路径；本目录git_tree.json复制为INPUT/N5/git_tree.json，published_execution_validation.json复制为INPUT/N5/published_validation.json。保留gzip-base64 envelope原字节，脚本自行解码，不改行尾。运行scripts/audit_post_n5_received_records.py --input-directory INPUT --output-directory OUTPUT，Python+NumPy即可。若完整下载原件目录，脚本还会验证已存在的其他轻量载荷，不将其当新训练。发布的50回读载荷计数不包括manifest及发布验证参考副本。
+
+560条case来源hash由summary内嵌row按原JSON写入格式重建匹配source_files中的original_sha256；不是全部case上传载荷重新下载。5040预测签名为服务器索引绑定，不是预测二进制重hash。44 mask只查形状/面积/坐标/索引SHA，不解码npz本体。权重、输入、预测、mask本体仍在zzx原目录。

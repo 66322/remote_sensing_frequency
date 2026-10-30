@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-30",
+  "status": "IMPLEMENTED_LOCAL_CHECKED_TARGET_QUEUE_PENDING",
+  "entry": "scripts/queue_post_m2_a_spatial_20261030.py",
+  "runtime_payload_commit": "d15f34e8d53f935aa17542123c2227fab14cb810",
+  "original_a0_scientific_source_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+  "predecessor": "records/post_m2_multiroute_v2_20261030_r1",
+  "original_a0": "records/post_m2_a0_ipcfix_20261030",
+  "new_run": "records/post_m2_a_spatial_followup_20261030_r1",
+  "preconditions": [
+    "normal Full train_complete/source",
+    "Full controller lock released",
+    "GPU0/1 idle",
+    "existing A0 completed",
+    "no existing standalone spatial attempt"
+  ],
+  "full_scientific_invalid_routes_block_spatial": false,
+  "full_upload_dependency": false,
+  "stages": [
+    "profile",
+    "train",
+    "calibration",
+    "screen",
+    "conditional_outer"
+  ],
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "seed": 42,
+  "formal_jobs": 2,
+  "formal_updates_each": 2000,
+  "formal_updates_to_execute": 4000,
+  "added_updates_beyond_existing_plan": 0,
+  "maximum_disposable_new_profile_updates": 8,
+  "old_a0_reprofile_updates": 0,
+  "models_and_fit_arrays_reused_across_profile_train": true,
+  "fit_cache_release": "after training, before calibration",
+  "frozen_files_modified": false,
+  "sidecar_in_new_process_only": [
+    "resident frozen encoder",
+    "bounded fit cache",
+    "DataLoader timeout30s"
+  ],
+  "data": "existing Potsdam F0 train6/cal2/outer4 NB128; sealed splits closed",
+  "downloads": "one small frozen Python sidecar only; no data, model or package downloads",
+  "target_environment": "existing remote_sensing Python3.11.13/Torch2.7.1+cu126",
+  "termination_scope": "only new Popen-owned worker groups",
+  "automatic_retry": false,
+  "target_queue_receipt_received": false,
+  "target_spatial_profile_received": false,
+  "target_spatial_formal_updates_received": false,
+  "publication": "small summaries/gates, manifest and compressed raw evidence after GPU release; endpoints indexed, not uploaded",
+  "source_publication_record": "records/post_m2_a_spatial_followup_20261030_release/publication_receipt.json",
+  "deferred_not_enqueued": [
+    "A1",
+    "A2",
+    "C",
+    "P",
+    "E",
+    "F",
+    "frequency"
+  ],
+  "last_known_full_observation": "2026-10-30T19:38:20+08:00"
+}

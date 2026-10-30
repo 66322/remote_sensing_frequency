@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "issues": [],
+  "statistics": {
+    "payloads": 2388,
+    "decoded_JSON": 2074,
+    "matrices": 58160,
+    "transition_cells": 29080,
+    "bootstrap_summaries": 1090
+  },
+  "cases": 1540,
+  "GPU_jobs": 100,
+  "sources_uploaded": 2388,
+  "scientific_support": "Potsdam fit12/Val2 3_11,5_10 native512/stride256 NB fg5; frozen seed42;20mask IDs",
+  "limitations": [
+    "server array/weight bodies not downloaded or independently rehashed",
+    "no GPU rerun",
+    "two repeatedly used Val2 tiles are not independent test/generalization",
+    "secondary signflip not independently recomputed"
+  ]
+}

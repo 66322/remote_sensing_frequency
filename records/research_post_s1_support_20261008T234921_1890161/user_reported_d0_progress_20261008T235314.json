@@ -1,0 +1,112 @@
+{
+  "source": "user_terminal_read_only_transcript",
+  "query_observed_at": "2026-10-08T23:53:14.323317+08:00",
+  "queue_last_observed": "2026-10-08T23:49:50.130388+08:00",
+  "queue_status": "PREPARING_D0_MASKS",
+  "controller_pid": 1890742,
+  "controller_live": true,
+  "physical_gpus": [
+    0
+  ],
+  "CPU": "RUNNING",
+  "Q": "RESERVED_NOT_AUTOMATIC",
+  "cpu_progress": {
+    "phase": "D0",
+    "tile": "3_11",
+    "condition": "rgb_U",
+    "observed_at": "2026-10-08T23:51:48.651736+08:00"
+  },
+  "jobs": {
+    "D1": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "pid": -1,
+      "live": false,
+      "progress": {}
+    },
+    "P6": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "pid": -1,
+      "live": false,
+      "progress": {}
+    },
+    "P7": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "pid": -1,
+      "live": false,
+      "progress": {}
+    },
+    "P8": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "pid": -1,
+      "live": false,
+      "progress": {}
+    },
+    "P9": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "pid": -1,
+      "live": false,
+      "progress": {}
+    },
+    "P4": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "pid": -1,
+      "live": false,
+      "progress": {}
+    },
+    "P5": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "pid": -1,
+      "live": false,
+      "progress": {}
+    },
+    "P2": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "pid": -1,
+      "live": false,
+      "progress": {}
+    },
+    "P3": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "pid": -1,
+      "live": false,
+      "progress": {}
+    },
+    "P0": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "pid": -1,
+      "live": false,
+      "progress": {}
+    },
+    "P1": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "pid": -1,
+      "live": false,
+      "progress": {}
+    },
+    "E": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "pid": -1,
+      "live": false,
+      "progress": {}
+    }
+  },
+  "new_training_complete": 0,
+  "gpu_first_step_received": false,
+  "execution_commit": "2c5e7d6f383cfe454415d4e106179930264f1141",
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_support_20261008T234921_1890161",
+  "nohup_log": "nohup_20261008T234938791083.log",
+  "error_reported_in_this_output": false,
+  "server_cpu_checks_log_received": false
+}

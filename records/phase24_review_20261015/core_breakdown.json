@@ -1,0 +1,1136 @@
+[
+  {
+    "system": "rgb",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": null,
+    "region": "all",
+    "value": 68.3729946630405
+  },
+  {
+    "system": "rgb",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": "zero",
+    "region": "all",
+    "value": 54.76371707858607
+  },
+  {
+    "system": "rgb",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": "down4",
+    "region": "all",
+    "value": 81.98227224749496
+  },
+  {
+    "system": "rgb",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": null,
+    "region": "all",
+    "value": 68.5357709834736
+  },
+  {
+    "system": "rgb",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": "zero",
+    "region": "all",
+    "value": 54.725147238032584
+  },
+  {
+    "system": "rgb",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": "down4",
+    "region": "all",
+    "value": 82.3463947289146
+  },
+  {
+    "system": "rgb",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": null,
+    "region": "all",
+    "value": 67.92212453887552
+  },
+  {
+    "system": "rgb",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": "zero",
+    "region": "all",
+    "value": 54.52706926618528
+  },
+  {
+    "system": "rgb",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": "down4",
+    "region": "all",
+    "value": 81.31717981156581
+  },
+  {
+    "system": "rgb",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": null,
+    "region": "all",
+    "value": 86.6342523500076
+  },
+  {
+    "system": "rgb",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": "zero",
+    "region": "all",
+    "value": 86.6342523500076
+  },
+  {
+    "system": "rgb",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": "down4",
+    "region": "all",
+    "value": 86.6342523500076
+  },
+  {
+    "system": "rgb",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": null,
+    "region": "all",
+    "value": 87.04886324381674
+  },
+  {
+    "system": "rgb",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": "zero",
+    "region": "all",
+    "value": 87.04886324381674
+  },
+  {
+    "system": "rgb",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": "down4",
+    "region": "all",
+    "value": 87.04886324381674
+  },
+  {
+    "system": "rgb",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": null,
+    "region": "all",
+    "value": 85.92957257809425
+  },
+  {
+    "system": "rgb",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": "zero",
+    "region": "all",
+    "value": 85.92957257809425
+  },
+  {
+    "system": "rgb",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": "down4",
+    "region": "all",
+    "value": 85.92957257809425
+  },
+  {
+    "system": "reference",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": null,
+    "region": "all",
+    "value": 69.28966111093224
+  },
+  {
+    "system": "reference",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": "zero",
+    "region": "all",
+    "value": 55.98368742671526
+  },
+  {
+    "system": "reference",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": "down4",
+    "region": "all",
+    "value": 82.59563479514921
+  },
+  {
+    "system": "reference",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": null,
+    "region": "all",
+    "value": 69.41408515039056
+  },
+  {
+    "system": "reference",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": "zero",
+    "region": "all",
+    "value": 55.92426148747943
+  },
+  {
+    "system": "reference",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": "down4",
+    "region": "all",
+    "value": 82.9039088133017
+  },
+  {
+    "system": "reference",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": null,
+    "region": "all",
+    "value": 68.88183733566106
+  },
+  {
+    "system": "reference",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": "zero",
+    "region": "all",
+    "value": 55.77053653900204
+  },
+  {
+    "system": "reference",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": "down4",
+    "region": "all",
+    "value": 81.99313813232007
+  },
+  {
+    "system": "reference",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": null,
+    "region": "all",
+    "value": 86.5887583177886
+  },
+  {
+    "system": "reference",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": "zero",
+    "region": "all",
+    "value": 86.33562165937008
+  },
+  {
+    "system": "reference",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": "down4",
+    "region": "all",
+    "value": 86.84189497620714
+  },
+  {
+    "system": "reference",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": null,
+    "region": "all",
+    "value": 86.97563750057068
+  },
+  {
+    "system": "reference",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": "zero",
+    "region": "all",
+    "value": 86.77097326475364
+  },
+  {
+    "system": "reference",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": "down4",
+    "region": "all",
+    "value": 87.18030173638775
+  },
+  {
+    "system": "reference",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": null,
+    "region": "all",
+    "value": 85.91720285496143
+  },
+  {
+    "system": "reference",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": "zero",
+    "region": "all",
+    "value": 85.61734284053122
+  },
+  {
+    "system": "reference",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": "down4",
+    "region": "all",
+    "value": 86.21706286939164
+  },
+  {
+    "system": "probe",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": null,
+    "region": "all",
+    "value": 72.76986279892138
+  },
+  {
+    "system": "probe",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": "zero",
+    "region": "all",
+    "value": 63.273814594102056
+  },
+  {
+    "system": "probe",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": "down4",
+    "region": "all",
+    "value": 82.26591100374073
+  },
+  {
+    "system": "probe",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": null,
+    "region": "all",
+    "value": 75.91754530618387
+  },
+  {
+    "system": "probe",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": "zero",
+    "region": "all",
+    "value": 68.87135834153183
+  },
+  {
+    "system": "probe",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": "down4",
+    "region": "all",
+    "value": 82.96373227083589
+  },
+  {
+    "system": "probe",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": null,
+    "region": "all",
+    "value": 69.60545680646801
+  },
+  {
+    "system": "probe",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": "zero",
+    "region": "all",
+    "value": 57.89115200018464
+  },
+  {
+    "system": "probe",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": "down4",
+    "region": "all",
+    "value": 81.31976161275138
+  },
+  {
+    "system": "probe",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": null,
+    "region": "all",
+    "value": 86.59750065925341
+  },
+  {
+    "system": "probe",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": "zero",
+    "region": "all",
+    "value": 86.61408356208965
+  },
+  {
+    "system": "probe",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": "down4",
+    "region": "all",
+    "value": 86.58091775641715
+  },
+  {
+    "system": "probe",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": null,
+    "region": "all",
+    "value": 86.98702850588634
+  },
+  {
+    "system": "probe",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": "zero",
+    "region": "all",
+    "value": 87.01669236371495
+  },
+  {
+    "system": "probe",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": "down4",
+    "region": "all",
+    "value": 86.95736464805773
+  },
+  {
+    "system": "probe",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": null,
+    "region": "all",
+    "value": 85.92973821975264
+  },
+  {
+    "system": "probe",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": "zero",
+    "region": "all",
+    "value": 85.9296730763902
+  },
+  {
+    "system": "probe",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": "down4",
+    "region": "all",
+    "value": 85.9298033631151
+  },
+  {
+    "system": "stump",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": null,
+    "region": "all",
+    "value": 76.85069227134451
+  },
+  {
+    "system": "stump",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": "zero",
+    "region": "all",
+    "value": 71.71911229519405
+  },
+  {
+    "system": "stump",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": "down4",
+    "region": "all",
+    "value": 81.98227224749496
+  },
+  {
+    "system": "stump",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": null,
+    "region": "all",
+    "value": 76.89144218334309
+  },
+  {
+    "system": "stump",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": "zero",
+    "region": "all",
+    "value": 71.43648963777157
+  },
+  {
+    "system": "stump",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": "down4",
+    "region": "all",
+    "value": 82.3463947289146
+  },
+  {
+    "system": "stump",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": null,
+    "region": "all",
+    "value": 76.50152111705314
+  },
+  {
+    "system": "stump",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": "zero",
+    "region": "all",
+    "value": 71.6858624225405
+  },
+  {
+    "system": "stump",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": "down4",
+    "region": "all",
+    "value": 81.31717981156581
+  },
+  {
+    "system": "stump",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": null,
+    "region": "all",
+    "value": 86.6342523500076
+  },
+  {
+    "system": "stump",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": "zero",
+    "region": "all",
+    "value": 86.6342523500076
+  },
+  {
+    "system": "stump",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": "down4",
+    "region": "all",
+    "value": 86.6342523500076
+  },
+  {
+    "system": "stump",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": null,
+    "region": "all",
+    "value": 87.04886324381674
+  },
+  {
+    "system": "stump",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": "zero",
+    "region": "all",
+    "value": 87.04886324381674
+  },
+  {
+    "system": "stump",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": "down4",
+    "region": "all",
+    "value": 87.04886324381674
+  },
+  {
+    "system": "stump",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": null,
+    "region": "all",
+    "value": 85.92957257809425
+  },
+  {
+    "system": "stump",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": "zero",
+    "region": "all",
+    "value": 85.92957257809425
+  },
+  {
+    "system": "stump",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": "down4",
+    "region": "all",
+    "value": 85.92957257809425
+  },
+  {
+    "system": "B0",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": null,
+    "region": "all",
+    "value": 73.10243052458996
+  },
+  {
+    "system": "B0",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": "zero",
+    "region": "all",
+    "value": 63.8712571621993
+  },
+  {
+    "system": "B0",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": "down4",
+    "region": "all",
+    "value": 82.33360388698063
+  },
+  {
+    "system": "B0",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": null,
+    "region": "all",
+    "value": 73.75253916673414
+  },
+  {
+    "system": "B0",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": "zero",
+    "region": "all",
+    "value": 64.53134897550302
+  },
+  {
+    "system": "B0",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": "down4",
+    "region": "all",
+    "value": 82.97372935796525
+  },
+  {
+    "system": "B0",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": null,
+    "region": "all",
+    "value": 72.20294664566396
+  },
+  {
+    "system": "B0",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": "zero",
+    "region": "all",
+    "value": 62.9451564934934
+  },
+  {
+    "system": "B0",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": "down4",
+    "region": "all",
+    "value": 81.4607367978345
+  },
+  {
+    "system": "B0",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": null,
+    "region": "all",
+    "value": 78.4106459307545
+  },
+  {
+    "system": "B0",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": "zero",
+    "region": "all",
+    "value": 72.75359190742722
+  },
+  {
+    "system": "B0",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": "down4",
+    "region": "all",
+    "value": 84.0676999540818
+  },
+  {
+    "system": "B0",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": null,
+    "region": "all",
+    "value": 78.82192496223549
+  },
+  {
+    "system": "B0",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": "zero",
+    "region": "all",
+    "value": 72.94336875648449
+  },
+  {
+    "system": "B0",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": "down4",
+    "region": "all",
+    "value": 84.70048116798647
+  },
+  {
+    "system": "B0",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": null,
+    "region": "all",
+    "value": 77.713578712217
+  },
+  {
+    "system": "B0",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": "zero",
+    "region": "all",
+    "value": 72.232554173951
+  },
+  {
+    "system": "B0",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": "down4",
+    "region": "all",
+    "value": 83.19460325048298
+  },
+  {
+    "system": "T0_4000",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": null,
+    "region": "all",
+    "value": 70.5535969240899
+  },
+  {
+    "system": "T0_4000",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": "zero",
+    "region": "all",
+    "value": 57.842917252135905
+  },
+  {
+    "system": "T0_4000",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": "down4",
+    "region": "all",
+    "value": 83.2642765960439
+  },
+  {
+    "system": "T0_4000",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": null,
+    "region": "all",
+    "value": 70.70063725614514
+  },
+  {
+    "system": "T0_4000",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": "zero",
+    "region": "all",
+    "value": 57.85053527214001
+  },
+  {
+    "system": "T0_4000",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": "down4",
+    "region": "all",
+    "value": 83.55073924015028
+  },
+  {
+    "system": "T0_4000",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": null,
+    "region": "all",
+    "value": 70.13565760355459
+  },
+  {
+    "system": "T0_4000",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": "zero",
+    "region": "all",
+    "value": 57.57339984695295
+  },
+  {
+    "system": "T0_4000",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": "down4",
+    "region": "all",
+    "value": 82.69791536015622
+  },
+  {
+    "system": "T0_4000",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": null,
+    "region": "all",
+    "value": 85.8454941266024
+  },
+  {
+    "system": "T0_4000",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": "zero",
+    "region": "all",
+    "value": 84.87707391835245
+  },
+  {
+    "system": "T0_4000",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": "down4",
+    "region": "all",
+    "value": 86.81391433485234
+  },
+  {
+    "system": "T0_4000",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": null,
+    "region": "all",
+    "value": 86.22181099055642
+  },
+  {
+    "system": "T0_4000",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": "zero",
+    "region": "all",
+    "value": 85.35384587316437
+  },
+  {
+    "system": "T0_4000",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": "down4",
+    "region": "all",
+    "value": 87.08977610794848
+  },
+  {
+    "system": "T0_4000",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": null,
+    "region": "all",
+    "value": 85.19403152876762
+  },
+  {
+    "system": "T0_4000",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": "zero",
+    "region": "all",
+    "value": 84.12517596089702
+  },
+  {
+    "system": "T0_4000",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": "down4",
+    "region": "all",
+    "value": 86.26288709663822
+  },
+  {
+    "system": "T0",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": null,
+    "region": "all",
+    "value": 70.33238522140589
+  },
+  {
+    "system": "T0",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": "zero",
+    "region": "all",
+    "value": 57.4805734674099
+  },
+  {
+    "system": "T0",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": null,
+    "damage": "down4",
+    "region": "all",
+    "value": 83.18419697540189
+  },
+  {
+    "system": "T0",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": null,
+    "region": "all",
+    "value": 70.4617002319948
+  },
+  {
+    "system": "T0",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": "zero",
+    "region": "all",
+    "value": 57.45990344603471
+  },
+  {
+    "system": "T0",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "3_11",
+    "damage": "down4",
+    "region": "all",
+    "value": 83.46349701795486
+  },
+  {
+    "system": "T0",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": null,
+    "region": "all",
+    "value": 69.92941945912287
+  },
+  {
+    "system": "T0",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": "zero",
+    "region": "all",
+    "value": 57.23650861012186
+  },
+  {
+    "system": "T0",
+    "panel": "P-U",
+    "direction": "rgb",
+    "tile": "5_10",
+    "damage": "down4",
+    "region": "all",
+    "value": 82.62233030812386
+  },
+  {
+    "system": "T0",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": null,
+    "region": "all",
+    "value": 86.17857471871291
+  },
+  {
+    "system": "T0",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": "zero",
+    "region": "all",
+    "value": 85.44936112086326
+  },
+  {
+    "system": "T0",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": null,
+    "damage": "down4",
+    "region": "all",
+    "value": 86.90778831656255
+  },
+  {
+    "system": "T0",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": null,
+    "region": "all",
+    "value": 86.55414309197144
+  },
+  {
+    "system": "T0",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": "zero",
+    "region": "all",
+    "value": 85.91715455868494
+  },
+  {
+    "system": "T0",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "3_11",
+    "damage": "down4",
+    "region": "all",
+    "value": 87.19113162525794
+  },
+  {
+    "system": "T0",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": null,
+    "region": "all",
+    "value": 85.52646434652782
+  },
+  {
+    "system": "T0",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": "zero",
+    "region": "all",
+    "value": 84.70540792596094
+  },
+  {
+    "system": "T0",
+    "panel": "P-U",
+    "direction": "dsm",
+    "tile": "5_10",
+    "damage": "down4",
+    "region": "all",
+    "value": 86.34752076709466
+  }
+]

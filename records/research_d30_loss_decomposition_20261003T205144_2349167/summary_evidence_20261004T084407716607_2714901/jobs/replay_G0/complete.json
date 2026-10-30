@@ -1,0 +1,19 @@
+{
+  "signature": {
+    "job": "replay_G0",
+    "checkpoint": {
+      "checkpoint_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/G0/selected.pth",
+      "checkpoint_sha256": "f7bb8076eb13f92b733053ba149bb7eabb12bf75db40e9c7ba372fb63080a93e",
+      "step": 4000,
+      "complete_sha256": "9a2833245ace2b0a6e0e0e6693feb9058474141288581ad74c210f9eefcf01e5"
+    },
+    "plan_sha256": "4ec66cd509534ca63c16b63585054d18bcabfedf9d8b9e5da27fa14d4aaab6d6",
+    "source_sha256": "872dd12fc0bfcb85fc56c5e164e9b984183d6c92477aba85ac3612b0bef62bec",
+    "execution_commit": "9db12dfb7ee85dff91dd6c246c7f161b60aca603",
+    "test6_loaded": false
+  },
+  "new_tile_evaluations": 24,
+  "original_reused": 6,
+  "completed_at": "2026-10-03T21:06:36.061041+08:00",
+  "test6_loaded": false
+}

@@ -1,0 +1,15 @@
+{
+  "source": "User-pasted server find and D5 log-grep output on 2026-09-23",
+  "project_root": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+  "d5_directories_found_under_records": [
+    "records/rebuild_v1_d5_queue_20260920"
+  ],
+  "per_seed_d5_result_directories_found": false,
+  "d5_complete_log_lines": [
+    "D5 COMPLETE /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/rebuild_v1_d5_confidence_routing_seed17_20260920",
+    "D5 COMPLETE /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/rebuild_v1_d5_confidence_routing_seed42_20260920",
+    "D5 COMPLETE /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/rebuild_v1_d5_confidence_routing_seed42_20260920_smoke"
+  ],
+  "status_file_found_at_expected_path": false,
+  "interpretation": "D5 evaluation reported completion, but original per-seed metric directories are absent under project records. A new narrow unfitted route audit is justified; it must not be represented as recovery of the original D5 CSVs."
+}

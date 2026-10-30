@@ -1,0 +1,31 @@
+{
+  "status": "BACKGROUND_ENTRY_DISPATCH_REPORTED_PREFLIGHT_AND_FORMAL_PROGRESS_NOT_YET_OBSERVED",
+  "source": "user_pasted_server_terminal_output",
+  "wrapper_release_commit": "2285fa669d71d9a3898a97f92e5f462f5aa179b4",
+  "a0_execution_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+  "launcher_pid": 2426676,
+  "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_capability_20261029/formal_continuation_20261030T171015_2273418.log",
+  "pid_file": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_capability_20261029/formal_continuation_20261030T171015_2273418.log.pid",
+  "log_filename_timestamp": "20261030T171015",
+  "timestamp_basis": "Supplied launcher date stamp in filename; no separate dated execution or liveness receipt received.",
+  "script_download_reported_bytes": 5286,
+  "stdout_lines": [
+    "PID=2426676",
+    "LOG=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_capability_20261029/formal_continuation_20261030T171015_2273418.log"
+  ],
+  "scientific_scope": "Original A0 paired frozen-encoder linear readout; seed42; 2000 formal updates/model; GPU0 DINO2, GPU1 DINO3. Existing loading/profile receipts reused.",
+  "source_script_changed": false,
+  "additional_target_profiles_requested": 0,
+  "automatic_retry": false,
+  "evidence_limits": {
+    "process_currently_alive": "UNKNOWN",
+    "preflight_passed": "UNKNOWN",
+    "gpu_child_dispatch": "NOT_YET_OBSERVED",
+    "successful_optimizer_updates": "NOT_YET_OBSERVED",
+    "phase_completion": "NOT_YET_OBSERVED",
+    "scientific_result": "NOT_RECEIVED"
+  },
+  "full_pipeline_launch_receipt_received": false,
+  "next_action": "Read this exact parent log and the existing two pair_train logs only. Do not rerun the launcher, repeat probes, start a competing Full/spatial queue, remove guards or stop jobs based only on this receipt.",
+  "assistant_server_access": "No SSH or direct server execution."
+}

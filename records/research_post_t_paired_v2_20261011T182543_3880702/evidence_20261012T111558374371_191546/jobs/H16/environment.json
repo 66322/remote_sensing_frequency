@@ -1,0 +1,24 @@
+{
+  "torch_version": "2.2.2+cu121",
+  "experts": {
+    "rgb": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/jobs/P6/selected.pth",
+      "sha256": "bef8dda6537b68fc51f300bc3789bbbef57682baedf92a3f7665217a4a2fde71",
+      "step": 2000
+    },
+    "dsm": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/D15_dsm_only_seed42_sched16000_stop16000/best_model.pth",
+      "sha256": "d597f1adf3ca0291dcd7d063af941bebf3db1e61205cfdaf13271fbba9437e84",
+      "step": 15000
+    }
+  },
+  "allowed_physical_gpus": [
+    0,
+    1
+  ],
+  "seed": 42,
+  "batch": 16,
+  "precision": "trainBF16_evalFP32_TF32",
+  "test6_loaded": false,
+  "independent_final_loaded": false
+}

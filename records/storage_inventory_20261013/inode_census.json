@@ -1,0 +1,10 @@
+{
+  "source": "user inode-deduplicated metadata census, no precise timestamp",
+  "unique_npy_GiB": 1365.52,
+  "duplicate_paths": 13104,
+  "scope": "five historical jobs trees; all examples are Val2 3_11/5_10 evaluation predictions",
+  "deletion_performed": false,
+  "compression_measured": false,
+  "external_hardlink_references_not_audited": true,
+  "original_bytes_must_be_restorable": true
+}

@@ -1,0 +1,23 @@
+test_all_arm_capacity_and_exact_common_initialization (test_d26.Tests.test_all_arm_capacity_and_exact_common_initialization) ... ok
+test_basis_inverse_energy_constant_and_gradients (test_d26.Tests.test_basis_inverse_energy_constant_and_gradients) ... ok
+test_bilateral_exact_fallback_masks_and_hidden_input_independence (test_d26.Tests.test_bilateral_exact_fallback_masks_and_hidden_input_independence) ... ok
+test_cap_has_no_cross_donor_but_cross_arm_does (test_d26.Tests.test_cap_has_no_cross_donor_but_cross_arm_does) ... ok
+test_complete_forward_hook_matches_unmodified_expert_logits (test_d26.Tests.test_complete_forward_hook_matches_unmodified_expert_logits) ... ok
+test_dynamic_queue_never_duplicates_assigned_job (test_d26.Tests.test_dynamic_queue_never_duplicates_assigned_job) ... ok
+test_fast_boundary_mask_matches_exact_pool_definition (test_d26.Tests.test_fast_boundary_mask_matches_exact_pool_definition) ... ok
+test_frequency_and_semantic_shuffle_are_effective (test_d26.Tests.test_frequency_and_semantic_shuffle_are_effective) ... ok
+test_gate_thresholds_and_protection_failures (test_d26.Tests.test_gate_thresholds_and_protection_failures) ... ok
+test_invalid_interaction_neighborhood_zero (test_d26.Tests.test_invalid_interaction_neighborhood_zero) ... ok
+test_joint_raw_counts_support_class_and_recovery (test_d26.Tests.test_joint_raw_counts_support_class_and_recovery) ... ok
+test_keyed_independent_quality_draws_and_availability (test_d26.Tests.test_keyed_independent_quality_draws_and_availability) ... ok
+test_locked_plan_budget_split_selection (test_d26.Tests.test_locked_plan_budget_split_selection) ... ok
+D26_EVAL evaluation 3_11 clean
+D26_EVAL evaluation 5_10 clean
+test_stitch_and_evaluation_resume_preserve_evidence (test_d26.Tests.test_stitch_and_evaluation_resume_preserve_evidence) ... ok
+test_trainable_paths_and_frozen_expert_gradients_bn_statistics (test_d26.Tests.test_trainable_paths_and_frozen_expert_gradients_bn_statistics) ... ok
+test_treatments_both_modalities_correct_shapes_and_no_gt_input (test_d26.Tests.test_treatments_both_modalities_correct_shapes_and_no_gt_input) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 12.116s
+
+OK

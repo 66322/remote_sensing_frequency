@@ -1,0 +1,144 @@
+{
+  "source": "user pasted D27 completion log and D28 status; full light records not uploaded yet",
+  "execution_commit": "ba7088ec05be7b85dd45e5896a8407506bcca14d",
+  "dataset": "Potsdam",
+  "split": "development Val2 3_11 and 5_10",
+  "metric": "pooled NoBoundary mIoU_fg5; four-family equal mean S_available",
+  "geometry": "native512 stride256",
+  "selection": "original validation selection; all ten selected step4000 from 8000 training budget",
+  "D27": {
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983",
+    "complete": 10,
+    "total": 10,
+    "status": "COMPLETE",
+    "observed_at": "2026-10-03T18:22:10.948452+08:00",
+    "time_source": "D28 predecessor status timestamp; exact final complete.json not yet received",
+    "summary_exit": 0,
+    "scores_pp": {
+      "S0": {
+        "selected_step": 4000,
+        "C": 87.14378448666568,
+        "QR": 86.2068025701019,
+        "QD": 86.69522882012534,
+        "QJ": 84.1590391764477,
+        "S_available": 86.05121376333516
+      },
+      "S1": {
+        "selected_step": 4000,
+        "C": 85.1192699378325,
+        "QR": 84.42117665286207,
+        "QD": 84.8061520230742,
+        "QJ": 82.67562165950697,
+        "S_available": 84.25555506831894
+      },
+      "G0": {
+        "selected_step": 4000,
+        "C": 87.12664118865077,
+        "QR": 86.2006616381255,
+        "QD": 86.65716799022805,
+        "QJ": 84.11614634252167,
+        "S_available": 86.0251542898815
+      },
+      "G1": {
+        "selected_step": 4000,
+        "C": 85.12104961986327,
+        "QR": 84.42444373873141,
+        "QD": 84.80701545121036,
+        "QJ": 82.67370580872264,
+        "S_available": 84.25655365463192
+      },
+      "L0": {
+        "selected_step": 4000,
+        "C": 87.13901597147242,
+        "QR": 86.20596641215032,
+        "QD": 86.68522885817572,
+        "QJ": 84.16179061334145,
+        "S_available": 86.04800046378497
+      },
+      "L1": {
+        "selected_step": 4000,
+        "C": 85.10556690201967,
+        "QR": 84.45145712251552,
+        "QD": 84.8026389339985,
+        "QJ": 82.69166167012558,
+        "S_available": 84.26283115716483
+      },
+      "C0": {
+        "selected_step": 4000,
+        "C": 87.12802894763932,
+        "QR": 86.2056477939151,
+        "QD": 86.69130143071403,
+        "QJ": 84.1893824616591,
+        "S_available": 86.05359015848188
+      },
+      "C1": {
+        "selected_step": 4000,
+        "C": 84.97286849402117,
+        "QR": 84.26006340767789,
+        "QD": 84.75075818750275,
+        "QJ": 82.66173839257571,
+        "S_available": 84.16135712044438
+      },
+      "L1-sh": {
+        "selected_step": 4000,
+        "C": 85.11971962319129,
+        "QR": 84.42233000998871,
+        "QD": 84.80600144031358,
+        "QJ": 82.67386857847217,
+        "S_available": 84.25547991299143
+      },
+      "C1-sh": {
+        "selected_step": 4000,
+        "C": 85.02871377667361,
+        "QR": 84.31647236070123,
+        "QD": 84.7826686722978,
+        "QJ": 82.69469728622242,
+        "S_available": 84.20563802397376
+      }
+    },
+    "comparisons_pp": {
+      "G1_G0": -1.7686006352495838,
+      "G1_S1": 0.0009985863129742256,
+      "L1_G1": 0.006277502532910262,
+      "L1_L1sh": 0.007351244173392502,
+      "C1_L1": -0.10147403672044675,
+      "C1_C1sh": -0.04428090352938341
+    }
+  },
+  "D28": {
+    "observed_at": "2026-10-03T18:34:10.615615+08:00",
+    "status": "RUNNING",
+    "complete": 0,
+    "total": 7,
+    "RGB_anchor": {
+      "gpu": 0,
+      "pid": 2275915,
+      "done": 26,
+      "total": 34,
+      "progress_at": "2026-10-03T18:34:04.843310+08:00"
+    },
+    "DSM_anchor": {
+      "gpu": 1,
+      "pid": 2275921,
+      "done": 27,
+      "total": 34,
+      "progress_at": "2026-10-03T18:34:09.849397+08:00"
+    },
+    "pending": [
+      "D26_B0",
+      "D27_S1",
+      "D27_G0",
+      "D27_G1",
+      "D27_L1"
+    ],
+    "predecessor_status": "COMPLETE",
+    "handover_observed": true
+  },
+  "limits": {
+    "raw_matrix_recomputed": false,
+    "full_original_screen_json_received": false,
+    "unique_retention_harm_route_review_pending": true,
+    "development_evidence_not_independent_final": true,
+    "D29_queued": false
+  }
+}

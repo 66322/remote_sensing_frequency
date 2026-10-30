@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "source_commit": "5209403c9a25bd7a7a85369e931ee4b44358a0a9",
+  "summaries": 8,
+  "queue_final_line": "2026-09-28T12:13:32+08:00\tQUEUE\tFINISHED\tjobs_all=22 formal_attempted=8 formal_complete=8 failures=0 missing_base=[] missing_conditional=[] summary_ok=True",
+  "previous_queue_starts": 1,
+  "candidates": [
+    "P2"
+  ],
+  "config_sha256": "cb1c398acac6c9892aeee65bc5f331375a2395c0233654d7a3fc6ee58329ef0f",
+  "checks": [
+    "final queue segment and all formal train/eval completions",
+    "historical Git blob source/config hashes and matched anchors",
+    "full and NoBoundary pooled/tile integer confusion matrices",
+    "per-class IoU, fg5 mIoU, OA and paired correctness counts",
+    "all score rows and frozen decision fields independently recomputed"
+  ],
+  "limitation": "Archived summaries were checked offline. Server checkpoint, dataset and split bytes were not independently rehashed or re-inferred; repeatedly used Val2 remains exploratory."
+}

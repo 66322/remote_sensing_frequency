@@ -1,0 +1,107 @@
+{
+  "jobs": {
+    "RGB_anchor": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "pid": 2275915,
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d28_pressure_20261003T092243758628_2001983/logs/RGB_anchor_20261003T182239369783.log",
+      "progress": {
+        "model": "RGB_anchor",
+        "done": 34,
+        "total": 34,
+        "observed_at": "2026-10-03T18:37:01.446196+08:00",
+        "phase": "complete"
+      },
+      "returncode": 0
+    },
+    "DSM_anchor": {
+      "status": "COMPLETE",
+      "gpu": 1,
+      "pid": 2275921,
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d28_pressure_20261003T092243758628_2001983/logs/DSM_anchor_20261003T182239600095.log",
+      "progress": {
+        "model": "DSM_anchor",
+        "done": 34,
+        "total": 34,
+        "observed_at": "2026-10-03T18:36:53.130869+08:00",
+        "phase": "complete"
+      },
+      "returncode": 0
+    },
+    "D26_B0": {
+      "status": "COMPLETE",
+      "gpu": 1,
+      "pid": 2283183,
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d28_pressure_20261003T092243758628_2001983/logs/D26_B0_20261003T183700743975.log",
+      "progress": {
+        "model": "D26_B0",
+        "done": 34,
+        "total": 34,
+        "observed_at": "2026-10-03T18:53:39.489104+08:00",
+        "phase": "complete"
+      },
+      "returncode": 0
+    },
+    "D27_S1": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "pid": 2283334,
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d28_pressure_20261003T092243758628_2001983/logs/D27_S1_20261003T183711152114.log",
+      "progress": {
+        "model": "D27_S1",
+        "done": 34,
+        "total": 34,
+        "observed_at": "2026-10-03T18:54:07.969136+08:00",
+        "phase": "complete"
+      },
+      "returncode": 0
+    },
+    "D27_G0": {
+      "status": "COMPLETE",
+      "gpu": 1,
+      "pid": 2291791,
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d28_pressure_20261003T092243758628_2001983/logs/D27_G0_20261003T185346166602.log",
+      "progress": {
+        "model": "D27_G0",
+        "done": 34,
+        "total": 34,
+        "observed_at": "2026-10-03T19:10:43.090361+08:00",
+        "phase": "complete"
+      },
+      "returncode": 0
+    },
+    "D27_G1": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "pid": 2292130,
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d28_pressure_20261003T092243758628_2001983/logs/D27_G1_20261003T185417888464.log",
+      "progress": {
+        "model": "D27_G1",
+        "done": 34,
+        "total": 34,
+        "observed_at": "2026-10-03T19:10:57.473226+08:00",
+        "phase": "complete"
+      },
+      "returncode": 0
+    },
+    "D27_L1": {
+      "status": "COMPLETE",
+      "gpu": 1,
+      "pid": 2300472,
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d28_pressure_20261003T092243758628_2001983/logs/D27_L1_20261003T191052936672.log",
+      "progress": {
+        "model": "D27_L1",
+        "done": 34,
+        "total": 34,
+        "observed_at": "2026-10-03T19:27:52.269595+08:00",
+        "phase": "complete"
+      },
+      "returncode": 0
+    }
+  },
+  "status": "COMPLETE",
+  "controller_pid": 2002037,
+  "observed_at": "2026-10-03T19:27:53.313658+08:00",
+  "predecessor_status": "COMPLETE",
+  "predecessor_observed_at": "2026-10-03T18:22:10.948452+08:00"
+}

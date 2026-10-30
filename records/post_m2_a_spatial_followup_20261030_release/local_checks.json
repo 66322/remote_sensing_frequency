@@ -1,0 +1,35 @@
+{
+  "status": "LOCAL_AFFECTED_CHECKS_PASSED",
+  "test_count": 17,
+  "command": "python -m unittest discover -s tests -p test_a_spatial_followup.py -v",
+  "environment": {
+    "os": "Windows",
+    "python": "3.9.25",
+    "torch": "2.8.0+cpu"
+  },
+  "tests_source": "tests/test_a_spatial_followup.py",
+  "no_gpu_optimizer_updates": true,
+  "coverage": [
+    "Full failures override completion",
+    "normal invalid Full routes independent",
+    "wrong source refused",
+    "old standalone duplicate refused",
+    "idempotent registration",
+    "real DataLoader timeout property accepted",
+    "old loader sampling preserved",
+    "first phase failure stops later stages",
+    "unlearned head closes spatial",
+    "original inner gate, no DINOv3 win requirement",
+    "Popen ownership cleanup",
+    "partial updates remain unknown",
+    "no model upload",
+    "PID reuse refused",
+    "lock/receipt handoff independent of upload",
+    "unknown busy GPU rejected",
+    "resident model/fit reuse, fit released after train"
+  ],
+  "target_linux_process_groups_verified": false,
+  "target_new_spatial_forward_backward_verified": false,
+  "target_queue_registration_verified": false,
+  "reuse": "existing Full and A0 actual loading/profile/IPC receipts, frozen d15 payload; no new model or data audits"
+}

@@ -1,0 +1,362 @@
+{
+  "input_manifest_sha256": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295",
+  "expected_configs": {
+    "base_config_sha256": "07dd4b7f224d2e036024dfb2ab57bac9fe312335a5eebb8173778cd5c11de133",
+    "dino_config_sha256": "cb1c398acac6c9892aeee65bc5f331375a2395c0233654d7a3fc6ee58329ef0f",
+    "split_sha256": "d9fe260f6b1be3807811e454c1673d1e69db235c32d4dea207e8724975e210ab"
+  },
+  "schema_version": "1.0",
+  "id": "D27_SAFE_ROUTING_20261002",
+  "status": "EXECUTION_CONFIGURED",
+  "execution_authorized": true,
+  "source_commit": "8457b3d838d35440d4028f031756d4d9b8fe36f8",
+  "user_direction": "Both RGB and DSM information; reuse already completed unimodal experiments",
+  "superseded_suggestion": "Retraining fresh RGB-only and DSM-only anchors is withdrawn",
+  "protocol": "docs/protocols/D27_SAFE_ROUTING_PLAN_20261002.md",
+  "evidence_review": "docs/experiments/RESEARCH_SYNTHESIS_D15_D25_20261002.md",
+  "literature": "docs/literature/D27_SAFE_ROUTING_RECENT_LITERATURE_20261002.md",
+  "experts": {
+    "rgb": {
+      "path": "records/research_d25_missingness_20261002T130253_1358078/jobs/P6/selected.pth",
+      "sha256": "bef8dda6537b68fc51f300bc3789bbbef57682baedf92a3f7665217a4a2fde71",
+      "step": 2000,
+      "kind": "D25_P6_DINOv2_vits14_RGB_only",
+      "normalization": "native RGB ImageNet mean/std"
+    },
+    "dsm": {
+      "path": "runs/rebuild_v1/D15_dsm_only_seed42_sched16000_stop16000/best_model.pth",
+      "sha256": "d597f1adf3ca0291dcd7d063af941bebf3db1e61205cfdaf13271fbba9437e84",
+      "step": 15000,
+      "kind": "D15_seed42_R50_ViT_B16_DSM_only",
+      "normalization": "native per-tile minmax DSM repeated3; no ImageNet normalization"
+    },
+    "heterogeneous_architectures": true,
+    "historical_held4_exposure": true
+  },
+  "new_unimodal_training": 0,
+  "jobs": [
+    {
+      "id": "S0",
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "priority": 2
+    },
+    {
+      "id": "S1",
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "priority": 3
+    },
+    {
+      "id": "G0",
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "priority": 0
+    },
+    {
+      "id": "G1",
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "priority": 1
+    },
+    {
+      "id": "L0",
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "priority": 4
+    },
+    {
+      "id": "L1",
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "priority": 5
+    },
+    {
+      "id": "C0",
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "priority": 6
+    },
+    {
+      "id": "C1",
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "priority": 7
+    },
+    {
+      "id": "L1-sh",
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "priority": 8
+    },
+    {
+      "id": "C1-sh",
+      "steps": 8000,
+      "seed": 42,
+      "optimizer_steps": 8000,
+      "priority": 9
+    }
+  ],
+  "unique_training_jobs": 10,
+  "total_optimizer_steps": 80000,
+  "batch": 16,
+  "gradient_accumulation": false,
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "nohup": true,
+  "server_root": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro",
+  "directory_pattern": "records/research_d27_safe_routing_<timestamp>_<pid>",
+  "repeat_resource_probe": false,
+  "test6_loaded": false,
+  "automatic_followup": false,
+  "selection": "mean complete clean, RGB-only clean, DSM-only clean on Val2 at4000/8000, earliest ties; fixed8000 diagnostic retained",
+  "primary_candidate": "G1",
+  "new_contribution_established": false,
+  "decision_source": "2026-10-02 user: \u6309\u7167\u89c4\u5212\u8fdb\u884c\u5b9e\u9a8c\uff0c\u6dfb\u52a0\u5230\u5df2\u6709\u5b9e\u9a8c\u7684\u540e\u9762\uff0c\u4e4b\u524d\u7684\u8dd1\u5b8c\u5c31\u8fdb\u884c\u8fd9\u7ec4\u5b9e\u9a8c",
+  "data": {
+    "dataset": "Potsdam",
+    "input": "RGB plus existing per-tile normalized DSM",
+    "fit12": [
+      "2_12",
+      "2_10",
+      "7_8",
+      "3_12",
+      "5_12",
+      "7_9",
+      "6_9",
+      "7_7",
+      "4_12",
+      "6_8",
+      "6_12",
+      "6_7"
+    ],
+    "train_held4": [
+      "4_11",
+      "6_10",
+      "7_10",
+      "7_11"
+    ],
+    "validation": [
+      "3_11",
+      "5_10"
+    ],
+    "held4_policy": "not loaded this round; historical Train16 checkpoint exposure means not an independent holdout",
+    "test6_loaded": false,
+    "independent_final_loaded": false,
+    "patch": 512,
+    "sampling": "D23 aligned keyed fit crop stream; D26 independent keyed R-quality/D-quality/availability draws"
+  },
+  "training": {
+    "steps": 8000,
+    "physical_batch": 16,
+    "gradient_accumulation": false,
+    "views_per_crop": 2,
+    "head_lr": 0.0002,
+    "encoder_last4_lr": 2e-05,
+    "weight_decay": 0.01,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "warmup_steps": 100,
+    "checkpoint_every": 500,
+    "validation_steps": [
+      4000,
+      8000
+    ],
+    "selection_states": [
+      "clean",
+      "dsm_missing",
+      "rgb_missing"
+    ],
+    "selection": "mean pooled NoBoundary fg5 across three states; ties earlier",
+    "joint_single_ce_weight": 0.5,
+    "precision": "bf16",
+    "validation_batch": 8,
+    "seed": 42,
+    "gradient_diagnostic_every": 500
+  },
+  "runtime": {
+    "per_job_timeout_hours": 8,
+    "queue": "independent successor; waits predecessor terminal9 jobs and released controller lock, then dynamicGPU0/1",
+    "estimated_hours": [
+      12,
+      18
+    ],
+    "host_prefetch_workers": 8,
+    "host_prefetch_batches": 4,
+    "automatic_retries": false,
+    "automatic_new_jobs": false,
+    "automatic_batch_resize": false,
+    "determinism": "strict frozen arms; J0 warn_only for native DSM bilinear CUDA backward; no bitwise multiGPU promise"
+  },
+  "architecture": {
+    "residual_experts": 3,
+    "expert_states": [
+      "complete_clean",
+      "dsm_quality_degraded",
+      "rgb_quality_degraded"
+    ],
+    "expert_specialization": "common auxiliary supervision on training stratum; both-quality receives expert1/2 supervision",
+    "frozen_original_anchors": true,
+    "projection_channels": 128,
+    "expert_head": "concat256 ->Conv3x3 128->GroupNorm8->GELU->Conv1x1 6 zero initialized",
+    "router": "20 detached probabilities/disagreement/known-mask ->Conv1x1 64->GELU->Conv1x1 18 zero initialized",
+    "route": "6classes x3experts; static fit token/image pooling/local class-average/local class-specific",
+    "fit_statistic": "first common clean fit batch mean detached20channels stored checkpoint buffer; not an extra probe",
+    "anchor": "RGB plus three weighted residuals; known single-modality pixels exact native-logit fallback",
+    "dense_moe": true,
+    "sparse_speedup_claim": false,
+    "class_shuffle": "per sample deterministic input-fingerprint random semantic channel permutation, availability unchanged",
+    "spatial_shuffle": "halfheight/halfwidth routing field roll, training andevaluation"
+  },
+  "augmentation": {
+    "rgb_probability": 0.5,
+    "rgb": [
+      "rgb_down2",
+      "rgb_down4",
+      "rgb_blur5",
+      "rgb_contrast060"
+    ],
+    "dsm_probability": 0.5,
+    "dsm": [
+      "aux_down4",
+      "aux_noise_std010",
+      "aux_shift8"
+    ],
+    "availability": {
+      "full": 0.5,
+      "rgb_missing": 0.1,
+      "dsm_missing": 0.1,
+      "rgb_local": 0.15,
+      "dsm_local": 0.15
+    },
+    "local_shapes": [
+      "q1",
+      "stripe_eighth"
+    ],
+    "both_missing_training": false
+  },
+  "evaluation": {
+    "primary": [
+      "clean",
+      "rgb_down2",
+      "rgb_down4",
+      "rgb_blur5",
+      "rgb_contrast060",
+      "aux_down4",
+      "aux_noise_std010",
+      "aux_shift8",
+      "rgb_down4+aux_noise_std010",
+      "rgb_blur5+aux_shift8"
+    ],
+    "families": {
+      "C": [
+        "clean"
+      ],
+      "QR": [
+        "rgb_down2",
+        "rgb_down4",
+        "rgb_blur5",
+        "rgb_contrast060"
+      ],
+      "QD": [
+        "aux_down4",
+        "aux_noise_std010",
+        "aux_shift8"
+      ],
+      "QJ": [
+        "rgb_down4+aux_noise_std010",
+        "rgb_blur5+aux_shift8"
+      ]
+    },
+    "missing": [
+      "rgb_missing",
+      "dsm_missing"
+    ],
+    "local": {
+      "LR": [
+        "rgb_local_q1",
+        "rgb_local_stripe_eighth",
+        "rgb_local_center_quarter"
+      ],
+      "LD": [
+        "dsm_local_q1",
+        "dsm_local_stripe_eighth",
+        "dsm_local_center_quarter"
+      ]
+    },
+    "diagnostic": [
+      "dsm_missing+rgb_down4",
+      "rgb_missing+aux_noise_std010",
+      "complementary_halves",
+      "both_center_missing",
+      "dsm_present_zero",
+      "dsm_present_shift_half"
+    ],
+    "fixed8000": "10 primary conditions; selected evaluates all22 conditions",
+    "window": 512,
+    "stride": 256,
+    "precision": "FP32 logits uniform stitch, TF32 enabled",
+    "metric": "NoBoundary mIoU_fg5 pooled; full and6class diagnostic",
+    "fixed_references": [
+      "rgb",
+      "dsm",
+      "probability_average",
+      "availability_switch"
+    ],
+    "joint_counts": "6^4 truth,rgb,dsm,candidate int64 per availability partition per scope/tile; references same masked input",
+    "joint_counts_encoding": "lossless sparse flat index/count int64 shape6^4, omitted bins exactly0; decode helper supplied; per condition/tile/scope/availability"
+  },
+  "verification_status": "LOCAL_SYNTHETIC_CPU_14_CHECKS_PASS_SERVER_CUDA_PENDING",
+  "inherited_execution_commit": "52f94388b1a9c7557e9ef533075661139cd55eda",
+  "predecessor_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d26_bidirectional_20261002T191253_1513109",
+  "safety_weights": {
+    "protect": 0.1,
+    "recover": 0.1,
+    "expert_auxiliary": 0.1
+  },
+  "development_gates": {
+    "safety": {
+      "worst_qd_tile_improvement_pp": 0.2,
+      "qd_harm_ratio_at_most": 0.8,
+      "composite_delta_min_pp": -0.1,
+      "clean_vs_rgb_min_pp": 0.5,
+      "worst_qd_tile_vs_rgb_min_pp": -0.2
+    },
+    "routing": {
+      "vs_static_composite_min_pp": 0.3,
+      "clean_delta_min_pp": -0.1,
+      "minimum_family_weight_difference": 0.02,
+      "minimum_expert_vote_disagreement": 0.01
+    },
+    "local": {
+      "vs_global_composite_min_pp": 0.2,
+      "vs_spatial_shuffle_min_pp": 0.2,
+      "ld_boundary16_harm_ratio_at_most": 0.8,
+      "dsm_unique_retention_delta_min_pp": -2,
+      "worst_qd_tile_vs_rgb_min_pp": -0.2
+    },
+    "classes": {
+      "vs_local_composite_min_pp": 0.2,
+      "vs_condition_shuffle_min_pp": 0.2,
+      "minimum_positive_foreground_classes": 3,
+      "worst_class_delta_min_pp": -0.5,
+      "worst_qd_tile_vs_rgb_min_pp": -0.2
+    },
+    "interpretation": "development allocation rules, not significance or theoretical safety; zero harm baseline not evidence ofrelative reduction"
+  },
+  "execution_commit": "ba7088ec05be7b85dd45e5896a8407506bcca14d",
+  "created_at": "2026-10-03T09:22:43.909827+08:00"
+}

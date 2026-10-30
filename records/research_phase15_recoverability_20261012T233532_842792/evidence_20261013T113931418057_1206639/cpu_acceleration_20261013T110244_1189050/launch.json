@@ -1,0 +1,14 @@
+{
+  "controller_pid": 1189233,
+  "command": [
+    "/home/jovyan/miniconda3/envs/d18_dino/bin/python",
+    "-u",
+    "-B",
+    "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792/cpu_acceleration_20261013T110244_1189050/code/scripts/run_phase15_acceleration.py",
+    "--directory",
+    "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792",
+    "--attempt",
+    "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792/cpu_acceleration_20261013T110244_1189050"
+  ],
+  "log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase15_recoverability_20261012T233532_842792/cpu_acceleration_20261013T110244_1189050/controller.log"
+}

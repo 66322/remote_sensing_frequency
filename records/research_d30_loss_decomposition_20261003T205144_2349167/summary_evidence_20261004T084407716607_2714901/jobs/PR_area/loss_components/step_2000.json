@@ -1,0 +1,90 @@
+{
+  "step": 2000,
+  "variant": "PR_area",
+  "views": {
+    "clean": {
+      "raw": {
+        "ce": 0.20573168992996216,
+        "aux": 0.06870223581790924,
+        "protect": 0.013905602507293224,
+        "recover": 0.03983859717845917
+      },
+      "weighted": {
+        "ce": 0.20573168992996216,
+        "aux": 0.006870223209261894,
+        "protect": 0.0013905602972954512,
+        "recover": 0.003983859904110432
+      },
+      "weights": {
+        "protect": 0.1,
+        "recover": 0.1,
+        "aux": 0.1
+      },
+      "denominators": {
+        "fusion_pixels": 4194304,
+        "protect_pixels": 3806011,
+        "both_valid_pixels": 4194304,
+        "recover_pixels": 178068,
+        "recover_class_counts": [
+          49168,
+          12313,
+          22430,
+          80191,
+          6149,
+          7817
+        ],
+        "recover_fraction": 0.04245471954345703
+      }
+    },
+    "aug": {
+      "raw": {
+        "ce": 0.24992802739143372,
+        "aux": 0.19845256209373474,
+        "protect": 0.014804537408053875,
+        "recover": 0.040011193603277206
+      },
+      "weighted": {
+        "ce": 0.24992802739143372,
+        "aux": 0.019845256581902504,
+        "protect": 0.0014804537640884519,
+        "recover": 0.004001119639724493
+      },
+      "weights": {
+        "protect": 0.1,
+        "recover": 0.1,
+        "aux": 0.1
+      },
+      "denominators": {
+        "fusion_pixels": 4194304,
+        "protect_pixels": 2492401,
+        "both_valid_pixels": 2752512,
+        "recover_pixels": 109607,
+        "recover_class_counts": [
+          46143,
+          3203,
+          10260,
+          40734,
+          4114,
+          5153
+        ],
+        "recover_fraction": 0.039820716494605654
+      }
+    }
+  },
+  "weighted_gradient_norms": {
+    "ce": 0.049310851019584385,
+    "aux": 0.004771687054012538,
+    "protect": 0.007427278329212572,
+    "recover": 0.004857951481789344
+  },
+  "cosines": {
+    "ce__aux": 0.6536220515057304,
+    "ce__protect": -0.021404459946428676,
+    "ce__recover": 0.016043988053502795,
+    "aux__protect": 0.09302579334939108,
+    "aux__recover": -0.07448887277096623,
+    "protect__recover": -0.40493943927013926
+  },
+  "diagnostic_only": true,
+  "optimizer_gradients_unchanged": true
+}

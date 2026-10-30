@@ -1,0 +1,105 @@
+{
+  "experiment_id": "PHASE3_M2_EXECUTION_20261016",
+  "status": "COMPLETE_SERVER_CHECKED_PRIMARY_GATES_FAILED",
+  "recorded_at": "2026-10-29",
+  "scope": "Fit12 same-city development CV, NoBoundary fg5, central 512 inset",
+  "source": "user terminal summary/gates/report; not full independent raw-count audit",
+  "conclusions": [
+    {
+      "id": "C1",
+      "finding": "Current DF training does not establish correspondence-specific extra rescue",
+      "gates": [
+        "G1"
+      ],
+      "evidence": {
+        "mean_DF_D0_rescue_pp": 0.2760442977444531,
+        "mean_DF_DSelf_rescue_pp": 0.07881923817516896,
+        "mean_DF_DShuffle_rescue_pp": -0.16596205941489947,
+        "mean_DF_DEntropy_rescue_pp": -0.13078814567993882
+      },
+      "observation_supported_by_received_results": true,
+      "positive_hypothesis_or_gate_satisfied": false
+    },
+    {
+      "id": "C2",
+      "finding": "DF improves rescue over clean-teacher DClean locally",
+      "gates": [
+        "H2_degradation_specificity"
+      ],
+      "limitation": "Does not establish overall method superiority",
+      "observation_supported_by_received_results": true,
+      "positive_hypothesis_or_gate_satisfied": true
+    },
+    {
+      "id": "C3",
+      "finding": "No practical primary fixed-fusion gain",
+      "gates": [
+        "G2"
+      ],
+      "evidence": {
+        "mean_fusion_DF_D0_pp": -0.0012610056934221348,
+        "positive_fold_seed_blocks": 4,
+        "required_positive": 7
+      },
+      "observation_supported_by_received_results": true,
+      "positive_hypothesis_or_gate_satisfied": false
+    },
+    {
+      "id": "C4",
+      "finding": "Prespecified protection tolerances met, not proof of effective safe correction",
+      "gates": [
+        "G3"
+      ],
+      "observation_supported_by_received_results": true,
+      "positive_hypothesis_or_gate_satisfied": true
+    },
+    {
+      "id": "C5",
+      "finding": "Required transfer benefit not demonstrated",
+      "gates": [
+        "G4"
+      ],
+      "evidence": {
+        "cross_seed_positive": 0,
+        "cross_seed_total": 6
+      },
+      "observation_supported_by_received_results": true,
+      "positive_hypothesis_or_gate_satisfied": false
+    },
+    {
+      "id": "C6",
+      "finding": "Clean DSM DF underperforms D0 in 9 of 9 blocks",
+      "evidence": {
+        "mean_fold_seed_delta_pp": -1.1597845200544679
+      },
+      "limitation": "Descriptive block mean, not official 12-tile pooled metric",
+      "observation_supported_by_received_results": true
+    },
+    {
+      "id": "C7",
+      "finding": "J stopped for engineering error; no J scientific conclusion",
+      "error": "CUDA cross entropy lacks deterministic implementation under strict mode",
+      "observation_supported_by_received_results": true
+    },
+    {
+      "id": "C8",
+      "finding": "Unneeded trained checkpoints retired after acceptance; sufficient counts retained",
+      "evidence": {
+        "deleted_endpoints": 90,
+        "retained_R_D0": 18
+      },
+      "observation_supported_by_received_results": true
+    }
+  ],
+  "all_observed_primary_gate_conclusions_documented": true,
+  "all_possible_secondary_analyses_completed": false,
+  "server_full_raw_counts_uploaded": false,
+  "not_established": [
+    "new geometry or fine-boundary principle",
+    "cross-city confirmation",
+    "statistical significance/equivalence",
+    "cause of near-unchanged primary fusion",
+    "full alpha/margin/calibration/classwise interpretation"
+  ],
+  "decision": "close current DF recipe; no automatic B/C; no automatic J retry; preserve evidence and remaining baselines"
+}

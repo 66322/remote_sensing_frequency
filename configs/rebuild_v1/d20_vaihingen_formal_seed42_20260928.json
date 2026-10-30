@@ -1,0 +1,39 @@
+{
+  "experiment": "D20_VAIHINGEN_MATCHED_DEVELOPMENT_SEED42_20260928",
+  "evidence_level": "same_mosaic_development_only",
+  "data_root": "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen",
+  "train_ids": [1, 3, 7, 11, 13, 17, 23, 26, 28, 32, 34, 37],
+  "development_ids": [2, 4, 6, 8, 10, 12, 14, 16, 20, 22, 24, 27, 29, 31, 33, 35, 38],
+  "excluded_historical_eval_ids": [5, 15, 21, 30],
+  "optical_channels": ["near_infrared", "red", "green"],
+  "optical_normalization": "native_order_divide_255_then_frozen_DINO_RGB_stats",
+  "height_normalization": "per_tile_raw_DSM_minmax",
+  "training_label_directory": "gts_for_participants",
+  "development_label_directory": "gts_complete_full",
+  "arms": ["P0", "P1", "P2"],
+  "seeds": [42],
+  "train_steps": 8000,
+  "patch": 512,
+  "micro_batch": 2,
+  "accum_steps": 8,
+  "checkpoint_every": 500,
+  "evaluation_stride": 512,
+  "evaluation_batch": 4,
+  "evaluation_conditions": ["clean", "rgb_down2", "rgb_down4", "rgb_blur5", "rgb_local_down4_q1", "aux_down4", "aux_noise_std010", "aux_zero", "aux_local_zero_q1", "rgb_contrast060", "aux_shift8"],
+  "score_families": {
+    "clean": ["clean"],
+    "optical_quality": ["rgb_down2", "rgb_down4", "rgb_blur5", "rgb_local_down4_q1"],
+    "auxiliary_quality": ["aux_down4", "aux_noise_std010"]
+  },
+  "development_gate_pp": {
+    "macro_gain_over_stronger_control_min": 0.2,
+    "clean_loss_vs_P0_max": 0.1,
+    "family_loss_vs_P0_max": 0.3,
+    "tile_clean_loss_vs_P0_max": 0.1,
+    "tile_family_loss_vs_P0_max": 0.3
+  },
+  "test6_loaded": false,
+  "development_used_for_checkpoint_selection": false,
+  "seed17_auto_launch": false,
+  "independent_final_loaded": false
+}

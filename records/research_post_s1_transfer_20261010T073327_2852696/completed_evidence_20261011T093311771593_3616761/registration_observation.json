@@ -1,0 +1,8 @@
+{
+  "verdict": "WAITING_PREDECESSOR",
+  "last_observed": "2026-10-10T07:33:24.785318+08:00",
+  "status": "RUNNING_E",
+  "controller_live": true,
+  "workers_live": true,
+  "checked_at": "2026-10-10T07:33:27.578653+08:00"
+}

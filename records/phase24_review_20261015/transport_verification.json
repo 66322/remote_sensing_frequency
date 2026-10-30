@@ -1,0 +1,11 @@
+{
+  "commit": "76ae973b869eb3c377be4dae99fcb7224c9e2ac3",
+  "manifest_sha256": "9c91050676d37825e8efd654c6ee2d3c030a01b718b690d44fa549ca68c04b06",
+  "summary_sha256": "1f9b9e50161eabb0db0c9ce8561408eec35fc13ca686baadd575752849488b86",
+  "archive_sha256": "c2ed75c3f88601db3c8b8f644749eedf5762bdb3717f12ea09f77221b939a108",
+  "archive_parts": 3249,
+  "payload_count": 3014,
+  "original_bytes": 1883553558,
+  "all_part_sha256": true,
+  "all_payload_sha256": true
+}

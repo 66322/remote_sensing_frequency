@@ -1,0 +1,32 @@
+{
+  "evidence_kind": "user_pasted_registration_stdout_not_live_status",
+  "reported_on": "2026-10-11",
+  "directory_name_timestamp": "20261011T182543",
+  "log_name_timestamp": "20261011T182552609577",
+  "timestamp_boundary": "directory/log naming timestamps; no QUERY_OBSERVED or queue observed_at supplied",
+  "execution_commit": "44e4df5afbaeb603e6441e7ef14ff09f228bc027",
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_t_paired_v2_20261011T182543_3880702",
+  "controller_pid": 3881013,
+  "log": "nohup_20261011T182552609577.log",
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "trainings": 6,
+  "planned_optimizer_calls": 72000,
+  "planned_content_cases": 48,
+  "registration_reported": true,
+  "controller_liveness_verified": false,
+  "gpu_workers_verified": false,
+  "completed_jobs_verified": false,
+  "actual_training_steps_verified": false,
+  "user_observation": "user feels GPU0 active and GPU1 idle; no nvidia-smi output supplied",
+  "gpu_release_requested_in_supplied_commands": false,
+  "next_action": "read status and original controller log; preserve existing queue and workers",
+  "scheduler_verified_from_execution_code": {
+    "CONTENT_PRE": "single queue job; blocks training until complete",
+    "training_stage": "two enabled/free physical GPU slots",
+    "default_blocked": false,
+    "release": "only when explicitly requested; technical HOLD also stops work"
+  }
+}

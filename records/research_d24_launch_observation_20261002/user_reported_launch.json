@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "recorded_at": "2026-10-02T00:15:45+08:00",
+  "source": "user_pasted_server_stdout",
+  "source_attachment_basename": "c5bb2972-1e4c-4752-8d01-ab2b14d7144b/已粘贴的文本.txt",
+  "observed_at": null,
+  "observation_time_note": "Launch block has no explicit clock timestamp. Directory name records creation time 2026-10-02T00:08:43+08:00; do not equate it with exact process start or log observation time.",
+  "directory_created_at_from_name": "2026-10-02T00:08:43+08:00",
+  "status": "running_as_last_reported_initializing",
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d24_overnight_20261002T000843_877409",
+  "execution_commit": "cf1955d966163978b5c8af433f3845b5ca05da9e",
+  "reported_fetched_head": "b077fcb7f8bf713e068ab53350356c4af332261e",
+  "launch_mode": "nohup",
+  "controller_pid": null,
+  "jobs_last_reported": [
+    {
+      "id": "A0",
+      "gpu": 0,
+      "pid": 1003559,
+      "phase": "initializing",
+      "step": 0,
+      "elapsed_minutes": 0
+    },
+    {
+      "id": "A2",
+      "gpu": 1,
+      "pid": 1003563,
+      "phase": "initializing",
+      "step": 0,
+      "elapsed_minutes": 0
+    }
+  ],
+  "remaining_jobs_status": "not observed in pasted launch excerpt",
+  "first_training_step_observed": false,
+  "gradient_check_received": false,
+  "traceback_in_D24_launch_excerpt": false,
+  "current_process_liveness_unchecked": true,
+  "hardware_metrics_received": false,
+  "server_runtime_artifacts_received": false,
+  "scientific_results_received": false,
+  "next_action": "Query persisted progress in this existing directory; do not create a second queue or repeat resource admission."
+}

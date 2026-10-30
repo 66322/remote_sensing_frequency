@@ -1,0 +1,15 @@
+{
+  "job": "H8",
+  "target": 8000,
+  "step": 8000,
+  "physical_gpu": 0,
+  "phase": "complete",
+  "observed_at": "2026-10-11T21:39:17.455787+08:00",
+  "elapsed_seconds": 10338.760011665523,
+  "tiles_loaded": 12,
+  "tiles_total": 12,
+  "loss": 0.30367398262023926,
+  "seconds_per_train_step": 0.6564349923320114,
+  "remaining_train_hours": 0.0,
+  "gpu_peak_allocated_bytes": 13738220032
+}

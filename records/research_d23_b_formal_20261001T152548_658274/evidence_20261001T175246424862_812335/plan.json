@@ -1,0 +1,26 @@
+{
+  "source_commit": "6ba4b49608f6eaae182611f5757685506447c534",
+  "created_at": "2026-10-01T15:25:48.407432+08:00",
+  "schedule": {
+    "0": [
+      "TSF",
+      "TS",
+      "TCAP",
+      "TSF_shuffleS"
+    ],
+    "1": [
+      "T0",
+      "TF",
+      "TSF_CE",
+      "TSF_shuffleF"
+    ]
+  },
+  "steps_per_arm": 4000,
+  "seed": 42,
+  "expert_micro_batch": 8,
+  "gate_batch": 16,
+  "checkpoint_selection": "fixed_final_step_protocol_exception",
+  "test6_loaded": false,
+  "development_scope": "Potsdam Val2 3_11/5_10, 14 conditions, NoBoundary fg5",
+  "expected_runtime_lock_sha256": "8ee5d47c651020dba001916f7c8ae084bff0894f812136177bb08fa41b693daf"
+}

@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-03",
+  "D27_checks": 15,
+  "D28_checks": 8,
+  "status": "CPU_PASS",
+  "D27_actual_worker_transfer_objective_backward": true,
+  "torch_version": "2.7.1+cpu",
+  "python_version": "3.13.3",
+  "python310_syntax": true,
+  "lock_test": "mock fcntl contention and release; Linux server pending",
+  "server_CUDA_verified": false,
+  "server_queue_observed": false,
+  "D29_queued": false,
+  "test6_loaded": false
+}

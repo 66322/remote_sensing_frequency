@@ -1,0 +1,44 @@
+{
+  "summary_envelope_sha_verified": 4,
+  "paired_endpoint_table_percent": {
+    "H8": 84.44107862766485,
+    "F8": 83.85661627924719,
+    "R8": 84.89638163893719,
+    "R16": 84.8803775786385,
+    "H16": 84.53181604344655,
+    "F16": 83.85791714405116
+  },
+  "paired_R16_minus_H16": {
+    "pooled_gain_pp": 0.34856153519194777,
+    "tile_gains_pp": {
+      "3_11": 0.3286418381796494,
+      "5_10": 0.35633470244874843
+    },
+    "threshold_pp": 0.3,
+    "passed": true
+  },
+  "paired_E_R0_failed": [
+    "rgb_lines64w8__aux_down4",
+    "rgb_lines64w8__aux_shift8",
+    "rgb_blocks64q25__clean",
+    "rgb_blocks64q25__aux_down4",
+    "rgb_blocks64q25__aux_shift8"
+  ],
+  "paired_gate": false,
+  "budget_signal": false,
+  "R16_within_schedule_8000_to_16000_pp": 0.6182165518099652,
+  "structured_PE_recomputed": 0.12252230193034012,
+  "structured_CI_recomputed": [
+    -0.3077333584460988,
+    0.5929303367113484
+  ],
+  "scope": "Key uploaded summaries, status and per-pair statistics checked; no new full 640-case matrix audit, GPU or weight verification",
+  "review_head": "0d3a05f26f3f7499b8bb3c8618068ad72c953574",
+  "review_date": "2026-10-12",
+  "raw_original_sha256": {
+    "paired_screen": "f1bda55267a40f5ac813d6f34a96947ad2fb0173bb0e191c6e8a48f2eb28dad8",
+    "paired_queue": "e2303acc7e56c3a4c405449737d33b94204d5c3c5fe82e9cfcbf760cce9f3228",
+    "structured_summary": "dcbdc1e0bb19ba570bcc30e09c6ea2580abcafc9798c469c4faeb40966f5f20c",
+    "structured_queue": "101c1003a792b68cef5f2375c0838bb16eb2e549df510a22ad6536a878a37534"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "status": "A0_COMPLETE_FULL_FIRST_DEPLOYMENT_NEXT_EXISTING_RESULTS_COLLECTION_IN_PARALLEL",
+  "source": "User-authorized first-wave arrangement; A0 completion evidence at 2026-10-30T19:01:20.924026+08:00",
+  "fixed_full_code_commit": "d15f34e8d53f935aa17542123c2227fab14cb810",
+  "fixed_full_jobs": 11,
+  "fixed_full_formal_updates": 88000,
+  "new_full_profile_disposable_updates_max": 28,
+  "seed": 42,
+  "new_downloads": "Small frozen source payload only; no model/data/package downloads or environment installs",
+  "no_automatic_retry": true,
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "dependencies": "Full uses its own qualified B0/B1 and route controls; no A0 score gate. Its CPU/input check and short actual path checks must pass before formal dispatch.",
+  "full_start_command": "(\nset -e\nROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro\nCODE=\"$ROOT/execution/post_m2_multiroute_v2_20261030_r1\"\nBASE=\"$ROOT/records/post_m2_multiroute_v2_20261030_r1\"\nif [ -f \"$CODE/SOURCE.json\" ]; then\n  python -B \"$CODE/scripts/post_m2_multiroute.py\" status\nelse\n  if [ -e \"$BASE/pipeline_started.json\" ] || [ -e \"$BASE/pipeline.log\" ]; then\n    echo \"已有Full启动记录，先读取原日志，不重复派发。\"\n    exit 1\n  fi\n  COMMIT=d15f34e8d53f935aa17542123c2227fab14cb810\n  BOOT=\"$ROOT/execution/bootstrap_post_m2_v2_$COMMIT.py\"\n  curl -fL --connect-timeout 10 --max-time 60 \\\n    \"https://raw.githubusercontent.com/66322/remote_sensing_frequency/$COMMIT/scripts/bootstrap_post_m2_v2.py\" \\\n    -o \"$BOOT.part\"\n  mv -n \"$BOOT.part\" \"$BOOT\"\n  python -u -B \"$BOOT\" --commit \"$COMMIT\" --start\nfi\n)",
+  "small_existing_result_collection_command": "python - <<'PY'\nimport json\nfrom pathlib import Path\nr=Path(\"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030\")\nnames=[\"calibration_screen.json\",\"repair_run_complete.json\",\"old_failure_stop_receipt.json\",\"cpu_ipc_check.json\"]\nnames += [f\"{k}/{n}.json\" for k in (\"dino2\",\"dino3\") for n in (\"train_started\",\"train_complete\",\"trajectory\",\"calibration_result\",\"outer_result\")]\nprint(json.dumps({\"run\":str(r),\"files\":{n:json.loads((r/n).read_text()) for n in names if (r/n).is_file()},\"missing\":[n for n in names if not (r/n).is_file()]},ensure_ascii=False,separators=(\",\",\":\")))\nPY",
+  "existing_source_or_receipt_policy": "Do not reinstall/restart/hot-patch or remove guards; read status instead.",
+  "collection_scope": "Existing small JSONs only; no model/data hashes, new forward passes or training.",
+  "target_full_launch_received": false,
+  "target_full_training_received": false,
+  "a0_outer_metrics_pending": true
+}

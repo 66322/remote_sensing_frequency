@@ -1,0 +1,7 @@
+/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/phase3_memfd_repair_20261024T083216.log
+[1]+  Done                    nohup python -u -B "$SCRIPT" --commit "$FIX" --directory "$Q" --m2-directory "$M2" --apply < /dev/null > "$REPAIR_LOG" 2>&1
+REPAIR_PACKAGE_VERIFIED 5 /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225/repairs/memfd_b0200004f30a8d55eef2049ecdfb30ef97f3d034
+REGISTRATION_ONLY_ADMISSION_OK training_jobs=0
+CHECKING_ORIGINAL_M2_16 /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225/repairs/memfd_b0200004f30a8d55eef2049ecdfb30ef97f3d034/target_checks.log
+ORIGINAL_M2_TARGET_CHECKS_PASSED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225/repairs/memfd_b0200004f30a8d55eef2049ecdfb30ef97f3d034/target_checks.log
+EXISTING_M2_MEMFD_REPAIR_LAUNCHED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330 m2_pid 2690788 combined_pid 2690789 repair /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225/repairs/memfd_b0200004f30a8d55eef2049ecdfb30ef97f3d034

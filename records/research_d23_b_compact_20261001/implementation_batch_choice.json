@@ -1,0 +1,14 @@
+{
+  "status": "IMPLEMENTED_PENDING_GPU_ENGINE_ADMISSION",
+  "expert_micro_batch": 8,
+  "gate_batch": 16,
+  "effective_batch": 16,
+  "gate_gradient_accumulation": false,
+  "backward_calls_per_step": 1,
+  "views_per_step": 2,
+  "seed": 42,
+  "crop_size": 512,
+  "formal_stats_samples": 256,
+  "formal_training_started": false,
+  "change_reason": "80GB H100 permits detached evidence caching; preserve expert8 numerical execution, combine both view losses for one backward; replaces earlier provisional8x2 gate accumulation"
+}

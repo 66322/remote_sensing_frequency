@@ -1,0 +1,102 @@
+{
+  "status": "COMPLETE",
+  "missing": [],
+  "test6_loaded": false,
+  "recorded_at": "2026-09-26T14:45:11+08:00",
+  "rows": [
+    {
+      "seed": 42,
+      "condition": "rgb_down2",
+      "scores_percent": {
+        "R01": 84.22447563373048,
+        "R05": 87.04201114878543,
+        "C-OO-QD": 85.57894065535508,
+        "D15_DSM_ONLY": 65.88571734486341
+      },
+      "r05_minus_best_rgb_pp": 1.463070493430351
+    },
+    {
+      "seed": 42,
+      "condition": "rgb_down4",
+      "scores_percent": {
+        "R01": 76.91300428828959,
+        "R05": 85.06391899294051,
+        "C-OO-QD": 82.10544738672297,
+        "D15_DSM_ONLY": 65.88571734486341
+      },
+      "r05_minus_best_rgb_pp": 2.958471606217543
+    },
+    {
+      "seed": 42,
+      "condition": "rgb_blur5",
+      "scores_percent": {
+        "R01": 82.73715888055983,
+        "R05": 86.670947598835,
+        "C-OO-QD": 84.85733714617986,
+        "D15_DSM_ONLY": 65.88571734486341
+      },
+      "r05_minus_best_rgb_pp": 1.8136104526551406
+    },
+    {
+      "seed": 42,
+      "condition": "rgb_local_down4_q1",
+      "scores_percent": {
+        "R01": 82.84318029915588,
+        "R05": 86.78942668210506,
+        "C-OO-QD": 84.73706704410485,
+        "D15_DSM_ONLY": 65.88571734486341
+      },
+      "r05_minus_best_rgb_pp": 2.052359638000212
+    },
+    {
+      "seed": 17,
+      "condition": "rgb_down2",
+      "scores_percent": {
+        "R01": 84.63726010657417,
+        "R05": 85.43367711063345,
+        "C-OO-QD": 85.21706213218663,
+        "D15_DSM_ONLY": 65.63547641865904
+      },
+      "r05_minus_best_rgb_pp": 0.21661497844682742
+    },
+    {
+      "seed": 17,
+      "condition": "rgb_down4",
+      "scores_percent": {
+        "R01": 77.67656073021246,
+        "R05": 83.61053662585685,
+        "C-OO-QD": 81.68599376873459,
+        "D15_DSM_ONLY": 65.63547641865904
+      },
+      "r05_minus_best_rgb_pp": 1.9245428571222618
+    },
+    {
+      "seed": 17,
+      "condition": "rgb_blur5",
+      "scores_percent": {
+        "R01": 83.10929997579753,
+        "R05": 85.00286417322101,
+        "C-OO-QD": 84.37780677415336,
+        "D15_DSM_ONLY": 65.63547641865904
+      },
+      "r05_minus_best_rgb_pp": 0.6250573990676571
+    },
+    {
+      "seed": 17,
+      "condition": "rgb_local_down4_q1",
+      "scores_percent": {
+        "R01": 83.73776667405302,
+        "R05": 85.48274087848068,
+        "C-OO-QD": 84.28949923992896,
+        "D15_DSM_ONLY": 65.63547641865904
+      },
+      "r05_minus_best_rgb_pp": 1.1932416385517257
+    }
+  ],
+  "seed_pass": {
+    "42": true,
+    "17": true
+  },
+  "rgb_degradation_gate_pass": true,
+  "gate_definition": "Both seeds: R05 mean >= best(R01,C-OO-QD) +0.2 pp across four predeclared RGB degradations and positive on >=3/4; exploratory only"
+}

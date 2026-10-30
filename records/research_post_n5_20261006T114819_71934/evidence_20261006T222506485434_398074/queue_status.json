@@ -1,0 +1,104 @@
+{
+  "status": "N5_COMPLETE_AWAITING_REVIEW",
+  "observed_at": "2026-10-06T21:16:59.632381+08:00",
+  "jobs": {
+    "N5-0": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "pid": 73794,
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_20261006T114819_71934/logs/N5-0_20261006T115131599156.log",
+      "started_at": "2026-10-06T11:51:31.600098+08:00",
+      "progress": {
+        "job": "N5-0",
+        "step": 8000,
+        "target": 8000,
+        "physical_gpu": 0,
+        "phase": "complete",
+        "observed_at": "2026-10-06T16:42:57.825331+08:00",
+        "session_elapsed_seconds": 17477.14747555554,
+        "tiles_loaded": 12,
+        "tiles_total": 12,
+        "loss": 0.31113946437835693,
+        "seconds_per_train_step": 1.3130301345698536,
+        "remaining_train_hours": 0.0,
+        "gpu_peak_allocated_bytes": 36648469504
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-06T16:43:05.145349+08:00"
+    },
+    "N5-1": {
+      "status": "COMPLETE",
+      "gpu": 1,
+      "pid": 73797,
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_20261006T114819_71934/logs/N5-1_20261006T115131837364.log",
+      "started_at": "2026-10-06T11:51:31.838480+08:00",
+      "progress": {
+        "job": "N5-1",
+        "step": 8000,
+        "target": 8000,
+        "physical_gpu": 1,
+        "phase": "complete",
+        "observed_at": "2026-10-06T16:42:57.103959+08:00",
+        "session_elapsed_seconds": 17476.54492881894,
+        "tiles_loaded": 12,
+        "tiles_total": 12,
+        "loss": 0.296257883310318,
+        "seconds_per_train_step": 1.308773415456526,
+        "remaining_train_hours": 0.0,
+        "gpu_peak_allocated_bytes": 36648469504
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-06T16:42:59.154941+08:00"
+    },
+    "N5-2": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "pid": 224177,
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_20261006T114819_71934/logs/N5-2_20261006T164310643470.log",
+      "started_at": "2026-10-06T16:43:10.644623+08:00",
+      "progress": {
+        "job": "N5-2",
+        "step": 8000,
+        "target": 8000,
+        "physical_gpu": 0,
+        "phase": "complete",
+        "observed_at": "2026-10-06T21:16:35.861571+08:00",
+        "session_elapsed_seconds": 16397.934038624167,
+        "tiles_loaded": 12,
+        "tiles_total": 12,
+        "loss": 0.29240432381629944,
+        "seconds_per_train_step": 1.3093824980789797,
+        "remaining_train_hours": 0.0,
+        "gpu_peak_allocated_bytes": 36648469504
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-06T21:16:38.482149+08:00"
+    },
+    "N5-3": {
+      "status": "COMPLETE",
+      "gpu": 1,
+      "pid": 224068,
+      "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_20261006T114819_71934/logs/N5-3_20261006T164305328132.log",
+      "started_at": "2026-10-06T16:43:05.389738+08:00",
+      "progress": {
+        "job": "N5-3",
+        "step": 8000,
+        "target": 8000,
+        "physical_gpu": 1,
+        "phase": "complete",
+        "observed_at": "2026-10-06T21:16:40.673728+08:00",
+        "session_elapsed_seconds": 16407.787763558328,
+        "tiles_loaded": 12,
+        "tiles_total": 12,
+        "loss": 0.2948911190032959,
+        "seconds_per_train_step": 1.3122047250187026,
+        "remaining_train_hours": 0.0,
+        "gpu_peak_allocated_bytes": 36648469504
+      },
+      "returncode": 0,
+      "completed_at": "2026-10-06T21:16:44.391450+08:00"
+    }
+  },
+  "controller_pid": 72265,
+  "screen_sha256": "43ff37a4f61e478803c52cadda6e58f7336ede7fa3113e6fd73d68cc8f320cb1"
+}

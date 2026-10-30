@@ -1,0 +1,25 @@
+{
+  "source": "user-pasted terminal attachment a350384b-3d44-4e5f-86aa-38b1aee7e80b",
+  "observed_at": "2026-10-13T19:36:10+08:00",
+  "scan_end": "2026-10-13T19:36:22+08:00",
+  "records_bytes": 2957484469248,
+  "phase2_bytes": 620860312576,
+  "val_cache_bytes": 252110893056,
+  "head_cache_bytes": 243290112000,
+  "evaluation_bytes": 106213376000,
+  "queue": "EVALUATING_B0_16000",
+  "controller_live": true,
+  "core_jobs_complete": [
+    "A_RGB",
+    "A_DSM",
+    "B0",
+    "B2"
+  ],
+  "volume_df": {
+    "used": "7.1T",
+    "available": "3.0T",
+    "percent": "71%"
+  },
+  "second_cleanup_executed": false,
+  "local_tests_passed": 11
+}

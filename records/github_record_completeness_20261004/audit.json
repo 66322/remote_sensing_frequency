@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "audited_at_date": "2026-10-04",
+  "repository": "66322/remote_sensing_frequency",
+  "branch": "rebuild-v1-protocol-20260915",
+  "source_commit": "54760318ae34ba2c307400d77f8fd146f97f027b",
+  "tree_entries": 9779,
+  "tree_truncated": false,
+  "scope": "近期D23—D30及Post-D30/Post-A/B共享记录；检查清单路径和Git树字节数，不重做全部SHA256或指标复算",
+  "manifests": [
+    {
+      "manifest": "records/research_d24_overnight_20261002T000843_877409/evidence_20261002T121402814506_1365054/upload_manifest.json",
+      "files": 563,
+      "missing": [],
+      "size_mismatches": []
+    },
+    {
+      "manifest": "records/research_d25_missingness_20261002T130253_1358078/evidence_20261002T171201888612_1513281/upload_manifest.json",
+      "files": 712,
+      "missing": [],
+      "size_mismatches": []
+    },
+    {
+      "manifest": "records/research_d26_bidirectional_20261002T191253_1513109/evidence_20261002T222229992478_1671572/upload_manifest.json",
+      "files": 246,
+      "missing": [],
+      "size_mismatches": []
+    },
+    {
+      "manifest": "records/research_d26_bidirectional_20261002T191253_1513109/evidence_20261003T082142607087_1971869/upload_manifest.json",
+      "files": 871,
+      "missing": [],
+      "size_mismatches": []
+    },
+    {
+      "manifest": "records/research_d27_safe_routing_repair_20261003T092243758628_2001983/evidence_20261003T184023096720_2284806/upload_manifest.json",
+      "files": 1016,
+      "missing": [],
+      "size_mismatches": []
+    },
+    {
+      "manifest": "records/research_d28_pressure_20261003T092243758628_2001983/evidence_20261003T211527279613_2361853/upload_manifest.json",
+      "files": 289,
+      "missing": [],
+      "size_mismatches": []
+    },
+    {
+      "manifest": "records/research_d30_loss_decomposition_20261003T205144_2349167/summary_evidence_20261004T084407716607_2714901/upload_manifest.json",
+      "files": 155,
+      "missing": [],
+      "size_mismatches": [],
+      "raw_tile_matrices_uploaded": false
+    },
+    {
+      "manifest": "records/research_post_d30_mechanisms_20261004T000812_2446364/evidence_20261004T180809837028_3002648/upload_manifest.json",
+      "files": 1768,
+      "missing": [],
+      "size_mismatches": []
+    },
+    {
+      "manifest": "records/research_d23_b_formal_20261001T152548_658274/evidence_20261001T220036381222_941244/upload_manifest.json",
+      "files": 59,
+      "missing": [],
+      "size_mismatches": []
+    },
+    {
+      "manifest": "records/research_d27_safe_routing_after_d26_20261002T191253_1513109/evidence_20261003T082232902519_1972719/upload_manifest.json",
+      "files": 47,
+      "missing": [],
+      "size_mismatches": []
+    }
+  ],
+  "listed_payloads_checked": 5726,
+  "missing_payloads": 0,
+  "size_mismatches": 0,
+  "links": {
+    "documents": [
+      "docs/START_HERE.md",
+      "docs/current/RESEARCH_DECISION.md",
+      "docs/current/HANDOFF.md",
+      "docs/current/PROJECT_STATUS.md",
+      "docs/current/NEXT_EXPERIMENT.md",
+      "docs/experiments/rebuild_v1/INDEX.md",
+      "docs/experiments/POST_D30_AB_RESULTS_20261004.md",
+      "docs/experiments/D30_COMPLETED_REVIEW_20261004.md"
+    ],
+    "relative_links_checked": 45,
+    "broken": []
+  },
+  "gaps": [
+    "D30完整逐tile混淆矩阵未上传",
+    "Post-D30 C0/C1仅用户完成状态，C最终结果原件待接",
+    "F实际SKIPPED_GATE及原队列最终交接标记待接",
+    "N1未开始，无完成结果；N2—N6为22项条件预约",
+    "历史D1—D6、dropout消融和部分seed17仅回报/紧凑转录，完整原件仍待接"
+  ],
+  "not_performed": [
+    "N1代码检查或GPU预检",
+    "服务器访问",
+    "新训练或推理",
+    "Test6访问",
+    "全部载荷SHA256重新验证"
+  ],
+  "user_cancellation": "用户取消追加N1代码/GPU预检；草稿未发布到分支、未在服务器安装；既有99acf队列不因本次审计重启"
+}

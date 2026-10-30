@@ -1,0 +1,37 @@
+{
+  "controller_commit": "846403ccc83c97731eceb199de99d9049039e64b",
+  "previous": {
+    "status": "INTERRUPTED",
+    "observed_at": "2026-10-01T15:38:06.821313+08:00",
+    "jobs": {
+      "TSF": {
+        "gpu": 0,
+        "pid": 739666,
+        "status": "PROCESS_STARTED",
+        "observed_at": "2026-10-01T15:25:48.409864+08:00"
+      },
+      "T0": {
+        "gpu": 1,
+        "pid": 739667,
+        "status": "PROCESS_STARTED",
+        "observed_at": "2026-10-01T15:25:48.412724+08:00"
+      }
+    },
+    "pending": {
+      "0": [
+        "TS",
+        "TCAP",
+        "TSF_shuffleS"
+      ],
+      "1": [
+        "TF",
+        "TSF_CE",
+        "TSF_shuffleF"
+      ]
+    },
+    "formal_training_requested": true,
+    "test6_loaded": false
+  },
+  "observed_at": "2026-10-01T15:38:23.560450+08:00",
+  "strategy": "copy matching checkpoint, retain old evaluation, skip complete jobs"
+}

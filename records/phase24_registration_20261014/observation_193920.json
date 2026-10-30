@@ -1,0 +1,36 @@
+{
+  "status": "REGISTERED_LAUNCH_OBSERVED_AWAITING_STATUS",
+  "source": "user pasted registration stdout; original receipt files not yet received",
+  "run_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase24_protected_20261014T193915_2149100",
+  "execution_commit": "5a84f0eacabe5d6f1c7ed1638e6a9291c58e151f",
+  "controller_pid": 2149894,
+  "log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase24_protected_20261014T193915_2149100/nohup_20261014T193920570637.log",
+  "directory_filename_time": "2026-10-14T19:39:15",
+  "log_filename_time": "2026-10-14T19:39:20.570637",
+  "timestamp_basis": "server filenames from user report, not a subsequent real-time query",
+  "replacement_of": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase24_protected_20261014T185408_2127460",
+  "inferred_from_pinned_registrar_control_flow": {
+    "all_26_Linux_CPU_checks_passed": true,
+    "no_skipped_checks": true,
+    "controller_process_created": true
+  },
+  "not_yet_observed": [
+    "current controller/worker liveness",
+    "input preload/hash completion",
+    "dual-GPU CUDA gradients and 12 exact CM bridges",
+    "CPU throughput benchmark",
+    "scientific case counts and training dispatch"
+  ],
+  "scientific_budget": {
+    "gpus": [
+      0,
+      1
+    ],
+    "core_heads": 1,
+    "max_heads": 4,
+    "max_updates": 32000,
+    "new_expert_trainings": 0,
+    "new_training_seeds": 0,
+    "deadline_24h": false
+  }
+}

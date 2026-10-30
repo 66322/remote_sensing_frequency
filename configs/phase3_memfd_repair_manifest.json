@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "scope": "registration-only runtime binding repair; frozen experiment sources unchanged",
+  "m2_execution_commit": "ac325cdbb403ebb95b5eb0acbf17fffa5441dcfd",
+  "combined_execution_commit": "e65c6cb0830985461b3cd30e2f43158dd3d858cb",
+  "required_m2_files": {
+    "scripts/control_phase3_m2.py": "34fdde8da80b110ac7e4ad60eb70aa31bd2043b34bd7864915ea19118b39967f",
+    "tests/test_phase3_m2.py": "ea9712e7e2b6f28245da3198f8b653c9da1939c4d4622c468dd3a93d43336dd1"
+  },
+  "files": {
+    "scripts/phase3_memfd_compat.py": "84e2a14e15e1d312effb40bf853c73d082d0bce9ca390ee448515bd1de5108ba",
+    "scripts/phase3_memfd_entry.py": "a7cda01dac2dd5afb39e539bae0c7984356df44af79640cc0682b7f52714a562",
+    "scripts/phase3_memfd_repair_common.py": "0922d3f2c0bec72335acb5e8e78671ab81cdf9d0f0617aa57246cbb8d88d1a33",
+    "scripts/repair_phase3_m2_memfd.py": "5984ddc345035f88f2b1061ab30947b0731d381dacb0094b7a1c6f002ff3a573",
+    "tests/test_phase3_memfd_compat.py": "63b5d5c20a26cb489170a1cc394a30316e07b230a7d8cec33398b1bd9f7ae1bf"
+  }
+}

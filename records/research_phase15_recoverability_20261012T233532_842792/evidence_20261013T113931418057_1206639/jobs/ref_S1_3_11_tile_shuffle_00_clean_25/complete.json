@@ -1,0 +1,15 @@
+{
+  "binding": {
+    "plan.json": "46f171542c643589ec93429feea13d3bed3ba0897b4a9d6c72d8755f7a23baba",
+    "code_manifest.json": "7755b8e7c9e51cc62702e43be6c609a70a7d1e981458ae7d683648cb6d9164e8",
+    "preparation_complete.json": "3a635441c9a7c7aa180084b780121b9360c5a75c15d0696b540b3cbc0a6b9b02"
+  },
+  "cases": [
+    "S1_3_11_tile_shuffle_00_clean_25"
+  ],
+  "records": {
+    "S1_3_11_tile_shuffle_00_clean_25": "6fab559870697a28a042b142c4be3427c19db93a2eb6eabf41d92014493d91eb"
+  },
+  "optimizer_updates": 0,
+  "completed_at": "2026-10-13T00:00:12.487686+08:00"
+}

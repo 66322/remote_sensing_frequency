@@ -1,0 +1,8 @@
+{
+  "cpu_tests": 8,
+  "passed": true,
+  "torch": "2.7.1+cpu",
+  "real_weights_loaded": false,
+  "gpu_forward_verified": false,
+  "server_execution_report_received": false
+}

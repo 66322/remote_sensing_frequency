@@ -1,0 +1,56 @@
+{
+  "evidence_kind": "user_pasted_console_status_not_original_file_bytes",
+  "observed_at": "2026-10-14T20:19:30.960798+08:00",
+  "query_observed_at": "2026-10-14T20:19:32.558327+08:00",
+  "run": "research_phase24_protected_20261014T193915_2149100",
+  "execution_commit": "5a84f0eacabe5d6f1c7ed1638e6a9291c58e151f",
+  "queue": "D1",
+  "controller_live": true,
+  "gpu_workers": [
+    {
+      "gpu": 0,
+      "pid": 2149964,
+      "live": true
+    },
+    {
+      "gpu": 1,
+      "pid": 2149965,
+      "live": true
+    }
+  ],
+  "smoke_cases": 12,
+  "d1_complete_including_reuse": 534,
+  "d1_total": 642,
+  "stage_new_complete": 524,
+  "stage_new_total": 632,
+  "reused_smoke": 10,
+  "cpu_pending": 0,
+  "remaining_stage_hours": 0.1265399739525871,
+  "eta_scope": "D1_only_estimate_2026-10-14_20:27_Asia_Shanghai_not_whole_run",
+  "verified_input_arrays": 48,
+  "cpu_benchmark": {
+    "workers": [
+      16,
+      24,
+      32
+    ],
+    "seconds": [
+      5.71723660081625,
+      4.9964746832847595,
+      4.957955874502659
+    ],
+    "selected": 32,
+    "numerical_threads_per_worker": 1,
+    "all_result_sha256": "6e528e3e97e207dec89963442324a45ea638250b89f26b2a14a6fbaba47b9c56",
+    "additional_expert_forwards": 0
+  },
+  "binding": {
+    "plan.json": "26efca2ae3e80796728edefc92da825ee8f0116ae12f1326868b569337b52fb3",
+    "code_manifest.json": "203a85b3f1056834b65e27c4773b954c9f55114881c29bb10aaaf17ba236b6b7"
+  },
+  "independent_smoke_original_files_verified": false,
+  "new_scientific_conclusions": false,
+  "previous_observation": "observation_200938.json",
+  "new_cases_since_previous": 141,
+  "approx_case_rate_per_minute_since_previous": 14.28
+}

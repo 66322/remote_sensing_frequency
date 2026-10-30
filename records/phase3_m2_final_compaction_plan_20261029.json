@@ -1,0 +1,31 @@
+{
+  "status": "IMPLEMENTED_LOCAL_CHECKED_WAITING_SERVER_EXECUTION",
+  "date": "2026-10-29",
+  "script": "scripts/compact_phase3_m2.py",
+  "report": "docs/experiments/PHASE3_M2_FINAL_COMPACTION_20261029.md",
+  "local_checks": {
+    "passed": 12,
+    "failed": 0,
+    "scope": "synthetic numeric metrics, aggregate coverage, trace receipts and retention policy",
+    "aggregate_fixture_groups": 6048,
+    "aggregate_fixture_cases": 77868,
+    "training_jobs": 108,
+    "trajectory_fixture_tiles": 1728,
+    "batch_fixture_rows": 3456000
+  },
+  "server_additional_analysis_executed": false,
+  "server_additional_cleanup_executed": false,
+  "unchanged_delete_helper_commit": "6374e41bc9b47fdccf9062d8b7e750afa359ef9d",
+  "last_actual_retained_endpoints": 18,
+  "planned_retained_endpoints": 0,
+  "new_training_updates": 0,
+  "new_inference_cases": 0,
+  "no_repeated_hashing": true,
+  "publication_status": "code_and_pending_plan_only; actual new results require server return",
+  "not_yet_received": [
+    "analysis_summary.json",
+    "cleanup_result.json",
+    "small derived tables"
+  ],
+  "no_automatic_retry": true
+}

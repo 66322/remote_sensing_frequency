@@ -1,0 +1,6 @@
+# N3/S1九组轻量原件离线审计
+源38d205591abe00179bebfb36a17595d4d7b75f47，目录records/research_post_n3_s1_20261007T083203_694293/evidence_20261008T221937481681_1846353。audit_result.json为独立NumPy/stdlib复算；脚本scripts/audit_post_n3_s1_received_records.py不导入工程模型/训练/数据集。
+复现时保持原相对路径下载upload_manifest.json、对应Git递归tree到git_tree.json；79JSON为plan/screen/queue/code_manifest/mask_manifest/preparation_complete/server_artifact_index及每组complete、两validation、capacity、四summary。运行--directory下载目录 --output结果路径。summary大于1MB须用Git blob SHA获取，普通Contents接口可能返回空content。
+
+全1508载荷路径/大小匹配，79JSON+manifest回读SHA，227556矩阵、22140原joint边际/池化、1044嵌入case原源SHA、9396预测索引绑定。科学12源/协议另回读SHA并与执行0e22438逐字比较，此额外验收见audit_result的science_source_paths，不把未回读继承源全数算入。没有服务器数组/权重/mask本体重新求SHA或GPU重放；joint_reports派生字段未穷举重算。
+

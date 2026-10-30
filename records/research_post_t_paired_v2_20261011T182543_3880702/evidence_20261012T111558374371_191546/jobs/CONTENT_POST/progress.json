@@ -1,0 +1,8 @@
+{
+  "job": "CONTENT_POST",
+  "physical_gpu": 0,
+  "optimizer_updates": 0,
+  "elapsed_seconds": 1283.1526200845838,
+  "observed_at": "2026-10-12T11:02:43.085569+08:00",
+  "phase": "complete"
+}

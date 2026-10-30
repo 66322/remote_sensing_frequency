@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "event": "PHASE3_M2_FINAL_COMPACTION_SERVER_ATTEMPT",
+  "observed_date": "2026-10-29",
+  "source": "user_pasted_server_terminal_output",
+  "launcher_commit": "40e47502a7c88d9b4a80d4631be761639cd44d08",
+  "server_log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/m2_final_compaction_20261029T191530.log",
+  "server_output": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/m2_final_compaction_20261029T191532_1299837",
+  "pid": 1299837,
+  "command": "python -u -B compact_phase3_m2.py --apply",
+  "last_progress": {
+    "aggregate_groups_logged": 6000,
+    "cases_logged": 75000,
+    "cases_expected": 77868
+  },
+  "failure": {
+    "type": "TypeError",
+    "location": "scripts/compact_phase3_m2.py analyze_cases line 207",
+    "message": "unsupported operand type(s) for -: 'NoneType' and 'NoneType'",
+    "cause": "A mask-family/ROI subset lacks support for all five foreground classes, so its mIoU is undefined and the original code subtracted two null values."
+  },
+  "deletion_stage_reached": false,
+  "deletion_stage_evidence": "Traceback at analyze_cases in main line 500; candidate planning and delete_checked begin later, at lines 516 and 552 in the launched script.",
+  "server_failure_receipt_contents_not_pasted": true,
+  "after_inventory_not_pasted": true,
+  "cleanup_success": false,
+  "user_instruction": "Defer M2 final cleanup until A0 environment is prepared and experiment launched.",
+  "next_state": "Paused. No automatic retry. Later use reviewed repair and verify the saved server failure receipt/inventory before any deletion."
+}

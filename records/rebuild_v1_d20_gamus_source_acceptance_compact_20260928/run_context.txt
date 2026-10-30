@@ -1,0 +1,9 @@
+2026-09-28T18:32:25+08:00
+HEAD=83808a96f64e3bc5b8986dbfd1d11cfd6e803239
+BRANCH=rebuild-v1-protocol-20260915
+PYTHON=/home/jovyan/miniconda3/envs/remote_sensing/bin/python
+Python 3.9.21
+83c21038224d9cf7cb52cb2eff73e4c4892719dab9258ad0574a305e717d5499  scripts/audit_rebuild_v1_d20_gamus_source.py
+f8fa7b8c4e88bbc43af3e87460cfafa468e8daf42371fd42cebdacf67c104995  scripts/run_rebuild_v1_d20_gamus_source_audit.sh
+PREFLIGHT PASS: CPU dependencies and zzx root 3.14.0 1.26.4
+H5PY_PATH=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/rebuild_v1_d20_gamus_source_acceptance_20260928/pydeps/h5py/__init__.py

@@ -1,0 +1,62 @@
+{
+  "step": 1000,
+  "signature": {
+    "execution_commit": "2c5e7d6f383cfe454415d4e106179930264f1141",
+    "plan_sha256": "c6363a7f7528790302ed5e45d398485a3b9dc7fff8f5ba049f740a3041565eb8",
+    "code_manifest_sha256": "acb90ce5e8a68a47238dc88e751862e1c8bed7c62f26cb73c869d8f9bbbbe19c",
+    "mask_manifest_sha256": "d1caf6fa3ff950c1b3cffd9ef1797c87ae22db82a41cb1ecbbd7a649fe1a6835",
+    "initial_checkpoint_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
+    "job": {
+      "id": "P7",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "frozen_base": true,
+      "support_preserved": true,
+      "local_only": true,
+      "control": "none",
+      "geometry_aug": false
+    },
+    "physical_gpu": 0,
+    "primary_checkpoint_step": 8000,
+    "test6_loaded": false,
+    "independent_final_loaded": false
+  },
+  "denominators": {
+    "clean_fusion_pixels": 4194304,
+    "clean_rgb_pixels": 4194304,
+    "clean_dsm_pixels": 4194304,
+    "clean_residual_support_pixels": 0,
+    "aug_fusion_pixels": 4194304,
+    "aug_rgb_pixels": 3080192,
+    "aug_dsm_pixels": 4194304,
+    "aug_residual_support_pixels": 65536
+  },
+  "trainable_parameters": 20422,
+  "groups_nonzero": {
+    "residual.0.weight": true,
+    "residual.0.bias": true,
+    "residual.2.weight": true,
+    "residual.2.bias": true
+  },
+  "frozen_gradients_absent": true,
+  "exposure": {
+    "views": {
+      "clean": {
+        "residual_support_pixels": 0,
+        "rgb_missing_observed_dsm_pixels": 0,
+        "moved_tokens": 0,
+        "total_tokens": 262144
+      },
+      "aug": {
+        "residual_support_pixels": 65536,
+        "rgb_missing_observed_dsm_pixels": 65536,
+        "moved_tokens": 0,
+        "total_tokens": 262144
+      }
+    },
+    "residual_support_pixels": 65536,
+    "moved_tokens": 0,
+    "total_tokens": 524288
+  }
+}

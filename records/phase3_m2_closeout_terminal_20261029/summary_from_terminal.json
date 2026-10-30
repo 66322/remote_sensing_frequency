@@ -1,0 +1,29 @@
+{
+  "status": "COMPLETE_SERVER_CHECKED",
+  "binding": {
+    "plan.json": "c9a2eb3c5db8abcc762d696b6b14892ca3c87548cf39316fd09e9f75165a9a7b",
+    "code_manifest.json": "045a6db7fdcfb4d5198b8c638b856ff62ed0a4cbb6dadd8d075ca20b3d254933",
+    "folds.json": "62215bb2b106993f518ad451db2ab6c618834080003e847eafa3a7e423590b0a"
+  },
+  "jobs_complete": 108,
+  "jobs_expected": 108,
+  "optimizer_updates": 3456000,
+  "evaluated_cases": 77868,
+  "expected_cases": 77868,
+  "gates": {
+    "G0": true,
+    "G1": false,
+    "H2_degradation_specificity": true,
+    "G2": false,
+    "G3": true,
+    "G4": false
+  },
+  "advance_reverse": false,
+  "conditional_extensions_started": false,
+  "errors": [],
+  "failures": [],
+  "server": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345",
+  "observed_at": "2026-10-29T08:43:22.555134+08:00",
+  "scope": "Fit12 same-city development CV; no Val2/Test6/held4/final or point cloud",
+  "extension": "B requires separately frozen reverse execution contract; C remains budget reservation"
+}

@@ -1,0 +1,25 @@
+{
+  "source": "user pasted server terminal",
+  "reported_date": "2026-10-05",
+  "repair_directory_timestamp": "20261005T091755",
+  "timestamp_scope": "directory timestamp; exact queue observed_at unavailable",
+  "queue_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_n2_20261005T085829_3456726",
+  "repair_directory": "controller_repair_20261005T091755_3467074",
+  "controller_pid": 3467202,
+  "fix_commit": "9b196a204e6a45cb54244b4deb5437ff44bd074e",
+  "science_execution_commit": "86b6a70e5c3482314986fb1259e2fccbd0a5a38b",
+  "adopted": {
+    "N2-0": 3457210
+  },
+  "accepted_complete": [],
+  "controller_log": "controller_repair_20261005T091755_3467074/nohup_controller.log",
+  "observed_log_lines": [
+    "POST_AB_ADOPT 0 N2-0 3457210"
+  ],
+  "worker_restart_occurred": false,
+  "actual_training_step": null,
+  "N2_1_dispatch_confirmed": false,
+  "post_adoption_controller_status": null,
+  "repair_cpu_checks": "pass inferred from installer pre-registration sequence; standalone log not received",
+  "next_action": "read-only status/progress/log query; no duplicate enqueue/recovery"
+}

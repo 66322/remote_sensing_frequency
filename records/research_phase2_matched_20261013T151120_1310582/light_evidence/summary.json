@@ -1,0 +1,257 @@
+{
+  "results": {
+    "average": {
+      "clean": {
+        "all": 84.84028458108071,
+        "missing": null,
+        "healthy": 84.84028458108071,
+        "observed": 84.84028458108071
+      },
+      "P-M": {
+        "all": 75.86293765267013,
+        "missing": 73.53721051382948,
+        "healthy": 83.61655433019153,
+        "observed": 75.9043421027815
+      },
+      "P-U": {
+        "all": 76.14746094759631,
+        "missing": 64.29412304625603,
+        "healthy": 84.05217759472797,
+        "observed": 80.12662062542766
+      },
+      "dose": {
+        "all": 71.20427390656872,
+        "missing": 74.55619387620456,
+        "healthy": 76.7079021733627,
+        "observed": 70.87861755265179
+      },
+      "ordinary": {
+        "all": 77.38052006787328,
+        "missing": 72.10286285739588,
+        "healthy": 80.62830912047474,
+        "observed": 80.62830912047474
+      }
+    },
+    "B0": {
+      "clean": {
+        "all": 84.37116308956544,
+        "missing": null,
+        "healthy": 84.37116308956544,
+        "observed": 84.37116308956544
+      },
+      "P-M": {
+        "all": 75.80674138376784,
+        "missing": 73.53721051382948,
+        "healthy": 83.23745400992718,
+        "observed": 75.8359060219631
+      },
+      "P-U": {
+        "all": 75.75653822767224,
+        "missing": 63.595788113708316,
+        "healthy": 83.62476172617656,
+        "observed": 79.86750798245902
+      },
+      "dose": {
+        "all": 71.47465520791745,
+        "missing": 74.55619387620456,
+        "healthy": 75.36036429457482,
+        "observed": 71.18409061922543
+      },
+      "ordinary": {
+        "all": 77.26027541460164,
+        "missing": 72.10286285739588,
+        "healthy": 80.4340677574975,
+        "observed": 80.4340677574975
+      }
+    },
+    "B2": {
+      "clean": {
+        "all": 84.27931779586096,
+        "missing": null,
+        "healthy": 84.27931779586096,
+        "observed": 84.27931779586096
+      },
+      "P-M": {
+        "all": 76.19521243440015,
+        "missing": 73.53721051382948,
+        "healthy": 83.27282532582363,
+        "observed": 76.36811189629665
+      },
+      "P-U": {
+        "all": 75.8230937199387,
+        "missing": 63.640895614262035,
+        "healthy": 83.58015919924806,
+        "observed": 79.96568707261363
+      },
+      "dose": {
+        "all": 72.42954638475955,
+        "missing": 74.55619387620456,
+        "healthy": 75.10002278423332,
+        "observed": 72.2263831012372
+      },
+      "ordinary": {
+        "all": 77.59718195879974,
+        "missing": 72.10286285739588,
+        "healthy": 80.97830140581753,
+        "observed": 80.97830140581753
+      }
+    }
+  },
+  "matched_expert_trajectories": {
+    "8000": {
+      "clean": {
+        "rgb": 86.57278873656237,
+        "dsm": 62.41420056175492,
+        "oracle": 90.95484345803251,
+        "availability_oracle": 90.95484345803251,
+        "candidate": 84.80397445180617
+      },
+      "P-M": {
+        "rgb": 70.96837799906424,
+        "dsm": 49.942290396943285,
+        "oracle": 87.61690390459765,
+        "availability_oracle": 84.89946182154067,
+        "candidate": 75.90002370180818
+      }
+    },
+    "16000": {
+      "clean": {
+        "rgb": 86.6342523500076,
+        "dsm": 62.480498118554394,
+        "oracle": 90.90339623413246,
+        "availability_oracle": 90.90339623413246,
+        "candidate": 84.84028458108071
+      },
+      "P-M": {
+        "rgb": 70.69898471429683,
+        "dsm": 49.94281359310975,
+        "oracle": 86.77545088439855,
+        "availability_oracle": 84.6489870268633,
+        "candidate": 75.86293765267013
+      },
+      "P-U": {
+        "rgb": 77.50362350652406,
+        "dsm": 55.98526210946799,
+        "oracle": 88.5583004346958,
+        "availability_oracle": 88.5583004346958,
+        "candidate": 76.14746094759631
+      },
+      "dose": {
+        "rgb": 73.9231598957504,
+        "dsm": 45.385046998011745,
+        "oracle": 86.7638891340192,
+        "availability_oracle": 85.6903041981135,
+        "candidate": 71.20427390656872
+      },
+      "ordinary": {
+        "rgb": 72.71009377346769,
+        "dsm": 43.34847559461329,
+        "oracle": 85.64117986664156,
+        "availability_oracle": 83.11030937433794,
+        "candidate": 77.38052006787328
+      }
+    }
+  },
+  "dynamic_accepted": null,
+  "comparison": {},
+  "gate_C_L": {
+    "C": true,
+    "C_by_direction": {
+      "rgb": true,
+      "dsm": true
+    },
+    "H_initial": {
+      "rgb": {
+        "pooled": 18.444090388631125,
+        "3_11": 18.588184885508966,
+        "5_10": 18.34389263239484
+      },
+      "dsm": {
+        "pooled": 3.66526346771235,
+        "3_11": 3.0131376334035025,
+        "5_10": 4.350605516047324
+      }
+    },
+    "L": false,
+    "L_support_passed": true,
+    "L_tail_wins": {
+      "3_11_rgb": {
+        "valid": 1244190308,
+        "rgb_correct": 1111620516,
+        "dsm_correct": 82396041,
+        "both_wrong": 50173751,
+        "distinct_coordinates": 30590907,
+        "selected_expert_win": 0.8934489433428379,
+        "mask_id_support": {
+          "rgb": 20,
+          "dsm": 20
+        }
+      },
+      "3_11_dsm": {
+        "valid": 129712287,
+        "rgb_correct": 19703985,
+        "dsm_correct": 101727150,
+        "both_wrong": 8281152,
+        "distinct_coordinates": 12312294,
+        "selected_expert_win": 0.7842522273930765,
+        "mask_id_support": {
+          "rgb": 20,
+          "dsm": 20
+        }
+      },
+      "5_10_rgb": {
+        "valid": 1304694961,
+        "rgb_correct": 1133611130,
+        "dsm_correct": 105603828,
+        "both_wrong": 65480003,
+        "distinct_coordinates": 30421452,
+        "selected_expert_win": 0.8688706279137687,
+        "mask_id_support": {
+          "rgb": 20,
+          "dsm": 20
+        }
+      },
+      "5_10_dsm": {
+        "valid": 149198819,
+        "rgb_correct": 21558417,
+        "dsm_correct": 115010330,
+        "both_wrong": 12630072,
+        "distinct_coordinates": 13412381,
+        "selected_expert_win": 0.7708528175414042,
+        "mask_id_support": {
+          "rgb": 20,
+          "dsm": 20
+        }
+      }
+    },
+    "L_rule_gain": {
+      "rgb_pooled": 15.054080533734748,
+      "rgb_3_11": 15.091276232941153,
+      "rgb_5_10": 15.020082283994007,
+      "dsm_pooled": -0.477858472377196,
+      "dsm_3_11": -0.7146940404283926,
+      "dsm_5_10": -0.2483590475844484
+    },
+    "status": "STOP_OR_INCONCLUSIVE",
+    "scope": "fixed Val2 masks, not independent sites/seeds",
+    "observed_at": "2026-10-13T19:11:12.674844+08:00"
+  },
+  "static_gate": {
+    "allow_dynamic": false,
+    "static_reference": "B2",
+    "residual_diagnostic_gap": {
+      "rgb": 14.195947161311665,
+      "dsm": 11.274466268202545
+    },
+    "clean_retention_pp": -0.5609667852197475,
+    "exact_fallback": true,
+    "C": true,
+    "L": false,
+    "observed_at": "2026-10-14T00:38:53.133289+08:00"
+  },
+  "no_automatic_followup": true,
+  "new_training_seeds": false,
+  "test6_loaded": false,
+  "held4_loaded": false,
+  "observed_at": "2026-10-14T00:39:01.349206+08:00"
+}

@@ -1,0 +1,162 @@
+{
+  "experiment_id": "R05",
+  "started_at": "2026-09-18T02:26:29+08:00",
+  "last_launch_at": "2026-09-18T02:28:53+08:00",
+  "git_commit": "3715c6b945897ce45c035ef5ed7f1f117b3f2cbc",
+  "config": {
+    "version": "REBUILD_V1_R05_QUALITY_PLUS_DROPOUT_16K_20260917",
+    "purpose": "Strong simple combined robustness baseline. First sample modality dropout; only when no modality is dropped, sample the R03 quality-corruption policy. Overall target probabilities: 56% clean, 24% quality degradation, 20% modality dropout.",
+    "model_id": "R05",
+    "model": "dual_f0_quality_plus_modality_dropout",
+    "seed": 42,
+    "split_file": "configs/rebuild_v1/potsdam_split_seed20260915.json",
+    "data_root": "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped",
+    "pretrain": "/home/jovyan/zzx/paper_rebuild/08_assets/pretrained/ftransunet/R50+ViT-B_16.npz",
+    "patch": 512,
+    "micro_batch": 4,
+    "accum_steps": 4,
+    "effective_batch": 16,
+    "optimizer": {
+      "name": "AdamW",
+      "backbone_lr": 6e-05,
+      "decoder_head_lr_mult": 10.0,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "weight_decay": 0.01
+    },
+    "schedule": {
+      "scheduler_total_steps": 16000,
+      "stop_at_step": 16000,
+      "warmup_steps": 1200,
+      "warmup_ratio": 1e-06,
+      "poly_power": 1.0
+    },
+    "augmentation": {
+      "random_scale_min": 0.5,
+      "random_scale_max": 2.0,
+      "horizontal_flip_p": 0.5,
+      "vertical_flip_p": 0.5,
+      "rare_sampling": false,
+      "quality_corruption": true,
+      "modality_dropout": true,
+      "optical_dropout_p": 0.1,
+      "dsm_dropout_p": 0.1,
+      "no_dropout_p": 0.8,
+      "never_drop_both": true,
+      "clean_within_no_dropout_p": 0.7,
+      "optical_degraded_within_no_dropout_p": 0.15,
+      "dsm_degraded_within_no_dropout_p": 0.15,
+      "blur5_within_degraded_p": 0.5,
+      "down2_within_degraded_p": 0.5,
+      "expected_overall_probabilities": {
+        "clean": 0.56,
+        "quality_degraded": 0.24,
+        "modality_dropout": 0.2
+      },
+      "corruption_order": "tilewise_minmax -> crop/resize -> dropout decision -> conditional quality corruption -> network"
+    },
+    "validation": {
+      "eval_interval_steps": 1000,
+      "stride": 256,
+      "inference_batch": 8,
+      "selection_metric": "noboundary_mIoU_fg5",
+      "fullgt_also_reported": true
+    }
+  },
+  "split": {
+    "version": "REBUILD_V1_POTSDAM_SPLIT_20260915",
+    "selection_rule": "Start from the historical Potsdam Train18 list. Use Python random.Random(20260915).sample(TRAIN18, 2), then sort the selected IDs. No labels, validation metrics, TEST6 metrics, or model outputs were inspected when choosing the two validation tiles.",
+    "selection_seed": 20260915,
+    "historical_train18": [
+      "6_10",
+      "7_10",
+      "2_12",
+      "3_11",
+      "2_10",
+      "7_8",
+      "5_10",
+      "3_12",
+      "5_12",
+      "7_11",
+      "7_9",
+      "6_9",
+      "7_7",
+      "4_12",
+      "6_8",
+      "6_12",
+      "6_7",
+      "4_11"
+    ],
+    "train16": [
+      "6_10",
+      "7_10",
+      "2_12",
+      "2_10",
+      "7_8",
+      "3_12",
+      "5_12",
+      "7_11",
+      "7_9",
+      "6_9",
+      "7_7",
+      "4_12",
+      "6_8",
+      "6_12",
+      "6_7",
+      "4_11"
+    ],
+    "val2": [
+      "3_11",
+      "5_10"
+    ],
+    "historical_exposed_test6": [
+      "4_10",
+      "5_11",
+      "2_11",
+      "3_10",
+      "6_11",
+      "7_12"
+    ],
+    "policy": {
+      "checkpoint_selection": "val2 only",
+      "budget_selection": "val2 only",
+      "historical_test6_during_training": false,
+      "note": "TEST6 has already influenced prior model development and is development/historical evidence, not an honest sealed final test."
+    }
+  },
+  "signature": {
+    "config_file": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/configs/rebuild_v1/r05_quality_plus_dropout_16k.json",
+    "split_file": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/configs/rebuild_v1/potsdam_split_seed20260915.json",
+    "seed": 42,
+    "train_ids": [
+      "6_10",
+      "7_10",
+      "2_12",
+      "2_10",
+      "7_8",
+      "3_12",
+      "5_12",
+      "7_11",
+      "7_9",
+      "6_9",
+      "7_7",
+      "4_12",
+      "6_8",
+      "6_12",
+      "6_7",
+      "4_11"
+    ],
+    "val_ids": [
+      "3_11",
+      "5_10"
+    ],
+    "scheduler_total_steps": 16000,
+    "stop_at_step": 16000,
+    "model": "dual_f0_quality_plus_modality_dropout",
+    "variant": "R05",
+    "test6_loaded": false
+  },
+  "resume": false
+}

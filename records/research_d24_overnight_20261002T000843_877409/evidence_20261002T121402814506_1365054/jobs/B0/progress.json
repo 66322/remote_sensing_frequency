@@ -1,0 +1,13 @@
+{
+  "job": "B0",
+  "step": 4000,
+  "target": 4000,
+  "phase": "complete",
+  "observed_at": "2026-10-02T03:09:39.152509+08:00",
+  "session_elapsed_seconds": 1721.1196386888623,
+  "loss": 0.18187493085861206,
+  "objective_counts": {},
+  "seconds_per_train_step": 0.20744469378888608,
+  "remaining_training_hours": 0.0,
+  "gpu_peak_allocated_bytes": 6509809152
+}

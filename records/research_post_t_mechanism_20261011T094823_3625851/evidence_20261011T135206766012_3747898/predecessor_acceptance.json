@@ -1,0 +1,11 @@
+{
+  "verdict": "READY",
+  "last_observed": "2026-10-11T08:45:44.211597+08:00",
+  "status": "TRANSFER_COMPLETE_AWAITING_REVIEW",
+  "controller_live": false,
+  "workers_live": false,
+  "checked_at": "2026-10-11T09:49:03.376589+08:00",
+  "queue_sha256": "902b15328f696d8886b80446b17dd36e88f62e30e927e7dc63e5dd0cde3a4088",
+  "screen_sha256": "d5aedef1fcd8f848d5ec59a668e3c47e6adddbbe2d45ddf554bdd71e33a3bd21",
+  "scientific_gate_required": false
+}

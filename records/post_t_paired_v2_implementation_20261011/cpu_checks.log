@@ -1,0 +1,64 @@
+test_batch_hash_rng_independent_resume_and_mismatch (test_post_t_paired_v2.PairedTests.test_batch_hash_rng_independent_resume_and_mismatch) ... ok
+test_content_does_not_touch_base_rgb_or_support (test_post_t_paired_v2.PairedTests.test_content_does_not_touch_base_rgb_or_support) ... ok
+test_design_exact_groups_budget_and_two_gpus (test_post_t_paired_v2.PairedTests.test_design_exact_groups_budget_and_two_gpus) ... ok
+test_dual_gpu_fifo_all8_tasks (test_post_t_paired_v2.PairedTests.test_dual_gpu_fifo_all8_tasks) ... PAIRED_START CONTENT_PRE GPU 0 RESUME False
+PAIRED_JOB CONTENT_PRE COMPLETE GPU 0
+PAIRED_START H8 GPU 0 RESUME False
+PAIRED_START F8 GPU 1 RESUME False
+PAIRED_JOB H8 COMPLETE GPU 0
+PAIRED_JOB F8 COMPLETE GPU 1
+PAIRED_START R8 GPU 0 RESUME False
+PAIRED_JOB R8 COMPLETE GPU 0
+PAIRED_START R16 GPU 0 RESUME False
+PAIRED_START H16 GPU 1 RESUME False
+PAIRED_JOB R16 COMPLETE GPU 0
+PAIRED_JOB H16 COMPLETE GPU 1
+PAIRED_START F16 GPU 0 RESUME False
+PAIRED_JOB F16 COMPLETE GPU 0
+PAIRED_START CONTENT_POST GPU 0 RESUME False
+PAIRED_JOB CONTENT_POST COMPLETE GPU 0
+ok
+test_failure_stops_dispatch_no_recipe_retry (test_post_t_paired_v2.PairedTests.test_failure_stops_dispatch_no_recipe_retry) ... PAIRED_START CONTENT_PRE GPU 0 RESUME False
+PAIRED_JOB CONTENT_PRE COMPLETE GPU 0
+PAIRED_START H8 GPU 0 RESUME False
+PAIRED_START F8 GPU 1 RESUME False
+PAIRED_JOB H8 TECHNICAL_FAILURE GPU 0
+PAIRED_JOB F8 COMPLETE GPU 1
+ok
+test_initial_equivalence_all_mechanisms_and_frozen_protection (test_post_t_paired_v2.PairedTests.test_initial_equivalence_all_mechanisms_and_frozen_protection) ... ok
+test_lossless_jsonl_upload (test_post_t_paired_v2.PairedTests.test_lossless_jsonl_upload) ... ok
+test_native_record_counts_endpoint_resume_and_protection (test_post_t_paired_v2.PairedTests.test_native_record_counts_endpoint_resume_and_protection) ... PAIRED_EVAL first 3_11 rgb_U
+PAIRED_EVAL first 5_10 rgb_U
+ok
+test_optimizer_groups_and_two_schedules (test_post_t_paired_v2.PairedTests.test_optimizer_groups_and_two_schedules) ... ok
+test_real_hook_private_gradient_and_frozen_states (test_post_t_paired_v2.PairedTests.test_real_hook_private_gradient_and_frozen_states) ... ok
+test_release_keeps_other_gpu_enabled (test_post_t_paired_v2.PairedTests.test_release_keeps_other_gpu_enabled) ... ok
+test_released_job_migrates_without_new_recipe (test_post_t_paired_v2.PairedTests.test_released_job_migrates_without_new_recipe) ... PAIRED_START CONTENT_PRE GPU 0 RESUME False
+PAIRED_JOB CONTENT_PRE COMPLETE GPU 0
+PAIRED_START H8 GPU 0 RESUME False
+PAIRED_START F8 GPU 1 RESUME False
+PAIRED_JOB H8 PAUSED_USER GPU 0
+PAIRED_JOB F8 COMPLETE GPU 1
+PAIRED_START H8 GPU 1 RESUME True
+PAIRED_JOB H8 COMPLETE GPU 1
+PAIRED_START R8 GPU 1 RESUME False
+PAIRED_JOB R8 COMPLETE GPU 1
+PAIRED_START R16 GPU 1 RESUME False
+PAIRED_JOB R16 COMPLETE GPU 1
+PAIRED_START H16 GPU 1 RESUME False
+PAIRED_JOB H16 COMPLETE GPU 1
+PAIRED_START F16 GPU 1 RESUME False
+PAIRED_JOB F16 COMPLETE GPU 1
+PAIRED_START CONTENT_POST GPU 1 RESUME False
+PAIRED_JOB CONTENT_POST COMPLETE GPU 1
+ok
+test_resume_optimizer_and_random_state_matches_uninterrupted (test_post_t_paired_v2.PairedTests.test_resume_optimizer_and_random_state_matches_uninterrupted) ... ok
+test_source_complete_and_release_both_required (test_post_t_paired_v2.PairedTests.test_source_complete_and_release_both_required) ... ok
+test_stage_barriers_not_scientific_selection (test_post_t_paired_v2.PairedTests.test_stage_barriers_not_scientific_selection) ... ok
+test_trainable_scope_classifier_excluded (test_post_t_paired_v2.PairedTests.test_trainable_scope_classifier_excluded) ... ok
+test_zero_support_still_valid_backward (test_post_t_paired_v2.PairedTests.test_zero_support_still_valid_backward) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 11.406s
+
+OK

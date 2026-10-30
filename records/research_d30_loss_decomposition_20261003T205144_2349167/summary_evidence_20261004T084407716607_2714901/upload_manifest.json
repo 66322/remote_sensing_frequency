@@ -1,0 +1,788 @@
+{
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d30_loss_decomposition_20261003T205144_2349167",
+  "observed_at": "2026-10-04T08:44:14.078612+08:00",
+  "base_commit": "1e70494b22fd1b52331eab688739aa1d57f92208",
+  "files": [
+    {
+      "path": "plan.json",
+      "bytes": 15956,
+      "sha256": "4ec66cd509534ca63c16b63585054d18bcabfedf9d8b9e5da27fa14d4aaab6d6"
+    },
+    {
+      "path": "execution_commit.txt",
+      "bytes": 41,
+      "sha256": "bbaf623628e4dd85a591358387ab3986e3348c1838434bdcd3bf20a5f5cea5da"
+    },
+    {
+      "path": "code_manifest.json",
+      "bytes": 4521,
+      "sha256": "872dd12fc0bfcb85fc56c5e164e9b984183d6c92477aba85ac3612b0bef62bec"
+    },
+    {
+      "path": "queue_status.json",
+      "bytes": 9291,
+      "sha256": "579daa74ff65e429672eb918340c65ac521770796f59ee4e4672792283ecd471"
+    },
+    {
+      "path": "screen_result.json",
+      "bytes": 166558,
+      "sha256": "1bb4065be0ab6fa02553c2d5ff70c0b9f8e0bc8eca7a6ba7e56abee24a4ea7ac"
+    },
+    {
+      "path": "results.csv",
+      "bytes": 1279,
+      "sha256": "4c55a7dd1731c5e03883d4060eb58d971586e3b6d586ac8d62d73793b94861b6"
+    },
+    {
+      "path": "reuse_binding.json",
+      "bytes": 28076,
+      "sha256": "52c30b21a803c90cca861f563b30aa733ff2f974cf1b9f471b489232cc6b73db"
+    },
+    {
+      "path": "jobs/replay_G0/complete.json",
+      "bytes": 858,
+      "sha256": "bb8f94c9716b5a6a09ef52c6a8ebedd035311b1d6d41ab76232fc5e18fd035cd"
+    },
+    {
+      "path": "jobs/replay_G1/complete.json",
+      "bytes": 858,
+      "sha256": "4254601695ad10476f55d6741f9b5ff31840a1532c904f7245cb3bfb6fe78276"
+    },
+    {
+      "path": "jobs/P/complete.json",
+      "bytes": 14940,
+      "sha256": "8d7eb94756afb69ed443afcaeb3e7b76165aea64e90250765509ca3881f686e8"
+    },
+    {
+      "path": "jobs/R/complete.json",
+      "bytes": 14938,
+      "sha256": "d92e638ae998c4f14bdd856e6579529a94cbb8b5595d57c6606d037aa377ee85"
+    },
+    {
+      "path": "jobs/PR_area/complete.json",
+      "bytes": 14941,
+      "sha256": "7b1d109cce4431c970c594170848f8ef50a430b37c10c151bc42cd4e62cc3fb2"
+    },
+    {
+      "path": "jobs/PR_pixel/complete.json",
+      "bytes": 14942,
+      "sha256": "76b5eec1ef8b8cb67644fa8a93bc3b726c8283d722bd6d75a166dda5d3523ffc"
+    },
+    {
+      "path": "cpu_checks.log",
+      "bytes": 1461,
+      "sha256": "39c715c7f6e0328f98d70057ce37f9c3799cce747f4fdfd417667b95f37dfaf9"
+    },
+    {
+      "path": "nohup.log",
+      "bytes": 196790,
+      "sha256": "4754b24eaf71a1a6a280b352f14588353029dff44b010f4dd350d60528204521"
+    },
+    {
+      "path": "jobs/P/loss_components/step_2500.json",
+      "bytes": 2128,
+      "sha256": "6e536c82e0acf1f4b7c52d80188071a8ab3bede50ef09ffaffe9da977e2aa54b"
+    },
+    {
+      "path": "jobs/P/loss_components/step_2000.json",
+      "bytes": 2138,
+      "sha256": "0b8cc6b6638d37a368e81e1eae3c8beecb52e053986c44d90d9aedf5078238b9"
+    },
+    {
+      "path": "jobs/P/loss_components/step_6500.json",
+      "bytes": 2128,
+      "sha256": "3e6d7ca57e18c692232d0758eca4c8cdb57682ae26c0c30df013eb80f0054b6c"
+    },
+    {
+      "path": "jobs/P/loss_components/step_0100.json",
+      "bytes": 2130,
+      "sha256": "0e2d6cbd8ebb21bb2802f8c33caa743e8ea00351ad38dbd8b0e1f22b3e7a9d25"
+    },
+    {
+      "path": "jobs/P/loss_components/step_6000.json",
+      "bytes": 2135,
+      "sha256": "83e87fd01bb660e1945ff6cee185569113384aaecf926cfaab5c31a1dbc2fe87"
+    },
+    {
+      "path": "jobs/P/loss_components/step_4000.json",
+      "bytes": 2131,
+      "sha256": "2a6a8568fa9af07effd9951b4d47b2d9ddcc74d000e9fc5e1ba37d7454657149"
+    },
+    {
+      "path": "jobs/P/loss_components/step_3500.json",
+      "bytes": 2134,
+      "sha256": "c388da6b9007d30a42157142d5661942a9337d1a8a2993bb46d9c2c830c7da8d"
+    },
+    {
+      "path": "jobs/P/loss_components/step_5500.json",
+      "bytes": 2133,
+      "sha256": "3b99e916391a099317a5adc179e136039125bb23ecc7cc79f9ac67d98e7e8a38"
+    },
+    {
+      "path": "jobs/P/loss_components/step_0500.json",
+      "bytes": 2130,
+      "sha256": "0bfb2eea5fa58ed2e7de83057363fec3a8d949c4d667afec9af9ab13f34be8fe"
+    },
+    {
+      "path": "jobs/P/loss_components/step_7500.json",
+      "bytes": 2131,
+      "sha256": "393ad32c712ee9471fd3ff48fb913578c31acf87d82388831dd1bdf72592b135"
+    },
+    {
+      "path": "jobs/P/loss_components/step_1500.json",
+      "bytes": 2134,
+      "sha256": "d4004a3f9f3f2d34c18632bd7fce7b959f1cfd41edd1a2ff383c9dd2b4438aa6"
+    },
+    {
+      "path": "jobs/P/loss_components/step_0001.json",
+      "bytes": 2010,
+      "sha256": "9239d6ac2a8073c9304c5ab9501ebb7d8831be036df97e107c5c003f21dcab3b"
+    },
+    {
+      "path": "jobs/P/loss_components/step_1000.json",
+      "bytes": 2129,
+      "sha256": "3ff2a280294aaa26ddd8edbf717ac1fed19ba1ba8a98e93578471f5e07ee4584"
+    },
+    {
+      "path": "jobs/P/loss_components/step_4500.json",
+      "bytes": 2130,
+      "sha256": "87b35c47b989b512d88c9e4f18595d0741040c16c3061e3c67359e906f711121"
+    },
+    {
+      "path": "jobs/P/loss_components/step_8000.json",
+      "bytes": 2128,
+      "sha256": "877472c0d3b56514590dab05dae39bb6f4b99d1b11d6210286da5eb37829b197"
+    },
+    {
+      "path": "jobs/P/loss_components/step_5000.json",
+      "bytes": 2130,
+      "sha256": "f8b02946f8edf26a52872832f5fffcc703f2d179f91337e84cf0601f9d1ad822"
+    },
+    {
+      "path": "jobs/P/loss_components/step_7000.json",
+      "bytes": 2134,
+      "sha256": "1f959a5c1d47b5cf05eb6db715c9f2584726468b5aaa6c87917f21a3b861b3a2"
+    },
+    {
+      "path": "jobs/P/loss_components/step_3000.json",
+      "bytes": 2124,
+      "sha256": "ec82271275572a899c77390a09399060a8d4bf2edab01a61aecd3ddd034536bd"
+    },
+    {
+      "path": "jobs/P/gradient_diagnostics/step_2500.json",
+      "bytes": 7233,
+      "sha256": "d9acc2a58b432e782715bda492331b93306f3488d5e57944d81068e7e1b836e8"
+    },
+    {
+      "path": "jobs/P/gradient_diagnostics/step_2000.json",
+      "bytes": 7235,
+      "sha256": "a3e6c39cbed061ffa3b6368b718ccbb68af86d7c4402992478e868d940a3d622"
+    },
+    {
+      "path": "jobs/P/gradient_diagnostics/step_6500.json",
+      "bytes": 7232,
+      "sha256": "1268616de5edb22f03ac501b0ee2cd337322a932951e946d50c3f6b99ec1ac6f"
+    },
+    {
+      "path": "jobs/P/gradient_diagnostics/step_6000.json",
+      "bytes": 7239,
+      "sha256": "80bc070223ba382d8531e412c57489d7046c5b003b6d17cad9d57e2583ec567e"
+    },
+    {
+      "path": "jobs/P/gradient_diagnostics/step_4000.json",
+      "bytes": 7237,
+      "sha256": "c9f232c97a2e5772c49f89ebe90a28c1ee44995625176058ce03262744ad9aa6"
+    },
+    {
+      "path": "jobs/P/gradient_diagnostics/step_3500.json",
+      "bytes": 7237,
+      "sha256": "260287e2bf1bfb6f8d9078fbb35deaf33461f5622dd36c0a697870082aeaca05"
+    },
+    {
+      "path": "jobs/P/gradient_diagnostics/step_5500.json",
+      "bytes": 7231,
+      "sha256": "d93c13772bd7eb3cf47be36e111792c648760c1638e308cb768fa813ad155f2d"
+    },
+    {
+      "path": "jobs/P/gradient_diagnostics/step_0500.json",
+      "bytes": 7235,
+      "sha256": "23e1ab43ac628798875864d3f1b4471c1055971db98fa9b49936a34284f52d63"
+    },
+    {
+      "path": "jobs/P/gradient_diagnostics/step_7500.json",
+      "bytes": 7237,
+      "sha256": "78e6e957120bd3706df33c92480d66c66eb5d45dea562a7cd2d1502080a76f24"
+    },
+    {
+      "path": "jobs/P/gradient_diagnostics/step_1500.json",
+      "bytes": 7235,
+      "sha256": "3852c8bac9b7438017ffda9fc549894d44fe3ddc08129fc1e60b8c3ee00c3393"
+    },
+    {
+      "path": "jobs/P/gradient_diagnostics/step_0001.json",
+      "bytes": 7234,
+      "sha256": "95cbc0325e4c059ef9250a945a32802c7ee39391c9224d180739427e17b358dd"
+    },
+    {
+      "path": "jobs/P/gradient_diagnostics/step_1000.json",
+      "bytes": 7233,
+      "sha256": "d60f96d6812b8cd756bad989f40ee47c7afc98101a23f461d02a068a48a0f222"
+    },
+    {
+      "path": "jobs/P/gradient_diagnostics/step_4500.json",
+      "bytes": 7239,
+      "sha256": "a37ad29579d44944ab773b495cf42359aaf41dfc19874897e02ab7d4c9725b5d"
+    },
+    {
+      "path": "jobs/P/gradient_diagnostics/step_8000.json",
+      "bytes": 7236,
+      "sha256": "4851de6e3adb48053c672f7246ccc842dd5c49c5bfb7d373334cd63c91ef62c4"
+    },
+    {
+      "path": "jobs/P/gradient_diagnostics/step_5000.json",
+      "bytes": 7232,
+      "sha256": "6df050e06d8bd36ae39c2a8585ca92b1842d3ec9e3e5a30153b4db71a02f3a16"
+    },
+    {
+      "path": "jobs/P/gradient_diagnostics/step_7000.json",
+      "bytes": 7235,
+      "sha256": "de28e3166eb41bab8622f594524c32f5a2f7669cb7bcf3b4d2d375f30ae2ccfd"
+    },
+    {
+      "path": "jobs/P/gradient_diagnostics/step_3000.json",
+      "bytes": 7238,
+      "sha256": "cd76a160d99f67de06bc762b3fa251453e14259a5927485e4adb4556c676d015"
+    },
+    {
+      "path": "jobs/R/loss_components/step_2500.json",
+      "bytes": 2123,
+      "sha256": "a7487535bf71a73a22a14f23f8f1423f6b3986c1df0a81f4238d5acaaa284626"
+    },
+    {
+      "path": "jobs/R/loss_components/step_2000.json",
+      "bytes": 2127,
+      "sha256": "b0c5a20be4e4b4a7a918a208f60556b9f67f4663b083025421927c7bb021b26f"
+    },
+    {
+      "path": "jobs/R/loss_components/step_6500.json",
+      "bytes": 2121,
+      "sha256": "27381f7f0b21f8f14129e46073bed448b8fc11166bced7c18b2e24a125d8553b"
+    },
+    {
+      "path": "jobs/R/loss_components/step_0100.json",
+      "bytes": 2122,
+      "sha256": "5df0172aff0970e048c6a3d6dd73025146265cb872468851bee92a81b931d6a1"
+    },
+    {
+      "path": "jobs/R/loss_components/step_6000.json",
+      "bytes": 2133,
+      "sha256": "9604dddad54a67c0f0bb4bece3937612561835daa6f71b179f7c1b67526bb6e4"
+    },
+    {
+      "path": "jobs/R/loss_components/step_4000.json",
+      "bytes": 2125,
+      "sha256": "20086cbdfee008158039edd3276a882794f979197516b29eae755b8f4b22f771"
+    },
+    {
+      "path": "jobs/R/loss_components/step_3500.json",
+      "bytes": 2132,
+      "sha256": "ddddb4edbfc2c0275ebce9ef9c1c31db0026f01f3c356ce5c14c9827145e0fbb"
+    },
+    {
+      "path": "jobs/R/loss_components/step_5500.json",
+      "bytes": 2128,
+      "sha256": "96b0b19b55f327673ef4597856f74e3c3a38b43ed2a87fbd4efb37ff208ad824"
+    },
+    {
+      "path": "jobs/R/loss_components/step_0500.json",
+      "bytes": 2120,
+      "sha256": "7a0531ac0ee6f80c498cc691dfc543aef1282c3c755e282aa59e0178fb3d57e4"
+    },
+    {
+      "path": "jobs/R/loss_components/step_7500.json",
+      "bytes": 2128,
+      "sha256": "ee6b052c71eb6b0fe1e8bb97153cc168cf6c897639f5e262948a96c255fcb793"
+    },
+    {
+      "path": "jobs/R/loss_components/step_1500.json",
+      "bytes": 2131,
+      "sha256": "89ac8719d375f9d31e55267d0296633e04334ed9e64d4206fb6948a9b388b897"
+    },
+    {
+      "path": "jobs/R/loss_components/step_0001.json",
+      "bytes": 2088,
+      "sha256": "eeabcc77dea91307a8b4ac5a947b2fddde6191e9d655ef303dd2f5f565d497d9"
+    },
+    {
+      "path": "jobs/R/loss_components/step_1000.json",
+      "bytes": 2130,
+      "sha256": "89c4897edff268fd3b22f33aa50970dfca91d2b04ca631b33a6392f41e870113"
+    },
+    {
+      "path": "jobs/R/loss_components/step_4500.json",
+      "bytes": 2133,
+      "sha256": "a59d08e2463e1c8acf824ef37a0d882ba8665bc36381b479278372749055a69e"
+    },
+    {
+      "path": "jobs/R/loss_components/step_8000.json",
+      "bytes": 2128,
+      "sha256": "af14cfe8524bb9e91df29e6ac1bb47363542f83c6529e4045c19f09e2b88115f"
+    },
+    {
+      "path": "jobs/R/loss_components/step_5000.json",
+      "bytes": 2130,
+      "sha256": "fcbd815ccafc995b793df320e635c3400100162b41a80290b0435c2e0e1661e6"
+    },
+    {
+      "path": "jobs/R/loss_components/step_7000.json",
+      "bytes": 2123,
+      "sha256": "6f389fc2f94c975abe203650fe1153cb7d922c41821098dd440af5ad56338a6b"
+    },
+    {
+      "path": "jobs/R/loss_components/step_3000.json",
+      "bytes": 2122,
+      "sha256": "5c417ecdad74fb221db6c1f4ee9c74e73aa22281afca2b56b43ef6ff15e0f244"
+    },
+    {
+      "path": "jobs/R/gradient_diagnostics/step_2500.json",
+      "bytes": 7241,
+      "sha256": "43d23dedf84635d06ca5ba18a406c67c7569b206171b8c2ca2377cf0ee13bb93"
+    },
+    {
+      "path": "jobs/R/gradient_diagnostics/step_2000.json",
+      "bytes": 7241,
+      "sha256": "4bee8120c1cf50d03e11858342aedf2dd12caf2d05e2676dcef22367b2d61b6d"
+    },
+    {
+      "path": "jobs/R/gradient_diagnostics/step_6500.json",
+      "bytes": 7252,
+      "sha256": "65f61942b4f140b3ab420d1e51900a928d56f771753cbb9a219fb12ccbfe11bf"
+    },
+    {
+      "path": "jobs/R/gradient_diagnostics/step_6000.json",
+      "bytes": 7253,
+      "sha256": "7e0ba57ba7296ca5a5a6b63013c55f47f867f621dd55c15562eb4ab5cf670c47"
+    },
+    {
+      "path": "jobs/R/gradient_diagnostics/step_4000.json",
+      "bytes": 7247,
+      "sha256": "7b8ba3248ab2b3c428c405dda97bcd561df022e13cdb08ad51e588bba42b542e"
+    },
+    {
+      "path": "jobs/R/gradient_diagnostics/step_3500.json",
+      "bytes": 7247,
+      "sha256": "2af45a0523c43cb0f488893192c1f52f3c221148ddf555a1773c4c3b04939eac"
+    },
+    {
+      "path": "jobs/R/gradient_diagnostics/step_5500.json",
+      "bytes": 7245,
+      "sha256": "119077105ec88f1b15d1392bc67763b464eeadc2bbe3a7f45497e436ab64bbeb"
+    },
+    {
+      "path": "jobs/R/gradient_diagnostics/step_0500.json",
+      "bytes": 7237,
+      "sha256": "9485ba279d8486945da24ff275b639e94fdecaaa53c7be392230c5861189a1e8"
+    },
+    {
+      "path": "jobs/R/gradient_diagnostics/step_7500.json",
+      "bytes": 7255,
+      "sha256": "68d7f38626b73d0487a453a81cbc3e5044450ff0f9ab0028d6d9695bb3ec9be0"
+    },
+    {
+      "path": "jobs/R/gradient_diagnostics/step_1500.json",
+      "bytes": 7239,
+      "sha256": "eccadb3ff1459b9251cc3a7c2c0b07fef4c343a57ff0853dc0d6dcf40dab1b20"
+    },
+    {
+      "path": "jobs/R/gradient_diagnostics/step_0001.json",
+      "bytes": 7234,
+      "sha256": "f1f91bf988caddb32d5b718371f05b6e3de7e57b7ddfbfd070082616bb094b87"
+    },
+    {
+      "path": "jobs/R/gradient_diagnostics/step_1000.json",
+      "bytes": 7241,
+      "sha256": "7e7aeb3c21e6b598408ca4a67fd290a51a45cc0f7124faa9096ebd43d039330f"
+    },
+    {
+      "path": "jobs/R/gradient_diagnostics/step_4500.json",
+      "bytes": 7245,
+      "sha256": "5611cdaeaa6b0e7da535db73ea1e16f521a7f84692259de19a32175c2370fd1a"
+    },
+    {
+      "path": "jobs/R/gradient_diagnostics/step_8000.json",
+      "bytes": 7252,
+      "sha256": "525b5bd659397d4d2fbd54464b46a25e34e4083b62fa85e502eef81d30c15b18"
+    },
+    {
+      "path": "jobs/R/gradient_diagnostics/step_5000.json",
+      "bytes": 7246,
+      "sha256": "1b37522618e1051764e3ac83e40441a125c2b1e5bd304b019c276a572b609535"
+    },
+    {
+      "path": "jobs/R/gradient_diagnostics/step_7000.json",
+      "bytes": 7251,
+      "sha256": "4c5b98cc20413013cbac7545f25317a62a8aea838c3fcf67efbd5fc3ab506532"
+    },
+    {
+      "path": "jobs/R/gradient_diagnostics/step_3000.json",
+      "bytes": 7244,
+      "sha256": "6129ec31b1f9f1ab55aefd7da96c1081d38356177fd35439a6aba643faf57112"
+    },
+    {
+      "path": "jobs/PR_area/loss_components/step_2500.json",
+      "bytes": 2230,
+      "sha256": "dbec3c1bc2dc97ac30f8f3f3f002ef97cd6e69cfb28ac9e7ce041675a09dc02c"
+    },
+    {
+      "path": "jobs/PR_area/loss_components/step_2000.json",
+      "bytes": 2247,
+      "sha256": "d42ece6dceea93de05839289ddd1e708a1248925379409c522d0b205b9f4a694"
+    },
+    {
+      "path": "jobs/PR_area/loss_components/step_6500.json",
+      "bytes": 2232,
+      "sha256": "73470e61d3b485fc1cf0436a7f09f1707a4ca1610f921e1d70465c43114fefdb"
+    },
+    {
+      "path": "jobs/PR_area/loss_components/step_0100.json",
+      "bytes": 2235,
+      "sha256": "ad4056a2a35ba5af342a4f150c789afd5d62e18d2666c5b247dcb2142a7a26b8"
+    },
+    {
+      "path": "jobs/PR_area/loss_components/step_6000.json",
+      "bytes": 2239,
+      "sha256": "374b6890e8ec250e061da3ecc78dc65af830af405c46fdf567ef73973d480e65"
+    },
+    {
+      "path": "jobs/PR_area/loss_components/step_4000.json",
+      "bytes": 2238,
+      "sha256": "599ea3f43cd3e58ef9481389d61bf8c67df5193ca8fd2d5ad40823419f99b640"
+    },
+    {
+      "path": "jobs/PR_area/loss_components/step_3500.json",
+      "bytes": 2235,
+      "sha256": "292c681478ed0198df2e5ecf75d8fdb0c4f53a757223b83625fb1a33a75631a9"
+    },
+    {
+      "path": "jobs/PR_area/loss_components/step_5500.json",
+      "bytes": 2239,
+      "sha256": "10b8848ec90d33c51acfddca2dd7f638f7ea4a677a730f80c8ed7e3f8323aecb"
+    },
+    {
+      "path": "jobs/PR_area/loss_components/step_0500.json",
+      "bytes": 2238,
+      "sha256": "924992b10dadb1fc264a395deeb3d374373bd9ab1feef9ad78d5505d44d8f9e5"
+    },
+    {
+      "path": "jobs/PR_area/loss_components/step_7500.json",
+      "bytes": 2232,
+      "sha256": "8c86604e05aa18c861bc1fd9ea12b6857e31d40810b8c5492d348be28d96057d"
+    },
+    {
+      "path": "jobs/PR_area/loss_components/step_1500.json",
+      "bytes": 2241,
+      "sha256": "96c7770162666d7526699044d596ffe83ad0b63d33f3f78634d72a1e0a431820"
+    },
+    {
+      "path": "jobs/PR_area/loss_components/step_0001.json",
+      "bytes": 2100,
+      "sha256": "308caf499b6c03c3f554c2a6b868f0b3b35430e5d59d3c8b4fe512ec39a97a69"
+    },
+    {
+      "path": "jobs/PR_area/loss_components/step_1000.json",
+      "bytes": 2233,
+      "sha256": "8e8b85ec2ac1e182f8873a1fadf81f3ed0f7b817f2cde043c5d188fca87caca3"
+    },
+    {
+      "path": "jobs/PR_area/loss_components/step_4500.json",
+      "bytes": 2238,
+      "sha256": "c0e16beb4d90a9efbd97c6fe300b30160347a8f044f6af75287fbe046ab45591"
+    },
+    {
+      "path": "jobs/PR_area/loss_components/step_8000.json",
+      "bytes": 2234,
+      "sha256": "f9cf067ad0d341b09cd16ab1bcff454f33a0a575ba331cf75f920f63f07eb2d4"
+    },
+    {
+      "path": "jobs/PR_area/loss_components/step_5000.json",
+      "bytes": 2235,
+      "sha256": "f7dcc5452932492a087f557e8afad8d9c8a5b224a57c917e7cbc28ef23824063"
+    },
+    {
+      "path": "jobs/PR_area/loss_components/step_7000.json",
+      "bytes": 2232,
+      "sha256": "3a5f16e7bb4954888f8745ff71654fea491e61b4ad2ae978e97b0131223312e1"
+    },
+    {
+      "path": "jobs/PR_area/loss_components/step_3000.json",
+      "bytes": 2232,
+      "sha256": "0d3df56ec49d248a73061eb3049b711dfb0dc3af4f5b3d76676033f48d8ed20a"
+    },
+    {
+      "path": "jobs/PR_area/gradient_diagnostics/step_2500.json",
+      "bytes": 7239,
+      "sha256": "4b8c8df670d2ff4bce7df3c60fc7f200c3a7c5ae72d466bb3c2788dd13d9660c"
+    },
+    {
+      "path": "jobs/PR_area/gradient_diagnostics/step_2000.json",
+      "bytes": 7241,
+      "sha256": "dc5e113a1b12f6aea3737a0ad34fc5221aee5b65d5a412126ed3251b17cae03d"
+    },
+    {
+      "path": "jobs/PR_area/gradient_diagnostics/step_6500.json",
+      "bytes": 7238,
+      "sha256": "3ef6f0794110574f3d706e5202d3b1550d289e17bc61eb775aae70952f54679d"
+    },
+    {
+      "path": "jobs/PR_area/gradient_diagnostics/step_6000.json",
+      "bytes": 7245,
+      "sha256": "1b399462c18ba04143111f4cd810563ed40d057c0ac25367c3bc98752e5c2242"
+    },
+    {
+      "path": "jobs/PR_area/gradient_diagnostics/step_4000.json",
+      "bytes": 7243,
+      "sha256": "a9ba852eacf75fdc2c8792396d6ec0b9a2db3f8939bbe63d3e3d5e8c6f3535cf"
+    },
+    {
+      "path": "jobs/PR_area/gradient_diagnostics/step_3500.json",
+      "bytes": 7239,
+      "sha256": "40af4224f6d65185ae8afc9dc30e334fb13e1f91ce719a30f4722395ee19e1cb"
+    },
+    {
+      "path": "jobs/PR_area/gradient_diagnostics/step_5500.json",
+      "bytes": 7239,
+      "sha256": "207e2f4370592b08d0fd4085d8c41b7b84eccb5201b969ec42af1b401d508389"
+    },
+    {
+      "path": "jobs/PR_area/gradient_diagnostics/step_0500.json",
+      "bytes": 7241,
+      "sha256": "d8af65180478f77b41b0edc775ff9f0fbfd714dc35c667d604f454ae7939b5e3"
+    },
+    {
+      "path": "jobs/PR_area/gradient_diagnostics/step_7500.json",
+      "bytes": 7245,
+      "sha256": "26d7c04b2c9397bb953be977e3838259e5cf996b11401828b6a1959da5c53410"
+    },
+    {
+      "path": "jobs/PR_area/gradient_diagnostics/step_1500.json",
+      "bytes": 7241,
+      "sha256": "a072470763f23dfd1697db2e0f82491711c0079e73b60212cb67861cc74bfa97"
+    },
+    {
+      "path": "jobs/PR_area/gradient_diagnostics/step_0001.json",
+      "bytes": 7240,
+      "sha256": "0ec057e4553da16c7c1f5b4423fedf499c6bb224bd41381bcac2575e346156e8"
+    },
+    {
+      "path": "jobs/PR_area/gradient_diagnostics/step_1000.json",
+      "bytes": 7243,
+      "sha256": "03aa5517a9bc4d15997b447705cd8cdbedaa40c47d6b4239cd72123c35c1df52"
+    },
+    {
+      "path": "jobs/PR_area/gradient_diagnostics/step_4500.json",
+      "bytes": 7243,
+      "sha256": "15cba8824cc62c64f592d8271104f44e2671ceedaebb3e572225148b7d1a37d6"
+    },
+    {
+      "path": "jobs/PR_area/gradient_diagnostics/step_8000.json",
+      "bytes": 7242,
+      "sha256": "b1d5bd61881112f7bddcdc75f19368d8d30f6528a05ba875b3878cddbf3ebdc3"
+    },
+    {
+      "path": "jobs/PR_area/gradient_diagnostics/step_5000.json",
+      "bytes": 7242,
+      "sha256": "26cb04fad924b7f9623ca5f7d0b63b9a21168a3d56e704781a1eab6ceb9a3a97"
+    },
+    {
+      "path": "jobs/PR_area/gradient_diagnostics/step_7000.json",
+      "bytes": 7241,
+      "sha256": "729b72da928f72a16fbe3b0a1f13b0cc9426830777fae9524961c159b6114cff"
+    },
+    {
+      "path": "jobs/PR_area/gradient_diagnostics/step_3000.json",
+      "bytes": 7238,
+      "sha256": "822cd5564295f4f37be727ebfc64c300daffa8686094bec05b6f745d87b7e181"
+    },
+    {
+      "path": "jobs/PR_pixel/loss_components/step_2500.json",
+      "bytes": 2223,
+      "sha256": "072cbae3dcba726a1d3c78653700af621748b1fd2467eb1a66c959335a54a2a5"
+    },
+    {
+      "path": "jobs/PR_pixel/loss_components/step_2000.json",
+      "bytes": 2229,
+      "sha256": "ce2c575d49e2fc8b5367754bc67c038f7403dc4e562b0d75b0dd093dcaf3c699"
+    },
+    {
+      "path": "jobs/PR_pixel/loss_components/step_6500.json",
+      "bytes": 2222,
+      "sha256": "b9c2b80a2a454f8bb36e259b153cebbd3b5a03b0e8a59d007a4805b6f1ea3b7a"
+    },
+    {
+      "path": "jobs/PR_pixel/loss_components/step_0100.json",
+      "bytes": 2219,
+      "sha256": "ec49a7473669bce99a9e6e344fc6d1754f5e7394d80a5b2eb4ccd7a1f5d56537"
+    },
+    {
+      "path": "jobs/PR_pixel/loss_components/step_6000.json",
+      "bytes": 2228,
+      "sha256": "6b77b1fb47844d766d5f638ce86a541fd470ca1b2b3b2ccca601fc6b4babbe72"
+    },
+    {
+      "path": "jobs/PR_pixel/loss_components/step_4000.json",
+      "bytes": 2233,
+      "sha256": "dcdcbba5764c7495a3b0146ecef87077173707e25b09379e641a2d516e6d17b3"
+    },
+    {
+      "path": "jobs/PR_pixel/loss_components/step_3500.json",
+      "bytes": 2231,
+      "sha256": "b44e4eb39b64ced6a39bb2e31b9b4f664c3ff02513fdb0b11b86447a4e73db4c"
+    },
+    {
+      "path": "jobs/PR_pixel/loss_components/step_5500.json",
+      "bytes": 2227,
+      "sha256": "6b27e0b929b335422c939cc3c631a7fe32987ed903922b28cbcd79dddcabdc81"
+    },
+    {
+      "path": "jobs/PR_pixel/loss_components/step_0500.json",
+      "bytes": 2227,
+      "sha256": "9138559445f9849d85a42c970184193983f561303fe49d09b00a45e9a8218345"
+    },
+    {
+      "path": "jobs/PR_pixel/loss_components/step_7500.json",
+      "bytes": 2227,
+      "sha256": "f7be42eb781803502c1ce875e552dc992f115948542582e0466930b9fe01261b"
+    },
+    {
+      "path": "jobs/PR_pixel/loss_components/step_1500.json",
+      "bytes": 2226,
+      "sha256": "b8e022db7170fbe96cb20cae627d3c030da50019cccd306caaa9171e464f94c4"
+    },
+    {
+      "path": "jobs/PR_pixel/loss_components/step_0001.json",
+      "bytes": 2093,
+      "sha256": "10a443117770e49cfad338dcfa69dbd51fdebc2bd7fa15cb70f5cd0d35c8986a"
+    },
+    {
+      "path": "jobs/PR_pixel/loss_components/step_1000.json",
+      "bytes": 2232,
+      "sha256": "29cf225aac202f483e8f0cba4d06852ec89d0ef7f01810b8fcf93ec70d52d364"
+    },
+    {
+      "path": "jobs/PR_pixel/loss_components/step_4500.json",
+      "bytes": 2229,
+      "sha256": "b5f2d3dbd7b233553ab868dbf602b221031003482da30c5b22dbda222976731c"
+    },
+    {
+      "path": "jobs/PR_pixel/loss_components/step_8000.json",
+      "bytes": 2224,
+      "sha256": "de1d7404838034c12ea4e7880d54a8d1d680bf121e424d95f5362215e1d721d9"
+    },
+    {
+      "path": "jobs/PR_pixel/loss_components/step_5000.json",
+      "bytes": 2228,
+      "sha256": "bbea4176208967362175548c806bbf6d88e24b44a24f1c11901a22bc2b3237a7"
+    },
+    {
+      "path": "jobs/PR_pixel/loss_components/step_7000.json",
+      "bytes": 2226,
+      "sha256": "6c2ee767c6f253a0df890fd0557997fc8928206fd98d304af10b7979186cf614"
+    },
+    {
+      "path": "jobs/PR_pixel/loss_components/step_3000.json",
+      "bytes": 2224,
+      "sha256": "9bc602b08d1efb3ad3074b735b1ccac58da34084e4f3b21ced73bcae7bcd8db8"
+    },
+    {
+      "path": "jobs/PR_pixel/gradient_diagnostics/step_2500.json",
+      "bytes": 7248,
+      "sha256": "0f402457a5e589e6fbdc84c03ea1203a7b5dae9b98d8cc11499d6f3b8b2e10ac"
+    },
+    {
+      "path": "jobs/PR_pixel/gradient_diagnostics/step_2000.json",
+      "bytes": 7242,
+      "sha256": "e642f862ff2be1aa3933e9201917f2e129797c98fa06202e0f782768dc65dd11"
+    },
+    {
+      "path": "jobs/PR_pixel/gradient_diagnostics/step_6500.json",
+      "bytes": 7251,
+      "sha256": "22d8039f786b200e446f6d70a8af9533aa326eec8e8f2f2db273b1cf2eacd68e"
+    },
+    {
+      "path": "jobs/PR_pixel/gradient_diagnostics/step_6000.json",
+      "bytes": 7252,
+      "sha256": "bc5adb50e9831fa06ed9f6a5ceb75a312be65881939549046f39bfd6e7ce5a8e"
+    },
+    {
+      "path": "jobs/PR_pixel/gradient_diagnostics/step_4000.json",
+      "bytes": 7246,
+      "sha256": "6be38805ea89ba7666d41d36f483f72fffbda2438d58deb3db6bb0e5313532eb"
+    },
+    {
+      "path": "jobs/PR_pixel/gradient_diagnostics/step_3500.json",
+      "bytes": 7242,
+      "sha256": "fa9fa3592a44fb21a44258a3667d14dfc0b2b84764815c982ad5a064dd43d8a6"
+    },
+    {
+      "path": "jobs/PR_pixel/gradient_diagnostics/step_5500.json",
+      "bytes": 7248,
+      "sha256": "b5e0574680b8eb8de224a274c41a1898850db749693d290c5a3a511ec01cf76b"
+    },
+    {
+      "path": "jobs/PR_pixel/gradient_diagnostics/step_0500.json",
+      "bytes": 7244,
+      "sha256": "152a3f47ee6bad45d4fb1a116e00398cbc0f92e48b12beaae2b11fbefc85cb8a"
+    },
+    {
+      "path": "jobs/PR_pixel/gradient_diagnostics/step_7500.json",
+      "bytes": 7254,
+      "sha256": "3cfa567c1c295af7cb2b4fb023997610971b99b26d3d4669772a2b2d251eea5c"
+    },
+    {
+      "path": "jobs/PR_pixel/gradient_diagnostics/step_1500.json",
+      "bytes": 7242,
+      "sha256": "7c1ce2db6c2d8bdc54e2edc5c9a8aa1ec4b61f4ef72c66322cb7d8484fba4a56"
+    },
+    {
+      "path": "jobs/PR_pixel/gradient_diagnostics/step_0001.json",
+      "bytes": 7241,
+      "sha256": "3bffe48e9411b10f3c8236541c6af84bf8284ad9c4d2c2c37591c0ba9706fcec"
+    },
+    {
+      "path": "jobs/PR_pixel/gradient_diagnostics/step_1000.json",
+      "bytes": 7244,
+      "sha256": "016d0ebdce61159eba4b23ae7ff34e2f1fbc6aa1884c87003a62c8093b20db40"
+    },
+    {
+      "path": "jobs/PR_pixel/gradient_diagnostics/step_4500.json",
+      "bytes": 7250,
+      "sha256": "a15ffe709982b3640bd725b5fa1352569ff72845be1ac340112d754a21eec1ad"
+    },
+    {
+      "path": "jobs/PR_pixel/gradient_diagnostics/step_8000.json",
+      "bytes": 7253,
+      "sha256": "223487e76a1ff40cb088d77f5f4dc263fe71bf5fc380e71fb1adeb9501572179"
+    },
+    {
+      "path": "jobs/PR_pixel/gradient_diagnostics/step_5000.json",
+      "bytes": 7247,
+      "sha256": "9eea6a76c379a76519804850c17304a1b42ec747c76147947eeb2bc946fc6dbe"
+    },
+    {
+      "path": "jobs/PR_pixel/gradient_diagnostics/step_7000.json",
+      "bytes": 7250,
+      "sha256": "755dead320eafb9d14cf003ac73adfb7448417947140d9f05dddf0dac1d458a3"
+    },
+    {
+      "path": "jobs/PR_pixel/gradient_diagnostics/step_3000.json",
+      "bytes": 7245,
+      "sha256": "d5d785db4f4b814ae9b369f58c162099f48ed5a49a46c78f6c207c7fd878d9f6"
+    }
+  ],
+  "evidence_scope": "native compact summary, paired tile deltas, retention, checkpoint interventions, loss and gradient records, source/completion bindings",
+  "raw_tile_matrices_uploaded": false,
+  "predictions_and_checkpoints_uploaded": false,
+  "new_training": false,
+  "new_inference": false,
+  "originals_preserved": true
+}

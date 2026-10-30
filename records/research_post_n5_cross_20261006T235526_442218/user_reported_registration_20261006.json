@@ -1,0 +1,26 @@
+{
+  "source": "user pasted server terminal registration output",
+  "report_date": "2026-10-06",
+  "execution_commit": "d1ed1a42093c40c979509eac54ba730d89692c1b",
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_cross_20261006T235526_442218",
+  "controller_pid": 442590,
+  "new_training": 0,
+  "E4_tile_units": 192,
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_cross_20261006T235526_442218/nohup_20261006T235538454869.log",
+  "directory_timestamp_label": "20261006T235526",
+  "log_timestamp_label": "20261006T235538454869",
+  "queue_observed_at": null,
+  "controller_live_observed": null,
+  "cpu_analysis_complete_observed": null,
+  "gpu_inference_started_observed": null,
+  "prelaunch_cpu_checks": "success inferred from registration code ordering; no independent server cpu_checks.log received",
+  "safe_excerpt": [
+    "CROSS_DIAGNOSTICS_REGISTERED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_cross_20261006T235526_442218 PID=442590 NEW_TRAINING=0 E4_TILE_UNITS=192 GPU=0,1",
+    "CROSS_LOG /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_cross_20261006T235526_442218/nohup_20261006T235538454869.log"
+  ],
+  "next_action": "read-only status/nohup/preparation; no duplicate registration"
+}

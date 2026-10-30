@@ -1,0 +1,404 @@
+(base) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ conda activate remote_sensing
+ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+python -B "$ROOT/records/phase3_engineering_restart_package_752d3835a18a15a04d83b1dcc1841bff98bf0b07/scripts/status_phase3_engineering_restart.py" --tail 10
+
+python -B - <<'PY'
+import json
+import runpy
+from pathlib import Path
+from datetime import datetime
+
+records = Path("/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records").resolve()
+receipt = json.loads((records / "phase3_engineering_restart_20261024_once.json").read_text())
+m2 = Path(receipt["m2_directory"]).resolve()
+queue = Path(receipt["combined_directory"]).resolve()
+assert m2.parent == records and queue.parent == records
+print("QUERY_TIME", datetime.now().astimezone().isoformat())
+
+for stage, base in [("M2", m2), ("J", queue), ("R", queue)]:
+    pub = base / "publication" if stage == "M2" else base / "publication" / stage
+    print("\nSTAGE", stage)
+    for name in ("summary.json", "gates.json"):
+        path = pub / name
+        print(name, path.read_text() if path.is_file() else "NOT_YET_PRESENT")
+    report = pub / "REPORT.md"
+    if report.is_file():
+        print("\n".join(report.read_text().splitlines()[:100]))
+
+reader = records / "report_phase3_m2_interim_624194105b3b018bb1e1e66d80cada2a405e7758.py"
+if reader.is_file():
+    result = runpy.run_path(str(reader))["collect"](m2, 32000)
+    print("\nCLEAN_DSM_RESULTS: job | eligible | mIoU% | delta_D0_pp")
+    for row in result["rows"]:
+        if row["role"] == "dsm_student":
+            print(row["id"], row["eligible"], row["nb_fg5"], row["delta_d0_nb_pp"])
+else:
+    print("INTERIM_READER_NOT_FOUND", reader)
+PY
+{
+  "bootstrap_receipt": {
+    "status": "CONTROLLERS_LAUNCHED",
+    "revision_commit": "752d3835a18a15a04d83b1dcc1841bff98bf0b07",
+    "old_m2": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_20261023T222114_2166330",
+    "old_combined": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_20261023T222112_2164225",
+    "m2_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345",
+    "combined_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345",
+    "automatic_retry": false,
+    "authorization": "user: 继续，把实验启动; 2026-10-24",
+    "observed_at": "2026-10-24T09:46:44.633221+08:00",
+    "namespace_patch_commit": "25b124a0cf69ececb6841b55ed90b19fae5b9a08",
+    "previous_failure_receipt": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/model_namespace_25b124a0cf69ececb6841b55ed90b19fae5b9a08/previous_bootstrap_failure.json",
+    "m2_controller_pid": 2754693,
+    "combined_controller_pid": 2754694
+  },
+  "observed_at": "2026-10-29T10:29:37.874768+08:00",
+  "m2_directory": {
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345",
+    "queue_status.json": {
+      "status": "COMPLETE_SERVER_CHECKED",
+      "observed_at": "2026-10-29T08:43:24.150694+08:00",
+      "publication": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/publication"
+    },
+    "preparation_progress.json": {
+      "tile": "6_7",
+      "done": 12,
+      "total": 12,
+      "observed_at": "2026-10-29T08:47:47.798568+08:00"
+    },
+    "jobs_with_progress": 108,
+    "latest_training_progress": [
+      {
+        "job": "F2_s2026_DClean",
+        "step": 32000,
+        "loss": 0.20965838432312012,
+        "gradient_norm": 5.387182235717773,
+        "activation_abs_mean": 5.605660915374756,
+        "elapsed_seconds": 7159.798743486404,
+        "stable_sec_per_update": 0.22573804352432492,
+        "remaining_training_hours": 0.0,
+        "lr": [
+          0.0,
+          0.0
+        ],
+        "weight_mean": 1.0,
+        "weight_min": 0.7325506806373596,
+        "weight_max": 2.1976521015167236,
+        "effective_fraction": 0.8021840453147888,
+        "small_stratum_pixels": 0,
+        "physical_gpu": 0,
+        "gpu_uuid": "GPU-97a250ea-42ff-eb14-4ed5-8c50231e0baa",
+        "observed_at": "2026-10-28T00:18:17.953122+08:00"
+      },
+      {
+        "job": "F2_s2026_DSelf",
+        "step": 32000,
+        "loss": 0.2815008759498596,
+        "gradient_norm": 8.00947093963623,
+        "activation_abs_mean": 5.745250701904297,
+        "elapsed_seconds": 5339.234091706574,
+        "stable_sec_per_update": 0.170080778747797,
+        "remaining_training_hours": 0.0,
+        "lr": [
+          0.0,
+          0.0
+        ],
+        "weight_mean": 1.0,
+        "weight_min": 0.8206958174705505,
+        "weight_max": 2.4617302417755127,
+        "effective_fraction": 0.9051939845085144,
+        "small_stratum_pixels": 0,
+        "physical_gpu": 1,
+        "gpu_uuid": "GPU-4b116760-e84c-2743-cee6-41cf76a01677",
+        "observed_at": "2026-10-28T01:46:54.614021+08:00"
+      }
+    ],
+    "job_failure_count": 0,
+    "first_job_failures": []
+  },
+  "combined_directory": {
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345",
+    "queue_status.json": {
+      "status": "STOPPED_NO_AUTOMATIC_RETRY",
+      "error": "J job failed without retry: J_F0_s42_J2\nTraceback (most recent call last):\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/phase3_j_runtime.py\", line 278, in _worker\n    _train(base, m2, job, c, uuid)\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/phase3_j_runtime.py\", line 137, in _train\n    loss = F.cross_entropy(score, target, ignore_index=255)\n  File \"/home/jovyan/miniconda3/envs/remote_sensing/lib/python3.9/site-packages/torch/nn/functional.py\", line 3059, in cross_entropy\n    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)\nRuntimeError: nll_loss2d_forward_out_cuda_template does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True)'. You can turn off determinism just for this operation, or you can use the 'warn_only=True' option, if that's acceptable for your application. You can also file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation.\n",
+      "observed_at": "2026-10-29T08:47:55.579782+08:00"
+    },
+    "runtime_revision_failure.json": {
+      "error": "J job failed without retry: J_F0_s42_J2\nTraceback (most recent call last):\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/phase3_j_runtime.py\", line 278, in _worker\n    _train(base, m2, job, c, uuid)\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/phase3_j_runtime.py\", line 137, in _train\n    loss = F.cross_entropy(score, target, ignore_index=255)\n  File \"/home/jovyan/miniconda3/envs/remote_sensing/lib/python3.9/site-packages/torch/nn/functional.py\", line 3059, in cross_entropy\n    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)\nRuntimeError: nll_loss2d_forward_out_cuda_template does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True)'. You can turn off determinism just for this operation, or you can use the 'warn_only=True' option, if that's acceptable for your application. You can also file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation.\n",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/engineering_runtime/scripts/phase3_engineering_runtime.py\", line 188, in main\n    controller.run(combined)\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/control_phase3_combined.py\", line 113, in run\n    invoke()\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/control_phase3_combined.py\", line 108, in <lambda>\n    for stage, invoke in ((\"J\",lambda:run_j(queue,source)),\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/phase3_j_runtime.py\", line 422, in run\n    raise RuntimeError(\"J job failed without retry: \" + job + \"\\n\" +\nRuntimeError: J job failed without retry: J_F0_s42_J2\nTraceback (most recent call last):\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/phase3_j_runtime.py\", line 278, in _worker\n    _train(base, m2, job, c, uuid)\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/phase3_j_runtime.py\", line 137, in _train\n    loss = F.cross_entropy(score, target, ignore_index=255)\n  File \"/home/jovyan/miniconda3/envs/remote_sensing/lib/python3.9/site-packages/torch/nn/functional.py\", line 3059, in cross_entropy\n    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)\nRuntimeError: nll_loss2d_forward_out_cuda_template does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True)'. You can turn off determinism just for this operation, or you can use the 'warn_only=True' option, if that's acceptable for your application. You can also file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation.\n\n",
+      "automatic_retry": false,
+      "observed_at": "2026-10-29T08:47:55.582715+08:00"
+    },
+    "runtime_revision_entry_failure.json": {
+      "error": "J job failed without retry: J_F0_s42_J2\nTraceback (most recent call last):\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/phase3_j_runtime.py\", line 278, in _worker\n    _train(base, m2, job, c, uuid)\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/phase3_j_runtime.py\", line 137, in _train\n    loss = F.cross_entropy(score, target, ignore_index=255)\n  File \"/home/jovyan/miniconda3/envs/remote_sensing/lib/python3.9/site-packages/torch/nn/functional.py\", line 3059, in cross_entropy\n    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)\nRuntimeError: nll_loss2d_forward_out_cuda_template does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True)'. You can turn off determinism just for this operation, or you can use the 'warn_only=True' option, if that's acceptable for your application. You can also file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation.\n",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/engineering_runtime/scripts/phase3_engineering_runtime.py\", line 204, in entry\n    main()\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/engineering_runtime/scripts/phase3_engineering_runtime.py\", line 188, in main\n    controller.run(combined)\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/control_phase3_combined.py\", line 113, in run\n    invoke()\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/control_phase3_combined.py\", line 108, in <lambda>\n    for stage, invoke in ((\"J\",lambda:run_j(queue,source)),\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/phase3_j_runtime.py\", line 422, in run\n    raise RuntimeError(\"J job failed without retry: \" + job + \"\\n\" +\nRuntimeError: J job failed without retry: J_F0_s42_J2\nTraceback (most recent call last):\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/phase3_j_runtime.py\", line 278, in _worker\n    _train(base, m2, job, c, uuid)\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/phase3_j_runtime.py\", line 137, in _train\n    loss = F.cross_entropy(score, target, ignore_index=255)\n  File \"/home/jovyan/miniconda3/envs/remote_sensing/lib/python3.9/site-packages/torch/nn/functional.py\", line 3059, in cross_entropy\n    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)\nRuntimeError: nll_loss2d_forward_out_cuda_template does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True)'. You can turn off determinism just for this operation, or you can use the 'warn_only=True' option, if that's acceptable for your application. You can also file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation.\n\n",
+      "automatic_retry": false,
+      "observed_at": "2026-10-29T08:47:55.583695+08:00"
+    }
+  }
+}
+    PID    PPID STAT     ELAPSED %CPU %MEM COMMAND
+2754693       1 Zs   441076636-23:38:40 0.0  0.0 [python] <defunct>
+2754694       1 Zs   441076636-23:38:40 0.0  0.0 [python] <defunct>
+
+LOG /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/nohup.log
+M2_TRAIN F2_s2026_DSelf 28500 {'step': 28500, 'loss': 0.26750946044921875, 'gradient_norm': 7.703426361083984, 'activation_abs_mean': 5.663413047790527, 'elapsed_seconds': 4749.714059457183, 'stable_sec_per_update': 0.16990685258060695, 'remaining_training_hours': 0.1651872177867012, 'lr': [2.2012578616352204e-06, 2.2012578616352204e-05], 'weight_mean': 1.0, 'weight_min': 0.8286694884300232, 'weight_max': 2.485576868057251, 'effective_fraction': 0.9066210985183716, 'small_stratum_pixels': 0}
+M2_TRAIN F2_s2026_DSelf 29000 {'step': 29000, 'loss': 0.2519725561141968, 'gradient_norm': 6.284914493560791, 'activation_abs_mean': 5.6117682456970215, 'elapsed_seconds': 4833.644220121205, 'stable_sec_per_update': 0.1683912590146065, 'remaining_training_hours': 0.14032604917883876, 'lr': [1.8867924528301889e-06, 1.8867924528301888e-05], 'weight_mean': 1.0, 'weight_min': 0.83871990442276, 'weight_max': 2.516112804412842, 'effective_fraction': 0.9091495275497437, 'small_stratum_pixels': 0}
+M2_TRAIN F2_s2026_DSelf 29500 {'step': 29500, 'loss': 0.2851916253566742, 'gradient_norm': 11.374490737915039, 'activation_abs_mean': 5.417123794555664, 'elapsed_seconds': 4917.232626460493, 'stable_sec_per_update': 0.16682649496942759, 'remaining_training_hours': 0.11585173261765805, 'lr': [1.5723270440251573e-06, 1.572327044025157e-05], 'weight_mean': 0.9999998807907104, 'weight_min': 0.8288143873214722, 'weight_max': 2.4862220287323, 'effective_fraction': 0.9009332656860352, 'small_stratum_pixels': 0}
+M2_TRAIN F2_s2026_DSelf 30000 {'step': 30000, 'loss': 0.24916225671768188, 'gradient_norm': 14.89416790008545, 'activation_abs_mean': 5.9671125411987305, 'elapsed_seconds': 5001.06682446599, 'stable_sec_per_update': 0.16780275125056504, 'remaining_training_hours': 0.09322375069475836, 'lr': [1.257861635220126e-06, 1.2578616352201259e-05], 'weight_mean': 1.0, 'weight_min': 0.8399247527122498, 'weight_max': 2.5195629596710205, 'effective_fraction': 0.9094814658164978, 'small_stratum_pixels': 0}
+M2_TRAIN F2_s2026_DSelf 30500 {'step': 30500, 'loss': 0.23508551716804504, 'gradient_norm': 10.001927375793457, 'activation_abs_mean': 5.796089172363281, 'elapsed_seconds': 5085.9286704435945, 'stable_sec_per_update': 0.1694308752194047, 'remaining_training_hours': 0.0705961980080853, 'lr': [9.433962264150944e-07, 9.433962264150944e-06], 'weight_mean': 0.9999998807907104, 'weight_min': 0.8501747846603394, 'weight_max': 2.5503640174865723, 'effective_fraction': 0.9124423265457153, 'small_stratum_pixels': 0}
+M2_TRAIN F2_s2026_DSelf 31000 {'step': 31000, 'loss': 0.23939922451972961, 'gradient_norm': 5.232741355895996, 'activation_abs_mean': 5.596586227416992, 'elapsed_seconds': 5169.752764992416, 'stable_sec_per_update': 0.16830541882663966, 'remaining_training_hours': 0.046751505229622126, 'lr': [6.28930817610063e-07, 6.289308176100629e-06], 'weight_mean': 1.0, 'weight_min': 0.8401218056678772, 'weight_max': 2.5194790363311768, 'effective_fraction': 0.9119029641151428, 'small_stratum_pixels': 0}
+M2_TRAIN F2_s2026_DSelf 31500 {'step': 31500, 'loss': 0.25158876180648804, 'gradient_norm': 7.103202819824219, 'activation_abs_mean': 5.748769760131836, 'elapsed_seconds': 5254.479654587805, 'stable_sec_per_update': 0.1685444401577115, 'remaining_training_hours': 0.023408950021904375, 'lr': [3.144654088050315e-07, 3.1446540880503146e-06], 'weight_mean': 1.0, 'weight_min': 0.8418934941291809, 'weight_max': 2.5256402492523193, 'effective_fraction': 0.9094107151031494, 'small_stratum_pixels': 0}
+M2_TRAIN F2_s2026_DSelf 32000 {'step': 32000, 'loss': 0.2815008759498596, 'gradient_norm': 8.00947093963623, 'activation_abs_mean': 5.745250701904297, 'elapsed_seconds': 5339.234091706574, 'stable_sec_per_update': 0.170080778747797, 'remaining_training_hours': 0.0, 'lr': [0.0, 0.0], 'weight_mean': 1.0, 'weight_min': 0.8206958174705505, 'weight_max': 2.4617302417755127, 'effective_fraction': 0.9051939845085144, 'small_stratum_pixels': 0}
+M2_FINISHED COMPLETE_SERVER_CHECKED {'G0': True, 'G1': False, 'H2_degradation_specificity': True, 'G2': False, 'G3': True, 'G4': False}
+M2_RESULTS_READY_UPLOAD_PENDING_EXISTING_AUTH_UNAVAILABLE /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/publication
+
+
+LOG /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/nohup.log
+RuntimeError: J job failed without retry: J_F0_s42_J2
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/phase3_j_runtime.py", line 278, in _worker
+    _train(base, m2, job, c, uuid)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/phase3_j_runtime.py", line 137, in _train
+    loss = F.cross_entropy(score, target, ignore_index=255)
+  File "/home/jovyan/miniconda3/envs/remote_sensing/lib/python3.9/site-packages/torch/nn/functional.py", line 3059, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)
+RuntimeError: nll_loss2d_forward_out_cuda_template does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True)'. You can turn off determinism just for this operation, or you can use the 'warn_only=True' option, if that's acceptable for your application. You can also file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation.
+
+
+Thu Oct 29 10:29:38 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.48.01              Driver Version: 590.48.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:0F:00.0 Off |                    0 |
+| N/A   30C    P0             71W /  700W |       0MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA H100 80GB HBM3          On  |   00000000:34:00.0 Off |                    0 |
+| N/A   29C    P0             72W /  700W |       0MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+QUERY_TIME 2026-10-29T10:29:38.727609+08:00
+
+STAGE M2
+summary.json {"status":"COMPLETE_SERVER_CHECKED","binding":{"plan.json":"c9a2eb3c5db8abcc762d696b6b14892ca3c87548cf39316fd09e9f75165a9a7b","code_manifest.json":"045a6db7fdcfb4d5198b8c638b856ff62ed0a4cbb6dadd8d075ca20b3d254933","folds.json":"62215bb2b106993f518ad451db2ab6c618834080003e847eafa3a7e423590b0a"},"jobs_complete":108,"jobs_expected":108,"optimizer_updates":3456000,"evaluated_cases":77868,"expected_cases":77868,"gates":{"G0":true,"G1":false,"H2_degradation_specificity":true,"G2":false,"G3":true,"G4":false},"advance_reverse":false,"conditional_extensions_started":false,"errors":[],"failures":[],"server":"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345","observed_at":"2026-10-29T08:43:22.555134+08:00","scope":"Fit12 same-city development CV; no Val2/Test6/held4/final or point cloud","extension":"B requires separately frozen reverse execution contract; C remains budget reservation"}
+
+gates.json {"status":{"G0":true,"G1":false,"H2_degradation_specificity":true,"G2":false,"G3":true,"G4":false},"checks":{"G1_rescue_DF-D0":{"pass_":false,"values_pp":[0.035680507999316546,0.4238065789416936,0.3686458062923492],"mean_threshold_pp":0.5,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G1_rescue_DF-DSelf":{"pass_":false,"values_pp":[0.07691136637469498,0.12290696511078636,0.036639383040025564],"mean_threshold_pp":0.5,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G1_rescue_DF-DShuffle":{"pass_":false,"values_pp":[-0.48113679754102634,0.10113347861231858,-0.11788285931599063],"mean_threshold_pp":0.5,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G1_rescue_DF-DEntropy":{"pass_":false,"values_pp":[-0.5271631586413363,0.4100666715883392,-0.27526794998681936],"mean_threshold_pp":0.5,"floor_pp":0,"strict_floor":true,"strict_mean":false},"H2_DF-DClean_all":{"pass_":true,"values_pp":[0.4990792148363994,0.4567045723647425,0.3343604546387837],"mean_threshold_pp":0.3,"floor_pp":0,"strict_floor":true,"strict_mean":false},"H2_DF-DClean_damaged":{"pass_":true,"values_pp":[0.4452521136464753,0.5199777867987052,0.6433066917522297],"mean_threshold_pp":0.3,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G2_fusion_DF-D0":{"pass_":false,"values_pp":[-0.0008400130521266647,-0.0011814970233530175,-0.001761507004786722],"mean_threshold_pp":0.3,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G2_fusion_DF-DSelf":{"pass_":false,"values_pp":[0.0006669385509212589,-0.0011587133162294094,-0.0014390085792825857],"mean_threshold_pp":0.2,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G2_fusion_DF-DShuffle":{"pass_":false,"values_pp":[-0.0017081444851356764,-0.002391924122818523,-0.0021124605273570296],"mean_threshold_pp":0.2,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G2_fusion_DF-DEntropy":{"pass_":false,"values_pp":[-0.0019460546495935205,-0.000784580510284627,-0.0011412988234553723],"mean_threshold_pp":0.2,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G2_fusion_DF-DMix":{"pass_":false,"values_pp":[-2.1588969090657883e-05,-0.002681583738976201,-0.0013032071389034172],"mean_threshold_pp":0.2,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G2_fusion_DF-DClean":{"pass_":false,"values_pp":[0.0004608749208188101,0.0018295764599258746,0.0010340128315817765],"mean_threshold_pp":0.2,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G2_fold_consistency":{"pass_":false,"values_pp":[-0.002642044513294195,0.0019315069080931835,-0.0017244085647973861,-0.0029611887013345495,-3.181248948180837e-05,0.00047059774998103876,0.0011822982960438821,0.0013704152140405768,-0.005774358689436099],"positive_required":7},"G3_clean_all":{"pass_":true,"values_pp":[-0.0003582834542044111,-0.0017121772339123709,-0.0013330254547554432],"mean_threshold_pp":null,"floor_pp":-0.2,"strict_floor":false,"strict_mean":false},"G3_tile_clean_all":{"pass_":true,"values_pp":[0.0007604782075674166,0.0034501959026205973,-0.0016408112424007488,0.004977392414697117,-0.012176834157562174,0.00543265029573566,0.002510309827632303,-0.0015138350332411694,-0.004129597990650306,8.478133661071752e-05,-0.001572443700013082,-0.0044884116263593414],"mean_threshold_pp":null,"floor_pp":-0.5,"strict_floor":false,"strict_mean":false},"G3_down4_healthy":{"pass_":true,"values_pp":[-0.0014318924123841725,-0.0015016550342039636,-0.0006609283501148866],"mean_threshold_pp":null,"floor_pp":-0.2,"strict_floor":false,"strict_mean":false},"G3_tile_down4_healthy":{"pass_":true,"values_pp":[0.0017927291184018184,-0.0005959674560784833,-0.00018249224501687422,0.0029437064009793326,-0.006371120691895271,0.001772121998745509,0.0005464718909991007,-0.0014968420482735685,-0.0047667827385519486,0.0021308488087470323,0.0006541515457125039,-0.00418646665373501],"mean_threshold_pp":null,"floor_pp":-0.5,"strict_floor":false,"strict_mean":false},"G3_dsm_down4_all":{"pass_":true,"values_pp":[-0.0015764862096148136,-0.00047345385742403323,0.0002644460994218889],"mean_threshold_pp":null,"floor_pp":-0.2,"strict_floor":false,"strict_mean":false},"G3_tile_dsm_down4_all":{"pass_":true,"values_pp":[-0.0019333257310828837,-0.00016514630091061613,-0.0003511825245207471,0.002709530221546667,-0.012944094365375728,0.0035020218352883603,0.002642413363754296,0.002841988433724888,0.0002149162253222888,-0.001428786898112359,-0.002403646335532509,-0.0014435292882666317],"mean_threshold_pp":null,"floor_pp":-0.5,"strict_floor":false,"strict_mean":false},"G3_dsm_shift8_all":{"pass_":true,"values_pp":[-0.0019825907906607654,-0.0008621592383235566,0.00045819724391549244],"mean_threshold_pp":null,"floor_pp":-0.2,"strict_floor":false,"strict_mean":false},"G3_tile_dsm_shift8_all":{"pass_":true,"values_pp":[-0.0011951516895010172,0.003641864369257064,-0.003519960021506563,0.0028888667961268766,-0.011566023573195139,0.004535714834053313,0.004618549581252296,0.0004664533229998824,-0.00037273052074719243,-0.001423402267917595,-0.0019730795350435906,0.0004975523386671435],"mean_threshold_pp":null,"floor_pp":-0.5,"strict_floor":false,"strict_mean":false},"G4_cross_pairing":{"pass_":false,"values_pp":[-0.0010582278539459367,-0.002228319693315939,-0.0007584517654919409,-0.0026428346338605024,-0.00014996471590222882,-0.00017350599782162135],"positive_required":5},"G4_down8":{"pass_":false,"values_pp":[-0.0012425420929389475,-0.0017619237187886938,-0.003687187431225425],"mean_threshold_pp":0.0,"floor_pp":-0.2,"strict_floor":false,"strict_mean":true},"G4_blur2":{"pass_":false,"values_pp":[-0.0005688083370074537,-0.0013614774193513313,-0.0015145153116264964],"mean_threshold_pp":0.0,"floor_pp":-0.2,"strict_floor":false,"strict_mean":true},"G4_noise005":{"pass_":false,"values_pp":[0.000527630162935111,-0.0016082433533028961,-0.0017020856382714555],"mean_threshold_pp":0.0,"floor_pp":-0.2,"strict_floor":false,"strict_mean":true}},"advance_reverse":false,"interpretation":"practical development gates, not significance/equivalence or independent-city confirmation"}
+
+# Phase3-M2 实验结果
+
+状态：COMPLETE_SERVER_CHECKED
+完成训练：108/108；更新：3456000
+评价案例：77868/77868
+
+## 预登记判断
+
+- G0: True
+- G1: False
+- H2_degradation_specificity: True
+- G2: False
+- G3: True
+- G4: False
+
+## RGB-down4 主结果
+
+| 整系统种子 | DSM 臂 | DSM mIoU % | 融合 mIoU % | DSM 补救率 % | DSM 损伤率 % |
+|---|---|---:|---:|---:|---:|
+| 42 | D0 | 62.412603 | 79.721156 | 52.043611 | 19.633245 |
+| 42 | DSelf | 61.983263 | 79.719649 | 52.002381 | 19.677214 |
+| 42 | DClean | 61.511336 | 79.719855 | 51.580213 | 20.489841 |
+| 42 | DF | 61.187912 | 79.720316 | 52.079292 | 20.570307 |
+| 42 | DShuffle | 61.782145 | 79.722024 | 52.560429 | 20.044597 |
+| 42 | DEntropy | 61.974689 | 79.722262 | 52.606455 | 20.066538 |
+| 42 | DMix | 61.611492 | 79.720337 | 51.857855 | 20.273592 |
+| 17 | D0 | 61.690293 | 79.459228 | 53.406764 | 20.396416 |
+| 17 | DSelf | 62.506959 | 79.459206 | 53.707663 | 19.616507 |
+| 17 | DClean | 60.289859 | 79.456217 | 53.373866 | 21.046258 |
+| 17 | DF | 60.735754 | 79.458047 | 53.830570 | 20.834383 |
+| 17 | DShuffle | 61.546768 | 79.460439 | 53.729437 | 20.430236 |
+| 17 | DEntropy | 61.224551 | 79.458831 | 53.420504 | 20.653419 |
+| 17 | DMix | 61.895296 | 79.460728 | 54.080022 | 20.204457 |
+| 2026 | D0 | 62.665038 | 79.605536 | 52.686311 | 19.791122 |
+| 2026 | DSelf | 62.940819 | 79.605213 | 53.018317 | 19.477065 |
+| 2026 | DClean | 61.264543 | 79.602740 | 52.720596 | 20.449829 |
+| 2026 | DF | 61.044142 | 79.603774 | 53.054956 | 20.647289 |
+| 2026 | DShuffle | 62.037738 | 79.605887 | 53.172839 | 20.358877 |
+| 2026 | DEntropy | 61.774136 | 79.604916 | 53.330224 | 20.651893 |
+| 2026 | DMix | 62.411506 | 79.605078 | 52.825144 | 19.931777 |
+
+这些结果属于 Fit12 同城开发交叉验证。全部负结果、逐掩码计数、模型和日志保留在服务器。
+metrics.csv 包含各面板和区域；三个 fold 计数文件包含每 tile、模型换配和权重曲线所需整数统计。
+科学阴性不触发重训；网络失败只恢复上传。B 方向须先冻结反向执行合同，第二编码器当前不进入队列。
+
+STAGE J
+summary.json NOT_YET_PRESENT
+gates.json NOT_YET_PRESENT
+
+STAGE R
+summary.json NOT_YET_PRESENT
+gates.json NOT_YET_PRESENT
+
+CLEAN_DSM_RESULTS: job | eligible | mIoU% | delta_D0_pp
+F0_s17_D0 True 62.32278331472344 0.0
+F0_s17_DClean True 61.875761578341624 -0.44702173638181364
+F0_s17_DEntropy True 62.29849897850066 -0.02428433622277737
+F0_s17_DF True 61.71017733954782 -0.6126059751756188
+F0_s17_DMix True 62.41167517353442 0.08889185881098172
+F0_s17_DSelf True 63.27060547252364 0.9478221578002035
+F0_s17_DShuffle True 62.20717076975323 -0.11561254497020457
+F0_s2026_D0 True 63.50107056318582 0.0
+F0_s2026_DClean True 62.597234203510176 -0.903836359675644
+F0_s2026_DEntropy True 63.1305612022057 -0.37050936098012244
+F0_s2026_DF True 62.57101387772102 -0.9300566854647982
+F0_s2026_DMix True 63.086393462137686 -0.4146771010481345
+F0_s2026_DSelf True 64.05572549954807 0.5546549363622546
+F0_s2026_DShuffle True 63.210680032430865 -0.290390530754955
+F0_s42_D0 True 62.97128835645414 0.0
+F0_s42_DClean True 62.60285846194681 -0.36842989450732944
+F0_s42_DEntropy True 62.53765751043852 -0.4336308460156175
+F0_s42_DF True 62.37300335842027 -0.5982849980338685
+F0_s42_DMix True 62.941449836503566 -0.029838519950573072
+F0_s42_DSelf True 62.538209159296045 -0.4330791971580936
+F0_s42_DShuffle True 62.88420580509052 -0.08708255136362197
+F1_s17_D0 True 58.70914135093981 0.0
+F1_s17_DClean True 57.86100840277186 -0.8481329481679509
+F1_s17_DEntropy True 58.67927825118045 -0.029863099759360523
+F1_s17_DF True 58.11153230623918 -0.5976090447006328
+F1_s17_DMix True 58.83866279522598 0.12952144428616919
+F1_s17_DSelf True 59.786574144581586 1.0774327936417762
+F1_s17_DShuffle True 59.075214846566766 0.36607349562695646
+F1_s2026_D0 True 59.26336859149725 0.0
+F1_s2026_DClean True 59.19668566784186 -0.0666829236553852
+F1_s2026_DEntropy True 58.27475217199717 -0.988616419500076
+F1_s2026_DF True 58.68293284050454 -0.5804357509927058
+F1_s2026_DMix True 59.15896420819253 -0.10440438330471835
+F1_s2026_DSelf True 60.009015179266086 0.7456465877688387
+F1_s2026_DShuffle True 58.605331693891664 -0.6580368976055837
+F1_s42_D0 True 59.563386629098524 0.0
+F1_s42_DClean True 58.82095599917001 -0.7424306299285135
+F1_s42_DEntropy True 59.83916697885157 0.2757803497530489
+F1_s42_DF True 58.477218022050955 -1.0861686070475685
+F1_s42_DMix True 58.88762051998377 -0.675766109114754
+F1_s42_DSelf True 60.210560109785526 0.6471734806870018
+F1_s42_DShuffle True 59.541141906634174 -0.022244722464350275
+F2_s17_D0 True 62.76069865739635 0.0
+F2_s17_DClean True 60.31681408343329 -2.4438845739630537
+F2_s17_DEntropy True 61.71647561247877 -1.0442230449175796
+F2_s17_DF True 61.30724997411487 -1.4534486832814792
+F2_s17_DMix True 63.02452855588749 0.2638298984911458
+F2_s17_DSelf True 63.02905398102007 0.26835532362372305
+F2_s17_DShuffle True 62.0764559663971 -0.6842426909992483
+F2_s2026_D0 True 63.70218346623261 0.0
+F2_s2026_DClean True 60.84711447358084 -2.8550689926517734
+F2_s2026_DEntropy True 62.714418759117336 -0.9877647071152751
+F2_s2026_DF True 60.84942029703417 -2.8527631691984396
+F2_s2026_DMix True 63.49713338742206 -0.20505007881055093
+F2_s2026_DSelf True 63.49616041918745 -0.20602304704516428
+F2_s2026_DShuffle True 62.9842029109286 -0.7179805553040097
+F2_s42_D0 True 63.130861653195424 0.0
+F2_s42_DClean True 61.84474386102497 -1.286117792170451
+F2_s42_DEntropy True 62.19674526671903 -0.934116386476397
+F2_s42_DF True 61.404173886600326 -1.7266877665950986
+F2_s42_DMix True 61.66627272053538 -1.4645889326600425
+F2_s42_DSelf True 61.97775206282934 -1.1531095903660855
+F2_s42_DShuffle True 61.70976125533137 -1.421100397864052
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ python -B - <<'PY'
+import json
+from pathlib import Path
+from datetime import datetime
+
+records = Path("/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records").resolve()
+receipt = json.loads((records / "phase3_engineering_restart_20261024_once.json").read_text())
+print("QUERY_TIME", datetime.now().astimezone().isoformat())
+
+for key in ("m2_directory", "combined_directory"):
+    base = Path(receipt[key]).resolve()
+    assert base.parent == records
+    print("\n", key)
+    for name in ("queue_status.json", "controller_failure.json"):
+        p = base / name
+        if p.is_file():
+            print(name, p.read_text())
+
+m2 = Path(receipt["m2_directory"])
+for name in ("summary.json", "gates.json", "REPORT.md"):
+    p = m2 / "publication" / name
+    print("\n", name)
+    print(p.read_text() if p.is_file() else "NOT_YET_PRESENT")
+PY
+QUERY_TIME 2026-10-29T10:29:51.035001+08:00
+
+ m2_directory
+queue_status.json {"status":"COMPLETE_SERVER_CHECKED","observed_at":"2026-10-29T08:43:24.150694+08:00","publication":"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/publication"}
+
+
+ combined_directory
+queue_status.json {"status": "STOPPED_NO_AUTOMATIC_RETRY", "error": "J job failed without retry: J_F0_s42_J2\nTraceback (most recent call last):\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/phase3_j_runtime.py\", line 278, in _worker\n    _train(base, m2, job, c, uuid)\n  File \"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_combined_revision_20261024T092814_2738345/code/scripts/phase3_j_runtime.py\", line 137, in _train\n    loss = F.cross_entropy(score, target, ignore_index=255)\n  File \"/home/jovyan/miniconda3/envs/remote_sensing/lib/python3.9/site-packages/torch/nn/functional.py\", line 3059, in cross_entropy\n    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)\nRuntimeError: nll_loss2d_forward_out_cuda_template does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True)'. You can turn off determinism just for this operation, or you can use the 'warn_only=True' option, if that's acceptable for your application. You can also file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation.\n", "observed_at": "2026-10-29T08:47:55.579782+08:00"}
+
+
+ summary.json
+{"status":"COMPLETE_SERVER_CHECKED","binding":{"plan.json":"c9a2eb3c5db8abcc762d696b6b14892ca3c87548cf39316fd09e9f75165a9a7b","code_manifest.json":"045a6db7fdcfb4d5198b8c638b856ff62ed0a4cbb6dadd8d075ca20b3d254933","folds.json":"62215bb2b106993f518ad451db2ab6c618834080003e847eafa3a7e423590b0a"},"jobs_complete":108,"jobs_expected":108,"optimizer_updates":3456000,"evaluated_cases":77868,"expected_cases":77868,"gates":{"G0":true,"G1":false,"H2_degradation_specificity":true,"G2":false,"G3":true,"G4":false},"advance_reverse":false,"conditional_extensions_started":false,"errors":[],"failures":[],"server":"/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345","observed_at":"2026-10-29T08:43:22.555134+08:00","scope":"Fit12 same-city development CV; no Val2/Test6/held4/final or point cloud","extension":"B requires separately frozen reverse execution contract; C remains budget reservation"}
+
+
+ gates.json
+{"status":{"G0":true,"G1":false,"H2_degradation_specificity":true,"G2":false,"G3":true,"G4":false},"checks":{"G1_rescue_DF-D0":{"pass_":false,"values_pp":[0.035680507999316546,0.4238065789416936,0.3686458062923492],"mean_threshold_pp":0.5,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G1_rescue_DF-DSelf":{"pass_":false,"values_pp":[0.07691136637469498,0.12290696511078636,0.036639383040025564],"mean_threshold_pp":0.5,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G1_rescue_DF-DShuffle":{"pass_":false,"values_pp":[-0.48113679754102634,0.10113347861231858,-0.11788285931599063],"mean_threshold_pp":0.5,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G1_rescue_DF-DEntropy":{"pass_":false,"values_pp":[-0.5271631586413363,0.4100666715883392,-0.27526794998681936],"mean_threshold_pp":0.5,"floor_pp":0,"strict_floor":true,"strict_mean":false},"H2_DF-DClean_all":{"pass_":true,"values_pp":[0.4990792148363994,0.4567045723647425,0.3343604546387837],"mean_threshold_pp":0.3,"floor_pp":0,"strict_floor":true,"strict_mean":false},"H2_DF-DClean_damaged":{"pass_":true,"values_pp":[0.4452521136464753,0.5199777867987052,0.6433066917522297],"mean_threshold_pp":0.3,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G2_fusion_DF-D0":{"pass_":false,"values_pp":[-0.0008400130521266647,-0.0011814970233530175,-0.001761507004786722],"mean_threshold_pp":0.3,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G2_fusion_DF-DSelf":{"pass_":false,"values_pp":[0.0006669385509212589,-0.0011587133162294094,-0.0014390085792825857],"mean_threshold_pp":0.2,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G2_fusion_DF-DShuffle":{"pass_":false,"values_pp":[-0.0017081444851356764,-0.002391924122818523,-0.0021124605273570296],"mean_threshold_pp":0.2,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G2_fusion_DF-DEntropy":{"pass_":false,"values_pp":[-0.0019460546495935205,-0.000784580510284627,-0.0011412988234553723],"mean_threshold_pp":0.2,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G2_fusion_DF-DMix":{"pass_":false,"values_pp":[-2.1588969090657883e-05,-0.002681583738976201,-0.0013032071389034172],"mean_threshold_pp":0.2,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G2_fusion_DF-DClean":{"pass_":false,"values_pp":[0.0004608749208188101,0.0018295764599258746,0.0010340128315817765],"mean_threshold_pp":0.2,"floor_pp":0,"strict_floor":true,"strict_mean":false},"G2_fold_consistency":{"pass_":false,"values_pp":[-0.002642044513294195,0.0019315069080931835,-0.0017244085647973861,-0.0029611887013345495,-3.181248948180837e-05,0.00047059774998103876,0.0011822982960438821,0.0013704152140405768,-0.005774358689436099],"positive_required":7},"G3_clean_all":{"pass_":true,"values_pp":[-0.0003582834542044111,-0.0017121772339123709,-0.0013330254547554432],"mean_threshold_pp":null,"floor_pp":-0.2,"strict_floor":false,"strict_mean":false},"G3_tile_clean_all":{"pass_":true,"values_pp":[0.0007604782075674166,0.0034501959026205973,-0.0016408112424007488,0.004977392414697117,-0.012176834157562174,0.00543265029573566,0.002510309827632303,-0.0015138350332411694,-0.004129597990650306,8.478133661071752e-05,-0.001572443700013082,-0.0044884116263593414],"mean_threshold_pp":null,"floor_pp":-0.5,"strict_floor":false,"strict_mean":false},"G3_down4_healthy":{"pass_":true,"values_pp":[-0.0014318924123841725,-0.0015016550342039636,-0.0006609283501148866],"mean_threshold_pp":null,"floor_pp":-0.2,"strict_floor":false,"strict_mean":false},"G3_tile_down4_healthy":{"pass_":true,"values_pp":[0.0017927291184018184,-0.0005959674560784833,-0.00018249224501687422,0.0029437064009793326,-0.006371120691895271,0.001772121998745509,0.0005464718909991007,-0.0014968420482735685,-0.0047667827385519486,0.0021308488087470323,0.0006541515457125039,-0.00418646665373501],"mean_threshold_pp":null,"floor_pp":-0.5,"strict_floor":false,"strict_mean":false},"G3_dsm_down4_all":{"pass_":true,"values_pp":[-0.0015764862096148136,-0.00047345385742403323,0.0002644460994218889],"mean_threshold_pp":null,"floor_pp":-0.2,"strict_floor":false,"strict_mean":false},"G3_tile_dsm_down4_all":{"pass_":true,"values_pp":[-0.0019333257310828837,-0.00016514630091061613,-0.0003511825245207471,0.002709530221546667,-0.012944094365375728,0.0035020218352883603,0.002642413363754296,0.002841988433724888,0.0002149162253222888,-0.001428786898112359,-0.002403646335532509,-0.0014435292882666317],"mean_threshold_pp":null,"floor_pp":-0.5,"strict_floor":false,"strict_mean":false},"G3_dsm_shift8_all":{"pass_":true,"values_pp":[-0.0019825907906607654,-0.0008621592383235566,0.00045819724391549244],"mean_threshold_pp":null,"floor_pp":-0.2,"strict_floor":false,"strict_mean":false},"G3_tile_dsm_shift8_all":{"pass_":true,"values_pp":[-0.0011951516895010172,0.003641864369257064,-0.003519960021506563,0.0028888667961268766,-0.011566023573195139,0.004535714834053313,0.004618549581252296,0.0004664533229998824,-0.00037273052074719243,-0.001423402267917595,-0.0019730795350435906,0.0004975523386671435],"mean_threshold_pp":null,"floor_pp":-0.5,"strict_floor":false,"strict_mean":false},"G4_cross_pairing":{"pass_":false,"values_pp":[-0.0010582278539459367,-0.002228319693315939,-0.0007584517654919409,-0.0026428346338605024,-0.00014996471590222882,-0.00017350599782162135],"positive_required":5},"G4_down8":{"pass_":false,"values_pp":[-0.0012425420929389475,-0.0017619237187886938,-0.003687187431225425],"mean_threshold_pp":0.0,"floor_pp":-0.2,"strict_floor":false,"strict_mean":true},"G4_blur2":{"pass_":false,"values_pp":[-0.0005688083370074537,-0.0013614774193513313,-0.0015145153116264964],"mean_threshold_pp":0.0,"floor_pp":-0.2,"strict_floor":false,"strict_mean":true},"G4_noise005":{"pass_":false,"values_pp":[0.000527630162935111,-0.0016082433533028961,-0.0017020856382714555],"mean_threshold_pp":0.0,"floor_pp":-0.2,"strict_floor":false,"strict_mean":true}},"advance_reverse":false,"interpretation":"practical development gates, not significance/equivalence or independent-city confirmation"}
+
+
+ REPORT.md
+# Phase3-M2 实验结果
+
+状态：COMPLETE_SERVER_CHECKED
+完成训练：108/108；更新：3456000
+评价案例：77868/77868
+
+## 预登记判断
+
+- G0: True
+- G1: False
+- H2_degradation_specificity: True
+- G2: False
+- G3: True
+- G4: False
+
+## RGB-down4 主结果
+
+| 整系统种子 | DSM 臂 | DSM mIoU % | 融合 mIoU % | DSM 补救率 % | DSM 损伤率 % |
+|---|---|---:|---:|---:|---:|
+| 42 | D0 | 62.412603 | 79.721156 | 52.043611 | 19.633245 |
+| 42 | DSelf | 61.983263 | 79.719649 | 52.002381 | 19.677214 |
+| 42 | DClean | 61.511336 | 79.719855 | 51.580213 | 20.489841 |
+| 42 | DF | 61.187912 | 79.720316 | 52.079292 | 20.570307 |
+| 42 | DShuffle | 61.782145 | 79.722024 | 52.560429 | 20.044597 |
+| 42 | DEntropy | 61.974689 | 79.722262 | 52.606455 | 20.066538 |
+| 42 | DMix | 61.611492 | 79.720337 | 51.857855 | 20.273592 |
+| 17 | D0 | 61.690293 | 79.459228 | 53.406764 | 20.396416 |
+| 17 | DSelf | 62.506959 | 79.459206 | 53.707663 | 19.616507 |
+| 17 | DClean | 60.289859 | 79.456217 | 53.373866 | 21.046258 |
+| 17 | DF | 60.735754 | 79.458047 | 53.830570 | 20.834383 |
+| 17 | DShuffle | 61.546768 | 79.460439 | 53.729437 | 20.430236 |
+| 17 | DEntropy | 61.224551 | 79.458831 | 53.420504 | 20.653419 |
+| 17 | DMix | 61.895296 | 79.460728 | 54.080022 | 20.204457 |
+| 2026 | D0 | 62.665038 | 79.605536 | 52.686311 | 19.791122 |
+| 2026 | DSelf | 62.940819 | 79.605213 | 53.018317 | 19.477065 |
+| 2026 | DClean | 61.264543 | 79.602740 | 52.720596 | 20.449829 |
+| 2026 | DF | 61.044142 | 79.603774 | 53.054956 | 20.647289 |
+| 2026 | DShuffle | 62.037738 | 79.605887 | 53.172839 | 20.358877 |
+| 2026 | DEntropy | 61.774136 | 79.604916 | 53.330224 | 20.651893 |
+| 2026 | DMix | 62.411506 | 79.605078 | 52.825144 | 19.931777 |
+
+这些结果属于 Fit12 同城开发交叉验证。全部负结果、逐掩码计数、模型和日志保留在服务器。
+metrics.csv 包含各面板和区域；三个 fold 计数文件包含每 tile、模型换配和权重曲线所需整数统计。
+科学阴性不触发重训；网络失败只恢复上传。B 方向须先冻结反向执行合同，第二编码器当前不进入队列。
+
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ 

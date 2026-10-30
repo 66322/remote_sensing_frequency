@@ -1,0 +1,51 @@
+{
+  "version": "REBUILD_V1_D8_SAMPLING_SCREEN_4K_20260922",
+  "model_id": "D8-C",
+  "model": "optical_only_f0",
+  "seed": 42,
+  "split_file": "configs/rebuild_v1/potsdam_split_seed20260915.json",
+  "data_root": "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped",
+  "pretrain": "/home/jovyan/zzx/paper_rebuild/08_assets/pretrained/ftransunet/R50+ViT-B_16.npz",
+  "student_init": "runs/rebuild_v1/R01_optical_only_seed42_sched16000_stop16000/best_model.pth",
+  "patch": 512,
+  "micro_batch": 4,
+  "accum_steps": 4,
+  "effective_batch": 16,
+  "optimizer": {
+    "name": "AdamW",
+    "backbone_lr": 0.00001,
+    "decoder_head_lr_mult": 10,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "weight_decay": 0.01
+  },
+  "schedule": {
+    "scheduler_total_steps": 4000,
+    "stop_at_step": 4000,
+    "warmup_steps": 200,
+    "warmup_ratio": 0.000001,
+    "poly_power": 1
+  },
+  "augmentation": {
+    "random_scale_min": 0.5,
+    "random_scale_max": 2,
+    "horizontal_flip_p": 0.5,
+    "vertical_flip_p": 0.5,
+    "aware_crop_p": 0.2
+  },
+  "sampling": {
+    "mode": "random_ce",
+    "small_car_max_area": 2117,
+    "tile_sampling": "uniform",
+    "aware_center_jitter_fraction": 0.25
+  },
+  "validation": {
+    "eval_interval_steps": 1000,
+    "stride": 256,
+    "inference_batch": 8,
+    "decision_checkpoint": "fixed_step_4000",
+    "test6_loaded": false
+  }
+}

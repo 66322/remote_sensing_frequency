@@ -1,0 +1,64 @@
+{
+  "source": "user_pasted_readonly_terminal",
+  "received_date": "2026-10-06",
+  "queue_observed_at": "2026-10-06T11:48:28.739479+08:00",
+  "queue_status": "PREPARING_MASKS",
+  "controller_pid": 72265,
+  "controller_live_at_query": true,
+  "jobs": {
+    "N5-0": {
+      "gpu": 0,
+      "status": "PENDING",
+      "step": 0,
+      "target": 8000,
+      "pid": -1,
+      "live": false
+    },
+    "N5-1": {
+      "gpu": 1,
+      "status": "PENDING",
+      "step": 0,
+      "target": 8000,
+      "pid": -1,
+      "live": false
+    },
+    "N5-2": {
+      "gpu": 0,
+      "status": "PENDING",
+      "step": 0,
+      "target": 8000,
+      "pid": -1,
+      "live": false
+    },
+    "N5-3": {
+      "gpu": 1,
+      "status": "PENDING",
+      "step": 0,
+      "target": 8000,
+      "pid": -1,
+      "live": false
+    }
+  },
+  "mask_complete_tiles_in_log": [
+    "2_12",
+    "2_10",
+    "7_8",
+    "3_12",
+    "5_12",
+    "7_9",
+    "6_9",
+    "7_7",
+    "4_12",
+    "6_8",
+    "6_12",
+    "6_7",
+    "3_11"
+  ],
+  "mask_complete_tile_count": 13,
+  "expected_remaining_tile_not_yet_reported": "5_10",
+  "log_line_observed_at": null,
+  "mask_preparation_complete_confirmed": false,
+  "error_in_pasted_output": false,
+  "gpu_training_confirmed": false,
+  "action": "continue same controller; read-only status; no restart"
+}

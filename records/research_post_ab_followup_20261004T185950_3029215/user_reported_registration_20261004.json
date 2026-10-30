@@ -1,0 +1,29 @@
+{
+  "source": "user-pasted server terminal output",
+  "execution_commit": "99acf754aaf3f6b1d119f42a5dab7297a263e4b4",
+  "original_queue": {
+    "observed_at": "2026-10-04T18:59:48.657318+08:00",
+    "status": "RUNNING",
+    "pid": 2720259,
+    "live": true,
+    "new_job_breakdown_received": false
+  },
+  "successor": {
+    "registration_directory_timestamp": "2026-10-04T18:59:50+08:00",
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_20261004T185950_3029215",
+    "controller_pid": 3029372,
+    "log_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_20261004T185950_3029215/nohup_20261004T185950714312.log",
+    "n1_executable": 4,
+    "conditional_reserved": 22,
+    "registered": true,
+    "controller_status_received": false,
+    "controller_live_verified": false,
+    "cpu_checks_report_received": false,
+    "n1_started_verified": false
+  },
+  "raw_status_lines": [
+    "ORIGINAL_QUEUE_LAST_OBSERVED=2026-10-04T18:59:48.657318+08:00 STATUS=RUNNING PID=2720259 LIVE=True",
+    "POST_AB_QUEUE_REGISTERED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_20261004T185950_3029215 PID=3029372 N1_EXECUTABLE=4 CONDITIONAL_RESERVED=22",
+    "POST_AB_LOG /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_ab_followup_20261004T185950_3029215/nohup_20261004T185950714312.log"
+  ]
+}

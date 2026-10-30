@@ -1,0 +1,69 @@
+test_T0_trajectory_is_counted (test_phase24.Contracts) ... ok
+test_constant_features_keep_constant_stump (test_phase24.Contracts) ... ok
+test_fixed_margins (test_phase24.Contracts) ... ok
+test_gate_requires_both_tile_protection (test_phase24.Contracts) ... ok
+test_native_feature_halos (test_phase24.Contracts) ... ok
+test_null_conserves_groundtruth (test_phase24.Contracts) ... ok
+test_panel_and_smoke_counts (test_phase24.Contracts) ... ok
+test_rebuild_rejects_consistent_hash_but_wrong_summary (test_phase24.Contracts) ... ok
+test_source_fit_rejects_target_and_handles_no_preference (test_phase24.Contracts) ... ok
+test_stripe_integer_partition (test_phase24.Contracts) ... ok
+test_temperature_does_not_change_expert_argmax (test_phase24.Contracts) ... ok
+test_validate_rejects_noninteger_and_partition_change (test_phase24.Contracts) ... ok
+test_capacity_control_removes_only_signal_features (test_phase24.Differentiable) ... ok
+test_exact_initialization_and_live_gradient (test_phase24.Differentiable) ... ok
+test_export_matches_nonzero_torch_gate (test_phase24.Differentiable) ... ok
+test_features_torch_numpy_agree (test_phase24.Differentiable) ... ok
+test_matched_static_initial_state_and_pairing (test_phase24.Differentiable) ... ok
+test_statistics_control_only_rolls_three_slots (test_phase24.Differentiable) ... ok
+test_cross_process_readonly (test_phase24.Transport) ... ERROR
+test_roundtrip_and_last_close (test_phase24.Transport) ... ERROR
+
+======================================================================
+ERROR: test_cross_process_readonly (test_phase24.Transport)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase24_protected_20261014T185408_2127460/code/tests/test_phase24.py", line 227, in test_cross_process_readonly
+    q.put(p.descriptor());result=out.get(timeout=30);child.join(timeout=10)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase24_protected_20261014T185408_2127460/code/scripts/phase24_ipc.py", line 15, in descriptor
+    def descriptor(self):return dict(fd=DupFd(self.fd),meta=self.meta)
+  File "/home/jovyan/miniconda3/envs/d18_dino/lib/python3.10/multiprocessing/reduction.py", line 198, in DupFd
+    return resource_sharer.DupFd(fd)
+  File "/home/jovyan/miniconda3/envs/d18_dino/lib/python3.10/multiprocessing/resource_sharer.py", line 53, in __init__
+    self._id = _resource_sharer.register(send, close)
+  File "/home/jovyan/miniconda3/envs/d18_dino/lib/python3.10/multiprocessing/resource_sharer.py", line 76, in register
+    self._start()
+  File "/home/jovyan/miniconda3/envs/d18_dino/lib/python3.10/multiprocessing/resource_sharer.py", line 126, in _start
+    self._listener = Listener(authkey=process.current_process().authkey)
+  File "/home/jovyan/miniconda3/envs/d18_dino/lib/python3.10/multiprocessing/connection.py", line 448, in __init__
+    self._listener = SocketListener(address, family, backlog)
+  File "/home/jovyan/miniconda3/envs/d18_dino/lib/python3.10/multiprocessing/connection.py", line 591, in __init__
+    self._socket.bind(address)
+OSError: AF_UNIX path too long
+
+======================================================================
+ERROR: test_roundtrip_and_last_close (test_phase24.Transport)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase24_protected_20261014T185408_2127460/code/tests/test_phase24.py", line 235, in test_roundtrip_and_last_close
+    other=Packet.receive(p.descriptor());np.testing.assert_array_equal(other.arrays['x'],a)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase24_protected_20261014T185408_2127460/code/scripts/phase24_ipc.py", line 15, in descriptor
+    def descriptor(self):return dict(fd=DupFd(self.fd),meta=self.meta)
+  File "/home/jovyan/miniconda3/envs/d18_dino/lib/python3.10/multiprocessing/reduction.py", line 198, in DupFd
+    return resource_sharer.DupFd(fd)
+  File "/home/jovyan/miniconda3/envs/d18_dino/lib/python3.10/multiprocessing/resource_sharer.py", line 53, in __init__
+    self._id = _resource_sharer.register(send, close)
+  File "/home/jovyan/miniconda3/envs/d18_dino/lib/python3.10/multiprocessing/resource_sharer.py", line 76, in register
+    self._start()
+  File "/home/jovyan/miniconda3/envs/d18_dino/lib/python3.10/multiprocessing/resource_sharer.py", line 126, in _start
+    self._listener = Listener(authkey=process.current_process().authkey)
+  File "/home/jovyan/miniconda3/envs/d18_dino/lib/python3.10/multiprocessing/connection.py", line 448, in __init__
+    self._listener = SocketListener(address, family, backlog)
+  File "/home/jovyan/miniconda3/envs/d18_dino/lib/python3.10/multiprocessing/connection.py", line 591, in __init__
+    self._socket.bind(address)
+OSError: AF_UNIX path too long
+
+----------------------------------------------------------------------
+Ran 20 tests in 5.477s
+
+FAILED (errors=2)

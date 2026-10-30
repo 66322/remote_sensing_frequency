@@ -1,0 +1,92 @@
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 dinov3]$ R=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030
+
+tail -n 60 "$R/repair_continuation.log"
+tail -n 12 "$R/pair_train_dino2.log" "$R/pair_train_dino3.log"
+  "observed_at": "2026-10-30T19:00:48.465103+08:00",
+  "dino3_minus_dino2_pooled_pp": 1.625692544708457,
+  "tile_differences_pp": [
+    0.3687178663341655,
+    2.933703757193811
+  ],
+  "training_trajectory_decreased": true,
+  "both_probes_competent": true,
+  "criteria": {
+    "delta_pp": 0.3,
+    "tile_floor_pp": -0.2,
+    "inner_miou_floor_percent": 50,
+    "relative_train_loss_decrease_required": true
+  },
+  "interpretation": "A0 selected-frozen-feature probe only; no general claim that one teacher has or lacks world knowledge."
+}
+A0_PAIR_LAUNCHED evaluate dino2 gpu 0 pid 2507728 log /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030/pair_evaluate_outer_dino2.log
+A0_PAIR_LAUNCHED evaluate dino3 gpu 1 pid 2507729 log /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030/pair_evaluate_outer_dino3.log
+A0_PAIR_EXIT dino2 0
+A0_PAIR_EXIT dino3 0
+{
+  "status": "PAIR_PHASE_COMPLETE",
+  "phase": "evaluate",
+  "split": "outer",
+  "observed_at": "2026-10-30T19:01:20.924026+08:00",
+  "code_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+  "parallel": true,
+  "resources": {
+    "effective_cpu_cores": 192,
+    "cgroup_aware_memory_available_bytes": 2039915413504,
+    "max_loader_workers_per_gpu": 8
+  },
+  "outputs": [
+    "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030/dino2/outer_result.json",
+    "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030/dino3/outer_result.json"
+  ]
+}
+{
+  "dino2": {
+    "train_started.json": true,
+    "train_complete.json": true,
+    "calibration_result.json": true,
+    "outer_result.json": true,
+    "failure.txt": false,
+    "calibration_failure.txt": false,
+    "outer_failure.txt": false,
+    "profile": true
+  },
+  "dino3": {
+    "train_started.json": true,
+    "train_complete.json": true,
+    "calibration_result.json": true,
+    "outer_result.json": true,
+    "failure.txt": false,
+    "calibration_failure.txt": false,
+    "outer_failure.txt": false,
+    "profile": true
+  },
+  "calibration_screen": true
+}
+==> /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030/pair_train_dino2.log <==
+A0_TRAIN dino2 {"step": 900, "loss": 0.5205698013305664, "elapsed_seconds": 9.73395162075758, "interval_seconds": 1.026882380247116, "gpu_allocated_bytes": 121820160, "gpu_reserved_bytes": 635437056}
+A0_TRAIN dino2 {"step": 1000, "loss": 0.5214055776596069, "elapsed_seconds": 10.75321265310049, "interval_seconds": 1.0189805924892426, "gpu_allocated_bytes": 121820160, "gpu_reserved_bytes": 635437056}
+A0_TRAIN dino2 {"step": 1100, "loss": 0.4628514051437378, "elapsed_seconds": 11.780670553445816, "interval_seconds": 1.0272028520703316, "gpu_allocated_bytes": 121820160, "gpu_reserved_bytes": 635437056}
+A0_TRAIN dino2 {"step": 1200, "loss": 0.4980713427066803, "elapsed_seconds": 12.803283356130123, "interval_seconds": 1.0223459154367447, "gpu_allocated_bytes": 121820160, "gpu_reserved_bytes": 635437056}
+A0_TRAIN dino2 {"step": 1300, "loss": 0.4767707884311676, "elapsed_seconds": 13.828488662838936, "interval_seconds": 1.0247353836894035, "gpu_allocated_bytes": 121820160, "gpu_reserved_bytes": 635437056}
+A0_TRAIN dino2 {"step": 1400, "loss": 0.4757670760154724, "elapsed_seconds": 14.846758492290974, "interval_seconds": 1.0180541425943375, "gpu_allocated_bytes": 121820160, "gpu_reserved_bytes": 635437056}
+A0_TRAIN dino2 {"step": 1500, "loss": 0.3942064642906189, "elapsed_seconds": 15.873197615146637, "interval_seconds": 1.02621328830719, "gpu_allocated_bytes": 121820160, "gpu_reserved_bytes": 635437056}
+A0_TRAIN dino2 {"step": 1600, "loss": 0.3819012939929962, "elapsed_seconds": 16.891452878713608, "interval_seconds": 1.0180311426520348, "gpu_allocated_bytes": 121820160, "gpu_reserved_bytes": 635437056}
+A0_TRAIN dino2 {"step": 1700, "loss": 0.49067381024360657, "elapsed_seconds": 17.918482661247253, "interval_seconds": 1.0267914161086082, "gpu_allocated_bytes": 121820160, "gpu_reserved_bytes": 635437056}
+A0_TRAIN dino2 {"step": 1800, "loss": 0.37660956382751465, "elapsed_seconds": 18.939960598945618, "interval_seconds": 1.0212528631091118, "gpu_allocated_bytes": 121820160, "gpu_reserved_bytes": 635437056}
+A0_TRAIN dino2 {"step": 1900, "loss": 0.4472406506538391, "elapsed_seconds": 19.966078363358974, "interval_seconds": 1.0258603990077972, "gpu_allocated_bytes": 121820160, "gpu_reserved_bytes": 635437056}
+A0_TRAIN dino2 {"step": 2000, "loss": 0.42590054869651794, "elapsed_seconds": 20.98410914838314, "interval_seconds": 1.01777845621109, "gpu_allocated_bytes": 121820160, "gpu_reserved_bytes": 635437056}
+
+==> /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030/pair_train_dino3.log <==
+A0_TRAIN dino3 {"step": 900, "loss": 0.704612672328949, "elapsed_seconds": 12.832465954124928, "interval_seconds": 1.3713627606630325, "gpu_allocated_bytes": 120381952, "gpu_reserved_bytes": 677380096}
+A0_TRAIN dino3 {"step": 1000, "loss": 0.6938616633415222, "elapsed_seconds": 14.200591161847115, "interval_seconds": 1.3677127212285995, "gpu_allocated_bytes": 120381952, "gpu_reserved_bytes": 677380096}
+A0_TRAIN dino3 {"step": 1100, "loss": 0.6258909106254578, "elapsed_seconds": 15.575449325144291, "interval_seconds": 1.3746068477630615, "gpu_allocated_bytes": 120381952, "gpu_reserved_bytes": 677380096}
+A0_TRAIN dino3 {"step": 1200, "loss": 0.6198710799217224, "elapsed_seconds": 16.94428738206625, "interval_seconds": 1.3686168119311333, "gpu_allocated_bytes": 120381952, "gpu_reserved_bytes": 677380096}
+A0_TRAIN dino3 {"step": 1300, "loss": 0.5773170590400696, "elapsed_seconds": 18.312245219945908, "interval_seconds": 1.3677086755633354, "gpu_allocated_bytes": 120381952, "gpu_reserved_bytes": 677380096}
+A0_TRAIN dino3 {"step": 1400, "loss": 0.5935168862342834, "elapsed_seconds": 19.691910214722157, "interval_seconds": 1.3794360384345055, "gpu_allocated_bytes": 120381952, "gpu_reserved_bytes": 677380096}
+A0_TRAIN dino3 {"step": 1500, "loss": 0.4725296199321747, "elapsed_seconds": 21.06351689994335, "interval_seconds": 1.3713679686188698, "gpu_allocated_bytes": 120381952, "gpu_reserved_bytes": 677380096}
+A0_TRAIN dino3 {"step": 1600, "loss": 0.5283685326576233, "elapsed_seconds": 22.433567889034748, "interval_seconds": 1.3697874620556831, "gpu_allocated_bytes": 120381952, "gpu_reserved_bytes": 677380096}
+A0_TRAIN dino3 {"step": 1700, "loss": 0.5341061353683472, "elapsed_seconds": 23.802717581391335, "interval_seconds": 1.3689157739281654, "gpu_allocated_bytes": 120381952, "gpu_reserved_bytes": 677380096}
+A0_TRAIN dino3 {"step": 1800, "loss": 0.41826021671295166, "elapsed_seconds": 25.17203340679407, "interval_seconds": 1.3676266744732857, "gpu_allocated_bytes": 120381952, "gpu_reserved_bytes": 677380096}
+A0_TRAIN dino3 {"step": 1900, "loss": 0.5086525082588196, "elapsed_seconds": 26.538564912974834, "interval_seconds": 1.3663151413202286, "gpu_allocated_bytes": 120381952, "gpu_reserved_bytes": 677380096}
+A0_TRAIN dino3 {"step": 2000, "loss": 0.48564329743385315, "elapsed_seconds": 27.903296507894993, "interval_seconds": 1.364504635334015, "gpu_allocated_bytes": 120381952, "gpu_reserved_bytes": 677380096}
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 dinov3]$ 

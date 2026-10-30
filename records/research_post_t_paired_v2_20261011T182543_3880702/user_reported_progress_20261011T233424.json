@@ -1,0 +1,107 @@
+{
+  "source": "user-pasted manage_post_t_paired_v2 status and nohup tail; no SSH or assistant live query",
+  "query_observed": "2026-10-11T23:34:24.796568+08:00",
+  "last_observed": "2026-10-11T23:34:17.832878+08:00",
+  "queue": "RUNNING",
+  "controller_live": true,
+  "execution_commit": "44e4df5afbaeb603e6441e7ef14ff09f228bc027",
+  "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_t_paired_v2_20261011T182543_3880702",
+  "jobs": {
+    "CONTENT_PRE": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "live": false,
+      "optimizer_updates": 0,
+      "elapsed_seconds": 1252.244643367827,
+      "observed_at": "2026-10-11T18:46:47.983999+08:00",
+      "phase": "complete"
+    },
+    "H8": {
+      "status": "COMPLETE",
+      "gpu": 0,
+      "live": false,
+      "target": 8000,
+      "step": 8000,
+      "phase": "complete",
+      "observed_at": "2026-10-11T21:39:17.455787+08:00",
+      "elapsed_seconds": 10338.760011665523,
+      "tiles_loaded": 12,
+      "tiles_total": 12,
+      "loss": 0.30367398262023926,
+      "seconds_per_train_step": 0.6564349923320114,
+      "remaining_train_hours": 0,
+      "gpu_peak_allocated_bytes": 13738220032
+    },
+    "F8": {
+      "status": "COMPLETE",
+      "gpu": 1,
+      "live": false,
+      "target": 8000,
+      "step": 8000,
+      "phase": "complete",
+      "observed_at": "2026-10-11T21:38:16.265404+08:00",
+      "elapsed_seconds": 10277.432101227343,
+      "tiles_loaded": 12,
+      "tiles_total": 12,
+      "loss": 0.30382153391838074,
+      "seconds_per_train_step": 0.6465977983763441,
+      "remaining_train_hours": 0,
+      "gpu_peak_allocated_bytes": 13294365184
+    },
+    "R8": {
+      "status": "RUNNING",
+      "gpu": 1,
+      "live": true,
+      "target": 8000,
+      "step": 8000,
+      "phase": "endpoint_ordinary",
+      "observed_at": "2026-10-11T23:34:06.055442+08:00",
+      "elapsed_seconds": 6936.955388523638,
+      "tiles_loaded": 12,
+      "tiles_total": 12,
+      "loss": 0.3030717372894287,
+      "seconds_per_train_step": 0.6688700165795163,
+      "remaining_train_hours": 0,
+      "gpu_peak_allocated_bytes": 15237331456,
+      "tile": "3_11",
+      "condition": "aux_down4",
+      "windows_done": 529,
+      "windows_total": 529
+    },
+    "R16": {
+      "status": "PENDING",
+      "gpu": null,
+      "live": false
+    },
+    "H16": {
+      "status": "PENDING",
+      "gpu": null,
+      "live": false
+    },
+    "F16": {
+      "status": "PENDING",
+      "gpu": null,
+      "live": false
+    },
+    "CONTENT_POST": {
+      "status": "PENDING",
+      "gpu": null,
+      "live": false
+    }
+  },
+  "log_lines": [
+    "PAIRED_START CONTENT_PRE GPU 0 RESUME False",
+    "PAIRED_JOB CONTENT_PRE COMPLETE GPU 0",
+    "PAIRED_START H8 GPU 0 RESUME False",
+    "PAIRED_START F8 GPU 1 RESUME False",
+    "PAIRED_JOB F8 COMPLETE GPU 1",
+    "PAIRED_START R8 GPU 1 RESUME False",
+    "PAIRED_JOB H8 COMPLETE GPU 0"
+  ],
+  "gpu0_utilization_user_reported_percent": 0,
+  "gpu_blocked_flags_not_supplied": true,
+  "accuracy_originals_received": false,
+  "scientific_result_verified": false,
+  "new_jobs_launched": false,
+  "queue_modified": false
+}

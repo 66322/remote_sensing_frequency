@@ -1,0 +1,22 @@
+{
+  "record_type": "user_reported_read_only_status_and_main_log",
+  "execution_commit": "7b12fec6d7fb451e09316ba59f7d62ca8e0c316b",
+  "query_observed_at": "2026-10-12T23:28:06.269038+08:00",
+  "queue_last_observed_at": "2026-10-12T23:27:34.651175+08:00",
+  "queue_status": "SMOKE_FAILED_HOLD",
+  "controller_live": false,
+  "counts": {
+    "PENDING": 100
+  },
+  "error": "smoke_phase15.py exit=1",
+  "failed_stage": "GPU0 smoke subprocess",
+  "root_cause_known": false,
+  "smoke_gpu0_log_received": false,
+  "gpu1_smoke_dispatched": false,
+  "full_gpu_batches_started": 0,
+  "optimizer_updates": 0,
+  "automatic_retry": false,
+  "preparation_success": "inferred from control flow only; original preparation log not independently received",
+  "next_action": "Read original logs/smoke_gpu0.log and failure/progress receipts; preserve original directory and do not re-enqueue.",
+  "main_traceback": "control_phase15.py line 55 sync('smoke_phase15.py',['--gpu','0'],gpu=0,log_name='smoke_gpu0'); line 47 raises RuntimeError(script+' exit='+str(proc.returncode))"
+}

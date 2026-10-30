@@ -1,0 +1,25 @@
+{
+  "validation": "CPU synthetic only",
+  "tests": 17,
+  "passed": true,
+  "inherited_python_exact_sha": 124,
+  "inherited_manifest_sha256": "9db028dc8df414f9d85fbf3ffbf1b59d4cd34b21a4cfbc3c5ff5960d70330e68",
+  "scientific_files": {
+    "model/post_s1_transfer_model.py": "c1651aace2e0558194cee57a1be65c01d6139ff38bf69684d9c32e24bde23d42",
+    "scripts/post_s1_transfer_common.py": "31cc092426c8ca6999c4f6f9ec089fd275e620415215b0f18b625b7fdd1691fc",
+    "scripts/post_s1_transfer_evaluation.py": "4d3e16bb6636776a581ad21ac78eedd8cea4ab9293a774b710876c9906fbf2a8",
+    "scripts/prepare_post_s1_transfer.py": "85b9db05dc7e5331ce819a44e992f43749c671ff2aad26af3123023a1b742dbc",
+    "scripts/run_post_s1_transfer.py": "233303e7fbb01e5467cc94babccbe1d15da96c13dcc52ba938c3f973634d5d83",
+    "scripts/control_post_s1_transfer.py": "15de7a7535a3582806fe1eddf8d8eda1ed5dccf08b1fd1a0bae976563b552ec5",
+    "scripts/status_post_s1_transfer.py": "bc5e899c1c8799489b59378aaf35860925ed2d72fadf76a51469e873264a5fc2",
+    "scripts/summarize_post_s1_transfer.py": "b47c4879d87cf4bd83e5cfa474bf9af316311504bb7e3f4cd683abcb52673ade",
+    "scripts/enqueue_post_s1_transfer.py": "5ee9c7b134507c941e2b149ee38eb515e2ba501daa5ed0fbbe5014fec0c45e0d",
+    "scripts/upload_post_s1_transfer_records.py": "47330085e0cb5a7273e7dae31e4e13dd321086fd3ade8cdc724d1361361b0251",
+    "tests/test_post_s1_transfer.py": "54ca09abbb8fc211355d1f54990853cb024c46bdce19fe3feb592ab31f7024b5"
+  },
+  "physical_gpu_execution": false,
+  "real_server_training": false,
+  "actual_gpu_admission": "pending first server worker",
+  "split": "no real images loaded; no Test6/held4/final",
+  "predecessor_status": "last accepted historical snapshot 2026-10-09T21:42:23+08:00; no new server query"
+}

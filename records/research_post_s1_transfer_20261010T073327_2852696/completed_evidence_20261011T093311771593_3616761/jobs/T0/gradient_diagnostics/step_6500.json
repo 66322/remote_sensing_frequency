@@ -1,0 +1,80 @@
+{
+  "step": 6500,
+  "signature": {
+    "execution_commit": "4bf69489f789e998b7bf3181d3b3057c6ff7c04e",
+    "plan_sha256": "ac39e220a80df3d09757a681c0e7dc0c258d83e50ad51458673915d851a4a655",
+    "code_manifest_sha256": "570aa1daa299365bd1d0be6bd0db242d4f660de9e42796fa4810978eff1f092c",
+    "mask_manifest_sha256": "1024da567263d7f74ed0465ca52a8f53e29d92ec4bd08fd4d711fc48fd72a57d",
+    "initial_checkpoint_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
+    "donor_checkpoint_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
+    "job": {
+      "id": "T0",
+      "gpu": 0,
+      "steps": 8000,
+      "seed": 42,
+      "donor": "S1-0",
+      "frozen_base": true,
+      "support_preserved": false,
+      "local_only": true,
+      "control": "none",
+      "geometry_aug": false
+    },
+    "physical_gpu": 0,
+    "primary_checkpoint_step": 8000,
+    "test6_loaded": false,
+    "independent_final_loaded": false
+  },
+  "denominators": {
+    "clean_fusion_pixels": 4194304,
+    "clean_rgb_pixels": 4194304,
+    "clean_dsm_pixels": 4194304,
+    "clean_residual_support_pixels": 0,
+    "aug_fusion_pixels": 4194304,
+    "aug_rgb_pixels": 2752512,
+    "aug_dsm_pixels": 3899392,
+    "aug_residual_support_pixels": 131072
+  },
+  "trainable_parameters": 622150,
+  "groups_nonzero": {
+    "branch.project_rgb.0.weight": true,
+    "branch.project_rgb.0.bias": true,
+    "branch.project_rgb.1.weight": true,
+    "branch.project_rgb.1.bias": true,
+    "branch.project_rgb.2.weight": true,
+    "branch.project_rgb.2.bias": true,
+    "branch.project_dsm.0.weight": true,
+    "branch.project_dsm.0.bias": true,
+    "branch.project_dsm.1.weight": true,
+    "branch.project_dsm.1.bias": true,
+    "branch.project_dsm.2.weight": true,
+    "branch.project_dsm.2.bias": true,
+    "branch.merge_rgb.weight": true,
+    "branch.merge_rgb.bias": true,
+    "branch.merge_dsm.weight": true,
+    "branch.merge_dsm.bias": true,
+    "branch.fusion.0.weight": true,
+    "branch.fusion.0.bias": true,
+    "branch.fusion.1.weight": true,
+    "branch.fusion.1.bias": true,
+    "branch.fusion.3.weight": true,
+    "branch.fusion.3.bias": true
+  },
+  "frozen_gradients_absent": true,
+  "exposure": {
+    "views": {
+      "clean": {
+        "residual_support_pixels": 0,
+        "moved_tokens": 0,
+        "total_tokens": 262144
+      },
+      "aug": {
+        "residual_support_pixels": 131072,
+        "moved_tokens": 0,
+        "total_tokens": 262144
+      }
+    },
+    "residual_support_pixels": 131072,
+    "moved_tokens": 0,
+    "total_tokens": 524288
+  }
+}

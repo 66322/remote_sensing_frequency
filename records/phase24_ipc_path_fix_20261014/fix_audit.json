@@ -1,0 +1,64 @@
+{
+  "status": "IPC_PATH_FIX_READY_AWAITING_SERVER_REGISTRATION_CHECKS",
+  "recorded_at": "2026-10-14T19:21:31.229796+08:00",
+  "base_head": "15fdfa4c64c4c50b631707a6d92de98642011bab",
+  "original_failed_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase24_protected_20261014T185408_2127460",
+  "server_observation": {
+    "source": "user pasted console output",
+    "directory_timestamp": "2026-10-14T18:54:08+08:00",
+    "failure_finished_at": "not provided",
+    "tests": 20,
+    "numeric_checks_passed": 18,
+    "IPC_errors": 2,
+    "error": "OSError: AF_UNIX path too long",
+    "launch_json_absent": true,
+    "controller_launched": false,
+    "scientific_inference_cases": 0,
+    "optimizer_updates": 0,
+    "original_server_log_bytes_sha256": "not provided; replacement guard will bind actual original file SHA"
+  },
+  "implementation": {
+    "transport": "explicit authenticated Linux abstract AF_UNIX Listener owned by CPython resource_sharer",
+    "filesystem_socket": false,
+    "global_address_monkeypatch": false,
+    "original_TMPDIR_unchanged": true,
+    "after_fork_and_descriptor_claim_cleanup": "existing CPython lifecycle preserved",
+    "CPython310_primary_source": [
+      "https://github.com/python/cpython/blob/3.10/Lib/multiprocessing/resource_sharer.py",
+      "https://github.com/python/cpython/blob/3.10/Lib/multiprocessing/connection.py"
+    ]
+  },
+  "changed_files": {
+    "scripts/phase24_ipc.py": "4f86dd10658d0621a6c933890145f790409bd1ffc7bf1126c6938c25b6b18b8b",
+    "scripts/enqueue_phase24.py": "4c3682903bf3da04393bc2fc6ffbb8b07b39b95a76078788425864c6080504d0",
+    "scripts/status_phase24.py": "e20cad57d7aba6a18e851ffbf192ab001dc75c550723f082b3e637891942ad17",
+    "scripts/upload_phase24.py": "0ef3072a352fb14eba3acb638f46e236c110189e646ffbab46276eb6b8c84d59",
+    "tests/test_phase24.py": "fde9dfd6b9e8579a0b43764ed25b6a89b1cd75d2dd2f0ecc4d9e9162f82772aa"
+  },
+  "local_checks": {
+    "platform": "Windows/Python3.13.3/Torch2.7.1+cpu",
+    "total": 26,
+    "passed": 23,
+    "skipped_linux_tests": 3,
+    "compile_pass": true,
+    "log_sha256": "c0edf92ce27f0b6c7f43c053629e766a87f8e25b51ea5d6e1e668323c17296b6"
+  },
+  "replacement": {
+    "explicit_flag": "--replace-ipc-path-bug-directory",
+    "allowed_original_execution": "15fdfa4c64c4c50b631707a6d92de98642011bab",
+    "requires_only_original_failure": true,
+    "requires_18_passes_and_only_two_matching_path_errors": true,
+    "requires_no_launch_or_science_artifacts": true,
+    "preserve_original": true,
+    "single_replacement_marker": true,
+    "automatic_retry": false,
+    "science_parameters_changed": false,
+    "new_expert_trainings": 0,
+    "new_training_seeds": 0
+  },
+  "pending": [
+    "server Linux: all 26 registration tests, no skips",
+    "dual-GPU real CUDA smoke and original-CM bridge",
+    "actual controller and queue observation"
+  ]
+}

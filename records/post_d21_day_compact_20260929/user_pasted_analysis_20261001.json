@@ -1,0 +1,270 @@
+{
+  "completed": 42,
+  "selected": 42,
+  "comparisons": [
+    {
+      "dataset": "potsdam",
+      "comparison": "A_last4_minus_frozen_R0",
+      "delta_pp": 3.5332227064773747
+    },
+    {
+      "dataset": "potsdam",
+      "comparison": "A_last4_minus_frozen_M1",
+      "delta_pp": 3.4455219471531535
+    },
+    {
+      "dataset": "potsdam",
+      "comparison": "A_last4_minus_frozen_M0",
+      "delta_pp": 3.1541037921064117
+    },
+    {
+      "dataset": "potsdam",
+      "comparison": "B3_minus_gray",
+      "delta_pp": 0.7006400579818006,
+      "passes_prefrozen_0p2pp": true
+    },
+    {
+      "dataset": "potsdam",
+      "comparison": "B3_minus_raw_dsm",
+      "delta_pp": 0.019960850910663908,
+      "passes_prefrozen_0p2pp": false
+    },
+    {
+      "dataset": "potsdam",
+      "comparison": "B3_minus_low_rolled_high_dsm",
+      "delta_pp": 0.020079905244088536,
+      "passes_prefrozen_0p2pp": false
+    },
+    {
+      "dataset": "potsdam",
+      "scale": 2,
+      "comparison": "C_learned_ce_minus_bicubic_ce",
+      "delta_pp": 0.7683176754530763
+    },
+    {
+      "dataset": "potsdam",
+      "scale": 2,
+      "comparison": "C_learned_pixel_ce_minus_learned_ce",
+      "delta_pp": -0.6682041342983212
+    },
+    {
+      "dataset": "potsdam",
+      "scale": 2,
+      "comparison": "C_learned_pixel_high_ce_minus_learned_ce",
+      "delta_pp": -0.0285821045327026
+    },
+    {
+      "dataset": "potsdam",
+      "scale": 2,
+      "comparison": "C_learned_pixel_high_ce_minus_learned_pixel_ce",
+      "delta_pp": 0.6396220297656185
+    },
+    {
+      "dataset": "potsdam",
+      "scale": 4,
+      "comparison": "C_learned_ce_minus_bicubic_ce",
+      "delta_pp": 0.5877101766680255
+    },
+    {
+      "dataset": "potsdam",
+      "scale": 4,
+      "comparison": "C_learned_pixel_ce_minus_learned_ce",
+      "delta_pp": -0.15473629819628343
+    },
+    {
+      "dataset": "potsdam",
+      "scale": 4,
+      "comparison": "C_learned_pixel_high_ce_minus_learned_ce",
+      "delta_pp": -0.2360308916932894
+    },
+    {
+      "dataset": "potsdam",
+      "scale": 4,
+      "comparison": "C_learned_pixel_high_ce_minus_learned_pixel_ce",
+      "delta_pp": -0.08129459349700596
+    },
+    {
+      "dataset": "potsdam",
+      "comparison": "D_recovery_x_DSM_interaction",
+      "delta_pp": -0.8692151578587897
+    },
+    {
+      "dataset": "potsdam",
+      "comparison": "D_DSM_minus_gray_capacity",
+      "delta_pp": -0.016472707958087085
+    },
+    {
+      "dataset": "vaihingen",
+      "comparison": "A_last4_minus_frozen_R0",
+      "delta_pp": 4.064522257644754
+    },
+    {
+      "dataset": "vaihingen",
+      "comparison": "A_last4_minus_frozen_M1",
+      "delta_pp": 4.005925155217454
+    },
+    {
+      "dataset": "vaihingen",
+      "comparison": "A_last4_minus_frozen_M0",
+      "delta_pp": 3.4113241697350816
+    },
+    {
+      "dataset": "vaihingen",
+      "comparison": "B3_minus_gray",
+      "delta_pp": 0.6331579875578086,
+      "passes_prefrozen_0p2pp": true
+    },
+    {
+      "dataset": "vaihingen",
+      "comparison": "B3_minus_raw_dsm",
+      "delta_pp": 0.05387990032060941,
+      "passes_prefrozen_0p2pp": false
+    },
+    {
+      "dataset": "vaihingen",
+      "comparison": "B3_minus_low_rolled_high_dsm",
+      "delta_pp": 0.0775420030019518,
+      "passes_prefrozen_0p2pp": false
+    },
+    {
+      "dataset": "vaihingen",
+      "scale": 2,
+      "comparison": "C_learned_ce_minus_bicubic_ce",
+      "delta_pp": 0.22806804334049957
+    },
+    {
+      "dataset": "vaihingen",
+      "scale": 2,
+      "comparison": "C_learned_pixel_ce_minus_learned_ce",
+      "delta_pp": -0.008540522589228772
+    },
+    {
+      "dataset": "vaihingen",
+      "scale": 2,
+      "comparison": "C_learned_pixel_high_ce_minus_learned_ce",
+      "delta_pp": 0.0005482474137039617
+    },
+    {
+      "dataset": "vaihingen",
+      "scale": 2,
+      "comparison": "C_learned_pixel_high_ce_minus_learned_pixel_ce",
+      "delta_pp": 0.009088770002932733
+    },
+    {
+      "dataset": "vaihingen",
+      "scale": 4,
+      "comparison": "C_learned_ce_minus_bicubic_ce",
+      "delta_pp": 0.42832180321374835
+    },
+    {
+      "dataset": "vaihingen",
+      "scale": 4,
+      "comparison": "C_learned_pixel_ce_minus_learned_ce",
+      "delta_pp": -0.1097104420937427
+    },
+    {
+      "dataset": "vaihingen",
+      "scale": 4,
+      "comparison": "C_learned_pixel_high_ce_minus_learned_ce",
+      "delta_pp": -0.05118678845484226
+    },
+    {
+      "dataset": "vaihingen",
+      "scale": 4,
+      "comparison": "C_learned_pixel_high_ce_minus_learned_pixel_ce",
+      "delta_pp": 0.05852365363890044
+    },
+    {
+      "dataset": "vaihingen",
+      "comparison": "D_recovery_x_DSM_interaction",
+      "delta_pp": -0.08318859416333169
+    },
+    {
+      "dataset": "vaihingen",
+      "comparison": "D_DSM_minus_gray_capacity",
+      "delta_pp": 0.1927473460761462
+    }
+  ],
+  "b_decisions": {
+    "potsdam": {
+      "candidate_scores": {
+        "clean": 84.41885594797982,
+        "optical_quality": 82.35783222566113,
+        "auxiliary_quality": 84.41537436933937,
+        "macro": 83.73068751432676
+      },
+      "strongest_control_macro": 83.7107266634161,
+      "failures": [
+        "macro gain below +0.2 pp over strongest B control"
+      ],
+      "development_gate_passed": false,
+      "synthetic_aux_zero_prediction_equality": "checked per tile during evaluation",
+      "actual_missing_dsm_detection_claim": false
+    },
+    "vaihingen": {
+      "candidate_scores": {
+        "clean": 71.15021899723082,
+        "optical_quality": 69.30549294162745,
+        "auxiliary_quality": 71.12452954806679,
+        "macro": 70.52674716230835
+      },
+      "strongest_control_macro": 70.47286726198774,
+      "failures": [
+        "macro gain below +0.2 pp over strongest B control",
+        "tile 12 clean below gray protection",
+        "tile 12 optical_quality below gray protection",
+        "tile 12 auxiliary_quality below gray protection",
+        "tile 14 clean below gray protection",
+        "tile 4 clean below low_rolled_high_dsm protection"
+      ],
+      "development_gate_passed": false,
+      "synthetic_aux_zero_prediction_equality": "checked per tile during evaluation",
+      "actual_missing_dsm_detection_claim": false
+    }
+  },
+  "c_decisions": {
+    "potsdam_scale2": {
+      "candidate_clean_pp": 87.27591975004432,
+      "strongest_C1_C2_clean_pp": 87.30450185457703,
+      "failures": [
+        "C3 clean LR-task gain below +0.2 pp over stronger C1/C2"
+      ],
+      "development_gate_passed": false
+    },
+    "potsdam_scale4": {
+      "candidate_clean_pp": 84.88075690820736,
+      "strongest_C1_C2_clean_pp": 85.11678779990065,
+      "failures": [
+        "C3 clean LR-task gain below +0.2 pp over stronger C1/C2",
+        "tile 3_11 below learned_ce protection"
+      ],
+      "development_gate_passed": false
+    },
+    "vaihingen_scale2": {
+      "candidate_clean_pp": 73.72363163927702,
+      "strongest_C1_C2_clean_pp": 73.72308339186331,
+      "failures": [
+        "C3 clean LR-task gain below +0.2 pp over stronger C1/C2",
+        "tile 16 below learned_ce protection",
+        "tile 24 below learned_ce protection",
+        "tile 31 below learned_ce protection"
+      ],
+      "development_gate_passed": false
+    },
+    "vaihingen_scale4": {
+      "candidate_clean_pp": 72.37942824100283,
+      "strongest_C1_C2_clean_pp": 72.43061502945767,
+      "failures": [
+        "C3 clean LR-task gain below +0.2 pp over stronger C1/C2",
+        "tile 12 below learned_ce protection",
+        "tile 24 below learned_ce protection",
+        "tile 35 below learned_ce protection"
+      ],
+      "development_gate_passed": false
+    }
+  },
+  "rows": 352,
+  "integer_count_audit": "PASS",
+  "test6_loaded": false,
+  "interpretation": "single-seed paired development evidence; no independent final claim"
+}

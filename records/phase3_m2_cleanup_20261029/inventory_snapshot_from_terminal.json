@@ -1,0 +1,34 @@
+{
+  "output": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/m2_closeout_storage_20261029T110535_882105",
+  "by_run": {
+    "m2_directory": {
+      "files": 3041,
+      "logical_bytes": 10965680740,
+      "allocated_bytes": 10966772224
+    },
+    "combined_directory": {
+      "files": 43,
+      "logical_bytes": 151516,
+      "allocated_bytes": 161792
+    },
+    "old_m2": {
+      "files": 634,
+      "logical_bytes": 5062497,
+      "allocated_bytes": 5258752
+    },
+    "old_combined": {
+      "files": 41,
+      "logical_bytes": 169282,
+      "allocated_bytes": 180736
+    }
+  },
+  "unique_allocated_bytes": 10972373504,
+  "candidates": 90,
+  "candidate_reasons": {
+    "closed_dsm_recipe": 54,
+    "retired_oof_teacher": 36
+  },
+  "candidate_logical_bytes": 8017988670,
+  "candidate_allocated_bytes": 8018012160,
+  "retained_endpoints": 18
+}

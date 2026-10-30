@@ -1,0 +1,56 @@
+LAST_OBSERVED=2026-10-04T08:41:43.586227+08:00 QUEUE=CONTROLLER_INTERRUPTED PID=2698383 LIVE=False
+COMPLETE=6/18 main; F conditional
+A0 GPU0 COMPLETE complete step=8000/8000 windows=-/- progress_at=2026-10-04T08:22:10.543377+08:00 PID_LIVE=False
+A1 GPU1 COMPLETE complete step=8000/8000 windows=-/- progress_at=2026-10-04T08:22:08.129111+08:00 PID_LIVE=False
+A2 GPU1 COMPLETE complete step=8000/8000 windows=-/- progress_at=2026-10-04T08:31:52.928465+08:00 PID_LIVE=False
+A3 GPU0 COMPLETE complete step=8000/8000 windows=-/- progress_at=2026-10-04T08:31:47.462097+08:00 PID_LIVE=False
+A4 GPU0 COMPLETE complete step=8000/8000 windows=-/- progress_at=2026-10-04T08:41:11.097734+08:00 PID_LIVE=False
+A5 GPU1 COMPLETE complete step=8000/8000 windows=-/- progress_at=2026-10-04T08:41:39.479134+08:00 PID_LIVE=False
+B1 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+B2 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+B3 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+B4 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+B5 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+B6 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+C0 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+C1 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+C2 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+C3 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+C4 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+C5 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+F0 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+F1 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+F2 GPU0 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+F3 GPU1 PENDING  step=0/8000 windows=-/- progress_at=- PID_LIVE=False
+ETA_HALTED; inspect error, queue is not actively finishing
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'tile': '5_10', 'condition': 'dsm_local_q1', 'observed_at': '2026-10-04T08:37:18.790572+08:00', 'session_elapsed_seconds': 286.68943171203136, 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'evaluation', 'tile': '5_10', 'condition': 'dsm_local_center_quarter', 'observed_at': '2026-10-04T08:38:31.155071+08:00', 'session_elapsed_seconds': 365.3873679935932, 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'tile': '5_10', 'condition': 'dsm_local_stripe_eighth', 'observed_at': '2026-10-04T08:38:13.923891+08:00', 'session_elapsed_seconds': 341.8227393478155, 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'evaluation', 'tile': '5_10', 'condition': 'complementary_halves', 'observed_at': '2026-10-04T08:39:11.287451+08:00', 'session_elapsed_seconds': 405.51976668834686, 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'tile': '5_10', 'condition': 'complementary_halves', 'observed_at': '2026-10-04T08:39:30.356906+08:00', 'session_elapsed_seconds': 418.2557767406106, 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 0 A4 {'job': 'A4', 'step': 8000, 'target': 8000, 'physical_gpu': 0, 'phase': 'evaluation', 'tile': '5_10', 'condition': 'dsm_present_zero', 'observed_at': '2026-10-04T08:40:27.242059+08:00', 'session_elapsed_seconds': 481.47435700148344, 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'tile': '5_10', 'condition': 'both_center_missing', 'observed_at': '2026-10-04T08:40:17.572463+08:00', 'session_elapsed_seconds': 465.4713294580579, 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_JOB_STATUS A4 COMPLETE
+PORTFOLIO_PROGRESS 1 A5 {'job': 'A5', 'step': 8000, 'target': 8000, 'physical_gpu': 1, 'phase': 'evaluation', 'tile': '5_10', 'condition': 'dsm_present_shift_half', 'observed_at': '2026-10-04T08:41:22.421452+08:00', 'session_elapsed_seconds': 530.3203048631549, 'windows_done': 529, 'windows_total': 529}
+PORTFOLIO_JOB_STATUS A5 COMPLETE
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/summarize_post_d30.py", line 6, in <module>
+    from post_d30_evaluation import metric,decode_joint,joint_report
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/post_d30_evaluation.py", line 7, in <module>
+    from post_d30_data import treatment
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/post_d30_data.py", line 9, in <module>
+    from model.rebuild_v1_post_d30 import alignment,distillation
+ModuleNotFoundError: No module named 'model'
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/recover_evaluation_20261004T081218_2687798.py", line 43, in <module>
+    if __name__=='__main__':main()
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/recover_evaluation_20261004T081218_2687798.py", line 42, in main
+    exec(compile(controller,str(repair/'controller_transformed.py'),'exec'),namespace)
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/evaluation_repair_20261004T081218353451_2698383/controller_transformed.py", line 149, in <module>
+    if __name__=='__main__':sys.exit(main())
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/evaluation_repair_20261004T081218353451_2698383/controller_transformed.py", line 142, in main
+    subprocess.run([sys.executable,'-B',str(code/'scripts/summarize_post_d30.py'),'--directory',str(base)],cwd=code,env=env,check=True)
+  File "/home/jovyan/miniconda3/envs/d18_dino/lib/python3.10/subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/jovyan/miniconda3/envs/d18_dino/bin/python', '-B', '/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364/code/scripts/summarize_post_d30.py', '--directory', '/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_d30_mechanisms_20261004T000812_2446364']' returned non-zero exit status 1.
+(remote_sensing) [root@h-aoji-aoji-h100-agent-2-w-0 08_thesis_full_repro]$ 

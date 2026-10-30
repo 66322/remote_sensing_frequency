@@ -1,0 +1,21 @@
+{
+  "source_sha256": "4d053022fa2fa16e92673a3d091607d4da5615f07254fe6e0e591ef5e6334c48",
+  "source_kind": "user-pasted server terminal output; not direct download of server publication",
+  "completion": {
+    "observed_at": "2026-10-29T08:43:22.555134+08:00",
+    "status": "COMPLETE_SERVER_CHECKED",
+    "jobs_complete": 108,
+    "evaluated_cases": 77868
+  },
+  "mean_paired_seed_differences_pp": {
+    "rescue_DF_D0": 0.2760442977444531,
+    "rescue_DF_DSelf": 0.07881923817516896,
+    "rescue_DF_DShuffle": -0.16596205941489947,
+    "rescue_DF_DEntropy": -0.13078814567993882,
+    "rescue_DF_DClean_all": 0.4300480806133085,
+    "rescue_DF_DClean_damaged": 0.5361788640658034,
+    "fusion_DF_D0": -0.0012610056934221348
+  },
+  "fusion_positive_fold_seed_blocks": 4,
+  "cross_pair_positive": 0
+}

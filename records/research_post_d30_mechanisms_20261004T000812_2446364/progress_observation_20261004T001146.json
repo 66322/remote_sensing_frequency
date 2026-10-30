@@ -1,0 +1,208 @@
+{
+  "source": "user terminal status_post_d30.py + ps + log tail; not direct SSH",
+  "observed_at": "2026-10-04T00:11:46.062560+08:00",
+  "status": "WAITING_D30",
+  "controller_pid": 2450552,
+  "controller_live": true,
+  "controller_live_source": "status script PID ownership check and ps output",
+  "execution_commit": "01ec8dee82f7e272f6a650aaf9f3e619a0e7c516",
+  "complete_main": 0,
+  "main_total": 18,
+  "conditional_F_total": 4,
+  "jobs": {
+    "A0": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "A1": {
+      "status": "PENDING",
+      "physical_gpu": 1,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "A2": {
+      "status": "PENDING",
+      "physical_gpu": 1,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "A3": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "A4": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "A5": {
+      "status": "PENDING",
+      "physical_gpu": 1,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "B1": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "B2": {
+      "status": "PENDING",
+      "physical_gpu": 1,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "B3": {
+      "status": "PENDING",
+      "physical_gpu": 1,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "B4": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "B5": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "B6": {
+      "status": "PENDING",
+      "physical_gpu": 1,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "C0": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "C1": {
+      "status": "PENDING",
+      "physical_gpu": 1,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "C2": {
+      "status": "PENDING",
+      "physical_gpu": 1,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "C3": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "C4": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "C5": {
+      "status": "PENDING",
+      "physical_gpu": 1,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "F0": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "F1": {
+      "status": "PENDING",
+      "physical_gpu": 1,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "F2": {
+      "status": "PENDING",
+      "physical_gpu": 0,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    },
+    "F3": {
+      "status": "PENDING",
+      "physical_gpu": 1,
+      "step": 0,
+      "target_step": 8000,
+      "pid_live": false,
+      "progress_at": null
+    }
+  },
+  "predecessor": {
+    "directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d30_loss_decomposition_20261003T205144_2349167",
+    "observed_at": "2026-10-04T00:11:52.142311+08:00",
+    "status": "RUNNING",
+    "controller_lock_free": false,
+    "job_progress_received": false
+  },
+  "log_lines": [
+    "PORTFOLIO_CPU_CHECKS_PASS",
+    "PORTFOLIO_WAITING_D30 RUNNING (repeated)"
+  ],
+  "ps_elapsed_raw": "441076675-22:13:20",
+  "ps_elapsed_used_for_eta": false,
+  "eta": null,
+  "eta_reason": "waiting for D30; latest predecessor job timing absent",
+  "new_gpu_training_started": false,
+  "new_scientific_metrics_received": false,
+  "test6_loaded": false
+}

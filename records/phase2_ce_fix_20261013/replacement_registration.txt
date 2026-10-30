@@ -1,0 +1,5 @@
+Source: user terminal receipt; observed launch time inferred from directory/log names; no live status query
+PHASE2_TECHNICAL_REPLACEMENT_OF /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase2_matched_20261013T145903_1304150
+PHASE2_REGISTERED /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase2_matched_20261013T151120_1310582 PID=1310878 GPU=0,1 CORE_TRAININGS=4 MAX_TRAININGS=6 CORE_UPDATES=48000 MAX_UPDATES=64000 NO24H_DEADLINE
+PHASE2_LOG /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase2_matched_20261013T151120_1310582/nohup_20261013T151123110536.log
+EXECUTION_COMMIT=e5641e073bf4421e346f589199c291a6e94db8b2

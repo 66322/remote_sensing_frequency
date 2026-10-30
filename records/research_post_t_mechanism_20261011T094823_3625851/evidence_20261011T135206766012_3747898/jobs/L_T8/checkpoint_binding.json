@@ -1,0 +1,48 @@
+{
+  "execution_commit": "cd958925cb5d4292dd15802830e97493c9c67033",
+  "plan_sha256": "0b22ceb9836e14a13c1407bbe280b4a2a3745ec13e5a79c1273f5875e5d73d1c",
+  "code_manifest_sha256": "e5e0a5c66d0604b5d6dceb9bb974ba2e3daa00b2e1fd5d016178e08a8419087b",
+  "job": {
+    "id": "L_T8",
+    "gpu": 0,
+    "kind": "trajectory",
+    "source_job": "T8",
+    "step": 4000,
+    "keys": [
+      "rgb_U",
+      "dsm_U"
+    ],
+    "optimizer_updates": 0
+  },
+  "checkpoint": {
+    "source_job": "T8",
+    "step": 4000,
+    "checkpoint_sha256": "593e93adaaabf99f206346e74029f5d576e890c6a1bb725232abb1d6e2f7f3ee",
+    "checkpoint_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_s1_transfer_20261010T073327_2852696/jobs/T8/checkpoints/step_4000.pth",
+    "training": {
+      "execution_commit": "4bf69489f789e998b7bf3181d3b3057c6ff7c04e",
+      "plan_sha256": "ac39e220a80df3d09757a681c0e7dc0c258d83e50ad51458673915d851a4a655",
+      "code_manifest_sha256": "570aa1daa299365bd1d0be6bd0db242d4f660de9e42796fa4810978eff1f092c",
+      "mask_manifest_sha256": "1024da567263d7f74ed0465ca52a8f53e29d92ec4bd08fd4d711fc48fd72a57d",
+      "initial_checkpoint_sha256": "5a8cd5c40576e1897fbb6a767dd2028016df402c2b3b6ae98994f55ac4cec58f",
+      "donor_checkpoint_sha256": null,
+      "job": {
+        "id": "T8",
+        "gpu": 0,
+        "steps": 8000,
+        "seed": 42,
+        "donor": "random",
+        "frozen_base": true,
+        "support_preserved": false,
+        "local_only": true,
+        "control": "none",
+        "geometry_aug": false
+      },
+      "physical_gpu": 0,
+      "primary_checkpoint_step": 8000,
+      "test6_loaded": false,
+      "independent_final_loaded": false
+    }
+  },
+  "optimizer_updates": 0
+}

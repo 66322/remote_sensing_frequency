@@ -1,0 +1,46 @@
+{
+  "files": {
+    "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped/2_Ortho_RGB/top_potsdam_3_11_RGB.tif": {
+      "size": 108921996,
+      "mtime_ns": 1442193724000000000,
+      "sha256": "88761e08e272daf9bf8d1bfc0c91a4aba5ec3605ef0d91f2e4fc12c40bcb37e7",
+      "sha_source": "existing D21 input manifest; current size/mtime checked"
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped/1_DSM/1_DSM/dsm_potsdam_03_11.tif": {
+      "size": 145197348,
+      "mtime_ns": 1437112687275774900,
+      "sha256": "b0b1bf37c7d61716ea4ec0d758e9db1026e44730d9095a0babc7c6c9d8d55823",
+      "sha_source": "existing D21 input manifest; current size/mtime checked"
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped/5_Labels_for_participants/top_potsdam_3_11_label.tif": {
+      "size": 108036444,
+      "mtime_ns": 1442487818000000000,
+      "sha256": "0409e5e48290ee6f7ac239c3b066c500385864fff9af31595e6e3a12e6348d43",
+      "sha_source": "existing D21 input manifest; current size/mtime checked"
+    },
+    "/home/jovyan/zzx/projects_zys/raw_extract/Potsdam_unzipped/5_Labels_for_participants_no_Boundary/top_potsdam_3_11_label_noBoundary.tif": {
+      "size": 108048310,
+      "mtime_ns": 1444747163000000000,
+      "sha256": "4c3876b902d8b1c7240c57624f481a8fe667c025399b40b98e8f864ae54e27f6",
+      "sha_source": "existing D21 input manifest; current size/mtime checked"
+    }
+  },
+  "experts": {
+    "rgb": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d25_missingness_20261002T130253_1358078/jobs/P6/selected.pth",
+      "sha256": "bef8dda6537b68fc51f300bc3789bbbef57682baedf92a3f7665217a4a2fde71",
+      "step": 2000
+    },
+    "dsm": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/D15_dsm_only_seed42_sched16000_stop16000/best_model.pth",
+      "sha256": "d597f1adf3ca0291dcd7d063af941bebf3db1e61205cfdaf13271fbba9437e84",
+      "step": 15000
+    }
+  },
+  "binding": {
+    "plan_sha256": "3b9298a187a83a7fe9b49c4f3282f8d94418978c42a08cbc9c49364e8481cfe0",
+    "code_sha256": "9eda3cb812434f05c85b5764430e9fd7d73e0f762734888ce09f337e7f67213d",
+    "mask_manifest_sha256": "c631005f512f891f978385332f2092649a536ec0b7f1cee972914a1418afa275",
+    "source_plan_sha256": "c4d5248f3cd5cfe9b61a8544533bbc6cb4bbe65001605fd8a90c4fb9d06b08b9"
+  }
+}

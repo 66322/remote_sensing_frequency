@@ -1,0 +1,30 @@
+{
+  "status": "LOCAL_PASS_NOT_SERVER_EXECUTION",
+  "date": "2026-10-02",
+  "cpu_behavior_tests": 14,
+  "tests_seconds": 5.72,
+  "torch_cpu": "2.7.1",
+  "python_local": "3.13.3",
+  "python310_ast_files": 11,
+  "standard_library_cli_help": [
+    "launch",
+    "status",
+    "upload"
+  ],
+  "d26_chain_checked_against_github_commit": "52f94388b1a9c7557e9ef533075661139cd55eda",
+  "d26_files_matched": 5,
+  "cuda_integration_tested": false,
+  "server_queue_started": false,
+  "test6_loaded": false,
+  "independent_final_loaded": false,
+  "notes": "Zero residual firststep gradient blocking intentional; alllearnedpaths required activeby500. Waiting requires9terminaljobs and parentlockreleased.",
+  "self_contained_snapshot_files": 30,
+  "self_contained_cpu_suite": "14_PASS",
+  "entrypoints_import_cli_help": [
+    "launch",
+    "run",
+    "status",
+    "summarize",
+    "upload"
+  ]
+}

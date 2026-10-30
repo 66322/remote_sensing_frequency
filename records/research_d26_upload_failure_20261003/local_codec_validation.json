@@ -1,0 +1,20 @@
+{
+  "python": "3.13.3",
+  "syntax_target": "3.10",
+  "files": [
+    "scripts/upload_rebuild_v1_d26_records.py",
+    "scripts/upload_rebuild_v1_d27_records.py",
+    "scripts/decode_rebuild_light_record.py"
+  ],
+  "original_bytes": 2800082,
+  "encoded_bytes": 5773,
+  "checks": {
+    "exact_bytes_roundtrip": true,
+    "int64_max_preserved": true,
+    "unicode_preserved": true,
+    "small_json_unchanged": true,
+    "bad_sha_rejected": true,
+    "bad_size_rejected": true
+  },
+  "server_upload_tested": false
+}

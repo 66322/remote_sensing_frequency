@@ -1,0 +1,177 @@
+{
+  "source": "user pasted server read-only status/nohup/preparation tails",
+  "query_observed_at": "2026-10-07T07:38:05.617099+08:00",
+  "queue_last_observed_at": "2026-10-07T01:08:32.994625+08:00",
+  "queue_status": "CROSS_DIAGNOSTICS_COMPLETE_AWAITING_REVIEW",
+  "controller_pid": 442590,
+  "controller_live_at_query": false,
+  "cpu_status": "COMPLETE",
+  "optimizer_updates": 0,
+  "jobs": {
+    "E4_N1-2": {
+      "gpu": 0,
+      "status": "COMPLETE",
+      "pid": 443709,
+      "live_at_query": false,
+      "progress_observed_at": "2026-10-07T00:32:38.403260+08:00",
+      "elapsed_seconds": 2095.9149092137814
+    },
+    "E4_N2-0": {
+      "gpu": 1,
+      "status": "COMPLETE",
+      "pid": 443712,
+      "live_at_query": false,
+      "progress_observed_at": "2026-10-07T00:32:43.223196+08:00",
+      "elapsed_seconds": 2100.568833298981
+    },
+    "E4_N2-3": {
+      "gpu": 0,
+      "status": "COMPLETE",
+      "pid": 461835,
+      "live_at_query": false,
+      "progress_observed_at": "2026-10-07T01:08:04.568018+08:00",
+      "elapsed_seconds": 2116.3425827994943
+    }
+  },
+  "problem_screens": {
+    "output": {
+      "trigger": false,
+      "direction": "rgb",
+      "directions": {
+        "rgb": {
+          "N1-2": {
+            "pooled_gain_pp": -0.29988367191470244,
+            "tile_gains_pp": {
+              "3_11": 0.15875906655244965,
+              "5_10": -0.7914757350524382
+            },
+            "passed": false
+          },
+          "N2-0": {
+            "pooled_gain_pp": 0.40115628754853194,
+            "tile_gains_pp": {
+              "3_11": 0.8529492136615913,
+              "5_10": -0.06630467615886815
+            },
+            "passed": false
+          },
+          "N2-3": {
+            "pooled_gain_pp": 0.39991066031034306,
+            "tile_gains_pp": {
+              "3_11": 0.8480706299125673,
+              "5_10": -0.06372659684619197
+            },
+            "passed": false
+          }
+        },
+        "dsm": {
+          "N1-2": {
+            "pooled_gain_pp": -0.035665200274137554,
+            "tile_gains_pp": {
+              "3_11": 0.0255882494131221,
+              "5_10": -0.09631120835464912
+            },
+            "passed": false
+          },
+          "N2-0": {
+            "pooled_gain_pp": -0.03223173526534229,
+            "tile_gains_pp": {
+              "3_11": 0.031862019224881966,
+              "5_10": -0.0943003223955241
+            },
+            "passed": false
+          },
+          "N2-3": {
+            "pooled_gain_pp": -0.02941016947423103,
+            "tile_gains_pp": {
+              "3_11": 0.0365950004120319,
+              "5_10": -0.09342383229938855
+            },
+            "passed": false
+          }
+        }
+      },
+      "better": "A1B1C0",
+      "control": "A1B1C1"
+    },
+    "feature": {
+      "trigger": true,
+      "direction": "rgb",
+      "directions": {
+        "rgb": {
+          "N1-2": {
+            "pooled_gain_pp": 1.3076025820085935,
+            "tile_gains_pp": {
+              "3_11": 1.06399691585638,
+              "5_10": 1.6094015314786936
+            },
+            "passed": true
+          },
+          "N2-0": {
+            "pooled_gain_pp": 0.5775911777696208,
+            "tile_gains_pp": {
+              "3_11": 0.3724103583214955,
+              "5_10": 0.8307751221933724
+            },
+            "passed": true
+          },
+          "N2-3": {
+            "pooled_gain_pp": 0.5952874165490063,
+            "tile_gains_pp": {
+              "3_11": 0.3935671903559812,
+              "5_10": 0.8452602581383695
+            },
+            "passed": true
+          }
+        },
+        "dsm": {
+          "N1-2": {
+            "pooled_gain_pp": 0.0025740770296378557,
+            "tile_gains_pp": {
+              "3_11": 0.11254359587187235,
+              "5_10": -0.10945493741574275
+            },
+            "passed": false
+          },
+          "N2-0": {
+            "pooled_gain_pp": -0.026329605382247045,
+            "tile_gains_pp": {
+              "3_11": -0.017652431139625335,
+              "5_10": -0.035522009835453616
+            },
+            "passed": false
+          },
+          "N2-3": {
+            "pooled_gain_pp": -0.03352338797233401,
+            "tile_gains_pp": {
+              "3_11": -0.028854424838842263,
+              "5_10": -0.03848836147909429
+            },
+            "passed": false
+          }
+        }
+      },
+      "better": "A1B0C0",
+      "control": "A1B1C0"
+    }
+  },
+  "boundary_trigger_user_reported": true,
+  "next_families": [
+    "N3",
+    "S1"
+  ],
+  "training_protocol_status": "NOT_YET_IMPLEMENTED",
+  "controller_log_tail": [
+    "CROSS_START 0 E4_N1-2 443709",
+    "CROSS_START 1 E4_N2-0 443712",
+    "CROSS_JOB E4_N1-2 COMPLETE",
+    "CROSS_JOB E4_N2-0 COMPLETE",
+    "CROSS_START 0 E4_N2-3 461835",
+    "CROSS_JOB E4_N2-3 COMPLETE",
+    "CROSS_SCREEN False True True NEXT ['N3', 'S1']",
+    "CROSS_COMPLETE_UPLOAD_AND_REVIEW /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_n5_cross_20261006T235526_442218 NEW_TRAINING=0"
+  ],
+  "raw_metrics_received": false,
+  "independent_raw_audit_done": false,
+  "next_action": "explicit upload light evidence, audit then implement authorized N3/S1 training"
+}

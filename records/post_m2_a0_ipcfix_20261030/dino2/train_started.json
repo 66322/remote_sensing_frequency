@@ -1,0 +1,54 @@
+{
+  "observed_at": "2026-10-30T18:59:17.269209+08:00",
+  "kind": "dino2",
+  "seed": 42,
+  "train_tiles": [
+    "2_10",
+    "2_12",
+    "3_12",
+    "4_12",
+    "5_12",
+    "6_12"
+  ],
+  "calibration_tiles": [
+    "6_9",
+    "7_9"
+  ],
+  "outer_tiles": [
+    "6_7",
+    "7_7",
+    "6_8",
+    "7_8"
+  ],
+  "selected": {
+    "workers": 4,
+    "micro": 16
+  },
+  "source": {
+    "repo": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/engineering_runtime/dinov2_py39",
+    "weight": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/pretrained_external/dinov2_vits14_pretrain.pth",
+    "source_binding": {
+      "path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/pretrained_external/dinov2_vits14_pretrain.pth",
+      "repository": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_phase3_m2_revision_20261024T092814_2738345/repairs/engineering_runtime/dinov2_py39",
+      "sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9",
+      "repository_commit": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+      "original_repository": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/external/dinov2_7764ea0",
+      "compatibility": "postponed_annotations_only"
+    }
+  },
+  "profile": "2026-10-29T20:18:55.808104+08:00",
+  "code_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "environment": {
+    "python": "3.11.13 (main, Jun  5 2025, 13:12:00) [GCC 11.2.0]",
+    "torch": "2.7.1+cu126"
+  },
+  "execution_patch": {
+    "scientific_source_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+    "execution_patch_commit": "d15f34e8d53f935aa17542123c2227fab14cb810",
+    "revision": "A0_IPC_PATH_FIX_20261030",
+    "run_name": "post_m2_a0_ipcfix_20261030",
+    "ipc_tmpdir": "/home/jovyan/zzx/tmp/a0_ipc",
+    "loader_timeout_seconds": 30
+  }
+}

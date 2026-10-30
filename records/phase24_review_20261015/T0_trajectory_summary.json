@@ -1,0 +1,32 @@
+{
+  "first": {
+    "arm": "T0",
+    "step": 1,
+    "target": 8000,
+    "loss": 0.13040322065353394,
+    "regularizer": 0.0,
+    "data_wait_seconds": 0.2959482967853546,
+    "elapsed_seconds": 0.526528000831604,
+    "physical_gpu": 0,
+    "optimizer_updates": 1,
+    "observed_at": "2026-10-14T20:26:49.770982+08:00",
+    "remaining_train_hours": 1.1699865393030147,
+    "gpu_peak_allocated_bytes": 5950522880
+  },
+  "last": {
+    "arm": "T0",
+    "step": 8000,
+    "target": 8000,
+    "loss": 0.10678979754447937,
+    "regularizer": 0.0,
+    "data_wait_seconds": 9.99942421913147e-05,
+    "elapsed_seconds": 601.7911514490843,
+    "physical_gpu": 0,
+    "optimizer_updates": 8000,
+    "observed_at": "2026-10-14T20:36:51.035619+08:00",
+    "remaining_train_hours": 0.0,
+    "gpu_peak_allocated_bytes": 5950522880
+  },
+  "loss_min": 0.08037862926721573,
+  "loss_max": 0.1486879587173462
+}

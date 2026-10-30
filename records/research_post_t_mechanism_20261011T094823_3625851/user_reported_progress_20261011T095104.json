@@ -1,0 +1,45 @@
+{
+  "source": "user terminal read-only status and controller log",
+  "query_observed": "2026-10-11T09:51:04.266613+08:00",
+  "queue_last_observed": "2026-10-11T09:50:54.789468+08:00",
+  "status": "RUNNING_M000_masked",
+  "controller_pid": 3626108,
+  "controller_live": true,
+  "CPU": "COMPLETE",
+  "physical_gpus": [
+    0
+  ],
+  "execution_commit": "cd958925cb5d4292dd15802830e97493c9c67033",
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_post_t_mechanism_20261011T094823_3625851",
+  "worker": {
+    "job": "M000_masked",
+    "pid": 3626555,
+    "live": true,
+    "physical_gpu": 0,
+    "optimizer_updates": 0,
+    "elapsed_seconds": 81.82480447739363,
+    "observed_at": "2026-10-11T09:50:47.640628+08:00",
+    "phase": "inference",
+    "tile": "3_11",
+    "condition": "dsm_U",
+    "windows_done": 529,
+    "windows_total": 529
+  },
+  "jobs_total": 26,
+  "jobs_complete": 0,
+  "jobs_running": 1,
+  "jobs_pending": 25,
+  "predecessor": {
+    "verdict": "READY",
+    "last_observed": "2026-10-11T08:45:44.211597+08:00",
+    "status": "TRANSFER_COMPLETE_AWAITING_REVIEW",
+    "controller_live": false,
+    "workers_live": false,
+    "checked_at": "2026-10-11T09:48:31.724509+08:00"
+  },
+  "log_lines": [
+    "MECHANISM_HANDOVER READY TRANSFER_COMPLETE_AWAITING_REVIEW",
+    "MECHANISM_START GPU0 M000_masked 3626555"
+  ],
+  "scientific_results_received": false
+}

@@ -1,0 +1,16 @@
+{
+  "status": "IPC_REPAIR_PREPARED_NO_TRAINING_STARTED",
+  "observed_at": "2026-10-30T10:59:13.428143+00:00",
+  "commit": "d15f34e8d53f935aa17542123c2227fab14cb810",
+  "scientific_source_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+  "execution_patch_commit": "d15f34e8d53f935aa17542123c2227fab14cb810",
+  "new_run": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030",
+  "original_profiles_reused_from": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_capability_20261029",
+  "short_tmpdir": "/home/jovyan/zzx/tmp/a0_ipc",
+  "loader_timeout_seconds": 30,
+  "probe_optimizer_updates": 0,
+  "successful_old_updates_observed": false,
+  "exact_old_update_count_known": false,
+  "automatic_training_start": false,
+  "original_files_changed": false
+}

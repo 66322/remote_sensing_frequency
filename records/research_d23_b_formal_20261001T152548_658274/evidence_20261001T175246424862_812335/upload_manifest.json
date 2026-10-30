@@ -1,0 +1,100 @@
+{
+  "created_at": "2026-10-01T17:52:47.762364+08:00",
+  "server_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d23_b_formal_20261001T152548_658274",
+  "base_commit": "0b9d76a77474f4de70f15c956f8b0eaa09231380",
+  "repository_directory": "records/research_d23_b_formal_20261001T152548_658274/evidence_20261001T175246424862_812335",
+  "files": [
+    {
+      "path": "execution_commit.txt",
+      "bytes": 41,
+      "sha256": "57ac8501c3d8035d720e678728e97e18c106c39a09fd1ec433c79da74b6bbde5"
+    },
+    {
+      "path": "plan.json",
+      "bytes": 652,
+      "sha256": "fb1c98feffc0a40ebfd63ad039388b4822437ca5262e22ea41ff47509db64557"
+    },
+    {
+      "path": "runtime_lock.json",
+      "bytes": 2045,
+      "sha256": "8ee5d47c651020dba001916f7c8ae084bff0894f812136177bb08fa41b693daf"
+    },
+    {
+      "path": "queue_status.json",
+      "bytes": 2291,
+      "sha256": "a29f888f85f18150a119aab9fb3cfbea62c8534554c6f08414e8b6f4a6c77ed1"
+    },
+    {
+      "path": "resume_event_20261001T153823537963.json",
+      "bytes": 891,
+      "sha256": "ce9e939f746d504e371408e45ea34e8160d64bb32ef54824fa904273a5e0c42e"
+    },
+    {
+      "path": "logs_resume_20261001T153823537963/T0.log",
+      "bytes": 3627,
+      "sha256": "b89a3f9a44b5ab8e23eb9a4638f20077cb12ee211127c2f2ad82ebfb7df673ec"
+    },
+    {
+      "path": "jobs/T0_resume_20261001T153823537963/preflight.json",
+      "bytes": 2047,
+      "sha256": "fe061dd8e3f50e3d6f29455b4c39ede6c9dc1e07b368ec71f55cd58eaba6b2af"
+    },
+    {
+      "path": "jobs/T0_resume_20261001T153823537963/formal_fit_statistics.json",
+      "bytes": 3208,
+      "sha256": "6d74fa77ef39bee5c34030beaf60b254e76fe909f0c1a7d336753c27c081e531"
+    },
+    {
+      "path": "jobs/T0_resume_20261001T153823537963/formal_complete.json",
+      "bytes": 2699,
+      "sha256": "2989ee7c053bf2ee66889a6727364b583bdc6ecfd8ced5bc8b57b680b611793f"
+    },
+    {
+      "path": "jobs/T0_resume_20261001T153823537963/training/training_complete.json",
+      "bytes": 2624,
+      "sha256": "a57bfec7a5fbe08fe52e240773b2b9fc8610a1274ec38bb2e052cdfd6bd7374c"
+    },
+    {
+      "path": "jobs/T0_resume_20261001T153823537963/evaluation/summary.json",
+      "bytes": 2547068,
+      "sha256": "4388e4b60765fca1c5f33daae6c28ea406ab525e866c13571329d6290c8e92b1"
+    },
+    {
+      "path": "logs_resume_20261001T153823537963/TS.log",
+      "bytes": 73,
+      "sha256": "939a9b8542a35c09170a186a35e38a5e4caeb8eb71f40cfe437c705e10bc656d"
+    },
+    {
+      "path": "logs_resume_20261001T153823537963/TSF.log",
+      "bytes": 3656,
+      "sha256": "47e6de02fb2439e8256bb5150d5b0e7df2e9406a35dffb61eb79bbcb5802704d"
+    },
+    {
+      "path": "jobs/TSF_resume_20261001T153823537963/preflight.json",
+      "bytes": 2048,
+      "sha256": "00b4fe757b075699b40055f2172965c043553fa6fc5ebd3d79833009500ddbd8"
+    },
+    {
+      "path": "jobs/TSF_resume_20261001T153823537963/formal_fit_statistics.json",
+      "bytes": 3209,
+      "sha256": "984e55072058c6783492bbf5fab06783a3a7dc5c5f437d0b4f91d98c80202dae"
+    },
+    {
+      "path": "jobs/TSF_resume_20261001T153823537963/formal_complete.json",
+      "bytes": 2700,
+      "sha256": "d875c148278e2de271df4c1f1721d700c2d716f0d393d1447218c370cfee1cc7"
+    },
+    {
+      "path": "jobs/TSF_resume_20261001T153823537963/training/training_complete.json",
+      "bytes": 2624,
+      "sha256": "9c81d17f3d45452a63aaa17997269aed0853cbbd3afe18f8ea3490c50127afef"
+    },
+    {
+      "path": "jobs/TSF_resume_20261001T153823537963/evaluation/summary.json",
+      "bytes": 2547267,
+      "sha256": "98f95b93366449939c1185a35c8779f5a1bbdc992a7322b5eb3f3c1458fe9c09"
+    }
+  ],
+  "predictions_and_checkpoints_uploaded": false,
+  "upload_launches_training": false
+}

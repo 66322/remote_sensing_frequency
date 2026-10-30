@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-15",
+  "provenance": "user-pasted server state at 16:26:47+08:00; no direct server SSH",
+  "source_run": "research_phase3_m1_20261015T143433_2657574",
+  "source_commit": "9abfaadae4d045086bda0861b588a73881139aaa",
+  "source_binding": {
+    "plan.json": "14ae36fa8b449200da2ea2d25d17b5c9c40129cabb63fa19e4d668b935f268c9",
+    "code_manifest.json": "ab7bbdc4ac6ee036b73e8f361cab62c25ce78ed1464741c7fbd9722743cba7fd"
+  },
+  "observation": {
+    "boot_id": "12ebdc0d-2e41-4223-bf1f-47ff13f3f7eb",
+    "live_controller_found": false,
+    "gpu0_1_memory_MiB": [
+      0,
+      0
+    ],
+    "last_queue_at": "2026-10-15T16:03:02+08:00",
+    "completed_jobs": [
+      "M10_17",
+      "M10_42",
+      "M11_17",
+      "M11_42",
+      "M20_42",
+      "M21_17",
+      "M21_42"
+    ],
+    "completed_updates": 112000,
+    "interrupted_progress": {
+      "M20_17": 12520,
+      "M01_42": 2680
+    },
+    "rolling_checkpoints_present": true,
+    "rolling_checkpoint_internal_steps_not_yet_read_on_server": true
+  },
+  "recovery": {
+    "new_directory": true,
+    "preserve_original": true,
+    "completed_original_binding_retained_with_hash_bridge": true,
+    "restore_model_optimizer_cpu_cuda_rng_and_sample_index": true,
+    "checkpoint_committed_log_prefix_only": true,
+    "previous_gate_must_recompute_exactly": true,
+    "required_new_main_updates_if_checkpoints_12k_2k": 50000,
+    "automatic_retry": false,
+    "server_execution_status": "PENDING_USER_LAUNCH"
+  },
+  "checks": {
+    "full_suite_tests": 25,
+    "passed": 24,
+    "skipped": 1,
+    "full_suite_seconds": 94.105,
+    "additional_registration_integrity_test_passed": true,
+    "distinct_tests_total": 26,
+    "applicable_passed": 25,
+    "skip": "Linux memfd unavailable locally; rechecked during server registration",
+    "local_torch": "2.8.0+cpu",
+    "target_torch": "2.2.2+cu121",
+    "actual_gpu_resume_not_yet_observed": true
+  },
+  "modified_sha256": {
+    "scripts/phase3_m1_common.py": "16604ef213c037d34089c537304f97d9733fe13ead823f8851707c8b4c1f903e",
+    "scripts/phase3_m1_data.py": "00206ea70fef561b874f77391d29d894e570f00a16f4b512414de62bdfe39106",
+    "scripts/phase3_m1_runtime.py": "0c70d754256cdbb8a4befda6c627abda55cbdefbe2f25144f9f2dd4683981760",
+    "scripts/control_phase3_m1.py": "c5fdf40849d34c8764b339099b6898049775582c4872ba8d4a8ae69f5be740b8",
+    "scripts/verify_phase3_m1.py": "009185b63af9d34bc631ea544a6f79d5f03df5af63c12d740b400578e8cfec19",
+    "scripts/recover_phase3_m1.py": "e09b098a5907e8af4f91f4de545fc3ed54898e1867210ac7798371e2a502f70b",
+    "tests/test_phase3_m1_recovery.py": "22879b88e9f386bc5305f3539195672cfcda555b020bc03f0a5de7ee86f255c1",
+    "docs/protocols/PHASE3_M1_REBOOT_RECOVERY_20261015.md": "5f36dc7029064dedbf639fb1328efac5ff30c7268ec12f44243cc3972675648c"
+  }
+}

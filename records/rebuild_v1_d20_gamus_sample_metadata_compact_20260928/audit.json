@@ -1,0 +1,166 @@
+{
+  "status": "SAMPLE_METADATA_INSPECTED_SOURCE_ACCEPTANCE_PENDING",
+  "source_audit": "records/rebuild_v1_d20_gamus_source_acceptance_compact_20260928/audit.json",
+  "dataset_revision": "a3c0e2511f06d909612406f436cf8abb4da805f5",
+  "scope": "nine_existing_HDF5_samples_only_no_download_no_training",
+  "files": [
+    {
+      "city": "DC",
+      "modality": "images",
+      "relative_path": "images/train/DC_01_25_RGB.h5",
+      "sha256": "d68446fa7fb4c111d364b79169d6a3bdf26738993439a22459fb93d89d4f5926",
+      "root_keys": [
+        "image"
+      ],
+      "root_attributes": {},
+      "image_shape": [
+        1024,
+        1024,
+        3
+      ],
+      "image_dtype": "uint8",
+      "image_attributes": {},
+      "possible_geo_or_source_attribute_keys": []
+    },
+    {
+      "city": "DC",
+      "modality": "heights",
+      "relative_path": "heights/train/DC_01_25_AGL.h5",
+      "sha256": "8350e1b74e5be0a7f614e150baec717d33cabd6a12e208e80c7e7504297a5c9a",
+      "root_keys": [
+        "image"
+      ],
+      "root_attributes": {},
+      "image_shape": [
+        1024,
+        1024
+      ],
+      "image_dtype": "float32",
+      "image_attributes": {},
+      "possible_geo_or_source_attribute_keys": []
+    },
+    {
+      "city": "DC",
+      "modality": "classes",
+      "relative_path": "classes/train/DC_01_25_CLS.h5",
+      "sha256": "9528e7ae804fca95e3c0e9f2efc7cd7ae90781a43003c0fbdca9f71193aa7acf",
+      "root_keys": [
+        "image"
+      ],
+      "root_attributes": {},
+      "image_shape": [
+        1024,
+        1024
+      ],
+      "image_dtype": "float32",
+      "image_attributes": {},
+      "possible_geo_or_source_attribute_keys": []
+    },
+    {
+      "city": "PHL",
+      "modality": "images",
+      "relative_path": "images/train/PHL_6148_RGB.h5",
+      "sha256": "a5c7e1f7110178081c8020066cd1159806dde281fa937167e398d370d4eada17",
+      "root_keys": [
+        "image"
+      ],
+      "root_attributes": {},
+      "image_shape": [
+        1024,
+        1024,
+        3
+      ],
+      "image_dtype": "uint8",
+      "image_attributes": {},
+      "possible_geo_or_source_attribute_keys": []
+    },
+    {
+      "city": "PHL",
+      "modality": "heights",
+      "relative_path": "heights/train/PHL_6148_AGL.h5",
+      "sha256": "09c5c1d089502757bb657b18b97800430cbc6c245a569aa055246587a4a65c0c",
+      "root_keys": [
+        "image"
+      ],
+      "root_attributes": {},
+      "image_shape": [
+        1024,
+        1024
+      ],
+      "image_dtype": "float32",
+      "image_attributes": {},
+      "possible_geo_or_source_attribute_keys": []
+    },
+    {
+      "city": "PHL",
+      "modality": "classes",
+      "relative_path": "classes/train/PHL_6148_CLS.h5",
+      "sha256": "0ed1e4e64882aa4451e289b04c97f586db2b98c12acc710cab51f42afca92940",
+      "root_keys": [
+        "image"
+      ],
+      "root_attributes": {},
+      "image_shape": [
+        1024,
+        1024
+      ],
+      "image_dtype": "uint8",
+      "image_attributes": {},
+      "possible_geo_or_source_attribute_keys": []
+    },
+    {
+      "city": "NYC",
+      "modality": "images",
+      "relative_path": "images/test/NYC_17683_IMG.h5",
+      "sha256": "f033b8b509b757441984af7ea9751b196772fde28142b3e71170e2ec2e027ebe",
+      "root_keys": [
+        "image"
+      ],
+      "root_attributes": {},
+      "image_shape": [
+        1024,
+        1024,
+        3
+      ],
+      "image_dtype": "uint8",
+      "image_attributes": {},
+      "possible_geo_or_source_attribute_keys": []
+    },
+    {
+      "city": "NYC",
+      "modality": "heights",
+      "relative_path": "heights/test/NYC_17683_AGL.h5",
+      "sha256": "eb359c62df03cbd5a491f1f0c338b2e7c6b4220771ba372b43590ce8e2f664ca",
+      "root_keys": [
+        "image"
+      ],
+      "root_attributes": {},
+      "image_shape": [
+        1024,
+        1024
+      ],
+      "image_dtype": "float32",
+      "image_attributes": {},
+      "possible_geo_or_source_attribute_keys": []
+    },
+    {
+      "city": "NYC",
+      "modality": "classes",
+      "relative_path": "classes/test/NYC_17683_CLS.h5",
+      "sha256": "8045394cdf46d31cb9141bbdd0da17f98fd1fe9f2e012751355af84a130b6adc",
+      "root_keys": [
+        "image"
+      ],
+      "root_attributes": {},
+      "image_shape": [
+        1024,
+        1024
+      ],
+      "image_dtype": "uint8",
+      "image_attributes": {},
+      "possible_geo_or_source_attribute_keys": []
+    }
+  ],
+  "files_with_possible_geo_or_source_attributes": 0,
+  "interpretation_limit": "Attribute-key inspection cannot prove geographic alignment or identify original rights; absence of a key in these nine samples does not establish absence in all files."
+}

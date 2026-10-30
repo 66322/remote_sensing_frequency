@@ -1,0 +1,38 @@
+{
+  "type": "experiment_planning_not_execution",
+  "date": "2026-10-05",
+  "source_head": "1b5ab6daa6a72af06ff8cba7c7fcd4c66379ac8b",
+  "last_server_observation": "2026-10-05T09:21:05.606873+08:00",
+  "plan_path": "docs/protocols/POST_N2_EVIDENCE_LED_PLAN_20261005.md",
+  "literature_path": "docs/literature/POST_N2_CROSS_QUESTIONS_20261005.md",
+  "suggested_order": [
+    "finish_and_audit_existing_N2",
+    "E0",
+    "E1",
+    "N5_if_E1_gap",
+    "N3_if_spatial_diagnostic",
+    "N4_only_if_exposure_evidence"
+  ],
+  "diagnostic_only_new": [
+    "E2_physical_missingness_x_reported_availability"
+  ],
+  "training_configuration_reservations": {
+    "N5": 4,
+    "N3": 5,
+    "N4": 4
+  },
+  "conditional_max_training_configurations": 13,
+  "steps_per_training_configuration": 8000,
+  "conditional_total_steps": 104000,
+  "implemented": false,
+  "queued": false,
+  "server_commands_generated": false,
+  "original_N2_protocol_changed": false,
+  "seed_additions": 0,
+  "test6_accessed": false,
+  "decision_status": "assistant recommendation requested by user; not a new user direction decision",
+  "physical_gpus": [
+    0,
+    1
+  ]
+}

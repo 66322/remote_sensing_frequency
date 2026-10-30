@@ -1,0 +1,352 @@
+{
+  "parent_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983",
+  "source_plan_sha256": "9dd1c13e46b3dab32b24ed4230863cc0802ae0ba2afa77659a1f9089520a77d7",
+  "jobs": {
+    "S0": {
+      "checkpoint_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/selected.pth",
+      "checkpoint_sha256": "94c9597dbcfb83124d712c445017ce1dc1e29b823e5e441dce22d067bc95e4f3",
+      "step": 4000,
+      "complete_sha256": "46c6c2a0502798d402c46e5ae13d66f61ffc495e4e0109065a6b92f53dab0668"
+    },
+    "S1": {
+      "checkpoint_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/selected.pth",
+      "checkpoint_sha256": "d8f2705c710ef2895195a30107115f7b7e4aa4fb1a9af1461f80df8d407e92c9",
+      "step": 4000,
+      "complete_sha256": "2a17aa6ac8724a07b7a681bfb31ba07f9b3849f2e8f87a9082dbddfd35d050ba"
+    },
+    "G0": {
+      "checkpoint_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/G0/selected.pth",
+      "checkpoint_sha256": "f7bb8076eb13f92b733053ba149bb7eabb12bf75db40e9c7ba372fb63080a93e",
+      "step": 4000,
+      "complete_sha256": "9a2833245ace2b0a6e0e0e6693feb9058474141288581ad74c210f9eefcf01e5"
+    },
+    "G1": {
+      "checkpoint_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/G1/selected.pth",
+      "checkpoint_sha256": "25f77adc4fb65529dca607318e54a73881008eecbda37af1ae944dc632ca6b8e",
+      "step": 4000,
+      "complete_sha256": "489df288085fdf3cc3c6e24e12fd44b87176b3043a5cdd5142d392852cbfe271"
+    }
+  },
+  "files": {
+    "reused/S0/evaluation/clean/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/clean/3_11.json",
+      "sha256": "b72821149f0c2f2b1a05acac65cd50860dce539c2332b0aae1425ea1486bb8c5"
+    },
+    "reused/S0/evaluation/clean/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/clean/5_10.json",
+      "sha256": "b4f44daea71ed8289b3362348a4691d4379b9c0353836ffe98303e3f9ef6a876"
+    },
+    "reused/S0/evaluation/rgb_down2/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/rgb_down2/3_11.json",
+      "sha256": "e1b6b98e04484e904a04772c290f18c64ebc7c4cf9929a381a0bf6365488ac25"
+    },
+    "reused/S0/evaluation/rgb_down2/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/rgb_down2/5_10.json",
+      "sha256": "4d75496998512a72a3c3bb8196f1e813602e61bc69c56c1a6cbf68fccff830a5"
+    },
+    "reused/S0/evaluation/rgb_down4/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/rgb_down4/3_11.json",
+      "sha256": "b1d3ee8b0d92a9fdd8c5f6305dad00cb5b2934f7c9c4bfbd23ec1f04894fff83"
+    },
+    "reused/S0/evaluation/rgb_down4/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/rgb_down4/5_10.json",
+      "sha256": "6d71adfce004d8dfe006ab3a49b3f76bca3514fd6be25b91c7587922609b9ef4"
+    },
+    "reused/S0/evaluation/rgb_blur5/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/rgb_blur5/3_11.json",
+      "sha256": "2627afcb2bca926c37c516224a8cd538f7362db9ca41ef15c5b6bcbf5569fda2"
+    },
+    "reused/S0/evaluation/rgb_blur5/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/rgb_blur5/5_10.json",
+      "sha256": "36f8ce8c73229655c014b8b9f42d9336539ad6d6ac2fa217897550cbc8eec4e4"
+    },
+    "reused/S0/evaluation/rgb_contrast060/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/rgb_contrast060/3_11.json",
+      "sha256": "89dbf673819ce6c82a49f541f6c00ddd74330e6d1c6dc66187e66bcba678638b"
+    },
+    "reused/S0/evaluation/rgb_contrast060/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/rgb_contrast060/5_10.json",
+      "sha256": "a6a8ae19d0f591da98806f7bae10e35efbf6cf396ed6fa605befbc8f9cdd9673"
+    },
+    "reused/S0/evaluation/aux_down4/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/aux_down4/3_11.json",
+      "sha256": "a05a81dd5eec3c0478dcff7c79e270d1c69788d7dfbe4db241a0c0a6f3ae4c9f"
+    },
+    "reused/S0/evaluation/aux_down4/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/aux_down4/5_10.json",
+      "sha256": "17ab04676c7e39ac6b8a72a901243b315a3edc7eeda940e0833f29559bfa8e2f"
+    },
+    "reused/S0/evaluation/aux_noise_std010/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/aux_noise_std010/3_11.json",
+      "sha256": "e521d93c64488b7eef222e3afd3badbdb56dadb80289f1207254f893dfe75895"
+    },
+    "reused/S0/evaluation/aux_noise_std010/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/aux_noise_std010/5_10.json",
+      "sha256": "1e937e241a9e903f346c401cc9023b6d8f57ec84bd9971ca52342a080b06bca2"
+    },
+    "reused/S0/evaluation/aux_shift8/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/aux_shift8/3_11.json",
+      "sha256": "a3136a6d60120795ff6c87adaa9ea628966d0778c6c8eeb5871d7ae8bc6f4aa2"
+    },
+    "reused/S0/evaluation/aux_shift8/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/aux_shift8/5_10.json",
+      "sha256": "675e4999ca7d7c569f64390b7754cefe9ec52f1c39e65ddaa4f57781ade28232"
+    },
+    "reused/S0/evaluation/rgb_down4+aux_noise_std010/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/rgb_down4+aux_noise_std010/3_11.json",
+      "sha256": "6237aa0a6ffecc7484e053e9132a08cdc8497ee779c5540122183eb9a42f4983"
+    },
+    "reused/S0/evaluation/rgb_down4+aux_noise_std010/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/rgb_down4+aux_noise_std010/5_10.json",
+      "sha256": "6c697fd54cac680064a721ac0ef00cc9fdcb0f74760163d1d175186be45635ea"
+    },
+    "reused/S0/evaluation/rgb_blur5+aux_shift8/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/rgb_blur5+aux_shift8/3_11.json",
+      "sha256": "0166c30c67e1f54dfe3ef8bc946b61228902920a0d07644a32f4cedf5b1a7a2a"
+    },
+    "reused/S0/evaluation/rgb_blur5+aux_shift8/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/evaluation/rgb_blur5+aux_shift8/5_10.json",
+      "sha256": "88ecb23f567076751e5a10deac7954b200f64be4a4caa7d97d74bede41cf16df"
+    },
+    "reused/S0/fixed8000/clean/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/clean/3_11.json",
+      "sha256": "c107dba2a93ce40c8281ef955df3971c1dd69f3853465d27b667d20d6775e504"
+    },
+    "reused/S0/fixed8000/clean/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/clean/5_10.json",
+      "sha256": "457d21d8b2374e768d520d89d93215a76041938431df05b8b96173255cba548d"
+    },
+    "reused/S0/fixed8000/rgb_down2/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/rgb_down2/3_11.json",
+      "sha256": "b5acd4847e9cb32b155b242aba668115c3c55abbb51f73449c93c91b3495ace6"
+    },
+    "reused/S0/fixed8000/rgb_down2/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/rgb_down2/5_10.json",
+      "sha256": "f5872ee3fe6d640ff404b0a53bc8c9372fdb31c421474456f46b8f3d828d2fc4"
+    },
+    "reused/S0/fixed8000/rgb_down4/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/rgb_down4/3_11.json",
+      "sha256": "2a0b77a0c61671ded532e6f604c185a6e9a0e484c1542dd3fbdf38ea54983573"
+    },
+    "reused/S0/fixed8000/rgb_down4/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/rgb_down4/5_10.json",
+      "sha256": "ef22f80cd2df7fe0ad4b811b9234e5db4d86b39120366e9c365d700ce257d217"
+    },
+    "reused/S0/fixed8000/rgb_blur5/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/rgb_blur5/3_11.json",
+      "sha256": "e56270b39a9f133ceccaf61d5568f939bd8bf64e1b7399c13f1fc0a784950a5a"
+    },
+    "reused/S0/fixed8000/rgb_blur5/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/rgb_blur5/5_10.json",
+      "sha256": "c38ea219481184d32dcbcc85171692347d84d5473c44ba1cba2cf2638787a883"
+    },
+    "reused/S0/fixed8000/rgb_contrast060/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/rgb_contrast060/3_11.json",
+      "sha256": "51f6afa4f55acefc57618b4f4f7c81b32f4c492f9b0299c87e0252d05d435ba4"
+    },
+    "reused/S0/fixed8000/rgb_contrast060/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/rgb_contrast060/5_10.json",
+      "sha256": "4ed9de495d37071334dc695fa9bc66949f3837a5196bef671f6d42a274608762"
+    },
+    "reused/S0/fixed8000/aux_down4/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/aux_down4/3_11.json",
+      "sha256": "b4ef465235077843a3d6acb1907147ff4e00b8272a83d3491e7854e58bedee16"
+    },
+    "reused/S0/fixed8000/aux_down4/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/aux_down4/5_10.json",
+      "sha256": "7a12ca52679a52a2fd802efb9b9d4bef4887ca9c81e4f525672cad0469ec5155"
+    },
+    "reused/S0/fixed8000/aux_noise_std010/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/aux_noise_std010/3_11.json",
+      "sha256": "a3c0dca4260403a99d0946fba2e9b920ef78a9f2335766d3d0000d7d069b2950"
+    },
+    "reused/S0/fixed8000/aux_noise_std010/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/aux_noise_std010/5_10.json",
+      "sha256": "d24f2f1cc4eabb7cbf5f010d1b5b2a7e46480d6dd1754dddf0bf0ff9d6e46e3c"
+    },
+    "reused/S0/fixed8000/aux_shift8/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/aux_shift8/3_11.json",
+      "sha256": "3f0ff0759e77f57f973f4dddf08c323fe430b3c7c007c9fe2f003e0d42ac0252"
+    },
+    "reused/S0/fixed8000/aux_shift8/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/aux_shift8/5_10.json",
+      "sha256": "c8a9ae5ce567bd02f0d9596b2047a78fbf3c2f6406ee6b49107c6c81c661684e"
+    },
+    "reused/S0/fixed8000/rgb_down4+aux_noise_std010/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/rgb_down4+aux_noise_std010/3_11.json",
+      "sha256": "62387b4ef1ed015477635aee3d65a7dec632114ee3ed313d4bf6ff25ac113794"
+    },
+    "reused/S0/fixed8000/rgb_down4+aux_noise_std010/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/rgb_down4+aux_noise_std010/5_10.json",
+      "sha256": "4be3eda5bae98d40cfb99e50a33882276b015a9e8aabcb58794110412ac07209"
+    },
+    "reused/S0/fixed8000/rgb_blur5+aux_shift8/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/rgb_blur5+aux_shift8/3_11.json",
+      "sha256": "522b1da513366399b4898e886a8174619005dd13559dbdc0939bc87a61edac5a"
+    },
+    "reused/S0/fixed8000/rgb_blur5+aux_shift8/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S0/fixed8000/rgb_blur5+aux_shift8/5_10.json",
+      "sha256": "0c1e035fb5265198ab30d0ff35b435119226bf32c96a36ed1bd12aef00c926d1"
+    },
+    "reused/S1/evaluation/clean/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/clean/3_11.json",
+      "sha256": "7a96543076626da60ba043517542dfb12be80eb02c1e5ec7b7f5c60cd623300f"
+    },
+    "reused/S1/evaluation/clean/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/clean/5_10.json",
+      "sha256": "d49a0bd8504dceb5c35917006622e4466246bb75d27bfd91ddcc40f0f3c4a083"
+    },
+    "reused/S1/evaluation/rgb_down2/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/rgb_down2/3_11.json",
+      "sha256": "b4f4cbb184eea624b621caeab84b5428986b505b3bb80e66668ff0bd775c0971"
+    },
+    "reused/S1/evaluation/rgb_down2/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/rgb_down2/5_10.json",
+      "sha256": "a1e73efe18e2e0e07ec812bc613fc4e5f795b7b5ecf6adcdf70fe399760e3942"
+    },
+    "reused/S1/evaluation/rgb_down4/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/rgb_down4/3_11.json",
+      "sha256": "ea31189c4b8b26a0c16a7dfc62d45d623039c7e3298e81dea8c579acb8d38b0d"
+    },
+    "reused/S1/evaluation/rgb_down4/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/rgb_down4/5_10.json",
+      "sha256": "5a8f2210983f6ca34d88902c0efbf4ee943db2262c850cb49d398e7fd416a5db"
+    },
+    "reused/S1/evaluation/rgb_blur5/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/rgb_blur5/3_11.json",
+      "sha256": "0e5e0b3d77735cc70098ff4518f279b8cae0274ca71ef5d3000af334fc1ea9e1"
+    },
+    "reused/S1/evaluation/rgb_blur5/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/rgb_blur5/5_10.json",
+      "sha256": "64309dbb6d882d5e005e8f2ff6785ef837c9ebf4c2a953aac42bae2fa36f4f20"
+    },
+    "reused/S1/evaluation/rgb_contrast060/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/rgb_contrast060/3_11.json",
+      "sha256": "6b9cbfb2291c150d76f813b0e1d275f14a831a25291b58349e54c1dfe7f6ba52"
+    },
+    "reused/S1/evaluation/rgb_contrast060/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/rgb_contrast060/5_10.json",
+      "sha256": "f8e4dbf86af250354f721f55ef480287ec8d7615389ab372d617d02a96f087f4"
+    },
+    "reused/S1/evaluation/aux_down4/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/aux_down4/3_11.json",
+      "sha256": "f47da0c6d5ad9dffa0f642f8617ae6bbf07d411401ffa03216dbeac9b0295c44"
+    },
+    "reused/S1/evaluation/aux_down4/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/aux_down4/5_10.json",
+      "sha256": "ac2f0297516c5a7e9ce018e9f84000f44843987b84a324a00dce05bd891927b6"
+    },
+    "reused/S1/evaluation/aux_noise_std010/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/aux_noise_std010/3_11.json",
+      "sha256": "7e6d26329df51a8827d5b5e964edd99e1a3ef50a3820f6f20ff3e30ec3f474c4"
+    },
+    "reused/S1/evaluation/aux_noise_std010/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/aux_noise_std010/5_10.json",
+      "sha256": "4d478c6e04bff44b42d8669b4a024726d53cab387d23d2b11591d1c76367d580"
+    },
+    "reused/S1/evaluation/aux_shift8/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/aux_shift8/3_11.json",
+      "sha256": "db09aff2724bb55f54c05665c4da1e8534b8e165db60f698ff14cfaa7d48e248"
+    },
+    "reused/S1/evaluation/aux_shift8/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/aux_shift8/5_10.json",
+      "sha256": "ac55f3b2bcc175b8c221cc47832b92ad83ee5faa3fc8544cd6c8b5022c9a2b34"
+    },
+    "reused/S1/evaluation/rgb_down4+aux_noise_std010/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/rgb_down4+aux_noise_std010/3_11.json",
+      "sha256": "bd847e950d9dc0bc206c3a6b8c07cb24f99bcd5108f0cd7173fb946d92704731"
+    },
+    "reused/S1/evaluation/rgb_down4+aux_noise_std010/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/rgb_down4+aux_noise_std010/5_10.json",
+      "sha256": "eaac8e1239456425574482ae1b62efc136b1f90be86c9e553eea31c1b7eedb80"
+    },
+    "reused/S1/evaluation/rgb_blur5+aux_shift8/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/rgb_blur5+aux_shift8/3_11.json",
+      "sha256": "fbc460c3919d33e6f829ddb92056a874ebe6f37e6af3024f7ec9ddee018c43c9"
+    },
+    "reused/S1/evaluation/rgb_blur5+aux_shift8/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/evaluation/rgb_blur5+aux_shift8/5_10.json",
+      "sha256": "d5e7c89552774e0ca68a4b3178c21bfb8f11912f88dcb123645055e218f907ce"
+    },
+    "reused/S1/fixed8000/clean/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/clean/3_11.json",
+      "sha256": "6c22c8ed5d53ea26a6b22ea4c66d1b13aa012d5f90cb06106347ee1d55e78a4a"
+    },
+    "reused/S1/fixed8000/clean/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/clean/5_10.json",
+      "sha256": "adda0120607ed5f9ccfd5c68888017bb0fdedcc98275ff109bc72fd48af10e21"
+    },
+    "reused/S1/fixed8000/rgb_down2/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/rgb_down2/3_11.json",
+      "sha256": "e95585cbe1acd93ccdb78e08d41ac3df65cadf6c8f0d19e0761c282a38645e3e"
+    },
+    "reused/S1/fixed8000/rgb_down2/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/rgb_down2/5_10.json",
+      "sha256": "23a55e0fef72a42a191b19902f3a2865ae5a482849bb09c6fd14f65cad9ba9a6"
+    },
+    "reused/S1/fixed8000/rgb_down4/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/rgb_down4/3_11.json",
+      "sha256": "7a80b745e015c8d0b5d6b1609d83fcdc6970b41c5a958972ce71ee5ecd4f2e38"
+    },
+    "reused/S1/fixed8000/rgb_down4/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/rgb_down4/5_10.json",
+      "sha256": "d022f9d610aa7e531fdbb23c683b7dfddc4475ee447c6680f75ad80cf8a5ec30"
+    },
+    "reused/S1/fixed8000/rgb_blur5/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/rgb_blur5/3_11.json",
+      "sha256": "738c5275ba190dd1f2ccd16aa10aa729cc490b7f196c51024d76ccc0d826beba"
+    },
+    "reused/S1/fixed8000/rgb_blur5/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/rgb_blur5/5_10.json",
+      "sha256": "b866eff1cc3a84f51ee200856be56e17fb36efb8f18b00dd19bca2a865765e6a"
+    },
+    "reused/S1/fixed8000/rgb_contrast060/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/rgb_contrast060/3_11.json",
+      "sha256": "894eb0815f854c89fa3037ffafc3e63f46cf510aee259ef88f475350d7f8dde9"
+    },
+    "reused/S1/fixed8000/rgb_contrast060/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/rgb_contrast060/5_10.json",
+      "sha256": "b4e667189d9012a496a11a671c9fbef2c4ec59a5285257db2e40d3d2ab199173"
+    },
+    "reused/S1/fixed8000/aux_down4/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/aux_down4/3_11.json",
+      "sha256": "74d16ea2aaf68525775d26ef57c01454c58e03bbdecbb1379439ce8bd2b87d19"
+    },
+    "reused/S1/fixed8000/aux_down4/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/aux_down4/5_10.json",
+      "sha256": "bb35351d1f4cdb6e044cf13e244d113237d97a212e302109a248c53bf4220473"
+    },
+    "reused/S1/fixed8000/aux_noise_std010/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/aux_noise_std010/3_11.json",
+      "sha256": "2ab265d92de186ae184b11e4110f7e92c335e2fbb42c5c4628a1e07e8c87fd66"
+    },
+    "reused/S1/fixed8000/aux_noise_std010/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/aux_noise_std010/5_10.json",
+      "sha256": "0077ab71cef8dfd4f4a57687930f10cdddcbe0f670cb588aca926d375f7da1ac"
+    },
+    "reused/S1/fixed8000/aux_shift8/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/aux_shift8/3_11.json",
+      "sha256": "5d021c78104480b26c917befb3536e7213006a2c1bfb9bb96c98f256a3783a38"
+    },
+    "reused/S1/fixed8000/aux_shift8/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/aux_shift8/5_10.json",
+      "sha256": "2ca2190120950dab23b7ce0de27233ede1235420a96e0e8328d34c8b4a04f6b3"
+    },
+    "reused/S1/fixed8000/rgb_down4+aux_noise_std010/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/rgb_down4+aux_noise_std010/3_11.json",
+      "sha256": "6c9cdec556bd8c945f87c4e6fc71e8b0cbeb406ea0fb23bf5abeb8b481c50765"
+    },
+    "reused/S1/fixed8000/rgb_down4+aux_noise_std010/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/rgb_down4+aux_noise_std010/5_10.json",
+      "sha256": "10837821a9b142fcc8cf841b399d95687f69db35aebbdab28f1356b03e7467b2"
+    },
+    "reused/S1/fixed8000/rgb_blur5+aux_shift8/3_11.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/rgb_blur5+aux_shift8/3_11.json",
+      "sha256": "b188298b709423b125940230c4735ba3efb165cd4fc2130ad53d72abeeb108a2"
+    },
+    "reused/S1/fixed8000/rgb_blur5+aux_shift8/5_10.json": {
+      "source": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/research_d27_safe_routing_repair_20261003T092243758628_2001983/jobs/S1/fixed8000/rgb_blur5+aux_shift8/5_10.json",
+      "sha256": "58dd9a0caefdee0ea4e674cb06225e062652fd610171b162e5e0a81970b3f2c1"
+    }
+  }
+}

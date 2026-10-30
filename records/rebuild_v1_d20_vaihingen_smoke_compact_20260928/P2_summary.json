@@ -1,0 +1,125 @@
+{
+  "arm": "P2",
+  "signature": {
+    "arm": "P2",
+    "seed": 42,
+    "config_sha256": "61140238426d8086932da5d60f92e3bca598c82e2a51d5f841063ba50868a423",
+    "source_sha256": "67241da6b5786a3d15bc624eddebcafc407e34b2cf803a6c8c50ab5248d4bec7",
+    "d18_binding": {
+      "arm": "P2",
+      "seed": 42,
+      "smoke": true,
+      "config_sha256": "cb1c398acac6c9892aeee65bc5f331375a2395c0233654d7a3fc6ee58329ef0f",
+      "split_sha256": "d9fe260f6b1be3807811e454c1673d1e69db235c32d4dea207e8724975e210ab",
+      "base_config_sha256": "07dd4b7f224d2e036024dfb2ab57bac9fe312335a5eebb8173778cd5c11de133",
+      "sources": {
+        "scripts/d18_d19_night.py": "2dfb66d46109de597d34d95674edcabe66222f96c23c1794da76eb413e3bf2ca",
+        "model/rebuild_v1_night_screen.py": "95ba4785eaeb7e0c0009ade5328de6d11b4f137e9df34e95b2793efc0ce8a6d6",
+        "scripts/train_rebuild_v1_d18_d19.py": "34d99d6275725200921aae125a7af3fefc655b29cb5a06473e0b774461af73ce",
+        "scripts/eval_rebuild_v1_d18_d19.py": "e34452ab96f37681f92949d37af9cf6771cd19cc5550183593ad84c2541d0c2a",
+        "scripts/d16_d17_portfolio.py": "87d5a6d9dc383881bd36fbf08c4c27bad89cc6303cc13e0434be6b0147448aa7",
+        "scripts/train_rebuild_v1_d16_d17.py": "13c5a815c8e7831bf826d5f9188a8885b0caa35cf146b49981e60d96ea30da8c",
+        "scripts/train_rebuild_v1_r02_budget_pilot.py": "93293ed196887b165c6d4fb500c7cabe22ffee4cfabbebcfb2c89c4a3042a9f9",
+        "model/vitcross_seg_modeling_freq_ablation.py": "c5a01fa7ef3ed754c1d8715217d3c3a7123174ff9d3be658c969186fa74a8453",
+        "model/vitcross_seg_modeling_freqfusion.py": "727183367be96dc287fe6f96dae8c7fce54371aa09b5b881bb512e104202be36",
+        "model/vit_seg_modeling_resnet_skip.py": "c8e4b1be6144bda0ec9acaf9e5339420a35f33a1c2bc138db4f8f3d3781e1850",
+        "model/dynamic_conv.py": "d24b6003e6b8010503dd2bb0e3657881f2970f73b671f96d4ee18a9d361ae4c7",
+        "model/vit_seg_configs.py": "303cf79b93631b144d4f4d4258ab7e2b780ca52376da3d21dbf75cb03b44dbd4",
+        "scripts/d15_capability.py": "32876110effb550694766815679ab3c283c7c9f1c1d37f4a6b31cf1ac0a9cf4e",
+        "scripts/train_rebuild_v1_r01_optical_only.py": "428322de27deeb6b02fe90f01cb8238d2580a2c36b4a04845111c87fecc7210a",
+        "model/rebuild_v1_optical_only.py": "fa4e0d323725223d2129bcd2f1becbd02e2ce01cba0ecc6512cddfeaee099ca0",
+        "scripts/night_boundary_metrics.py": "eb942fd36cafb19d6a32709d23a841e518d68099777d9b3913eeefe62e44c814"
+      },
+      "torch_version": "2.2.2+cu121",
+      "anchor_sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9",
+      "dino_commit": "7764ea0f912e53c92e82eb78a2a1631e92725fc8"
+    },
+    "train_tile": 1,
+    "development_tile": 2,
+    "input_sha256": {
+      "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area1.tif": "656e4f358d2298a84b97472168f4b5416fba4162ffc51f4b3fc11a1cdfef0e3d",
+      "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area1.tif": "30cefd7b4c756a8891b2c3b0fe38a7ef2b4d3e5a9da2493cf13130b125fa233e",
+      "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_for_participants/top_mosaic_09cm_area1.tif": "9e01a18b2fa8dbba17d30e36d50a264f97409356e5a259a48b9f3225143984d7",
+      "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/top/top_mosaic_09cm_area2.tif": "5929a0e53d6c30bead13af190659489a0f0d438f76eda226a6846d7539a317f6",
+      "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/dsm/dsm_09cm_matching_area2.tif": "c7b2b8772c16b0f260f665586ea1042454f596d8f4f89a2c2bb5a6f8ab2ebf86",
+      "/home/jovyan/zzx/projects_zys/raw_extract/Vaihingen/gts_complete_full/top_mosaic_09cm_area2.tif": "3f13e735bee58c61091b9046c58415a1a4e3941216599312132b5b09ec88f6d0"
+    },
+    "optical_channels": [
+      "near_infrared",
+      "red",
+      "green"
+    ],
+    "test6_loaded": false
+  },
+  "checkpoint_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/runs/rebuild_v1/D20_VAI_SMOKE_P2_seed42_20260928/checkpoint.pth",
+  "checkpoint_sha256": "8e08aeb9e8ab8d76f66cad5041ded4137802462b9e5a1308a3354c2d19c0678c",
+  "loss": 1.796454668045044,
+  "smoke_confusion_matrix": [
+    [
+      10638,
+      14702,
+      41465,
+      2834,
+      0,
+      41
+    ],
+    [
+      608,
+      11832,
+      8470,
+      1355,
+      0,
+      0
+    ],
+    [
+      119,
+      5985,
+      5614,
+      618,
+      0,
+      0
+    ],
+    [
+      4084,
+      4365,
+      53939,
+      288,
+      0,
+      16
+    ],
+    [
+      628,
+      601,
+      1671,
+      82,
+      0,
+      55
+    ],
+    [
+      7779,
+      46531,
+      37321,
+      487,
+      16,
+      0
+    ]
+  ],
+  "smoke_metrics": {
+    "OA": 0.1082305908203125,
+    "mF1_fg5": 0.10567273129900889,
+    "mIoU_fg5": 0.058800722339483226,
+    "mF1_all6": 0.08806060941584075,
+    "mIoU_all6": 0.04900060194956935,
+    "per_class_iou": [
+      0.1283263769934136,
+      0.1252739573738208,
+      0.03617221427558923,
+      0.004231063054592466,
+      0.0,
+      0.0
+    ],
+    "valid_pixels": 262144
+  },
+  "elapsed_seconds": 3.96,
+  "scope": "one train step and 512px development crop; infrastructure check only"
+}

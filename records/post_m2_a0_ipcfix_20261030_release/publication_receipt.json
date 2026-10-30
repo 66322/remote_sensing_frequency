@@ -1,0 +1,30 @@
+{
+  "status": "PUBLISHED_LOCAL_CHECKED_TARGET_PREPARE_AND_START_PENDING",
+  "code_commit": "d15f34e8d53f935aa17542123c2227fab14cb810",
+  "scientific_source_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+  "execution_revision": "A0_IPC_PATH_FIX_20261030",
+  "original_scientific_source_unchanged": true,
+  "original_failed_run": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_capability_20261029",
+  "new_run": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030",
+  "start_command": "(\nset -e\nROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro\nREL=d15f34e8d53f935aa17542123c2227fab14cb810\nTOOLS=\"$ROOT/execution/a0_ipcfix_$REL\"\nmkdir -p \"$TOOLS\"\nfor FILE in repair_post_m2_a0_ipc_20261030.py post_m2_a0_ipcfix_20261030.py; do\n  if [ ! -f \"$TOOLS/$FILE\" ]; then\n    curl -fL --connect-timeout 10 --max-time 60 \\\n      \"https://raw.githubusercontent.com/66322/remote_sensing_frequency/$REL/scripts/$FILE\" \\\n      -o \"$TOOLS/$FILE.part\"\n    mv -n \"$TOOLS/$FILE.part\" \"$TOOLS/$FILE\"\n  fi\ndone\npython -u -B \"$TOOLS/repair_post_m2_a0_ipc_20261030.py\" prepare --commit \"$REL\"\npython -u -B \"$TOOLS/repair_post_m2_a0_ipc_20261030.py\" start --commit \"$REL\"\n)",
+  "command_scope": "User explicitly runs preparation then start in sequence. Preparation only verifies/stops known fault owners, preserves original evidence, checks one CPU IPC batch and reuses profiles. If preparation fails or observes original formal progress, set -e prevents start.",
+  "automatic_retry": false,
+  "model_load_or_speed_probes": 0,
+  "cpu_tensor_test_batches": 1,
+  "cpu_test_optimizer_updates": 0,
+  "formal_updates_per_model": 2000,
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "seed": 42,
+  "local_repair_tests_passed": 9,
+  "local_main_tests_passed": 14,
+  "isolated_main_payload_check_passed": true,
+  "target_process_stop_received": false,
+  "target_cpu_ipc_received": false,
+  "target_repair_dispatch_received": false,
+  "target_formal_update_received": false,
+  "future_spatial_records_env": "POST_M2_A0_RECORDS=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030",
+  "failed_attempt_formal_update_count": "UNKNOWN; no successful update logged or endpoint listed by user; preparation blocks if new old-run evidence appears."
+}

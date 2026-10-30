@@ -1,0 +1,129 @@
+{
+  "status": "OLD_A0_GPU_OWNERS_STILL_PRESENT_NEW_REPAIR_PROGRESS_NOT_RECEIVED",
+  "source": "user_pasted_nvidia_smi_and_read_only_proc_queries",
+  "observed_at_local": "2026-10-30 17:49:06",
+  "timestamp_source": "nvidia-smi header; Asia/Shanghai project display convention",
+  "driver": "590.48.01",
+  "driver_supported_cuda_display": "13.1",
+  "a0": {
+    "launcher_pid": 2426676,
+    "pair_parent_pid": 2426713,
+    "scientific_entry": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_capability_20261029/post_m2_a0.py",
+    "rows": [
+      {
+        "gpu": 0,
+        "pid": 2426731,
+        "kind": "dino2",
+        "gpu_util_percent": 0,
+        "device_used_mib": 863,
+        "process_used_mib": 854
+      },
+      {
+        "gpu": 1,
+        "pid": 2426732,
+        "kind": "dino3",
+        "gpu_util_percent": 0,
+        "device_used_mib": 865,
+        "process_used_mib": 856
+      }
+    ],
+    "context": "Same original PIDs previously confirmed with AF_UNIX IPC failure and absent progress/endpoint output. Current snapshot shows no GPU computation; this is not evidence of successful repaired training.",
+    "raw_logs": [
+      "pair_train_dino2.log",
+      "pair_train_dino3.log"
+    ],
+    "repaired_attempt_status": "No prepare/stop/IPC/dispatch/formal update receipt received; do not infer exact zero failed-attempt updates."
+  },
+  "other_gpu_rows": [
+    {
+      "gpu": 2,
+      "pid": 2458629,
+      "ppid": 1,
+      "user": "root",
+      "state": "Rl",
+      "command": "python gpu.py",
+      "cwd": "/home/jovyan/scripts",
+      "stdout": "/dev/pts/19",
+      "gpu_util_percent": 100,
+      "device_used_mib": 647,
+      "process_used_mib": 638
+    },
+    {
+      "gpu": 3,
+      "pid": 2458630,
+      "ppid": 1,
+      "user": "root",
+      "state": "Rl",
+      "command": "python gpu.py",
+      "cwd": "/home/jovyan/scripts",
+      "stdout": "/dev/pts/19",
+      "gpu_util_percent": 100,
+      "device_used_mib": 647,
+      "process_used_mib": 638
+    },
+    {
+      "gpu": 4,
+      "pid": 2458631,
+      "ppid": 1,
+      "user": "root",
+      "state": "Rl",
+      "command": "python gpu.py",
+      "cwd": "/home/jovyan/scripts",
+      "stdout": "/dev/pts/19",
+      "gpu_util_percent": 100,
+      "device_used_mib": 647,
+      "process_used_mib": 638
+    },
+    {
+      "gpu": 5,
+      "pid": 2458632,
+      "ppid": 1,
+      "user": "root",
+      "state": "Rl",
+      "command": "python gpu.py",
+      "cwd": "/home/jovyan/scripts",
+      "stdout": "/dev/pts/19",
+      "gpu_util_percent": 100,
+      "device_used_mib": 647,
+      "process_used_mib": 638
+    },
+    {
+      "gpu": 6,
+      "pid": 2458633,
+      "ppid": 1,
+      "user": "root",
+      "state": "Rl",
+      "command": "python gpu.py",
+      "cwd": "/home/jovyan/scripts",
+      "stdout": "/dev/pts/19",
+      "gpu_util_percent": 100,
+      "device_used_mib": 647,
+      "process_used_mib": 638
+    },
+    {
+      "gpu": 7,
+      "pid": 2458634,
+      "ppid": 1,
+      "user": "root",
+      "state": "Rl",
+      "command": "python gpu.py",
+      "cwd": "/home/jovyan/scripts",
+      "stdout": "/dev/pts/19",
+      "gpu_util_percent": 100,
+      "device_used_mib": 647,
+      "process_used_mib": 638
+    }
+  ],
+  "inference_limits": [
+    "Other-card visible command and working directory indicate a relative gpu.py entry; its code was not supplied.",
+    "Cannot classify it as real training, a benchmark or a reservation/stress script from GPU utilization and filename alone.",
+    "PPID=1 does not identify the original launcher or the human operator."
+  ],
+  "authorized_experiment_gpus": [
+    0,
+    1
+  ],
+  "other_gpu_actions": "No stop/change/launch; read-only observation only",
+  "next_action": "Use the already published A0 IPC repair on verified old A0 owners; original profiles reused. Optionally read /home/jovyan/scripts/gpu.py to identify the other entry's actual computation.",
+  "assistant_server_actions": 0
+}

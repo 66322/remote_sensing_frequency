@@ -1,0 +1,42 @@
+{
+  "status": "ALL_EXISTING_INTEGER_COUNTS_AND_REPORTED_METRICS_MATCH",
+  "matrices": [
+    "dino2/calibration/6_9",
+    "dino2/calibration/7_9",
+    "dino2/calibration/pooled",
+    "dino3/calibration/6_9",
+    "dino3/calibration/7_9",
+    "dino3/calibration/pooled",
+    "dino2/outer/6_7",
+    "dino2/outer/7_7",
+    "dino2/outer/6_8",
+    "dino2/outer/7_8",
+    "dino2/outer/pooled",
+    "dino3/outer/6_7",
+    "dino3/outer/7_7",
+    "dino3/outer/6_8",
+    "dino3/outer/7_8",
+    "dino3/outer/pooled"
+  ],
+  "checks": {
+    "matrix_count": 16,
+    "all_6x6_nonnegative_integer": true,
+    "tile_sums_equal_pooled": true,
+    "stored_metrics_recomputed_match": true,
+    "matched_gt_supports_and_tile_lists": true,
+    "trajectory_decreased_both": true,
+    "completed_updates_2000_each": true,
+    "scientific_and_patch_bindings_match": true,
+    "calibration_screen_arithmetic_matches": true,
+    "retraining_or_inference": false,
+    "new_model_hashes": false
+  },
+  "metric_units": {
+    "stored_iou": "fraction",
+    "reported_miou": "percent",
+    "delta": "percentage_points"
+  },
+  "outer_valid_pixels": 91547243,
+  "calibration_valid_pixels": 45956064,
+  "inference_repeated": false
+}

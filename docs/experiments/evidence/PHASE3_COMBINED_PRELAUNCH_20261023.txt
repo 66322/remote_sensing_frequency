@@ -1,0 +1,111 @@
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ conda activate remote_sensing
+
+ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+COMMIT=90b9bbe8f4fe4777aa10b11aea48ddd572785a39
+M2_COMMIT=ac325cdbb403ebb95b5eb0acbf17fffa5441dcfd
+CATALOG="$ROOT/records/phase3_combined_public_catalog.json"
+BOOTSTRAP="$ROOT/records/bootstrap_phase3_combined_${COMMIT}.py"
+M2_BOOTSTRAP="$ROOT/records/bootstrap_phase3_m2_${M2_COMMIT}.py"
+
+cd "$ROOT"
+
+curl -fL --retry 2 \
+  "https://raw.githubusercontent.com/66322/remote_sensing_frequency/$COMMIT/scripts/bootstrap_phase3_combined.py" \
+  -o "$BOOTSTRAP"
+
+python "$BOOTSTRAP" \
+  --root "$ROOT" --commit "$COMMIT" --catalog "$CATALOG" --inspect
+
+nvidia-smi -i 0,1
+
+python -c 'import sys,torch,numpy,scipy,PIL; print("Python:",sys.executable); print("Torch:",torch.__version__,"CUDA:",torch.version.cuda,"available:",torch.cuda.is_available())'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  5551  100  5551    0     0   5299      0  0:00:01  0:00:01 --:--:--  5306
+COMBINED_INSPECT_ONLY {"m2_runs": [], "combined_runs": [], "catalog_path": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/phase3_combined_public_catalog.json", "catalog_present": false}
+Fri Oct 23 21:50:30 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.48.01              Driver Version: 590.48.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:0F:00.0 Off |                    0 |
+| N/A   29C    P0             70W /  700W |       0MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA H100 80GB HBM3          On  |   00000000:34:00.0 Off |                    0 |
+| N/A   28C    P0             72W /  700W |       0MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Python: /home/jovyan/miniconda3/envs/remote_sensing/bin/python
+Torch: 2.1.2+cu121 CUDA: 12.1 available: True
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ curl -fL --retry 2 \
+  "https://raw.githubusercontent.com/66322/remote_sensing_frequency/$M2_COMMIT/scripts/bootstrap_phase3_m2.py" \
+  -o "$M2_BOOTSTRAP"
+
+python "$M2_BOOTSTRAP" \
+  --root "$ROOT" --commit "$M2_COMMIT" --inspect
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  7808  100  7808    0     0   8438      0 --:--:-- --:--:-- --:--:--  8450
+M2_GPU_SNAPSHOT {"gpus": "0, GPU-97a250ea-42ff-eb14-4ed5-8c50231e0baa, NVIDIA H100 80GB HBM3, 81559, 81081, 0\n1, GPU-4b116760-e84c-2743-cee6-41cf76a01677, NVIDIA H100 80GB HBM3, 81559, 81081, 0\n2, GPU-e1a1a2c7-ef25-1bd3-9b06-abc05a6fd165, NVIDIA H100 80GB HBM3, 81559, 80434, 100\n3, GPU-c711616f-6f02-0d2a-e0fb-686602a0a157, NVIDIA H100 80GB HBM3, 81559, 80434, 100\n4, GPU-9c9e83d0-bc0c-f6ce-e493-8cff9d29933f, NVIDIA H100 80GB HBM3, 81559, 80434, 100\n5, GPU-e41f22dd-28af-29c2-ba44-5a10eb09d3a3, NVIDIA H100 80GB HBM3, 81559, 80434, 100\n6, GPU-2c16ce01-e889-23da-385d-a864043eed00, NVIDIA H100 80GB HBM3, 81559, 80434, 100\n7, GPU-27ddd129-ada7-af86-de6c-bdde3339413a, NVIDIA H100 80GB HBM3, 81559, 80434, 100\n", "compute_apps": "1738428, GPU-e1a1a2c7-ef25-1bd3-9b06-abc05a6fd165, python, 638\n1738429, GPU-c711616f-6f02-0d2a-e0fb-686602a0a157, python, 638\n1738430, GPU-9c9e83d0-bc0c-f6ce-e493-8cff9d29933f, python, 638\n1738431, GPU-e41f22dd-28af-29c2-ba44-5a10eb09d3a3, python, 638\n1738432, GPU-2c16ce01-e889-23da-385d-a864043eed00, python, 638\n1738433, GPU-27ddd129-ada7-af86-de6c-bdde3339413a, python, 638\n", "selected": {"0": ["0", "GPU-97a250ea-42ff-eb14-4ed5-8c50231e0baa", "NVIDIA H100 80GB HBM3", "81559", "81081", "0"], "1": ["1", "GPU-4b116760-e84c-2743-cee6-41cf76a01677", "NVIDIA H100 80GB HBM3", "81559", "81081", "0"]}, "ready": true, "observed_at": "2026-10-23T21:52:05.340047+08:00"}
+M2_LABEL_BLIND_FOLDS {"method": "geospatial_centroid_axis_0", "order": ["6_7", "7_7", "6_8", "7_8", "6_9", "7_9", "2_10", "2_12", "3_12", "4_12", "5_12", "6_12"], "headers": {"2_12": {"shape": [6000, 6000], "bounds": [367576.5, 5808262.6, 367876.5, 5808562.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "2_10": {"shape": [6000, 6000], "bounds": [366976.5, 5808262.6, 367276.5, 5808562.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "7_8": {"shape": [6000, 6000], "bounds": [366376.5, 5806762.6, 366676.5, 5807062.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "3_12": {"shape": [6000, 6000], "bounds": [367576.5, 5807962.6, 367876.5, 5808262.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "5_12": {"shape": [6000, 6000], "bounds": [367576.5, 5807362.6, 367876.5, 5807662.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "7_9": {"shape": [6000, 6000], "bounds": [366676.5, 5806762.6, 366976.5, 5807062.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "6_9": {"shape": [6000, 6000], "bounds": [366676.5, 5807062.6, 366976.5, 5807362.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "7_7": {"shape": [6000, 6000], "bounds": [366076.5, 5806762.6, 366376.5, 5807062.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "4_12": {"shape": [6000, 6000], "bounds": [367576.5, 5807662.6, 367876.5, 5807962.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "6_8": {"shape": [6000, 6000], "bounds": [366376.5, 5807062.6, 366676.5, 5807362.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "6_12": {"shape": [6000, 6000], "bounds": [367576.5, 5807062.6, 367876.5, 5807362.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}, "6_7": {"shape": [6000, 6000], "bounds": [366076.5, 5807062.6, 366376.5, 5807362.6], "crs": [1, 1, 0, 5, 1024, 0, 1, 1, 1025, 0, 1, 1, 1026, 34737, 133, 0, 3072, 0, 1, 32633, 3076, 0, 1, 9001]}}, "folds": {"F0": {"evaluation": ["6_7", "7_7", "6_8", "7_8"], "train": ["6_9", "7_9", "2_10", "2_12", "3_12", "4_12", "5_12", "6_12"], "inner_pairs": [["6_9", "7_9"], ["2_10", "2_12"], ["3_12", "4_12"], ["5_12", "6_12"]]}, "F1": {"evaluation": ["6_9", "7_9", "2_10", "2_12"], "train": ["6_7", "7_7", "6_8", "7_8", "3_12", "4_12", "5_12", "6_12"], "inner_pairs": [["6_7", "7_7"], ["6_8", "7_8"], ["3_12", "4_12"], ["5_12", "6_12"]]}, "F2": {"evaluation": ["3_12", "4_12", "5_12", "6_12"], "train": ["6_7", "7_7", "6_8", "7_8", "6_9", "7_9", "2_10", "2_12"], "inner_pairs": [["6_7", "7_7"], ["6_8", "7_8"], ["6_9", "7_9"], ["2_10", "2_12"]]}}, "labels_used": false, "metadata_scope": "Fit12 RGB headers only"}
+INSPECTION_ONLY_NO_RUN_REGISTERED
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ BOOT_LOG="$ROOT/records/phase3_combined_bootstrap_$(date +%Y%m%dT%H%M%S).log"
+
+nohup python -u -B "$BOOTSTRAP" \
+  --root "$ROOT" \
+  --commit "$COMMIT" \
+  --catalog "$CATALOG" \
+  </dev/null >"$BOOT_LOG" 2>&1 &
+
+echo "$!" > "${BOOT_LOG%.log}.pid"
+echo "启动日志：$BOOT_LOG"
+
+sleep 5
+tail -n 60 "$BOOT_LOG"
+[1] 2140296
+启动日志：/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/phase3_combined_bootstrap_20261023T215254.log
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ watch -n 1 nvidia-smi
+[1]+  Exit 1                  nohup python -u -B "$BOOTSTRAP" --root "$ROOT" --commit "$COMMIT" --catalog "$CATALOG" < /dev/null > "$BOOT_LOG" 2>&1
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ tail -n 60 "$BOOT_LOG"
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/bootstrap_phase3_combined_90b9bbe8f4fe4777aa10b11aea48ddd572785a39.py", line 106, in <module>
+    if __name__=="__main__":main()
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/bootstrap_phase3_combined_90b9bbe8f4fe4777aa10b11aea48ddd572785a39.py", line 72, in main
+    raise RuntimeError("combined target check failed ("+suite+"): "+check.stderr[-3000:])
+RuntimeError: combined target check failed (test_phase3_combined_plan.py): test_frozen_package_manifest (test_phase3_combined_plan.Contract) ... ERROR
+test_heldout_paths_rejected_before_file_access (test_phase3_combined_plan.Contract) ... ok
+test_new_stages_keep_temporary_files_in_own_run (test_phase3_combined_plan.Contract) ... ok
+test_stage_counts (test_phase3_combined_plan.Contract) ... ok
+
+======================================================================
+ERROR: test_frozen_package_manifest (test_phase3_combined_plan.Contract)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/phase3_combined_package_90b9bbe8f4fe4777aa10b11aea48ddd572785a39/tests/test_phase3_combined_plan.py", line 32, in test_frozen_package_manifest
+    manifest = json.loads((HERE / "configs/phase3_combined_execution_manifest.json").read_text(encoding="utf-8"))
+  File "/home/jovyan/miniconda3/envs/remote_sensing/lib/python3.9/pathlib.py", line 1266, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/home/jovyan/miniconda3/envs/remote_sensing/lib/python3.9/pathlib.py", line 1252, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/home/jovyan/miniconda3/envs/remote_sensing/lib/python3.9/pathlib.py", line 1120, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/phase3_combined_package_90b9bbe8f4fe4777aa10b11aea48ddd572785a39/configs/phase3_combined_execution_manifest.json'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.003s
+
+FAILED (errors=1)
+
+(remote_sensing) [root@h-aoji-aoji-h100-agent-1-m-0 08_thesis_full_repro]$ 

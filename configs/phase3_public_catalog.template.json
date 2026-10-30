@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "status": "TEMPLATE_ONLY_REPLACE_ALL_PATHS_AND_LABEL_CODING",
+  "datasets": {
+    "3DCD": {
+      "source_url": "https://sites.google.com/uniroma1.it/3dchangedetection/download",
+      "version": "FILL_FROM_DOWNLOADED_RELEASE",
+      "metadata": {
+        "dsm_units_to_meters": "FILL_NUMERIC_FROM_SOURCE",
+        "change2d_positive_values": ["FILL_INTEGER"],
+        "change2d_negative_values": ["FILL_INTEGER"],
+        "change3d_ignore_values": ["FILL_INTEGER"],
+        "change3d_scale_m": "FILL_NUMERIC_FROM_SOURCE",
+        "change3d_offset_m": "FILL_NUMERIC_FROM_SOURCE",
+        "pixel_grid_alignment_verified": false
+      },
+      "development": [
+        {
+          "id": "FILL_UNIQUE_SCENE_ID",
+          "group": "FILL_LABEL_BLIND_GEO_GROUP_1_OF_3",
+          "split": "development",
+          "rgb_t1": "/home/jovyan/zzx/FILL_OFFICIAL_DEV_RGB_T1.tif",
+          "rgb_t2": "/home/jovyan/zzx/FILL_OFFICIAL_DEV_RGB_T2.tif",
+          "dsm_t1": "/home/jovyan/zzx/FILL_OFFICIAL_DEV_DSM_T1.tif",
+          "dsm_t2": "/home/jovyan/zzx/FILL_OFFICIAL_DEV_DSM_T2.tif",
+          "change2d": "/home/jovyan/zzx/FILL_OFFICIAL_DEV_CHANGE_2D.tif",
+          "change3d": "/home/jovyan/zzx/FILL_OFFICIAL_DEV_CHANGE_3D.tif"
+        }
+      ]
+    },
+    "P3": {
+      "source_url": "https://huggingface.co/datasets/rsi/PixelsPointsPolygons",
+      "version": "FILL_FROM_DOWNLOADED_RELEASE",
+      "metadata": {"allow_empty_tiles": false},
+      "development": [
+        {
+          "id": "FILL_UNIQUE_IMAGE_ID",
+          "group": "CH",
+          "split": "development",
+          "image_id": "FILL_INTEGER_FROM_COCO_IMAGES",
+          "rgb": "/home/jovyan/zzx/FILL_OFFICIAL_TRAIN_RGB.tif",
+          "lidar": "/home/jovyan/zzx/FILL_MATCHED_OFFICIAL_TRAIN_LIDAR.copc.laz",
+          "instance": "/home/jovyan/zzx/FILL_OFFICIAL_ANNOTATIONS_ALL_TRAIN.json"
+        }
+      ]
+    }
+  }
+}

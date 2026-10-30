@@ -1,0 +1,8 @@
+{
+  "job": "clean_5_10",
+  "physical_gpu": 0,
+  "optimizer_updates": 0,
+  "observed_at": "2026-10-12T11:15:53.578313+08:00",
+  "elapsed_seconds": 179.89246353507042,
+  "phase": "complete"
+}

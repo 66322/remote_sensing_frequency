@@ -1,0 +1,42 @@
+test_actual_input_binding_write_for_both_gpu_ids (test_phase15.KnownAnswers) ... ok
+test_bootstrap_pairing_and_no_pseudoreplication (test_phase15.KnownAnswers) ... ok
+test_composition_and_seam_containment (test_phase15.KnownAnswers) ... ok
+test_conditional_counts_only_disagreement (test_phase15.KnownAnswers) ... ok
+test_confusion_conservation_invalid_output (test_phase15.KnownAnswers) ... ok
+test_controller_smoke_order_two_lanes_and_failure_hold (test_phase15.KnownAnswers) ... PHASE15_START r0 GPU 0
+PHASE15_START r1 GPU 1
+PHASE15_JOB_COMPLETE r0 GPU 0
+PHASE15_JOB_COMPLETE r1 GPU 1
+PHASE15_START j0 GPU 0
+PHASE15_START j1 GPU 1
+PHASE15_JOB_COMPLETE j0 GPU 0
+PHASE15_JOB_COMPLETE j1 GPU 1
+PHASE15_START j2 GPU 0
+PHASE15_START j3 GPU 1
+PHASE15_JOB_COMPLETE j2 GPU 0
+PHASE15_JOB_COMPLETE j3 GPU 1
+PHASE15_COMPLETE NO_AUTOMATIC_TRAINING
+PHASE15_START r0 GPU 0
+PHASE15_START r1 GPU 1
+ok
+test_crop_permutation_unequal_edges_is_bijective (test_phase15.KnownAnswers) ... ok
+test_distance_rectangle_and_ring (test_phase15.KnownAnswers) ... ok
+test_entropy_and_logit_stitch_cpu (test_phase15.KnownAnswers) ... ok
+test_explicit_path_bug_replacement_guards (test_phase15.KnownAnswers) ... ok
+test_full_fixed_summary_synthetic_end_to_end (test_phase15.KnownAnswers) ... ok
+test_nested_exact_and_deterministic (test_phase15.KnownAnswers) ... ok
+test_observable_features_never_read_gt (test_phase15.KnownAnswers) ... ok
+test_oracle_any_correct_and_ties (test_phase15.KnownAnswers) ... ok
+test_oracle_joint_counts_and_composition_known_answer (test_phase15.KnownAnswers) ... ok
+test_patch_oracle_one_expert_correct_count (test_phase15.KnownAnswers) ... ok
+test_plan_tampering_rejected (test_phase15.KnownAnswers) ... ok
+test_s13_graph_equals_original_continuation (test_phase15.KnownAnswers) ... ok
+test_scheduler_dependencies_and_no_retry (test_phase15.KnownAnswers) ... ok
+test_task_count_unique_and_all_cells (test_phase15.KnownAnswers) ... ok
+test_tile_permutation_exact_multiset (test_phase15.KnownAnswers) ... ok
+test_transitions_net_count_and_by_class (test_phase15.KnownAnswers) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 10.050s
+
+OK

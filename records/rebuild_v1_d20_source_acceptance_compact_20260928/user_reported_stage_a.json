@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "source": "user-reported output of scripts/run_rebuild_v1_d20_stage_a_source_audit.sh",
+  "observed_at": "2026-09-28T15:22:11+08:00",
+  "run_commit": "6c7c0d14290197e6741c48342d5f4f82111473ab",
+  "stage": "D20_A_source_acceptance",
+  "status": "BLOCKED_DATA_TRANSFER_AND_TERMS_PENDING",
+  "facts": {
+    "google_drive_retry_performed": false,
+    "test6_loaded": false,
+    "gpu_used": false,
+    "local_tif_count": 0,
+    "local_rgb_agl_cls_triplets": 0,
+    "server_free_gib": 5769.96,
+    "grss_server_probe": "proxy_403",
+    "dataport_server_probe": "proxy_403",
+    "official_github_torrent_metadata": "reachable_http_200",
+    "torrent_size_bytes": 29731,
+    "torrent_sha256": "7ef1c26b14ed66e257e549c4278f053ac8cb582d477bce738e333b074572a028",
+    "track1_torrent_total_size_bytes": 48682790134,
+    "required_packages": {
+      "Train-Track1-Truth.zip": 8774684120,
+      "Train-Track1-RGB.zip": 7073992673
+    },
+    "required_package_total_bytes": 15848676793
+  },
+  "interpretation": "US3D/DFC2019 Track 1 remains the first candidate. Capacity is not limiting. The remaining Stage-A blockers are an acceptable data-transfer route plus dataset-use/registration terms; no GPU queue is authorized yet.",
+  "next_action": "Run metadata-only tracker/webseed preflight. Do not retry Google Drive or start peer data transfer automatically."
+}
