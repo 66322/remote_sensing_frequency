@@ -1,21 +1,38 @@
-# 下一步：跟进已派发Full队列，A0完整结果已归档（2026-10-30）
+# 下一步：一次注册空间读出接续，保留Full原队列（2026-10-30）
 
-最新Full实际进度19:38:20：[回执](../../records/post_m2_multiroute_v2_20261030_r1/progress_observations/20261030T193820/observation.json)确认已通过CPU准备和七路径轻量profile并进入正式训练。GPU0/PID2518876：Q2第3000步，最近100步2.238秒、取数等待0.149ms；GPU1/PID2518877：G1第1100步，100步2.954秒、等待0.159ms。两窗口取数等待占平均步时均<1%。B0/B1/Q1/S1已返回8k训练循环，至少36,100次Full优化更新为源码/调度推断下界；S1是否资格通过及各方法分数仍待现成结果JSON。当前保持运行，只读已有结果与heartbeat，不重启、不改包、不加测速。
+新空间头接续入口已发布并完成本地17项检查，尚未收到服务器注册、profile或正式更新回执。不能写成已入队。这次执行下面一次即可，之后不再逐phase手动接续。Full无需停止、重装或重新profile；已有正常结束回执时可以直接交接。新入口不是旧Full bootstrap，也不是A0修复重跑。
 
-用户已要求按[最新主计划](../experiments/POST_M2_MULTIROUTE_PLAN_20261030.md)安排实验；[首批执行r1](../experiments/POST_M2_MULTIROUTE_EXECUTION_20261030.md)和[机器清单](../../records/post_m2_multiroute_v2_20261030_release/execution_plan.json)已完成实现及本地检查，Full已收到真实更新心跳，原A0已有4k成功完成证据。
+```bash
+(
+set -e
+ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+REL=5f2958ae8b7d3ac79901eb0261239d89e82b461e
+TOOL="$ROOT/execution/a_spatial_followup_$REL.py"
+mkdir -p "$ROOT/execution"
 
-尚未部署的新任务使用轻量测速修订，精确代码提交见[当前发布回执](../../records/post_m2_multiroute_v2_20261030_release/publication_receipt.json)。若已安装/启动历史4fbabd6版本则读其既有状态，不热改或重启。
+if [ ! -f "$TOOL" ]; then
+  curl -fL --connect-timeout 10 --max-time 60 \
+    "https://raw.githubusercontent.com/66322/remote_sensing_frequency/$REL/scripts/queue_post_m2_a_spatial_20261030.py" \
+    -o "$TOOL.part"
+  mv -n "$TOOL.part" "$TOOL"
+fi
 
-当前A0已完整归档：新run为ROOT/records/post_m2_a0_ipcfix_20261030，各2k/seed42及全部阶段完成，14份小JSON和逐tile整数计数均已收到。内校准+1.6257pp、外层−0.6527pp。原screen保留READY，无新增外层数值门槛；研究复盘建议A1/A2不因内筛阳性自动追加，空间读出仍按原预算独立候选。不要重跑A0或为补文档重新推理。
+/home/jovyan/miniconda3/envs/remote_sensing/bin/python -u -B \
+  "$TOOL" start --commit "$REL"
+)
+```
 
-Full已正式运行（入口PID2517098、代码d15f34e8），最新GPU0 Q2/3000、GPU1 G1/1100。当前不要再执行bootstrap --start。继续原队列，并读取已返回B0/B1/Q1/S1的result.json与outer_selected的各条件Full fg5小摘要，供中途阶段复盘；不新做评价、不停队。它只下载小型固定代码载荷，后台pipeline自动完成CPU数据/公共权重检查、七条真实路径profile、合格后11个Full作业/88k；不另等人工放行、不在训练中安装或下载。
+FOLLOWUP_DISPATCHED_NOT_TRAINING_PROOF只证明后台接续程序已派发。实际等待状态为WAITING_FULL_NORMAL_COMPLETION或WAITING_FULL_WORKERS_TO_RELEASE；取得正常回执与锁、确认两卡释放后自动profile→各2k训练→校准→原screen→条件outer。若Full已收尾，会直接启动后续。正常交接不等Full上传。
 
-排程：B0/B1合格后按就绪任务填满两卡，优先Q1→Q2→Q3真实数据依赖并穿插S/G；G2/G3可在G1合格后并行，S2/S3可在S1合格后并行。固定每卡一个常驻进程，复用编码器与训练图块；新头、优化器、样本流独立绑定。源/包/数据/环境不变的既有检查复用。
+新日志：ROOT/records/post_m2_a_spatial_followup_20261030_r1/followup.log；当前小状态为同目录state.json。只读查询使用同一个固定入口的status动作：
 
-按用户要求，每真实新路径仅一个配置，预热1步、计时3步，共4个丢弃更新；七路径最多28，两个新空间头合计最多8。Full复用已有DINOv2的4worker/micro16；空间头复用各自原骨干配置；不再扫worker/microbatch。有效batch16不变，短计时仅作粗估，正式训练中原有日志继续记录真实耗时。单配置仍由数据等待主导则停，正式训练/评价超过自己profile2.5倍亦停诊断。profile后写measured_budget.json，不引用A0速度外推。原始错误栈保存、共性首败停派发，无自动重试或热改。
+```bash
+/home/jovyan/miniconda3/envs/remote_sensing/bin/python -B \
+  /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/execution/a_spatial_followup_5f2958ae8b7d3ac79901eb0261239d89e82b461e.py status
+```
 
-A分支独立：原A0代码c22a046不变；2026-10-30 16:30:50已收到[DINOv3源码/真实加载/profile通过回执](../../records/post_m2_a0_capability_20261029/dino3_readiness_server_receipt_20261030.json)，DINOv2检查复用，不重复下载/哈希/测速。原pair正式训练、校准和外层评价已完成，不再运行；新增两空间头共4k在原A0完成且两卡空闲时独立运行。整个A0/A空间4探针共8k，与Full队列合计96k。DINOv3未就绪不阻塞G/Q/S，Full/NB128结果分开解释。
+原A0完成且已归档，不重跑；原Full d15最后19:38:20有Q2/3000与G1/1100真实更新，继续现有控制器。新空间头各4步粗测、正式各2k/seed42，沿已准备数据/权重，常驻复用骨干和拟合数组；正式预算不变。已有started/注册/失败不自动重试；工程失败只处理本入口拥有的工作进程，其他GPU进程不触碰。
 
-阶段完整配对后复盘G/Q/S主指标、保护约束和错配/时序控制；科学阴性只收缩对应机制，INVALID不当科学失败。C/P/E/F和频率子实验仍有各自前置，不自动扩队列/种子。M2清理仍暂缓；旧队列不重启，封存集不开。
+接续完成先释放GPU，再归档并尝试上传小结果。没有认证时UPLOAD_PENDING，仅补传现成文件；不为上传重训或推理。后续读取Full与空间完整配对结果按[阶段复盘](../protocols/ITERATIVE_RESEARCH_REVIEW_20261025.md)判断。A1/A2、C/P/E/F与频率仍是各有前置的候选，未排队；M2清理暂缓，封存集不开。
 
-本次已收到A0训练/校准/外层完成回执；Full已收到CPU准备、profile放行与正式更新心跳。先前首次启动命令已完成，不再运行；现在只读状态和原日志。新入口将后续Torch/CUDA临时缓存放在ROOT内，通过链接复用已验权重，不删除原/root缓存副本。
+[来源/检查/停止和保留边界](../experiments/POST_M2_A_SPATIAL_FOLLOWUP_20261030.md)。

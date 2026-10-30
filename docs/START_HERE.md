@@ -1,17 +1,13 @@
-# 共享入口：多路线 v2 首批执行交付（2026-10-30）
+# 当前入口：Full已有正式更新，补齐空间头自动接续（2026-10-30）
 
-最新Full实际进度19:38:20：[回执](../records/post_m2_multiroute_v2_20261030_r1/progress_observations/20261030T193820/observation.json)确认已通过CPU准备和七路径轻量profile并进入正式训练。GPU0/PID2518876：Q2第3000步，最近100步2.238秒、取数等待0.149ms；GPU1/PID2518877：G1第1100步，100步2.954秒、等待0.159ms。两窗口取数等待占平均步时均<1%。B0/B1/Q1/S1已返回8k训练循环，至少36,100次Full优化更新为源码/调度推断下界；S1是否资格通过及各方法分数仍待现成结果JSON。当前保持运行，只读已有结果与heartbeat，不重启、不改包、不加测速。
+先读[研究决定](current/RESEARCH_DECISION.md)、[交接](current/HANDOFF.md)、[状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)。长期约定见[AGENTS](../AGENTS.md)、[执行约定](protocols/EXECUTION_CONTRACT.md)、[规划规则](protocols/EXPERIMENT_PLANNING_RULES.md)和[启动/首败控制](protocols/STARTUP_DELIVERY_AND_FAILURE_CONTROL.md)。
 
-2026-10-30用户进一步修订：加载/测速仅做轻量验证，已有通过项直接复用；新路径只保留一个已有依据的配置，1步预热+3步计时，计时仅作粗估，不跑多组扫参或额外百步训练。七条Full路径最多28个丢弃更新，两个空间头合计最多8；正式科学实验训练预算与测速分开，不能把各2k正式A0误当测速。仅适用于尚未部署的新快照，已安装/运行不热改、不重启，原A0 c22及已测回执不变。
+最后实际观测：2026-10-30 19:38:20+08。Full GPU0 Q2/3000、GPU1 G1/1100，已有真实优化；七条轻量profile通过。B0/B1/Q1/S1已返回8k训练循环，至少36,100次Full更新为源码/派发推断下界；完整科学分数及S1资格结果尚未回传。[原始观察](../records/post_m2_multiroute_v2_20261030_r1/progress_observations/20261030T193820/observation.json)不冒充当前实时存活。
 
-先读[研究决定](current/RESEARCH_DECISION.md)、[交接](current/HANDOFF.md)、[状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)。长期规则见[AGENTS](../AGENTS.md)、[执行约定](protocols/EXECUTION_CONTRACT.md)和[实验规划规则](protocols/EXPERIMENT_PLANNING_RULES.md)。
+原A0已在19:01完成两模型各2k及校准/外层，14份小JSON和原始计数已验。校准DINOv3 +1.6257pp、outer开发−0.6527pp，保留原校准READY，不事后加门槛。[完整A0复盘](experiments/POST_M2_A0_RESULTS_AND_REVIEW_20261030.md)。旧IPC故障16个确认进程已停止，无残留回执；旧失败证据保留，不重跑旧入口。
 
-本轮用户要求按最新规划安排实验，避免M2式代码与资源等待。已实现[执行交付 r1](experiments/POST_M2_MULTIROUTE_EXECUTION_20261030.md)、[机器执行清单](../records/post_m2_multiroute_v2_20261030_release/execution_plan.json)、[小型固定载荷](../records/post_m2_multiroute_v2_20261030_release/payload_manifest.json)。本地14项检查及独立包核验见[本地验收](../records/post_m2_multiroute_v2_20261030_release/local_checks.json)。目标Linux/CUDA、真实新路径吞吐、正式训练均待服务器回执，不写已排队。
+当前Full冻结d15载荷和控制器保持，不再运行bootstrap/repair。原入口只自动覆盖11项Full；两空间读出曾独立、没有接入队尾，现由[外置单次接续](experiments/POST_M2_A_SPATIAL_FOLLOWUP_20261030.md)补齐。新空间头接续入口已发布并完成本地17项检查，尚未收到服务器注册、profile或正式更新回执。不能写成已入队。唯一注册命令见[下一步](current/NEXT_EXPERIMENT.md)，无须逐phase手工操作。
 
-研究依据继续用[多路线主计划](experiments/POST_M2_MULTIROUTE_PLAN_20261030.md)与[文献矩阵](experiments/POST_M2_MULTIROUTE_LITERATURE_20261030.md)。G/Q/S基于现有DINOv2，不等A0阳性。首批15作业/96k，其中主流水线B0/B1+G/Q/S为11作业/88k；原A0与新空间读出各4k独立。C/P/E/F及频率子实验仍有条件，不自动启动。
+接续程序等待Full正常结束和GPU0/1释放，不等上传、不修改Full冻结文件；随后每卡一个常驻进程，复用骨干与拟合图块，按原预算完成两空间头各2k及条件评价。原A0/骨干加载检查复用，只有两个新读出各4步轻量检查。首批仍15作业/96k/seed42，无新增科学预算。
 
-服务器用户执行，无SSH；物理GPU0/1，各一卡一常驻进程。载荷下载后后台依次CPU真实权重/数据检查→每真实路径测速→全部合格后正式队列；不在训练中下载/安装，首败停派发、不自动重试。GPU先释放再上传压缩小证据。
-
-A0继续固定c22a046407daf42064cbb161429f2648c9b86d66；DINOv2既有检查复用。2026-10-30 16:30:50已收到[DINOv3源码HEAD、真实加载与profile通过回执](../records/post_m2_a0_capability_20261029/dino3_readiness_server_receipt_20261030.json)；原A0各2k及校准/外层阶段已完成，外层原始分数已收齐，DINOv3总体低0.6527pp。原小型入口已发生IPC故障，当前采用[独立修复入口](experiments/POST_M2_A0_IPC_REPAIR_20261030.md)在停止已确认故障进程、验证IPC后接续原pair训练→校准→screen→条件外层开发评价，不重复下载/哈希/测速。GPU0/1若正被占用或Full控制器正准备/运行，则不派发竞争队列。该A0回执不替代Full新路径验收。
-
-M2验收与配方关闭、J工程停止保持；M2最终清理因预删除空值统计首败仍暂缓，最后确认18端点，不写0，不自动恢复。GitHub分支rebuild-v1-protocol-20260915为跨电脑权威。
+研究主线不切换。A1/A2、C/P/E/F、频率子实验各有前置，未入队；不把代码就绪当作实验执行。Val2/Test6/held4/final仍封存。M2已验收、DF配方关闭，J工程停止；最终清理仍暂缓，最后确认18端点，无成功最终删除回执。

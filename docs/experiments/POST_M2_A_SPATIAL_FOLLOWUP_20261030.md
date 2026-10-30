@@ -34,3 +34,25 @@
 只需按发布回执执行一次start，不再逐阶段手动操作；不再运行Full bootstrap或旧A0修复命令。status仅显示既有回执与进度；publish仅续传现成小证据。具体固定提交命令在发布回执及当前NEXT_EXPERIMENT提供。
 
 本地Windows Python3.9.25/Torch2.8.0+cpu的17项检查覆盖完成/故障互斥、失效路线独立性、PID复用拒绝、无上传依赖的锁交接、忙卡停止、重复注册、真实DataLoader超时属性、模型/拟合缓存复用及释放、原内筛、首败仅停自身、部分更新不确定性与无权重导出。Linux进程组/fork、H100实际新路径及空间头首更尚待服务器，不以这些本地检查替代。
+
+## 固定版本一次启动命令
+
+```bash
+(
+set -e
+ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
+REL=5f2958ae8b7d3ac79901eb0261239d89e82b461e
+TOOL="$ROOT/execution/a_spatial_followup_$REL.py"
+mkdir -p "$ROOT/execution"
+
+if [ ! -f "$TOOL" ]; then
+  curl -fL --connect-timeout 10 --max-time 60 \
+    "https://raw.githubusercontent.com/66322/remote_sensing_frequency/$REL/scripts/queue_post_m2_a_spatial_20261030.py" \
+    -o "$TOOL.part"
+  mv -n "$TOOL.part" "$TOOL"
+fi
+
+/home/jovyan/miniconda3/envs/remote_sensing/bin/python -u -B \
+  "$TOOL" start --commit "$REL"
+)
+```
