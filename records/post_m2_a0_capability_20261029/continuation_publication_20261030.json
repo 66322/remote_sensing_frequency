@@ -1,0 +1,32 @@
+{
+  "status": "PUBLISHED_READY_FOR_USER_RUN_FORMAL_TRAINING_PENDING",
+  "wrapper_release_commit": "2285fa669d71d9a3898a97f92e5f462f5aa179b4",
+  "a0_execution_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+  "full_execution_commit_unchanged": "4fbabd6b135a41c1ba0891120dcac6546880bf47",
+  "entry": "scripts/continue_post_m2_a0_20261030.sh",
+  "server_script": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_capability_20261029/continue_post_m2_a0_20261030.sh",
+  "expected_existing_data": "Existing F0 development tiles and small M2 source-binding JSONs, reused without rehash/decode probe",
+  "new_data_downloads": 0,
+  "new_dependency_installs": 0,
+  "additional_target_probes": 0,
+  "formal_updates_per_kind": 2000,
+  "seed": 42,
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "stages": [
+    "pair train",
+    "pair evaluate calibration",
+    "screen",
+    "pair evaluate outer only if READY",
+    "status"
+  ],
+  "automatic_retry": false,
+  "new_formal_updates_received": 0,
+  "target_wrapper_run_received": false,
+  "upload_scope": "This publication includes the complete smoke/profile field values parsed from user terminal, provenance, local wrapper checks, code and current handoff. It contains no formal training results. Future A0 formal records remain on server until actually uploaded.",
+  "start_command": "(\nset -e\nROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro\nA0=\"$ROOT/records/post_m2_a0_capability_20261029\"\nREL=2285fa669d71d9a3898a97f92e5f462f5aa179b4\nRUN=\"$A0/continue_post_m2_a0_20261030.sh\"\ntest ! -e \"$RUN\"\ncurl -fL --connect-timeout 10 --max-time 60 \\\n  \"https://raw.githubusercontent.com/66322/remote_sensing_frequency/$REL/scripts/continue_post_m2_a0_20261030.sh\" \\\n  -o \"$RUN.part.$$\"\nmv -n \"$RUN.part.$$\" \"$RUN\"\nLOG=\"$A0/formal_continuation_$(date +%Y%m%dT%H%M%S)_$$.log\"\nnohup bash \"$RUN\" >\"$LOG\" 2>&1 </dev/null &\nPID=$!\nprintf '%s\\n' \"$PID\" > \"$LOG.pid\"\nprintf 'PID=%s\\nLOG=%s\\n' \"$PID\" \"$LOG\"\n)",
+  "duplicate_guard_note": "The download command refuses an already-present RUN. After a launch or partial result, inspect existing A0 status and logs; do not delete guard/start receipts, redownload or restart.",
+  "monitor_note": "Read the printed LOG (tail -n 60). Each model stage has its existing pair_<phase>_<kind>.log; results in dino2/ and dino3/."
+}
