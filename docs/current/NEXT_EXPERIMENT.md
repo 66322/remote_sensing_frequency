@@ -1,38 +1,13 @@
-# 下一步：一次注册空间读出接续，保留Full原队列（2026-10-30）
+# 下一步：汇总现成结果，不再启动实验（2026-10-30）
 
-新空间头接续入口已发布并完成本地17项检查，尚未收到服务器注册、profile或正式更新回执。不能写成已入队。这次执行下面一次即可，之后不再逐phase手动接续。Full无需停止、重装或重新profile；已有正常结束回执时可以直接交接。新入口不是旧Full bootstrap，也不是A0修复重跑。
+2026-10-30 20:41:08用户回执确认：两空间头已于20:39:39完成全部阶段，各2000步且learned=true；DINOv2/DINOv3训练循环约22.78/28.50秒。接续进程已退出，自动上传因EXISTING_AUTH_UNAVAILABLE待补传，no_recompute=true。当前只读汇总现成Full和空间结果，不再执行任何start/bootstrap/repair。Full正常收尾及释放GPU可由接续成功推断，但11项是否全合格仍待其完成摘要；空间校准/outer分数尚未收到。
 
-```bash
-(
-set -e
-ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro
-REL=5f2958ae8b7d3ac79901eb0261239d89e82b461e
-TOOL="$ROOT/execution/a_spatial_followup_$REL.py"
-mkdir -p "$ROOT/execution"
+接续代码5f2958ae8b7d3ac79901eb0261239d89e82b461e已执行，PID2561231已完成使命。queue_process_identity_matches=false与正常完成、退出一致；上传缺认证不是训练失败。
 
-if [ ! -f "$TOOL" ]; then
-  curl -fL --connect-timeout 10 --max-time 60 \
-    "https://raw.githubusercontent.com/66322/remote_sensing_frequency/$REL/scripts/queue_post_m2_a_spatial_20261030.py" \
-    -o "$TOOL.part"
-  mv -n "$TOOL.part" "$TOOL"
-fi
+当前需要读取两run的publication/summary.json、publication/gates.json，Full的train_complete.json/blocked_routes.json，以及空间的handoff、resident_dino2/3和workers_released小回执。用户已收到一次只读汇总命令。收到后通过本聊天的GitHub连接同步小结果；不要求在聊天发送token，不因缺认证重新训练或推理。
 
-/home/jovyan/miniconda3/envs/remote_sensing/bin/python -u -B \
-  "$TOOL" start --commit "$REL"
-)
-```
+Full run：ROOT/records/post_m2_multiroute_v2_20261030_r1。
+空间 run：ROOT/records/post_m2_a_spatial_followup_20261030_r1。
+ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro。
 
-FOLLOWUP_DISPATCHED_NOT_TRAINING_PROOF只证明后台接续程序已派发。实际等待状态为WAITING_FULL_NORMAL_COMPLETION或WAITING_FULL_WORKERS_TO_RELEASE；取得正常回执与锁、确认两卡释放后自动profile→各2k训练→校准→原screen→条件outer。若Full已收尾，会直接启动后续。正常交接不等Full上传。
-
-新日志：ROOT/records/post_m2_a_spatial_followup_20261030_r1/followup.log；当前小状态为同目录state.json。只读查询使用同一个固定入口的status动作：
-
-```bash
-/home/jovyan/miniconda3/envs/remote_sensing/bin/python -B \
-  /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/execution/a_spatial_followup_5f2958ae8b7d3ac79901eb0261239d89e82b461e.py status
-```
-
-原A0完成且已归档，不重跑；原Full d15最后19:38:20有Q2/3000与G1/1100真实更新，继续现有控制器。新空间头各4步粗测、正式各2k/seed42，沿已准备数据/权重，常驻复用骨干和拟合数组；正式预算不变。已有started/注册/失败不自动重试；工程失败只处理本入口拥有的工作进程，其他GPU进程不触碰。
-
-接续完成先释放GPU，再归档并尝试上传小结果。没有认证时UPLOAD_PENDING，仅补传现成文件；不为上传重训或推理。后续读取Full与空间完整配对结果按[阶段复盘](../protocols/ITERATIVE_RESEARCH_REVIEW_20261025.md)判断。A1/A2、C/P/E/F与频率仍是各有前置的候选，未排队；M2清理暂缓，封存集不开。
-
-[来源/检查/停止和保留边界](../experiments/POST_M2_A_SPATIAL_FOLLOWUP_20261030.md)。
+原A0结果已完整归档。新空间头已有各2k及完整阶段完成证据，尚不能仅凭loss判断DINOv3或空间头的指标增益。Full的具体合格/阻断项待摘要，不宣称15项全部科学验收。A1/A2、C/P/E/F、频率仍未入队；不扩种子，封存集不开，M2清理继续暂缓。

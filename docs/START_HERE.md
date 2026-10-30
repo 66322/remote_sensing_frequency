@@ -6,7 +6,7 @@
 
 原A0已在19:01完成两模型各2k及校准/外层，14份小JSON和原始计数已验。校准DINOv3 +1.6257pp、outer开发−0.6527pp，保留原校准READY，不事后加门槛。[完整A0复盘](experiments/POST_M2_A0_RESULTS_AND_REVIEW_20261030.md)。旧IPC故障16个确认进程已停止，无残留回执；旧失败证据保留，不重跑旧入口。
 
-当前Full冻结d15载荷和控制器保持，不再运行bootstrap/repair。原入口只自动覆盖11项Full；两空间读出曾独立、没有接入队尾，现由[外置单次接续](experiments/POST_M2_A_SPATIAL_FOLLOWUP_20261030.md)补齐。新空间头接续入口已发布并完成本地17项检查，尚未收到服务器注册、profile或正式更新回执。不能写成已入队。唯一注册命令见[下一步](current/NEXT_EXPERIMENT.md)，无须逐phase手工操作。
+当前Full冻结d15载荷和控制器保持，不再运行bootstrap/repair。原入口只自动覆盖11项Full；两空间读出曾独立、没有接入队尾，现由[外置单次接续](experiments/POST_M2_A_SPATIAL_FOLLOWUP_20261030.md)补齐。2026-10-30 20:41:08用户回执确认：两空间头已于20:39:39完成全部阶段，各2000步且learned=true；DINOv2/DINOv3训练循环约22.78/28.50秒。接续进程已退出，自动上传因EXISTING_AUTH_UNAVAILABLE待补传，no_recompute=true。当前只读汇总现成Full和空间结果，不再执行任何start/bootstrap/repair。Full正常收尾及释放GPU可由接续成功推断，但11项是否全合格仍待其完成摘要；空间校准/outer分数尚未收到。当前结果汇总见[下一步](current/NEXT_EXPERIMENT.md)，无须逐phase手工操作。
 
 接续程序等待Full正常结束和GPU0/1释放，不等上传、不修改Full冻结文件；随后每卡一个常驻进程，复用骨干与拟合图块，按原预算完成两空间头各2k及条件评价。原A0/骨干加载检查复用，只有两个新读出各4步轻量检查。首批仍15作业/96k/seed42，无新增科学预算。
 

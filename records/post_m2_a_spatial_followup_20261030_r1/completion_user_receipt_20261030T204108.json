@@ -1,0 +1,56 @@
+{
+  "evidence_origin": "user pasted status output; not complete server artifact archive",
+  "observed_at": "2026-10-30T20:41:08.155099+08:00",
+  "dispatch": {
+    "status": "FOLLOWUP_DISPATCHED_NOT_TRAINING_PROOF",
+    "observed_at": "2026-10-30T20:37:48.763994+08:00",
+    "pid": 2561231,
+    "start_ticks": "5333021547",
+    "log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a_spatial_followup_20261030_r1/followup.log"
+  },
+  "followup_commit": "5f2958ae8b7d3ac79901eb0261239d89e82b461e",
+  "payload_commit": "d15f34e8d53f935aa17542123c2227fab14cb810",
+  "state": {
+    "status": "SPATIAL_PAIR_ALL_PHASES_COMPLETE",
+    "observed_at": "2026-10-30T20:39:39.414742+08:00"
+  },
+  "run_complete": {
+    "status": "SPATIAL_PAIR_ALL_PHASES_COMPLETE",
+    "observed_at": "2026-10-30T20:39:39.413345+08:00"
+  },
+  "upload_pending": {
+    "status": "EXISTING_AUTH_UNAVAILABLE",
+    "no_recompute": true,
+    "observed_at": "2026-10-30T20:39:39.478036+08:00"
+  },
+  "queue_process_identity_matches": false,
+  "dino2_progress": {
+    "step": 2000,
+    "loss": 0.3333075940608978,
+    "seconds": 22.64508915692568
+  },
+  "dino3_progress": {
+    "step": 2000,
+    "loss": 0.33903968334198,
+    "seconds": 28.365236148238182
+  },
+  "train_results": {
+    "dino2": {
+      "status": "TRAINED_SPATIAL_HEAD",
+      "updates": 2000,
+      "learned": true,
+      "seconds": 22.783465161919594,
+      "observed_at": "2026-10-30T20:38:54.091809+08:00"
+    },
+    "dino3": {
+      "status": "TRAINED_SPATIAL_HEAD",
+      "updates": 2000,
+      "learned": true,
+      "seconds": 28.503792017698288,
+      "observed_at": "2026-10-30T20:38:59.853577+08:00"
+    }
+  },
+  "calibration_outer_scores_received": false,
+  "full_job_outcomes_received": false,
+  "next_action": "read existing summaries/gates and lifecycle receipts; no training/inference/restart"
+}
