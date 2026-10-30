@@ -2410,15 +2410,16 @@
     }
   ],
   "next_plan": {
-    "status": "IMPLEMENTED_LOCAL_CHECKED_TARGET_PENDING",
+    "status": "FULL_ENTRY_DISPATCHED_READ_EXISTING_PROGRESS",
     "document": "docs/experiments/POST_M2_MULTIROUTE_EXECUTION_20261030.md",
     "research_plan": "docs/experiments/POST_M2_MULTIROUTE_PLAN_20261030.md",
     "machine_plan": "records/post_m2_multiroute_v2_20261030_release/execution_plan.json",
     "user_authorized_arrangement": true,
-    "server_training_started": false,
+    "server_training_started": null,
     "automatic_retry": false,
-    "a0_next_action": "Read existing small result JSONs only, no recomputation. User-run fixed d15 Full bootstrap only if uninstalled/unstarted; existing source/receipts -> status only.",
-    "a0_launcher_dispatched": true
+    "a0_next_action": "Complete raw A0 accepted; no recomputation. Read existing Full pipeline log/heartbeat_gpu0/1 only, PID2517098; no new queue.",
+    "a0_launcher_dispatched": true,
+    "server_training_started_evidence": "Full formal updates unobserved; A0 successful4k archived."
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -3481,11 +3482,13 @@
     "a0_launcher_pid": 2506856,
     "a0_formal_update_status": "BOTH_2000_COMPLETE_CAL_AND_OUTER_PHASE_COMPLETE",
     "training_started_status_note": "Original A0 successful2k/model observed. Full launch remains unobserved.",
-    "current_resource_owner": "A0 paired GPU phases exited successfully; fresh Full device guard must confirm physicalGPU0/1 idle before dispatch",
+    "current_resource_owner": "Full entry dispatched on authorizedGPU0/1; actual current worker/optimizer state awaits heartbeat/log. Do not start competing A/spatial/teacher jobs.",
     "original_a0_completed_jobs": 2,
     "original_a0_completed_updates": 4000,
     "remaining_registered_successful_jobs": 13,
-    "remaining_registered_successful_updates": 92000
+    "remaining_registered_successful_updates": 92000,
+    "full_pipeline_pid": 2517098,
+    "full_pipeline_entry_dispatched": true
   },
   "completed_d26_plan": {
     "input_manifest_sha256": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295",
@@ -4181,7 +4184,7 @@
   },
   "latest_research_plan": {
     "date": "2026-10-30",
-    "status": "MULTIROUTE_V2_FIRST_WAVE_IMPLEMENTED_NOT_DEPLOYED",
+    "status": "ORIGINAL_A0_COMPLETE_FULL_ENTRY_DISPATCHED",
     "document": "docs/experiments/POST_M2_MULTIROUTE_PLAN_20261030.md",
     "gate_scope": "A0 only gates A1/A2; G/Q/S independent DINOv2 routes",
     "recommended_first_seed": 42,
@@ -4190,7 +4193,7 @@
   },
   "latest_implementation": {
     "date": "2026-10-30",
-    "status": "IMPLEMENTED_LOCAL_CHECKED_TARGET_PENDING",
+    "status": "TARGET_PAYLOAD_INSTALLED_FULL_ENTRY_DISPATCHED_CPU_GPU_PROFILE_PENDING",
     "document": "docs/experiments/POST_M2_MULTIROUTE_EXECUTION_20261030.md",
     "script": "scripts/post_m2_multiroute.py",
     "bootstrap": "scripts/bootstrap_post_m2_v2.py",
@@ -4222,8 +4225,10 @@
     "config_version": 2,
     "profile_policy_revision": "USER_REQUESTED_MINIMAL_LOADING_AND_TIMING_20261030",
     "hot_patch_running_source": false,
-    "a0_current_execution_status": "ORIGINAL_A0_4K_CAL_OUTER_COMPLETED_RAW_OUTER_METRICS_PENDING",
-    "full_ipc_path_fix_implemented_not_deployed": true
+    "a0_current_execution_status": "A0_COMPLETE_CALIBRATION_SCREEN_PASSED_OUTER_ADVANTAGE_NOT_REPLICATED",
+    "full_ipc_path_fix_implemented_not_deployed": true,
+    "target_payload_install_received": true,
+    "target_pipeline_pid": 2517098
   },
   "historical_routing_before_multiroute_execution_20261030": {
     "next_plan": {
@@ -4370,7 +4375,7 @@
       2426732
     ],
     "old_formal_updates": "NOT_OBSERVED_EXACT_COUNT_UNKNOWN",
-    "repair_target_status": "TARGET_REPAIRED_PAIR_TRAIN_CAL_OUTER_COMPLETED",
+    "repair_target_status": "FULL_A0_TARGET_CHAIN_COMPLETE_RAW_RESULTS_VERIFIED",
     "new_run": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030"
   },
   "latest_resource_observation": {
@@ -4399,95 +4404,46 @@
     "formal_updates_received": false
   },
   "latest_a0_completion": {
-    "status": "ORIGINAL_A0_LINEAR_PAIR_TRAIN_CAL_OUTER_COMPLETED_CAL_SCREEN_POSITIVE_OUTER_METRICS_PENDING",
-    "last_observed_at": "2026-10-30T19:01:20.924026+08:00",
-    "source": "user_pasted_terminal_completion_excerpt; original result JSONs not independently received yet",
-    "scientific_source_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
-    "execution_patch_commit": "d15f34e8d53f935aa17542123c2227fab14cb810",
-    "successful_completed_updates": {
-      "dino2": 2000,
-      "dino3": 2000,
-      "total": 4000
-    },
+    "status": "RAW_COMPLETE_VERIFIED_INNER_SCREEN_PASSED_OUTER_ADVANTAGE_NOT_REPLICATED",
+    "record": "records/post_m2_a0_ipcfix_20261030/accepted_result_review_20261030.json",
+    "historical_terminal_completion_record": "records/post_m2_a0_ipcfix_20261030/completion_observation_20261030.json",
     "successful_completed_jobs": 2,
-    "training_loop_seconds": {
-      "dino2": 20.98410914838314,
-      "dino3": 27.903296507894993
+    "successful_completed_updates": 4000,
+    "calibration_fg5": {
+      "dino2": 71.83675103208176,
+      "dino3": 73.46244357679022,
+      "delta_pp": 1.625692544708457
     },
-    "timing_scope": "Training loop after data/model preparation; excludes those loads and all evaluations. Not whole-stage wall time.",
-    "calibration": {
-      "observed_at": "2026-10-30T19:00:48.465103+08:00",
-      "dino3_minus_dino2_pooled_pp": 1.625692544708457,
-      "tile_differences_pp": [
-        0.3687178663341655,
-        2.933703757193811
-      ],
-      "training_trajectory_decreased": true,
-      "both_probes_competent": true,
-      "criteria": {
-        "delta_pp": 0.3,
-        "tile_floor_pp": -0.2,
-        "inner_miou_floor_percent": 50,
-        "relative_train_loss_decrease_required": true
-      },
-      "interpretation": "A0 selected-frozen-feature probe only; no general claim that one teacher has or lacks world knowledge.",
-      "screen_status": "READY_FOR_OUTER_DEVELOPMENT_EVALUATION",
-      "status_basis": "Inferred from the displayed criteria/true competence flags and the guarded outer phase executing successfully; original status header was outside tail."
+    "outer_fg5": {
+      "dino2": 71.03935469280408,
+      "dino3": 70.38669702323286,
+      "delta_pp": -0.6526576695712265
     },
-    "outer": {
-      "pair_complete": true,
-      "parallel": true,
-      "child_exit_codes": {
-        "dino2": 0,
-        "dino3": 0
-      },
-      "result_file_presence": {
-        "dino2": true,
-        "dino3": true
-      },
-      "absolute_pooled_scores_received": false,
-      "per_tile_scores_received": false,
-      "raw_confusion_matrices_received": false,
-      "comparison_conclusion": "PENDING_RAW_OUTER_RESULTS"
-    },
-    "final_status_flags": {
-      "dino2": {
-        "train_started.json": true,
-        "train_complete.json": true,
-        "calibration_result.json": true,
-        "outer_result.json": true,
-        "failure.txt": false,
-        "calibration_failure.txt": false,
-        "outer_failure.txt": false,
-        "profile": true
-      },
-      "dino3": {
-        "train_started.json": true,
-        "train_complete.json": true,
-        "calibration_result.json": true,
-        "outer_result.json": true,
-        "failure.txt": false,
-        "calibration_failure.txt": false,
-        "outer_failure.txt": false,
-        "profile": true
-      },
-      "calibration_screen": true
-    },
-    "actual_ipc_and_training_path": "Repaired target reached update2000 and completed both evaluation stages. No failure flags shown in final status; no further model loading/speed probes needed.",
-    "interpretation": "Supports positive inner-calibration linear-readout comparison only. Full/NB128 tasks remain separate; outer is reused F0 development, not a sealed independent test or a world-knowledge claim.",
-    "failed_original_attempt": "Preserved with unknown exact unlogged update count; not counted as zero.",
-    "remaining_registered_successful_update_budget": {
-      "full_main_jobs": 11,
-      "full_main_updates": 88000,
-      "new_spatial_jobs": 2,
-      "new_spatial_updates": 4000,
-      "total": 92000
-    },
-    "next_action": "Read and archive existing small A0 JSON files without recomputation; independently user-run the already-published d15 Full bootstrap when GPU0/1 idle and no existing installed/running Full instance.",
-    "full_new_profile_max_disposable_updates": 28,
-    "new_model_probe_for_completed_a0": 0,
-    "target_full_pipeline_launch_received": false,
-    "new_queue_started_by_assistant": false,
-    "record": "records/post_m2_a0_ipcfix_20261030/completion_observation_20261030.json"
+    "raw_small_files_received": 14,
+    "integer_matrices_verified": 16,
+    "scientific_source_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+    "execution_patch_commit": "d15f34e8d53f935aa17542123c2227fab14cb810"
+  },
+  "latest_a0_acceptance": {
+    "status": "A0_COMPLETE_CALIBRATION_SCREEN_PASSED_OUTER_ADVANTAGE_NOT_REPLICATED",
+    "record": "records/post_m2_a0_ipcfix_20261030/accepted_result_review_20261030.json",
+    "report": "docs/experiments/POST_M2_A0_RESULTS_AND_REVIEW_20261030.md",
+    "raw_small_files_received": 14,
+    "verified_integer_matrices": 16,
+    "completed_updates": 4000,
+    "inner_delta_pp": 1.625692544708457,
+    "outer_delta_pp": -0.6526576695712265,
+    "original_screen_preserved": "READY_FOR_OUTER_DEVELOPMENT_EVALUATION",
+    "outer_gate_retroactively_added": false,
+    "a1_a2": "CONDITIONAL_UNQUEUED_NOT_AUTOMATICALLY_EXPANDED",
+    "independent_spatial_and_gqs": "RETAINED"
+  },
+  "latest_full_dispatch": {
+    "status": "TARGET_PAYLOAD_INSTALLED_ENTRY_DISPATCHED_FORMAL_PROGRESS_PENDING",
+    "pid": 2517098,
+    "code_commit": "d15f34e8d53f935aa17542123c2227fab14cb810",
+    "record": "records/post_m2_multiroute_v2_20261030_r1/dispatch_user_receipt_20261030.json",
+    "formal_updates_received": 0,
+    "exact_current_updates": "UNOBSERVED"
   }
 }

@@ -1,0 +1,41 @@
+{
+  "observed_at": "2026-10-30T10:59:10.597224+00:00",
+  "stopped_pids": [
+    2426731,
+    2426713,
+    2426732,
+    2426676,
+    2427317,
+    2427318,
+    2427319,
+    2427320,
+    2427335,
+    2427336,
+    2427337,
+    2427338,
+    2427340,
+    2427341,
+    2427342,
+    2427343
+  ],
+  "sigkill_pids": [],
+  "remaining_owned_pids": [],
+  "update_evidence_after_stop": {
+    "dino2": {
+      "last_logged_step": null,
+      "progress": null,
+      "formal_artifacts": [],
+      "af_unix_error_observed": true,
+      "update_evidence": "NO_SUCCESSFUL_UPDATE_OBSERVED"
+    },
+    "dino3": {
+      "last_logged_step": null,
+      "progress": null,
+      "formal_artifacts": [],
+      "af_unix_error_observed": true,
+      "update_evidence": "NO_SUCCESSFUL_UPDATE_OBSERVED"
+    }
+  },
+  "originals_preserved": true,
+  "exact_total_failed_attempt_updates": "UNKNOWN; absence of a progress record alone is not proof of zero updates"
+}

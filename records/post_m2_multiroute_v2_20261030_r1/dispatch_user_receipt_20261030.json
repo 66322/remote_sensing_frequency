@@ -1,0 +1,31 @@
+{
+  "status": "TARGET_FROZEN_PAYLOAD_INSTALLED_BACKGROUND_ENTRY_DISPATCHED_PROFILE_AND_TRAINING_NOT_YET_OBSERVED",
+  "source": "user_pasted_bootstrap_terminal",
+  "code_commit": "d15f34e8d53f935aa17542123c2227fab14cb810",
+  "source_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/execution/post_m2_multiroute_v2_20261030_r1",
+  "runtime_directory": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_multiroute_v2_20261030_r1",
+  "pipeline_pid": 2517098,
+  "pipeline_log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_multiroute_v2_20261030_r1/pipeline.log",
+  "bootstrap_reported_bytes": 2930,
+  "stdout_lines": [
+    "FROZEN_PAYLOAD_READY /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/execution/post_m2_multiroute_v2_20261030_r1",
+    "PIPELINE_DISPATCHED_NOT_TRAINING_PROOF 2517098 log /home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_multiroute_v2_20261030_r1/pipeline.log"
+  ],
+  "observed_at": null,
+  "observation_time_note": "No standalone dispatch timestamp in pasted output; do not reuse the earlier A0 result timestamp.",
+  "completed_formal_updates_received": 0,
+  "exact_current_formal_updates": "NOT_OBSERVED",
+  "target_cpu_prepare_received": false,
+  "target_path_profile_received": false,
+  "scientific_result_received": false,
+  "registered_formal_jobs": 11,
+  "registered_formal_updates": 88000,
+  "maximum_disposable_new_profile_updates": 28,
+  "seed": 42,
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "automatic_retry": false,
+  "next_action": "Read this existing pipeline.log and heartbeat_gpu0/1 JSONs only; do not reinstall/restart or launch a competing spatial/A1/A2 queue."
+}

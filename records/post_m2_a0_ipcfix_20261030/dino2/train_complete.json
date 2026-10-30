@@ -1,0 +1,23 @@
+{
+  "status": "TRAINED_HEAD_ONLY",
+  "kind": "dino2",
+  "optimizer_updates": 2000,
+  "endpoint_bytes": 11381,
+  "elapsed_seconds": 20.98881996423006,
+  "total_wall_seconds": 58.66372096538544,
+  "data_load_seconds": 35.42991256713867,
+  "model_load_seconds": 1.410300299525261,
+  "observed_at": "2026-10-30T19:00:15.934218+08:00",
+  "code_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "peak_allocated_bytes": 493810176,
+  "peak_reserved_bytes": 635437056,
+  "execution_patch": {
+    "scientific_source_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+    "execution_patch_commit": "d15f34e8d53f935aa17542123c2227fab14cb810",
+    "revision": "A0_IPC_PATH_FIX_20261030",
+    "run_name": "post_m2_a0_ipcfix_20261030",
+    "ipc_tmpdir": "/home/jovyan/zzx/tmp/a0_ipc",
+    "loader_timeout_seconds": 30
+  }
+}

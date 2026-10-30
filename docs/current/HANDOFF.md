@@ -1,6 +1,6 @@
 # 当前交接：多路线 v2 首批执行版本 r1（2026-10-30）
 
-2026-10-30 19:01:20（北京时间）[A0完成回执](../../records/post_m2_a0_ipcfix_20261030/completion_observation_20261030.json)：DINOv2/DINOv3各完成2,000正式更新，合计4,000；校准与外层开发评价都完成、最终状态无失败标记。校准DINOv3−DINOv2为+1.6257pp，两tile分别+0.3687/+2.9337pp，筛查阳性。外层分数/整数矩阵原件尚未回传，不能提前报告外层胜负。当前不重跑A0；只收集现成小JSON，同时按已授权计划接续独立Full B0/B1与G/Q/S队列，首次部署用固定d15f34e8源；已安装/运行则只读状态，禁止重复启动。
+已接收A0全部14份现成小JSON，16个整数矩阵与指标核对一致，见[结果与阶段复盘](../experiments/POST_M2_A0_RESULTS_AND_REVIEW_20261030.md)：内校准DINOv3−DINOv2 +1.6257pp，外层开发−0.6527pp（71.0394%→70.3867%），四tile两升两降。原内校准screen保留READY；整体优势未在外层复现，A1/A2保持条件且未入队，独立空间读出及G/Q/S不关闭。Full固定载荷已安装、后台入口PID2517098已派发；正式进度尚未回传。当前只读现有pipeline.log和heartbeat_gpu0/1，不重新启动、测速或改配方。
 
 2026-10-30用户进一步修订：加载/测速仅做轻量验证，已有通过项直接复用；新路径只保留一个已有依据的配置，1步预热+3步计时，计时仅作粗估，不跑多组扫参或额外百步训练。七条Full路径最多28个丢弃更新，两个空间头合计最多8；正式科学实验训练预算与测速分开，不能把各2k正式A0误当测速。仅适用于尚未部署的新快照，已安装/运行不热改、不重启，原A0 c22及已测回执不变。
 
@@ -10,13 +10,13 @@
 
 ## 当前接续
 
-A0原两线性头已在[独立IPC修复run](../experiments/POST_M2_A0_IPC_REPAIR_20261030.md)完成各2k与校准/外层评价。原profile复用，准备优化更新0；失败旧attempt仍保留，精确未记录更新数未知。现在收集现成结果JSON，不重算A0；独立Full队列按已授权计划接续。修复后的新入口按同一科学合同串接各2k训练、校准、screen与条件外层评价，不重做检查；旧入口保留停态。既有Full队列若已运行（包括CPU准备）则不派发第二控制器。Full独立入口继续是在既有remote_sensing环境按固定发布commit执行bootstrap --start；缺少启动回执时不能重复启动。服务器由用户操作，无SSH。小载荷保存于ROOT/execution/post_m2_multiroute_v2_20261030_r1；运行目录ROOT/records/post_m2_multiroute_v2_20261030_r1；ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro。后台pipeline依次CPU数据/真实公共权重严格加载→七条真实路径profile→全部合格后11作业/88k，阶段间自动接续，无隐藏下载/安装或人工确认等待。
+A0原两线性头已在[独立IPC修复run](../experiments/POST_M2_A0_IPC_REPAIR_20261030.md)完成各2k与校准/外层评价。原profile复用，准备优化更新0；失败旧attempt仍保留，精确未记录更新数未知。14份现成小JSON已收齐并核对，外层为负向比较，不重算A0。独立Full队列已派发PID2517098，现在只读原日志/heartbeat确认实际进度。修复后的新入口按同一科学合同串接各2k训练、校准、screen与条件外层评价，不重做检查；旧入口保留停态。既有Full队列若已运行（包括CPU准备）则不派发第二控制器。Full独立入口继续是在既有remote_sensing环境按固定发布commit执行bootstrap --start；缺少启动回执时不能重复启动。服务器由用户操作，无SSH。小载荷保存于ROOT/execution/post_m2_multiroute_v2_20261030_r1；运行目录ROOT/records/post_m2_multiroute_v2_20261030_r1；ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro。后台pipeline依次CPU数据/真实公共权重严格加载→七条真实路径profile→全部合格后11作业/88k，阶段间自动接续，无隐藏下载/安装或人工确认等待。
 
 每卡常驻一个进程，跨作业复用DINOv2与六拟合tile；头/优化器独立初始化。G/S候选及错配控制在各自主控制合格后可并行；Q3必须读取Q2实际暴露记录。默认42，有效batch16，Full512监督。G/Q/S不等DINOv3。真实耗时由measured_budget.json给出，A0速度不外推。共性首败停止整队、保留原栈，仅终止自身进程组，不自动重试/改配方/删锁。
 
 ## A分支与证据边界
 
-原A0脚本逐字节保持c22a046407daf42064cbb161429f2648c9b86d66，DINOv2检查复用；DINOv3下载/首次SHA256后，源码HEAD、真实加载和profile也通过，见[最新回执](../../records/post_m2_a0_capability_20261029/dino3_readiness_server_receipt_20261030.json)及[原profile字段](../../records/post_m2_a0_capability_20261029/profile_dino3.json)。原两线性头成功完成回执为各2k，终端确认4k及完整评价阶段；原始outer JSON尚待回传。新增薄层入口只串接原阶段，不修改原科学合同或阈值；首败停止、无自动重试。原环境最后已确认Python3.11.13/Torch2.7.1+cu126、torchvision0.22.1/torchaudio2.7.1、pip check通过，不重建。
+原A0脚本逐字节保持c22a046407daf42064cbb161429f2648c9b86d66，DINOv2检查复用；DINOv3下载/首次SHA256后，源码HEAD、真实加载和profile也通过，见[最新回执](../../records/post_m2_a0_capability_20261029/dino3_readiness_server_receipt_20261030.json)及[原profile字段](../../records/post_m2_a0_capability_20261029/profile_dino3.json)。原两线性头成功完成回执为各2k，终端确认4k及完整评价阶段；原始outer JSON已归档，pooled fg5为DINOv2 71.0394%、DINOv3 70.3867%。新增薄层入口只串接原阶段，不修改原科学合同或阈值；首败停止、无自动重试。原环境最后已确认Python3.11.13/Torch2.7.1+cu126、torchvision0.22.1/torchaudio2.7.1、pip check通过，不重建。
 
 新A空间头代码已交付，两骨干同19,254参数、同原A0样本流/NB128监督，各2k；依原A0双模型真实检查和正式训练完成，在双卡空闲窗口独立分阶段运行，不混入Full队列。原A0各2k+空间各2k合计8k；与11×8k共96k。旧线性头2,310参数，不能宣称线性/空间同容量，也不能绕过旧外层screen。
 
@@ -30,4 +30,4 @@ M2已完成108训练/3,456,000更新/77,868评价，DF配方关闭；J工程停�
 
 小证据自动导出压缩evidence.jsonl.gz，含逐tile整数矩阵、边界/ROI计数、训练轨迹、真实暴露/重放、来源、成本和原始错误日志。先释放GPU再沿已有认证上传records/运行名；认证不可用保留UPLOAD_PENDING，后续仅publish不重算。原始数据/公共权重不进普通Git，最少端点保留服务器。
 
-Full流水线的本地Windows/Python3.9.25/Torch2.8.0+cpu检查不能替代其目标Linux/fork/CUDA/真实权重与吞吐验收。A0两骨干目标加载/测速已通过，与Full验收分开。已收到A0正向内校准开发结果和阶段完成回执，外层具体分数尚待现成JSON；Full新路线目标回执尚缺，不能据A0完成推断它已部署。科学主线未更换，封存集未打开，C/P/E/F仍按自身条件准备。
+Full流水线的本地Windows/Python3.9.25/Torch2.8.0+cpu检查不能替代其目标Linux/fork/CUDA/真实权重与吞吐验收。A0两骨干目标加载/测速已通过，与Full验收分开。已收到A0正向内校准开发结果和阶段完成回执，外层小JSON已归档并经计数核对；Full已安装载荷且入口派发，CPU/profile/真实更新仍待回传。科学主线未更换，封存集未打开，C/P/E/F仍按自身条件准备。
