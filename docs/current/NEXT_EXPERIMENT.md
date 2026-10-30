@@ -1,12 +1,14 @@
-# 下一步：部署多路线 v2 r1，按真实测速自动放行（2026-10-30）
+# 下一步：读取已派发A0的进度，不重复启动（2026-10-30）
+
+2026-10-30最新启动回执：用户已派发原A0后台入口，PID `2426676`，日志文件名时间戳`20261030T171015`，见[回执](../../records/post_m2_a0_capability_20261029/continuation_dispatch_user_receipt_20261030.json)。目前只证明后台入口派发，预检通过、GPU子进程、正式首更和阶段完成仍未回传。当前唯一操作为读取这份既有日志及pair_train日志，不重复启动/测速，不另派Full或空间头竞争队列。
 
 用户已要求按[最新主计划](../experiments/POST_M2_MULTIROUTE_PLAN_20261030.md)安排实验；[首批执行r1](../experiments/POST_M2_MULTIROUTE_EXECUTION_20261030.md)和[机器清单](../../records/post_m2_multiroute_v2_20261030_release/execution_plan.json)已完成实现及本地检查，无目标训练回执。
 
 尚未部署的新任务使用轻量测速修订，精确代码提交见[当前发布回执](../../records/post_m2_multiroute_v2_20261030_release/publication_receipt.json)。若已安装/启动历史4fbabd6版本则读其既有状态，不热改或重启。
 
-当前A0接续：双骨干真实加载/profile已齐备，在GPU0/1空闲且没有既有Full控制器时，按[薄层接续入口](../experiments/POST_M2_A0_CONTINUATION_20261030.md)串接原pair训练、校准、screen和条件外层评价；各2k/seed42，不新增探针或人工阶段等待。
+当前A0接续：后台入口已派发；读取上述精确日志和pair_train_dino2/dino3日志确认预检、首更、完成或原始错误。入口继续按原合同自动串接pair训练、校准、screen和条件外层评价，各2k/seed42。未见进度不等于任务停止，禁止重复启动或为补回执加测。
 
-Full独立入口：服务器沿既有remote_sensing，按本次固定发布commit运行bootstrap --start。它只下载小型固定代码载荷，后台pipeline自动完成CPU数据/公共权重检查、七条真实路径profile、合格后11个Full作业/88k；不另等人工放行、不在训练中安装或下载。
+后续Full独立入口（当前不另派发）：服务器沿既有remote_sensing，按本次固定发布commit运行bootstrap --start。它只下载小型固定代码载荷，后台pipeline自动完成CPU数据/公共权重检查、七条真实路径profile、合格后11个Full作业/88k；不另等人工放行、不在训练中安装或下载。
 
 排程：B0/B1合格后按就绪任务填满两卡，优先Q1→Q2→Q3真实数据依赖并穿插S/G；G2/G3可在G1合格后并行，S2/S3可在S1合格后并行。固定每卡一个常驻进程，复用编码器与训练图块；新头、优化器、样本流独立绑定。源/包/数据/环境不变的既有检查复用。
 
@@ -16,4 +18,4 @@ A分支独立：原A0代码c22a046不变；2026-10-30 16:30:50已收到[DINOv3�
 
 阶段完整配对后复盘G/Q/S主指标、保护约束和错配/时序控制；科学阴性只收缩对应机制，INVALID不当科学失败。C/P/E/F和频率子实验仍有各自前置，不自动扩队列/种子。M2清理仍暂缓；旧队列不重启，封存集不开。
 
-本次只有A0 DINOv3工程检查/profile回执，没有正式A0更新或新Full流水线启动回执；不得据此重复启动既有队列。新入口将后续Torch/CUDA临时缓存放在ROOT内，通过链接复用已验权重，不删除原/root缓存副本。
+本次新增A0后台入口派发回执，尚无正式首更、阶段完成或新Full流水线启动回执；不得据此重复启动既有队列。新入口将后续Torch/CUDA临时缓存放在ROOT内，通过链接复用已验权重，不删除原/root缓存副本。

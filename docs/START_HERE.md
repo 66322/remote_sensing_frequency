@@ -1,5 +1,7 @@
 # 共享入口：多路线 v2 首批执行交付（2026-10-30）
 
+2026-10-30最新启动回执：用户已派发原A0后台入口，PID `2426676`，日志文件名时间戳`20261030T171015`，见[回执](../records/post_m2_a0_capability_20261029/continuation_dispatch_user_receipt_20261030.json)。目前只证明后台入口派发，预检通过、GPU子进程、正式首更和阶段完成仍未回传。当前唯一操作为读取这份既有日志及pair_train日志，不重复启动/测速，不另派Full或空间头竞争队列。
+
 2026-10-30用户进一步修订：加载/测速仅做轻量验证，已有通过项直接复用；新路径只保留一个已有依据的配置，1步预热+3步计时，计时仅作粗估，不跑多组扫参或额外百步训练。七条Full路径最多28个丢弃更新，两个空间头合计最多8；正式科学实验训练预算与测速分开，不能把各2k正式A0误当测速。仅适用于尚未部署的新快照，已安装/运行不热改、不重启，原A0 c22及已测回执不变。
 
 先读[研究决定](current/RESEARCH_DECISION.md)、[交接](current/HANDOFF.md)、[状态](current/PROJECT_STATUS.md)、[下一步](current/NEXT_EXPERIMENT.md)。长期规则见[AGENTS](../AGENTS.md)、[执行约定](protocols/EXECUTION_CONTRACT.md)和[实验规划规则](protocols/EXPERIMENT_PLANNING_RULES.md)。

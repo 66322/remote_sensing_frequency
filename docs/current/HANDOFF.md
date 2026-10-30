@@ -1,5 +1,7 @@
 # 当前交接：多路线 v2 首批执行版本 r1（2026-10-30）
 
+2026-10-30最新启动回执：用户已派发原A0后台入口，PID `2426676`，日志文件名时间戳`20261030T171015`，见[回执](../../records/post_m2_a0_capability_20261029/continuation_dispatch_user_receipt_20261030.json)。目前只证明后台入口派发，预检通过、GPU子进程、正式首更和阶段完成仍未回传。当前唯一操作为读取这份既有日志及pair_train日志，不重复启动/测速，不另派Full或空间头竞争队列。
+
 2026-10-30用户进一步修订：加载/测速仅做轻量验证，已有通过项直接复用；新路径只保留一个已有依据的配置，1步预热+3步计时，计时仅作粗估，不跑多组扫参或额外百步训练。七条Full路径最多28个丢弃更新，两个空间头合计最多8；正式科学实验训练预算与测速分开，不能把各2k正式A0误当测速。仅适用于尚未部署的新快照，已安装/运行不热改、不重启，原A0 c22及已测回执不变。
 
 权威分支rebuild-v1-protocol-20260915。[研究主计划](../experiments/POST_M2_MULTIROUTE_PLAN_20261030.md)、[执行合同](../experiments/POST_M2_MULTIROUTE_EXECUTION_20261030.md)、[机器清单](../../records/post_m2_multiroute_v2_20261030_release/execution_plan.json)。本轮用户明确要求按最新规划安排并优化资源；已完成实现、本地14项检查和独立载荷核验；尚无目标Linux/真实新路径profile/正式更新回执。
@@ -8,7 +10,7 @@
 
 ## 当前接续
 
-A0双模型的真实检查现已齐备；当前先在空闲GPU0/1窗口按[接续说明](../experiments/POST_M2_A0_CONTINUATION_20261030.md)连续完成原A0各2k训练、配对校准、screen与条件外层评价，不重做检查。既有Full队列若已运行（包括CPU准备）则不派发第二控制器。Full独立入口继续是在既有remote_sensing环境按固定发布commit执行bootstrap --start；缺少启动回执时不能重复启动。服务器由用户操作，无SSH。小载荷保存于ROOT/execution/post_m2_multiroute_v2_20261030_r1；运行目录ROOT/records/post_m2_multiroute_v2_20261030_r1；ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro。后台pipeline依次CPU数据/真实公共权重严格加载→七条真实路径profile→全部合格后11作业/88k，阶段间自动接续，无隐藏下载/安装或人工确认等待。
+A0双模型的真实检查现已齐备，原[接续入口](../experiments/POST_M2_A0_CONTINUATION_20261030.md)已由用户后台派发；当前只读取PID2426676对应父日志及子日志确认预检、首更或错误，不再建议启动。既有入口按原合同自动串接各2k训练、校准、screen与条件外层评价，不重做检查。既有Full队列若已运行（包括CPU准备）则不派发第二控制器。Full独立入口继续是在既有remote_sensing环境按固定发布commit执行bootstrap --start；缺少启动回执时不能重复启动。服务器由用户操作，无SSH。小载荷保存于ROOT/execution/post_m2_multiroute_v2_20261030_r1；运行目录ROOT/records/post_m2_multiroute_v2_20261030_r1；ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro。后台pipeline依次CPU数据/真实公共权重严格加载→七条真实路径profile→全部合格后11作业/88k，阶段间自动接续，无隐藏下载/安装或人工确认等待。
 
 每卡常驻一个进程，跨作业复用DINOv2与六拟合tile；头/优化器独立初始化。G/S候选及错配控制在各自主控制合格后可并行；Q3必须读取Q2实际暴露记录。默认42，有效batch16，Full512监督。G/Q/S不等DINOv3。真实耗时由measured_budget.json给出，A0速度不外推。共性首败停止整队、保留原栈，仅终止自身进程组，不自动重试/改配方/删锁。
 
