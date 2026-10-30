@@ -92,8 +92,10 @@ def main():
     args=p.parse_args();base=Path(args.base)
     if args.action!='status':
         base.resolve().relative_to(c.ROOT/'records')
-        for rel in ('temporary','cache/torch','cache/cuda'):(base/rel).mkdir(parents=True,exist_ok=True)
-        os.environ.update(TMPDIR=str(base/'temporary'),TORCH_HOME=str(base/'cache/torch'),CUDA_CACHE_PATH=str(base/'cache/cuda'))
+        for rel in ('cache/torch','cache/cuda'):(base/rel).mkdir(parents=True,exist_ok=True)
+        import tempfile
+        temporary=c.ipc_tmpdir(base);Path(temporary).mkdir(parents=True,exist_ok=True);tempfile.tempdir=temporary
+        os.environ.update(TMPDIR=temporary,TEMP=temporary,TMP=temporary,TORCH_HOME=str(base/'cache/torch'),CUDA_CACHE_PATH=str(base/'cache/cuda'))
     if args.action=='pipeline':
         from .controller import run
         from .report import export

@@ -1,5 +1,7 @@
 # A0双骨干检查完成后的连续执行（2026-10-30）
 
+> 2026-10-30新故障：原薄层入口TMPDIR过长，已确认AF_UNIX阻塞。旧命令仅保留历史，不再运行；当前接续按[独立IPC修复](POST_M2_A0_IPC_REPAIR_20261030.md)，原模型检查继续复用，旧记录/锁保留。修复目标执行尚待回执。
+
 状态：TARGET_BOTH_MODEL_CHECKS_PASSED；FORMAL_TRAINING_PENDING。最后目标观测为2026-10-30 16:30:50.996411+08:00，来源为用户粘贴的完整终端JSON，未独立取得服务器原始文件。见[回执](../../records/post_m2_a0_capability_20261029/dino3_readiness_server_receipt_20261030.json)、[DINOv3 smoke](../../records/post_m2_a0_capability_20261029/smoke_dino3.json)、[DINOv3 profile](../../records/post_m2_a0_capability_20261029/profile_dino3.json)。
 
 ## 当前要做的事

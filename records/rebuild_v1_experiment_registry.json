@@ -2417,7 +2417,7 @@
     "user_authorized_arrangement": true,
     "server_training_started": false,
     "automatic_retry": false,
-    "a0_next_action": "Read exact existing parent/child logs for launcher PID2426676; no launch/retry/probe/new competing queue.",
+    "a0_next_action": "Use versioned IPC repair: verify and stop only old owned fault processes, preserve originals, check one CPU IPC batch, then explicit separate new-run start only if no old formal progress/endpoint evidence.",
     "a0_launcher_dispatched": true
   },
   "completed_post_d21_mixed_followup": {
@@ -3479,8 +3479,9 @@
     "profile_policy": "one inherited configuration; 1 warmup + 3 timed updates per new path; existing A0 readiness reused",
     "a0_launch_receipt_received": true,
     "a0_launcher_pid": 2426676,
-    "a0_formal_update_status": "NOT_YET_OBSERVED",
-    "training_started_status_note": "Background entry dispatch observed; first successful formal update not yet observed."
+    "a0_formal_update_status": "NOT_OBSERVED; OLD_PROCESSES_CONFIRMED_ALIVE_WITH_AF_UNIX_ERRORS",
+    "training_started_status_note": "Background entry dispatch observed; first successful formal update not yet observed.",
+    "current_resource_owner": "Faulted original A0 children on physical GPU0/1; release only verified owned process tree before any new dispatch"
   },
   "completed_d26_plan": {
     "input_manifest_sha256": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295",
@@ -4216,7 +4217,9 @@
     "code_commit_source": "records/post_m2_multiroute_v2_20261030_release/publication_receipt.json:code_commit",
     "config_version": 2,
     "profile_policy_revision": "USER_REQUESTED_MINIMAL_LOADING_AND_TIMING_20261030",
-    "hot_patch_running_source": false
+    "hot_patch_running_source": false,
+    "a0_current_execution_status": "ENGINEERING_BLOCKED_AF_UNIX_REPAIR_LOCAL_CHECKED_TARGET_PENDING",
+    "full_ipc_path_fix_implemented_not_deployed": true
   },
   "historical_routing_before_multiroute_execution_20261030": {
     "next_plan": {
@@ -4351,5 +4354,19 @@
     "next_action": "Read this exact parent log and the existing two pair_train logs only. Do not rerun the launcher, repeat probes, start a competing Full/spatial queue, remove guards or stop jobs based only on this receipt.",
     "assistant_server_access": "No SSH or direct server execution.",
     "record": "records/post_m2_a0_capability_20261029/continuation_dispatch_user_receipt_20261030.json"
+  },
+  "latest_a0_engineering_failure": {
+    "status": "A0_AF_UNIX_ENGINEERING_BLOCK_CONFIRMED_OWNED_PROCESSES_LIVE_REPAIR_TARGET_PENDING",
+    "record": "records/post_m2_a0_ipcfix_20261030_release/failure_and_repair.json",
+    "error": "OSError: AF_UNIX path too long",
+    "known_live_pids": [
+      2426676,
+      2426713,
+      2426731,
+      2426732
+    ],
+    "old_formal_updates": "NOT_OBSERVED_EXACT_COUNT_UNKNOWN",
+    "repair_target_status": "NOT_EXECUTED",
+    "new_run": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030"
   }
 }

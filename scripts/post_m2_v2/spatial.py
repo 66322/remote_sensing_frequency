@@ -10,6 +10,17 @@ import sys
 import time
 import traceback
 
+def a0_contract(a0,c):
+    legacy=a0.contract(argparse.Namespace(root=str(c.ROOT)),require_d3=True)
+    selected=os.getenv('POST_M2_A0_RECORDS')
+    if selected:
+        folder=Path(selected).resolve();folder.relative_to((c.ROOT/'records').resolve())
+        if folder!=Path(legacy['out']).resolve():
+            ready=c.read(folder/'repair_ready.json')
+            if ready.get('scientific_source_commit')!='c22a046407daf42064cbb161429f2648c9b86d66':raise RuntimeError('repaired A0 scientific source differs')
+            legacy['out']=folder
+    return legacy
+
 def execute(base,kind,phase):
     import numpy as np
     import torch
@@ -17,12 +28,12 @@ def execute(base,kind,phase):
     from . import common as c
     from .model import SpatialProbe
     from .engine import close_loader
-    base=Path(base);_,source=c.source();legacy=a0.contract(argparse.Namespace(root=str(c.ROOT)),require_d3=True)
+    base=Path(base);_,source=c.source();legacy=a0_contract(a0,c)
     a0.ensure_gpu(kind);torch.set_num_threads(1);c.seed_all()
     old=a0.read(legacy['out']/('profile_'+kind+'.json'))
     if old['code_commit']!='c22a046407daf42064cbb161429f2648c9b86d66':raise RuntimeError('A0 profile source mismatch')
     folder=base/'a_spatial'/kind;folder.mkdir(parents=True,exist_ok=True)
-    c.write(folder/(phase+'_started.json'),dict(source=source,observed_at=c.now(),kind=kind),once=True)
+    c.write(folder/(phase+'_started.json'),dict(source=source,observed_at=c.now(),kind=kind,a0_source_run=str(legacy['out'])),once=True)
     encoder,patch=a0.load_encoder(legacy,kind);result=None
     if phase in ('profile','train'):
         arrays=a0.arrays(legacy,legacy['folds']['train']);history=[]
@@ -91,7 +102,7 @@ def run(base,phase):
     from . import common as c
     from .controller import idle_gpus,stop_owned
     base=Path(base);base.resolve().relative_to(c.ROOT/'records');base.mkdir(parents=True,exist_ok=True)
-    legacy=a0.contract(argparse.Namespace(root=str(c.ROOT)),require_d3=True)
+    legacy=a0_contract(a0,c)
     if phase=='screen':
         rows=[c.read(base/'a_spatial'/k/'calibration_result.json') for k in ('dino2','dino3')]
         eligible=all(x['pooled']['nb_fg5_miou']>=50 for x in rows)

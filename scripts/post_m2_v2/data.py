@@ -86,7 +86,7 @@ def loader(data,tiles,workers,length):
     import torch
     kw=dict(dataset=Crops(data,tiles,length),batch_size=16,num_workers=workers,
         shuffle=False,pin_memory=True,drop_last=True)
-    if workers:kw.update(persistent_workers=True,prefetch_factor=2,multiprocessing_context='fork')
+    if workers:kw.update(persistent_workers=True,prefetch_factor=2,multiprocessing_context='fork',timeout=30)
     return torch.utils.data.DataLoader(**kw)
 
 def exposure(step,p_rgb=0.5):

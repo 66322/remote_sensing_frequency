@@ -71,9 +71,18 @@ def runtime_contract(base):
         if st.st_size!=row['bytes'] or st.st_mtime_ns!=row['mtime_ns']:
             raise RuntimeError('input identity changed: '+row['path'])
     return p
+def ipc_tmpdir(base):
+    # AF_UNIX includes Python's pymp-/listener- suffix; deep run paths overflow it.
+    owner=Path('/home/jovyan/zzx').resolve()
+    folder=owner/'tmp'/('pm2_'+hashlib.sha256(str(Path(base).resolve()).encode()).hexdigest()[:12])
+    folder=folder.resolve();folder.relative_to(owner)
+    if len(os.fsencode(str(folder)))>50:raise RuntimeError('IPC temporary directory is too long')
+    return str(folder)
+
 def env(gpu,base):
+    temporary=ipc_tmpdir(base)
     v=dict(os.environ);v.update(CUDA_VISIBLE_DEVICES=str(gpu),OMP_NUM_THREADS='1',MKL_NUM_THREADS='1',
         OPENBLAS_NUM_THREADS='1',NUMEXPR_NUM_THREADS='1',XFORMERS_DISABLED='1',
         PYTHONDONTWRITEBYTECODE='1',TORCH_HOME=str(Path(base)/'cache/torch'),
-        CUDA_CACHE_PATH=str(Path(base)/'cache/cuda'),TMPDIR=str(Path(base)/'temporary'))
+        CUDA_CACHE_PATH=str(Path(base)/'cache/cuda'),TMPDIR=temporary,TEMP=temporary,TMP=temporary)
     return v
