@@ -1,6 +1,8 @@
 # M2后A0首批实验：冻结教师能力探针与双H100资源合同（2026-10-29）
 
-**状态：DINO2_INVENTORY_SMOKE_PROFILE_PASSED；DINO3_NOT_CONFIGURED；NO_NEW_SCIENTIFIC_RESULT。** 本文件给出已写好的首批执行入口和预先冻结的判断规则。旧M2最终清理于19:15启动后在预删除离线统计阶段停止，用户要求暂缓清理、优先启动A0；A0不引用旧M2的训练端点、推理缓存或大权重。
+**状态：DINO2_INVENTORY_SMOKE_PROFILE_PASSED；DINO3_WEIGHT_DOWNLOADED_SHA256_VERIFIED_SOURCE_LOAD_PROFILE_PENDING；NO_NEW_SCIENTIFIC_RESULT。** 本文件给出已写好的首批执行入口和预先冻结的判断规则。旧M2最终清理于19:15启动后在预删除离线统计阶段停止，用户要求暂缓清理、优先启动A0；A0不引用旧M2的训练端点、推理缓存或大权重。
+
+2026-10-30接续：用户已在服务器直下魔搭固定版本原生vits16权重，首次SHA256核对通过，见[回执](../../records/post_m2_a0_capability_20261029/dino3_download_server_receipt_20261030.json)。不需要中转或重复下载/哈希；尚无源码HEAD、DINOv3真实加载/smoke/profile回执。接续只补这些缺项，DINOv2既有检查继续复用。最后GPU资源观测仍为10月29日，不能据下载成功判断GPU空闲。
 
 ## 要回答的问题与对照
 

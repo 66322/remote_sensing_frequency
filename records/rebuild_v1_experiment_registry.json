@@ -4193,7 +4193,11 @@
     "first_common_failure_stops_dispatch": true,
     "automatic_retry": false,
     "code_commit": "4fbabd6b135a41c1ba0891120dcac6546880bf47",
-    "publication_receipt": "records/post_m2_multiroute_v2_20261030_release/publication_receipt.json"
+    "publication_receipt": "records/post_m2_multiroute_v2_20261030_release/publication_receipt.json",
+    "a0_dino3_weight_download_received": true,
+    "a0_dino3_weight_sha256_verified_on_server": true,
+    "a0_dino3_download_record": "records/post_m2_a0_capability_20261029/dino3_download_server_receipt_20261030.json",
+    "a0_dino3_source_load_profile_pending": true
   },
   "historical_routing_before_multiroute_execution_20261030": {
     "next_plan": {
@@ -4290,5 +4294,12 @@
       "new_jobs_to_dispatch": 0,
       "automatic_B_C": false
     }
+  },
+  "latest_preparation_observation": {
+    "date": "2026-10-30",
+    "record": "records/post_m2_a0_capability_20261029/dino3_download_server_receipt_20261030.json",
+    "status": "SERVER_DOWNLOAD_AND_INITIAL_SHA256_VERIFIED_LOAD_PROFILE_PENDING",
+    "source": "user_pasted_server_terminal",
+    "model_download_only": true
   }
 }
