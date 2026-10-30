@@ -1,0 +1,20 @@
+{
+  "observed_at": "2026-10-30T19:38:20.918267+08:00",
+  "pid": 2518876,
+  "stage": "training",
+  "job": "Q2",
+  "step": 3000,
+  "loss": 0.20883115768432617,
+  "wall_since_last_log": 2.2377423495054245,
+  "mean_data_wait": 0.00014863282442092895,
+  "last_sample_segments": {
+    "h2d": 0.0010742399692535401,
+    "encoder": 0.009359519958496093,
+    "decoder_backward": 0.011753952026367188,
+    "optimizer": 0.00015641599893569946
+  },
+  "p_rgb": 0.4920021704856449,
+  "gradient_norm": 0.8422136306762695,
+  "peak_allocated": 2387119104,
+  "peak_reserved": 2740977664
+}

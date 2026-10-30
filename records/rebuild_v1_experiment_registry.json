@@ -2410,16 +2410,16 @@
     }
   ],
   "next_plan": {
-    "status": "FULL_ENTRY_DISPATCHED_READ_EXISTING_PROGRESS",
+    "status": "FULL_FORMAL_TRAINING_IN_PROGRESS",
     "document": "docs/experiments/POST_M2_MULTIROUTE_EXECUTION_20261030.md",
     "research_plan": "docs/experiments/POST_M2_MULTIROUTE_PLAN_20261030.md",
     "machine_plan": "records/post_m2_multiroute_v2_20261030_release/execution_plan.json",
     "user_authorized_arrangement": true,
-    "server_training_started": null,
+    "server_training_started": true,
     "automatic_retry": false,
-    "a0_next_action": "Complete raw A0 accepted; no recomputation. Read existing Full pipeline log/heartbeat_gpu0/1 only, PID2517098; no new queue.",
+    "a0_next_action": "A0 accepted and unchanged. Continue existing Full queue; read immutable finished-job small results for stage review, no new launch/checks.",
     "a0_launcher_dispatched": true,
-    "server_training_started_evidence": "Full formal updates unobserved; A0 successful4k archived."
+    "server_training_started_evidence": "19:38:20 heartbeats: Q2/3000 and G1/1100 with finite loss/gradient; seven profile paths released."
   },
   "completed_post_d21_mixed_followup": {
     "id": "POST_D21_MIXED_DEGRADATION_C0_C1_20260930",
@@ -3482,13 +3482,16 @@
     "a0_launcher_pid": 2506856,
     "a0_formal_update_status": "BOTH_2000_COMPLETE_CAL_AND_OUTER_PHASE_COMPLETE",
     "training_started_status_note": "Original A0 successful2k/model observed. Full launch remains unobserved.",
-    "current_resource_owner": "Full entry dispatched on authorizedGPU0/1; actual current worker/optimizer state awaits heartbeat/log. Do not start competing A/spatial/teacher jobs.",
+    "current_resource_owner": "PhysicalGPU0 worker2518876 Q2/3000, GPU1 worker2518877 G1/1100 as of19:38:20; retain existing queue.",
     "original_a0_completed_jobs": 2,
     "original_a0_completed_updates": 4000,
     "remaining_registered_successful_jobs": 13,
     "remaining_registered_successful_updates": 92000,
     "full_pipeline_pid": 2517098,
-    "full_pipeline_entry_dispatched": true
+    "full_pipeline_entry_dispatched": true,
+    "full_formal_updates_lower_bound": 36100,
+    "full_exact_current_updates_known": false,
+    "main_training_loops_returned_lower_bound": 4
   },
   "completed_d26_plan": {
     "input_manifest_sha256": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295",
@@ -4170,7 +4173,7 @@
     },
     "recent_review": "docs/experiments/COMPLETED_EXPERIMENTS_HANDOFF_20261004.md"
   },
-  "latest_observed_at": "2026-10-30T19:01:20.924026+08:00",
+  "latest_observed_at": "2026-10-30T19:38:20.918267+08:00",
   "registry_coverage_note_20261029": "Backfilled the actual M2 completed state, J engineering stop and authorized cleanup. Previous M2 not-launched routing is preserved under historical_routing_before_phase3_m2_closeout_20261029. This does not claim every intervening historical result was independently re-audited.",
   "historical_next_plan_before_capability_plan_20261029": {
     "status": "M2_OFFLINE_ANALYSIS_AND_FINAL_COMPACTION_WAITING_SERVER",
@@ -4193,7 +4196,7 @@
   },
   "latest_implementation": {
     "date": "2026-10-30",
-    "status": "TARGET_PAYLOAD_INSTALLED_FULL_ENTRY_DISPATCHED_CPU_GPU_PROFILE_PENDING",
+    "status": "TARGET_FULL_FORMAL_OPTIMIZATION_IN_PROGRESS",
     "document": "docs/experiments/POST_M2_MULTIROUTE_EXECUTION_20261030.md",
     "script": "scripts/post_m2_multiroute.py",
     "bootstrap": "scripts/bootstrap_post_m2_v2.py",
@@ -4201,7 +4204,7 @@
     "tests": "tests/test_post_m2_v2.py",
     "local_tests_passed": 14,
     "target_gpu_profile_received": false,
-    "target_formal_updates_received": 0,
+    "target_formal_updates_received": 36100,
     "server_actions": 0,
     "a0_script_unchanged": true,
     "a0_execution_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
@@ -4228,7 +4231,12 @@
     "a0_current_execution_status": "A0_COMPLETE_CALIBRATION_SCREEN_PASSED_OUTER_ADVANTAGE_NOT_REPLICATED",
     "full_ipc_path_fix_implemented_not_deployed": true,
     "target_payload_install_received": true,
-    "target_pipeline_pid": 2517098
+    "target_pipeline_pid": 2517098,
+    "target_cpu_preparation_pass_received": true,
+    "target_gpu_profile_release_observed": true,
+    "target_formal_updates_received_lower_bound": 36100,
+    "target_formal_updates_received_is_lower_bound": true,
+    "target_gpu_profile_receipt_scope": "Frozen train prerequisites confirm all7 actual path profiles passed; individual raw profile JSONs not yet received."
   },
   "historical_routing_before_multiroute_execution_20261030": {
     "next_plan": {
@@ -4445,5 +4453,43 @@
     "record": "records/post_m2_multiroute_v2_20261030_r1/dispatch_user_receipt_20261030.json",
     "formal_updates_received": 0,
     "exact_current_updates": "UNOBSERVED"
+  },
+  "latest_full_progress": {
+    "record": "records/post_m2_multiroute_v2_20261030_r1/progress_observations/20261030T193820/observation.json",
+    "status": "TARGET_FULL_FORMAL_TRAINING_CONFIRMED_TWO_WORKERS_PROGRESSING",
+    "observed_at": "2026-10-30T19:38:20.918267+08:00",
+    "workers": [
+      {
+        "gpu": 0,
+        "pid": 2518876,
+        "job": "Q2",
+        "step": 3000,
+        "per_100_updates_seconds": 2.2377423495054245,
+        "mean_step_ms": 22.377423495054245,
+        "mean_data_wait_ms": 0.14863282442092896,
+        "data_wait_to_mean_step_fraction": 0.006642088373300845,
+        "timing_scope": "Latest100-update reporting window; CUDA segments are one last sampled update, not a full-run average."
+      },
+      {
+        "gpu": 1,
+        "pid": 2518877,
+        "job": "G1",
+        "step": 1100,
+        "per_100_updates_seconds": 2.9535949677228928,
+        "mean_step_ms": 29.535949677228928,
+        "mean_data_wait_ms": 0.15896596014499664,
+        "data_wait_to_mean_step_fraction": 0.005382117788057895,
+        "timing_scope": "Latest100-update reporting window; CUDA segments are one last sampled update, not a full-run average."
+      }
+    ],
+    "formal_update_lower_bound": 36100,
+    "exact_current_updates_known": false,
+    "prior_8k_loops_inferred_finished": [
+      "B0",
+      "B1",
+      "Q1",
+      "S1"
+    ],
+    "raw_finished_results_received": false
   }
 }

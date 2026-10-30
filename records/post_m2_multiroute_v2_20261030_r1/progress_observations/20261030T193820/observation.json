@@ -1,0 +1,155 @@
+{
+  "status": "TARGET_FULL_FORMAL_TRAINING_CONFIRMED_TWO_WORKERS_PROGRESSING",
+  "observed_at": "2026-10-30T19:38:20.918267+08:00",
+  "source": "user_pasted_pipeline_log_and_complete_heartbeat_gpu0_1_JSON",
+  "code_commit": "d15f34e8d53f935aa17542123c2227fab14cb810",
+  "pipeline_pid": 2517098,
+  "cpu_preparation": "CPU_PREPARED_GPU_PROFILE_PENDING explicitly reported; exact target interpreter/environment/real-input/model checks precede it in frozen source.",
+  "real_profile_paths_dispatched": [
+    {
+      "job": "B0",
+      "gpu": 0
+    },
+    {
+      "job": "B1",
+      "gpu": 1
+    },
+    {
+      "job": "G1",
+      "gpu": 0
+    },
+    {
+      "job": "G2",
+      "gpu": 1
+    },
+    {
+      "job": "Q2",
+      "gpu": 0
+    },
+    {
+      "job": "S1",
+      "gpu": 1
+    },
+    {
+      "job": "S2",
+      "gpu": 0
+    }
+  ],
+  "profile_release": "All seven passed by the frozen train prerequisites; individual profile JSONs and measured budget not yet collected.",
+  "train_dispatch_order": [
+    {
+      "job": "B0",
+      "gpu": 0
+    },
+    {
+      "job": "B1",
+      "gpu": 1
+    },
+    {
+      "job": "Q1",
+      "gpu": 0
+    },
+    {
+      "job": "S1",
+      "gpu": 1
+    },
+    {
+      "job": "Q2",
+      "gpu": 0
+    },
+    {
+      "job": "G1",
+      "gpu": 1
+    }
+  ],
+  "latest_workers": [
+    {
+      "observed_at": "2026-10-30T19:38:20.918267+08:00",
+      "pid": 2518876,
+      "stage": "training",
+      "job": "Q2",
+      "step": 3000,
+      "loss": 0.20883115768432617,
+      "wall_since_last_log": 2.2377423495054245,
+      "mean_data_wait": 0.00014863282442092895,
+      "last_sample_segments": {
+        "h2d": 0.0010742399692535401,
+        "encoder": 0.009359519958496093,
+        "decoder_backward": 0.011753952026367188,
+        "optimizer": 0.00015641599893569946
+      },
+      "p_rgb": 0.4920021704856449,
+      "gradient_norm": 0.8422136306762695,
+      "peak_allocated": 2387119104,
+      "peak_reserved": 2740977664
+    },
+    {
+      "observed_at": "2026-10-30T19:38:20.630251+08:00",
+      "pid": 2518877,
+      "stage": "training",
+      "job": "G1",
+      "step": 1100,
+      "loss": 0.22747825622558593,
+      "wall_since_last_log": 2.9535949677228928,
+      "mean_data_wait": 0.00015896596014499664,
+      "last_sample_segments": {
+        "h2d": 0.0008038399815559387,
+        "encoder": 0.009397055625915527,
+        "decoder_backward": 0.019115264892578126,
+        "optimizer": 0.00016303999722003937
+      },
+      "p_rgb": 0.5,
+      "gradient_norm": 1.2440308332443237,
+      "peak_allocated": 4128171520,
+      "peak_reserved": 5123342336
+    }
+  ],
+  "sampling": [
+    {
+      "gpu": 0,
+      "pid": 2518876,
+      "job": "Q2",
+      "step": 3000,
+      "per_100_updates_seconds": 2.2377423495054245,
+      "mean_step_ms": 22.377423495054245,
+      "mean_data_wait_ms": 0.14863282442092896,
+      "data_wait_to_mean_step_fraction": 0.006642088373300845,
+      "timing_scope": "Latest100-update reporting window; CUDA segments are one last sampled update, not a full-run average."
+    },
+    {
+      "gpu": 1,
+      "pid": 2518877,
+      "job": "G1",
+      "step": 1100,
+      "per_100_updates_seconds": 2.9535949677228928,
+      "mean_step_ms": 29.535949677228928,
+      "mean_data_wait_ms": 0.15896596014499664,
+      "data_wait_to_mean_step_fraction": 0.005382117788057895,
+      "timing_scope": "Latest100-update reporting window; CUDA segments are one last sampled update, not a full-run average."
+    }
+  ],
+  "prior_8k_training_loops_inferred_finished": [
+    "B0",
+    "B1",
+    "Q1",
+    "S1"
+  ],
+  "qualified_complete_inferred_from_dependencies": [
+    "B0",
+    "B1",
+    "Q1"
+  ],
+  "s1_result_qualification": "UNKNOWN; G1 is independent of S1. S1 returned after8k, but its result JSON/learning status has not been read.",
+  "observed_full_optimizer_updates_lower_bound": 36100,
+  "update_lower_bound_basis": "Four returned8k training loops plus Q2 latest3000 and G1 latest1100; inferred from the frozen one-task-per-worker controller and train loop. Later unlogged updates possible.",
+  "exact_current_updates_known": false,
+  "completed_result_json_received": [],
+  "scientific_route_gain": "NOT_YET_RECEIVED; do not judge improvement from loss or dispatch order.",
+  "engineering_observation": "No error stack shown. The two reporting windows have data-wait fractions below1%; no input-wait-dominated slowdown in these windows. This does not claim100% utilization, optimality or complete queue success.",
+  "warnings": "xFormers disabled/unavailable notices are expected under frozen XFORMERS_DISABLED=1; they did not stop actual training. No install/environment change required.",
+  "interactive_shell": "pointcept-torch2.5.0-cu12.4 used for tail/cat only; it does not change the already-started remote_sensing worker interpreter/environment.",
+  "next_action": "Let existing queue continue; read already-finished B0/B1/Q1/S1 result.json and selected-outer full_fg5 scalars for stage review without inference, restart or source changes.",
+  "original_a0": "Separate accepted result unchanged: innerDINO3+1.6257pp, outer-0.6527pp; no teacher-route expansion.",
+  "queue_modified": false,
+  "new_probes_requested": 0
+}
