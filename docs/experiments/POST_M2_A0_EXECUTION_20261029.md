@@ -1,8 +1,10 @@
 # M2后A0首批实验：冻结教师能力探针与双H100资源合同（2026-10-29）
 
+最新19:01:20：原A0两线性头已于修复run完成各2k/校准/外层阶段；内校准DINOv3+1.6257pp，外层分数原件待回传。见[完成回执](../../records/post_m2_a0_ipcfix_20261030/completion_observation_20261030.json)。下列安装、故障及接续命令保留为历史，当前不再运行A0。
+
 > 2026-10-30新故障：原薄层入口TMPDIR过长，已确认AF_UNIX阻塞。旧命令仅保留历史，不再运行；当前接续按[独立IPC修复](POST_M2_A0_IPC_REPAIR_20261030.md)，原模型检查继续复用，旧记录/锁保留。修复目标执行尚待回执。
 
-**状态：BOTH_MODELS_SMOKE_PROFILE_PASSED；FORMAL_A0_TRAINING_PENDING；NO_NEW_SCIENTIFIC_RESULT。** 本文件给出已写好的首批执行入口和预先冻结的判断规则。旧M2最终清理于19:15启动后在预删除离线统计阶段停止，用户要求暂缓清理、优先启动A0；A0不引用旧M2的训练端点、推理缓存或大权重。
+**状态：ORIGINAL_A0_BOTH_2K_TRAIN_CAL_OUTER_COMPLETED；INNER_SCREEN_POSITIVE；RAW_OUTER_METRICS_PENDING。** 本文件给出已写好的首批执行入口和预先冻结的判断规则。旧M2最终清理于19:15启动后在预删除离线统计阶段停止，用户要求暂缓清理、优先启动A0；A0不引用旧M2的训练端点、推理缓存或大权重。
 
 2026-10-30 16:30:50接续：用户已回传固定源码HEAD检查及DINOv3真实smoke/profile通过，见[最新回执](../../records/post_m2_a0_capability_20261029/dino3_readiness_server_receipt_20261030.json)、[smoke](../../records/post_m2_a0_capability_20261029/smoke_dino3.json)与[profile](../../records/post_m2_a0_capability_20261029/profile_dino3.json)。DINOv2既有检查继续复用；不重复环境升级、下载/哈希或smoke/profile。当前操作以[连续执行说明](POST_M2_A0_CONTINUATION_20261030.md)为准，以下安装/准备/单阶段命令保留为历史合同参考，不能从头重做。正式A0训练回执仍0，GPU0当前占用未知。
 

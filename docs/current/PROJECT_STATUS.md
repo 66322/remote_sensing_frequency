@@ -1,16 +1,16 @@
 # 当前状态：A0双骨干真实检查通过，Full执行版本待目标回执（2026-10-30）
 
-2026-10-30 18:59:13（北京时间）已收到[修复准备通过](../../records/post_m2_a0_ipcfix_20261030/repair_ready.json)与[新后台入口派发](../../records/post_m2_a0_ipcfix_20261030/repair_dispatch.json)回执：PID2506856，短TMPDIR=/home/jovyan/zzx/tmp/a0_ipc，原profile复用、准备优化更新0。成功prepare报告已完成旧归属进程停止与一次CPU IPC检查，详细停止/IPC原件仍在服务器。当前唯一下一步是读取新run的repair_continuation.log和pair_train_dino2/dino3.log确认正式首更/完成或原始错误，不再prepare/start，不再测速；尚未收到正式成功更新回执。
+2026-10-30 19:01:20（北京时间）[A0完成回执](../../records/post_m2_a0_ipcfix_20261030/completion_observation_20261030.json)：DINOv2/DINOv3各完成2,000正式更新，合计4,000；校准与外层开发评价都完成、最终状态无失败标记。校准DINOv3−DINOv2为+1.6257pp，两tile分别+0.3687/+2.9337pp，筛查阳性。外层分数/整数矩阵原件尚未回传，不能提前报告外层胜负。当前不重跑A0；只收集现成小JSON，同时按已授权计划接续独立Full B0/B1与G/Q/S队列，首次部署用固定d15f34e8源；已安装/运行则只读状态，禁止重复启动。
 
 2026-10-30用户进一步修订：加载/测速仅做轻量验证，已有通过项直接复用；新路径只保留一个已有依据的配置，1步预热+3步计时，计时仅作粗估，不跑多组扫参或额外百步训练。七条Full路径最多28个丢弃更新，两个空间头合计最多8；正式科学实验训练预算与测速分开，不能把各2k正式A0误当测速。仅适用于尚未部署的新快照，已安装/运行不热改、不重启，原A0 c22及已测回执不变。
 
 - 本轮用户要求按最新规划安排实验并避免M2式等待；[执行版本r1](../experiments/POST_M2_MULTIROUTE_EXECUTION_20261030.md)已实现，机器清单/载荷manifest/本地验收见[发布目录](../../records/post_m2_multiroute_v2_20261030_release)。状态IMPLEMENTED_LOCAL_CHECKED_TARGET_PENDING。
-- 11个Full模型/88k自动流水线，原A0 4k与新A空间头4k独立，总15作业/96k、seed42。G/Q/S不等待A0。新流水线会先做真实路径profile，全部合格才正式训练；无队列内部安装/下载，首败停派发，无自动重试。
+- 11个Full模型/88k自动流水线，原A0 4k已完成，新A空间头4k独立且未启动，总15作业/96k、seed42。G/Q/S不等待A0。新流水线会先做真实路径profile，全部合格才正式训练；无队列内部安装/下载，首败停派发，无自动重试。
 - 实现：每卡常驻冻结骨干/拟合图块；持久CPU预取、有效batch不变的microbatch比较、GPU预测与有界CPU计数重叠；待测真实吞吐/CPU等待/H2D/反传/峰值与预算。不能写GPU性能已优化验证。
-- 本地14项检查通过，另验独立下载载荷/入口和模块导入；目标Linux进程组/fork、真实公共权重加载、CUDA路径与H100计时尚待回执。助手未直连服务器；用户已回传DINOv3权重直下/首次SHA256及真实smoke/profile通过。正式新优化更新、新科学结果回执仍0。
+- 本地14项检查通过，另验独立下载载荷/入口和模块导入；目标Linux进程组/fork、真实公共权重加载、CUDA路径与H100计时尚待回执。助手未直连服务器；用户已回传DINOv3权重直下/首次SHA256及真实smoke/profile通过。原A0已收到4,000正式更新和正向校准开发结果，Full新路线更新/结果仍待目标回执。
 - **新增准备回执2026-10-30 16:30:50**：[DINOv3源码HEAD/真实smoke/profile通过](../../records/post_m2_a0_capability_20261029/dino3_readiness_server_receipt_20261030.json)，完整字段已从用户终端JSON归档。8worker/micro16，14.36ms/步，等待0.109ms；eval16，529窗口预测/拼接0.6641秒。首次加载35.19秒、profile总43.74秒、160丢弃更新，不计正式训练。无需中转，不重复下载/哈希/测速。
 - **DINOv2既有观测2026-10-29 20:18:55**：profile通过，160丢弃更新，4worker/micro16中位等待+计算0.01093秒/步；529窗口0.4066秒不含完整加载/CPU统计。两骨干A0速度均不能外推Full/G/Q/S或新空间头。
 - 既有环境Python3.11.13/Torch2.7.1+cu126/torchvision0.22.1/torchaudio2.7.1，pip check通过；沿用。GPU0/1 H100空闲与192有效核/2.04TB RAM仅为前序历史inventory，新启动现场确认，不扩大到其他卡。
-- A0原脚本逐字节保持c22a046407daf42064cbb161429f2648c9b86d66；DINOv2检查复用，DINOv3源码HEAD/真实加载/profile也已通过，A0正式训练回执仍0。原薄层入口已发生IPC故障，改由[独立修复入口](../experiments/POST_M2_A0_IPC_REPAIR_20261030.md)接续；不修改原脚本、不追加训练预算，不与已运行Full控制器争卡。新增空间头虽已实现，尚未启动。
+- A0原脚本逐字节保持c22a046407daf42064cbb161429f2648c9b86d66；DINOv2检查复用，DINOv3源码HEAD/真实加载/profile也已通过，原A0正式完成回执各2k，共4k，校准与外层评价完成。原薄层入口已发生IPC故障，改由[独立修复入口](../experiments/POST_M2_A0_IPC_REPAIR_20261030.md)接续；不修改原脚本、不追加训练预算，不与已运行Full控制器争卡。新增空间头虽已实现，尚未启动。
 - M2已完成108训练/3,456,000更新/77,868评价，DF关闭；J工程停止。首清理90删/18留，最终清理空值统计首败后暂缓，未收到成功删除回执，最后仍18。
 - 科学主线未切换；F0是反复使用的开发折，Full与A0 NB/128不混比，Val2/Test6/held4/final仍封存。GitHub跨电脑权威，小结果上传回读不重复全量哈希。

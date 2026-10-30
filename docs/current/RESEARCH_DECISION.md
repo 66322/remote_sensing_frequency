@@ -2,7 +2,7 @@
 
 用户2026-10-30认为A0/A1/A2覆盖不足，要求结合2025—2026语义分割研究和原论文，以两张GPU开展多视角、多路线规划。已作决定是扩大问题覆盖与并行准备；具体机制、96k预算和Full监督新底座为本轮助手建议，不能写成用户已指定的成功方法。
 
-[主计划](../experiments/POST_M2_MULTIROUTE_PLAN_20261030.md)、[文献核验](../experiments/POST_M2_MULTIROUTE_LITERATURE_20261030.md)、[准备表](../protocols/POST_M2_MULTIROUTE_PREFLIGHT_20261030.md)、[机器计划](../../records/post_m2_multiroute_plan_20261030/plan.json)。规划本身的原状态为PLANNED_NOT_IMPLEMENTED_NOT_QUEUED；本轮用户已要求安排实验，首批实现及具体冻结合同见[执行交付r1](../experiments/POST_M2_MULTIROUTE_EXECUTION_20261030.md)，当前IMPLEMENTED_LOCAL_CHECKED_TARGET_PENDING。未连接服务器或启动训练。A0既有代码与证据独立保留。
+[主计划](../experiments/POST_M2_MULTIROUTE_PLAN_20261030.md)、[文献核验](../experiments/POST_M2_MULTIROUTE_LITERATURE_20261030.md)、[准备表](../protocols/POST_M2_MULTIROUTE_PREFLIGHT_20261030.md)、[机器计划](../../records/post_m2_multiroute_plan_20261030/plan.json)。规划本身的原状态为PLANNED_NOT_IMPLEMENTED_NOT_QUEUED；本轮用户已要求安排实验，首批实现及具体冻结合同见[执行交付r1](../experiments/POST_M2_MULTIROUTE_EXECUTION_20261030.md)，当前IMPLEMENTED_LOCAL_CHECKED_TARGET_PENDING。助手无服务器直连；用户已回传原A0 4k正式训练及完整评价阶段完成。A0证据独立保留，Full流水线尚无目标启动回执。
 
 ## 当前角色
 
@@ -25,4 +25,10 @@ A0实际512输入、冻结骨干、1×1头、128标签监督；只检验这种�
 
 以每路线的主强对照、最小实用增益和正常区域保护判据决定收缩。先单路线机制，再2×2组合；不预先叠MIAM+EDL+PCGrad。强控制解释全部改善则收回新机制，工程未学会不作科学阴性。
 
-本轮已将首批实现并完成本地检查，未启动服务器训练。既有A0接续授权不撤销，原环境/已通过检查继续有效。M2最终清理暂缓且未成功，授权仍在，不自动重启旧队列或为新计划强留旧18专家。最新状态见[交接](HANDOFF.md)。
+本轮首批代码已实现并本地检查；用户已完成原A0两线性头4k及校准/外层阶段，Full尚无目标启动回执。既有A0接续授权不撤销，原环境/已通过检查继续有效。M2最终清理暂缓且未成功，授权仍在，不自动重启旧队列或为新计划强留旧18专家。最新状态见[交接](HANDOFF.md)。
+
+## 2026-10-30 A0阶段观察
+
+19:01:20原两线性头及校准/外层开发评价已完成。内校准DINOv3较DINOv2 fg5 mIoU高1.6257pp，两tile均正，且两头达到资格、轨迹下降，支持该同视野冻结浅读出配置的内校准可读性差异。外层具体分数和原始计数未收到，不作外层胜负、独立测试、一般能力或世界知识结论。该观察不切换主线、不自动追加A1/A2或种子。
+
+按原已授权多路线方案，现成小结果归档与独立Full B0/B1、G/Q/S执行可并行；G/Q/S依自身基线和route gate。剩余首批成功完成预算为11×8k Full加2×2k空间头共92k，seed42，未增加预算。空间头后续显式绑定已完成的修复run，旧失败目录不改。

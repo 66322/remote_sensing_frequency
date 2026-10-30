@@ -1,0 +1,91 @@
+{
+  "status": "ORIGINAL_A0_LINEAR_PAIR_TRAIN_CAL_OUTER_COMPLETED_CAL_SCREEN_POSITIVE_OUTER_METRICS_PENDING",
+  "last_observed_at": "2026-10-30T19:01:20.924026+08:00",
+  "source": "user_pasted_terminal_completion_excerpt; original result JSONs not independently received yet",
+  "scientific_source_commit": "c22a046407daf42064cbb161429f2648c9b86d66",
+  "execution_patch_commit": "d15f34e8d53f935aa17542123c2227fab14cb810",
+  "successful_completed_updates": {
+    "dino2": 2000,
+    "dino3": 2000,
+    "total": 4000
+  },
+  "successful_completed_jobs": 2,
+  "training_loop_seconds": {
+    "dino2": 20.98410914838314,
+    "dino3": 27.903296507894993
+  },
+  "timing_scope": "Training loop after data/model preparation; excludes those loads and all evaluations. Not whole-stage wall time.",
+  "calibration": {
+    "observed_at": "2026-10-30T19:00:48.465103+08:00",
+    "dino3_minus_dino2_pooled_pp": 1.625692544708457,
+    "tile_differences_pp": [
+      0.3687178663341655,
+      2.933703757193811
+    ],
+    "training_trajectory_decreased": true,
+    "both_probes_competent": true,
+    "criteria": {
+      "delta_pp": 0.3,
+      "tile_floor_pp": -0.2,
+      "inner_miou_floor_percent": 50,
+      "relative_train_loss_decrease_required": true
+    },
+    "interpretation": "A0 selected-frozen-feature probe only; no general claim that one teacher has or lacks world knowledge.",
+    "screen_status": "READY_FOR_OUTER_DEVELOPMENT_EVALUATION",
+    "status_basis": "Inferred from the displayed criteria/true competence flags and the guarded outer phase executing successfully; original status header was outside tail."
+  },
+  "outer": {
+    "pair_complete": true,
+    "parallel": true,
+    "child_exit_codes": {
+      "dino2": 0,
+      "dino3": 0
+    },
+    "result_file_presence": {
+      "dino2": true,
+      "dino3": true
+    },
+    "absolute_pooled_scores_received": false,
+    "per_tile_scores_received": false,
+    "raw_confusion_matrices_received": false,
+    "comparison_conclusion": "PENDING_RAW_OUTER_RESULTS"
+  },
+  "final_status_flags": {
+    "dino2": {
+      "train_started.json": true,
+      "train_complete.json": true,
+      "calibration_result.json": true,
+      "outer_result.json": true,
+      "failure.txt": false,
+      "calibration_failure.txt": false,
+      "outer_failure.txt": false,
+      "profile": true
+    },
+    "dino3": {
+      "train_started.json": true,
+      "train_complete.json": true,
+      "calibration_result.json": true,
+      "outer_result.json": true,
+      "failure.txt": false,
+      "calibration_failure.txt": false,
+      "outer_failure.txt": false,
+      "profile": true
+    },
+    "calibration_screen": true
+  },
+  "actual_ipc_and_training_path": "Repaired target reached update2000 and completed both evaluation stages. No failure flags shown in final status; no further model loading/speed probes needed.",
+  "interpretation": "Supports positive inner-calibration linear-readout comparison only. Full/NB128 tasks remain separate; outer is reused F0 development, not a sealed independent test or a world-knowledge claim.",
+  "failed_original_attempt": "Preserved with unknown exact unlogged update count; not counted as zero.",
+  "remaining_registered_successful_update_budget": {
+    "full_main_jobs": 11,
+    "full_main_updates": 88000,
+    "new_spatial_jobs": 2,
+    "new_spatial_updates": 4000,
+    "total": 92000
+  },
+  "next_action": "Read and archive existing small A0 JSON files without recomputation; independently user-run the already-published d15 Full bootstrap when GPU0/1 idle and no existing installed/running Full instance.",
+  "full_new_profile_max_disposable_updates": 28,
+  "new_model_probe_for_completed_a0": 0,
+  "target_full_pipeline_launch_received": false,
+  "new_queue_started_by_assistant": false
+}

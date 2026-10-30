@@ -1,6 +1,6 @@
 # A0 IPC长路径故障与独立执行修复（2026-10-30）
 
-当前：旧工程故障已确认、旧进程仍活着；修复代码/本地检查完成，目标停止/IPC/首更回执尚未收到。原A0源码、数据、公开权重、旧日志、锁及回执保留。详见[失败与修复记录](../../records/post_m2_a0_ipcfix_20261030_release/failure_and_repair.json)、[当前固定发布](../../records/post_m2_a0_ipcfix_20261030_release/publication_receipt.json)。
+当前：已收到目标prepare通过、修复入口派发及两模型各2k/校准/外层阶段完成回执；工程修复已在真实训练与评价链验证。内校准筛查阳性，原始外层分数/整数矩阵待现成JSON回传。不再prepare/start或重跑检查。原A0源码、数据、公开权重、旧日志、锁及回执保留。详见[失败与修复记录](../../records/post_m2_a0_ipcfix_20261030_release/failure_and_repair.json)、[当前固定发布](../../records/post_m2_a0_ipcfix_20261030_release/publication_receipt.json)。
 
 ## 原因与已知状态
 
