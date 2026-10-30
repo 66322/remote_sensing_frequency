@@ -1,14 +1,12 @@
-# 下一步：修复已确认的A0 IPC阻塞，再显式接续（2026-10-30）
+# 下一步：读取修复版A0正式进度，不重复启动（2026-10-30）
 
-最新实际状态：原A0双子进程已启动，但均报`AF_UNIX path too long`，用户确认PID2426676/2426731/2426732仍活着，未列出progress/完成/端点。当前是IPC工程阻塞，不是科学阴性；不重跑原入口。按[独立修复说明](../experiments/POST_M2_A0_IPC_REPAIR_20261030.md)保留旧记录、核对并停止本次故障进程、验证一次CPU IPC，再显式接续新修复目录。没有正式成功更新回执，不能由缺失文件宣称精确零更新。
-
-历史启动回执：用户已派发原A0后台入口，PID `2426676`，日志文件名时间戳`20261030T171015`，见[回执](../../records/post_m2_a0_capability_20261029/continuation_dispatch_user_receipt_20261030.json)。目前只证明后台入口派发，预检通过、GPU子进程、正式首更和阶段完成仍未回传。此派发记录已被后续AF_UNIX故障观测更新；当前按上方独立修复流程执行。
+2026-10-30 18:59:13（北京时间）已收到[修复准备通过](../../records/post_m2_a0_ipcfix_20261030/repair_ready.json)与[新后台入口派发](../../records/post_m2_a0_ipcfix_20261030/repair_dispatch.json)回执：PID2506856，短TMPDIR=/home/jovyan/zzx/tmp/a0_ipc，原profile复用、准备优化更新0。成功prepare报告已完成旧归属进程停止与一次CPU IPC检查，详细停止/IPC原件仍在服务器。当前唯一下一步是读取新run的repair_continuation.log和pair_train_dino2/dino3.log确认正式首更/完成或原始错误，不再prepare/start，不再测速；尚未收到正式成功更新回执。
 
 用户已要求按[最新主计划](../experiments/POST_M2_MULTIROUTE_PLAN_20261030.md)安排实验；[首批执行r1](../experiments/POST_M2_MULTIROUTE_EXECUTION_20261030.md)和[机器清单](../../records/post_m2_multiroute_v2_20261030_release/execution_plan.json)已完成实现及本地检查，无目标训练回执。
 
 尚未部署的新任务使用轻量测速修订，精确代码提交见[当前发布回执](../../records/post_m2_multiroute_v2_20261030_release/publication_receipt.json)。若已安装/启动历史4fbabd6版本则读其既有状态，不热改或重启。
 
-当前A0接续：旧入口已因长TMPDIR报IPC错误，进程仍在，不能再用原启动命令。新修复工具先核对归属、保存证据并停止本次故障树；原进度/端点若存在即停止重放；否则验证一次CPU进程张量通信并复用两份profile。prepare不训练，随后由用户显式start新目录，按原合同各2k/seed42→校准→screen→条件外层；无自动重试。
+当前A0接续：新prepare已通过，用户已显式start并得到PID2506856；当前只读新父/子日志确认首更、阶段完成或错误。新run为ROOT/records/post_m2_a0_ipcfix_20261030，原记录保留；入口按原科学合同各2k/seed42→校准→screen→条件外层，无自动重试。不要重复prepare/start，不另开加载/测速或竞争队列。
 
 后续Full独立入口（当前不另派发）：服务器沿既有remote_sensing，按本次固定发布commit运行bootstrap --start。它只下载小型固定代码载荷，后台pipeline自动完成CPU数据/公共权重检查、七条真实路径profile、合格后11个Full作业/88k；不另等人工放行、不在训练中安装或下载。
 

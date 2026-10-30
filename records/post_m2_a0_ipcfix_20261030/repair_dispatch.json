@@ -1,0 +1,7 @@
+{
+  "status": "REPAIRED_ENTRY_DISPATCHED_NOT_TRAINING_PROOF",
+  "observed_at": "2026-10-30T10:59:13.502568+00:00",
+  "pid": 2506856,
+  "log": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030/repair_continuation.log",
+  "execution_patch_commit": "d15f34e8d53f935aa17542123c2227fab14cb810"
+}

@@ -1,10 +1,6 @@
 # 当前交接：多路线 v2 首批执行版本 r1（2026-10-30）
 
-最新GPU快照2026-10-30 17:49:06：[进程对应记录](../../records/post_m2_a0_ipcfix_20261030_release/gpu_process_observation_20261030_174906.json)确认GPU0/1仍为旧A0 PID2426731/2426732，均0%计算、约854/856MiB进程显存；父控制器2426713、原入口2426676。GPU2–7为/home/jovyan/scripts下python gpu.py的六个进程，各100%计算/约638MiB，PPID1、stdout=/dev/pts/19；具体用途/原始启动者未知，不归本次修复操作范围。尚未收到修复准备/停止/新派发回执，当前继续使用已发布的独立IPC修复，不重做模型检查。
-
-最新实际状态：原A0双子进程已启动，但均报`AF_UNIX path too long`，用户确认PID2426676/2426731/2426732仍活着，未列出progress/完成/端点。当前是IPC工程阻塞，不是科学阴性；不重跑原入口。按[独立修复说明](../experiments/POST_M2_A0_IPC_REPAIR_20261030.md)保留旧记录、核对并停止本次故障进程、验证一次CPU IPC，再显式接续新修复目录。没有正式成功更新回执，不能由缺失文件宣称精确零更新。
-
-历史启动回执：用户已派发原A0后台入口，PID `2426676`，日志文件名时间戳`20261030T171015`，见[回执](../../records/post_m2_a0_capability_20261029/continuation_dispatch_user_receipt_20261030.json)。目前只证明后台入口派发，预检通过、GPU子进程、正式首更和阶段完成仍未回传。此派发记录已被后续AF_UNIX故障观测更新；当前按上方独立修复流程执行。
+2026-10-30 18:59:13（北京时间）已收到[修复准备通过](../../records/post_m2_a0_ipcfix_20261030/repair_ready.json)与[新后台入口派发](../../records/post_m2_a0_ipcfix_20261030/repair_dispatch.json)回执：PID2506856，短TMPDIR=/home/jovyan/zzx/tmp/a0_ipc，原profile复用、准备优化更新0。成功prepare报告已完成旧归属进程停止与一次CPU IPC检查，详细停止/IPC原件仍在服务器。当前唯一下一步是读取新run的repair_continuation.log和pair_train_dino2/dino3.log确认正式首更/完成或原始错误，不再prepare/start，不再测速；尚未收到正式成功更新回执。
 
 2026-10-30用户进一步修订：加载/测速仅做轻量验证，已有通过项直接复用；新路径只保留一个已有依据的配置，1步预热+3步计时，计时仅作粗估，不跑多组扫参或额外百步训练。七条Full路径最多28个丢弃更新，两个空间头合计最多8；正式科学实验训练预算与测速分开，不能把各2k正式A0误当测速。仅适用于尚未部署的新快照，已安装/运行不热改、不重启，原A0 c22及已测回执不变。
 
@@ -14,7 +10,7 @@
 
 ## 当前接续
 
-A0两骨干真实检查继续有效；原入口派发后已确认长TMPDIR导致IPC线程失败并等待。当前使用[独立IPC修复](../experiments/POST_M2_A0_IPC_REPAIR_20261030.md)：停止核实归属的故障进程，原位保留旧记录，在新目录接续；若发现旧正式进度则阻止重放。修复后的新入口按同一科学合同串接各2k训练、校准、screen与条件外层评价，不重做检查；旧入口保留停态。既有Full队列若已运行（包括CPU准备）则不派发第二控制器。Full独立入口继续是在既有remote_sensing环境按固定发布commit执行bootstrap --start；缺少启动回执时不能重复启动。服务器由用户操作，无SSH。小载荷保存于ROOT/execution/post_m2_multiroute_v2_20261030_r1；运行目录ROOT/records/post_m2_multiroute_v2_20261030_r1；ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro。后台pipeline依次CPU数据/真实公共权重严格加载→七条真实路径profile→全部合格后11作业/88k，阶段间自动接续，无隐藏下载/安装或人工确认等待。
+A0两骨干真实检查继续有效；[独立IPC修复](../experiments/POST_M2_A0_IPC_REPAIR_20261030.md)已收到prepare通过及新入口PID2506856派发回执，原文件未改、准备优化更新0、未观察到旧成功更新且不宣称旧精确零更新。现在只读新日志确认正式进度，禁止重复prepare/start。修复后的新入口按同一科学合同串接各2k训练、校准、screen与条件外层评价，不重做检查；旧入口保留停态。既有Full队列若已运行（包括CPU准备）则不派发第二控制器。Full独立入口继续是在既有remote_sensing环境按固定发布commit执行bootstrap --start；缺少启动回执时不能重复启动。服务器由用户操作，无SSH。小载荷保存于ROOT/execution/post_m2_multiroute_v2_20261030_r1；运行目录ROOT/records/post_m2_multiroute_v2_20261030_r1；ROOT=/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro。后台pipeline依次CPU数据/真实公共权重严格加载→七条真实路径profile→全部合格后11作业/88k，阶段间自动接续，无隐藏下载/安装或人工确认等待。
 
 每卡常驻一个进程，跨作业复用DINOv2与六拟合tile；头/优化器独立初始化。G/S候选及错配控制在各自主控制合格后可并行；Q3必须读取Q2实际暴露记录。默认42，有效batch16，Full512监督。G/Q/S不等DINOv3。真实耗时由measured_budget.json给出，A0速度不外推。共性首败停止整队、保留原栈，仅终止自身进程组，不自动重试/改配方/删锁。
 
@@ -26,7 +22,7 @@ A0两骨干真实检查继续有效；原入口派发后已确认长TMPDIR导致
 
 ## 最后实际服务器状态
 
-最后GPU计算观测为2026-10-30 16:30:50.996411+08:00 DINOv3 profile完成：8worker/micro16，中位14.36ms/步，取数等待0.109ms；评价batch16，529窗口预测/拼接0.6641秒（不含数据加载/完整指标统计）。首次数据加载35.19秒、总profile43.74秒、160丢弃更新；不算正式训练。GPU1在该检查前通过占用保护，GPU0当前状态未知，不宣称两卡现在空闲。此前inventory确认F0 12tile、CPU192、约2.04TB RAM、GPU0/1各81081MiB空闲，是历史观测。新启动由目标检查确认实际空闲，不动2–7卡。
+最后GPU计算观测为2026-10-30 16:30:50.996411+08:00 DINOv3 profile完成：8worker/micro16，中位14.36ms/步，取数等待0.109ms；评价batch16，529窗口预测/拼接0.6641秒（不含数据加载/完整指标统计）。首次数据加载35.19秒、总profile43.74秒、160丢弃更新；不算正式训练。GPU1在该检查前通过占用保护，当前GPU子进程占用待新修复日志，不能把18:59后台派发当成正式训练已进行。此前inventory确认F0 12tile、CPU192、约2.04TB RAM、GPU0/1各81081MiB空闲，是历史观测。新启动由目标检查确认实际空闲，不动2–7卡。
 
 M2已完成108训练/3,456,000更新/77,868评价，DF配方关闭；J工程停止，无科学结果。首清理删除90保留18；最终清理19:15在预删除统计空值相减失败，未删除，仍按用户要求暂缓。授权不撤回，本轮不恢复清理、不为新研究强留旧专家。
 

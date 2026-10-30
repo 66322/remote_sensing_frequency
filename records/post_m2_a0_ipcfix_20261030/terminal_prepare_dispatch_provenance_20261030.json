@@ -1,0 +1,22 @@
+{
+  "source": "user_pasted_complete_prepare_and_start_terminal_JSON",
+  "observed_at_utc": "2026-10-30T10:59:13.502568+00:00",
+  "observed_at_asia_shanghai": "2026-10-30T18:59:13.502568+08:00",
+  "code_commit": "d15f34e8d53f935aa17542123c2227fab14cb810",
+  "download_reported_bytes": {
+    "repair_entry": 13511,
+    "scientific_entry_with_execution_patch": 38251
+  },
+  "raw_ready": "records/post_m2_a0_ipcfix_20261030/repair_ready.json",
+  "raw_dispatch": "records/post_m2_a0_ipcfix_20261030/repair_dispatch.json",
+  "original_profiles_reused": true,
+  "probe_optimizer_updates": 0,
+  "old_owned_process_stop_and_cpu_ipc_pass": "Reported through successful prepare completion; these are required predecessors in the pinned d15f34e source.",
+  "detailed_stop_receipt_received": false,
+  "detailed_cpu_ipc_receipt_received": false,
+  "formal_child_dispatch_received": false,
+  "successful_formal_update_received": false,
+  "phase_complete_received": false,
+  "next_action": "Read existing new-run repair_continuation.log and pair_train_dino2/dino3.log only; do not call prepare/start again or rerun model checks.",
+  "server_access": "User-operated; assistant has no direct server access"
+}

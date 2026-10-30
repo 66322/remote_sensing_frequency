@@ -2417,7 +2417,7 @@
     "user_authorized_arrangement": true,
     "server_training_started": false,
     "automatic_retry": false,
-    "a0_next_action": "Use versioned IPC repair: verify and stop only old owned fault processes, preserve originals, check one CPU IPC batch, then explicit separate new-run start only if no old formal progress/endpoint evidence.",
+    "a0_next_action": "Read new-run repair_continuation.log and pair_train_dino2/dino3.log for PID2506856; do not repeat prepare/start or profiling.",
     "a0_launcher_dispatched": true
   },
   "completed_post_d21_mixed_followup": {
@@ -3478,10 +3478,10 @@
     "a0_formal_updates_received": 0,
     "profile_policy": "one inherited configuration; 1 warmup + 3 timed updates per new path; existing A0 readiness reused",
     "a0_launch_receipt_received": true,
-    "a0_launcher_pid": 2426676,
-    "a0_formal_update_status": "NOT_OBSERVED; OLD_PROCESSES_CONFIRMED_ALIVE_WITH_AF_UNIX_ERRORS",
+    "a0_launcher_pid": 2506856,
+    "a0_formal_update_status": "REPAIRED_ENTRY_DISPATCHED_SUCCESSFUL_FORMAL_UPDATE_NOT_YET_OBSERVED",
     "training_started_status_note": "Background entry dispatch observed; first successful formal update not yet observed.",
-    "current_resource_owner": "Faulted original A0 children on physical GPU0/1; release only verified owned process tree before any new dispatch"
+    "current_resource_owner": "Repaired A0 entry dispatched; original-owned process stop reported through successful prepare; current GPU child occupancy awaits logs"
   },
   "completed_d26_plan": {
     "input_manifest_sha256": "4cdd767e3fc9d9984377d3833e068fb4864b16dfb9ed1aead3b6af12ec2e0295",
@@ -4218,7 +4218,7 @@
     "config_version": 2,
     "profile_policy_revision": "USER_REQUESTED_MINIMAL_LOADING_AND_TIMING_20261030",
     "hot_patch_running_source": false,
-    "a0_current_execution_status": "ENGINEERING_BLOCKED_AF_UNIX_REPAIR_LOCAL_CHECKED_TARGET_PENDING",
+    "a0_current_execution_status": "TARGET_REPAIR_PREPARED_ENTRY_DISPATCHED_FORMAL_PROGRESS_PENDING",
     "full_ipc_path_fix_implemented_not_deployed": true
   },
   "historical_routing_before_multiroute_execution_20261030": {
@@ -4366,7 +4366,7 @@
       2426732
     ],
     "old_formal_updates": "NOT_OBSERVED_EXACT_COUNT_UNKNOWN",
-    "repair_target_status": "NO_TARGET_REPAIR_RECEIPT; ORIGINAL_GPU_OWNER_PIDS_STILL_PRESENT",
+    "repair_target_status": "PREPARE_PASSED_ENTRY_DISPATCH_REPORTED_FORMAL_PROGRESS_PENDING",
     "new_run": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030"
   },
   "latest_resource_observation": {
@@ -4382,5 +4382,16 @@
     ],
     "other_cards_entry": "python gpu.py; purpose and original launcher unknown",
     "a0_repair_receipt_received": false
+  },
+  "latest_a0_repaired_dispatch": {
+    "record": "records/post_m2_a0_ipcfix_20261030/repair_dispatch.json",
+    "preparation_record": "records/post_m2_a0_ipcfix_20261030/repair_ready.json",
+    "observed_at": "2026-10-30T10:59:13.502568+00:00",
+    "observed_at_asia_shanghai": "2026-10-30T18:59:13.502568+08:00",
+    "pid": 2506856,
+    "status": "REPAIRED_ENTRY_DISPATCHED_NOT_TRAINING_PROOF",
+    "code_commit": "d15f34e8d53f935aa17542123c2227fab14cb810",
+    "new_run": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030",
+    "formal_updates_received": false
   }
 }
