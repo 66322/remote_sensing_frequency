@@ -4191,7 +4191,9 @@
     "a0_dino2_checks_reused": true,
     "a0_dino3_readiness_receipt_received": false,
     "first_common_failure_stops_dispatch": true,
-    "automatic_retry": false
+    "automatic_retry": false,
+    "code_commit": "4fbabd6b135a41c1ba0891120dcac6546880bf47",
+    "publication_receipt": "records/post_m2_multiroute_v2_20261030_release/publication_receipt.json"
   },
   "historical_routing_before_multiroute_execution_20261030": {
     "next_plan": {
