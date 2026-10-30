@@ -4366,7 +4366,21 @@
       2426732
     ],
     "old_formal_updates": "NOT_OBSERVED_EXACT_COUNT_UNKNOWN",
-    "repair_target_status": "NOT_EXECUTED",
+    "repair_target_status": "NO_TARGET_REPAIR_RECEIPT; ORIGINAL_GPU_OWNER_PIDS_STILL_PRESENT",
     "new_run": "/home/jovyan/zzx/paper_rebuild/08_thesis_full_repro/records/post_m2_a0_ipcfix_20261030"
+  },
+  "latest_resource_observation": {
+    "record": "records/post_m2_a0_ipcfix_20261030_release/gpu_process_observation_20261030_174906.json",
+    "observed_at_local": "2026-10-30 17:49:06",
+    "original_a0_gpu_pids": [
+      2426731,
+      2426732
+    ],
+    "gpu0_1_util_percent": [
+      0,
+      0
+    ],
+    "other_cards_entry": "python gpu.py; purpose and original launcher unknown",
+    "a0_repair_receipt_received": false
   }
 }
